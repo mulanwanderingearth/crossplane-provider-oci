@@ -8,9 +8,10 @@ set -euo pipefail
 : "${KUBECONFIG:=}"  # Path to kubeconfig for target cluster
 : "${CONTEXT:=}"  # Context name for target cluster
 : "${PROVIDER_IMAGE_REPO_NAME:=ghcr.io/oracle}"  # OCI provider image repository
-: "${FAMILY_PROVIDER_VERSION:=v0.2.0}"  # Version of OCI provider family
+: "${FAMILY_PROVIDER_VERSION:=v1.0.1}"  # Version of OCI provider family
 : "${SUB_PROVIDERS_VERSION:=${FAMILY_PROVIDER_VERSION}}"  # Version of sub-providers (defaults to FAMILY_PROVIDER_VERSION)
 : "${TENANCY_OCID:=ocid1.tenancy.oc1.xxx}"
+: "${TEST_NAMESPACES:=}"  # Comma-separated list of namespaces that should receive namespaced ProviderConfigs
 
 
 # kubectl wrapper for multi-cluster support
@@ -87,18 +88,40 @@ while true; do
 done
 
 
-# Step 3: Create InstancePrincipal secret
-# For more credential types, refer to quickstart guide in docs/quickstart.md
-echo "Creating InstancePrincipal secret..."
-kctl create secret generic oci-creds \
-  --namespace="${NAMESPACE}" \
-  --from-literal=credentials="{
+# Step 3: Create InstancePrincipal secrets (cluster namespace + test namespaces)
+credentials_payload="{
     \"tenancy_ocid\": \"${TENANCY_OCID}\",
     \"auth\": \"InstancePrincipal\",
     \"region\": \"${REGION}\"
-  }" --dry-run=client -o yaml | kctl apply -f -
+  }"
 
-# Step 4: Create ProviderConfig
-echo "Creating ProviderConfig..."
-kctl apply -f /git-repo/argo/setup/providerconfig.yaml
+echo "Creating InstancePrincipal secret in ${NAMESPACE}..."
+kctl create secret generic oci-creds \
+  --namespace="${NAMESPACE}" \
+  --from-literal=credentials="${credentials_payload}" \
+  --dry-run=client -o yaml | kctl apply -f -
+
+readarray -t target_namespaces < <(echo "${TEST_NAMESPACES}" | tr ',' '\n' | sed '/^\s*$/d' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+for target_namespace in "${target_namespaces[@]}"; do
+  echo "Ensuring namespace ${target_namespace} exists..."
+  kctl get ns "${target_namespace}" || kctl create ns "${target_namespace}"
+
+  echo "Creating InstancePrincipal secret in ${target_namespace}..."
+  kctl create secret generic oci-creds \
+    --namespace="${target_namespace}" \
+    --from-literal=credentials="${credentials_payload}" \
+    --dry-run=client -o yaml | kctl apply -f -
+done
+
+# Step 4: Create ProviderConfigs
+echo "Applying cluster scoped ProviderConfig..."
+CROSSPLANE_NAMESPACE="${NAMESPACE}" \
+  envsubst < /git-repo/argo/setup/cluster-providerconfig.yaml | kctl apply -f -
+
+for target_namespace in "${target_namespaces[@]}"; do
+  echo "Applying namespaced ProviderConfig in ${target_namespace}..."
+  TARGET_NAMESPACE="${target_namespace}" \
+    envsubst < /git-repo/argo/setup/namespaced-providerconfig.yaml | kctl apply -f -
+done
+
 echo "Crossplane setup with OCI providers completed successfully."
