@@ -17,9 +17,7 @@ spec:
     {{- end }}
     {{- range .Parameters }}
     - name: {{ .Name }}
-      {{- if .Value }}
       value: "{{ .Value }}"
-      {{- end }}
     {{- end }}
   templates:
     - name: crossplane-provider-oci-test-workflow
@@ -31,10 +29,19 @@ spec:
             name: {{ .Name }}
             template: {{ .Entrypoint }}
           when: "{{ resolveWhen .RunParam }}"
+          {{- if .Namespaced }}
+          withParam: "{{ resolveParameter $.NamespaceListParam }}"
+          {{- end }}
           arguments:
             parameters:
+            {{- if .Namespaced }}
+              - name: {{ .NamespaceParameter }}
+                value: "{{"{{"}}item{{"}}"}}"
+            {{- end }}
             {{- range .Parameters }}
+              {{- if ne .Name "target_namespace" }}
               - name: {{ .Name }}
                 value: "{{ resolveParameter .Name }}"
+              {{- end }}
             {{- end }}
         {{- end }}

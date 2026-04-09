@@ -2,16 +2,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: oci-{{ .Service }}-{{ .Version }}-tests-template
+  name: oci-{{ .Service }}-{{ .Scope }}-{{ .Version }}-tests-template
 spec:
   serviceAccountName: argo-workflow
-  entrypoint: {{ .Service }}-tests-workflow
+  entrypoint: {{ .Service }}-{{ .Scope }}-tests-workflow
   volumes:
     - name: git-repo
       persistentVolumeClaim:
         claimName: git-repo-pvc
   arguments:
     parameters:
+    {{- if .NeedsNamespace }}
+    - name: {{ .NamespaceParameter }}
+    {{- end }}
     {{- range .EnvVars }}
     - name: {{ . }}
     {{- end }}
@@ -24,11 +27,17 @@ spec:
     - name: delete_resources
       value: "true"
   templates:
-    - name: {{ .Service }}-tests-workflow
+    - name: {{ .Service }}-{{ .Scope }}-tests-workflow
+      {{- if .NeedsNamespace }}
+      inputs:
+        parameters:
+          - name: {{ .NamespaceParameter }}
+            value: "{{ resolveParameter .NamespaceParameter }}"
+      {{- end }}
       dag:
         tasks:
         {{- range .PrerequisiteResourceFiles }}
-        - name: create-{{ .Kind }}
+        - name: create-{{ normalizeTaskName .Name }}
           templateRef:
             name: test-template
             template: create-resource
@@ -40,6 +49,10 @@ spec:
             parameters:
               - name: resourceFile
                 value: "{{ .Path | resolveResourceFile }}"
+              {{- if $.NeedsNamespace }}
+              - name: namespace
+                value: "{{ resolveInputParameter $.NamespaceParameter }}"
+              {{- end }}
               {{- if .EnvVars }}
               - name: envVars
                 value: "{{ .EnvVars | resolveEnvVars }}"
@@ -47,10 +60,14 @@ spec:
               {{- if .SetupFilePath }}
               - name: setupFile
                 value: "{{ .SetupFilePath | resolveResourceFile }}"
+              {{- if .EnvVars }}
+              - name: setupEnvVars
+                value: "{{ .EnvVars | resolveEnvVars }}"
+              {{- end }}
               {{- end }}
         {{- end }}
         {{- range .ResourceFiles }}
-        - name: create-{{ .Name }}
+        - name: create-{{ normalizeTaskName .Name }}
           templateRef:
             name: test-template
             template: create-resource
@@ -62,6 +79,10 @@ spec:
             parameters:
               - name: resourceFile
                 value: "{{ .Path | resolveResourceFile }}"
+              {{- if $.NeedsNamespace }}
+              - name: namespace
+                value: "{{ resolveInputParameter $.NamespaceParameter }}"
+              {{- end }}
               {{- if .EnvVars }}
               - name: envVars
                 value: "{{ .EnvVars | resolveEnvVars }}"
@@ -69,10 +90,14 @@ spec:
               {{- if .SetupFilePath }}
               - name: setupFile
                 value: "{{ .SetupFilePath | resolveResourceFile }}"
+              {{- if .EnvVars }}
+              - name: setupEnvVars
+                value: "{{ .EnvVars | resolveEnvVars }}"
+              {{- end }}
               {{- end }}
         {{- end }}
         {{- range .ResourceFiles }}
-        - name: delete-{{ .Name }}
+        - name: delete-{{ normalizeTaskName .Name }}
           templateRef:
             name: test-template
             template: delete-resource
@@ -86,9 +111,17 @@ spec:
                 value: "{{ resolveDeleteParameters .Name "Name" }}"
               - name: resourceGroup
                 value: "{{ resolveDeleteParameters .Name "Group" }}"
+              {{- if $.NeedsNamespace }}
+              - name: namespace
+                value: "{{ resolveInputParameter $.NamespaceParameter }}"
+              {{- end }}
               {{- if .TeardownFilePath }}
               - name: teardownFile
                 value: "{{ .TeardownFilePath | resolveResourceFile }}"
+              {{- if .EnvVars }}
+              - name: teardownEnvVars
+                value: "{{ .EnvVars | resolveEnvVars }}"
+              {{- end }}
               {{- end }}
         {{- end }}
 {{- end }}

@@ -22,6 +22,9 @@ const (
 	generatedWorkflowsDirName   = "generated-workflows"
 	defaultParameterMapCapacity = 128
 	templateFileName            = "workflow.yaml.tmpl"
+	scopeCluster                = "cluster"
+	scopeNamespaced             = "namespaced"
+	namespaceListParameter      = "namespace_list"
 )
 
 //go:embed templates/*.tmpl
@@ -38,17 +41,22 @@ type Config struct {
 
 // TemplateData is the view model passed to the workflow Go template.
 type TemplateData struct {
-	Services   []ServiceData // Service DAG tasks included in the final workflow.
-	Parameters []Parameter   // De-duplicated workflow-level parameters.
+	Services           []ServiceData // Service DAG tasks included in the final workflow.
+	Parameters         []Parameter   // De-duplicated workflow-level parameters.
+	HasNamespaced      bool          // Indicates if any namespaced services are present.
+	NamespaceListParam string        // Workflow parameter used to supply namespaces.
 }
 
 // ServiceData represents one service's workflowtemplate information used by the final DAG.
 type ServiceData struct {
-	Name       string      // WorkflowTemplate metadata.name.
-	TaskName   string      // Generated DAG task name.
-	RunParam   string      // Workflow boolean gate for the service task.
-	Entrypoint string      // Referenced template entrypoint.
-	Parameters []Parameter // WorkflowTemplate argument parameters.
+	Name               string      // WorkflowTemplate metadata.name.
+	TaskName           string      // Generated DAG task name.
+	RunParam           string      // Workflow boolean gate for the service task.
+	Entrypoint         string      // Referenced template entrypoint.
+	Scope              string      // Scope identifier (cluster/namespaced).
+	Namespaced         bool        // True if this template must iterate across namespaces.
+	NamespaceParameter string      // Parameter name expected by namespaced templates.
+	Parameters         []Parameter // WorkflowTemplate argument parameters.
 }
 
 // ArgoWorkflowTemplate is a minimal schema used to parse required fields from input YAML files.
@@ -100,97 +108,144 @@ func Run(config Config) error {
 		return fmt.Errorf("version must not be empty")
 	}
 
-	templateData, err := createTemplateData(cfg)
+	templateDataByScope, err := createTemplateData(cfg)
 	if err != nil {
 		return err
 	}
 
-	return generateWorkflow(cfg, templateData)
+	return generateWorkflow(cfg, templateDataByScope)
 }
 
-// createTemplateData loads workflowtemplate YAML files and builds sorted, deduplicated template data.
-func createTemplateData(config Config) (TemplateData, error) {
-	parameterByName := make(map[string]Parameter, defaultParameterMapCapacity)
-
-	serviceTemplates, err := os.ReadDir(config.InputDir)
-	if err != nil {
-		return TemplateData{}, err
-	}
-	sort.Slice(serviceTemplates, func(i, j int) bool {
-		return serviceTemplates[i].Name() < serviceTemplates[j].Name()
-	})
-
+// createTemplateData loads workflowtemplate YAML files from each scope and builds sorted, deduplicated template data.
+func createTemplateData(config Config) (map[string]TemplateData, error) {
 	if err := os.MkdirAll(config.OutputDir, os.ModePerm); err != nil {
-		return TemplateData{}, err
+		return nil, err
 	}
 
-	services := make([]ServiceData, 0)
 	requestedServices := normalizeRequestedServices(config.ServiceNames)
+	templateDataByScope := make(map[string]TemplateData, 2)
+	foundAny := false
+
+	for _, scope := range []string{scopeCluster, scopeNamespaced} {
+		scopeDir := filepath.Join(config.InputDir, scope)
+		scopeEntries, err := os.ReadDir(scopeDir)
+		if err != nil {
+			if os.IsNotExist(err) {
+				continue
+			}
+			return nil, err
+		}
+
+		scopeData, err := createTemplateDataForScope(scope, scopeDir, scopeEntries, config.Version, requestedServices)
+		if err != nil {
+			return nil, err
+		}
+		if scopeData == nil {
+			continue
+		}
+
+		templateDataByScope[scope] = *scopeData
+		foundAny = true
+	}
+
+	if !foundAny {
+		return nil, fmt.Errorf("no workflowtemplates found in %s for version %s", config.InputDir, config.Version)
+	}
+
+	return templateDataByScope, nil
+}
+
+func createTemplateDataForScope(scope, scopeDir string, entries []os.DirEntry, version string, requestedServices []string) (*TemplateData, error) {
+	parameterByName := make(map[string]Parameter, defaultParameterMapCapacity)
+	services := make([]ServiceData, 0)
+	hasNamespaced := scope == scopeNamespaced
+
 	if len(requestedServices) == 0 {
-		// Process all templates for the target version when no explicit service filter is provided.
-		for _, serviceTemplate := range serviceTemplates {
-			if serviceTemplate.IsDir() {
-				continue
-			}
-			if filepath.Ext(serviceTemplate.Name()) != ".yaml" {
-				continue
-			}
-			if !strings.HasSuffix(serviceTemplate.Name(), fmt.Sprintf("-%s.yaml", config.Version)) {
+		sort.Slice(entries, func(i, j int) bool {
+			return entries[i].Name() < entries[j].Name()
+		})
+
+		for _, entry := range entries {
+			if entry.IsDir() || filepath.Ext(entry.Name()) != ".yaml" {
 				continue
 			}
 
-			serviceName := strings.TrimSuffix(serviceTemplate.Name(), fmt.Sprintf("-%s.yaml", config.Version))
-			serviceData, err := processArgoWorkflowTemplate(filepath.Join(config.InputDir, serviceTemplate.Name()), serviceName)
+			serviceName, entryScope, ok := parseTemplateFileName(entry.Name(), version)
+			if !ok || entryScope != scope {
+				continue
+			}
+
+			templatePath := filepath.Join(scopeDir, entry.Name())
+			serviceData, err := processArgoWorkflowTemplate(templatePath, serviceName, scope)
 			if err != nil {
-				log.Printf("Skipping %q due to error: %v", serviceTemplate.Name(), err)
+				log.Printf("Skipping %q due to error: %v", templatePath, err)
 				continue
 			}
 			services = append(services, serviceData)
 			collateParameters(parameterByName, serviceData.Parameters)
+			if serviceData.Namespaced {
+				hasNamespaced = true
+			}
 		}
 	} else {
-		// When services are specified, only include exact <service>-<version>.yaml matches.
 		for _, serviceName := range requestedServices {
-			fileName := fmt.Sprintf("%s-%s.yaml", serviceName, config.Version)
-			workflowTemplatePath := filepath.Join(config.InputDir, fileName)
-			_, err := os.Stat(workflowTemplatePath)
-			if err == nil {
-				serviceData, err := processArgoWorkflowTemplate(workflowTemplatePath, serviceName)
-				if err != nil {
-					log.Printf("Skipping %q due to error: %v", workflowTemplatePath, err)
+			fileName := fmt.Sprintf("%s-%s-%s.yaml", serviceName, scope, version)
+			templatePath := filepath.Join(scopeDir, fileName)
+			if _, err := os.Stat(templatePath); err != nil {
+				if os.IsNotExist(err) {
 					continue
 				}
-				services = append(services, serviceData)
-				collateParameters(parameterByName, serviceData.Parameters)
+				return nil, err
+			}
+
+			serviceData, err := processArgoWorkflowTemplate(templatePath, serviceName, scope)
+			if err != nil {
+				log.Printf("Skipping %q due to error: %v", templatePath, err)
 				continue
 			}
-			if !os.IsNotExist(err) {
-				return TemplateData{}, err
+			services = append(services, serviceData)
+			collateParameters(parameterByName, serviceData.Parameters)
+			if serviceData.Namespaced {
+				hasNamespaced = true
 			}
-			log.Printf("Skipping service %q as workflowtemplate file does not exist", serviceName)
 		}
 	}
 
 	if len(services) == 0 {
-		return TemplateData{}, fmt.Errorf("no workflowtemplates found in %s for version %s", config.InputDir, config.Version)
+		return nil, nil
+	}
+
+	if hasNamespaced {
+		if _, exists := parameterByName[namespaceListParameter]; !exists {
+			parameterByName[namespaceListParameter] = Parameter{
+				Name:  namespaceListParameter,
+				Value: "[]",
+			}
+		}
 	}
 
 	parameters := make([]Parameter, 0, len(parameterByName))
 	for _, parameter := range parameterByName {
 		parameters = append(parameters, parameter)
 	}
-
 	sort.Slice(parameters, func(i, j int) bool {
 		return parameters[i].Name < parameters[j].Name
 	})
+
 	sort.Slice(services, func(i, j int) bool {
-		return services[i].Name < services[j].Name
+		return services[i].TaskName < services[j].TaskName
 	})
 
-	return TemplateData{
-		Services:   services,
-		Parameters: parameters,
-	}, nil
+	data := TemplateData{
+		Services:           services,
+		Parameters:         parameters,
+		HasNamespaced:      hasNamespaced,
+		NamespaceListParam: namespaceListParameter,
+	}
+	if !hasNamespaced {
+		data.NamespaceListParam = ""
+	}
+	return &data, nil
 }
 
 // normalizeRequestedServices trims and de-duplicates requested service names while preserving order.
@@ -211,8 +266,37 @@ func normalizeRequestedServices(serviceNames []string) []string {
 	return normalized
 }
 
+func parseTemplateFileName(fileName, version string) (string, string, bool) {
+	if filepath.Ext(fileName) != ".yaml" {
+		return "", "", false
+	}
+	base := strings.TrimSuffix(fileName, ".yaml")
+	versionSuffix := "-" + version
+	if !strings.HasSuffix(base, versionSuffix) {
+		return "", "", false
+	}
+	base = strings.TrimSuffix(base, versionSuffix)
+	lastDash := strings.LastIndex(base, "-")
+	if lastDash == -1 {
+		return "", "", false
+	}
+
+	serviceName := base[:lastDash]
+	scope := base[lastDash+1:]
+	if serviceName == "" || scope == "" {
+		return "", "", false
+	}
+
+	switch scope {
+	case scopeCluster, scopeNamespaced:
+		return serviceName, scope, true
+	default:
+		return "", "", false
+	}
+}
+
 // processArgoWorkflowTemplate parses one workflowtemplate and converts it to ServiceData.
-func processArgoWorkflowTemplate(workflowTemplatePath string, serviceName string) (ServiceData, error) {
+func processArgoWorkflowTemplate(workflowTemplatePath, serviceName, scope string) (ServiceData, error) {
 	data, err := os.ReadFile(workflowTemplatePath)
 	if err != nil {
 		return ServiceData{}, err
@@ -244,20 +328,31 @@ func processArgoWorkflowTemplate(workflowTemplatePath string, serviceName string
 		return ServiceData{}, fmt.Errorf("unable to derive normalized service name for %s", workflowTemplatePath)
 	}
 
-	taskName := strings.ReplaceAll(normalizedServiceName, "_", "-")
-	return ServiceData{
-		Name:       awt.Metadata.Name,
-		TaskName:   fmt.Sprintf("%s-tests", taskName),
-		RunParam:   fmt.Sprintf("run_%s_tests", normalizedServiceName),
-		Entrypoint: awt.Spec.Entrypoint,
-		Parameters: serviceParameters,
-	}, nil
+	taskName := strings.ReplaceAll(normalizedServiceName, "_", "-") + "-" + strings.ReplaceAll(scope, "_", "-")
+	serviceData := ServiceData{
+		Name:               awt.Metadata.Name,
+		TaskName:           fmt.Sprintf("%s-tests", taskName),
+		RunParam:           fmt.Sprintf("run_%s_%s_tests", normalizedServiceName, scope),
+		Entrypoint:         awt.Spec.Entrypoint,
+		Scope:              scope,
+		Namespaced:         scope == scopeNamespaced,
+		NamespaceParameter: "target_namespace",
+		Parameters:         serviceParameters,
+	}
+	if !serviceData.Namespaced {
+		serviceData.NamespaceParameter = ""
+	}
+	return serviceData, nil
 }
 
 // collateParameters merges service parameters by name and preserves the first non-empty default value.
 func collateParameters(parameterByName map[string]Parameter, parameters []Parameter) {
 	for _, parameter := range parameters {
 		if parameter.Name == "" {
+			continue
+		}
+		if parameter.Name == "target_namespace" {
+			// target_namespace is supplied dynamically for namespaced workflows.
 			continue
 		}
 		existing, ok := parameterByName[parameter.Name]
@@ -307,7 +402,7 @@ func resolveWorkflowParameter(parameterName string) string {
 }
 
 // generateWorkflow renders the consolidated workflow YAML file from template data.
-func generateWorkflow(config Config, templateData TemplateData) error {
+func generateWorkflow(config Config, templateDataByScope map[string]TemplateData) error {
 	workflowTemplate, err := template.New(templateFileName).Funcs(template.FuncMap{
 		"resolveWhen":      resolveWhen,
 		"resolveParameter": resolveWorkflowParameter,
@@ -316,17 +411,29 @@ func generateWorkflow(config Config, templateData TemplateData) error {
 		return err
 	}
 
-	outputFilePath := filepath.Join(config.OutputDir, fmt.Sprintf("crossplane-provider-oci-%s.yaml", config.Version))
-	file, err := os.Create(outputFilePath)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
+	for _, scope := range []string{scopeCluster, scopeNamespaced} {
+		templateData, ok := templateDataByScope[scope]
+		if !ok {
+			continue
+		}
 
-	if err := workflowTemplate.Execute(file, templateData); err != nil {
-		return err
+		outputFilePath := filepath.Join(config.OutputDir, fmt.Sprintf("crossplane-provider-oci-%s-%s.yaml", scope, config.Version))
+		file, err := os.Create(outputFilePath)
+		if err != nil {
+			return err
+		}
+
+		if err := workflowTemplate.Execute(file, templateData); err != nil {
+			file.Close()
+			return err
+		}
+
+		if err := file.Close(); err != nil {
+			return err
+		}
+
+		log.Printf("Generated workflow file: %s", outputFilePath)
 	}
 
-	log.Printf("Generated workflow file: %s", outputFilePath)
 	return nil
 }
