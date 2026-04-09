@@ -1,0 +1,925 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: oci-crossplane-test-
+spec:
+  serviceAccountName: argo-workflow
+  entrypoint: crossplane-provider-oci-test-workflow
+  volumes:
+    - name: git-repo
+      persistentVolumeClaim:
+        claimName: git-repo-pvc
+  arguments:
+    parameters:
+    - name: run_apigateway_cluster_tests
+      value: "false"
+    - name: run_apm_cluster_tests
+      value: "false"
+    - name: run_artifacts_cluster_tests
+      value: "false"
+    - name: run_autoscaling_cluster_tests
+      value: "false"
+    - name: run_bastion_cluster_tests
+      value: "false"
+    - name: run_blockstorage_cluster_tests
+      value: "false"
+    - name: run_budget_cluster_tests
+      value: "false"
+    - name: run_certificatesmanagement_cluster_tests
+      value: "false"
+    - name: run_compute_cluster_tests
+      value: "false"
+    - name: run_containerengine_cluster_tests
+      value: "false"
+    - name: run_datacatalog_cluster_tests
+      value: "false"
+    - name: run_dataintegration_cluster_tests
+      value: "false"
+    - name: run_dns_cluster_tests
+      value: "false"
+    - name: run_email_cluster_tests
+      value: "false"
+    - name: run_events_cluster_tests
+      value: "false"
+    - name: run_filestorage_cluster_tests
+      value: "false"
+    - name: run_functions_cluster_tests
+      value: "false"
+    - name: run_healthchecks_cluster_tests
+      value: "false"
+    - name: run_identity_cluster_tests
+      value: "false"
+    - name: run_integration_cluster_tests
+      value: "false"
+    - name: run_kms_cluster_tests
+      value: "false"
+    - name: run_limits_cluster_tests
+      value: "false"
+    - name: run_loadbalancer_cluster_tests
+      value: "false"
+    - name: run_logging_cluster_tests
+      value: "false"
+    - name: run_mediaservices_cluster_tests
+      value: "false"
+    - name: run_monitoring_cluster_tests
+      value: "false"
+    - name: run_mysql_cluster_tests
+      value: "false"
+    - name: run_networking_cluster_tests
+      value: "false"
+    - name: run_networkloadbalancer_cluster_tests
+      value: "false"
+    - name: run_nosql_cluster_tests
+      value: "false"
+    - name: run_objectstorage_cluster_tests
+      value: "false"
+    - name: run_ons_cluster_tests
+      value: "false"
+    - name: run_psql_cluster_tests
+      value: "false"
+    - name: run_queue_cluster_tests
+      value: "false"
+    - name: run_recovery_cluster_tests
+      value: "false"
+    - name: run_redis_cluster_tests
+      value: "false"
+    - name: run_resourcemanager_cluster_tests
+      value: "false"
+    - name: run_streaming_cluster_tests
+      value: "false"
+    - name: run_vault_cluster_tests
+      value: "false"
+    - name: run_waf_cluster_tests
+      value: "false"
+    - name: availability_domain
+      value: ""
+    - name: boot_volume_source_id
+      value: ""
+    - name: compartment_ocid
+      value: ""
+    - name: computehost_id
+      value: ""
+    - name: create_application
+      value: "true"
+    - name: create_compartment
+      value: "true"
+    - name: create_function
+      value: "true"
+    - name: create_image
+      value: "true"
+    - name: create_instance
+      value: "true"
+    - name: create_key
+      value: "true"
+    - name: create_keyversion
+      value: "true"
+    - name: create_loadbalancer
+      value: "true"
+    - name: create_notificationtopic
+      value: "true"
+    - name: create_resources
+      value: "true"
+    - name: create_secret
+      value: "true"
+    - name: create_subnet
+      value: "true"
+    - name: create_vault
+      value: "true"
+    - name: create_vcn
+      value: "true"
+    - name: delete_resources
+      value: "true"
+    - name: function_image
+      value: ""
+    - name: image_instance_ocid
+      value: ""
+    - name: instanceconsoleconnection_publickey
+      value: ""
+    - name: instancemaintenanceevent_id
+      value: ""
+    - name: instancepool_ocid
+      value: ""
+    - name: nosql_table_ddlstatement
+      value: ""
+    - name: objectstorage_namespace
+      value: ""
+    - name: ssh_public_key
+      value: ""
+    - name: subnet_ocid
+      value: ""
+    - name: target_resource_ocid
+      value: ""
+    - name: tenancy_ocid
+      value: ""
+    - name: usageplan_ocid
+      value: ""
+    - name: vault_crypto_endpoint
+      value: ""
+    - name: vault_key_signature
+      value: ""
+    - name: vault_management_endpoint
+      value: ""
+  templates:
+    - name: crossplane-provider-oci-test-workflow
+      dag:
+        tasks:
+        - name: apigateway-cluster-tests
+          templateRef:
+            name: oci-apigateway-cluster-v1alpha1-tests-template
+            template: apigateway-cluster-tests-workflow
+          when: "{{workflow.parameters.run_apigateway_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: usageplan_ocid
+                value: "{{workflow.parameters.usageplan_ocid}}"
+        - name: apm-cluster-tests
+          templateRef:
+            name: oci-apm-cluster-v1alpha1-tests-template
+            template: apm-cluster-tests-workflow
+          when: "{{workflow.parameters.run_apm_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: artifacts-cluster-tests
+          templateRef:
+            name: oci-artifacts-cluster-v1alpha1-tests-template
+            template: artifacts-cluster-tests-workflow
+          when: "{{workflow.parameters.run_artifacts_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_image
+                value: "{{workflow.parameters.create_image}}"
+              - name: create_key
+                value: "{{workflow.parameters.create_key}}"
+              - name: create_keyversion
+                value: "{{workflow.parameters.create_keyversion}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: image_instance_ocid
+                value: "{{workflow.parameters.image_instance_ocid}}"
+              - name: vault_key_signature
+                value: "{{workflow.parameters.vault_key_signature}}"
+              - name: vault_management_endpoint
+                value: "{{workflow.parameters.vault_management_endpoint}}"
+        - name: autoscaling-cluster-tests
+          templateRef:
+            name: oci-autoscaling-cluster-v1alpha1-tests-template
+            template: autoscaling-cluster-tests-workflow
+          when: "{{workflow.parameters.run_autoscaling_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: instancepool_ocid
+                value: "{{workflow.parameters.instancepool_ocid}}"
+        - name: bastion-cluster-tests
+          templateRef:
+            name: oci-bastion-cluster-v1alpha1-tests-template
+            template: bastion-cluster-tests-workflow
+          when: "{{workflow.parameters.run_bastion_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: ssh_public_key
+                value: "{{workflow.parameters.ssh_public_key}}"
+              - name: target_resource_ocid
+                value: "{{workflow.parameters.target_resource_ocid}}"
+        - name: blockstorage-cluster-tests
+          templateRef:
+            name: oci-blockstorage-cluster-v1alpha1-tests-template
+            template: blockstorage-cluster-tests-workflow
+          when: "{{workflow.parameters.run_blockstorage_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: availability_domain
+                value: "{{workflow.parameters.availability_domain}}"
+              - name: boot_volume_source_id
+                value: "{{workflow.parameters.boot_volume_source_id}}"
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_image
+                value: "{{workflow.parameters.create_image}}"
+              - name: create_instance
+                value: "{{workflow.parameters.create_instance}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: image_instance_ocid
+                value: "{{workflow.parameters.image_instance_ocid}}"
+        - name: budget-cluster-tests
+          templateRef:
+            name: oci-budget-cluster-v1alpha1-tests-template
+            template: budget-cluster-tests-workflow
+          when: "{{workflow.parameters.run_budget_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: tenancy_ocid
+                value: "{{workflow.parameters.tenancy_ocid}}"
+        - name: certificatesmanagement-cluster-tests
+          templateRef:
+            name: oci-certificatesmanagement-cluster-v1alpha1-tests-template
+            template: certificatesmanagement-cluster-tests-workflow
+          when: "{{workflow.parameters.run_certificatesmanagement_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_key
+                value: "{{workflow.parameters.create_key}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: vault_management_endpoint
+                value: "{{workflow.parameters.vault_management_endpoint}}"
+        - name: compute-cluster-tests
+          templateRef:
+            name: oci-compute-cluster-v1alpha1-tests-template
+            template: compute-cluster-tests-workflow
+          when: "{{workflow.parameters.run_compute_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: availability_domain
+                value: "{{workflow.parameters.availability_domain}}"
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: computehost_id
+                value: "{{workflow.parameters.computehost_id}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: image_instance_ocid
+                value: "{{workflow.parameters.image_instance_ocid}}"
+              - name: instanceconsoleconnection_publickey
+                value: "{{workflow.parameters.instanceconsoleconnection_publickey}}"
+              - name: instancemaintenanceevent_id
+                value: "{{workflow.parameters.instancemaintenanceevent_id}}"
+        - name: containerengine-cluster-tests
+          templateRef:
+            name: oci-containerengine-cluster-v1alpha1-tests-template
+            template: containerengine-cluster-tests-workflow
+          when: "{{workflow.parameters.run_containerengine_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: datacatalog-cluster-tests
+          templateRef:
+            name: oci-datacatalog-cluster-v1alpha1-tests-template
+            template: datacatalog-cluster-tests-workflow
+          when: "{{workflow.parameters.run_datacatalog_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: dataintegration-cluster-tests
+          templateRef:
+            name: oci-dataintegration-cluster-v1alpha1-tests-template
+            template: dataintegration-cluster-tests-workflow
+          when: "{{workflow.parameters.run_dataintegration_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: dns-cluster-tests
+          templateRef:
+            name: oci-dns-cluster-v1alpha1-tests-template
+            template: dns-cluster-tests-workflow
+          when: "{{workflow.parameters.run_dns_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: email-cluster-tests
+          templateRef:
+            name: oci-email-cluster-v1alpha1-tests-template
+            template: email-cluster-tests-workflow
+          when: "{{workflow.parameters.run_email_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: tenancy_ocid
+                value: "{{workflow.parameters.tenancy_ocid}}"
+        - name: events-cluster-tests
+          templateRef:
+            name: oci-events-cluster-v1alpha1-tests-template
+            template: events-cluster-tests-workflow
+          when: "{{workflow.parameters.run_events_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_application
+                value: "{{workflow.parameters.create_application}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_function
+                value: "{{workflow.parameters.create_function}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: function_image
+                value: "{{workflow.parameters.function_image}}"
+        - name: filestorage-cluster-tests
+          templateRef:
+            name: oci-filestorage-cluster-v1alpha1-tests-template
+            template: filestorage-cluster-tests-workflow
+          when: "{{workflow.parameters.run_filestorage_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: availability_domain
+                value: "{{workflow.parameters.availability_domain}}"
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_key
+                value: "{{workflow.parameters.create_key}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_secret
+                value: "{{workflow.parameters.create_secret}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vault
+                value: "{{workflow.parameters.create_vault}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: vault_management_endpoint
+                value: "{{workflow.parameters.vault_management_endpoint}}"
+        - name: functions-cluster-tests
+          templateRef:
+            name: oci-functions-cluster-v1alpha1-tests-template
+            template: functions-cluster-tests-workflow
+          when: "{{workflow.parameters.run_functions_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: function_image
+                value: "{{workflow.parameters.function_image}}"
+        - name: healthchecks-cluster-tests
+          templateRef:
+            name: oci-healthchecks-cluster-v1alpha1-tests-template
+            template: healthchecks-cluster-tests-workflow
+          when: "{{workflow.parameters.run_healthchecks_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: identity-cluster-tests
+          templateRef:
+            name: oci-identity-cluster-v1alpha1-tests-template
+            template: identity-cluster-tests-workflow
+          when: "{{workflow.parameters.run_identity_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: integration-cluster-tests
+          templateRef:
+            name: oci-integration-cluster-v1alpha1-tests-template
+            template: integration-cluster-tests-workflow
+          when: "{{workflow.parameters.run_integration_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: kms-cluster-tests
+          templateRef:
+            name: oci-kms-cluster-v1alpha1-tests-template
+            template: kms-cluster-tests-workflow
+          when: "{{workflow.parameters.run_kms_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: vault_crypto_endpoint
+                value: "{{workflow.parameters.vault_crypto_endpoint}}"
+              - name: vault_management_endpoint
+                value: "{{workflow.parameters.vault_management_endpoint}}"
+        - name: limits-cluster-tests
+          templateRef:
+            name: oci-limits-cluster-v1alpha1-tests-template
+            template: limits-cluster-tests-workflow
+          when: "{{workflow.parameters.run_limits_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: tenancy_ocid
+                value: "{{workflow.parameters.tenancy_ocid}}"
+        - name: loadbalancer-cluster-tests
+          templateRef:
+            name: oci-loadbalancer-cluster-v1alpha1-tests-template
+            template: loadbalancer-cluster-tests-workflow
+          when: "{{workflow.parameters.run_loadbalancer_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: logging-cluster-tests
+          templateRef:
+            name: oci-logging-cluster-v1alpha1-tests-template
+            template: logging-cluster-tests-workflow
+          when: "{{workflow.parameters.run_logging_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: mediaservices-cluster-tests
+          templateRef:
+            name: oci-mediaservices-cluster-v1alpha1-tests-template
+            template: mediaservices-cluster-tests-workflow
+          when: "{{workflow.parameters.run_mediaservices_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: monitoring-cluster-tests
+          templateRef:
+            name: oci-monitoring-cluster-v1alpha1-tests-template
+            template: monitoring-cluster-tests-workflow
+          when: "{{workflow.parameters.run_monitoring_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_notificationtopic
+                value: "{{workflow.parameters.create_notificationtopic}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: mysql-cluster-tests
+          templateRef:
+            name: oci-mysql-cluster-v1alpha1-tests-template
+            template: mysql-cluster-tests-workflow
+          when: "{{workflow.parameters.run_mysql_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: availability_domain
+                value: "{{workflow.parameters.availability_domain}}"
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: networking-cluster-tests
+          templateRef:
+            name: oci-networking-cluster-v1alpha1-tests-template
+            template: networking-cluster-tests-workflow
+          when: "{{workflow.parameters.run_networking_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: availability_domain
+                value: "{{workflow.parameters.availability_domain}}"
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_image
+                value: "{{workflow.parameters.create_image}}"
+              - name: create_instance
+                value: "{{workflow.parameters.create_instance}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: image_instance_ocid
+                value: "{{workflow.parameters.image_instance_ocid}}"
+        - name: networkloadbalancer-cluster-tests
+          templateRef:
+            name: oci-networkloadbalancer-cluster-v1alpha1-tests-template
+            template: networkloadbalancer-cluster-tests-workflow
+          when: "{{workflow.parameters.run_networkloadbalancer_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: nosql-cluster-tests
+          templateRef:
+            name: oci-nosql-cluster-v1alpha1-tests-template
+            template: nosql-cluster-tests-workflow
+          when: "{{workflow.parameters.run_nosql_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: nosql_table_ddlstatement
+                value: "{{workflow.parameters.nosql_table_ddlstatement}}"
+        - name: objectstorage-cluster-tests
+          templateRef:
+            name: oci-objectstorage-cluster-v1alpha1-tests-template
+            template: objectstorage-cluster-tests-workflow
+          when: "{{workflow.parameters.run_objectstorage_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: objectstorage_namespace
+                value: "{{workflow.parameters.objectstorage_namespace}}"
+        - name: ons-cluster-tests
+          templateRef:
+            name: oci-ons-cluster-v1alpha1-tests-template
+            template: ons-cluster-tests-workflow
+          when: "{{workflow.parameters.run_ons_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: psql-cluster-tests
+          templateRef:
+            name: oci-psql-cluster-v1alpha1-tests-template
+            template: psql-cluster-tests-workflow
+          when: "{{workflow.parameters.run_psql_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: queue-cluster-tests
+          templateRef:
+            name: oci-queue-cluster-v1alpha1-tests-template
+            template: queue-cluster-tests-workflow
+          when: "{{workflow.parameters.run_queue_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: recovery-cluster-tests
+          templateRef:
+            name: oci-recovery-cluster-v1alpha1-tests-template
+            template: recovery-cluster-tests-workflow
+          when: "{{workflow.parameters.run_recovery_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: subnet_ocid
+                value: "{{workflow.parameters.subnet_ocid}}"
+        - name: redis-cluster-tests
+          templateRef:
+            name: oci-redis-cluster-v1alpha1-tests-template
+            template: redis-cluster-tests-workflow
+          when: "{{workflow.parameters.run_redis_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: resourcemanager-cluster-tests
+          templateRef:
+            name: oci-resourcemanager-cluster-v1alpha1-tests-template
+            template: resourcemanager-cluster-tests-workflow
+          when: "{{workflow.parameters.run_resourcemanager_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+        - name: streaming-cluster-tests
+          templateRef:
+            name: oci-streaming-cluster-v1alpha1-tests-template
+            template: streaming-cluster-tests-workflow
+          when: "{{workflow.parameters.run_streaming_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_key
+                value: "{{workflow.parameters.create_key}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: vault_management_endpoint
+                value: "{{workflow.parameters.vault_management_endpoint}}"
+        - name: vault-cluster-tests
+          templateRef:
+            name: oci-vault-cluster-v1alpha1-tests-template
+            template: vault-cluster-tests-workflow
+          when: "{{workflow.parameters.run_vault_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_key
+                value: "{{workflow.parameters.create_key}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_vault
+                value: "{{workflow.parameters.create_vault}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"
+              - name: vault_management_endpoint
+                value: "{{workflow.parameters.vault_management_endpoint}}"
+        - name: waf-cluster-tests
+          templateRef:
+            name: oci-waf-cluster-v1alpha1-tests-template
+            template: waf-cluster-tests-workflow
+          when: "{{workflow.parameters.run_waf_cluster_tests}} == true"
+          arguments:
+            parameters:
+              - name: compartment_ocid
+                value: "{{workflow.parameters.compartment_ocid}}"
+              - name: create_compartment
+                value: "{{workflow.parameters.create_compartment}}"
+              - name: create_loadbalancer
+                value: "{{workflow.parameters.create_loadbalancer}}"
+              - name: create_resources
+                value: "{{workflow.parameters.create_resources}}"
+              - name: create_subnet
+                value: "{{workflow.parameters.create_subnet}}"
+              - name: create_vcn
+                value: "{{workflow.parameters.create_vcn}}"
+              - name: delete_resources
+                value: "{{workflow.parameters.delete_resources}}"

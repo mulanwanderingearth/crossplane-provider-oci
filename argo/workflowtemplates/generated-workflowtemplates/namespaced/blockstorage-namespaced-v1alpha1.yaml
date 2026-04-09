@@ -1,0 +1,364 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: oci-blockstorage-namespaced-v1alpha1-tests-template
+spec:
+  serviceAccountName: argo-workflow
+  entrypoint: blockstorage-namespaced-tests-workflow
+  volumes:
+    - name: git-repo
+      persistentVolumeClaim:
+        claimName: git-repo-pvc
+  arguments:
+    parameters:
+    - name: target_namespace
+    - name: availability_domain
+    - name: boot_volume_source_id
+    - name: compartment_ocid
+    - name: image_instance_ocid
+    - name: create_compartment
+      value: "true"
+    - name: create_image
+      value: "true"
+    - name: create_instance
+      value: "true"
+    - name: create_subnet
+      value: "true"
+    - name: create_vcn
+      value: "true"
+    - name: create_resources
+      value: "true"
+    - name: delete_resources
+      value: "true"
+  templates:
+    - name: blockstorage-namespaced-tests-workflow
+      inputs:
+        parameters:
+          - name: target_namespace
+            value: "{{workflow.parameters.target_namespace}}"
+      dag:
+        tasks:
+        - name: create-compartment
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_compartment}} == true"
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/identity/v1alpha1/compartment.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+              - name: envVars
+                value: "COMPARTMENT_OCID={{workflow.parameters.compartment_ocid}}"
+        - name: create-image
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_image}} == true"
+          dependencies: [create-compartment]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/compute/v1alpha1/image.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+              - name: envVars
+                value: "IMAGE_INSTANCE_OCID={{workflow.parameters.image_instance_ocid}}"
+        - name: create-instance
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_instance}} == true"
+          dependencies: [create-compartment, create-image, create-subnet]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/compute/v1alpha1/instance.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+              - name: envVars
+                value: "AVAILABILITY_DOMAIN={{workflow.parameters.availability_domain}}"
+        - name: create-subnet
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_subnet}} == true"
+          dependencies: [create-compartment, create-vcn]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/networking/v1alpha1/subnet.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-vcn
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_vcn}} == true"
+          dependencies: [create-compartment]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/networking/v1alpha1/vcn.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-bootvolume
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-compartment]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/blockstorage/v1alpha1/bootvolume.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+              - name: envVars
+                value: "AVAILABILITY_DOMAIN={{workflow.parameters.availability_domain}},BOOT_VOLUME_SOURCE_ID={{workflow.parameters.boot_volume_source_id}}"
+        - name: create-bootvolumebackup
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-bootvolume]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/blockstorage/v1alpha1/bootvolumebackup.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-volume
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-compartment]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/blockstorage/v1alpha1/volume.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+              - name: envVars
+                value: "AVAILABILITY_DOMAIN={{workflow.parameters.availability_domain}}"
+        - name: create-volumeattachment
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-instance, create-volume]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/blockstorage/v1alpha1/volumeattachment.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-volumebackup
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-volume]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/blockstorage/v1alpha1/volumebackup.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-volumebackuppolicy
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-compartment]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/blockstorage/v1alpha1/volumebackuppolicy.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-volumebackuppolicyassignment
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-volume, create-volumebackuppolicy]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/blockstorage/v1alpha1/volumebackuppolicyassignment.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-volumegroup
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-compartment, create-volume]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/blockstorage/v1alpha1/volumegroup.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+              - name: envVars
+                value: "AVAILABILITY_DOMAIN={{workflow.parameters.availability_domain}}"
+        - name: create-volumegroupbackup
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-volumegroup]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/blockstorage/v1alpha1/volumegroupbackup.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-bootvolume
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-bootvolume", "delete-bootvolumebackup"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-bootvolume.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-bootvolume.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-bootvolume.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-bootvolumebackup
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-bootvolumebackup"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-bootvolumebackup.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-bootvolumebackup.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-bootvolumebackup.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-volume
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-volume", "delete-volumeattachment", "delete-volumebackup", "delete-volumebackuppolicyassignment", "delete-volumegroup"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-volume.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-volume.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-volume.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-volumeattachment
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-volumeattachment"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-volumeattachment.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-volumeattachment.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-volumeattachment.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-volumebackup
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-volumebackup"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-volumebackup.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-volumebackup.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-volumebackup.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-volumebackuppolicy
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-volumebackuppolicy", "delete-volumebackuppolicyassignment"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-volumebackuppolicy.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-volumebackuppolicy.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-volumebackuppolicy.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-volumebackuppolicyassignment
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-volumebackuppolicyassignment"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-volumebackuppolicyassignment.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-volumebackuppolicyassignment.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-volumebackuppolicyassignment.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-volumegroup
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-volumegroup", "delete-volumegroupbackup"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-volumegroup.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-volumegroup.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-volumegroup.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-volumegroupbackup
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-volumegroupbackup"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-volumegroupbackup.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-volumegroupbackup.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-volumegroupbackup.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
