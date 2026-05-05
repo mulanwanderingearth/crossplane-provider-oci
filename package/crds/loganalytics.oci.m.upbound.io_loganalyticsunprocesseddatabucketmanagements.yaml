@@ -63,14 +63,18 @@ spec:
               forProvider:
                 properties:
                   bucket:
-                    description: Name of the Object Storage bucket.
+                    description: Name of the Object Storage bucket. Bucket name can
+                      be obtained by running 'oci os bucket list --namespace-name  --compartment-id
+                      '. The json output 'name' parameter value contains the bucket
+                      name.
                     type: string
                   isEnabled:
                     description: Flag that specifies if this configuration is enabled
                       or not.
                     type: boolean
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                 type: object
               initProvider:
@@ -87,14 +91,18 @@ spec:
                   autoscaler.
                 properties:
                   bucket:
-                    description: Name of the Object Storage bucket.
+                    description: Name of the Object Storage bucket. Bucket name can
+                      be obtained by running 'oci os bucket list --namespace-name  --compartment-id
+                      '. The json output 'name' parameter value contains the bucket
+                      name.
                     type: string
                   isEnabled:
                     description: Flag that specifies if this configuration is enabled
                       or not.
                     type: boolean
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                 type: object
               managementPolicies:
@@ -173,7 +181,10 @@ spec:
               atProvider:
                 properties:
                   bucket:
-                    description: Name of the Object Storage bucket.
+                    description: Name of the Object Storage bucket. Bucket name can
+                      be obtained by running 'oci os bucket list --namespace-name  --compartment-id
+                      '. The json output 'name' parameter value contains the bucket
+                      name.
                     type: string
                   id:
                     type: string
@@ -182,7 +193,8 @@ spec:
                       or not.
                     type: boolean
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   timeCreated:
                     description: The time when this record is created. An RFC3339

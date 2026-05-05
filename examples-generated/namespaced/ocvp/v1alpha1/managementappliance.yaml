@@ -1,0 +1,32 @@
+apiVersion: ocvp.oci.m.upbound.io/v1alpha1
+kind: ManagementAppliance
+metadata:
+  annotations:
+    meta.upbound.io/example-id: ocvp/v1alpha1/managementappliance
+  labels:
+    testing.upbound.io/example-name: test_management_appliance
+  name: test-management-appliance
+  namespace: upbound-system
+spec:
+  forProvider:
+    configuration:
+    - isLogIngestionEnabled: ${var.management_appliance_configuration_is_log_ingestion_enabled}
+      isMetricsCollectionEnabled: ${var.management_appliance_configuration_is_metrics_collection_enabled}
+      metrics: ${var.management_appliance_configuration_metrics}
+      supportBundleBucketIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_bucket
+    connections:
+    - credentialsSecretIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_secret
+      type: ${var.management_appliance_connections_type}
+    definedTags:
+      Operations.CostCenter: "42"
+    displayName: ${var.management_appliance_display_name}
+    freeformTags:
+      Department: Finance
+    publicSshKeys: ${var.management_appliance_public_ssh_keys}
+    sddcIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_sddc

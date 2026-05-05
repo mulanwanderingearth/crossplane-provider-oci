@@ -16,11 +16,32 @@ import (
 
 type AssetInitParameters struct {
 
+	// (Updatable) The class name of the asset.
+	AssetClassName *string `json:"assetClassName,omitempty" tf:"asset_class_name,omitempty"`
+
+	// (Updatable) The version of the asset class.
+	AssetClassVersion *string `json:"assetClassVersion,omitempty" tf:"asset_class_version,omitempty"`
+
+	// (Updatable) The details of the asset.
+	AssetDetails *string `json:"assetDetails,omitempty" tf:"asset_details,omitempty"`
+
 	// (Updatable) List of asset source OCID.
 	AssetSourceIds []*string `json:"assetSourceIds,omitempty" tf:"asset_source_ids,omitempty"`
 
 	// (Updatable) The type of asset.
 	AssetType *string `json:"assetType,omitempty" tf:"asset_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Cost information for monthly maintenance.
+	AttachedEBSVolumesCost []AttachedEBSVolumesCostInitParameters `json:"attachedEbsVolumesCost,omitempty" tf:"attached_ebs_volumes_cost,omitempty"`
+
+	// (Updatable) AWS EBS volume related properties.
+	AwsEBS []AwsEBSInitParameters `json:"awsEbs,omitempty" tf:"aws_ebs,omitempty"`
+
+	// (Updatable) AWS virtual machine related properties.
+	AwsEC2 []AwsEC2InitParameters `json:"awsEc2,omitempty" tf:"aws_ec2,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Cost information for monthly maintenance.
+	AwsEc2Cost []AwsEc2CostInitParameters `json:"awsEc2Cost,omitempty" tf:"aws_ec2cost,omitempty"`
 
 	// (Updatable) The OCID of the compartment that the asset belongs to.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -34,7 +55,7 @@ type AssetInitParameters struct {
 	// +kubebuilder:validation:Optional
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Compute related properties.
+	// (Updatable) Compute related properties.
 	Compute []ComputeInitParameters `json:"compute,omitempty" tf:"compute,omitempty"`
 
 	// (Updatable) The defined tags associated with this resource, if any. Each key is predefined and scoped to namespaces. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
@@ -67,7 +88,7 @@ type AssetInitParameters struct {
 	// The source key to which the asset belongs.
 	SourceKey *string `json:"sourceKey,omitempty" tf:"source_key,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Virtual machine related properties.
+	// (Updatable) Virtual machine related properties.
 	VM []VMInitParameters `json:"vm,omitempty" tf:"vm,omitempty"`
 
 	// (Updatable) VMware virtual machine related properties.
@@ -79,16 +100,37 @@ type AssetInitParameters struct {
 
 type AssetObservation struct {
 
+	// (Updatable) The class name of the asset.
+	AssetClassName *string `json:"assetClassName,omitempty" tf:"asset_class_name,omitempty"`
+
+	// (Updatable) The version of the asset class.
+	AssetClassVersion *string `json:"assetClassVersion,omitempty" tf:"asset_class_version,omitempty"`
+
+	// (Updatable) The details of the asset.
+	AssetDetails *string `json:"assetDetails,omitempty" tf:"asset_details,omitempty"`
+
 	// (Updatable) List of asset source OCID.
 	AssetSourceIds []*string `json:"assetSourceIds,omitempty" tf:"asset_source_ids,omitempty"`
 
 	// (Updatable) The type of asset.
 	AssetType *string `json:"assetType,omitempty" tf:"asset_type,omitempty"`
 
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Cost information for monthly maintenance.
+	AttachedEBSVolumesCost []AttachedEBSVolumesCostObservation `json:"attachedEbsVolumesCost,omitempty" tf:"attached_ebs_volumes_cost,omitempty"`
+
+	// (Updatable) AWS EBS volume related properties.
+	AwsEBS []AwsEBSObservation `json:"awsEbs,omitempty" tf:"aws_ebs,omitempty"`
+
+	// (Updatable) AWS virtual machine related properties.
+	AwsEC2 []AwsEC2Observation `json:"awsEc2,omitempty" tf:"aws_ec2,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Cost information for monthly maintenance.
+	AwsEc2Cost []AwsEc2CostObservation `json:"awsEc2Cost,omitempty" tf:"aws_ec2cost,omitempty"`
+
 	// (Updatable) The OCID of the compartment that the asset belongs to.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Compute related properties.
+	// (Updatable) Compute related properties.
 	Compute []ComputeObservation `json:"compute,omitempty" tf:"compute,omitempty"`
 
 	// (Updatable) The defined tags associated with this resource, if any. Each key is predefined and scoped to namespaces. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
@@ -97,6 +139,9 @@ type AssetObservation struct {
 
 	// (Updatable) Asset display name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// Specifies if this is the Source or Destination point for migration - different assets may be discovered depending on setting.
+	EnvironmentType *string `json:"environmentType,omitempty" tf:"environment_type,omitempty"`
 
 	// The key of the asset from the external environment.
 	ExternalAssetKey *string `json:"externalAssetKey,omitempty" tf:"external_asset_key,omitempty"`
@@ -114,7 +159,7 @@ type AssetObservation struct {
 	// The source key to which the asset belongs.
 	SourceKey *string `json:"sourceKey,omitempty" tf:"source_key,omitempty"`
 
-	// The current state of the asset.
+	// (Updatable) Describes the current state of an instance.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// The system tags associated with this resource, if any. The system tags are set by Oracle cloud infrastructure services. Each key is predefined and scoped to namespaces. For more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain: true}}
@@ -127,7 +172,7 @@ type AssetObservation struct {
 	// The time when the asset was updated. An RFC3339 formatted datetime string.
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Virtual machine related properties.
+	// (Updatable) Virtual machine related properties.
 	VM []VMObservation `json:"vm,omitempty" tf:"vm,omitempty"`
 
 	// (Updatable) VMware virtual machine related properties.
@@ -139,6 +184,18 @@ type AssetObservation struct {
 
 type AssetParameters struct {
 
+	// (Updatable) The class name of the asset.
+	// +kubebuilder:validation:Optional
+	AssetClassName *string `json:"assetClassName,omitempty" tf:"asset_class_name,omitempty"`
+
+	// (Updatable) The version of the asset class.
+	// +kubebuilder:validation:Optional
+	AssetClassVersion *string `json:"assetClassVersion,omitempty" tf:"asset_class_version,omitempty"`
+
+	// (Updatable) The details of the asset.
+	// +kubebuilder:validation:Optional
+	AssetDetails *string `json:"assetDetails,omitempty" tf:"asset_details,omitempty"`
+
 	// (Updatable) List of asset source OCID.
 	// +kubebuilder:validation:Optional
 	AssetSourceIds []*string `json:"assetSourceIds,omitempty" tf:"asset_source_ids,omitempty"`
@@ -146,6 +203,22 @@ type AssetParameters struct {
 	// (Updatable) The type of asset.
 	// +kubebuilder:validation:Optional
 	AssetType *string `json:"assetType,omitempty" tf:"asset_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Cost information for monthly maintenance.
+	// +kubebuilder:validation:Optional
+	AttachedEBSVolumesCost []AttachedEBSVolumesCostParameters `json:"attachedEbsVolumesCost,omitempty" tf:"attached_ebs_volumes_cost,omitempty"`
+
+	// (Updatable) AWS EBS volume related properties.
+	// +kubebuilder:validation:Optional
+	AwsEBS []AwsEBSParameters `json:"awsEbs,omitempty" tf:"aws_ebs,omitempty"`
+
+	// (Updatable) AWS virtual machine related properties.
+	// +kubebuilder:validation:Optional
+	AwsEC2 []AwsEC2Parameters `json:"awsEc2,omitempty" tf:"aws_ec2,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Cost information for monthly maintenance.
+	// +kubebuilder:validation:Optional
+	AwsEc2Cost []AwsEc2CostParameters `json:"awsEc2Cost,omitempty" tf:"aws_ec2cost,omitempty"`
 
 	// (Updatable) The OCID of the compartment that the asset belongs to.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -160,7 +233,7 @@ type AssetParameters struct {
 	// +kubebuilder:validation:Optional
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Compute related properties.
+	// (Updatable) Compute related properties.
 	// +kubebuilder:validation:Optional
 	Compute []ComputeParameters `json:"compute,omitempty" tf:"compute,omitempty"`
 
@@ -200,7 +273,7 @@ type AssetParameters struct {
 	// +kubebuilder:validation:Optional
 	SourceKey *string `json:"sourceKey,omitempty" tf:"source_key,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Virtual machine related properties.
+	// (Updatable) Virtual machine related properties.
 	// +kubebuilder:validation:Optional
 	VM []VMParameters `json:"vm,omitempty" tf:"vm,omitempty"`
 
@@ -213,841 +286,2115 @@ type AssetParameters struct {
 	VmwareVcenter []VmwareVcenterParameters `json:"vmwareVcenter,omitempty" tf:"vmware_vcenter,omitempty"`
 }
 
+type AssociationInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The carrier IP address associated with the network interface.
+	CarrierIP *string `json:"carrierIp,omitempty" tf:"carrier_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The customer-owned IP address associated with the network interface.
+	CustomerOwnedIP *string `json:"customerOwnedIp,omitempty" tf:"customer_owned_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the owner of the Elastic IP address.
+	IPOwnerKey *string `json:"ipOwnerKey,omitempty" tf:"ip_owner_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public DNS name.
+	PublicDNSName *string `json:"publicDnsName,omitempty" tf:"public_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public IP address or Elastic IP address bound to the network interface.
+	PublicIP *string `json:"publicIp,omitempty" tf:"public_ip,omitempty"`
+}
+
+type AssociationObservation struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The carrier IP address associated with the network interface.
+	CarrierIP *string `json:"carrierIp,omitempty" tf:"carrier_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The customer-owned IP address associated with the network interface.
+	CustomerOwnedIP *string `json:"customerOwnedIp,omitempty" tf:"customer_owned_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the owner of the Elastic IP address.
+	IPOwnerKey *string `json:"ipOwnerKey,omitempty" tf:"ip_owner_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public DNS name.
+	PublicDNSName *string `json:"publicDnsName,omitempty" tf:"public_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public IP address or Elastic IP address bound to the network interface.
+	PublicIP *string `json:"publicIp,omitempty" tf:"public_ip,omitempty"`
+}
+
+type AssociationParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The carrier IP address associated with the network interface.
+	// +kubebuilder:validation:Optional
+	CarrierIP *string `json:"carrierIp,omitempty" tf:"carrier_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The customer-owned IP address associated with the network interface.
+	// +kubebuilder:validation:Optional
+	CustomerOwnedIP *string `json:"customerOwnedIp,omitempty" tf:"customer_owned_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the owner of the Elastic IP address.
+	// +kubebuilder:validation:Optional
+	IPOwnerKey *string `json:"ipOwnerKey,omitempty" tf:"ip_owner_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public DNS name.
+	// +kubebuilder:validation:Optional
+	PublicDNSName *string `json:"publicDnsName,omitempty" tf:"public_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public IP address or Elastic IP address bound to the network interface.
+	// +kubebuilder:validation:Optional
+	PublicIP *string `json:"publicIp,omitempty" tf:"public_ip,omitempty"`
+}
+
+type AttachedEBSVolumesCostInitParameters struct {
+
+	// (Updatable) Monthly costs for maintenance of this asset.
+	Amount *float64 `json:"amount,omitempty" tf:"amount,omitempty"`
+
+	// (Updatable) Currency code
+	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
+}
+
+type AttachedEBSVolumesCostObservation struct {
+
+	// (Updatable) Monthly costs for maintenance of this asset.
+	Amount *float64 `json:"amount,omitempty" tf:"amount,omitempty"`
+
+	// (Updatable) Currency code
+	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
+}
+
+type AttachedEBSVolumesCostParameters struct {
+
+	// (Updatable) Monthly costs for maintenance of this asset.
+	// +kubebuilder:validation:Optional
+	Amount *float64 `json:"amount,omitempty" tf:"amount,omitempty"`
+
+	// (Updatable) Currency code
+	// +kubebuilder:validation:Optional
+	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
+}
+
+type AttachmentInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the network interface attachment.
+	AttachmentKey *string `json:"attachmentKey,omitempty" tf:"attachment_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the device on the instance for the network interface attachment.
+	DeviceIndex *float64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Indicates whether the EBS volume is deleted on instance termination.
+	IsDeleteOnTermination *bool `json:"isDeleteOnTermination,omitempty" tf:"is_delete_on_termination,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the network card.
+	NetworkCardIndex *float64 `json:"networkCardIndex,omitempty" tf:"network_card_index,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The timestamp when the attachment initiated.
+	TimeAttach *string `json:"timeAttach,omitempty" tf:"time_attach,omitempty"`
+}
+
+type AttachmentObservation struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the network interface attachment.
+	AttachmentKey *string `json:"attachmentKey,omitempty" tf:"attachment_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the device on the instance for the network interface attachment.
+	DeviceIndex *float64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Indicates whether the EBS volume is deleted on instance termination.
+	IsDeleteOnTermination *bool `json:"isDeleteOnTermination,omitempty" tf:"is_delete_on_termination,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the network card.
+	NetworkCardIndex *float64 `json:"networkCardIndex,omitempty" tf:"network_card_index,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The timestamp when the attachment initiated.
+	TimeAttach *string `json:"timeAttach,omitempty" tf:"time_attach,omitempty"`
+}
+
+type AttachmentParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the network interface attachment.
+	// +kubebuilder:validation:Optional
+	AttachmentKey *string `json:"attachmentKey,omitempty" tf:"attachment_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the device on the instance for the network interface attachment.
+	// +kubebuilder:validation:Optional
+	DeviceIndex *float64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Indicates whether the EBS volume is deleted on instance termination.
+	// +kubebuilder:validation:Optional
+	IsDeleteOnTermination *bool `json:"isDeleteOnTermination,omitempty" tf:"is_delete_on_termination,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the network card.
+	// +kubebuilder:validation:Optional
+	NetworkCardIndex *float64 `json:"networkCardIndex,omitempty" tf:"network_card_index,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	// +kubebuilder:validation:Optional
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The timestamp when the attachment initiated.
+	// +kubebuilder:validation:Optional
+	TimeAttach *string `json:"timeAttach,omitempty" tf:"time_attach,omitempty"`
+}
+
+type AttachmentsInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The device name.
+	Device *string `json:"device,omitempty" tf:"device,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the instance.
+	InstanceKey *string `json:"instanceKey,omitempty" tf:"instance_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Indicates whether the EBS volume is deleted on instance termination.
+	IsDeleteOnTermination *bool `json:"isDeleteOnTermination,omitempty" tf:"is_delete_on_termination,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the volume.
+	VolumeKey *string `json:"volumeKey,omitempty" tf:"volume_key,omitempty"`
+}
+
+type AttachmentsObservation struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The device name.
+	Device *string `json:"device,omitempty" tf:"device,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the instance.
+	InstanceKey *string `json:"instanceKey,omitempty" tf:"instance_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Indicates whether the EBS volume is deleted on instance termination.
+	IsDeleteOnTermination *bool `json:"isDeleteOnTermination,omitempty" tf:"is_delete_on_termination,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the volume.
+	VolumeKey *string `json:"volumeKey,omitempty" tf:"volume_key,omitempty"`
+}
+
+type AttachmentsParameters struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The device name.
+	// +kubebuilder:validation:Optional
+	Device *string `json:"device,omitempty" tf:"device,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the instance.
+	// +kubebuilder:validation:Optional
+	InstanceKey *string `json:"instanceKey,omitempty" tf:"instance_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Indicates whether the EBS volume is deleted on instance termination.
+	// +kubebuilder:validation:Optional
+	IsDeleteOnTermination *bool `json:"isDeleteOnTermination,omitempty" tf:"is_delete_on_termination,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	// +kubebuilder:validation:Optional
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the volume.
+	// +kubebuilder:validation:Optional
+	VolumeKey *string `json:"volumeKey,omitempty" tf:"volume_key,omitempty"`
+}
+
+type AwsEBSInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Information about the volume attachments.
+	Attachments []AttachmentsInitParameters `json:"attachments,omitempty" tf:"attachments,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The Availability Zone for the volume.
+	AvailabilityZone *string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The number of I/O operations per second.
+	Iops *float64 `json:"iops,omitempty" tf:"iops,omitempty"`
+
+	// (Updatable) Indicates whether the volume is encrypted.
+	IsEncrypted *bool `json:"isEncrypted,omitempty" tf:"is_encrypted,omitempty"`
+
+	// (Updatable) Indicates whether Amazon EBS Multi-Attach is enabled.
+	IsMultiAttachEnabled *bool `json:"isMultiAttachEnabled,omitempty" tf:"is_multi_attach_enabled,omitempty"`
+
+	// (Updatable) The size of the volume, in GiBs.
+	SizeInGiBs *float64 `json:"sizeInGiBs,omitempty" tf:"size_in_gi_bs,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Any tags assigned to the volume.
+	Tags []TagsInitParameters `json:"tags,omitempty" tf:"tags,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The throughput that the volume supports, in MiB/s.
+	Throughput *float64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the volume.
+	VolumeKey *string `json:"volumeKey,omitempty" tf:"volume_key,omitempty"`
+
+	// (Updatable) The volume type.
+	VolumeType *string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
+}
+
+type AwsEBSObservation struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Information about the volume attachments.
+	Attachments []AttachmentsObservation `json:"attachments,omitempty" tf:"attachments,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The Availability Zone for the volume.
+	AvailabilityZone *string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The number of I/O operations per second.
+	Iops *float64 `json:"iops,omitempty" tf:"iops,omitempty"`
+
+	// (Updatable) Indicates whether the volume is encrypted.
+	IsEncrypted *bool `json:"isEncrypted,omitempty" tf:"is_encrypted,omitempty"`
+
+	// (Updatable) Indicates whether Amazon EBS Multi-Attach is enabled.
+	IsMultiAttachEnabled *bool `json:"isMultiAttachEnabled,omitempty" tf:"is_multi_attach_enabled,omitempty"`
+
+	// (Updatable) The size of the volume, in GiBs.
+	SizeInGiBs *float64 `json:"sizeInGiBs,omitempty" tf:"size_in_gi_bs,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Any tags assigned to the volume.
+	Tags []TagsObservation `json:"tags,omitempty" tf:"tags,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The throughput that the volume supports, in MiB/s.
+	Throughput *float64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the volume.
+	VolumeKey *string `json:"volumeKey,omitempty" tf:"volume_key,omitempty"`
+
+	// (Updatable) The volume type.
+	VolumeType *string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
+}
+
+type AwsEBSParameters struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Information about the volume attachments.
+	// +kubebuilder:validation:Optional
+	Attachments []AttachmentsParameters `json:"attachments,omitempty" tf:"attachments,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The Availability Zone for the volume.
+	// +kubebuilder:validation:Optional
+	AvailabilityZone *string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The number of I/O operations per second.
+	// +kubebuilder:validation:Optional
+	Iops *float64 `json:"iops,omitempty" tf:"iops,omitempty"`
+
+	// (Updatable) Indicates whether the volume is encrypted.
+	// +kubebuilder:validation:Optional
+	IsEncrypted *bool `json:"isEncrypted,omitempty" tf:"is_encrypted,omitempty"`
+
+	// (Updatable) Indicates whether Amazon EBS Multi-Attach is enabled.
+	// +kubebuilder:validation:Optional
+	IsMultiAttachEnabled *bool `json:"isMultiAttachEnabled,omitempty" tf:"is_multi_attach_enabled,omitempty"`
+
+	// (Updatable) The size of the volume, in GiBs.
+	// +kubebuilder:validation:Optional
+	SizeInGiBs *float64 `json:"sizeInGiBs,omitempty" tf:"size_in_gi_bs,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	// +kubebuilder:validation:Optional
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Any tags assigned to the volume.
+	// +kubebuilder:validation:Optional
+	Tags []TagsParameters `json:"tags,omitempty" tf:"tags,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The throughput that the volume supports, in MiB/s.
+	// +kubebuilder:validation:Optional
+	Throughput *float64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the volume.
+	// +kubebuilder:validation:Optional
+	VolumeKey *string `json:"volumeKey,omitempty" tf:"volume_key,omitempty"`
+
+	// (Updatable) The volume type.
+	// +kubebuilder:validation:Optional
+	VolumeType *string `json:"volumeType,omitempty" tf:"volume_type,omitempty"`
+}
+
+type AwsEC2InitParameters struct {
+
+	// (Updatable) The architecture of the image.
+	Architecture *string `json:"architecture,omitempty" tf:"architecture,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates if the elastic inference accelerators attached to an instance
+	AreElasticInferenceAcceleratorsPresent *bool `json:"areElasticInferenceAcceleratorsPresent,omitempty" tf:"are_elastic_inference_accelerators_present,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The boot mode of the instance.
+	BootMode *string `json:"bootMode,omitempty" tf:"boot_mode,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the Capacity Reservation.
+	CapacityReservationKey *string `json:"capacityReservationKey,omitempty" tf:"capacity_reservation_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public IPv4 address, or the Carrier IP address assigned to the instance.
+	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the AMI used to launch the instance.
+	ImageKey *string `json:"imageKey,omitempty" tf:"image_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the instance.
+	InstanceKey *string `json:"instanceKey,omitempty" tf:"instance_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether this is a Spot Instance or a Scheduled Instance.
+	InstanceLifecycle *string `json:"instanceLifecycle,omitempty" tf:"instance_lifecycle,omitempty"`
+
+	// (Updatable) The instance type.
+	InstanceType *string `json:"instanceType,omitempty" tf:"instance_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv6 address assigned to the instance.
+	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether the instance is enabled for AWS Nitro Enclaves.
+	IsEnclaveOptions *bool `json:"isEnclaveOptions,omitempty" tf:"is_enclave_options,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether the instance is enabled for hibernation.
+	IsHibernationOptions *bool `json:"isHibernationOptions,omitempty" tf:"is_hibernation_options,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether source/destination checking is enabled.
+	IsSourceDestCheck *bool `json:"isSourceDestCheck,omitempty" tf:"is_source_dest_check,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) If the request is a Spot Instance request, this value will be true.
+	IsSpotInstance *bool `json:"isSpotInstance,omitempty" tf:"is_spot_instance,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The kernel associated with this instance, if applicable.
+	KernelKey *string `json:"kernelKey,omitempty" tf:"kernel_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The license configurations for the instance.
+	Licenses []*string `json:"licenses,omitempty" tf:"licenses,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Provides information on the recovery and maintenance options of your instance.
+	MaintenanceOptions *string `json:"maintenanceOptions,omitempty" tf:"maintenance_options,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The monitoring for the instance.
+	Monitoring *string `json:"monitoring,omitempty" tf:"monitoring,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The network interfaces for the instance.
+	NetworkInterfaces []NetworkInterfacesInitParameters `json:"networkInterfaces,omitempty" tf:"network_interfaces,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes the placement of an instance.
+	Placement []PlacementInitParameters `json:"placement,omitempty" tf:"placement,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 DNS name.
+	PrivateDNSName *string `json:"privateDnsName,omitempty" tf:"private_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 address of the network interface.
+	PrivateIPAddress *string `json:"privateIpAddress,omitempty" tf:"private_ip_address,omitempty"`
+
+	// (Updatable) The device name of the root device volume.
+	RootDeviceName *string `json:"rootDeviceName,omitempty" tf:"root_device_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.
+	RootDeviceType *string `json:"rootDeviceType,omitempty" tf:"root_device_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The security groups.
+	SecurityGroups []AwsEC2SecurityGroupsInitParameters `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.
+	SriovNetSupport *string `json:"sriovNetSupport,omitempty" tf:"sriov_net_support,omitempty"`
+
+	// (Updatable) Describes the current state of an instance.
+	State []StateInitParameters `json:"state,omitempty" tf:"state,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the subnet.
+	SubnetKey *string `json:"subnetKey,omitempty" tf:"subnet_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Any tags assigned to the volume.
+	Tags []AwsEC2TagsInitParameters `json:"tags,omitempty" tf:"tags,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The time the instance was launched.
+	TimeLaunch *string `json:"timeLaunch,omitempty" tf:"time_launch,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) If the instance is configured for NitroTPM support, the value is v2.0.
+	TpmSupport *string `json:"tpmSupport,omitempty" tf:"tpm_support,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) EC2-VPC The ID of the VPC in which the instance is running.
+	VPCKey *string `json:"vpcKey,omitempty" tf:"vpc_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The virtualization type of the instance.
+	VirtualizationType *string `json:"virtualizationType,omitempty" tf:"virtualization_type,omitempty"`
+}
+
+type AwsEC2Observation struct {
+
+	// (Updatable) The architecture of the image.
+	Architecture *string `json:"architecture,omitempty" tf:"architecture,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates if the elastic inference accelerators attached to an instance
+	AreElasticInferenceAcceleratorsPresent *bool `json:"areElasticInferenceAcceleratorsPresent,omitempty" tf:"are_elastic_inference_accelerators_present,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The boot mode of the instance.
+	BootMode *string `json:"bootMode,omitempty" tf:"boot_mode,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the Capacity Reservation.
+	CapacityReservationKey *string `json:"capacityReservationKey,omitempty" tf:"capacity_reservation_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public IPv4 address, or the Carrier IP address assigned to the instance.
+	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the AMI used to launch the instance.
+	ImageKey *string `json:"imageKey,omitempty" tf:"image_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the instance.
+	InstanceKey *string `json:"instanceKey,omitempty" tf:"instance_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether this is a Spot Instance or a Scheduled Instance.
+	InstanceLifecycle *string `json:"instanceLifecycle,omitempty" tf:"instance_lifecycle,omitempty"`
+
+	// (Updatable) The instance type.
+	InstanceType *string `json:"instanceType,omitempty" tf:"instance_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv6 address assigned to the instance.
+	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether the instance is enabled for AWS Nitro Enclaves.
+	IsEnclaveOptions *bool `json:"isEnclaveOptions,omitempty" tf:"is_enclave_options,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether the instance is enabled for hibernation.
+	IsHibernationOptions *bool `json:"isHibernationOptions,omitempty" tf:"is_hibernation_options,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether source/destination checking is enabled.
+	IsSourceDestCheck *bool `json:"isSourceDestCheck,omitempty" tf:"is_source_dest_check,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) If the request is a Spot Instance request, this value will be true.
+	IsSpotInstance *bool `json:"isSpotInstance,omitempty" tf:"is_spot_instance,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The kernel associated with this instance, if applicable.
+	KernelKey *string `json:"kernelKey,omitempty" tf:"kernel_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The license configurations for the instance.
+	Licenses []*string `json:"licenses,omitempty" tf:"licenses,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Provides information on the recovery and maintenance options of your instance.
+	MaintenanceOptions *string `json:"maintenanceOptions,omitempty" tf:"maintenance_options,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The monitoring for the instance.
+	Monitoring *string `json:"monitoring,omitempty" tf:"monitoring,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The network interfaces for the instance.
+	NetworkInterfaces []NetworkInterfacesObservation `json:"networkInterfaces,omitempty" tf:"network_interfaces,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes the placement of an instance.
+	Placement []PlacementObservation `json:"placement,omitempty" tf:"placement,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 DNS name.
+	PrivateDNSName *string `json:"privateDnsName,omitempty" tf:"private_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 address of the network interface.
+	PrivateIPAddress *string `json:"privateIpAddress,omitempty" tf:"private_ip_address,omitempty"`
+
+	// (Updatable) The device name of the root device volume.
+	RootDeviceName *string `json:"rootDeviceName,omitempty" tf:"root_device_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.
+	RootDeviceType *string `json:"rootDeviceType,omitempty" tf:"root_device_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The security groups.
+	SecurityGroups []AwsEC2SecurityGroupsObservation `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.
+	SriovNetSupport *string `json:"sriovNetSupport,omitempty" tf:"sriov_net_support,omitempty"`
+
+	// (Updatable) Describes the current state of an instance.
+	State []StateObservation `json:"state,omitempty" tf:"state,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the subnet.
+	SubnetKey *string `json:"subnetKey,omitempty" tf:"subnet_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Any tags assigned to the volume.
+	Tags []AwsEC2TagsObservation `json:"tags,omitempty" tf:"tags,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The time the instance was launched.
+	TimeLaunch *string `json:"timeLaunch,omitempty" tf:"time_launch,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) If the instance is configured for NitroTPM support, the value is v2.0.
+	TpmSupport *string `json:"tpmSupport,omitempty" tf:"tpm_support,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) EC2-VPC The ID of the VPC in which the instance is running.
+	VPCKey *string `json:"vpcKey,omitempty" tf:"vpc_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The virtualization type of the instance.
+	VirtualizationType *string `json:"virtualizationType,omitempty" tf:"virtualization_type,omitempty"`
+}
+
+type AwsEC2Parameters struct {
+
+	// (Updatable) The architecture of the image.
+	// +kubebuilder:validation:Optional
+	Architecture *string `json:"architecture,omitempty" tf:"architecture,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates if the elastic inference accelerators attached to an instance
+	// +kubebuilder:validation:Optional
+	AreElasticInferenceAcceleratorsPresent *bool `json:"areElasticInferenceAcceleratorsPresent,omitempty" tf:"are_elastic_inference_accelerators_present,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The boot mode of the instance.
+	// +kubebuilder:validation:Optional
+	BootMode *string `json:"bootMode,omitempty" tf:"boot_mode,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the Capacity Reservation.
+	// +kubebuilder:validation:Optional
+	CapacityReservationKey *string `json:"capacityReservationKey,omitempty" tf:"capacity_reservation_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public IPv4 address, or the Carrier IP address assigned to the instance.
+	// +kubebuilder:validation:Optional
+	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the AMI used to launch the instance.
+	// +kubebuilder:validation:Optional
+	ImageKey *string `json:"imageKey,omitempty" tf:"image_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the instance.
+	// +kubebuilder:validation:Optional
+	InstanceKey *string `json:"instanceKey,omitempty" tf:"instance_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether this is a Spot Instance or a Scheduled Instance.
+	// +kubebuilder:validation:Optional
+	InstanceLifecycle *string `json:"instanceLifecycle,omitempty" tf:"instance_lifecycle,omitempty"`
+
+	// (Updatable) The instance type.
+	// +kubebuilder:validation:Optional
+	InstanceType *string `json:"instanceType,omitempty" tf:"instance_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv6 address assigned to the instance.
+	// +kubebuilder:validation:Optional
+	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether the instance is enabled for AWS Nitro Enclaves.
+	// +kubebuilder:validation:Optional
+	IsEnclaveOptions *bool `json:"isEnclaveOptions,omitempty" tf:"is_enclave_options,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether the instance is enabled for hibernation.
+	// +kubebuilder:validation:Optional
+	IsHibernationOptions *bool `json:"isHibernationOptions,omitempty" tf:"is_hibernation_options,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether source/destination checking is enabled.
+	// +kubebuilder:validation:Optional
+	IsSourceDestCheck *bool `json:"isSourceDestCheck,omitempty" tf:"is_source_dest_check,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) If the request is a Spot Instance request, this value will be true.
+	// +kubebuilder:validation:Optional
+	IsSpotInstance *bool `json:"isSpotInstance,omitempty" tf:"is_spot_instance,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The kernel associated with this instance, if applicable.
+	// +kubebuilder:validation:Optional
+	KernelKey *string `json:"kernelKey,omitempty" tf:"kernel_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The license configurations for the instance.
+	// +kubebuilder:validation:Optional
+	Licenses []*string `json:"licenses,omitempty" tf:"licenses,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Provides information on the recovery and maintenance options of your instance.
+	// +kubebuilder:validation:Optional
+	MaintenanceOptions *string `json:"maintenanceOptions,omitempty" tf:"maintenance_options,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The monitoring for the instance.
+	// +kubebuilder:validation:Optional
+	Monitoring *string `json:"monitoring,omitempty" tf:"monitoring,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The network interfaces for the instance.
+	// +kubebuilder:validation:Optional
+	NetworkInterfaces []NetworkInterfacesParameters `json:"networkInterfaces,omitempty" tf:"network_interfaces,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes the placement of an instance.
+	// +kubebuilder:validation:Optional
+	Placement []PlacementParameters `json:"placement,omitempty" tf:"placement,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 DNS name.
+	// +kubebuilder:validation:Optional
+	PrivateDNSName *string `json:"privateDnsName,omitempty" tf:"private_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 address of the network interface.
+	// +kubebuilder:validation:Optional
+	PrivateIPAddress *string `json:"privateIpAddress,omitempty" tf:"private_ip_address,omitempty"`
+
+	// (Updatable) The device name of the root device volume.
+	// +kubebuilder:validation:Optional
+	RootDeviceName *string `json:"rootDeviceName,omitempty" tf:"root_device_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The root device type used by the AMI. The AMI can use an EBS volume or an instance store volume.
+	// +kubebuilder:validation:Optional
+	RootDeviceType *string `json:"rootDeviceType,omitempty" tf:"root_device_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The security groups.
+	// +kubebuilder:validation:Optional
+	SecurityGroups []AwsEC2SecurityGroupsParameters `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Specifies whether enhanced networking with the Intel 82599 Virtual Function interface is enabled.
+	// +kubebuilder:validation:Optional
+	SriovNetSupport *string `json:"sriovNetSupport,omitempty" tf:"sriov_net_support,omitempty"`
+
+	// (Updatable) Describes the current state of an instance.
+	// +kubebuilder:validation:Optional
+	State []StateParameters `json:"state,omitempty" tf:"state,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the subnet.
+	// +kubebuilder:validation:Optional
+	SubnetKey *string `json:"subnetKey,omitempty" tf:"subnet_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) Any tags assigned to the volume.
+	// +kubebuilder:validation:Optional
+	Tags []AwsEC2TagsParameters `json:"tags,omitempty" tf:"tags,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The time the instance was launched.
+	// +kubebuilder:validation:Optional
+	TimeLaunch *string `json:"timeLaunch,omitempty" tf:"time_launch,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) If the instance is configured for NitroTPM support, the value is v2.0.
+	// +kubebuilder:validation:Optional
+	TpmSupport *string `json:"tpmSupport,omitempty" tf:"tpm_support,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) EC2-VPC The ID of the VPC in which the instance is running.
+	// +kubebuilder:validation:Optional
+	VPCKey *string `json:"vpcKey,omitempty" tf:"vpc_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The virtualization type of the instance.
+	// +kubebuilder:validation:Optional
+	VirtualizationType *string `json:"virtualizationType,omitempty" tf:"virtualization_type,omitempty"`
+}
+
+type AwsEC2SecurityGroupsInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the security group.
+	GroupKey *string `json:"groupKey,omitempty" tf:"group_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The name of the security group.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Group
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
+	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
+
+	// Reference to a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameRef *v1.NamespacedReference `json:"groupNameRef,omitempty" tf:"-"`
+
+	// Selector for a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameSelector *v1.NamespacedSelector `json:"groupNameSelector,omitempty" tf:"-"`
+}
+
+type AwsEC2SecurityGroupsObservation struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the security group.
+	GroupKey *string `json:"groupKey,omitempty" tf:"group_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The name of the security group.
+	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
+}
+
+type AwsEC2SecurityGroupsParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the security group.
+	// +kubebuilder:validation:Optional
+	GroupKey *string `json:"groupKey,omitempty" tf:"group_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The name of the security group.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Group
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
+	// +kubebuilder:validation:Optional
+	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
+
+	// Reference to a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameRef *v1.NamespacedReference `json:"groupNameRef,omitempty" tf:"-"`
+
+	// Selector for a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameSelector *v1.NamespacedSelector `json:"groupNameSelector,omitempty" tf:"-"`
+}
+
+type AwsEC2TagsInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The key of the tag.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The value of the tag.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type AwsEC2TagsObservation struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The key of the tag.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The value of the tag.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type AwsEC2TagsParameters struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The key of the tag.
+	// +kubebuilder:validation:Optional
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The value of the tag.
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type AwsEc2CostInitParameters struct {
+
+	// (Updatable) Monthly costs for maintenance of this asset.
+	Amount *float64 `json:"amount,omitempty" tf:"amount,omitempty"`
+
+	// (Updatable) Currency code
+	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
+}
+
+type AwsEc2CostObservation struct {
+
+	// (Updatable) Monthly costs for maintenance of this asset.
+	Amount *float64 `json:"amount,omitempty" tf:"amount,omitempty"`
+
+	// (Updatable) Currency code
+	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
+}
+
+type AwsEc2CostParameters struct {
+
+	// (Updatable) Monthly costs for maintenance of this asset.
+	// +kubebuilder:validation:Optional
+	Amount *float64 `json:"amount,omitempty" tf:"amount,omitempty"`
+
+	// (Updatable) Currency code
+	// +kubebuilder:validation:Optional
+	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
+}
+
 type ComputeInitParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) CPU model name.
+	// (Updatable) CPU model name.
 	CPUModel *string `json:"cpuModel,omitempty" tf:"cpu_model,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of connected networks.
+	// (Updatable) Number of connected networks.
 	ConnectedNetworks *float64 `json:"connectedNetworks,omitempty" tf:"connected_networks,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of CPUs.
+	// (Updatable) Number of CPUs.
 	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Fully Qualified DNS Name.
+	// (Updatable) Fully Qualified DNS Name.
 	DNSName *string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about the asset.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Lists the set of disks belonging to the virtual machine. This list is unordered.
+	// (Updatable) Lists the set of disks belonging to the virtual machine. This list is unordered.
 	Disks []DisksInitParameters `json:"disks,omitempty" tf:"disks,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of disks.
+	// (Updatable) Number of disks.
 	DisksCount *float64 `json:"disksCount,omitempty" tf:"disks_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about firmware type for this virtual machine.
+	// (Updatable) Information about firmware type for this virtual machine.
 	Firmware *string `json:"firmware,omitempty" tf:"firmware,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) List of GPU devices attached to a virtual machine.
+	// (Updatable) List of GPU devices attached to a virtual machine.
 	GpuDevices []GpuDevicesInitParameters `json:"gpuDevices,omitempty" tf:"gpu_devices,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of GPU devices.
+	// (Updatable) Number of GPU devices.
 	GpuDevicesCount *float64 `json:"gpuDevicesCount,omitempty" tf:"gpu_devices_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Guest state.
+	// (Updatable) Guest state.
 	GuestState *string `json:"guestState,omitempty" tf:"guest_state,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Hardware version.
+	// (Updatable) Hardware version.
 	HardwareVersion *string `json:"hardwareVersion,omitempty" tf:"hardware_version,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Host name of the VM.
+	// (Updatable) Host name of the VM.
 	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Whether Pmem is enabled. Decides if NVDIMMs are used as a permanent memory.
+	// (Updatable) Whether Pmem is enabled. Decides if NVDIMMs are used as a permanent memory.
 	IsPmemEnabled *bool `json:"isPmemEnabled,omitempty" tf:"is_pmem_enabled,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Whether Trusted Platform Module (TPM) is enabled.
+	// (Updatable) Whether Trusted Platform Module (TPM) is enabled.
 	IsTpmEnabled *bool `json:"isTpmEnabled,omitempty" tf:"is_tpm_enabled,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Latency sensitivity.
+	// (Updatable) Latency sensitivity.
 	LatencySensitivity *string `json:"latencySensitivity,omitempty" tf:"latency_sensitivity,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) GPU memory size in MBs.
+	// (Updatable) GPU memory size in MBs.
 	MemoryInMbs *string `json:"memoryInMbs,omitempty" tf:"memory_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) List of network ethernet cards attached to a virtual machine.
+	// (Updatable) List of network ethernet cards attached to a virtual machine.
 	Nics []NicsInitParameters `json:"nics,omitempty" tf:"nics,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of network ethernet cards.
+	// (Updatable) Number of network ethernet cards.
 	NicsCount *float64 `json:"nicsCount,omitempty" tf:"nics_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The asset's NVDIMM configuration.
+	// (Updatable) The asset's NVDIMM configuration.
 	NvdimmController []NvdimmControllerInitParameters `json:"nvdimmController,omitempty" tf:"nvdimm_controller,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The properties of the NVDIMMs attached to a virtual machine.
+	// (Updatable) The properties of the NVDIMMs attached to a virtual machine.
 	Nvdimms []NvdimmsInitParameters `json:"nvdimms,omitempty" tf:"nvdimms,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Operating system.
+	// (Updatable) Operating system.
 	OperatingSystem *string `json:"operatingSystem,omitempty" tf:"operating_system,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Operating system version.
+	// (Updatable) Operating system version.
 	OperatingSystemVersion *string `json:"operatingSystemVersion,omitempty" tf:"operating_system_version,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Pmem size in MBs.
+	// (Updatable) Pmem size in MBs.
 	PmemInMbs *string `json:"pmemInMbs,omitempty" tf:"pmem_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The current power state of the virtual machine.
+	// (Updatable) The current power state of the virtual machine.
 	PowerState *string `json:"powerState,omitempty" tf:"power_state,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Primary IP address of the compute instance.
+	// (Updatable) Primary IP address of the compute instance.
 	PrimaryIP *string `json:"primaryIp,omitempty" tf:"primary_ip,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The assets SCSI controller.
+	// (Updatable) The assets SCSI controller.
 	ScsiController []ScsiControllerInitParameters `json:"scsiController,omitempty" tf:"scsi_controller,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provision storage size in MBs.
+	// (Updatable) Provision storage size in MBs.
 	StorageProvisionedInMbs *string `json:"storageProvisionedInMbs,omitempty" tf:"storage_provisioned_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of threads per core.
+	// (Updatable) Number of threads per core.
 	ThreadsPerCoreCount *float64 `json:"threadsPerCoreCount,omitempty" tf:"threads_per_core_count,omitempty"`
 }
 
 type ComputeObservation struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) CPU model name.
+	// (Updatable) CPU model name.
 	CPUModel *string `json:"cpuModel,omitempty" tf:"cpu_model,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of connected networks.
+	// (Updatable) Number of connected networks.
 	ConnectedNetworks *float64 `json:"connectedNetworks,omitempty" tf:"connected_networks,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of CPUs.
+	// (Updatable) Number of CPUs.
 	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Fully Qualified DNS Name.
+	// (Updatable) Fully Qualified DNS Name.
 	DNSName *string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about the asset.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Lists the set of disks belonging to the virtual machine. This list is unordered.
+	// (Updatable) Lists the set of disks belonging to the virtual machine. This list is unordered.
 	Disks []DisksObservation `json:"disks,omitempty" tf:"disks,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of disks.
+	// (Updatable) Number of disks.
 	DisksCount *float64 `json:"disksCount,omitempty" tf:"disks_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about firmware type for this virtual machine.
+	// (Updatable) Information about firmware type for this virtual machine.
 	Firmware *string `json:"firmware,omitempty" tf:"firmware,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) List of GPU devices attached to a virtual machine.
+	// (Updatable) List of GPU devices attached to a virtual machine.
 	GpuDevices []GpuDevicesObservation `json:"gpuDevices,omitempty" tf:"gpu_devices,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of GPU devices.
+	// (Updatable) Number of GPU devices.
 	GpuDevicesCount *float64 `json:"gpuDevicesCount,omitempty" tf:"gpu_devices_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Guest state.
+	// (Updatable) Guest state.
 	GuestState *string `json:"guestState,omitempty" tf:"guest_state,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Hardware version.
+	// (Updatable) Hardware version.
 	HardwareVersion *string `json:"hardwareVersion,omitempty" tf:"hardware_version,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Host name of the VM.
+	// (Updatable) Host name of the VM.
 	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Whether Pmem is enabled. Decides if NVDIMMs are used as a permanent memory.
+	// (Updatable) Whether Pmem is enabled. Decides if NVDIMMs are used as a permanent memory.
 	IsPmemEnabled *bool `json:"isPmemEnabled,omitempty" tf:"is_pmem_enabled,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Whether Trusted Platform Module (TPM) is enabled.
+	// (Updatable) Whether Trusted Platform Module (TPM) is enabled.
 	IsTpmEnabled *bool `json:"isTpmEnabled,omitempty" tf:"is_tpm_enabled,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Latency sensitivity.
+	// (Updatable) Latency sensitivity.
 	LatencySensitivity *string `json:"latencySensitivity,omitempty" tf:"latency_sensitivity,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) GPU memory size in MBs.
+	// (Updatable) GPU memory size in MBs.
 	MemoryInMbs *string `json:"memoryInMbs,omitempty" tf:"memory_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) List of network ethernet cards attached to a virtual machine.
+	// (Updatable) List of network ethernet cards attached to a virtual machine.
 	Nics []NicsObservation `json:"nics,omitempty" tf:"nics,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of network ethernet cards.
+	// (Updatable) Number of network ethernet cards.
 	NicsCount *float64 `json:"nicsCount,omitempty" tf:"nics_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The asset's NVDIMM configuration.
+	// (Updatable) The asset's NVDIMM configuration.
 	NvdimmController []NvdimmControllerObservation `json:"nvdimmController,omitempty" tf:"nvdimm_controller,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The properties of the NVDIMMs attached to a virtual machine.
+	// (Updatable) The properties of the NVDIMMs attached to a virtual machine.
 	Nvdimms []NvdimmsObservation `json:"nvdimms,omitempty" tf:"nvdimms,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Operating system.
+	// (Updatable) Operating system.
 	OperatingSystem *string `json:"operatingSystem,omitempty" tf:"operating_system,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Operating system version.
+	// (Updatable) Operating system version.
 	OperatingSystemVersion *string `json:"operatingSystemVersion,omitempty" tf:"operating_system_version,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Pmem size in MBs.
+	// (Updatable) Pmem size in MBs.
 	PmemInMbs *string `json:"pmemInMbs,omitempty" tf:"pmem_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The current power state of the virtual machine.
+	// (Updatable) The current power state of the virtual machine.
 	PowerState *string `json:"powerState,omitempty" tf:"power_state,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Primary IP address of the compute instance.
+	// (Updatable) Primary IP address of the compute instance.
 	PrimaryIP *string `json:"primaryIp,omitempty" tf:"primary_ip,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The assets SCSI controller.
+	// (Updatable) The assets SCSI controller.
 	ScsiController []ScsiControllerObservation `json:"scsiController,omitempty" tf:"scsi_controller,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provision storage size in MBs.
+	// (Updatable) Provision storage size in MBs.
 	StorageProvisionedInMbs *string `json:"storageProvisionedInMbs,omitempty" tf:"storage_provisioned_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of threads per core.
+	// (Updatable) Number of threads per core.
 	ThreadsPerCoreCount *float64 `json:"threadsPerCoreCount,omitempty" tf:"threads_per_core_count,omitempty"`
 }
 
 type ComputeParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) CPU model name.
+	// (Updatable) CPU model name.
 	// +kubebuilder:validation:Optional
 	CPUModel *string `json:"cpuModel,omitempty" tf:"cpu_model,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of connected networks.
+	// (Updatable) Number of connected networks.
 	// +kubebuilder:validation:Optional
 	ConnectedNetworks *float64 `json:"connectedNetworks,omitempty" tf:"connected_networks,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of CPUs.
+	// (Updatable) Number of CPUs.
 	// +kubebuilder:validation:Optional
 	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Fully Qualified DNS Name.
+	// (Updatable) Fully Qualified DNS Name.
 	// +kubebuilder:validation:Optional
 	DNSName *string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about the asset.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Lists the set of disks belonging to the virtual machine. This list is unordered.
+	// (Updatable) Lists the set of disks belonging to the virtual machine. This list is unordered.
 	// +kubebuilder:validation:Optional
 	Disks []DisksParameters `json:"disks,omitempty" tf:"disks,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of disks.
+	// (Updatable) Number of disks.
 	// +kubebuilder:validation:Optional
 	DisksCount *float64 `json:"disksCount,omitempty" tf:"disks_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about firmware type for this virtual machine.
+	// (Updatable) Information about firmware type for this virtual machine.
 	// +kubebuilder:validation:Optional
 	Firmware *string `json:"firmware,omitempty" tf:"firmware,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) List of GPU devices attached to a virtual machine.
+	// (Updatable) List of GPU devices attached to a virtual machine.
 	// +kubebuilder:validation:Optional
 	GpuDevices []GpuDevicesParameters `json:"gpuDevices,omitempty" tf:"gpu_devices,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of GPU devices.
+	// (Updatable) Number of GPU devices.
 	// +kubebuilder:validation:Optional
 	GpuDevicesCount *float64 `json:"gpuDevicesCount,omitempty" tf:"gpu_devices_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Guest state.
+	// (Updatable) Guest state.
 	// +kubebuilder:validation:Optional
 	GuestState *string `json:"guestState,omitempty" tf:"guest_state,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Hardware version.
+	// (Updatable) Hardware version.
 	// +kubebuilder:validation:Optional
 	HardwareVersion *string `json:"hardwareVersion,omitempty" tf:"hardware_version,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Host name of the VM.
+	// (Updatable) Host name of the VM.
 	// +kubebuilder:validation:Optional
 	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Whether Pmem is enabled. Decides if NVDIMMs are used as a permanent memory.
+	// (Updatable) Whether Pmem is enabled. Decides if NVDIMMs are used as a permanent memory.
 	// +kubebuilder:validation:Optional
 	IsPmemEnabled *bool `json:"isPmemEnabled,omitempty" tf:"is_pmem_enabled,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Whether Trusted Platform Module (TPM) is enabled.
+	// (Updatable) Whether Trusted Platform Module (TPM) is enabled.
 	// +kubebuilder:validation:Optional
 	IsTpmEnabled *bool `json:"isTpmEnabled,omitempty" tf:"is_tpm_enabled,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Latency sensitivity.
+	// (Updatable) Latency sensitivity.
 	// +kubebuilder:validation:Optional
 	LatencySensitivity *string `json:"latencySensitivity,omitempty" tf:"latency_sensitivity,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) GPU memory size in MBs.
+	// (Updatable) GPU memory size in MBs.
 	// +kubebuilder:validation:Optional
 	MemoryInMbs *string `json:"memoryInMbs,omitempty" tf:"memory_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) List of network ethernet cards attached to a virtual machine.
+	// (Updatable) List of network ethernet cards attached to a virtual machine.
 	// +kubebuilder:validation:Optional
 	Nics []NicsParameters `json:"nics,omitempty" tf:"nics,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of network ethernet cards.
+	// (Updatable) Number of network ethernet cards.
 	// +kubebuilder:validation:Optional
 	NicsCount *float64 `json:"nicsCount,omitempty" tf:"nics_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The asset's NVDIMM configuration.
+	// (Updatable) The asset's NVDIMM configuration.
 	// +kubebuilder:validation:Optional
 	NvdimmController []NvdimmControllerParameters `json:"nvdimmController,omitempty" tf:"nvdimm_controller,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The properties of the NVDIMMs attached to a virtual machine.
+	// (Updatable) The properties of the NVDIMMs attached to a virtual machine.
 	// +kubebuilder:validation:Optional
 	Nvdimms []NvdimmsParameters `json:"nvdimms,omitempty" tf:"nvdimms,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Operating system.
+	// (Updatable) Operating system.
 	// +kubebuilder:validation:Optional
 	OperatingSystem *string `json:"operatingSystem,omitempty" tf:"operating_system,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Operating system version.
+	// (Updatable) Operating system version.
 	// +kubebuilder:validation:Optional
 	OperatingSystemVersion *string `json:"operatingSystemVersion,omitempty" tf:"operating_system_version,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Pmem size in MBs.
+	// (Updatable) Pmem size in MBs.
 	// +kubebuilder:validation:Optional
 	PmemInMbs *string `json:"pmemInMbs,omitempty" tf:"pmem_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The current power state of the virtual machine.
+	// (Updatable) The current power state of the virtual machine.
 	// +kubebuilder:validation:Optional
 	PowerState *string `json:"powerState,omitempty" tf:"power_state,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Primary IP address of the compute instance.
+	// (Updatable) Primary IP address of the compute instance.
 	// +kubebuilder:validation:Optional
 	PrimaryIP *string `json:"primaryIp,omitempty" tf:"primary_ip,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The assets SCSI controller.
+	// (Updatable) The assets SCSI controller.
 	// +kubebuilder:validation:Optional
 	ScsiController []ScsiControllerParameters `json:"scsiController,omitempty" tf:"scsi_controller,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provision storage size in MBs.
+	// (Updatable) Provision storage size in MBs.
 	// +kubebuilder:validation:Optional
 	StorageProvisionedInMbs *string `json:"storageProvisionedInMbs,omitempty" tf:"storage_provisioned_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of threads per core.
+	// (Updatable) Number of threads per core.
 	// +kubebuilder:validation:Optional
 	ThreadsPerCoreCount *float64 `json:"threadsPerCoreCount,omitempty" tf:"threads_per_core_count,omitempty"`
 }
 
 type CustomerTagsInitParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about the asset.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk name.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type CustomerTagsObservation struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about the asset.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk name.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type CustomerTagsParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about the asset.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk name.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type DisksInitParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Order of boot volumes.
+	// (Updatable) Order of boot volumes.
 	BootOrder *float64 `json:"bootOrder,omitempty" tf:"boot_order,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Location of the boot/data volume.
+	// (Updatable) Indicates that CBT (change disk tracking) is enabled for this virtual disk.
+	IsCbtEnabled *bool `json:"isCbtEnabled,omitempty" tf:"is_cbt_enabled,omitempty"`
+
+	// (Updatable) Location of the boot/data volume.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk name.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The disk persistent mode.
+	// (Updatable) The disk persistent mode.
 	PersistentMode *string `json:"persistentMode,omitempty" tf:"persistent_mode,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The size of the volume in MBs.
+	// (Updatable) The size of the volume in MBs.
 	SizeInMbs *string `json:"sizeInMbs,omitempty" tf:"size_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk UUID for the virtual disk, if available.
+	// (Updatable) Disk UUID for the virtual disk, if available.
 	UUID *string `json:"uuid,omitempty" tf:"uuid,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk UUID LUN for the virtual disk, if available.
+	// (Updatable) Disk UUID LUN for the virtual disk, if available.
 	UUIDLun *string `json:"uuidLun,omitempty" tf:"uuid_lun,omitempty"`
 }
 
 type DisksObservation struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Order of boot volumes.
+	// (Updatable) Order of boot volumes.
 	BootOrder *float64 `json:"bootOrder,omitempty" tf:"boot_order,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Location of the boot/data volume.
+	// (Updatable) Indicates that CBT (change disk tracking) is enabled for this virtual disk.
+	IsCbtEnabled *bool `json:"isCbtEnabled,omitempty" tf:"is_cbt_enabled,omitempty"`
+
+	// (Updatable) Location of the boot/data volume.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk name.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The disk persistent mode.
+	// (Updatable) The disk persistent mode.
 	PersistentMode *string `json:"persistentMode,omitempty" tf:"persistent_mode,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The size of the volume in MBs.
+	// (Updatable) The size of the volume in MBs.
 	SizeInMbs *string `json:"sizeInMbs,omitempty" tf:"size_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk UUID for the virtual disk, if available.
+	// (Updatable) Disk UUID for the virtual disk, if available.
 	UUID *string `json:"uuid,omitempty" tf:"uuid,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk UUID LUN for the virtual disk, if available.
+	// (Updatable) Disk UUID LUN for the virtual disk, if available.
 	UUIDLun *string `json:"uuidLun,omitempty" tf:"uuid_lun,omitempty"`
 }
 
 type DisksParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Order of boot volumes.
+	// (Updatable) Order of boot volumes.
 	// +kubebuilder:validation:Optional
 	BootOrder *float64 `json:"bootOrder,omitempty" tf:"boot_order,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Location of the boot/data volume.
+	// (Updatable) Indicates that CBT (change disk tracking) is enabled for this virtual disk.
+	// +kubebuilder:validation:Optional
+	IsCbtEnabled *bool `json:"isCbtEnabled,omitempty" tf:"is_cbt_enabled,omitempty"`
+
+	// (Updatable) Location of the boot/data volume.
 	// +kubebuilder:validation:Optional
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk name.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The disk persistent mode.
+	// (Updatable) The disk persistent mode.
 	// +kubebuilder:validation:Optional
 	PersistentMode *string `json:"persistentMode,omitempty" tf:"persistent_mode,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The size of the volume in MBs.
+	// (Updatable) The size of the volume in MBs.
 	// +kubebuilder:validation:Optional
 	SizeInMbs *string `json:"sizeInMbs,omitempty" tf:"size_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk UUID for the virtual disk, if available.
+	// (Updatable) Disk UUID for the virtual disk, if available.
 	// +kubebuilder:validation:Optional
 	UUID *string `json:"uuid,omitempty" tf:"uuid,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk UUID LUN for the virtual disk, if available.
+	// (Updatable) Disk UUID LUN for the virtual disk, if available.
 	// +kubebuilder:validation:Optional
 	UUIDLun *string `json:"uuidLun,omitempty" tf:"uuid_lun,omitempty"`
 }
 
 type GpuDevicesInitParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of CPUs.
+	// (Updatable) Number of CPUs.
 	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about the asset.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The manufacturer of GPU.
+	// (Updatable) The manufacturer of GPU.
 	Manufacturer *string `json:"manufacturer,omitempty" tf:"manufacturer,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) GPU memory size in MBs.
+	// (Updatable) GPU memory size in MBs.
 	MemoryInMbs *string `json:"memoryInMbs,omitempty" tf:"memory_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk name.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type GpuDevicesObservation struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of CPUs.
+	// (Updatable) Number of CPUs.
 	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about the asset.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The manufacturer of GPU.
+	// (Updatable) The manufacturer of GPU.
 	Manufacturer *string `json:"manufacturer,omitempty" tf:"manufacturer,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) GPU memory size in MBs.
+	// (Updatable) GPU memory size in MBs.
 	MemoryInMbs *string `json:"memoryInMbs,omitempty" tf:"memory_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk name.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type GpuDevicesParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Number of CPUs.
+	// (Updatable) Number of CPUs.
 	// +kubebuilder:validation:Optional
 	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Information about the asset.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The manufacturer of GPU.
+	// (Updatable) The manufacturer of GPU.
 	// +kubebuilder:validation:Optional
 	Manufacturer *string `json:"manufacturer,omitempty" tf:"manufacturer,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) GPU memory size in MBs.
+	// (Updatable) GPU memory size in MBs.
 	// +kubebuilder:validation:Optional
 	MemoryInMbs *string `json:"memoryInMbs,omitempty" tf:"memory_in_mbs,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Disk name.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
-type NicsInitParameters struct {
+type NetworkInterfacesInitParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) List of IP addresses.
-	IPAddresses []*string `json:"ipAddresses,omitempty" tf:"ip_addresses,omitempty"`
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes association information for an Elastic IP address (IPv4).
+	Association []AssociationInitParameters `json:"association,omitempty" tf:"association,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
-	Label *string `json:"label,omitempty" tf:"label,omitempty"`
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes a network interface attachment.
+	Attachment []AttachmentInitParameters `json:"attachment,omitempty" tf:"attachment,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Mac address of the VM.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The type of network interface.
+	InterfaceType *string `json:"interfaceType,omitempty" tf:"interface_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv4 delegated prefixes that are assigned to the network interface.
+	Ipv4Prefixes []*string `json:"ipv4prefixes,omitempty" tf:"ipv4prefixes,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv6 addresses associated with the network interface.
+	Ipv6Addresses []*string `json:"ipv6addresses,omitempty" tf:"ipv6addresses,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv6 delegated prefixes that are assigned to the network interface.
+	Ipv6Prefixes []*string `json:"ipv6prefixes,omitempty" tf:"ipv6prefixes,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether source/destination checking is enabled.
+	IsSourceDestCheck *bool `json:"isSourceDestCheck,omitempty" tf:"is_source_dest_check,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The MAC address.
 	MacAddress *string `json:"macAddress,omitempty" tf:"mac_address,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Mac address type.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the network interface.
+	NetworkInterfaceKey *string `json:"networkInterfaceKey,omitempty" tf:"network_interface_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the AWS account that created the network interface.
+	OwnerKey *string `json:"ownerKey,omitempty" tf:"owner_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 addresses associated with the network interface.
+	PrivateIPAddresses []PrivateIPAddressesInitParameters `json:"privateIpAddresses,omitempty" tf:"private_ip_addresses,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The security groups.
+	SecurityGroups []SecurityGroupsInitParameters `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the subnet.
+	SubnetKey *string `json:"subnetKey,omitempty" tf:"subnet_key,omitempty"`
+}
+
+type NetworkInterfacesObservation struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes association information for an Elastic IP address (IPv4).
+	Association []AssociationObservation `json:"association,omitempty" tf:"association,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes a network interface attachment.
+	Attachment []AttachmentObservation `json:"attachment,omitempty" tf:"attachment,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The type of network interface.
+	InterfaceType *string `json:"interfaceType,omitempty" tf:"interface_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv4 delegated prefixes that are assigned to the network interface.
+	Ipv4Prefixes []*string `json:"ipv4prefixes,omitempty" tf:"ipv4prefixes,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv6 addresses associated with the network interface.
+	Ipv6Addresses []*string `json:"ipv6addresses,omitempty" tf:"ipv6addresses,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv6 delegated prefixes that are assigned to the network interface.
+	Ipv6Prefixes []*string `json:"ipv6prefixes,omitempty" tf:"ipv6prefixes,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether source/destination checking is enabled.
+	IsSourceDestCheck *bool `json:"isSourceDestCheck,omitempty" tf:"is_source_dest_check,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The MAC address.
+	MacAddress *string `json:"macAddress,omitempty" tf:"mac_address,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the network interface.
+	NetworkInterfaceKey *string `json:"networkInterfaceKey,omitempty" tf:"network_interface_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the AWS account that created the network interface.
+	OwnerKey *string `json:"ownerKey,omitempty" tf:"owner_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 addresses associated with the network interface.
+	PrivateIPAddresses []PrivateIPAddressesObservation `json:"privateIpAddresses,omitempty" tf:"private_ip_addresses,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The security groups.
+	SecurityGroups []SecurityGroupsObservation `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the subnet.
+	SubnetKey *string `json:"subnetKey,omitempty" tf:"subnet_key,omitempty"`
+}
+
+type NetworkInterfacesParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes association information for an Elastic IP address (IPv4).
+	// +kubebuilder:validation:Optional
+	Association []AssociationParameters `json:"association,omitempty" tf:"association,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes a network interface attachment.
+	// +kubebuilder:validation:Optional
+	Attachment []AttachmentParameters `json:"attachment,omitempty" tf:"attachment,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The type of network interface.
+	// +kubebuilder:validation:Optional
+	InterfaceType *string `json:"interfaceType,omitempty" tf:"interface_type,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv4 delegated prefixes that are assigned to the network interface.
+	// +kubebuilder:validation:Optional
+	Ipv4Prefixes []*string `json:"ipv4prefixes,omitempty" tf:"ipv4prefixes,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv6 addresses associated with the network interface.
+	// +kubebuilder:validation:Optional
+	Ipv6Addresses []*string `json:"ipv6addresses,omitempty" tf:"ipv6addresses,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The IPv6 delegated prefixes that are assigned to the network interface.
+	// +kubebuilder:validation:Optional
+	Ipv6Prefixes []*string `json:"ipv6prefixes,omitempty" tf:"ipv6prefixes,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether source/destination checking is enabled.
+	// +kubebuilder:validation:Optional
+	IsSourceDestCheck *bool `json:"isSourceDestCheck,omitempty" tf:"is_source_dest_check,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The MAC address.
+	// +kubebuilder:validation:Optional
+	MacAddress *string `json:"macAddress,omitempty" tf:"mac_address,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the network interface.
+	// +kubebuilder:validation:Optional
+	NetworkInterfaceKey *string `json:"networkInterfaceKey,omitempty" tf:"network_interface_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the AWS account that created the network interface.
+	// +kubebuilder:validation:Optional
+	OwnerKey *string `json:"ownerKey,omitempty" tf:"owner_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 addresses associated with the network interface.
+	// +kubebuilder:validation:Optional
+	PrivateIPAddresses []PrivateIPAddressesParameters `json:"privateIpAddresses,omitempty" tf:"private_ip_addresses,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The security groups.
+	// +kubebuilder:validation:Optional
+	SecurityGroups []SecurityGroupsParameters `json:"securityGroups,omitempty" tf:"security_groups,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
+	// +kubebuilder:validation:Optional
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the subnet.
+	// +kubebuilder:validation:Optional
+	SubnetKey *string `json:"subnetKey,omitempty" tf:"subnet_key,omitempty"`
+}
+
+type NicsInitParameters struct {
+
+	// (Updatable) List of IP addresses.
+	IPAddresses []*string `json:"ipAddresses,omitempty" tf:"ip_addresses,omitempty"`
+
+	// (Updatable) Provides a label and summary information for the device.
+	Label *string `json:"label,omitempty" tf:"label,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The MAC address.
+	MacAddress *string `json:"macAddress,omitempty" tf:"mac_address,omitempty"`
+
+	// (Updatable) Mac address type.
 	MacAddressType *string `json:"macAddressType,omitempty" tf:"mac_address_type,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Network name.
+	// (Updatable) Network name.
 	NetworkName *string `json:"networkName,omitempty" tf:"network_name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Switch name.
+	// (Updatable) Switch name.
 	SwitchName *string `json:"switchName,omitempty" tf:"switch_name,omitempty"`
 }
 
 type NicsObservation struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) List of IP addresses.
+	// (Updatable) List of IP addresses.
 	IPAddresses []*string `json:"ipAddresses,omitempty" tf:"ip_addresses,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Mac address of the VM.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The MAC address.
 	MacAddress *string `json:"macAddress,omitempty" tf:"mac_address,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Mac address type.
+	// (Updatable) Mac address type.
 	MacAddressType *string `json:"macAddressType,omitempty" tf:"mac_address_type,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Network name.
+	// (Updatable) Network name.
 	NetworkName *string `json:"networkName,omitempty" tf:"network_name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Switch name.
+	// (Updatable) Switch name.
 	SwitchName *string `json:"switchName,omitempty" tf:"switch_name,omitempty"`
 }
 
 type NicsParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) List of IP addresses.
+	// (Updatable) List of IP addresses.
 	// +kubebuilder:validation:Optional
 	IPAddresses []*string `json:"ipAddresses,omitempty" tf:"ip_addresses,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	// +kubebuilder:validation:Optional
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Mac address of the VM.
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The MAC address.
 	// +kubebuilder:validation:Optional
 	MacAddress *string `json:"macAddress,omitempty" tf:"mac_address,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Mac address type.
+	// (Updatable) Mac address type.
 	// +kubebuilder:validation:Optional
 	MacAddressType *string `json:"macAddressType,omitempty" tf:"mac_address_type,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Network name.
+	// (Updatable) Network name.
 	// +kubebuilder:validation:Optional
 	NetworkName *string `json:"networkName,omitempty" tf:"network_name,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Switch name.
+	// (Updatable) Switch name.
 	// +kubebuilder:validation:Optional
 	SwitchName *string `json:"switchName,omitempty" tf:"switch_name,omitempty"`
 }
 
 type NvdimmControllerInitParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Bus number.
+	// (Updatable) Bus number.
 	BusNumber *float64 `json:"busNumber,omitempty" tf:"bus_number,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 }
 
 type NvdimmControllerObservation struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Bus number.
+	// (Updatable) Bus number.
 	BusNumber *float64 `json:"busNumber,omitempty" tf:"bus_number,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 }
 
 type NvdimmControllerParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Bus number.
+	// (Updatable) Bus number.
 	// +kubebuilder:validation:Optional
 	BusNumber *float64 `json:"busNumber,omitempty" tf:"bus_number,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	// +kubebuilder:validation:Optional
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 }
 
 type NvdimmsInitParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Controller key.
+	// (Updatable) Controller key.
 	ControllerKey *float64 `json:"controllerKey,omitempty" tf:"controller_key,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The unit number of NVDIMM.
+	// (Updatable) The unit number of NVDIMM.
 	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type NvdimmsObservation struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Controller key.
+	// (Updatable) Controller key.
 	ControllerKey *float64 `json:"controllerKey,omitempty" tf:"controller_key,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The unit number of NVDIMM.
+	// (Updatable) The unit number of NVDIMM.
 	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type NvdimmsParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Controller key.
+	// (Updatable) Controller key.
 	// +kubebuilder:validation:Optional
 	ControllerKey *float64 `json:"controllerKey,omitempty" tf:"controller_key,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	// +kubebuilder:validation:Optional
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The unit number of NVDIMM.
+	// (Updatable) The unit number of NVDIMM.
 	// +kubebuilder:validation:Optional
 	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
+type PlacementInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The affinity setting for the instance on the Dedicated Host.
+	Affinity *string `json:"affinity,omitempty" tf:"affinity,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The Availability Zone for the volume.
+	AvailabilityZone *string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The name of the security group.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Group
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
+	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
+
+	// Reference to a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameRef *v1.NamespacedReference `json:"groupNameRef,omitempty" tf:"-"`
+
+	// Selector for a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameSelector *v1.NamespacedSelector `json:"groupNameSelector,omitempty" tf:"-"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the Dedicated Host on which the instance resides.
+	HostKey *string `json:"hostKey,omitempty" tf:"host_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ARN of the host resource group in which to launch the instances.
+	HostResourceGroupArn *string `json:"hostResourceGroupArn,omitempty" tf:"host_resource_group_arn,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The number of the partition that the instance is in.
+	PartitionNumber *float64 `json:"partitionNumber,omitempty" tf:"partition_number,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Reserved for future use.
+	SpreadDomain *string `json:"spreadDomain,omitempty" tf:"spread_domain,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The tenancy of the instance (if the instance is running in a VPC).
+	Tenancy *string `json:"tenancy,omitempty" tf:"tenancy,omitempty"`
+}
+
+type PlacementObservation struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The affinity setting for the instance on the Dedicated Host.
+	Affinity *string `json:"affinity,omitempty" tf:"affinity,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The Availability Zone for the volume.
+	AvailabilityZone *string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The name of the security group.
+	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the Dedicated Host on which the instance resides.
+	HostKey *string `json:"hostKey,omitempty" tf:"host_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ARN of the host resource group in which to launch the instances.
+	HostResourceGroupArn *string `json:"hostResourceGroupArn,omitempty" tf:"host_resource_group_arn,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The number of the partition that the instance is in.
+	PartitionNumber *float64 `json:"partitionNumber,omitempty" tf:"partition_number,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Reserved for future use.
+	SpreadDomain *string `json:"spreadDomain,omitempty" tf:"spread_domain,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The tenancy of the instance (if the instance is running in a VPC).
+	Tenancy *string `json:"tenancy,omitempty" tf:"tenancy,omitempty"`
+}
+
+type PlacementParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The affinity setting for the instance on the Dedicated Host.
+	// +kubebuilder:validation:Optional
+	Affinity *string `json:"affinity,omitempty" tf:"affinity,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The Availability Zone for the volume.
+	// +kubebuilder:validation:Optional
+	AvailabilityZone *string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The name of the security group.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Group
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
+	// +kubebuilder:validation:Optional
+	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
+
+	// Reference to a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameRef *v1.NamespacedReference `json:"groupNameRef,omitempty" tf:"-"`
+
+	// Selector for a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameSelector *v1.NamespacedSelector `json:"groupNameSelector,omitempty" tf:"-"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the Dedicated Host on which the instance resides.
+	// +kubebuilder:validation:Optional
+	HostKey *string `json:"hostKey,omitempty" tf:"host_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ARN of the host resource group in which to launch the instances.
+	// +kubebuilder:validation:Optional
+	HostResourceGroupArn *string `json:"hostResourceGroupArn,omitempty" tf:"host_resource_group_arn,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The number of the partition that the instance is in.
+	// +kubebuilder:validation:Optional
+	PartitionNumber *float64 `json:"partitionNumber,omitempty" tf:"partition_number,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Reserved for future use.
+	// +kubebuilder:validation:Optional
+	SpreadDomain *string `json:"spreadDomain,omitempty" tf:"spread_domain,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The tenancy of the instance (if the instance is running in a VPC).
+	// +kubebuilder:validation:Optional
+	Tenancy *string `json:"tenancy,omitempty" tf:"tenancy,omitempty"`
+}
+
+type PrivateIPAddressesAssociationInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The carrier IP address associated with the network interface.
+	CarrierIP *string `json:"carrierIp,omitempty" tf:"carrier_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The customer-owned IP address associated with the network interface.
+	CustomerOwnedIP *string `json:"customerOwnedIp,omitempty" tf:"customer_owned_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the owner of the Elastic IP address.
+	IPOwnerKey *string `json:"ipOwnerKey,omitempty" tf:"ip_owner_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public DNS name.
+	PublicDNSName *string `json:"publicDnsName,omitempty" tf:"public_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public IP address or Elastic IP address bound to the network interface.
+	PublicIP *string `json:"publicIp,omitempty" tf:"public_ip,omitempty"`
+}
+
+type PrivateIPAddressesAssociationObservation struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The carrier IP address associated with the network interface.
+	CarrierIP *string `json:"carrierIp,omitempty" tf:"carrier_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The customer-owned IP address associated with the network interface.
+	CustomerOwnedIP *string `json:"customerOwnedIp,omitempty" tf:"customer_owned_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the owner of the Elastic IP address.
+	IPOwnerKey *string `json:"ipOwnerKey,omitempty" tf:"ip_owner_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public DNS name.
+	PublicDNSName *string `json:"publicDnsName,omitempty" tf:"public_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public IP address or Elastic IP address bound to the network interface.
+	PublicIP *string `json:"publicIp,omitempty" tf:"public_ip,omitempty"`
+}
+
+type PrivateIPAddressesAssociationParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The carrier IP address associated with the network interface.
+	// +kubebuilder:validation:Optional
+	CarrierIP *string `json:"carrierIp,omitempty" tf:"carrier_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The customer-owned IP address associated with the network interface.
+	// +kubebuilder:validation:Optional
+	CustomerOwnedIP *string `json:"customerOwnedIp,omitempty" tf:"customer_owned_ip,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the owner of the Elastic IP address.
+	// +kubebuilder:validation:Optional
+	IPOwnerKey *string `json:"ipOwnerKey,omitempty" tf:"ip_owner_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public DNS name.
+	// +kubebuilder:validation:Optional
+	PublicDNSName *string `json:"publicDnsName,omitempty" tf:"public_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The public IP address or Elastic IP address bound to the network interface.
+	// +kubebuilder:validation:Optional
+	PublicIP *string `json:"publicIp,omitempty" tf:"public_ip,omitempty"`
+}
+
+type PrivateIPAddressesInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes association information for an Elastic IP address (IPv4).
+	Association []PrivateIPAddressesAssociationInitParameters `json:"association,omitempty" tf:"association,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether this IPv4 address is the primary private IP address of the network interface.
+	IsPrimary *bool `json:"isPrimary,omitempty" tf:"is_primary,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 DNS name.
+	PrivateDNSName *string `json:"privateDnsName,omitempty" tf:"private_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 address of the network interface.
+	PrivateIPAddress *string `json:"privateIpAddress,omitempty" tf:"private_ip_address,omitempty"`
+}
+
+type PrivateIPAddressesObservation struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes association information for an Elastic IP address (IPv4).
+	Association []PrivateIPAddressesAssociationObservation `json:"association,omitempty" tf:"association,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether this IPv4 address is the primary private IP address of the network interface.
+	IsPrimary *bool `json:"isPrimary,omitempty" tf:"is_primary,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 DNS name.
+	PrivateDNSName *string `json:"privateDnsName,omitempty" tf:"private_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 address of the network interface.
+	PrivateIPAddress *string `json:"privateIpAddress,omitempty" tf:"private_ip_address,omitempty"`
+}
+
+type PrivateIPAddressesParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Describes association information for an Elastic IP address (IPv4).
+	// +kubebuilder:validation:Optional
+	Association []PrivateIPAddressesAssociationParameters `json:"association,omitempty" tf:"association,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) Indicates whether this IPv4 address is the primary private IP address of the network interface.
+	// +kubebuilder:validation:Optional
+	IsPrimary *bool `json:"isPrimary,omitempty" tf:"is_primary,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 DNS name.
+	// +kubebuilder:validation:Optional
+	PrivateDNSName *string `json:"privateDnsName,omitempty" tf:"private_dns_name,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The private IPv4 address of the network interface.
+	// +kubebuilder:validation:Optional
+	PrivateIPAddress *string `json:"privateIpAddress,omitempty" tf:"private_ip_address,omitempty"`
+}
+
 type ScsiControllerInitParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Shared bus.
+	// (Updatable) Shared bus.
 	SharedBus *string `json:"sharedBus,omitempty" tf:"shared_bus,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The unit number of NVDIMM.
+	// (Updatable) The unit number of NVDIMM.
 	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type ScsiControllerObservation struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Shared bus.
+	// (Updatable) Shared bus.
 	SharedBus *string `json:"sharedBus,omitempty" tf:"shared_bus,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The unit number of NVDIMM.
+	// (Updatable) The unit number of NVDIMM.
 	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type ScsiControllerParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Provides a label and summary information for the device.
+	// (Updatable) Provides a label and summary information for the device.
 	// +kubebuilder:validation:Optional
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Shared bus.
+	// (Updatable) Shared bus.
 	// +kubebuilder:validation:Optional
 	SharedBus *string `json:"sharedBus,omitempty" tf:"shared_bus,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) The unit number of NVDIMM.
+	// (Updatable) The unit number of NVDIMM.
 	// +kubebuilder:validation:Optional
 	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
+type SecurityGroupsInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the security group.
+	GroupKey *string `json:"groupKey,omitempty" tf:"group_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The name of the security group.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Group
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
+	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
+
+	// Reference to a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameRef *v1.NamespacedReference `json:"groupNameRef,omitempty" tf:"-"`
+
+	// Selector for a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameSelector *v1.NamespacedSelector `json:"groupNameSelector,omitempty" tf:"-"`
+}
+
+type SecurityGroupsObservation struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the security group.
+	GroupKey *string `json:"groupKey,omitempty" tf:"group_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The name of the security group.
+	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
+}
+
+type SecurityGroupsParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The ID of the security group.
+	// +kubebuilder:validation:Optional
+	GroupKey *string `json:"groupKey,omitempty" tf:"group_key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The name of the security group.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Group
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
+	// +kubebuilder:validation:Optional
+	GroupName *string `json:"groupName,omitempty" tf:"group_name,omitempty"`
+
+	// Reference to a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameRef *v1.NamespacedReference `json:"groupNameRef,omitempty" tf:"-"`
+
+	// Selector for a Group in identity to populate groupName.
+	// +kubebuilder:validation:Optional
+	GroupNameSelector *v1.NamespacedSelector `json:"groupNameSelector,omitempty" tf:"-"`
+}
+
+type StateInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The state of the instance as a 16-bit unsigned integer.
+	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
+type StateObservation struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The state of the instance as a 16-bit unsigned integer.
+	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
+type StateParameters struct {
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The state of the instance as a 16-bit unsigned integer.
+	// +kubebuilder:validation:Optional
+	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+
+	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
+type TagsInitParameters struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The key of the tag.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The value of the tag.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type TagsObservation struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The key of the tag.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The value of the tag.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type TagsParameters struct {
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The key of the tag.
+	// +kubebuilder:validation:Optional
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Applicable when asset_type=AWS_EBS) (Updatable) The value of the tag.
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
 type VMInitParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Host name/IP address of VM on which the host is running.
+	// (Updatable) Host name/IP address of VM on which the host is running.
 	HypervisorHost *string `json:"hypervisorHost,omitempty" tf:"hypervisor_host,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Hypervisor vendor.
+	// (Updatable) Hypervisor vendor.
 	HypervisorVendor *string `json:"hypervisorVendor,omitempty" tf:"hypervisor_vendor,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Hypervisor version.
+	// (Updatable) Hypervisor version.
 	HypervisorVersion *string `json:"hypervisorVersion,omitempty" tf:"hypervisor_version,omitempty"`
 }
 
 type VMObservation struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Host name/IP address of VM on which the host is running.
+	// (Updatable) Host name/IP address of VM on which the host is running.
 	HypervisorHost *string `json:"hypervisorHost,omitempty" tf:"hypervisor_host,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Hypervisor vendor.
+	// (Updatable) Hypervisor vendor.
 	HypervisorVendor *string `json:"hypervisorVendor,omitempty" tf:"hypervisor_vendor,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Hypervisor version.
+	// (Updatable) Hypervisor version.
 	HypervisorVersion *string `json:"hypervisorVersion,omitempty" tf:"hypervisor_version,omitempty"`
 }
 
 type VMParameters struct {
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Host name/IP address of VM on which the host is running.
+	// (Updatable) Host name/IP address of VM on which the host is running.
 	// +kubebuilder:validation:Optional
 	HypervisorHost *string `json:"hypervisorHost,omitempty" tf:"hypervisor_host,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Hypervisor vendor.
+	// (Updatable) Hypervisor vendor.
 	// +kubebuilder:validation:Optional
 	HypervisorVendor *string `json:"hypervisorVendor,omitempty" tf:"hypervisor_vendor,omitempty"`
 
-	// (Applicable when asset_type=VM | VMWARE_VM) (Updatable) Hypervisor version.
+	// (Updatable) Hypervisor version.
 	// +kubebuilder:validation:Optional
 	HypervisorVersion *string `json:"hypervisorVersion,omitempty" tf:"hypervisor_version,omitempty"`
 }
 
 type VmwareVMInitParameters struct {
 
-	// (Updatable) Cluster name.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Cluster name.
 	Cluster *string `json:"cluster,omitempty" tf:"cluster,omitempty"`
 
-	// (Updatable) Customer fields.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Customer fields.
 	CustomerFields []*string `json:"customerFields,omitempty" tf:"customer_fields,omitempty"`
 
-	// (Updatable) Customer defined tags.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Customer defined tags.
 	CustomerTags []CustomerTagsInitParameters `json:"customerTags,omitempty" tf:"customer_tags,omitempty"`
 
-	// (Updatable) Fault tolerance bandwidth.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance bandwidth.
 	FaultToleranceBandwidth *float64 `json:"faultToleranceBandwidth,omitempty" tf:"fault_tolerance_bandwidth,omitempty"`
 
-	// (Updatable) Fault tolerance to secondary latency.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance to secondary latency.
 	FaultToleranceSecondaryLatency *float64 `json:"faultToleranceSecondaryLatency,omitempty" tf:"fault_tolerance_secondary_latency,omitempty"`
 
-	// (Updatable) Fault tolerance state.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance state.
 	FaultToleranceState *string `json:"faultToleranceState,omitempty" tf:"fault_tolerance_state,omitempty"`
 
-	// (Updatable) vCenter-specific identifier of the virtual machine.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) vCenter-specific identifier of the virtual machine.
 	InstanceUUID *string `json:"instanceUuid,omitempty" tf:"instance_uuid,omitempty"`
 
-	// (Updatable) Indicates that change tracking is supported for virtual disks of this virtual machine. However, even if change tracking is supported, it might not be available for all disks of the virtual machine.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Indicates that change tracking is supported for virtual disks of this virtual machine. However, even if change tracking is supported, it might not be available for all disks of the virtual machine.
 	IsDisksCbtEnabled *bool `json:"isDisksCbtEnabled,omitempty" tf:"is_disks_cbt_enabled,omitempty"`
 
-	// (Updatable) Whether changed block tracking for this VM's disk is active.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Whether changed block tracking for this VM's disk is active.
 	IsDisksUUIDEnabled *bool `json:"isDisksUuidEnabled,omitempty" tf:"is_disks_uuid_enabled,omitempty"`
 
-	// (Updatable) Path directory of the asset.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Path directory of the asset.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
-	// (Updatable) VMware tools status.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) VMware tools status.
 	VmwareToolsStatus *string `json:"vmwareToolsStatus,omitempty" tf:"vmware_tools_status,omitempty"`
 }
 
 type VmwareVMObservation struct {
 
-	// (Updatable) Cluster name.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Cluster name.
 	Cluster *string `json:"cluster,omitempty" tf:"cluster,omitempty"`
 
-	// (Updatable) Customer fields.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Customer fields.
 	CustomerFields []*string `json:"customerFields,omitempty" tf:"customer_fields,omitempty"`
 
-	// (Updatable) Customer defined tags.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Customer defined tags.
 	CustomerTags []CustomerTagsObservation `json:"customerTags,omitempty" tf:"customer_tags,omitempty"`
 
-	// (Updatable) Fault tolerance bandwidth.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance bandwidth.
 	FaultToleranceBandwidth *float64 `json:"faultToleranceBandwidth,omitempty" tf:"fault_tolerance_bandwidth,omitempty"`
 
-	// (Updatable) Fault tolerance to secondary latency.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance to secondary latency.
 	FaultToleranceSecondaryLatency *float64 `json:"faultToleranceSecondaryLatency,omitempty" tf:"fault_tolerance_secondary_latency,omitempty"`
 
-	// (Updatable) Fault tolerance state.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance state.
 	FaultToleranceState *string `json:"faultToleranceState,omitempty" tf:"fault_tolerance_state,omitempty"`
 
-	// (Updatable) vCenter-specific identifier of the virtual machine.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) vCenter-specific identifier of the virtual machine.
 	InstanceUUID *string `json:"instanceUuid,omitempty" tf:"instance_uuid,omitempty"`
 
-	// (Updatable) Indicates that change tracking is supported for virtual disks of this virtual machine. However, even if change tracking is supported, it might not be available for all disks of the virtual machine.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Indicates that change tracking is supported for virtual disks of this virtual machine. However, even if change tracking is supported, it might not be available for all disks of the virtual machine.
 	IsDisksCbtEnabled *bool `json:"isDisksCbtEnabled,omitempty" tf:"is_disks_cbt_enabled,omitempty"`
 
-	// (Updatable) Whether changed block tracking for this VM's disk is active.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Whether changed block tracking for this VM's disk is active.
 	IsDisksUUIDEnabled *bool `json:"isDisksUuidEnabled,omitempty" tf:"is_disks_uuid_enabled,omitempty"`
 
-	// (Updatable) Path directory of the asset.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Path directory of the asset.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
-	// (Updatable) VMware tools status.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) VMware tools status.
 	VmwareToolsStatus *string `json:"vmwareToolsStatus,omitempty" tf:"vmware_tools_status,omitempty"`
 }
 
 type VmwareVMParameters struct {
 
-	// (Updatable) Cluster name.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Cluster name.
 	// +kubebuilder:validation:Optional
 	Cluster *string `json:"cluster,omitempty" tf:"cluster,omitempty"`
 
-	// (Updatable) Customer fields.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Customer fields.
 	// +kubebuilder:validation:Optional
 	CustomerFields []*string `json:"customerFields,omitempty" tf:"customer_fields,omitempty"`
 
-	// (Updatable) Customer defined tags.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Customer defined tags.
 	// +kubebuilder:validation:Optional
 	CustomerTags []CustomerTagsParameters `json:"customerTags,omitempty" tf:"customer_tags,omitempty"`
 
-	// (Updatable) Fault tolerance bandwidth.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance bandwidth.
 	// +kubebuilder:validation:Optional
 	FaultToleranceBandwidth *float64 `json:"faultToleranceBandwidth,omitempty" tf:"fault_tolerance_bandwidth,omitempty"`
 
-	// (Updatable) Fault tolerance to secondary latency.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance to secondary latency.
 	// +kubebuilder:validation:Optional
 	FaultToleranceSecondaryLatency *float64 `json:"faultToleranceSecondaryLatency,omitempty" tf:"fault_tolerance_secondary_latency,omitempty"`
 
-	// (Updatable) Fault tolerance state.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance state.
 	// +kubebuilder:validation:Optional
 	FaultToleranceState *string `json:"faultToleranceState,omitempty" tf:"fault_tolerance_state,omitempty"`
 
-	// (Updatable) vCenter-specific identifier of the virtual machine.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) vCenter-specific identifier of the virtual machine.
 	// +kubebuilder:validation:Optional
 	InstanceUUID *string `json:"instanceUuid,omitempty" tf:"instance_uuid,omitempty"`
 
-	// (Updatable) Indicates that change tracking is supported for virtual disks of this virtual machine. However, even if change tracking is supported, it might not be available for all disks of the virtual machine.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Indicates that change tracking is supported for virtual disks of this virtual machine. However, even if change tracking is supported, it might not be available for all disks of the virtual machine.
 	// +kubebuilder:validation:Optional
 	IsDisksCbtEnabled *bool `json:"isDisksCbtEnabled,omitempty" tf:"is_disks_cbt_enabled,omitempty"`
 
-	// (Updatable) Whether changed block tracking for this VM's disk is active.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Whether changed block tracking for this VM's disk is active.
 	// +kubebuilder:validation:Optional
 	IsDisksUUIDEnabled *bool `json:"isDisksUuidEnabled,omitempty" tf:"is_disks_uuid_enabled,omitempty"`
 
-	// (Updatable) Path directory of the asset.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Path directory of the asset.
 	// +kubebuilder:validation:Optional
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
-	// (Updatable) VMware tools status.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) VMware tools status.
 	// +kubebuilder:validation:Optional
 	VmwareToolsStatus *string `json:"vmwareToolsStatus,omitempty" tf:"vmware_tools_status,omitempty"`
 }
 
 type VmwareVcenterInitParameters struct {
 
-	// (Updatable) Data center name.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Data center name.
 	DataCenter *string `json:"dataCenter,omitempty" tf:"data_center,omitempty"`
 
-	// (Updatable) vCenter unique key.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) vCenter unique key.
 	VcenterKey *string `json:"vcenterKey,omitempty" tf:"vcenter_key,omitempty"`
 
-	// (Updatable) Dot-separated version string.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Dot-separated version string.
 	VcenterVersion *string `json:"vcenterVersion,omitempty" tf:"vcenter_version,omitempty"`
 }
 
 type VmwareVcenterObservation struct {
 
-	// (Updatable) Data center name.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Data center name.
 	DataCenter *string `json:"dataCenter,omitempty" tf:"data_center,omitempty"`
 
-	// (Updatable) vCenter unique key.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) vCenter unique key.
 	VcenterKey *string `json:"vcenterKey,omitempty" tf:"vcenter_key,omitempty"`
 
-	// (Updatable) Dot-separated version string.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Dot-separated version string.
 	VcenterVersion *string `json:"vcenterVersion,omitempty" tf:"vcenter_version,omitempty"`
 }
 
 type VmwareVcenterParameters struct {
 
-	// (Updatable) Data center name.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Data center name.
 	// +kubebuilder:validation:Optional
 	DataCenter *string `json:"dataCenter,omitempty" tf:"data_center,omitempty"`
 
-	// (Updatable) vCenter unique key.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) vCenter unique key.
 	// +kubebuilder:validation:Optional
 	VcenterKey *string `json:"vcenterKey,omitempty" tf:"vcenter_key,omitempty"`
 
-	// (Updatable) Dot-separated version string.
+	// (Applicable when asset_type=VMWARE_VM) (Updatable) Dot-separated version string.
 	// +kubebuilder:validation:Optional
 	VcenterVersion *string `json:"vcenterVersion,omitempty" tf:"vcenter_version,omitempty"`
 }

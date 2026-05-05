@@ -1,0 +1,20 @@
+apiVersion: budget.oci.upbound.io/v1alpha1
+kind: CostAlertSubscription
+metadata:
+  annotations:
+    meta.upbound.io/example-id: budget/v1alpha1/costalertsubscription
+  labels:
+    testing.upbound.io/example-name: test_cost_alert_subscription
+  name: test-cost-alert-subscription
+spec:
+  forProvider:
+    channels: ${var.cost_alert_subscription_channels}
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.cost_alert_subscription_description}
+    freeformTags:
+      Department: Finance
+    name: ${var.cost_alert_subscription_name}

@@ -168,6 +168,9 @@ type AdditionalDetailsObservation struct {
 	// connections assigned to Golden Gate deployment
 	AssignedConnections []AssignedConnectionsObservation `json:"assignedConnections,omitempty" tf:"assigned_connections,omitempty"`
 
+	// OCID of existing OKE cluster.
+	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
+
 	// details of all endpoints assigned to cluster
 	EndpointDetails []EndpointDetailsObservation `json:"endpointDetails,omitempty" tf:"endpoint_details,omitempty"`
 
@@ -177,6 +180,9 @@ type AdditionalDetailsObservation struct {
 	// version of model
 	ModelVersion *string `json:"modelVersion,omitempty" tf:"model_version,omitempty"`
 
+	// Kubernetes namespace-name of OKE cluster.
+	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
+
 	// Region on which the cluster end endpoint will be provisioned.
 	OciRegion *string `json:"ociRegion,omitempty" tf:"oci_region,omitempty"`
 
@@ -185,6 +191,73 @@ type AdditionalDetailsObservation struct {
 }
 
 type AdditionalDetailsParameters struct {
+}
+
+type AidataplatformInitParameters struct {
+
+	// A default workspace will be created with this name.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/dataintegration/v1alpha1.Workspace
+	DefaultWorkspaceName *string `json:"defaultWorkspaceName,omitempty" tf:"default_workspace_name,omitempty"`
+
+	// Reference to a Workspace in dataintegration to populate defaultWorkspaceName.
+	// +kubebuilder:validation:Optional
+	DefaultWorkspaceNameRef *v1.NamespacedReference `json:"defaultWorkspaceNameRef,omitempty" tf:"-"`
+
+	// Selector for a Workspace in dataintegration to populate defaultWorkspaceName.
+	// +kubebuilder:validation:Optional
+	DefaultWorkspaceNameSelector *v1.NamespacedSelector `json:"defaultWorkspaceNameSelector,omitempty" tf:"-"`
+
+	// Id for the adw instance.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/compute/v1alpha1.Instance
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
+
+	// Reference to a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDRef *v1.NamespacedReference `json:"instanceIdRef,omitempty" tf:"-"`
+
+	// Selector for a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDSelector *v1.NamespacedSelector `json:"instanceIdSelector,omitempty" tf:"-"`
+}
+
+type AidataplatformObservation struct {
+
+	// A default workspace will be created with this name.
+	DefaultWorkspaceName *string `json:"defaultWorkspaceName,omitempty" tf:"default_workspace_name,omitempty"`
+
+	// Id for the adw instance.
+	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
+}
+
+type AidataplatformParameters struct {
+
+	// A default workspace will be created with this name.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/dataintegration/v1alpha1.Workspace
+	// +kubebuilder:validation:Optional
+	DefaultWorkspaceName *string `json:"defaultWorkspaceName,omitempty" tf:"default_workspace_name,omitempty"`
+
+	// Reference to a Workspace in dataintegration to populate defaultWorkspaceName.
+	// +kubebuilder:validation:Optional
+	DefaultWorkspaceNameRef *v1.NamespacedReference `json:"defaultWorkspaceNameRef,omitempty" tf:"-"`
+
+	// Selector for a Workspace in dataintegration to populate defaultWorkspaceName.
+	// +kubebuilder:validation:Optional
+	DefaultWorkspaceNameSelector *v1.NamespacedSelector `json:"defaultWorkspaceNameSelector,omitempty" tf:"-"`
+
+	// Id for the adw instance.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/compute/v1alpha1.Instance
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
+
+	// Reference to a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDRef *v1.NamespacedReference `json:"instanceIdRef,omitempty" tf:"-"`
+
+	// Selector for a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDSelector *v1.NamespacedSelector `json:"instanceIdSelector,omitempty" tf:"-"`
 }
 
 type AssignedConnectionsInitParameters struct {
@@ -203,6 +276,44 @@ type AssignedConnectionsObservation struct {
 }
 
 type AssignedConnectionsParameters struct {
+}
+
+type ComponentValueOverridesInitParameters struct {
+
+	// Logical name of the grouping independently deployable kubernetes resource artifacts for the current deployment.
+	ComponentName *string `json:"componentName,omitempty" tf:"component_name,omitempty"`
+
+	// Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// Used for overriding the values in value.yaml artifact of the component.
+	// Example: {"WORKER_THREADS": "8"}
+	// +mapType=granular
+	ValueOverrides map[string]*string `json:"valueOverrides,omitempty" tf:"value_overrides,omitempty"`
+}
+
+type ComponentValueOverridesObservation struct {
+
+	// Logical name of the grouping independently deployable kubernetes resource artifacts for the current deployment.
+	ComponentName *string `json:"componentName,omitempty" tf:"component_name,omitempty"`
+
+	// Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// Used for overriding the values in value.yaml artifact of the component.
+	// Example: {"WORKER_THREADS": "8"}
+	// +mapType=granular
+	ValueOverrides map[string]*string `json:"valueOverrides,omitempty" tf:"value_overrides,omitempty"`
+}
+
+type ComponentValueOverridesParameters struct {
+
+	// Logical name of the grouping independently deployable kubernetes resource artifacts for the current deployment.
+	// +kubebuilder:validation:Optional
+	ComponentName *string `json:"componentName" tf:"component_name,omitempty"`
+
+	// Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// Used for overriding the values in value.yaml artifact of the component.
+	// Example: {"WORKER_THREADS": "8"}
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	ValueOverrides map[string]*string `json:"valueOverrides" tf:"value_overrides,omitempty"`
 }
 
 type ConnectionDetailsInitParameters struct {
@@ -999,6 +1110,428 @@ type ObjectstorageParameters struct {
 	StorageTier *string `json:"storageTier" tf:"storage_tier,omitempty"`
 }
 
+type OkeInitParameters struct {
+
+	// OCID of existing OKE cluster.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/containerengine/v1alpha1.Cluster
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
+
+	// Reference to a Cluster in containerengine to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDRef *v1.NamespacedReference `json:"clusterIdRef,omitempty" tf:"-"`
+
+	// Selector for a Cluster in containerengine to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDSelector *v1.NamespacedSelector `json:"clusterIdSelector,omitempty" tf:"-"`
+
+	// Component overrides for stack specific parameters applied during artifact template rendering.
+	ComponentValueOverrides []ComponentValueOverridesInitParameters `json:"componentValueOverrides,omitempty" tf:"component_value_overrides,omitempty"`
+
+	// Id for the adw instance.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/compute/v1alpha1.Instance
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
+
+	// Reference to a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDRef *v1.NamespacedReference `json:"instanceIdRef,omitempty" tf:"-"`
+
+	// Selector for a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDSelector *v1.NamespacedSelector `json:"instanceIdSelector,omitempty" tf:"-"`
+
+	// Object storage path for the deployment manifest.
+	ManifestObjectStoragePath *string `json:"manifestObjectStoragePath,omitempty" tf:"manifest_object_storage_path,omitempty"`
+
+	// Kubernetes namespace-name of OKE cluster.
+	NamespaceName *string `json:"namespaceName,omitempty" tf:"namespace_name,omitempty"`
+
+	// List of kubernetes secrets to create or update in the namespace-name of the target cluster. Each entry source secret values from OCI vault.
+	Secrets []SecretsInitParameters `json:"secrets,omitempty" tf:"secrets,omitempty"`
+}
+
+type OkeObservation struct {
+
+	// OCID of existing OKE cluster.
+	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
+
+	// Component overrides for stack specific parameters applied during artifact template rendering.
+	ComponentValueOverrides []ComponentValueOverridesObservation `json:"componentValueOverrides,omitempty" tf:"component_value_overrides,omitempty"`
+
+	// Id for the adw instance.
+	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
+
+	// Object storage path for the deployment manifest.
+	ManifestObjectStoragePath *string `json:"manifestObjectStoragePath,omitempty" tf:"manifest_object_storage_path,omitempty"`
+
+	// Kubernetes namespace-name of OKE cluster.
+	NamespaceName *string `json:"namespaceName,omitempty" tf:"namespace_name,omitempty"`
+
+	// List of kubernetes secrets to create or update in the namespace-name of the target cluster. Each entry source secret values from OCI vault.
+	Secrets []SecretsObservation `json:"secrets,omitempty" tf:"secrets,omitempty"`
+}
+
+type OkeParameters struct {
+
+	// OCID of existing OKE cluster.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/containerengine/v1alpha1.Cluster
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
+
+	// Reference to a Cluster in containerengine to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDRef *v1.NamespacedReference `json:"clusterIdRef,omitempty" tf:"-"`
+
+	// Selector for a Cluster in containerengine to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDSelector *v1.NamespacedSelector `json:"clusterIdSelector,omitempty" tf:"-"`
+
+	// Component overrides for stack specific parameters applied during artifact template rendering.
+	// +kubebuilder:validation:Optional
+	ComponentValueOverrides []ComponentValueOverridesParameters `json:"componentValueOverrides,omitempty" tf:"component_value_overrides,omitempty"`
+
+	// Id for the adw instance.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/compute/v1alpha1.Instance
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
+
+	// Reference to a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDRef *v1.NamespacedReference `json:"instanceIdRef,omitempty" tf:"-"`
+
+	// Selector for a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDSelector *v1.NamespacedSelector `json:"instanceIdSelector,omitempty" tf:"-"`
+
+	// Object storage path for the deployment manifest.
+	// +kubebuilder:validation:Optional
+	ManifestObjectStoragePath *string `json:"manifestObjectStoragePath,omitempty" tf:"manifest_object_storage_path,omitempty"`
+
+	// Kubernetes namespace-name of OKE cluster.
+	// +kubebuilder:validation:Optional
+	NamespaceName *string `json:"namespaceName" tf:"namespace_name,omitempty"`
+
+	// List of kubernetes secrets to create or update in the namespace-name of the target cluster. Each entry source secret values from OCI vault.
+	// +kubebuilder:validation:Optional
+	Secrets []SecretsParameters `json:"secrets,omitempty" tf:"secrets,omitempty"`
+}
+
+type OmkComponentValueOverridesInitParameters struct {
+
+	// Logical name of the grouping independently deployable kubernetes resource artifacts for the current deployment.
+	ComponentName *string `json:"componentName,omitempty" tf:"component_name,omitempty"`
+
+	// Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// Used for overriding the values in value.yaml artifact of the component.
+	// Example: {"WORKER_THREADS": "8"}
+	// +mapType=granular
+	ValueOverrides map[string]*string `json:"valueOverrides,omitempty" tf:"value_overrides,omitempty"`
+}
+
+type OmkComponentValueOverridesObservation struct {
+
+	// Logical name of the grouping independently deployable kubernetes resource artifacts for the current deployment.
+	ComponentName *string `json:"componentName,omitempty" tf:"component_name,omitempty"`
+
+	// Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// Used for overriding the values in value.yaml artifact of the component.
+	// Example: {"WORKER_THREADS": "8"}
+	// +mapType=granular
+	ValueOverrides map[string]*string `json:"valueOverrides,omitempty" tf:"value_overrides,omitempty"`
+}
+
+type OmkComponentValueOverridesParameters struct {
+
+	// Logical name of the grouping independently deployable kubernetes resource artifacts for the current deployment.
+	// +kubebuilder:validation:Optional
+	ComponentName *string `json:"componentName" tf:"component_name,omitempty"`
+
+	// Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+	// Used for overriding the values in value.yaml artifact of the component.
+	// Example: {"WORKER_THREADS": "8"}
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	ValueOverrides map[string]*string `json:"valueOverrides" tf:"value_overrides,omitempty"`
+}
+
+type OmkInitParameters struct {
+
+	// OCID of existing OKE cluster.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/containerengine/v1alpha1.Cluster
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
+
+	// Reference to a Cluster in containerengine to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDRef *v1.NamespacedReference `json:"clusterIdRef,omitempty" tf:"-"`
+
+	// Selector for a Cluster in containerengine to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDSelector *v1.NamespacedSelector `json:"clusterIdSelector,omitempty" tf:"-"`
+
+	// OCID of existing OMK cluster-namespace.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loganalytics/v1alpha1.Namespace
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	ClusterNamespaceID *string `json:"clusterNamespaceId,omitempty" tf:"cluster_namespace_id,omitempty"`
+
+	// Reference to a Namespace in loganalytics to populate clusterNamespaceId.
+	// +kubebuilder:validation:Optional
+	ClusterNamespaceIDRef *v1.NamespacedReference `json:"clusterNamespaceIdRef,omitempty" tf:"-"`
+
+	// Selector for a Namespace in loganalytics to populate clusterNamespaceId.
+	// +kubebuilder:validation:Optional
+	ClusterNamespaceIDSelector *v1.NamespacedSelector `json:"clusterNamespaceIdSelector,omitempty" tf:"-"`
+
+	// Component overrides for stack specific parameters applied during artifact template rendering.
+	ComponentValueOverrides []OmkComponentValueOverridesInitParameters `json:"componentValueOverrides,omitempty" tf:"component_value_overrides,omitempty"`
+
+	// Id for the adw instance.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/compute/v1alpha1.Instance
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
+
+	// Reference to a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDRef *v1.NamespacedReference `json:"instanceIdRef,omitempty" tf:"-"`
+
+	// Selector for a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDSelector *v1.NamespacedSelector `json:"instanceIdSelector,omitempty" tf:"-"`
+
+	// Object storage path for the deployment manifest.
+	ManifestObjectStoragePath *string `json:"manifestObjectStoragePath,omitempty" tf:"manifest_object_storage_path,omitempty"`
+
+	// Kubernetes namespace-name of OKE cluster.
+	NamespaceName *string `json:"namespaceName,omitempty" tf:"namespace_name,omitempty"`
+
+	// List of kubernetes secrets to create or update in the namespace-name of the target cluster. Each entry source secret values from OCI vault.
+	Secrets []OmkSecretsInitParameters `json:"secrets,omitempty" tf:"secrets,omitempty"`
+}
+
+type OmkObservation struct {
+
+	// OCID of existing OKE cluster.
+	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
+
+	// OCID of existing OMK cluster-namespace.
+	ClusterNamespaceID *string `json:"clusterNamespaceId,omitempty" tf:"cluster_namespace_id,omitempty"`
+
+	// Component overrides for stack specific parameters applied during artifact template rendering.
+	ComponentValueOverrides []OmkComponentValueOverridesObservation `json:"componentValueOverrides,omitempty" tf:"component_value_overrides,omitempty"`
+
+	// Id for the adw instance.
+	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
+
+	// Object storage path for the deployment manifest.
+	ManifestObjectStoragePath *string `json:"manifestObjectStoragePath,omitempty" tf:"manifest_object_storage_path,omitempty"`
+
+	// Kubernetes namespace-name of OKE cluster.
+	NamespaceName *string `json:"namespaceName,omitempty" tf:"namespace_name,omitempty"`
+
+	// List of kubernetes secrets to create or update in the namespace-name of the target cluster. Each entry source secret values from OCI vault.
+	Secrets []OmkSecretsObservation `json:"secrets,omitempty" tf:"secrets,omitempty"`
+}
+
+type OmkParameters struct {
+
+	// OCID of existing OKE cluster.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/containerengine/v1alpha1.Cluster
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	ClusterID *string `json:"clusterId,omitempty" tf:"cluster_id,omitempty"`
+
+	// Reference to a Cluster in containerengine to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDRef *v1.NamespacedReference `json:"clusterIdRef,omitempty" tf:"-"`
+
+	// Selector for a Cluster in containerengine to populate clusterId.
+	// +kubebuilder:validation:Optional
+	ClusterIDSelector *v1.NamespacedSelector `json:"clusterIdSelector,omitempty" tf:"-"`
+
+	// OCID of existing OMK cluster-namespace.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loganalytics/v1alpha1.Namespace
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	ClusterNamespaceID *string `json:"clusterNamespaceId,omitempty" tf:"cluster_namespace_id,omitempty"`
+
+	// Reference to a Namespace in loganalytics to populate clusterNamespaceId.
+	// +kubebuilder:validation:Optional
+	ClusterNamespaceIDRef *v1.NamespacedReference `json:"clusterNamespaceIdRef,omitempty" tf:"-"`
+
+	// Selector for a Namespace in loganalytics to populate clusterNamespaceId.
+	// +kubebuilder:validation:Optional
+	ClusterNamespaceIDSelector *v1.NamespacedSelector `json:"clusterNamespaceIdSelector,omitempty" tf:"-"`
+
+	// Component overrides for stack specific parameters applied during artifact template rendering.
+	// +kubebuilder:validation:Optional
+	ComponentValueOverrides []OmkComponentValueOverridesParameters `json:"componentValueOverrides,omitempty" tf:"component_value_overrides,omitempty"`
+
+	// Id for the adw instance.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/compute/v1alpha1.Instance
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
+
+	// Reference to a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDRef *v1.NamespacedReference `json:"instanceIdRef,omitempty" tf:"-"`
+
+	// Selector for a Instance in compute to populate instanceId.
+	// +kubebuilder:validation:Optional
+	InstanceIDSelector *v1.NamespacedSelector `json:"instanceIdSelector,omitempty" tf:"-"`
+
+	// Object storage path for the deployment manifest.
+	// +kubebuilder:validation:Optional
+	ManifestObjectStoragePath *string `json:"manifestObjectStoragePath,omitempty" tf:"manifest_object_storage_path,omitempty"`
+
+	// Kubernetes namespace-name of OKE cluster.
+	// +kubebuilder:validation:Optional
+	NamespaceName *string `json:"namespaceName" tf:"namespace_name,omitempty"`
+
+	// List of kubernetes secrets to create or update in the namespace-name of the target cluster. Each entry source secret values from OCI vault.
+	// +kubebuilder:validation:Optional
+	Secrets []OmkSecretsParameters `json:"secrets,omitempty" tf:"secrets,omitempty"`
+}
+
+type OmkSecretsInitParameters struct {
+
+	// List of kubernetes secret data.
+	SecretData []SecretsSecretDataInitParameters `json:"secretData,omitempty" tf:"secret_data,omitempty"`
+
+	// Name of the kubernetes secret of max length 63 and contain only lowercase alphanumeric characters or '-' and start and end with an alphabetic character.
+	SecretName *string `json:"secretName,omitempty" tf:"secret_name,omitempty"`
+
+	// Object storage path for the secret template to be used for creating secret otherwise it will be created with default template.
+	TemplateObjectStoragePath *string `json:"templateObjectStoragePath,omitempty" tf:"template_object_storage_path,omitempty"`
+}
+
+type OmkSecretsObservation struct {
+
+	// List of kubernetes secret data.
+	SecretData []SecretsSecretDataObservation `json:"secretData,omitempty" tf:"secret_data,omitempty"`
+
+	// Name of the kubernetes secret of max length 63 and contain only lowercase alphanumeric characters or '-' and start and end with an alphabetic character.
+	SecretName *string `json:"secretName,omitempty" tf:"secret_name,omitempty"`
+
+	// Object storage path for the secret template to be used for creating secret otherwise it will be created with default template.
+	TemplateObjectStoragePath *string `json:"templateObjectStoragePath,omitempty" tf:"template_object_storage_path,omitempty"`
+}
+
+type OmkSecretsParameters struct {
+
+	// List of kubernetes secret data.
+	// +kubebuilder:validation:Optional
+	SecretData []SecretsSecretDataParameters `json:"secretData" tf:"secret_data,omitempty"`
+
+	// Name of the kubernetes secret of max length 63 and contain only lowercase alphanumeric characters or '-' and start and end with an alphabetic character.
+	// +kubebuilder:validation:Optional
+	SecretName *string `json:"secretName" tf:"secret_name,omitempty"`
+
+	// Object storage path for the secret template to be used for creating secret otherwise it will be created with default template.
+	// +kubebuilder:validation:Optional
+	TemplateObjectStoragePath *string `json:"templateObjectStoragePath,omitempty" tf:"template_object_storage_path,omitempty"`
+}
+
+type SecretDataInitParameters struct {
+
+	// Data key in the kubernetes secret.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// Vault secret OCID containing the corresponding user password.
+	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
+}
+
+type SecretDataObservation struct {
+
+	// Data key in the kubernetes secret.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// Vault secret OCID containing the corresponding user password.
+	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
+}
+
+type SecretDataParameters struct {
+
+	// Data key in the kubernetes secret.
+	// +kubebuilder:validation:Optional
+	Key *string `json:"key" tf:"key,omitempty"`
+
+	// Vault secret OCID containing the corresponding user password.
+	// +kubebuilder:validation:Optional
+	SecretID *string `json:"secretId" tf:"secret_id,omitempty"`
+}
+
+type SecretsInitParameters struct {
+
+	// List of kubernetes secret data.
+	SecretData []SecretDataInitParameters `json:"secretData,omitempty" tf:"secret_data,omitempty"`
+
+	// Name of the kubernetes secret of max length 63 and contain only lowercase alphanumeric characters or '-' and start and end with an alphabetic character.
+	SecretName *string `json:"secretName,omitempty" tf:"secret_name,omitempty"`
+
+	// Object storage path for the secret template to be used for creating secret otherwise it will be created with default template.
+	TemplateObjectStoragePath *string `json:"templateObjectStoragePath,omitempty" tf:"template_object_storage_path,omitempty"`
+}
+
+type SecretsObservation struct {
+
+	// List of kubernetes secret data.
+	SecretData []SecretDataObservation `json:"secretData,omitempty" tf:"secret_data,omitempty"`
+
+	// Name of the kubernetes secret of max length 63 and contain only lowercase alphanumeric characters or '-' and start and end with an alphabetic character.
+	SecretName *string `json:"secretName,omitempty" tf:"secret_name,omitempty"`
+
+	// Object storage path for the secret template to be used for creating secret otherwise it will be created with default template.
+	TemplateObjectStoragePath *string `json:"templateObjectStoragePath,omitempty" tf:"template_object_storage_path,omitempty"`
+}
+
+type SecretsParameters struct {
+
+	// List of kubernetes secret data.
+	// +kubebuilder:validation:Optional
+	SecretData []SecretDataParameters `json:"secretData" tf:"secret_data,omitempty"`
+
+	// Name of the kubernetes secret of max length 63 and contain only lowercase alphanumeric characters or '-' and start and end with an alphabetic character.
+	// +kubebuilder:validation:Optional
+	SecretName *string `json:"secretName" tf:"secret_name,omitempty"`
+
+	// Object storage path for the secret template to be used for creating secret otherwise it will be created with default template.
+	// +kubebuilder:validation:Optional
+	TemplateObjectStoragePath *string `json:"templateObjectStoragePath,omitempty" tf:"template_object_storage_path,omitempty"`
+}
+
+type SecretsSecretDataInitParameters struct {
+
+	// Data key in the kubernetes secret.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// Vault secret OCID containing the corresponding user password.
+	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
+}
+
+type SecretsSecretDataObservation struct {
+
+	// Data key in the kubernetes secret.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// Vault secret OCID containing the corresponding user password.
+	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
+}
+
+type SecretsSecretDataParameters struct {
+
+	// Data key in the kubernetes secret.
+	// +kubebuilder:validation:Optional
+	Key *string `json:"key" tf:"key,omitempty"`
+
+	// Vault secret OCID containing the corresponding user password.
+	// +kubebuilder:validation:Optional
+	SecretID *string `json:"secretId" tf:"secret_id,omitempty"`
+}
+
 type ServiceDetailsInitParameters struct {
 }
 
@@ -1099,6 +1632,9 @@ type StackInitParameters struct {
 	// (Updatable) An optional property when incremented triggers Add Service. Could be set to any integer value.
 	AddServiceTrigger *float64 `json:"addServiceTrigger,omitempty" tf:"add_service_trigger,omitempty"`
 
+	// AI Data Platform Details if aidataplatform is included in services.
+	Aidataplatform []AidataplatformInitParameters `json:"aidataplatform,omitempty" tf:"aidataplatform,omitempty"`
+
 	// (Updatable) The OCID of the compartment to create the Stack in.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -1140,6 +1676,12 @@ type StackInitParameters struct {
 	// (Updatable) Object Storage Details if object storage is included in services.
 	Objectstorage []ObjectstorageInitParameters `json:"objectstorage,omitempty" tf:"objectstorage,omitempty"`
 
+	// OKE Details if oke is included in services.
+	Oke []OkeInitParameters `json:"oke,omitempty" tf:"oke,omitempty"`
+
+	// OMK Details if omk is included in services.
+	Omk []OmkInitParameters `json:"omk,omitempty" tf:"omk,omitempty"`
+
 	// (Updatable) List of services to be onboarded for the stack.
 	// +listType=set
 	Services []*string `json:"services,omitempty" tf:"services,omitempty"`
@@ -1159,6 +1701,9 @@ type StackObservation struct {
 
 	// (Updatable) An optional property when incremented triggers Add Service. Could be set to any integer value.
 	AddServiceTrigger *float64 `json:"addServiceTrigger,omitempty" tf:"add_service_trigger,omitempty"`
+
+	// AI Data Platform Details if aidataplatform is included in services.
+	Aidataplatform []AidataplatformObservation `json:"aidataplatform,omitempty" tf:"aidataplatform,omitempty"`
 
 	// (Updatable) The OCID of the compartment to create the Stack in.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -1198,6 +1743,12 @@ type StackObservation struct {
 	// (Updatable) Object Storage Details if object storage is included in services.
 	Objectstorage []ObjectstorageObservation `json:"objectstorage,omitempty" tf:"objectstorage,omitempty"`
 
+	// OKE Details if oke is included in services.
+	Oke []OkeObservation `json:"oke,omitempty" tf:"oke,omitempty"`
+
+	// OMK Details if omk is included in services.
+	Omk []OmkObservation `json:"omk,omitempty" tf:"omk,omitempty"`
+
 	// Details of the service onboarded for the data intelligence stack.
 	ServiceDetails []ServiceDetailsObservation `json:"serviceDetails,omitempty" tf:"service_details,omitempty"`
 
@@ -1235,6 +1786,10 @@ type StackParameters struct {
 	// (Updatable) An optional property when incremented triggers Add Service. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
 	AddServiceTrigger *float64 `json:"addServiceTrigger,omitempty" tf:"add_service_trigger,omitempty"`
+
+	// AI Data Platform Details if aidataplatform is included in services.
+	// +kubebuilder:validation:Optional
+	Aidataplatform []AidataplatformParameters `json:"aidataplatform,omitempty" tf:"aidataplatform,omitempty"`
 
 	// (Updatable) The OCID of the compartment to create the Stack in.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -1286,6 +1841,14 @@ type StackParameters struct {
 	// (Updatable) Object Storage Details if object storage is included in services.
 	// +kubebuilder:validation:Optional
 	Objectstorage []ObjectstorageParameters `json:"objectstorage,omitempty" tf:"objectstorage,omitempty"`
+
+	// OKE Details if oke is included in services.
+	// +kubebuilder:validation:Optional
+	Oke []OkeParameters `json:"oke,omitempty" tf:"oke,omitempty"`
+
+	// OMK Details if omk is included in services.
+	// +kubebuilder:validation:Optional
+	Omk []OmkParameters `json:"omk,omitempty" tf:"omk,omitempty"`
 
 	// (Updatable) List of services to be onboarded for the stack.
 	// +kubebuilder:validation:Optional

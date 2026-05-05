@@ -12,6 +12,7 @@ spec:
     condition:
     - destinationAddress: ${var.network_firewall_policy_tunnel_inspection_rule_condition_destination_address}
       sourceAddress: ${var.network_firewall_policy_tunnel_inspection_rule_condition_source_address}
+    description: ${var.network_firewall_policy_tunnel_inspection_rule_description}
     name: ${var.network_firewall_policy_tunnel_inspection_rule_name}
     networkFirewallPolicyIdSelector:
       matchLabels:

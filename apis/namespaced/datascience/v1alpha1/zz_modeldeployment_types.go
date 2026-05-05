@@ -17,30 +17,10 @@ import (
 type AccessInitParameters struct {
 
 	// (Updatable) The OCID of a log group to work with.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/logging/v1alpha1.LogGroup
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
 
-	// Reference to a LogGroup in logging to populate logGroupId.
-	// +kubebuilder:validation:Optional
-	LogGroupIDRef *v1.NamespacedReference `json:"logGroupIdRef,omitempty" tf:"-"`
-
-	// Selector for a LogGroup in logging to populate logGroupId.
-	// +kubebuilder:validation:Optional
-	LogGroupIDSelector *v1.NamespacedSelector `json:"logGroupIdSelector,omitempty" tf:"-"`
-
 	// (Updatable) The OCID of a log to work with.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/logging/v1alpha1.Log
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	LogID *string `json:"logId,omitempty" tf:"log_id,omitempty"`
-
-	// Reference to a Log in logging to populate logId.
-	// +kubebuilder:validation:Optional
-	LogIDRef *v1.NamespacedReference `json:"logIdRef,omitempty" tf:"-"`
-
-	// Selector for a Log in logging to populate logId.
-	// +kubebuilder:validation:Optional
-	LogIDSelector *v1.NamespacedSelector `json:"logIdSelector,omitempty" tf:"-"`
 }
 
 type AccessObservation struct {
@@ -55,32 +35,12 @@ type AccessObservation struct {
 type AccessParameters struct {
 
 	// (Updatable) The OCID of a log group to work with.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/logging/v1alpha1.LogGroup
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
-	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
-
-	// Reference to a LogGroup in logging to populate logGroupId.
-	// +kubebuilder:validation:Optional
-	LogGroupIDRef *v1.NamespacedReference `json:"logGroupIdRef,omitempty" tf:"-"`
-
-	// Selector for a LogGroup in logging to populate logGroupId.
-	// +kubebuilder:validation:Optional
-	LogGroupIDSelector *v1.NamespacedSelector `json:"logGroupIdSelector,omitempty" tf:"-"`
+	LogGroupID *string `json:"logGroupId" tf:"log_group_id,omitempty"`
 
 	// (Updatable) The OCID of a log to work with.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/logging/v1alpha1.Log
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
-	LogID *string `json:"logId,omitempty" tf:"log_id,omitempty"`
-
-	// Reference to a Log in logging to populate logId.
-	// +kubebuilder:validation:Optional
-	LogIDRef *v1.NamespacedReference `json:"logIdRef,omitempty" tf:"-"`
-
-	// Selector for a Log in logging to populate logId.
-	// +kubebuilder:validation:Optional
-	LogIDSelector *v1.NamespacedSelector `json:"logIdSelector,omitempty" tf:"-"`
+	LogID *string `json:"logId" tf:"log_id,omitempty"`
 }
 
 type AutoScalingPoliciesInitParameters struct {
@@ -225,6 +185,10 @@ type EnvironmentConfigurationDetailsInitParameters struct {
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The container image run CMD as a list of strings. Use CMD as arguments to the ENTRYPOINT or the only command to run in the absence of an ENTRYPOINT. The combined size of CMD and ENTRYPOINT must be less than 2048 bytes.
 	Cmd []*string `json:"cmd,omitempty" tf:"cmd,omitempty"`
 
+	// (Applicable when environment_configuration_type=OCIR_CONTAINER) Service injected Environment variables set for the web server container and can not be set or modified by user.
+	// +mapType=granular
+	DefaultEnvironmentVariables map[string]*string `json:"defaultEnvironmentVariables,omitempty" tf:"default_environment_variables,omitempty"`
+
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The container image run ENTRYPOINT as a list of strings. Accept the CMD as extra arguments. The combined size of CMD and ENTRYPOINT must be less than 2048 bytes. More information on how CMD and ENTRYPOINT interact are here.
 	Entrypoint []*string `json:"entrypoint,omitempty" tf:"entrypoint,omitempty"`
 
@@ -238,11 +202,14 @@ type EnvironmentConfigurationDetailsInitParameters struct {
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The port on which the container HEALTHCHECK would listen. The port can be anything between 1024 and 65535. The following ports cannot be used 24224, 8446, 8447.
 	HealthCheckPort *float64 `json:"healthCheckPort,omitempty" tf:"health_check_port,omitempty"`
 
-	// (Updatable) The full path to the Oracle Container Repository (OCIR) registry, image, and tag in a canonical format. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag> <region>.ocir.io/<registry>/<image>:<tag>@digest
+	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The full path to the Oracle Container Repository (OCIR) registry, image, and tag in a canonical format. The container image is optional while using service managed open source foundation model. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag> <region>.ocir.io/<registry>/<image>:<tag>@digest
 	Image *string `json:"image,omitempty" tf:"image,omitempty"`
 
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The digest of the container image. For example, sha256:881303a6b2738834d795a32b4a98eb0e5e3d1cad590a712d1e04f9b2fa90a030
 	ImageDigest *string `json:"imageDigest,omitempty" tf:"image_digest,omitempty"`
+
+	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) OCID of the container image signature
+	ImageSignatureID *string `json:"imageSignatureId,omitempty" tf:"image_signature_id,omitempty"`
 
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The port on which the web server serving the inference is running. The port can be anything between 1024 and 65535. The following ports cannot be used 24224, 8446, 8447.
 	ServerPort *float64 `json:"serverPort,omitempty" tf:"server_port,omitempty"`
@@ -253,6 +220,10 @@ type EnvironmentConfigurationDetailsObservation struct {
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The container image run CMD as a list of strings. Use CMD as arguments to the ENTRYPOINT or the only command to run in the absence of an ENTRYPOINT. The combined size of CMD and ENTRYPOINT must be less than 2048 bytes.
 	Cmd []*string `json:"cmd,omitempty" tf:"cmd,omitempty"`
 
+	// (Applicable when environment_configuration_type=OCIR_CONTAINER) Service injected Environment variables set for the web server container and can not be set or modified by user.
+	// +mapType=granular
+	DefaultEnvironmentVariables map[string]*string `json:"defaultEnvironmentVariables,omitempty" tf:"default_environment_variables,omitempty"`
+
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The container image run ENTRYPOINT as a list of strings. Accept the CMD as extra arguments. The combined size of CMD and ENTRYPOINT must be less than 2048 bytes. More information on how CMD and ENTRYPOINT interact are here.
 	Entrypoint []*string `json:"entrypoint,omitempty" tf:"entrypoint,omitempty"`
 
@@ -266,11 +237,14 @@ type EnvironmentConfigurationDetailsObservation struct {
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The port on which the container HEALTHCHECK would listen. The port can be anything between 1024 and 65535. The following ports cannot be used 24224, 8446, 8447.
 	HealthCheckPort *float64 `json:"healthCheckPort,omitempty" tf:"health_check_port,omitempty"`
 
-	// (Updatable) The full path to the Oracle Container Repository (OCIR) registry, image, and tag in a canonical format. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag> <region>.ocir.io/<registry>/<image>:<tag>@digest
+	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The full path to the Oracle Container Repository (OCIR) registry, image, and tag in a canonical format. The container image is optional while using service managed open source foundation model. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag> <region>.ocir.io/<registry>/<image>:<tag>@digest
 	Image *string `json:"image,omitempty" tf:"image,omitempty"`
 
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The digest of the container image. For example, sha256:881303a6b2738834d795a32b4a98eb0e5e3d1cad590a712d1e04f9b2fa90a030
 	ImageDigest *string `json:"imageDigest,omitempty" tf:"image_digest,omitempty"`
+
+	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) OCID of the container image signature
+	ImageSignatureID *string `json:"imageSignatureId,omitempty" tf:"image_signature_id,omitempty"`
 
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The port on which the web server serving the inference is running. The port can be anything between 1024 and 65535. The following ports cannot be used 24224, 8446, 8447.
 	ServerPort *float64 `json:"serverPort,omitempty" tf:"server_port,omitempty"`
@@ -281,6 +255,11 @@ type EnvironmentConfigurationDetailsParameters struct {
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The container image run CMD as a list of strings. Use CMD as arguments to the ENTRYPOINT or the only command to run in the absence of an ENTRYPOINT. The combined size of CMD and ENTRYPOINT must be less than 2048 bytes.
 	// +kubebuilder:validation:Optional
 	Cmd []*string `json:"cmd,omitempty" tf:"cmd,omitempty"`
+
+	// (Applicable when environment_configuration_type=OCIR_CONTAINER) Service injected Environment variables set for the web server container and can not be set or modified by user.
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	DefaultEnvironmentVariables map[string]*string `json:"defaultEnvironmentVariables,omitempty" tf:"default_environment_variables,omitempty"`
 
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The container image run ENTRYPOINT as a list of strings. Accept the CMD as extra arguments. The combined size of CMD and ENTRYPOINT must be less than 2048 bytes. More information on how CMD and ENTRYPOINT interact are here.
 	// +kubebuilder:validation:Optional
@@ -299,13 +278,17 @@ type EnvironmentConfigurationDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	HealthCheckPort *float64 `json:"healthCheckPort,omitempty" tf:"health_check_port,omitempty"`
 
-	// (Updatable) The full path to the Oracle Container Repository (OCIR) registry, image, and tag in a canonical format. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag> <region>.ocir.io/<registry>/<image>:<tag>@digest
+	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The full path to the Oracle Container Repository (OCIR) registry, image, and tag in a canonical format. The container image is optional while using service managed open source foundation model. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag> <region>.ocir.io/<registry>/<image>:<tag>@digest
 	// +kubebuilder:validation:Optional
 	Image *string `json:"image,omitempty" tf:"image,omitempty"`
 
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The digest of the container image. For example, sha256:881303a6b2738834d795a32b4a98eb0e5e3d1cad590a712d1e04f9b2fa90a030
 	// +kubebuilder:validation:Optional
 	ImageDigest *string `json:"imageDigest,omitempty" tf:"image_digest,omitempty"`
+
+	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) OCID of the container image signature
+	// +kubebuilder:validation:Optional
+	ImageSignatureID *string `json:"imageSignatureId,omitempty" tf:"image_signature_id,omitempty"`
 
 	// (Applicable when environment_configuration_type=OCIR_CONTAINER) (Updatable) The port on which the web server serving the inference is running. The port can be anything between 1024 and 65535. The following ports cannot be used 24224, 8446, 8447.
 	// +kubebuilder:validation:Optional
@@ -317,6 +300,7 @@ type InfrastructureConfigurationDetailsInitParameters struct {
 	// (Updatable) The minimum network bandwidth for the model deployment.
 	BandwidthMbps *float64 `json:"bandwidthMbps,omitempty" tf:"bandwidth_mbps,omitempty"`
 
+	// The type of the model deployment infrastructure.
 	InfrastructureType *string `json:"infrastructureType,omitempty" tf:"infrastructure_type,omitempty"`
 
 	// (Updatable) The model deployment instance configuration.
@@ -334,6 +318,7 @@ type InfrastructureConfigurationDetailsObservation struct {
 	// (Updatable) The minimum network bandwidth for the model deployment.
 	BandwidthMbps *float64 `json:"bandwidthMbps,omitempty" tf:"bandwidth_mbps,omitempty"`
 
+	// The type of the model deployment infrastructure.
 	InfrastructureType *string `json:"infrastructureType,omitempty" tf:"infrastructure_type,omitempty"`
 
 	// (Updatable) The model deployment instance configuration.
@@ -352,6 +337,7 @@ type InfrastructureConfigurationDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	BandwidthMbps *float64 `json:"bandwidthMbps,omitempty" tf:"bandwidth_mbps,omitempty"`
 
+	// The type of the model deployment infrastructure.
 	// +kubebuilder:validation:Optional
 	InfrastructureType *string `json:"infrastructureType" tf:"infrastructure_type,omitempty"`
 
@@ -370,11 +356,14 @@ type InfrastructureConfigurationDetailsParameters struct {
 
 type InstanceConfigurationInitParameters struct {
 
-	// (Updatable) The shape used to launch the model deployment instances.
+	// (Updatable) The shape used to launch the model deployment instances.  When using service managed open source foundation model, the supported shapes can be retrieved using get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
 	InstanceShapeName *string `json:"instanceShapeName,omitempty" tf:"instance_shape_name,omitempty"`
 
 	// (Updatable) Details for the model-deployment instance shape configuration.
 	ModelDeploymentInstanceShapeConfigDetails []ModelDeploymentInstanceShapeConfigDetailsInitParameters `json:"modelDeploymentInstanceShapeConfigDetails,omitempty" tf:"model_deployment_instance_shape_config_details,omitempty"`
+
+	// (Updatable) Network Access type of model deployment.
+	NetworkAccessType *string `json:"networkAccessType,omitempty" tf:"network_access_type,omitempty"`
 
 	// (Updatable) The OCID of a Data Science private endpoint.
 	PrivateEndpointID *string `json:"privateEndpointId,omitempty" tf:"private_endpoint_id,omitempty"`
@@ -424,11 +413,14 @@ type InstanceConfigurationModelDeploymentInstanceShapeConfigDetailsParameters st
 
 type InstanceConfigurationObservation struct {
 
-	// (Updatable) The shape used to launch the model deployment instances.
+	// (Updatable) The shape used to launch the model deployment instances.  When using service managed open source foundation model, the supported shapes can be retrieved using get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
 	InstanceShapeName *string `json:"instanceShapeName,omitempty" tf:"instance_shape_name,omitempty"`
 
 	// (Updatable) Details for the model-deployment instance shape configuration.
 	ModelDeploymentInstanceShapeConfigDetails []ModelDeploymentInstanceShapeConfigDetailsObservation `json:"modelDeploymentInstanceShapeConfigDetails,omitempty" tf:"model_deployment_instance_shape_config_details,omitempty"`
+
+	// (Updatable) Network Access type of model deployment.
+	NetworkAccessType *string `json:"networkAccessType,omitempty" tf:"network_access_type,omitempty"`
 
 	// (Updatable) The OCID of a Data Science private endpoint.
 	PrivateEndpointID *string `json:"privateEndpointId,omitempty" tf:"private_endpoint_id,omitempty"`
@@ -439,13 +431,17 @@ type InstanceConfigurationObservation struct {
 
 type InstanceConfigurationParameters struct {
 
-	// (Updatable) The shape used to launch the model deployment instances.
+	// (Updatable) The shape used to launch the model deployment instances.  When using service managed open source foundation model, the supported shapes can be retrieved using get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
 	// +kubebuilder:validation:Optional
 	InstanceShapeName *string `json:"instanceShapeName" tf:"instance_shape_name,omitempty"`
 
 	// (Updatable) Details for the model-deployment instance shape configuration.
 	// +kubebuilder:validation:Optional
 	ModelDeploymentInstanceShapeConfigDetails []ModelDeploymentInstanceShapeConfigDetailsParameters `json:"modelDeploymentInstanceShapeConfigDetails,omitempty" tf:"model_deployment_instance_shape_config_details,omitempty"`
+
+	// (Updatable) Network Access type of model deployment.
+	// +kubebuilder:validation:Optional
+	NetworkAccessType *string `json:"networkAccessType,omitempty" tf:"network_access_type,omitempty"`
 
 	// (Updatable) The OCID of a Data Science private endpoint.
 	// +kubebuilder:validation:Optional
@@ -468,17 +464,7 @@ type ModelConfigurationDetailsInitParameters struct {
 	MaximumBandwidthMbps *float64 `json:"maximumBandwidthMbps,omitempty" tf:"maximum_bandwidth_mbps,omitempty"`
 
 	// (Updatable) The OCID of the model you want to deploy.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.Model
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	ModelID *string `json:"modelId,omitempty" tf:"model_id,omitempty"`
-
-	// Reference to a Model in datascience to populate modelId.
-	// +kubebuilder:validation:Optional
-	ModelIDRef *v1.NamespacedReference `json:"modelIdRef,omitempty" tf:"-"`
-
-	// Selector for a Model in datascience to populate modelId.
-	// +kubebuilder:validation:Optional
-	ModelIDSelector *v1.NamespacedSelector `json:"modelIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The scaling policy to apply to each model of the deployment.
 	ScalingPolicy []ModelConfigurationDetailsScalingPolicyInitParameters `json:"scalingPolicy,omitempty" tf:"scaling_policy,omitempty"`
@@ -486,46 +472,32 @@ type ModelConfigurationDetailsInitParameters struct {
 
 type ModelConfigurationDetailsInstanceConfigurationInitParameters struct {
 
-	// (Updatable) The shape used to launch the model deployment instances.
+	// (Updatable) The shape used to launch the model deployment instances.  When using service managed open source foundation model, the supported shapes can be retrieved using get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
 	InstanceShapeName *string `json:"instanceShapeName,omitempty" tf:"instance_shape_name,omitempty"`
 
 	// (Updatable) Details for the model-deployment instance shape configuration.
 	ModelDeploymentInstanceShapeConfigDetails []InstanceConfigurationModelDeploymentInstanceShapeConfigDetailsInitParameters `json:"modelDeploymentInstanceShapeConfigDetails,omitempty" tf:"model_deployment_instance_shape_config_details,omitempty"`
 
+	// (Updatable) Network Access type of model deployment.
+	NetworkAccessType *string `json:"networkAccessType,omitempty" tf:"network_access_type,omitempty"`
+
 	// (Updatable) The OCID of a Data Science private endpoint.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.PrivateEndpoint
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	PrivateEndpointID *string `json:"privateEndpointId,omitempty" tf:"private_endpoint_id,omitempty"`
 
-	// Reference to a PrivateEndpoint in datascience to populate privateEndpointId.
-	// +kubebuilder:validation:Optional
-	PrivateEndpointIDRef *v1.NamespacedReference `json:"privateEndpointIdRef,omitempty" tf:"-"`
-
-	// Selector for a PrivateEndpoint in datascience to populate privateEndpointId.
-	// +kubebuilder:validation:Optional
-	PrivateEndpointIDSelector *v1.NamespacedSelector `json:"privateEndpointIdSelector,omitempty" tf:"-"`
-
 	// (Updatable) A model deployment instance is provided with a VNIC for network access.  This specifies the OCID of the subnet to create a VNIC in.  The subnet should be in a VCN with a NAT/SGW gateway for egress.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
-
-	// Reference to a Subnet in networking to populate subnetId.
-	// +kubebuilder:validation:Optional
-	SubnetIDRef *v1.NamespacedReference `json:"subnetIdRef,omitempty" tf:"-"`
-
-	// Selector for a Subnet in networking to populate subnetId.
-	// +kubebuilder:validation:Optional
-	SubnetIDSelector *v1.NamespacedSelector `json:"subnetIdSelector,omitempty" tf:"-"`
 }
 
 type ModelConfigurationDetailsInstanceConfigurationObservation struct {
 
-	// (Updatable) The shape used to launch the model deployment instances.
+	// (Updatable) The shape used to launch the model deployment instances.  When using service managed open source foundation model, the supported shapes can be retrieved using get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
 	InstanceShapeName *string `json:"instanceShapeName,omitempty" tf:"instance_shape_name,omitempty"`
 
 	// (Updatable) Details for the model-deployment instance shape configuration.
 	ModelDeploymentInstanceShapeConfigDetails []InstanceConfigurationModelDeploymentInstanceShapeConfigDetailsObservation `json:"modelDeploymentInstanceShapeConfigDetails,omitempty" tf:"model_deployment_instance_shape_config_details,omitempty"`
+
+	// (Updatable) Network Access type of model deployment.
+	NetworkAccessType *string `json:"networkAccessType,omitempty" tf:"network_access_type,omitempty"`
 
 	// (Updatable) The OCID of a Data Science private endpoint.
 	PrivateEndpointID *string `json:"privateEndpointId,omitempty" tf:"private_endpoint_id,omitempty"`
@@ -536,7 +508,7 @@ type ModelConfigurationDetailsInstanceConfigurationObservation struct {
 
 type ModelConfigurationDetailsInstanceConfigurationParameters struct {
 
-	// (Updatable) The shape used to launch the model deployment instances.
+	// (Updatable) The shape used to launch the model deployment instances.  When using service managed open source foundation model, the supported shapes can be retrieved using get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
 	// +kubebuilder:validation:Optional
 	InstanceShapeName *string `json:"instanceShapeName,omitempty" tf:"instance_shape_name,omitempty"`
 
@@ -544,33 +516,17 @@ type ModelConfigurationDetailsInstanceConfigurationParameters struct {
 	// +kubebuilder:validation:Optional
 	ModelDeploymentInstanceShapeConfigDetails []InstanceConfigurationModelDeploymentInstanceShapeConfigDetailsParameters `json:"modelDeploymentInstanceShapeConfigDetails,omitempty" tf:"model_deployment_instance_shape_config_details,omitempty"`
 
+	// (Updatable) Network Access type of model deployment.
+	// +kubebuilder:validation:Optional
+	NetworkAccessType *string `json:"networkAccessType,omitempty" tf:"network_access_type,omitempty"`
+
 	// (Updatable) The OCID of a Data Science private endpoint.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.PrivateEndpoint
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
 	PrivateEndpointID *string `json:"privateEndpointId,omitempty" tf:"private_endpoint_id,omitempty"`
 
-	// Reference to a PrivateEndpoint in datascience to populate privateEndpointId.
-	// +kubebuilder:validation:Optional
-	PrivateEndpointIDRef *v1.NamespacedReference `json:"privateEndpointIdRef,omitempty" tf:"-"`
-
-	// Selector for a PrivateEndpoint in datascience to populate privateEndpointId.
-	// +kubebuilder:validation:Optional
-	PrivateEndpointIDSelector *v1.NamespacedSelector `json:"privateEndpointIdSelector,omitempty" tf:"-"`
-
 	// (Updatable) A model deployment instance is provided with a VNIC for network access.  This specifies the OCID of the subnet to create a VNIC in.  The subnet should be in a VCN with a NAT/SGW gateway for egress.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
-
-	// Reference to a Subnet in networking to populate subnetId.
-	// +kubebuilder:validation:Optional
-	SubnetIDRef *v1.NamespacedReference `json:"subnetIdRef,omitempty" tf:"-"`
-
-	// Selector for a Subnet in networking to populate subnetId.
-	// +kubebuilder:validation:Optional
-	SubnetIDSelector *v1.NamespacedSelector `json:"subnetIdSelector,omitempty" tf:"-"`
 }
 
 type ModelConfigurationDetailsObservation struct {
@@ -606,18 +562,8 @@ type ModelConfigurationDetailsParameters struct {
 	MaximumBandwidthMbps *float64 `json:"maximumBandwidthMbps,omitempty" tf:"maximum_bandwidth_mbps,omitempty"`
 
 	// (Updatable) The OCID of the model you want to deploy.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.Model
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
 	ModelID *string `json:"modelId,omitempty" tf:"model_id,omitempty"`
-
-	// Reference to a Model in datascience to populate modelId.
-	// +kubebuilder:validation:Optional
-	ModelIDRef *v1.NamespacedReference `json:"modelIdRef,omitempty" tf:"-"`
-
-	// Selector for a Model in datascience to populate modelId.
-	// +kubebuilder:validation:Optional
-	ModelIDSelector *v1.NamespacedSelector `json:"modelIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The scaling policy to apply to each model of the deployment.
 	// +kubebuilder:validation:Optional
@@ -691,11 +637,13 @@ type ModelDeploymentConfigurationDetailsInitParameters struct {
 	// (Updatable) The configuration to carry the environment details thats used in Model Deployment creation
 	EnvironmentConfigurationDetails []EnvironmentConfigurationDetailsInitParameters `json:"environmentConfigurationDetails,omitempty" tf:"environment_configuration_details,omitempty"`
 
+	// The infrastructure configuration details.
 	InfrastructureConfigurationDetails []InfrastructureConfigurationDetailsInitParameters `json:"infrastructureConfigurationDetails,omitempty" tf:"infrastructure_configuration_details,omitempty"`
 
 	// (Updatable) The model configuration details.
 	ModelConfigurationDetails []ModelConfigurationDetailsInitParameters `json:"modelConfigurationDetails,omitempty" tf:"model_configuration_details,omitempty"`
 
+	// (Updatable) The model group configuration details.
 	ModelGroupConfigurationDetails []ModelGroupConfigurationDetailsInitParameters `json:"modelGroupConfigurationDetails,omitempty" tf:"model_group_configuration_details,omitempty"`
 }
 
@@ -707,11 +655,13 @@ type ModelDeploymentConfigurationDetailsObservation struct {
 	// (Updatable) The configuration to carry the environment details thats used in Model Deployment creation
 	EnvironmentConfigurationDetails []EnvironmentConfigurationDetailsObservation `json:"environmentConfigurationDetails,omitempty" tf:"environment_configuration_details,omitempty"`
 
+	// The infrastructure configuration details.
 	InfrastructureConfigurationDetails []InfrastructureConfigurationDetailsObservation `json:"infrastructureConfigurationDetails,omitempty" tf:"infrastructure_configuration_details,omitempty"`
 
 	// (Updatable) The model configuration details.
 	ModelConfigurationDetails []ModelConfigurationDetailsObservation `json:"modelConfigurationDetails,omitempty" tf:"model_configuration_details,omitempty"`
 
+	// (Updatable) The model group configuration details.
 	ModelGroupConfigurationDetails []ModelGroupConfigurationDetailsObservation `json:"modelGroupConfigurationDetails,omitempty" tf:"model_group_configuration_details,omitempty"`
 }
 
@@ -725,6 +675,7 @@ type ModelDeploymentConfigurationDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	EnvironmentConfigurationDetails []EnvironmentConfigurationDetailsParameters `json:"environmentConfigurationDetails,omitempty" tf:"environment_configuration_details,omitempty"`
 
+	// The infrastructure configuration details.
 	// +kubebuilder:validation:Optional
 	InfrastructureConfigurationDetails []InfrastructureConfigurationDetailsParameters `json:"infrastructureConfigurationDetails,omitempty" tf:"infrastructure_configuration_details,omitempty"`
 
@@ -732,6 +683,7 @@ type ModelDeploymentConfigurationDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	ModelConfigurationDetails []ModelConfigurationDetailsParameters `json:"modelConfigurationDetails,omitempty" tf:"model_configuration_details,omitempty"`
 
+	// (Updatable) The model group configuration details.
 	// +kubebuilder:validation:Optional
 	ModelGroupConfigurationDetails []ModelGroupConfigurationDetailsParameters `json:"modelGroupConfigurationDetails,omitempty" tf:"model_group_configuration_details,omitempty"`
 }
@@ -774,17 +726,7 @@ type ModelDeploymentInitParameters struct {
 	OpcParentRptURL *string `json:"opcParentRptUrl,omitempty" tf:"opc_parent_rpt_url,omitempty"`
 
 	// The OCID of the project to associate with the model deployment.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.Project
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
-
-	// Reference to a Project in datascience to populate projectId.
-	// +kubebuilder:validation:Optional
-	ProjectIDRef *v1.NamespacedReference `json:"projectIdRef,omitempty" tf:"-"`
-
-	// Selector for a Project in datascience to populate projectId.
-	// +kubebuilder:validation:Optional
-	ProjectIDSelector *v1.NamespacedSelector `json:"projectIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The target state for the Model Deployment. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -928,18 +870,8 @@ type ModelDeploymentParameters struct {
 	OpcParentRptURL *string `json:"opcParentRptUrl,omitempty" tf:"opc_parent_rpt_url,omitempty"`
 
 	// The OCID of the project to associate with the model deployment.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.Project
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
-
-	// Reference to a Project in datascience to populate projectId.
-	// +kubebuilder:validation:Optional
-	ProjectIDRef *v1.NamespacedReference `json:"projectIdRef,omitempty" tf:"-"`
-
-	// Selector for a Project in datascience to populate projectId.
-	// +kubebuilder:validation:Optional
-	ProjectIDSelector *v1.NamespacedSelector `json:"projectIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The target state for the Model Deployment. Could be set to ACTIVE or INACTIVE.
 	// +kubebuilder:validation:Optional
@@ -954,6 +886,9 @@ type ModelDeploymentSystemDataObservation struct {
 	// This value is the current count of the model deployment instances.
 	CurrentInstanceCount *float64 `json:"currentInstanceCount,omitempty" tf:"current_instance_count,omitempty"`
 
+	// The type of the deployed model.
+	ModelType *string `json:"modelType,omitempty" tf:"model_type,omitempty"`
+
 	// The infrastructure type of the model deployment.
 	SystemInfraType *string `json:"systemInfraType,omitempty" tf:"system_infra_type,omitempty"`
 }
@@ -963,19 +898,19 @@ type ModelDeploymentSystemDataParameters struct {
 
 type ModelGroupConfigurationDetailsInitParameters struct {
 
-	// The OCID of the model deployment.
+	// (Updatable) The OCID of the model group you want to deploy.
 	ModelGroupID *string `json:"modelGroupId,omitempty" tf:"model_group_id,omitempty"`
 }
 
 type ModelGroupConfigurationDetailsObservation struct {
 
-	// The OCID of the model deployment.
+	// (Updatable) The OCID of the model group you want to deploy.
 	ModelGroupID *string `json:"modelGroupId,omitempty" tf:"model_group_id,omitempty"`
 }
 
 type ModelGroupConfigurationDetailsParameters struct {
 
-	// The OCID of the model deployment.
+	// (Updatable) The OCID of the model group you want to deploy.
 	// +kubebuilder:validation:Optional
 	ModelGroupID *string `json:"modelGroupId,omitempty" tf:"model_group_id,omitempty"`
 }
@@ -983,30 +918,10 @@ type ModelGroupConfigurationDetailsParameters struct {
 type PredictInitParameters struct {
 
 	// (Updatable) The OCID of a log group to work with.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/logging/v1alpha1.LogGroup
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
 
-	// Reference to a LogGroup in logging to populate logGroupId.
-	// +kubebuilder:validation:Optional
-	LogGroupIDRef *v1.NamespacedReference `json:"logGroupIdRef,omitempty" tf:"-"`
-
-	// Selector for a LogGroup in logging to populate logGroupId.
-	// +kubebuilder:validation:Optional
-	LogGroupIDSelector *v1.NamespacedSelector `json:"logGroupIdSelector,omitempty" tf:"-"`
-
 	// (Updatable) The OCID of a log to work with.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/logging/v1alpha1.Log
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	LogID *string `json:"logId,omitempty" tf:"log_id,omitempty"`
-
-	// Reference to a Log in logging to populate logId.
-	// +kubebuilder:validation:Optional
-	LogIDRef *v1.NamespacedReference `json:"logIdRef,omitempty" tf:"-"`
-
-	// Selector for a Log in logging to populate logId.
-	// +kubebuilder:validation:Optional
-	LogIDSelector *v1.NamespacedSelector `json:"logIdSelector,omitempty" tf:"-"`
 }
 
 type PredictObservation struct {
@@ -1021,32 +936,12 @@ type PredictObservation struct {
 type PredictParameters struct {
 
 	// (Updatable) The OCID of a log group to work with.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/logging/v1alpha1.LogGroup
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
-	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
-
-	// Reference to a LogGroup in logging to populate logGroupId.
-	// +kubebuilder:validation:Optional
-	LogGroupIDRef *v1.NamespacedReference `json:"logGroupIdRef,omitempty" tf:"-"`
-
-	// Selector for a LogGroup in logging to populate logGroupId.
-	// +kubebuilder:validation:Optional
-	LogGroupIDSelector *v1.NamespacedSelector `json:"logGroupIdSelector,omitempty" tf:"-"`
+	LogGroupID *string `json:"logGroupId" tf:"log_group_id,omitempty"`
 
 	// (Updatable) The OCID of a log to work with.
-	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/logging/v1alpha1.Log
-	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
-	LogID *string `json:"logId,omitempty" tf:"log_id,omitempty"`
-
-	// Reference to a Log in logging to populate logId.
-	// +kubebuilder:validation:Optional
-	LogIDRef *v1.NamespacedReference `json:"logIdRef,omitempty" tf:"-"`
-
-	// Selector for a Log in logging to populate logId.
-	// +kubebuilder:validation:Optional
-	LogIDSelector *v1.NamespacedSelector `json:"logIdSelector,omitempty" tf:"-"`
+	LogID *string `json:"logId" tf:"log_id,omitempty"`
 }
 
 type RulesInitParameters struct {
@@ -1489,6 +1384,7 @@ type ModelDeployment struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.modelDeploymentConfigurationDetails) || (has(self.initProvider) && has(self.initProvider.modelDeploymentConfigurationDetails))",message="spec.forProvider.modelDeploymentConfigurationDetails is a required parameter"
+	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.projectId) || (has(self.initProvider) && has(self.initProvider.projectId))",message="spec.forProvider.projectId is a required parameter"
 	Spec   ModelDeploymentSpec   `json:"spec"`
 	Status ModelDeploymentStatus `json:"status,omitempty"`
 }

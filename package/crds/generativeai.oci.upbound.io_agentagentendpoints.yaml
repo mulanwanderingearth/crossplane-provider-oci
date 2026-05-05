@@ -375,6 +375,122 @@ spec:
                           type: number
                       type: object
                     type: array
+                  provisionedCapacityConfig:
+                    description: (Updatable) The configuration includes the provisioned
+                      capacity id and component runtime (tool versions, and other
+                      relevant information).
+                    items:
+                      properties:
+                        platformRuntimeConfig:
+                          description: (Updatable) Configuration for agent platform
+                            component.
+                          items:
+                            properties:
+                              platformRuntimeConfigType:
+                                description: (Updatable) The type of Platform runtime
+                                  config.
+                                type: string
+                              version:
+                                description: (Updatable) The version of the Core.
+                                  The latest version will be displayed as default.
+                                type: string
+                            type: object
+                          type: array
+                        provisionedCapacityId:
+                          description: (Updatable) An OCID that uniquely identifies
+                            an Provisioned Capacity.
+                          type: string
+                        provisionedCapacityIdRef:
+                          description: Reference to a AgentProvisionedCapacity in
+                            generativeai to populate provisionedCapacityId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        provisionedCapacityIdSelector:
+                          description: Selector for a AgentProvisionedCapacity in
+                            generativeai to populate provisionedCapacityId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        toolRuntimeConfigs:
+                          description: (Updatable) RAG and SQL will be tools.
+                          items:
+                            properties:
+                              toolRuntimeConfigType:
+                                description: (Updatable) The type of the tool.
+                                type: string
+                              version:
+                                description: (Updatable) The version of the Core.
+                                  The latest version will be displayed as default.
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   sessionConfig:
                     description: (Updatable) Session Configuration on AgentEndpoint.
                     items:
@@ -714,6 +830,122 @@ spec:
                           type: number
                       type: object
                     type: array
+                  provisionedCapacityConfig:
+                    description: (Updatable) The configuration includes the provisioned
+                      capacity id and component runtime (tool versions, and other
+                      relevant information).
+                    items:
+                      properties:
+                        platformRuntimeConfig:
+                          description: (Updatable) Configuration for agent platform
+                            component.
+                          items:
+                            properties:
+                              platformRuntimeConfigType:
+                                description: (Updatable) The type of Platform runtime
+                                  config.
+                                type: string
+                              version:
+                                description: (Updatable) The version of the Core.
+                                  The latest version will be displayed as default.
+                                type: string
+                            type: object
+                          type: array
+                        provisionedCapacityId:
+                          description: (Updatable) An OCID that uniquely identifies
+                            an Provisioned Capacity.
+                          type: string
+                        provisionedCapacityIdRef:
+                          description: Reference to a AgentProvisionedCapacity in
+                            generativeai to populate provisionedCapacityId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        provisionedCapacityIdSelector:
+                          description: Selector for a AgentProvisionedCapacity in
+                            generativeai to populate provisionedCapacityId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        toolRuntimeConfigs:
+                          description: (Updatable) RAG and SQL will be tools.
+                          items:
+                            properties:
+                              toolRuntimeConfigType:
+                                description: (Updatable) The type of the tool.
+                                type: string
+                              version:
+                                description: (Updatable) The version of the Core.
+                                  The latest version will be displayed as default.
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   sessionConfig:
                     description: (Updatable) Session Configuration on AgentEndpoint.
                     items:
@@ -987,6 +1219,46 @@ spec:
                           description: (Updatable) Retention duration of the output
                             data.
                           type: number
+                      type: object
+                    type: array
+                  provisionedCapacityConfig:
+                    description: (Updatable) The configuration includes the provisioned
+                      capacity id and component runtime (tool versions, and other
+                      relevant information).
+                    items:
+                      properties:
+                        platformRuntimeConfig:
+                          description: (Updatable) Configuration for agent platform
+                            component.
+                          items:
+                            properties:
+                              platformRuntimeConfigType:
+                                description: (Updatable) The type of Platform runtime
+                                  config.
+                                type: string
+                              version:
+                                description: (Updatable) The version of the Core.
+                                  The latest version will be displayed as default.
+                                type: string
+                            type: object
+                          type: array
+                        provisionedCapacityId:
+                          description: (Updatable) An OCID that uniquely identifies
+                            an Provisioned Capacity.
+                          type: string
+                        toolRuntimeConfigs:
+                          description: (Updatable) RAG and SQL will be tools.
+                          items:
+                            properties:
+                              toolRuntimeConfigType:
+                                description: (Updatable) The type of the tool.
+                                type: string
+                              version:
+                                description: (Updatable) The version of the Core.
+                                  The latest version will be displayed as default.
+                                type: string
+                            type: object
+                          type: array
                       type: object
                     type: array
                   sessionConfig:

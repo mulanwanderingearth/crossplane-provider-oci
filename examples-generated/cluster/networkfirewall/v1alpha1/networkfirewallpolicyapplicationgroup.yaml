@@ -9,6 +9,7 @@ metadata:
 spec:
   forProvider:
     apps: ${var.network_firewall_policy_application_group_apps}
+    description: ${var.network_firewall_policy_application_group_description}
     name: ${var.network_firewall_policy_application_group_name}
     networkFirewallPolicyIdSelector:
       matchLabels:

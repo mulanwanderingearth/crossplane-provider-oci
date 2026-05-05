@@ -12,12 +12,16 @@ spec:
     availabilityDomain: ${var.migration_asset_availability_domain}
     displayName: ${var.migration_asset_display_name}
     inventoryAssetId: ${oci_cloud_migrations_inventory_asset.test_inventory_asset.id}
+    migrationAssetDependsOn: ${var.migration_asset_migration_asset_depends_on}
     migrationIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_migration
     replicationCompartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_compartment
+    replicationLocationDetail:
+    - metadata: ${var.migration_asset_replication_location_detail_metadata}
+      replicationLocationType: ${var.migration_asset_replication_location_detail_replication_location_type}
     replicationScheduleIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_replication_schedule

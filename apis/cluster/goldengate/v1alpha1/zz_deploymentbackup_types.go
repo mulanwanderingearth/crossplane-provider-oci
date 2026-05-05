@@ -164,7 +164,7 @@ type DeploymentBackupObservation struct {
 	// The size of the backup stored in object storage (in bytes)
 	SizeInBytes *float64 `json:"sizeInBytes,omitempty" tf:"size_in_bytes,omitempty"`
 
-	// Possible lifecycle states.
+	// Possible lifecycle states for a Deployment Backup.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// The system tags associated with this resource, if any. The system tags are set by Oracle Cloud Infrastructure services. Each key is predefined and scoped to namespaces.  For more information, see Resource Tags.  Example: {orcl-cloud: {free-tier-retain: true}}

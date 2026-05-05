@@ -1118,6 +1118,12 @@ spec:
                           type: string
                       type: object
                     type: array
+                  mountTargetIpv6Ids:
+                    description: The OCIDs of the IPv6 addresses associated with this
+                      mount target.
+                    items:
+                      type: string
+                    type: array
                   nsgIds:
                     description: (Updatable) A list of Network Security Group OCIDs
                       associated with this mount target. A maximum of 5 is allowed.
@@ -1172,8 +1178,8 @@ spec:
                     x-kubernetes-map-type: granular
                   timeBillingCycleEnd:
                     description: 'The date and time the mount target current billing
-                      cycle will end, expressed in  RFC 3339 timestamp format. Once
-                      a cycle ends, it is updated  automatically to next timestamp
+                      cycle will end, expressed in RFC 3339 timestamp format. Once
+                      a cycle ends, it is updated automatically to next timestamp
                       which is after 30 days.  Example: 2016-08-25T21:10:29.600Z'
                     type: string
                   timeCreated:

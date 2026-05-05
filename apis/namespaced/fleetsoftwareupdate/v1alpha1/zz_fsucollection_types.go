@@ -309,7 +309,7 @@ type FleetDiscoveryInitParameters struct {
 	// Supported fleet discovery strategies.
 	Strategy *string `json:"strategy,omitempty" tf:"strategy,omitempty"`
 
-	// The OCIDs of Exadata VM Cluster targets. Only Exadata VM Cluster targets associated with the specified 'serviceType' are allowed.
+	// OCIDs of target resources to include. For EXACC service type Collections only VMClusters are allowed. For EXACS service type Collections only CloudVMClusters are allowed. For EXA-DB-XS service type Collections only ExaDBVMClusters are allowed.
 	Targets []*string `json:"targets,omitempty" tf:"targets,omitempty"`
 }
 
@@ -327,7 +327,7 @@ type FleetDiscoveryObservation struct {
 	// Supported fleet discovery strategies.
 	Strategy *string `json:"strategy,omitempty" tf:"strategy,omitempty"`
 
-	// The OCIDs of Exadata VM Cluster targets. Only Exadata VM Cluster targets associated with the specified 'serviceType' are allowed.
+	// OCIDs of target resources to include. For EXACC service type Collections only VMClusters are allowed. For EXACS service type Collections only CloudVMClusters are allowed. For EXA-DB-XS service type Collections only ExaDBVMClusters are allowed.
 	Targets []*string `json:"targets,omitempty" tf:"targets,omitempty"`
 }
 
@@ -349,7 +349,7 @@ type FleetDiscoveryParameters struct {
 	// +kubebuilder:validation:Optional
 	Strategy *string `json:"strategy" tf:"strategy,omitempty"`
 
-	// The OCIDs of Exadata VM Cluster targets. Only Exadata VM Cluster targets associated with the specified 'serviceType' are allowed.
+	// OCIDs of target resources to include. For EXACC service type Collections only VMClusters are allowed. For EXACS service type Collections only CloudVMClusters are allowed. For EXA-DB-XS service type Collections only ExaDBVMClusters are allowed.
 	// +kubebuilder:validation:Optional
 	Targets []*string `json:"targets,omitempty" tf:"targets,omitempty"`
 }
@@ -368,7 +368,7 @@ type FsuCollectionFleetDiscoveryInitParameters struct {
 	// Supported fleet discovery strategies.
 	Strategy *string `json:"strategy,omitempty" tf:"strategy,omitempty"`
 
-	// The OCIDs of Exadata VM Cluster targets. Only Exadata VM Cluster targets associated with the specified 'serviceType' are allowed.
+	// OCIDs of target resources to include. For EXACC service type Collections only VMClusters are allowed. For EXACS service type Collections only CloudVMClusters are allowed. For EXA-DB-XS service type Collections only ExaDBVMClusters are allowed.
 	Targets []*string `json:"targets,omitempty" tf:"targets,omitempty"`
 }
 
@@ -386,7 +386,7 @@ type FsuCollectionFleetDiscoveryObservation struct {
 	// Supported fleet discovery strategies.
 	Strategy *string `json:"strategy,omitempty" tf:"strategy,omitempty"`
 
-	// The OCIDs of Exadata VM Cluster targets. Only Exadata VM Cluster targets associated with the specified 'serviceType' are allowed.
+	// OCIDs of target resources to include. For EXACC service type Collections only VMClusters are allowed. For EXACS service type Collections only CloudVMClusters are allowed. For EXA-DB-XS service type Collections only ExaDBVMClusters are allowed.
 	Targets []*string `json:"targets,omitempty" tf:"targets,omitempty"`
 }
 
@@ -408,7 +408,7 @@ type FsuCollectionFleetDiscoveryParameters struct {
 	// +kubebuilder:validation:Optional
 	Strategy *string `json:"strategy" tf:"strategy,omitempty"`
 
-	// The OCIDs of Exadata VM Cluster targets. Only Exadata VM Cluster targets associated with the specified 'serviceType' are allowed.
+	// OCIDs of target resources to include. For EXACC service type Collections only VMClusters are allowed. For EXACS service type Collections only CloudVMClusters are allowed. For EXA-DB-XS service type Collections only ExaDBVMClusters are allowed.
 	// +kubebuilder:validation:Optional
 	Targets []*string `json:"targets,omitempty" tf:"targets,omitempty"`
 }

@@ -11,3 +11,15 @@ func (tr *AlertRule) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Budget) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *CostAlertSubscription) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *CostAnomalyEvent) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *CostAnomalyMonitor) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) Hub() {}

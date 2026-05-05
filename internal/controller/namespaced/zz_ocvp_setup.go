@@ -9,10 +9,13 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
+	byol "github.com/oracle/provider-oci/internal/controller/namespaced/ocvp/byol"
+	byolallocation "github.com/oracle/provider-oci/internal/controller/namespaced/ocvp/byolallocation"
 	cluster "github.com/oracle/provider-oci/internal/controller/namespaced/ocvp/cluster"
 	datastore "github.com/oracle/provider-oci/internal/controller/namespaced/ocvp/datastore"
 	datastorecluster "github.com/oracle/provider-oci/internal/controller/namespaced/ocvp/datastorecluster"
 	esxihost "github.com/oracle/provider-oci/internal/controller/namespaced/ocvp/esxihost"
+	managementappliance "github.com/oracle/provider-oci/internal/controller/namespaced/ocvp/managementappliance"
 	sddc "github.com/oracle/provider-oci/internal/controller/namespaced/ocvp/sddc"
 )
 
@@ -20,10 +23,13 @@ import (
 // the supplied manager.
 func Setup_ocvp(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		byol.Setup,
+		byolallocation.Setup,
 		cluster.Setup,
 		datastore.Setup,
 		datastorecluster.Setup,
 		esxihost.Setup,
+		managementappliance.Setup,
 		sddc.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
@@ -37,10 +43,13 @@ func Setup_ocvp(mgr ctrl.Manager, o controller.Options) error {
 // the supplied manager gated.
 func SetupGated_ocvp(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		byol.SetupGated,
+		byolallocation.SetupGated,
 		cluster.SetupGated,
 		datastore.SetupGated,
 		datastorecluster.SetupGated,
 		esxihost.SetupGated,
+		managementappliance.SetupGated,
 		sddc.SetupGated,
 	} {
 		if err := setup(mgr, o); err != nil {

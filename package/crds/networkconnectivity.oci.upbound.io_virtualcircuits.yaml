@@ -290,8 +290,9 @@ spec:
                       service offerings, see ListFastConnectProviderServices.
                     type: string
                   providerServiceKeyName:
-                    description: (Updatable) The service key name offered by the provider
-                      (if the customer is connecting via a provider).
+                    description: (Updatable) The service key name or activation key
+                      offered by the provider (if the customer is connecting via a
+                      provider).
                     type: string
                   publicPrefixes:
                     description: (Updatable) For a public virtual circuit. The public
@@ -556,8 +557,9 @@ spec:
                       service offerings, see ListFastConnectProviderServices.
                     type: string
                   providerServiceKeyName:
-                    description: (Updatable) The service key name offered by the provider
-                      (if the customer is connecting via a provider).
+                    description: (Updatable) The service key name or activation key
+                      offered by the provider (if the customer is connecting via a
+                      provider).
                     type: string
                   publicPrefixes:
                     description: (Updatable) For a public virtual circuit. The public
@@ -848,8 +850,9 @@ spec:
                       service offerings, see ListFastConnectProviderServices.
                     type: string
                   providerServiceKeyName:
-                    description: (Updatable) The service key name offered by the provider
-                      (if the customer is connecting via a provider).
+                    description: (Updatable) The service key name or activation key
+                      offered by the provider (if the customer is connecting via a
+                      provider).
                     type: string
                   providerState:
                     description: The provider's state in relation to this virtual

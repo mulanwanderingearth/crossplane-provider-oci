@@ -46,3 +46,43 @@ func (mg *OccDemandSignal) SetProviderConfigReference(r *xpv1.ProviderConfigRefe
 func (mg *OccDemandSignal) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
+
+// GetCondition of this OccMetricAlarm.
+func (mg *OccMetricAlarm) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this OccMetricAlarm.
+func (mg *OccMetricAlarm) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this OccMetricAlarm.
+func (mg *OccMetricAlarm) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this OccMetricAlarm.
+func (mg *OccMetricAlarm) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this OccMetricAlarm.
+func (mg *OccMetricAlarm) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this OccMetricAlarm.
+func (mg *OccMetricAlarm) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this OccMetricAlarm.
+func (mg *OccMetricAlarm) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this OccMetricAlarm.
+func (mg *OccMetricAlarm) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}

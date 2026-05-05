@@ -26,10 +26,13 @@ import (
 	dynamicresourcegroup "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/dynamicresourcegroup"
 	grant "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/grant"
 	group "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/group"
+	identityproofingprovider "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/identityproofingprovider"
+	identityproofingprovidertemplate "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/identityproofingprovidertemplate"
 	identitypropagationtrust "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/identitypropagationtrust"
 	identityprovider "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/identityprovider"
 	identitysetting "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/identitysetting"
 	kmsisetting "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/kmsisetting"
+	mappedattribute "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/mappedattribute"
 	myapikey "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/myapikey"
 	myauthtoken "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/myauthtoken"
 	mycustomersecretkey "github.com/oracle/provider-oci/internal/controller/namespaced/identitydomains/mycustomersecretkey"
@@ -77,10 +80,13 @@ func Setup_identitydomains(mgr ctrl.Manager, o controller.Options) error {
 		dynamicresourcegroup.Setup,
 		grant.Setup,
 		group.Setup,
+		identityproofingprovider.Setup,
+		identityproofingprovidertemplate.Setup,
 		identitypropagationtrust.Setup,
 		identityprovider.Setup,
 		identitysetting.Setup,
 		kmsisetting.Setup,
+		mappedattribute.Setup,
 		myapikey.Setup,
 		myauthtoken.Setup,
 		mycustomersecretkey.Setup,
@@ -134,10 +140,13 @@ func SetupGated_identitydomains(mgr ctrl.Manager, o controller.Options) error {
 		dynamicresourcegroup.SetupGated,
 		grant.SetupGated,
 		group.SetupGated,
+		identityproofingprovider.SetupGated,
+		identityproofingprovidertemplate.SetupGated,
 		identitypropagationtrust.SetupGated,
 		identityprovider.SetupGated,
 		identitysetting.SetupGated,
 		kmsisetting.SetupGated,
+		mappedattribute.SetupGated,
 		myapikey.SetupGated,
 		myauthtoken.SetupGated,
 		mycustomersecretkey.SetupGated,

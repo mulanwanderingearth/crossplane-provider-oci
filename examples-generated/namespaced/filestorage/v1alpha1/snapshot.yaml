@@ -17,6 +17,10 @@ spec:
         testing.upbound.io/example-name: test_file_system
     freeformTags:
       Department: Finance
+    lockDurationDetails:
+    - coolOffDuration: ${var.snapshot_lock_duration_details_cool_off_duration}
+      lockDuration: ${var.snapshot_lock_duration_details_lock_duration}
+      lockMode: ${var.snapshot_lock_duration_details_lock_mode}
     locks:
     - message: ${var.snapshot_locks_message}
       relatedResourceId: ${oci_cloud_guard_resource.test_resource.id}

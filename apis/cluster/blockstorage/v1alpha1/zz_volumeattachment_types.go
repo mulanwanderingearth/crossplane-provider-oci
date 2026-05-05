@@ -129,6 +129,9 @@ type VolumeAttachmentObservation struct {
 	// The volume's iSCSI IP address.  Example: 169.254.0.2
 	IPv4 *string `json:"ipv4,omitempty" tf:"ipv4,omitempty"`
 
+	// The volume's iSCSI IPv6 address.  Example: 2001:db8::1/64
+	IPv6 *string `json:"ipv6,omitempty" tf:"ipv6,omitempty"`
+
 	// The iscsi login state of the volume attachment. For a Iscsi volume attachment, all iscsi sessions need to be all logged-in or logged-out to be in logged-in or logged-out state.
 	ISCSILoginState *string `json:"iscsiLoginState,omitempty" tf:"iscsi_login_state,omitempty"`
 

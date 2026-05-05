@@ -16,7 +16,7 @@ import (
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-func (mg *Cluster) ResolveReferences( // ResolveReferences of this Cluster.
+func (mg *Byol) ResolveReferences( // ResolveReferences of this Byol.
 	ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
 	var l xpresource.ManagedList
@@ -24,6 +24,214 @@ func (mg *Cluster) ResolveReferences( // ResolveReferences of this Cluster.
 
 	var rsp reference.NamespacedResolutionResponse
 	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ByolAllocation.
+func (mg *ByolAllocation) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "Byol", "ByolList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ByolID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ByolIDRef,
+			Selector:     mg.Spec.ForProvider.ByolIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ByolID")
+	}
+	mg.Spec.ForProvider.ByolID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ByolIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "Byol", "ByolList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ByolID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ByolIDRef,
+			Selector:     mg.Spec.InitProvider.ByolIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ByolID")
+	}
+	mg.Spec.InitProvider.ByolID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ByolIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this Cluster.
+func (mg *Cluster) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ClusterByolAllocationDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationIDRef,
+				Selector:     mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationID")
+		}
+		mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ClusterByolAllocationDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationIDRef,
+				Selector:     mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationID")
+		}
+		mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationIDRef = rsp.ResolvedReference
+
+	}
+	{
+		m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InitialVcfByolAllocationID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.InitialVcfByolAllocationIDRef,
+			Selector:     mg.Spec.ForProvider.InitialVcfByolAllocationIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.InitialVcfByolAllocationID")
+	}
+	mg.Spec.ForProvider.InitialVcfByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.InitialVcfByolAllocationIDRef = rsp.ResolvedReference
 
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.NetworkConfiguration); i3++ {
 		{
@@ -242,6 +450,70 @@ func (mg *Cluster) ResolveReferences( // ResolveReferences of this Cluster.
 	}
 	mg.Spec.ForProvider.SddcID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.SddcIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ClusterByolAllocationDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationIDRef,
+				Selector:     mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationID")
+		}
+		mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].FirewallByolAllocationIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ClusterByolAllocationDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationIDRef,
+				Selector:     mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationID")
+		}
+		mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.ClusterByolAllocationDetails[i3].VsanByolAllocationIDRef = rsp.ResolvedReference
+
+	}
+	{
+		m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InitialVcfByolAllocationID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.InitialVcfByolAllocationIDRef,
+			Selector:     mg.Spec.InitProvider.InitialVcfByolAllocationIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.InitialVcfByolAllocationID")
+	}
+	mg.Spec.InitProvider.InitialVcfByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.InitialVcfByolAllocationIDRef = rsp.ResolvedReference
 
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.NetworkConfiguration); i3++ {
 		{
@@ -597,6 +869,26 @@ func (mg *EsxiHost) ResolveReferences(ctx context.Context, c client.Reader) erro
 	mg.Spec.ForProvider.ClusterID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.ClusterIDRef = rsp.ResolvedReference
 	{
+		m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.VcfByolAllocationID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.VcfByolAllocationIDRef,
+			Selector:     mg.Spec.ForProvider.VcfByolAllocationIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.VcfByolAllocationID")
+	}
+	mg.Spec.ForProvider.VcfByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.VcfByolAllocationIDRef = rsp.ResolvedReference
+	{
 		m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "Cluster", "ClusterList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
@@ -616,6 +908,166 @@ func (mg *EsxiHost) ResolveReferences(ctx context.Context, c client.Reader) erro
 	}
 	mg.Spec.InitProvider.ClusterID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.ClusterIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.VcfByolAllocationID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.VcfByolAllocationIDRef,
+			Selector:     mg.Spec.InitProvider.VcfByolAllocationIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.VcfByolAllocationID")
+	}
+	mg.Spec.InitProvider.VcfByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.VcfByolAllocationIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagementAppliance.
+func (mg *ManagementAppliance) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.Configuration); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("objectstorage.oci.m.upbound.io", "v1alpha1", "Bucket", "BucketList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.Configuration[i3].SupportBundleBucketID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.Configuration[i3].SupportBundleBucketIDRef,
+				Selector:     mg.Spec.ForProvider.Configuration[i3].SupportBundleBucketIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.Configuration[i3].SupportBundleBucketID")
+		}
+		mg.Spec.ForProvider.Configuration[i3].SupportBundleBucketID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.Configuration[i3].SupportBundleBucketIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.Connections); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("vault.oci.m.upbound.io", "v1alpha1", "Secret", "SecretList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.Connections[i3].CredentialsSecretID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.Connections[i3].CredentialsSecretIDRef,
+				Selector:     mg.Spec.ForProvider.Connections[i3].CredentialsSecretIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.Connections[i3].CredentialsSecretID")
+		}
+		mg.Spec.ForProvider.Connections[i3].CredentialsSecretID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.Connections[i3].CredentialsSecretIDRef = rsp.ResolvedReference
+
+	}
+	{
+		m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "Sddc", "SddcList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.SddcID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.SddcIDRef,
+			Selector:     mg.Spec.ForProvider.SddcIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.SddcID")
+	}
+	mg.Spec.ForProvider.SddcID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.SddcIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.Configuration); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("objectstorage.oci.m.upbound.io", "v1alpha1", "Bucket", "BucketList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.Configuration[i3].SupportBundleBucketID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.Configuration[i3].SupportBundleBucketIDRef,
+				Selector:     mg.Spec.InitProvider.Configuration[i3].SupportBundleBucketIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.Configuration[i3].SupportBundleBucketID")
+		}
+		mg.Spec.InitProvider.Configuration[i3].SupportBundleBucketID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.Configuration[i3].SupportBundleBucketIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.Connections); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("vault.oci.m.upbound.io", "v1alpha1", "Secret", "SecretList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.Connections[i3].CredentialsSecretID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.Connections[i3].CredentialsSecretIDRef,
+				Selector:     mg.Spec.InitProvider.Connections[i3].CredentialsSecretIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.Connections[i3].CredentialsSecretID")
+		}
+		mg.Spec.InitProvider.Connections[i3].CredentialsSecretID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.Connections[i3].CredentialsSecretIDRef = rsp.ResolvedReference
+
+	}
+	{
+		m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "Sddc", "SddcList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.SddcID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.SddcIDRef,
+			Selector:     mg.Spec.InitProvider.SddcIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.SddcID")
+	}
+	mg.Spec.InitProvider.SddcID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.SddcIDRef = rsp.ResolvedReference
 
 	return nil
 }
@@ -649,6 +1101,82 @@ func (mg *Sddc) ResolveReferences(ctx context.Context, c client.Reader) error {
 	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
 
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InitialConfiguration); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationIDRef,
+						Selector:     mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationID")
+				}
+				mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InitialConfiguration); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationIDRef,
+						Selector:     mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationID")
+				}
+				mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InitialConfiguration); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationID),
+					Extract:      resource.ExtractResourceID(),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationIDRef,
+					Selector:     mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationIDSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationID")
+			}
+			mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationIDRef = rsp.ResolvedReference
+
+		}
+	}
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.InitialConfiguration); i3++ {
 		for i4 := 0; i4 < len(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations); i4++ {
 			for i5 := 0; i5 < len(mg.Spec.ForProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].NetworkConfiguration); i5++ {
@@ -883,6 +1411,28 @@ func (mg *Sddc) ResolveReferences(ctx context.Context, c client.Reader) error {
 			}
 		}
 	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.SddcByolAllocationDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationIDRef,
+				Selector:     mg.Spec.ForProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationID")
+		}
+		mg.Spec.ForProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationIDRef = rsp.ResolvedReference
+
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 		if err != nil {
@@ -903,6 +1453,82 @@ func (mg *Sddc) ResolveReferences(ctx context.Context, c client.Reader) error {
 	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
 
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InitialConfiguration); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationIDRef,
+						Selector:     mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationID")
+				}
+				mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].FirewallByolAllocationIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InitialConfiguration); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationIDRef,
+						Selector:     mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationID")
+				}
+				mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].ClusterByolAllocationDetails[i5].VsanByolAllocationIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InitialConfiguration); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationID),
+					Extract:      resource.ExtractResourceID(),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationIDRef,
+					Selector:     mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationIDSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationID")
+			}
+			mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].InitialVcfByolAllocationIDRef = rsp.ResolvedReference
+
+		}
+	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.InitialConfiguration); i3++ {
 		for i4 := 0; i4 < len(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations); i4++ {
 			for i5 := 0; i5 < len(mg.Spec.InitProvider.InitialConfiguration[i3].InitialClusterConfigurations[i4].NetworkConfiguration); i5++ {
@@ -1136,6 +1762,28 @@ func (mg *Sddc) ResolveReferences(ctx context.Context, c client.Reader) error {
 
 			}
 		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.SddcByolAllocationDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("ocvp.oci.m.upbound.io", "v1alpha1", "ByolAllocation", "ByolAllocationList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationIDRef,
+				Selector:     mg.Spec.InitProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationID")
+		}
+		mg.Spec.InitProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.SddcByolAllocationDetails[i3].LoadBalancerByolAllocationIDRef = rsp.ResolvedReference
+
 	}
 
 	return nil

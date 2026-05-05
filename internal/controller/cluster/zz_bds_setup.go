@@ -13,6 +13,7 @@ import (
 	bdscapacityreport "github.com/oracle/provider-oci/internal/controller/cluster/bds/bdscapacityreport"
 	bdsinstance "github.com/oracle/provider-oci/internal/controller/cluster/bds/bdsinstance"
 	bdsinstanceapikey "github.com/oracle/provider-oci/internal/controller/cluster/bds/bdsinstanceapikey"
+	bdsinstanceexecutebootstrapscriptaction "github.com/oracle/provider-oci/internal/controller/cluster/bds/bdsinstanceexecutebootstrapscriptaction"
 	bdsinstanceidentityconfiguration "github.com/oracle/provider-oci/internal/controller/cluster/bds/bdsinstanceidentityconfiguration"
 	bdsinstancemetastoreconfig "github.com/oracle/provider-oci/internal/controller/cluster/bds/bdsinstancemetastoreconfig"
 	bdsinstancenodebackup "github.com/oracle/provider-oci/internal/controller/cluster/bds/bdsinstancenodebackup"
@@ -34,6 +35,7 @@ func Setup_bds(mgr ctrl.Manager, o controller.Options) error {
 		bdscapacityreport.Setup,
 		bdsinstance.Setup,
 		bdsinstanceapikey.Setup,
+		bdsinstanceexecutebootstrapscriptaction.Setup,
 		bdsinstanceidentityconfiguration.Setup,
 		bdsinstancemetastoreconfig.Setup,
 		bdsinstancenodebackup.Setup,
@@ -61,6 +63,7 @@ func SetupGated_bds(mgr ctrl.Manager, o controller.Options) error {
 		bdscapacityreport.SetupGated,
 		bdsinstance.SetupGated,
 		bdsinstanceapikey.SetupGated,
+		bdsinstanceexecutebootstrapscriptaction.SetupGated,
 		bdsinstanceidentityconfiguration.SetupGated,
 		bdsinstancemetastoreconfig.SetupGated,
 		bdsinstancenodebackup.SetupGated,

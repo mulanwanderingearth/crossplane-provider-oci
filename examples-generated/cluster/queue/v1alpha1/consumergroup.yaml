@@ -1,0 +1,21 @@
+apiVersion: queue.oci.upbound.io/v1alpha1
+kind: ConsumerGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: queue/v1alpha1/consumergroup
+  labels:
+    testing.upbound.io/example-name: test_consumer_group
+  name: test-consumer-group
+spec:
+  forProvider:
+    consumerGroupFilter: ${var.consumer_group_consumer_group_filter}
+    deadLetterQueueDeliveryCount: ${var.consumer_group_dead_letter_queue_delivery_count}
+    definedTags:
+      foo-namespace.bar-key: value
+    displayName: ${var.consumer_group_display_name}
+    freeformTags:
+      bar-key: value
+    isEnabled: ${var.consumer_group_is_enabled}
+    queueIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_queue

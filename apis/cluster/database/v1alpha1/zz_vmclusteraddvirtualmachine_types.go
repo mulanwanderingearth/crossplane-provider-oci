@@ -161,6 +161,9 @@ type VmClusterAddVirtualMachineObservation struct {
 	// Indicates user preferences for the various diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM DBCS.
 	DataCollectionOptions []VmClusterAddVirtualMachineDataCollectionOptionsObservation `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
+	// The percentage assigned to DATA storage (user data and database files). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+
 	// Size of the DATA disk group in GBs.
 	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
@@ -214,11 +217,17 @@ type VmClusterAddVirtualMachineObservation struct {
 	// The number of enabled CPU cores.
 	OcpusEnabled *float64 `json:"ocpusEnabled,omitempty" tf:"ocpus_enabled,omitempty"`
 
+	// The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	RecoStoragePercentage *float64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
+
 	// The public key portion of one or more key pairs used for SSH access to the VM cluster.
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
 	// The shape of the Exadata infrastructure. The shape determines the amount of CPU, storage, and memory resources allocated to the instance.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
+
+	// The percentage assigned to SPARSE storage (Exadata snapshots). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	SparseStoragePercentage *float64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
 
 	// The current state of the VM cluster.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`

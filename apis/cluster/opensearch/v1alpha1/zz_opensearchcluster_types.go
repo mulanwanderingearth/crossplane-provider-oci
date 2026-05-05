@@ -102,6 +102,45 @@ type CertificateConfigParameters struct {
 	OpenSearchDashboardCertificateIDSelector *v1.Selector `json:"openSearchDashboardCertificateIdSelector,omitempty" tf:"-"`
 }
 
+type LoadBalancerConfigInitParameters struct {
+
+	// (Updatable) Maximum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
+	LoadBalancerMaxBandwidthInMbps *float64 `json:"loadBalancerMaxBandwidthInMbps,omitempty" tf:"load_balancer_max_bandwidth_in_mbps,omitempty"`
+
+	// (Updatable) Minimum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
+	LoadBalancerMinBandwidthInMbps *float64 `json:"loadBalancerMinBandwidthInMbps,omitempty" tf:"load_balancer_min_bandwidth_in_mbps,omitempty"`
+
+	// (Updatable) Load balancer service for OpenSearch and OpenDashboard load balancer. Default value is LOAD_BALANCER.
+	LoadBalancerServiceType *string `json:"loadBalancerServiceType,omitempty" tf:"load_balancer_service_type,omitempty"`
+}
+
+type LoadBalancerConfigObservation struct {
+
+	// (Updatable) Maximum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
+	LoadBalancerMaxBandwidthInMbps *float64 `json:"loadBalancerMaxBandwidthInMbps,omitempty" tf:"load_balancer_max_bandwidth_in_mbps,omitempty"`
+
+	// (Updatable) Minimum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
+	LoadBalancerMinBandwidthInMbps *float64 `json:"loadBalancerMinBandwidthInMbps,omitempty" tf:"load_balancer_min_bandwidth_in_mbps,omitempty"`
+
+	// (Updatable) Load balancer service for OpenSearch and OpenDashboard load balancer. Default value is LOAD_BALANCER.
+	LoadBalancerServiceType *string `json:"loadBalancerServiceType,omitempty" tf:"load_balancer_service_type,omitempty"`
+}
+
+type LoadBalancerConfigParameters struct {
+
+	// (Updatable) Maximum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
+	// +kubebuilder:validation:Optional
+	LoadBalancerMaxBandwidthInMbps *float64 `json:"loadBalancerMaxBandwidthInMbps,omitempty" tf:"load_balancer_max_bandwidth_in_mbps,omitempty"`
+
+	// (Updatable) Minimum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
+	// +kubebuilder:validation:Optional
+	LoadBalancerMinBandwidthInMbps *float64 `json:"loadBalancerMinBandwidthInMbps,omitempty" tf:"load_balancer_min_bandwidth_in_mbps,omitempty"`
+
+	// (Updatable) Load balancer service for OpenSearch and OpenDashboard load balancer. Default value is LOAD_BALANCER.
+	// +kubebuilder:validation:Optional
+	LoadBalancerServiceType *string `json:"loadBalancerServiceType" tf:"load_balancer_service_type,omitempty"`
+}
+
 type MaintenanceDetailsInitParameters struct {
 
 	// (Updatable) The Email IDs given by the customer to get notified about maintenance activities
@@ -184,6 +223,27 @@ type OpensearchClusterInitParameters struct {
 
 	// List of inbound clusters that will be queried using cross cluster search
 	InboundClusterIds []*string `json:"inboundClusterIds,omitempty" tf:"inbound_cluster_ids,omitempty"`
+
+	// (Updatable) This config is used to choose the load balancer service and bandwidth for OpenSearch and OpenDashboard load balancers.
+	LoadBalancerConfig []LoadBalancerConfigInitParameters `json:"loadBalancerConfig,omitempty" tf:"load_balancer_config,omitempty"`
+
+	// (Updatable) The number of ML nodes configured for the cluster.
+	MLNodeCount *float64 `json:"mlNodeCount,omitempty" tf:"ml_node_count,omitempty"`
+
+	// (Updatable) The amount of memory in GB, for the cluster's ML nodes.
+	MLNodeHostMemoryGb *float64 `json:"mlNodeHostMemoryGb,omitempty" tf:"ml_node_host_memory_gb,omitempty"`
+
+	// (Updatable) The number of OCPUs configured for the cluster's ML nodes.
+	MLNodeHostOcpuCount *float64 `json:"mlNodeHostOcpuCount,omitempty" tf:"ml_node_host_ocpu_count,omitempty"`
+
+	// (Updatable) The node shape for the cluster's ML nodes.
+	MLNodeHostShape *string `json:"mlNodeHostShape,omitempty" tf:"ml_node_host_shape,omitempty"`
+
+	// The instance type for the cluster's ML nodes.
+	MLNodeHostType *string `json:"mlNodeHostType,omitempty" tf:"ml_node_host_type,omitempty"`
+
+	// (Updatable) The amount of storage in GB, to configure per node for the cluster's ML nodes.
+	MLNodeStorageGb *float64 `json:"mlNodeStorageGb,omitempty" tf:"ml_node_storage_gb,omitempty"`
 
 	// (Updatable) Details for creation of maintenance details
 	MaintenanceDetails []MaintenanceDetailsInitParameters `json:"maintenanceDetails,omitempty" tf:"maintenance_details,omitempty"`
@@ -392,6 +452,27 @@ type OpensearchClusterObservation struct {
 	// Additional information about the current lifecycle state of the cluster.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
+	// (Updatable) This config is used to choose the load balancer service and bandwidth for OpenSearch and OpenDashboard load balancers.
+	LoadBalancerConfig []LoadBalancerConfigObservation `json:"loadBalancerConfig,omitempty" tf:"load_balancer_config,omitempty"`
+
+	// (Updatable) The number of ML nodes configured for the cluster.
+	MLNodeCount *float64 `json:"mlNodeCount,omitempty" tf:"ml_node_count,omitempty"`
+
+	// (Updatable) The amount of memory in GB, for the cluster's ML nodes.
+	MLNodeHostMemoryGb *float64 `json:"mlNodeHostMemoryGb,omitempty" tf:"ml_node_host_memory_gb,omitempty"`
+
+	// (Updatable) The number of OCPUs configured for the cluster's ML nodes.
+	MLNodeHostOcpuCount *float64 `json:"mlNodeHostOcpuCount,omitempty" tf:"ml_node_host_ocpu_count,omitempty"`
+
+	// (Updatable) The node shape for the cluster's ML nodes.
+	MLNodeHostShape *string `json:"mlNodeHostShape,omitempty" tf:"ml_node_host_shape,omitempty"`
+
+	// The instance type for the cluster's ML nodes.
+	MLNodeHostType *string `json:"mlNodeHostType,omitempty" tf:"ml_node_host_type,omitempty"`
+
+	// (Updatable) The amount of storage in GB, to configure per node for the cluster's ML nodes.
+	MLNodeStorageGb *float64 `json:"mlNodeStorageGb,omitempty" tf:"ml_node_storage_gb,omitempty"`
+
 	// (Updatable) Details for creation of maintenance details
 	MaintenanceDetails []MaintenanceDetailsObservation `json:"maintenanceDetails,omitempty" tf:"maintenance_details,omitempty"`
 
@@ -586,6 +667,34 @@ type OpensearchClusterParameters struct {
 	// List of inbound clusters that will be queried using cross cluster search
 	// +kubebuilder:validation:Optional
 	InboundClusterIds []*string `json:"inboundClusterIds,omitempty" tf:"inbound_cluster_ids,omitempty"`
+
+	// (Updatable) This config is used to choose the load balancer service and bandwidth for OpenSearch and OpenDashboard load balancers.
+	// +kubebuilder:validation:Optional
+	LoadBalancerConfig []LoadBalancerConfigParameters `json:"loadBalancerConfig,omitempty" tf:"load_balancer_config,omitempty"`
+
+	// (Updatable) The number of ML nodes configured for the cluster.
+	// +kubebuilder:validation:Optional
+	MLNodeCount *float64 `json:"mlNodeCount,omitempty" tf:"ml_node_count,omitempty"`
+
+	// (Updatable) The amount of memory in GB, for the cluster's ML nodes.
+	// +kubebuilder:validation:Optional
+	MLNodeHostMemoryGb *float64 `json:"mlNodeHostMemoryGb,omitempty" tf:"ml_node_host_memory_gb,omitempty"`
+
+	// (Updatable) The number of OCPUs configured for the cluster's ML nodes.
+	// +kubebuilder:validation:Optional
+	MLNodeHostOcpuCount *float64 `json:"mlNodeHostOcpuCount,omitempty" tf:"ml_node_host_ocpu_count,omitempty"`
+
+	// (Updatable) The node shape for the cluster's ML nodes.
+	// +kubebuilder:validation:Optional
+	MLNodeHostShape *string `json:"mlNodeHostShape,omitempty" tf:"ml_node_host_shape,omitempty"`
+
+	// The instance type for the cluster's ML nodes.
+	// +kubebuilder:validation:Optional
+	MLNodeHostType *string `json:"mlNodeHostType,omitempty" tf:"ml_node_host_type,omitempty"`
+
+	// (Updatable) The amount of storage in GB, to configure per node for the cluster's ML nodes.
+	// +kubebuilder:validation:Optional
+	MLNodeStorageGb *float64 `json:"mlNodeStorageGb,omitempty" tf:"ml_node_storage_gb,omitempty"`
 
 	// (Updatable) Details for creation of maintenance details
 	// +kubebuilder:validation:Optional

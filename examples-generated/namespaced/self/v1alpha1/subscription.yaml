@@ -1,0 +1,53 @@
+apiVersion: self.oci.m.upbound.io/v1alpha1
+kind: Subscription
+metadata:
+  annotations:
+    meta.upbound.io/example-id: self/v1alpha1/subscription
+  labels:
+    testing.upbound.io/example-name: test_subscription
+  name: test-subscription
+  namespace: upbound-system
+spec:
+  forProvider:
+    additionalDetails:
+    - key: ${var.subscription_additional_details_key}
+      value: ${var.subscription_additional_details_value}
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    displayName: ${var.subscription_display_name}
+    freeformTags:
+      Department: Finance
+    productId: ${oci_self_product.test_product.id}
+    realm: ${var.subscription_realm}
+    region: ${var.subscription_region}
+    sellerId: ${oci_self_seller.test_seller.id}
+    sourceType: ${var.subscription_source_type}
+    subscriptionDetails:
+    - amount: ${var.subscription_subscription_details_amount}
+      billingDetails:
+      - hasGovSku: ${var.subscription_subscription_details_billing_details_has_gov_sku}
+        meters:
+        - extendedMetadata:
+          - key: ${var.subscription_subscription_details_billing_details_meters_extended_metadata_key}
+            value: ${var.subscription_subscription_details_billing_details_meters_extended_metadata_value}
+          name: ${var.subscription_subscription_details_billing_details_meters_name}
+          rateAllocation: ${var.subscription_subscription_details_billing_details_meters_rate_allocation}
+        metricType: ${var.subscription_subscription_details_billing_details_metric_type}
+        rateAllocation: ${var.subscription_subscription_details_billing_details_rate_allocation}
+        sku: ${var.subscription_subscription_details_billing_details_sku}
+      currency: ${var.subscription_subscription_details_currency}
+      isAutoRenew: ${var.subscription_subscription_details_is_auto_renew}
+      partnerRegistrationUrl: ${var.subscription_subscription_details_partner_registration_url}
+      pricingPlan:
+      - billingFrequency: ${var.subscription_subscription_details_pricing_plan_billing_frequency}
+        planDescription: ${var.subscription_subscription_details_pricing_plan_plan_description}
+        planDuration: ${var.subscription_subscription_details_pricing_plan_plan_duration}
+        planName: ${var.subscription_subscription_details_pricing_plan_plan_name}
+        planType: ${var.subscription_subscription_details_pricing_plan_plan_type}
+        rates:
+        - currency: ${var.subscription_subscription_details_pricing_plan_rates_currency}
+          rate: ${var.subscription_subscription_details_pricing_plan_rates_rate}
+    tenantId: ${oci_self_tenant.test_tenant.id}

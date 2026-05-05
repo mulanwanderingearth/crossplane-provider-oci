@@ -21,7 +21,7 @@ func (mg *FusionEnvironmentAdminUser) GetTerraformResourceType() string {
 
 // GetConnectionDetailsMapping for this FusionEnvironmentAdminUser
 func (tr *FusionEnvironmentAdminUser) GetConnectionDetailsMapping() map[string]string {
-	return map[string]string{"password": "passwordSecretRef"}
+	return nil
 }
 
 // GetObservation of this FusionEnvironmentAdminUser

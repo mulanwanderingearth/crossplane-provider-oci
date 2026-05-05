@@ -58,7 +58,7 @@ type NetworkFirewallPolicyNatRuleInitParameters struct {
 	// (Updatable) action:
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// (Updatable) Match criteria used in NAT Rule used on the firewall policy.
+	// (Updatable) Match criteria used in NAT rule used on the firewall policy.
 	Condition []NetworkFirewallPolicyNatRuleConditionInitParameters `json:"condition,omitempty" tf:"condition,omitempty"`
 
 	// (Updatable) Description of a NAT rule. This field can be used to add additional info.
@@ -92,7 +92,7 @@ type NetworkFirewallPolicyNatRuleObservation struct {
 	// (Updatable) action:
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// (Updatable) Match criteria used in NAT Rule used on the firewall policy.
+	// (Updatable) Match criteria used in NAT rule used on the firewall policy.
 	Condition []NetworkFirewallPolicyNatRuleConditionObservation `json:"condition,omitempty" tf:"condition,omitempty"`
 
 	// (Updatable) Description of a NAT rule. This field can be used to add additional info.
@@ -106,7 +106,7 @@ type NetworkFirewallPolicyNatRuleObservation struct {
 	// Unique Network Firewall Policy identifier
 	NetworkFirewallPolicyID *string `json:"networkFirewallPolicyId,omitempty" tf:"network_firewall_policy_id,omitempty"`
 
-	// OCID of the Network Firewall Policy this decryption profile belongs to.
+	// The OCID of the Network Firewall policy this NAT rule belongs to.
 	ParentResourceID *string `json:"parentResourceId,omitempty" tf:"parent_resource_id,omitempty"`
 
 	// (Updatable) An object which defines the position of the rule.
@@ -125,7 +125,7 @@ type NetworkFirewallPolicyNatRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// (Updatable) Match criteria used in NAT Rule used on the firewall policy.
+	// (Updatable) Match criteria used in NAT rule used on the firewall policy.
 	// +kubebuilder:validation:Optional
 	Condition []NetworkFirewallPolicyNatRuleConditionParameters `json:"condition,omitempty" tf:"condition,omitempty"`
 

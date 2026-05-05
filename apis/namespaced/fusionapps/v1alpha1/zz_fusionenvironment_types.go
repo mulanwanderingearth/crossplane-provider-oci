@@ -14,6 +14,55 @@ import (
 	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
 )
 
+type AdditionalEgressRulesInitParameters struct {
+
+	// (Updatable) Rule description.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Updatable) Specifies the destination CIDR block the port should be opened for. Must be IPv4 only, and cannot be part of any private range from RFC 1918.
+	DestinationCidr *string `json:"destinationCidr,omitempty" tf:"destination_cidr,omitempty"`
+
+	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
+	MaxDestinationPort *float64 `json:"maxDestinationPort,omitempty" tf:"max_destination_port,omitempty"`
+
+	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
+	MinDestinationPort *float64 `json:"minDestinationPort,omitempty" tf:"min_destination_port,omitempty"`
+}
+
+type AdditionalEgressRulesObservation struct {
+
+	// (Updatable) Rule description.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Updatable) Specifies the destination CIDR block the port should be opened for. Must be IPv4 only, and cannot be part of any private range from RFC 1918.
+	DestinationCidr *string `json:"destinationCidr,omitempty" tf:"destination_cidr,omitempty"`
+
+	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
+	MaxDestinationPort *float64 `json:"maxDestinationPort,omitempty" tf:"max_destination_port,omitempty"`
+
+	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
+	MinDestinationPort *float64 `json:"minDestinationPort,omitempty" tf:"min_destination_port,omitempty"`
+}
+
+type AdditionalEgressRulesParameters struct {
+
+	// (Updatable) Rule description.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description" tf:"description,omitempty"`
+
+	// (Updatable) Specifies the destination CIDR block the port should be opened for. Must be IPv4 only, and cannot be part of any private range from RFC 1918.
+	// +kubebuilder:validation:Optional
+	DestinationCidr *string `json:"destinationCidr" tf:"destination_cidr,omitempty"`
+
+	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
+	// +kubebuilder:validation:Optional
+	MaxDestinationPort *float64 `json:"maxDestinationPort" tf:"max_destination_port,omitempty"`
+
+	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
+	// +kubebuilder:validation:Optional
+	MinDestinationPort *float64 `json:"minDestinationPort" tf:"min_destination_port,omitempty"`
+}
+
 type ConditionsInitParameters struct {
 
 	// (Updatable) RuleCondition type
@@ -54,9 +103,6 @@ type CreateFusionEnvironmentAdminUserDetailsInitParameters struct {
 	// The administrator's last name.
 	LastName *string `json:"lastName,omitempty" tf:"last_name,omitempty"`
 
-	// The password for the administrator.
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
-
 	// The username for the administrator.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
@@ -90,16 +136,15 @@ type CreateFusionEnvironmentAdminUserDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	LastName *string `json:"lastName" tf:"last_name,omitempty"`
 
-	// The password for the administrator.
-	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
-
 	// The username for the administrator.
 	// +kubebuilder:validation:Optional
 	Username *string `json:"username" tf:"username,omitempty"`
 }
 
 type FusionEnvironmentInitParameters struct {
+
+	// (Updatable) Additional egress rules that should be applied to the environment. Some standard ports are open for general use; see [Securing Network Access to a Fusion Applications Environment][iaas/Content/fusion-applications/plan-environment.htm#internet-cache]. If access to a non-standard port is required, however, they can be listed here.
+	AdditionalEgressRules []AdditionalEgressRulesInitParameters `json:"additionalEgressRules,omitempty" tf:"additional_egress_rules,omitempty"`
 
 	// (Updatable) Language packs.
 	AdditionalLanguagePacks []*string `json:"additionalLanguagePacks,omitempty" tf:"additional_language_packs,omitempty"`
@@ -149,7 +194,7 @@ type FusionEnvironmentInitParameters struct {
 	// The type of environment. Valid values are Production, Test, or Development.
 	FusionEnvironmentType *string `json:"fusionEnvironmentType,omitempty" tf:"fusion_environment_type,omitempty"`
 
-	// Enable IPv4/IPv6 dual stack support for the environment.  Setting to true will assign an IPv6 address to the environment in addition to an IPv4 address.
+	// (Updatable) Enable IPv4/IPv6 dual stack support for the environment (where available). Setting to true will assign an IPv6 address to the environment in addition to an IPv4 address. The default value is false.
 	IsIpv6DualStackEnabled *bool `json:"isIpv6DualStackEnabled,omitempty" tf:"is_ipv6dual_stack_enabled,omitempty"`
 
 	// (Updatable) byok kms keyId
@@ -173,6 +218,9 @@ type FusionEnvironmentInitParameters struct {
 }
 
 type FusionEnvironmentObservation struct {
+
+	// (Updatable) Additional egress rules that should be applied to the environment. Some standard ports are open for general use; see [Securing Network Access to a Fusion Applications Environment][iaas/Content/fusion-applications/plan-environment.htm#internet-cache]. If access to a non-standard port is required, however, they can be listed here.
+	AdditionalEgressRules []AdditionalEgressRulesObservation `json:"additionalEgressRules,omitempty" tf:"additional_egress_rules,omitempty"`
 
 	// (Updatable) Language packs.
 	AdditionalLanguagePacks []*string `json:"additionalLanguagePacks,omitempty" tf:"additional_language_packs,omitempty"`
@@ -218,7 +266,7 @@ type FusionEnvironmentObservation struct {
 	// If it's true, then the Break Glass feature is enabled
 	IsBreakGlassEnabled *bool `json:"isBreakGlassEnabled,omitempty" tf:"is_break_glass_enabled,omitempty"`
 
-	// Enable IPv4/IPv6 dual stack support for the environment.  Setting to true will assign an IPv6 address to the environment in addition to an IPv4 address.
+	// (Updatable) Enable IPv4/IPv6 dual stack support for the environment (where available). Setting to true will assign an IPv6 address to the environment in addition to an IPv4 address. The default value is false.
 	IsIpv6DualStackEnabled *bool `json:"isIpv6DualStackEnabled,omitempty" tf:"is_ipv6dual_stack_enabled,omitempty"`
 
 	// (Updatable) byok kms keyId
@@ -268,6 +316,10 @@ type FusionEnvironmentObservation struct {
 }
 
 type FusionEnvironmentParameters struct {
+
+	// (Updatable) Additional egress rules that should be applied to the environment. Some standard ports are open for general use; see [Securing Network Access to a Fusion Applications Environment][iaas/Content/fusion-applications/plan-environment.htm#internet-cache]. If access to a non-standard port is required, however, they can be listed here.
+	// +kubebuilder:validation:Optional
+	AdditionalEgressRules []AdditionalEgressRulesParameters `json:"additionalEgressRules,omitempty" tf:"additional_egress_rules,omitempty"`
 
 	// (Updatable) Language packs.
 	// +kubebuilder:validation:Optional
@@ -326,7 +378,7 @@ type FusionEnvironmentParameters struct {
 	// +kubebuilder:validation:Optional
 	FusionEnvironmentType *string `json:"fusionEnvironmentType,omitempty" tf:"fusion_environment_type,omitempty"`
 
-	// Enable IPv4/IPv6 dual stack support for the environment.  Setting to true will assign an IPv6 address to the environment in addition to an IPv4 address.
+	// (Updatable) Enable IPv4/IPv6 dual stack support for the environment (where available). Setting to true will assign an IPv6 address to the environment in addition to an IPv4 address. The default value is false.
 	// +kubebuilder:validation:Optional
 	IsIpv6DualStackEnabled *bool `json:"isIpv6DualStackEnabled,omitempty" tf:"is_ipv6dual_stack_enabled,omitempty"`
 
@@ -455,7 +507,7 @@ type RulesInitParameters struct {
 	// (Updatable)
 	Conditions []ConditionsInitParameters `json:"conditions,omitempty" tf:"conditions,omitempty"`
 
-	// (Updatable) A brief description of the access control rule. Avoid entering confidential information. example: 192.168.0.0/16 and 2001:db8::/32 are trusted clients. Whitelist them.
+	// (Updatable) Rule description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 }
 
@@ -467,7 +519,7 @@ type RulesObservation struct {
 	// (Updatable)
 	Conditions []ConditionsObservation `json:"conditions,omitempty" tf:"conditions,omitempty"`
 
-	// (Updatable) A brief description of the access control rule. Avoid entering confidential information. example: 192.168.0.0/16 and 2001:db8::/32 are trusted clients. Whitelist them.
+	// (Updatable) Rule description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 }
 
@@ -481,7 +533,7 @@ type RulesParameters struct {
 	// +kubebuilder:validation:Optional
 	Conditions []ConditionsParameters `json:"conditions" tf:"conditions,omitempty"`
 
-	// (Updatable) A brief description of the access control rule. Avoid entering confidential information. example: 192.168.0.0/16 and 2001:db8::/32 are trusted clients. Whitelist them.
+	// (Updatable) Rule description.
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 }

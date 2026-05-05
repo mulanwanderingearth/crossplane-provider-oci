@@ -156,6 +156,10 @@ spec:
                             type: string
                         type: object
                     type: object
+                  configurationActionType:
+                    description: (Updatable) The configuration action to next occur
+                      on the host if pinning its firmware with a host group.
+                    type: string
                 type: object
               initProvider:
                 description: |-
@@ -253,6 +257,10 @@ spec:
                             type: string
                         type: object
                     type: object
+                  configurationActionType:
+                    description: (Updatable) The configuration action to next occur
+                      on the host if pinning its firmware with a host group.
+                    type: string
                 type: object
               managementPolicies:
                 default:
@@ -370,6 +378,10 @@ spec:
                   computeHostId:
                     description: The OCID of the compute host.
                     type: string
+                  configurationActionType:
+                    description: (Updatable) The configuration action to next occur
+                      on the host if pinning its firmware with a host group.
+                    type: string
                   configurationData:
                     description: Compute Host Configuration Data
                     items:
@@ -433,6 +445,10 @@ spec:
                       maintenance that affects one fault domain does not affect instances
                       in other fault domains.
                     type: string
+                  firmwareBundleId:
+                    description: The OCID for the Customer-unique firmware bundle
+                      associated with the Host Configuration.
+                    type: string
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -476,6 +492,9 @@ spec:
                     type: string
                   networkBlockId:
                     description: The OCID for Customer-unique Network Block
+                    type: string
+                  platform:
+                    description: The platform of the host
                     type: string
                   recycleDetails:
                     description: Shows details about the last recycle performed on

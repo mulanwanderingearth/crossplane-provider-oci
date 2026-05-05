@@ -8,8 +8,6 @@ metadata:
   name: test-redis-cluster-create-identity-token
 spec:
   forProvider:
-    definedTags: ${var.redis_cluster_create_identity_token_defined_tags}
-    freeformTags: ${var.redis_cluster_create_identity_token_freeform_tags}
     publicKey: ${var.redis_cluster_create_identity_token_public_key}
     redisClusterIdSelector:
       matchLabels:

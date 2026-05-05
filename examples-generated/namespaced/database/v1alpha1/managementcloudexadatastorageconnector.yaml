@@ -1,0 +1,31 @@
+apiVersion: database.oci.m.upbound.io/v1alpha1
+kind: ManagementCloudExadataStorageConnector
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/managementcloudexadatastorageconnector
+  labels:
+    testing.upbound.io/example-name: test_cloud_exadata_storage_connector
+  name: test-cloud-exadata-storage-connector
+  namespace: upbound-system
+spec:
+  forProvider:
+    agentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_agent
+    connectionUri: ${var.cloud_exadata_storage_connector_connection_uri}
+    credentialInfo:
+    - passwordSecretRef:
+        key: example-key
+        name: example-secret
+      sslTrustStoreLocation: ${var.cloud_exadata_storage_connector_credential_info_ssl_trust_store_location}
+      sslTrustStorePasswordSecretRef:
+        key: example-key
+        name: example-secret
+      sslTrustStoreType: ${var.cloud_exadata_storage_connector_credential_info_ssl_trust_store_type}
+      username: ${var.cloud_exadata_storage_connector_credential_info_username}
+    definedTags:
+      Operations.CostCenter: "42"
+    displayName: ${var.cloud_exadata_storage_connector_display_name}
+    freeformTags:
+      Department: Finance
+    storageServerId: ${oci_database_management_storage_server.test_storage_server.id}

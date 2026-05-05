@@ -7,6 +7,256 @@ package v1alpha1
 
 import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
 
+// GetCondition of this DynamicSet.
+func (mg *DynamicSet) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this DynamicSet.
+func (mg *DynamicSet) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this DynamicSet.
+func (mg *DynamicSet) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this DynamicSet.
+func (mg *DynamicSet) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this DynamicSet.
+func (mg *DynamicSet) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this DynamicSet.
+func (mg *DynamicSet) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this DynamicSet.
+func (mg *DynamicSet) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this DynamicSet.
+func (mg *DynamicSet) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this DynamicSet.
+func (mg *DynamicSet) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this DynamicSet.
+func (mg *DynamicSet) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this Event.
 func (mg *Event) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
@@ -407,6 +657,56 @@ func (mg *ManagedInstanceAttachProfileManagement) SetWriteConnectionSecretToRefe
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this ManagedInstanceDetachProfileManagement.
 func (mg *ManagedInstanceDetachProfileManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
@@ -454,6 +754,56 @@ func (mg *ManagedInstanceDetachProfileManagement) SetProviderConfigReference(r *
 
 // SetWriteConnectionSecretToReference of this ManagedInstanceDetachProfileManagement.
 func (mg *ManagedInstanceDetachProfileManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
@@ -1007,6 +1357,106 @@ func (mg *ManagedInstanceGroupUpdateAllPackagesManagement) SetWriteConnectionSec
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this ManagedInstanceInstallWindowsUpdatesManagement.
 func (mg *ManagedInstanceInstallWindowsUpdatesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
@@ -1107,6 +1557,206 @@ func (mg *ManagedInstanceRebootManagement) SetWriteConnectionSecretToReference(r
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this ManagedInstanceUpdatePackagesManagement.
 func (mg *ManagedInstanceUpdatePackagesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
@@ -1154,6 +1804,106 @@ func (mg *ManagedInstanceUpdatePackagesManagement) SetProviderConfigReference(r 
 
 // SetWriteConnectionSecretToReference of this ManagedInstanceUpdatePackagesManagement.
 func (mg *ManagedInstanceUpdatePackagesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
@@ -1654,6 +2404,56 @@ func (mg *ProfileAttachSoftwareSourcesManagement) SetProviderConfigReference(r *
 
 // SetWriteConnectionSecretToReference of this ProfileAttachSoftwareSourcesManagement.
 func (mg *ProfileAttachSoftwareSourcesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 

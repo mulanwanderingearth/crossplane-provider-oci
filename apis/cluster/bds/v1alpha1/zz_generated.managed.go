@@ -207,6 +207,56 @@ func (mg *BdsInstanceApiKey) SetWriteConnectionSecretToReference(r *xpv1.SecretR
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this BdsInstanceExecuteBootstrapScriptAction.
+func (mg *BdsInstanceExecuteBootstrapScriptAction) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this BdsInstanceIdentityConfiguration.
 func (mg *BdsInstanceIdentityConfiguration) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)

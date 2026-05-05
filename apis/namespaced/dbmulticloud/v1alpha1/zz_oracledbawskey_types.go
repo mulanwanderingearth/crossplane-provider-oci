@@ -15,6 +15,7 @@ import (
 )
 
 type OracleDbAwsKeyInitParameters struct {
+	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// AWS Account ID.
 	AwsAccountID *string `json:"awsAccountId,omitempty" tf:"aws_account_id,omitempty"`
@@ -58,11 +59,15 @@ type OracleDbAwsKeyInitParameters struct {
 	// +mapType=granular
 	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
 
+	// The target region, where resource is replicated.
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
 	// AWS Key resource type.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type OracleDbAwsKeyObservation struct {
+	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// AWS Account ID.
 	AwsAccountID *string `json:"awsAccountId,omitempty" tf:"aws_account_id,omitempty"`
@@ -103,6 +108,9 @@ type OracleDbAwsKeyObservation struct {
 	// +mapType=granular
 	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
 
+	// Replication metadata, it has information about replication and target region.
+	ReplicationMetadata []ReplicationMetadataObservation `json:"replicationMetadata,omitempty" tf:"replication_metadata,omitempty"`
+
 	// The lifecycle state of the Oracle DB AWS Key resource.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
@@ -110,10 +118,13 @@ type OracleDbAwsKeyObservation struct {
 	// +mapType=granular
 	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
-	// Time when the DB AWS Key resource was created in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'.
+	// The target region, where resource is replicated.
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
+	// Time when the Replication was created in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
-	// Time when the DB AWS Key resource was last modified, expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'.
+	// Time when the Replication was last modified, expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// AWS Key resource type.
@@ -121,6 +132,9 @@ type OracleDbAwsKeyObservation struct {
 }
 
 type OracleDbAwsKeyParameters struct {
+
+	// +kubebuilder:validation:Optional
+	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// AWS Account ID.
 	// +kubebuilder:validation:Optional
@@ -174,9 +188,46 @@ type OracleDbAwsKeyParameters struct {
 	// +mapType=granular
 	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
 
+	// The target region, where resource is replicated.
+	// +kubebuilder:validation:Optional
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
 	// AWS Key resource type.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type ReplicationDetailsInitParameters struct {
+}
+
+type ReplicationDetailsObservation struct {
+
+	// The lifecycle state of the Oracle DB Azure Vault resource.
+	ReplicationState *string `json:"replicationState,omitempty" tf:"replication_state,omitempty"`
+
+	// The target region, where resource is replicated.
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
+	// Time when the Replication was created in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
+
+	// Time when the Replication was last modified, expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
+}
+
+type ReplicationDetailsParameters struct {
+}
+
+type ReplicationMetadataInitParameters struct {
+}
+
+type ReplicationMetadataObservation struct {
+
+	// List of all regions and their respective resource ID.
+	ReplicationDetails []ReplicationDetailsObservation `json:"replicationDetails,omitempty" tf:"replication_details,omitempty"`
+}
+
+type ReplicationMetadataParameters struct {
 }
 
 // OracleDbAwsKeySpec defines the desired state of OracleDbAwsKey

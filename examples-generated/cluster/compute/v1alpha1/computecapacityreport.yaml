@@ -16,6 +16,7 @@ spec:
     - faultDomain: ${var.compute_capacity_report_shape_availabilities_fault_domain}
       instanceShape: ${var.compute_capacity_report_shape_availabilities_instance_shape}
       instanceShapeConfig:
-      - memoryInGbs: ${var.compute_capacity_report_shape_availabilities_instance_shape_config_memory_in_gbs}
+      - baselineOcpuUtilization: ${var.compute_capacity_report_shape_availabilities_instance_shape_config_baseline_ocpu_utilization}
+        memoryInGbs: ${var.compute_capacity_report_shape_availabilities_instance_shape_config_memory_in_gbs}
         nvmes: ${var.compute_capacity_report_shape_availabilities_instance_shape_config_nvmes}
         ocpus: ${var.compute_capacity_report_shape_availabilities_instance_shape_config_ocpus}

@@ -858,6 +858,9 @@ type RequiredClaimsParameters struct {
 
 type ServiceLBConfigInitParameters struct {
 
+	// (Updatable) A list of the OCIDs of the network security groups (NSGs) associated to backends to LBs (pods/nodes/virtual pods, etc.). Rules necessary for LB to backend communication would be added when rule management mode is set to NSG via annotations. see NetworkSecurityGroup.
+	BackendNsgIds []*string `json:"backendNsgIds,omitempty" tf:"backend_nsg_ids,omitempty"`
+
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
@@ -869,6 +872,9 @@ type ServiceLBConfigInitParameters struct {
 
 type ServiceLBConfigObservation struct {
 
+	// (Updatable) A list of the OCIDs of the network security groups (NSGs) associated to backends to LBs (pods/nodes/virtual pods, etc.). Rules necessary for LB to backend communication would be added when rule management mode is set to NSG via annotations. see NetworkSecurityGroup.
+	BackendNsgIds []*string `json:"backendNsgIds,omitempty" tf:"backend_nsg_ids,omitempty"`
+
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
@@ -879,6 +885,10 @@ type ServiceLBConfigObservation struct {
 }
 
 type ServiceLBConfigParameters struct {
+
+	// (Updatable) A list of the OCIDs of the network security groups (NSGs) associated to backends to LBs (pods/nodes/virtual pods, etc.). Rules necessary for LB to backend communication would be added when rule management mode is set to NSG via annotations. see NetworkSecurityGroup.
+	// +kubebuilder:validation:Optional
+	BackendNsgIds []*string `json:"backendNsgIds,omitempty" tf:"backend_nsg_ids,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional

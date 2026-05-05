@@ -1,0 +1,33 @@
+apiVersion: identitydomains.oci.m.upbound.io/v1alpha1
+kind: IdentityProofingProvider
+metadata:
+  annotations:
+    meta.upbound.io/example-id: identitydomains/v1alpha1/identityproofingprovider
+  labels:
+    testing.upbound.io/example-name: test_identity_proofing_provider
+  name: test-identity-proofing-provider
+  namespace: upbound-system
+spec:
+  forProvider:
+    attributeSets:
+    - all
+    attributes: ""
+    authorization: ${var.identity_proofing_provider_authorization}
+    claimMapping:
+    - attrMatch: ${var.identity_proofing_provider_claim_mapping_attr_match}
+      verifiableClaim: ${var.identity_proofing_provider_claim_mapping_verifiable_claim}
+    configuration:
+    - name: ${var.identity_proofing_provider_configuration_name}
+      value: ${var.identity_proofing_provider_configuration_value}
+    description: ${var.identity_proofing_provider_description}
+    idcsEndpoint: ${data.oci_identity_domain.test_domain.url}
+    identityProofingProviderProvider: ${var.identity_proofing_provider_identity_proofing_provider_provider}
+    name: ${var.identity_proofing_provider_name}
+    ocid: ${var.identity_proofing_provider_ocid}
+    resourceTypeSchemaVersion: ${var.identity_proofing_provider_resource_type_schema_version}
+    runtimeData:
+    - attrName: ${var.identity_proofing_provider_runtime_data_attr_name}
+      attrValue: ${var.identity_proofing_provider_runtime_data_attr_value}
+    schemas:
+    - urn:ietf:params:scim:schemas:oracle:idcs:IdentityProofingProvider
+    status: ${var.identity_proofing_provider_status}

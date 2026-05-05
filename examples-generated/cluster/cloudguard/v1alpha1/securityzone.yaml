@@ -17,4 +17,5 @@ spec:
     displayName: ${var.security_zone_display_name}
     freeformTags:
       bar-key: value
+    isInheritanceAfterDeleteEnabled: ${var.security_zone_is_inheritance_after_delete_enabled}
     securityZoneRecipeId: ${oci_cloud_guard_security_zone_recipe.test_security_zone_recipe.id}

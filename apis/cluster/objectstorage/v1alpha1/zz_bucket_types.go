@@ -21,6 +21,9 @@ type BucketInitParameters struct {
 	// (Updatable) Set the auto tiering status on the bucket. By default, a bucket is created with auto tiering Disabled. Use this option to enable auto tiering during bucket creation. Objects in a bucket with auto tiering set to InfrequentAccess are transitioned automatically between the 'Standard' and 'InfrequentAccess' tiers based on the access pattern of the objects.
 	AutoTiering *string `json:"autoTiering,omitempty" tf:"auto_tiering,omitempty"`
 
+	// (Updatable) Scope in which the bucket is unique. Default value is NAMESPACE. Bucket scope as NAMESPACE means that the bucket is unique only in the owning namespace/tenancy. Other  tenancies can have a bucket with same name in their namespace. Bucket scope as REGION means that the bucket is regionally unique. No other tenancy can have a bucket with same name and scope REGION.
+	BucketScope *string `json:"bucketScope,omitempty" tf:"bucket_scope,omitempty"`
+
 	// (Updatable) The ID of the compartment in which to create the bucket.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -94,6 +97,9 @@ type BucketObservation struct {
 	// The OCID of the bucket which is a Oracle assigned unique identifier for this resource type (bucket). bucket_id cannot be used for bucket lookup.
 	BucketID *string `json:"bucketId,omitempty" tf:"bucket_id,omitempty"`
 
+	// (Updatable) Scope in which the bucket is unique. Default value is NAMESPACE. Bucket scope as NAMESPACE means that the bucket is unique only in the owning namespace/tenancy. Other  tenancies can have a bucket with same name in their namespace. Bucket scope as REGION means that the bucket is regionally unique. No other tenancy can have a bucket with same name and scope REGION.
+	BucketScope *string `json:"bucketScope,omitempty" tf:"bucket_scope,omitempty"`
+
 	// (Updatable) The ID of the compartment in which to create the bucket.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
@@ -160,6 +166,10 @@ type BucketParameters struct {
 	// (Updatable) Set the auto tiering status on the bucket. By default, a bucket is created with auto tiering Disabled. Use this option to enable auto tiering during bucket creation. Objects in a bucket with auto tiering set to InfrequentAccess are transitioned automatically between the 'Standard' and 'InfrequentAccess' tiers based on the access pattern of the objects.
 	// +kubebuilder:validation:Optional
 	AutoTiering *string `json:"autoTiering,omitempty" tf:"auto_tiering,omitempty"`
+
+	// (Updatable) Scope in which the bucket is unique. Default value is NAMESPACE. Bucket scope as NAMESPACE means that the bucket is unique only in the owning namespace/tenancy. Other  tenancies can have a bucket with same name in their namespace. Bucket scope as REGION means that the bucket is regionally unique. No other tenancy can have a bucket with same name and scope REGION.
+	// +kubebuilder:validation:Optional
+	BucketScope *string `json:"bucketScope,omitempty" tf:"bucket_scope,omitempty"`
 
 	// (Updatable) The ID of the compartment in which to create the bucket.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment

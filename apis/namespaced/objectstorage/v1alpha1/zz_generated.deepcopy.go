@@ -143,6 +143,11 @@ func (in *BucketInitParameters) DeepCopyInto(out *BucketInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.BucketScope != nil {
+		in, out := &in.BucketScope, &out.BucketScope
+		*out = new(string)
+		**out = **in
+	}
 	if in.CompartmentID != nil {
 		in, out := &in.CompartmentID, &out.CompartmentID
 		*out = new(string)
@@ -325,6 +330,11 @@ func (in *BucketObservation) DeepCopyInto(out *BucketObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.BucketScope != nil {
+		in, out := &in.BucketScope, &out.BucketScope
+		*out = new(string)
+		**out = **in
+	}
 	if in.CompartmentID != nil {
 		in, out := &in.CompartmentID, &out.CompartmentID
 		*out = new(string)
@@ -472,6 +482,11 @@ func (in *BucketParameters) DeepCopyInto(out *BucketParameters) {
 	}
 	if in.AutoTiering != nil {
 		in, out := &in.AutoTiering, &out.AutoTiering
+		*out = new(string)
+		**out = **in
+	}
+	if in.BucketScope != nil {
+		in, out := &in.BucketScope, &out.BucketScope
 		*out = new(string)
 		**out = **in
 	}

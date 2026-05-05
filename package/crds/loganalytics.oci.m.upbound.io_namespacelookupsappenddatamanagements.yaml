@@ -62,6 +62,7 @@ spec:
               forProvider:
                 properties:
                   appendLookupFile:
+                    description: Path to the file containing data for the lookup append.
                     type: string
                   charEncoding:
                     description: The character encoding of the uploaded file.
@@ -81,7 +82,8 @@ spec:
                     description: The name of the lookup to operate on.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                 type: object
               initProvider:
@@ -98,6 +100,7 @@ spec:
                   autoscaler.
                 properties:
                   appendLookupFile:
+                    description: Path to the file containing data for the lookup append.
                     type: string
                   charEncoding:
                     description: The character encoding of the uploaded file.
@@ -117,7 +120,8 @@ spec:
                     description: The name of the lookup to operate on.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                 type: object
               managementPolicies:
@@ -200,6 +204,7 @@ spec:
               atProvider:
                 properties:
                   appendLookupFile:
+                    description: Path to the file containing data for the lookup append.
                     type: string
                   charEncoding:
                     description: The character encoding of the uploaded file.
@@ -221,7 +226,8 @@ spec:
                     description: The name of the lookup to operate on.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                 type: object
               conditions:

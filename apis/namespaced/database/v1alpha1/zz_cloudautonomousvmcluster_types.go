@@ -88,6 +88,9 @@ type CloudAutonomousVmClusterInitParameters struct {
 	// (Updatable) Indicates that the request is a dry run, if set to "true". A dry run request does not actually  creating or updating a resource and is used only to perform validation on the submitted data.
 	OpcDryRun *bool `json:"opcDryRun,omitempty" tf:"opc_dry_run,omitempty"`
 
+	// (Updatable) An optional property when incremented triggers Register Pkcs. Could be set to any integer value.
+	RegisterPkcsTrigger *float64 `json:"registerPkcsTrigger,omitempty" tf:"register_pkcs_trigger,omitempty"`
+
 	// The SCAN Listener Non TLS port. Default is 1521.
 	ScanListenerPortNonTLS *float64 `json:"scanListenerPortNonTls,omitempty" tf:"scan_listener_port_non_tls,omitempty"`
 
@@ -113,11 +116,17 @@ type CloudAutonomousVmClusterInitParameters struct {
 	// The OCID of the subscription with which resource needs to be associated with.
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
+	// TDE keystore type
+	TdeKeyStoreType *string `json:"tdeKeyStoreType,omitempty" tf:"tde_key_store_type,omitempty"`
+
 	// The last date and time that the cloud Autonomous VM cluster was updated.
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) The total number of Autonomous Container Databases that can be created.
 	TotalContainerDatabases *float64 `json:"totalContainerDatabases,omitempty" tf:"total_container_databases,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Unregister Pkcs. Could be set to any integer value.
+	UnregisterPkcsTrigger *float64 `json:"unregisterPkcsTrigger,omitempty" tf:"unregister_pkcs_trigger,omitempty"`
 }
 
 type CloudAutonomousVmClusterMaintenanceWindowDaysOfWeekInitParameters struct {
@@ -455,6 +464,9 @@ type CloudAutonomousVmClusterObservation struct {
 	// The memory allocated in GBs.
 	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
+	// Details of the multi cloud identity connectors of the VM cluster.
+	MultiCloudIdentityConnectorConfigs []MultiCloudIdentityConnectorConfigsObservation `json:"multiCloudIdentityConnectorConfigs,omitempty" tf:"multi_cloud_identity_connector_configs,omitempty"`
+
 	// The OCID of the next maintenance run.
 	NextMaintenanceRunID *string `json:"nextMaintenanceRunId,omitempty" tf:"next_maintenance_run_id,omitempty"`
 
@@ -489,6 +501,9 @@ type CloudAutonomousVmClusterObservation struct {
 	// CPUs that continue to be included in the count of CPUs available to the Autonomous Container Database even after one of its Autonomous AI Database is terminated or scaled down. You can release them to the available CPUs at its parent Autonomous VM Cluster level by restarting the Autonomous Container Database.
 	ReclaimableCpus *float64 `json:"reclaimableCpus,omitempty" tf:"reclaimable_cpus,omitempty"`
 
+	// (Updatable) An optional property when incremented triggers Register Pkcs. Could be set to any integer value.
+	RegisterPkcsTrigger *float64 `json:"registerPkcsTrigger,omitempty" tf:"register_pkcs_trigger,omitempty"`
+
 	// The number of CPUs reserved in an Autonomous VM Cluster.
 	ReservedCpus *float64 `json:"reservedCpus,omitempty" tf:"reserved_cpus,omitempty"`
 
@@ -518,6 +533,9 @@ type CloudAutonomousVmClusterObservation struct {
 	// +mapType=granular
 	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
+	// TDE keystore type
+	TdeKeyStoreType *string `json:"tdeKeyStoreType,omitempty" tf:"tde_key_store_type,omitempty"`
+
 	// The date and time that the cloud Autonomous VM cluster was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
@@ -538,6 +556,9 @@ type CloudAutonomousVmClusterObservation struct {
 
 	// The total number of CPUs in an Autonomous VM Cluster.
 	TotalCpus *float64 `json:"totalCpus,omitempty" tf:"total_cpus,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Unregister Pkcs. Could be set to any integer value.
+	UnregisterPkcsTrigger *float64 `json:"unregisterPkcsTrigger,omitempty" tf:"unregister_pkcs_trigger,omitempty"`
 }
 
 type CloudAutonomousVmClusterParameters struct {
@@ -631,6 +652,10 @@ type CloudAutonomousVmClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	OpcDryRun *bool `json:"opcDryRun,omitempty" tf:"opc_dry_run,omitempty"`
 
+	// (Updatable) An optional property when incremented triggers Register Pkcs. Could be set to any integer value.
+	// +kubebuilder:validation:Optional
+	RegisterPkcsTrigger *float64 `json:"registerPkcsTrigger,omitempty" tf:"register_pkcs_trigger,omitempty"`
+
 	// The SCAN Listener Non TLS port. Default is 1521.
 	// +kubebuilder:validation:Optional
 	ScanListenerPortNonTLS *float64 `json:"scanListenerPortNonTls,omitempty" tf:"scan_listener_port_non_tls,omitempty"`
@@ -661,6 +686,10 @@ type CloudAutonomousVmClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
+	// TDE keystore type
+	// +kubebuilder:validation:Optional
+	TdeKeyStoreType *string `json:"tdeKeyStoreType,omitempty" tf:"tde_key_store_type,omitempty"`
+
 	// The last date and time that the cloud Autonomous VM cluster was updated.
 	// +kubebuilder:validation:Optional
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
@@ -668,6 +697,25 @@ type CloudAutonomousVmClusterParameters struct {
 	// (Updatable) The total number of Autonomous Container Databases that can be created.
 	// +kubebuilder:validation:Optional
 	TotalContainerDatabases *float64 `json:"totalContainerDatabases,omitempty" tf:"total_container_databases,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Unregister Pkcs. Could be set to any integer value.
+	// +kubebuilder:validation:Optional
+	UnregisterPkcsTrigger *float64 `json:"unregisterPkcsTrigger,omitempty" tf:"unregister_pkcs_trigger,omitempty"`
+}
+
+type MultiCloudIdentityConnectorConfigsInitParameters struct {
+}
+
+type MultiCloudIdentityConnectorConfigsObservation struct {
+
+	// Cloud provider
+	CloudProvider *string `json:"cloudProvider,omitempty" tf:"cloud_provider,omitempty"`
+
+	// The OCID of the Cloud Autonomous VM cluster.
+	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+}
+
+type MultiCloudIdentityConnectorConfigsParameters struct {
 }
 
 // CloudAutonomousVmClusterSpec defines the desired state of CloudAutonomousVmCluster

@@ -13,6 +13,15 @@ spec:
       dataType: ${var.namespace_scheduled_task_action_data_type}
       metricExtraction:
       - compartmentId: ${var.compartment_id}
+        metricCollections:
+        - dimensions:
+          - dimensionName: ${var.namespace_scheduled_task_action_metric_extraction_metric_collections_dimensions_dimension_name}
+            queryFieldName: ${var.namespace_scheduled_task_action_metric_extraction_metric_collections_dimensions_query_field_name}
+          metricName: ${oci_monitoring_metric.test_metric.name}
+          metricQueryFieldName: ${var.namespace_scheduled_task_action_metric_extraction_metric_collections_metric_query_field_name}
+          queryTableNameSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_table
         metricName: ${oci_monitoring_metric.test_metric.name}
         namespace: ${var.namespace_scheduled_task_action_metric_extraction_namespace}
         resourceGroup: ${var.namespace_scheduled_task_action_metric_extraction_resource_group}
@@ -33,6 +42,7 @@ spec:
         testing.upbound.io/example-name: example
     definedTags:
       foo-namespace.bar-key: value
+    description: ${var.namespace_scheduled_task_description}
     displayName: ${var.namespace_scheduled_task_display_name}
     freeformTags:
       bar-key: value
@@ -42,8 +52,10 @@ spec:
     schedules:
     - expression: ${var.namespace_scheduled_task_schedules_expression}
       misfire_policy: ${var.namespace_scheduled_task_schedules_misfire_policy}
+      query_offset_secs: ${var.namespace_scheduled_task_schedules_query_offset_secs}
       recurring_interval: ${var.namespace_scheduled_task_schedules_recurring_interval}
       repeat_count: ${var.namespace_scheduled_task_schedules_repeat_count}
+      time_end: ${var.namespace_scheduled_task_schedules_time_end}
       time_zone: ${var.namespace_scheduled_task_schedules_time_zone}
       type: ${var.namespace_scheduled_task_schedules_type}
     taskType: ${var.namespace_scheduled_task_task_type}

@@ -19,7 +19,7 @@ type NamespaceStorageEnableDisableArchivingInitParameters struct {
 	// (Updatable) A required field when set to true calls enable action and when set to false calls disable action.
 	EnableArchivingTenant *bool `json:"enableArchivingTenant,omitempty" tf:"enable_archiving_tenant,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
@@ -33,7 +33,7 @@ type NamespaceStorageEnableDisableArchivingObservation struct {
 	// A human-readable success string.
 	Message *string `json:"message,omitempty" tf:"message,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
@@ -43,7 +43,7 @@ type NamespaceStorageEnableDisableArchivingParameters struct {
 	// +kubebuilder:validation:Optional
 	EnableArchivingTenant *bool `json:"enableArchivingTenant,omitempty" tf:"enable_archiving_tenant,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }

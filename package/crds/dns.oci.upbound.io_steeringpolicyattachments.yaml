@@ -164,7 +164,7 @@ spec:
                         type: object
                     type: object
                   zoneId:
-                    description: The OCID of the attached zone.
+                    description: The OCID of the attached zone. Must be a public zone.
                     type: string
                   zoneIdRef:
                     description: Reference to a Zone in dns to populate zoneId.
@@ -343,7 +343,7 @@ spec:
                         type: object
                     type: object
                   zoneId:
-                    description: The OCID of the attached zone.
+                    description: The OCID of the attached zone. Must be a public zone.
                     type: string
                   zoneIdRef:
                     description: Reference to a Zone in dns to populate zoneId.
@@ -556,7 +556,7 @@ spec:
                       in RFC 3339 timestamp format.
                     type: string
                   zoneId:
-                    description: The OCID of the attached zone.
+                    description: The OCID of the attached zone. Must be a public zone.
                     type: string
                 type: object
               conditions:

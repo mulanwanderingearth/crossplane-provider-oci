@@ -4674,6 +4674,24 @@ spec:
             properties:
               atProvider:
                 properties:
+                  chargebackPlanDetails:
+                    description: Object containing chargeback plan details
+                    items:
+                      properties:
+                        planId:
+                          description: OCID of OPSI Chargeback plan resource.
+                          type: string
+                        planType:
+                          description: Chargeback Plan type of the chargeback entity.
+                            For an Exadata it can be WEIGHTED_ALLOCATION, EQUAL_ALLOCATION,
+                            UNUSED_ALLOCATION.
+                          type: string
+                        timeEnabled:
+                          description: The date and time the chargeback plan was enabled
+                            on the resource, in the format defined by RFC3339.
+                          type: string
+                      type: object
+                    type: array
                   compartmentId:
                     description: (Updatable) Compartment Identifier of Exadata insight
                     type: string
@@ -5140,6 +5158,11 @@ spec:
                     description: '(Updatable) Status of the resource. Example: "ENABLED",
                       "DISABLED". Resource can be either enabled or disabled by updating
                       the value of status field to either "ENABLED" or "DISABLED"'
+                    type: string
+                  statusDetails:
+                    description: A message describing the status of the Exadata Resource.
+                      For example, it can be used to provide actionable information
+                      about the policies needed to access the Exadata Resource.
                     type: string
                   systemTags:
                     additionalProperties:

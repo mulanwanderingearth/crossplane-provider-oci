@@ -1,0 +1,16 @@
+apiVersion: bds.oci.upbound.io/v1alpha1
+kind: BdsInstanceExecuteBootstrapScriptAction
+metadata:
+  annotations:
+    meta.upbound.io/example-id: bds/v1alpha1/bdsinstanceexecutebootstrapscriptaction
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+spec:
+  forProvider:
+    bdsInstanceId: ${var.bds_instance_id}
+    bootstrapScriptUrl: ${var.bootstrap_script_url}
+    clusterAdminPasswordSecretRef:
+      key: example-key
+      name: example-secret
+      namespace: upbound-system

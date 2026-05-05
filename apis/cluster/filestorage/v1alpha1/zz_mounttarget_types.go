@@ -353,6 +353,9 @@ type MountTargetObservation struct {
 	// Locks associated with this resource.
 	Locks []MountTargetLocksObservation `json:"locks,omitempty" tf:"locks,omitempty"`
 
+	// The OCIDs of the IPv6 addresses associated with this mount target.
+	MountTargetIpv6Ids []*string `json:"mountTargetIpv6Ids,omitempty" tf:"mount_target_ipv6ids,omitempty"`
+
 	// (Updatable) A list of Network Security Group OCIDs associated with this mount target. A maximum of 5 is allowed. Setting this to an empty array after the list is created removes the mount target from all NSGs. For more information about NSGs, see Security Rules.
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
@@ -382,7 +385,7 @@ type MountTargetObservation struct {
 	// +mapType=granular
 	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
-	// The date and time the mount target current billing cycle will end, expressed in  RFC 3339 timestamp format. Once a cycle ends, it is updated  automatically to next timestamp which is after 30 days.  Example: 2016-08-25T21:10:29.600Z
+	// The date and time the mount target current billing cycle will end, expressed in RFC 3339 timestamp format. Once a cycle ends, it is updated automatically to next timestamp which is after 30 days.  Example: 2016-08-25T21:10:29.600Z
 	TimeBillingCycleEnd *string `json:"timeBillingCycleEnd,omitempty" tf:"time_billing_cycle_end,omitempty"`
 
 	// When the lock was created.

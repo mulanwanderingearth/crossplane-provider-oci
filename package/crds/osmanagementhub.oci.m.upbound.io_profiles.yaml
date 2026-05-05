@@ -161,8 +161,8 @@ spec:
                       profile.
                     type: string
                   displayName:
-                    description: (Updatable) A user-friendly name. Does not have to
-                      be unique and you can change the name later. Avoid entering  confidential
+                    description: (Updatable) A user-friendly name. Must be unique
+                      and you can change the name later. Avoid entering  confidential
                       information.
                     type: string
                   freeformTags:
@@ -273,7 +273,7 @@ spec:
                     type: object
                   managementStationId:
                     description: 'description: The OCID of the management station
-                      to associate  with an instance once registered. This is required
+                      to associate  with an instance once registered. This is used
                       when creating a profile for non-OCI instances.'
                     type: string
                   managementStationIdRef:
@@ -368,9 +368,8 @@ spec:
                     description: The type of instance to register.
                     type: string
                   softwareSourceIds:
-                    description: (Applicable when profile_type=SOFTWARESOURCE) The
-                      list of software source OCIDs that the registration profile
-                      will use.
+                    description: The list of software source OCIDs that the registration
+                      profile will use.
                     items:
                       type: string
                     type: array
@@ -493,8 +492,8 @@ spec:
                       profile.
                     type: string
                   displayName:
-                    description: (Updatable) A user-friendly name. Does not have to
-                      be unique and you can change the name later. Avoid entering  confidential
+                    description: (Updatable) A user-friendly name. Must be unique
+                      and you can change the name later. Avoid entering  confidential
                       information.
                     type: string
                   freeformTags:
@@ -605,7 +604,7 @@ spec:
                     type: object
                   managementStationId:
                     description: 'description: The OCID of the management station
-                      to associate  with an instance once registered. This is required
+                      to associate  with an instance once registered. This is used
                       when creating a profile for non-OCI instances.'
                     type: string
                   managementStationIdRef:
@@ -700,9 +699,8 @@ spec:
                     description: The type of instance to register.
                     type: string
                   softwareSourceIds:
-                    description: (Applicable when profile_type=SOFTWARESOURCE) The
-                      list of software source OCIDs that the registration profile
-                      will use.
+                    description: The list of software source OCIDs that the registration
+                      profile will use.
                     items:
                       type: string
                     type: array
@@ -804,8 +802,8 @@ spec:
                       profile.
                     type: string
                   displayName:
-                    description: (Updatable) A user-friendly name. Does not have to
-                      be unique and you can change the name later. Avoid entering  confidential
+                    description: (Updatable) A user-friendly name. Must be unique
+                      and you can change the name later. Avoid entering  confidential
                       information.
                     type: string
                   freeformTags:
@@ -838,9 +836,9 @@ spec:
                     items:
                       properties:
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique and you can change the name later. Avoid
-                            entering  confidential information.
+                          description: (Updatable) A user-friendly name. Must be unique
+                            and you can change the name later. Avoid entering  confidential
+                            information.
                           type: string
                         id:
                           description: The OCID of the registration profile.
@@ -853,9 +851,9 @@ spec:
                     items:
                       properties:
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique and you can change the name later. Avoid
-                            entering  confidential information.
+                          description: (Updatable) A user-friendly name. Must be unique
+                            and you can change the name later. Avoid entering  confidential
+                            information.
                           type: string
                         id:
                           description: The OCID of the registration profile.
@@ -872,9 +870,9 @@ spec:
                     items:
                       properties:
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique and you can change the name later. Avoid
-                            entering  confidential information.
+                          description: (Updatable) A user-friendly name. Must be unique
+                            and you can change the name later. Avoid entering  confidential
+                            information.
                           type: string
                         id:
                           description: The OCID of the registration profile.
@@ -887,7 +885,7 @@ spec:
                     type: string
                   managementStationId:
                     description: 'description: The OCID of the management station
-                      to associate  with an instance once registered. This is required
+                      to associate  with an instance once registered. This is used
                       when creating a profile for non-OCI instances.'
                     type: string
                   osFamily:
@@ -904,9 +902,8 @@ spec:
                     description: The type of instance to register.
                     type: string
                   softwareSourceIds:
-                    description: (Applicable when profile_type=SOFTWARESOURCE) The
-                      list of software source OCIDs that the registration profile
-                      will use.
+                    description: The list of software source OCIDs that the registration
+                      profile will use.
                     items:
                       type: string
                     type: array
@@ -920,9 +917,9 @@ spec:
                             registration profile.
                           type: string
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique and you can change the name later. Avoid
-                            entering  confidential information.
+                          description: (Updatable) A user-friendly name. Must be unique
+                            and you can change the name later. Avoid entering  confidential
+                            information.
                           type: string
                         id:
                           description: The OCID of the registration profile.

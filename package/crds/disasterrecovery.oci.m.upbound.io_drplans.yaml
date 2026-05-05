@@ -540,9 +540,9 @@ spec:
                                         { "FnParam1", "FnParam2" }'
                                       type: string
                                     runAsUser:
-                                      description: 'The userid on the instance to
-                                        be used for executing the script or command.  Example:
-                                        opc'
+                                      description: 'The user ID on the instance that
+                                        will be used to execute the script specified
+                                        in ''scriptCommand''. Example: opc'
                                       type: string
                                     runOnInstanceId:
                                       description: The OCID of the instance on which
@@ -554,9 +554,12 @@ spec:
                                         us-ashburn-1'
                                       type: string
                                     scriptCommand:
-                                      description: 'The script name and arguments.  Example:
-                                        /usr/bin/python3 /home/opc/scripts/my_app_script.py
-                                        arg1 arg2 arg3'
+                                      description: 'The entire path and arguments
+                                        for the script that is stored in object store,
+                                        or inside a compressed archive in object store.
+                                        Example: /usr/bin/python3.7 scripts/start_server.py
+                                        --port 8080 --env "production" --max-connections
+                                        200 --log-level "INFO"'
                                       type: string
                                     stepType:
                                       description: The type of the user-defined step.

@@ -1,0 +1,15 @@
+apiVersion: loganalytics.oci.upbound.io/v1alpha1
+kind: LogAnalyticsEntityAssociationsAdd
+metadata:
+  annotations:
+    meta.upbound.io/example-id: loganalytics/v1alpha1/loganalyticsentityassociationsadd
+  labels:
+    testing.upbound.io/example-name: test_log_analytics_entity_associations_add
+  name: test-log-analytics-entity-associations-add
+spec:
+  forProvider:
+    associationEntities: ${var.log_analytics_entity_associations_add_association_entities}
+    logAnalyticsEntityIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_log_analytics_entity
+    namespace: ${var.log_analytics_entity_associations_add_namespace}

@@ -59,6 +59,41 @@ spec:
             properties:
               forProvider:
                 properties:
+                  capabilities:
+                    description: (Updatable) The capability to add on the queue
+                    items:
+                      properties:
+                        isPrimaryConsumerGroupEnabled:
+                          description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
+                            Specifies if the primary consumer group should be automatically
+                            enabled after adding the capability.
+                          type: boolean
+                        primaryConsumerGroupDeadLetterQueueDeliveryCount:
+                          description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
+                            The number of times a message can be delivered to a consumer
+                            before being moved to the dead letter queue.  A value
+                            of 0 indicates that the DLQ is not used. If the value
+                            isn't set, it will be using the value defined at the queue
+                            level.
+                          type: number
+                        primaryConsumerGroupDisplayName:
+                          description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
+                            Name of the primary consumer group. If omitted, it will
+                            be named "Primary Consumer Group".
+                          type: string
+                        primaryConsumerGroupFilter:
+                          description: (Applicable when type=CONSUMER_GROUPS) The
+                            primary consumer group cannot have any filter hence this
+                            field will always be empty. An empty value means that
+                            all messages will be available in the primary consumer
+                            group.
+                          type: string
+                        type:
+                          description: (Updatable) The type of the capability. Could
+                            be CONSUMER_GROUPS and/or LARGE_MESSAGES
+                          type: string
+                      type: object
+                    type: array
                   channelConsumptionLimit:
                     description: (Updatable) The percentage of allocated queue resources
                       that can be consumed by a single channel. For example, if a
@@ -296,6 +331,41 @@ spec:
                   for example because of an external controller is managing them, like an
                   autoscaler.
                 properties:
+                  capabilities:
+                    description: (Updatable) The capability to add on the queue
+                    items:
+                      properties:
+                        isPrimaryConsumerGroupEnabled:
+                          description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
+                            Specifies if the primary consumer group should be automatically
+                            enabled after adding the capability.
+                          type: boolean
+                        primaryConsumerGroupDeadLetterQueueDeliveryCount:
+                          description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
+                            The number of times a message can be delivered to a consumer
+                            before being moved to the dead letter queue.  A value
+                            of 0 indicates that the DLQ is not used. If the value
+                            isn't set, it will be using the value defined at the queue
+                            level.
+                          type: number
+                        primaryConsumerGroupDisplayName:
+                          description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
+                            Name of the primary consumer group. If omitted, it will
+                            be named "Primary Consumer Group".
+                          type: string
+                        primaryConsumerGroupFilter:
+                          description: (Applicable when type=CONSUMER_GROUPS) The
+                            primary consumer group cannot have any filter hence this
+                            field will always be empty. An empty value means that
+                            all messages will be available in the primary consumer
+                            group.
+                          type: string
+                        type:
+                          description: (Updatable) The type of the capability. Could
+                            be CONSUMER_GROUPS and/or LARGE_MESSAGES
+                          type: string
+                      type: object
+                    type: array
                   channelConsumptionLimit:
                     description: (Updatable) The percentage of allocated queue resources
                       that can be consumed by a single channel. For example, if a
@@ -590,6 +660,41 @@ spec:
             properties:
               atProvider:
                 properties:
+                  capabilities:
+                    description: (Updatable) The capability to add on the queue
+                    items:
+                      properties:
+                        isPrimaryConsumerGroupEnabled:
+                          description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
+                            Specifies if the primary consumer group should be automatically
+                            enabled after adding the capability.
+                          type: boolean
+                        primaryConsumerGroupDeadLetterQueueDeliveryCount:
+                          description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
+                            The number of times a message can be delivered to a consumer
+                            before being moved to the dead letter queue.  A value
+                            of 0 indicates that the DLQ is not used. If the value
+                            isn't set, it will be using the value defined at the queue
+                            level.
+                          type: number
+                        primaryConsumerGroupDisplayName:
+                          description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
+                            Name of the primary consumer group. If omitted, it will
+                            be named "Primary Consumer Group".
+                          type: string
+                        primaryConsumerGroupFilter:
+                          description: (Applicable when type=CONSUMER_GROUPS) The
+                            primary consumer group cannot have any filter hence this
+                            field will always be empty. An empty value means that
+                            all messages will be available in the primary consumer
+                            group.
+                          type: string
+                        type:
+                          description: (Updatable) The type of the capability. Could
+                            be CONSUMER_GROUPS and/or LARGE_MESSAGES
+                          type: string
+                      type: object
+                    type: array
                   channelConsumptionLimit:
                     description: (Updatable) The percentage of allocated queue resources
                       that can be consumed by a single channel. For example, if a

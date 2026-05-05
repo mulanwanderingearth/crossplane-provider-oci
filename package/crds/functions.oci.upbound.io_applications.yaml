@@ -284,6 +284,18 @@ spec:
                           type: array
                       type: object
                     type: array
+                  logging:
+                    description: (Updatable) Set logging configuration for an application.
+                      This is only used if Service Logs for the application are enabled
+                      in the Oracle Cloud Infrastructure Logging service.
+                    items:
+                      properties:
+                        lineFormat:
+                          description: (Updatable) Specify the format of log lines
+                            emitted by functions in this application.
+                          type: string
+                      type: object
+                    type: array
                   networkSecurityGroupIds:
                     description: (Updatable) The OCIDs of the Network Security Groups
                       to add the application to.
@@ -722,6 +734,18 @@ spec:
                           type: array
                       type: object
                     type: array
+                  logging:
+                    description: (Updatable) Set logging configuration for an application.
+                      This is only used if Service Logs for the application are enabled
+                      in the Oracle Cloud Infrastructure Logging service.
+                    items:
+                      properties:
+                        lineFormat:
+                          description: (Updatable) Specify the format of log lines
+                            emitted by functions in this application.
+                          type: string
+                      type: object
+                    type: array
                   networkSecurityGroupIds:
                     description: (Updatable) The OCIDs of the Network Security Groups
                       to add the application to.
@@ -1094,6 +1118,18 @@ spec:
                                 type: string
                             type: object
                           type: array
+                      type: object
+                    type: array
+                  logging:
+                    description: (Updatable) Set logging configuration for an application.
+                      This is only used if Service Logs for the application are enabled
+                      in the Oracle Cloud Infrastructure Logging service.
+                    items:
+                      properties:
+                        lineFormat:
+                          description: (Updatable) Specify the format of log lines
+                            emitted by functions in this application.
+                          type: string
                       type: object
                     type: array
                   networkSecurityGroupIds:

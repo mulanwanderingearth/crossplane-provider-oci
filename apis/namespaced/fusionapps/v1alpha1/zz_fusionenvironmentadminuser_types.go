@@ -38,9 +38,6 @@ type FusionEnvironmentAdminUserInitParameters struct {
 	// The administrator's last name.
 	LastName *string `json:"lastName,omitempty" tf:"last_name,omitempty"`
 
-	// The password for the administrator.
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
-
 	// The username for the administrator.
 	Username *string `json:"username,omitempty" tf:"username,omitempty"`
 }
@@ -95,10 +92,6 @@ type FusionEnvironmentAdminUserParameters struct {
 	// The administrator's last name.
 	// +kubebuilder:validation:Optional
 	LastName *string `json:"lastName,omitempty" tf:"last_name,omitempty"`
-
-	// The password for the administrator.
-	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The username for the administrator.
 	// +kubebuilder:validation:Optional

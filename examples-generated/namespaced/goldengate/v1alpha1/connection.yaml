@@ -29,17 +29,18 @@ spec:
     bootstrapServers:
     - host: ${var.connection_bootstrap_servers_host}
       port: ${var.connection_bootstrap_servers_port}
-      privateIp: ${var.connection_bootstrap_servers_private_ip}
     catalog:
     - branch: ${var.connection_catalog_branch}
       catalogType: ${var.connection_catalog_catalog_type}
       clientId: ${oci_golden_gate_client.test_client.id}
+      clientSecret: ${var.connection_catalog_client_secret}
       clientSecretSecretIdSelector:
         matchLabels:
           testing.upbound.io/example-name: test_secret
       glueId: ${oci_golden_gate_glue.test_glue.id}
       name: ${var.connection_catalog_name}
       principalRole: ${var.connection_catalog_principal_role}
+      properties: ${var.connection_catalog_properties}
       propertiesSecretIdSelector:
         matchLabels:
           testing.upbound.io/example-name: test_secret
@@ -124,7 +125,6 @@ spec:
       key: example-key
       name: example-secret
     port: ${var.connection_port}
-    privateIp: ${var.connection_private_ip}
     privateKeyFileSecretIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_secret
@@ -202,6 +202,7 @@ spec:
     - accessKeyIdSelector:
         matchLabels:
           testing.upbound.io/example-name: test_key
+      accountKey: ${var.connection_storage_account_key}
       accountKeySecretIdSelector:
         matchLabels:
           testing.upbound.io/example-name: test_secret
@@ -214,9 +215,11 @@ spec:
           testing.upbound.io/example-name: test_project
       region: ${var.connection_storage_region}
       schemeType: ${var.connection_storage_scheme_type}
+      secretAccessKey: ${var.connection_storage_secret_access_key}
       secretAccessKeySecretIdSelector:
         matchLabels:
           testing.upbound.io/example-name: test_secret
+      serviceAccountKeyFile: ${var.connection_storage_service_account_key_file}
       serviceAccountKeyFileSecretIdSelector:
         matchLabels:
           testing.upbound.io/example-name: test_secret

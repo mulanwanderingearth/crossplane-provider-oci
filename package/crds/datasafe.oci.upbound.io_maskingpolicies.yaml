@@ -883,6 +883,10 @@ spec:
                       triggers Add Masking Columns From Sdm. Could be set to any integer
                       value.
                     type: number
+                  areTargetCredentialsRequired:
+                    description: Specifies whether target database credentials are
+                      required to perform masking with this policy
+                    type: boolean
                   columnSource:
                     description: (Updatable) Details to associate a column source
                       with a masking policy.

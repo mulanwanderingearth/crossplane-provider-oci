@@ -52,6 +52,15 @@ func (l *AgentKnowledgeBaseList) GetItems() []resource.Managed {
 	return items
 }
 
+// GetItems of this AgentProvisionedCapacityList.
+func (l *AgentProvisionedCapacityList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this AgentToolList.
 func (l *AgentToolList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
@@ -88,8 +97,26 @@ func (l *GenerativeAiPrivateEndpointList) GetItems() []resource.Managed {
 	return items
 }
 
+// GetItems of this ImportedModelList.
+func (l *ImportedModelList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this ModelList.
 func (l *ModelList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this SemanticStoreList.
+func (l *SemanticStoreList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]

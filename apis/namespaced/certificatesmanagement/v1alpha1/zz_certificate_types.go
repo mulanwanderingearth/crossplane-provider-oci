@@ -19,7 +19,7 @@ type CertificateConfigInitParameters struct {
 	// The name of the profile used to create the certificate, which depends on the type of certificate you need.
 	CertificateProfileType *string `json:"certificateProfileType,omitempty" tf:"certificate_profile_type,omitempty"`
 
-	// (Updatable) The origin of the certificate.
+	// (Updatable) The origin of the certificate. It must be one of the supported types: MANAGED_EXTERNALLY_ISSUED_BY_INTERNAL_CA or ISSUED_BY_INTERNAL_CA.
 	ConfigType *string `json:"configType,omitempty" tf:"config_type,omitempty"`
 
 	// (Updatable) The certificate signing request (in PEM format).
@@ -61,7 +61,7 @@ type CertificateConfigObservation struct {
 	// The name of the profile used to create the certificate, which depends on the type of certificate you need.
 	CertificateProfileType *string `json:"certificateProfileType,omitempty" tf:"certificate_profile_type,omitempty"`
 
-	// (Updatable) The origin of the certificate.
+	// (Updatable) The origin of the certificate. It must be one of the supported types: MANAGED_EXTERNALLY_ISSUED_BY_INTERNAL_CA or ISSUED_BY_INTERNAL_CA.
 	ConfigType *string `json:"configType,omitempty" tf:"config_type,omitempty"`
 
 	// (Updatable) The certificate signing request (in PEM format).
@@ -95,7 +95,7 @@ type CertificateConfigParameters struct {
 	// +kubebuilder:validation:Optional
 	CertificateProfileType *string `json:"certificateProfileType,omitempty" tf:"certificate_profile_type,omitempty"`
 
-	// (Updatable) The origin of the certificate.
+	// (Updatable) The origin of the certificate. It must be one of the supported types: MANAGED_EXTERNALLY_ISSUED_BY_INTERNAL_CA or ISSUED_BY_INTERNAL_CA.
 	// +kubebuilder:validation:Optional
 	ConfigType *string `json:"configType" tf:"config_type,omitempty"`
 
@@ -193,7 +193,7 @@ type CertificateObservation struct {
 	// (Updatable) The OCID of the compartment where you want to create the certificate.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	// (Updatable) The origin of the certificate.
+	// (Updatable) The origin of the certificate. It must be one of the supported types: MANAGED_EXTERNALLY_ISSUED_BY_INTERNAL_CA or ISSUED_BY_INTERNAL_CA.
 	ConfigType *string `json:"configType,omitempty" tf:"config_type,omitempty"`
 
 	// The details of the certificate version. This object does not contain the certificate contents.

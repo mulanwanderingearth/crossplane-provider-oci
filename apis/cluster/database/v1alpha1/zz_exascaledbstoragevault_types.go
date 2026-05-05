@@ -18,7 +18,7 @@ type ExascaleDbStorageVaultInitParameters struct {
 	// (Updatable) The size of additional Flash Cache in percentage of High Capacity database storage.
 	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
-	// (Updatable) Maximum limit storage size in gigabytes, that is applicable for the Database Storage Vault.
+	// (Updatable) The maximum limit, in gigabytes, to which the Vault storage size can automatically scale when auto scaling is enabled for the Database Storage Vault
 	AutoscaleLimitInGbs *float64 `json:"autoscaleLimitInGbs,omitempty" tf:"autoscale_limit_in_gbs,omitempty"`
 
 	// The name of the availability domain in which the Exadata Database Storage Vault is located.
@@ -97,7 +97,7 @@ type ExascaleDbStorageVaultObservation struct {
 	// The shapeAttribute of the Exadata VM cluster(s) associated with the Exadata Database Storage Vault.
 	AttachedShapeAttributes []*string `json:"attachedShapeAttributes,omitempty" tf:"attached_shape_attributes,omitempty"`
 
-	// (Updatable) Maximum limit storage size in gigabytes, that is applicable for the Database Storage Vault.
+	// (Updatable) The maximum limit, in gigabytes, to which the Vault storage size can automatically scale when auto scaling is enabled for the Database Storage Vault
 	AutoscaleLimitInGbs *float64 `json:"autoscaleLimitInGbs,omitempty" tf:"autoscale_limit_in_gbs,omitempty"`
 
 	// The name of the availability domain in which the Exadata Database Storage Vault is located.
@@ -167,7 +167,7 @@ type ExascaleDbStorageVaultParameters struct {
 	// +kubebuilder:validation:Optional
 	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
-	// (Updatable) Maximum limit storage size in gigabytes, that is applicable for the Database Storage Vault.
+	// (Updatable) The maximum limit, in gigabytes, to which the Vault storage size can automatically scale when auto scaling is enabled for the Database Storage Vault
 	// +kubebuilder:validation:Optional
 	AutoscaleLimitInGbs *float64 `json:"autoscaleLimitInGbs,omitempty" tf:"autoscale_limit_in_gbs,omitempty"`
 

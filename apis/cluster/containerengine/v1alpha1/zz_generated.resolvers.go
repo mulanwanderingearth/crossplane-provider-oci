@@ -777,6 +777,30 @@ func (mg *NodePool) ResolveReferences(ctx context.Context, c client.Reader) erro
 		mg.Spec.ForProvider.NodeSourceDetails[i3].ImageIDRef = rsp.ResolvedReference
 
 	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.SecondaryVnics); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.SecondaryVnics[i3].CreateVnicDetails); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("networking.oci.upbound.io", "v1alpha1", "Subnet", "SubnetList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetID),
+					Extract:      resource.ExtractResourceID(),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.ForProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetIDRef,
+					Selector:     mg.Spec.ForProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetIDSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.ForProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetID")
+			}
+			mg.Spec.ForProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetID = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.ForProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetIDRef = rsp.ResolvedReference
+
+		}
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("containerengine.oci.upbound.io", "v1alpha1", "Cluster", "ClusterList")
 		if err != nil {
@@ -926,6 +950,30 @@ func (mg *NodePool) ResolveReferences(ctx context.Context, c client.Reader) erro
 		mg.Spec.InitProvider.NodeSourceDetails[i3].ImageID = reference.ToPtrValue(rsp.ResolvedValue)
 		mg.Spec.InitProvider.NodeSourceDetails[i3].ImageIDRef = rsp.ResolvedReference
 
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.SecondaryVnics); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.SecondaryVnics[i3].CreateVnicDetails); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("networking.oci.upbound.io", "v1alpha1", "Subnet", "SubnetList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetID),
+					Extract:      resource.ExtractResourceID(),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.InitProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetIDRef,
+					Selector:     mg.Spec.InitProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetIDSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.InitProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetID")
+			}
+			mg.Spec.InitProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetID = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.InitProvider.SecondaryVnics[i3].CreateVnicDetails[i4].SubnetIDRef = rsp.ResolvedReference
+
+		}
 	}
 
 	return nil

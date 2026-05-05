@@ -74,6 +74,9 @@ spec:
                 type: string
               forProvider:
                 properties:
+                  archType:
+                    description: (Updatable) The architecture type.
+                    type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment that contains
                       the management station.
@@ -216,6 +219,9 @@ spec:
                           type: string
                       type: object
                     type: array
+                  osFamily:
+                    description: (Updatable) The operating system family.
+                    type: string
                   proxy:
                     description: (Updatable) Information used to create the proxy
                       configuration for a management station.
@@ -258,6 +264,9 @@ spec:
                   for example because of an external controller is managing them, like an
                   autoscaler.
                 properties:
+                  archType:
+                    description: (Updatable) The architecture type.
+                    type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment that contains
                       the management station.
@@ -400,6 +409,9 @@ spec:
                           type: string
                       type: object
                     type: array
+                  osFamily:
+                    description: (Updatable) The operating system family.
+                    type: string
                   proxy:
                     description: (Updatable) Information used to create the proxy
                       configuration for a management station.
@@ -539,6 +551,9 @@ spec:
             properties:
               atProvider:
                 properties:
+                  archType:
+                    description: (Updatable) The architecture type.
+                    type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment that contains
                       the management station.
@@ -678,6 +693,9 @@ spec:
                       software sources on the station. Each package is counted only
                       once, regardless of how many versions it has.
                     type: number
+                  osFamily:
+                    description: (Updatable) The operating system family.
+                    type: string
                   overallPercentage:
                     description: A decimal number representing the progress of the
                       current mirror sync.

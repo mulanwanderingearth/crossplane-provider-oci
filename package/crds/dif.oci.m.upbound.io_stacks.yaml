@@ -231,6 +231,184 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Add Service. Could be set to any integer value.
                     type: number
+                  aidataplatform:
+                    description: AI Data Platform Details if aidataplatform is included
+                      in services.
+                    items:
+                      properties:
+                        defaultWorkspaceName:
+                          description: A default workspace will be created with this
+                            name.
+                          type: string
+                        defaultWorkspaceNameRef:
+                          description: Reference to a Workspace in dataintegration
+                            to populate defaultWorkspaceName.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        defaultWorkspaceNameSelector:
+                          description: Selector for a Workspace in dataintegration
+                            to populate defaultWorkspaceName.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        instanceId:
+                          description: Id for the adw instance.
+                          type: string
+                        instanceIdRef:
+                          description: Reference to a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        instanceIdSelector:
+                          description: Selector for a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                      type: object
+                    type: array
                   compartmentId:
                     description: (Updatable) The OCID of the compartment to create
                       the Stack in.
@@ -1181,6 +1359,561 @@ spec:
                           type: string
                       type: object
                     type: array
+                  oke:
+                    description: OKE Details if oke is included in services.
+                    items:
+                      properties:
+                        clusterId:
+                          description: OCID of existing OKE cluster.
+                          type: string
+                        clusterIdRef:
+                          description: Reference to a Cluster in containerengine to
+                            populate clusterId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        clusterIdSelector:
+                          description: Selector for a Cluster in containerengine to
+                            populate clusterId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        componentValueOverrides:
+                          description: Component overrides for stack specific parameters
+                            applied during artifact template rendering.
+                          items:
+                            properties:
+                              componentName:
+                                description: Logical name of the grouping independently
+                                  deployable kubernetes resource artifacts for the
+                                  current deployment.
+                                type: string
+                              valueOverrides:
+                                additionalProperties:
+                                  type: string
+                                description: |-
+                                  Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+                                  Used for overriding the values in value.yaml artifact of the component.
+                                  Example: {"WORKER_THREADS": "8"}
+                                type: object
+                                x-kubernetes-map-type: granular
+                            type: object
+                          type: array
+                        instanceId:
+                          description: Id for the adw instance.
+                          type: string
+                        instanceIdRef:
+                          description: Reference to a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        instanceIdSelector:
+                          description: Selector for a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        manifestObjectStoragePath:
+                          description: Object storage path for the deployment manifest.
+                          type: string
+                        namespaceName:
+                          description: Kubernetes namespace-name of OKE cluster.
+                          type: string
+                        secrets:
+                          description: List of kubernetes secrets to create or update
+                            in the namespace-name of the target cluster. Each entry
+                            source secret values from OCI vault.
+                          items:
+                            properties:
+                              secretData:
+                                description: List of kubernetes secret data.
+                                items:
+                                  properties:
+                                    key:
+                                      description: Data key in the kubernetes secret.
+                                      type: string
+                                    secretId:
+                                      description: Vault secret OCID containing the
+                                        corresponding user password.
+                                      type: string
+                                  type: object
+                                type: array
+                              secretName:
+                                description: Name of the kubernetes secret of max
+                                  length 63 and contain only lowercase alphanumeric
+                                  characters or '-' and start and end with an alphabetic
+                                  character.
+                                type: string
+                              templateObjectStoragePath:
+                                description: Object storage path for the secret template
+                                  to be used for creating secret otherwise it will
+                                  be created with default template.
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
+                  omk:
+                    description: OMK Details if omk is included in services.
+                    items:
+                      properties:
+                        clusterId:
+                          description: OCID of existing OKE cluster.
+                          type: string
+                        clusterIdRef:
+                          description: Reference to a Cluster in containerengine to
+                            populate clusterId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        clusterIdSelector:
+                          description: Selector for a Cluster in containerengine to
+                            populate clusterId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        clusterNamespaceId:
+                          description: OCID of existing OMK cluster-namespace.
+                          type: string
+                        clusterNamespaceIdRef:
+                          description: Reference to a Namespace in loganalytics to
+                            populate clusterNamespaceId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        clusterNamespaceIdSelector:
+                          description: Selector for a Namespace in loganalytics to
+                            populate clusterNamespaceId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        componentValueOverrides:
+                          description: Component overrides for stack specific parameters
+                            applied during artifact template rendering.
+                          items:
+                            properties:
+                              componentName:
+                                description: Logical name of the grouping independently
+                                  deployable kubernetes resource artifacts for the
+                                  current deployment.
+                                type: string
+                              valueOverrides:
+                                additionalProperties:
+                                  type: string
+                                description: |-
+                                  Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+                                  Used for overriding the values in value.yaml artifact of the component.
+                                  Example: {"WORKER_THREADS": "8"}
+                                type: object
+                                x-kubernetes-map-type: granular
+                            type: object
+                          type: array
+                        instanceId:
+                          description: Id for the adw instance.
+                          type: string
+                        instanceIdRef:
+                          description: Reference to a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        instanceIdSelector:
+                          description: Selector for a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        manifestObjectStoragePath:
+                          description: Object storage path for the deployment manifest.
+                          type: string
+                        namespaceName:
+                          description: Kubernetes namespace-name of OKE cluster.
+                          type: string
+                        secrets:
+                          description: List of kubernetes secrets to create or update
+                            in the namespace-name of the target cluster. Each entry
+                            source secret values from OCI vault.
+                          items:
+                            properties:
+                              secretData:
+                                description: List of kubernetes secret data.
+                                items:
+                                  properties:
+                                    key:
+                                      description: Data key in the kubernetes secret.
+                                      type: string
+                                    secretId:
+                                      description: Vault secret OCID containing the
+                                        corresponding user password.
+                                      type: string
+                                  type: object
+                                type: array
+                              secretName:
+                                description: Name of the kubernetes secret of max
+                                  length 63 and contain only lowercase alphanumeric
+                                  characters or '-' and start and end with an alphabetic
+                                  character.
+                                type: string
+                              templateObjectStoragePath:
+                                description: Object storage path for the secret template
+                                  to be used for creating secret otherwise it will
+                                  be created with default template.
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   services:
                     description: (Updatable) List of services to be onboarded for
                       the stack.
@@ -1389,6 +2122,184 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Add Service. Could be set to any integer value.
                     type: number
+                  aidataplatform:
+                    description: AI Data Platform Details if aidataplatform is included
+                      in services.
+                    items:
+                      properties:
+                        defaultWorkspaceName:
+                          description: A default workspace will be created with this
+                            name.
+                          type: string
+                        defaultWorkspaceNameRef:
+                          description: Reference to a Workspace in dataintegration
+                            to populate defaultWorkspaceName.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        defaultWorkspaceNameSelector:
+                          description: Selector for a Workspace in dataintegration
+                            to populate defaultWorkspaceName.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        instanceId:
+                          description: Id for the adw instance.
+                          type: string
+                        instanceIdRef:
+                          description: Reference to a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        instanceIdSelector:
+                          description: Selector for a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                      type: object
+                    type: array
                   compartmentId:
                     description: (Updatable) The OCID of the compartment to create
                       the Stack in.
@@ -2343,6 +3254,561 @@ spec:
                           type: string
                       type: object
                     type: array
+                  oke:
+                    description: OKE Details if oke is included in services.
+                    items:
+                      properties:
+                        clusterId:
+                          description: OCID of existing OKE cluster.
+                          type: string
+                        clusterIdRef:
+                          description: Reference to a Cluster in containerengine to
+                            populate clusterId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        clusterIdSelector:
+                          description: Selector for a Cluster in containerengine to
+                            populate clusterId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        componentValueOverrides:
+                          description: Component overrides for stack specific parameters
+                            applied during artifact template rendering.
+                          items:
+                            properties:
+                              componentName:
+                                description: Logical name of the grouping independently
+                                  deployable kubernetes resource artifacts for the
+                                  current deployment.
+                                type: string
+                              valueOverrides:
+                                additionalProperties:
+                                  type: string
+                                description: |-
+                                  Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+                                  Used for overriding the values in value.yaml artifact of the component.
+                                  Example: {"WORKER_THREADS": "8"}
+                                type: object
+                                x-kubernetes-map-type: granular
+                            type: object
+                          type: array
+                        instanceId:
+                          description: Id for the adw instance.
+                          type: string
+                        instanceIdRef:
+                          description: Reference to a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        instanceIdSelector:
+                          description: Selector for a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        manifestObjectStoragePath:
+                          description: Object storage path for the deployment manifest.
+                          type: string
+                        namespaceName:
+                          description: Kubernetes namespace-name of OKE cluster.
+                          type: string
+                        secrets:
+                          description: List of kubernetes secrets to create or update
+                            in the namespace-name of the target cluster. Each entry
+                            source secret values from OCI vault.
+                          items:
+                            properties:
+                              secretData:
+                                description: List of kubernetes secret data.
+                                items:
+                                  properties:
+                                    key:
+                                      description: Data key in the kubernetes secret.
+                                      type: string
+                                    secretId:
+                                      description: Vault secret OCID containing the
+                                        corresponding user password.
+                                      type: string
+                                  type: object
+                                type: array
+                              secretName:
+                                description: Name of the kubernetes secret of max
+                                  length 63 and contain only lowercase alphanumeric
+                                  characters or '-' and start and end with an alphabetic
+                                  character.
+                                type: string
+                              templateObjectStoragePath:
+                                description: Object storage path for the secret template
+                                  to be used for creating secret otherwise it will
+                                  be created with default template.
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
+                  omk:
+                    description: OMK Details if omk is included in services.
+                    items:
+                      properties:
+                        clusterId:
+                          description: OCID of existing OKE cluster.
+                          type: string
+                        clusterIdRef:
+                          description: Reference to a Cluster in containerengine to
+                            populate clusterId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        clusterIdSelector:
+                          description: Selector for a Cluster in containerengine to
+                            populate clusterId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        clusterNamespaceId:
+                          description: OCID of existing OMK cluster-namespace.
+                          type: string
+                        clusterNamespaceIdRef:
+                          description: Reference to a Namespace in loganalytics to
+                            populate clusterNamespaceId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        clusterNamespaceIdSelector:
+                          description: Selector for a Namespace in loganalytics to
+                            populate clusterNamespaceId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        componentValueOverrides:
+                          description: Component overrides for stack specific parameters
+                            applied during artifact template rendering.
+                          items:
+                            properties:
+                              componentName:
+                                description: Logical name of the grouping independently
+                                  deployable kubernetes resource artifacts for the
+                                  current deployment.
+                                type: string
+                              valueOverrides:
+                                additionalProperties:
+                                  type: string
+                                description: |-
+                                  Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+                                  Used for overriding the values in value.yaml artifact of the component.
+                                  Example: {"WORKER_THREADS": "8"}
+                                type: object
+                                x-kubernetes-map-type: granular
+                            type: object
+                          type: array
+                        instanceId:
+                          description: Id for the adw instance.
+                          type: string
+                        instanceIdRef:
+                          description: Reference to a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        instanceIdSelector:
+                          description: Selector for a Instance in compute to populate
+                            instanceId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        manifestObjectStoragePath:
+                          description: Object storage path for the deployment manifest.
+                          type: string
+                        namespaceName:
+                          description: Kubernetes namespace-name of OKE cluster.
+                          type: string
+                        secrets:
+                          description: List of kubernetes secrets to create or update
+                            in the namespace-name of the target cluster. Each entry
+                            source secret values from OCI vault.
+                          items:
+                            properties:
+                              secretData:
+                                description: List of kubernetes secret data.
+                                items:
+                                  properties:
+                                    key:
+                                      description: Data key in the kubernetes secret.
+                                      type: string
+                                    secretId:
+                                      description: Vault secret OCID containing the
+                                        corresponding user password.
+                                      type: string
+                                  type: object
+                                type: array
+                              secretName:
+                                description: Name of the kubernetes secret of max
+                                  length 63 and contain only lowercase alphanumeric
+                                  characters or '-' and start and end with an alphabetic
+                                  character.
+                                type: string
+                              templateObjectStoragePath:
+                                description: Object storage path for the secret template
+                                  to be used for creating secret otherwise it will
+                                  be created with default template.
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   services:
                     description: (Updatable) List of services to be onboarded for
                       the stack.
@@ -2503,6 +3969,20 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Add Service. Could be set to any integer value.
                     type: number
+                  aidataplatform:
+                    description: AI Data Platform Details if aidataplatform is included
+                      in services.
+                    items:
+                      properties:
+                        defaultWorkspaceName:
+                          description: A default workspace will be created with this
+                            name.
+                          type: string
+                        instanceId:
+                          description: Id for the adw instance.
+                          type: string
+                      type: object
+                    type: array
                   compartmentId:
                     description: (Updatable) The OCID of the compartment to create
                       the Stack in.
@@ -2847,6 +4327,151 @@ spec:
                           type: string
                       type: object
                     type: array
+                  oke:
+                    description: OKE Details if oke is included in services.
+                    items:
+                      properties:
+                        clusterId:
+                          description: OCID of existing OKE cluster.
+                          type: string
+                        componentValueOverrides:
+                          description: Component overrides for stack specific parameters
+                            applied during artifact template rendering.
+                          items:
+                            properties:
+                              componentName:
+                                description: Logical name of the grouping independently
+                                  deployable kubernetes resource artifacts for the
+                                  current deployment.
+                                type: string
+                              valueOverrides:
+                                additionalProperties:
+                                  type: string
+                                description: |-
+                                  Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+                                  Used for overriding the values in value.yaml artifact of the component.
+                                  Example: {"WORKER_THREADS": "8"}
+                                type: object
+                                x-kubernetes-map-type: granular
+                            type: object
+                          type: array
+                        instanceId:
+                          description: Id for the adw instance.
+                          type: string
+                        manifestObjectStoragePath:
+                          description: Object storage path for the deployment manifest.
+                          type: string
+                        namespaceName:
+                          description: Kubernetes namespace-name of OKE cluster.
+                          type: string
+                        secrets:
+                          description: List of kubernetes secrets to create or update
+                            in the namespace-name of the target cluster. Each entry
+                            source secret values from OCI vault.
+                          items:
+                            properties:
+                              secretData:
+                                description: List of kubernetes secret data.
+                                items:
+                                  properties:
+                                    key:
+                                      description: Data key in the kubernetes secret.
+                                      type: string
+                                    secretId:
+                                      description: Vault secret OCID containing the
+                                        corresponding user password.
+                                      type: string
+                                  type: object
+                                type: array
+                              secretName:
+                                description: Name of the kubernetes secret of max
+                                  length 63 and contain only lowercase alphanumeric
+                                  characters or '-' and start and end with an alphabetic
+                                  character.
+                                type: string
+                              templateObjectStoragePath:
+                                description: Object storage path for the secret template
+                                  to be used for creating secret otherwise it will
+                                  be created with default template.
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
+                  omk:
+                    description: OMK Details if omk is included in services.
+                    items:
+                      properties:
+                        clusterId:
+                          description: OCID of existing OKE cluster.
+                          type: string
+                        clusterNamespaceId:
+                          description: OCID of existing OMK cluster-namespace.
+                          type: string
+                        componentValueOverrides:
+                          description: Component overrides for stack specific parameters
+                            applied during artifact template rendering.
+                          items:
+                            properties:
+                              componentName:
+                                description: Logical name of the grouping independently
+                                  deployable kubernetes resource artifacts for the
+                                  current deployment.
+                                type: string
+                              valueOverrides:
+                                additionalProperties:
+                                  type: string
+                                description: |-
+                                  Free-form value overrides for the component. Each tag is a simple key-value pair with no predefined name, type, or namespace.
+                                  Used for overriding the values in value.yaml artifact of the component.
+                                  Example: {"WORKER_THREADS": "8"}
+                                type: object
+                                x-kubernetes-map-type: granular
+                            type: object
+                          type: array
+                        instanceId:
+                          description: Id for the adw instance.
+                          type: string
+                        manifestObjectStoragePath:
+                          description: Object storage path for the deployment manifest.
+                          type: string
+                        namespaceName:
+                          description: Kubernetes namespace-name of OKE cluster.
+                          type: string
+                        secrets:
+                          description: List of kubernetes secrets to create or update
+                            in the namespace-name of the target cluster. Each entry
+                            source secret values from OCI vault.
+                          items:
+                            properties:
+                              secretData:
+                                description: List of kubernetes secret data.
+                                items:
+                                  properties:
+                                    key:
+                                      description: Data key in the kubernetes secret.
+                                      type: string
+                                    secretId:
+                                      description: Vault secret OCID containing the
+                                        corresponding user password.
+                                      type: string
+                                  type: object
+                                type: array
+                              secretName:
+                                description: Name of the kubernetes secret of max
+                                  length 63 and contain only lowercase alphanumeric
+                                  characters or '-' and start and end with an alphabetic
+                                  character.
+                                type: string
+                              templateObjectStoragePath:
+                                description: Object storage path for the secret template
+                                  to be used for creating secret otherwise it will
+                                  be created with default template.
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   serviceDetails:
                     description: Details of the service onboarded for the data intelligence
                       stack.
@@ -2873,6 +4498,9 @@ spec:
                                       type: string
                                   type: object
                                 type: array
+                              clusterId:
+                                description: OCID of existing OKE cluster.
+                                type: string
                               endpointDetails:
                                 description: details of all endpoints assigned to
                                   cluster
@@ -2892,6 +4520,9 @@ spec:
                                 type: string
                               modelVersion:
                                 description: version of model
+                                type: string
+                              namespace:
+                                description: Kubernetes namespace-name of OKE cluster.
                                 type: string
                               ociRegion:
                                 description: Region on which the cluster end endpoint

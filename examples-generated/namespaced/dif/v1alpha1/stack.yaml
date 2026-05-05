@@ -31,6 +31,13 @@ spec:
         matchLabels:
           testing.upbound.io/example-name: test_subnet
       toolsPublicAccess: ${var.stack_adb_tools_public_access}
+    aidataplatform:
+    - defaultWorkspaceNameSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_workspace
+      instanceIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_instance
     compartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: example
@@ -128,6 +135,45 @@ spec:
       instanceId: ${var.stack_objectstorage_instance_id}
       objectVersioning: ${var.stack_objectstorage_object_versioning}
       storageTier: ${var.stack_objectstorage_storage_tier}
+    oke:
+    - clusterIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_cluster
+      componentValueOverrides:
+      - componentName: ${var.stack_oke_component_value_overrides_component_name}
+        valueOverrides: ${var.stack_oke_component_value_overrides_value_overrides}
+      instanceIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_instance
+      manifestObjectStoragePath: ${var.stack_oke_manifest_object_storage_path}
+      namespaceName: ${var.stack_oke_namespace_name}
+      secrets:
+      - secretData:
+        - key: ${var.stack_oke_secrets_secret_data_key}
+          secretId: ${var.stack_oke_secrets_secret_data_secret_id}
+        secretName: ${var.stack_oke_secrets_secret_name}
+        templateObjectStoragePath: ${var.stack_oke_secrets_template_object_storage_path}
+    omk:
+    - clusterIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_cluster
+      clusterNamespaceIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_namespace
+      componentValueOverrides:
+      - componentName: ${var.stack_omk_component_value_overrides_component_name}
+        valueOverrides: ${var.stack_omk_component_value_overrides_value_overrides}
+      instanceIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_instance
+      manifestObjectStoragePath: ${var.stack_omk_manifest_object_storage_path}
+      namespaceName: ${var.stack_omk_namespace_name}
+      secrets:
+      - secretData:
+        - key: ${var.stack_omk_secrets_secret_data_key}
+          secretId: ${var.stack_omk_secrets_secret_data_secret_id}
+        secretName: ${var.stack_omk_secrets_secret_name}
+        templateObjectStoragePath: ${var.stack_omk_secrets_template_object_storage_path}
     services: ${var.stack_services}
     stackTemplates: ${var.stack_stack_templates}
     subnetId: ${var.stack_deploy_artifacts_subnet_id}

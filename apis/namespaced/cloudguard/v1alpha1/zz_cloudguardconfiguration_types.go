@@ -34,7 +34,7 @@ type CloudGuardConfigurationInitParameters struct {
 	// (Updatable) Identifies if Oracle managed resources will be created by customers. If no value is specified false is the default.
 	SelfManageResources *bool `json:"selfManageResources,omitempty" tf:"self_manage_resources,omitempty"`
 
-	// (Updatable) Partner service status
+	// (Updatable) Status of Cloud Guard tenant
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 }
 
@@ -51,7 +51,7 @@ type CloudGuardConfigurationObservation struct {
 	// (Updatable) Identifies if Oracle managed resources will be created by customers. If no value is specified false is the default.
 	SelfManageResources *bool `json:"selfManageResources,omitempty" tf:"self_manage_resources,omitempty"`
 
-	// (Updatable) Partner service status
+	// (Updatable) Status of Cloud Guard tenant
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 }
 
@@ -78,7 +78,7 @@ type CloudGuardConfigurationParameters struct {
 	// +kubebuilder:validation:Optional
 	SelfManageResources *bool `json:"selfManageResources,omitempty" tf:"self_manage_resources,omitempty"`
 
-	// (Updatable) Partner service status
+	// (Updatable) Status of Cloud Guard tenant
 	// +kubebuilder:validation:Optional
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 }

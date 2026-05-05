@@ -15,13 +15,16 @@ import (
 
 type NetworkFirewallPolicyDecryptionProfileInitParameters struct {
 
-	// (Applicable only when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if the server's certificate uses extensions other than key usage and/or extended key usage.
+	// (Applicable when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if the server's certificate uses extensions other than key usage and/or extended key usage.
 	AreCertificateExtensionsRestricted *bool `json:"areCertificateExtensionsRestricted,omitempty" tf:"are_certificate_extensions_restricted,omitempty"`
 
-	// (Applicable only when type=SSL_FORWARD_PROXY) (Updatable) Whether to automatically append SAN to impersonating certificate if server certificate is missing SAN.
+	// (Updatable) The description of the decryption profile. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Applicable when type=SSL_FORWARD_PROXY) (Updatable) Whether to automatically append SAN to impersonating certificate if server certificate is missing SAN.
 	IsAutoIncludeAltName *bool `json:"isAutoIncludeAltName,omitempty" tf:"is_auto_include_alt_name,omitempty"`
 
-	// (Applicable only when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if server's certificate is expired.
+	// (Applicable when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if server's certificate is expired.
 	IsExpiredCertificateBlocked *bool `json:"isExpiredCertificateBlocked,omitempty" tf:"is_expired_certificate_blocked,omitempty"`
 
 	// (Updatable) Whether to block sessions if the firewall is temporarily unable to decrypt their traffic.
@@ -64,15 +67,18 @@ type NetworkFirewallPolicyDecryptionProfileInitParameters struct {
 
 type NetworkFirewallPolicyDecryptionProfileObservation struct {
 
-	// (Applicable only when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if the server's certificate uses extensions other than key usage and/or extended key usage.
+	// (Applicable when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if the server's certificate uses extensions other than key usage and/or extended key usage.
 	AreCertificateExtensionsRestricted *bool `json:"areCertificateExtensionsRestricted,omitempty" tf:"are_certificate_extensions_restricted,omitempty"`
+
+	// (Updatable) The description of the decryption profile. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// (Applicable only when type=SSL_FORWARD_PROXY) (Updatable) Whether to automatically append SAN to impersonating certificate if server certificate is missing SAN.
+	// (Applicable when type=SSL_FORWARD_PROXY) (Updatable) Whether to automatically append SAN to impersonating certificate if server certificate is missing SAN.
 	IsAutoIncludeAltName *bool `json:"isAutoIncludeAltName,omitempty" tf:"is_auto_include_alt_name,omitempty"`
 
-	// (Applicable only when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if server's certificate is expired.
+	// (Applicable when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if server's certificate is expired.
 	IsExpiredCertificateBlocked *bool `json:"isExpiredCertificateBlocked,omitempty" tf:"is_expired_certificate_blocked,omitempty"`
 
 	// (Updatable) Whether to block sessions if the firewall is temporarily unable to decrypt their traffic.
@@ -108,15 +114,19 @@ type NetworkFirewallPolicyDecryptionProfileObservation struct {
 
 type NetworkFirewallPolicyDecryptionProfileParameters struct {
 
-	// (Applicable only when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if the server's certificate uses extensions other than key usage and/or extended key usage.
+	// (Applicable when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if the server's certificate uses extensions other than key usage and/or extended key usage.
 	// +kubebuilder:validation:Optional
 	AreCertificateExtensionsRestricted *bool `json:"areCertificateExtensionsRestricted,omitempty" tf:"are_certificate_extensions_restricted,omitempty"`
 
-	// (Applicable only when type=SSL_FORWARD_PROXY) (Updatable) Whether to automatically append SAN to impersonating certificate if server certificate is missing SAN.
+	// (Updatable) The description of the decryption profile. This field can be used to add additional info.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Applicable when type=SSL_FORWARD_PROXY) (Updatable) Whether to automatically append SAN to impersonating certificate if server certificate is missing SAN.
 	// +kubebuilder:validation:Optional
 	IsAutoIncludeAltName *bool `json:"isAutoIncludeAltName,omitempty" tf:"is_auto_include_alt_name,omitempty"`
 
-	// (Applicable only when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if server's certificate is expired.
+	// (Applicable when type=SSL_FORWARD_PROXY) (Updatable) Whether to block sessions if server's certificate is expired.
 	// +kubebuilder:validation:Optional
 	IsExpiredCertificateBlocked *bool `json:"isExpiredCertificateBlocked,omitempty" tf:"is_expired_certificate_blocked,omitempty"`
 

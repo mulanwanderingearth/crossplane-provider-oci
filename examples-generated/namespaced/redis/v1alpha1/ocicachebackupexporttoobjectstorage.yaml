@@ -1,0 +1,17 @@
+apiVersion: redis.oci.m.upbound.io/v1alpha1
+kind: OciCacheBackupExportToObjectStorage
+metadata:
+  annotations:
+    meta.upbound.io/example-id: redis/v1alpha1/ocicachebackupexporttoobjectstorage
+  labels:
+    testing.upbound.io/example-name: test_oci_cache_backup_export_to_object_storage
+  name: test-oci-cache-backup-export-to-object-storage
+  namespace: upbound-system
+spec:
+  forProvider:
+    bucket: ${var.oci_cache_backup_export_to_object_storage_bucket}
+    namespace: ${var.oci_cache_backup_export_to_object_storage_namespace}
+    ociCacheBackupIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_oci_cache_backup
+    prefix: ${var.oci_cache_backup_export_to_object_storage_prefix}

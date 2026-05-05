@@ -268,6 +268,38 @@ type SqlEndpointInitParameters struct {
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
+	// (Updatable) The identifier of the log group compartment used with the SQL Endpoint.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	LogCompartmentID *string `json:"logCompartmentId,omitempty" tf:"log_compartment_id,omitempty"`
+
+	// Reference to a Compartment in identity to populate logCompartmentId.
+	// +kubebuilder:validation:Optional
+	LogCompartmentIDRef *v1.Reference `json:"logCompartmentIdRef,omitempty" tf:"-"`
+
+	// Selector for a Compartment in identity to populate logCompartmentId.
+	// +kubebuilder:validation:Optional
+	LogCompartmentIDSelector *v1.Selector `json:"logCompartmentIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) The friendly name of the log object used with the SQL Endpoint.
+	LogDisplayName *string `json:"logDisplayName,omitempty" tf:"log_display_name,omitempty"`
+
+	// (Updatable) The identifier of the log group used with the SQL Endpoint.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/logging/v1alpha1.LogGroup
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
+
+	// Reference to a LogGroup in logging to populate logGroupId.
+	// +kubebuilder:validation:Optional
+	LogGroupIDRef *v1.Reference `json:"logGroupIdRef,omitempty" tf:"-"`
+
+	// Selector for a LogGroup in logging to populate logGroupId.
+	// +kubebuilder:validation:Optional
+	LogGroupIDSelector *v1.Selector `json:"logGroupIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) Log retention duration in days
+	LogRetentionDuration *float64 `json:"logRetentionDuration,omitempty" tf:"log_retention_duration,omitempty"`
+
 	// (Updatable) The maximum number of executors.
 	MaxExecutorCount *float64 `json:"maxExecutorCount,omitempty" tf:"max_executor_count,omitempty"`
 
@@ -340,6 +372,18 @@ type SqlEndpointObservation struct {
 
 	// Oracle Cloud Infrastructure lake OCID
 	LakeID *string `json:"lakeId,omitempty" tf:"lake_id,omitempty"`
+
+	// (Updatable) The identifier of the log group compartment used with the SQL Endpoint.
+	LogCompartmentID *string `json:"logCompartmentId,omitempty" tf:"log_compartment_id,omitempty"`
+
+	// (Updatable) The friendly name of the log object used with the SQL Endpoint.
+	LogDisplayName *string `json:"logDisplayName,omitempty" tf:"log_display_name,omitempty"`
+
+	// (Updatable) The identifier of the log group used with the SQL Endpoint.
+	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
+
+	// (Updatable) Log retention duration in days
+	LogRetentionDuration *float64 `json:"logRetentionDuration,omitempty" tf:"log_retention_duration,omitempty"`
 
 	// (Updatable) The maximum number of executors.
 	MaxExecutorCount *float64 `json:"maxExecutorCount,omitempty" tf:"max_executor_count,omitempty"`
@@ -428,6 +472,42 @@ type SqlEndpointParameters struct {
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// (Updatable) The identifier of the log group compartment used with the SQL Endpoint.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	LogCompartmentID *string `json:"logCompartmentId,omitempty" tf:"log_compartment_id,omitempty"`
+
+	// Reference to a Compartment in identity to populate logCompartmentId.
+	// +kubebuilder:validation:Optional
+	LogCompartmentIDRef *v1.Reference `json:"logCompartmentIdRef,omitempty" tf:"-"`
+
+	// Selector for a Compartment in identity to populate logCompartmentId.
+	// +kubebuilder:validation:Optional
+	LogCompartmentIDSelector *v1.Selector `json:"logCompartmentIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) The friendly name of the log object used with the SQL Endpoint.
+	// +kubebuilder:validation:Optional
+	LogDisplayName *string `json:"logDisplayName,omitempty" tf:"log_display_name,omitempty"`
+
+	// (Updatable) The identifier of the log group used with the SQL Endpoint.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/logging/v1alpha1.LogGroup
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
+
+	// Reference to a LogGroup in logging to populate logGroupId.
+	// +kubebuilder:validation:Optional
+	LogGroupIDRef *v1.Reference `json:"logGroupIdRef,omitempty" tf:"-"`
+
+	// Selector for a LogGroup in logging to populate logGroupId.
+	// +kubebuilder:validation:Optional
+	LogGroupIDSelector *v1.Selector `json:"logGroupIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) Log retention duration in days
+	// +kubebuilder:validation:Optional
+	LogRetentionDuration *float64 `json:"logRetentionDuration,omitempty" tf:"log_retention_duration,omitempty"`
 
 	// (Updatable) The maximum number of executors.
 	// +kubebuilder:validation:Optional

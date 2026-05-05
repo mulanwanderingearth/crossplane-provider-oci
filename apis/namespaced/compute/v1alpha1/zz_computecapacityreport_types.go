@@ -78,6 +78,9 @@ type ComputeCapacityReportParameters struct {
 
 type InstanceShapeConfigInitParameters struct {
 
+	// The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
+	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
+
 	// The total amount of memory available to the instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
@@ -90,6 +93,9 @@ type InstanceShapeConfigInitParameters struct {
 
 type InstanceShapeConfigObservation struct {
 
+	// The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
+	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
+
 	// The total amount of memory available to the instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
@@ -101,6 +107,10 @@ type InstanceShapeConfigObservation struct {
 }
 
 type InstanceShapeConfigParameters struct {
+
+	// The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
+	// +kubebuilder:validation:Optional
+	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
 	// The total amount of memory available to the instance, in gigabytes.
 	// +kubebuilder:validation:Optional

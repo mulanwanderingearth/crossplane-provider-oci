@@ -8,6 +8,11 @@ metadata:
   name: test-fusion-environment
 spec:
   forProvider:
+    additionalEgressRules:
+    - description: ${var.fusion_environment_additional_egress_rules_description}
+      destinationCidr: ${var.fusion_environment_additional_egress_rules_destination_cidr}
+      maxDestinationPort: ${var.fusion_environment_additional_egress_rules_max_destination_port}
+      minDestinationPort: ${var.fusion_environment_additional_egress_rules_min_destination_port}
     additionalLanguagePacks: ${var.fusion_environment_additional_language_packs}
     compartmentIdSelector:
       matchLabels:
@@ -16,10 +21,6 @@ spec:
     - emailAddress: ${var.fusion_environment_create_fusion_environment_admin_user_details_email_address}
       firstName: ${var.fusion_environment_create_fusion_environment_admin_user_details_first_name}
       lastName: ${var.fusion_environment_create_fusion_environment_admin_user_details_last_name}
-      passwordSecretRef:
-        key: example-key
-        name: example-secret
-        namespace: upbound-system
       username: ${var.fusion_environment_create_fusion_environment_admin_user_details_username}
     definedTags:
       foo-namespace.bar-key: value

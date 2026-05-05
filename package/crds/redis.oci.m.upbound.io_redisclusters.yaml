@@ -59,6 +59,91 @@ spec:
             properties:
               forProvider:
                 properties:
+                  backupId:
+                    description: The ID of the Oracle Cloud Infrastructure Cache Backup
+                      from which this cluster was created.Mutually exclusive with
+                      'importFromObjectStorageDetails'.
+                    type: string
+                  backupIdRef:
+                    description: Reference to a Backup in database to populate backupId.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                      namespace:
+                        description: Namespace of the referenced object
+                        type: string
+                      policy:
+                        description: Policies for referencing.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    required:
+                    - name
+                    type: object
+                  backupIdSelector:
+                    description: Selector for a Backup in database to populate backupId.
+                    properties:
+                      matchControllerRef:
+                        description: |-
+                          MatchControllerRef ensures an object with the same controller reference
+                          as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                      namespace:
+                        description: Namespace for the selector
+                        type: string
+                      policy:
+                        description: Policies for selection.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    type: object
                   clusterMode:
                     description: Specifies whether the cluster is sharded or non-sharded.
                     type: string
@@ -169,6 +254,30 @@ spec:
                       only. Example: {"bar-key": "value"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  importFromObjectStorageDetails:
+                    description: Details for importing Oracle Cloud Infrastructure
+                      Cache data from Object Storage RDB file(s) during cluster creation.
+                    items:
+                      properties:
+                        bucket:
+                          description: The Object Storage bucket name.
+                          type: string
+                        namespace:
+                          description: The Object Storage namespace name.
+                          type: string
+                        objects:
+                          description: The list of objects to import from the specified
+                            bucket.
+                          items:
+                            properties:
+                              object:
+                                description: The name of the object in the bucket
+                                  (for example, 'customerA/exports/backup_ocid/dump.rdb').
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   nodeCount:
                     description: (Updatable) The number of nodes per shard in the
                       cluster when clusterMode is SHARDED. This is the total number
@@ -386,6 +495,91 @@ spec:
                   for example because of an external controller is managing them, like an
                   autoscaler.
                 properties:
+                  backupId:
+                    description: The ID of the Oracle Cloud Infrastructure Cache Backup
+                      from which this cluster was created.Mutually exclusive with
+                      'importFromObjectStorageDetails'.
+                    type: string
+                  backupIdRef:
+                    description: Reference to a Backup in database to populate backupId.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                      namespace:
+                        description: Namespace of the referenced object
+                        type: string
+                      policy:
+                        description: Policies for referencing.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    required:
+                    - name
+                    type: object
+                  backupIdSelector:
+                    description: Selector for a Backup in database to populate backupId.
+                    properties:
+                      matchControllerRef:
+                        description: |-
+                          MatchControllerRef ensures an object with the same controller reference
+                          as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                      namespace:
+                        description: Namespace for the selector
+                        type: string
+                      policy:
+                        description: Policies for selection.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    type: object
                   clusterMode:
                     description: Specifies whether the cluster is sharded or non-sharded.
                     type: string
@@ -496,6 +690,30 @@ spec:
                       only. Example: {"bar-key": "value"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  importFromObjectStorageDetails:
+                    description: Details for importing Oracle Cloud Infrastructure
+                      Cache data from Object Storage RDB file(s) during cluster creation.
+                    items:
+                      properties:
+                        bucket:
+                          description: The Object Storage bucket name.
+                          type: string
+                        namespace:
+                          description: The Object Storage namespace name.
+                          type: string
+                        objects:
+                          description: The list of objects to import from the specified
+                            bucket.
+                          items:
+                            properties:
+                              object:
+                                description: The name of the object in the bucket
+                                  (for example, 'customerA/exports/backup_ocid/dump.rdb').
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   nodeCount:
                     description: (Updatable) The number of nodes per shard in the
                       cluster when clusterMode is SHARDED. This is the total number
@@ -782,6 +1000,11 @@ spec:
             properties:
               atProvider:
                 properties:
+                  backupId:
+                    description: The ID of the Oracle Cloud Infrastructure Cache Backup
+                      from which this cluster was created.Mutually exclusive with
+                      'importFromObjectStorageDetails'.
+                    type: string
                   clusterMode:
                     description: Specifies whether the cluster is sharded or non-sharded.
                     type: string
@@ -821,6 +1044,30 @@ spec:
                   id:
                     description: The OCID of the cluster.
                     type: string
+                  importFromObjectStorageDetails:
+                    description: Details for importing Oracle Cloud Infrastructure
+                      Cache data from Object Storage RDB file(s) during cluster creation.
+                    items:
+                      properties:
+                        bucket:
+                          description: The Object Storage bucket name.
+                          type: string
+                        namespace:
+                          description: The Object Storage namespace name.
+                          type: string
+                        objects:
+                          description: The list of objects to import from the specified
+                            bucket.
+                          items:
+                            properties:
+                              object:
+                                description: The name of the object in the bucket
+                                  (for example, 'customerA/exports/backup_ocid/dump.rdb').
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   lifecycleDetails:
                     description: A message describing the current state in more detail.
                       For example, the message might provide actionable information

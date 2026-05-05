@@ -13,6 +13,7 @@ spec:
         testing.upbound.io/example-name: example
     definedTags:
       Operations.CostCenter: "42"
+    description: ${var.network_firewall_policy_description}
     displayName: ${var.network_firewall_policy_display_name}
     freeformTags:
       Department: Finance

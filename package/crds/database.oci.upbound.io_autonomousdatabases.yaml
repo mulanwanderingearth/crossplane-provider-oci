@@ -362,6 +362,33 @@ spec:
                             type: string
                         type: object
                     type: object
+                  autonomousDatabaseMaintenanceWindow:
+                    description: (Updatable) Autonomous Database maintenance window.
+                      The maintenance window can be configured during database creation.
+                      To change the maintenance window of an existing Autonomous Database
+                      Serverless instance, clone the database and specify the maintenance
+                      window for the new cloned instance.
+                    items:
+                      properties:
+                        dayOfWeek:
+                          description: (Updatable) Day of the week.
+                          items:
+                            properties:
+                              name:
+                                description: (Updatable) Name of the day of the week.
+                                type: string
+                            type: object
+                          type: array
+                        maintenanceEndTime:
+                          description: (Updatable) The maintenance end time. The value
+                            must use the ISO-8601 format "hh:mm".
+                          type: string
+                        maintenanceStartTime:
+                          description: (Updatable) The maintenance start time. The
+                            value must use the ISO-8601 format "hh:mm".
+                          type: string
+                      type: object
+                    type: array
                   autonomousMaintenanceScheduleType:
                     description: (Updatable) The maintenance schedule type of the
                       Autonomous AI Database Serverless. An EARLY maintenance schedule
@@ -574,18 +601,20 @@ spec:
                             after which the VM used by database tools will be terminated.
                           type: number
                         name:
-                          description: (Updatable) Name of database tool.
+                          description: (Updatable) Name of the day of the week.
                           type: string
                       type: object
                     type: array
                   dbVersion:
                     description: (Updatable) A valid Oracle AI Database version for
-                      Autonomous AI Database.db_workload AJD is only supported for
-                      db_version 19c and above.
+                      Autonomous AI Database. When you specify 23ai for dbversion,
+                      the system will provision a 23ai database, but the UI will display
+                      it as 26ai. When you specify 26ai for dbversion, the system
+                      will provision and display a 26ai database as expected. For
+                      new databases, it is recommended to use either 19c or 26ai.
                     type: string
                   dbWorkload:
-                    description: '(Updatable) The Autonomous AI Database workload
-                      type. The following values are valid:'
+                    description: AJD is only supported for db_version 19c and above.
                     type: string
                   definedTags:
                     additionalProperties:
@@ -1085,6 +1114,12 @@ spec:
                   isScheduleDbVersionUpgradeToEarliest:
                     type: boolean
                   isShrinkOnly:
+                    description: (Updatable) An optional property when enabled triggers
+                      the Shrinking of Autonomous Database once. To trigger Shrinking
+                      of ADB once again, this flag needs to be disabled and re-enabled
+                      again. It should not be passed during create database operation.
+                      It is only applicable on Serverless databases i.e. where is_dedicated
+                      is false.
                     type: boolean
                   keyVersionId:
                     description: The OCID of the Autonomous AI Database.
@@ -1190,6 +1225,11 @@ spec:
                       will be triggered when necessary for a Local Autonomous Data
                       Guard
                     type: number
+                  localAdgResourcePoolLeaderId:
+                    description: The OCID of the dedicated resource pool leader Autonomous
+                      Database in the same region, associated with local Autonomous
+                      Data Guard for a dedicated resource pool member.
+                    type: string
                   longTermBackupSchedule:
                     description: Details for the long-term backup schedule.
                     items:
@@ -1286,6 +1326,11 @@ spec:
                       pool
                     items:
                       properties:
+                        availableStorageCapacityInTbs:
+                          description: (Updatable) Available storage capacity (in
+                            TB) that can be used for adding new members or scaling
+                            existing members in a dedicated elastic pool.
+                          type: number
                         isDisabled:
                           description: (Updatable) Indicates if the resource pool
                             should be deleted for the Autonomous AI Database.
@@ -1293,9 +1338,15 @@ spec:
                         poolSize:
                           description: (Updatable) Resource pool size.
                           type: number
+                        poolStorageSizeInTbs:
+                          description: (Updatable) Resource pool storage size in TBs.
+                          type: number
                       type: object
                     type: array
                   rotateKeyTrigger:
+                    description: (Updatable) An optional property when flipped triggers
+                      rotation of KMS key. It is only applicable on dedicated databases
+                      i.e. where is_dedicated is true.
                     type: boolean
                   scheduledOperations:
                     description: (Updatable) The list of scheduled operations. Consists
@@ -1307,7 +1358,7 @@ spec:
                           items:
                             properties:
                               name:
-                                description: (Updatable) Name of database tool.
+                                description: (Updatable) Name of the day of the week.
                                 type: string
                             type: object
                           type: array
@@ -1524,9 +1575,22 @@ spec:
                       needs to be associated with.
                     type: string
                   switchoverTo:
+                    description: It is applicable only when is_local_data_guard_enabled
+                      is true. Could be set to PRIMARY or STANDBY. Default value is
+                      PRIMARY.
                     type: string
                   switchoverToRemotePeerId:
-                    description: The OCID of the Autonomous AI Database.
+                    description: (Updatable) It is applicable only when dataguard_region_type
+                      and role are set, and is_dedicated is false. For Autonomous
+                      Database Serverless instances, Data Guard associations have
+                      designated primary and standby regions, and these region types
+                      do not change when the database changes roles. It takes the
+                      OCID of the remote peer to switchover to and the API is called
+                      from the remote region.
+                    type: string
+                  timeMaintenancePauseUntil:
+                    description: The date until which maintenance of Autonomous Database
+                      is temporarily paused.
                     type: string
                   timeOfAutoRefreshStart:
                     description: (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable)
@@ -1545,6 +1609,17 @@ spec:
                       timestamp specified for the point-in-time clone of the source
                       Autonomous AI Database. The timestamp must be in the past.
                     type: string
+                  transportableTablespace:
+                    description: Details for importing transportable tablespace for
+                      an Autonomous Database.
+                    items:
+                      properties:
+                        ttsBundleUrl:
+                          description: URL for Oracle Cloud Infrastructure Storage
+                            location for a Transportable Tablespace (TTS) bundle.
+                          type: string
+                      type: object
+                    type: array
                   useLatestAvailableBackupTimeStamp:
                     description: (Applicable when source=BACKUP_FROM_TIMESTAMP) Clone
                       from latest available backup timestamp.
@@ -1961,6 +2036,33 @@ spec:
                             type: string
                         type: object
                     type: object
+                  autonomousDatabaseMaintenanceWindow:
+                    description: (Updatable) Autonomous Database maintenance window.
+                      The maintenance window can be configured during database creation.
+                      To change the maintenance window of an existing Autonomous Database
+                      Serverless instance, clone the database and specify the maintenance
+                      window for the new cloned instance.
+                    items:
+                      properties:
+                        dayOfWeek:
+                          description: (Updatable) Day of the week.
+                          items:
+                            properties:
+                              name:
+                                description: (Updatable) Name of the day of the week.
+                                type: string
+                            type: object
+                          type: array
+                        maintenanceEndTime:
+                          description: (Updatable) The maintenance end time. The value
+                            must use the ISO-8601 format "hh:mm".
+                          type: string
+                        maintenanceStartTime:
+                          description: (Updatable) The maintenance start time. The
+                            value must use the ISO-8601 format "hh:mm".
+                          type: string
+                      type: object
+                    type: array
                   autonomousMaintenanceScheduleType:
                     description: (Updatable) The maintenance schedule type of the
                       Autonomous AI Database Serverless. An EARLY maintenance schedule
@@ -2173,18 +2275,20 @@ spec:
                             after which the VM used by database tools will be terminated.
                           type: number
                         name:
-                          description: (Updatable) Name of database tool.
+                          description: (Updatable) Name of the day of the week.
                           type: string
                       type: object
                     type: array
                   dbVersion:
                     description: (Updatable) A valid Oracle AI Database version for
-                      Autonomous AI Database.db_workload AJD is only supported for
-                      db_version 19c and above.
+                      Autonomous AI Database. When you specify 23ai for dbversion,
+                      the system will provision a 23ai database, but the UI will display
+                      it as 26ai. When you specify 26ai for dbversion, the system
+                      will provision and display a 26ai database as expected. For
+                      new databases, it is recommended to use either 19c or 26ai.
                     type: string
                   dbWorkload:
-                    description: '(Updatable) The Autonomous AI Database workload
-                      type. The following values are valid:'
+                    description: AJD is only supported for db_version 19c and above.
                     type: string
                   definedTags:
                     additionalProperties:
@@ -2684,6 +2788,12 @@ spec:
                   isScheduleDbVersionUpgradeToEarliest:
                     type: boolean
                   isShrinkOnly:
+                    description: (Updatable) An optional property when enabled triggers
+                      the Shrinking of Autonomous Database once. To trigger Shrinking
+                      of ADB once again, this flag needs to be disabled and re-enabled
+                      again. It should not be passed during create database operation.
+                      It is only applicable on Serverless databases i.e. where is_dedicated
+                      is false.
                     type: boolean
                   keyVersionId:
                     description: The OCID of the Autonomous AI Database.
@@ -2789,6 +2899,11 @@ spec:
                       will be triggered when necessary for a Local Autonomous Data
                       Guard
                     type: number
+                  localAdgResourcePoolLeaderId:
+                    description: The OCID of the dedicated resource pool leader Autonomous
+                      Database in the same region, associated with local Autonomous
+                      Data Guard for a dedicated resource pool member.
+                    type: string
                   longTermBackupSchedule:
                     description: Details for the long-term backup schedule.
                     items:
@@ -2885,6 +3000,11 @@ spec:
                       pool
                     items:
                       properties:
+                        availableStorageCapacityInTbs:
+                          description: (Updatable) Available storage capacity (in
+                            TB) that can be used for adding new members or scaling
+                            existing members in a dedicated elastic pool.
+                          type: number
                         isDisabled:
                           description: (Updatable) Indicates if the resource pool
                             should be deleted for the Autonomous AI Database.
@@ -2892,9 +3012,15 @@ spec:
                         poolSize:
                           description: (Updatable) Resource pool size.
                           type: number
+                        poolStorageSizeInTbs:
+                          description: (Updatable) Resource pool storage size in TBs.
+                          type: number
                       type: object
                     type: array
                   rotateKeyTrigger:
+                    description: (Updatable) An optional property when flipped triggers
+                      rotation of KMS key. It is only applicable on dedicated databases
+                      i.e. where is_dedicated is true.
                     type: boolean
                   scheduledOperations:
                     description: (Updatable) The list of scheduled operations. Consists
@@ -2906,7 +3032,7 @@ spec:
                           items:
                             properties:
                               name:
-                                description: (Updatable) Name of database tool.
+                                description: (Updatable) Name of the day of the week.
                                 type: string
                             type: object
                           type: array
@@ -3123,9 +3249,22 @@ spec:
                       needs to be associated with.
                     type: string
                   switchoverTo:
+                    description: It is applicable only when is_local_data_guard_enabled
+                      is true. Could be set to PRIMARY or STANDBY. Default value is
+                      PRIMARY.
                     type: string
                   switchoverToRemotePeerId:
-                    description: The OCID of the Autonomous AI Database.
+                    description: (Updatable) It is applicable only when dataguard_region_type
+                      and role are set, and is_dedicated is false. For Autonomous
+                      Database Serverless instances, Data Guard associations have
+                      designated primary and standby regions, and these region types
+                      do not change when the database changes roles. It takes the
+                      OCID of the remote peer to switchover to and the API is called
+                      from the remote region.
+                    type: string
+                  timeMaintenancePauseUntil:
+                    description: The date until which maintenance of Autonomous Database
+                      is temporarily paused.
                     type: string
                   timeOfAutoRefreshStart:
                     description: (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable)
@@ -3144,6 +3283,17 @@ spec:
                       timestamp specified for the point-in-time clone of the source
                       Autonomous AI Database. The timestamp must be in the past.
                     type: string
+                  transportableTablespace:
+                    description: Details for importing transportable tablespace for
+                      an Autonomous Database.
+                    items:
+                      properties:
+                        ttsBundleUrl:
+                          description: URL for Oracle Cloud Infrastructure Storage
+                            location for a Transportable Tablespace (TTS) bundle.
+                          type: string
+                      type: object
+                    type: array
                   useLatestAvailableBackupTimeStamp:
                     description: (Applicable when source=BACKUP_FROM_TIMESTAMP) Clone
                       from latest available backup timestamp.
@@ -3428,6 +3578,33 @@ spec:
                     description: The OCID of the source Autonomous AI Database that
                       you will clone to create a new Autonomous AI Database.
                     type: string
+                  autonomousDatabaseMaintenanceWindow:
+                    description: (Updatable) Autonomous Database maintenance window.
+                      The maintenance window can be configured during database creation.
+                      To change the maintenance window of an existing Autonomous Database
+                      Serverless instance, clone the database and specify the maintenance
+                      window for the new cloned instance.
+                    items:
+                      properties:
+                        dayOfWeek:
+                          description: (Updatable) Day of the week.
+                          items:
+                            properties:
+                              name:
+                                description: (Updatable) Name of the day of the week.
+                                type: string
+                            type: object
+                          type: array
+                        maintenanceEndTime:
+                          description: (Updatable) The maintenance end time. The value
+                            must use the ISO-8601 format "hh:mm".
+                          type: string
+                        maintenanceStartTime:
+                          description: (Updatable) The maintenance start time. The
+                            value must use the ISO-8601 format "hh:mm".
+                          type: string
+                      type: object
+                    type: array
                   autonomousMaintenanceScheduleType:
                     description: (Updatable) The maintenance schedule type of the
                       Autonomous AI Database Serverless. An EARLY maintenance schedule
@@ -3636,6 +3813,10 @@ spec:
                           description: The Oracle REST Data Services (ORDS) URL of
                             the Web Access for the Autonomous AI Database.
                           type: string
+                        spatialStudioUrl:
+                          description: The URL of the Spatial Studio for the Autonomous
+                            AI Database.
+                          type: string
                         sqlDevWebUrl:
                           description: Oracle SQL Developer Web URL.
                           type: string
@@ -3734,18 +3915,20 @@ spec:
                             after which the VM used by database tools will be terminated.
                           type: number
                         name:
-                          description: (Updatable) Name of database tool.
+                          description: (Updatable) Name of the day of the week.
                           type: string
                       type: object
                     type: array
                   dbVersion:
                     description: (Updatable) A valid Oracle AI Database version for
-                      Autonomous AI Database.db_workload AJD is only supported for
-                      db_version 19c and above.
+                      Autonomous AI Database. When you specify 23ai for dbversion,
+                      the system will provision a 23ai database, but the UI will display
+                      it as 26ai. When you specify 26ai for dbversion, the system
+                      will provision and display a 26ai database as expected. For
+                      new databases, it is recommended to use either 19c or 26ai.
                     type: string
                   dbWorkload:
-                    description: '(Updatable) The Autonomous AI Database workload
-                      type. The following values are valid:'
+                    description: AJD is only supported for db_version 19c and above.
                     type: string
                   definedTags:
                     additionalProperties:
@@ -3934,6 +4117,24 @@ spec:
                           type: string
                       type: object
                     type: array
+                  encryptionKeyLocationDetails:
+                    description: Types of providers supported for managing database
+                      encryption keys
+                    items:
+                      properties:
+                        awsEncryptionKeyId:
+                          description: Provide the key OCID of a registered AWS key.
+                          type: string
+                        azureEncryptionKeyId:
+                          description: The OCID of the Autonomous AI Database.
+                          type: string
+                        hsmPassword:
+                          type: string
+                        providerType:
+                          description: Use 'AWS' for creating a new database.
+                          type: string
+                      type: object
+                    type: array
                   failedDataRecoveryInSeconds:
                     description: Indicates the number of seconds of data loss for
                       a Data Guard failover.
@@ -4068,6 +4269,12 @@ spec:
                   isScheduleDbVersionUpgradeToEarliest:
                     type: boolean
                   isShrinkOnly:
+                    description: (Updatable) An optional property when enabled triggers
+                      the Shrinking of Autonomous Database once. To trigger Shrinking
+                      of ADB once again, this flag needs to be disabled and re-enabled
+                      again. It should not be passed during create database operation.
+                      It is only applicable on Serverless databases i.e. where is_dedicated
+                      is false.
                     type: boolean
                   keyHistoryEntry:
                     description: Key History Entry.
@@ -4146,6 +4353,11 @@ spec:
                       will be triggered when necessary for a Local Autonomous Data
                       Guard
                     type: number
+                  localAdgResourcePoolLeaderId:
+                    description: The OCID of the dedicated resource pool leader Autonomous
+                      Database in the same region, associated with local Autonomous
+                      Data Guard for a dedicated resource pool member.
+                    type: string
                   localDisasterRecoveryType:
                     description: Indicates the local disaster recovery (DR) type of
                       the Autonomous AI Database Serverless instance. Autonomous Data
@@ -4338,6 +4550,10 @@ spec:
                           description: The Oracle REST Data Services (ORDS) URL of
                             the Web Access for the Autonomous AI Database.
                           type: string
+                        spatialStudioUrl:
+                          description: The URL of the Spatial Studio for the Autonomous
+                            AI Database.
+                          type: string
                         sqlDevWebUrl:
                           description: Oracle SQL Developer Web URL.
                           type: string
@@ -4413,12 +4629,20 @@ spec:
                           description: (Updatable) Available capacity left for new
                             elastic pool members provision
                           type: number
+                        availableStorageCapacityInTbs:
+                          description: (Updatable) Available storage capacity (in
+                            TB) that can be used for adding new members or scaling
+                            existing members in a dedicated elastic pool.
+                          type: number
                         isDisabled:
                           description: (Updatable) Indicates if the resource pool
                             should be deleted for the Autonomous AI Database.
                           type: boolean
                         poolSize:
                           description: (Updatable) Resource pool size.
+                          type: number
+                        poolStorageSizeInTbs:
+                          description: (Updatable) Resource pool storage size in TBs.
                           type: number
                         totalComputeCapacity:
                           description: Resource Pool total capacity, it's currently
@@ -4431,6 +4655,9 @@ spec:
                       or Autonomous AI Database, if Autonomous Data Guard is enabled.
                     type: string
                   rotateKeyTrigger:
+                    description: (Updatable) An optional property when flipped triggers
+                      rotation of KMS key. It is only applicable on dedicated databases
+                      i.e. where is_dedicated is true.
                     type: boolean
                   scheduledOperations:
                     description: (Updatable) The list of scheduled operations. Consists
@@ -4442,7 +4669,7 @@ spec:
                           items:
                             properties:
                               name:
-                                description: (Updatable) Name of database tool.
+                                description: (Updatable) Name of the day of the week.
                                 type: string
                             type: object
                           type: array
@@ -4562,9 +4789,18 @@ spec:
                       type: string
                     type: array
                   switchoverTo:
+                    description: It is applicable only when is_local_data_guard_enabled
+                      is true. Could be set to PRIMARY or STANDBY. Default value is
+                      PRIMARY.
                     type: string
                   switchoverToRemotePeerId:
-                    description: The OCID of the Autonomous AI Database.
+                    description: (Updatable) It is applicable only when dataguard_region_type
+                      and role are set, and is_dedicated is false. For Autonomous
+                      Database Serverless instances, Data Guard associations have
+                      designated primary and standby regions, and these region types
+                      do not change when the database changes roles. It takes the
+                      OCID of the remote peer to switchover to and the API is called
+                      from the remote region.
                     type: string
                   systemTags:
                     additionalProperties:
@@ -4610,6 +4846,10 @@ spec:
                     type: string
                   timeMaintenanceEnd:
                     description: The date and time when maintenance will end.
+                    type: string
+                  timeMaintenancePauseUntil:
+                    description: The date until which maintenance of Autonomous Database
+                      is temporarily paused.
                     type: string
                   timeOfAutoRefreshStart:
                     description: (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable)
@@ -4668,6 +4908,17 @@ spec:
                   totalBackupStorageSizeInGbs:
                     description: The backup storage to the database.
                     type: number
+                  transportableTablespace:
+                    description: Details for importing transportable tablespace for
+                      an Autonomous Database.
+                    items:
+                      properties:
+                        ttsBundleUrl:
+                          description: URL for Oracle Cloud Infrastructure Storage
+                            location for a Transportable Tablespace (TTS) bundle.
+                          type: string
+                      type: object
+                    type: array
                   useLatestAvailableBackupTimeStamp:
                     description: (Applicable when source=BACKUP_FROM_TIMESTAMP) Clone
                       from latest available backup timestamp.

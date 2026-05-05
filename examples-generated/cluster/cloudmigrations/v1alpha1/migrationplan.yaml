@@ -31,9 +31,13 @@ spec:
       strategyType: ${var.migration_plan_strategies_strategy_type}
     targetEnvironments:
     - availabilityDomain: ${var.migration_plan_target_environments_availability_domain}
+      clusterAssetIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_asset
       dedicatedVmHost: ${var.migration_plan_target_environments_dedicated_vm_host}
       faultDomain: ${var.migration_plan_target_environments_fault_domain}
       msLicense: ${var.migration_plan_target_environments_ms_license}
+      olvmTemplates: ${var.migration_plan_target_environments_olvm_templates}
       preferredShapeType: ${var.migration_plan_target_environments_preferred_shape_type}
       subnet: ${var.migration_plan_target_environments_subnet}
       targetCompartmentIdSelector:
@@ -41,3 +45,6 @@ spec:
           testing.upbound.io/example-name: test_compartment
       targetEnvironmentType: ${var.migration_plan_target_environments_target_environment_type}
       vcn: ${var.migration_plan_target_environments_vcn}
+      vnicProfileAssetIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_asset

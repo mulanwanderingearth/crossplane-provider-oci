@@ -16,22 +16,22 @@ import (
 
 type NATConfigurationInitParameters struct {
 
-	// (Updatable) To allocate private NAT IPs to the firewall. The attached network firewall policy must also have NAT rules to enable NAT on any traffic passing through the firewall. The value of this field can not be false to release the NAT IPs given that the attached network firewall policy does not contains any NAT rules. The value of this field should be set to true if the network firewall policy being applied contains NAT rules.
+	// (Updatable) The value of this field must be set to true if the network firewall policy being applied contains NAT rules. The value of this field can be set to false if the network firewall policy being applied or the currently attached firewall policy doesn't contain NAT rules.
 	MustEnablePrivateNAT *bool `json:"mustEnablePrivateNat,omitempty" tf:"must_enable_private_nat,omitempty"`
 }
 
 type NATConfigurationObservation struct {
 
-	// (Updatable) To allocate private NAT IPs to the firewall. The attached network firewall policy must also have NAT rules to enable NAT on any traffic passing through the firewall. The value of this field can not be false to release the NAT IPs given that the attached network firewall policy does not contains any NAT rules. The value of this field should be set to true if the network firewall policy being applied contains NAT rules.
+	// (Updatable) The value of this field must be set to true if the network firewall policy being applied contains NAT rules. The value of this field can be set to false if the network firewall policy being applied or the currently attached firewall policy doesn't contain NAT rules.
 	MustEnablePrivateNAT *bool `json:"mustEnablePrivateNat,omitempty" tf:"must_enable_private_nat,omitempty"`
 
-	// An array of NAT IP addresses that are associated with the Network Firewall. These IPs are reserved for NAT and shouldn't be used for any other purpose in the subnet.
+	// An array of Private NAT IP addresses that are associated with the Network Firewall. These IP addresses are reserved for NAT and shouldn't be used for any other purpose in the subnet. This list contains IP  addresses when NAT configuration is enabled. This list is empty or null IP when NAT configuration is disabled.
 	NATIPAddressList []*string `json:"natIpAddressList,omitempty" tf:"nat_ip_address_list,omitempty"`
 }
 
 type NATConfigurationParameters struct {
 
-	// (Updatable) To allocate private NAT IPs to the firewall. The attached network firewall policy must also have NAT rules to enable NAT on any traffic passing through the firewall. The value of this field can not be false to release the NAT IPs given that the attached network firewall policy does not contains any NAT rules. The value of this field should be set to true if the network firewall policy being applied contains NAT rules.
+	// (Updatable) The value of this field must be set to true if the network firewall policy being applied contains NAT rules. The value of this field can be set to false if the network firewall policy being applied or the currently attached firewall policy doesn't contain NAT rules.
 	// +kubebuilder:validation:Optional
 	MustEnablePrivateNAT *bool `json:"mustEnablePrivateNat" tf:"must_enable_private_nat,omitempty"`
 }
@@ -70,7 +70,7 @@ type NetworkFirewallInitParameters struct {
 	// IPv6 address for the Network Firewall.
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// (Updatable) Nat Configuration request to use Nat feature on firewall.
+	// (Updatable) Request to configure Network Address Translation (NAT) on a firewall. To perform NAT on traffic passing the private NAT IPs to the firewall, the attached network firewall policy must also have NAT rules and NAT configuration must be enabled. If NAT configuration is enabled and the attached firewall policy does not contain NAT rule then NAT IPs will get allocated but NAT will not be performed on any traffic.
 	NATConfiguration []NATConfigurationInitParameters `json:"natConfiguration,omitempty" tf:"nat_configuration,omitempty"`
 
 	// (Updatable) The OCID of the Network Firewall Policy.
@@ -88,6 +88,9 @@ type NetworkFirewallInitParameters struct {
 	// (Updatable) An array of network security groups OCID associated with the Network Firewall.
 	// +listType=set
 	NetworkSecurityGroupIds []*string `json:"networkSecurityGroupIds,omitempty" tf:"network_security_group_ids,omitempty"`
+
+	// (Updatable) The shape of a firewall to determine the bandwidth that the firewall allows.
+	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// The OCID of the subnet associated with the Network Firewall.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet
@@ -133,7 +136,7 @@ type NetworkFirewallObservation struct {
 	// A message describing the current state in more detail. For example, it can be used to provide actionable information for a resource in 'FAILED' state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
-	// (Updatable) Nat Configuration request to use Nat feature on firewall.
+	// (Updatable) Request to configure Network Address Translation (NAT) on a firewall. To perform NAT on traffic passing the private NAT IPs to the firewall, the attached network firewall policy must also have NAT rules and NAT configuration must be enabled. If NAT configuration is enabled and the attached firewall policy does not contain NAT rule then NAT IPs will get allocated but NAT will not be performed on any traffic.
 	NATConfiguration []NATConfigurationObservation `json:"natConfiguration,omitempty" tf:"nat_configuration,omitempty"`
 
 	// (Updatable) The OCID of the Network Firewall Policy.
@@ -142,6 +145,9 @@ type NetworkFirewallObservation struct {
 	// (Updatable) An array of network security groups OCID associated with the Network Firewall.
 	// +listType=set
 	NetworkSecurityGroupIds []*string `json:"networkSecurityGroupIds,omitempty" tf:"network_security_group_ids,omitempty"`
+
+	// (Updatable) The shape of a firewall to determine the bandwidth that the firewall allows.
+	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// The current state of the Network Firewall.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -201,7 +207,7 @@ type NetworkFirewallParameters struct {
 	// +kubebuilder:validation:Optional
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// (Updatable) Nat Configuration request to use Nat feature on firewall.
+	// (Updatable) Request to configure Network Address Translation (NAT) on a firewall. To perform NAT on traffic passing the private NAT IPs to the firewall, the attached network firewall policy must also have NAT rules and NAT configuration must be enabled. If NAT configuration is enabled and the attached firewall policy does not contain NAT rule then NAT IPs will get allocated but NAT will not be performed on any traffic.
 	// +kubebuilder:validation:Optional
 	NATConfiguration []NATConfigurationParameters `json:"natConfiguration,omitempty" tf:"nat_configuration,omitempty"`
 
@@ -222,6 +228,10 @@ type NetworkFirewallParameters struct {
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	NetworkSecurityGroupIds []*string `json:"networkSecurityGroupIds,omitempty" tf:"network_security_group_ids,omitempty"`
+
+	// (Updatable) The shape of a firewall to determine the bandwidth that the firewall allows.
+	// +kubebuilder:validation:Optional
+	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// The OCID of the subnet associated with the Network Firewall.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet

@@ -245,6 +245,9 @@ type PhasesObservation struct {
 	// Summary of phase status results.
 	Extract []ExtractObservation `json:"extract,omitempty" tf:"extract,omitempty"`
 
+	// Job Phase group display name e.g. 'Step 1: Migration'
+	GroupDisplayName *string `json:"groupDisplayName,omitempty" tf:"group_display_name,omitempty"`
+
 	// True if a Pre-Migration Advisor report is available for this phase. False or null if no report is available.
 	IsAdvisorReportAvailable *bool `json:"isAdvisorReportAvailable,omitempty" tf:"is_advisor_report_available,omitempty"`
 

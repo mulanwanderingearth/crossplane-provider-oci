@@ -181,7 +181,7 @@ spec:
                       Avoid entering confidential information.
                     type: string
                   entityId:
-                    description: (Updatable) Logging Analytics entity OCID. Associates
+                    description: (Updatable) Log Analytics entity OCID. Associates
                       the processed logs with the given entity .
                     type: string
                   freeformTags:
@@ -201,7 +201,7 @@ spec:
                       overlaps with existing ACTIVE collection rule
                     type: boolean
                   logGroupId:
-                    description: (Updatable) Logging Analytics Log group OCID to associate
+                    description: (Updatable) Log Analytics Log group OCID to associate
                       the processed logs with.
                     type: string
                   logGroupIdRef:
@@ -299,8 +299,8 @@ spec:
                       value is OBJECT_PATH (e.g. /n//b//o/).
                     type: string
                   logSourceName:
-                    description: (Updatable) Name of the Logging Analytics Source
-                      to use for the processing.
+                    description: (Updatable) Name of the Log Analytics Source to use
+                      for the processing.
                     type: string
                   logType:
                     description: Type of files/objects in this object collection rule.
@@ -310,7 +310,8 @@ spec:
                       unique within the tenancy, and cannot be modified.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   objectNameFilters:
                     description: (Updatable) When the filters are provided, only the
@@ -459,7 +460,7 @@ spec:
                   streamId:
                     description: (Updatable) A Stream OCID is required for Object
                       Collection rules of type LIVE or HISTORIC_LIVE, which will be
-                      used by Logging Analytics while creating Event Rule and consume
+                      used by Log Analytics while creating Event Rule and consume
                       the event notifications created by the Object Storage.
                     type: string
                   streamIdRef:
@@ -663,7 +664,7 @@ spec:
                       Avoid entering confidential information.
                     type: string
                   entityId:
-                    description: (Updatable) Logging Analytics entity OCID. Associates
+                    description: (Updatable) Log Analytics entity OCID. Associates
                       the processed logs with the given entity .
                     type: string
                   freeformTags:
@@ -683,7 +684,7 @@ spec:
                       overlaps with existing ACTIVE collection rule
                     type: boolean
                   logGroupId:
-                    description: (Updatable) Logging Analytics Log group OCID to associate
+                    description: (Updatable) Log Analytics Log group OCID to associate
                       the processed logs with.
                     type: string
                   logGroupIdRef:
@@ -781,8 +782,8 @@ spec:
                       value is OBJECT_PATH (e.g. /n//b//o/).
                     type: string
                   logSourceName:
-                    description: (Updatable) Name of the Logging Analytics Source
-                      to use for the processing.
+                    description: (Updatable) Name of the Log Analytics Source to use
+                      for the processing.
                     type: string
                   logType:
                     description: Type of files/objects in this object collection rule.
@@ -792,7 +793,8 @@ spec:
                       unique within the tenancy, and cannot be modified.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   objectNameFilters:
                     description: (Updatable) When the filters are provided, only the
@@ -941,7 +943,7 @@ spec:
                   streamId:
                     description: (Updatable) A Stream OCID is required for Object
                       Collection rules of type LIVE or HISTORIC_LIVE, which will be
-                      used by Logging Analytics while creating Event Rule and consume
+                      used by Log Analytics while creating Event Rule and consume
                       the event notifications created by the Object Storage.
                     type: string
                   streamIdRef:
@@ -1163,7 +1165,7 @@ spec:
                       Avoid entering confidential information.
                     type: string
                   entityId:
-                    description: (Updatable) Logging Analytics entity OCID. Associates
+                    description: (Updatable) Log Analytics entity OCID. Associates
                       the processed logs with the given entity .
                     type: string
                   freeformTags:
@@ -1192,7 +1194,7 @@ spec:
                     description: A detailed status of the life cycle state.
                     type: string
                   logGroupId:
-                    description: (Updatable) Logging Analytics Log group OCID to associate
+                    description: (Updatable) Log Analytics Log group OCID to associate
                       the processed logs with.
                     type: string
                   logSet:
@@ -1214,8 +1216,8 @@ spec:
                       value is OBJECT_PATH (e.g. /n//b//o/).
                     type: string
                   logSourceName:
-                    description: (Updatable) Name of the Logging Analytics Source
-                      to use for the processing.
+                    description: (Updatable) Name of the Log Analytics Source to use
+                      for the processing.
                     type: string
                   logType:
                     description: Type of files/objects in this object collection rule.
@@ -1225,7 +1227,8 @@ spec:
                       unique within the tenancy, and cannot be modified.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   objectNameFilters:
                     description: (Updatable) When the filters are provided, only the
@@ -1301,7 +1304,7 @@ spec:
                   streamId:
                     description: (Updatable) A Stream OCID is required for Object
                       Collection rules of type LIVE or HISTORIC_LIVE, which will be
-                      used by Logging Analytics while creating Event Rule and consume
+                      used by Log Analytics while creating Event Rule and consume
                       the event notifications created by the Object Storage.
                     type: string
                   timeCreated:

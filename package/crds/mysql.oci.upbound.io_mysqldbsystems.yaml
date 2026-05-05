@@ -375,6 +375,22 @@ spec:
                       It is required if you are creating a new database. It cannot
                       be set if you are creating a database from a backup.
                     type: number
+                  databaseConsole:
+                    description: (Updatable) Details required to configure the database
+                      console while creating a DB System.
+                    items:
+                      properties:
+                        port:
+                          description: (Updatable) The port on which the database
+                            console can be accessed. Supported port numbers are 443
+                            and from 1024 to 65535.
+                          type: number
+                        status:
+                          description: (Updatable) Enable/disable the database console
+                            on the DB System.
+                          type: string
+                      type: object
+                    type: array
                   databaseManagement:
                     description: (Updatable) Whether to enable monitoring via the
                       Database Management service.
@@ -544,6 +560,26 @@ spec:
                       and backup_policy cannot be updated in the same request.
                     items:
                       properties:
+                        maintenanceDisabledWindows:
+                          description: (Updatable) Time window during which downtime-inducing
+                            maintenance shall not be performed. Downtime-free maintenance
+                            may be performed to apply required security patches. At
+                            most one configured window is supported.
+                          items:
+                            properties:
+                              timeEnd:
+                                description: (Updatable) The time until when maintenance
+                                  is disabled. Must be set together with timeStart
+                                  and must be after timeStart. as described by RFC
+                                  3339.
+                                type: string
+                              timeStart:
+                                description: (Updatable) The time from when maintenance
+                                  is disabled. Must be set together with timeEnd and
+                                  must be before timeEnd. as described by RFC 3339.
+                                type: string
+                            type: object
+                          type: array
                         maintenanceScheduleType:
                           description: '(Updatable) The maintenance schedule type
                             of the DB system. Defaults to REGULAR. EARLY:   Maintenance
@@ -582,8 +618,9 @@ spec:
                     type: array
                     x-kubernetes-list-type: set
                   port:
-                    description: The port for primary endpoint of the DB System to
-                      listen on.
+                    description: (Updatable) The port on which the database console
+                      can be accessed. Supported port numbers are 443 and from 1024
+                      to 65535.
                     type: number
                   portX:
                     description: The TCP network port on which X Plugin listens for
@@ -628,8 +665,9 @@ spec:
                             the DB System instances.
                           type: string
                         port:
-                          description: The port for primary endpoint of the DB System
-                            to listen on.
+                          description: (Updatable) The port on which the database
+                            console can be accessed. Supported port numbers are 443
+                            and from 1024 to 65535.
                           type: number
                       type: object
                     type: array
@@ -954,6 +992,47 @@ spec:
                             type: string
                         type: object
                     type: object
+                  telemetryConfiguration:
+                    description: (Updatable) Details required to configure how MySQL
+                      telemetry should be exposed.
+                    items:
+                      properties:
+                        logs:
+                          description: (Updatable) Telemetry configuration details
+                            for logging.
+                          items:
+                            properties:
+                              destination:
+                                description: (Updatable) Type of destination where
+                                  MySQL telemetry is exposed to. Use LOG_ANALYTICS
+                                  to send logs to OCI Log Analytics.
+                                type: string
+                              destinationConfigurations:
+                                description: |-
+                                  (Updatable) List of configuration variables for a given destination type.
+                                  * key -  (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+                                items:
+                                  properties:
+                                    key:
+                                      description: Name of the destination configuration
+                                        variable.
+                                      type: string
+                                    value:
+                                      description: (Updatable) Value of the destination
+                                        configuration variable.
+                                      type: string
+                                  type: object
+                                type: array
+                              logTypes:
+                                description: (Updatable) List of MySQL telemetry types
+                                  that can be exposed on a telemetry destination
+                                items:
+                                  type: string
+                                type: array
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                 type: object
               initProvider:
                 description: |-
@@ -1269,6 +1348,22 @@ spec:
                       It is required if you are creating a new database. It cannot
                       be set if you are creating a database from a backup.
                     type: number
+                  databaseConsole:
+                    description: (Updatable) Details required to configure the database
+                      console while creating a DB System.
+                    items:
+                      properties:
+                        port:
+                          description: (Updatable) The port on which the database
+                            console can be accessed. Supported port numbers are 443
+                            and from 1024 to 65535.
+                          type: number
+                        status:
+                          description: (Updatable) Enable/disable the database console
+                            on the DB System.
+                          type: string
+                      type: object
+                    type: array
                   databaseManagement:
                     description: (Updatable) Whether to enable monitoring via the
                       Database Management service.
@@ -1438,6 +1533,26 @@ spec:
                       and backup_policy cannot be updated in the same request.
                     items:
                       properties:
+                        maintenanceDisabledWindows:
+                          description: (Updatable) Time window during which downtime-inducing
+                            maintenance shall not be performed. Downtime-free maintenance
+                            may be performed to apply required security patches. At
+                            most one configured window is supported.
+                          items:
+                            properties:
+                              timeEnd:
+                                description: (Updatable) The time until when maintenance
+                                  is disabled. Must be set together with timeStart
+                                  and must be after timeStart. as described by RFC
+                                  3339.
+                                type: string
+                              timeStart:
+                                description: (Updatable) The time from when maintenance
+                                  is disabled. Must be set together with timeEnd and
+                                  must be before timeEnd. as described by RFC 3339.
+                                type: string
+                            type: object
+                          type: array
                         maintenanceScheduleType:
                           description: '(Updatable) The maintenance schedule type
                             of the DB system. Defaults to REGULAR. EARLY:   Maintenance
@@ -1476,8 +1591,9 @@ spec:
                     type: array
                     x-kubernetes-list-type: set
                   port:
-                    description: The port for primary endpoint of the DB System to
-                      listen on.
+                    description: (Updatable) The port on which the database console
+                      can be accessed. Supported port numbers are 443 and from 1024
+                      to 65535.
                     type: number
                   portX:
                     description: The TCP network port on which X Plugin listens for
@@ -1522,8 +1638,9 @@ spec:
                             the DB System instances.
                           type: string
                         port:
-                          description: The port for primary endpoint of the DB System
-                            to listen on.
+                          description: (Updatable) The port on which the database
+                            console can be accessed. Supported port numbers are 443
+                            and from 1024 to 65535.
                           type: number
                       type: object
                     type: array
@@ -1848,6 +1965,47 @@ spec:
                             type: string
                         type: object
                     type: object
+                  telemetryConfiguration:
+                    description: (Updatable) Details required to configure how MySQL
+                      telemetry should be exposed.
+                    items:
+                      properties:
+                        logs:
+                          description: (Updatable) Telemetry configuration details
+                            for logging.
+                          items:
+                            properties:
+                              destination:
+                                description: (Updatable) Type of destination where
+                                  MySQL telemetry is exposed to. Use LOG_ANALYTICS
+                                  to send logs to OCI Log Analytics.
+                                type: string
+                              destinationConfigurations:
+                                description: |-
+                                  (Updatable) List of configuration variables for a given destination type.
+                                  * key -  (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+                                items:
+                                  properties:
+                                    key:
+                                      description: Name of the destination configuration
+                                        variable.
+                                      type: string
+                                    value:
+                                      description: (Updatable) Value of the destination
+                                        configuration variable.
+                                      type: string
+                                  type: object
+                                type: array
+                              logTypes:
+                                description: (Updatable) List of MySQL telemetry types
+                                  that can be exposed on a telemetry destination
+                                items:
+                                  type: string
+                                type: array
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                 type: object
               managementPolicies:
                 default:
@@ -2110,8 +2268,9 @@ spec:
                                 description: The network address of the MySQL instance.
                                 type: string
                               port:
-                                description: The port for primary endpoint of the
-                                  DB System to listen on.
+                                description: (Updatable) The port on which the database
+                                  console can be accessed. Supported port numbers
+                                  are 443 and from 1024 to 65535.
                                 type: number
                               sourceType:
                                 description: The specific source identifier. Use BACKUP
@@ -2191,10 +2350,8 @@ spec:
                                       description: The type of the filter rule.
                                       type: string
                                     value:
-                                      description: The body of the filter rule. This
-                                        can represent a database, a table, or a database
-                                        pair (represented as "db1->db2"). For more
-                                        information, see Replication Filtering Rules.
+                                      description: (Updatable) Value of the destination
+                                        configuration variable.
                                       type: string
                                   type: object
                                 type: array
@@ -2309,6 +2466,22 @@ spec:
                       It is required if you are creating a new database. It cannot
                       be set if you are creating a database from a backup.
                     type: number
+                  databaseConsole:
+                    description: (Updatable) Details required to configure the database
+                      console while creating a DB System.
+                    items:
+                      properties:
+                        port:
+                          description: (Updatable) The port on which the database
+                            console can be accessed. Supported port numbers are 443
+                            and from 1024 to 65535.
+                          type: number
+                        status:
+                          description: (Updatable) Enable/disable the database console
+                            on the DB System.
+                          type: string
+                      type: object
+                    type: array
                   databaseManagement:
                     description: (Updatable) Whether to enable monitoring via the
                       Database Management service.
@@ -2393,8 +2566,9 @@ spec:
                             type: string
                           type: array
                         port:
-                          description: The port for primary endpoint of the DB System
-                            to listen on.
+                          description: (Updatable) The port on which the database
+                            console can be accessed. Supported port numbers are 443
+                            and from 1024 to 65535.
                           type: number
                         portX:
                           description: The TCP network port on which X Plugin listens
@@ -2409,9 +2583,8 @@ spec:
                             can connect to.
                           type: string
                         status:
-                          description: The state of the endpoints, as far as it can
-                            seen from the DB System. There may be some inconsistency
-                            with the actual state of the MySQL service.
+                          description: (Updatable) Enable/disable the database console
+                            on the DB System.
                           type: string
                         statusDetails:
                           description: Additional information about the current endpoint
@@ -2491,6 +2664,26 @@ spec:
                       and backup_policy cannot be updated in the same request.
                     items:
                       properties:
+                        maintenanceDisabledWindows:
+                          description: (Updatable) Time window during which downtime-inducing
+                            maintenance shall not be performed. Downtime-free maintenance
+                            may be performed to apply required security patches. At
+                            most one configured window is supported.
+                          items:
+                            properties:
+                              timeEnd:
+                                description: (Updatable) The time until when maintenance
+                                  is disabled. Must be set together with timeStart
+                                  and must be after timeStart. as described by RFC
+                                  3339.
+                                type: string
+                              timeStart:
+                                description: (Updatable) The time from when maintenance
+                                  is disabled. Must be set together with timeEnd and
+                                  must be before timeEnd. as described by RFC 3339.
+                                type: string
+                            type: object
+                          type: array
                         maintenanceScheduleType:
                           description: '(Updatable) The maintenance schedule type
                             of the DB system. Defaults to REGULAR. EARLY:   Maintenance
@@ -2552,8 +2745,9 @@ spec:
                       type: object
                     type: array
                   port:
-                    description: The port for primary endpoint of the DB System to
-                      listen on.
+                    description: (Updatable) The port on which the database console
+                      can be accessed. Supported port numbers are 443 and from 1024
+                      to 65535.
                     type: number
                   portX:
                     description: The TCP network port on which X Plugin listens for
@@ -2598,8 +2792,9 @@ spec:
                             the DB System instances.
                           type: string
                         port:
-                          description: The port for primary endpoint of the DB System
-                            to listen on.
+                          description: (Updatable) The port on which the database
+                            console can be accessed. Supported port numbers are 443
+                            and from 1024 to 65535.
                           type: number
                       type: object
                     type: array
@@ -2682,6 +2877,47 @@ spec:
                       "true"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  telemetryConfiguration:
+                    description: (Updatable) Details required to configure how MySQL
+                      telemetry should be exposed.
+                    items:
+                      properties:
+                        logs:
+                          description: (Updatable) Telemetry configuration details
+                            for logging.
+                          items:
+                            properties:
+                              destination:
+                                description: (Updatable) Type of destination where
+                                  MySQL telemetry is exposed to. Use LOG_ANALYTICS
+                                  to send logs to OCI Log Analytics.
+                                type: string
+                              destinationConfigurations:
+                                description: |-
+                                  (Updatable) List of configuration variables for a given destination type.
+                                  * key -  (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+                                items:
+                                  properties:
+                                    key:
+                                      description: Name of the destination configuration
+                                        variable.
+                                      type: string
+                                    value:
+                                      description: (Updatable) Value of the destination
+                                        configuration variable.
+                                      type: string
+                                  type: object
+                                type: array
+                              logTypes:
+                                description: (Updatable) List of MySQL telemetry types
+                                  that can be exposed on a telemetry destination
+                                items:
+                                  type: string
+                                type: array
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   timeCreated:
                     description: The date and time the Channel was created, as described
                       by RFC 3339.

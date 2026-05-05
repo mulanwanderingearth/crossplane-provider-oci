@@ -99,6 +99,22 @@ type OutboundConnectorInitParameters struct {
 
 	// Version of the password secret in the Vault to use.
 	PasswordSecretVersion *float64 `json:"passwordSecretVersion,omitempty" tf:"password_secret_version,omitempty"`
+
+	// The OCID of the trusted certificate for the LDAP server in the Vault.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	TrustedCertificateSecretID *string `json:"trustedCertificateSecretId,omitempty" tf:"trusted_certificate_secret_id,omitempty"`
+
+	// Reference to a Secret in vault to populate trustedCertificateSecretId.
+	// +kubebuilder:validation:Optional
+	TrustedCertificateSecretIDRef *v1.Reference `json:"trustedCertificateSecretIdRef,omitempty" tf:"-"`
+
+	// Selector for a Secret in vault to populate trustedCertificateSecretId.
+	// +kubebuilder:validation:Optional
+	TrustedCertificateSecretIDSelector *v1.Selector `json:"trustedCertificateSecretIdSelector,omitempty" tf:"-"`
+
+	// Version of the trusted certificate secret in the Vault to use.
+	TrustedCertificateSecretVersion *float64 `json:"trustedCertificateSecretVersion,omitempty" tf:"trusted_certificate_secret_version,omitempty"`
 }
 
 type OutboundConnectorLocksInitParameters struct {
@@ -201,6 +217,12 @@ type OutboundConnectorObservation struct {
 
 	// When the lock was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
+
+	// The OCID of the trusted certificate for the LDAP server in the Vault.
+	TrustedCertificateSecretID *string `json:"trustedCertificateSecretId,omitempty" tf:"trusted_certificate_secret_id,omitempty"`
+
+	// Version of the trusted certificate secret in the Vault to use.
+	TrustedCertificateSecretVersion *float64 `json:"trustedCertificateSecretVersion,omitempty" tf:"trusted_certificate_secret_version,omitempty"`
 }
 
 type OutboundConnectorParameters struct {
@@ -272,6 +294,24 @@ type OutboundConnectorParameters struct {
 	// Version of the password secret in the Vault to use.
 	// +kubebuilder:validation:Optional
 	PasswordSecretVersion *float64 `json:"passwordSecretVersion,omitempty" tf:"password_secret_version,omitempty"`
+
+	// The OCID of the trusted certificate for the LDAP server in the Vault.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	TrustedCertificateSecretID *string `json:"trustedCertificateSecretId,omitempty" tf:"trusted_certificate_secret_id,omitempty"`
+
+	// Reference to a Secret in vault to populate trustedCertificateSecretId.
+	// +kubebuilder:validation:Optional
+	TrustedCertificateSecretIDRef *v1.Reference `json:"trustedCertificateSecretIdRef,omitempty" tf:"-"`
+
+	// Selector for a Secret in vault to populate trustedCertificateSecretId.
+	// +kubebuilder:validation:Optional
+	TrustedCertificateSecretIDSelector *v1.Selector `json:"trustedCertificateSecretIdSelector,omitempty" tf:"-"`
+
+	// Version of the trusted certificate secret in the Vault to use.
+	// +kubebuilder:validation:Optional
+	TrustedCertificateSecretVersion *float64 `json:"trustedCertificateSecretVersion,omitempty" tf:"trusted_certificate_secret_version,omitempty"`
 }
 
 // OutboundConnectorSpec defines the desired state of OutboundConnector

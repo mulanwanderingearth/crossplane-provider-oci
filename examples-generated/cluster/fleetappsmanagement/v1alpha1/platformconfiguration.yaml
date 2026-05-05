@@ -26,6 +26,9 @@ spec:
       instanceNameSelector:
         matchLabels:
           testing.upbound.io/example-name: test_instance
+      isCompliancePolicyRequiredForSoftlink: ${var.platform_configuration_config_category_details_is_compliance_policy_required_for_softlink}
+      isSoftlink: ${var.platform_configuration_config_category_details_is_softlink}
+      linkProductId: ${oci_fleet_apps_management_link_product.test_link_product.id}
       patchTypes:
       - displayName: ${var.platform_configuration_config_category_details_patch_types_display_name}
         id: ${var.platform_configuration_config_category_details_patch_types_id}

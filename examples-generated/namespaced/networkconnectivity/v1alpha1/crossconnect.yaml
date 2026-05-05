@@ -24,6 +24,7 @@ spec:
         testing.upbound.io/example-name: test_cross_connect_group
     freeformTags:
       Department: Finance
+    interfaceName: ${var.cross_connect_interface_name}
     locationName: ${var.cross_connect_location_name}
     macsecProperties:
     - encryptionCipher: ${var.cross_connect_macsec_properties_encryption_cipher}
@@ -39,4 +40,5 @@ spec:
     nearCrossConnectOrCrossConnectGroupIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_cross_connect_group
+    ociPhysicalDeviceName: ${var.cross_connect_oci_physical_device_name}
     portSpeedShapeName: ${var.cross_connect_port_speed_shape_name}

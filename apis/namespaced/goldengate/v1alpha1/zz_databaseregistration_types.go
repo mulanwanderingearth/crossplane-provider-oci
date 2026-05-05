@@ -140,6 +140,9 @@ type DatabaseRegistrationObservation struct {
 	// (Updatable) The OCID of the compartment being referenced.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
+	// The OCID of the connection being referenced as the successor resource of the deprecated database registration.
+	ConnectionID *string `json:"connectionId,omitempty" tf:"connection_id,omitempty"`
+
 	// (Updatable) Connect descriptor or Easy Connect Naming method used to connect to a database.
 	ConnectionString *string `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
 

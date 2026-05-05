@@ -1,0 +1,23 @@
+apiVersion: osmanagementhub.oci.m.upbound.io/v1alpha1
+kind: ManagedInstanceInstallSnapsManagement
+metadata:
+  annotations:
+    meta.upbound.io/example-id: osmanagementhub/v1alpha1/managedinstanceinstallsnapsmanagement
+  labels:
+    testing.upbound.io/example-name: test_managed_instance_install_snaps_management
+  name: test-managed-instance-install-snaps-management
+  namespace: upbound-system
+spec:
+  forProvider:
+    managedInstanceIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_managed_instance
+    snapDetails:
+    - channel: ${var.managed_instance_install_snaps_management_snap_details_channel}
+      isSigned: ${var.managed_instance_install_snaps_management_snap_details_is_signed}
+      mode: ${var.managed_instance_install_snaps_management_snap_details_mode}
+      name: ${var.managed_instance_install_snaps_management_snap_details_name}
+      revision: ${var.managed_instance_install_snaps_management_snap_details_revision}
+    workRequestDetails:
+    - description: ${var.managed_instance_install_snaps_management_work_request_details_description}
+      displayName: ${var.managed_instance_install_snaps_management_work_request_details_display_name}

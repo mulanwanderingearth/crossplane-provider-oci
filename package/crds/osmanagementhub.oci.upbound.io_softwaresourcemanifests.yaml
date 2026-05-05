@@ -75,8 +75,6 @@ spec:
               forProvider:
                 properties:
                   content:
-                    description: (Updatable) Provides the manifest content used to
-                      update the package list of the software source.
                     type: string
                   softwareSourceId:
                     description: The OCID of the software source.
@@ -172,8 +170,6 @@ spec:
                   autoscaler.
                 properties:
                   content:
-                    description: (Updatable) Provides the manifest content used to
-                      update the package list of the software source.
                     type: string
                   softwareSourceId:
                     description: The OCID of the software source.
@@ -350,10 +346,9 @@ spec:
               atProvider:
                 properties:
                   content:
-                    description: (Updatable) Provides the manifest content used to
-                      update the package list of the software source.
                     type: string
                   id:
+                    description: The OCID of the software source.
                     type: string
                   softwareSourceId:
                     description: The OCID of the software source.

@@ -7,6 +7,15 @@ Copyright 2022 Upbound Inc.
 package v1alpha1
 
 // Hub marks this type as a conversion hub.
+func (tr *AdvancedClusterFileSystem) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *AdvancedClusterFileSystemMount) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *AdvancedClusterFileSystemUnmount) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *ApplicationVip) Hub() {}
 
 // Hub marks this type as a conversion hub.
@@ -101,6 +110,9 @@ func (tr *DatabaseUpgrade) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *DataGuardAssociation) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *DataPatch) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *DbHome) Hub() {}
@@ -232,6 +244,21 @@ func (tr *ManagementCloudDbSystemConnector) Hub() {}
 func (tr *ManagementCloudDbSystemDiscovery) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *ManagementCloudExadataInfrastructure) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagementCloudExadataInfrastructureManagedexadata) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagementCloudExadataStorageConnector) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagementCloudExadataStorageGrid) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagementCloudExadataStorageServer) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *ManagementCloudListener) Hub() {}
 
 // Hub marks this type as a conversion hub.
@@ -331,10 +358,19 @@ func (tr *ManagementPluggabledatabaseDbmFeaturesManagement) Hub() {}
 func (tr *Migration) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *MigrationAssessment) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MigrationAssessmentAssessorAction) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *MigrationConnection) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *MigrationJob) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MigrationJobAdvisorReportCheck) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *MigrationMigration) Hub() {}

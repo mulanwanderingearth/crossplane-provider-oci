@@ -54,7 +54,7 @@ type ItemsParameters struct {
 
 type LogAnalyticsEntityInitParameters struct {
 
-	// The OCID of the Cloud resource which this entity is a representation of. This may be blank when the entity represents a non-cloud resource that the customer may have on their premises.
+	// (Updatable) The OCID of the Cloud resource which this entity is a representation of. This may be blank when the entity represents a non-cloud resource that the customer may have on their premises.
 	CloudResourceID *string `json:"cloudResourceId,omitempty" tf:"cloud_resource_id,omitempty"`
 
 	// (Updatable) Compartment Identifier [OCID] (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
@@ -102,7 +102,7 @@ type LogAnalyticsEntityInitParameters struct {
 	// (Updatable) The metadata name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// (Updatable) The name/value pairs for parameter values to be used in file patterns specified in log sources.
@@ -127,7 +127,7 @@ type LogAnalyticsEntityObservation struct {
 	// The count of associated log sources for a given log analytics entity.
 	AssociatedSourcesCount *float64 `json:"associatedSourcesCount,omitempty" tf:"associated_sources_count,omitempty"`
 
-	// The OCID of the Cloud resource which this entity is a representation of. This may be blank when the entity represents a non-cloud resource that the customer may have on their premises.
+	// (Updatable) The OCID of the Cloud resource which this entity is a representation of. This may be blank when the entity represents a non-cloud resource that the customer may have on their premises.
 	CloudResourceID *string `json:"cloudResourceId,omitempty" tf:"cloud_resource_id,omitempty"`
 
 	// (Updatable) Compartment Identifier [OCID] (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm).
@@ -171,7 +171,7 @@ type LogAnalyticsEntityObservation struct {
 	// (Updatable) The metadata name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// (Updatable) The name/value pairs for parameter values to be used in file patterns specified in log sources.
@@ -199,7 +199,7 @@ type LogAnalyticsEntityObservation struct {
 
 type LogAnalyticsEntityParameters struct {
 
-	// The OCID of the Cloud resource which this entity is a representation of. This may be blank when the entity represents a non-cloud resource that the customer may have on their premises.
+	// (Updatable) The OCID of the Cloud resource which this entity is a representation of. This may be blank when the entity represents a non-cloud resource that the customer may have on their premises.
 	// +kubebuilder:validation:Optional
 	CloudResourceID *string `json:"cloudResourceId,omitempty" tf:"cloud_resource_id,omitempty"`
 
@@ -256,7 +256,7 @@ type LogAnalyticsEntityParameters struct {
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 

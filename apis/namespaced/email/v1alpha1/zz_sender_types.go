@@ -35,6 +35,19 @@ type SenderInitParameters struct {
 	// The email address of the sender.
 	EmailAddress *string `json:"emailAddress,omitempty" tf:"email_address,omitempty"`
 
+	// (Updatable) An optional field. The IpPool OCID used to submit an email by Email Delivery when sent from this sender.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/email/v1alpha1.EmailIpPool
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	EmailIPPoolID *string `json:"emailIpPoolId,omitempty" tf:"email_ip_pool_id,omitempty"`
+
+	// Reference to a EmailIpPool in email to populate emailIpPoolId.
+	// +kubebuilder:validation:Optional
+	EmailIPPoolIDRef *v1.NamespacedReference `json:"emailIpPoolIdRef,omitempty" tf:"-"`
+
+	// Selector for a EmailIpPool in email to populate emailIpPoolId.
+	// +kubebuilder:validation:Optional
+	EmailIPPoolIDSelector *v1.NamespacedSelector `json:"emailIpPoolIdSelector,omitempty" tf:"-"`
+
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
@@ -78,6 +91,9 @@ type SenderObservation struct {
 
 	// The email domain used to assert responsibility for emails sent from this sender.
 	EmailDomainID *string `json:"emailDomainId,omitempty" tf:"email_domain_id,omitempty"`
+
+	// (Updatable) An optional field. The IpPool OCID used to submit an email by Email Delivery when sent from this sender.
+	EmailIPPoolID *string `json:"emailIpPoolId,omitempty" tf:"email_ip_pool_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
@@ -126,6 +142,20 @@ type SenderParameters struct {
 	// The email address of the sender.
 	// +kubebuilder:validation:Optional
 	EmailAddress *string `json:"emailAddress,omitempty" tf:"email_address,omitempty"`
+
+	// (Updatable) An optional field. The IpPool OCID used to submit an email by Email Delivery when sent from this sender.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/email/v1alpha1.EmailIpPool
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	EmailIPPoolID *string `json:"emailIpPoolId,omitempty" tf:"email_ip_pool_id,omitempty"`
+
+	// Reference to a EmailIpPool in email to populate emailIpPoolId.
+	// +kubebuilder:validation:Optional
+	EmailIPPoolIDRef *v1.NamespacedReference `json:"emailIpPoolIdRef,omitempty" tf:"-"`
+
+	// Selector for a EmailIpPool in email to populate emailIpPoolId.
+	// +kubebuilder:validation:Optional
+	EmailIPPoolIDSelector *v1.NamespacedSelector `json:"emailIpPoolIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional

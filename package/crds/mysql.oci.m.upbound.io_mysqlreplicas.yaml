@@ -299,6 +299,50 @@ spec:
                             storage for non-VM (bare metal) shapes.  To get a list
                             of shapes, use the ListShapes operation.'
                           type: string
+                        telemetryConfiguration:
+                          description: (Updatable) Telemetry configuration details
+                            of a DB System or a read replica.
+                          items:
+                            properties:
+                              logs:
+                                description: (Updatable) Telemetry configuration details
+                                  for logging.
+                                items:
+                                  properties:
+                                    destination:
+                                      description: (Updatable) Type of destination
+                                        where MySQL telemetry is exposed to. Use LOG_ANALYTICS
+                                        to send logs to Log Analytics.
+                                      type: string
+                                    destinationConfigurations:
+                                      description: (Updatable) List of configuration
+                                        variables for a given destination type.
+                                      items:
+                                        properties:
+                                          key:
+                                            description: (Updatable) Name of the destination
+                                              configuration variable. Use log-group-id
+                                              to  specify Log Analytics Log Group
+                                              OCID. Also specify log-set when using
+                                              the Log Partitioning feature of Log
+                                              Analytics.
+                                            type: string
+                                          value:
+                                            description: (Updatable) Value of the
+                                              destination configuration variable.
+                                            type: string
+                                        type: object
+                                      type: array
+                                    logTypes:
+                                      description: (Updatable) List of MySQL telemetry
+                                        types that can be exposed on a telemetry destination
+                                      items:
+                                        type: string
+                                      type: array
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
                       type: object
                     type: array
                 type: object
@@ -555,6 +599,50 @@ spec:
                             storage for non-VM (bare metal) shapes.  To get a list
                             of shapes, use the ListShapes operation.'
                           type: string
+                        telemetryConfiguration:
+                          description: (Updatable) Telemetry configuration details
+                            of a DB System or a read replica.
+                          items:
+                            properties:
+                              logs:
+                                description: (Updatable) Telemetry configuration details
+                                  for logging.
+                                items:
+                                  properties:
+                                    destination:
+                                      description: (Updatable) Type of destination
+                                        where MySQL telemetry is exposed to. Use LOG_ANALYTICS
+                                        to send logs to Log Analytics.
+                                      type: string
+                                    destinationConfigurations:
+                                      description: (Updatable) List of configuration
+                                        variables for a given destination type.
+                                      items:
+                                        properties:
+                                          key:
+                                            description: (Updatable) Name of the destination
+                                              configuration variable. Use log-group-id
+                                              to  specify Log Analytics Log Group
+                                              OCID. Also specify log-set when using
+                                              the Log Partitioning feature of Log
+                                              Analytics.
+                                            type: string
+                                          value:
+                                            description: (Updatable) Value of the
+                                              destination configuration variable.
+                                            type: string
+                                        type: object
+                                      type: array
+                                    logTypes:
+                                      description: (Updatable) List of MySQL telemetry
+                                        types that can be exposed on a telemetry destination
+                                      items:
+                                        type: string
+                                      type: array
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
                       type: object
                     type: array
                 type: object
@@ -757,6 +845,50 @@ spec:
                             storage for non-VM (bare metal) shapes.  To get a list
                             of shapes, use the ListShapes operation.'
                           type: string
+                        telemetryConfiguration:
+                          description: (Updatable) Telemetry configuration details
+                            of a DB System or a read replica.
+                          items:
+                            properties:
+                              logs:
+                                description: (Updatable) Telemetry configuration details
+                                  for logging.
+                                items:
+                                  properties:
+                                    destination:
+                                      description: (Updatable) Type of destination
+                                        where MySQL telemetry is exposed to. Use LOG_ANALYTICS
+                                        to send logs to Log Analytics.
+                                      type: string
+                                    destinationConfigurations:
+                                      description: (Updatable) List of configuration
+                                        variables for a given destination type.
+                                      items:
+                                        properties:
+                                          key:
+                                            description: (Updatable) Name of the destination
+                                              configuration variable. Use log-group-id
+                                              to  specify Log Analytics Log Group
+                                              OCID. Also specify log-set when using
+                                              the Log Partitioning feature of Log
+                                              Analytics.
+                                            type: string
+                                          value:
+                                            description: (Updatable) Value of the
+                                              destination configuration variable.
+                                            type: string
+                                        type: object
+                                      type: array
+                                    logTypes:
+                                      description: (Updatable) List of MySQL telemetry
+                                        types that can be exposed on a telemetry destination
+                                      items:
+                                        type: string
+                                      type: array
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
                       type: object
                     type: array
                   secureConnections:
@@ -791,6 +923,49 @@ spec:
                   state:
                     description: The state of the read replica.
                     type: string
+                  telemetryConfiguration:
+                    description: (Updatable) Telemetry configuration details of a
+                      DB System or a read replica.
+                    items:
+                      properties:
+                        logs:
+                          description: (Updatable) Telemetry configuration details
+                            for logging.
+                          items:
+                            properties:
+                              destination:
+                                description: (Updatable) Type of destination where
+                                  MySQL telemetry is exposed to. Use LOG_ANALYTICS
+                                  to send logs to Log Analytics.
+                                type: string
+                              destinationConfigurations:
+                                description: (Updatable) List of configuration variables
+                                  for a given destination type.
+                                items:
+                                  properties:
+                                    key:
+                                      description: (Updatable) Name of the destination
+                                        configuration variable. Use log-group-id to  specify
+                                        Log Analytics Log Group OCID. Also specify
+                                        log-set when using the Log Partitioning feature
+                                        of Log Analytics.
+                                      type: string
+                                    value:
+                                      description: (Updatable) Value of the destination
+                                        configuration variable.
+                                      type: string
+                                  type: object
+                                type: array
+                              logTypes:
+                                description: (Updatable) List of MySQL telemetry types
+                                  that can be exposed on a telemetry destination
+                                items:
+                                  type: string
+                                type: array
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   timeCreated:
                     description: The date and time the read replica was created, as
                       described by RFC 3339.

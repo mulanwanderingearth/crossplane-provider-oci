@@ -93,6 +93,10 @@ spec:
                         nodeCount:
                           description: (Updatable) Number of Kafka broker nodes
                           type: number
+                        nodeShape:
+                          description: (Updatable) Node shape for broker is passed
+                            as part of cluster creation, similar to VM.Standard.A1.Flex
+                          type: string
                         ocpuCount:
                           description: (Updatable) Number of OCPUs per nodes
                           type: number
@@ -333,6 +337,10 @@ spec:
                         nodeCount:
                           description: (Updatable) Number of Kafka broker nodes
                           type: number
+                        nodeShape:
+                          description: (Updatable) Node shape for broker is passed
+                            as part of cluster creation, similar to VM.Standard.A1.Flex
+                          type: string
                         ocpuCount:
                           description: (Updatable) Number of OCPUs per nodes
                           type: number
@@ -678,6 +686,10 @@ spec:
                         nodeCount:
                           description: (Updatable) Number of Kafka broker nodes
                           type: number
+                        nodeShape:
+                          description: (Updatable) Node shape for broker is passed
+                            as part of cluster creation, similar to VM.Standard.A1.Flex
+                          type: string
                         ocpuCount:
                           description: (Updatable) Number of OCPUs per nodes
                           type: number

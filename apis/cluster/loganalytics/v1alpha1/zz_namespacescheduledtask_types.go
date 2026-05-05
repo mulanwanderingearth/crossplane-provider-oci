@@ -132,10 +132,111 @@ type ActionParameters struct {
 	Type *string `json:"type" tf:"type,omitempty"`
 }
 
+type DimensionsInitParameters struct {
+
+	// (Applicable when type=STREAM) Dimension name to be stored with the metric.
+	DimensionName *string `json:"dimensionName,omitempty" tf:"dimension_name,omitempty"`
+
+	// Output field in the query to be used as the source for the metric dimension.
+	QueryFieldName *string `json:"queryFieldName,omitempty" tf:"query_field_name,omitempty"`
+}
+
+type DimensionsObservation struct {
+
+	// (Applicable when type=STREAM) Dimension name to be stored with the metric.
+	DimensionName *string `json:"dimensionName,omitempty" tf:"dimension_name,omitempty"`
+
+	// Output field in the query to be used as the source for the metric dimension.
+	QueryFieldName *string `json:"queryFieldName,omitempty" tf:"query_field_name,omitempty"`
+}
+
+type DimensionsParameters struct {
+
+	// (Applicable when type=STREAM) Dimension name to be stored with the metric.
+	// +kubebuilder:validation:Optional
+	DimensionName *string `json:"dimensionName,omitempty" tf:"dimension_name,omitempty"`
+
+	// Output field in the query to be used as the source for the metric dimension.
+	// +kubebuilder:validation:Optional
+	QueryFieldName *string `json:"queryFieldName,omitempty" tf:"query_field_name,omitempty"`
+}
+
+type MetricCollectionsInitParameters struct {
+
+	// (Minumum 1 Required when type=STREAM and metric_collections is provided) Selected dimension fields for the metric collection.
+	Dimensions []DimensionsInitParameters `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+
+	// The metric name of the extracted metric. A valid value starts with an alphabetical character and includes only alphanumeric characters, periods (.), underscores (_), hyphens (-), and dollar signs ($).
+	MetricName *string `json:"metricName,omitempty" tf:"metric_name,omitempty"`
+
+	// Output field in the query to be used as the metric value.
+	MetricQueryFieldName *string `json:"metricQueryFieldName,omitempty" tf:"metric_query_field_name,omitempty"`
+
+	// (Applicable when type=STREAM) Output table in the query.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/nosql/v1alpha1.Table
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
+	QueryTableName *string `json:"queryTableName,omitempty" tf:"query_table_name,omitempty"`
+
+	// Reference to a Table in nosql to populate queryTableName.
+	// +kubebuilder:validation:Optional
+	QueryTableNameRef *v1.Reference `json:"queryTableNameRef,omitempty" tf:"-"`
+
+	// Selector for a Table in nosql to populate queryTableName.
+	// +kubebuilder:validation:Optional
+	QueryTableNameSelector *v1.Selector `json:"queryTableNameSelector,omitempty" tf:"-"`
+}
+
+type MetricCollectionsObservation struct {
+
+	// (Minumum 1 Required when type=STREAM and metric_collections is provided) Selected dimension fields for the metric collection.
+	Dimensions []DimensionsObservation `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+
+	// The metric name of the extracted metric. A valid value starts with an alphabetical character and includes only alphanumeric characters, periods (.), underscores (_), hyphens (-), and dollar signs ($).
+	MetricName *string `json:"metricName,omitempty" tf:"metric_name,omitempty"`
+
+	// Output field in the query to be used as the metric value.
+	MetricQueryFieldName *string `json:"metricQueryFieldName,omitempty" tf:"metric_query_field_name,omitempty"`
+
+	// (Applicable when type=STREAM) Output table in the query.
+	QueryTableName *string `json:"queryTableName,omitempty" tf:"query_table_name,omitempty"`
+}
+
+type MetricCollectionsParameters struct {
+
+	// (Minumum 1 Required when type=STREAM and metric_collections is provided) Selected dimension fields for the metric collection.
+	// +kubebuilder:validation:Optional
+	Dimensions []DimensionsParameters `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+
+	// The metric name of the extracted metric. A valid value starts with an alphabetical character and includes only alphanumeric characters, periods (.), underscores (_), hyphens (-), and dollar signs ($).
+	// +kubebuilder:validation:Optional
+	MetricName *string `json:"metricName,omitempty" tf:"metric_name,omitempty"`
+
+	// Output field in the query to be used as the metric value.
+	// +kubebuilder:validation:Optional
+	MetricQueryFieldName *string `json:"metricQueryFieldName,omitempty" tf:"metric_query_field_name,omitempty"`
+
+	// (Applicable when type=STREAM) Output table in the query.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/nosql/v1alpha1.Table
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
+	// +kubebuilder:validation:Optional
+	QueryTableName *string `json:"queryTableName,omitempty" tf:"query_table_name,omitempty"`
+
+	// Reference to a Table in nosql to populate queryTableName.
+	// +kubebuilder:validation:Optional
+	QueryTableNameRef *v1.Reference `json:"queryTableNameRef,omitempty" tf:"-"`
+
+	// Selector for a Table in nosql to populate queryTableName.
+	// +kubebuilder:validation:Optional
+	QueryTableNameSelector *v1.Selector `json:"queryTableNameSelector,omitempty" tf:"-"`
+}
+
 type MetricExtractionInitParameters struct {
 
 	// (Updatable) The compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the extracted metric.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
+
+	// Details for the metrics to be collected.
+	MetricCollections []MetricCollectionsInitParameters `json:"metricCollections,omitempty" tf:"metric_collections,omitempty"`
 
 	// The metric name of the extracted metric. A valid value starts with an alphabetical character and includes only alphanumeric characters, periods (.), underscores (_), hyphens (-), and dollar signs ($).
 	MetricName *string `json:"metricName,omitempty" tf:"metric_name,omitempty"`
@@ -152,6 +253,9 @@ type MetricExtractionObservation struct {
 	// (Updatable) The compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the extracted metric.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
+	// Details for the metrics to be collected.
+	MetricCollections []MetricCollectionsObservation `json:"metricCollections,omitempty" tf:"metric_collections,omitempty"`
+
 	// The metric name of the extracted metric. A valid value starts with an alphabetical character and includes only alphanumeric characters, periods (.), underscores (_), hyphens (-), and dollar signs ($).
 	MetricName *string `json:"metricName,omitempty" tf:"metric_name,omitempty"`
 
@@ -167,6 +271,10 @@ type MetricExtractionParameters struct {
 	// (Updatable) The compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the extracted metric.
 	// +kubebuilder:validation:Optional
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
+
+	// Details for the metrics to be collected.
+	// +kubebuilder:validation:Optional
+	MetricCollections []MetricCollectionsParameters `json:"metricCollections,omitempty" tf:"metric_collections,omitempty"`
 
 	// The metric name of the extracted metric. A valid value starts with an alphabetical character and includes only alphanumeric characters, periods (.), underscores (_), hyphens (-), and dollar signs ($).
 	// +kubebuilder:validation:Optional
@@ -201,6 +309,9 @@ type NamespaceScheduledTaskInitParameters struct {
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) Description for this resource.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) A user-friendly name that is changeable and that does not have to be unique. Format: a leading alphanumeric, followed by zero or more alphanumerics, underscores, spaces, backslashes, or hyphens in any order). No trailing spaces allowed.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -237,6 +348,9 @@ type NamespaceScheduledTaskObservation struct {
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
+	// (Updatable) Description for this resource.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	// (Updatable) A user-friendly name that is changeable and that does not have to be unique. Format: a leading alphanumeric, followed by zero or more alphanumerics, underscores, spaces, backslashes, or hyphens in any order). No trailing spaces allowed.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
@@ -268,7 +382,7 @@ type NamespaceScheduledTaskObservation struct {
 	// The current state of the scheduled task.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
-	// Status of the scheduled task. - PURGE_RESOURCE_NOT_FOUND
+	// Status of the scheduled task. - PURGE_RESOURCE_NOT_FOUND - LIMIT_EXCEEDED
 	TaskStatus *string `json:"taskStatus,omitempty" tf:"task_status,omitempty"`
 
 	// Task type.
@@ -280,7 +394,7 @@ type NamespaceScheduledTaskObservation struct {
 	// The date and time the scheduled task was last updated, in the format defined by RFC3339.
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
-	// most recent Work Request Identifier [OCID] (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) for the asynchronous request.
+	// most recent Work Request Identifier OCID for the asynchronous request.
 	WorkRequestID *string `json:"workRequestId,omitempty" tf:"work_request_id,omitempty"`
 }
 
@@ -307,6 +421,10 @@ type NamespaceScheduledTaskParameters struct {
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) Description for this resource.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) A user-friendly name that is changeable and that does not have to be unique. Format: a leading alphanumeric, followed by zero or more alphanumerics, underscores, spaces, backslashes, or hyphens in any order). No trailing spaces allowed.
 	// +kubebuilder:validation:Optional
@@ -346,11 +464,17 @@ type ScheduleInitParameters struct {
 	// (Applicable when kind=STANDARD) (Updatable) Schedule misfire retry policy.
 	MisfirePolicy *string `json:"misfirePolicy,omitempty" tf:"misfire_policy,omitempty"`
 
+	// (Applicable when kind=STANDARD) (Updatable) Number of seconds to offset the query time window by to accommodate capture late arriving data. For example, a schedule run at 12:00 with a 10 minute interval and queryOffsetSecs=120 will use the query time window of 11:48-11:58 rather than 11:50-12:00 without queryOffsetSecs.
+	QueryOffsetSecs *float64 `json:"queryOffsetSecs,omitempty" tf:"query_offset_secs,omitempty"`
+
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Recurring interval in ISO 8601 extended format as described in https://en.wikipedia.org/wiki/ISO_8601#Durations. The largest supported unit is D, e.g. P14D (not P2W). The value must be at least 5 minutes (PT5M) and at most 3 weeks (P21D or PT30240M).
 	RecurringInterval *string `json:"recurringInterval,omitempty" tf:"recurring_interval,omitempty"`
 
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Number of times (0-based) to execute until auto-stop. Default value -1 will execute indefinitely. Value 0 will execute once.
 	RepeatCount *float64 `json:"repeatCount,omitempty" tf:"repeat_count,omitempty"`
+
+	// (Applicable when kind=STANDARD) (Updatable) End time for the schedule, even if the schedule would otherwise have remaining executions.
+	TimeEnd *string `json:"timeEnd,omitempty" tf:"time_end,omitempty"`
 
 	// (Applicable when type=CRON) (Updatable) Time zone, by default UTC.
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`
@@ -367,11 +491,17 @@ type ScheduleObservation struct {
 	// (Applicable when kind=STANDARD) (Updatable) Schedule misfire retry policy.
 	MisfirePolicy *string `json:"misfirePolicy,omitempty" tf:"misfire_policy,omitempty"`
 
+	// (Applicable when kind=STANDARD) (Updatable) Number of seconds to offset the query time window by to accommodate capture late arriving data. For example, a schedule run at 12:00 with a 10 minute interval and queryOffsetSecs=120 will use the query time window of 11:48-11:58 rather than 11:50-12:00 without queryOffsetSecs.
+	QueryOffsetSecs *float64 `json:"queryOffsetSecs,omitempty" tf:"query_offset_secs,omitempty"`
+
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Recurring interval in ISO 8601 extended format as described in https://en.wikipedia.org/wiki/ISO_8601#Durations. The largest supported unit is D, e.g. P14D (not P2W). The value must be at least 5 minutes (PT5M) and at most 3 weeks (P21D or PT30240M).
 	RecurringInterval *string `json:"recurringInterval,omitempty" tf:"recurring_interval,omitempty"`
 
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Number of times (0-based) to execute until auto-stop. Default value -1 will execute indefinitely. Value 0 will execute once.
 	RepeatCount *float64 `json:"repeatCount,omitempty" tf:"repeat_count,omitempty"`
+
+	// (Applicable when kind=STANDARD) (Updatable) End time for the schedule, even if the schedule would otherwise have remaining executions.
+	TimeEnd *string `json:"timeEnd,omitempty" tf:"time_end,omitempty"`
 
 	// (Applicable when type=CRON) (Updatable) Time zone, by default UTC.
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`
@@ -390,6 +520,10 @@ type ScheduleParameters struct {
 	// +kubebuilder:validation:Optional
 	MisfirePolicy *string `json:"misfirePolicy,omitempty" tf:"misfire_policy,omitempty"`
 
+	// (Applicable when kind=STANDARD) (Updatable) Number of seconds to offset the query time window by to accommodate capture late arriving data. For example, a schedule run at 12:00 with a 10 minute interval and queryOffsetSecs=120 will use the query time window of 11:48-11:58 rather than 11:50-12:00 without queryOffsetSecs.
+	// +kubebuilder:validation:Optional
+	QueryOffsetSecs *float64 `json:"queryOffsetSecs,omitempty" tf:"query_offset_secs,omitempty"`
+
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Recurring interval in ISO 8601 extended format as described in https://en.wikipedia.org/wiki/ISO_8601#Durations. The largest supported unit is D, e.g. P14D (not P2W). The value must be at least 5 minutes (PT5M) and at most 3 weeks (P21D or PT30240M).
 	// +kubebuilder:validation:Optional
 	RecurringInterval *string `json:"recurringInterval,omitempty" tf:"recurring_interval,omitempty"`
@@ -397,6 +531,10 @@ type ScheduleParameters struct {
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Number of times (0-based) to execute until auto-stop. Default value -1 will execute indefinitely. Value 0 will execute once.
 	// +kubebuilder:validation:Optional
 	RepeatCount *float64 `json:"repeatCount,omitempty" tf:"repeat_count,omitempty"`
+
+	// (Applicable when kind=STANDARD) (Updatable) End time for the schedule, even if the schedule would otherwise have remaining executions.
+	// +kubebuilder:validation:Optional
+	TimeEnd *string `json:"timeEnd,omitempty" tf:"time_end,omitempty"`
 
 	// (Applicable when type=CRON) (Updatable) Time zone, by default UTC.
 	// +kubebuilder:validation:Optional

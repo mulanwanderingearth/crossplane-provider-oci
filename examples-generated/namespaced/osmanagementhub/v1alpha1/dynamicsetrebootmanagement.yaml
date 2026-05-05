@@ -1,0 +1,19 @@
+apiVersion: osmanagementhub.oci.m.upbound.io/v1alpha1
+kind: DynamicSetRebootManagement
+metadata:
+  annotations:
+    meta.upbound.io/example-id: osmanagementhub/v1alpha1/dynamicsetrebootmanagement
+  labels:
+    testing.upbound.io/example-name: test_dynamic_set_reboot_management
+  name: test-dynamic-set-reboot-management
+  namespace: upbound-system
+spec:
+  forProvider:
+    dynamicSetIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_dynamic_set
+    managedInstances: ${var.dynamic_set_reboot_management_managed_instances}
+    rebootTimeoutInMins: ${var.dynamic_set_reboot_management_reboot_timeout_in_mins}
+    workRequestDetails:
+    - description: ${var.dynamic_set_reboot_management_work_request_details_description}
+      displayName: ${var.dynamic_set_reboot_management_work_request_details_display_name}

@@ -7,6 +7,12 @@ Copyright 2022 Upbound Inc.
 package v1alpha1
 
 // Hub marks this type as a conversion hub.
+func (tr *Byol) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ByolAllocation) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Cluster) Hub() {}
 
 // Hub marks this type as a conversion hub.
@@ -17,6 +23,9 @@ func (tr *DatastoreCluster) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *EsxiHost) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagementAppliance) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Sddc) Hub() {}

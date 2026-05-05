@@ -127,6 +127,46 @@ func (mg *ClusterCompleteCredentialRotationManagement) SetWriteConnectionSecretT
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this ClusterStartCredentialRotationManagement.
 func (mg *ClusterStartCredentialRotationManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)

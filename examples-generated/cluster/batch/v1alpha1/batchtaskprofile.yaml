@@ -1,0 +1,25 @@
+apiVersion: batch.oci.upbound.io/v1alpha1
+kind: BatchTaskProfile
+metadata:
+  annotations:
+    meta.upbound.io/example-id: batch/v1alpha1/batchtaskprofile
+  labels:
+    testing.upbound.io/example-name: test_batch_task_profile
+  name: test-batch-task-profile
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.batch_task_profile_description}
+    displayName: ${var.batch_task_profile_display_name}
+    extendedInformation:
+    - architecture: ${var.batch_task_profile_extended_information_architecture}
+      type: ${var.batch_task_profile_extended_information_type}
+    freeformTags:
+      Department: Finance
+    minDiskSizeInGbs: ${var.batch_task_profile_min_disk_size_in_gbs}
+    minMemoryInGbs: ${var.batch_task_profile_min_memory_in_gbs}
+    minOcpus: ${var.batch_task_profile_min_ocpus}

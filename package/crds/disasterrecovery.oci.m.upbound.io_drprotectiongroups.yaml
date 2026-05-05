@@ -3067,6 +3067,25 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        resourceModifierMappings:
+                          description: (Applicable when member_type=OKE_CLUSTER) (Updatable)
+                            The list of config maps along with their corresponding
+                            namespaces. This property applies to the OKE cluster member
+                            in primary region.
+                          items:
+                            properties:
+                              configMap:
+                                description: '(Updatable) The name of the config map
+                                  containing resource modification details. Example:
+                                  resource-modifier'
+                                type: string
+                              namespace:
+                                description: '(Updatable) The namespace in object
+                                  storage (Note - this is usually the tenancy name).  Example:
+                                  myocitenancy'
+                                type: string
+                            type: object
+                          type: array
                         sourceVolumeToDestinationEncryptionKeyMappings:
                           description: (Applicable when member_type=VOLUME_GROUP)
                             (Updatable) A list of mappings between source volume IDs
@@ -6897,6 +6916,25 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        resourceModifierMappings:
+                          description: (Applicable when member_type=OKE_CLUSTER) (Updatable)
+                            The list of config maps along with their corresponding
+                            namespaces. This property applies to the OKE cluster member
+                            in primary region.
+                          items:
+                            properties:
+                              configMap:
+                                description: '(Updatable) The name of the config map
+                                  containing resource modification details. Example:
+                                  resource-modifier'
+                                type: string
+                              namespace:
+                                description: '(Updatable) The namespace in object
+                                  storage (Note - this is usually the tenancy name).  Example:
+                                  myocitenancy'
+                                type: string
+                            type: object
+                          type: array
                         sourceVolumeToDestinationEncryptionKeyMappings:
                           description: (Applicable when member_type=VOLUME_GROUP)
                             (Updatable) A list of mappings between source volume IDs
@@ -8382,6 +8420,25 @@ spec:
                             (Updatable) The OCID of the peer HeatWave MySQL DB System
                             from the peer region.  Example: ocid1.mysqldbsystem.oc1..uniqueID'
                           type: string
+                        resourceModifierMappings:
+                          description: (Applicable when member_type=OKE_CLUSTER) (Updatable)
+                            The list of config maps along with their corresponding
+                            namespaces. This property applies to the OKE cluster member
+                            in primary region.
+                          items:
+                            properties:
+                              configMap:
+                                description: '(Updatable) The name of the config map
+                                  containing resource modification details. Example:
+                                  resource-modifier'
+                                type: string
+                              namespace:
+                                description: '(Updatable) The namespace in object
+                                  storage (Note - this is usually the tenancy name).  Example:
+                                  myocitenancy'
+                                type: string
+                            type: object
+                          type: array
                         sourceVolumeToDestinationEncryptionKeyMappings:
                           description: (Applicable when member_type=VOLUME_GROUP)
                             (Updatable) A list of mappings between source volume IDs

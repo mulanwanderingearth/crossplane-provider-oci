@@ -1,0 +1,34 @@
+apiVersion: generativeai.oci.upbound.io/v1alpha1
+kind: ImportedModel
+metadata:
+  annotations:
+    meta.upbound.io/example-id: generativeai/v1alpha1/importedmodel
+  labels:
+    testing.upbound.io/example-name: test_imported_model
+  name: test-imported-model
+spec:
+  forProvider:
+    capabilities: ${var.imported_model_capabilities}
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    dataSource:
+    - accessToken: ${var.imported_model_data_source_access_token}
+      branch: ${var.imported_model_data_source_branch}
+      bucket: ${var.imported_model_data_source_bucket}
+      commit: ${var.imported_model_data_source_commit}
+      modelIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_model
+      namespace: ${var.imported_model_data_source_namespace}
+      prefixName: ${var.imported_model_data_source_prefix_name}
+      region: ${var.imported_model_data_source_region}
+      sourceType: ${var.imported_model_data_source_source_type}
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.imported_model_description}
+    displayName: ${var.imported_model_display_name}
+    freeformTags:
+      Department: Finance
+    vendor: ${var.imported_model_vendor}
+    version: ${var.imported_model_version}

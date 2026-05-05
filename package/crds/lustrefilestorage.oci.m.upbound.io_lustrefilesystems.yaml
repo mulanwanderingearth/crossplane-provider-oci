@@ -240,6 +240,18 @@ spec:
                             type: string
                         type: object
                     type: object
+                  dateTimeDetails:
+                    items:
+                      properties:
+                        date:
+                          description: 'A user-friendly date. Example: 2025-04-25'
+                          type: string
+                        time:
+                          description: 'A user-friendly time. The format is ''HH:MM'',
+                            ''HH:MM'' represents the time in UTC. Example: 22:00'
+                          type: string
+                      type: object
+                    type: array
                   definedTags:
                     additionalProperties:
                       type: string
@@ -440,6 +452,22 @@ spec:
                             type: string
                         type: object
                     type: object
+                  maintenanceWindow:
+                    description: (Updatable) The preferred day and time to perform
+                      maintenance.
+                    items:
+                      properties:
+                        dayOfWeek:
+                          description: (Updatable) Day of the week when the maintainence
+                            window starts.
+                          type: string
+                        timeStart:
+                          description: '(Updatable) The time to start the maintenance
+                            window. The format is ''HH:MM'', ''HH:MM'' represents
+                            the time in UTC.   Example: 22:00'
+                          type: string
+                      type: object
+                    type: array
                   nsgIds:
                     description: (Updatable) A list of Network Security Group OCIDs
                       associated with this lustre file system. A maximum of 5 is allowed.
@@ -450,6 +478,10 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  overrideMaintenanceTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Override Maintenance. Could be set to any integer value.
+                    type: number
                   performanceTier:
                     description: The Lustre file system performance tier. A value
                       of MBPS_PER_TB_125 represents 125 megabytes per second per terabyte.
@@ -772,6 +804,18 @@ spec:
                             type: string
                         type: object
                     type: object
+                  dateTimeDetails:
+                    items:
+                      properties:
+                        date:
+                          description: 'A user-friendly date. Example: 2025-04-25'
+                          type: string
+                        time:
+                          description: 'A user-friendly time. The format is ''HH:MM'',
+                            ''HH:MM'' represents the time in UTC. Example: 22:00'
+                          type: string
+                      type: object
+                    type: array
                   definedTags:
                     additionalProperties:
                       type: string
@@ -972,6 +1016,22 @@ spec:
                             type: string
                         type: object
                     type: object
+                  maintenanceWindow:
+                    description: (Updatable) The preferred day and time to perform
+                      maintenance.
+                    items:
+                      properties:
+                        dayOfWeek:
+                          description: (Updatable) Day of the week when the maintainence
+                            window starts.
+                          type: string
+                        timeStart:
+                          description: '(Updatable) The time to start the maintenance
+                            window. The format is ''HH:MM'', ''HH:MM'' represents
+                            the time in UTC.   Example: 22:00'
+                          type: string
+                      type: object
+                    type: array
                   nsgIds:
                     description: (Updatable) A list of Network Security Group OCIDs
                       associated with this lustre file system. A maximum of 5 is allowed.
@@ -982,6 +1042,10 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  overrideMaintenanceTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Override Maintenance. Could be set to any integer value.
+                    type: number
                   performanceTier:
                     description: The Lustre file system performance tier. A value
                       of MBPS_PER_TB_125 represents 125 megabytes per second per terabyte.
@@ -1209,6 +1273,18 @@ spec:
                     description: (Updatable) The OCID of the compartment that contains
                       the Lustre file system.
                     type: string
+                  dateTimeDetails:
+                    items:
+                      properties:
+                        date:
+                          description: 'A user-friendly date. Example: 2025-04-25'
+                          type: string
+                        time:
+                          description: 'A user-friendly time. The format is ''HH:MM'',
+                            ''HH:MM'' represents the time in UTC. Example: 22:00'
+                          type: string
+                      type: object
+                    type: array
                   definedTags:
                     additionalProperties:
                       type: string
@@ -1261,18 +1337,59 @@ spec:
                       system.   Example: tcp'
                     type: string
                   maintenanceWindow:
-                    description: The preferred day and time to perform maintenance.
+                    description: (Updatable) The preferred day and time to perform
+                      maintenance.
                     items:
                       properties:
                         dayOfWeek:
-                          description: Day of the week when the maintainence window
-                            starts.
+                          description: (Updatable) Day of the week when the maintainence
+                            window starts.
                           type: string
                         timeStart:
-                          description: 'The time to start the maintenance window.
-                            The format is ''HH:MM'', ''HH:MM'' represents the time
-                            in UTC.   Example: 22:00'
+                          description: '(Updatable) The time to start the maintenance
+                            window. The format is ''HH:MM'', ''HH:MM'' represents
+                            the time in UTC.   Example: 22:00'
                           type: string
+                      type: object
+                    type: array
+                  maintenanceWindowMetadata:
+                    description: The meta-data for maintenance window.
+                    items:
+                      properties:
+                        activeOrNextPlannedMaintenance:
+                          description: A generic object to show date and time in the
+                            below specified format
+                          items:
+                            properties:
+                              date:
+                                description: 'A user-friendly date. Example: 2025-04-25'
+                                type: string
+                              time:
+                                description: 'A user-friendly time. The format is
+                                  ''HH:MM'', ''HH:MM'' represents the time in UTC.
+                                  Example: 22:00'
+                                type: string
+                            type: object
+                          type: array
+                        finishedMaintenance:
+                          description: A generic object to show date and time in the
+                            below specified format
+                          items:
+                            properties:
+                              date:
+                                description: 'A user-friendly date. Example: 2025-04-25'
+                                type: string
+                              time:
+                                description: 'A user-friendly time. The format is
+                                  ''HH:MM'', ''HH:MM'' represents the time in UTC.
+                                  Example: 22:00'
+                                type: string
+                            type: object
+                          type: array
+                        isMaintenanceInProgress:
+                          description: whether or not an active maintenance is going
+                            on for the LustreFileSystem
+                          type: boolean
                       type: object
                     type: array
                   majorVersion:
@@ -1293,6 +1410,10 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  overrideMaintenanceTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Override Maintenance. Could be set to any integer value.
+                    type: number
                   performanceTier:
                     description: The Lustre file system performance tier. A value
                       of MBPS_PER_TB_125 represents 125 megabytes per second per terabyte.

@@ -50,6 +50,11 @@ spec:
       Operations.CostCenter: "42"
     displayName: ${var.autonomous_container_database_display_name}
     distributionAffinity: ${var.autonomous_container_database_distribution_affinity}
+    encryptionKeyLocationDetails:
+    - awsEncryptionKeyIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_key
+      providerType: ${var.autonomous_container_database_encryption_key_location_details_provider_type}
     fastStartFailOverLagLimitInSeconds: ${var.autonomous_container_database_fast_start_fail_over_lag_limit_in_seconds}
     freeformTags:
       Department: Finance

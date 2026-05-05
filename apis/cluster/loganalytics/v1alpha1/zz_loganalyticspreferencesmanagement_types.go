@@ -18,7 +18,7 @@ type LogAnalyticsPreferencesManagementInitParameters struct {
 	// An array of tenant preference details.
 	Items []LogAnalyticsPreferencesManagementItemsInitParameters `json:"items,omitempty" tf:"items,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
@@ -57,7 +57,7 @@ type LogAnalyticsPreferencesManagementObservation struct {
 	// An array of tenant preference details.
 	Items []LogAnalyticsPreferencesManagementItemsObservation `json:"items,omitempty" tf:"items,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
@@ -67,7 +67,7 @@ type LogAnalyticsPreferencesManagementParameters struct {
 	// +kubebuilder:validation:Optional
 	Items []LogAnalyticsPreferencesManagementItemsParameters `json:"items,omitempty" tf:"items,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }

@@ -35,7 +35,7 @@ type BackendInitParameters struct {
 	// (Updatable) Whether the network load balancer should treat this server as a backup unit. If true, then the network load balancer forwards no ingress traffic to this backend server unless all other backend servers not marked as "isBackup" fail the health check policy.  Example: false
 	IsBackup *bool `json:"isBackup,omitempty" tf:"is_backup,omitempty"`
 
-	// (Updatable) Whether the network load balancer should drain this server. Servers marked "isDrain" receive no incoming traffic.  Example: false
+	// (Updatable) Whether the network load balancer should drain this server.  Servers marked "isDrain" stop receiving new connections but will continue to receive traffic on existing connections until the connection is terminated.  Example: false
 	IsDrain *bool `json:"isDrain,omitempty" tf:"is_drain,omitempty"`
 
 	// (Updatable) Whether the network load balancer should treat this server as offline. Offline servers receive no incoming traffic.  Example: false
@@ -89,7 +89,7 @@ type BackendObservation struct {
 	// (Updatable) Whether the network load balancer should treat this server as a backup unit. If true, then the network load balancer forwards no ingress traffic to this backend server unless all other backend servers not marked as "isBackup" fail the health check policy.  Example: false
 	IsBackup *bool `json:"isBackup,omitempty" tf:"is_backup,omitempty"`
 
-	// (Updatable) Whether the network load balancer should drain this server. Servers marked "isDrain" receive no incoming traffic.  Example: false
+	// (Updatable) Whether the network load balancer should drain this server.  Servers marked "isDrain" stop receiving new connections but will continue to receive traffic on existing connections until the connection is terminated.  Example: false
 	IsDrain *bool `json:"isDrain,omitempty" tf:"is_drain,omitempty"`
 
 	// (Updatable) Whether the network load balancer should treat this server as offline. Offline servers receive no incoming traffic.  Example: false
@@ -135,7 +135,7 @@ type BackendParameters struct {
 	// +kubebuilder:validation:Optional
 	IsBackup *bool `json:"isBackup,omitempty" tf:"is_backup,omitempty"`
 
-	// (Updatable) Whether the network load balancer should drain this server. Servers marked "isDrain" receive no incoming traffic.  Example: false
+	// (Updatable) Whether the network load balancer should drain this server.  Servers marked "isDrain" stop receiving new connections but will continue to receive traffic on existing connections until the connection is terminated.  Example: false
 	// +kubebuilder:validation:Optional
 	IsDrain *bool `json:"isDrain,omitempty" tf:"is_drain,omitempty"`
 

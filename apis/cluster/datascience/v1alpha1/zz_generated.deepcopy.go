@@ -21,30 +21,10 @@ func (in *AccessInitParameters) DeepCopyInto(out *AccessInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.LogGroupIDRef != nil {
-		in, out := &in.LogGroupIDRef, &out.LogGroupIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.LogGroupIDSelector != nil {
-		in, out := &in.LogGroupIDSelector, &out.LogGroupIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.LogID != nil {
 		in, out := &in.LogID, &out.LogID
 		*out = new(string)
 		**out = **in
-	}
-	if in.LogIDRef != nil {
-		in, out := &in.LogIDRef, &out.LogIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.LogIDSelector != nil {
-		in, out := &in.LogIDSelector, &out.LogIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
 	}
 }
 
@@ -91,30 +71,10 @@ func (in *AccessParameters) DeepCopyInto(out *AccessParameters) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.LogGroupIDRef != nil {
-		in, out := &in.LogGroupIDRef, &out.LogGroupIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.LogGroupIDSelector != nil {
-		in, out := &in.LogGroupIDSelector, &out.LogGroupIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.LogID != nil {
 		in, out := &in.LogID, &out.LogID
 		*out = new(string)
 		**out = **in
-	}
-	if in.LogIDRef != nil {
-		in, out := &in.LogIDRef, &out.LogIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.LogIDSelector != nil {
-		in, out := &in.LogIDSelector, &out.LogIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
 	}
 }
 
@@ -3912,6 +3872,22 @@ func (in *EnvironmentConfigurationDetailsInitParameters) DeepCopyInto(out *Envir
 			}
 		}
 	}
+	if in.DefaultEnvironmentVariables != nil {
+		in, out := &in.DefaultEnvironmentVariables, &out.DefaultEnvironmentVariables
+		*out = make(map[string]*string, len(*in))
+		for key, val := range *in {
+			var outVal *string
+			if val == nil {
+				(*out)[key] = nil
+			} else {
+				inVal := (*in)[key]
+				in, out := &inVal, &outVal
+				*out = new(string)
+				**out = **in
+			}
+			(*out)[key] = outVal
+		}
+	}
 	if in.Entrypoint != nil {
 		in, out := &in.Entrypoint, &out.Entrypoint
 		*out = make([]*string, len(*in))
@@ -3956,6 +3932,11 @@ func (in *EnvironmentConfigurationDetailsInitParameters) DeepCopyInto(out *Envir
 	}
 	if in.ImageDigest != nil {
 		in, out := &in.ImageDigest, &out.ImageDigest
+		*out = new(string)
+		**out = **in
+	}
+	if in.ImageSignatureID != nil {
+		in, out := &in.ImageSignatureID, &out.ImageSignatureID
 		*out = new(string)
 		**out = **in
 	}
@@ -3990,6 +3971,22 @@ func (in *EnvironmentConfigurationDetailsObservation) DeepCopyInto(out *Environm
 			}
 		}
 	}
+	if in.DefaultEnvironmentVariables != nil {
+		in, out := &in.DefaultEnvironmentVariables, &out.DefaultEnvironmentVariables
+		*out = make(map[string]*string, len(*in))
+		for key, val := range *in {
+			var outVal *string
+			if val == nil {
+				(*out)[key] = nil
+			} else {
+				inVal := (*in)[key]
+				in, out := &inVal, &outVal
+				*out = new(string)
+				**out = **in
+			}
+			(*out)[key] = outVal
+		}
+	}
 	if in.Entrypoint != nil {
 		in, out := &in.Entrypoint, &out.Entrypoint
 		*out = make([]*string, len(*in))
@@ -4034,6 +4031,11 @@ func (in *EnvironmentConfigurationDetailsObservation) DeepCopyInto(out *Environm
 	}
 	if in.ImageDigest != nil {
 		in, out := &in.ImageDigest, &out.ImageDigest
+		*out = new(string)
+		**out = **in
+	}
+	if in.ImageSignatureID != nil {
+		in, out := &in.ImageSignatureID, &out.ImageSignatureID
 		*out = new(string)
 		**out = **in
 	}
@@ -4068,6 +4070,22 @@ func (in *EnvironmentConfigurationDetailsParameters) DeepCopyInto(out *Environme
 			}
 		}
 	}
+	if in.DefaultEnvironmentVariables != nil {
+		in, out := &in.DefaultEnvironmentVariables, &out.DefaultEnvironmentVariables
+		*out = make(map[string]*string, len(*in))
+		for key, val := range *in {
+			var outVal *string
+			if val == nil {
+				(*out)[key] = nil
+			} else {
+				inVal := (*in)[key]
+				in, out := &inVal, &outVal
+				*out = new(string)
+				**out = **in
+			}
+			(*out)[key] = outVal
+		}
+	}
 	if in.Entrypoint != nil {
 		in, out := &in.Entrypoint, &out.Entrypoint
 		*out = make([]*string, len(*in))
@@ -4112,6 +4130,11 @@ func (in *EnvironmentConfigurationDetailsParameters) DeepCopyInto(out *Environme
 	}
 	if in.ImageDigest != nil {
 		in, out := &in.ImageDigest, &out.ImageDigest
+		*out = new(string)
+		**out = **in
+	}
+	if in.ImageSignatureID != nil {
+		in, out := &in.ImageSignatureID, &out.ImageSignatureID
 		*out = new(string)
 		**out = **in
 	}
@@ -4780,6 +4803,11 @@ func (in *InstanceConfigurationInitParameters) DeepCopyInto(out *InstanceConfigu
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.NetworkAccessType != nil {
+		in, out := &in.NetworkAccessType, &out.NetworkAccessType
+		*out = new(string)
+		**out = **in
+	}
 	if in.PrivateEndpointID != nil {
 		in, out := &in.PrivateEndpointID, &out.PrivateEndpointID
 		*out = new(string)
@@ -4907,6 +4935,11 @@ func (in *InstanceConfigurationObservation) DeepCopyInto(out *InstanceConfigurat
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.NetworkAccessType != nil {
+		in, out := &in.NetworkAccessType, &out.NetworkAccessType
+		*out = new(string)
+		**out = **in
+	}
 	if in.PrivateEndpointID != nil {
 		in, out := &in.PrivateEndpointID, &out.PrivateEndpointID
 		*out = new(string)
@@ -4943,6 +4976,11 @@ func (in *InstanceConfigurationParameters) DeepCopyInto(out *InstanceConfigurati
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
+	}
+	if in.NetworkAccessType != nil {
+		in, out := &in.NetworkAccessType, &out.NetworkAccessType
+		*out = new(string)
+		**out = **in
 	}
 	if in.PrivateEndpointID != nil {
 		in, out := &in.PrivateEndpointID, &out.PrivateEndpointID
@@ -12830,16 +12868,6 @@ func (in *ModelConfigurationDetailsInitParameters) DeepCopyInto(out *ModelConfig
 		*out = new(string)
 		**out = **in
 	}
-	if in.ModelIDRef != nil {
-		in, out := &in.ModelIDRef, &out.ModelIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.ModelIDSelector != nil {
-		in, out := &in.ModelIDSelector, &out.ModelIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.ScalingPolicy != nil {
 		in, out := &in.ScalingPolicy, &out.ScalingPolicy
 		*out = make([]ModelConfigurationDetailsScalingPolicyInitParameters, len(*in))
@@ -12874,35 +12902,20 @@ func (in *ModelConfigurationDetailsInstanceConfigurationInitParameters) DeepCopy
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.NetworkAccessType != nil {
+		in, out := &in.NetworkAccessType, &out.NetworkAccessType
+		*out = new(string)
+		**out = **in
+	}
 	if in.PrivateEndpointID != nil {
 		in, out := &in.PrivateEndpointID, &out.PrivateEndpointID
 		*out = new(string)
 		**out = **in
 	}
-	if in.PrivateEndpointIDRef != nil {
-		in, out := &in.PrivateEndpointIDRef, &out.PrivateEndpointIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.PrivateEndpointIDSelector != nil {
-		in, out := &in.PrivateEndpointIDSelector, &out.PrivateEndpointIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.SubnetID != nil {
 		in, out := &in.SubnetID, &out.SubnetID
 		*out = new(string)
 		**out = **in
-	}
-	if in.SubnetIDRef != nil {
-		in, out := &in.SubnetIDRef, &out.SubnetIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.SubnetIDSelector != nil {
-		in, out := &in.SubnetIDSelector, &out.SubnetIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
 	}
 }
 
@@ -12930,6 +12943,11 @@ func (in *ModelConfigurationDetailsInstanceConfigurationObservation) DeepCopyInt
 		for i := range *in {
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
+	}
+	if in.NetworkAccessType != nil {
+		in, out := &in.NetworkAccessType, &out.NetworkAccessType
+		*out = new(string)
+		**out = **in
 	}
 	if in.PrivateEndpointID != nil {
 		in, out := &in.PrivateEndpointID, &out.PrivateEndpointID
@@ -12968,35 +12986,20 @@ func (in *ModelConfigurationDetailsInstanceConfigurationParameters) DeepCopyInto
 			(*in)[i].DeepCopyInto(&(*out)[i])
 		}
 	}
+	if in.NetworkAccessType != nil {
+		in, out := &in.NetworkAccessType, &out.NetworkAccessType
+		*out = new(string)
+		**out = **in
+	}
 	if in.PrivateEndpointID != nil {
 		in, out := &in.PrivateEndpointID, &out.PrivateEndpointID
 		*out = new(string)
 		**out = **in
 	}
-	if in.PrivateEndpointIDRef != nil {
-		in, out := &in.PrivateEndpointIDRef, &out.PrivateEndpointIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.PrivateEndpointIDSelector != nil {
-		in, out := &in.PrivateEndpointIDSelector, &out.PrivateEndpointIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.SubnetID != nil {
 		in, out := &in.SubnetID, &out.SubnetID
 		*out = new(string)
 		**out = **in
-	}
-	if in.SubnetIDRef != nil {
-		in, out := &in.SubnetIDRef, &out.SubnetIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.SubnetIDSelector != nil {
-		in, out := &in.SubnetIDSelector, &out.SubnetIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
 	}
 }
 
@@ -13078,16 +13081,6 @@ func (in *ModelConfigurationDetailsParameters) DeepCopyInto(out *ModelConfigurat
 		in, out := &in.ModelID, &out.ModelID
 		*out = new(string)
 		**out = **in
-	}
-	if in.ModelIDRef != nil {
-		in, out := &in.ModelIDRef, &out.ModelIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.ModelIDSelector != nil {
-		in, out := &in.ModelIDSelector, &out.ModelIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
 	}
 	if in.ScalingPolicy != nil {
 		in, out := &in.ScalingPolicy, &out.ScalingPolicy
@@ -14007,16 +14000,6 @@ func (in *ModelDeploymentInitParameters) DeepCopyInto(out *ModelDeploymentInitPa
 		*out = new(string)
 		**out = **in
 	}
-	if in.ProjectIDRef != nil {
-		in, out := &in.ProjectIDRef, &out.ProjectIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.ProjectIDSelector != nil {
-		in, out := &in.ProjectIDSelector, &out.ProjectIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.State != nil {
 		in, out := &in.State, &out.State
 		*out = new(string)
@@ -14363,16 +14346,6 @@ func (in *ModelDeploymentParameters) DeepCopyInto(out *ModelDeploymentParameters
 		*out = new(string)
 		**out = **in
 	}
-	if in.ProjectIDRef != nil {
-		in, out := &in.ProjectIDRef, &out.ProjectIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.ProjectIDSelector != nil {
-		in, out := &in.ProjectIDSelector, &out.ProjectIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.State != nil {
 		in, out := &in.State, &out.State
 		*out = new(string)
@@ -14446,6 +14419,11 @@ func (in *ModelDeploymentSystemDataObservation) DeepCopyInto(out *ModelDeploymen
 	if in.CurrentInstanceCount != nil {
 		in, out := &in.CurrentInstanceCount, &out.CurrentInstanceCount
 		*out = new(float64)
+		**out = **in
+	}
+	if in.ModelType != nil {
+		in, out := &in.ModelType, &out.ModelType
+		*out = new(string)
 		**out = **in
 	}
 	if in.SystemInfraType != nil {
@@ -20953,30 +20931,10 @@ func (in *PredictInitParameters) DeepCopyInto(out *PredictInitParameters) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.LogGroupIDRef != nil {
-		in, out := &in.LogGroupIDRef, &out.LogGroupIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.LogGroupIDSelector != nil {
-		in, out := &in.LogGroupIDSelector, &out.LogGroupIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.LogID != nil {
 		in, out := &in.LogID, &out.LogID
 		*out = new(string)
 		**out = **in
-	}
-	if in.LogIDRef != nil {
-		in, out := &in.LogIDRef, &out.LogIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.LogIDSelector != nil {
-		in, out := &in.LogIDSelector, &out.LogIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
 	}
 }
 
@@ -21023,30 +20981,10 @@ func (in *PredictParameters) DeepCopyInto(out *PredictParameters) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.LogGroupIDRef != nil {
-		in, out := &in.LogGroupIDRef, &out.LogGroupIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.LogGroupIDSelector != nil {
-		in, out := &in.LogGroupIDSelector, &out.LogGroupIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.LogID != nil {
 		in, out := &in.LogID, &out.LogID
 		*out = new(string)
 		**out = **in
-	}
-	if in.LogIDRef != nil {
-		in, out := &in.LogIDRef, &out.LogIDRef
-		*out = new(v1.Reference)
-		(*in).DeepCopyInto(*out)
-	}
-	if in.LogIDSelector != nil {
-		in, out := &in.LogIDSelector, &out.LogIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
 	}
 }
 

@@ -31,10 +31,10 @@ type DBHomeDatabaseConnectionStringsParameters struct {
 
 type DBHomeDatabaseDBBackupConfigBackupDestinationDetailsInitParameters struct {
 
-	// (Applicable when source=DB_SYSTEM | NONE) Defines the automatic and manual backup retention policy for the Autonomous Database termination.  The retention policy set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination. Options are 'RETAIN_PER_RETENTION_WINDOW' or 'RETAIN_FOR_72_HOURS'.The default value is 'RETAIN_FOR_72_HOURS'.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Defines the automatic and manual backup retention policy for the Autonomous AI Database termination.  The retention policy set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination. Options are 'RETAIN_PER_RETENTION_WINDOW' or 'RETAIN_FOR_72_HOURS'.The default value is 'RETAIN_FOR_72_HOURS'.
 	BackupRetentionPolicyOnTerminate *string `json:"backupRetentionPolicyOnTerminate,omitempty" tf:"backup_retention_policy_on_terminate,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the DBRS policy used for backup.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the DBRS policy used for backup.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Policy
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	DbrsPolicyID *string `json:"dbrsPolicyId,omitempty" tf:"dbrs_policy_id,omitempty"`
@@ -47,16 +47,16 @@ type DBHomeDatabaseDBBackupConfigBackupDestinationDetailsInitParameters struct {
 	// +kubebuilder:validation:Optional
 	DbrsPolicyIDSelector *v1.Selector `json:"dbrsPolicyIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Indicates whether the backup destination is cross-region or local.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Indicates whether the backup destination is cross-region or local.
 	IsRemote *bool `json:"isRemote,omitempty" tf:"is_remote,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Indicates if backup retention is locked for all the database backups in the Autonomous Container Database (ACD). The retention window cannot be decreased if the backup retention lock is enabled. Once applied on the Autonomous Container Database, the retention lock cannot be removed, or the retention period cannot be decreased after a 14-day period. If the backup is a Long Term Backup and retention lock is enabled, the backup cannot be deleted and must expire. The retention lock set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Indicates if backup retention is locked for all the database backups in the Autonomous Container Database (ACD). The retention window cannot be decreased if the backup retention lock is enabled. Once applied on the Autonomous Container Database, the retention lock cannot be removed, or the retention period cannot be decreased after a 14-day period. If the backup is a Long Term Backup and retention lock is enabled, the backup cannot be deleted and must expire. The retention lock set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination.
 	IsRetentionLockEnabled *bool `json:"isRetentionLockEnabled,omitempty" tf:"is_retention_lock_enabled,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The name of the remote region where the remote automatic incremental backups will be stored.           For information about valid region names, see Regions and Availability Domains.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The name of the remote region where the remote automatic incremental backups will be stored.           For information about valid region names, see Regions and Availability Domains.
 	RemoteRegion *string `json:"remoteRegion,omitempty" tf:"remote_region,omitempty"`
 
 	// Type of the database backup destination.
@@ -65,22 +65,22 @@ type DBHomeDatabaseDBBackupConfigBackupDestinationDetailsInitParameters struct {
 
 type DBHomeDatabaseDBBackupConfigBackupDestinationDetailsObservation struct {
 
-	// (Applicable when source=DB_SYSTEM | NONE) Defines the automatic and manual backup retention policy for the Autonomous Database termination.  The retention policy set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination. Options are 'RETAIN_PER_RETENTION_WINDOW' or 'RETAIN_FOR_72_HOURS'.The default value is 'RETAIN_FOR_72_HOURS'.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Defines the automatic and manual backup retention policy for the Autonomous AI Database termination.  The retention policy set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination. Options are 'RETAIN_PER_RETENTION_WINDOW' or 'RETAIN_FOR_72_HOURS'.The default value is 'RETAIN_FOR_72_HOURS'.
 	BackupRetentionPolicyOnTerminate *string `json:"backupRetentionPolicyOnTerminate,omitempty" tf:"backup_retention_policy_on_terminate,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the DBRS policy used for backup.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the DBRS policy used for backup.
 	DbrsPolicyID *string `json:"dbrsPolicyId,omitempty" tf:"dbrs_policy_id,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Indicates whether the backup destination is cross-region or local.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Indicates whether the backup destination is cross-region or local.
 	IsRemote *bool `json:"isRemote,omitempty" tf:"is_remote,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Indicates if backup retention is locked for all the database backups in the Autonomous Container Database (ACD). The retention window cannot be decreased if the backup retention lock is enabled. Once applied on the Autonomous Container Database, the retention lock cannot be removed, or the retention period cannot be decreased after a 14-day period. If the backup is a Long Term Backup and retention lock is enabled, the backup cannot be deleted and must expire. The retention lock set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Indicates if backup retention is locked for all the database backups in the Autonomous Container Database (ACD). The retention window cannot be decreased if the backup retention lock is enabled. Once applied on the Autonomous Container Database, the retention lock cannot be removed, or the retention period cannot be decreased after a 14-day period. If the backup is a Long Term Backup and retention lock is enabled, the backup cannot be deleted and must expire. The retention lock set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination.
 	IsRetentionLockEnabled *bool `json:"isRetentionLockEnabled,omitempty" tf:"is_retention_lock_enabled,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The name of the remote region where the remote automatic incremental backups will be stored.           For information about valid region names, see Regions and Availability Domains.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The name of the remote region where the remote automatic incremental backups will be stored.           For information about valid region names, see Regions and Availability Domains.
 	RemoteRegion *string `json:"remoteRegion,omitempty" tf:"remote_region,omitempty"`
 
 	// Type of the database backup destination.
@@ -89,11 +89,11 @@ type DBHomeDatabaseDBBackupConfigBackupDestinationDetailsObservation struct {
 
 type DBHomeDatabaseDBBackupConfigBackupDestinationDetailsParameters struct {
 
-	// (Applicable when source=DB_SYSTEM | NONE) Defines the automatic and manual backup retention policy for the Autonomous Database termination.  The retention policy set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination. Options are 'RETAIN_PER_RETENTION_WINDOW' or 'RETAIN_FOR_72_HOURS'.The default value is 'RETAIN_FOR_72_HOURS'.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Defines the automatic and manual backup retention policy for the Autonomous AI Database termination.  The retention policy set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination. Options are 'RETAIN_PER_RETENTION_WINDOW' or 'RETAIN_FOR_72_HOURS'.The default value is 'RETAIN_FOR_72_HOURS'.
 	// +kubebuilder:validation:Optional
 	BackupRetentionPolicyOnTerminate *string `json:"backupRetentionPolicyOnTerminate,omitempty" tf:"backup_retention_policy_on_terminate,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the DBRS policy used for backup.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the DBRS policy used for backup.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Policy
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -107,19 +107,19 @@ type DBHomeDatabaseDBBackupConfigBackupDestinationDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	DbrsPolicyIDSelector *v1.Selector `json:"dbrsPolicyIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Indicates whether the backup destination is cross-region or local.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Indicates whether the backup destination is cross-region or local.
 	// +kubebuilder:validation:Optional
 	IsRemote *bool `json:"isRemote,omitempty" tf:"is_remote,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Indicates if backup retention is locked for all the database backups in the Autonomous Container Database (ACD). The retention window cannot be decreased if the backup retention lock is enabled. Once applied on the Autonomous Container Database, the retention lock cannot be removed, or the retention period cannot be decreased after a 14-day period. If the backup is a Long Term Backup and retention lock is enabled, the backup cannot be deleted and must expire. The retention lock set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Indicates if backup retention is locked for all the database backups in the Autonomous Container Database (ACD). The retention window cannot be decreased if the backup retention lock is enabled. Once applied on the Autonomous Container Database, the retention lock cannot be removed, or the retention period cannot be decreased after a 14-day period. If the backup is a Long Term Backup and retention lock is enabled, the backup cannot be deleted and must expire. The retention lock set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination.
 	// +kubebuilder:validation:Optional
 	IsRetentionLockEnabled *bool `json:"isRetentionLockEnabled,omitempty" tf:"is_retention_lock_enabled,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The name of the remote region where the remote automatic incremental backups will be stored.           For information about valid region names, see Regions and Availability Domains.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The name of the remote region where the remote automatic incremental backups will be stored.           For information about valid region names, see Regions and Availability Domains.
 	// +kubebuilder:validation:Optional
 	RemoteRegion *string `json:"remoteRegion,omitempty" tf:"remote_region,omitempty"`
 
@@ -130,89 +130,89 @@ type DBHomeDatabaseDBBackupConfigBackupDestinationDetailsParameters struct {
 
 type DBHomeDatabaseDBBackupConfigInitParameters struct {
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) If set to true, configures automatic backups. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) If set to true, configures automatic backups. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
 	AutoBackupEnabled *bool `json:"autoBackupEnabled,omitempty" tf:"auto_backup_enabled,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Time window selected for initiating automatic backup for the database system. There are twelve available two-hour time windows. If no option is selected, a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Time window selected for initiating automatic backup for the database system. There are twelve available two-hour time windows. If no option is selected, a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
 	AutoBackupWindow *string `json:"autoBackupWindow,omitempty" tf:"auto_backup_window,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Day of the week the full backup should be applied on the database system. If no option is selected, the value is null and we will default to Sunday.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Day of the week the full backup should be applied on the database system. If no option is selected, the value is null and we will default to Sunday.
 	AutoFullBackupDay *string `json:"autoFullBackupDay,omitempty" tf:"auto_full_backup_day,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Time window selected for initiating full backup for the database system. There are twelve available two-hour time windows. If no option is selected, the value is null and a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Time window selected for initiating full backup for the database system. There are twelve available two-hour time windows. If no option is selected, the value is null and a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
 	AutoFullBackupWindow *string `json:"autoFullBackupWindow,omitempty" tf:"auto_full_backup_window,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) This defines when the backups will be deleted. - DELETE_IMMEDIATELY option keep the backup for predefined time i.e 72 hours and then delete permanently... - DELETE_AFTER_RETENTION_PERIOD will keep the backups as per the policy defined for database backups.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) This defines when the backups will be deleted. - DELETE_IMMEDIATELY option keep the backup for predefined time i.e 72 hours and then delete permanently... - DELETE_AFTER_RETENTION_PERIOD will keep the backups as per the policy defined for database backups.
 	BackupDeletionPolicy *string `json:"backupDeletionPolicy,omitempty" tf:"backup_deletion_policy,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Backup destination details.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Backup destination details.
 	BackupDestinationDetails []DBHomeDatabaseDBBackupConfigBackupDestinationDetailsInitParameters `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
 	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
 }
 
 type DBHomeDatabaseDBBackupConfigObservation struct {
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) If set to true, configures automatic backups. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) If set to true, configures automatic backups. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
 	AutoBackupEnabled *bool `json:"autoBackupEnabled,omitempty" tf:"auto_backup_enabled,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Time window selected for initiating automatic backup for the database system. There are twelve available two-hour time windows. If no option is selected, a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Time window selected for initiating automatic backup for the database system. There are twelve available two-hour time windows. If no option is selected, a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
 	AutoBackupWindow *string `json:"autoBackupWindow,omitempty" tf:"auto_backup_window,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Day of the week the full backup should be applied on the database system. If no option is selected, the value is null and we will default to Sunday.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Day of the week the full backup should be applied on the database system. If no option is selected, the value is null and we will default to Sunday.
 	AutoFullBackupDay *string `json:"autoFullBackupDay,omitempty" tf:"auto_full_backup_day,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Time window selected for initiating full backup for the database system. There are twelve available two-hour time windows. If no option is selected, the value is null and a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Time window selected for initiating full backup for the database system. There are twelve available two-hour time windows. If no option is selected, the value is null and a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
 	AutoFullBackupWindow *string `json:"autoFullBackupWindow,omitempty" tf:"auto_full_backup_window,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) This defines when the backups will be deleted. - DELETE_IMMEDIATELY option keep the backup for predefined time i.e 72 hours and then delete permanently... - DELETE_AFTER_RETENTION_PERIOD will keep the backups as per the policy defined for database backups.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) This defines when the backups will be deleted. - DELETE_IMMEDIATELY option keep the backup for predefined time i.e 72 hours and then delete permanently... - DELETE_AFTER_RETENTION_PERIOD will keep the backups as per the policy defined for database backups.
 	BackupDeletionPolicy *string `json:"backupDeletionPolicy,omitempty" tf:"backup_deletion_policy,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Backup destination details.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Backup destination details.
 	BackupDestinationDetails []DBHomeDatabaseDBBackupConfigBackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
 	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
 }
 
 type DBHomeDatabaseDBBackupConfigParameters struct {
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) If set to true, configures automatic backups. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) If set to true, configures automatic backups. If you previously used RMAN or dbcli to configure backups and then you switch to using the Console or the API for backups, a new backup configuration is created and associated with your database. This means that you can no longer rely on your previously configured unmanaged backups to work.
 	// +kubebuilder:validation:Optional
 	AutoBackupEnabled *bool `json:"autoBackupEnabled,omitempty" tf:"auto_backup_enabled,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Time window selected for initiating automatic backup for the database system. There are twelve available two-hour time windows. If no option is selected, a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Time window selected for initiating automatic backup for the database system. There are twelve available two-hour time windows. If no option is selected, a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
 	// +kubebuilder:validation:Optional
 	AutoBackupWindow *string `json:"autoBackupWindow,omitempty" tf:"auto_backup_window,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Day of the week the full backup should be applied on the database system. If no option is selected, the value is null and we will default to Sunday.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Day of the week the full backup should be applied on the database system. If no option is selected, the value is null and we will default to Sunday.
 	// +kubebuilder:validation:Optional
 	AutoFullBackupDay *string `json:"autoFullBackupDay,omitempty" tf:"auto_full_backup_day,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) Time window selected for initiating full backup for the database system. There are twelve available two-hour time windows. If no option is selected, the value is null and a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) Time window selected for initiating full backup for the database system. There are twelve available two-hour time windows. If no option is selected, the value is null and a start time between 12:00 AM to 7:00 AM in the region of the database is automatically chosen. For example, if the user selects SLOT_TWO from the enum list, the automatic backup job will start in between 2:00 AM (inclusive) to 4:00 AM (exclusive).  Example: SLOT_TWO
 	// +kubebuilder:validation:Optional
 	AutoFullBackupWindow *string `json:"autoFullBackupWindow,omitempty" tf:"auto_full_backup_window,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) This defines when the backups will be deleted. - DELETE_IMMEDIATELY option keep the backup for predefined time i.e 72 hours and then delete permanently... - DELETE_AFTER_RETENTION_PERIOD will keep the backups as per the policy defined for database backups.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) This defines when the backups will be deleted. - DELETE_IMMEDIATELY option keep the backup for predefined time i.e 72 hours and then delete permanently... - DELETE_AFTER_RETENTION_PERIOD will keep the backups as per the policy defined for database backups.
 	// +kubebuilder:validation:Optional
 	BackupDeletionPolicy *string `json:"backupDeletionPolicy,omitempty" tf:"backup_deletion_policy,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Backup destination details.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Backup destination details.
 	// +kubebuilder:validation:Optional
 	BackupDestinationDetails []DBHomeDatabaseDBBackupConfigBackupDestinationDetailsParameters `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
 	// +kubebuilder:validation:Optional
 	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	// +kubebuilder:validation:Optional
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
 }
@@ -241,13 +241,13 @@ type DBHomeDatabaseInitParameters struct {
 	// (Applicable when source=NONE) The character set for the database.  The default is AL32UTF8. Allowed values are:
 	CharacterSet *string `json:"characterSet,omitempty" tf:"character_set,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Backup Options To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Backup Options To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies.
 	DBBackupConfig []DBHomeDatabaseDBBackupConfigInitParameters `json:"dbBackupConfig,omitempty" tf:"db_backup_config,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM) The database domain. In a distributed database system, DB_DOMAIN specifies the logical location of the database within the network structure.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM) The database domain. In a distributed database system, DB_DOMAIN specifies the logical location of the database within the network structure.
 	DBDomain *string `json:"dbDomain,omitempty" tf:"db_domain,omitempty"`
 
-	// The display name of the database to be created from the backup. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) The display name of the database to be created from the backup. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted.
 	DBName *string `json:"dbName,omitempty" tf:"db_name,omitempty"`
 
 	// (Updatable) Name of the day of the week.
@@ -255,6 +255,14 @@ type DBHomeDatabaseInitParameters struct {
 
 	// (Applicable when source=NONE) Deprecated. The dbWorkload field has been deprecated for Exadata Database Service on Dedicated Infrastructure, Exadata Database Service on Cloud@Customer, and Base Database Service. Support for this attribute will end in November 2023. You may choose to update your custom scripts to exclude the dbWorkload attribute. After November 2023 if you pass a value to the dbWorkload attribute, it will be ignored.
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
+
+	// (Applicable when source=DATAGUARD) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// +mapType=granular
+	DatabaseDefinedTags map[string]*string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
+
+	// (Applicable when source=DATAGUARD) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// +mapType=granular
+	DatabaseFreeformTags map[string]*string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
 
 	// The database OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.Database
@@ -269,7 +277,7 @@ type DBHomeDatabaseInitParameters struct {
 	// +kubebuilder:validation:Optional
 	DatabaseIDSelector *v1.Selector `json:"databaseIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=NONE) The database software image OCID
+	// (Applicable when source=DATAGUARD | NONE) The database software image OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.DatabaseSoftwareImage
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
@@ -282,13 +290,16 @@ type DBHomeDatabaseInitParameters struct {
 	// +kubebuilder:validation:Optional
 	DatabaseSoftwareImageIDSelector *v1.Selector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// (Applicable when source=DATAGUARD) True if active Data Guard is enabled.
+	IsActiveDataGuardEnabled *bool `json:"isActiveDataGuardEnabled,omitempty" tf:"is_active_data_guard_enabled,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -316,6 +327,19 @@ type DBHomeDatabaseInitParameters struct {
 	// +kubebuilder:validation:Optional
 	KMSKeyVersionIDSelector *v1.Selector `json:"kmsKeyVersionIdSelector,omitempty" tf:"-"`
 
+	// (Applicable when source=NONE) The OCID of the key store of Oracle Vault.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.KeyStore
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	KeyStoreID *string `json:"keyStoreId,omitempty" tf:"key_store_id,omitempty"`
+
+	// Reference to a KeyStore in database to populate keyStoreId.
+	// +kubebuilder:validation:Optional
+	KeyStoreIDRef *v1.Reference `json:"keyStoreIdRef,omitempty" tf:"-"`
+
+	// Selector for a KeyStore in database to populate keyStoreId.
+	// +kubebuilder:validation:Optional
+	KeyStoreIDSelector *v1.Selector `json:"keyStoreIdSelector,omitempty" tf:"-"`
+
 	// (Applicable when source=NONE) The national character set for the database.  The default is AL16UTF16. Allowed values are: AL16UTF16 or UTF8.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
 
@@ -325,11 +349,20 @@ type DBHomeDatabaseInitParameters struct {
 	// (Applicable when source=DATABASE | DB_BACKUP) The list of pluggable databases that needs to be restored into new database.
 	PluggableDatabases []*string `json:"pluggableDatabases,omitempty" tf:"pluggable_databases,omitempty"`
 
-	// (Applicable when source=NONE) The optional password to open the TDE wallet. The password must be at least nine characters and contain at least two uppercase, two lowercase, two numeric, and two special characters. The special characters must be _, #, or -.
+	// The protection mode of this Data Guard association. For more information, see Oracle Data Guard Protection Modes in the Oracle Data Guard documentation.
+	ProtectionMode *string `json:"protectionMode,omitempty" tf:"protection_mode,omitempty"`
+
+	// (Applicable when source=DATABASE | DATAGUARD | DB_BACKUP | NONE) Specifies a prefix for the Oracle SID of the database to be created.
+	SidPrefix *string `json:"sidPrefix,omitempty" tf:"sid_prefix,omitempty"`
+
+	// (Applicable when source=DATAGUARD | NONE) The optional password to open the TDE wallet. The password must be at least nine characters and contain at least two uppercase, two lowercase, two numeric, and two special characters. The special characters must be _, #, or -.
 	TdeWalletPasswordSecretRef *v1.SecretKeySelector `json:"tdeWalletPasswordSecretRef,omitempty" tf:"-"`
 
 	// (Applicable when source=DATABASE) The point in time of the original database from which the new database is created. If not specifed, the latest backup is used to create the database.
 	TimeStampForPointInTimeRecovery *string `json:"timeStampForPointInTimeRecovery,omitempty" tf:"time_stamp_for_point_in_time_recovery,omitempty"`
+
+	// The redo transport type to use for this Data Guard association.  Valid values depend on the specified protectionMode:
+	TransportType *string `json:"transportType,omitempty" tf:"transport_type,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Vault
@@ -355,13 +388,13 @@ type DBHomeDatabaseObservation struct {
 
 	ConnectionStrings []DBHomeDatabaseConnectionStringsObservation `json:"connectionStrings,omitempty" tf:"connection_strings,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Backup Options To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Backup Options To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies.
 	DBBackupConfig []DBHomeDatabaseDBBackupConfigObservation `json:"dbBackupConfig,omitempty" tf:"db_backup_config,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM) The database domain. In a distributed database system, DB_DOMAIN specifies the logical location of the database within the network structure.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM) The database domain. In a distributed database system, DB_DOMAIN specifies the logical location of the database within the network structure.
 	DBDomain *string `json:"dbDomain,omitempty" tf:"db_domain,omitempty"`
 
-	// The display name of the database to be created from the backup. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) The display name of the database to be created from the backup. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted.
 	DBName *string `json:"dbName,omitempty" tf:"db_name,omitempty"`
 
 	// (Updatable) Name of the day of the week.
@@ -370,28 +403,42 @@ type DBHomeDatabaseObservation struct {
 	// (Applicable when source=NONE) Deprecated. The dbWorkload field has been deprecated for Exadata Database Service on Dedicated Infrastructure, Exadata Database Service on Cloud@Customer, and Base Database Service. Support for this attribute will end in November 2023. You may choose to update your custom scripts to exclude the dbWorkload attribute. After November 2023 if you pass a value to the dbWorkload attribute, it will be ignored.
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
 
+	// (Applicable when source=DATAGUARD) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// +mapType=granular
+	DatabaseDefinedTags map[string]*string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
+
+	// (Applicable when source=DATAGUARD) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// +mapType=granular
+	DatabaseFreeformTags map[string]*string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
+
 	// The database OCID.
 	DatabaseID *string `json:"databaseId,omitempty" tf:"database_id,omitempty"`
 
-	// (Applicable when source=NONE) The database software image OCID
+	// (Applicable when source=DATAGUARD | NONE) The database software image OCID
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+
+	// (Applicable when source=DATAGUARD) True if active Data Guard is enabled.
+	IsActiveDataGuardEnabled *bool `json:"isActiveDataGuardEnabled,omitempty" tf:"is_active_data_guard_enabled,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
 	KMSKeyID *string `json:"kmsKeyId,omitempty" tf:"kms_key_id,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous AI Database Serverless does not use key versions, hence is not applicable for Autonomous AI Database Serverless instances.
 	KMSKeyVersionID *string `json:"kmsKeyVersionId,omitempty" tf:"kms_key_version_id,omitempty"`
+
+	// (Applicable when source=NONE) The OCID of the key store of Oracle Vault.
+	KeyStoreID *string `json:"keyStoreId,omitempty" tf:"key_store_id,omitempty"`
 
 	// Additional information about the current lifecycleState.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
@@ -405,6 +452,12 @@ type DBHomeDatabaseObservation struct {
 	// (Applicable when source=DATABASE | DB_BACKUP) The list of pluggable databases that needs to be restored into new database.
 	PluggableDatabases []*string `json:"pluggableDatabases,omitempty" tf:"pluggable_databases,omitempty"`
 
+	// The protection mode of this Data Guard association. For more information, see Oracle Data Guard Protection Modes in the Oracle Data Guard documentation.
+	ProtectionMode *string `json:"protectionMode,omitempty" tf:"protection_mode,omitempty"`
+
+	// (Applicable when source=DATABASE | DATAGUARD | DB_BACKUP | NONE) Specifies a prefix for the Oracle SID of the database to be created.
+	SidPrefix *string `json:"sidPrefix,omitempty" tf:"sid_prefix,omitempty"`
+
 	// The current state of IORM configuration for the Exadata DB system.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
@@ -413,6 +466,9 @@ type DBHomeDatabaseObservation struct {
 
 	// (Applicable when source=DATABASE) The point in time of the original database from which the new database is created. If not specifed, the latest backup is used to create the database.
 	TimeStampForPointInTimeRecovery *string `json:"timeStampForPointInTimeRecovery,omitempty" tf:"time_stamp_for_point_in_time_recovery,omitempty"`
+
+	// The redo transport type to use for this Data Guard association.  Valid values depend on the specified protectionMode:
+	TransportType *string `json:"transportType,omitempty" tf:"transport_type,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	VaultID *string `json:"vaultId,omitempty" tf:"vault_id,omitempty"`
@@ -446,15 +502,15 @@ type DBHomeDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	CharacterSet *string `json:"characterSet,omitempty" tf:"character_set,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) (Updatable) Backup Options To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Backup Options To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies.
 	// +kubebuilder:validation:Optional
 	DBBackupConfig []DBHomeDatabaseDBBackupConfigParameters `json:"dbBackupConfig,omitempty" tf:"db_backup_config,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM) The database domain. In a distributed database system, DB_DOMAIN specifies the logical location of the database within the network structure.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM) The database domain. In a distributed database system, DB_DOMAIN specifies the logical location of the database within the network structure.
 	// +kubebuilder:validation:Optional
 	DBDomain *string `json:"dbDomain,omitempty" tf:"db_domain,omitempty"`
 
-	// The display name of the database to be created from the backup. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) The display name of the database to be created from the backup. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted.
 	// +kubebuilder:validation:Optional
 	DBName *string `json:"dbName,omitempty" tf:"db_name,omitempty"`
 
@@ -465,6 +521,16 @@ type DBHomeDatabaseParameters struct {
 	// (Applicable when source=NONE) Deprecated. The dbWorkload field has been deprecated for Exadata Database Service on Dedicated Infrastructure, Exadata Database Service on Cloud@Customer, and Base Database Service. Support for this attribute will end in November 2023. You may choose to update your custom scripts to exclude the dbWorkload attribute. After November 2023 if you pass a value to the dbWorkload attribute, it will be ignored.
 	// +kubebuilder:validation:Optional
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
+
+	// (Applicable when source=DATAGUARD) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	DatabaseDefinedTags map[string]*string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
+
+	// (Applicable when source=DATAGUARD) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	DatabaseFreeformTags map[string]*string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
 
 	// The database OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.Database
@@ -480,7 +546,7 @@ type DBHomeDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	DatabaseIDSelector *v1.Selector `json:"databaseIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=NONE) The database software image OCID
+	// (Applicable when source=DATAGUARD | NONE) The database software image OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.DatabaseSoftwareImage
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -494,15 +560,19 @@ type DBHomeDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	DatabaseSoftwareImageIDSelector *v1.Selector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// (Applicable when source=DATAGUARD) True if active Data Guard is enabled.
+	// +kubebuilder:validation:Optional
+	IsActiveDataGuardEnabled *bool `json:"isActiveDataGuardEnabled,omitempty" tf:"is_active_data_guard_enabled,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -532,6 +602,20 @@ type DBHomeDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	KMSKeyVersionIDSelector *v1.Selector `json:"kmsKeyVersionIdSelector,omitempty" tf:"-"`
 
+	// (Applicable when source=NONE) The OCID of the key store of Oracle Vault.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.KeyStore
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	KeyStoreID *string `json:"keyStoreId,omitempty" tf:"key_store_id,omitempty"`
+
+	// Reference to a KeyStore in database to populate keyStoreId.
+	// +kubebuilder:validation:Optional
+	KeyStoreIDRef *v1.Reference `json:"keyStoreIdRef,omitempty" tf:"-"`
+
+	// Selector for a KeyStore in database to populate keyStoreId.
+	// +kubebuilder:validation:Optional
+	KeyStoreIDSelector *v1.Selector `json:"keyStoreIdSelector,omitempty" tf:"-"`
+
 	// (Applicable when source=NONE) The national character set for the database.  The default is AL16UTF16. Allowed values are: AL16UTF16 or UTF8.
 	// +kubebuilder:validation:Optional
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
@@ -544,13 +628,25 @@ type DBHomeDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	PluggableDatabases []*string `json:"pluggableDatabases,omitempty" tf:"pluggable_databases,omitempty"`
 
-	// (Applicable when source=NONE) The optional password to open the TDE wallet. The password must be at least nine characters and contain at least two uppercase, two lowercase, two numeric, and two special characters. The special characters must be _, #, or -.
+	// The protection mode of this Data Guard association. For more information, see Oracle Data Guard Protection Modes in the Oracle Data Guard documentation.
+	// +kubebuilder:validation:Optional
+	ProtectionMode *string `json:"protectionMode,omitempty" tf:"protection_mode,omitempty"`
+
+	// (Applicable when source=DATABASE | DATAGUARD | DB_BACKUP | NONE) Specifies a prefix for the Oracle SID of the database to be created.
+	// +kubebuilder:validation:Optional
+	SidPrefix *string `json:"sidPrefix,omitempty" tf:"sid_prefix,omitempty"`
+
+	// (Applicable when source=DATAGUARD | NONE) The optional password to open the TDE wallet. The password must be at least nine characters and contain at least two uppercase, two lowercase, two numeric, and two special characters. The special characters must be _, #, or -.
 	// +kubebuilder:validation:Optional
 	TdeWalletPasswordSecretRef *v1.SecretKeySelector `json:"tdeWalletPasswordSecretRef,omitempty" tf:"-"`
 
 	// (Applicable when source=DATABASE) The point in time of the original database from which the new database is created. If not specifed, the latest backup is used to create the database.
 	// +kubebuilder:validation:Optional
 	TimeStampForPointInTimeRecovery *string `json:"timeStampForPointInTimeRecovery,omitempty" tf:"time_stamp_for_point_in_time_recovery,omitempty"`
+
+	// The redo transport type to use for this Data Guard association.  Valid values depend on the specified protectionMode:
+	// +kubebuilder:validation:Optional
+	TransportType *string `json:"transportType,omitempty" tf:"transport_type,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Vault
@@ -576,7 +672,7 @@ type DBHomeInitParameters struct {
 	// (Updatable) Details for creating a database by restoring from a source database system.
 	Database []DBHomeDatabaseInitParameters `json:"database,omitempty" tf:"database,omitempty"`
 
-	// (Applicable when source=NONE) The database software image OCID
+	// (Applicable when source=DATAGUARD | NONE) The database software image OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.DatabaseSoftwareImage
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
@@ -589,14 +685,14 @@ type DBHomeInitParameters struct {
 	// +kubebuilder:validation:Optional
 	DatabaseSoftwareImageIDSelector *v1.Selector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the Database Home.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
@@ -615,21 +711,21 @@ type DBHomeObservation struct {
 	// (Updatable) Details for creating a database by restoring from a source database system.
 	Database []DBHomeDatabaseObservation `json:"database,omitempty" tf:"database,omitempty"`
 
-	// (Applicable when source=NONE) The database software image OCID
+	// (Applicable when source=DATAGUARD | NONE) The database software image OCID
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the Database Home.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | NONE) Indicates whether unified auditing is enabled or not
@@ -661,7 +757,7 @@ type DBHomeParameters struct {
 	// +kubebuilder:validation:Optional
 	Database []DBHomeDatabaseParameters `json:"database" tf:"database,omitempty"`
 
-	// (Applicable when source=NONE) The database software image OCID
+	// (Applicable when source=DATAGUARD | NONE) The database software image OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.DatabaseSoftwareImage
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -675,7 +771,7 @@ type DBHomeParameters struct {
 	// +kubebuilder:validation:Optional
 	DatabaseSoftwareImageIDSelector *v1.Selector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
@@ -684,7 +780,7 @@ type DBHomeParameters struct {
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
@@ -780,7 +876,7 @@ type DbSystemInitParameters struct {
 	// The cluster name for Exadata and 2-node RAC virtual machine DB systems. The cluster name must begin with an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	ClusterPlacementGroupID *string `json:"clusterPlacementGroupId,omitempty" tf:"cluster_placement_group_id,omitempty"`
 
 	// (Updatable) The OCID of the compartment the DB system  belongs in.
@@ -819,7 +915,7 @@ type DbSystemInitParameters struct {
 	// The Oracle Database Edition that applies to all the databases on the DB system. Exadata DB systems and 2-node RAC DB systems require ENTERPRISE_EDITION_EXTREME_PERFORMANCE.
 	DatabaseEdition *string `json:"databaseEdition,omitempty" tf:"database_edition,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
@@ -835,7 +931,7 @@ type DbSystemInitParameters struct {
 	// A Fault Domain is a grouping of hardware and infrastructure within an availability domain. Fault Domains let you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or maintenance that affects one Fault Domain does not affect DB systems in other Fault Domains.
 	FaultDomains []*string `json:"faultDomains,omitempty" tf:"fault_domains,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
@@ -880,6 +976,27 @@ type DbSystemInitParameters struct {
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
+
+	OsPatchAction *string `json:"osPatchAction,omitempty" tf:"os_patch_action,omitempty"`
+
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
+	OsPatchDBNodeID *string `json:"osPatchDbNodeId,omitempty" tf:"os_patch_db_node_id,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Os Patch. Could be set to any integer value.
+	OsPatchTrigger *float64 `json:"osPatchTrigger,omitempty" tf:"os_patch_trigger,omitempty"`
+
+	// The OCID of the DB system.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.DbSystem
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	PrimaryDBSystemID *string `json:"primaryDbSystemId,omitempty" tf:"primary_db_system_id,omitempty"`
+
+	// Reference to a DbSystem in database to populate primaryDbSystemId.
+	// +kubebuilder:validation:Optional
+	PrimaryDBSystemIDRef *v1.Reference `json:"primaryDbSystemIdRef,omitempty" tf:"-"`
+
+	// Selector for a DbSystem in database to populate primaryDbSystemId.
+	// +kubebuilder:validation:Optional
+	PrimaryDBSystemIDSelector *v1.Selector `json:"primaryDbSystemIdSelector,omitempty" tf:"-"`
 
 	// A private IP address of your choice. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. Supported for VM BM shape.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
@@ -936,7 +1053,7 @@ type DbSystemInitParameters struct {
 	// +kubebuilder:validation:Optional
 	SubnetIDSelector *v1.Selector `json:"subnetIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
 	// The time zone to use for the DB system. For details, see DB System Time Zones.
@@ -951,7 +1068,7 @@ type DbSystemIormConfigCacheObservation struct {
 	// An array of IORM settings for all the database in the Exadata DB system.
 	DBPlans []IormConfigCacheDBPlansObservation `json:"dbPlans,omitempty" tf:"db_plans,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	DBSystemID *string `json:"dbSystemId,omitempty" tf:"db_system_id,omitempty"`
 
 	// Additional information about the current lifecycleState.
@@ -1208,7 +1325,7 @@ type DbSystemObservation struct {
 	// The cluster name for Exadata and 2-node RAC virtual machine DB systems. The cluster name must begin with an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	ClusterPlacementGroupID *string `json:"clusterPlacementGroupId,omitempty" tf:"cluster_placement_group_id,omitempty"`
 
 	// (Updatable) The OCID of the compartment the DB system  belongs in.
@@ -1238,7 +1355,7 @@ type DbSystemObservation struct {
 	// The Oracle Database Edition that applies to all the databases on the DB system. Exadata DB systems and 2-node RAC DB systems require ENTERPRISE_EDITION_EXTREME_PERFORMANCE.
 	DatabaseEdition *string `json:"databaseEdition,omitempty" tf:"database_edition,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
@@ -1254,14 +1371,14 @@ type DbSystemObservation struct {
 	// A Fault Domain is a grouping of hardware and infrastructure within an availability domain. Fault Domains let you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or maintenance that affects one Fault Domain does not affect DB systems in other Fault Domains.
 	FaultDomains []*string `json:"faultDomains,omitempty" tf:"fault_domains,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the DB system. The hostname must begin with an alphabetic character, and can contain alphanumeric characters and hyphens (-). The maximum length of the hostname is 16 characters for bare metal and virtual machine DB systems, and 12 characters for Exadata DB systems.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The IORM settings of the Exadata DB system.
@@ -1307,11 +1424,22 @@ type DbSystemObservation struct {
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
+	OsPatchAction *string `json:"osPatchAction,omitempty" tf:"os_patch_action,omitempty"`
+
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
+	OsPatchDBNodeID *string `json:"osPatchDbNodeId,omitempty" tf:"os_patch_db_node_id,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Os Patch. Could be set to any integer value.
+	OsPatchTrigger *float64 `json:"osPatchTrigger,omitempty" tf:"os_patch_trigger,omitempty"`
+
 	// The most recent OS Patch Version applied on the DB system.
 	OsVersion *string `json:"osVersion,omitempty" tf:"os_version,omitempty"`
 
 	// The point in time for a cloned database system when the data disks were cloned from the source database system, as described in RFC 3339.
 	PointInTimeDataDiskCloneTimestamp *string `json:"pointInTimeDataDiskCloneTimestamp,omitempty" tf:"point_in_time_data_disk_clone_timestamp,omitempty"`
+
+	// The OCID of the DB system.
+	PrimaryDBSystemID *string `json:"primaryDbSystemId,omitempty" tf:"primary_db_system_id,omitempty"`
 
 	// A private IP address of your choice. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. Supported for VM BM shape.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
@@ -1363,7 +1491,7 @@ type DbSystemObservation struct {
 	// The OCID of the subnet the DB system is associated with.
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
@@ -1422,7 +1550,7 @@ type DbSystemParameters struct {
 	// +kubebuilder:validation:Optional
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	// +kubebuilder:validation:Optional
 	ClusterPlacementGroupID *string `json:"clusterPlacementGroupId,omitempty" tf:"cluster_placement_group_id,omitempty"`
 
@@ -1471,7 +1599,7 @@ type DbSystemParameters struct {
 	// +kubebuilder:validation:Optional
 	DatabaseEdition *string `json:"databaseEdition,omitempty" tf:"database_edition,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
@@ -1492,7 +1620,7 @@ type DbSystemParameters struct {
 	// +kubebuilder:validation:Optional
 	FaultDomains []*string `json:"faultDomains,omitempty" tf:"fault_domains,omitempty"`
 
-	// (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
@@ -1545,6 +1673,31 @@ type DbSystemParameters struct {
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OsPatchAction *string `json:"osPatchAction,omitempty" tf:"os_patch_action,omitempty"`
+
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
+	// +kubebuilder:validation:Optional
+	OsPatchDBNodeID *string `json:"osPatchDbNodeId,omitempty" tf:"os_patch_db_node_id,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Os Patch. Could be set to any integer value.
+	// +kubebuilder:validation:Optional
+	OsPatchTrigger *float64 `json:"osPatchTrigger,omitempty" tf:"os_patch_trigger,omitempty"`
+
+	// The OCID of the DB system.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.DbSystem
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	PrimaryDBSystemID *string `json:"primaryDbSystemId,omitempty" tf:"primary_db_system_id,omitempty"`
+
+	// Reference to a DbSystem in database to populate primaryDbSystemId.
+	// +kubebuilder:validation:Optional
+	PrimaryDBSystemIDRef *v1.Reference `json:"primaryDbSystemIdRef,omitempty" tf:"-"`
+
+	// Selector for a DbSystem in database to populate primaryDbSystemId.
+	// +kubebuilder:validation:Optional
+	PrimaryDBSystemIDSelector *v1.Selector `json:"primaryDbSystemIdSelector,omitempty" tf:"-"`
 
 	// A private IP address of your choice. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. Supported for VM BM shape.
 	// +kubebuilder:validation:Optional
@@ -1612,7 +1765,7 @@ type DbSystemParameters struct {
 	// +kubebuilder:validation:Optional
 	SubnetIDSelector *v1.Selector `json:"subnetIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=DB_SYSTEM | NONE) The OCID of the backup destination.
+	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	// +kubebuilder:validation:Optional
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
@@ -1626,7 +1779,7 @@ type IormConfigCacheDBPlansInitParameters struct {
 
 type IormConfigCacheDBPlansObservation struct {
 
-	// The display name of the database to be created from the backup. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted.
+	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) The display name of the database to be created from the backup. It must begin with an alphabetic character and can contain a maximum of eight alphanumeric characters. Special characters are not permitted.
 	DBName *string `json:"dbName,omitempty" tf:"db_name,omitempty"`
 
 	// The flash cache limit for this database. This value is internally configured based on the share value assigned to the database.

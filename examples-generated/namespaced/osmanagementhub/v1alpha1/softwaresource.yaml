@@ -46,6 +46,7 @@ spec:
     isLatestContentOnly: ${var.software_source_is_latest_content_only}
     isMirrorSyncAllowed: ${var.software_source_is_mirror_sync_allowed}
     isSslVerifyEnabled: ${var.software_source_is_ssl_verify_enabled}
+    originDisplayName: ${var.software_source_origin_display_name}
     originSoftwareSourceIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_software_source

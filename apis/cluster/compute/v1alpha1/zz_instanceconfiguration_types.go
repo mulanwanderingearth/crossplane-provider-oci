@@ -1059,7 +1059,7 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsInitParameters struct {
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []InstanceDetailsSecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Applicable when instance_type=compute) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -1068,6 +1068,19 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsInitParameters struct {
 
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +mapType=granular
@@ -1095,29 +1108,59 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsInitParameters struct {
 
 type InstanceDetailsSecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type InstanceDetailsSecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type InstanceDetailsSecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	// +kubebuilder:validation:Optional
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	// +kubebuilder:validation:Optional
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
@@ -1147,7 +1190,7 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsObservation struct {
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []InstanceDetailsSecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Applicable when instance_type=compute) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -1156,6 +1199,9 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsObservation struct {
 
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +mapType=granular
@@ -1203,7 +1249,7 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	// +kubebuilder:validation:Optional
 	Ipv6AddressIpv6SubnetCidrPairDetails []InstanceDetailsSecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
@@ -1215,6 +1261,20 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsParameters struct {
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional
@@ -1415,7 +1475,7 @@ type LaunchDetailsCreateVnicDetailsInitParameters struct {
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []LaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Applicable when instance_type=compute) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -1424,6 +1484,19 @@ type LaunchDetailsCreateVnicDetailsInitParameters struct {
 
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +mapType=granular
@@ -1451,29 +1524,59 @@ type LaunchDetailsCreateVnicDetailsInitParameters struct {
 
 type LaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type LaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type LaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	// +kubebuilder:validation:Optional
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	// +kubebuilder:validation:Optional
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
@@ -1503,7 +1606,7 @@ type LaunchDetailsCreateVnicDetailsObservation struct {
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []LaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Applicable when instance_type=compute) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -1512,6 +1615,9 @@ type LaunchDetailsCreateVnicDetailsObservation struct {
 
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +mapType=granular
@@ -1559,7 +1665,7 @@ type LaunchDetailsCreateVnicDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	// +kubebuilder:validation:Optional
 	Ipv6AddressIpv6SubnetCidrPairDetails []LaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
@@ -1571,6 +1677,20 @@ type LaunchDetailsCreateVnicDetailsParameters struct {
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional
@@ -2765,7 +2885,7 @@ type OptionsLaunchDetailsCreateVnicDetailsInitParameters struct {
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []OptionsLaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Applicable when instance_type=compute) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -2774,6 +2894,19 @@ type OptionsLaunchDetailsCreateVnicDetailsInitParameters struct {
 
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +mapType=granular
@@ -2801,29 +2934,59 @@ type OptionsLaunchDetailsCreateVnicDetailsInitParameters struct {
 
 type OptionsLaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type OptionsLaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type OptionsLaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	// +kubebuilder:validation:Optional
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	// +kubebuilder:validation:Optional
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
@@ -2853,7 +3016,7 @@ type OptionsLaunchDetailsCreateVnicDetailsObservation struct {
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []OptionsLaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Applicable when instance_type=compute) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -2862,6 +3025,9 @@ type OptionsLaunchDetailsCreateVnicDetailsObservation struct {
 
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +mapType=granular
@@ -2909,7 +3075,7 @@ type OptionsLaunchDetailsCreateVnicDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	// +kubebuilder:validation:Optional
 	Ipv6AddressIpv6SubnetCidrPairDetails []OptionsLaunchDetailsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
@@ -2921,6 +3087,20 @@ type OptionsLaunchDetailsCreateVnicDetailsParameters struct {
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional
@@ -3909,7 +4089,7 @@ type SecondaryVnicsCreateVnicDetailsInitParameters struct {
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []SecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Applicable when instance_type=compute) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -3918,6 +4098,19 @@ type SecondaryVnicsCreateVnicDetailsInitParameters struct {
 
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +mapType=granular
@@ -3945,29 +4138,59 @@ type SecondaryVnicsCreateVnicDetailsInitParameters struct {
 
 type SecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type SecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type SecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters struct {
 
-	// Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
+	// (Applicable when instance_type=compute) Optional. An available IPv6 address of your subnet from a valid IPv6 prefix on the subnet (otherwise the IP address is automatically assigned).
 	// +kubebuilder:validation:Optional
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// (Applicable when instance_type=compute) Optional. Used to disambiguate which subnet prefix should be used to create an IPv6 allocation.
 	// +kubebuilder:validation:Optional
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
@@ -3997,7 +4220,7 @@ type SecondaryVnicsCreateVnicDetailsObservation struct {
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []SecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Applicable when instance_type=compute) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -4006,6 +4229,9 @@ type SecondaryVnicsCreateVnicDetailsObservation struct {
 
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +mapType=granular
@@ -4053,7 +4279,7 @@ type SecondaryVnicsCreateVnicDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// (Applicable when instance_type=compute) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
 	// +kubebuilder:validation:Optional
 	Ipv6AddressIpv6SubnetCidrPairDetails []SecondaryVnicsCreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
@@ -4065,6 +4291,20 @@ type SecondaryVnicsCreateVnicDetailsParameters struct {
 	// (Applicable when instance_type=compute) A private IP address of your choice to assign to the VNIC. See the privateIp attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
+
+	// (Applicable when instance_type=compute) An OCID that specifies a previously-reserved IP address to use for this VNIC. See the privateIpId attribute of CreateVnicDetails for more information.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional

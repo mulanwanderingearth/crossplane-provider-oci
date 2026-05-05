@@ -124,6 +124,9 @@ type DrPlanExecutionObservation struct {
 	// The current state of the DR plan execution.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
+	// A categorized summary of step execution statuses and their corresponding counts.
+	StepStatusCounts []StepStatusCountsObservation `json:"stepStatusCounts,omitempty" tf:"step_status_counts,omitempty"`
+
 	// Usage of system tag keys. These predefined keys are scoped to namespaces.  Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +mapType=granular
 	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
@@ -205,6 +208,24 @@ type ExecutionOptionsParameters struct {
 	PlanExecutionType *string `json:"planExecutionType" tf:"plan_execution_type,omitempty"`
 }
 
+type FailedStepsInitParameters struct {
+}
+
+type FailedStepsObservation struct {
+
+	// The total number of failed steps in a DR plan execution.
+	Failed *float64 `json:"failed,omitempty" tf:"failed,omitempty"`
+
+	// The total number of steps that timed out during a DR plan execution.
+	TimedOut *float64 `json:"timedOut,omitempty" tf:"timed_out,omitempty"`
+
+	// The total number of steps that failed during a DR plan execution.
+	TotalFailed *float64 `json:"totalFailed,omitempty" tf:"total_failed,omitempty"`
+}
+
+type FailedStepsParameters struct {
+}
+
 type GroupExecutionsInitParameters struct {
 }
 
@@ -259,6 +280,51 @@ type LogLocationObservation struct {
 type LogLocationParameters struct {
 }
 
+type RemainingStepsInitParameters struct {
+}
+
+type RemainingStepsObservation struct {
+
+	// The total number of steps in progress during a DR plan execution.
+	InProgress *float64 `json:"inProgress,omitempty" tf:"in_progress,omitempty"`
+
+	// The total number of paused steps in a DR plan execution.
+	Paused *float64 `json:"paused,omitempty" tf:"paused,omitempty"`
+
+	// The total number of queued steps in a DR plan execution.
+	Queued *float64 `json:"queued,omitempty" tf:"queued,omitempty"`
+
+	// The total number of remaining steps in a DR plan execution.
+	TotalRemaining *float64 `json:"totalRemaining,omitempty" tf:"total_remaining,omitempty"`
+}
+
+type RemainingStepsParameters struct {
+}
+
+type SkippedStepsInitParameters struct {
+}
+
+type SkippedStepsObservation struct {
+
+	// The total number of canceled steps in a DR plan execution.
+	Canceled *float64 `json:"canceled,omitempty" tf:"canceled,omitempty"`
+
+	// The total number of disabled steps in a DR plan execution.
+	Disabled *float64 `json:"disabled,omitempty" tf:"disabled,omitempty"`
+
+	// The total number of steps that failed but were ignored during a DR plan execution.
+	FailedIgnored *float64 `json:"failedIgnored,omitempty" tf:"failed_ignored,omitempty"`
+
+	// The total number of steps that timed out but were ignored during a DR plan execution.
+	TimedOutIgnored *float64 `json:"timedOutIgnored,omitempty" tf:"timed_out_ignored,omitempty"`
+
+	// The total number of steps that were skipped during a DR plan execution.
+	TotalSkipped *float64 `json:"totalSkipped,omitempty" tf:"total_skipped,omitempty"`
+}
+
+type SkippedStepsParameters struct {
+}
+
 type StepExecutionsInitParameters struct {
 }
 
@@ -299,6 +365,63 @@ type StepExecutionsObservation struct {
 }
 
 type StepExecutionsParameters struct {
+}
+
+type StepStatusCountsInitParameters struct {
+}
+
+type StepStatusCountsObservation struct {
+
+	// A summary of steps that failed during a DR plan execution, including failed and timed out steps.
+	FailedSteps []FailedStepsObservation `json:"failedSteps,omitempty" tf:"failed_steps,omitempty"`
+
+	// A summary of remaining steps in a DR plan execution, including queued, paused, and in-progress steps.
+	RemainingSteps []RemainingStepsObservation `json:"remainingSteps,omitempty" tf:"remaining_steps,omitempty"`
+
+	// A summary of steps that were skipped during a DR plan execution, including disabled, failed but ignored, timed out but ignored, and canceled steps.
+	SkippedSteps []SkippedStepsObservation `json:"skippedSteps,omitempty" tf:"skipped_steps,omitempty"`
+
+	// A summary of steps that completed successfully during a DR plan execution.
+	SuccessfulSteps []SuccessfulStepsObservation `json:"successfulSteps,omitempty" tf:"successful_steps,omitempty"`
+
+	// The total number of steps in a DR plan execution.
+	TotalSteps *float64 `json:"totalSteps,omitempty" tf:"total_steps,omitempty"`
+
+	// A summary of steps that encountered warnings during a DR plan execution.
+	WarningSteps []WarningStepsObservation `json:"warningSteps,omitempty" tf:"warning_steps,omitempty"`
+}
+
+type StepStatusCountsParameters struct {
+}
+
+type SuccessfulStepsInitParameters struct {
+}
+
+type SuccessfulStepsObservation struct {
+
+	// The total number of steps that succeeded during a DR plan execution.
+	Succeeded *float64 `json:"succeeded,omitempty" tf:"succeeded,omitempty"`
+
+	// The total number of successful steps in a DR plan execution.
+	TotalSuccessful *float64 `json:"totalSuccessful,omitempty" tf:"total_successful,omitempty"`
+}
+
+type SuccessfulStepsParameters struct {
+}
+
+type WarningStepsInitParameters struct {
+}
+
+type WarningStepsObservation struct {
+
+	// The total number of steps that encountered warnings in a DR plan execution.
+	TotalWarnings *float64 `json:"totalWarnings,omitempty" tf:"total_warnings,omitempty"`
+
+	// The total number of steps with warnings that were ignored during a DR plan execution.
+	WarningsIgnored *float64 `json:"warningsIgnored,omitempty" tf:"warnings_ignored,omitempty"`
+}
+
+type WarningStepsParameters struct {
 }
 
 // DrPlanExecutionSpec defines the desired state of DrPlanExecution

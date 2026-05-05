@@ -13,7 +13,4 @@ spec:
         testing.upbound.io/example-name: example
     reportingRegion: ${var.cloud_guard_configuration_reporting_region}
     selfManageResources: ${var.cloud_guard_configuration_self_manage_resources}
-    service_configurations:
-    - service_configuration_type: ${var.cloud_guard_configuration_service_configurations_service_configuration_type}
-      status: ${var.cloud_guard_configuration_service_configurations_status}
     status: ${var.cloud_guard_configuration_status}

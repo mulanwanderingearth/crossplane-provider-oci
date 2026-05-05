@@ -13,6 +13,7 @@ spec:
     - destinationAddress: ${var.network_firewall_policy_decryption_rule_condition_destination_address}
       sourceAddress: ${var.network_firewall_policy_decryption_rule_condition_source_address}
     decryptionProfile: ${var.network_firewall_policy_decryption_rule_decryption_profile}
+    description: ${var.network_firewall_policy_decryption_rule_description}
     name: ${var.network_firewall_policy_decryption_rule_name}
     networkFirewallPolicyIdSelector:
       matchLabels:

@@ -75,7 +75,8 @@ spec:
               forProvider:
                 properties:
                   blockVolumesPerformance:
-                    description: (Updatable) Performance of the block volumes.
+                    description: (Applicable when type=INSTANCE) (Updatable) Performance
+                      of the block volumes.
                     type: number
                   isExcludedFromExecution:
                     description: (Updatable) A boolean indicating whether the asset
@@ -166,6 +167,20 @@ spec:
                   preferredShapeType:
                     description: (Updatable) Preferred VM shape type that you provide.
                     type: string
+                  recommendedSpec:
+                    description: Instance launch details. Use the sourceDetails parameter
+                      to specify whether a boot volume or an image should be used
+                      to launch a new instance.
+                    items:
+                      type: object
+                    type: array
+                  testSpec:
+                    description: Instance launch details. Use the sourceDetails parameter
+                      to specify whether a boot volume or an image should be used
+                      to launch a new instance.
+                    items:
+                      type: object
+                    type: array
                   type:
                     description: (Updatable) The type of target asset.
                     type: string
@@ -176,30 +191,34 @@ spec:
                     items:
                       properties:
                         agentConfig:
-                          description: (Updatable) Configuration options for the Oracle
-                            Cloud Agent software running on the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for the Oracle Cloud Agent software
+                            running on the instance.
                           items:
                             properties:
                               areAllPluginsDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available plugins. This includes
-                                  the management and monitoring plugins.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  plugins. This includes the management and monitoring
+                                  plugins.
                                 type: boolean
                               isManagementDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available management plugins. By
-                                  default, the value is false (management plugins
-                                  are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  management plugins. By default, the value is false
+                                  (management plugins are enabled).
                                 type: boolean
                               isMonitoringDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can gather performance metrics and monitor the instance
-                                  using the monitoring plugins. By default, the value
-                                  is false (monitoring plugins are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can gather performance
+                                  metrics and monitor the instance using the monitoring
+                                  plugins. By default, the value is false (monitoring
+                                  plugins are enabled).
                                 type: boolean
                               pluginsConfig:
-                                description: (Updatable) The configuration of plugins
-                                  associated with this instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The configuration of plugins associated with this
+                                  instance.
                                 items:
                                   properties:
                                     desiredState:
@@ -218,110 +237,117 @@ spec:
                             type: object
                           type: array
                         availabilityDomain:
-                          description: '(Updatable) The availability domain of the
-                            instance.  Example: Uocm:PHX-AD-1'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            The availability domain of the instance.  Example: Uocm:PHX-AD-1'
                           type: string
                         capacityReservationId:
-                          description: (Updatable) The OCID of the compute capacity
-                            reservation under which this instance is launched. You
-                            can opt out of all default reservations by specifying
-                            an empty string as input for this field. For more information,
-                            see Capacity Reservations.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compute capacity reservation under which
+                            this instance is launched. You can opt out of all default
+                            reservations by specifying an empty string as input for
+                            this field. For more information, see Capacity Reservations.
                           type: string
                         compartmentId:
-                          description: (Updatable) The OCID of the compartment.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compartment.
                           type: string
                         createVnicDetails:
-                          description: (Updatable) Contains properties for a VNIC.
-                            You use this object when creating the primary VNIC during
-                            instance launch or when creating a secondary VNIC. For
-                            more information about VNICs, see Virtual Network Interface
-                            Cards (VNICs).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Contains properties for a VNIC. You use this object when
+                            creating the primary VNIC during instance launch or when
+                            creating a secondary VNIC. For more information about
+                            VNICs, see Virtual Network Interface Cards (VNICs).
                           items:
                             properties:
                               assignPrivateDnsRecord:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a DNS record. If set to false, there will
-                                  be no DNS record registration for the VNIC. If set
-                                  to true, the DNS record will be registered. By default,
-                                  the value is true.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a DNS record.
+                                  If set to false, there will be no DNS record registration
+                                  for the VNIC. If set to true, the DNS record will
+                                  be registered. By default, the value is true.
                                 type: boolean
                               assignPublicIp:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a public IP address. Defaults to whether
-                                  the subnet is public or private. If not set and
-                                  the VNIC is being created in a private subnet (that
-                                  is, where prohibitPublicIpOnVnic = true in the Subnet),
-                                  then no public IP address is assigned. If not set
-                                  and the subnet is public (prohibitPublicIpOnVnic
-                                  = false), then a public IP address is assigned.
-                                  If set to true and prohibitPublicIpOnVnic = true,
-                                  an error is returned.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a public IP
+                                  address. Defaults to whether the subnet is public
+                                  or private. If not set and the VNIC is being created
+                                  in a private subnet (that is, where prohibitPublicIpOnVnic
+                                  = true in the Subnet), then no public IP address
+                                  is assigned. If not set and the subnet is public
+                                  (prohibitPublicIpOnVnic = false), then a public
+                                  IP address is assigned. If set to true and prohibitPublicIpOnVnic
+                                  = true, an error is returned.
                                 type: boolean
                               definedTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Defined tags for this resource.
-                                  Each key is predefined and scoped to a namespace.
-                                  Example: {"foo-namespace.bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Defined tags for this resource. Each key is predefined
+                                  and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                                  "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               displayName:
-                                description: (Updatable) A user-friendly name. Does
-                                  not have to be unique, and it's changeable. Avoid
-                                  entering confidential information.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A user-friendly name. Does not have to be unique,
+                                  and it's changeable. Avoid entering confidential
+                                  information.
                                 type: string
                               freeformTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Simple key-value pair that
-                                  is applied without any predefined name, type or
-                                  scope. It exists only for cross-compatibility. Example:
-                                  {"bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Simple key-value pair that is applied without any
+                                  predefined name, type or scope. It exists only for
+                                  cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               hostnameLabel:
-                                description: (Updatable) The hostname for the VNIC's
-                                  primary private IP. Used for DNS. The value is the
-                                  hostname portion of the primary private IP's fully
-                                  qualified domain name (FQDN) (for example, bminstance-1
-                                  in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The hostname for the VNIC's primary private IP.
+                                  Used for DNS. The value is the hostname portion
+                                  of the primary private IP's fully qualified domain
+                                  name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                                   Must be unique across all VNICs in the subnet and
                                   comply with RFC 952 and RFC 1123. The value appears
                                   in the Vnic object and also the PrivateIp object
                                   returned by ListPrivateIps and GetPrivateIp.
                                 type: string
                               nsgIds:
-                                description: (Updatable) List of OCIDs of the network
-                                  security groups (NSGs) that are added to the VNIC.
-                                  For more information about NSGs, see NetworkSecurityGroup.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  List of OCIDs of the network security groups (NSGs)
+                                  that are added to the VNIC. For more information
+                                  about NSGs, see NetworkSecurityGroup.
                                 items:
                                   type: string
                                 type: array
                                 x-kubernetes-list-type: set
                               privateIp:
-                                description: (Updatable) A private IP address of your
-                                  choice to assign to the VNIC. Must be an available
-                                  IP address within the subnet's CIDR. If you don't
-                                  specify a value, Oracle automatically assigns a
-                                  private IP address from the subnet. This is the
-                                  VNIC's primary private IP address. The value appears
-                                  in the Vnic object and also the PrivateIp object
-                                  returned by ListPrivateIps and GetPrivateIp.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A private IP address of your choice to assign to
+                                  the VNIC. Must be an available IP address within
+                                  the subnet's CIDR. If you don't specify a value,
+                                  Oracle automatically assigns a private IP address
+                                  from the subnet. This is the VNIC's primary private
+                                  IP address. The value appears in the Vnic object
+                                  and also the PrivateIp object returned by ListPrivateIps
+                                  and GetPrivateIp.
                                 type: string
                               skipSourceDestCheck:
-                                description: (Updatable) Whether the source/destination
-                                  check is disabled on the VNIC. Defaults to false,
-                                  which means the check is performed. For information
-                                  about why you should skip the source/destination
-                                  check, see Using a Private IP as a Route Target.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the source/destination check is disabled
+                                  on the VNIC. Defaults to false, which means the
+                                  check is performed. For information about why you
+                                  should skip the source/destination check, see Using
+                                  a Private IP as a Route Target.
                                 type: boolean
                               subnetId:
-                                description: (Updatable) The OCID of the subnet to
-                                  create the VNIC. When launching an instance, use
-                                  this subnetId instead of the deprecated subnetId
-                                  in LaunchInstanceDetails. At least one of them is
-                                  required; if you provide both, the values must match.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The OCID of the subnet to create the VNIC. When
+                                  launching an instance, use this subnetId instead
+                                  of the deprecated subnetId in LaunchInstanceDetails.
+                                  At least one of them is required; if you provide
+                                  both, the values must match.
                                 type: string
                               subnetIdRef:
                                 description: Reference to a Subnet in networking to
@@ -400,10 +426,11 @@ spec:
                                     type: object
                                 type: object
                               vlanId:
-                                description: (Updatable) Provide this attribute only
-                                  if you are an Oracle Cloud VMware Solution customer
-                                  and creating a secondary VNIC in a VLAN. The value
-                                  is the OCID of the VLAN. See Vlan.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Provide this attribute only if you are an Oracle
+                                  Cloud VMware Solution customer and creating a secondary
+                                  VNIC in a VLAN. The value is the OCID of the VLAN.
+                                  See Vlan.
                                 type: string
                               vlanIdRef:
                                 description: Reference to a Vlan in networking to
@@ -484,7 +511,8 @@ spec:
                             type: object
                           type: array
                         dedicatedVmHostId:
-                          description: (Updatable) The OCID of the dedicated VM host.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the dedicated VM host.
                           type: string
                         dedicatedVmHostIdRef:
                           description: Reference to a DedicatedVmHost in compute to
@@ -565,69 +593,76 @@ spec:
                         definedTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Defined tags for this resource.
-                            Each key is predefined and scoped to a namespace. Example:
-                            {"foo-namespace.bar-key": "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Defined tags for this resource. Each key is predefined
+                            and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                            "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique, and it's changeable. Avoid entering
-                            confidential information.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A user-friendly name. Does not have to be unique, and
+                            it's changeable. Avoid entering confidential information.
                           type: string
                         faultDomain:
-                          description: (Updatable) A fault domain is a grouping of
-                            hardware and infrastructure within an availability domain.
-                            Each availability domain contains three fault domains.
-                            Fault domains lets you distribute your instances so that
-                            they are not on the same physical hardware within a single
-                            availability domain. A hardware failure or Compute hardware
-                            maintenance that affects one fault domain does not affect
-                            instances in other fault domains.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A fault domain is a grouping of hardware and infrastructure
+                            within an availability domain. Each availability domain
+                            contains three fault domains. Fault domains lets you distribute
+                            your instances so that they are not on the same physical
+                            hardware within a single availability domain. A hardware
+                            failure or Compute hardware maintenance that affects one
+                            fault domain does not affect instances in other fault
+                            domains.
                           type: string
                         freeformTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Simple key-value pair that is
-                            applied without any predefined name, type or scope. It
-                            exists only for cross-compatibility. Example: {"bar-key":
-                            "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Simple key-value pair that is applied without any predefined
+                            name, type or scope. It exists only for cross-compatibility.
+                            Example: {"bar-key": "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         hostnameLabel:
-                          description: (Updatable) The hostname for the VNIC's primary
-                            private IP. Used for DNS. The value is the hostname portion
-                            of the primary private IP's fully qualified domain name
-                            (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The hostname for the VNIC's primary private IP. Used for
+                            DNS. The value is the hostname portion of the primary
+                            private IP's fully qualified domain name (FQDN) (for example,
+                            bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                             Must be unique across all VNICs in the subnet and comply
                             with RFC 952 and RFC 1123. The value appears in the Vnic
                             object and also the PrivateIp object returned by ListPrivateIps
                             and GetPrivateIp.
                           type: string
                         instanceOptions:
-                          description: (Updatable) Optional mutable instance options
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Optional mutable instance options
                           items:
                             properties:
                               areLegacyImdsEndpointsDisabled:
-                                description: (Updatable) Whether to disable the legacy
-                                  (/v1) instance metadata service endpoints. Customers
-                                  who have migrated to /v2 should set this to true
-                                  for added security. Default is false.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether to disable the legacy (/v1) instance metadata
+                                  service endpoints. Customers who have migrated to
+                                  /v2 should set this to true for added security.
+                                  Default is false.
                                 type: boolean
                             type: object
                           type: array
                         ipxeScript:
-                          description: (Updatable) This is an advanced option.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            This is an advanced option.
                           type: string
                         isPvEncryptionInTransitEnabled:
-                          description: (Updatable) Whether to enable in-transit encryption
-                            for the data volume's paravirtualized attachment. This
-                            field applies to both block volumes and boot volumes.
-                            By default, the value is false.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Whether to enable in-transit encryption for the data volume's
+                            paravirtualized attachment. This field applies to both
+                            block volumes and boot volumes. By default, the value
+                            is false.
                           type: boolean
                         preemptibleInstanceConfig:
-                          description: (Updatable) Configuration options for preemptible
-                            instances.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for preemptible instances.
                           items:
                             properties:
                               preemptionAction:
@@ -651,33 +686,36 @@ spec:
                             type: object
                           type: array
                         shape:
-                          description: (Updatable) The shape of an instance. The shape
-                            determines the number of CPUs, amount of memory, and other
-                            resources allocated to the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape of an instance. The shape determines the number
+                            of CPUs, amount of memory, and other resources allocated
+                            to the instance.
                           type: string
                         shapeConfig:
-                          description: (Updatable) The shape configuration requested
-                            for the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape configuration requested for the instance.
                           items:
                             properties:
                               baselineOcpuUtilization:
-                                description: (Updatable) The baseline OCPU utilization
-                                  for a subcore burstable VM instance. Leave this
-                                  attribute blank for a non-burstable instance, or
-                                  explicitly specify non-burstable with BASELINE_1_1.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The baseline OCPU utilization for a subcore burstable
+                                  VM instance. Leave this attribute blank for a non-burstable
+                                  instance, or explicitly specify non-burstable with
+                                  BASELINE_1_1.
                                 type: string
                               memoryInGbs:
-                                description: (Updatable) The total amount of memory
-                                  in gigabytes that is available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total amount of memory in gigabytes that is
+                                  available to the instance.
                                 type: number
                               ocpus:
-                                description: (Updatable) The total number of OCPUs
-                                  available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total number of OCPUs available to the instance.
                                 type: number
                             type: object
                           type: array
                         sourceDetails:
-                          description: (Updatable)
+                          description: (Applicable when type=INSTANCE) (Updatable)
                           items:
                             properties:
                               bootVolumeId:
@@ -958,7 +996,8 @@ spec:
                   autoscaler.
                 properties:
                   blockVolumesPerformance:
-                    description: (Updatable) Performance of the block volumes.
+                    description: (Applicable when type=INSTANCE) (Updatable) Performance
+                      of the block volumes.
                     type: number
                   isExcludedFromExecution:
                     description: (Updatable) A boolean indicating whether the asset
@@ -1049,6 +1088,20 @@ spec:
                   preferredShapeType:
                     description: (Updatable) Preferred VM shape type that you provide.
                     type: string
+                  recommendedSpec:
+                    description: Instance launch details. Use the sourceDetails parameter
+                      to specify whether a boot volume or an image should be used
+                      to launch a new instance.
+                    items:
+                      type: object
+                    type: array
+                  testSpec:
+                    description: Instance launch details. Use the sourceDetails parameter
+                      to specify whether a boot volume or an image should be used
+                      to launch a new instance.
+                    items:
+                      type: object
+                    type: array
                   type:
                     description: (Updatable) The type of target asset.
                     type: string
@@ -1059,30 +1112,34 @@ spec:
                     items:
                       properties:
                         agentConfig:
-                          description: (Updatable) Configuration options for the Oracle
-                            Cloud Agent software running on the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for the Oracle Cloud Agent software
+                            running on the instance.
                           items:
                             properties:
                               areAllPluginsDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available plugins. This includes
-                                  the management and monitoring plugins.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  plugins. This includes the management and monitoring
+                                  plugins.
                                 type: boolean
                               isManagementDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available management plugins. By
-                                  default, the value is false (management plugins
-                                  are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  management plugins. By default, the value is false
+                                  (management plugins are enabled).
                                 type: boolean
                               isMonitoringDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can gather performance metrics and monitor the instance
-                                  using the monitoring plugins. By default, the value
-                                  is false (monitoring plugins are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can gather performance
+                                  metrics and monitor the instance using the monitoring
+                                  plugins. By default, the value is false (monitoring
+                                  plugins are enabled).
                                 type: boolean
                               pluginsConfig:
-                                description: (Updatable) The configuration of plugins
-                                  associated with this instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The configuration of plugins associated with this
+                                  instance.
                                 items:
                                   properties:
                                     desiredState:
@@ -1101,110 +1158,117 @@ spec:
                             type: object
                           type: array
                         availabilityDomain:
-                          description: '(Updatable) The availability domain of the
-                            instance.  Example: Uocm:PHX-AD-1'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            The availability domain of the instance.  Example: Uocm:PHX-AD-1'
                           type: string
                         capacityReservationId:
-                          description: (Updatable) The OCID of the compute capacity
-                            reservation under which this instance is launched. You
-                            can opt out of all default reservations by specifying
-                            an empty string as input for this field. For more information,
-                            see Capacity Reservations.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compute capacity reservation under which
+                            this instance is launched. You can opt out of all default
+                            reservations by specifying an empty string as input for
+                            this field. For more information, see Capacity Reservations.
                           type: string
                         compartmentId:
-                          description: (Updatable) The OCID of the compartment.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compartment.
                           type: string
                         createVnicDetails:
-                          description: (Updatable) Contains properties for a VNIC.
-                            You use this object when creating the primary VNIC during
-                            instance launch or when creating a secondary VNIC. For
-                            more information about VNICs, see Virtual Network Interface
-                            Cards (VNICs).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Contains properties for a VNIC. You use this object when
+                            creating the primary VNIC during instance launch or when
+                            creating a secondary VNIC. For more information about
+                            VNICs, see Virtual Network Interface Cards (VNICs).
                           items:
                             properties:
                               assignPrivateDnsRecord:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a DNS record. If set to false, there will
-                                  be no DNS record registration for the VNIC. If set
-                                  to true, the DNS record will be registered. By default,
-                                  the value is true.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a DNS record.
+                                  If set to false, there will be no DNS record registration
+                                  for the VNIC. If set to true, the DNS record will
+                                  be registered. By default, the value is true.
                                 type: boolean
                               assignPublicIp:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a public IP address. Defaults to whether
-                                  the subnet is public or private. If not set and
-                                  the VNIC is being created in a private subnet (that
-                                  is, where prohibitPublicIpOnVnic = true in the Subnet),
-                                  then no public IP address is assigned. If not set
-                                  and the subnet is public (prohibitPublicIpOnVnic
-                                  = false), then a public IP address is assigned.
-                                  If set to true and prohibitPublicIpOnVnic = true,
-                                  an error is returned.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a public IP
+                                  address. Defaults to whether the subnet is public
+                                  or private. If not set and the VNIC is being created
+                                  in a private subnet (that is, where prohibitPublicIpOnVnic
+                                  = true in the Subnet), then no public IP address
+                                  is assigned. If not set and the subnet is public
+                                  (prohibitPublicIpOnVnic = false), then a public
+                                  IP address is assigned. If set to true and prohibitPublicIpOnVnic
+                                  = true, an error is returned.
                                 type: boolean
                               definedTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Defined tags for this resource.
-                                  Each key is predefined and scoped to a namespace.
-                                  Example: {"foo-namespace.bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Defined tags for this resource. Each key is predefined
+                                  and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                                  "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               displayName:
-                                description: (Updatable) A user-friendly name. Does
-                                  not have to be unique, and it's changeable. Avoid
-                                  entering confidential information.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A user-friendly name. Does not have to be unique,
+                                  and it's changeable. Avoid entering confidential
+                                  information.
                                 type: string
                               freeformTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Simple key-value pair that
-                                  is applied without any predefined name, type or
-                                  scope. It exists only for cross-compatibility. Example:
-                                  {"bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Simple key-value pair that is applied without any
+                                  predefined name, type or scope. It exists only for
+                                  cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               hostnameLabel:
-                                description: (Updatable) The hostname for the VNIC's
-                                  primary private IP. Used for DNS. The value is the
-                                  hostname portion of the primary private IP's fully
-                                  qualified domain name (FQDN) (for example, bminstance-1
-                                  in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The hostname for the VNIC's primary private IP.
+                                  Used for DNS. The value is the hostname portion
+                                  of the primary private IP's fully qualified domain
+                                  name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                                   Must be unique across all VNICs in the subnet and
                                   comply with RFC 952 and RFC 1123. The value appears
                                   in the Vnic object and also the PrivateIp object
                                   returned by ListPrivateIps and GetPrivateIp.
                                 type: string
                               nsgIds:
-                                description: (Updatable) List of OCIDs of the network
-                                  security groups (NSGs) that are added to the VNIC.
-                                  For more information about NSGs, see NetworkSecurityGroup.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  List of OCIDs of the network security groups (NSGs)
+                                  that are added to the VNIC. For more information
+                                  about NSGs, see NetworkSecurityGroup.
                                 items:
                                   type: string
                                 type: array
                                 x-kubernetes-list-type: set
                               privateIp:
-                                description: (Updatable) A private IP address of your
-                                  choice to assign to the VNIC. Must be an available
-                                  IP address within the subnet's CIDR. If you don't
-                                  specify a value, Oracle automatically assigns a
-                                  private IP address from the subnet. This is the
-                                  VNIC's primary private IP address. The value appears
-                                  in the Vnic object and also the PrivateIp object
-                                  returned by ListPrivateIps and GetPrivateIp.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A private IP address of your choice to assign to
+                                  the VNIC. Must be an available IP address within
+                                  the subnet's CIDR. If you don't specify a value,
+                                  Oracle automatically assigns a private IP address
+                                  from the subnet. This is the VNIC's primary private
+                                  IP address. The value appears in the Vnic object
+                                  and also the PrivateIp object returned by ListPrivateIps
+                                  and GetPrivateIp.
                                 type: string
                               skipSourceDestCheck:
-                                description: (Updatable) Whether the source/destination
-                                  check is disabled on the VNIC. Defaults to false,
-                                  which means the check is performed. For information
-                                  about why you should skip the source/destination
-                                  check, see Using a Private IP as a Route Target.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the source/destination check is disabled
+                                  on the VNIC. Defaults to false, which means the
+                                  check is performed. For information about why you
+                                  should skip the source/destination check, see Using
+                                  a Private IP as a Route Target.
                                 type: boolean
                               subnetId:
-                                description: (Updatable) The OCID of the subnet to
-                                  create the VNIC. When launching an instance, use
-                                  this subnetId instead of the deprecated subnetId
-                                  in LaunchInstanceDetails. At least one of them is
-                                  required; if you provide both, the values must match.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The OCID of the subnet to create the VNIC. When
+                                  launching an instance, use this subnetId instead
+                                  of the deprecated subnetId in LaunchInstanceDetails.
+                                  At least one of them is required; if you provide
+                                  both, the values must match.
                                 type: string
                               subnetIdRef:
                                 description: Reference to a Subnet in networking to
@@ -1283,10 +1347,11 @@ spec:
                                     type: object
                                 type: object
                               vlanId:
-                                description: (Updatable) Provide this attribute only
-                                  if you are an Oracle Cloud VMware Solution customer
-                                  and creating a secondary VNIC in a VLAN. The value
-                                  is the OCID of the VLAN. See Vlan.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Provide this attribute only if you are an Oracle
+                                  Cloud VMware Solution customer and creating a secondary
+                                  VNIC in a VLAN. The value is the OCID of the VLAN.
+                                  See Vlan.
                                 type: string
                               vlanIdRef:
                                 description: Reference to a Vlan in networking to
@@ -1367,7 +1432,8 @@ spec:
                             type: object
                           type: array
                         dedicatedVmHostId:
-                          description: (Updatable) The OCID of the dedicated VM host.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the dedicated VM host.
                           type: string
                         dedicatedVmHostIdRef:
                           description: Reference to a DedicatedVmHost in compute to
@@ -1448,69 +1514,76 @@ spec:
                         definedTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Defined tags for this resource.
-                            Each key is predefined and scoped to a namespace. Example:
-                            {"foo-namespace.bar-key": "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Defined tags for this resource. Each key is predefined
+                            and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                            "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique, and it's changeable. Avoid entering
-                            confidential information.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A user-friendly name. Does not have to be unique, and
+                            it's changeable. Avoid entering confidential information.
                           type: string
                         faultDomain:
-                          description: (Updatable) A fault domain is a grouping of
-                            hardware and infrastructure within an availability domain.
-                            Each availability domain contains three fault domains.
-                            Fault domains lets you distribute your instances so that
-                            they are not on the same physical hardware within a single
-                            availability domain. A hardware failure or Compute hardware
-                            maintenance that affects one fault domain does not affect
-                            instances in other fault domains.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A fault domain is a grouping of hardware and infrastructure
+                            within an availability domain. Each availability domain
+                            contains three fault domains. Fault domains lets you distribute
+                            your instances so that they are not on the same physical
+                            hardware within a single availability domain. A hardware
+                            failure or Compute hardware maintenance that affects one
+                            fault domain does not affect instances in other fault
+                            domains.
                           type: string
                         freeformTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Simple key-value pair that is
-                            applied without any predefined name, type or scope. It
-                            exists only for cross-compatibility. Example: {"bar-key":
-                            "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Simple key-value pair that is applied without any predefined
+                            name, type or scope. It exists only for cross-compatibility.
+                            Example: {"bar-key": "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         hostnameLabel:
-                          description: (Updatable) The hostname for the VNIC's primary
-                            private IP. Used for DNS. The value is the hostname portion
-                            of the primary private IP's fully qualified domain name
-                            (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The hostname for the VNIC's primary private IP. Used for
+                            DNS. The value is the hostname portion of the primary
+                            private IP's fully qualified domain name (FQDN) (for example,
+                            bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                             Must be unique across all VNICs in the subnet and comply
                             with RFC 952 and RFC 1123. The value appears in the Vnic
                             object and also the PrivateIp object returned by ListPrivateIps
                             and GetPrivateIp.
                           type: string
                         instanceOptions:
-                          description: (Updatable) Optional mutable instance options
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Optional mutable instance options
                           items:
                             properties:
                               areLegacyImdsEndpointsDisabled:
-                                description: (Updatable) Whether to disable the legacy
-                                  (/v1) instance metadata service endpoints. Customers
-                                  who have migrated to /v2 should set this to true
-                                  for added security. Default is false.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether to disable the legacy (/v1) instance metadata
+                                  service endpoints. Customers who have migrated to
+                                  /v2 should set this to true for added security.
+                                  Default is false.
                                 type: boolean
                             type: object
                           type: array
                         ipxeScript:
-                          description: (Updatable) This is an advanced option.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            This is an advanced option.
                           type: string
                         isPvEncryptionInTransitEnabled:
-                          description: (Updatable) Whether to enable in-transit encryption
-                            for the data volume's paravirtualized attachment. This
-                            field applies to both block volumes and boot volumes.
-                            By default, the value is false.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Whether to enable in-transit encryption for the data volume's
+                            paravirtualized attachment. This field applies to both
+                            block volumes and boot volumes. By default, the value
+                            is false.
                           type: boolean
                         preemptibleInstanceConfig:
-                          description: (Updatable) Configuration options for preemptible
-                            instances.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for preemptible instances.
                           items:
                             properties:
                               preemptionAction:
@@ -1534,33 +1607,36 @@ spec:
                             type: object
                           type: array
                         shape:
-                          description: (Updatable) The shape of an instance. The shape
-                            determines the number of CPUs, amount of memory, and other
-                            resources allocated to the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape of an instance. The shape determines the number
+                            of CPUs, amount of memory, and other resources allocated
+                            to the instance.
                           type: string
                         shapeConfig:
-                          description: (Updatable) The shape configuration requested
-                            for the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape configuration requested for the instance.
                           items:
                             properties:
                               baselineOcpuUtilization:
-                                description: (Updatable) The baseline OCPU utilization
-                                  for a subcore burstable VM instance. Leave this
-                                  attribute blank for a non-burstable instance, or
-                                  explicitly specify non-burstable with BASELINE_1_1.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The baseline OCPU utilization for a subcore burstable
+                                  VM instance. Leave this attribute blank for a non-burstable
+                                  instance, or explicitly specify non-burstable with
+                                  BASELINE_1_1.
                                 type: string
                               memoryInGbs:
-                                description: (Updatable) The total amount of memory
-                                  in gigabytes that is available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total amount of memory in gigabytes that is
+                                  available to the instance.
                                 type: number
                               ocpus:
-                                description: (Updatable) The total number of OCPUs
-                                  available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total number of OCPUs available to the instance.
                                 type: number
                             type: object
                           type: array
                         sourceDetails:
-                          description: (Updatable)
+                          description: (Applicable when type=INSTANCE) (Updatable)
                           items:
                             properties:
                               bootVolumeId:
@@ -1920,28 +1996,22 @@ spec:
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.isExcludedFromExecution)
                 || (has(self.initProvider) && has(self.initProvider.isExcludedFromExecution))'
-            - message: spec.forProvider.preferredShapeType is a required parameter
-              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
-                || ''Update'' in self.managementPolicies) || has(self.forProvider.preferredShapeType)
-                || (has(self.initProvider) && has(self.initProvider.preferredShapeType))'
             - message: spec.forProvider.type is a required parameter
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.type)
                 || (has(self.initProvider) && has(self.initProvider.type))'
-            - message: spec.forProvider.userSpec is a required parameter
-              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
-                || ''Update'' in self.managementPolicies) || has(self.forProvider.userSpec)
-                || (has(self.initProvider) && has(self.initProvider.userSpec))'
           status:
             description: TargetAssetStatus defines the observed state of TargetAsset.
             properties:
               atProvider:
                 properties:
                   blockVolumesPerformance:
-                    description: (Updatable) Performance of the block volumes.
+                    description: (Applicable when type=INSTANCE) (Updatable) Performance
+                      of the block volumes.
                     type: number
                   compartmentId:
-                    description: (Updatable) The OCID of the compartment.
+                    description: (Applicable when type=INSTANCE) (Updatable) The OCID
+                      of the compartment.
                     type: string
                   compatibilityMessages:
                     description: Messages about the compatibility issues.
@@ -1966,9 +2036,9 @@ spec:
                     description: Created resource identifier
                     type: string
                   displayName:
-                    description: (Updatable) A user-friendly name. Does not have to
-                      be unique, and it's changeable. Avoid entering confidential
-                      information.
+                    description: (Applicable when type=INSTANCE) (Updatable) A user-friendly
+                      name. Does not have to be unique, and it's changeable. Avoid
+                      entering confidential information.
                     type: string
                   estimatedCost:
                     description: Cost estimation description
@@ -2088,11 +2158,12 @@ spec:
                     items:
                       properties:
                         availabilityDomain:
-                          description: '(Updatable) The availability domain of the
-                            instance.  Example: Uocm:PHX-AD-1'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            The availability domain of the instance.  Example: Uocm:PHX-AD-1'
                           type: string
                         compartmentId:
-                          description: (Updatable) The OCID of the compartment.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compartment.
                           type: string
                         dependedOnBy:
                           description: List of migration assets that depend on the
@@ -2106,10 +2177,17 @@ spec:
                           items:
                             type: string
                           type: array
+                        destinationDisks:
+                          additionalProperties:
+                            type: string
+                          description: Mapping of source disk id to destination disk
+                            details
+                          type: object
+                          x-kubernetes-map-type: granular
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique, and it's changeable. Avoid entering
-                            confidential information.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A user-friendly name. Does not have to be unique, and
+                            it's changeable. Avoid entering confidential information.
                           type: string
                         id:
                           description: Unique identifier that is immutable on creation.
@@ -2134,6 +2212,23 @@ spec:
                         replicationCompartmentId:
                           description: Replication compartment identifier
                           type: string
+                        replicationLocationDetail:
+                          description: Replication location detail where the snapshots
+                            reside
+                          items:
+                            properties:
+                              metadata:
+                                additionalProperties:
+                                  type: string
+                                description: Properties for each of the replication
+                                  location types
+                                type: object
+                                x-kubernetes-map-type: granular
+                              replicationLocationType:
+                                description: The type of replication location
+                                type: string
+                            type: object
+                          type: array
                         replicationScheduleId:
                           description: Replication schedule identifier
                           type: string
@@ -2195,30 +2290,34 @@ spec:
                     items:
                       properties:
                         agentConfig:
-                          description: (Updatable) Configuration options for the Oracle
-                            Cloud Agent software running on the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for the Oracle Cloud Agent software
+                            running on the instance.
                           items:
                             properties:
                               areAllPluginsDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available plugins. This includes
-                                  the management and monitoring plugins.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  plugins. This includes the management and monitoring
+                                  plugins.
                                 type: boolean
                               isManagementDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available management plugins. By
-                                  default, the value is false (management plugins
-                                  are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  management plugins. By default, the value is false
+                                  (management plugins are enabled).
                                 type: boolean
                               isMonitoringDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can gather performance metrics and monitor the instance
-                                  using the monitoring plugins. By default, the value
-                                  is false (monitoring plugins are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can gather performance
+                                  metrics and monitor the instance using the monitoring
+                                  plugins. By default, the value is false (monitoring
+                                  plugins are enabled).
                                 type: boolean
                               pluginsConfig:
-                                description: (Updatable) The configuration of plugins
-                                  associated with this instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The configuration of plugins associated with this
+                                  instance.
                                 items:
                                   properties:
                                     desiredState:
@@ -2237,188 +2336,204 @@ spec:
                             type: object
                           type: array
                         availabilityDomain:
-                          description: '(Updatable) The availability domain of the
-                            instance.  Example: Uocm:PHX-AD-1'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            The availability domain of the instance.  Example: Uocm:PHX-AD-1'
                           type: string
                         capacityReservationId:
-                          description: (Updatable) The OCID of the compute capacity
-                            reservation under which this instance is launched. You
-                            can opt out of all default reservations by specifying
-                            an empty string as input for this field. For more information,
-                            see Capacity Reservations.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compute capacity reservation under which
+                            this instance is launched. You can opt out of all default
+                            reservations by specifying an empty string as input for
+                            this field. For more information, see Capacity Reservations.
                           type: string
                         compartmentId:
-                          description: (Updatable) The OCID of the compartment.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compartment.
                           type: string
                         createVnicDetails:
-                          description: (Updatable) Contains properties for a VNIC.
-                            You use this object when creating the primary VNIC during
-                            instance launch or when creating a secondary VNIC. For
-                            more information about VNICs, see Virtual Network Interface
-                            Cards (VNICs).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Contains properties for a VNIC. You use this object when
+                            creating the primary VNIC during instance launch or when
+                            creating a secondary VNIC. For more information about
+                            VNICs, see Virtual Network Interface Cards (VNICs).
                           items:
                             properties:
                               assignPrivateDnsRecord:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a DNS record. If set to false, there will
-                                  be no DNS record registration for the VNIC. If set
-                                  to true, the DNS record will be registered. By default,
-                                  the value is true.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a DNS record.
+                                  If set to false, there will be no DNS record registration
+                                  for the VNIC. If set to true, the DNS record will
+                                  be registered. By default, the value is true.
                                 type: boolean
                               assignPublicIp:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a public IP address. Defaults to whether
-                                  the subnet is public or private. If not set and
-                                  the VNIC is being created in a private subnet (that
-                                  is, where prohibitPublicIpOnVnic = true in the Subnet),
-                                  then no public IP address is assigned. If not set
-                                  and the subnet is public (prohibitPublicIpOnVnic
-                                  = false), then a public IP address is assigned.
-                                  If set to true and prohibitPublicIpOnVnic = true,
-                                  an error is returned.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a public IP
+                                  address. Defaults to whether the subnet is public
+                                  or private. If not set and the VNIC is being created
+                                  in a private subnet (that is, where prohibitPublicIpOnVnic
+                                  = true in the Subnet), then no public IP address
+                                  is assigned. If not set and the subnet is public
+                                  (prohibitPublicIpOnVnic = false), then a public
+                                  IP address is assigned. If set to true and prohibitPublicIpOnVnic
+                                  = true, an error is returned.
                                 type: boolean
                               definedTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Defined tags for this resource.
-                                  Each key is predefined and scoped to a namespace.
-                                  Example: {"foo-namespace.bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Defined tags for this resource. Each key is predefined
+                                  and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                                  "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               displayName:
-                                description: (Updatable) A user-friendly name. Does
-                                  not have to be unique, and it's changeable. Avoid
-                                  entering confidential information.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A user-friendly name. Does not have to be unique,
+                                  and it's changeable. Avoid entering confidential
+                                  information.
                                 type: string
                               freeformTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Simple key-value pair that
-                                  is applied without any predefined name, type or
-                                  scope. It exists only for cross-compatibility. Example:
-                                  {"bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Simple key-value pair that is applied without any
+                                  predefined name, type or scope. It exists only for
+                                  cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               hostnameLabel:
-                                description: (Updatable) The hostname for the VNIC's
-                                  primary private IP. Used for DNS. The value is the
-                                  hostname portion of the primary private IP's fully
-                                  qualified domain name (FQDN) (for example, bminstance-1
-                                  in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The hostname for the VNIC's primary private IP.
+                                  Used for DNS. The value is the hostname portion
+                                  of the primary private IP's fully qualified domain
+                                  name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                                   Must be unique across all VNICs in the subnet and
                                   comply with RFC 952 and RFC 1123. The value appears
                                   in the Vnic object and also the PrivateIp object
                                   returned by ListPrivateIps and GetPrivateIp.
                                 type: string
                               nsgIds:
-                                description: (Updatable) List of OCIDs of the network
-                                  security groups (NSGs) that are added to the VNIC.
-                                  For more information about NSGs, see NetworkSecurityGroup.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  List of OCIDs of the network security groups (NSGs)
+                                  that are added to the VNIC. For more information
+                                  about NSGs, see NetworkSecurityGroup.
                                 items:
                                   type: string
                                 type: array
                                 x-kubernetes-list-type: set
                               privateIp:
-                                description: (Updatable) A private IP address of your
-                                  choice to assign to the VNIC. Must be an available
-                                  IP address within the subnet's CIDR. If you don't
-                                  specify a value, Oracle automatically assigns a
-                                  private IP address from the subnet. This is the
-                                  VNIC's primary private IP address. The value appears
-                                  in the Vnic object and also the PrivateIp object
-                                  returned by ListPrivateIps and GetPrivateIp.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A private IP address of your choice to assign to
+                                  the VNIC. Must be an available IP address within
+                                  the subnet's CIDR. If you don't specify a value,
+                                  Oracle automatically assigns a private IP address
+                                  from the subnet. This is the VNIC's primary private
+                                  IP address. The value appears in the Vnic object
+                                  and also the PrivateIp object returned by ListPrivateIps
+                                  and GetPrivateIp.
                                 type: string
                               skipSourceDestCheck:
-                                description: (Updatable) Whether the source/destination
-                                  check is disabled on the VNIC. Defaults to false,
-                                  which means the check is performed. For information
-                                  about why you should skip the source/destination
-                                  check, see Using a Private IP as a Route Target.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the source/destination check is disabled
+                                  on the VNIC. Defaults to false, which means the
+                                  check is performed. For information about why you
+                                  should skip the source/destination check, see Using
+                                  a Private IP as a Route Target.
                                 type: boolean
                               subnetId:
-                                description: (Updatable) The OCID of the subnet to
-                                  create the VNIC. When launching an instance, use
-                                  this subnetId instead of the deprecated subnetId
-                                  in LaunchInstanceDetails. At least one of them is
-                                  required; if you provide both, the values must match.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The OCID of the subnet to create the VNIC. When
+                                  launching an instance, use this subnetId instead
+                                  of the deprecated subnetId in LaunchInstanceDetails.
+                                  At least one of them is required; if you provide
+                                  both, the values must match.
                                 type: string
                               vlanId:
-                                description: (Updatable) Provide this attribute only
-                                  if you are an Oracle Cloud VMware Solution customer
-                                  and creating a secondary VNIC in a VLAN. The value
-                                  is the OCID of the VLAN. See Vlan.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Provide this attribute only if you are an Oracle
+                                  Cloud VMware Solution customer and creating a secondary
+                                  VNIC in a VLAN. The value is the OCID of the VLAN.
+                                  See Vlan.
                                 type: string
                             type: object
                           type: array
                         dedicatedVmHostId:
-                          description: (Updatable) The OCID of the dedicated VM host.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the dedicated VM host.
                           type: string
                         definedTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Defined tags for this resource.
-                            Each key is predefined and scoped to a namespace. Example:
-                            {"foo-namespace.bar-key": "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Defined tags for this resource. Each key is predefined
+                            and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                            "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique, and it's changeable. Avoid entering
-                            confidential information.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A user-friendly name. Does not have to be unique, and
+                            it's changeable. Avoid entering confidential information.
                           type: string
                         faultDomain:
-                          description: (Updatable) A fault domain is a grouping of
-                            hardware and infrastructure within an availability domain.
-                            Each availability domain contains three fault domains.
-                            Fault domains lets you distribute your instances so that
-                            they are not on the same physical hardware within a single
-                            availability domain. A hardware failure or Compute hardware
-                            maintenance that affects one fault domain does not affect
-                            instances in other fault domains.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A fault domain is a grouping of hardware and infrastructure
+                            within an availability domain. Each availability domain
+                            contains three fault domains. Fault domains lets you distribute
+                            your instances so that they are not on the same physical
+                            hardware within a single availability domain. A hardware
+                            failure or Compute hardware maintenance that affects one
+                            fault domain does not affect instances in other fault
+                            domains.
                           type: string
                         freeformTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Simple key-value pair that is
-                            applied without any predefined name, type or scope. It
-                            exists only for cross-compatibility. Example: {"bar-key":
-                            "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Simple key-value pair that is applied without any predefined
+                            name, type or scope. It exists only for cross-compatibility.
+                            Example: {"bar-key": "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         hostnameLabel:
-                          description: (Updatable) The hostname for the VNIC's primary
-                            private IP. Used for DNS. The value is the hostname portion
-                            of the primary private IP's fully qualified domain name
-                            (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The hostname for the VNIC's primary private IP. Used for
+                            DNS. The value is the hostname portion of the primary
+                            private IP's fully qualified domain name (FQDN) (for example,
+                            bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                             Must be unique across all VNICs in the subnet and comply
                             with RFC 952 and RFC 1123. The value appears in the Vnic
                             object and also the PrivateIp object returned by ListPrivateIps
                             and GetPrivateIp.
                           type: string
                         instanceOptions:
-                          description: (Updatable) Optional mutable instance options
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Optional mutable instance options
                           items:
                             properties:
                               areLegacyImdsEndpointsDisabled:
-                                description: (Updatable) Whether to disable the legacy
-                                  (/v1) instance metadata service endpoints. Customers
-                                  who have migrated to /v2 should set this to true
-                                  for added security. Default is false.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether to disable the legacy (/v1) instance metadata
+                                  service endpoints. Customers who have migrated to
+                                  /v2 should set this to true for added security.
+                                  Default is false.
                                 type: boolean
                             type: object
                           type: array
                         ipxeScript:
-                          description: (Updatable) This is an advanced option.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            This is an advanced option.
                           type: string
                         isPvEncryptionInTransitEnabled:
-                          description: (Updatable) Whether to enable in-transit encryption
-                            for the data volume's paravirtualized attachment. This
-                            field applies to both block volumes and boot volumes.
-                            By default, the value is false.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Whether to enable in-transit encryption for the data volume's
+                            paravirtualized attachment. This field applies to both
+                            block volumes and boot volumes. By default, the value
+                            is false.
                           type: boolean
                         preemptibleInstanceConfig:
-                          description: (Updatable) Configuration options for preemptible
-                            instances.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for preemptible instances.
                           items:
                             properties:
                               preemptionAction:
@@ -2442,33 +2557,36 @@ spec:
                             type: object
                           type: array
                         shape:
-                          description: (Updatable) The shape of an instance. The shape
-                            determines the number of CPUs, amount of memory, and other
-                            resources allocated to the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape of an instance. The shape determines the number
+                            of CPUs, amount of memory, and other resources allocated
+                            to the instance.
                           type: string
                         shapeConfig:
-                          description: (Updatable) The shape configuration requested
-                            for the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape configuration requested for the instance.
                           items:
                             properties:
                               baselineOcpuUtilization:
-                                description: (Updatable) The baseline OCPU utilization
-                                  for a subcore burstable VM instance. Leave this
-                                  attribute blank for a non-burstable instance, or
-                                  explicitly specify non-burstable with BASELINE_1_1.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The baseline OCPU utilization for a subcore burstable
+                                  VM instance. Leave this attribute blank for a non-burstable
+                                  instance, or explicitly specify non-burstable with
+                                  BASELINE_1_1.
                                 type: string
                               memoryInGbs:
-                                description: (Updatable) The total amount of memory
-                                  in gigabytes that is available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total amount of memory in gigabytes that is
+                                  available to the instance.
                                 type: number
                               ocpus:
-                                description: (Updatable) The total number of OCPUs
-                                  available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total number of OCPUs available to the instance.
                                 type: number
                             type: object
                           type: array
                         sourceDetails:
-                          description: (Updatable)
+                          description: (Applicable when type=INSTANCE) (Updatable)
                           items:
                             properties:
                               bootVolumeId:
@@ -2516,30 +2634,34 @@ spec:
                     items:
                       properties:
                         agentConfig:
-                          description: (Updatable) Configuration options for the Oracle
-                            Cloud Agent software running on the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for the Oracle Cloud Agent software
+                            running on the instance.
                           items:
                             properties:
                               areAllPluginsDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available plugins. This includes
-                                  the management and monitoring plugins.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  plugins. This includes the management and monitoring
+                                  plugins.
                                 type: boolean
                               isManagementDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available management plugins. By
-                                  default, the value is false (management plugins
-                                  are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  management plugins. By default, the value is false
+                                  (management plugins are enabled).
                                 type: boolean
                               isMonitoringDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can gather performance metrics and monitor the instance
-                                  using the monitoring plugins. By default, the value
-                                  is false (monitoring plugins are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can gather performance
+                                  metrics and monitor the instance using the monitoring
+                                  plugins. By default, the value is false (monitoring
+                                  plugins are enabled).
                                 type: boolean
                               pluginsConfig:
-                                description: (Updatable) The configuration of plugins
-                                  associated with this instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The configuration of plugins associated with this
+                                  instance.
                                 items:
                                   properties:
                                     desiredState:
@@ -2558,188 +2680,204 @@ spec:
                             type: object
                           type: array
                         availabilityDomain:
-                          description: '(Updatable) The availability domain of the
-                            instance.  Example: Uocm:PHX-AD-1'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            The availability domain of the instance.  Example: Uocm:PHX-AD-1'
                           type: string
                         capacityReservationId:
-                          description: (Updatable) The OCID of the compute capacity
-                            reservation under which this instance is launched. You
-                            can opt out of all default reservations by specifying
-                            an empty string as input for this field. For more information,
-                            see Capacity Reservations.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compute capacity reservation under which
+                            this instance is launched. You can opt out of all default
+                            reservations by specifying an empty string as input for
+                            this field. For more information, see Capacity Reservations.
                           type: string
                         compartmentId:
-                          description: (Updatable) The OCID of the compartment.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compartment.
                           type: string
                         createVnicDetails:
-                          description: (Updatable) Contains properties for a VNIC.
-                            You use this object when creating the primary VNIC during
-                            instance launch or when creating a secondary VNIC. For
-                            more information about VNICs, see Virtual Network Interface
-                            Cards (VNICs).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Contains properties for a VNIC. You use this object when
+                            creating the primary VNIC during instance launch or when
+                            creating a secondary VNIC. For more information about
+                            VNICs, see Virtual Network Interface Cards (VNICs).
                           items:
                             properties:
                               assignPrivateDnsRecord:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a DNS record. If set to false, there will
-                                  be no DNS record registration for the VNIC. If set
-                                  to true, the DNS record will be registered. By default,
-                                  the value is true.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a DNS record.
+                                  If set to false, there will be no DNS record registration
+                                  for the VNIC. If set to true, the DNS record will
+                                  be registered. By default, the value is true.
                                 type: boolean
                               assignPublicIp:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a public IP address. Defaults to whether
-                                  the subnet is public or private. If not set and
-                                  the VNIC is being created in a private subnet (that
-                                  is, where prohibitPublicIpOnVnic = true in the Subnet),
-                                  then no public IP address is assigned. If not set
-                                  and the subnet is public (prohibitPublicIpOnVnic
-                                  = false), then a public IP address is assigned.
-                                  If set to true and prohibitPublicIpOnVnic = true,
-                                  an error is returned.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a public IP
+                                  address. Defaults to whether the subnet is public
+                                  or private. If not set and the VNIC is being created
+                                  in a private subnet (that is, where prohibitPublicIpOnVnic
+                                  = true in the Subnet), then no public IP address
+                                  is assigned. If not set and the subnet is public
+                                  (prohibitPublicIpOnVnic = false), then a public
+                                  IP address is assigned. If set to true and prohibitPublicIpOnVnic
+                                  = true, an error is returned.
                                 type: boolean
                               definedTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Defined tags for this resource.
-                                  Each key is predefined and scoped to a namespace.
-                                  Example: {"foo-namespace.bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Defined tags for this resource. Each key is predefined
+                                  and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                                  "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               displayName:
-                                description: (Updatable) A user-friendly name. Does
-                                  not have to be unique, and it's changeable. Avoid
-                                  entering confidential information.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A user-friendly name. Does not have to be unique,
+                                  and it's changeable. Avoid entering confidential
+                                  information.
                                 type: string
                               freeformTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Simple key-value pair that
-                                  is applied without any predefined name, type or
-                                  scope. It exists only for cross-compatibility. Example:
-                                  {"bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Simple key-value pair that is applied without any
+                                  predefined name, type or scope. It exists only for
+                                  cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               hostnameLabel:
-                                description: (Updatable) The hostname for the VNIC's
-                                  primary private IP. Used for DNS. The value is the
-                                  hostname portion of the primary private IP's fully
-                                  qualified domain name (FQDN) (for example, bminstance-1
-                                  in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The hostname for the VNIC's primary private IP.
+                                  Used for DNS. The value is the hostname portion
+                                  of the primary private IP's fully qualified domain
+                                  name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                                   Must be unique across all VNICs in the subnet and
                                   comply with RFC 952 and RFC 1123. The value appears
                                   in the Vnic object and also the PrivateIp object
                                   returned by ListPrivateIps and GetPrivateIp.
                                 type: string
                               nsgIds:
-                                description: (Updatable) List of OCIDs of the network
-                                  security groups (NSGs) that are added to the VNIC.
-                                  For more information about NSGs, see NetworkSecurityGroup.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  List of OCIDs of the network security groups (NSGs)
+                                  that are added to the VNIC. For more information
+                                  about NSGs, see NetworkSecurityGroup.
                                 items:
                                   type: string
                                 type: array
                                 x-kubernetes-list-type: set
                               privateIp:
-                                description: (Updatable) A private IP address of your
-                                  choice to assign to the VNIC. Must be an available
-                                  IP address within the subnet's CIDR. If you don't
-                                  specify a value, Oracle automatically assigns a
-                                  private IP address from the subnet. This is the
-                                  VNIC's primary private IP address. The value appears
-                                  in the Vnic object and also the PrivateIp object
-                                  returned by ListPrivateIps and GetPrivateIp.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A private IP address of your choice to assign to
+                                  the VNIC. Must be an available IP address within
+                                  the subnet's CIDR. If you don't specify a value,
+                                  Oracle automatically assigns a private IP address
+                                  from the subnet. This is the VNIC's primary private
+                                  IP address. The value appears in the Vnic object
+                                  and also the PrivateIp object returned by ListPrivateIps
+                                  and GetPrivateIp.
                                 type: string
                               skipSourceDestCheck:
-                                description: (Updatable) Whether the source/destination
-                                  check is disabled on the VNIC. Defaults to false,
-                                  which means the check is performed. For information
-                                  about why you should skip the source/destination
-                                  check, see Using a Private IP as a Route Target.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the source/destination check is disabled
+                                  on the VNIC. Defaults to false, which means the
+                                  check is performed. For information about why you
+                                  should skip the source/destination check, see Using
+                                  a Private IP as a Route Target.
                                 type: boolean
                               subnetId:
-                                description: (Updatable) The OCID of the subnet to
-                                  create the VNIC. When launching an instance, use
-                                  this subnetId instead of the deprecated subnetId
-                                  in LaunchInstanceDetails. At least one of them is
-                                  required; if you provide both, the values must match.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The OCID of the subnet to create the VNIC. When
+                                  launching an instance, use this subnetId instead
+                                  of the deprecated subnetId in LaunchInstanceDetails.
+                                  At least one of them is required; if you provide
+                                  both, the values must match.
                                 type: string
                               vlanId:
-                                description: (Updatable) Provide this attribute only
-                                  if you are an Oracle Cloud VMware Solution customer
-                                  and creating a secondary VNIC in a VLAN. The value
-                                  is the OCID of the VLAN. See Vlan.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Provide this attribute only if you are an Oracle
+                                  Cloud VMware Solution customer and creating a secondary
+                                  VNIC in a VLAN. The value is the OCID of the VLAN.
+                                  See Vlan.
                                 type: string
                             type: object
                           type: array
                         dedicatedVmHostId:
-                          description: (Updatable) The OCID of the dedicated VM host.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the dedicated VM host.
                           type: string
                         definedTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Defined tags for this resource.
-                            Each key is predefined and scoped to a namespace. Example:
-                            {"foo-namespace.bar-key": "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Defined tags for this resource. Each key is predefined
+                            and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                            "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique, and it's changeable. Avoid entering
-                            confidential information.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A user-friendly name. Does not have to be unique, and
+                            it's changeable. Avoid entering confidential information.
                           type: string
                         faultDomain:
-                          description: (Updatable) A fault domain is a grouping of
-                            hardware and infrastructure within an availability domain.
-                            Each availability domain contains three fault domains.
-                            Fault domains lets you distribute your instances so that
-                            they are not on the same physical hardware within a single
-                            availability domain. A hardware failure or Compute hardware
-                            maintenance that affects one fault domain does not affect
-                            instances in other fault domains.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A fault domain is a grouping of hardware and infrastructure
+                            within an availability domain. Each availability domain
+                            contains three fault domains. Fault domains lets you distribute
+                            your instances so that they are not on the same physical
+                            hardware within a single availability domain. A hardware
+                            failure or Compute hardware maintenance that affects one
+                            fault domain does not affect instances in other fault
+                            domains.
                           type: string
                         freeformTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Simple key-value pair that is
-                            applied without any predefined name, type or scope. It
-                            exists only for cross-compatibility. Example: {"bar-key":
-                            "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Simple key-value pair that is applied without any predefined
+                            name, type or scope. It exists only for cross-compatibility.
+                            Example: {"bar-key": "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         hostnameLabel:
-                          description: (Updatable) The hostname for the VNIC's primary
-                            private IP. Used for DNS. The value is the hostname portion
-                            of the primary private IP's fully qualified domain name
-                            (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The hostname for the VNIC's primary private IP. Used for
+                            DNS. The value is the hostname portion of the primary
+                            private IP's fully qualified domain name (FQDN) (for example,
+                            bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                             Must be unique across all VNICs in the subnet and comply
                             with RFC 952 and RFC 1123. The value appears in the Vnic
                             object and also the PrivateIp object returned by ListPrivateIps
                             and GetPrivateIp.
                           type: string
                         instanceOptions:
-                          description: (Updatable) Optional mutable instance options
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Optional mutable instance options
                           items:
                             properties:
                               areLegacyImdsEndpointsDisabled:
-                                description: (Updatable) Whether to disable the legacy
-                                  (/v1) instance metadata service endpoints. Customers
-                                  who have migrated to /v2 should set this to true
-                                  for added security. Default is false.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether to disable the legacy (/v1) instance metadata
+                                  service endpoints. Customers who have migrated to
+                                  /v2 should set this to true for added security.
+                                  Default is false.
                                 type: boolean
                             type: object
                           type: array
                         ipxeScript:
-                          description: (Updatable) This is an advanced option.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            This is an advanced option.
                           type: string
                         isPvEncryptionInTransitEnabled:
-                          description: (Updatable) Whether to enable in-transit encryption
-                            for the data volume's paravirtualized attachment. This
-                            field applies to both block volumes and boot volumes.
-                            By default, the value is false.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Whether to enable in-transit encryption for the data volume's
+                            paravirtualized attachment. This field applies to both
+                            block volumes and boot volumes. By default, the value
+                            is false.
                           type: boolean
                         preemptibleInstanceConfig:
-                          description: (Updatable) Configuration options for preemptible
-                            instances.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for preemptible instances.
                           items:
                             properties:
                               preemptionAction:
@@ -2763,33 +2901,36 @@ spec:
                             type: object
                           type: array
                         shape:
-                          description: (Updatable) The shape of an instance. The shape
-                            determines the number of CPUs, amount of memory, and other
-                            resources allocated to the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape of an instance. The shape determines the number
+                            of CPUs, amount of memory, and other resources allocated
+                            to the instance.
                           type: string
                         shapeConfig:
-                          description: (Updatable) The shape configuration requested
-                            for the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape configuration requested for the instance.
                           items:
                             properties:
                               baselineOcpuUtilization:
-                                description: (Updatable) The baseline OCPU utilization
-                                  for a subcore burstable VM instance. Leave this
-                                  attribute blank for a non-burstable instance, or
-                                  explicitly specify non-burstable with BASELINE_1_1.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The baseline OCPU utilization for a subcore burstable
+                                  VM instance. Leave this attribute blank for a non-burstable
+                                  instance, or explicitly specify non-burstable with
+                                  BASELINE_1_1.
                                 type: string
                               memoryInGbs:
-                                description: (Updatable) The total amount of memory
-                                  in gigabytes that is available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total amount of memory in gigabytes that is
+                                  available to the instance.
                                 type: number
                               ocpus:
-                                description: (Updatable) The total number of OCPUs
-                                  available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total number of OCPUs available to the instance.
                                 type: number
                             type: object
                           type: array
                         sourceDetails:
-                          description: (Updatable)
+                          description: (Applicable when type=INSTANCE) (Updatable)
                           items:
                             properties:
                               bootVolumeId:
@@ -2849,30 +2990,34 @@ spec:
                     items:
                       properties:
                         agentConfig:
-                          description: (Updatable) Configuration options for the Oracle
-                            Cloud Agent software running on the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for the Oracle Cloud Agent software
+                            running on the instance.
                           items:
                             properties:
                               areAllPluginsDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available plugins. This includes
-                                  the management and monitoring plugins.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  plugins. This includes the management and monitoring
+                                  plugins.
                                 type: boolean
                               isManagementDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can run all the available management plugins. By
-                                  default, the value is false (management plugins
-                                  are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can run all the available
+                                  management plugins. By default, the value is false
+                                  (management plugins are enabled).
                                 type: boolean
                               isMonitoringDisabled:
-                                description: (Updatable) Whether Oracle Cloud Agent
-                                  can gather performance metrics and monitor the instance
-                                  using the monitoring plugins. By default, the value
-                                  is false (monitoring plugins are enabled).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether Oracle Cloud Agent can gather performance
+                                  metrics and monitor the instance using the monitoring
+                                  plugins. By default, the value is false (monitoring
+                                  plugins are enabled).
                                 type: boolean
                               pluginsConfig:
-                                description: (Updatable) The configuration of plugins
-                                  associated with this instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The configuration of plugins associated with this
+                                  instance.
                                 items:
                                   properties:
                                     desiredState:
@@ -2891,188 +3036,204 @@ spec:
                             type: object
                           type: array
                         availabilityDomain:
-                          description: '(Updatable) The availability domain of the
-                            instance.  Example: Uocm:PHX-AD-1'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            The availability domain of the instance.  Example: Uocm:PHX-AD-1'
                           type: string
                         capacityReservationId:
-                          description: (Updatable) The OCID of the compute capacity
-                            reservation under which this instance is launched. You
-                            can opt out of all default reservations by specifying
-                            an empty string as input for this field. For more information,
-                            see Capacity Reservations.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compute capacity reservation under which
+                            this instance is launched. You can opt out of all default
+                            reservations by specifying an empty string as input for
+                            this field. For more information, see Capacity Reservations.
                           type: string
                         compartmentId:
-                          description: (Updatable) The OCID of the compartment.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the compartment.
                           type: string
                         createVnicDetails:
-                          description: (Updatable) Contains properties for a VNIC.
-                            You use this object when creating the primary VNIC during
-                            instance launch or when creating a secondary VNIC. For
-                            more information about VNICs, see Virtual Network Interface
-                            Cards (VNICs).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Contains properties for a VNIC. You use this object when
+                            creating the primary VNIC during instance launch or when
+                            creating a secondary VNIC. For more information about
+                            VNICs, see Virtual Network Interface Cards (VNICs).
                           items:
                             properties:
                               assignPrivateDnsRecord:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a DNS record. If set to false, there will
-                                  be no DNS record registration for the VNIC. If set
-                                  to true, the DNS record will be registered. By default,
-                                  the value is true.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a DNS record.
+                                  If set to false, there will be no DNS record registration
+                                  for the VNIC. If set to true, the DNS record will
+                                  be registered. By default, the value is true.
                                 type: boolean
                               assignPublicIp:
-                                description: (Updatable) Whether the VNIC should be
-                                  assigned a public IP address. Defaults to whether
-                                  the subnet is public or private. If not set and
-                                  the VNIC is being created in a private subnet (that
-                                  is, where prohibitPublicIpOnVnic = true in the Subnet),
-                                  then no public IP address is assigned. If not set
-                                  and the subnet is public (prohibitPublicIpOnVnic
-                                  = false), then a public IP address is assigned.
-                                  If set to true and prohibitPublicIpOnVnic = true,
-                                  an error is returned.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the VNIC should be assigned a public IP
+                                  address. Defaults to whether the subnet is public
+                                  or private. If not set and the VNIC is being created
+                                  in a private subnet (that is, where prohibitPublicIpOnVnic
+                                  = true in the Subnet), then no public IP address
+                                  is assigned. If not set and the subnet is public
+                                  (prohibitPublicIpOnVnic = false), then a public
+                                  IP address is assigned. If set to true and prohibitPublicIpOnVnic
+                                  = true, an error is returned.
                                 type: boolean
                               definedTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Defined tags for this resource.
-                                  Each key is predefined and scoped to a namespace.
-                                  Example: {"foo-namespace.bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Defined tags for this resource. Each key is predefined
+                                  and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                                  "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               displayName:
-                                description: (Updatable) A user-friendly name. Does
-                                  not have to be unique, and it's changeable. Avoid
-                                  entering confidential information.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A user-friendly name. Does not have to be unique,
+                                  and it's changeable. Avoid entering confidential
+                                  information.
                                 type: string
                               freeformTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Updatable) Simple key-value pair that
-                                  is applied without any predefined name, type or
-                                  scope. It exists only for cross-compatibility. Example:
-                                  {"bar-key": "value"}'
+                                description: '(Applicable when type=INSTANCE) (Updatable)
+                                  Simple key-value pair that is applied without any
+                                  predefined name, type or scope. It exists only for
+                                  cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
                                 x-kubernetes-map-type: granular
                               hostnameLabel:
-                                description: (Updatable) The hostname for the VNIC's
-                                  primary private IP. Used for DNS. The value is the
-                                  hostname portion of the primary private IP's fully
-                                  qualified domain name (FQDN) (for example, bminstance-1
-                                  in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The hostname for the VNIC's primary private IP.
+                                  Used for DNS. The value is the hostname portion
+                                  of the primary private IP's fully qualified domain
+                                  name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                                   Must be unique across all VNICs in the subnet and
                                   comply with RFC 952 and RFC 1123. The value appears
                                   in the Vnic object and also the PrivateIp object
                                   returned by ListPrivateIps and GetPrivateIp.
                                 type: string
                               nsgIds:
-                                description: (Updatable) List of OCIDs of the network
-                                  security groups (NSGs) that are added to the VNIC.
-                                  For more information about NSGs, see NetworkSecurityGroup.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  List of OCIDs of the network security groups (NSGs)
+                                  that are added to the VNIC. For more information
+                                  about NSGs, see NetworkSecurityGroup.
                                 items:
                                   type: string
                                 type: array
                                 x-kubernetes-list-type: set
                               privateIp:
-                                description: (Updatable) A private IP address of your
-                                  choice to assign to the VNIC. Must be an available
-                                  IP address within the subnet's CIDR. If you don't
-                                  specify a value, Oracle automatically assigns a
-                                  private IP address from the subnet. This is the
-                                  VNIC's primary private IP address. The value appears
-                                  in the Vnic object and also the PrivateIp object
-                                  returned by ListPrivateIps and GetPrivateIp.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  A private IP address of your choice to assign to
+                                  the VNIC. Must be an available IP address within
+                                  the subnet's CIDR. If you don't specify a value,
+                                  Oracle automatically assigns a private IP address
+                                  from the subnet. This is the VNIC's primary private
+                                  IP address. The value appears in the Vnic object
+                                  and also the PrivateIp object returned by ListPrivateIps
+                                  and GetPrivateIp.
                                 type: string
                               skipSourceDestCheck:
-                                description: (Updatable) Whether the source/destination
-                                  check is disabled on the VNIC. Defaults to false,
-                                  which means the check is performed. For information
-                                  about why you should skip the source/destination
-                                  check, see Using a Private IP as a Route Target.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether the source/destination check is disabled
+                                  on the VNIC. Defaults to false, which means the
+                                  check is performed. For information about why you
+                                  should skip the source/destination check, see Using
+                                  a Private IP as a Route Target.
                                 type: boolean
                               subnetId:
-                                description: (Updatable) The OCID of the subnet to
-                                  create the VNIC. When launching an instance, use
-                                  this subnetId instead of the deprecated subnetId
-                                  in LaunchInstanceDetails. At least one of them is
-                                  required; if you provide both, the values must match.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The OCID of the subnet to create the VNIC. When
+                                  launching an instance, use this subnetId instead
+                                  of the deprecated subnetId in LaunchInstanceDetails.
+                                  At least one of them is required; if you provide
+                                  both, the values must match.
                                 type: string
                               vlanId:
-                                description: (Updatable) Provide this attribute only
-                                  if you are an Oracle Cloud VMware Solution customer
-                                  and creating a secondary VNIC in a VLAN. The value
-                                  is the OCID of the VLAN. See Vlan.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Provide this attribute only if you are an Oracle
+                                  Cloud VMware Solution customer and creating a secondary
+                                  VNIC in a VLAN. The value is the OCID of the VLAN.
+                                  See Vlan.
                                 type: string
                             type: object
                           type: array
                         dedicatedVmHostId:
-                          description: (Updatable) The OCID of the dedicated VM host.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The OCID of the dedicated VM host.
                           type: string
                         definedTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Defined tags for this resource.
-                            Each key is predefined and scoped to a namespace. Example:
-                            {"foo-namespace.bar-key": "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Defined tags for this resource. Each key is predefined
+                            and scoped to a namespace. Example: {"foo-namespace.bar-key":
+                            "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         displayName:
-                          description: (Updatable) A user-friendly name. Does not
-                            have to be unique, and it's changeable. Avoid entering
-                            confidential information.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A user-friendly name. Does not have to be unique, and
+                            it's changeable. Avoid entering confidential information.
                           type: string
                         faultDomain:
-                          description: (Updatable) A fault domain is a grouping of
-                            hardware and infrastructure within an availability domain.
-                            Each availability domain contains three fault domains.
-                            Fault domains lets you distribute your instances so that
-                            they are not on the same physical hardware within a single
-                            availability domain. A hardware failure or Compute hardware
-                            maintenance that affects one fault domain does not affect
-                            instances in other fault domains.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            A fault domain is a grouping of hardware and infrastructure
+                            within an availability domain. Each availability domain
+                            contains three fault domains. Fault domains lets you distribute
+                            your instances so that they are not on the same physical
+                            hardware within a single availability domain. A hardware
+                            failure or Compute hardware maintenance that affects one
+                            fault domain does not affect instances in other fault
+                            domains.
                           type: string
                         freeformTags:
                           additionalProperties:
                             type: string
-                          description: '(Updatable) Simple key-value pair that is
-                            applied without any predefined name, type or scope. It
-                            exists only for cross-compatibility. Example: {"bar-key":
-                            "value"}'
+                          description: '(Applicable when type=INSTANCE) (Updatable)
+                            Simple key-value pair that is applied without any predefined
+                            name, type or scope. It exists only for cross-compatibility.
+                            Example: {"bar-key": "value"}'
                           type: object
                           x-kubernetes-map-type: granular
                         hostnameLabel:
-                          description: (Updatable) The hostname for the VNIC's primary
-                            private IP. Used for DNS. The value is the hostname portion
-                            of the primary private IP's fully qualified domain name
-                            (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The hostname for the VNIC's primary private IP. Used for
+                            DNS. The value is the hostname portion of the primary
+                            private IP's fully qualified domain name (FQDN) (for example,
+                            bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com).
                             Must be unique across all VNICs in the subnet and comply
                             with RFC 952 and RFC 1123. The value appears in the Vnic
                             object and also the PrivateIp object returned by ListPrivateIps
                             and GetPrivateIp.
                           type: string
                         instanceOptions:
-                          description: (Updatable) Optional mutable instance options
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Optional mutable instance options
                           items:
                             properties:
                               areLegacyImdsEndpointsDisabled:
-                                description: (Updatable) Whether to disable the legacy
-                                  (/v1) instance metadata service endpoints. Customers
-                                  who have migrated to /v2 should set this to true
-                                  for added security. Default is false.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  Whether to disable the legacy (/v1) instance metadata
+                                  service endpoints. Customers who have migrated to
+                                  /v2 should set this to true for added security.
+                                  Default is false.
                                 type: boolean
                             type: object
                           type: array
                         ipxeScript:
-                          description: (Updatable) This is an advanced option.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            This is an advanced option.
                           type: string
                         isPvEncryptionInTransitEnabled:
-                          description: (Updatable) Whether to enable in-transit encryption
-                            for the data volume's paravirtualized attachment. This
-                            field applies to both block volumes and boot volumes.
-                            By default, the value is false.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Whether to enable in-transit encryption for the data volume's
+                            paravirtualized attachment. This field applies to both
+                            block volumes and boot volumes. By default, the value
+                            is false.
                           type: boolean
                         preemptibleInstanceConfig:
-                          description: (Updatable) Configuration options for preemptible
-                            instances.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            Configuration options for preemptible instances.
                           items:
                             properties:
                               preemptionAction:
@@ -3096,33 +3257,36 @@ spec:
                             type: object
                           type: array
                         shape:
-                          description: (Updatable) The shape of an instance. The shape
-                            determines the number of CPUs, amount of memory, and other
-                            resources allocated to the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape of an instance. The shape determines the number
+                            of CPUs, amount of memory, and other resources allocated
+                            to the instance.
                           type: string
                         shapeConfig:
-                          description: (Updatable) The shape configuration requested
-                            for the instance.
+                          description: (Applicable when type=INSTANCE) (Updatable)
+                            The shape configuration requested for the instance.
                           items:
                             properties:
                               baselineOcpuUtilization:
-                                description: (Updatable) The baseline OCPU utilization
-                                  for a subcore burstable VM instance. Leave this
-                                  attribute blank for a non-burstable instance, or
-                                  explicitly specify non-burstable with BASELINE_1_1.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The baseline OCPU utilization for a subcore burstable
+                                  VM instance. Leave this attribute blank for a non-burstable
+                                  instance, or explicitly specify non-burstable with
+                                  BASELINE_1_1.
                                 type: string
                               memoryInGbs:
-                                description: (Updatable) The total amount of memory
-                                  in gigabytes that is available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total amount of memory in gigabytes that is
+                                  available to the instance.
                                 type: number
                               ocpus:
-                                description: (Updatable) The total number of OCPUs
-                                  available to the instance.
+                                description: (Applicable when type=INSTANCE) (Updatable)
+                                  The total number of OCPUs available to the instance.
                                 type: number
                             type: object
                           type: array
                         sourceDetails:
-                          description: (Updatable)
+                          description: (Applicable when type=INSTANCE) (Updatable)
                           items:
                             properties:
                               bootVolumeId:

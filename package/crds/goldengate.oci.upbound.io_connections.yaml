@@ -310,13 +310,6 @@ spec:
                           description: (Applicable when connection_type=KAFKA) (Updatable)
                             The port of an endpoint usually specified for a connection.
                           type: number
-                        privateIp:
-                          description: '(Applicable when connection_type=KAFKA) (Updatable)
-                            Deprecated: this field will be removed in future versions.
-                            Either specify the private IP in the connectionString
-                            or host  field, or make sure the host name is resolvable
-                            in the target VCN.'
-                          type: string
                       type: object
                     type: array
                   catalog:
@@ -334,10 +327,14 @@ spec:
                         clientId:
                           description: (Updatable) The OAuth client ID used for authentication.
                           type: string
+                        clientSecret:
+                          description: (Applicable when catalog_type=POLARIS) (Updatable)
+                            Client secret required to connect to Polaris.
+                          type: string
                         clientSecretSecretId:
-                          description: (Updatable) The OCID of the Secret that stores
-                            the password Oracle GoldenGate uses to connect to Snowflake
-                            platform.
+                          description: (Applicable when catalog_type=POLARIS) (Updatable)
+                            The OCID of the Secret that stores the password Oracle
+                            GoldenGate uses to connect to Polaris.
                           type: string
                         clientSecretSecretIdRef:
                           description: Reference to a Secret in vault to populate
@@ -426,10 +423,16 @@ spec:
                           description: (Updatable) The Snowflake role used to access
                             Polaris.
                           type: string
+                        properties:
+                          description: (Applicable when catalog_type=REST) (Updatable)
+                            The base64 encoded content of the configuration file containing
+                            additional properties for the REST catalog.
+                          type: string
                         propertiesSecretId:
-                          description: '(Updatable) The OCID of the Secret that stores
-                            the content of the configuration file containing additional
-                            properties for the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm'
+                          description: '(Applicable when catalog_type=REST) (Updatable)
+                            The OCID of the Secret that stores the content of the
+                            configuration file containing additional properties for
+                            the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm'
                           type: string
                         propertiesSecretIdRef:
                           description: Reference to a Secret in vault to populate
@@ -517,8 +520,9 @@ spec:
                     description: (Updatable) The OAuth client ID used for authentication.
                     type: string
                   clientSecretSecretId:
-                    description: (Updatable) The OCID of the Secret that stores the
-                      password Oracle GoldenGate uses to connect to Snowflake platform.
+                    description: (Applicable when catalog_type=POLARIS) (Updatable)
+                      The OCID of the Secret that stores the password Oracle GoldenGate
+                      uses to connect to Polaris.
                     type: string
                   clientSecretSecretIdRef:
                     description: Reference to a Secret in vault to populate clientSecretSecretId.
@@ -595,13 +599,8 @@ spec:
                         type: object
                     type: object
                   clientSecretSecretRef:
-                    description: '(Applicable when connection_type=AZURE_DATA_LAKE_STORAGE
-                      | DATABRICKS | MICROSOFT_FABRIC) (Updatable) Azure client secret
-                      (aka application password) for authentication. This property
-                      is required when ''authenticationType'' is set to ''AZURE_ACTIVE_DIRECTORY''.
-                      e.g.: dO29Q~F5-VwnA.lZdd11xFF_t5NAXCaGwDl9NbT1 Deprecated: This
-                      field is deprecated and replaced by "clientSecretSecretId".
-                      This field will be removed after February 15 2026.'
+                    description: (Applicable when catalog_type=POLARIS) (Updatable)
+                      Client secret required to connect to Polaris.
                     properties:
                       key:
                         description: The key to select.
@@ -1218,8 +1217,9 @@ spec:
                     type: boolean
                   endpoint:
                     description: '(Applicable when connection_type=AMAZON_KINESIS
-                      | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC) (Updatable)
-                      The endpoint URL of the Amazon Kinesis service. e.g.: ''https://kinesis.us-east-1.amazonaws.com''
+                      | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE
+                      | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon
+                      Kinesis service. e.g.: ''https://kinesis.us-east-1.amazonaws.com''
                       If not provided, GoldenGate will default to ''https://kinesis..amazonaws.com''.'
                     type: string
                   fingerprint:
@@ -1781,12 +1781,6 @@ spec:
                     description: (Applicable when connection_type=KAFKA) (Updatable)
                       The port of an endpoint usually specified for a connection.
                     type: number
-                  privateIp:
-                    description: '(Applicable when connection_type=KAFKA) (Updatable)
-                      Deprecated: this field will be removed in future versions. Either
-                      specify the private IP in the connectionString or host  field,
-                      or make sure the host name is resolvable in the target VCN.'
-                    type: string
                   privateKeyFileSecretId:
                     description: '(Applicable when connection_type=OCI_OBJECT_STORAGE
                       | ORACLE_AI_DATA_PLATFORM | ORACLE_NOSQL | SNOWFLAKE) (Updatable)
@@ -2432,11 +2426,14 @@ spec:
                     type: object
                   sessionMode:
                     description: (Applicable when connection_type=ORACLE) (Updatable)
-                      The mode of the database connection session to be established
-                      by the data client. 'REDIRECT' - for a RAC database, 'DIRECT'
-                      - for a non-RAC database. Connection to a RAC database involves
-                      a redirection received from the SCAN listeners to the database
-                      node to connect to. By default the mode would be DIRECT.
+                      Specifies the session mode for the database connection. Use
+                      REDIRECT only for RAC databases with SCAN listeners that return
+                      IP addresses. For RAC databases with SCAN listeners that return
+                      FQDNs, and for all other Oracle database technologies, use DIRECT.
+                      In RAC deployments, SCAN listeners redirects a connection to
+                      a specific database node, identified by either IP address or
+                      FQDN. It is recommended to configure RAC with FQDN-based SCAN
+                      listeners.
                     type: string
                   shouldUseJndi:
                     description: (Updatable) If set to true, Java Naming and Directory
@@ -2978,6 +2975,14 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        accountKey:
+                          description: '(Applicable when connection_type=AZURE_DATA_LAKE_STORAGE)
+                            (Updatable) Azure storage account key. This property is
+                            required when ''authenticationType'' is set to ''SHARED_KEY''.
+                            e.g.: pa3WbhVATzj56xD4DH1VjOUhApRGEGHvOo58eQJVWIzX+j8j4CUVFcTjpIqDSRaSa1Wo2LbWY5at+AStEgLOIQ==
+                            Deprecated: This field is deprecated and replaced by "accountKeySecretId".
+                            This field will be removed after February 15 2026.'
+                          type: string
                         accountKeySecretId:
                           description: '(Applicable when connection_type=AZURE_DATA_LAKE_STORAGE)
                             (Updatable) The OCID of the Secret where the account key
@@ -3074,10 +3079,11 @@ spec:
                           type: string
                         endpoint:
                           description: '(Applicable when connection_type=AMAZON_KINESIS
-                            | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC)
-                            (Updatable) The endpoint URL of the Amazon Kinesis service.
-                            e.g.: ''https://kinesis.us-east-1.amazonaws.com'' If not
-                            provided, GoldenGate will default to ''https://kinesis..amazonaws.com''.'
+                            | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY
+                            | GOOGLE_CLOUD_STORAGE | MICROSOFT_FABRIC) (Updatable)
+                            The endpoint URL of the Amazon Kinesis service. e.g.:
+                            ''https://kinesis.us-east-1.amazonaws.com'' If not provided,
+                            GoldenGate will default to ''https://kinesis..amazonaws.com''.'
                           type: string
                         projectId:
                           description: (Updatable) The Google Cloud Project where
@@ -3170,6 +3176,13 @@ spec:
                         schemeType:
                           description: (Updatable) The scheme of the storage.
                           type: string
+                        secretAccessKey:
+                          description: '(Applicable when connection_type=AMAZON_KINESIS
+                            | AMAZON_S3) (Updatable) Secret access key to access the
+                            Amazon S3 bucket. e.g.: "this-is-not-the-secret" Deprecated:
+                            This field is deprecated and replaced by "secretAccessKeySecretId".
+                            This field will be removed after February 15 2026.'
+                          type: string
                         secretAccessKeySecretId:
                           description: '(Applicable when connection_type=AMAZON_KINESIS
                             | AMAZON_S3) (Updatable) The OCID of the Secret where
@@ -3252,6 +3265,15 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        serviceAccountKeyFile:
+                          description: '(Applicable when connection_type=GOOGLE_BIGQUERY
+                            | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The
+                            base64 encoded content of the service account key file
+                            containing the credentials required to use Google Cloud
+                            Storage. Deprecated: This field is deprecated and replaced
+                            by "serviceAccountKeyFileSecretId". This field will be
+                            removed after February 15 2026.'
+                          type: string
                         serviceAccountKeyFileSecretId:
                           description: '(Applicable when connection_type=GOOGLE_BIGQUERY
                             | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The
@@ -4385,13 +4407,6 @@ spec:
                           description: (Applicable when connection_type=KAFKA) (Updatable)
                             The port of an endpoint usually specified for a connection.
                           type: number
-                        privateIp:
-                          description: '(Applicable when connection_type=KAFKA) (Updatable)
-                            Deprecated: this field will be removed in future versions.
-                            Either specify the private IP in the connectionString
-                            or host  field, or make sure the host name is resolvable
-                            in the target VCN.'
-                          type: string
                       type: object
                     type: array
                   catalog:
@@ -4409,10 +4424,14 @@ spec:
                         clientId:
                           description: (Updatable) The OAuth client ID used for authentication.
                           type: string
+                        clientSecret:
+                          description: (Applicable when catalog_type=POLARIS) (Updatable)
+                            Client secret required to connect to Polaris.
+                          type: string
                         clientSecretSecretId:
-                          description: (Updatable) The OCID of the Secret that stores
-                            the password Oracle GoldenGate uses to connect to Snowflake
-                            platform.
+                          description: (Applicable when catalog_type=POLARIS) (Updatable)
+                            The OCID of the Secret that stores the password Oracle
+                            GoldenGate uses to connect to Polaris.
                           type: string
                         clientSecretSecretIdRef:
                           description: Reference to a Secret in vault to populate
@@ -4501,10 +4520,16 @@ spec:
                           description: (Updatable) The Snowflake role used to access
                             Polaris.
                           type: string
+                        properties:
+                          description: (Applicable when catalog_type=REST) (Updatable)
+                            The base64 encoded content of the configuration file containing
+                            additional properties for the REST catalog.
+                          type: string
                         propertiesSecretId:
-                          description: '(Updatable) The OCID of the Secret that stores
-                            the content of the configuration file containing additional
-                            properties for the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm'
+                          description: '(Applicable when catalog_type=REST) (Updatable)
+                            The OCID of the Secret that stores the content of the
+                            configuration file containing additional properties for
+                            the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm'
                           type: string
                         propertiesSecretIdRef:
                           description: Reference to a Secret in vault to populate
@@ -4592,8 +4617,9 @@ spec:
                     description: (Updatable) The OAuth client ID used for authentication.
                     type: string
                   clientSecretSecretId:
-                    description: (Updatable) The OCID of the Secret that stores the
-                      password Oracle GoldenGate uses to connect to Snowflake platform.
+                    description: (Applicable when catalog_type=POLARIS) (Updatable)
+                      The OCID of the Secret that stores the password Oracle GoldenGate
+                      uses to connect to Polaris.
                     type: string
                   clientSecretSecretIdRef:
                     description: Reference to a Secret in vault to populate clientSecretSecretId.
@@ -4670,13 +4696,8 @@ spec:
                         type: object
                     type: object
                   clientSecretSecretRef:
-                    description: '(Applicable when connection_type=AZURE_DATA_LAKE_STORAGE
-                      | DATABRICKS | MICROSOFT_FABRIC) (Updatable) Azure client secret
-                      (aka application password) for authentication. This property
-                      is required when ''authenticationType'' is set to ''AZURE_ACTIVE_DIRECTORY''.
-                      e.g.: dO29Q~F5-VwnA.lZdd11xFF_t5NAXCaGwDl9NbT1 Deprecated: This
-                      field is deprecated and replaced by "clientSecretSecretId".
-                      This field will be removed after February 15 2026.'
+                    description: (Applicable when catalog_type=POLARIS) (Updatable)
+                      Client secret required to connect to Polaris.
                     properties:
                       key:
                         description: The key to select.
@@ -5293,8 +5314,9 @@ spec:
                     type: boolean
                   endpoint:
                     description: '(Applicable when connection_type=AMAZON_KINESIS
-                      | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC) (Updatable)
-                      The endpoint URL of the Amazon Kinesis service. e.g.: ''https://kinesis.us-east-1.amazonaws.com''
+                      | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE
+                      | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon
+                      Kinesis service. e.g.: ''https://kinesis.us-east-1.amazonaws.com''
                       If not provided, GoldenGate will default to ''https://kinesis..amazonaws.com''.'
                     type: string
                   fingerprint:
@@ -5856,12 +5878,6 @@ spec:
                     description: (Applicable when connection_type=KAFKA) (Updatable)
                       The port of an endpoint usually specified for a connection.
                     type: number
-                  privateIp:
-                    description: '(Applicable when connection_type=KAFKA) (Updatable)
-                      Deprecated: this field will be removed in future versions. Either
-                      specify the private IP in the connectionString or host  field,
-                      or make sure the host name is resolvable in the target VCN.'
-                    type: string
                   privateKeyFileSecretId:
                     description: '(Applicable when connection_type=OCI_OBJECT_STORAGE
                       | ORACLE_AI_DATA_PLATFORM | ORACLE_NOSQL | SNOWFLAKE) (Updatable)
@@ -6507,11 +6523,14 @@ spec:
                     type: object
                   sessionMode:
                     description: (Applicable when connection_type=ORACLE) (Updatable)
-                      The mode of the database connection session to be established
-                      by the data client. 'REDIRECT' - for a RAC database, 'DIRECT'
-                      - for a non-RAC database. Connection to a RAC database involves
-                      a redirection received from the SCAN listeners to the database
-                      node to connect to. By default the mode would be DIRECT.
+                      Specifies the session mode for the database connection. Use
+                      REDIRECT only for RAC databases with SCAN listeners that return
+                      IP addresses. For RAC databases with SCAN listeners that return
+                      FQDNs, and for all other Oracle database technologies, use DIRECT.
+                      In RAC deployments, SCAN listeners redirects a connection to
+                      a specific database node, identified by either IP address or
+                      FQDN. It is recommended to configure RAC with FQDN-based SCAN
+                      listeners.
                     type: string
                   shouldUseJndi:
                     description: (Updatable) If set to true, Java Naming and Directory
@@ -7053,6 +7072,14 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        accountKey:
+                          description: '(Applicable when connection_type=AZURE_DATA_LAKE_STORAGE)
+                            (Updatable) Azure storage account key. This property is
+                            required when ''authenticationType'' is set to ''SHARED_KEY''.
+                            e.g.: pa3WbhVATzj56xD4DH1VjOUhApRGEGHvOo58eQJVWIzX+j8j4CUVFcTjpIqDSRaSa1Wo2LbWY5at+AStEgLOIQ==
+                            Deprecated: This field is deprecated and replaced by "accountKeySecretId".
+                            This field will be removed after February 15 2026.'
+                          type: string
                         accountKeySecretId:
                           description: '(Applicable when connection_type=AZURE_DATA_LAKE_STORAGE)
                             (Updatable) The OCID of the Secret where the account key
@@ -7149,10 +7176,11 @@ spec:
                           type: string
                         endpoint:
                           description: '(Applicable when connection_type=AMAZON_KINESIS
-                            | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC)
-                            (Updatable) The endpoint URL of the Amazon Kinesis service.
-                            e.g.: ''https://kinesis.us-east-1.amazonaws.com'' If not
-                            provided, GoldenGate will default to ''https://kinesis..amazonaws.com''.'
+                            | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY
+                            | GOOGLE_CLOUD_STORAGE | MICROSOFT_FABRIC) (Updatable)
+                            The endpoint URL of the Amazon Kinesis service. e.g.:
+                            ''https://kinesis.us-east-1.amazonaws.com'' If not provided,
+                            GoldenGate will default to ''https://kinesis..amazonaws.com''.'
                           type: string
                         projectId:
                           description: (Updatable) The Google Cloud Project where
@@ -7245,6 +7273,13 @@ spec:
                         schemeType:
                           description: (Updatable) The scheme of the storage.
                           type: string
+                        secretAccessKey:
+                          description: '(Applicable when connection_type=AMAZON_KINESIS
+                            | AMAZON_S3) (Updatable) Secret access key to access the
+                            Amazon S3 bucket. e.g.: "this-is-not-the-secret" Deprecated:
+                            This field is deprecated and replaced by "secretAccessKeySecretId".
+                            This field will be removed after February 15 2026.'
+                          type: string
                         secretAccessKeySecretId:
                           description: '(Applicable when connection_type=AMAZON_KINESIS
                             | AMAZON_S3) (Updatable) The OCID of the Secret where
@@ -7327,6 +7362,15 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        serviceAccountKeyFile:
+                          description: '(Applicable when connection_type=GOOGLE_BIGQUERY
+                            | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The
+                            base64 encoded content of the service account key file
+                            containing the credentials required to use Google Cloud
+                            Storage. Deprecated: This field is deprecated and replaced
+                            by "serviceAccountKeyFileSecretId". This field will be
+                            removed after February 15 2026.'
+                          type: string
                         serviceAccountKeyFileSecretId:
                           description: '(Applicable when connection_type=GOOGLE_BIGQUERY
                             | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The
@@ -8384,11 +8428,10 @@ spec:
                             The port of an endpoint usually specified for a connection.
                           type: number
                         privateIp:
-                          description: '(Applicable when connection_type=KAFKA) (Updatable)
-                            Deprecated: this field will be removed in future versions.
-                            Either specify the private IP in the connectionString
-                            or host  field, or make sure the host name is resolvable
-                            in the target VCN.'
+                          description: This property is not available when creating
+                            connections. For existing deprecated connections having
+                            this value set, the value cannot be updated; set it to
+                            empty.
                           type: string
                       type: object
                     type: array
@@ -8407,10 +8450,14 @@ spec:
                         clientId:
                           description: (Updatable) The OAuth client ID used for authentication.
                           type: string
+                        clientSecret:
+                          description: (Applicable when catalog_type=POLARIS) (Updatable)
+                            Client secret required to connect to Polaris.
+                          type: string
                         clientSecretSecretId:
-                          description: (Updatable) The OCID of the Secret that stores
-                            the password Oracle GoldenGate uses to connect to Snowflake
-                            platform.
+                          description: (Applicable when catalog_type=POLARIS) (Updatable)
+                            The OCID of the Secret that stores the password Oracle
+                            GoldenGate uses to connect to Polaris.
                           type: string
                         glueId:
                           description: (Updatable) The AWS Glue Catalog ID where Iceberg
@@ -8423,10 +8470,16 @@ spec:
                           description: (Updatable) The Snowflake role used to access
                             Polaris.
                           type: string
+                        properties:
+                          description: (Applicable when catalog_type=REST) (Updatable)
+                            The base64 encoded content of the configuration file containing
+                            additional properties for the REST catalog.
+                          type: string
                         propertiesSecretId:
-                          description: '(Updatable) The OCID of the Secret that stores
-                            the content of the configuration file containing additional
-                            properties for the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm'
+                          description: '(Applicable when catalog_type=REST) (Updatable)
+                            The OCID of the Secret that stores the content of the
+                            configuration file containing additional properties for
+                            the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm'
                           type: string
                         uri:
                           description: '(Updatable) The URL endpoint for the Polaris
@@ -8438,8 +8491,9 @@ spec:
                     description: (Updatable) The OAuth client ID used for authentication.
                     type: string
                   clientSecretSecretId:
-                    description: (Updatable) The OCID of the Secret that stores the
-                      password Oracle GoldenGate uses to connect to Snowflake platform.
+                    description: (Applicable when catalog_type=POLARIS) (Updatable)
+                      The OCID of the Secret that stores the password Oracle GoldenGate
+                      uses to connect to Polaris.
                     type: string
                   clusterId:
                     description: (Applicable when connection_type=KAFKA) (Updatable)
@@ -8516,8 +8570,9 @@ spec:
                     type: boolean
                   endpoint:
                     description: '(Applicable when connection_type=AMAZON_KINESIS
-                      | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC) (Updatable)
-                      The endpoint URL of the Amazon Kinesis service. e.g.: ''https://kinesis.us-east-1.amazonaws.com''
+                      | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE
+                      | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon
+                      Kinesis service. e.g.: ''https://kinesis.us-east-1.amazonaws.com''
                       If not provided, GoldenGate will default to ''https://kinesis..amazonaws.com''.'
                     type: string
                   fingerprint:
@@ -8651,10 +8706,9 @@ spec:
                       The port of an endpoint usually specified for a connection.
                     type: number
                   privateIp:
-                    description: '(Applicable when connection_type=KAFKA) (Updatable)
-                      Deprecated: this field will be removed in future versions. Either
-                      specify the private IP in the connectionString or host  field,
-                      or make sure the host name is resolvable in the target VCN.'
+                    description: This property is not available when creating connections.
+                      For existing deprecated connections having this value set, the
+                      value cannot be updated; set it to empty.
                     type: string
                   privateKeyFileSecretId:
                     description: '(Applicable when connection_type=OCI_OBJECT_STORAGE
@@ -8746,11 +8800,14 @@ spec:
                     type: string
                   sessionMode:
                     description: (Applicable when connection_type=ORACLE) (Updatable)
-                      The mode of the database connection session to be established
-                      by the data client. 'REDIRECT' - for a RAC database, 'DIRECT'
-                      - for a non-RAC database. Connection to a RAC database involves
-                      a redirection received from the SCAN listeners to the database
-                      node to connect to. By default the mode would be DIRECT.
+                      Specifies the session mode for the database connection. Use
+                      REDIRECT only for RAC databases with SCAN listeners that return
+                      IP addresses. For RAC databases with SCAN listeners that return
+                      FQDNs, and for all other Oracle database technologies, use DIRECT.
+                      In RAC deployments, SCAN listeners redirects a connection to
+                      a specific database node, identified by either IP address or
+                      FQDN. It is recommended to configure RAC with FQDN-based SCAN
+                      listeners.
                     type: string
                   shouldUseJndi:
                     description: (Updatable) If set to true, Java Naming and Directory
@@ -8841,6 +8898,14 @@ spec:
                           description: '(Updatable) Access key ID to access the Amazon
                             S3 bucket. e.g.: "this-is-not-the-secret"'
                           type: string
+                        accountKey:
+                          description: '(Applicable when connection_type=AZURE_DATA_LAKE_STORAGE)
+                            (Updatable) Azure storage account key. This property is
+                            required when ''authenticationType'' is set to ''SHARED_KEY''.
+                            e.g.: pa3WbhVATzj56xD4DH1VjOUhApRGEGHvOo58eQJVWIzX+j8j4CUVFcTjpIqDSRaSa1Wo2LbWY5at+AStEgLOIQ==
+                            Deprecated: This field is deprecated and replaced by "accountKeySecretId".
+                            This field will be removed after February 15 2026.'
+                          type: string
                         accountKeySecretId:
                           description: '(Applicable when connection_type=AZURE_DATA_LAKE_STORAGE)
                             (Updatable) The OCID of the Secret where the account key
@@ -8861,10 +8926,11 @@ spec:
                           type: string
                         endpoint:
                           description: '(Applicable when connection_type=AMAZON_KINESIS
-                            | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC)
-                            (Updatable) The endpoint URL of the Amazon Kinesis service.
-                            e.g.: ''https://kinesis.us-east-1.amazonaws.com'' If not
-                            provided, GoldenGate will default to ''https://kinesis..amazonaws.com''.'
+                            | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY
+                            | GOOGLE_CLOUD_STORAGE | MICROSOFT_FABRIC) (Updatable)
+                            The endpoint URL of the Amazon Kinesis service. e.g.:
+                            ''https://kinesis.us-east-1.amazonaws.com'' If not provided,
+                            GoldenGate will default to ''https://kinesis..amazonaws.com''.'
                           type: string
                         projectId:
                           description: (Updatable) The Google Cloud Project where
@@ -8881,11 +8947,27 @@ spec:
                         schemeType:
                           description: (Updatable) The scheme of the storage.
                           type: string
+                        secretAccessKey:
+                          description: '(Applicable when connection_type=AMAZON_KINESIS
+                            | AMAZON_S3) (Updatable) Secret access key to access the
+                            Amazon S3 bucket. e.g.: "this-is-not-the-secret" Deprecated:
+                            This field is deprecated and replaced by "secretAccessKeySecretId".
+                            This field will be removed after February 15 2026.'
+                          type: string
                         secretAccessKeySecretId:
                           description: '(Applicable when connection_type=AMAZON_KINESIS
                             | AMAZON_S3) (Updatable) The OCID of the Secret where
                             the secret access key is stored. Note: When provided,
                             ''secretAccessKey'' field must not be provided.'
+                          type: string
+                        serviceAccountKeyFile:
+                          description: '(Applicable when connection_type=GOOGLE_BIGQUERY
+                            | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The
+                            base64 encoded content of the service account key file
+                            containing the credentials required to use Google Cloud
+                            Storage. Deprecated: This field is deprecated and replaced
+                            by "serviceAccountKeyFileSecretId". This field will be
+                            removed after February 15 2026.'
                           type: string
                         serviceAccountKeyFileSecretId:
                           description: '(Applicable when connection_type=GOOGLE_BIGQUERY

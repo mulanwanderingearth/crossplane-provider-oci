@@ -150,12 +150,18 @@ type LlmConfigInitParameters struct {
 
 	// (Updatable) Configuration to customize LLM.
 	RoutingLlmCustomization []RoutingLlmCustomizationInitParameters `json:"routingLlmCustomization,omitempty" tf:"routing_llm_customization,omitempty"`
+
+	// (Updatable) The runtimeVersion of the system prompt.
+	RuntimeVersion *string `json:"runtimeVersion,omitempty" tf:"runtime_version,omitempty"`
 }
 
 type LlmConfigObservation struct {
 
 	// (Updatable) Configuration to customize LLM.
 	RoutingLlmCustomization []RoutingLlmCustomizationObservation `json:"routingLlmCustomization,omitempty" tf:"routing_llm_customization,omitempty"`
+
+	// (Updatable) The runtimeVersion of the system prompt.
+	RuntimeVersion *string `json:"runtimeVersion,omitempty" tf:"runtime_version,omitempty"`
 }
 
 type LlmConfigParameters struct {
@@ -163,18 +169,115 @@ type LlmConfigParameters struct {
 	// (Updatable) Configuration to customize LLM.
 	// +kubebuilder:validation:Optional
 	RoutingLlmCustomization []RoutingLlmCustomizationParameters `json:"routingLlmCustomization,omitempty" tf:"routing_llm_customization,omitempty"`
+
+	// (Updatable) The runtimeVersion of the system prompt.
+	// +kubebuilder:validation:Optional
+	RuntimeVersion *string `json:"runtimeVersion,omitempty" tf:"runtime_version,omitempty"`
+}
+
+type LlmSelectionInitParameters struct {
+
+	// (Updatable) The OCID of the GenAI endpoint
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ailanguage/v1alpha1.Endpoint
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	EndpointID *string `json:"endpointId,omitempty" tf:"endpoint_id,omitempty"`
+
+	// Reference to a Endpoint in ailanguage to populate endpointId.
+	// +kubebuilder:validation:Optional
+	EndpointIDRef *v1.NamespacedReference `json:"endpointIdRef,omitempty" tf:"-"`
+
+	// Selector for a Endpoint in ailanguage to populate endpointId.
+	// +kubebuilder:validation:Optional
+	EndpointIDSelector *v1.NamespacedSelector `json:"endpointIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) Type of LLM selection
+	LlmSelectionType *string `json:"llmSelectionType,omitempty" tf:"llm_selection_type,omitempty"`
+
+	// (Updatable) The OCID of the GenAI model
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/aidocument/v1alpha1.Model
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	ModelID *string `json:"modelId,omitempty" tf:"model_id,omitempty"`
+
+	// Reference to a Model in aidocument to populate modelId.
+	// +kubebuilder:validation:Optional
+	ModelIDRef *v1.NamespacedReference `json:"modelIdRef,omitempty" tf:"-"`
+
+	// Selector for a Model in aidocument to populate modelId.
+	// +kubebuilder:validation:Optional
+	ModelIDSelector *v1.NamespacedSelector `json:"modelIdSelector,omitempty" tf:"-"`
+}
+
+type LlmSelectionObservation struct {
+
+	// (Updatable) The OCID of the GenAI endpoint
+	EndpointID *string `json:"endpointId,omitempty" tf:"endpoint_id,omitempty"`
+
+	// (Updatable) Type of LLM selection
+	LlmSelectionType *string `json:"llmSelectionType,omitempty" tf:"llm_selection_type,omitempty"`
+
+	// (Updatable) The OCID of the GenAI model
+	ModelID *string `json:"modelId,omitempty" tf:"model_id,omitempty"`
+}
+
+type LlmSelectionParameters struct {
+
+	// (Updatable) The OCID of the GenAI endpoint
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ailanguage/v1alpha1.Endpoint
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	EndpointID *string `json:"endpointId,omitempty" tf:"endpoint_id,omitempty"`
+
+	// Reference to a Endpoint in ailanguage to populate endpointId.
+	// +kubebuilder:validation:Optional
+	EndpointIDRef *v1.NamespacedReference `json:"endpointIdRef,omitempty" tf:"-"`
+
+	// Selector for a Endpoint in ailanguage to populate endpointId.
+	// +kubebuilder:validation:Optional
+	EndpointIDSelector *v1.NamespacedSelector `json:"endpointIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) Type of LLM selection
+	// +kubebuilder:validation:Optional
+	LlmSelectionType *string `json:"llmSelectionType" tf:"llm_selection_type,omitempty"`
+
+	// (Updatable) The OCID of the GenAI model
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/aidocument/v1alpha1.Model
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	ModelID *string `json:"modelId,omitempty" tf:"model_id,omitempty"`
+
+	// Reference to a Model in aidocument to populate modelId.
+	// +kubebuilder:validation:Optional
+	ModelIDRef *v1.NamespacedReference `json:"modelIdRef,omitempty" tf:"-"`
+
+	// Selector for a Model in aidocument to populate modelId.
+	// +kubebuilder:validation:Optional
+	ModelIDSelector *v1.NamespacedSelector `json:"modelIdSelector,omitempty" tf:"-"`
 }
 
 type RoutingLlmCustomizationInitParameters struct {
 
 	// (Updatable) If specified, the default instruction is replaced with provided instruction.
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
+
+	// (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
+	// +mapType=granular
+	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+
+	// (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
+	LlmSelection []LlmSelectionInitParameters `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
 }
 
 type RoutingLlmCustomizationObservation struct {
 
 	// (Updatable) If specified, the default instruction is replaced with provided instruction.
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
+
+	// (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
+	// +mapType=granular
+	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+
+	// (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
+	LlmSelection []LlmSelectionObservation `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
 }
 
 type RoutingLlmCustomizationParameters struct {
@@ -182,6 +285,15 @@ type RoutingLlmCustomizationParameters struct {
 	// (Updatable) If specified, the default instruction is replaced with provided instruction.
 	// +kubebuilder:validation:Optional
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
+
+	// (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+
+	// (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
+	// +kubebuilder:validation:Optional
+	LlmSelection []LlmSelectionParameters `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
 }
 
 // AgentAgentSpec defines the desired state of AgentAgent

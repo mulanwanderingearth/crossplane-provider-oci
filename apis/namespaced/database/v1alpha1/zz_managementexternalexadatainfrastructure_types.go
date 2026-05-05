@@ -152,7 +152,7 @@ type ManagementExternalExadataInfrastructureObservation struct {
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// The Exadata storage server grid of the Exadata infrastructure.
-	StorageGrid []StorageGridObservation `json:"storageGrid,omitempty" tf:"storage_grid,omitempty"`
+	StorageGrid []ManagementExternalExadataInfrastructureStorageGridObservation `json:"storageGrid,omitempty" tf:"storage_grid,omitempty"`
 
 	// (Updatable) The list of all the Exadata storage server names to be included for monitoring purposes. If not specified, all the Exadata storage servers associated with the DB systems are included.
 	StorageServerNames []*string `json:"storageServerNames,omitempty" tf:"storage_server_names,omitempty"`
@@ -217,10 +217,10 @@ type ManagementExternalExadataInfrastructureParameters struct {
 	StorageServerNames []*string `json:"storageServerNames,omitempty" tf:"storage_server_names,omitempty"`
 }
 
-type StorageGridInitParameters struct {
+type ManagementExternalExadataInfrastructureStorageGridInitParameters struct {
 }
 
-type StorageGridObservation struct {
+type ManagementExternalExadataInfrastructureStorageGridObservation struct {
 
 	// The additional details of the resource defined in {"key": "value"} format. Example: {"bar-key": "value"}
 	// +mapType=granular
@@ -257,7 +257,7 @@ type StorageGridObservation struct {
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
-type StorageGridParameters struct {
+type ManagementExternalExadataInfrastructureStorageGridParameters struct {
 }
 
 // ManagementExternalExadataInfrastructureSpec defines the desired state of ManagementExternalExadataInfrastructure

@@ -32,6 +32,9 @@ type NetworkFirewallPolicyInitParameters struct {
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
+	// (Updatable) The description of the network firewall policy. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	// (Updatable) A user-friendly optional name for the firewall policy. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
@@ -51,6 +54,9 @@ type NetworkFirewallPolicyObservation struct {
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) The description of the network firewall policy. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) A user-friendly optional name for the firewall policy. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -98,6 +104,10 @@ type NetworkFirewallPolicyParameters struct {
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) The description of the network firewall policy. This field can be used to add additional info.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) A user-friendly optional name for the firewall policy. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional

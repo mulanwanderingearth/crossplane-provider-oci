@@ -101,6 +101,10 @@ spec:
                           type: array
                       type: object
                     type: array
+                  description:
+                    description: (Updatable) The description of the tunnel inspect
+                      rule. This field can be used to add additional info.
+                    type: string
                   name:
                     description: Name for the Tunnel Inspection Rule, must be unique
                       within the policy.
@@ -253,6 +257,10 @@ spec:
                           type: array
                       type: object
                     type: array
+                  description:
+                    description: (Updatable) The description of the tunnel inspect
+                      rule. This field can be used to add additional info.
+                    type: string
                   name:
                     description: Name for the Tunnel Inspection Rule, must be unique
                       within the policy.
@@ -499,6 +507,10 @@ spec:
                           type: array
                       type: object
                     type: array
+                  description:
+                    description: (Updatable) The description of the tunnel inspect
+                      rule. This field can be used to add additional info.
+                    type: string
                   id:
                     type: string
                   name:

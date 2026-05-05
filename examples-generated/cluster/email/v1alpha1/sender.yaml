@@ -14,5 +14,8 @@ spec:
     definedTags:
       Operations.CostCenter: "42"
     emailAddress: ${var.sender_email_address}
+    emailIpPoolIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_email_ip_pool
     freeformTags:
       Department: Finance

@@ -13,6 +13,8 @@ spec:
     assetsCompartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_compartment
+    awsAccountKey: ${var.asset_source_aws_account_key}
+    awsRegion: ${var.asset_source_aws_region}
     compartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: example
@@ -30,11 +32,14 @@ spec:
     environmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_environment
+    environmentType: ${var.asset_source_environment_type}
     freeformTags:
       Department: Finance
     inventoryIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_inventory
+    isCostInformationCollected: ${var.asset_source_is_cost_information_collected}
+    olvmEndpoint: ${var.asset_source_olvm_endpoint}
     replicationCredentials:
     - secretIdSelector:
         matchLabels:

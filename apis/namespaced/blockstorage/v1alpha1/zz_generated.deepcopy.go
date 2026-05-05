@@ -2133,6 +2133,11 @@ func (in *VolumeAttachmentObservation) DeepCopyInto(out *VolumeAttachmentObserva
 		*out = new(string)
 		**out = **in
 	}
+	if in.IPv6 != nil {
+		in, out := &in.IPv6, &out.IPv6
+		*out = new(string)
+		**out = **in
+	}
 	if in.ISCSILoginState != nil {
 		in, out := &in.ISCSILoginState, &out.ISCSILoginState
 		*out = new(string)

@@ -24,3 +24,12 @@ func (l *FsuCycleList) GetItems() []resource.Managed {
 	}
 	return items
 }
+
+// GetItems of this FsuReadinessCheckList.
+func (l *FsuReadinessCheckList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}

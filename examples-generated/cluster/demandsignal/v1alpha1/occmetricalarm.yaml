@@ -1,0 +1,35 @@
+apiVersion: demandsignal.oci.upbound.io/v1alpha1
+kind: OccMetricAlarm
+metadata:
+  annotations:
+    meta.upbound.io/example-id: demandsignal/v1alpha1/occmetricalarm
+  labels:
+    testing.upbound.io/example-name: test_occ_metric_alarm
+  name: test-occ-metric-alarm
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.occ_metric_alarm_description}
+    displayName: ${var.occ_metric_alarm_display_name}
+    freeformTags:
+      Department: Finance
+    frequency: ${var.occ_metric_alarm_frequency}
+    isActive: ${var.occ_metric_alarm_is_active}
+    resourceConfiguration:
+    - computeHwGeneration: ${var.occ_metric_alarm_resource_configuration_compute_hw_generation}
+      hwGeneration: ${var.occ_metric_alarm_resource_configuration_hw_generation}
+      linkRole: ${var.occ_metric_alarm_resource_configuration_link_role}
+      nodeType: ${var.occ_metric_alarm_resource_configuration_node_type}
+      occMetricAlarmProvider: ${var.occ_metric_alarm_resource_configuration_occ_metric_alarm_provider}
+      resource: ${var.occ_metric_alarm_resource_configuration_resource}
+      shape: ${var.occ_metric_alarm_resource_configuration_shape}
+      storageType: ${var.occ_metric_alarm_resource_configuration_storage_type}
+      usageType: ${var.occ_metric_alarm_resource_configuration_usage_type}
+    state: ${var.occ_metric_alarm_state}
+    subscribers: ${var.occ_metric_alarm_subscribers}
+    threshold: ${var.occ_metric_alarm_threshold}
+    thresholdType: ${var.occ_metric_alarm_threshold_type}

@@ -54,8 +54,12 @@ type CloudExadataInfrastructureConfigureExascaleManagementExascaleConfigObservat
 	// Available storage size for Exascale in GBs.
 	AvailableStorageInGbs *float64 `json:"availableStorageInGbs,omitempty" tf:"available_storage_in_gbs,omitempty"`
 
+	AvailableVMStorageInGbs *float64 `json:"availableVmStorageInGbs,omitempty" tf:"available_vm_storage_in_gbs,omitempty"`
+
 	// Storage size needed for Exascale in GBs.
 	TotalStorageInGbs *float64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
+
+	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 type CloudExadataInfrastructureConfigureExascaleManagementExascaleConfigParameters struct {
@@ -78,6 +82,8 @@ type CloudExadataInfrastructureConfigureExascaleManagementInitParameters struct 
 
 	// Storage size needed for Exascale in GBs.
 	TotalStorageInGbs *float64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
+
+	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 type CloudExadataInfrastructureConfigureExascaleManagementMaintenanceWindowDaysOfWeekInitParameters struct {
@@ -270,6 +276,8 @@ type CloudExadataInfrastructureConfigureExascaleManagementObservation struct {
 
 	// The total storage allocated to the cloud Exadata infrastructure resource, in gigabytes (GB).
 	TotalStorageSizeInGbs *float64 `json:"totalStorageSizeInGbs,omitempty" tf:"total_storage_size_in_gbs,omitempty"`
+
+	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 type CloudExadataInfrastructureConfigureExascaleManagementParameters struct {
@@ -291,6 +299,9 @@ type CloudExadataInfrastructureConfigureExascaleManagementParameters struct {
 	// Storage size needed for Exascale in GBs.
 	// +kubebuilder:validation:Optional
 	TotalStorageInGbs *float64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 // CloudExadataInfrastructureConfigureExascaleManagementSpec defines the desired state of CloudExadataInfrastructureConfigureExascaleManagement

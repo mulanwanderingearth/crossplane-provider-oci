@@ -1,0 +1,15 @@
+apiVersion: database.oci.upbound.io/v1alpha1
+kind: ManagementCloudExadataInfrastructureManagedexadata
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/managementcloudexadatainfrastructuremanagedexadata
+  labels:
+    testing.upbound.io/example-name: test_cloud_exadata_infrastructure_managedexadata_management
+  name: test-cloud-exadata-infrastructure-managedexadata-management
+spec:
+  forProvider:
+    cloudExadataInfrastructureIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_cloud_exadata_infrastructure
+    enableManagedexadata: ${var.enable_managedexadata}
+    licenseModel: ${var.cloud_exadata_infrastructure_managedexadata_management_license_model}

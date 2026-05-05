@@ -43,7 +43,7 @@ type BudgetInitParameters struct {
 	// (Updatable) The displayName of the budget. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) The date when the one-time budget concludes. For example, 2023-03-23. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
+	// (Updatable) The date when the one-time budget concludes. For example, 2023-08-12T16:01:19.847222+05:30. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
 	EndDate *string `json:"endDate,omitempty" tf:"end_date,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
@@ -56,8 +56,12 @@ type BudgetInitParameters struct {
 	// (Updatable) The reset period for the budget. Valid value is MONTHLY.
 	ResetPeriod *string `json:"resetPeriod,omitempty" tf:"reset_period,omitempty"`
 
-	// (Updatable) The date when the one-time budget begins. For example, 2023-03-23. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
+	// (Updatable) The date when the one-time budget begins. For example, 2023-07-12T16:01:19.847222+05:30. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
 	StartDate *string `json:"startDate,omitempty" tf:"start_date,omitempty"`
+
+	// (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
+	// +mapType=granular
+	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// This is DEPRECATED. Set the target compartment ID in targets instead.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -106,7 +110,7 @@ type BudgetObservation struct {
 	// (Updatable) The displayName of the budget. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) The date when the one-time budget concludes. For example, 2023-03-23. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
+	// (Updatable) The date when the one-time budget concludes. For example, 2023-08-12T16:01:19.847222+05:30. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
 	EndDate *string `json:"endDate,omitempty" tf:"end_date,omitempty"`
 
 	// The forecasted spend in currency by the end of the current budget cycle.
@@ -125,11 +129,15 @@ type BudgetObservation struct {
 	// (Updatable) The reset period for the budget. Valid value is MONTHLY.
 	ResetPeriod *string `json:"resetPeriod,omitempty" tf:"reset_period,omitempty"`
 
-	// (Updatable) The date when the one-time budget begins. For example, 2023-03-23. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
+	// (Updatable) The date when the one-time budget begins. For example, 2023-07-12T16:01:19.847222+05:30. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
 	StartDate *string `json:"startDate,omitempty" tf:"start_date,omitempty"`
 
 	// The current state of the budget.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
+
+	// (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
+	// +mapType=granular
+	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// This is DEPRECATED. Set the target compartment ID in targets instead.
 	TargetCompartmentID *string `json:"targetCompartmentId,omitempty" tf:"target_compartment_id,omitempty"`
@@ -189,7 +197,7 @@ type BudgetParameters struct {
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) The date when the one-time budget concludes. For example, 2023-03-23. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
+	// (Updatable) The date when the one-time budget concludes. For example, 2023-08-12T16:01:19.847222+05:30. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
 	// +kubebuilder:validation:Optional
 	EndDate *string `json:"endDate,omitempty" tf:"end_date,omitempty"`
 
@@ -206,9 +214,14 @@ type BudgetParameters struct {
 	// +kubebuilder:validation:Optional
 	ResetPeriod *string `json:"resetPeriod,omitempty" tf:"reset_period,omitempty"`
 
-	// (Updatable) The date when the one-time budget begins. For example, 2023-03-23. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
+	// (Updatable) The date when the one-time budget begins. For example, 2023-07-12T16:01:19.847222+05:30. The date-time format conforms to RFC 3339, and will be truncated to the starting point of the date provided after being converted to UTC time.
 	// +kubebuilder:validation:Optional
 	StartDate *string `json:"startDate,omitempty" tf:"start_date,omitempty"`
+
+	// (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// This is DEPRECATED. Set the target compartment ID in targets instead.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment

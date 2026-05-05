@@ -16,8 +16,268 @@ import (
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-func (mg *Event) ResolveReferences( // ResolveReferences of this Event.
+func (mg *DynamicSet) ResolveReferences( // ResolveReferences of this DynamicSet.
 	ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this DynamicSetInstallPackagesManagement.
+func (mg *DynamicSetInstallPackagesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "DynamicSet", "DynamicSetList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.DynamicSetID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.DynamicSetIDRef,
+			Selector:     mg.Spec.ForProvider.DynamicSetIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.DynamicSetID")
+	}
+	mg.Spec.ForProvider.DynamicSetID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.DynamicSetIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "DynamicSet", "DynamicSetList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.DynamicSetID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.DynamicSetIDRef,
+			Selector:     mg.Spec.InitProvider.DynamicSetIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.DynamicSetID")
+	}
+	mg.Spec.InitProvider.DynamicSetID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.DynamicSetIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this DynamicSetRebootManagement.
+func (mg *DynamicSetRebootManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "DynamicSet", "DynamicSetList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.DynamicSetID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.DynamicSetIDRef,
+			Selector:     mg.Spec.ForProvider.DynamicSetIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.DynamicSetID")
+	}
+	mg.Spec.ForProvider.DynamicSetID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.DynamicSetIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "DynamicSet", "DynamicSetList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.DynamicSetID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.DynamicSetIDRef,
+			Selector:     mg.Spec.InitProvider.DynamicSetIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.DynamicSetID")
+	}
+	mg.Spec.InitProvider.DynamicSetID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.DynamicSetIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this DynamicSetRemovePackagesManagement.
+func (mg *DynamicSetRemovePackagesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "DynamicSet", "DynamicSetList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.DynamicSetID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.DynamicSetIDRef,
+			Selector:     mg.Spec.ForProvider.DynamicSetIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.DynamicSetID")
+	}
+	mg.Spec.ForProvider.DynamicSetID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.DynamicSetIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "DynamicSet", "DynamicSetList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.DynamicSetID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.DynamicSetIDRef,
+			Selector:     mg.Spec.InitProvider.DynamicSetIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.DynamicSetID")
+	}
+	mg.Spec.InitProvider.DynamicSetID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.DynamicSetIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this DynamicSetUpdatePackagesManagement.
+func (mg *DynamicSetUpdatePackagesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "DynamicSet", "DynamicSetList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.DynamicSetID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.DynamicSetIDRef,
+			Selector:     mg.Spec.ForProvider.DynamicSetIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.DynamicSetID")
+	}
+	mg.Spec.ForProvider.DynamicSetID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.DynamicSetIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "DynamicSet", "DynamicSetList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.DynamicSetID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.DynamicSetIDRef,
+			Selector:     mg.Spec.InitProvider.DynamicSetIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.DynamicSetID")
+	}
+	mg.Spec.InitProvider.DynamicSetID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.DynamicSetIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this Event.
+func (mg *Event) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
 	var l xpresource.ManagedList
 	r := reference.NewAPIResolver(c, mg)
@@ -476,8 +736,112 @@ func (mg *ManagedInstanceAttachProfileManagement) ResolveReferences(ctx context.
 	return nil
 }
 
+// ResolveReferences of this ManagedInstanceAttachSoftwareSourcesManagement.
+func (mg *ManagedInstanceAttachSoftwareSourcesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.ForProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ManagedInstanceID")
+	}
+	mg.Spec.ForProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.InitProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ManagedInstanceID")
+	}
+	mg.Spec.InitProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this ManagedInstanceDetachProfileManagement.
 func (mg *ManagedInstanceDetachProfileManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.ForProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ManagedInstanceID")
+	}
+	mg.Spec.ForProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.InitProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ManagedInstanceID")
+	}
+	mg.Spec.InitProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagedInstanceDetachSoftwareSourcesManagement.
+func (mg *ManagedInstanceDetachSoftwareSourcesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
 	var l xpresource.ManagedList
 	r := reference.NewAPIResolver(c, mg)
@@ -1581,6 +1945,110 @@ func (mg *ManagedInstanceGroupUpdateAllPackagesManagement) ResolveReferences(ctx
 	return nil
 }
 
+// ResolveReferences of this ManagedInstanceInstallPackagesManagement.
+func (mg *ManagedInstanceInstallPackagesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.ForProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ManagedInstanceID")
+	}
+	mg.Spec.ForProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.InitProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ManagedInstanceID")
+	}
+	mg.Spec.InitProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagedInstanceInstallSnapsManagement.
+func (mg *ManagedInstanceInstallSnapsManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.ForProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ManagedInstanceID")
+	}
+	mg.Spec.ForProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.InitProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ManagedInstanceID")
+	}
+	mg.Spec.InitProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this ManagedInstanceInstallWindowsUpdatesManagement.
 func (mg *ManagedInstanceInstallWindowsUpdatesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -1685,6 +2153,214 @@ func (mg *ManagedInstanceRebootManagement) ResolveReferences(ctx context.Context
 	return nil
 }
 
+// ResolveReferences of this ManagedInstanceRefreshSoftwareManagement.
+func (mg *ManagedInstanceRefreshSoftwareManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.ForProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ManagedInstanceID")
+	}
+	mg.Spec.ForProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.InitProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ManagedInstanceID")
+	}
+	mg.Spec.InitProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagedInstanceRemovePackagesManagement.
+func (mg *ManagedInstanceRemovePackagesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.ForProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ManagedInstanceID")
+	}
+	mg.Spec.ForProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.InitProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ManagedInstanceID")
+	}
+	mg.Spec.InitProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagedInstanceRemoveSnapsManagement.
+func (mg *ManagedInstanceRemoveSnapsManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.ForProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ManagedInstanceID")
+	}
+	mg.Spec.ForProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.InitProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ManagedInstanceID")
+	}
+	mg.Spec.InitProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagedInstanceSwitchSnapChannelManagement.
+func (mg *ManagedInstanceSwitchSnapChannelManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.ForProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ManagedInstanceID")
+	}
+	mg.Spec.ForProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagedInstance", "ManagedInstanceList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ManagedInstanceID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ManagedInstanceIDRef,
+			Selector:     mg.Spec.InitProvider.ManagedInstanceIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ManagedInstanceID")
+	}
+	mg.Spec.InitProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this ManagedInstanceUpdatePackagesManagement.
 func (mg *ManagedInstanceUpdatePackagesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -1733,6 +2409,110 @@ func (mg *ManagedInstanceUpdatePackagesManagement) ResolveReferences(ctx context
 	}
 	mg.Spec.InitProvider.ManagedInstanceID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.ManagedInstanceIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagedInstancesInstallWindowsUpdatesManagement.
+func (mg *ManagedInstancesInstallWindowsUpdatesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagedInstancesUpdatePackagesManagement.
+func (mg *ManagedInstancesUpdatePackagesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
 
 	return nil
 }
@@ -2393,6 +3173,98 @@ func (mg *ProfileAttachSoftwareSourcesManagement) ResolveReferences(ctx context.
 	}
 	mg.Spec.ForProvider.ProfileID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.ProfileIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "Profile", "ProfileList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ProfileID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ProfileIDRef,
+			Selector:     mg.Spec.InitProvider.ProfileIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ProfileID")
+	}
+	mg.Spec.InitProvider.ProfileID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ProfileIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ProfileDetachManagementStationManagement.
+func (mg *ProfileDetachManagementStationManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagementStation", "ManagementStationList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ManagementStationID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ManagementStationIDRef,
+			Selector:     mg.Spec.ForProvider.ManagementStationIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ManagementStationID")
+	}
+	mg.Spec.ForProvider.ManagementStationID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ManagementStationIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "Profile", "ProfileList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ProfileID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.ProfileIDRef,
+			Selector:     mg.Spec.ForProvider.ProfileIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ProfileID")
+	}
+	mg.Spec.ForProvider.ProfileID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ProfileIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "ManagementStation", "ManagementStationList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ManagementStationID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.ManagementStationIDRef,
+			Selector:     mg.Spec.InitProvider.ManagementStationIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.ManagementStationID")
+	}
+	mg.Spec.InitProvider.ManagementStationID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.ManagementStationIDRef = rsp.ResolvedReference
 	{
 		m, l, err = apisresolver.GetManagedResource("osmanagementhub.oci.upbound.io", "v1alpha1", "Profile", "ProfileList")
 		if err != nil {

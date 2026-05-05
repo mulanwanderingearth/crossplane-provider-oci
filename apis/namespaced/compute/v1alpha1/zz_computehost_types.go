@@ -52,6 +52,9 @@ type ComputeHostInitParameters struct {
 	// Selector for a ComputeHost in compute to populate computeHostId.
 	// +kubebuilder:validation:Optional
 	ComputeHostIDSelector *v1.NamespacedSelector `json:"computeHostIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) The configuration action to next occur on the host if pinning its firmware with a host group.
+	ConfigurationActionType *string `json:"configurationActionType,omitempty" tf:"configuration_action_type,omitempty"`
 }
 
 type ComputeHostObservation struct {
@@ -74,6 +77,9 @@ type ComputeHostObservation struct {
 	// The OCID of the compute host.
 	ComputeHostID *string `json:"computeHostId,omitempty" tf:"compute_host_id,omitempty"`
 
+	// (Updatable) The configuration action to next occur on the host if pinning its firmware with a host group.
+	ConfigurationActionType *string `json:"configurationActionType,omitempty" tf:"configuration_action_type,omitempty"`
+
 	// Compute Host Configuration Data
 	ConfigurationData []ConfigurationDataObservation `json:"configurationData,omitempty" tf:"configuration_data,omitempty"`
 
@@ -89,6 +95,9 @@ type ComputeHostObservation struct {
 
 	// A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains let you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
+
+	// The OCID for the Customer-unique firmware bundle associated with the Host Configuration.
+	FirmwareBundleID *string `json:"firmwareBundleId,omitempty" tf:"firmware_bundle_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
@@ -121,6 +130,9 @@ type ComputeHostObservation struct {
 
 	// The OCID for Customer-unique Network Block
 	NetworkBlockID *string `json:"networkBlockId,omitempty" tf:"network_block_id,omitempty"`
+
+	// The platform of the host
+	Platform *string `json:"platform,omitempty" tf:"platform,omitempty"`
 
 	// Shows details about the last recycle performed on this host.
 	RecycleDetails []RecycleDetailsObservation `json:"recycleDetails,omitempty" tf:"recycle_details,omitempty"`
@@ -160,6 +172,10 @@ type ComputeHostParameters struct {
 	// Selector for a ComputeHost in compute to populate computeHostId.
 	// +kubebuilder:validation:Optional
 	ComputeHostIDSelector *v1.NamespacedSelector `json:"computeHostIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) The configuration action to next occur on the host if pinning its firmware with a host group.
+	// +kubebuilder:validation:Optional
+	ConfigurationActionType *string `json:"configurationActionType,omitempty" tf:"configuration_action_type,omitempty"`
 }
 
 type ConfigurationDataInitParameters struct {

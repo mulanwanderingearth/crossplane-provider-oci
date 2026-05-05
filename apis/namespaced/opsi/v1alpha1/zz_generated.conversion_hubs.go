@@ -16,6 +16,9 @@ func (tr *AwrHubSource) Hub() {}
 func (tr *AwrHubSourceAwrhubsourcesManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *ChargebackPlan) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *DatabaseInsight) Hub() {}
 
 // Hub marks this type as a conversion hub.

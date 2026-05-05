@@ -230,6 +230,67 @@ type CustomEndpointParameters struct {
 	Hostname *string `json:"hostname" tf:"hostname,omitempty"`
 }
 
+type DesignTimeAllowlistedHTTPVcnsInitParameters struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	// +listType=set
+	AllowlistedIps []*string `json:"allowlistedIps,omitempty" tf:"allowlisted_ips,omitempty"`
+
+	// The Virtual Cloud Network OCID.
+	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+}
+
+type DesignTimeAllowlistedHTTPVcnsObservation struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	// +listType=set
+	AllowlistedIps []*string `json:"allowlistedIps,omitempty" tf:"allowlisted_ips,omitempty"`
+
+	// The Virtual Cloud Network OCID.
+	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+}
+
+type DesignTimeAllowlistedHTTPVcnsParameters struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	// +kubebuilder:validation:Optional
+	// +listType=set
+	AllowlistedIps []*string `json:"allowlistedIps,omitempty" tf:"allowlisted_ips,omitempty"`
+
+	// The Virtual Cloud Network OCID.
+	// +kubebuilder:validation:Optional
+	ID *string `json:"id" tf:"id,omitempty"`
+}
+
+type DesignTimeInitParameters struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	AllowlistedHTTPIps []*string `json:"allowlistedHttpIps,omitempty" tf:"allowlisted_http_ips,omitempty"`
+
+	// Virtual Cloud Networks allowed to access this network endpoint.
+	AllowlistedHTTPVcns []DesignTimeAllowlistedHTTPVcnsInitParameters `json:"allowlistedHttpVcns,omitempty" tf:"allowlisted_http_vcns,omitempty"`
+}
+
+type DesignTimeObservation struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	AllowlistedHTTPIps []*string `json:"allowlistedHttpIps,omitempty" tf:"allowlisted_http_ips,omitempty"`
+
+	// Virtual Cloud Networks allowed to access this network endpoint.
+	AllowlistedHTTPVcns []DesignTimeAllowlistedHTTPVcnsObservation `json:"allowlistedHttpVcns,omitempty" tf:"allowlisted_http_vcns,omitempty"`
+}
+
+type DesignTimeParameters struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	// +kubebuilder:validation:Optional
+	AllowlistedHTTPIps []*string `json:"allowlistedHttpIps,omitempty" tf:"allowlisted_http_ips,omitempty"`
+
+	// Virtual Cloud Networks allowed to access this network endpoint.
+	// +kubebuilder:validation:Optional
+	AllowlistedHTTPVcns []DesignTimeAllowlistedHTTPVcnsParameters `json:"allowlistedHttpVcns,omitempty" tf:"allowlisted_http_vcns,omitempty"`
+}
+
 type DisasterRecoveryDetailsInitParameters struct {
 }
 
@@ -292,12 +353,21 @@ type IntegrationInstanceInitParameters struct {
 	// Optional parameter specifying which entitlement to use for billing purposes. Only required if the account possesses more than one entitlement.
 	ConsumptionModel *string `json:"consumptionModel,omitempty" tf:"consumption_model,omitempty"`
 
+	// (Updatable) An optional property when incremented triggers Convert Instance. Could be set to any integer value.
+	ConvertInstanceTrigger *float64 `json:"convertInstanceTrigger,omitempty" tf:"convert_instance_trigger,omitempty"`
+
 	// (Updatable) Details for a custom endpoint for the integration instance (update).
 	CustomEndpoint []CustomEndpointInitParameters `json:"customEndpoint,omitempty" tf:"custom_endpoint,omitempty"`
+
+	// Data retention period set for given integration instance
+	DataRetentionPeriod *string `json:"dataRetentionPeriod,omitempty" tf:"data_retention_period,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Disable Process Automation. Could be set to any integer value.
+	DisableProcessAutomationTrigger *float64 `json:"disableProcessAutomationTrigger,omitempty" tf:"disable_process_automation_trigger,omitempty"`
 
 	// (Updatable) Integration Instance Identifier.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -318,7 +388,6 @@ type IntegrationInstanceInitParameters struct {
 	// (Updatable) An optional property when incremented triggers Enable Process Automation. Could be set to any integer value.
 	EnableProcessAutomationTrigger *float64 `json:"enableProcessAutomationTrigger,omitempty" tf:"enable_process_automation_trigger,omitempty"`
 
-	// (Updatable) An optional property when incremented triggers Extend Data Retention. Could be set to any integer value.
 	ExtendDataRetentionTrigger *float64 `json:"extendDataRetentionTrigger,omitempty" tf:"extend_data_retention_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
@@ -346,13 +415,16 @@ type IntegrationInstanceInitParameters struct {
 	// (Updatable) Visual Builder is enabled or not.
 	IsVisualBuilderEnabled *bool `json:"isVisualBuilderEnabled,omitempty" tf:"is_visual_builder_enabled,omitempty"`
 
+	// OCID of LogAnalytics LogGroup, enabled for given integration instance
+	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
+
 	// (Updatable) The number of configured message packs
 	MessagePacks *float64 `json:"messagePacks,omitempty" tf:"message_packs,omitempty"`
 
 	// Base representation of a network endpoint.
 	NetworkEndpointDetails []NetworkEndpointDetailsInitParameters `json:"networkEndpointDetails,omitempty" tf:"network_endpoint_details,omitempty"`
 
-	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: { "oracle-zpr.sensitivity.value" = "low" "oracle-zpr.sensitivity.mode" = "enforce" }
+	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
 	// +mapType=granular
 	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
@@ -377,6 +449,9 @@ type IntegrationInstanceObservation struct {
 	// Optional parameter specifying which entitlement to use for billing purposes. Only required if the account possesses more than one entitlement.
 	ConsumptionModel *string `json:"consumptionModel,omitempty" tf:"consumption_model,omitempty"`
 
+	// (Updatable) An optional property when incremented triggers Convert Instance. Could be set to any integer value.
+	ConvertInstanceTrigger *float64 `json:"convertInstanceTrigger,omitempty" tf:"convert_instance_trigger,omitempty"`
+
 	// (Updatable) Details for a custom endpoint for the integration instance (update).
 	CustomEndpoint []CustomEndpointObservation `json:"customEndpoint,omitempty" tf:"custom_endpoint,omitempty"`
 
@@ -386,6 +461,9 @@ type IntegrationInstanceObservation struct {
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Disable Process Automation. Could be set to any integer value.
+	DisableProcessAutomationTrigger *float64 `json:"disableProcessAutomationTrigger,omitempty" tf:"disable_process_automation_trigger,omitempty"`
 
 	// Disaster recovery details for the integration instance created in the region.
 	DisasterRecoveryDetails []DisasterRecoveryDetailsObservation `json:"disasterRecoveryDetails,omitempty" tf:"disaster_recovery_details,omitempty"`
@@ -399,7 +477,6 @@ type IntegrationInstanceObservation struct {
 	// (Updatable) An optional property when incremented triggers Enable Process Automation. Could be set to any integer value.
 	EnableProcessAutomationTrigger *float64 `json:"enableProcessAutomationTrigger,omitempty" tf:"enable_process_automation_trigger,omitempty"`
 
-	// (Updatable) An optional property when incremented triggers Extend Data Retention. Could be set to any integer value.
 	ExtendDataRetentionTrigger *float64 `json:"extendDataRetentionTrigger,omitempty" tf:"extend_data_retention_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
@@ -438,6 +515,9 @@ type IntegrationInstanceObservation struct {
 	// Additional details of lifecycleState or substates
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
+	// OCID of LogAnalytics LogGroup, enabled for given integration instance
+	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
+
 	// (Updatable) The number of configured message packs
 	MessagePacks *float64 `json:"messagePacks,omitempty" tf:"message_packs,omitempty"`
 
@@ -447,7 +527,7 @@ type IntegrationInstanceObservation struct {
 	// Base representation for Outbound Connection (Reverse Connection).
 	PrivateEndpointOutboundConnection []PrivateEndpointOutboundConnectionObservation `json:"privateEndpointOutboundConnection,omitempty" tf:"private_endpoint_outbound_connection,omitempty"`
 
-	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: { "oracle-zpr.sensitivity.value" = "low" "oracle-zpr.sensitivity.mode" = "enforce" }
+	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
 	// +mapType=granular
 	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
@@ -494,14 +574,26 @@ type IntegrationInstanceParameters struct {
 	// +kubebuilder:validation:Optional
 	ConsumptionModel *string `json:"consumptionModel,omitempty" tf:"consumption_model,omitempty"`
 
+	// (Updatable) An optional property when incremented triggers Convert Instance. Could be set to any integer value.
+	// +kubebuilder:validation:Optional
+	ConvertInstanceTrigger *float64 `json:"convertInstanceTrigger,omitempty" tf:"convert_instance_trigger,omitempty"`
+
 	// (Updatable) Details for a custom endpoint for the integration instance (update).
 	// +kubebuilder:validation:Optional
 	CustomEndpoint []CustomEndpointParameters `json:"customEndpoint,omitempty" tf:"custom_endpoint,omitempty"`
+
+	// Data retention period set for given integration instance
+	// +kubebuilder:validation:Optional
+	DataRetentionPeriod *string `json:"dataRetentionPeriod,omitempty" tf:"data_retention_period,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Disable Process Automation. Could be set to any integer value.
+	// +kubebuilder:validation:Optional
+	DisableProcessAutomationTrigger *float64 `json:"disableProcessAutomationTrigger,omitempty" tf:"disable_process_automation_trigger,omitempty"`
 
 	// (Updatable) Integration Instance Identifier.
 	// +kubebuilder:validation:Optional
@@ -525,7 +617,6 @@ type IntegrationInstanceParameters struct {
 	// +kubebuilder:validation:Optional
 	EnableProcessAutomationTrigger *float64 `json:"enableProcessAutomationTrigger,omitempty" tf:"enable_process_automation_trigger,omitempty"`
 
-	// (Updatable) An optional property when incremented triggers Extend Data Retention. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
 	ExtendDataRetentionTrigger *float64 `json:"extendDataRetentionTrigger,omitempty" tf:"extend_data_retention_trigger,omitempty"`
 
@@ -562,6 +653,10 @@ type IntegrationInstanceParameters struct {
 	// +kubebuilder:validation:Optional
 	IsVisualBuilderEnabled *bool `json:"isVisualBuilderEnabled,omitempty" tf:"is_visual_builder_enabled,omitempty"`
 
+	// OCID of LogAnalytics LogGroup, enabled for given integration instance
+	// +kubebuilder:validation:Optional
+	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
+
 	// (Updatable) The number of configured message packs
 	// +kubebuilder:validation:Optional
 	MessagePacks *float64 `json:"messagePacks,omitempty" tf:"message_packs,omitempty"`
@@ -570,7 +665,7 @@ type IntegrationInstanceParameters struct {
 	// +kubebuilder:validation:Optional
 	NetworkEndpointDetails []NetworkEndpointDetailsParameters `json:"networkEndpointDetails,omitempty" tf:"network_endpoint_details,omitempty"`
 
-	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: { "oracle-zpr.sensitivity.value" = "low" "oracle-zpr.sensitivity.mode" = "enforce" }
+	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
@@ -593,11 +688,17 @@ type NetworkEndpointDetailsInitParameters struct {
 	// Virtual Cloud Networks allowed to access this network endpoint.
 	AllowlistedHTTPVcns []AllowlistedHTTPVcnsInitParameters `json:"allowlistedHttpVcns,omitempty" tf:"allowlisted_http_vcns,omitempty"`
 
+	// A collection of AllowListedIps and AllowListedVcns for a specific OIC component: global, RT, or DT
+	DesignTime []DesignTimeInitParameters `json:"designTime,omitempty" tf:"design_time,omitempty"`
+
 	// The Integration service's VCN is allow-listed to allow integrations to call back into other integrations
 	IsIntegrationVcnAllowlisted *bool `json:"isIntegrationVcnAllowlisted,omitempty" tf:"is_integration_vcn_allowlisted,omitempty"`
 
 	// The type of network endpoint.
 	NetworkEndpointType *string `json:"networkEndpointType,omitempty" tf:"network_endpoint_type,omitempty"`
+
+	// A collection of AllowListedIps and AllowListedVcns for a specific OIC component: global, RT, or DT
+	Runtime []RuntimeInitParameters `json:"runtime,omitempty" tf:"runtime,omitempty"`
 }
 
 type NetworkEndpointDetailsObservation struct {
@@ -609,11 +710,17 @@ type NetworkEndpointDetailsObservation struct {
 	// Virtual Cloud Networks allowed to access this network endpoint.
 	AllowlistedHTTPVcns []AllowlistedHTTPVcnsObservation `json:"allowlistedHttpVcns,omitempty" tf:"allowlisted_http_vcns,omitempty"`
 
+	// A collection of AllowListedIps and AllowListedVcns for a specific OIC component: global, RT, or DT
+	DesignTime []DesignTimeObservation `json:"designTime,omitempty" tf:"design_time,omitempty"`
+
 	// The Integration service's VCN is allow-listed to allow integrations to call back into other integrations
 	IsIntegrationVcnAllowlisted *bool `json:"isIntegrationVcnAllowlisted,omitempty" tf:"is_integration_vcn_allowlisted,omitempty"`
 
 	// The type of network endpoint.
 	NetworkEndpointType *string `json:"networkEndpointType,omitempty" tf:"network_endpoint_type,omitempty"`
+
+	// A collection of AllowListedIps and AllowListedVcns for a specific OIC component: global, RT, or DT
+	Runtime []RuntimeObservation `json:"runtime,omitempty" tf:"runtime,omitempty"`
 }
 
 type NetworkEndpointDetailsParameters struct {
@@ -627,6 +734,10 @@ type NetworkEndpointDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	AllowlistedHTTPVcns []AllowlistedHTTPVcnsParameters `json:"allowlistedHttpVcns,omitempty" tf:"allowlisted_http_vcns,omitempty"`
 
+	// A collection of AllowListedIps and AllowListedVcns for a specific OIC component: global, RT, or DT
+	// +kubebuilder:validation:Optional
+	DesignTime []DesignTimeParameters `json:"designTime,omitempty" tf:"design_time,omitempty"`
+
 	// The Integration service's VCN is allow-listed to allow integrations to call back into other integrations
 	// +kubebuilder:validation:Optional
 	IsIntegrationVcnAllowlisted *bool `json:"isIntegrationVcnAllowlisted,omitempty" tf:"is_integration_vcn_allowlisted,omitempty"`
@@ -634,12 +745,17 @@ type NetworkEndpointDetailsParameters struct {
 	// The type of network endpoint.
 	// +kubebuilder:validation:Optional
 	NetworkEndpointType *string `json:"networkEndpointType" tf:"network_endpoint_type,omitempty"`
+
+	// A collection of AllowListedIps and AllowListedVcns for a specific OIC component: global, RT, or DT
+	// +kubebuilder:validation:Optional
+	Runtime []RuntimeParameters `json:"runtime,omitempty" tf:"runtime,omitempty"`
 }
 
 type PrivateEndpointOutboundConnectionInitParameters struct {
 }
 
 type PrivateEndpointOutboundConnectionObservation struct {
+	IsAllOutboundTrafficPrivate *bool `json:"isAllOutboundTrafficPrivate,omitempty" tf:"is_all_outbound_traffic_private,omitempty"`
 
 	// One or more Network security group Ids. This is an optional argument.
 	// +listType=set
@@ -653,6 +769,67 @@ type PrivateEndpointOutboundConnectionObservation struct {
 }
 
 type PrivateEndpointOutboundConnectionParameters struct {
+}
+
+type RuntimeAllowlistedHTTPVcnsInitParameters struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	// +listType=set
+	AllowlistedIps []*string `json:"allowlistedIps,omitempty" tf:"allowlisted_ips,omitempty"`
+
+	// The Virtual Cloud Network OCID.
+	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+}
+
+type RuntimeAllowlistedHTTPVcnsObservation struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	// +listType=set
+	AllowlistedIps []*string `json:"allowlistedIps,omitempty" tf:"allowlisted_ips,omitempty"`
+
+	// The Virtual Cloud Network OCID.
+	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+}
+
+type RuntimeAllowlistedHTTPVcnsParameters struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	// +kubebuilder:validation:Optional
+	// +listType=set
+	AllowlistedIps []*string `json:"allowlistedIps,omitempty" tf:"allowlisted_ips,omitempty"`
+
+	// The Virtual Cloud Network OCID.
+	// +kubebuilder:validation:Optional
+	ID *string `json:"id" tf:"id,omitempty"`
+}
+
+type RuntimeInitParameters struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	AllowlistedHTTPIps []*string `json:"allowlistedHttpIps,omitempty" tf:"allowlisted_http_ips,omitempty"`
+
+	// Virtual Cloud Networks allowed to access this network endpoint.
+	AllowlistedHTTPVcns []RuntimeAllowlistedHTTPVcnsInitParameters `json:"allowlistedHttpVcns,omitempty" tf:"allowlisted_http_vcns,omitempty"`
+}
+
+type RuntimeObservation struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	AllowlistedHTTPIps []*string `json:"allowlistedHttpIps,omitempty" tf:"allowlisted_http_ips,omitempty"`
+
+	// Virtual Cloud Networks allowed to access this network endpoint.
+	AllowlistedHTTPVcns []RuntimeAllowlistedHTTPVcnsObservation `json:"allowlistedHttpVcns,omitempty" tf:"allowlisted_http_vcns,omitempty"`
+}
+
+type RuntimeParameters struct {
+
+	// Source IP addresses or IP address ranges ingress rules. (ex: "168.122.59.5", "10.20.30.0/26") An invalid IP or CIDR block will result in a 400 response.
+	// +kubebuilder:validation:Optional
+	AllowlistedHTTPIps []*string `json:"allowlistedHttpIps,omitempty" tf:"allowlisted_http_ips,omitempty"`
+
+	// Virtual Cloud Networks allowed to access this network endpoint.
+	// +kubebuilder:validation:Optional
+	AllowlistedHTTPVcns []RuntimeAllowlistedHTTPVcnsParameters `json:"allowlistedHttpVcns,omitempty" tf:"allowlisted_http_vcns,omitempty"`
 }
 
 // IntegrationInstanceSpec defines the desired state of IntegrationInstance

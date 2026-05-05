@@ -12,6 +12,7 @@ import (
 	addon "github.com/oracle/provider-oci/internal/controller/cluster/containerengine/addon"
 	cluster "github.com/oracle/provider-oci/internal/controller/cluster/containerengine/cluster"
 	clustercompletecredentialrotationmanagement "github.com/oracle/provider-oci/internal/controller/cluster/containerengine/clustercompletecredentialrotationmanagement"
+	clusterpublicapiendpointdecommissionmanager "github.com/oracle/provider-oci/internal/controller/cluster/containerengine/clusterpublicapiendpointdecommissionmanager"
 	clusterstartcredentialrotationmanagement "github.com/oracle/provider-oci/internal/controller/cluster/containerengine/clusterstartcredentialrotationmanagement"
 	clusterworkloadmapping "github.com/oracle/provider-oci/internal/controller/cluster/containerengine/clusterworkloadmapping"
 	nodepool "github.com/oracle/provider-oci/internal/controller/cluster/containerengine/nodepool"
@@ -25,6 +26,7 @@ func Setup_containerengine(mgr ctrl.Manager, o controller.Options) error {
 		addon.Setup,
 		cluster.Setup,
 		clustercompletecredentialrotationmanagement.Setup,
+		clusterpublicapiendpointdecommissionmanager.Setup,
 		clusterstartcredentialrotationmanagement.Setup,
 		clusterworkloadmapping.Setup,
 		nodepool.Setup,
@@ -44,6 +46,7 @@ func SetupGated_containerengine(mgr ctrl.Manager, o controller.Options) error {
 		addon.SetupGated,
 		cluster.SetupGated,
 		clustercompletecredentialrotationmanagement.SetupGated,
+		clusterpublicapiendpointdecommissionmanager.SetupGated,
 		clusterstartcredentialrotationmanagement.SetupGated,
 		clusterworkloadmapping.SetupGated,
 		nodepool.SetupGated,

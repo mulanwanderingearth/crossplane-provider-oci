@@ -73,16 +73,16 @@ type ConfigCategoryDetailsCredentialsParameters struct {
 
 type ConfigCategoryDetailsInitParameters struct {
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Products compatible with this Product. Provide products from the list of other products you have created that are compatible with the present one
+	// (Applicable when config_category=PRODUCT) (Updatable) Products compatible with this Product. Provide products from the list of other products you have created that are compatible with the present one. This property is not applicable if isSoftlink is set to true.
 	CompatibleProducts []CompatibleProductsInitParameters `json:"compatibleProducts,omitempty" tf:"compatible_products,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite.
+	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite. This property is not applicable if isSoftlink is set to true.
 	Components []*string `json:"components,omitempty" tf:"components,omitempty"`
 
 	// (Updatable) Category of configuration
 	ConfigCategory *string `json:"configCategory,omitempty" tf:"config_category,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server.
+	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server. This property is not applicable if isSoftlink is set to true.
 	Credentials []ConfigCategoryDetailsCredentialsInitParameters `json:"credentials,omitempty" tf:"credentials,omitempty"`
 
 	// (Updatable) The OCID of the resource.
@@ -110,7 +110,16 @@ type ConfigCategoryDetailsInitParameters struct {
 	// +kubebuilder:validation:Optional
 	InstanceNameSelector *v1.Selector `json:"instanceNameSelector,omitempty" tf:"-"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product.
+	// (Applicable when config_category=PRODUCT) (Updatable) If set true ,compliance policies will be created for softlink product. This property is applicable only if isSoftlink is set to true
+	IsCompliancePolicyRequiredForSoftlink *bool `json:"isCompliancePolicyRequiredForSoftlink,omitempty" tf:"is_compliance_policy_required_for_softlink,omitempty"`
+
+	// (Applicable when config_category=PRODUCT) (Updatable) Specify if the product is softlink product or not
+	IsSoftlink *bool `json:"isSoftlink,omitempty" tf:"is_softlink,omitempty"`
+
+	// (Applicable when config_category=PRODUCT) (Updatable) The OCID of the product that would be the target for the softlink. This property is applicable only if isSoftlink is set to true
+	LinkProductID *string `json:"linkProductId,omitempty" tf:"link_product_id,omitempty"`
+
+	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product. This property is not applicable if isSoftlink is set to true.
 	PatchTypes []PatchTypesInitParameters `json:"patchTypes,omitempty" tf:"patch_types,omitempty"`
 
 	// (Updatable) Products that belong to the stack. For example, Oracle WebLogic and Java for the Oracle Fusion Middleware product stack.
@@ -125,16 +134,16 @@ type ConfigCategoryDetailsInitParameters struct {
 
 type ConfigCategoryDetailsObservation struct {
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Products compatible with this Product. Provide products from the list of other products you have created that are compatible with the present one
+	// (Applicable when config_category=PRODUCT) (Updatable) Products compatible with this Product. Provide products from the list of other products you have created that are compatible with the present one. This property is not applicable if isSoftlink is set to true.
 	CompatibleProducts []CompatibleProductsObservation `json:"compatibleProducts,omitempty" tf:"compatible_products,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite.
+	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite. This property is not applicable if isSoftlink is set to true.
 	Components []*string `json:"components,omitempty" tf:"components,omitempty"`
 
 	// (Updatable) Category of configuration
 	ConfigCategory *string `json:"configCategory,omitempty" tf:"config_category,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server.
+	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server. This property is not applicable if isSoftlink is set to true.
 	Credentials []ConfigCategoryDetailsCredentialsObservation `json:"credentials,omitempty" tf:"credentials,omitempty"`
 
 	// (Updatable) The OCID of the resource.
@@ -143,7 +152,16 @@ type ConfigCategoryDetailsObservation struct {
 	// (Applicable when config_category=SELF_HOSTED_INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	InstanceName *string `json:"instanceName,omitempty" tf:"instance_name,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product.
+	// (Applicable when config_category=PRODUCT) (Updatable) If set true ,compliance policies will be created for softlink product. This property is applicable only if isSoftlink is set to true
+	IsCompliancePolicyRequiredForSoftlink *bool `json:"isCompliancePolicyRequiredForSoftlink,omitempty" tf:"is_compliance_policy_required_for_softlink,omitempty"`
+
+	// (Applicable when config_category=PRODUCT) (Updatable) Specify if the product is softlink product or not
+	IsSoftlink *bool `json:"isSoftlink,omitempty" tf:"is_softlink,omitempty"`
+
+	// (Applicable when config_category=PRODUCT) (Updatable) The OCID of the product that would be the target for the softlink. This property is applicable only if isSoftlink is set to true
+	LinkProductID *string `json:"linkProductId,omitempty" tf:"link_product_id,omitempty"`
+
+	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product. This property is not applicable if isSoftlink is set to true.
 	PatchTypes []PatchTypesObservation `json:"patchTypes,omitempty" tf:"patch_types,omitempty"`
 
 	// (Updatable) Products that belong to the stack. For example, Oracle WebLogic and Java for the Oracle Fusion Middleware product stack.
@@ -158,11 +176,11 @@ type ConfigCategoryDetailsObservation struct {
 
 type ConfigCategoryDetailsParameters struct {
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Products compatible with this Product. Provide products from the list of other products you have created that are compatible with the present one
+	// (Applicable when config_category=PRODUCT) (Updatable) Products compatible with this Product. Provide products from the list of other products you have created that are compatible with the present one. This property is not applicable if isSoftlink is set to true.
 	// +kubebuilder:validation:Optional
 	CompatibleProducts []CompatibleProductsParameters `json:"compatibleProducts,omitempty" tf:"compatible_products,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite.
+	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite. This property is not applicable if isSoftlink is set to true.
 	// +kubebuilder:validation:Optional
 	Components []*string `json:"components,omitempty" tf:"components,omitempty"`
 
@@ -170,7 +188,7 @@ type ConfigCategoryDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	ConfigCategory *string `json:"configCategory" tf:"config_category,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server.
+	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server. This property is not applicable if isSoftlink is set to true.
 	// +kubebuilder:validation:Optional
 	Credentials []ConfigCategoryDetailsCredentialsParameters `json:"credentials,omitempty" tf:"credentials,omitempty"`
 
@@ -201,7 +219,19 @@ type ConfigCategoryDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	InstanceNameSelector *v1.Selector `json:"instanceNameSelector,omitempty" tf:"-"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product.
+	// (Applicable when config_category=PRODUCT) (Updatable) If set true ,compliance policies will be created for softlink product. This property is applicable only if isSoftlink is set to true
+	// +kubebuilder:validation:Optional
+	IsCompliancePolicyRequiredForSoftlink *bool `json:"isCompliancePolicyRequiredForSoftlink,omitempty" tf:"is_compliance_policy_required_for_softlink,omitempty"`
+
+	// (Applicable when config_category=PRODUCT) (Updatable) Specify if the product is softlink product or not
+	// +kubebuilder:validation:Optional
+	IsSoftlink *bool `json:"isSoftlink,omitempty" tf:"is_softlink,omitempty"`
+
+	// (Applicable when config_category=PRODUCT) (Updatable) The OCID of the product that would be the target for the softlink. This property is applicable only if isSoftlink is set to true
+	// +kubebuilder:validation:Optional
+	LinkProductID *string `json:"linkProductId,omitempty" tf:"link_product_id,omitempty"`
+
+	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product. This property is not applicable if isSoftlink is set to true.
 	// +kubebuilder:validation:Optional
 	PatchTypes []PatchTypesParameters `json:"patchTypes,omitempty" tf:"patch_types,omitempty"`
 
@@ -425,13 +455,13 @@ type SubCategoryDetailsCredentialsParameters struct {
 
 type SubCategoryDetailsInitParameters struct {
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite.
+	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite. This property is not applicable if isSoftlink is set to true.
 	Components []*string `json:"components,omitempty" tf:"components,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server.
+	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server. This property is not applicable if isSoftlink is set to true.
 	Credentials []SubCategoryDetailsCredentialsInitParameters `json:"credentials,omitempty" tf:"credentials,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product.
+	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product. This property is not applicable if isSoftlink is set to true.
 	PatchTypes []SubCategoryDetailsPatchTypesInitParameters `json:"patchTypes,omitempty" tf:"patch_types,omitempty"`
 
 	// (Updatable) SubCategory of Product Stack.
@@ -443,13 +473,13 @@ type SubCategoryDetailsInitParameters struct {
 
 type SubCategoryDetailsObservation struct {
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite.
+	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite. This property is not applicable if isSoftlink is set to true.
 	Components []*string `json:"components,omitempty" tf:"components,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server.
+	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server. This property is not applicable if isSoftlink is set to true.
 	Credentials []SubCategoryDetailsCredentialsObservation `json:"credentials,omitempty" tf:"credentials,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product.
+	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product. This property is not applicable if isSoftlink is set to true.
 	PatchTypes []SubCategoryDetailsPatchTypesObservation `json:"patchTypes,omitempty" tf:"patch_types,omitempty"`
 
 	// (Updatable) SubCategory of Product Stack.
@@ -461,15 +491,15 @@ type SubCategoryDetailsObservation struct {
 
 type SubCategoryDetailsParameters struct {
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite.
+	// (Applicable when config_category=PRODUCT) (Updatable) Various components of the Product. For example:The administration server or node manager can be the components of the Oracle WebLogic Application server. Forms server or concurrent manager can be the components of the Oracle E-Business Suite. This property is not applicable if isSoftlink is set to true.
 	// +kubebuilder:validation:Optional
 	Components []*string `json:"components,omitempty" tf:"components,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server.
+	// (Applicable when config_category=PRODUCT) (Updatable) OCID for the Credential name to be associated with the Product. These are useful for target discovery or lifecycle management activities, for example, Oracle WebLogic admin credentials for Oracle WebLogic Application server. This property is not applicable if isSoftlink is set to true.
 	// +kubebuilder:validation:Optional
 	Credentials []SubCategoryDetailsCredentialsParameters `json:"credentials,omitempty" tf:"credentials,omitempty"`
 
-	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product.
+	// (Applicable when config_category=PRODUCT) (Updatable) Patch Types associated with this Product. This property is not applicable if isSoftlink is set to true.
 	// +kubebuilder:validation:Optional
 	PatchTypes []SubCategoryDetailsPatchTypesParameters `json:"patchTypes,omitempty" tf:"patch_types,omitempty"`
 

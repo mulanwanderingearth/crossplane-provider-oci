@@ -108,6 +108,110 @@ func (mg *LogAnalyticsEntity) ResolveReferences( // ResolveReferences of this Lo
 	return nil
 }
 
+// ResolveReferences of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("loganalytics.oci.m.upbound.io", "v1alpha1", "LogAnalyticsEntity", "LogAnalyticsEntityList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.LogAnalyticsEntityID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.LogAnalyticsEntityIDRef,
+			Selector:     mg.Spec.ForProvider.LogAnalyticsEntityIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.LogAnalyticsEntityID")
+	}
+	mg.Spec.ForProvider.LogAnalyticsEntityID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.LogAnalyticsEntityIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("loganalytics.oci.m.upbound.io", "v1alpha1", "LogAnalyticsEntity", "LogAnalyticsEntityList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.LogAnalyticsEntityID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.LogAnalyticsEntityIDRef,
+			Selector:     mg.Spec.InitProvider.LogAnalyticsEntityIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.LogAnalyticsEntityID")
+	}
+	mg.Spec.InitProvider.LogAnalyticsEntityID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.LogAnalyticsEntityIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("loganalytics.oci.m.upbound.io", "v1alpha1", "LogAnalyticsEntity", "LogAnalyticsEntityList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.LogAnalyticsEntityID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.LogAnalyticsEntityIDRef,
+			Selector:     mg.Spec.ForProvider.LogAnalyticsEntityIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.LogAnalyticsEntityID")
+	}
+	mg.Spec.ForProvider.LogAnalyticsEntityID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.LogAnalyticsEntityIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("loganalytics.oci.m.upbound.io", "v1alpha1", "LogAnalyticsEntity", "LogAnalyticsEntityList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.LogAnalyticsEntityID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.LogAnalyticsEntityIDRef,
+			Selector:     mg.Spec.InitProvider.LogAnalyticsEntityIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.LogAnalyticsEntityID")
+	}
+	mg.Spec.InitProvider.LogAnalyticsEntityID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.LogAnalyticsEntityIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this LogAnalyticsLogGroup.
 func (mg *LogAnalyticsLogGroup) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -384,6 +488,138 @@ func (mg *Namespace) ResolveReferences(ctx context.Context, c client.Reader) err
 	return nil
 }
 
+// ResolveReferences of this NamespaceAssociation.
+func (mg *NamespaceAssociation) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("loganalytics.oci.m.upbound.io", "v1alpha1", "LogAnalyticsEntity", "LogAnalyticsEntityList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.EntityID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.EntityIDRef,
+			Selector:     mg.Spec.ForProvider.EntityIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.EntityID")
+	}
+	mg.Spec.ForProvider.EntityID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.EntityIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("loganalytics.oci.m.upbound.io", "v1alpha1", "LogAnalyticsLogGroup", "LogAnalyticsLogGroupList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.LogGroupID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.LogGroupIDRef,
+			Selector:     mg.Spec.ForProvider.LogGroupIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.LogGroupID")
+	}
+	mg.Spec.ForProvider.LogGroupID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.LogGroupIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("loganalytics.oci.m.upbound.io", "v1alpha1", "LogAnalyticsEntity", "LogAnalyticsEntityList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.EntityID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.EntityIDRef,
+			Selector:     mg.Spec.InitProvider.EntityIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.EntityID")
+	}
+	mg.Spec.InitProvider.EntityID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.EntityIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("loganalytics.oci.m.upbound.io", "v1alpha1", "LogAnalyticsLogGroup", "LogAnalyticsLogGroupList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.LogGroupID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.LogGroupIDRef,
+			Selector:     mg.Spec.InitProvider.LogGroupIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.LogGroupID")
+	}
+	mg.Spec.InitProvider.LogGroupID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.LogGroupIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this NamespaceIngestTimeRule.
 func (mg *NamespaceIngestTimeRule) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -550,6 +786,32 @@ func (mg *NamespaceScheduledTask) ResolveReferences(ctx context.Context, c clien
 	var err error
 
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.Action); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.Action[i3].MetricExtraction); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.Action[i3].MetricExtraction[i4].MetricCollections); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("nosql.oci.m.upbound.io", "v1alpha1", "Table", "TableList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableName),
+						Extract:      resource.ExtractParamPath("name", false),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableNameRef,
+						Selector:     mg.Spec.ForProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableNameSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableName")
+				}
+				mg.Spec.ForProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableName = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableNameRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.Action); i3++ {
 		{
 			m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 			if err != nil {
@@ -591,6 +853,32 @@ func (mg *NamespaceScheduledTask) ResolveReferences(ctx context.Context, c clien
 	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
 
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.Action); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.Action[i3].MetricExtraction); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.Action[i3].MetricExtraction[i4].MetricCollections); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("nosql.oci.m.upbound.io", "v1alpha1", "Table", "TableList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableName),
+						Extract:      resource.ExtractParamPath("name", false),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableNameRef,
+						Selector:     mg.Spec.InitProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableNameSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableName")
+				}
+				mg.Spec.InitProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableName = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.Action[i3].MetricExtraction[i4].MetricCollections[i5].QueryTableNameRef = rsp.ResolvedReference
+
+			}
+		}
+	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.Action); i3++ {
 		{
 			m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")

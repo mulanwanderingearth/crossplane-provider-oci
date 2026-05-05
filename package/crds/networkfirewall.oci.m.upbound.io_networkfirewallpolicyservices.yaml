@@ -61,6 +61,10 @@ spec:
             properties:
               forProvider:
                 properties:
+                  description:
+                    description: (Updatable) The description of the service. This
+                      field can be used to add additional info.
+                    type: string
                   name:
                     description: Name of the service
                     type: string
@@ -181,6 +185,10 @@ spec:
                   for example because of an external controller is managing them, like an
                   autoscaler.
                 properties:
+                  description:
+                    description: (Updatable) The description of the service. This
+                      field can be used to add additional info.
+                    type: string
                   name:
                     description: Name of the service
                     type: string
@@ -367,6 +375,10 @@ spec:
             properties:
               atProvider:
                 properties:
+                  description:
+                    description: (Updatable) The description of the service. This
+                      field can be used to add additional info.
+                    type: string
                   id:
                     type: string
                   name:

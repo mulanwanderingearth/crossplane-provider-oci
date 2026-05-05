@@ -882,6 +882,21 @@ spec:
                         dataStorageSizeInGb:
                           description: Initial size of the data volume in GiBs.
                           type: number
+                        databaseConsole:
+                          description: Database console configuration details.
+                          items:
+                            properties:
+                              port:
+                                description: The port on which the database console
+                                  can be accessed. Supported port numbers are 443
+                                  and from 1024 to 65535.
+                                type: number
+                              status:
+                                description: Whether the database console is enabled
+                                  on the DB System.
+                                type: string
+                            type: object
+                          type: array
                         databaseManagement:
                           description: Whether to enable monitoring via the Database
                             Management service.
@@ -956,7 +971,9 @@ spec:
                                   type: string
                                 type: array
                               port:
-                                description: The port the MySQL instance listens on.
+                                description: The port on which the database console
+                                  can be accessed. Supported port numbers are 443
+                                  and from 1024 to 65535.
                                 type: number
                               portX:
                                 description: The network port where to connect to
@@ -971,10 +988,8 @@ spec:
                                   connectors can connect to.
                                 type: string
                               status:
-                                description: The state of the endpoints, as far as
-                                  it can seen from the DB System. There may be some
-                                  inconsistency with the actual state of the MySQL
-                                  service.
+                                description: Whether the database console is enabled
+                                  on the DB System.
                                 type: string
                               statusDetails:
                                 description: Additional information about the current
@@ -1017,6 +1032,27 @@ spec:
                             Read Replica that this model is included in.
                           items:
                             properties:
+                              maintenanceDisabledWindows:
+                                description: Time window during which downtime-inducing
+                                  maintenance shall not be performed. Downtime-free
+                                  maintenance may be performed to apply required security
+                                  patches. At most one configured window is supported.
+                                items:
+                                  properties:
+                                    timeEnd:
+                                      description: The time until when maintenance
+                                        is disabled. Must be set together with timeStart
+                                        and must be after timeStart. as described
+                                        by RFC 3339.
+                                      type: string
+                                    timeStart:
+                                      description: The time from when maintenance
+                                        is disabled. Must be set together with timeEnd
+                                        and must be before timeEnd. as described by
+                                        RFC 3339.
+                                      type: string
+                                  type: object
+                                type: array
                               maintenanceScheduleType:
                                 description: 'The maintenance schedule type of the
                                   DB system. EARLY:   Maintenance schedule follows
@@ -1063,7 +1099,9 @@ spec:
                           type: array
                           x-kubernetes-list-type: set
                         port:
-                          description: The port the MySQL instance listens on.
+                          description: The port on which the database console can
+                            be accessed. Supported port numbers are 443 and from 1024
+                            to 65535.
                           type: number
                         portX:
                           description: The network port where to connect to use this
@@ -1110,7 +1148,9 @@ spec:
                                   the DB System instances.
                                 type: string
                               port:
-                                description: The port the MySQL instance listens on.
+                                description: The port on which the database console
+                                  can be accessed. Supported port numbers are 443
+                                  and from 1024 to 65535.
                                 type: number
                             type: object
                           type: array
@@ -1148,6 +1188,44 @@ spec:
                           description: The OCID of the subnet the DB System is associated
                             with.
                           type: string
+                        telemetryConfiguration:
+                          description: Telemetry configuration details of a DB System
+                            or a read replica.
+                          items:
+                            properties:
+                              logs:
+                                description: Telemetry configuration details for logging.
+                                items:
+                                  properties:
+                                    destination:
+                                      description: Type of destination where MySQL
+                                        telemetry is exposed to.
+                                      type: string
+                                    destinationConfigurations:
+                                      description: List of configuration variables
+                                        for a given destination type.
+                                      items:
+                                        properties:
+                                          key:
+                                            description: Name of the destination configuration
+                                              variable.
+                                            type: string
+                                          value:
+                                            description: Value of the destination
+                                              configuration variable.
+                                            type: string
+                                        type: object
+                                      type: array
+                                    logTypes:
+                                      description: List of MySQL telemetry types that
+                                        can be exposed on a telemetry destination
+                                      items:
+                                        type: string
+                                      type: array
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
                       type: object
                     type: array
                   dbSystemSnapshotSummary:

@@ -41,7 +41,7 @@ type LogAnalyticsObjectCollectionRuleInitParameters struct {
 	// (Updatable) A string that describes the details of the rule. It does not have to be unique, and can be changed. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Updatable) Logging Analytics entity OCID. Associates the processed logs with the given entity .
+	// (Updatable) Log Analytics entity OCID. Associates the processed logs with the given entity .
 	EntityID *string `json:"entityId,omitempty" tf:"entity_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
@@ -54,7 +54,7 @@ type LogAnalyticsObjectCollectionRuleInitParameters struct {
 	// Flag to allow historic collection if poll period overlaps with existing ACTIVE collection rule
 	IsForceHistoricCollection *bool `json:"isForceHistoricCollection,omitempty" tf:"is_force_historic_collection,omitempty"`
 
-	// (Updatable) Logging Analytics Log group OCID to associate the processed logs with.
+	// (Updatable) Log Analytics Log group OCID to associate the processed logs with.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loganalytics/v1alpha1.LogAnalyticsLogGroup
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
@@ -76,7 +76,7 @@ type LogAnalyticsObjectCollectionRuleInitParameters struct {
 	// (Updatable) An optional parameter to indicate from where the logSet to be extracted using logSetExtRegex. Default value is OBJECT_PATH (e.g. /n//b//o/).
 	LogSetKey *string `json:"logSetKey,omitempty" tf:"log_set_key,omitempty"`
 
-	// (Updatable) Name of the Logging Analytics Source to use for the processing.
+	// (Updatable) Name of the Log Analytics Source to use for the processing.
 	LogSourceName *string `json:"logSourceName,omitempty" tf:"log_source_name,omitempty"`
 
 	// Type of files/objects in this object collection rule.
@@ -85,7 +85,7 @@ type LogAnalyticsObjectCollectionRuleInitParameters struct {
 	// A unique name given to the rule. The name must be unique within the tenancy, and cannot be modified.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// (Updatable) When the filters are provided, only the objects matching the filters are picked up for processing. The matchType supported is exact match and accommodates wildcard "*". For more information on filters, see Event Filters.
@@ -122,7 +122,7 @@ type LogAnalyticsObjectCollectionRuleInitParameters struct {
 	// (Updatable) Cursor type used to fetch messages from stream. When the streamCursorType is set to DEFAULT, the existing cursor position will be used if already set by any previous objection collection rule(s) using the same stream.  Otherwise, the behaviour is to consume from the oldest available message in the stream.  When the streamCursorType is set to TRIM_HORIZON, the behaviour is to start consuming from the oldest available message in the stream.  When the streamCursorType is set to LATEST, the behavior is to start consuming messages that were published after the creation of this rule.  When the streamCursorType is set to AT_TIME, the behavior is to start consuming from a given time.  For more information on cursor types, see Stream Consumer Groups.
 	StreamCursorType *string `json:"streamCursorType,omitempty" tf:"stream_cursor_type,omitempty"`
 
-	// (Updatable) A Stream OCID is required for Object Collection rules of type LIVE or HISTORIC_LIVE, which will be used by Logging Analytics while creating Event Rule and consume the event notifications created by the Object Storage.
+	// (Updatable) A Stream OCID is required for Object Collection rules of type LIVE or HISTORIC_LIVE, which will be used by Log Analytics while creating Event Rule and consume the event notifications created by the Object Storage.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/streaming/v1alpha1.Stream
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	StreamID *string `json:"streamId,omitempty" tf:"stream_id,omitempty"`
@@ -157,7 +157,7 @@ type LogAnalyticsObjectCollectionRuleObservation struct {
 	// (Updatable) A string that describes the details of the rule. It does not have to be unique, and can be changed. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Updatable) Logging Analytics entity OCID. Associates the processed logs with the given entity .
+	// (Updatable) Log Analytics entity OCID. Associates the processed logs with the given entity .
 	EntityID *string `json:"entityId,omitempty" tf:"entity_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
@@ -179,7 +179,7 @@ type LogAnalyticsObjectCollectionRuleObservation struct {
 	// A detailed status of the life cycle state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
-	// (Updatable) Logging Analytics Log group OCID to associate the processed logs with.
+	// (Updatable) Log Analytics Log group OCID to associate the processed logs with.
 	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
 
 	// (Updatable) The logSet to be associated with the processed logs. The logSet feature can be used by customers with high volume of data  and this feature has to be enabled for a given tenancy prior to its usage. When logSetExtRegex value is provided, it will take precedence over this logSet value and logSet will be computed dynamically  using logSetKey and logSetExtRegex.
@@ -191,7 +191,7 @@ type LogAnalyticsObjectCollectionRuleObservation struct {
 	// (Updatable) An optional parameter to indicate from where the logSet to be extracted using logSetExtRegex. Default value is OBJECT_PATH (e.g. /n//b//o/).
 	LogSetKey *string `json:"logSetKey,omitempty" tf:"log_set_key,omitempty"`
 
-	// (Updatable) Name of the Logging Analytics Source to use for the processing.
+	// (Updatable) Name of the Log Analytics Source to use for the processing.
 	LogSourceName *string `json:"logSourceName,omitempty" tf:"log_source_name,omitempty"`
 
 	// Type of files/objects in this object collection rule.
@@ -200,7 +200,7 @@ type LogAnalyticsObjectCollectionRuleObservation struct {
 	// A unique name given to the rule. The name must be unique within the tenancy, and cannot be modified.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// (Updatable) When the filters are provided, only the objects matching the filters are picked up for processing. The matchType supported is exact match and accommodates wildcard "*". For more information on filters, see Event Filters.
@@ -230,7 +230,7 @@ type LogAnalyticsObjectCollectionRuleObservation struct {
 	// (Updatable) Cursor type used to fetch messages from stream. When the streamCursorType is set to DEFAULT, the existing cursor position will be used if already set by any previous objection collection rule(s) using the same stream.  Otherwise, the behaviour is to consume from the oldest available message in the stream.  When the streamCursorType is set to TRIM_HORIZON, the behaviour is to start consuming from the oldest available message in the stream.  When the streamCursorType is set to LATEST, the behavior is to start consuming messages that were published after the creation of this rule.  When the streamCursorType is set to AT_TIME, the behavior is to start consuming from a given time.  For more information on cursor types, see Stream Consumer Groups.
 	StreamCursorType *string `json:"streamCursorType,omitempty" tf:"stream_cursor_type,omitempty"`
 
-	// (Updatable) A Stream OCID is required for Object Collection rules of type LIVE or HISTORIC_LIVE, which will be used by Logging Analytics while creating Event Rule and consume the event notifications created by the Object Storage.
+	// (Updatable) A Stream OCID is required for Object Collection rules of type LIVE or HISTORIC_LIVE, which will be used by Log Analytics while creating Event Rule and consume the event notifications created by the Object Storage.
 	StreamID *string `json:"streamId,omitempty" tf:"stream_id,omitempty"`
 
 	// The time when this rule was created. An RFC3339 formatted datetime string.
@@ -275,7 +275,7 @@ type LogAnalyticsObjectCollectionRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Updatable) Logging Analytics entity OCID. Associates the processed logs with the given entity .
+	// (Updatable) Log Analytics entity OCID. Associates the processed logs with the given entity .
 	// +kubebuilder:validation:Optional
 	EntityID *string `json:"entityId,omitempty" tf:"entity_id,omitempty"`
 
@@ -292,7 +292,7 @@ type LogAnalyticsObjectCollectionRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	IsForceHistoricCollection *bool `json:"isForceHistoricCollection,omitempty" tf:"is_force_historic_collection,omitempty"`
 
-	// (Updatable) Logging Analytics Log group OCID to associate the processed logs with.
+	// (Updatable) Log Analytics Log group OCID to associate the processed logs with.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loganalytics/v1alpha1.LogAnalyticsLogGroup
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -318,7 +318,7 @@ type LogAnalyticsObjectCollectionRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	LogSetKey *string `json:"logSetKey,omitempty" tf:"log_set_key,omitempty"`
 
-	// (Updatable) Name of the Logging Analytics Source to use for the processing.
+	// (Updatable) Name of the Log Analytics Source to use for the processing.
 	// +kubebuilder:validation:Optional
 	LogSourceName *string `json:"logSourceName,omitempty" tf:"log_source_name,omitempty"`
 
@@ -330,7 +330,7 @@ type LogAnalyticsObjectCollectionRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
@@ -376,7 +376,7 @@ type LogAnalyticsObjectCollectionRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	StreamCursorType *string `json:"streamCursorType,omitempty" tf:"stream_cursor_type,omitempty"`
 
-	// (Updatable) A Stream OCID is required for Object Collection rules of type LIVE or HISTORIC_LIVE, which will be used by Logging Analytics while creating Event Rule and consume the event notifications created by the Object Storage.
+	// (Updatable) A Stream OCID is required for Object Collection rules of type LIVE or HISTORIC_LIVE, which will be used by Log Analytics while creating Event Rule and consume the event notifications created by the Object Storage.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/streaming/v1alpha1.Stream
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional

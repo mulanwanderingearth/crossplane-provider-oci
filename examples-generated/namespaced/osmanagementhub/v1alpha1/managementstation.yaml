@@ -9,6 +9,7 @@ metadata:
   namespace: upbound-system
 spec:
   forProvider:
+    archType: ${var.management_station_arch_type}
     compartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: example
@@ -26,6 +27,7 @@ spec:
       port: ${var.management_station_mirror_port}
       sslcert: ${var.management_station_mirror_sslcert}
       sslport: ${var.management_station_mirror_sslport}
+    osFamily: ${var.management_station_os_family}
     proxy:
     - forward: ${var.management_station_proxy_forward}
       hosts: ${var.management_station_proxy_hosts}

@@ -175,7 +175,7 @@ spec:
                           type: number
                         intervalInSeconds:
                           description: (Applicable when data_source_feed_provider=SCHEDULEDQUERY)
-                            (Updatable) Interval in minutes which query is run periodically.
+                            (Updatable) Interval in seconds which query is run periodically.
                           type: number
                         loggingQueryDetails:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
@@ -197,7 +197,7 @@ spec:
                           type: string
                         operator:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                            (Updatable) Operator used in data source
+                            (Updatable) DEPRECATED - Operator used in data source
                           type: string
                         query:
                           description: (Updatable) The continuous query expression
@@ -205,12 +205,13 @@ spec:
                           type: string
                         queryStartTime:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                            (Updatable) Start policy for continuous query
+                            (Updatable) DEPRECATED - Start policy for continuous query
                           items:
                             properties:
                               queryStartTime:
                                 description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                                  (Updatable) Start policy for continuous query
+                                  (Updatable) DEPRECATED - Start policy for continuous
+                                  query
                                 type: string
                               startPolicyType:
                                 description: (Updatable) Start policy delay timing
@@ -249,9 +250,9 @@ spec:
                           type: array
                         threshold:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                            (Updatable) The integer value that must be exceeded, fall
-                            below or equal to (depending on the operator), for the
-                            query result to trigger an event
+                            (Updatable) DEPRECATED - The integer value that must be
+                            exceeded, fall below or equal to (depending on the operator),
+                            for the query result to trigger an event
                           type: number
                       type: object
                     type: array
@@ -396,7 +397,7 @@ spec:
                           type: number
                         intervalInSeconds:
                           description: (Applicable when data_source_feed_provider=SCHEDULEDQUERY)
-                            (Updatable) Interval in minutes which query is run periodically.
+                            (Updatable) Interval in seconds which query is run periodically.
                           type: number
                         loggingQueryDetails:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
@@ -418,7 +419,7 @@ spec:
                           type: string
                         operator:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                            (Updatable) Operator used in data source
+                            (Updatable) DEPRECATED - Operator used in data source
                           type: string
                         query:
                           description: (Updatable) The continuous query expression
@@ -426,12 +427,13 @@ spec:
                           type: string
                         queryStartTime:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                            (Updatable) Start policy for continuous query
+                            (Updatable) DEPRECATED - Start policy for continuous query
                           items:
                             properties:
                               queryStartTime:
                                 description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                                  (Updatable) Start policy for continuous query
+                                  (Updatable) DEPRECATED - Start policy for continuous
+                                  query
                                 type: string
                               startPolicyType:
                                 description: (Updatable) Start policy delay timing
@@ -470,9 +472,9 @@ spec:
                           type: array
                         threshold:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                            (Updatable) The integer value that must be exceeded, fall
-                            below or equal to (depending on the operator), for the
-                            query result to trigger an event
+                            (Updatable) DEPRECATED - The integer value that must be
+                            exceeded, fall below or equal to (depending on the operator),
+                            for the query result to trigger an event
                           type: number
                       type: object
                     type: array
@@ -630,7 +632,7 @@ spec:
                           type: number
                         intervalInSeconds:
                           description: (Applicable when data_source_feed_provider=SCHEDULEDQUERY)
-                            (Updatable) Interval in minutes which query is run periodically.
+                            (Updatable) Interval in seconds which query is run periodically.
                           type: number
                         loggingQueryDetails:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
@@ -652,7 +654,7 @@ spec:
                           type: string
                         operator:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                            (Updatable) Operator used in data source
+                            (Updatable) DEPRECATED - Operator used in data source
                           type: string
                         query:
                           description: (Updatable) The continuous query expression
@@ -660,12 +662,13 @@ spec:
                           type: string
                         queryStartTime:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                            (Updatable) Start policy for continuous query
+                            (Updatable) DEPRECATED - Start policy for continuous query
                           items:
                             properties:
                               queryStartTime:
                                 description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                                  (Updatable) Start policy for continuous query
+                                  (Updatable) DEPRECATED - Start policy for continuous
+                                  query
                                 type: string
                               startPolicyType:
                                 description: (Updatable) Start policy delay timing
@@ -704,9 +707,9 @@ spec:
                           type: array
                         threshold:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
-                            (Updatable) The integer value that must be exceeded, fall
-                            below or equal to (depending on the operator), for the
-                            query result to trigger an event
+                            (Updatable) DEPRECATED - The integer value that must be
+                            exceeded, fall below or equal to (depending on the operator),
+                            for the query result to trigger an event
                           type: number
                       type: object
                     type: array

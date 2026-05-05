@@ -172,9 +172,9 @@ spec:
                     type: string
                   endDate:
                     description: (Updatable) The date when the one-time budget concludes.
-                      For example, 2023-03-23. The date-time format conforms to RFC
-                      3339, and will be truncated to the starting point of the date
-                      provided after being converted to UTC time.
+                      For example, 2023-08-12T16:01:19.847222+05:30. The date-time
+                      format conforms to RFC 3339, and will be truncated to the starting
+                      point of the date provided after being converted to UTC time.
                     type: string
                   freeformTags:
                     additionalProperties:
@@ -195,10 +195,18 @@ spec:
                     type: string
                   startDate:
                     description: (Updatable) The date when the one-time budget begins.
-                      For example, 2023-03-23. The date-time format conforms to RFC
-                      3339, and will be truncated to the starting point of the date
-                      provided after being converted to UTC time.
+                      For example, 2023-07-12T16:01:19.847222+05:30. The date-time
+                      format conforms to RFC 3339, and will be truncated to the starting
+                      point of the date provided after being converted to UTC time.
                     type: string
+                  systemTags:
+                    additionalProperties:
+                      type: string
+                    description: '(Updatable) Usage of system tag keys. These predefined
+                      keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
+                      "true"}'
+                    type: object
+                    x-kubernetes-map-type: granular
                   targetCompartmentId:
                     description: This is DEPRECATED. Set the target compartment ID
                       in targets instead.
@@ -424,9 +432,9 @@ spec:
                     type: string
                   endDate:
                     description: (Updatable) The date when the one-time budget concludes.
-                      For example, 2023-03-23. The date-time format conforms to RFC
-                      3339, and will be truncated to the starting point of the date
-                      provided after being converted to UTC time.
+                      For example, 2023-08-12T16:01:19.847222+05:30. The date-time
+                      format conforms to RFC 3339, and will be truncated to the starting
+                      point of the date provided after being converted to UTC time.
                     type: string
                   freeformTags:
                     additionalProperties:
@@ -447,10 +455,18 @@ spec:
                     type: string
                   startDate:
                     description: (Updatable) The date when the one-time budget begins.
-                      For example, 2023-03-23. The date-time format conforms to RFC
-                      3339, and will be truncated to the starting point of the date
-                      provided after being converted to UTC time.
+                      For example, 2023-07-12T16:01:19.847222+05:30. The date-time
+                      format conforms to RFC 3339, and will be truncated to the starting
+                      point of the date provided after being converted to UTC time.
                     type: string
+                  systemTags:
+                    additionalProperties:
+                      type: string
+                    description: '(Updatable) Usage of system tag keys. These predefined
+                      keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
+                      "true"}'
+                    type: object
+                    x-kubernetes-map-type: granular
                   targetCompartmentId:
                     description: This is DEPRECATED. Set the target compartment ID
                       in targets instead.
@@ -662,9 +678,9 @@ spec:
                     type: string
                   endDate:
                     description: (Updatable) The date when the one-time budget concludes.
-                      For example, 2023-03-23. The date-time format conforms to RFC
-                      3339, and will be truncated to the starting point of the date
-                      provided after being converted to UTC time.
+                      For example, 2023-08-12T16:01:19.847222+05:30. The date-time
+                      format conforms to RFC 3339, and will be truncated to the starting
+                      point of the date provided after being converted to UTC time.
                     type: string
                   forecastedSpend:
                     description: The forecasted spend in currency by the end of the
@@ -692,13 +708,21 @@ spec:
                     type: string
                   startDate:
                     description: (Updatable) The date when the one-time budget begins.
-                      For example, 2023-03-23. The date-time format conforms to RFC
-                      3339, and will be truncated to the starting point of the date
-                      provided after being converted to UTC time.
+                      For example, 2023-07-12T16:01:19.847222+05:30. The date-time
+                      format conforms to RFC 3339, and will be truncated to the starting
+                      point of the date provided after being converted to UTC time.
                     type: string
                   state:
                     description: The current state of the budget.
                     type: string
+                  systemTags:
+                    additionalProperties:
+                      type: string
+                    description: '(Updatable) Usage of system tag keys. These predefined
+                      keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
+                      "true"}'
+                    type: object
+                    x-kubernetes-map-type: granular
                   targetCompartmentId:
                     description: This is DEPRECATED. Set the target compartment ID
                       in targets instead.

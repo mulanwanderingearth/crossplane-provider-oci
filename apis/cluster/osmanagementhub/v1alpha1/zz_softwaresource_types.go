@@ -278,7 +278,10 @@ type SoftwareSourceInitParameters struct {
 	// (Applicable when software_source_type=PRIVATE | THIRD_PARTY) (Updatable) Whether SSL validation needs to be turned on
 	IsSSLVerifyEnabled *bool `json:"isSslVerifyEnabled,omitempty" tf:"is_ssl_verify_enabled,omitempty"`
 
-	// The OCID of the vendor software source in the root compartment that is being replicated.
+	// (Applicable when software_source_type=VENDOR) The display name of the software source to be replicated
+	OriginDisplayName *string `json:"originDisplayName,omitempty" tf:"origin_display_name,omitempty"`
+
+	// (Applicable when software_source_type=VENDOR) The OCID of the vendor software source in the root compartment that is being replicated.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/osmanagementhub/v1alpha1.SoftwareSource
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	OriginSoftwareSourceID *string `json:"originSoftwareSourceId,omitempty" tf:"origin_software_source_id,omitempty"`
@@ -386,7 +389,10 @@ type SoftwareSourceObservation struct {
 	// (Applicable when software_source_type=PRIVATE | THIRD_PARTY) (Updatable) Whether SSL validation needs to be turned on
 	IsSSLVerifyEnabled *bool `json:"isSslVerifyEnabled,omitempty" tf:"is_ssl_verify_enabled,omitempty"`
 
-	// The OCID of the vendor software source in the root compartment that is being replicated.
+	// (Applicable when software_source_type=VENDOR) The display name of the software source to be replicated
+	OriginDisplayName *string `json:"originDisplayName,omitempty" tf:"origin_display_name,omitempty"`
+
+	// (Applicable when software_source_type=VENDOR) The OCID of the vendor software source in the root compartment that is being replicated.
 	OriginSoftwareSourceID *string `json:"originSoftwareSourceId,omitempty" tf:"origin_software_source_id,omitempty"`
 
 	// The OS family for the third-party software source.
@@ -513,7 +519,11 @@ type SoftwareSourceParameters struct {
 	// +kubebuilder:validation:Optional
 	IsSSLVerifyEnabled *bool `json:"isSslVerifyEnabled,omitempty" tf:"is_ssl_verify_enabled,omitempty"`
 
-	// The OCID of the vendor software source in the root compartment that is being replicated.
+	// (Applicable when software_source_type=VENDOR) The display name of the software source to be replicated
+	// +kubebuilder:validation:Optional
+	OriginDisplayName *string `json:"originDisplayName,omitempty" tf:"origin_display_name,omitempty"`
+
+	// (Applicable when software_source_type=VENDOR) The OCID of the vendor software source in the root compartment that is being replicated.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/osmanagementhub/v1alpha1.SoftwareSource
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional

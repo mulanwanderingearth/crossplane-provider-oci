@@ -44,12 +44,32 @@ spec:
         namespace: ${var.tool_tool_config_database_schema_namespace}
         prefix: ${var.tool_tool_config_database_schema_prefix}
       dialect: ${var.tool_tool_config_dialect}
+      embeddingLlmCustomization:
+      - instruction: ${var.tool_tool_config_embedding_llm_customization_instruction}
+        llmHyperParameters: ${var.tool_tool_config_embedding_llm_customization_llm_hyper_parameters}
+        llmSelection:
+        - endpointIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_endpoint
+          llmSelectionType: ${var.tool_tool_config_embedding_llm_customization_llm_selection_llm_selection_type}
+          modelIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_model
       function:
       - description: ${var.tool_tool_config_function_description}
         name: ${var.tool_tool_config_function_name}
         parameters: ${var.tool_tool_config_function_parameters}
       generationLlmCustomization:
       - instruction: ${var.tool_tool_config_generation_llm_customization_instruction}
+        llmHyperParameters: ${var.tool_tool_config_generation_llm_customization_llm_hyper_parameters}
+        llmSelection:
+        - endpointIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_endpoint
+          llmSelectionType: ${var.tool_tool_config_generation_llm_customization_llm_selection_llm_selection_type}
+          modelIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_model
       httpEndpointAuthConfig:
       - httpEndpointAuthSources:
         - httpEndpointAuthScope: ${var.tool_tool_config_http_endpoint_auth_config_http_endpoint_auth_sources_http_endpoint_auth_scope}
@@ -76,6 +96,29 @@ spec:
           matchLabels:
             testing.upbound.io/example-name: test_knowledge_base
       modelSize: ${var.tool_tool_config_model_size}
+      reasoningLlmCustomization:
+      - instruction: ${var.tool_tool_config_reasoning_llm_customization_instruction}
+        llmHyperParameters: ${var.tool_tool_config_reasoning_llm_customization_llm_hyper_parameters}
+        llmSelection:
+        - endpointIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_endpoint
+          llmSelectionType: ${var.tool_tool_config_reasoning_llm_customization_llm_selection_llm_selection_type}
+          modelIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_model
+      rerankingLlmCustomization:
+      - instruction: ${var.tool_tool_config_reranking_llm_customization_instruction}
+        llmHyperParameters: ${var.tool_tool_config_reranking_llm_customization_llm_hyper_parameters}
+        llmSelection:
+        - endpointIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_endpoint
+          llmSelectionType: ${var.tool_tool_config_reranking_llm_customization_llm_selection_llm_selection_type}
+          modelIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_model
+      runtimeVersion: ${var.tool_tool_config_runtime_version}
       shouldEnableSelfCorrection: ${var.tool_tool_config_should_enable_self_correction}
       shouldEnableSqlExecution: ${var.tool_tool_config_should_enable_sql_execution}
       subnetIdSelector:

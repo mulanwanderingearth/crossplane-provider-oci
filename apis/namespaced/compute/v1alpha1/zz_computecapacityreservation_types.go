@@ -202,6 +202,8 @@ type InstanceReservationConfigsInstanceShapeConfigInitParameters struct {
 
 	// (Updatable) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+
+	ResourceManagement *string `json:"resourceManagement,omitempty" tf:"resource_management,omitempty"`
 }
 
 type InstanceReservationConfigsInstanceShapeConfigObservation struct {
@@ -211,6 +213,8 @@ type InstanceReservationConfigsInstanceShapeConfigObservation struct {
 
 	// (Updatable) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+
+	ResourceManagement *string `json:"resourceManagement,omitempty" tf:"resource_management,omitempty"`
 }
 
 type InstanceReservationConfigsInstanceShapeConfigParameters struct {
@@ -222,6 +226,9 @@ type InstanceReservationConfigsInstanceShapeConfigParameters struct {
 	// (Updatable) The total number of OCPUs available to the instance.
 	// +kubebuilder:validation:Optional
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	ResourceManagement *string `json:"resourceManagement,omitempty" tf:"resource_management,omitempty"`
 }
 
 type InstanceReservationConfigsObservation struct {

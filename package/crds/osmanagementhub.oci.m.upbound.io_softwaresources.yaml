@@ -457,9 +457,14 @@ spec:
                     description: (Applicable when software_source_type=PRIVATE | THIRD_PARTY)
                       (Updatable) Whether SSL validation needs to be turned on
                     type: boolean
+                  originDisplayName:
+                    description: (Applicable when software_source_type=VENDOR) The
+                      display name of the software source to be replicated
+                    type: string
                   originSoftwareSourceId:
-                    description: The OCID of the vendor software source in the root
-                      compartment that is being replicated.
+                    description: (Applicable when software_source_type=VENDOR) The
+                      OCID of the vendor software source in the root compartment that
+                      is being replicated.
                     type: string
                   originSoftwareSourceIdRef:
                     description: Reference to a SoftwareSource in osmanagementhub
@@ -994,9 +999,14 @@ spec:
                     description: (Applicable when software_source_type=PRIVATE | THIRD_PARTY)
                       (Updatable) Whether SSL validation needs to be turned on
                     type: boolean
+                  originDisplayName:
+                    description: (Applicable when software_source_type=VENDOR) The
+                      display name of the software source to be replicated
+                    type: string
                   originSoftwareSourceId:
-                    description: The OCID of the vendor software source in the root
-                      compartment that is being replicated.
+                    description: (Applicable when software_source_type=VENDOR) The
+                      OCID of the vendor software source in the root compartment that
+                      is being replicated.
                     type: string
                   originSoftwareSourceIdRef:
                     description: Reference to a SoftwareSource in osmanagementhub
@@ -1368,9 +1378,14 @@ spec:
                     description: (Applicable when software_source_type=PRIVATE | THIRD_PARTY)
                       (Updatable) Whether SSL validation needs to be turned on
                     type: boolean
+                  originDisplayName:
+                    description: (Applicable when software_source_type=VENDOR) The
+                      display name of the software source to be replicated
+                    type: string
                   originSoftwareSourceId:
-                    description: The OCID of the vendor software source in the root
-                      compartment that is being replicated.
+                    description: (Applicable when software_source_type=VENDOR) The
+                      OCID of the vendor software source in the root compartment that
+                      is being replicated.
                     type: string
                   osFamily:
                     description: The OS family for the third-party software source.

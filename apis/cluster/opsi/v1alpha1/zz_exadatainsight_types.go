@@ -13,6 +13,24 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
 )
 
+type ChargebackPlanDetailsInitParameters struct {
+}
+
+type ChargebackPlanDetailsObservation struct {
+
+	// OCID of OPSI Chargeback plan resource.
+	PlanID *string `json:"planId,omitempty" tf:"plan_id,omitempty"`
+
+	// Chargeback Plan type of the chargeback entity. For an Exadata it can be WEIGHTED_ALLOCATION, EQUAL_ALLOCATION, UNUSED_ALLOCATION.
+	PlanType *string `json:"planType,omitempty" tf:"plan_type,omitempty"`
+
+	// The date and time the chargeback plan was enabled on the resource, in the format defined by RFC3339.
+	TimeEnabled *string `json:"timeEnabled,omitempty" tf:"time_enabled,omitempty"`
+}
+
+type ChargebackPlanDetailsParameters struct {
+}
+
 type ConnectionDetailsHostsInitParameters struct {
 
 	// (Applicable when entity_source=PE_COMANAGED_EXADATA) Host IP used for connection requests for Cloud DB resource.
@@ -101,6 +119,9 @@ type ExadataInsightInitParameters struct {
 
 type ExadataInsightObservation struct {
 
+	// Object containing chargeback plan details
+	ChargebackPlanDetails []ChargebackPlanDetailsObservation `json:"chargebackPlanDetails,omitempty" tf:"chargeback_plan_details,omitempty"`
+
 	// (Updatable) Compartment Identifier of Exadata insight
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
@@ -172,6 +193,9 @@ type ExadataInsightObservation struct {
 
 	// (Updatable) Status of the resource. Example: "ENABLED", "DISABLED". Resource can be either enabled or disabled by updating the value of status field to either "ENABLED" or "DISABLED"
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+
+	// A message describing the status of the Exadata Resource. For example, it can be used to provide actionable information about the policies needed to access the Exadata Resource.
+	StatusDetails *string `json:"statusDetails,omitempty" tf:"status_details,omitempty"`
 
 	// (Applicable when entity_source=MACS_MANAGED_CLOUD_EXADATA | PE_COMANAGED_EXADATA) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +mapType=granular

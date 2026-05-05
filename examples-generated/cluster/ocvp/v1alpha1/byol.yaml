@@ -1,0 +1,24 @@
+apiVersion: ocvp.oci.upbound.io/v1alpha1
+kind: Byol
+metadata:
+  annotations:
+    meta.upbound.io/example-id: ocvp/v1alpha1/byol
+  labels:
+    testing.upbound.io/example-name: test_byol
+  name: test-byol
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.byol_description}
+    displayName: ${var.byol_display_name}
+    entitlementKey: ${var.byol_entitlement_key}
+    freeformTags:
+      Department: Finance
+    softwareType: ${var.byol_software_type}
+    timeTermEnd: ${var.byol_time_term_end}
+    timeTermStart: ${var.byol_time_term_start}
+    totalUnits: ${var.byol_total_units}

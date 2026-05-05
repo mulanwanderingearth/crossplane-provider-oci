@@ -155,6 +155,9 @@ type AutonomousContainerDatabaseInitParameters struct {
 	// Determines whether an Autonomous AI Database must be opened across a minimum or maximum of nodes. By default, Minimum nodes is selected.
 	DistributionAffinity *string `json:"distributionAffinity,omitempty" tf:"distribution_affinity,omitempty"`
 
+	// Types of providers supported for managing database encryption keys
+	EncryptionKeyLocationDetails []EncryptionKeyLocationDetailsInitParameters `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
+
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
 	FailoverTrigger *float64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
 
@@ -394,6 +397,9 @@ type AutonomousContainerDatabaseObservation struct {
 
 	// DST Time-Zone File version of the Autonomous Container Database.
 	DstFileVersion *string `json:"dstFileVersion,omitempty" tf:"dst_file_version,omitempty"`
+
+	// Types of providers supported for managing database encryption keys
+	EncryptionKeyLocationDetails []EncryptionKeyLocationDetailsObservation `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
 	FailoverTrigger *float64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
@@ -679,6 +685,10 @@ type AutonomousContainerDatabaseParameters struct {
 	// Determines whether an Autonomous AI Database must be opened across a minimum or maximum of nodes. By default, Minimum nodes is selected.
 	// +kubebuilder:validation:Optional
 	DistributionAffinity *string `json:"distributionAffinity,omitempty" tf:"distribution_affinity,omitempty"`
+
+	// Types of providers supported for managing database encryption keys
+	// +kubebuilder:validation:Optional
+	EncryptionKeyLocationDetails []EncryptionKeyLocationDetailsParameters `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
@@ -1169,6 +1179,72 @@ type DaysOfWeekObservation struct {
 }
 
 type DaysOfWeekParameters struct {
+}
+
+type EncryptionKeyLocationDetailsInitParameters struct {
+
+	// Provide the key OCID of a registered AWS key.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	AwsEncryptionKeyID *string `json:"awsEncryptionKeyId,omitempty" tf:"aws_encryption_key_id,omitempty"`
+
+	// Reference to a Key in kms to populate awsEncryptionKeyId.
+	// +kubebuilder:validation:Optional
+	AwsEncryptionKeyIDRef *v1.Reference `json:"awsEncryptionKeyIdRef,omitempty" tf:"-"`
+
+	// Selector for a Key in kms to populate awsEncryptionKeyId.
+	// +kubebuilder:validation:Optional
+	AwsEncryptionKeyIDSelector *v1.Selector `json:"awsEncryptionKeyIdSelector,omitempty" tf:"-"`
+
+	// Provide the key OCID of a registered Azure key.
+	AzureEncryptionKeyID *string `json:"azureEncryptionKeyId,omitempty" tf:"azure_encryption_key_id,omitempty"`
+
+	// Provide the HSM password as you would in RDBMS for External HSM.
+	HSMPasswordSecretRef *v1.SecretKeySelector `json:"hsmPasswordSecretRef,omitempty" tf:"-"`
+
+	// Use 'EXTERNAL' for creating a new database or migrating a database key to an External HSM. Use 'AZURE' for creating a new database or migrating a database key to Azure. Use 'AWS' for creating a new database or migrating a database key to Aws.
+	ProviderType *string `json:"providerType,omitempty" tf:"provider_type,omitempty"`
+}
+
+type EncryptionKeyLocationDetailsObservation struct {
+
+	// Provide the key OCID of a registered AWS key.
+	AwsEncryptionKeyID *string `json:"awsEncryptionKeyId,omitempty" tf:"aws_encryption_key_id,omitempty"`
+
+	// Provide the key OCID of a registered Azure key.
+	AzureEncryptionKeyID *string `json:"azureEncryptionKeyId,omitempty" tf:"azure_encryption_key_id,omitempty"`
+
+	// Use 'EXTERNAL' for creating a new database or migrating a database key to an External HSM. Use 'AZURE' for creating a new database or migrating a database key to Azure. Use 'AWS' for creating a new database or migrating a database key to Aws.
+	ProviderType *string `json:"providerType,omitempty" tf:"provider_type,omitempty"`
+}
+
+type EncryptionKeyLocationDetailsParameters struct {
+
+	// Provide the key OCID of a registered AWS key.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	AwsEncryptionKeyID *string `json:"awsEncryptionKeyId,omitempty" tf:"aws_encryption_key_id,omitempty"`
+
+	// Reference to a Key in kms to populate awsEncryptionKeyId.
+	// +kubebuilder:validation:Optional
+	AwsEncryptionKeyIDRef *v1.Reference `json:"awsEncryptionKeyIdRef,omitempty" tf:"-"`
+
+	// Selector for a Key in kms to populate awsEncryptionKeyId.
+	// +kubebuilder:validation:Optional
+	AwsEncryptionKeyIDSelector *v1.Selector `json:"awsEncryptionKeyIdSelector,omitempty" tf:"-"`
+
+	// Provide the key OCID of a registered Azure key.
+	// +kubebuilder:validation:Optional
+	AzureEncryptionKeyID *string `json:"azureEncryptionKeyId,omitempty" tf:"azure_encryption_key_id,omitempty"`
+
+	// Provide the HSM password as you would in RDBMS for External HSM.
+	// +kubebuilder:validation:Optional
+	HSMPasswordSecretRef *v1.SecretKeySelector `json:"hsmPasswordSecretRef,omitempty" tf:"-"`
+
+	// Use 'EXTERNAL' for creating a new database or migrating a database key to an External HSM. Use 'AZURE' for creating a new database or migrating a database key to Azure. Use 'AWS' for creating a new database or migrating a database key to Aws.
+	// +kubebuilder:validation:Optional
+	ProviderType *string `json:"providerType" tf:"provider_type,omitempty"`
 }
 
 type KeyHistoryEntryInitParameters struct {

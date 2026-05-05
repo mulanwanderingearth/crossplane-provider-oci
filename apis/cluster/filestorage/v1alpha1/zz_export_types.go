@@ -111,7 +111,7 @@ type ExportOptionsInitParameters struct {
 	// (Updatable) If true, clients accessing the file system through this export must connect from a privileged source port. If unspecified, defaults to true.
 	RequirePrivilegedSourcePort *bool `json:"requirePrivilegedSourcePort,omitempty" tf:"require_privileged_source_port,omitempty"`
 
-	// (Updatable) Clients these options should apply to. Must be a either single IPv4 address or single IPv4 CIDR block.
+	// (Updatable) Clients these options should apply to. Must be a either single IPv4/IPv6 address or single IPv4/IPv6 CIDR block.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
@@ -138,7 +138,7 @@ type ExportOptionsObservation struct {
 	// (Updatable) If true, clients accessing the file system through this export must connect from a privileged source port. If unspecified, defaults to true.
 	RequirePrivilegedSourcePort *bool `json:"requirePrivilegedSourcePort,omitempty" tf:"require_privileged_source_port,omitempty"`
 
-	// (Updatable) Clients these options should apply to. Must be a either single IPv4 address or single IPv4 CIDR block.
+	// (Updatable) Clients these options should apply to. Must be a either single IPv4/IPv6 address or single IPv4/IPv6 CIDR block.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 }
 
@@ -172,7 +172,7 @@ type ExportOptionsParameters struct {
 	// +kubebuilder:validation:Optional
 	RequirePrivilegedSourcePort *bool `json:"requirePrivilegedSourcePort,omitempty" tf:"require_privileged_source_port,omitempty"`
 
-	// (Updatable) Clients these options should apply to. Must be a either single IPv4 address or single IPv4 CIDR block.
+	// (Updatable) Clients these options should apply to. Must be a either single IPv4/IPv6 address or single IPv4/IPv6 CIDR block.
 	// +kubebuilder:validation:Optional
 	Source *string `json:"source" tf:"source,omitempty"`
 }

@@ -15,7 +15,4 @@ spec:
       matchLabels:
         testing.upbound.io/example-name: test_fusion_environment
     lastName: ${var.fusion_environment_admin_user_last_name}
-    passwordSecretRef:
-      key: example-key
-      name: example-secret
     username: ${var.fusion_environment_admin_user_username}

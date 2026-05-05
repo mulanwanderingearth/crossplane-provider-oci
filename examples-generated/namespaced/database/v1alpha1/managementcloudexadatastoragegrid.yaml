@@ -1,0 +1,18 @@
+apiVersion: database.oci.m.upbound.io/v1alpha1
+kind: ManagementCloudExadataStorageGrid
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/managementcloudexadatastoragegrid
+  labels:
+    testing.upbound.io/example-name: test_cloud_exadata_storage_grid
+  name: test-cloud-exadata-storage-grid
+  namespace: upbound-system
+spec:
+  forProvider:
+    cloudExadataStorageGridIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_cloud_exadata_storage_grid
+    definedTags:
+      Operations.CostCenter: "42"
+    freeformTags:
+      Department: Finance

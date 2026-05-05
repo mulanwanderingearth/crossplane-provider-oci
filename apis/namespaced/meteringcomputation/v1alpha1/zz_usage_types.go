@@ -235,7 +235,7 @@ type UsageInitParameters struct {
 	// Specifies whether aggregated by time. If isAggregateByTime is true, all usage or cost over the query time period will be added up.
 	IsAggregateByTime *bool `json:"isAggregateByTime,omitempty" tf:"is_aggregate_by_time,omitempty"`
 
-	// The query usage type. COST by default if it is missing. Usage - Query the usage data. Cost - Query the cost/billing data. Credit - Query the credit adjustments data. ExpiredCredit - Query the expired credits data. AllCredit - Query the credit adjustments and expired credit.
+	// The query usage type. COST by default if it is missing. Usage - Query the usage data. Cost - Query the cost/billing data. Credit - Query the credit adjustments data. ExpiredCredit - Query the expired credits data. AllCredit - Query the credit adjustments and expired credit. Usage_Only - Query the only usage data without cost or currency.
 	QueryType *string `json:"queryType,omitempty" tf:"query_type,omitempty"`
 
 	// Tenant ID.
@@ -276,7 +276,7 @@ type UsageObservation struct {
 	// A list of usage items.
 	Items []ItemsObservation `json:"items,omitempty" tf:"items,omitempty"`
 
-	// The query usage type. COST by default if it is missing. Usage - Query the usage data. Cost - Query the cost/billing data. Credit - Query the credit adjustments data. ExpiredCredit - Query the expired credits data. AllCredit - Query the credit adjustments and expired credit.
+	// The query usage type. COST by default if it is missing. Usage - Query the usage data. Cost - Query the cost/billing data. Credit - Query the credit adjustments data. ExpiredCredit - Query the expired credits data. AllCredit - Query the credit adjustments and expired credit. Usage_Only - Query the only usage data without cost or currency.
 	QueryType *string `json:"queryType,omitempty" tf:"query_type,omitempty"`
 
 	// Tenant ID.
@@ -319,7 +319,7 @@ type UsageParameters struct {
 	// +kubebuilder:validation:Optional
 	IsAggregateByTime *bool `json:"isAggregateByTime,omitempty" tf:"is_aggregate_by_time,omitempty"`
 
-	// The query usage type. COST by default if it is missing. Usage - Query the usage data. Cost - Query the cost/billing data. Credit - Query the credit adjustments data. ExpiredCredit - Query the expired credits data. AllCredit - Query the credit adjustments and expired credit.
+	// The query usage type. COST by default if it is missing. Usage - Query the usage data. Cost - Query the cost/billing data. Credit - Query the credit adjustments data. ExpiredCredit - Query the expired credits data. AllCredit - Query the credit adjustments and expired credit. Usage_Only - Query the only usage data without cost or currency.
 	// +kubebuilder:validation:Optional
 	QueryType *string `json:"queryType,omitempty" tf:"query_type,omitempty"`
 

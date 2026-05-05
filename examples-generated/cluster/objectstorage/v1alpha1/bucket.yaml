@@ -10,6 +10,7 @@ spec:
   forProvider:
     accessType: ${var.bucket_access_type}
     autoTiering: ${var.bucket_auto_tiering}
+    bucketScope: ${var.bucket_bucket_scope}
     compartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: example

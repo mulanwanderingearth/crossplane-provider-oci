@@ -18,7 +18,7 @@ type NamespaceIngestTimeRulesManagementInitParameters struct {
 	// (Updatable) A required field when set to true calls enable action and when set to false calls disable action.
 	EnableIngestTimeRule *bool `json:"enableIngestTimeRule,omitempty" tf:"enable_ingest_time_rule,omitempty"`
 
-	// Unique ocid of the ingest time rule.
+	// Unique ocid of the ingest time rule. Ingest time rule ID can be obtained by running 'oci log-analytics ingest-time-rule list --namespace-name  --compartment-id '. The json output 'id' parameter value contains the rule ID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/events/v1alpha1.Rule
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	IngestTimeRuleID *string `json:"ingestTimeRuleId,omitempty" tf:"ingest_time_rule_id,omitempty"`
@@ -31,7 +31,7 @@ type NamespaceIngestTimeRulesManagementInitParameters struct {
 	// +kubebuilder:validation:Optional
 	IngestTimeRuleIDSelector *v1.Selector `json:"ingestTimeRuleIdSelector,omitempty" tf:"-"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
@@ -42,10 +42,10 @@ type NamespaceIngestTimeRulesManagementObservation struct {
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// Unique ocid of the ingest time rule.
+	// Unique ocid of the ingest time rule. Ingest time rule ID can be obtained by running 'oci log-analytics ingest-time-rule list --namespace-name  --compartment-id '. The json output 'id' parameter value contains the rule ID.
 	IngestTimeRuleID *string `json:"ingestTimeRuleId,omitempty" tf:"ingest_time_rule_id,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
@@ -55,7 +55,7 @@ type NamespaceIngestTimeRulesManagementParameters struct {
 	// +kubebuilder:validation:Optional
 	EnableIngestTimeRule *bool `json:"enableIngestTimeRule,omitempty" tf:"enable_ingest_time_rule,omitempty"`
 
-	// Unique ocid of the ingest time rule.
+	// Unique ocid of the ingest time rule. Ingest time rule ID can be obtained by running 'oci log-analytics ingest-time-rule list --namespace-name  --compartment-id '. The json output 'id' parameter value contains the rule ID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/events/v1alpha1.Rule
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -69,7 +69,7 @@ type NamespaceIngestTimeRulesManagementParameters struct {
 	// +kubebuilder:validation:Optional
 	IngestTimeRuleIDSelector *v1.Selector `json:"ingestTimeRuleIdSelector,omitempty" tf:"-"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }

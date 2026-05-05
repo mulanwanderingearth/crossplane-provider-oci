@@ -13,6 +13,45 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
 )
 
+type ImportFromObjectStorageDetailsInitParameters struct {
+
+	// The Object Storage bucket name.
+	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
+
+	// The Object Storage namespace name.
+	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
+
+	// The list of objects to import from the specified bucket.
+	Objects []ObjectsInitParameters `json:"objects,omitempty" tf:"objects,omitempty"`
+}
+
+type ImportFromObjectStorageDetailsObservation struct {
+
+	// The Object Storage bucket name.
+	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
+
+	// The Object Storage namespace name.
+	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
+
+	// The list of objects to import from the specified bucket.
+	Objects []ObjectsObservation `json:"objects,omitempty" tf:"objects,omitempty"`
+}
+
+type ImportFromObjectStorageDetailsParameters struct {
+
+	// The Object Storage bucket name.
+	// +kubebuilder:validation:Optional
+	Bucket *string `json:"bucket" tf:"bucket,omitempty"`
+
+	// The Object Storage namespace name.
+	// +kubebuilder:validation:Optional
+	Namespace *string `json:"namespace" tf:"namespace,omitempty"`
+
+	// The list of objects to import from the specified bucket.
+	// +kubebuilder:validation:Optional
+	Objects []ObjectsParameters `json:"objects" tf:"objects,omitempty"`
+}
+
 type NodeCollectionInitParameters struct {
 }
 
@@ -43,7 +82,39 @@ type NodeCollectionObservation struct {
 type NodeCollectionParameters struct {
 }
 
+type ObjectsInitParameters struct {
+
+	// The name of the object in the bucket (for example, 'customerA/exports/backup_ocid/dump.rdb').
+	Object *string `json:"object,omitempty" tf:"object,omitempty"`
+}
+
+type ObjectsObservation struct {
+
+	// The name of the object in the bucket (for example, 'customerA/exports/backup_ocid/dump.rdb').
+	Object *string `json:"object,omitempty" tf:"object,omitempty"`
+}
+
+type ObjectsParameters struct {
+
+	// The name of the object in the bucket (for example, 'customerA/exports/backup_ocid/dump.rdb').
+	// +kubebuilder:validation:Optional
+	Object *string `json:"object" tf:"object,omitempty"`
+}
+
 type RedisClusterInitParameters struct {
+
+	// The ID of the Oracle Cloud Infrastructure Cache Backup from which this cluster was created.Mutually exclusive with 'importFromObjectStorageDetails'.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.Backup
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	BackupID *string `json:"backupId,omitempty" tf:"backup_id,omitempty"`
+
+	// Reference to a Backup in database to populate backupId.
+	// +kubebuilder:validation:Optional
+	BackupIDRef *v1.Reference `json:"backupIdRef,omitempty" tf:"-"`
+
+	// Selector for a Backup in database to populate backupId.
+	// +kubebuilder:validation:Optional
+	BackupIDSelector *v1.Selector `json:"backupIdSelector,omitempty" tf:"-"`
 
 	// Specifies whether the cluster is sharded or non-sharded.
 	ClusterMode *string `json:"clusterMode,omitempty" tf:"cluster_mode,omitempty"`
@@ -70,6 +141,9 @@ type RedisClusterInitParameters struct {
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// Details for importing Oracle Cloud Infrastructure Cache data from Object Storage RDB file(s) during cluster creation.
+	ImportFromObjectStorageDetails []ImportFromObjectStorageDetailsInitParameters `json:"importFromObjectStorageDetails,omitempty" tf:"import_from_object_storage_details,omitempty"`
 
 	// (Updatable) The number of nodes per shard in the cluster when clusterMode is SHARDED. This is the total number of nodes when clusterMode is NONSHARDED.
 	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
@@ -119,6 +193,9 @@ type RedisClusterInitParameters struct {
 
 type RedisClusterObservation struct {
 
+	// The ID of the Oracle Cloud Infrastructure Cache Backup from which this cluster was created.Mutually exclusive with 'importFromObjectStorageDetails'.
+	BackupID *string `json:"backupId,omitempty" tf:"backup_id,omitempty"`
+
 	// Specifies whether the cluster is sharded or non-sharded.
 	ClusterMode *string `json:"clusterMode,omitempty" tf:"cluster_mode,omitempty"`
 
@@ -144,6 +221,9 @@ type RedisClusterObservation struct {
 
 	// The OCID of the cluster.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
+
+	// Details for importing Oracle Cloud Infrastructure Cache data from Object Storage RDB file(s) during cluster creation.
+	ImportFromObjectStorageDetails []ImportFromObjectStorageDetailsObservation `json:"importFromObjectStorageDetails,omitempty" tf:"import_from_object_storage_details,omitempty"`
 
 	// A message describing the current state in more detail. For example, the message might provide actionable information for a resource in FAILED state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
@@ -205,6 +285,20 @@ type RedisClusterObservation struct {
 
 type RedisClusterParameters struct {
 
+	// The ID of the Oracle Cloud Infrastructure Cache Backup from which this cluster was created.Mutually exclusive with 'importFromObjectStorageDetails'.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.Backup
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	BackupID *string `json:"backupId,omitempty" tf:"backup_id,omitempty"`
+
+	// Reference to a Backup in database to populate backupId.
+	// +kubebuilder:validation:Optional
+	BackupIDRef *v1.Reference `json:"backupIdRef,omitempty" tf:"-"`
+
+	// Selector for a Backup in database to populate backupId.
+	// +kubebuilder:validation:Optional
+	BackupIDSelector *v1.Selector `json:"backupIdSelector,omitempty" tf:"-"`
+
 	// Specifies whether the cluster is sharded or non-sharded.
 	// +kubebuilder:validation:Optional
 	ClusterMode *string `json:"clusterMode,omitempty" tf:"cluster_mode,omitempty"`
@@ -235,6 +329,10 @@ type RedisClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// Details for importing Oracle Cloud Infrastructure Cache data from Object Storage RDB file(s) during cluster creation.
+	// +kubebuilder:validation:Optional
+	ImportFromObjectStorageDetails []ImportFromObjectStorageDetailsParameters `json:"importFromObjectStorageDetails,omitempty" tf:"import_from_object_storage_details,omitempty"`
 
 	// (Updatable) The number of nodes per shard in the cluster when clusterMode is SHARDED. This is the total number of nodes when clusterMode is NONSHARDED.
 	// +kubebuilder:validation:Optional

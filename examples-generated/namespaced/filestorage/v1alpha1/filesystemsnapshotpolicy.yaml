@@ -28,6 +28,10 @@ spec:
     - dayOfMonth: ${var.filesystem_snapshot_policy_schedules_day_of_month}
       dayOfWeek: ${var.filesystem_snapshot_policy_schedules_day_of_week}
       hourOfDay: ${var.filesystem_snapshot_policy_schedules_hour_of_day}
+      lockDurationDetails:
+      - coolOffDuration: ${var.filesystem_snapshot_policy_schedules_lock_duration_details_cool_off_duration}
+        lockDuration: ${var.filesystem_snapshot_policy_schedules_lock_duration_details_lock_duration}
+        lockMode: ${var.filesystem_snapshot_policy_schedules_lock_duration_details_lock_mode}
       month: ${var.filesystem_snapshot_policy_schedules_month}
       period: ${var.filesystem_snapshot_policy_schedules_period}
       retentionDurationInSeconds: ${var.filesystem_snapshot_policy_schedules_retention_duration_in_seconds}

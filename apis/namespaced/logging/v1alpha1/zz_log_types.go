@@ -181,11 +181,11 @@ type SourceInitParameters struct {
 	// Log object category.
 	Category *string `json:"category,omitempty" tf:"category,omitempty"`
 
-	// (Applicable when source_type=OCISERVICE) (Updatable) Log category parameters are stored here.
+	// (Applicable when source_type=OCISERVICE) (Updatable) Log category parameters are stored here. The resource for a service log can't be updated.
 	// +mapType=granular
 	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
-	// The unique identifier of the resource emitting the log.
+	// The unique identifier of the resource emitting the log. The resource can be updated, and the resource value can vary depending on the Oracle Cloud Infrastructure service to which the resource belongs to.
 	Resource *string `json:"resource,omitempty" tf:"resource,omitempty"`
 
 	// Service generating log.
@@ -200,11 +200,11 @@ type SourceObservation struct {
 	// Log object category.
 	Category *string `json:"category,omitempty" tf:"category,omitempty"`
 
-	// (Applicable when source_type=OCISERVICE) (Updatable) Log category parameters are stored here.
+	// (Applicable when source_type=OCISERVICE) (Updatable) Log category parameters are stored here. The resource for a service log can't be updated.
 	// +mapType=granular
 	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
-	// The unique identifier of the resource emitting the log.
+	// The unique identifier of the resource emitting the log. The resource can be updated, and the resource value can vary depending on the Oracle Cloud Infrastructure service to which the resource belongs to.
 	Resource *string `json:"resource,omitempty" tf:"resource,omitempty"`
 
 	// Service generating log.
@@ -220,12 +220,12 @@ type SourceParameters struct {
 	// +kubebuilder:validation:Optional
 	Category *string `json:"category" tf:"category,omitempty"`
 
-	// (Applicable when source_type=OCISERVICE) (Updatable) Log category parameters are stored here.
+	// (Applicable when source_type=OCISERVICE) (Updatable) Log category parameters are stored here. The resource for a service log can't be updated.
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
-	// The unique identifier of the resource emitting the log.
+	// The unique identifier of the resource emitting the log. The resource can be updated, and the resource value can vary depending on the Oracle Cloud Infrastructure service to which the resource belongs to.
 	// +kubebuilder:validation:Optional
 	Resource *string `json:"resource" tf:"resource,omitempty"`
 

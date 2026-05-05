@@ -710,7 +710,7 @@ spec:
                       bytes)
                     type: number
                   state:
-                    description: Possible lifecycle states.
+                    description: Possible lifecycle states for a Deployment Backup.
                     type: string
                   systemTags:
                     additionalProperties:

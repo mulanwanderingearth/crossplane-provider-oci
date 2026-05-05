@@ -8,6 +8,12 @@ metadata:
   name: test-queue
 spec:
   forProvider:
+    capabilities:
+    - isPrimaryConsumerGroupEnabled: ${var.queue_capabilities_is_primary_consumer_group_enabled}
+      primaryConsumerGroupDeadLetterQueueDeliveryCount: ${var.queue_capabilities_primary_consumer_group_dead_letter_queue_delivery_count}
+      primaryConsumerGroupDisplayName: ${var.queue_capabilities_primary_consumer_group_display_name}
+      primaryConsumerGroupFilter: ${var.queue_capabilities_primary_consumer_group_filter}
+      type: ${var.queue_capabilities_type}
     channelConsumptionLimit: ${var.queue_channel_consumption_limit}
     compartmentIdSelector:
       matchLabels:

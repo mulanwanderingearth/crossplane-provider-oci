@@ -1,0 +1,22 @@
+apiVersion: fleetsoftwareupdate.oci.upbound.io/v1alpha1
+kind: FsuReadinessCheck
+metadata:
+  annotations:
+    meta.upbound.io/example-id: fleetsoftwareupdate/v1alpha1/fsureadinesscheck
+  labels:
+    testing.upbound.io/example-name: test_fsu_readiness_check
+  name: test-fsu-readiness-check
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      foo-namespace.bar-key: value
+    displayName: ${var.fsu_readiness_check_display_name}
+    freeformTags:
+      bar-key: value
+    targets:
+    - entityId: ${oci_fleet_software_update_entity.test_entity.id}
+      entityType: ${var.fsu_readiness_check_targets_entity_type}
+    type: ${var.fsu_readiness_check_type}

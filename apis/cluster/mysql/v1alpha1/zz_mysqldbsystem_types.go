@@ -123,7 +123,7 @@ type ChannelsSourceObservation struct {
 	// The network address of the MySQL instance.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 
-	// The port for primary endpoint of the DB System to listen on.
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The CA certificate of the server used for VERIFY_IDENTITY and VERIFY_CA ssl modes.
@@ -231,6 +231,64 @@ type HeatWaveClusterObservation struct {
 }
 
 type HeatWaveClusterParameters struct {
+}
+
+type LogsDestinationConfigurationsInitParameters struct {
+
+	// Name of the destination configuration variable.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Updatable) Value of the destination configuration variable.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type LogsDestinationConfigurationsObservation struct {
+
+	// Name of the destination configuration variable.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Updatable) Value of the destination configuration variable.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type LogsDestinationConfigurationsParameters struct {
+
+	// Name of the destination configuration variable.
+	// +kubebuilder:validation:Optional
+	Key *string `json:"key" tf:"key,omitempty"`
+
+	// (Updatable) Value of the destination configuration variable.
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
+}
+
+type MaintenanceMaintenanceDisabledWindowsInitParameters struct {
+
+	// (Updatable) The time until when maintenance is disabled. Must be set together with timeStart and must be after timeStart. as described by RFC 3339.
+	TimeEnd *string `json:"timeEnd,omitempty" tf:"time_end,omitempty"`
+
+	// (Updatable) The time from when maintenance is disabled. Must be set together with timeEnd and must be before timeEnd. as described by RFC 3339.
+	TimeStart *string `json:"timeStart,omitempty" tf:"time_start,omitempty"`
+}
+
+type MaintenanceMaintenanceDisabledWindowsObservation struct {
+
+	// (Updatable) The time until when maintenance is disabled. Must be set together with timeStart and must be after timeStart. as described by RFC 3339.
+	TimeEnd *string `json:"timeEnd,omitempty" tf:"time_end,omitempty"`
+
+	// (Updatable) The time from when maintenance is disabled. Must be set together with timeEnd and must be before timeEnd. as described by RFC 3339.
+	TimeStart *string `json:"timeStart,omitempty" tf:"time_start,omitempty"`
+}
+
+type MaintenanceMaintenanceDisabledWindowsParameters struct {
+
+	// (Updatable) The time until when maintenance is disabled. Must be set together with timeStart and must be after timeStart. as described by RFC 3339.
+	// +kubebuilder:validation:Optional
+	TimeEnd *string `json:"timeEnd" tf:"time_end,omitempty"`
+
+	// (Updatable) The time from when maintenance is disabled. Must be set together with timeEnd and must be before timeEnd. as described by RFC 3339.
+	// +kubebuilder:validation:Optional
+	TimeStart *string `json:"timeStart" tf:"time_start,omitempty"`
 }
 
 type MysqlDbSystemBackupPolicyInitParameters struct {
@@ -366,6 +424,35 @@ type MysqlDbSystemDataStorageParameters struct {
 	MaxStorageSizeInGbs *float64 `json:"maxStorageSizeInGbs,omitempty" tf:"max_storage_size_in_gbs,omitempty"`
 }
 
+type MysqlDbSystemDatabaseConsoleInitParameters struct {
+
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
+	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+
+	// (Updatable) Enable/disable the database console on the DB System.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+}
+
+type MysqlDbSystemDatabaseConsoleObservation struct {
+
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
+	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+
+	// (Updatable) Enable/disable the database console on the DB System.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+}
+
+type MysqlDbSystemDatabaseConsoleParameters struct {
+
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
+	// +kubebuilder:validation:Optional
+	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+
+	// (Updatable) Enable/disable the database console on the DB System.
+	// +kubebuilder:validation:Optional
+	Status *string `json:"status" tf:"status,omitempty"`
+}
+
 type MysqlDbSystemDeletionPolicyInitParameters struct {
 
 	// (Updatable) Specifies if any automatic backups created for a DB System should be retained or deleted when the DB System is deleted.
@@ -468,7 +555,7 @@ type MysqlDbSystemEndpointsObservation struct {
 	// The access modes from the client that this endpoint supports.
 	Modes []*string `json:"modes,omitempty" tf:"modes,omitempty"`
 
-	// The port for primary endpoint of the DB System to listen on.
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The TCP network port on which X Plugin listens for connections. This is the X Plugin equivalent of port.
@@ -480,7 +567,7 @@ type MysqlDbSystemEndpointsObservation struct {
 	// The type of endpoint that clients and connectors can connect to.
 	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
 
-	// The state of the endpoints, as far as it can seen from the DB System. There may be some inconsistency with the actual state of the MySQL service.
+	// (Updatable) Enable/disable the database console on the DB System.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// Additional information about the current endpoint status.
@@ -544,6 +631,9 @@ type MysqlDbSystemInitParameters struct {
 	// (Updatable) Initial size of the data volume in GBs that will be created and attached. Keep in mind that this only specifies the size of the database data volume, the log volume for the database will be scaled appropriately with its shape. It is required if you are creating a new database. It cannot be set if you are creating a database from a backup.
 	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
+	// (Updatable) Details required to configure the database console while creating a DB System.
+	DatabaseConsole []MysqlDbSystemDatabaseConsoleInitParameters `json:"databaseConsole,omitempty" tf:"database_console,omitempty"`
+
 	// (Updatable) Whether to enable monitoring via the Database Management service.
 	DatabaseManagement *string `json:"databaseManagement,omitempty" tf:"database_management,omitempty"`
 
@@ -592,7 +682,7 @@ type MysqlDbSystemInitParameters struct {
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
-	// The port for primary endpoint of the DB System to listen on.
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The TCP network port on which X Plugin listens for connections. This is the X Plugin equivalent of port.
@@ -634,9 +724,15 @@ type MysqlDbSystemInitParameters struct {
 	// Selector for a Subnet in networking to populate subnetId.
 	// +kubebuilder:validation:Optional
 	SubnetIDSelector *v1.Selector `json:"subnetIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) Details required to configure how MySQL telemetry should be exposed.
+	TelemetryConfiguration []MysqlDbSystemTelemetryConfigurationInitParameters `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
 }
 
 type MysqlDbSystemMaintenanceInitParameters struct {
+
+	// (Updatable) Time window during which downtime-inducing maintenance shall not be performed. Downtime-free maintenance may be performed to apply required security patches. At most one configured window is supported.
+	MaintenanceDisabledWindows []MaintenanceMaintenanceDisabledWindowsInitParameters `json:"maintenanceDisabledWindows,omitempty" tf:"maintenance_disabled_windows,omitempty"`
 
 	// (Updatable) The maintenance schedule type of the DB system. Defaults to REGULAR. EARLY:   Maintenance schedule follows a cycle where upgrades are performed when versions become deprecated. REGULAR: Maintenance schedule follows the normal cycle where upgrades are performed when versions become unavailable.
 	MaintenanceScheduleType *string `json:"maintenanceScheduleType,omitempty" tf:"maintenance_schedule_type,omitempty"`
@@ -652,6 +748,9 @@ type MysqlDbSystemMaintenanceInitParameters struct {
 }
 
 type MysqlDbSystemMaintenanceObservation struct {
+
+	// (Updatable) Time window during which downtime-inducing maintenance shall not be performed. Downtime-free maintenance may be performed to apply required security patches. At most one configured window is supported.
+	MaintenanceDisabledWindows []MaintenanceMaintenanceDisabledWindowsObservation `json:"maintenanceDisabledWindows,omitempty" tf:"maintenance_disabled_windows,omitempty"`
 
 	// (Updatable) The maintenance schedule type of the DB system. Defaults to REGULAR. EARLY:   Maintenance schedule follows a cycle where upgrades are performed when versions become deprecated. REGULAR: Maintenance schedule follows the normal cycle where upgrades are performed when versions become unavailable.
 	MaintenanceScheduleType *string `json:"maintenanceScheduleType,omitempty" tf:"maintenance_schedule_type,omitempty"`
@@ -673,6 +772,10 @@ type MysqlDbSystemMaintenanceObservation struct {
 }
 
 type MysqlDbSystemMaintenanceParameters struct {
+
+	// (Updatable) Time window during which downtime-inducing maintenance shall not be performed. Downtime-free maintenance may be performed to apply required security patches. At most one configured window is supported.
+	// +kubebuilder:validation:Optional
+	MaintenanceDisabledWindows []MaintenanceMaintenanceDisabledWindowsParameters `json:"maintenanceDisabledWindows,omitempty" tf:"maintenance_disabled_windows,omitempty"`
 
 	// (Updatable) The maintenance schedule type of the DB system. Defaults to REGULAR. EARLY:   Maintenance schedule follows a cycle where upgrades are performed when versions become deprecated. REGULAR: Maintenance schedule follows the normal cycle where upgrades are performed when versions become unavailable.
 	// +kubebuilder:validation:Optional
@@ -728,6 +831,9 @@ type MysqlDbSystemObservation struct {
 
 	// (Updatable) Initial size of the data volume in GBs that will be created and attached. Keep in mind that this only specifies the size of the database data volume, the log volume for the database will be scaled appropriately with its shape. It is required if you are creating a new database. It cannot be set if you are creating a database from a backup.
 	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+
+	// (Updatable) Details required to configure the database console while creating a DB System.
+	DatabaseConsole []MysqlDbSystemDatabaseConsoleObservation `json:"databaseConsole,omitempty" tf:"database_console,omitempty"`
 
 	// (Updatable) Whether to enable monitoring via the Database Management service.
 	DatabaseManagement *string `json:"databaseManagement,omitempty" tf:"database_management,omitempty"`
@@ -795,7 +901,7 @@ type MysqlDbSystemObservation struct {
 	// Point-in-time Recovery details like earliest and latest recovery time point for the DB System.
 	PointInTimeRecoveryDetails []PointInTimeRecoveryDetailsObservation `json:"pointInTimeRecoveryDetails,omitempty" tf:"point_in_time_recovery_details,omitempty"`
 
-	// The port for primary endpoint of the DB System to listen on.
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The TCP network port on which X Plugin listens for connections. This is the X Plugin equivalent of port.
@@ -832,6 +938,9 @@ type MysqlDbSystemObservation struct {
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +mapType=granular
 	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+
+	// (Updatable) Details required to configure how MySQL telemetry should be exposed.
+	TelemetryConfiguration []MysqlDbSystemTelemetryConfigurationObservation `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
 
 	// The date and time the Channel was created, as described by RFC 3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -905,6 +1014,10 @@ type MysqlDbSystemParameters struct {
 	// +kubebuilder:validation:Optional
 	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
+	// (Updatable) Details required to configure the database console while creating a DB System.
+	// +kubebuilder:validation:Optional
+	DatabaseConsole []MysqlDbSystemDatabaseConsoleParameters `json:"databaseConsole,omitempty" tf:"database_console,omitempty"`
+
 	// (Updatable) Whether to enable monitoring via the Database Management service.
 	// +kubebuilder:validation:Optional
 	DatabaseManagement *string `json:"databaseManagement,omitempty" tf:"database_management,omitempty"`
@@ -968,7 +1081,7 @@ type MysqlDbSystemParameters struct {
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
-	// The port for primary endpoint of the DB System to listen on.
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
@@ -1021,6 +1134,10 @@ type MysqlDbSystemParameters struct {
 	// Selector for a Subnet in networking to populate subnetId.
 	// +kubebuilder:validation:Optional
 	SubnetIDSelector *v1.Selector `json:"subnetIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) Details required to configure how MySQL telemetry should be exposed.
+	// +kubebuilder:validation:Optional
+	TelemetryConfiguration []MysqlDbSystemTelemetryConfigurationParameters `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
 }
 
 type MysqlDbSystemReadEndpointInitParameters struct {
@@ -1077,7 +1194,7 @@ type MysqlDbSystemRestInitParameters struct {
 	// (Updatable) Select how REST is configured across the DB System instances.
 	Configuration *string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
-	// The port for primary endpoint of the DB System to listen on.
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
@@ -1086,7 +1203,7 @@ type MysqlDbSystemRestObservation struct {
 	// (Updatable) Select how REST is configured across the DB System instances.
 	Configuration *string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
-	// The port for primary endpoint of the DB System to listen on.
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
@@ -1096,7 +1213,7 @@ type MysqlDbSystemRestParameters struct {
 	// +kubebuilder:validation:Optional
 	Configuration *string `json:"configuration" tf:"configuration,omitempty"`
 
-	// The port for primary endpoint of the DB System to listen on.
+	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
@@ -1226,6 +1343,25 @@ type MysqlDbSystemSourceParameters struct {
 	SourceURLSecretRef *v1.SecretKeySelector `json:"sourceUrlSecretRef,omitempty" tf:"-"`
 }
 
+type MysqlDbSystemTelemetryConfigurationInitParameters struct {
+
+	// (Updatable) Telemetry configuration details for logging.
+	Logs []TelemetryConfigurationLogsInitParameters `json:"logs,omitempty" tf:"logs,omitempty"`
+}
+
+type MysqlDbSystemTelemetryConfigurationObservation struct {
+
+	// (Updatable) Telemetry configuration details for logging.
+	Logs []TelemetryConfigurationLogsObservation `json:"logs,omitempty" tf:"logs,omitempty"`
+}
+
+type MysqlDbSystemTelemetryConfigurationParameters struct {
+
+	// (Updatable) Telemetry configuration details for logging.
+	// +kubebuilder:validation:Optional
+	Logs []TelemetryConfigurationLogsParameters `json:"logs,omitempty" tf:"logs,omitempty"`
+}
+
 type PointInTimeRecoveryDetailsInitParameters struct {
 }
 
@@ -1285,11 +1421,53 @@ type TargetFiltersObservation struct {
 	// The type of the filter rule.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
-	// The body of the filter rule. This can represent a database, a table, or a database pair (represented as "db1->db2"). For more information, see Replication Filtering Rules.
+	// (Updatable) Value of the destination configuration variable.
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type TargetFiltersParameters struct {
+}
+
+type TelemetryConfigurationLogsInitParameters struct {
+
+	// (Updatable) Type of destination where MySQL telemetry is exposed to. Use LOG_ANALYTICS to send logs to OCI Log Analytics.
+	Destination *string `json:"destination,omitempty" tf:"destination,omitempty"`
+
+	// (Updatable) List of configuration variables for a given destination type.
+	// * key -  (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+	DestinationConfigurations []LogsDestinationConfigurationsInitParameters `json:"destinationConfigurations,omitempty" tf:"destination_configurations,omitempty"`
+
+	// (Updatable) List of MySQL telemetry types that can be exposed on a telemetry destination
+	LogTypes []*string `json:"logTypes,omitempty" tf:"log_types,omitempty"`
+}
+
+type TelemetryConfigurationLogsObservation struct {
+
+	// (Updatable) Type of destination where MySQL telemetry is exposed to. Use LOG_ANALYTICS to send logs to OCI Log Analytics.
+	Destination *string `json:"destination,omitempty" tf:"destination,omitempty"`
+
+	// (Updatable) List of configuration variables for a given destination type.
+	// * key -  (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+	DestinationConfigurations []LogsDestinationConfigurationsObservation `json:"destinationConfigurations,omitempty" tf:"destination_configurations,omitempty"`
+
+	// (Updatable) List of MySQL telemetry types that can be exposed on a telemetry destination
+	LogTypes []*string `json:"logTypes,omitempty" tf:"log_types,omitempty"`
+}
+
+type TelemetryConfigurationLogsParameters struct {
+
+	// (Updatable) Type of destination where MySQL telemetry is exposed to. Use LOG_ANALYTICS to send logs to OCI Log Analytics.
+	// +kubebuilder:validation:Optional
+	Destination *string `json:"destination" tf:"destination,omitempty"`
+
+	// (Updatable) List of configuration variables for a given destination type.
+	// * key -  (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+	// +kubebuilder:validation:Optional
+	DestinationConfigurations []LogsDestinationConfigurationsParameters `json:"destinationConfigurations" tf:"destination_configurations,omitempty"`
+
+	// (Updatable) List of MySQL telemetry types that can be exposed on a telemetry destination
+	// +kubebuilder:validation:Optional
+	LogTypes []*string `json:"logTypes" tf:"log_types,omitempty"`
 }
 
 // MysqlDbSystemSpec defines the desired state of MysqlDbSystem

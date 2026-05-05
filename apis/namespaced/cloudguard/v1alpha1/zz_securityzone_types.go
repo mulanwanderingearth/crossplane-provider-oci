@@ -42,6 +42,9 @@ type SecurityZoneInitParameters struct {
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
+	// (Updatable) Indicates if upon deletion of the security zone the comparment should inherit parent security zone
+	IsInheritanceAfterDeleteEnabled *bool `json:"isInheritanceAfterDeleteEnabled,omitempty" tf:"is_inheritance_after_delete_enabled,omitempty"`
+
 	// (Updatable) The OCID of the security zone recipe (SecurityRecipe resource) for the security zone
 	SecurityZoneRecipeID *string `json:"securityZoneRecipeId,omitempty" tf:"security_zone_recipe_id,omitempty"`
 }
@@ -70,6 +73,9 @@ type SecurityZoneObservation struct {
 
 	// List of inherited compartments
 	InheritedByCompartments []*string `json:"inheritedByCompartments,omitempty" tf:"inherited_by_compartments,omitempty"`
+
+	// (Updatable) Indicates if upon deletion of the security zone the comparment should inherit parent security zone
+	IsInheritanceAfterDeleteEnabled *bool `json:"isInheritanceAfterDeleteEnabled,omitempty" tf:"is_inheritance_after_delete_enabled,omitempty"`
 
 	// A message describing the current state in more detail. For example, this can be used to provide actionable information for a zone in the Failed state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
@@ -122,6 +128,10 @@ type SecurityZoneParameters struct {
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// (Updatable) Indicates if upon deletion of the security zone the comparment should inherit parent security zone
+	// +kubebuilder:validation:Optional
+	IsInheritanceAfterDeleteEnabled *bool `json:"isInheritanceAfterDeleteEnabled,omitempty" tf:"is_inheritance_after_delete_enabled,omitempty"`
 
 	// (Updatable) The OCID of the security zone recipe (SecurityRecipe resource) for the security zone
 	// +kubebuilder:validation:Optional

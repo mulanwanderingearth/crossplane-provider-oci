@@ -157,6 +157,56 @@ func (mg *ClusterCompleteCredentialRotationManagement) SetWriteConnectionSecretT
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ClusterPublicApiEndpointDecommissionManager.
+func (mg *ClusterPublicApiEndpointDecommissionManager) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this ClusterStartCredentialRotationManagement.
 func (mg *ClusterStartCredentialRotationManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)

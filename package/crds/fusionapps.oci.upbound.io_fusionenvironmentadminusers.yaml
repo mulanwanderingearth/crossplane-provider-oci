@@ -163,23 +163,6 @@ spec:
                   lastName:
                     description: The administrator's last name.
                     type: string
-                  passwordSecretRef:
-                    description: The password for the administrator.
-                    properties:
-                      key:
-                        description: The key to select.
-                        type: string
-                      name:
-                        description: Name of the secret.
-                        type: string
-                      namespace:
-                        description: Namespace of the secret.
-                        type: string
-                    required:
-                    - key
-                    - name
-                    - namespace
-                    type: object
                   username:
                     description: The username for the administrator.
                     type: string
@@ -285,23 +268,6 @@ spec:
                   lastName:
                     description: The administrator's last name.
                     type: string
-                  passwordSecretRef:
-                    description: The password for the administrator.
-                    properties:
-                      key:
-                        description: The key to select.
-                        type: string
-                      name:
-                        description: Name of the secret.
-                        type: string
-                      namespace:
-                        description: Namespace of the secret.
-                        type: string
-                    required:
-                    - key
-                    - name
-                    - namespace
-                    type: object
                   username:
                     description: The username for the administrator.
                     type: string

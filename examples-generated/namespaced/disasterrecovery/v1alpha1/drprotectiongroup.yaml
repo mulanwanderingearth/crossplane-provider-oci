@@ -170,6 +170,9 @@ spec:
       peerDbSystemIdSelector:
         matchLabels:
           testing.upbound.io/example-name: test_db_system
+      resourceModifierMappings:
+      - configMap: ${var.dr_protection_group_members_resource_modifier_mappings_config_map}
+        namespace: ${var.dr_protection_group_members_resource_modifier_mappings_namespace}
       sourceVolumeToDestinationEncryptionKeyMappings:
       - destinationEncryptionKey:
         - encryptionKeyIdSelector:

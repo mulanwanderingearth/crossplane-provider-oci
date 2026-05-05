@@ -314,6 +314,8 @@ spec:
                                 description: (Updatable) The total number of OCPUs
                                   available to the instance.
                                 type: number
+                              resourceManagement:
+                                type: string
                             type: object
                           type: array
                         reservedCount:
@@ -579,6 +581,8 @@ spec:
                                 description: (Updatable) The total number of OCPUs
                                   available to the instance.
                                 type: number
+                              resourceManagement:
+                                type: string
                             type: object
                           type: array
                         reservedCount:
@@ -785,6 +789,8 @@ spec:
                                 description: (Updatable) The total number of OCPUs
                                   available to the instance.
                                 type: number
+                              resourceManagement:
+                                type: string
                             type: object
                           type: array
                         reservedCount:

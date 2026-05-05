@@ -8,6 +8,7 @@ metadata:
   name: test-network-firewall-policy-service
 spec:
   forProvider:
+    description: ${var.network_firewall_policy_service_description}
     name: ${var.network_firewall_policy_service_name}
     networkFirewallPolicyIdSelector:
       matchLabels:

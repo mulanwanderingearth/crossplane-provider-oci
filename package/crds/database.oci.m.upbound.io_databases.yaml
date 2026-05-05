@@ -199,6 +199,9 @@ spec:
                           - key
                           - name
                           type: object
+                        databaseId:
+                          description: The OCID of the Database.
+                          type: string
                         databaseSoftwareImageId:
                           description: (Applicable when source=NONE) The database
                             software image OCID
@@ -470,6 +473,17 @@ spec:
                                         the Autonomous Container Database is not applicable
                                         for cross region remote backups and backups
                                         hosted on recovery Appliance backup destination.
+                                      type: boolean
+                                    isZeroDataLossEnabled:
+                                      description: (Applicable when source=NONE) Indicates
+                                        whether Zero Data Loss functionality is enabled
+                                        for a Recovery Appliance backup destination
+                                        in an Autonomous Container Database. When
+                                        enabled, the database automatically ships
+                                        all redo logs in real-time to the Recovery
+                                        Appliance for a Zero Data Loss recovery setup
+                                        (sub-second RPO). Defaults to TRUE if no value
+                                        is given.
                                       type: boolean
                                     remoteRegion:
                                       description: (Applicable when source=NONE) The
@@ -936,9 +950,8 @@ spec:
                             data encryption (TDE) operations KMS Key can have multiple
                             key versions. If none is specified, the current key version
                             (latest) of the Key Id is used for the operation. Autonomous
-                            AI Database Serverless does not use key versions, hence
-                            is not applicable for Autonomous AI Database Serverless
-                            instances.
+                            Database Serverless does not use key versions, hence is
+                            not applicable for Autonomous Database Serverless instances.
                           type: string
                         kmsKeyVersionIdRef:
                           description: Reference to a KeyVersion in kms to populate
@@ -1027,6 +1040,20 @@ spec:
                             character set for the database.  The default is AL16UTF16.
                             Allowed values are: AL16UTF16 or UTF8.'
                           type: string
+                        patchOptions:
+                          description: (Updatable) Options for DB Home and Database
+                            patching
+                          items:
+                            properties:
+                              shouldSkipClosedPdbs:
+                                description: Skip running datapatch on PDBs in closed
+                                  state
+                                type: boolean
+                              shouldSkipDataPatch:
+                                description: Skip running datapatch on database(s)
+                                type: boolean
+                            type: object
+                          type: array
                         pdbName:
                           description: (Applicable when source=NONE) The name of the
                             pluggable database. The name must begin with an alphabetic
@@ -1210,6 +1237,8 @@ spec:
                           - key
                           - name
                           type: object
+                        timeStampForPointInTimeRecovery:
+                          type: string
                         transportType:
                           description: 'The redo transport type to use for this Data
                             Guard association.  Valid values depend on the specified
@@ -1300,6 +1329,9 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        vmClusterId:
+                          description: The OCID of the VM cluster.
+                          type: string
                       type: object
                     type: array
                   dbHomeId:
@@ -1487,9 +1519,9 @@ spec:
                       container version that is used in database transparent data
                       encryption (TDE) operations KMS Key can have multiple key versions.
                       If none is specified, the current key version (latest) of the
-                      Key Id is used for the operation. Autonomous AI Database Serverless
+                      Key Id is used for the operation. Autonomous Database Serverless
                       does not use key versions, hence is not applicable for Autonomous
-                      AI Database Serverless instances.
+                      Database Serverless instances.
                     type: string
                   kmsKeyVersionIdRef:
                     description: Reference to a KeyVersion in kms to populate kmsKeyVersionId.
@@ -1736,6 +1768,9 @@ spec:
                           - key
                           - name
                           type: object
+                        databaseId:
+                          description: The OCID of the Database.
+                          type: string
                         databaseSoftwareImageId:
                           description: (Applicable when source=NONE) The database
                             software image OCID
@@ -2007,6 +2042,17 @@ spec:
                                         the Autonomous Container Database is not applicable
                                         for cross region remote backups and backups
                                         hosted on recovery Appliance backup destination.
+                                      type: boolean
+                                    isZeroDataLossEnabled:
+                                      description: (Applicable when source=NONE) Indicates
+                                        whether Zero Data Loss functionality is enabled
+                                        for a Recovery Appliance backup destination
+                                        in an Autonomous Container Database. When
+                                        enabled, the database automatically ships
+                                        all redo logs in real-time to the Recovery
+                                        Appliance for a Zero Data Loss recovery setup
+                                        (sub-second RPO). Defaults to TRUE if no value
+                                        is given.
                                       type: boolean
                                     remoteRegion:
                                       description: (Applicable when source=NONE) The
@@ -2473,9 +2519,8 @@ spec:
                             data encryption (TDE) operations KMS Key can have multiple
                             key versions. If none is specified, the current key version
                             (latest) of the Key Id is used for the operation. Autonomous
-                            AI Database Serverless does not use key versions, hence
-                            is not applicable for Autonomous AI Database Serverless
-                            instances.
+                            Database Serverless does not use key versions, hence is
+                            not applicable for Autonomous Database Serverless instances.
                           type: string
                         kmsKeyVersionIdRef:
                           description: Reference to a KeyVersion in kms to populate
@@ -2564,6 +2609,20 @@ spec:
                             character set for the database.  The default is AL16UTF16.
                             Allowed values are: AL16UTF16 or UTF8.'
                           type: string
+                        patchOptions:
+                          description: (Updatable) Options for DB Home and Database
+                            patching
+                          items:
+                            properties:
+                              shouldSkipClosedPdbs:
+                                description: Skip running datapatch on PDBs in closed
+                                  state
+                                type: boolean
+                              shouldSkipDataPatch:
+                                description: Skip running datapatch on database(s)
+                                type: boolean
+                            type: object
+                          type: array
                         pdbName:
                           description: (Applicable when source=NONE) The name of the
                             pluggable database. The name must begin with an alphabetic
@@ -2747,6 +2806,8 @@ spec:
                           - key
                           - name
                           type: object
+                        timeStampForPointInTimeRecovery:
+                          type: string
                         transportType:
                           description: 'The redo transport type to use for this Data
                             Guard association.  Valid values depend on the specified
@@ -2837,6 +2898,9 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        vmClusterId:
+                          description: The OCID of the VM cluster.
+                          type: string
                       type: object
                     type: array
                   dbHomeId:
@@ -3024,9 +3088,9 @@ spec:
                       container version that is used in database transparent data
                       encryption (TDE) operations KMS Key can have multiple key versions.
                       If none is specified, the current key version (latest) of the
-                      Key Id is used for the operation. Autonomous AI Database Serverless
+                      Key Id is used for the operation. Autonomous Database Serverless
                       does not use key versions, hence is not applicable for Autonomous
-                      AI Database Serverless instances.
+                      Database Serverless instances.
                     type: string
                   kmsKeyVersionIdRef:
                     description: Reference to a KeyVersion in kms to populate kmsKeyVersionId.
@@ -3324,6 +3388,9 @@ spec:
                             set for the database.  The default is AL32UTF8. Allowed
                             values are:'
                           type: string
+                        databaseId:
+                          description: The OCID of the Database.
+                          type: string
                         databaseSoftwareImageId:
                           description: (Applicable when source=NONE) The database
                             software image OCID
@@ -3430,6 +3497,17 @@ spec:
                                         the Autonomous Container Database is not applicable
                                         for cross region remote backups and backups
                                         hosted on recovery Appliance backup destination.
+                                      type: boolean
+                                    isZeroDataLossEnabled:
+                                      description: (Applicable when source=NONE) Indicates
+                                        whether Zero Data Loss functionality is enabled
+                                        for a Recovery Appliance backup destination
+                                        in an Autonomous Container Database. When
+                                        enabled, the database automatically ships
+                                        all redo logs in real-time to the Recovery
+                                        Appliance for a Zero Data Loss recovery setup
+                                        (sub-second RPO). Defaults to TRUE if no value
+                                        is given.
                                       type: boolean
                                     remoteRegion:
                                       description: (Applicable when source=NONE) The
@@ -3543,15 +3621,28 @@ spec:
                             data encryption (TDE) operations KMS Key can have multiple
                             key versions. If none is specified, the current key version
                             (latest) of the Key Id is used for the operation. Autonomous
-                            AI Database Serverless does not use key versions, hence
-                            is not applicable for Autonomous AI Database Serverless
-                            instances.
+                            Database Serverless does not use key versions, hence is
+                            not applicable for Autonomous Database Serverless instances.
                           type: string
                         ncharacterSet:
                           description: '(Applicable when source=NONE) The national
                             character set for the database.  The default is AL16UTF16.
                             Allowed values are: AL16UTF16 or UTF8.'
                           type: string
+                        patchOptions:
+                          description: (Updatable) Options for DB Home and Database
+                            patching
+                          items:
+                            properties:
+                              shouldSkipClosedPdbs:
+                                description: Skip running datapatch on PDBs in closed
+                                  state
+                                type: boolean
+                              shouldSkipDataPatch:
+                                description: Skip running datapatch on database(s)
+                                type: boolean
+                            type: object
+                          type: array
                         pdbName:
                           description: (Applicable when source=NONE) The name of the
                             pluggable database. The name must begin with an alphabetic
@@ -3615,6 +3706,8 @@ spec:
                                 type: number
                             type: object
                           type: array
+                        timeStampForPointInTimeRecovery:
+                          type: string
                         transportType:
                           description: 'The redo transport type to use for this Data
                             Guard association.  Valid values depend on the specified
@@ -3624,6 +3717,9 @@ spec:
                           description: (Applicable when source=NONE) The OCID of the
                             Oracle Cloud Infrastructure vault. This parameter and
                             secretId are required for Customer Managed Keys.
+                          type: string
+                        vmClusterId:
+                          description: The OCID of the VM cluster.
                           type: string
                       type: object
                     type: array
@@ -3848,9 +3944,9 @@ spec:
                       container version that is used in database transparent data
                       encryption (TDE) operations KMS Key can have multiple key versions.
                       If none is specified, the current key version (latest) of the
-                      Key Id is used for the operation. Autonomous AI Database Serverless
+                      Key Id is used for the operation. Autonomous Database Serverless
                       does not use key versions, hence is not applicable for Autonomous
-                      AI Database Serverless instances.
+                      Database Serverless instances.
                     type: string
                   lastBackupDurationInSeconds:
                     description: The duration when the latest database backup created.
@@ -3871,6 +3967,9 @@ spec:
                     description: '(Applicable when source=NONE) The national character
                       set for the database.  The default is AL16UTF16. Allowed values
                       are: AL16UTF16 or UTF8.'
+                    type: string
+                  patchVersion:
+                    description: The patch version of the database.
                     type: string
                   pdbName:
                     description: (Applicable when source=NONE) The name of the pluggable

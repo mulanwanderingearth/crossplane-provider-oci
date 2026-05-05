@@ -27,7 +27,7 @@ type DataSourceDetailsInitParameters struct {
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Interval in minutes that query is run periodically.
 	IntervalInMinutes *float64 `json:"intervalInMinutes,omitempty" tf:"interval_in_minutes,omitempty"`
 
-	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Interval in minutes which query is run periodically.
+	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Interval in seconds which query is run periodically.
 	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Details for a logging query for a data source.
@@ -36,13 +36,13 @@ type DataSourceDetailsInitParameters struct {
 	// (Updatable) Logging query type for data source
 	LoggingQueryType *string `json:"loggingQueryType,omitempty" tf:"logging_query_type,omitempty"`
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Operator used in data source
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - Operator used in data source
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) The continuous query expression that is run periodically.
 	Query *string `json:"query,omitempty" tf:"query,omitempty"`
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Start policy for continuous query
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - Start policy for continuous query
 	QueryStartTime []QueryStartTimeInitParameters `json:"queryStartTime,omitempty" tf:"query_start_time,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) List of logging query regions
@@ -51,7 +51,7 @@ type DataSourceDetailsInitParameters struct {
 	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Target information in which scheduled query will be run
 	ScheduledQueryScopeDetails []ScheduledQueryScopeDetailsInitParameters `json:"scheduledQueryScopeDetails,omitempty" tf:"scheduled_query_scope_details,omitempty"`
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) The integer value that must be exceeded, fall below or equal to (depending on the operator), for the query result to trigger an event
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - The integer value that must be exceeded, fall below or equal to (depending on the operator), for the query result to trigger an event
 	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
@@ -69,7 +69,7 @@ type DataSourceDetailsObservation struct {
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Interval in minutes that query is run periodically.
 	IntervalInMinutes *float64 `json:"intervalInMinutes,omitempty" tf:"interval_in_minutes,omitempty"`
 
-	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Interval in minutes which query is run periodically.
+	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Interval in seconds which query is run periodically.
 	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Details for a logging query for a data source.
@@ -78,13 +78,13 @@ type DataSourceDetailsObservation struct {
 	// (Updatable) Logging query type for data source
 	LoggingQueryType *string `json:"loggingQueryType,omitempty" tf:"logging_query_type,omitempty"`
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Operator used in data source
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - Operator used in data source
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) The continuous query expression that is run periodically.
 	Query *string `json:"query,omitempty" tf:"query,omitempty"`
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Start policy for continuous query
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - Start policy for continuous query
 	QueryStartTime []QueryStartTimeObservation `json:"queryStartTime,omitempty" tf:"query_start_time,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) List of logging query regions
@@ -93,7 +93,7 @@ type DataSourceDetailsObservation struct {
 	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Target information in which scheduled query will be run
 	ScheduledQueryScopeDetails []ScheduledQueryScopeDetailsObservation `json:"scheduledQueryScopeDetails,omitempty" tf:"scheduled_query_scope_details,omitempty"`
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) The integer value that must be exceeded, fall below or equal to (depending on the operator), for the query result to trigger an event
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - The integer value that must be exceeded, fall below or equal to (depending on the operator), for the query result to trigger an event
 	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
@@ -115,7 +115,7 @@ type DataSourceDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	IntervalInMinutes *float64 `json:"intervalInMinutes,omitempty" tf:"interval_in_minutes,omitempty"`
 
-	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Interval in minutes which query is run periodically.
+	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Interval in seconds which query is run periodically.
 	// +kubebuilder:validation:Optional
 	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
@@ -127,7 +127,7 @@ type DataSourceDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	LoggingQueryType *string `json:"loggingQueryType,omitempty" tf:"logging_query_type,omitempty"`
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Operator used in data source
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - Operator used in data source
 	// +kubebuilder:validation:Optional
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
@@ -135,7 +135,7 @@ type DataSourceDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	Query *string `json:"query,omitempty" tf:"query,omitempty"`
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Start policy for continuous query
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - Start policy for continuous query
 	// +kubebuilder:validation:Optional
 	QueryStartTime []QueryStartTimeParameters `json:"queryStartTime,omitempty" tf:"query_start_time,omitempty"`
 
@@ -147,7 +147,7 @@ type DataSourceDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	ScheduledQueryScopeDetails []ScheduledQueryScopeDetailsParameters `json:"scheduledQueryScopeDetails,omitempty" tf:"scheduled_query_scope_details,omitempty"`
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) The integer value that must be exceeded, fall below or equal to (depending on the operator), for the query result to trigger an event
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - The integer value that must be exceeded, fall below or equal to (depending on the operator), for the query result to trigger an event
 	// +kubebuilder:validation:Optional
 	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
@@ -323,7 +323,7 @@ type LoggingQueryDetailsParameters struct {
 
 type QueryStartTimeInitParameters struct {
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Start policy for continuous query
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - Start policy for continuous query
 	QueryStartTime *string `json:"queryStartTime,omitempty" tf:"query_start_time,omitempty"`
 
 	// (Updatable) Start policy delay timing
@@ -332,7 +332,7 @@ type QueryStartTimeInitParameters struct {
 
 type QueryStartTimeObservation struct {
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Start policy for continuous query
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - Start policy for continuous query
 	QueryStartTime *string `json:"queryStartTime,omitempty" tf:"query_start_time,omitempty"`
 
 	// (Updatable) Start policy delay timing
@@ -341,7 +341,7 @@ type QueryStartTimeObservation struct {
 
 type QueryStartTimeParameters struct {
 
-	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Start policy for continuous query
+	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - Start policy for continuous query
 	// +kubebuilder:validation:Optional
 	QueryStartTime *string `json:"queryStartTime,omitempty" tf:"query_start_time,omitempty"`
 

@@ -51,6 +51,9 @@ type NetworkFirewallPolicyTunnelInspectionRuleInitParameters struct {
 	// (Updatable) Criteria to evaluate against incoming network traffic. A match occurs when at least one item in the array associated with each specified property corresponds with the relevant aspect of the traffic.
 	Condition []NetworkFirewallPolicyTunnelInspectionRuleConditionInitParameters `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// (Updatable) The description of the tunnel inspect rule. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	// Name for the Tunnel Inspection Rule, must be unique within the policy.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
@@ -85,6 +88,9 @@ type NetworkFirewallPolicyTunnelInspectionRuleObservation struct {
 	// (Updatable) Criteria to evaluate against incoming network traffic. A match occurs when at least one item in the array associated with each specified property corresponds with the relevant aspect of the traffic.
 	Condition []NetworkFirewallPolicyTunnelInspectionRuleConditionObservation `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// (Updatable) The description of the tunnel inspect rule. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Name for the Tunnel Inspection Rule, must be unique within the policy.
@@ -118,6 +124,10 @@ type NetworkFirewallPolicyTunnelInspectionRuleParameters struct {
 	// (Updatable) Criteria to evaluate against incoming network traffic. A match occurs when at least one item in the array associated with each specified property corresponds with the relevant aspect of the traffic.
 	// +kubebuilder:validation:Optional
 	Condition []NetworkFirewallPolicyTunnelInspectionRuleConditionParameters `json:"condition,omitempty" tf:"condition,omitempty"`
+
+	// (Updatable) The description of the tunnel inspect rule. This field can be used to add additional info.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// Name for the Tunnel Inspection Rule, must be unique within the policy.
 	// +kubebuilder:validation:Optional

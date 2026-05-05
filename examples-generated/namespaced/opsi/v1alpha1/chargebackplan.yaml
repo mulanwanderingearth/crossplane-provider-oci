@@ -1,0 +1,26 @@
+apiVersion: opsi.oci.m.upbound.io/v1alpha1
+kind: ChargebackPlan
+metadata:
+  annotations:
+    meta.upbound.io/example-id: opsi/v1alpha1/chargebackplan
+  labels:
+    testing.upbound.io/example-name: test_chargeback_plan
+  name: test-chargeback-plan
+  namespace: upbound-system
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      foo-namespace.bar-key: value
+    entitySource: ${var.chargeback_plan_entity_source}
+    freeformTags:
+      bar-key: value
+    planCustomItems:
+    - isCustomizable: ${var.chargeback_plan_plan_custom_items_is_customizable}
+      name: ${var.chargeback_plan_plan_custom_items_name}
+      value: ${var.chargeback_plan_plan_custom_items_value}
+    planDescription: ${var.chargeback_plan_plan_description}
+    planName: ${var.chargeback_plan_plan_name}
+    planType: ${var.chargeback_plan_plan_type}

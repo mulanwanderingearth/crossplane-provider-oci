@@ -167,7 +167,7 @@ type VirtualCircuitInitParameters struct {
 	// The OCID of the service offered by the provider (if you're connecting via a provider). To get a list of the available service offerings, see ListFastConnectProviderServices.
 	ProviderServiceID *string `json:"providerServiceId,omitempty" tf:"provider_service_id,omitempty"`
 
-	// (Updatable) The service key name offered by the provider (if the customer is connecting via a provider).
+	// (Updatable) The service key name or activation key offered by the provider (if the customer is connecting via a provider).
 	ProviderServiceKeyName *string `json:"providerServiceKeyName,omitempty" tf:"provider_service_key_name,omitempty"`
 
 	// (Updatable) For a public virtual circuit. The public IP prefixes (CIDRs) the customer wants to advertise across the connection.
@@ -244,7 +244,7 @@ type VirtualCircuitObservation struct {
 	// The OCID of the service offered by the provider (if you're connecting via a provider). To get a list of the available service offerings, see ListFastConnectProviderServices.
 	ProviderServiceID *string `json:"providerServiceId,omitempty" tf:"provider_service_id,omitempty"`
 
-	// (Updatable) The service key name offered by the provider (if the customer is connecting via a provider).
+	// (Updatable) The service key name or activation key offered by the provider (if the customer is connecting via a provider).
 	ProviderServiceKeyName *string `json:"providerServiceKeyName,omitempty" tf:"provider_service_key_name,omitempty"`
 
 	// The provider's state in relation to this virtual circuit (if the customer is connecting via a provider). ACTIVE means the provider has provisioned the virtual circuit from their end. INACTIVE means the provider has not yet provisioned the virtual circuit, or has de-provisioned it.
@@ -347,7 +347,7 @@ type VirtualCircuitParameters struct {
 	// +kubebuilder:validation:Optional
 	ProviderServiceID *string `json:"providerServiceId,omitempty" tf:"provider_service_id,omitempty"`
 
-	// (Updatable) The service key name offered by the provider (if the customer is connecting via a provider).
+	// (Updatable) The service key name or activation key offered by the provider (if the customer is connecting via a provider).
 	// +kubebuilder:validation:Optional
 	ProviderServiceKeyName *string `json:"providerServiceKeyName,omitempty" tf:"provider_service_key_name,omitempty"`
 

@@ -1,0 +1,21 @@
+apiVersion: database.oci.upbound.io/v1alpha1
+kind: AdvancedClusterFileSystem
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/advancedclusterfilesystem
+  labels:
+    testing.upbound.io/example-name: test_advanced_cluster_file_system
+  name: test-advanced-cluster-file-system
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags: ${var.advanced_cluster_file_system_defined_tags}
+    freeformTags:
+      Department: Finance
+    name: ${var.advanced_cluster_file_system_name}
+    storageInGbs: ${var.advanced_cluster_file_system_storage_in_gbs}
+    vmClusterIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_vm_cluster

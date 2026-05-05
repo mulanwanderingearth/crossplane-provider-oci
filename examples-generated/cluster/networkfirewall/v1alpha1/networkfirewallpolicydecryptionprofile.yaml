@@ -9,6 +9,7 @@ metadata:
 spec:
   forProvider:
     areCertificateExtensionsRestricted: ${var.network_firewall_policy_decryption_profile_are_certificate_extensions_restricted}
+    description: ${var.network_firewall_policy_decryption_profile_description}
     isAutoIncludeAltName: ${var.network_firewall_policy_decryption_profile_is_auto_include_alt_name}
     isExpiredCertificateBlocked: ${var.network_firewall_policy_decryption_profile_is_expired_certificate_blocked}
     isOutOfCapacityBlocked: ${var.network_firewall_policy_decryption_profile_is_out_of_capacity_blocked}

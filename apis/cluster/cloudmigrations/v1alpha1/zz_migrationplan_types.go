@@ -55,6 +55,48 @@ type ComputeObservation struct {
 type ComputeParameters struct {
 }
 
+type CostToMigrateInitParameters struct {
+}
+
+type CostToMigrateObservation struct {
+
+	// Number of assets used in this calculation.
+	AssetCount *float64 `json:"assetCount,omitempty" tf:"asset_count,omitempty"`
+
+	// Currency code as defined by ISO-4217.
+	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
+
+	// Data transfer costs from OCI.
+	OciDataTransferCosts *float64 `json:"ociDataTransferCosts,omitempty" tf:"oci_data_transfer_costs,omitempty"`
+
+	// Data transfer costs from source cloud provider.
+	SourceDataTransferCosts *float64 `json:"sourceDataTransferCosts,omitempty" tf:"source_data_transfer_costs,omitempty"`
+}
+
+type CostToMigrateParameters struct {
+}
+
+type CurrentMonthlyCostInitParameters struct {
+}
+
+type CurrentMonthlyCostObservation struct {
+
+	// Number of assets used in this calculation.
+	AssetCount *float64 `json:"assetCount,omitempty" tf:"asset_count,omitempty"`
+
+	// Current monthly compute costs.
+	ComputeAmount *float64 `json:"computeAmount,omitempty" tf:"compute_amount,omitempty"`
+
+	// Currency code as defined by ISO-4217.
+	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
+
+	// Current monthly storage costs.
+	StorageAmount *float64 `json:"storageAmount,omitempty" tf:"storage_amount,omitempty"`
+}
+
+type CurrentMonthlyCostParameters struct {
+}
+
 type MigrationPlanInitParameters struct {
 
 	// (Updatable) Compartment identifier
@@ -242,6 +284,12 @@ type MigrationPlanStatsInitParameters struct {
 
 type MigrationPlanStatsObservation struct {
 
+	// Summary of costs to migrate.
+	CostToMigrate []CostToMigrateObservation `json:"costToMigrate,omitempty" tf:"cost_to_migrate,omitempty"`
+
+	// Current monthly compute and storage costs.
+	CurrentMonthlyCost []CurrentMonthlyCostObservation `json:"currentMonthlyCost,omitempty" tf:"current_monthly_cost,omitempty"`
+
 	// The time when the migration plan was calculated. An RFC3339 formatted datetime string.
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
@@ -359,17 +407,34 @@ type StrategiesParameters struct {
 
 type TargetEnvironmentsInitParameters struct {
 
-	// (Updatable) Availability Domain of the VM configuration.
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) Availability Domain of the VM configuration.
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) OCID of the dedicated VM configuration host.
+	// (Updatable) Inventory asset id of the olvm cluster
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudbridge/v1alpha1.Asset
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	ClusterAssetID *string `json:"clusterAssetId,omitempty" tf:"cluster_asset_id,omitempty"`
+
+	// Reference to a Asset in cloudbridge to populate clusterAssetId.
+	// +kubebuilder:validation:Optional
+	ClusterAssetIDRef *v1.Reference `json:"clusterAssetIdRef,omitempty" tf:"-"`
+
+	// Selector for a Asset in cloudbridge to populate clusterAssetId.
+	// +kubebuilder:validation:Optional
+	ClusterAssetIDSelector *v1.Selector `json:"clusterAssetIdSelector,omitempty" tf:"-"`
+
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) OCID of the dedicated VM configuration host.
 	DedicatedVMHost *string `json:"dedicatedVmHost,omitempty" tf:"dedicated_vm_host,omitempty"`
 
-	// (Updatable) Fault domain of the VM configuration.
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) Fault domain of the VM configuration.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
-	// (Updatable) Microsoft license for the VM configuration.
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) Microsoft license for the VM configuration.
 	MsLicense *string `json:"msLicense,omitempty" tf:"ms_license,omitempty"`
+
+	// (Applicable when target_environment_type=OLVM_TARGET_ENV) (Updatable) OLVM OS type to inventory asset id of the template
+	// +mapType=granular
+	OlvmTemplates map[string]*string `json:"olvmTemplates,omitempty" tf:"olvm_templates,omitempty"`
 
 	// (Updatable) Preferred VM shape type provided by the customer.
 	PreferredShapeType *string `json:"preferredShapeType,omitempty" tf:"preferred_shape_type,omitempty"`
@@ -395,21 +460,41 @@ type TargetEnvironmentsInitParameters struct {
 
 	// (Updatable) OCID of the VM configuration VCN.
 	Vcn *string `json:"vcn,omitempty" tf:"vcn,omitempty"`
+
+	// (Updatable) Inventory asset Id of the vnic profile
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudbridge/v1alpha1.Asset
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	VnicProfileAssetID *string `json:"vnicProfileAssetId,omitempty" tf:"vnic_profile_asset_id,omitempty"`
+
+	// Reference to a Asset in cloudbridge to populate vnicProfileAssetId.
+	// +kubebuilder:validation:Optional
+	VnicProfileAssetIDRef *v1.Reference `json:"vnicProfileAssetIdRef,omitempty" tf:"-"`
+
+	// Selector for a Asset in cloudbridge to populate vnicProfileAssetId.
+	// +kubebuilder:validation:Optional
+	VnicProfileAssetIDSelector *v1.Selector `json:"vnicProfileAssetIdSelector,omitempty" tf:"-"`
 }
 
 type TargetEnvironmentsObservation struct {
 
-	// (Updatable) Availability Domain of the VM configuration.
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) Availability Domain of the VM configuration.
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) OCID of the dedicated VM configuration host.
+	// (Updatable) Inventory asset id of the olvm cluster
+	ClusterAssetID *string `json:"clusterAssetId,omitempty" tf:"cluster_asset_id,omitempty"`
+
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) OCID of the dedicated VM configuration host.
 	DedicatedVMHost *string `json:"dedicatedVmHost,omitempty" tf:"dedicated_vm_host,omitempty"`
 
-	// (Updatable) Fault domain of the VM configuration.
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) Fault domain of the VM configuration.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
-	// (Updatable) Microsoft license for the VM configuration.
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) Microsoft license for the VM configuration.
 	MsLicense *string `json:"msLicense,omitempty" tf:"ms_license,omitempty"`
+
+	// (Applicable when target_environment_type=OLVM_TARGET_ENV) (Updatable) OLVM OS type to inventory asset id of the template
+	// +mapType=granular
+	OlvmTemplates map[string]*string `json:"olvmTemplates,omitempty" tf:"olvm_templates,omitempty"`
 
 	// (Updatable) Preferred VM shape type provided by the customer.
 	PreferredShapeType *string `json:"preferredShapeType,omitempty" tf:"preferred_shape_type,omitempty"`
@@ -425,25 +510,47 @@ type TargetEnvironmentsObservation struct {
 
 	// (Updatable) OCID of the VM configuration VCN.
 	Vcn *string `json:"vcn,omitempty" tf:"vcn,omitempty"`
+
+	// (Updatable) Inventory asset Id of the vnic profile
+	VnicProfileAssetID *string `json:"vnicProfileAssetId,omitempty" tf:"vnic_profile_asset_id,omitempty"`
 }
 
 type TargetEnvironmentsParameters struct {
 
-	// (Updatable) Availability Domain of the VM configuration.
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) Availability Domain of the VM configuration.
 	// +kubebuilder:validation:Optional
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) OCID of the dedicated VM configuration host.
+	// (Updatable) Inventory asset id of the olvm cluster
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudbridge/v1alpha1.Asset
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	ClusterAssetID *string `json:"clusterAssetId,omitempty" tf:"cluster_asset_id,omitempty"`
+
+	// Reference to a Asset in cloudbridge to populate clusterAssetId.
+	// +kubebuilder:validation:Optional
+	ClusterAssetIDRef *v1.Reference `json:"clusterAssetIdRef,omitempty" tf:"-"`
+
+	// Selector for a Asset in cloudbridge to populate clusterAssetId.
+	// +kubebuilder:validation:Optional
+	ClusterAssetIDSelector *v1.Selector `json:"clusterAssetIdSelector,omitempty" tf:"-"`
+
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) OCID of the dedicated VM configuration host.
 	// +kubebuilder:validation:Optional
 	DedicatedVMHost *string `json:"dedicatedVmHost,omitempty" tf:"dedicated_vm_host,omitempty"`
 
-	// (Updatable) Fault domain of the VM configuration.
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) Fault domain of the VM configuration.
 	// +kubebuilder:validation:Optional
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
-	// (Updatable) Microsoft license for the VM configuration.
+	// (Applicable when target_environment_type=VM_TARGET_ENV) (Updatable) Microsoft license for the VM configuration.
 	// +kubebuilder:validation:Optional
 	MsLicense *string `json:"msLicense,omitempty" tf:"ms_license,omitempty"`
+
+	// (Applicable when target_environment_type=OLVM_TARGET_ENV) (Updatable) OLVM OS type to inventory asset id of the template
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	OlvmTemplates map[string]*string `json:"olvmTemplates,omitempty" tf:"olvm_templates,omitempty"`
 
 	// (Updatable) Preferred VM shape type provided by the customer.
 	// +kubebuilder:validation:Optional
@@ -451,7 +558,7 @@ type TargetEnvironmentsParameters struct {
 
 	// (Updatable) OCID of the VM configuration subnet.
 	// +kubebuilder:validation:Optional
-	Subnet *string `json:"subnet" tf:"subnet,omitempty"`
+	Subnet *string `json:"subnet,omitempty" tf:"subnet,omitempty"`
 
 	// (Updatable) Target compartment identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -473,7 +580,21 @@ type TargetEnvironmentsParameters struct {
 
 	// (Updatable) OCID of the VM configuration VCN.
 	// +kubebuilder:validation:Optional
-	Vcn *string `json:"vcn" tf:"vcn,omitempty"`
+	Vcn *string `json:"vcn,omitempty" tf:"vcn,omitempty"`
+
+	// (Updatable) Inventory asset Id of the vnic profile
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudbridge/v1alpha1.Asset
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	VnicProfileAssetID *string `json:"vnicProfileAssetId,omitempty" tf:"vnic_profile_asset_id,omitempty"`
+
+	// Reference to a Asset in cloudbridge to populate vnicProfileAssetId.
+	// +kubebuilder:validation:Optional
+	VnicProfileAssetIDRef *v1.Reference `json:"vnicProfileAssetIdRef,omitempty" tf:"-"`
+
+	// Selector for a Asset in cloudbridge to populate vnicProfileAssetId.
+	// +kubebuilder:validation:Optional
+	VnicProfileAssetIDSelector *v1.Selector `json:"vnicProfileAssetIdSelector,omitempty" tf:"-"`
 }
 
 type TotalEstimatedCostInitParameters struct {
@@ -484,7 +605,7 @@ type TotalEstimatedCostObservation struct {
 	// Cost estimation for compute
 	Compute []ComputeObservation `json:"compute,omitempty" tf:"compute,omitempty"`
 
-	// Currency code in the ISO format.
+	// Currency code as defined by ISO-4217.
 	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
 
 	// Cost estimation for the OS image.

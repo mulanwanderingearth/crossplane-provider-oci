@@ -79,7 +79,7 @@ spec:
                     description: '(Updatable) action:'
                     type: string
                   condition:
-                    description: (Updatable) Match criteria used in NAT Rule used
+                    description: (Updatable) Match criteria used in NAT rule used
                       on the firewall policy.
                     items:
                       properties:
@@ -224,7 +224,7 @@ spec:
                     description: '(Updatable) action:'
                     type: string
                   condition:
-                    description: (Updatable) Match criteria used in NAT Rule used
+                    description: (Updatable) Match criteria used in NAT rule used
                       on the firewall policy.
                     items:
                       properties:
@@ -467,7 +467,7 @@ spec:
                     description: '(Updatable) action:'
                     type: string
                   condition:
-                    description: (Updatable) Match criteria used in NAT Rule used
+                    description: (Updatable) Match criteria used in NAT rule used
                       on the firewall policy.
                     items:
                       properties:
@@ -503,8 +503,8 @@ spec:
                     description: Unique Network Firewall Policy identifier
                     type: string
                   parentResourceId:
-                    description: OCID of the Network Firewall Policy this decryption
-                      profile belongs to.
+                    description: The OCID of the Network Firewall policy this NAT
+                      rule belongs to.
                     type: string
                   position:
                     description: (Updatable) An object which defines the position

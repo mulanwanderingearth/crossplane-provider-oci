@@ -81,6 +81,9 @@ type NetworkFirewallPolicySecurityRuleInitParameters struct {
 	// (Updatable) Criteria to evaluate against network traffic. A match occurs when at least one item in the array associated with each specified property corresponds with the relevant aspect of the traffic. The resources mentioned must already be present in the policy before being referenced in the rule.
 	Condition []NetworkFirewallPolicySecurityRuleConditionInitParameters `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// (Updatable) The description of the security rule. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	// , which may result in rejection.
 	Inspection *string `json:"inspection,omitempty" tf:"inspection,omitempty"`
 
@@ -114,6 +117,9 @@ type NetworkFirewallPolicySecurityRuleObservation struct {
 	// (Updatable) Criteria to evaluate against network traffic. A match occurs when at least one item in the array associated with each specified property corresponds with the relevant aspect of the traffic. The resources mentioned must already be present in the policy before being referenced in the rule.
 	Condition []NetworkFirewallPolicySecurityRuleConditionObservation `json:"condition,omitempty" tf:"condition,omitempty"`
 
+	// (Updatable) The description of the security rule. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// , which may result in rejection.
@@ -143,6 +149,10 @@ type NetworkFirewallPolicySecurityRuleParameters struct {
 	// (Updatable) Criteria to evaluate against network traffic. A match occurs when at least one item in the array associated with each specified property corresponds with the relevant aspect of the traffic. The resources mentioned must already be present in the policy before being referenced in the rule.
 	// +kubebuilder:validation:Optional
 	Condition []NetworkFirewallPolicySecurityRuleConditionParameters `json:"condition,omitempty" tf:"condition,omitempty"`
+
+	// (Updatable) The description of the security rule. This field can be used to add additional info.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// , which may result in rejection.
 	// +kubebuilder:validation:Optional

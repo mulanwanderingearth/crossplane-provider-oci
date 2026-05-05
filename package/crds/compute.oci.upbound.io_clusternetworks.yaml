@@ -1204,6 +1204,10 @@ spec:
                           description: (Updatable) The OCID of the compartment containing
                             the cluster network.
                           type: string
+                        currentSize:
+                          description: Count of instance in running state associated
+                            to the Instance Pool.
+                          type: number
                         definedTags:
                           additionalProperties:
                             type: string
@@ -1283,6 +1287,10 @@ spec:
                               availabilityDomain:
                                 description: 'The availability domain to place instances.  Example:
                                   Uocm:PHX-AD-1'
+                                type: string
+                              computeClusterId:
+                                description: The OCID of the compute cluster that
+                                  the instance will be created in.
                                 type: string
                               faultDomains:
                                 description: The fault domains to place instances.

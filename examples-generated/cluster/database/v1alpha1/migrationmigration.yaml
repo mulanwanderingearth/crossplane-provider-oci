@@ -15,6 +15,9 @@ spec:
     advisorSettings:
     - isIgnoreErrors: ${var.migration_advisor_settings_is_ignore_errors}
       isSkipAdvisor: ${var.migration_advisor_settings_is_skip_advisor}
+    assessmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_assessment
     bulkIncludeExcludeData: ${var.migration_bulk_include_exclude_data}
     compartmentIdSelector:
       matchLabels:

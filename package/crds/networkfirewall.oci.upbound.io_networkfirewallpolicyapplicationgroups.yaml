@@ -76,12 +76,14 @@ spec:
               forProvider:
                 properties:
                   apps:
-                    description: (Updatable) Collection of application names. The
-                      apps referenced in the application group must already be present
-                      in the policy before being used in the application group.
+                    description: (Updatable) Collection of application names.
                     items:
                       type: string
                     type: array
+                  description:
+                    description: (Updatable) The description of the application group.
+                      This field can be used to add additional info.
+                    type: string
                   name:
                     description: Name of the application group.
                     type: string
@@ -179,12 +181,14 @@ spec:
                   autoscaler.
                 properties:
                   apps:
-                    description: (Updatable) Collection of application names. The
-                      apps referenced in the application group must already be present
-                      in the policy before being used in the application group.
+                    description: (Updatable) Collection of application names.
                     items:
                       type: string
                     type: array
+                  description:
+                    description: (Updatable) The description of the application group.
+                      This field can be used to add additional info.
+                    type: string
                   name:
                     description: Name of the application group.
                     type: string
@@ -372,12 +376,14 @@ spec:
               atProvider:
                 properties:
                   apps:
-                    description: (Updatable) Collection of application names. The
-                      apps referenced in the application group must already be present
-                      in the policy before being used in the application group.
+                    description: (Updatable) Collection of application names.
                     items:
                       type: string
                     type: array
+                  description:
+                    description: (Updatable) The description of the application group.
+                      This field can be used to add additional info.
+                    type: string
                   id:
                     type: string
                   name:

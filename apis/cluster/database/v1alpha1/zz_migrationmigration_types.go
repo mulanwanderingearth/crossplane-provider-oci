@@ -286,65 +286,6 @@ type DataTransferMediumDetailsParameters struct {
 	Type *string `json:"type" tf:"type,omitempty"`
 }
 
-type ExcludeObjectsInitParameters struct {
-
-	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
-	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
-
-	// Name of the object (regular expression is allowed)
-	Object *string `json:"object,omitempty" tf:"object,omitempty"`
-
-	// Owner of the object (regular expression is allowed)
-	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
-
-	// Schema of the object (regular expression is allowed)
-	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
-
-	// (Updatable) Type of the data transfer medium to use.
-	Type *string `json:"type,omitempty" tf:"type,omitempty"`
-}
-
-type ExcludeObjectsObservation struct {
-
-	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
-	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
-
-	// Name of the object (regular expression is allowed)
-	Object *string `json:"object,omitempty" tf:"object,omitempty"`
-
-	// Owner of the object (regular expression is allowed)
-	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
-
-	// Schema of the object (regular expression is allowed)
-	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
-
-	// (Updatable) Type of the data transfer medium to use.
-	Type *string `json:"type,omitempty" tf:"type,omitempty"`
-}
-
-type ExcludeObjectsParameters struct {
-
-	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
-	// +kubebuilder:validation:Optional
-	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
-
-	// Name of the object (regular expression is allowed)
-	// +kubebuilder:validation:Optional
-	Object *string `json:"object" tf:"object,omitempty"`
-
-	// Owner of the object (regular expression is allowed)
-	// +kubebuilder:validation:Optional
-	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
-
-	// Schema of the object (regular expression is allowed)
-	// +kubebuilder:validation:Optional
-	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
-
-	// (Updatable) Type of the data transfer medium to use.
-	// +kubebuilder:validation:Optional
-	Type *string `json:"type,omitempty" tf:"type,omitempty"`
-}
-
 type ExportDirectoryObjectInitParameters struct {
 
 	// (Updatable) Parameter name.
@@ -666,65 +607,6 @@ type ImportDirectoryObjectParameters struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 }
 
-type IncludeObjectsInitParameters struct {
-
-	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
-	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
-
-	// Name of the object (regular expression is allowed)
-	Object *string `json:"object,omitempty" tf:"object,omitempty"`
-
-	// Owner of the object (regular expression is allowed)
-	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
-
-	// Schema of the object (regular expression is allowed)
-	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
-
-	// (Updatable) Type of the data transfer medium to use.
-	Type *string `json:"type,omitempty" tf:"type,omitempty"`
-}
-
-type IncludeObjectsObservation struct {
-
-	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
-	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
-
-	// Name of the object (regular expression is allowed)
-	Object *string `json:"object,omitempty" tf:"object,omitempty"`
-
-	// Owner of the object (regular expression is allowed)
-	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
-
-	// Schema of the object (regular expression is allowed)
-	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
-
-	// (Updatable) Type of the data transfer medium to use.
-	Type *string `json:"type,omitempty" tf:"type,omitempty"`
-}
-
-type IncludeObjectsParameters struct {
-
-	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
-	// +kubebuilder:validation:Optional
-	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
-
-	// Name of the object (regular expression is allowed)
-	// +kubebuilder:validation:Optional
-	Object *string `json:"object" tf:"object,omitempty"`
-
-	// Owner of the object (regular expression is allowed)
-	// +kubebuilder:validation:Optional
-	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
-
-	// Schema of the object (regular expression is allowed)
-	// +kubebuilder:validation:Optional
-	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
-
-	// (Updatable) Type of the data transfer medium to use.
-	// +kubebuilder:validation:Optional
-	Type *string `json:"type,omitempty" tf:"type,omitempty"`
-}
-
 type InitialLoadSettingsInitParameters struct {
 
 	// (Applicable when database_combination=MYSQL) (Updatable) Apply the specified requirements for compatibility with MySQL Database Service for all tables in the dump  output, altering the dump files as necessary.
@@ -893,6 +775,124 @@ type MetadataRemapsParameters struct {
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
+type MigrationMigrationExcludeObjectsInitParameters struct {
+
+	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
+	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
+
+	// Name of the object (regular expression is allowed)
+	Object *string `json:"object,omitempty" tf:"object,omitempty"`
+
+	// Owner of the object (regular expression is allowed)
+	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
+
+	// Schema of the object (regular expression is allowed)
+	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
+
+	// (Updatable) Type of the data transfer medium to use.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type MigrationMigrationExcludeObjectsObservation struct {
+
+	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
+	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
+
+	// Name of the object (regular expression is allowed)
+	Object *string `json:"object,omitempty" tf:"object,omitempty"`
+
+	// Owner of the object (regular expression is allowed)
+	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
+
+	// Schema of the object (regular expression is allowed)
+	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
+
+	// (Updatable) Type of the data transfer medium to use.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type MigrationMigrationExcludeObjectsParameters struct {
+
+	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
+	// +kubebuilder:validation:Optional
+	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
+
+	// Name of the object (regular expression is allowed)
+	// +kubebuilder:validation:Optional
+	Object *string `json:"object" tf:"object,omitempty"`
+
+	// Owner of the object (regular expression is allowed)
+	// +kubebuilder:validation:Optional
+	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
+
+	// Schema of the object (regular expression is allowed)
+	// +kubebuilder:validation:Optional
+	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
+
+	// (Updatable) Type of the data transfer medium to use.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type MigrationMigrationIncludeObjectsInitParameters struct {
+
+	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
+	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
+
+	// Name of the object (regular expression is allowed)
+	Object *string `json:"object,omitempty" tf:"object,omitempty"`
+
+	// Owner of the object (regular expression is allowed)
+	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
+
+	// Schema of the object (regular expression is allowed)
+	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
+
+	// (Updatable) Type of the data transfer medium to use.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type MigrationMigrationIncludeObjectsObservation struct {
+
+	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
+	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
+
+	// Name of the object (regular expression is allowed)
+	Object *string `json:"object,omitempty" tf:"object,omitempty"`
+
+	// Owner of the object (regular expression is allowed)
+	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
+
+	// Schema of the object (regular expression is allowed)
+	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
+
+	// (Updatable) Type of the data transfer medium to use.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type MigrationMigrationIncludeObjectsParameters struct {
+
+	// (Applicable when database_combination=ORACLE) Whether an excluded table should be omitted from replication. Only valid for database objects  that have are of type TABLE and object status EXCLUDE.
+	// +kubebuilder:validation:Optional
+	IsOmitExcludedTableFromReplication *bool `json:"isOmitExcludedTableFromReplication,omitempty" tf:"is_omit_excluded_table_from_replication,omitempty"`
+
+	// Name of the object (regular expression is allowed)
+	// +kubebuilder:validation:Optional
+	Object *string `json:"object" tf:"object,omitempty"`
+
+	// Owner of the object (regular expression is allowed)
+	// +kubebuilder:validation:Optional
+	Owner *string `json:"owner,omitempty" tf:"owner,omitempty"`
+
+	// Schema of the object (regular expression is allowed)
+	// +kubebuilder:validation:Optional
+	Schema *string `json:"schema,omitempty" tf:"schema,omitempty"`
+
+	// (Updatable) Type of the data transfer medium to use.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
 type MigrationMigrationInitParameters struct {
 
 	// (Applicable when database_combination=ORACLE) (Updatable) List of Migration Parameter objects.
@@ -900,6 +900,19 @@ type MigrationMigrationInitParameters struct {
 
 	// (Updatable) Optional Pre-Migration advisor settings.
 	AdvisorSettings []AdvisorSettingsInitParameters `json:"advisorSettings,omitempty" tf:"advisor_settings,omitempty"`
+
+	// The OCID of the resource being referenced.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.MigrationAssessment
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	AssessmentID *string `json:"assessmentId,omitempty" tf:"assessment_id,omitempty"`
+
+	// Reference to a MigrationAssessment in database to populate assessmentId.
+	// +kubebuilder:validation:Optional
+	AssessmentIDRef *v1.Reference `json:"assessmentIdRef,omitempty" tf:"-"`
+
+	// Selector for a MigrationAssessment in database to populate assessmentId.
+	// +kubebuilder:validation:Optional
+	AssessmentIDSelector *v1.Selector `json:"assessmentIdSelector,omitempty" tf:"-"`
 
 	// Specifies the database objects to be excluded from the migration in bulk. The definition accepts input in a CSV format, newline separated for each entry. More details can be found in the documentation.
 	BulkIncludeExcludeData *string `json:"bulkIncludeExcludeData,omitempty" tf:"bulk_include_exclude_data,omitempty"`
@@ -933,7 +946,7 @@ type MigrationMigrationInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Database objects to exclude from migration, cannot be specified alongside 'includeObjects'
-	ExcludeObjects []ExcludeObjectsInitParameters `json:"excludeObjects,omitempty" tf:"exclude_objects,omitempty"`
+	ExcludeObjects []MigrationMigrationExcludeObjectsInitParameters `json:"excludeObjects,omitempty" tf:"exclude_objects,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +mapType=granular
@@ -946,7 +959,7 @@ type MigrationMigrationInitParameters struct {
 	HubDetails []HubDetailsInitParameters `json:"hubDetails,omitempty" tf:"hub_details,omitempty"`
 
 	// Database objects to include from migration, cannot be specified alongside 'excludeObjects'
-	IncludeObjects []IncludeObjectsInitParameters `json:"includeObjects,omitempty" tf:"include_objects,omitempty"`
+	IncludeObjects []MigrationMigrationIncludeObjectsInitParameters `json:"includeObjects,omitempty" tf:"include_objects,omitempty"`
 
 	// (Updatable) Optional settings for Data Pump Export and Import jobs
 	InitialLoadSettings []InitialLoadSettingsInitParameters `json:"initialLoadSettings,omitempty" tf:"initial_load_settings,omitempty"`
@@ -1015,6 +1028,9 @@ type MigrationMigrationObservation struct {
 	// (Updatable) Optional Pre-Migration advisor settings.
 	AdvisorSettings []AdvisorSettingsObservation `json:"advisorSettings,omitempty" tf:"advisor_settings,omitempty"`
 
+	// The OCID of the resource being referenced.
+	AssessmentID *string `json:"assessmentId,omitempty" tf:"assessment_id,omitempty"`
+
 	// Specifies the database objects to be excluded from the migration in bulk. The definition accepts input in a CSV format, newline separated for each entry. More details can be found in the documentation.
 	BulkIncludeExcludeData *string `json:"bulkIncludeExcludeData,omitempty" tf:"bulk_include_exclude_data,omitempty"`
 
@@ -1038,7 +1054,7 @@ type MigrationMigrationObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Database objects to exclude from migration, cannot be specified alongside 'includeObjects'
-	ExcludeObjects []ExcludeObjectsObservation `json:"excludeObjects,omitempty" tf:"exclude_objects,omitempty"`
+	ExcludeObjects []MigrationMigrationExcludeObjectsObservation `json:"excludeObjects,omitempty" tf:"exclude_objects,omitempty"`
 
 	// The OCID of the resource being referenced.
 	ExecutingJobID *string `json:"executingJobId,omitempty" tf:"executing_job_id,omitempty"`
@@ -1057,7 +1073,7 @@ type MigrationMigrationObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Database objects to include from migration, cannot be specified alongside 'excludeObjects'
-	IncludeObjects []IncludeObjectsObservation `json:"includeObjects,omitempty" tf:"include_objects,omitempty"`
+	IncludeObjects []MigrationMigrationIncludeObjectsObservation `json:"includeObjects,omitempty" tf:"include_objects,omitempty"`
 
 	// (Updatable) Optional settings for Data Pump Export and Import jobs
 	InitialLoadSettings []InitialLoadSettingsObservation `json:"initialLoadSettings,omitempty" tf:"initial_load_settings,omitempty"`
@@ -1110,6 +1126,20 @@ type MigrationMigrationParameters struct {
 	// +kubebuilder:validation:Optional
 	AdvisorSettings []AdvisorSettingsParameters `json:"advisorSettings,omitempty" tf:"advisor_settings,omitempty"`
 
+	// The OCID of the resource being referenced.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.MigrationAssessment
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	AssessmentID *string `json:"assessmentId,omitempty" tf:"assessment_id,omitempty"`
+
+	// Reference to a MigrationAssessment in database to populate assessmentId.
+	// +kubebuilder:validation:Optional
+	AssessmentIDRef *v1.Reference `json:"assessmentIdRef,omitempty" tf:"-"`
+
+	// Selector for a MigrationAssessment in database to populate assessmentId.
+	// +kubebuilder:validation:Optional
+	AssessmentIDSelector *v1.Selector `json:"assessmentIdSelector,omitempty" tf:"-"`
+
 	// Specifies the database objects to be excluded from the migration in bulk. The definition accepts input in a CSV format, newline separated for each entry. More details can be found in the documentation.
 	// +kubebuilder:validation:Optional
 	BulkIncludeExcludeData *string `json:"bulkIncludeExcludeData,omitempty" tf:"bulk_include_exclude_data,omitempty"`
@@ -1150,7 +1180,7 @@ type MigrationMigrationParameters struct {
 
 	// Database objects to exclude from migration, cannot be specified alongside 'includeObjects'
 	// +kubebuilder:validation:Optional
-	ExcludeObjects []ExcludeObjectsParameters `json:"excludeObjects,omitempty" tf:"exclude_objects,omitempty"`
+	ExcludeObjects []MigrationMigrationExcludeObjectsParameters `json:"excludeObjects,omitempty" tf:"exclude_objects,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
@@ -1167,7 +1197,7 @@ type MigrationMigrationParameters struct {
 
 	// Database objects to include from migration, cannot be specified alongside 'excludeObjects'
 	// +kubebuilder:validation:Optional
-	IncludeObjects []IncludeObjectsParameters `json:"includeObjects,omitempty" tf:"include_objects,omitempty"`
+	IncludeObjects []MigrationMigrationIncludeObjectsParameters `json:"includeObjects,omitempty" tf:"include_objects,omitempty"`
 
 	// (Updatable) Optional settings for Data Pump Export and Import jobs
 	// +kubebuilder:validation:Optional

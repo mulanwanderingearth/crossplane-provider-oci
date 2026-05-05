@@ -190,6 +190,10 @@ spec:
                           description: (Updatable) The Disaster recovery SCAN TCPIP
                             port. Default is 1521.
                           type: number
+                        scanListenerPortTcpSsl:
+                          description: (Updatable) The DR SCAN TCPIP SSL port. Default
+                            is 2484.
+                          type: number
                       type: object
                     type: array
                   exadataInfrastructureId:
@@ -309,7 +313,7 @@ spec:
                             port. Default is 1521.
                           type: number
                         scanListenerPortTcpSsl:
-                          description: (Updatable) The SCAN TCPIP SSL port. Default
+                          description: (Updatable) The DR SCAN TCPIP SSL port. Default
                             is 2484.
                           type: number
                       type: object
@@ -591,6 +595,10 @@ spec:
                           description: (Updatable) The Disaster recovery SCAN TCPIP
                             port. Default is 1521.
                           type: number
+                        scanListenerPortTcpSsl:
+                          description: (Updatable) The DR SCAN TCPIP SSL port. Default
+                            is 2484.
+                          type: number
                       type: object
                     type: array
                   exadataInfrastructureId:
@@ -710,7 +718,7 @@ spec:
                             port. Default is 1521.
                           type: number
                         scanListenerPortTcpSsl:
-                          description: (Updatable) The SCAN TCPIP SSL port. Default
+                          description: (Updatable) The DR SCAN TCPIP SSL port. Default
                             is 2484.
                           type: number
                       type: object
@@ -1009,6 +1017,10 @@ spec:
                           description: (Updatable) The Disaster recovery SCAN TCPIP
                             port. Default is 1521.
                           type: number
+                        scanListenerPortTcpSsl:
+                          description: (Updatable) The DR SCAN TCPIP SSL port. Default
+                            is 2484.
+                          type: number
                       type: object
                     type: array
                   exadataInfrastructureId:
@@ -1059,7 +1071,7 @@ spec:
                             port. Default is 1521.
                           type: number
                         scanListenerPortTcpSsl:
-                          description: (Updatable) The SCAN TCPIP SSL port. Default
+                          description: (Updatable) The DR SCAN TCPIP SSL port. Default
                             is 2484.
                           type: number
                       type: object

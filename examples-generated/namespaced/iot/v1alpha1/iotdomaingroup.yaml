@@ -18,3 +18,4 @@ spec:
     displayName: ${var.iot_domain_group_display_name}
     freeformTags:
       Department: Finance
+    type: ${var.iot_domain_group_type}

@@ -24,6 +24,11 @@ spec:
     autonomousDatabaseIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_autonomous_database
+    autonomousDatabaseMaintenanceWindow:
+    - dayOfWeek:
+      - name: ${var.autonomous_database_autonomous_database_maintenance_window_day_of_week_name}
+      maintenanceEndTime: ${var.autonomous_database_autonomous_database_maintenance_window_maintenance_end_time}
+      maintenanceStartTime: ${var.autonomous_database_autonomous_database_maintenance_window_maintenance_start_time}
     autonomousMaintenanceScheduleType: ${var.autonomous_database_autonomous_maintenance_schedule_type}
     backupRetentionPeriodInDays: ${var.autonomous_database_backup_retention_period_in_days}
     byolComputeCountLimit: ${var.autonomous_database_byol_compute_count_limit}
@@ -109,8 +114,10 @@ spec:
     remoteDisasterRecoveryType: ${var.autonomous_database_remote_disaster_recovery_type}
     resourcePoolLeaderId: ${oci_database_resource_pool_leader.test_resource_pool_leader.id}
     resourcePoolSummary:
-    - isDisabled: ${var.autonomous_database_resource_pool_summary_is_disabled}
+    - availableStorageCapacityInTbs: ${var.autonomous_database_resource_pool_summary_available_storage_capacity_in_tbs}
+      isDisabled: ${var.autonomous_database_resource_pool_summary_is_disabled}
       poolSize: ${var.autonomous_database_resource_pool_summary_pool_size}
+      poolStorageSizeInTbs: ${var.autonomous_database_resource_pool_summary_pool_storage_size_in_tbs}
     scheduledOperations:
     - dayOfWeek:
       - name: ${var.autonomous_database_scheduled_operations_day_of_week_name}
@@ -130,6 +137,8 @@ spec:
     subscriptionId: ${oci_onesubscription_subscription.test_subscription.id}
     timeOfAutoRefreshStart: ${var.autonomous_database_time_of_auto_refresh_start}
     timestamp: ${var.autonomous_database_timestamp}
+    transportableTablespace:
+    - ttsBundleUrl: ${var.autonomous_database_transportable_tablespace_tts_bundle_url}
     useLatestAvailableBackupTimeStamp: ${var.autonomous_database_use_latest_available_backup_time_stamp}
     vaultIdSelector:
       matchLabels:

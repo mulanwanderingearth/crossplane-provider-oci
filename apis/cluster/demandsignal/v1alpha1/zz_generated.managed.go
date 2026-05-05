@@ -56,3 +56,53 @@ func (mg *OccDemandSignal) SetProviderConfigReference(r *xpv1.Reference) {
 func (mg *OccDemandSignal) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
+
+// GetCondition of this OccMetricAlarm.
+func (mg *OccMetricAlarm) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this OccMetricAlarm.
+func (mg *OccMetricAlarm) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this OccMetricAlarm.
+func (mg *OccMetricAlarm) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this OccMetricAlarm.
+func (mg *OccMetricAlarm) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this OccMetricAlarm.
+func (mg *OccMetricAlarm) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this OccMetricAlarm.
+func (mg *OccMetricAlarm) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this OccMetricAlarm.
+func (mg *OccMetricAlarm) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this OccMetricAlarm.
+func (mg *OccMetricAlarm) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this OccMetricAlarm.
+func (mg *OccMetricAlarm) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this OccMetricAlarm.
+func (mg *OccMetricAlarm) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}

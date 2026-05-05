@@ -14,11 +14,14 @@ import (
 	agentdataingestionjob "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/agentdataingestionjob"
 	agentdatasource "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/agentdatasource"
 	agentknowledgebase "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/agentknowledgebase"
+	agentprovisionedcapacity "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/agentprovisionedcapacity"
 	agenttool "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/agenttool"
 	dedicatedaicluster "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/dedicatedaicluster"
 	endpoint "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/endpoint"
 	generativeaiprivateendpoint "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/generativeaiprivateendpoint"
+	importedmodel "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/importedmodel"
 	model "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/model"
+	semanticstore "github.com/oracle/provider-oci/internal/controller/namespaced/generativeai/semanticstore"
 )
 
 // Setup_generativeai creates all controllers with the supplied logger and adds them to
@@ -30,11 +33,14 @@ func Setup_generativeai(mgr ctrl.Manager, o controller.Options) error {
 		agentdataingestionjob.Setup,
 		agentdatasource.Setup,
 		agentknowledgebase.Setup,
+		agentprovisionedcapacity.Setup,
 		agenttool.Setup,
 		dedicatedaicluster.Setup,
 		endpoint.Setup,
 		generativeaiprivateendpoint.Setup,
+		importedmodel.Setup,
 		model.Setup,
+		semanticstore.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err
@@ -52,11 +58,14 @@ func SetupGated_generativeai(mgr ctrl.Manager, o controller.Options) error {
 		agentdataingestionjob.SetupGated,
 		agentdatasource.SetupGated,
 		agentknowledgebase.SetupGated,
+		agentprovisionedcapacity.SetupGated,
 		agenttool.SetupGated,
 		dedicatedaicluster.SetupGated,
 		endpoint.SetupGated,
 		generativeaiprivateendpoint.SetupGated,
+		importedmodel.SetupGated,
 		model.SetupGated,
+		semanticstore.SetupGated,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err

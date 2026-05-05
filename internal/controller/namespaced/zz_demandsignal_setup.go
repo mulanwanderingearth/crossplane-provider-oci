@@ -10,6 +10,7 @@ import (
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
 	occdemandsignal "github.com/oracle/provider-oci/internal/controller/namespaced/demandsignal/occdemandsignal"
+	occmetricalarm "github.com/oracle/provider-oci/internal/controller/namespaced/demandsignal/occmetricalarm"
 )
 
 // Setup_demandsignal creates all controllers with the supplied logger and adds them to
@@ -17,6 +18,7 @@ import (
 func Setup_demandsignal(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
 		occdemandsignal.Setup,
+		occmetricalarm.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err
@@ -30,6 +32,7 @@ func Setup_demandsignal(mgr ctrl.Manager, o controller.Options) error {
 func SetupGated_demandsignal(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
 		occdemandsignal.SetupGated,
+		occmetricalarm.SetupGated,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err

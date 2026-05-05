@@ -1,0 +1,16 @@
+apiVersion: database.oci.m.upbound.io/v1alpha1
+kind: MigrationJobAdvisorReportCheck
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/migrationjobadvisorreportcheck
+  labels:
+    testing.upbound.io/example-name: test_job_advisor_report_check
+  name: test-job-advisor-report-check
+  namespace: upbound-system
+spec:
+  forProvider:
+    advisorReportCheckId: ${oci_database_migration_advisor_report_check.test_advisor_report_check.id}
+    isReviewed: ${var.job_advisor_report_check_is_reviewed}
+    jobIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_job

@@ -40,6 +40,9 @@ type DBBackupConfigBackupDestinationDetailsInitParameters struct {
 	// (Applicable when source=NONE) Indicates if backup retention is locked for all the database backups in the Autonomous Container Database (ACD). The retention window cannot be decreased if the backup retention lock is enabled. Once applied on the Autonomous Container Database, the retention lock cannot be removed, or the retention period cannot be decreased after a 14-day period. If the backup is a Long Term Backup and retention lock is enabled, the backup cannot be deleted and must expire. The retention lock set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination.
 	IsRetentionLockEnabled *bool `json:"isRetentionLockEnabled,omitempty" tf:"is_retention_lock_enabled,omitempty"`
 
+	// (Applicable when source=NONE) Indicates whether Zero Data Loss functionality is enabled for a Recovery Appliance backup destination in an Autonomous Container Database. When enabled, the database automatically ships all redo logs in real-time to the Recovery Appliance for a Zero Data Loss recovery setup (sub-second RPO). Defaults to TRUE if no value is given.
+	IsZeroDataLossEnabled *bool `json:"isZeroDataLossEnabled,omitempty" tf:"is_zero_data_loss_enabled,omitempty"`
+
 	// (Applicable when source=NONE) The name of the remote region where the remote automatic incremental backups will be stored.           For information about valid region names, see Regions and Availability Domains.
 	RemoteRegion *string `json:"remoteRegion,omitempty" tf:"remote_region,omitempty"`
 
@@ -67,6 +70,9 @@ type DBBackupConfigBackupDestinationDetailsObservation struct {
 
 	// (Applicable when source=NONE) Indicates if backup retention is locked for all the database backups in the Autonomous Container Database (ACD). The retention window cannot be decreased if the backup retention lock is enabled. Once applied on the Autonomous Container Database, the retention lock cannot be removed, or the retention period cannot be decreased after a 14-day period. If the backup is a Long Term Backup and retention lock is enabled, the backup cannot be deleted and must expire. The retention lock set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination.
 	IsRetentionLockEnabled *bool `json:"isRetentionLockEnabled,omitempty" tf:"is_retention_lock_enabled,omitempty"`
+
+	// (Applicable when source=NONE) Indicates whether Zero Data Loss functionality is enabled for a Recovery Appliance backup destination in an Autonomous Container Database. When enabled, the database automatically ships all redo logs in real-time to the Recovery Appliance for a Zero Data Loss recovery setup (sub-second RPO). Defaults to TRUE if no value is given.
+	IsZeroDataLossEnabled *bool `json:"isZeroDataLossEnabled,omitempty" tf:"is_zero_data_loss_enabled,omitempty"`
 
 	// (Applicable when source=NONE) The name of the remote region where the remote automatic incremental backups will be stored.           For information about valid region names, see Regions and Availability Domains.
 	RemoteRegion *string `json:"remoteRegion,omitempty" tf:"remote_region,omitempty"`
@@ -108,6 +114,10 @@ type DBBackupConfigBackupDestinationDetailsParameters struct {
 	// (Applicable when source=NONE) Indicates if backup retention is locked for all the database backups in the Autonomous Container Database (ACD). The retention window cannot be decreased if the backup retention lock is enabled. Once applied on the Autonomous Container Database, the retention lock cannot be removed, or the retention period cannot be decreased after a 14-day period. If the backup is a Long Term Backup and retention lock is enabled, the backup cannot be deleted and must expire. The retention lock set on the Autonomous Container Database is not applicable for cross region remote backups and backups hosted on recovery Appliance backup destination.
 	// +kubebuilder:validation:Optional
 	IsRetentionLockEnabled *bool `json:"isRetentionLockEnabled,omitempty" tf:"is_retention_lock_enabled,omitempty"`
+
+	// (Applicable when source=NONE) Indicates whether Zero Data Loss functionality is enabled for a Recovery Appliance backup destination in an Autonomous Container Database. When enabled, the database automatically ships all redo logs in real-time to the Recovery Appliance for a Zero Data Loss recovery setup (sub-second RPO). Defaults to TRUE if no value is given.
+	// +kubebuilder:validation:Optional
+	IsZeroDataLossEnabled *bool `json:"isZeroDataLossEnabled,omitempty" tf:"is_zero_data_loss_enabled,omitempty"`
 
 	// (Applicable when source=NONE) The name of the remote region where the remote automatic incremental backups will be stored.           For information about valid region names, see Regions and Availability Domains.
 	// +kubebuilder:validation:Optional
@@ -353,6 +363,9 @@ type DatabaseDatabaseInitParameters struct {
 	// The administrator password of the primary database in this Data Guard association.
 	DatabaseAdminPasswordSecretRef *v1.SecretKeySelector `json:"databaseAdminPasswordSecretRef,omitempty" tf:"-"`
 
+	// The OCID of the Database.
+	DatabaseID *string `json:"databaseId,omitempty" tf:"database_id,omitempty"`
+
 	// (Applicable when source=NONE) The database software image OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.DatabaseSoftwareImage
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
@@ -393,7 +406,7 @@ type DatabaseDatabaseInitParameters struct {
 	// +kubebuilder:validation:Optional
 	KMSKeyIDSelector *v1.Selector `json:"kmsKeyIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous AI Database Serverless does not use key versions, hence is not applicable for Autonomous AI Database Serverless instances.
+	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous Database Serverless does not use key versions, hence is not applicable for Autonomous Database Serverless instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.KeyVersion
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	KMSKeyVersionID *string `json:"kmsKeyVersionId,omitempty" tf:"kms_key_version_id,omitempty"`
@@ -408,6 +421,9 @@ type DatabaseDatabaseInitParameters struct {
 
 	// (Applicable when source=NONE) The national character set for the database.  The default is AL16UTF16. Allowed values are: AL16UTF16 or UTF8.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
+
+	// (Updatable) Options for DB Home and Database patching
+	PatchOptions []PatchOptionsInitParameters `json:"patchOptions,omitempty" tf:"patch_options,omitempty"`
 
 	// (Applicable when source=NONE) The name of the pluggable database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters. Special characters are not permitted. Pluggable database should not be same as database name.
 	PdbName *string `json:"pdbName,omitempty" tf:"pdb_name,omitempty"`
@@ -446,8 +462,13 @@ type DatabaseDatabaseInitParameters struct {
 	// (Applicable when source=NONE) The optional password to open the TDE wallet. The password must be at least nine characters and contain at least two uppercase, two lowercase, two numeric, and two special characters. The special characters must be _, #, or -.
 	TdeWalletPasswordSecretRef *v1.SecretKeySelector `json:"tdeWalletPasswordSecretRef,omitempty" tf:"-"`
 
+	TimeStampForPointInTimeRecovery *string `json:"timeStampForPointInTimeRecovery,omitempty" tf:"time_stamp_for_point_in_time_recovery,omitempty"`
+
 	// The redo transport type to use for this Data Guard association.  Valid values depend on the specified protectionMode:
 	TransportType *string `json:"transportType,omitempty" tf:"transport_type,omitempty"`
+
+	// The OCID of the VM cluster.
+	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Vault
@@ -483,6 +504,9 @@ type DatabaseDatabaseObservation struct {
 	// (Applicable when source=NONE) Deprecated. The dbWorkload field has been deprecated for Exadata Database Service on Dedicated Infrastructure, Exadata Database Service on Cloud@Customer, and Base Database Service. Support for this attribute will end in November 2023. You may choose to update your custom scripts to exclude the dbWorkload attribute. After November 2023 if you pass a value to the dbWorkload attribute, it will be ignored.
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
 
+	// The OCID of the Database.
+	DatabaseID *string `json:"databaseId,omitempty" tf:"database_id,omitempty"`
+
 	// (Applicable when source=NONE) The database software image OCID
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
@@ -503,11 +527,14 @@ type DatabaseDatabaseObservation struct {
 	// (Applicable when source=NONE) The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
 	KMSKeyID *string `json:"kmsKeyId,omitempty" tf:"kms_key_id,omitempty"`
 
-	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous AI Database Serverless does not use key versions, hence is not applicable for Autonomous AI Database Serverless instances.
+	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous Database Serverless does not use key versions, hence is not applicable for Autonomous Database Serverless instances.
 	KMSKeyVersionID *string `json:"kmsKeyVersionId,omitempty" tf:"kms_key_version_id,omitempty"`
 
 	// (Applicable when source=NONE) The national character set for the database.  The default is AL16UTF16. Allowed values are: AL16UTF16 or UTF8.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
+
+	// (Updatable) Options for DB Home and Database patching
+	PatchOptions []PatchOptionsObservation `json:"patchOptions,omitempty" tf:"patch_options,omitempty"`
 
 	// (Applicable when source=NONE) The name of the pluggable database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters. Special characters are not permitted. Pluggable database should not be same as database name.
 	PdbName *string `json:"pdbName,omitempty" tf:"pdb_name,omitempty"`
@@ -530,8 +557,13 @@ type DatabaseDatabaseObservation struct {
 	// The database storage size details. This database option is supported for the Exadata VM cluster on Exascale Infrastructure.
 	StorageSizeDetails []StorageSizeDetailsObservation `json:"storageSizeDetails,omitempty" tf:"storage_size_details,omitempty"`
 
+	TimeStampForPointInTimeRecovery *string `json:"timeStampForPointInTimeRecovery,omitempty" tf:"time_stamp_for_point_in_time_recovery,omitempty"`
+
 	// The redo transport type to use for this Data Guard association.  Valid values depend on the specified protectionMode:
 	TransportType *string `json:"transportType,omitempty" tf:"transport_type,omitempty"`
+
+	// The OCID of the VM cluster.
+	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	VaultID *string `json:"vaultId,omitempty" tf:"vault_id,omitempty"`
@@ -585,6 +617,10 @@ type DatabaseDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	DatabaseAdminPasswordSecretRef *v1.SecretKeySelector `json:"databaseAdminPasswordSecretRef,omitempty" tf:"-"`
 
+	// The OCID of the Database.
+	// +kubebuilder:validation:Optional
+	DatabaseID *string `json:"databaseId,omitempty" tf:"database_id,omitempty"`
+
 	// (Applicable when source=NONE) The database software image OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.DatabaseSoftwareImage
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
@@ -631,7 +667,7 @@ type DatabaseDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	KMSKeyIDSelector *v1.Selector `json:"kmsKeyIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous AI Database Serverless does not use key versions, hence is not applicable for Autonomous AI Database Serverless instances.
+	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous Database Serverless does not use key versions, hence is not applicable for Autonomous Database Serverless instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.KeyVersion
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -648,6 +684,10 @@ type DatabaseDatabaseParameters struct {
 	// (Applicable when source=NONE) The national character set for the database.  The default is AL16UTF16. Allowed values are: AL16UTF16 or UTF8.
 	// +kubebuilder:validation:Optional
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
+
+	// (Updatable) Options for DB Home and Database patching
+	// +kubebuilder:validation:Optional
+	PatchOptions []PatchOptionsParameters `json:"patchOptions,omitempty" tf:"patch_options,omitempty"`
 
 	// (Applicable when source=NONE) The name of the pluggable database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters. Special characters are not permitted. Pluggable database should not be same as database name.
 	// +kubebuilder:validation:Optional
@@ -695,9 +735,16 @@ type DatabaseDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	TdeWalletPasswordSecretRef *v1.SecretKeySelector `json:"tdeWalletPasswordSecretRef,omitempty" tf:"-"`
 
+	// +kubebuilder:validation:Optional
+	TimeStampForPointInTimeRecovery *string `json:"timeStampForPointInTimeRecovery,omitempty" tf:"time_stamp_for_point_in_time_recovery,omitempty"`
+
 	// The redo transport type to use for this Data Guard association.  Valid values depend on the specified protectionMode:
 	// +kubebuilder:validation:Optional
 	TransportType *string `json:"transportType,omitempty" tf:"transport_type,omitempty"`
+
+	// The OCID of the VM cluster.
+	// +kubebuilder:validation:Optional
+	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Vault
@@ -871,7 +918,7 @@ type DatabaseInitParameters struct {
 
 	KMSKeyRotation *float64 `json:"kmsKeyRotation,omitempty" tf:"kms_key_rotation,omitempty"`
 
-	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous AI Database Serverless does not use key versions, hence is not applicable for Autonomous AI Database Serverless instances.
+	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous Database Serverless does not use key versions, hence is not applicable for Autonomous Database Serverless instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.KeyVersion
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	KMSKeyVersionID *string `json:"kmsKeyVersionId,omitempty" tf:"kms_key_version_id,omitempty"`
@@ -977,7 +1024,7 @@ type DatabaseObservation struct {
 
 	KMSKeyRotation *float64 `json:"kmsKeyRotation,omitempty" tf:"kms_key_rotation,omitempty"`
 
-	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous AI Database Serverless does not use key versions, hence is not applicable for Autonomous AI Database Serverless instances.
+	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous Database Serverless does not use key versions, hence is not applicable for Autonomous Database Serverless instances.
 	KMSKeyVersionID *string `json:"kmsKeyVersionId,omitempty" tf:"kms_key_version_id,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the key store of Oracle Vault.
@@ -1000,6 +1047,9 @@ type DatabaseObservation struct {
 
 	// (Applicable when source=NONE) The national character set for the database.  The default is AL16UTF16. Allowed values are: AL16UTF16 or UTF8.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
+
+	// The patch version of the database.
+	PatchVersion *string `json:"patchVersion,omitempty" tf:"patch_version,omitempty"`
 
 	// (Applicable when source=NONE) The name of the pluggable database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters. Special characters are not permitted. Pluggable database should not be same as database name.
 	PdbName *string `json:"pdbName,omitempty" tf:"pdb_name,omitempty"`
@@ -1083,7 +1133,7 @@ type DatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	KMSKeyRotation *float64 `json:"kmsKeyRotation,omitempty" tf:"kms_key_rotation,omitempty"`
 
-	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous AI Database Serverless does not use key versions, hence is not applicable for Autonomous AI Database Serverless instances.
+	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous Database Serverless does not use key versions, hence is not applicable for Autonomous Database Serverless instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.KeyVersion
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -1180,6 +1230,35 @@ type MembersObservation struct {
 }
 
 type MembersParameters struct {
+}
+
+type PatchOptionsInitParameters struct {
+
+	// Skip running datapatch on PDBs in closed state
+	ShouldSkipClosedPdbs *bool `json:"shouldSkipClosedPdbs,omitempty" tf:"should_skip_closed_pdbs,omitempty"`
+
+	// Skip running datapatch on database(s)
+	ShouldSkipDataPatch *bool `json:"shouldSkipDataPatch,omitempty" tf:"should_skip_data_patch,omitempty"`
+}
+
+type PatchOptionsObservation struct {
+
+	// Skip running datapatch on PDBs in closed state
+	ShouldSkipClosedPdbs *bool `json:"shouldSkipClosedPdbs,omitempty" tf:"should_skip_closed_pdbs,omitempty"`
+
+	// Skip running datapatch on database(s)
+	ShouldSkipDataPatch *bool `json:"shouldSkipDataPatch,omitempty" tf:"should_skip_data_patch,omitempty"`
+}
+
+type PatchOptionsParameters struct {
+
+	// Skip running datapatch on PDBs in closed state
+	// +kubebuilder:validation:Optional
+	ShouldSkipClosedPdbs *bool `json:"shouldSkipClosedPdbs,omitempty" tf:"should_skip_closed_pdbs,omitempty"`
+
+	// Skip running datapatch on database(s)
+	// +kubebuilder:validation:Optional
+	ShouldSkipDataPatch *bool `json:"shouldSkipDataPatch,omitempty" tf:"should_skip_data_patch,omitempty"`
 }
 
 type SourceEncryptionKeyLocationDetailsInitParameters struct {

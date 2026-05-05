@@ -7,6 +7,86 @@ package v1alpha1
 
 import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
 
+// GetCondition of this OciCacheBackup.
+func (mg *OciCacheBackup) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this OciCacheBackup.
+func (mg *OciCacheBackup) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this OciCacheBackup.
+func (mg *OciCacheBackup) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this OciCacheBackup.
+func (mg *OciCacheBackup) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this OciCacheBackup.
+func (mg *OciCacheBackup) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this OciCacheBackup.
+func (mg *OciCacheBackup) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this OciCacheBackup.
+func (mg *OciCacheBackup) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this OciCacheBackup.
+func (mg *OciCacheBackup) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this OciCacheBackupExportToObjectStorage.
+func (mg *OciCacheBackupExportToObjectStorage) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this OciCacheBackupExportToObjectStorage.
+func (mg *OciCacheBackupExportToObjectStorage) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this OciCacheBackupExportToObjectStorage.
+func (mg *OciCacheBackupExportToObjectStorage) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this OciCacheBackupExportToObjectStorage.
+func (mg *OciCacheBackupExportToObjectStorage) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this OciCacheBackupExportToObjectStorage.
+func (mg *OciCacheBackupExportToObjectStorage) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this OciCacheBackupExportToObjectStorage.
+func (mg *OciCacheBackupExportToObjectStorage) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this OciCacheBackupExportToObjectStorage.
+func (mg *OciCacheBackupExportToObjectStorage) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this OciCacheBackupExportToObjectStorage.
+func (mg *OciCacheBackupExportToObjectStorage) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this OciCacheConfigSet.
 func (mg *OciCacheConfigSet) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)

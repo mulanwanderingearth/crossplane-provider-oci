@@ -15,6 +15,7 @@ import (
 )
 
 type OracleDbAzureVaultInitParameters struct {
+	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) Azure Vault ID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/kms/v1alpha1.Vault
@@ -65,11 +66,15 @@ type OracleDbAzureVaultInitParameters struct {
 	// +mapType=granular
 	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
 
+	// The target region, where resource is replicated.
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
 	// (Updatable) Oracle DB Azure Vault resource type.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type OracleDbAzureVaultObservation struct {
+	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) Azure Vault ID.
 	AzureVaultID *string `json:"azureVaultId,omitempty" tf:"azure_vault_id,omitempty"`
@@ -110,6 +115,9 @@ type OracleDbAzureVaultObservation struct {
 	// +mapType=granular
 	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
 
+	// Replication metadata, it has information about replication and target region.
+	ReplicationMetadata []OracleDbAzureVaultReplicationMetadataObservation `json:"replicationMetadata,omitempty" tf:"replication_metadata,omitempty"`
+
 	// The lifecycle state of the Oracle DB Azure Vault resource.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
@@ -117,10 +125,13 @@ type OracleDbAzureVaultObservation struct {
 	// +mapType=granular
 	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
-	// Time when the DB Azure Vault resource was created in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	// The target region, where resource is replicated.
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
+	// Time when the Replication was created in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
-	// Time when the DB Azure Vault resource was last modified, expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	// Time when the Replication was last modified, expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) Oracle DB Azure Vault resource type.
@@ -128,6 +139,9 @@ type OracleDbAzureVaultObservation struct {
 }
 
 type OracleDbAzureVaultParameters struct {
+
+	// +kubebuilder:validation:Optional
+	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) Azure Vault ID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/kms/v1alpha1.Vault
@@ -187,9 +201,46 @@ type OracleDbAzureVaultParameters struct {
 	// +mapType=granular
 	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
 
+	// The target region, where resource is replicated.
+	// +kubebuilder:validation:Optional
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
 	// (Updatable) Oracle DB Azure Vault resource type.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type OracleDbAzureVaultReplicationMetadataInitParameters struct {
+}
+
+type OracleDbAzureVaultReplicationMetadataObservation struct {
+
+	// List of all regions and their respective resource ID.
+	ReplicationDetails []ReplicationMetadataReplicationDetailsObservation `json:"replicationDetails,omitempty" tf:"replication_details,omitempty"`
+}
+
+type OracleDbAzureVaultReplicationMetadataParameters struct {
+}
+
+type ReplicationMetadataReplicationDetailsInitParameters struct {
+}
+
+type ReplicationMetadataReplicationDetailsObservation struct {
+
+	// The lifecycle state of the Oracle DB Azure Vault resource.
+	ReplicationState *string `json:"replicationState,omitempty" tf:"replication_state,omitempty"`
+
+	// The target region, where resource is replicated.
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
+	// Time when the Replication was created in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
+
+	// Time when the Replication was last modified, expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
+}
+
+type ReplicationMetadataReplicationDetailsParameters struct {
 }
 
 // OracleDbAzureVaultSpec defines the desired state of OracleDbAzureVault

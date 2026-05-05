@@ -1,0 +1,19 @@
+apiVersion: database.oci.m.upbound.io/v1alpha1
+kind: DataPatch
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/datapatch
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+  namespace: upbound-system
+spec:
+  forProvider:
+    action: APPLY
+    dataPatchOptions:
+    - shouldSkipClosedPdbs: true
+    databaseIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    pluggableDatabasesRefs:
+    - name: example

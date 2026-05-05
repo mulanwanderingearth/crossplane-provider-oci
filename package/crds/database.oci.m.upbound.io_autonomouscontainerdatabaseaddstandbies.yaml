@@ -1505,6 +1505,24 @@ spec:
                     description: DST Time-Zone File version of the Autonomous Container
                       Database.
                     type: string
+                  encryptionKeyLocationDetails:
+                    description: Types of providers supported for managing database
+                      encryption keys
+                    items:
+                      properties:
+                        awsEncryptionKeyId:
+                          description: Provide the key OCID of a registered AWS key.
+                          type: string
+                        azureEncryptionKeyId:
+                          description: The OCID of the backup destination.
+                          type: string
+                        hsmPassword:
+                          type: string
+                        providerType:
+                          description: Use 'AWS' for creating a new database.
+                          type: string
+                      type: object
+                    type: array
                   fastStartFailOverLagLimitInSeconds:
                     description: The lag time for my preference based on data loss
                       tolerance in seconds.

@@ -82,7 +82,7 @@ type NetworkLoadBalancerInitParameters struct {
 	// (Updatable) IP version associated with the NLB.
 	NlbIPVersion *string `json:"nlbIpVersion,omitempty" tf:"nlb_ip_version,omitempty"`
 
-	// An array of reserved Ips.
+	// An array of reserved Ips. NLB supports reserved public ip, reserved private IP and reserved IPv6. Customer can pass 3 reserved IP ocids, with all items unique, and a maximum of 1 allowed for each entity type: public-ip, private-ip and IPv6 Note that NLB does not support changing an IP’s lifecycle state between ephemeral and reserved if the IP is already assigned to the NLB. While this type of lifecycle state change is supported by VCN IPs even when the IP is assigned to a resource, such changes will not be recognized or reflected by NLB.
 	ReservedIps []ReservedIpsInitParameters `json:"reservedIps,omitempty" tf:"reserved_ips,omitempty"`
 
 	// (Updatable) ZPR tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"oracle-zpr": {"td": {"value": "42", "mode": "audit"}}}
@@ -127,7 +127,7 @@ type NetworkLoadBalancerObservation struct {
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// OCID of the reserved public IP address created with the virtual cloud network.
+	// Ocid of the Reserved IP (Public IP, Private IP or IPv6) created with VCN.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// An array of IP addresses.
@@ -152,7 +152,7 @@ type NetworkLoadBalancerObservation struct {
 	// (Updatable) IP version associated with the NLB.
 	NlbIPVersion *string `json:"nlbIpVersion,omitempty" tf:"nlb_ip_version,omitempty"`
 
-	// An array of reserved Ips.
+	// An array of reserved Ips. NLB supports reserved public ip, reserved private IP and reserved IPv6. Customer can pass 3 reserved IP ocids, with all items unique, and a maximum of 1 allowed for each entity type: public-ip, private-ip and IPv6 Note that NLB does not support changing an IP’s lifecycle state between ephemeral and reserved if the IP is already assigned to the NLB. While this type of lifecycle state change is supported by VCN IPs even when the IP is assigned to a resource, such changes will not be recognized or reflected by NLB.
 	ReservedIps []ReservedIpsObservation `json:"reservedIps,omitempty" tf:"reserved_ips,omitempty"`
 
 	// (Updatable) ZPR tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"oracle-zpr": {"td": {"value": "42", "mode": "audit"}}}
@@ -237,7 +237,7 @@ type NetworkLoadBalancerParameters struct {
 	// +kubebuilder:validation:Optional
 	NlbIPVersion *string `json:"nlbIpVersion,omitempty" tf:"nlb_ip_version,omitempty"`
 
-	// An array of reserved Ips.
+	// An array of reserved Ips. NLB supports reserved public ip, reserved private IP and reserved IPv6. Customer can pass 3 reserved IP ocids, with all items unique, and a maximum of 1 allowed for each entity type: public-ip, private-ip and IPv6 Note that NLB does not support changing an IP’s lifecycle state between ephemeral and reserved if the IP is already assigned to the NLB. While this type of lifecycle state change is supported by VCN IPs even when the IP is assigned to a resource, such changes will not be recognized or reflected by NLB.
 	// +kubebuilder:validation:Optional
 	ReservedIps []ReservedIpsParameters `json:"reservedIps,omitempty" tf:"reserved_ips,omitempty"`
 
@@ -269,7 +269,7 @@ type ReservedIPInitParameters struct {
 
 type ReservedIPObservation struct {
 
-	// OCID of the reserved public IP address created with the virtual cloud network.
+	// Ocid of the Reserved IP (Public IP, Private IP or IPv6) created with VCN.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
@@ -278,19 +278,19 @@ type ReservedIPParameters struct {
 
 type ReservedIpsInitParameters struct {
 
-	// OCID of the reserved public IP address created with the virtual cloud network.
+	// Ocid of the Reserved IP (Public IP, Private IP or IPv6) created with VCN.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ReservedIpsObservation struct {
 
-	// OCID of the reserved public IP address created with the virtual cloud network.
+	// Ocid of the Reserved IP (Public IP, Private IP or IPv6) created with VCN.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
 
 type ReservedIpsParameters struct {
 
-	// OCID of the reserved public IP address created with the virtual cloud network.
+	// Ocid of the Reserved IP (Public IP, Private IP or IPv6) created with VCN.
 	// +kubebuilder:validation:Optional
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }

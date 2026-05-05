@@ -1,0 +1,14 @@
+apiVersion: osmanagementhub.oci.m.upbound.io/v1alpha1
+kind: ManagedInstanceRefreshSoftwareManagement
+metadata:
+  annotations:
+    meta.upbound.io/example-id: osmanagementhub/v1alpha1/managedinstancerefreshsoftwaremanagement
+  labels:
+    testing.upbound.io/example-name: test_managed_instance_refresh_software_management
+  name: test-managed-instance-refresh-software-management
+  namespace: upbound-system
+spec:
+  forProvider:
+    managedInstanceIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_managed_instance

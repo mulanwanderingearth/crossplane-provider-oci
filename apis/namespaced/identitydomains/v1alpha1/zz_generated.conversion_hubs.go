@@ -58,6 +58,12 @@ func (tr *Grant) Hub() {}
 func (tr *Group) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *IdentityProofingProvider) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *IdentityProofingProviderTemplate) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *IdentityPropagationTrust) Hub() {}
 
 // Hub marks this type as a conversion hub.
@@ -68,6 +74,9 @@ func (tr *IdentitySetting) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *KmsiSetting) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *MappedAttribute) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *MyApiKey) Hub() {}

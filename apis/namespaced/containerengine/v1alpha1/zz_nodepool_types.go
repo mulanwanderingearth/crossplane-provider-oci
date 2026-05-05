@@ -14,6 +14,154 @@ import (
 	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
 )
 
+type CreateVnicDetailsInitParameters struct {
+
+	// (Updatable) The application resource that corresponds to this secondary vnic. Used to map pods to this specific vnic for scheduling
+	ApplicationResources []*string `json:"applicationResources,omitempty" tf:"application_resources,omitempty"`
+
+	// (Updatable) Whether to allocate an IPv6 address at instance and VNIC creation from an IPv6 enabled subnet
+	AssignIpv6Ip *bool `json:"assignIpv6Ip,omitempty" tf:"assign_ipv6ip,omitempty"`
+
+	// (Updatable) Whether the VNIC should be assigned a public IP address
+	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
+
+	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
+	// +mapType=granular
+	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) Display name for secondary vnic
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
+	// +mapType=granular
+	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// (Updatable) The number of ip addresses to attach to secondary vnic
+	IPCount *float64 `json:"ipCount,omitempty" tf:"ip_count,omitempty"`
+
+	// (Updatable) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix  and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty  and instead provide the specific IPv6 address that should be used from within that range.
+	Ipv6AddressIpv6SubnetCidrPairDetails []Ipv6AddressIpv6SubnetCidrPairDetailsInitParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
+
+	// (Updatable) The OCIDs of the Network Security Group(s) to associate nodes for this node pool with. For more information about NSGs, see NetworkSecurityGroup.
+	// +listType=set
+	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
+
+	// (Updatable) Whether the source/destination check is disabled on the VNIC
+	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
+
+	// (Updatable) The OCID of the subnet in which to place nodes.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
+
+	// Reference to a Subnet in networking to populate subnetId.
+	// +kubebuilder:validation:Optional
+	SubnetIDRef *v1.NamespacedReference `json:"subnetIdRef,omitempty" tf:"-"`
+
+	// Selector for a Subnet in networking to populate subnetId.
+	// +kubebuilder:validation:Optional
+	SubnetIDSelector *v1.NamespacedSelector `json:"subnetIdSelector,omitempty" tf:"-"`
+}
+
+type CreateVnicDetailsObservation struct {
+
+	// (Updatable) The application resource that corresponds to this secondary vnic. Used to map pods to this specific vnic for scheduling
+	ApplicationResources []*string `json:"applicationResources,omitempty" tf:"application_resources,omitempty"`
+
+	// (Updatable) Whether to allocate an IPv6 address at instance and VNIC creation from an IPv6 enabled subnet
+	AssignIpv6Ip *bool `json:"assignIpv6Ip,omitempty" tf:"assign_ipv6ip,omitempty"`
+
+	// (Updatable) Whether the VNIC should be assigned a public IP address
+	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
+
+	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
+	// +mapType=granular
+	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) Display name for secondary vnic
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
+	// +mapType=granular
+	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// (Updatable) The number of ip addresses to attach to secondary vnic
+	IPCount *float64 `json:"ipCount,omitempty" tf:"ip_count,omitempty"`
+
+	// (Updatable) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix  and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty  and instead provide the specific IPv6 address that should be used from within that range.
+	Ipv6AddressIpv6SubnetCidrPairDetails []Ipv6AddressIpv6SubnetCidrPairDetailsObservation `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
+
+	// (Updatable) The OCIDs of the Network Security Group(s) to associate nodes for this node pool with. For more information about NSGs, see NetworkSecurityGroup.
+	// +listType=set
+	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
+
+	// (Updatable) Whether the source/destination check is disabled on the VNIC
+	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
+
+	// (Updatable) The OCID of the subnet in which to place nodes.
+	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
+}
+
+type CreateVnicDetailsParameters struct {
+
+	// (Updatable) The application resource that corresponds to this secondary vnic. Used to map pods to this specific vnic for scheduling
+	// +kubebuilder:validation:Optional
+	ApplicationResources []*string `json:"applicationResources,omitempty" tf:"application_resources,omitempty"`
+
+	// (Updatable) Whether to allocate an IPv6 address at instance and VNIC creation from an IPv6 enabled subnet
+	// +kubebuilder:validation:Optional
+	AssignIpv6Ip *bool `json:"assignIpv6Ip,omitempty" tf:"assign_ipv6ip,omitempty"`
+
+	// (Updatable) Whether the VNIC should be assigned a public IP address
+	// +kubebuilder:validation:Optional
+	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
+
+	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+
+	// (Updatable) Display name for secondary vnic
+	// +kubebuilder:validation:Optional
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// (Updatable) The number of ip addresses to attach to secondary vnic
+	// +kubebuilder:validation:Optional
+	IPCount *float64 `json:"ipCount,omitempty" tf:"ip_count,omitempty"`
+
+	// (Updatable) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix  and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty  and instead provide the specific IPv6 address that should be used from within that range.
+	// +kubebuilder:validation:Optional
+	Ipv6AddressIpv6SubnetCidrPairDetails []Ipv6AddressIpv6SubnetCidrPairDetailsParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
+
+	// (Updatable) The OCIDs of the Network Security Group(s) to associate nodes for this node pool with. For more information about NSGs, see NetworkSecurityGroup.
+	// +kubebuilder:validation:Optional
+	// +listType=set
+	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
+
+	// (Updatable) Whether the source/destination check is disabled on the VNIC
+	// +kubebuilder:validation:Optional
+	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
+
+	// (Updatable) The OCID of the subnet in which to place nodes.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
+
+	// Reference to a Subnet in networking to populate subnetId.
+	// +kubebuilder:validation:Optional
+	SubnetIDRef *v1.NamespacedReference `json:"subnetIdRef,omitempty" tf:"-"`
+
+	// Selector for a Subnet in networking to populate subnetId.
+	// +kubebuilder:validation:Optional
+	SubnetIDSelector *v1.NamespacedSelector `json:"subnetIdSelector,omitempty" tf:"-"`
+}
+
 type ErrorInitParameters struct {
 }
 
@@ -59,6 +207,35 @@ type InitialNodeLabelsParameters struct {
 	// (Updatable) The value of the pair.
 	// +kubebuilder:validation:Optional
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type Ipv6AddressIpv6SubnetCidrPairDetailsInitParameters struct {
+
+	// (Updatable) An IPv6 address of your choice. Must be an available IPv6 address within the subnet's prefix
+	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
+
+	// (Updatable) The IPv6 prefix allocated to the subnet
+	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
+}
+
+type Ipv6AddressIpv6SubnetCidrPairDetailsObservation struct {
+
+	// (Updatable) An IPv6 address of your choice. Must be an available IPv6 address within the subnet's prefix
+	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
+
+	// (Updatable) The IPv6 prefix allocated to the subnet
+	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
+}
+
+type Ipv6AddressIpv6SubnetCidrPairDetailsParameters struct {
+
+	// (Updatable) An IPv6 address of your choice. Must be an available IPv6 address within the subnet's prefix
+	// +kubebuilder:validation:Optional
+	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
+
+	// (Updatable) The IPv6 prefix allocated to the subnet
+	// +kubebuilder:validation:Optional
+	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type NodeConfigDetailsInitParameters struct {
@@ -328,6 +505,9 @@ type NodePoolInitParameters struct {
 	// (Updatable) The name of the node pool. Avoid entering confidential information.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Updatable) Emulation type for the physical network interface card (NIC) for nodes
+	NetworkLaunchType *string `json:"networkLaunchType,omitempty" tf:"network_launch_type,omitempty"`
+
 	// (Updatable) The configuration of nodes in the node pool. Exactly one of the subnetIds or nodeConfigDetails properties must be specified.
 	NodeConfigDetails []NodeConfigDetailsInitParameters `json:"nodeConfigDetails,omitempty" tf:"node_config_details,omitempty"`
 
@@ -371,6 +551,9 @@ type NodePoolInitParameters struct {
 	// (Updatable) The SSH public key on each node in the node pool on launch.
 	SSHPublicKey *string `json:"sshPublicKey,omitempty" tf:"ssh_public_key,omitempty"`
 
+	// (Updatable) A list of secondary vnics to attach to nodes
+	SecondaryVnics []SecondaryVnicsInitParameters `json:"secondaryVnics,omitempty" tf:"secondary_vnics,omitempty"`
+
 	// (Updatable) The OCIDs of the subnets in which to place nodes for this node pool. When used, quantityPerSubnet can be provided. This property is deprecated, use nodeConfigDetails. Exactly one of the subnetIds or nodeConfigDetails properties must be specified.
 	// +listType=set
 	SubnetIds []*string `json:"subnetIds,omitempty" tf:"subnet_ids,omitempty"`
@@ -406,6 +589,9 @@ type NodePoolObservation struct {
 
 	// (Updatable) The name of the node pool. Avoid entering confidential information.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) Emulation type for the physical network interface card (NIC) for nodes
+	NetworkLaunchType *string `json:"networkLaunchType,omitempty" tf:"network_launch_type,omitempty"`
 
 	// (Updatable) The configuration of nodes in the node pool. Exactly one of the subnetIds or nodeConfigDetails properties must be specified.
 	NodeConfigDetails []NodeConfigDetailsObservation `json:"nodeConfigDetails,omitempty" tf:"node_config_details,omitempty"`
@@ -447,7 +633,10 @@ type NodePoolObservation struct {
 	// (Updatable) The SSH public key on each node in the node pool on launch.
 	SSHPublicKey *string `json:"sshPublicKey,omitempty" tf:"ssh_public_key,omitempty"`
 
-	// The state of the node.
+	// (Updatable) A list of secondary vnics to attach to nodes
+	SecondaryVnics []SecondaryVnicsObservation `json:"secondaryVnics,omitempty" tf:"secondary_vnics,omitempty"`
+
+	// The state of the node. For more information, see Monitoring Clusters
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) The OCIDs of the subnets in which to place nodes for this node pool. When used, quantityPerSubnet can be provided. This property is deprecated, use nodeConfigDetails. Exactly one of the subnetIds or nodeConfigDetails properties must be specified.
@@ -505,6 +694,10 @@ type NodePoolParameters struct {
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Updatable) Emulation type for the physical network interface card (NIC) for nodes
+	// +kubebuilder:validation:Optional
+	NetworkLaunchType *string `json:"networkLaunchType,omitempty" tf:"network_launch_type,omitempty"`
+
 	// (Updatable) The configuration of nodes in the node pool. Exactly one of the subnetIds or nodeConfigDetails properties must be specified.
 	// +kubebuilder:validation:Optional
 	NodeConfigDetails []NodeConfigDetailsParameters `json:"nodeConfigDetails,omitempty" tf:"node_config_details,omitempty"`
@@ -559,6 +752,10 @@ type NodePoolParameters struct {
 	// +kubebuilder:validation:Optional
 	SSHPublicKey *string `json:"sshPublicKey,omitempty" tf:"ssh_public_key,omitempty"`
 
+	// (Updatable) A list of secondary vnics to attach to nodes
+	// +kubebuilder:validation:Optional
+	SecondaryVnics []SecondaryVnicsParameters `json:"secondaryVnics,omitempty" tf:"secondary_vnics,omitempty"`
+
 	// (Updatable) The OCIDs of the subnets in which to place nodes for this node pool. When used, quantityPerSubnet can be provided. This property is deprecated, use nodeConfigDetails. Exactly one of the subnetIds or nodeConfigDetails properties must be specified.
 	// +kubebuilder:validation:Optional
 	// +listType=set
@@ -576,7 +773,7 @@ type NodePoolPodNetworkOptionDetailsInitParameters struct {
 	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The OCIDs of the Network Security Group(s) to associate pods for this node pool with. For more information about NSGs, see NetworkSecurityGroup.
 	PodNsgIds []*string `json:"podNsgIds,omitempty" tf:"pod_nsg_ids,omitempty"`
 
-	// (Updatable) The OCIDs of the subnets in which to place pods for this node pool. This can be one of the node pool subnet IDs
+	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The OCIDs of the subnets in which to place pods for this node pool. This can be one of the node pool subnet IDs
 	PodSubnetIds []*string `json:"podSubnetIds,omitempty" tf:"pod_subnet_ids,omitempty"`
 }
 
@@ -591,7 +788,7 @@ type NodePoolPodNetworkOptionDetailsObservation struct {
 	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The OCIDs of the Network Security Group(s) to associate pods for this node pool with. For more information about NSGs, see NetworkSecurityGroup.
 	PodNsgIds []*string `json:"podNsgIds,omitempty" tf:"pod_nsg_ids,omitempty"`
 
-	// (Updatable) The OCIDs of the subnets in which to place pods for this node pool. This can be one of the node pool subnet IDs
+	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The OCIDs of the subnets in which to place pods for this node pool. This can be one of the node pool subnet IDs
 	PodSubnetIds []*string `json:"podSubnetIds,omitempty" tf:"pod_subnet_ids,omitempty"`
 }
 
@@ -609,7 +806,7 @@ type NodePoolPodNetworkOptionDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	PodNsgIds []*string `json:"podNsgIds,omitempty" tf:"pod_nsg_ids,omitempty"`
 
-	// (Updatable) The OCIDs of the subnets in which to place pods for this node pool. This can be one of the node pool subnet IDs
+	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The OCIDs of the subnets in which to place pods for this node pool. This can be one of the node pool subnet IDs
 	// +kubebuilder:validation:Optional
 	PodSubnetIds []*string `json:"podSubnetIds,omitempty" tf:"pod_subnet_ids,omitempty"`
 }
@@ -763,7 +960,7 @@ type NodesObservation struct {
 	// The public IP address of this node.
 	PublicIP *string `json:"publicIp,omitempty" tf:"public_ip,omitempty"`
 
-	// The state of the node.
+	// The state of the node. For more information, see Monitoring Clusters
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) The OCID of the subnet in which to place nodes.
@@ -896,6 +1093,45 @@ type PreemptionActionParameters struct {
 	// (Updatable) The type of action to run when the instance is interrupted for eviction.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type" tf:"type,omitempty"`
+}
+
+type SecondaryVnicsInitParameters struct {
+
+	// (Updatable) The properties of the secondary vnics
+	CreateVnicDetails []CreateVnicDetailsInitParameters `json:"createVnicDetails,omitempty" tf:"create_vnic_details,omitempty"`
+
+	// (Updatable) Display name for secondary vnic
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// (Updatable) Which physical network interface card (NIC) the VNIC will use
+	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+}
+
+type SecondaryVnicsObservation struct {
+
+	// (Updatable) The properties of the secondary vnics
+	CreateVnicDetails []CreateVnicDetailsObservation `json:"createVnicDetails,omitempty" tf:"create_vnic_details,omitempty"`
+
+	// (Updatable) Display name for secondary vnic
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// (Updatable) Which physical network interface card (NIC) the VNIC will use
+	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+}
+
+type SecondaryVnicsParameters struct {
+
+	// (Updatable) The properties of the secondary vnics
+	// +kubebuilder:validation:Optional
+	CreateVnicDetails []CreateVnicDetailsParameters `json:"createVnicDetails" tf:"create_vnic_details,omitempty"`
+
+	// (Updatable) Display name for secondary vnic
+	// +kubebuilder:validation:Optional
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// (Updatable) Which physical network interface card (NIC) the VNIC will use
+	// +kubebuilder:validation:Optional
+	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 // NodePoolSpec defines the desired state of NodePool

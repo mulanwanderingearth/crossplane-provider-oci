@@ -62,11 +62,11 @@ spec:
               forProvider:
                 properties:
                   availabilityDomain:
-                    description: The availability domain of the GPU memory cluster.
+                    description: The availability domain of the GPU Memory Cluster.
                     type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment that contains
-                      the compute GPU memory cluster. compartment.
+                      the compute GPU Memory Cluster. compartment.
                     type: string
                   compartmentIdRef:
                     description: Reference to a Compartment in identity to populate
@@ -257,6 +257,25 @@ spec:
                       {"Department": "Finance"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  gpuMemoryClusterScaleConfig:
+                    description: (Updatable) Configuration settings for GPU Memory
+                      Cluster scaling.
+                    items:
+                      properties:
+                        isDownsizeEnabled:
+                          description: (Updatable) Enables downsizing towards the
+                            target size.
+                          type: boolean
+                        isUpsizeEnabled:
+                          description: (Updatable) Enables upsizing towards the target
+                            size.
+                          type: boolean
+                        targetSize:
+                          description: (Updatable) The configured target size for
+                            the GPU Memory Cluster.
+                          type: string
+                      type: object
+                    type: array
                   gpuMemoryFabricId:
                     description: The OCID of the GPU memory fabric.
                     type: string
@@ -346,9 +365,16 @@ spec:
                             type: string
                         type: object
                     type: object
+                  privateIpIds:
+                    description: (Updatable) Unique list of OCIDs for private IPs
+                      (IPv4/IPv6) associated with the GPU Memory Cluster
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   size:
-                    description: (Updatable) The number of instances currently running
-                      in the GpuMemoryCluster
+                    description: (Updatable) The desired number of instances for the
+                      GPU Memory Cluster.
                     type: string
                 type: object
               initProvider:
@@ -365,11 +391,11 @@ spec:
                   autoscaler.
                 properties:
                   availabilityDomain:
-                    description: The availability domain of the GPU memory cluster.
+                    description: The availability domain of the GPU Memory Cluster.
                     type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment that contains
-                      the compute GPU memory cluster. compartment.
+                      the compute GPU Memory Cluster. compartment.
                     type: string
                   compartmentIdRef:
                     description: Reference to a Compartment in identity to populate
@@ -560,6 +586,25 @@ spec:
                       {"Department": "Finance"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  gpuMemoryClusterScaleConfig:
+                    description: (Updatable) Configuration settings for GPU Memory
+                      Cluster scaling.
+                    items:
+                      properties:
+                        isDownsizeEnabled:
+                          description: (Updatable) Enables downsizing towards the
+                            target size.
+                          type: boolean
+                        isUpsizeEnabled:
+                          description: (Updatable) Enables upsizing towards the target
+                            size.
+                          type: boolean
+                        targetSize:
+                          description: (Updatable) The configured target size for
+                            the GPU Memory Cluster.
+                          type: string
+                      type: object
+                    type: array
                   gpuMemoryFabricId:
                     description: The OCID of the GPU memory fabric.
                     type: string
@@ -649,9 +694,16 @@ spec:
                             type: string
                         type: object
                     type: object
+                  privateIpIds:
+                    description: (Updatable) Unique list of OCIDs for private IPs
+                      (IPv4/IPv6) associated with the GPU Memory Cluster
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   size:
-                    description: (Updatable) The number of instances currently running
-                      in the GpuMemoryCluster
+                    description: (Updatable) The desired number of instances for the
+                      GPU Memory Cluster.
                     type: string
                 type: object
               managementPolicies:
@@ -726,11 +778,11 @@ spec:
               atProvider:
                 properties:
                   availabilityDomain:
-                    description: The availability domain of the GPU memory cluster.
+                    description: The availability domain of the GPU Memory Cluster.
                     type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment that contains
-                      the compute GPU memory cluster. compartment.
+                      the compute GPU Memory Cluster. compartment.
                     type: string
                   computeClusterId:
                     description: The OCID of the compute cluster.
@@ -757,22 +809,48 @@ spec:
                       {"Department": "Finance"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  gpuMemoryClusterScaleConfig:
+                    description: (Updatable) Configuration settings for GPU Memory
+                      Cluster scaling.
+                    items:
+                      properties:
+                        isDownsizeEnabled:
+                          description: (Updatable) Enables downsizing towards the
+                            target size.
+                          type: boolean
+                        isUpsizeEnabled:
+                          description: (Updatable) Enables upsizing towards the target
+                            size.
+                          type: boolean
+                        targetSize:
+                          description: (Updatable) The configured target size for
+                            the GPU Memory Cluster.
+                          type: string
+                      type: object
+                    type: array
                   gpuMemoryFabricId:
                     description: The OCID of the GPU memory fabric.
                     type: string
                   id:
-                    description: The OCID for the Customer-unique GPU memory cluster
+                    description: The OCID for the Customer-unique GPU Memory Cluster
                     type: string
                   instanceConfigurationId:
                     description: (Updatable) Instance Configuration to be used for
                       this GPU Memory Cluster
                     type: string
+                  privateIpIds:
+                    description: (Updatable) Unique list of OCIDs for private IPs
+                      (IPv4/IPv6) associated with the GPU Memory Cluster
+                    items:
+                      type: string
+                    type: array
+                    x-kubernetes-list-type: set
                   size:
-                    description: (Updatable) The number of instances currently running
-                      in the GpuMemoryCluster
+                    description: (Updatable) The desired number of instances for the
+                      GPU Memory Cluster.
                     type: string
                   state:
-                    description: The lifecycle state of the GPU memory cluster
+                    description: The lifecycle state of the GPU Memory Cluster
                     type: string
                   systemTags:
                     additionalProperties:
@@ -783,7 +861,7 @@ spec:
                     type: object
                     x-kubernetes-map-type: granular
                   timeCreated:
-                    description: 'The date and time the GPU memory cluster was created.  Example:
+                    description: 'The date and time the GPU Memory Cluster was created.  Example:
                       2016-09-15T21:10:29.600Z'
                     type: string
                 type: object

@@ -59,9 +59,11 @@ spec:
     privateZoneIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_zone
+    recoStoragePercentage: ${var.cloud_vm_cluster_reco_storage_percentage}
     scanListenerPortTcp: ${var.cloud_vm_cluster_scan_listener_port_tcp}
     scanListenerPortTcpSsl: ${var.cloud_vm_cluster_scan_listener_port_tcp_ssl}
     securityAttributes: ${var.cloud_vm_cluster_security_attributes}
+    sparseStoragePercentage: ${var.cloud_vm_cluster_sparse_storage_percentage}
     sshPublicKeys: ${var.cloud_vm_cluster_ssh_public_keys}
     subnetIdSelector:
       matchLabels:
@@ -69,4 +71,6 @@ spec:
     subscriptionId: ${var.tenant_subscription_id}
     systemVersion: ${var.cloud_vm_cluster_system_version}
     timeZone: ${var.cloud_vm_cluster_time_zone}
+    vmBackupStorageType: ${var.cloud_vm_cluster_vm_backup_storage_type}
     vmClusterType: ${var.cloud_vm_cluster_vm_cluster_type}
+    vmFileSystemStorageType: ${var.cloud_vm_cluster_vm_file_system_storage_type}

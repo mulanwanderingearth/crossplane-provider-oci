@@ -8,6 +8,7 @@ metadata:
   name: test-network-firewall-policy-application
 spec:
   forProvider:
+    description: ${var.network_firewall_policy_application_description}
     icmpCode: ${var.network_firewall_policy_application_icmp_code}
     icmpType: ${var.network_firewall_policy_application_icmp_type}
     name: ${var.network_firewall_policy_application_name}

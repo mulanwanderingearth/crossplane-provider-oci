@@ -13,6 +13,45 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
 )
 
+type MigrationConfigInitParameters struct {
+
+	// (Updatable) The OCID of the subnet to use for replication
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
+
+	// Reference to a Subnet in networking to populate subnetId.
+	// +kubebuilder:validation:Optional
+	SubnetIDRef *v1.Reference `json:"subnetIdRef,omitempty" tf:"-"`
+
+	// Selector for a Subnet in networking to populate subnetId.
+	// +kubebuilder:validation:Optional
+	SubnetIDSelector *v1.Selector `json:"subnetIdSelector,omitempty" tf:"-"`
+}
+
+type MigrationConfigObservation struct {
+
+	// (Updatable) The OCID of the subnet to use for replication
+	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
+}
+
+type MigrationConfigParameters struct {
+
+	// (Updatable) The OCID of the subnet to use for replication
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
+
+	// Reference to a Subnet in networking to populate subnetId.
+	// +kubebuilder:validation:Optional
+	SubnetIDRef *v1.Reference `json:"subnetIdRef,omitempty" tf:"-"`
+
+	// Selector for a Subnet in networking to populate subnetId.
+	// +kubebuilder:validation:Optional
+	SubnetIDSelector *v1.Selector `json:"subnetIdSelector,omitempty" tf:"-"`
+}
+
 type MigrationInitParameters struct {
 
 	// (Updatable) Compartment identifier
@@ -40,6 +79,12 @@ type MigrationInitParameters struct {
 
 	// (Updatable) Indicates whether migration is marked as complete.
 	IsCompleted *bool `json:"isCompleted,omitempty" tf:"is_completed,omitempty"`
+
+	// (Updatable) Configuration for a Migration Project.
+	MigrationConfig []MigrationConfigInitParameters `json:"migrationConfig,omitempty" tf:"migration_config,omitempty"`
+
+	// (Updatable) Type of migration project (OCI/OLVM). This determines the target environment for the migration.
+	MigrationType *string `json:"migrationType,omitempty" tf:"migration_type,omitempty"`
 
 	// (Updatable) Replication schedule identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudmigrations/v1alpha1.ReplicationSchedule
@@ -79,6 +124,12 @@ type MigrationObservation struct {
 
 	// A message describing the current state in more detail. For example, it can be used to provide actionable information for a resource in Failed state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
+
+	// (Updatable) Configuration for a Migration Project.
+	MigrationConfig []MigrationConfigObservation `json:"migrationConfig,omitempty" tf:"migration_config,omitempty"`
+
+	// (Updatable) Type of migration project (OCI/OLVM). This determines the target environment for the migration.
+	MigrationType *string `json:"migrationType,omitempty" tf:"migration_type,omitempty"`
 
 	// (Updatable) Replication schedule identifier
 	ReplicationScheduleID *string `json:"replicationScheduleId,omitempty" tf:"replication_schedule_id,omitempty"`
@@ -129,6 +180,14 @@ type MigrationParameters struct {
 	// (Updatable) Indicates whether migration is marked as complete.
 	// +kubebuilder:validation:Optional
 	IsCompleted *bool `json:"isCompleted,omitempty" tf:"is_completed,omitempty"`
+
+	// (Updatable) Configuration for a Migration Project.
+	// +kubebuilder:validation:Optional
+	MigrationConfig []MigrationConfigParameters `json:"migrationConfig,omitempty" tf:"migration_config,omitempty"`
+
+	// (Updatable) Type of migration project (OCI/OLVM). This determines the target environment for the migration.
+	// +kubebuilder:validation:Optional
+	MigrationType *string `json:"migrationType,omitempty" tf:"migration_type,omitempty"`
 
 	// (Updatable) Replication schedule identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudmigrations/v1alpha1.ReplicationSchedule

@@ -1,0 +1,18 @@
+apiVersion: osmanagementhub.oci.m.upbound.io/v1alpha1
+kind: ManagedInstancesInstallWindowsUpdatesManagement
+metadata:
+  annotations:
+    meta.upbound.io/example-id: osmanagementhub/v1alpha1/managedinstancesinstallwindowsupdatesmanagement
+  labels:
+    testing.upbound.io/example-name: test_managed_instances_install_windows_updates_management
+  name: test-managed-instances-install-windows-updates-management
+  namespace: upbound-system
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    windowsUpdateTypes: ${var.managed_instances_install_windows_updates_management_windows_update_types}
+    workRequestDetails:
+    - description: ${var.managed_instances_install_windows_updates_management_work_request_details_description}
+      displayName: ${var.managed_instances_install_windows_updates_management_work_request_details_display_name}

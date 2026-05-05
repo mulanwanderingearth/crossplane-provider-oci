@@ -120,6 +120,9 @@ type DBSystemSnapshotObservation struct {
 	// Initial size of the data volume in GiBs.
 	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
+	// Database console configuration details.
+	DatabaseConsole []DatabaseConsoleObservation `json:"databaseConsole,omitempty" tf:"database_console,omitempty"`
+
 	// Whether to enable monitoring via the Database Management service.
 	DatabaseManagement *string `json:"databaseManagement,omitempty" tf:"database_management,omitempty"`
 
@@ -171,7 +174,7 @@ type DBSystemSnapshotObservation struct {
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
-	// The port the MySQL instance listens on.
+	// The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The network port where to connect to use this endpoint using the X protocol.
@@ -198,6 +201,9 @@ type DBSystemSnapshotObservation struct {
 
 	// The OCID of the subnet the DB System is associated with.
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
+
+	// Telemetry configuration details of a DB System or a read replica.
+	TelemetryConfiguration []TelemetryConfigurationObservation `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
 }
 
 type DBSystemSnapshotParameters struct {
@@ -266,6 +272,21 @@ type DataStorageObservation struct {
 type DataStorageParameters struct {
 }
 
+type DatabaseConsoleInitParameters struct {
+}
+
+type DatabaseConsoleObservation struct {
+
+	// The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
+	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+
+	// Whether the database console is enabled on the DB System.
+	Status *string `json:"status,omitempty" tf:"status,omitempty"`
+}
+
+type DatabaseConsoleParameters struct {
+}
+
 type DeletionPolicyInitParameters struct {
 }
 
@@ -282,6 +303,21 @@ type DeletionPolicyObservation struct {
 }
 
 type DeletionPolicyParameters struct {
+}
+
+type DestinationConfigurationsInitParameters struct {
+}
+
+type DestinationConfigurationsObservation struct {
+
+	// Name of the destination configuration variable.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// Value of the destination configuration variable.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type DestinationConfigurationsParameters struct {
 }
 
 type EncryptDataInitParameters struct {
@@ -313,7 +349,7 @@ type EndpointsObservation struct {
 	// The access modes from the client that this endpoint supports.
 	Modes []*string `json:"modes,omitempty" tf:"modes,omitempty"`
 
-	// The port the MySQL instance listens on.
+	// The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The network port where to connect to use this endpoint using the X protocol.
@@ -325,7 +361,7 @@ type EndpointsObservation struct {
 	// The type of endpoint that clients and connectors can connect to.
 	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
 
-	// The state of the endpoints, as far as it can seen from the DB System. There may be some inconsistency with the actual state of the MySQL service.
+	// Whether the database console is enabled on the DB System.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// Additional information about the current endpoint status.
@@ -335,10 +371,46 @@ type EndpointsObservation struct {
 type EndpointsParameters struct {
 }
 
+type LogsInitParameters struct {
+}
+
+type LogsObservation struct {
+
+	// Type of destination where MySQL telemetry is exposed to.
+	Destination *string `json:"destination,omitempty" tf:"destination,omitempty"`
+
+	// List of configuration variables for a given destination type.
+	DestinationConfigurations []DestinationConfigurationsObservation `json:"destinationConfigurations,omitempty" tf:"destination_configurations,omitempty"`
+
+	// List of MySQL telemetry types that can be exposed on a telemetry destination
+	LogTypes []*string `json:"logTypes,omitempty" tf:"log_types,omitempty"`
+}
+
+type LogsParameters struct {
+}
+
+type MaintenanceDisabledWindowsInitParameters struct {
+}
+
+type MaintenanceDisabledWindowsObservation struct {
+
+	// The time until when maintenance is disabled. Must be set together with timeStart and must be after timeStart. as described by RFC 3339.
+	TimeEnd *string `json:"timeEnd,omitempty" tf:"time_end,omitempty"`
+
+	// The time from when maintenance is disabled. Must be set together with timeEnd and must be before timeEnd. as described by RFC 3339.
+	TimeStart *string `json:"timeStart,omitempty" tf:"time_start,omitempty"`
+}
+
+type MaintenanceDisabledWindowsParameters struct {
+}
+
 type MaintenanceInitParameters struct {
 }
 
 type MaintenanceObservation struct {
+
+	// Time window during which downtime-inducing maintenance shall not be performed. Downtime-free maintenance may be performed to apply required security patches. At most one configured window is supported.
+	MaintenanceDisabledWindows []MaintenanceDisabledWindowsObservation `json:"maintenanceDisabledWindows,omitempty" tf:"maintenance_disabled_windows,omitempty"`
 
 	// The maintenance schedule type of the DB system. EARLY:   Maintenance schedule follows a cycle where upgrades are performed when versions become deprecated. REGULAR: Maintenance schedule follows the normal cycle where upgrades are performed when versions become unavailable.
 	MaintenanceScheduleType *string `json:"maintenanceScheduleType,omitempty" tf:"maintenance_schedule_type,omitempty"`
@@ -681,7 +753,7 @@ type RestObservation struct {
 	// Select how REST is configured across the DB System instances.
 	Configuration *string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
-	// The port the MySQL instance listens on.
+	// The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
@@ -740,6 +812,18 @@ type SourceDetailsParameters struct {
 	// The region of the backup source.
 	// +kubebuilder:validation:Optional
 	Region *string `json:"region" tf:"region,omitempty"`
+}
+
+type TelemetryConfigurationInitParameters struct {
+}
+
+type TelemetryConfigurationObservation struct {
+
+	// Telemetry configuration details for logging.
+	Logs []LogsObservation `json:"logs,omitempty" tf:"logs,omitempty"`
+}
+
+type TelemetryConfigurationParameters struct {
 }
 
 type ValidateBackupDetailsInitParameters struct {

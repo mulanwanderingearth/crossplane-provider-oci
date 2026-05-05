@@ -95,6 +95,121 @@ spec:
                                 description: (Updatable) The compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)
                                   of the extracted metric.
                                 type: string
+                              metricCollections:
+                                description: Details for the metrics to be collected.
+                                items:
+                                  properties:
+                                    dimensions:
+                                      description: (Minumum 1 Required when type=STREAM
+                                        and metric_collections is provided) Selected
+                                        dimension fields for the metric collection.
+                                      items:
+                                        properties:
+                                          dimensionName:
+                                            description: (Applicable when type=STREAM)
+                                              Dimension name to be stored with the
+                                              metric.
+                                            type: string
+                                          queryFieldName:
+                                            description: Output field in the query
+                                              to be used as the source for the metric
+                                              dimension.
+                                            type: string
+                                        type: object
+                                      type: array
+                                    metricName:
+                                      description: The metric name of the extracted
+                                        metric. A valid value starts with an alphabetical
+                                        character and includes only alphanumeric characters,
+                                        periods (.), underscores (_), hyphens (-),
+                                        and dollar signs ($).
+                                      type: string
+                                    metricQueryFieldName:
+                                      description: Output field in the query to be
+                                        used as the metric value.
+                                      type: string
+                                    queryTableName:
+                                      description: (Applicable when type=STREAM) Output
+                                        table in the query.
+                                      type: string
+                                    queryTableNameRef:
+                                      description: Reference to a Table in nosql to
+                                        populate queryTableName.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    queryTableNameSelector:
+                                      description: Selector for a Table in nosql to
+                                        populate queryTableName.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
                               metricName:
                                 description: The metric name of the extracted metric.
                                   A valid value starts with an alphabetical character
@@ -333,6 +448,9 @@ spec:
                       "value"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  description:
+                    description: (Updatable) Description for this resource.
+                    type: string
                   displayName:
                     description: '(Updatable) A user-friendly name that is changeable
                       and that does not have to be unique. Format: a leading alphanumeric,
@@ -377,6 +495,15 @@ spec:
                                 description: (Applicable when kind=STANDARD) (Updatable)
                                   Schedule misfire retry policy.
                                 type: string
+                              queryOffsetSecs:
+                                description: (Applicable when kind=STANDARD) (Updatable)
+                                  Number of seconds to offset the query time window
+                                  by to accommodate capture late arriving data. For
+                                  example, a schedule run at 12:00 with a 10 minute
+                                  interval and queryOffsetSecs=120 will use the query
+                                  time window of 11:48-11:58 rather than 11:50-12:00
+                                  without queryOffsetSecs.
+                                type: number
                               recurringInterval:
                                 description: (Applicable when type=FIXED_FREQUENCY)
                                   (Updatable) Recurring interval in ISO 8601 extended
@@ -391,6 +518,11 @@ spec:
                                   until auto-stop. Default value -1 will execute indefinitely.
                                   Value 0 will execute once.
                                 type: number
+                              timeEnd:
+                                description: (Applicable when kind=STANDARD) (Updatable)
+                                  End time for the schedule, even if the schedule
+                                  would otherwise have remaining executions.
+                                type: string
                               timeZone:
                                 description: (Applicable when type=CRON) (Updatable)
                                   Time zone, by default UTC.
@@ -440,6 +572,121 @@ spec:
                                 description: (Updatable) The compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)
                                   of the extracted metric.
                                 type: string
+                              metricCollections:
+                                description: Details for the metrics to be collected.
+                                items:
+                                  properties:
+                                    dimensions:
+                                      description: (Minumum 1 Required when type=STREAM
+                                        and metric_collections is provided) Selected
+                                        dimension fields for the metric collection.
+                                      items:
+                                        properties:
+                                          dimensionName:
+                                            description: (Applicable when type=STREAM)
+                                              Dimension name to be stored with the
+                                              metric.
+                                            type: string
+                                          queryFieldName:
+                                            description: Output field in the query
+                                              to be used as the source for the metric
+                                              dimension.
+                                            type: string
+                                        type: object
+                                      type: array
+                                    metricName:
+                                      description: The metric name of the extracted
+                                        metric. A valid value starts with an alphabetical
+                                        character and includes only alphanumeric characters,
+                                        periods (.), underscores (_), hyphens (-),
+                                        and dollar signs ($).
+                                      type: string
+                                    metricQueryFieldName:
+                                      description: Output field in the query to be
+                                        used as the metric value.
+                                      type: string
+                                    queryTableName:
+                                      description: (Applicable when type=STREAM) Output
+                                        table in the query.
+                                      type: string
+                                    queryTableNameRef:
+                                      description: Reference to a Table in nosql to
+                                        populate queryTableName.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    queryTableNameSelector:
+                                      description: Selector for a Table in nosql to
+                                        populate queryTableName.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
                               metricName:
                                 description: The metric name of the extracted metric.
                                   A valid value starts with an alphabetical character
@@ -678,6 +925,9 @@ spec:
                       "value"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  description:
+                    description: (Updatable) Description for this resource.
+                    type: string
                   displayName:
                     description: '(Updatable) A user-friendly name that is changeable
                       and that does not have to be unique. Format: a leading alphanumeric,
@@ -722,6 +972,15 @@ spec:
                                 description: (Applicable when kind=STANDARD) (Updatable)
                                   Schedule misfire retry policy.
                                 type: string
+                              queryOffsetSecs:
+                                description: (Applicable when kind=STANDARD) (Updatable)
+                                  Number of seconds to offset the query time window
+                                  by to accommodate capture late arriving data. For
+                                  example, a schedule run at 12:00 with a 10 minute
+                                  interval and queryOffsetSecs=120 will use the query
+                                  time window of 11:48-11:58 rather than 11:50-12:00
+                                  without queryOffsetSecs.
+                                type: number
                               recurringInterval:
                                 description: (Applicable when type=FIXED_FREQUENCY)
                                   (Updatable) Recurring interval in ISO 8601 extended
@@ -736,6 +995,11 @@ spec:
                                   until auto-stop. Default value -1 will execute indefinitely.
                                   Value 0 will execute once.
                                 type: number
+                              timeEnd:
+                                description: (Applicable when kind=STANDARD) (Updatable)
+                                  End time for the schedule, even if the schedule
+                                  would otherwise have remaining executions.
+                                type: string
                               timeZone:
                                 description: (Applicable when type=CRON) (Updatable)
                                   Time zone, by default UTC.
@@ -887,6 +1151,45 @@ spec:
                                 description: (Updatable) The compartment OCID (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)
                                   of the extracted metric.
                                 type: string
+                              metricCollections:
+                                description: Details for the metrics to be collected.
+                                items:
+                                  properties:
+                                    dimensions:
+                                      description: (Minumum 1 Required when type=STREAM
+                                        and metric_collections is provided) Selected
+                                        dimension fields for the metric collection.
+                                      items:
+                                        properties:
+                                          dimensionName:
+                                            description: (Applicable when type=STREAM)
+                                              Dimension name to be stored with the
+                                              metric.
+                                            type: string
+                                          queryFieldName:
+                                            description: Output field in the query
+                                              to be used as the source for the metric
+                                              dimension.
+                                            type: string
+                                        type: object
+                                      type: array
+                                    metricName:
+                                      description: The metric name of the extracted
+                                        metric. A valid value starts with an alphabetical
+                                        character and includes only alphanumeric characters,
+                                        periods (.), underscores (_), hyphens (-),
+                                        and dollar signs ($).
+                                      type: string
+                                    metricQueryFieldName:
+                                      description: Output field in the query to be
+                                        used as the metric value.
+                                      type: string
+                                    queryTableName:
+                                      description: (Applicable when type=STREAM) Output
+                                        table in the query.
+                                      type: string
+                                  type: object
+                                type: array
                               metricName:
                                 description: The metric name of the extracted metric.
                                   A valid value starts with an alphabetical character
@@ -973,6 +1276,9 @@ spec:
                       "value"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  description:
+                    description: (Updatable) Description for this resource.
+                    type: string
                   displayName:
                     description: '(Updatable) A user-friendly name that is changeable
                       and that does not have to be unique. Format: a leading alphanumeric,
@@ -1026,6 +1332,15 @@ spec:
                                 description: (Applicable when kind=STANDARD) (Updatable)
                                   Schedule misfire retry policy.
                                 type: string
+                              queryOffsetSecs:
+                                description: (Applicable when kind=STANDARD) (Updatable)
+                                  Number of seconds to offset the query time window
+                                  by to accommodate capture late arriving data. For
+                                  example, a schedule run at 12:00 with a 10 minute
+                                  interval and queryOffsetSecs=120 will use the query
+                                  time window of 11:48-11:58 rather than 11:50-12:00
+                                  without queryOffsetSecs.
+                                type: number
                               recurringInterval:
                                 description: (Applicable when type=FIXED_FREQUENCY)
                                   (Updatable) Recurring interval in ISO 8601 extended
@@ -1040,6 +1355,11 @@ spec:
                                   until auto-stop. Default value -1 will execute indefinitely.
                                   Value 0 will execute once.
                                 type: number
+                              timeEnd:
+                                description: (Applicable when kind=STANDARD) (Updatable)
+                                  End time for the schedule, even if the schedule
+                                  would otherwise have remaining executions.
+                                type: string
                               timeZone:
                                 description: (Applicable when type=CRON) (Updatable)
                                   Time zone, by default UTC.
@@ -1056,6 +1376,7 @@ spec:
                     type: string
                   taskStatus:
                     description: Status of the scheduled task. - PURGE_RESOURCE_NOT_FOUND
+                      - LIMIT_EXCEEDED
                     type: string
                   taskType:
                     description: Task type.
@@ -1069,8 +1390,8 @@ spec:
                       in the format defined by RFC3339.
                     type: string
                   workRequestId:
-                    description: most recent Work Request Identifier [OCID] (https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)
-                      for the asynchronous request.
+                    description: most recent Work Request Identifier OCID for the
+                      asynchronous request.
                     type: string
                 type: object
               conditions:

@@ -245,7 +245,8 @@ spec:
                     description: (Updatable) The maximum number of matches.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   registerLookupFile:
                     description: Path to the file containing data for lookup creation.
@@ -439,7 +440,8 @@ spec:
                     description: (Updatable) The maximum number of matches.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   registerLookupFile:
                     description: Path to the file containing data for lookup creation.
@@ -681,7 +683,8 @@ spec:
                     description: (Updatable) The maximum number of matches.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   referringSources:
                     description: AutoLookups

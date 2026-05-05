@@ -76,7 +76,7 @@ type ComputeHostGroupObservation struct {
 	// (Updatable) A flag that allows customers to restrict placement for hosts attached to the group. If true, the only way to place on hosts is to target the specific host group.
 	IsTargetedPlacementRequired *bool `json:"isTargetedPlacementRequired,omitempty" tf:"is_targeted_placement_required,omitempty"`
 
-	// The lifecycle state of the host group
+	// (Updatable) The state of the host group configuration.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
@@ -140,6 +140,9 @@ type ConfigurationsInitParameters struct {
 	// (Updatable) Preferred recycle level for hosts associated with the reservation config.
 	RecycleLevel *string `json:"recycleLevel,omitempty" tf:"recycle_level,omitempty"`
 
+	// (Updatable) The state of the host group configuration.
+	State *string `json:"state,omitempty" tf:"state,omitempty"`
+
 	// (Updatable) Either the platform name or compute shape that the configuration is targeting
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 }
@@ -151,6 +154,9 @@ type ConfigurationsObservation struct {
 
 	// (Updatable) Preferred recycle level for hosts associated with the reservation config.
 	RecycleLevel *string `json:"recycleLevel,omitempty" tf:"recycle_level,omitempty"`
+
+	// (Updatable) The state of the host group configuration.
+	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) Either the platform name or compute shape that the configuration is targeting
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
@@ -165,6 +171,10 @@ type ConfigurationsParameters struct {
 	// (Updatable) Preferred recycle level for hosts associated with the reservation config.
 	// +kubebuilder:validation:Optional
 	RecycleLevel *string `json:"recycleLevel,omitempty" tf:"recycle_level,omitempty"`
+
+	// (Updatable) The state of the host group configuration.
+	// +kubebuilder:validation:Optional
+	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) Either the platform name or compute shape that the configuration is targeting
 	// +kubebuilder:validation:Optional

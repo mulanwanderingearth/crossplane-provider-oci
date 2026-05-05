@@ -76,7 +76,9 @@ spec:
                 properties:
                   autonomousSettings:
                     description: (Updatable) Updatable settings for the Autonomous
-                      Linux service.
+                      Linux service. This is required when creating an Autonomous
+                      Linux Managed Instance Group. Do not include it when creating
+                      a standard (non-Autonomous) Managed Instance Group.
                     items:
                       properties:
                         isDataCollectionAuthorized:
@@ -425,7 +427,9 @@ spec:
                 properties:
                   autonomousSettings:
                     description: (Updatable) Updatable settings for the Autonomous
-                      Linux service.
+                      Linux service. This is required when creating an Autonomous
+                      Linux Managed Instance Group. Do not include it when creating
+                      a standard (non-Autonomous) Managed Instance Group.
                     items:
                       properties:
                         isDataCollectionAuthorized:
@@ -859,9 +863,16 @@ spec:
                   architecture:
                     description: The CPU architecture type of the managed instance.
                     type: string
+                  areSourcesManaged:
+                    description: Controls whether OSMH manages software sources for
+                      this instance. This defaults to false for Ubuntu and Windows
+                      instances.
+                    type: boolean
                   autonomousSettings:
                     description: (Updatable) Updatable settings for the Autonomous
-                      Linux service.
+                      Linux service. This is required when creating an Autonomous
+                      Linux Managed Instance Group. Do not include it when creating
+                      a standard (non-Autonomous) Managed Instance Group.
                     items:
                       properties:
                         isDataCollectionAuthorized:
@@ -1047,6 +1058,10 @@ spec:
                   timeLastCheckin:
                     description: Time that the instance last checked in with the service
                       (in RFC 3339 format).
+                    type: string
+                  timeLastSoftwareRefresh:
+                    description: The date and time the instance's software information
+                      was last refreshed (in RFC 3339 format).
                     type: string
                   timeUpdated:
                     description: The date and time the instance was last updated (in

@@ -34,6 +34,10 @@ spec:
     freeformTags:
       bar-key: value
     inboundClusterIds: ${var.opensearch_cluster_inbound_cluster_ids}
+    loadBalancerConfig:
+    - loadBalancerMaxBandwidthInMbps: ${var.opensearch_cluster_load_balancer_config_load_balancer_max_bandwidth_in_mbps}
+      loadBalancerMinBandwidthInMbps: ${var.opensearch_cluster_load_balancer_config_load_balancer_min_bandwidth_in_mbps}
+      loadBalancerServiceType: ${var.opensearch_cluster_load_balancer_config_load_balancer_service_type}
     maintenanceDetails:
     - notificationEmailIds: ${var.opensearch_cluster_maintenance_details_notification_email_ids}
     masterNodeCount: ${var.opensearch_cluster_master_node_count}
@@ -42,6 +46,12 @@ spec:
     masterNodeHostOcpuCount: ${var.opensearch_cluster_master_node_host_ocpu_count}
     masterNodeHostShape: ${var.opensearch_cluster_master_node_host_shape}
     masterNodeHostType: ${var.opensearch_cluster_master_node_host_type}
+    mlNodeCount: ${var.opensearch_cluster_ml_node_count}
+    mlNodeHostMemoryGb: ${var.opensearch_cluster_ml_node_host_memory_gb}
+    mlNodeHostOcpuCount: ${var.opensearch_cluster_ml_node_host_ocpu_count}
+    mlNodeHostShape: ${var.opensearch_cluster_ml_node_host_shape}
+    mlNodeHostType: ${var.opensearch_cluster_ml_node_host_type}
+    mlNodeStorageGb: ${var.opensearch_cluster_ml_node_storage_gb}
     nsgId: ${oci_opensearch_nsg.test_nsg.id}
     opendashboardNodeCount: ${var.opensearch_cluster_opendashboard_node_count}
     opendashboardNodeHostMemoryGb: ${var.opensearch_cluster_opendashboard_node_host_memory_gb}

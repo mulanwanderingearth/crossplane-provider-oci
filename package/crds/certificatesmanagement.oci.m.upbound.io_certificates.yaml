@@ -71,7 +71,9 @@ spec:
                             you need.
                           type: string
                         configType:
-                          description: (Updatable) The origin of the certificate.
+                          description: '(Updatable) The origin of the certificate.
+                            It must be one of the supported types: MANAGED_EXTERNALLY_ISSUED_BY_INTERNAL_CA
+                            or ISSUED_BY_INTERNAL_CA.'
                           type: string
                         csrPem:
                           description: (Updatable) The certificate signing request
@@ -532,7 +534,9 @@ spec:
                             you need.
                           type: string
                         configType:
-                          description: (Updatable) The origin of the certificate.
+                          description: '(Updatable) The origin of the certificate.
+                            It must be one of the supported types: MANAGED_EXTERNALLY_ISSUED_BY_INTERNAL_CA
+                            or ISSUED_BY_INTERNAL_CA.'
                           type: string
                         csrPem:
                           description: (Updatable) The certificate signing request
@@ -1054,7 +1058,9 @@ spec:
                             you need.
                           type: string
                         configType:
-                          description: (Updatable) The origin of the certificate.
+                          description: '(Updatable) The origin of the certificate.
+                            It must be one of the supported types: MANAGED_EXTERNALLY_ISSUED_BY_INTERNAL_CA
+                            or ISSUED_BY_INTERNAL_CA.'
                           type: string
                         csrPem:
                           description: (Updatable) The certificate signing request
@@ -1265,7 +1271,9 @@ spec:
                       want to create the certificate.
                     type: string
                   configType:
-                    description: (Updatable) The origin of the certificate.
+                    description: '(Updatable) The origin of the certificate. It must
+                      be one of the supported types: MANAGED_EXTERNALLY_ISSUED_BY_INTERNAL_CA
+                      or ISSUED_BY_INTERNAL_CA.'
                     type: string
                   currentVersion:
                     description: The details of the certificate version. This object

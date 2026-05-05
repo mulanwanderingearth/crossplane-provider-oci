@@ -22,7 +22,7 @@ type LogAnalyticsEntityTypeInitParameters struct {
 	// Log analytics entity type name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// Log analytics entity type property definition.
@@ -47,7 +47,7 @@ type LogAnalyticsEntityTypeObservation struct {
 	// Log analytics entity type name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// Log analytics entity type property definition.
@@ -73,7 +73,7 @@ type LogAnalyticsEntityTypeParameters struct {
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 

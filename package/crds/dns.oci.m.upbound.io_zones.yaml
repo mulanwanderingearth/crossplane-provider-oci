@@ -371,10 +371,13 @@ spec:
                   name:
                     description: The name of the zone.
                     type: string
+                  resolutionMode:
+                    description: (Updatable) The resolution mode of a zone defines
+                      behavior related to how query responses can be handled.
+                    type: string
                   scope:
-                    description: |-
-                      Specifies to operate only on resources that have a matching DNS scope.
-                      This value will be null for zones in the global DNS and PRIVATE when creating a private zone.
+                    description: Specifies to operate only on resources that have
+                      a matching DNS scope.
                     type: string
                   viewId:
                     description: The OCID of the private view containing the zone.
@@ -791,10 +794,13 @@ spec:
                   name:
                     description: The name of the zone.
                     type: string
+                  resolutionMode:
+                    description: (Updatable) The resolution mode of a zone defines
+                      behavior related to how query responses can be handled.
+                    type: string
                   scope:
-                    description: |-
-                      Specifies to operate only on resources that have a matching DNS scope.
-                      This value will be null for zones in the global DNS and PRIVATE when creating a private zone.
+                    description: Specifies to operate only on resources that have
+                      a matching DNS scope.
                     type: string
                   viewId:
                     description: The OCID of the private view containing the zone.
@@ -1232,18 +1238,20 @@ spec:
                     description: The name of the zone.
                     type: string
                   nameservers:
-                    description: The authoritative nameservers for the zone.
                     items:
                       properties:
                         hostname:
-                          description: The hostname of the nameserver.
+                          description: The name of the zone.
                           type: string
                       type: object
                     type: array
+                  resolutionMode:
+                    description: (Updatable) The resolution mode of a zone defines
+                      behavior related to how query responses can be handled.
+                    type: string
                   scope:
-                    description: |-
-                      Specifies to operate only on resources that have a matching DNS scope.
-                      This value will be null for zones in the global DNS and PRIVATE when creating a private zone.
+                    description: Specifies to operate only on resources that have
+                      a matching DNS scope.
                     type: string
                   self:
                     description: The canonical absolute URL of the resource.

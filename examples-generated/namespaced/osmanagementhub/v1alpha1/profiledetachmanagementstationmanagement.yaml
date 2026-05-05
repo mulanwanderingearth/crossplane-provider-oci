@@ -1,0 +1,17 @@
+apiVersion: osmanagementhub.oci.m.upbound.io/v1alpha1
+kind: ProfileDetachManagementStationManagement
+metadata:
+  annotations:
+    meta.upbound.io/example-id: osmanagementhub/v1alpha1/profiledetachmanagementstationmanagement
+  labels:
+    testing.upbound.io/example-name: test_profile_detach_management_station_management
+  name: test-profile-detach-management-station-management
+  namespace: upbound-system
+spec:
+  forProvider:
+    managementStationIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_management_station
+    profileIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_profile

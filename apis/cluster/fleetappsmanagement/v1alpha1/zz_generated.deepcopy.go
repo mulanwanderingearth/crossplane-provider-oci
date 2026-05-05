@@ -2521,6 +2521,21 @@ func (in *ConfigCategoryDetailsInitParameters) DeepCopyInto(out *ConfigCategoryD
 		*out = new(v1.Selector)
 		(*in).DeepCopyInto(*out)
 	}
+	if in.IsCompliancePolicyRequiredForSoftlink != nil {
+		in, out := &in.IsCompliancePolicyRequiredForSoftlink, &out.IsCompliancePolicyRequiredForSoftlink
+		*out = new(bool)
+		**out = **in
+	}
+	if in.IsSoftlink != nil {
+		in, out := &in.IsSoftlink, &out.IsSoftlink
+		*out = new(bool)
+		**out = **in
+	}
+	if in.LinkProductID != nil {
+		in, out := &in.LinkProductID, &out.LinkProductID
+		*out = new(string)
+		**out = **in
+	}
 	if in.PatchTypes != nil {
 		in, out := &in.PatchTypes, &out.PatchTypes
 		*out = make([]PatchTypesInitParameters, len(*in))
@@ -2605,6 +2620,21 @@ func (in *ConfigCategoryDetailsObservation) DeepCopyInto(out *ConfigCategoryDeta
 	}
 	if in.InstanceName != nil {
 		in, out := &in.InstanceName, &out.InstanceName
+		*out = new(string)
+		**out = **in
+	}
+	if in.IsCompliancePolicyRequiredForSoftlink != nil {
+		in, out := &in.IsCompliancePolicyRequiredForSoftlink, &out.IsCompliancePolicyRequiredForSoftlink
+		*out = new(bool)
+		**out = **in
+	}
+	if in.IsSoftlink != nil {
+		in, out := &in.IsSoftlink, &out.IsSoftlink
+		*out = new(bool)
+		**out = **in
+	}
+	if in.LinkProductID != nil {
+		in, out := &in.LinkProductID, &out.LinkProductID
 		*out = new(string)
 		**out = **in
 	}
@@ -2714,6 +2744,21 @@ func (in *ConfigCategoryDetailsParameters) DeepCopyInto(out *ConfigCategoryDetai
 		in, out := &in.InstanceNameSelector, &out.InstanceNameSelector
 		*out = new(v1.Selector)
 		(*in).DeepCopyInto(*out)
+	}
+	if in.IsCompliancePolicyRequiredForSoftlink != nil {
+		in, out := &in.IsCompliancePolicyRequiredForSoftlink, &out.IsCompliancePolicyRequiredForSoftlink
+		*out = new(bool)
+		**out = **in
+	}
+	if in.IsSoftlink != nil {
+		in, out := &in.IsSoftlink, &out.IsSoftlink
+		*out = new(bool)
+		**out = **in
+	}
+	if in.LinkProductID != nil {
+		in, out := &in.LinkProductID, &out.LinkProductID
+		*out = new(string)
+		**out = **in
 	}
 	if in.PatchTypes != nil {
 		in, out := &in.PatchTypes, &out.PatchTypes

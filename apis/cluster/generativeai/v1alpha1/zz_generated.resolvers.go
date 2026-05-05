@@ -44,12 +44,64 @@ func (mg *AgentAgent) ResolveReferences( // ResolveReferences of this AgentAgent
 	}
 	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.LlmConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.LlmConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
-
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
 			Extract:      reference.ExternalName(),
@@ -64,6 +116,59 @@ func (mg *AgentAgent) ResolveReferences( // ResolveReferences of this AgentAgent
 	}
 	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.LlmConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.LlmConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.LlmConfig[i3].RoutingLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
 
 	return nil
 }
@@ -116,12 +221,34 @@ func (mg *AgentAgentEndpoint) ResolveReferences(ctx context.Context, c client.Re
 	}
 	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ProvisionedCapacityConfig); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("generativeai.oci.upbound.io", "v1alpha1", "AgentProvisionedCapacity", "AgentProvisionedCapacityList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityIDRef,
+				Selector:     mg.Spec.ForProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityID")
+		}
+		mg.Spec.ForProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityIDRef = rsp.ResolvedReference
+
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("generativeai.oci.upbound.io", "v1alpha1", "AgentAgent", "AgentAgentList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
-
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AgentID),
 			Extract:      resource.ExtractResourceID(),
@@ -156,6 +283,29 @@ func (mg *AgentAgentEndpoint) ResolveReferences(ctx context.Context, c client.Re
 	}
 	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ProvisionedCapacityConfig); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("generativeai.oci.upbound.io", "v1alpha1", "AgentProvisionedCapacity", "AgentProvisionedCapacityList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityIDRef,
+				Selector:     mg.Spec.InitProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityID")
+		}
+		mg.Spec.InitProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.ProvisionedCapacityConfig[i3].ProvisionedCapacityIDRef = rsp.ResolvedReference
+
+	}
 
 	return nil
 }
@@ -537,6 +687,58 @@ func (mg *AgentKnowledgeBase) ResolveReferences(ctx context.Context, c client.Re
 	return nil
 }
 
+// ResolveReferences of this AgentProvisionedCapacity.
+func (mg *AgentProvisionedCapacity) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this AgentTool.
 func (mg *AgentTool) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -633,6 +835,110 @@ func (mg *AgentTool) ResolveReferences(ctx context.Context, c client.Reader) err
 		}
 	}
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
 		for i4 := 0; i4 < len(mg.Spec.ForProvider.ToolConfig[i3].HTTPEndpointAuthConfig); i4++ {
 			for i5 := 0; i5 < len(mg.Spec.ForProvider.ToolConfig[i3].HTTPEndpointAuthConfig[i4].HTTPEndpointAuthSources); i5++ {
 				for i6 := 0; i6 < len(mg.Spec.ForProvider.ToolConfig[i3].HTTPEndpointAuthConfig[i4].HTTPEndpointAuthSources[i5].HTTPEndpointAuthScopeConfig); i6++ {
@@ -710,6 +1016,110 @@ func (mg *AgentTool) ResolveReferences(ctx context.Context, c client.Reader) err
 			mg.Spec.ForProvider.ToolConfig[i3].KnowledgeBaseConfigs[i4].KnowledgeBaseID = reference.ToPtrValue(rsp.ResolvedValue)
 			mg.Spec.ForProvider.ToolConfig[i3].KnowledgeBaseConfigs[i4].KnowledgeBaseIDRef = rsp.ResolvedReference
 
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
 		}
 	}
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.ToolConfig); i3++ {
@@ -821,6 +1231,110 @@ func (mg *AgentTool) ResolveReferences(ctx context.Context, c client.Reader) err
 		}
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.ToolConfig[i3].EmbeddingLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.ToolConfig[i3].GenerationLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
 		for i4 := 0; i4 < len(mg.Spec.InitProvider.ToolConfig[i3].HTTPEndpointAuthConfig); i4++ {
 			for i5 := 0; i5 < len(mg.Spec.InitProvider.ToolConfig[i3].HTTPEndpointAuthConfig[i4].HTTPEndpointAuthSources); i5++ {
 				for i6 := 0; i6 < len(mg.Spec.InitProvider.ToolConfig[i3].HTTPEndpointAuthConfig[i4].HTTPEndpointAuthSources[i5].HTTPEndpointAuthScopeConfig); i6++ {
@@ -898,6 +1412,110 @@ func (mg *AgentTool) ResolveReferences(ctx context.Context, c client.Reader) err
 			mg.Spec.InitProvider.ToolConfig[i3].KnowledgeBaseConfigs[i4].KnowledgeBaseID = reference.ToPtrValue(rsp.ResolvedValue)
 			mg.Spec.InitProvider.ToolConfig[i3].KnowledgeBaseConfigs[i4].KnowledgeBaseIDRef = rsp.ResolvedReference
 
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.ToolConfig[i3].ReasoningLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("ailanguage.oci.upbound.io", "v1alpha1", "Endpoint", "EndpointList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef,
+						Selector:     mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointID")
+				}
+				mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].EndpointIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("aidocument.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelIDRef,
+						Selector:     mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelID")
+				}
+				mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.ToolConfig[i3].RerankingLlmCustomization[i4].LlmSelection[i5].ModelIDRef = rsp.ResolvedReference
+
+			}
 		}
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.ToolConfig); i3++ {
@@ -1286,6 +1904,103 @@ func (mg *GenerativeAiPrivateEndpoint) ResolveReferences(ctx context.Context, c 
 	return nil
 }
 
+// ResolveReferences of this ImportedModel.
+func (mg *ImportedModel) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.DataSource); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("generativeai.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.DataSource[i3].ModelID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.DataSource[i3].ModelIDRef,
+				Selector:     mg.Spec.ForProvider.DataSource[i3].ModelIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.DataSource[i3].ModelID")
+		}
+		mg.Spec.ForProvider.DataSource[i3].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.DataSource[i3].ModelIDRef = rsp.ResolvedReference
+
+	}
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.DataSource); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("generativeai.oci.upbound.io", "v1alpha1", "Model", "ModelList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.DataSource[i3].ModelID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.DataSource[i3].ModelIDRef,
+				Selector:     mg.Spec.InitProvider.DataSource[i3].ModelIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.DataSource[i3].ModelID")
+		}
+		mg.Spec.InitProvider.DataSource[i3].ModelID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.DataSource[i3].ModelIDRef = rsp.ResolvedReference
+
+	}
+
+	return nil
+}
+
 // ResolveReferences of this Model.
 func (mg *Model) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -1417,6 +2132,147 @@ func (mg *Model) ResolveReferences(ctx context.Context, c client.Reader) error {
 		}
 		mg.Spec.InitProvider.FineTuneDetails[i3].DedicatedAIClusterID = reference.ToPtrValue(rsp.ResolvedValue)
 		mg.Spec.InitProvider.FineTuneDetails[i3].DedicatedAIClusterIDRef = rsp.ResolvedReference
+
+	}
+
+	return nil
+}
+
+// ResolveReferences of this SemanticStore.
+func (mg *SemanticStore) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPIResolver(c, mg)
+
+	var rsp reference.ResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.DataSource); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("database.oci.upbound.io", "v1alpha1", "ToolsDatabaseToolsConnection", "ToolsDatabaseToolsConnectionList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.DataSource[i3].EnrichmentConnectionID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.DataSource[i3].EnrichmentConnectionIDRef,
+				Selector:     mg.Spec.ForProvider.DataSource[i3].EnrichmentConnectionIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.DataSource[i3].EnrichmentConnectionID")
+		}
+		mg.Spec.ForProvider.DataSource[i3].EnrichmentConnectionID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.DataSource[i3].EnrichmentConnectionIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.DataSource); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("database.oci.upbound.io", "v1alpha1", "ToolsDatabaseToolsConnection", "ToolsDatabaseToolsConnectionList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.DataSource[i3].QueryingConnectionID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.DataSource[i3].QueryingConnectionIDRef,
+				Selector:     mg.Spec.ForProvider.DataSource[i3].QueryingConnectionIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.DataSource[i3].QueryingConnectionID")
+		}
+		mg.Spec.ForProvider.DataSource[i3].QueryingConnectionID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.DataSource[i3].QueryingConnectionIDRef = rsp.ResolvedReference
+
+	}
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.DataSource); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("database.oci.upbound.io", "v1alpha1", "ToolsDatabaseToolsConnection", "ToolsDatabaseToolsConnectionList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.DataSource[i3].EnrichmentConnectionID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.DataSource[i3].EnrichmentConnectionIDRef,
+				Selector:     mg.Spec.InitProvider.DataSource[i3].EnrichmentConnectionIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.DataSource[i3].EnrichmentConnectionID")
+		}
+		mg.Spec.InitProvider.DataSource[i3].EnrichmentConnectionID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.DataSource[i3].EnrichmentConnectionIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.DataSource); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("database.oci.upbound.io", "v1alpha1", "ToolsDatabaseToolsConnection", "ToolsDatabaseToolsConnectionList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.DataSource[i3].QueryingConnectionID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.DataSource[i3].QueryingConnectionIDRef,
+				Selector:     mg.Spec.InitProvider.DataSource[i3].QueryingConnectionIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.DataSource[i3].QueryingConnectionID")
+		}
+		mg.Spec.InitProvider.DataSource[i3].QueryingConnectionID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.DataSource[i3].QueryingConnectionIDRef = rsp.ResolvedReference
 
 	}
 

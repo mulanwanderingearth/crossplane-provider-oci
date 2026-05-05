@@ -16,6 +16,9 @@ func (tr *Cluster) Hub() {}
 func (tr *ClusterCompleteCredentialRotationManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *ClusterPublicApiEndpointDecommissionManager) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *ClusterStartCredentialRotationManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.

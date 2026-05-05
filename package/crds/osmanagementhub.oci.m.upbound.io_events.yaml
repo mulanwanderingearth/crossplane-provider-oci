@@ -594,6 +594,9 @@ spec:
                         errorLog:
                           description: The output log of the error.
                           type: string
+                        errorSummary:
+                          description: Brief description on how this error is categorized.
+                          type: string
                         eventCount:
                           description: Number of times the event has occurred.
                           type: number

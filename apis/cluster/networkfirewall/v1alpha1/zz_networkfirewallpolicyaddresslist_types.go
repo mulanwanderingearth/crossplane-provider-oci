@@ -18,6 +18,9 @@ type NetworkFirewallPolicyAddressListInitParameters struct {
 	// (Updatable) List of addresses.
 	Addresses []*string `json:"addresses,omitempty" tf:"addresses,omitempty"`
 
+	// (Updatable) The description of the address list. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	// Unique name to identify the group of addresses to be used in the policy rules.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
@@ -43,6 +46,9 @@ type NetworkFirewallPolicyAddressListObservation struct {
 	// (Updatable) List of addresses.
 	Addresses []*string `json:"addresses,omitempty" tf:"addresses,omitempty"`
 
+	// (Updatable) The description of the address list. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Unique name to identify the group of addresses to be used in the policy rules.
@@ -66,6 +72,10 @@ type NetworkFirewallPolicyAddressListParameters struct {
 	// (Updatable) List of addresses.
 	// +kubebuilder:validation:Optional
 	Addresses []*string `json:"addresses,omitempty" tf:"addresses,omitempty"`
+
+	// (Updatable) The description of the address list. This field can be used to add additional info.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// Unique name to identify the group of addresses to be used in the policy rules.
 	// +kubebuilder:validation:Optional

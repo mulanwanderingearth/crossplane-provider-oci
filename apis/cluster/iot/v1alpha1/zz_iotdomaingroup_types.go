@@ -40,6 +40,9 @@ type IotDomainGroupInitParameters struct {
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// Type of domain group. DEVELOPMENT uses fewer resources and has a higher Recovery Time Objective (RTO), making it suitable for development and testing. PRODUCTION is recommended for production workloads.  LIGHTWEIGHT and STANDARD are deprecated aliases for DEVELOPMENT and PRODUCTION respectively and will be removed  in a future release.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type IotDomainGroupObservation struct {
@@ -88,6 +91,9 @@ type IotDomainGroupObservation struct {
 
 	// The date and time when the resource was last updated, in the format defined by RFC 3339. Example: 2016-08-25T21:10:29.600Z
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
+
+	// Type of domain group. DEVELOPMENT uses fewer resources and has a higher Recovery Time Objective (RTO), making it suitable for development and testing. PRODUCTION is recommended for production workloads.  LIGHTWEIGHT and STANDARD are deprecated aliases for DEVELOPMENT and PRODUCTION respectively and will be removed  in a future release.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type IotDomainGroupParameters struct {
@@ -122,6 +128,10 @@ type IotDomainGroupParameters struct {
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+
+	// Type of domain group. DEVELOPMENT uses fewer resources and has a higher Recovery Time Objective (RTO), making it suitable for development and testing. PRODUCTION is recommended for production workloads.  LIGHTWEIGHT and STANDARD are deprecated aliases for DEVELOPMENT and PRODUCTION respectively and will be removed  in a future release.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 // IotDomainGroupSpec defines the desired state of IotDomainGroup

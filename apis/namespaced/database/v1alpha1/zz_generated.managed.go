@@ -7,6 +7,126 @@ package v1alpha1
 
 import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
 
+// GetCondition of this AdvancedClusterFileSystem.
+func (mg *AdvancedClusterFileSystem) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this AdvancedClusterFileSystem.
+func (mg *AdvancedClusterFileSystem) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this AdvancedClusterFileSystem.
+func (mg *AdvancedClusterFileSystem) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this AdvancedClusterFileSystem.
+func (mg *AdvancedClusterFileSystem) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this AdvancedClusterFileSystem.
+func (mg *AdvancedClusterFileSystem) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this AdvancedClusterFileSystem.
+func (mg *AdvancedClusterFileSystem) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this AdvancedClusterFileSystem.
+func (mg *AdvancedClusterFileSystem) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this AdvancedClusterFileSystem.
+func (mg *AdvancedClusterFileSystem) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this AdvancedClusterFileSystemMount.
+func (mg *AdvancedClusterFileSystemMount) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this AdvancedClusterFileSystemMount.
+func (mg *AdvancedClusterFileSystemMount) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this AdvancedClusterFileSystemMount.
+func (mg *AdvancedClusterFileSystemMount) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this AdvancedClusterFileSystemMount.
+func (mg *AdvancedClusterFileSystemMount) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this AdvancedClusterFileSystemMount.
+func (mg *AdvancedClusterFileSystemMount) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this AdvancedClusterFileSystemMount.
+func (mg *AdvancedClusterFileSystemMount) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this AdvancedClusterFileSystemMount.
+func (mg *AdvancedClusterFileSystemMount) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this AdvancedClusterFileSystemMount.
+func (mg *AdvancedClusterFileSystemMount) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this AdvancedClusterFileSystemUnmount.
+func (mg *AdvancedClusterFileSystemUnmount) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this AdvancedClusterFileSystemUnmount.
+func (mg *AdvancedClusterFileSystemUnmount) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this AdvancedClusterFileSystemUnmount.
+func (mg *AdvancedClusterFileSystemUnmount) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this AdvancedClusterFileSystemUnmount.
+func (mg *AdvancedClusterFileSystemUnmount) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this AdvancedClusterFileSystemUnmount.
+func (mg *AdvancedClusterFileSystemUnmount) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this AdvancedClusterFileSystemUnmount.
+func (mg *AdvancedClusterFileSystemUnmount) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this AdvancedClusterFileSystemUnmount.
+func (mg *AdvancedClusterFileSystemUnmount) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this AdvancedClusterFileSystemUnmount.
+func (mg *AdvancedClusterFileSystemUnmount) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this ApplicationVip.
 func (mg *ApplicationVip) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
@@ -1124,6 +1244,46 @@ func (mg *DataGuardAssociation) SetProviderConfigReference(r *xpv1.ProviderConfi
 
 // SetWriteConnectionSecretToReference of this DataGuardAssociation.
 func (mg *DataGuardAssociation) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this DataPatch.
+func (mg *DataPatch) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this DataPatch.
+func (mg *DataPatch) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this DataPatch.
+func (mg *DataPatch) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this DataPatch.
+func (mg *DataPatch) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this DataPatch.
+func (mg *DataPatch) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this DataPatch.
+func (mg *DataPatch) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this DataPatch.
+func (mg *DataPatch) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this DataPatch.
+func (mg *DataPatch) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
@@ -3007,6 +3167,206 @@ func (mg *ManagementCloudDbSystemDiscovery) SetWriteConnectionSecretToReference(
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this ManagementCloudExadataInfrastructure.
+func (mg *ManagementCloudExadataInfrastructure) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this ManagementCloudExadataInfrastructure.
+func (mg *ManagementCloudExadataInfrastructure) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagementCloudExadataInfrastructure.
+func (mg *ManagementCloudExadataInfrastructure) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagementCloudExadataInfrastructure.
+func (mg *ManagementCloudExadataInfrastructure) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagementCloudExadataInfrastructure.
+func (mg *ManagementCloudExadataInfrastructure) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this ManagementCloudExadataInfrastructure.
+func (mg *ManagementCloudExadataInfrastructure) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagementCloudExadataInfrastructure.
+func (mg *ManagementCloudExadataInfrastructure) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagementCloudExadataInfrastructure.
+func (mg *ManagementCloudExadataInfrastructure) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagementCloudExadataInfrastructureManagedexadata.
+func (mg *ManagementCloudExadataInfrastructureManagedexadata) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this ManagementCloudExadataInfrastructureManagedexadata.
+func (mg *ManagementCloudExadataInfrastructureManagedexadata) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagementCloudExadataInfrastructureManagedexadata.
+func (mg *ManagementCloudExadataInfrastructureManagedexadata) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagementCloudExadataInfrastructureManagedexadata.
+func (mg *ManagementCloudExadataInfrastructureManagedexadata) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagementCloudExadataInfrastructureManagedexadata.
+func (mg *ManagementCloudExadataInfrastructureManagedexadata) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this ManagementCloudExadataInfrastructureManagedexadata.
+func (mg *ManagementCloudExadataInfrastructureManagedexadata) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagementCloudExadataInfrastructureManagedexadata.
+func (mg *ManagementCloudExadataInfrastructureManagedexadata) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagementCloudExadataInfrastructureManagedexadata.
+func (mg *ManagementCloudExadataInfrastructureManagedexadata) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagementCloudExadataStorageConnector.
+func (mg *ManagementCloudExadataStorageConnector) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this ManagementCloudExadataStorageConnector.
+func (mg *ManagementCloudExadataStorageConnector) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagementCloudExadataStorageConnector.
+func (mg *ManagementCloudExadataStorageConnector) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagementCloudExadataStorageConnector.
+func (mg *ManagementCloudExadataStorageConnector) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagementCloudExadataStorageConnector.
+func (mg *ManagementCloudExadataStorageConnector) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this ManagementCloudExadataStorageConnector.
+func (mg *ManagementCloudExadataStorageConnector) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagementCloudExadataStorageConnector.
+func (mg *ManagementCloudExadataStorageConnector) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagementCloudExadataStorageConnector.
+func (mg *ManagementCloudExadataStorageConnector) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagementCloudExadataStorageGrid.
+func (mg *ManagementCloudExadataStorageGrid) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this ManagementCloudExadataStorageGrid.
+func (mg *ManagementCloudExadataStorageGrid) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagementCloudExadataStorageGrid.
+func (mg *ManagementCloudExadataStorageGrid) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagementCloudExadataStorageGrid.
+func (mg *ManagementCloudExadataStorageGrid) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagementCloudExadataStorageGrid.
+func (mg *ManagementCloudExadataStorageGrid) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this ManagementCloudExadataStorageGrid.
+func (mg *ManagementCloudExadataStorageGrid) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagementCloudExadataStorageGrid.
+func (mg *ManagementCloudExadataStorageGrid) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagementCloudExadataStorageGrid.
+func (mg *ManagementCloudExadataStorageGrid) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this ManagementCloudExadataStorageServer.
+func (mg *ManagementCloudExadataStorageServer) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this ManagementCloudExadataStorageServer.
+func (mg *ManagementCloudExadataStorageServer) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ManagementCloudExadataStorageServer.
+func (mg *ManagementCloudExadataStorageServer) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ManagementCloudExadataStorageServer.
+func (mg *ManagementCloudExadataStorageServer) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ManagementCloudExadataStorageServer.
+func (mg *ManagementCloudExadataStorageServer) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this ManagementCloudExadataStorageServer.
+func (mg *ManagementCloudExadataStorageServer) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ManagementCloudExadataStorageServer.
+func (mg *ManagementCloudExadataStorageServer) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ManagementCloudExadataStorageServer.
+func (mg *ManagementCloudExadataStorageServer) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this ManagementCloudListener.
 func (mg *ManagementCloudListener) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
@@ -4327,6 +4687,86 @@ func (mg *Migration) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretRefe
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this MigrationAssessment.
+func (mg *MigrationAssessment) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this MigrationAssessment.
+func (mg *MigrationAssessment) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this MigrationAssessment.
+func (mg *MigrationAssessment) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this MigrationAssessment.
+func (mg *MigrationAssessment) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this MigrationAssessment.
+func (mg *MigrationAssessment) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this MigrationAssessment.
+func (mg *MigrationAssessment) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this MigrationAssessment.
+func (mg *MigrationAssessment) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this MigrationAssessment.
+func (mg *MigrationAssessment) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this MigrationAssessmentAssessorAction.
+func (mg *MigrationAssessmentAssessorAction) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this MigrationAssessmentAssessorAction.
+func (mg *MigrationAssessmentAssessorAction) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this MigrationAssessmentAssessorAction.
+func (mg *MigrationAssessmentAssessorAction) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this MigrationAssessmentAssessorAction.
+func (mg *MigrationAssessmentAssessorAction) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this MigrationAssessmentAssessorAction.
+func (mg *MigrationAssessmentAssessorAction) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this MigrationAssessmentAssessorAction.
+func (mg *MigrationAssessmentAssessorAction) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this MigrationAssessmentAssessorAction.
+func (mg *MigrationAssessmentAssessorAction) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this MigrationAssessmentAssessorAction.
+func (mg *MigrationAssessmentAssessorAction) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this MigrationConnection.
 func (mg *MigrationConnection) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
@@ -4404,6 +4844,46 @@ func (mg *MigrationJob) SetProviderConfigReference(r *xpv1.ProviderConfigReferen
 
 // SetWriteConnectionSecretToReference of this MigrationJob.
 func (mg *MigrationJob) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this MigrationJobAdvisorReportCheck.
+func (mg *MigrationJobAdvisorReportCheck) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this MigrationJobAdvisorReportCheck.
+func (mg *MigrationJobAdvisorReportCheck) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this MigrationJobAdvisorReportCheck.
+func (mg *MigrationJobAdvisorReportCheck) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this MigrationJobAdvisorReportCheck.
+func (mg *MigrationJobAdvisorReportCheck) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this MigrationJobAdvisorReportCheck.
+func (mg *MigrationJobAdvisorReportCheck) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this MigrationJobAdvisorReportCheck.
+func (mg *MigrationJobAdvisorReportCheck) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this MigrationJobAdvisorReportCheck.
+func (mg *MigrationJobAdvisorReportCheck) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this MigrationJobAdvisorReportCheck.
+func (mg *MigrationJobAdvisorReportCheck) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 

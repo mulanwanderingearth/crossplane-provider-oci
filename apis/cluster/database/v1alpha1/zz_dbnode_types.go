@@ -98,6 +98,9 @@ type DbNodeObservation struct {
 	// The OCID of the database node.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// Indicates whether the database node must be rebooted after applying Operating System patches. This flag becomes true after operations such as OS/kernel updates to indicate that a reboot of the node is required. After a successful reboot, this value is expected to return to false.
+	IsOsPatchRebootRequired *bool `json:"isOsPatchRebootRequired,omitempty" tf:"is_os_patch_reboot_required,omitempty"`
+
 	// Information about the current lifecycle state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 

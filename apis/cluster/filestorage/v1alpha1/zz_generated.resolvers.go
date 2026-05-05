@@ -621,6 +621,26 @@ func (mg *OutboundConnector) ResolveReferences(ctx context.Context, c client.Rea
 	mg.Spec.ForProvider.PasswordSecretID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.PasswordSecretIDRef = rsp.ResolvedReference
 	{
+		m, l, err = apisresolver.GetManagedResource("vault.oci.upbound.io", "v1alpha1", "Secret", "SecretList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.TrustedCertificateSecretID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.TrustedCertificateSecretIDRef,
+			Selector:     mg.Spec.ForProvider.TrustedCertificateSecretIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.TrustedCertificateSecretID")
+	}
+	mg.Spec.ForProvider.TrustedCertificateSecretID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.TrustedCertificateSecretIDRef = rsp.ResolvedReference
+	{
 		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
@@ -660,6 +680,26 @@ func (mg *OutboundConnector) ResolveReferences(ctx context.Context, c client.Rea
 	}
 	mg.Spec.InitProvider.PasswordSecretID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.PasswordSecretIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("vault.oci.upbound.io", "v1alpha1", "Secret", "SecretList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.TrustedCertificateSecretID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.TrustedCertificateSecretIDRef,
+			Selector:     mg.Spec.InitProvider.TrustedCertificateSecretIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.TrustedCertificateSecretID")
+	}
+	mg.Spec.InitProvider.TrustedCertificateSecretID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.TrustedCertificateSecretIDRef = rsp.ResolvedReference
 
 	return nil
 }

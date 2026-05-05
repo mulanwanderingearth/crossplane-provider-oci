@@ -23,3 +23,7 @@ spec:
       Department: Finance
     hostOcpuCount: ${var.esxi_host_host_ocpu_count}
     hostShapeName: ${oci_core_shape.test_shape.name}
+    isVsanByolEnabled: ${var.esxi_host_is_vsan_byol_enabled}
+    vcfByolAllocationIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_byol_allocation

@@ -16,6 +16,9 @@ import (
 
 type NetworkFirewallPolicyServiceInitParameters struct {
 
+	// (Updatable) The description of the service. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	// Name of the service
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
@@ -40,6 +43,10 @@ type NetworkFirewallPolicyServiceInitParameters struct {
 }
 
 type NetworkFirewallPolicyServiceObservation struct {
+
+	// (Updatable) The description of the service. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Name of the service
@@ -59,6 +66,10 @@ type NetworkFirewallPolicyServiceObservation struct {
 }
 
 type NetworkFirewallPolicyServiceParameters struct {
+
+	// (Updatable) The description of the service. This field can be used to add additional info.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// Name of the service
 	// +kubebuilder:validation:Optional

@@ -15,6 +15,7 @@ spec:
       Operations.CostCenter: "42"
     description: ${var.scheduled_job_description}
     displayName: ${var.scheduled_job_display_name}
+    dynamicSetIds: ${var.scheduled_job_dynamic_set_ids}
     freeformTags:
       Department: Finance
     isManagedByAutonomousLinux: ${var.scheduled_job_is_managed_by_autonomous_linux}
@@ -25,7 +26,13 @@ spec:
     managedInstanceGroupIds: ${var.scheduled_job_managed_instance_group_ids}
     managedInstanceIds: ${var.scheduled_job_managed_instance_ids}
     operations:
-    - manageModuleStreamsDetails:
+    - installSnapDetails:
+      - channel: ${var.scheduled_job_operations_install_snap_details_channel}
+        isSigned: ${var.scheduled_job_operations_install_snap_details_is_signed}
+        mode: ${var.scheduled_job_operations_install_snap_details_mode}
+        name: ${var.scheduled_job_operations_install_snap_details_name}
+        revision: ${var.scheduled_job_operations_install_snap_details_revision}
+      manageModuleStreamsDetails:
       - disable:
         - moduleName: ${var.scheduled_job_operations_manage_module_streams_details_disable_module_name}
           softwareSourceIdSelector:
@@ -67,6 +74,9 @@ spec:
       operationType: ${var.scheduled_job_operations_operation_type}
       packageNames: ${var.scheduled_job_operations_package_names}
       rebootTimeoutInMins: ${var.scheduled_job_operations_reboot_timeout_in_mins}
+      removeSnapDetails:
+      - name: ${var.scheduled_job_operations_remove_snap_details_name}
+        revision: ${var.scheduled_job_operations_remove_snap_details_revision}
       softwareSourceIds: ${var.scheduled_job_operations_software_source_ids}
       switchModuleStreamsDetails:
       - moduleName: ${var.scheduled_job_operations_switch_module_streams_details_module_name}
@@ -76,6 +86,9 @@ spec:
         streamNameSelector:
           matchLabels:
             testing.upbound.io/example-name: test_stream
+      switchSnapChannelDetails:
+      - channel: ${var.scheduled_job_operations_switch_snap_channel_details_channel}
+        name: ${var.scheduled_job_operations_switch_snap_channel_details_name}
       windowsUpdateNames: ${var.scheduled_job_operations_windows_update_names}
     recurringRule: ${var.scheduled_job_recurring_rule}
     retryIntervals: ${var.scheduled_job_retry_intervals}

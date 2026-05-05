@@ -106,3 +106,203 @@ func (mg *Budget) SetProviderConfigReference(r *xpv1.Reference) {
 func (mg *Budget) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
+
+// GetCondition of this CostAlertSubscription.
+func (mg *CostAlertSubscription) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this CostAlertSubscription.
+func (mg *CostAlertSubscription) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this CostAlertSubscription.
+func (mg *CostAlertSubscription) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this CostAlertSubscription.
+func (mg *CostAlertSubscription) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this CostAlertSubscription.
+func (mg *CostAlertSubscription) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this CostAlertSubscription.
+func (mg *CostAlertSubscription) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this CostAlertSubscription.
+func (mg *CostAlertSubscription) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this CostAlertSubscription.
+func (mg *CostAlertSubscription) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this CostAlertSubscription.
+func (mg *CostAlertSubscription) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this CostAlertSubscription.
+func (mg *CostAlertSubscription) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}

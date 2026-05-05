@@ -175,6 +175,12 @@ spec:
                             report.
                           items:
                             properties:
+                              baselineOcpuUtilization:
+                                description: The baseline OCPU utilization for a subcore
+                                  burstable VM instance. Leave this attribute blank
+                                  for a non-burstable instance, or explicitly specify
+                                  non-burstable with BASELINE_1_1.
+                                type: string
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the instance, in gigabytes.
@@ -306,6 +312,12 @@ spec:
                             report.
                           items:
                             properties:
+                              baselineOcpuUtilization:
+                                description: The baseline OCPU utilization for a subcore
+                                  burstable VM instance. Leave this attribute blank
+                                  for a non-burstable instance, or explicitly specify
+                                  non-burstable with BASELINE_1_1.
+                                type: string
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the instance, in gigabytes.
@@ -460,6 +472,12 @@ spec:
                             report.
                           items:
                             properties:
+                              baselineOcpuUtilization:
+                                description: The baseline OCPU utilization for a subcore
+                                  burstable VM instance. Leave this attribute blank
+                                  for a non-burstable instance, or explicitly specify
+                                  non-burstable with BASELINE_1_1.
+                                type: string
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the instance, in gigabytes.

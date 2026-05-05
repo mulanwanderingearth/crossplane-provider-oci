@@ -61,7 +61,7 @@ type LogAnalyticsImportCustomContentInitParameters struct {
 	// A flag indicating whether or not to overwrite existing content if a conflict is found during import content operation.
 	IsOverwrite *bool `json:"isOverwrite,omitempty" tf:"is_overwrite,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
@@ -87,7 +87,7 @@ type LogAnalyticsImportCustomContentObservation struct {
 	// A flag indicating whether or not to overwrite existing content if a conflict is found during import content operation.
 	IsOverwrite *bool `json:"isOverwrite,omitempty" tf:"is_overwrite,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// The parser names.
@@ -111,7 +111,7 @@ type LogAnalyticsImportCustomContentParameters struct {
 	// +kubebuilder:validation:Optional
 	IsOverwrite *bool `json:"isOverwrite,omitempty" tf:"is_overwrite,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }

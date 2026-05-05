@@ -160,6 +160,24 @@ func (l *GroupList) GetItems() []resource.Managed {
 	return items
 }
 
+// GetItems of this IdentityProofingProviderList.
+func (l *IdentityProofingProviderList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this IdentityProofingProviderTemplateList.
+func (l *IdentityProofingProviderTemplateList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this IdentityPropagationTrustList.
 func (l *IdentityPropagationTrustList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
@@ -189,6 +207,15 @@ func (l *IdentitySettingList) GetItems() []resource.Managed {
 
 // GetItems of this KmsiSettingList.
 func (l *KmsiSettingList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this MappedAttributeList.
+func (l *MappedAttributeList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]

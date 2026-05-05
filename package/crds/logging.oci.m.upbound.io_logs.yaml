@@ -79,11 +79,15 @@ spec:
                                   type: string
                                 description: (Applicable when source_type=OCISERVICE)
                                   (Updatable) Log category parameters are stored here.
+                                  The resource for a service log can't be updated.
                                 type: object
                                 x-kubernetes-map-type: granular
                               resource:
                                 description: The unique identifier of the resource
-                                  emitting the log.
+                                  emitting the log. The resource can be updated, and
+                                  the resource value can vary depending on the Oracle
+                                  Cloud Infrastructure service to which the resource
+                                  belongs to.
                                 type: string
                               service:
                                 description: Service generating log.
@@ -246,11 +250,15 @@ spec:
                                   type: string
                                 description: (Applicable when source_type=OCISERVICE)
                                   (Updatable) Log category parameters are stored here.
+                                  The resource for a service log can't be updated.
                                 type: object
                                 x-kubernetes-map-type: granular
                               resource:
                                 description: The unique identifier of the resource
-                                  emitting the log.
+                                  emitting the log. The resource can be updated, and
+                                  the resource value can vary depending on the Oracle
+                                  Cloud Infrastructure service to which the resource
+                                  belongs to.
                                 type: string
                               service:
                                 description: Service generating log.
@@ -478,11 +486,15 @@ spec:
                                   type: string
                                 description: (Applicable when source_type=OCISERVICE)
                                   (Updatable) Log category parameters are stored here.
+                                  The resource for a service log can't be updated.
                                 type: object
                                 x-kubernetes-map-type: granular
                               resource:
                                 description: The unique identifier of the resource
-                                  emitting the log.
+                                  emitting the log. The resource can be updated, and
+                                  the resource value can vary depending on the Oracle
+                                  Cloud Infrastructure service to which the resource
+                                  belongs to.
                                 type: string
                               service:
                                 description: Service generating log.

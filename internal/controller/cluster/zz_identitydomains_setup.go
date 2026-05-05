@@ -26,10 +26,13 @@ import (
 	dynamicresourcegroup "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/dynamicresourcegroup"
 	grant "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/grant"
 	group "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/group"
+	identityproofingprovider "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/identityproofingprovider"
+	identityproofingprovidertemplate "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/identityproofingprovidertemplate"
 	identitypropagationtrust "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/identitypropagationtrust"
 	identityprovider "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/identityprovider"
 	identitysetting "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/identitysetting"
 	kmsisetting "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/kmsisetting"
+	mappedattribute "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/mappedattribute"
 	myapikey "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/myapikey"
 	myauthtoken "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/myauthtoken"
 	mycustomersecretkey "github.com/oracle/provider-oci/internal/controller/cluster/identitydomains/mycustomersecretkey"
@@ -77,10 +80,13 @@ func Setup_identitydomains(mgr ctrl.Manager, o controller.Options) error {
 		dynamicresourcegroup.Setup,
 		grant.Setup,
 		group.Setup,
+		identityproofingprovider.Setup,
+		identityproofingprovidertemplate.Setup,
 		identitypropagationtrust.Setup,
 		identityprovider.Setup,
 		identitysetting.Setup,
 		kmsisetting.Setup,
+		mappedattribute.Setup,
 		myapikey.Setup,
 		myauthtoken.Setup,
 		mycustomersecretkey.Setup,
@@ -134,10 +140,13 @@ func SetupGated_identitydomains(mgr ctrl.Manager, o controller.Options) error {
 		dynamicresourcegroup.SetupGated,
 		grant.SetupGated,
 		group.SetupGated,
+		identityproofingprovider.SetupGated,
+		identityproofingprovidertemplate.SetupGated,
 		identitypropagationtrust.SetupGated,
 		identityprovider.SetupGated,
 		identitysetting.SetupGated,
 		kmsisetting.SetupGated,
+		mappedattribute.SetupGated,
 		myapikey.SetupGated,
 		myauthtoken.SetupGated,
 		mycustomersecretkey.SetupGated,

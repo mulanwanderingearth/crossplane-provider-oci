@@ -26,3 +26,10 @@ spec:
       nsgIds: ${var.replica_replica_overrides_nsg_ids}
       securityAttributes: ${var.replica_replica_overrides_security_attributes}
       shapeName: ${oci_mysql_shape.test_shape.name}
+      telemetryConfiguration:
+      - logs:
+        - destination: ${var.replica_replica_overrides_telemetry_configuration_logs_destination}
+          destinationConfigurations:
+          - key: ${var.replica_replica_overrides_telemetry_configuration_logs_destination_configurations_key}
+            value: ${var.replica_replica_overrides_telemetry_configuration_logs_destination_configurations_value}
+          logTypes: ${var.replica_replica_overrides_telemetry_configuration_logs_log_types}

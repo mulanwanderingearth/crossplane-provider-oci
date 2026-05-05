@@ -86,3 +86,43 @@ func (mg *FsuCycle) SetProviderConfigReference(r *xpv1.ProviderConfigReference) 
 func (mg *FsuCycle) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
+
+// GetCondition of this FsuReadinessCheck.
+func (mg *FsuReadinessCheck) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetManagementPolicies of this FsuReadinessCheck.
+func (mg *FsuReadinessCheck) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this FsuReadinessCheck.
+func (mg *FsuReadinessCheck) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this FsuReadinessCheck.
+func (mg *FsuReadinessCheck) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this FsuReadinessCheck.
+func (mg *FsuReadinessCheck) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetManagementPolicies of this FsuReadinessCheck.
+func (mg *FsuReadinessCheck) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this FsuReadinessCheck.
+func (mg *FsuReadinessCheck) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this FsuReadinessCheck.
+func (mg *FsuReadinessCheck) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}

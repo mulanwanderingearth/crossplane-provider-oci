@@ -19,6 +19,9 @@ func (tr *BdsInstance) Hub() {}
 func (tr *BdsInstanceApiKey) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *BdsInstanceExecuteBootstrapScriptAction) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *BdsInstanceIdentityConfiguration) Hub() {}
 
 // Hub marks this type as a conversion hub.

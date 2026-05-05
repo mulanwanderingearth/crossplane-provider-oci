@@ -13,6 +13,9 @@ func (tr *Dkim) Hub() {}
 func (tr *EmailDomain) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *EmailIpPool) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *EmailReturnPath) Hub() {}
 
 // Hub marks this type as a conversion hub.

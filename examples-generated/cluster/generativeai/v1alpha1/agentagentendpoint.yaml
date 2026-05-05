@@ -42,6 +42,16 @@ spec:
         outputLocationType: ${var.agent_endpoint_output_config_output_location_output_location_type}
         prefix: ${var.agent_endpoint_output_config_output_location_prefix}
       retentionPeriodInMinutes: ${var.agent_endpoint_output_config_retention_period_in_minutes}
+    provisionedCapacityConfig:
+    - platformRuntimeConfig:
+      - platformRuntimeConfigType: ${var.agent_endpoint_provisioned_capacity_config_platform_runtime_config_platform_runtime_config_type}
+        version: ${var.agent_endpoint_provisioned_capacity_config_platform_runtime_config_version}
+      provisionedCapacityIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_provisioned_capacity
+      toolRuntimeConfigs:
+      - toolRuntimeConfigType: ${var.agent_endpoint_provisioned_capacity_config_tool_runtime_configs_tool_runtime_config_type}
+        version: ${var.agent_endpoint_provisioned_capacity_config_tool_runtime_configs_version}
     sessionConfig:
     - idleTimeoutInSeconds: ${var.agent_endpoint_session_config_idle_timeout_in_seconds}
     shouldEnableCitation: ${var.agent_endpoint_should_enable_citation}

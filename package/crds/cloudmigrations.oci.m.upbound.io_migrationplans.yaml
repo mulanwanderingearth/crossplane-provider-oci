@@ -368,18 +368,115 @@ spec:
                     items:
                       properties:
                         availabilityDomain:
-                          description: (Updatable) Availability Domain of the VM configuration.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) Availability Domain of the VM configuration.
                           type: string
+                        clusterAssetId:
+                          description: (Updatable) Inventory asset id of the olvm
+                            cluster
+                          type: string
+                        clusterAssetIdRef:
+                          description: Reference to a Asset in cloudbridge to populate
+                            clusterAssetId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        clusterAssetIdSelector:
+                          description: Selector for a Asset in cloudbridge to populate
+                            clusterAssetId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
                         dedicatedVmHost:
-                          description: (Updatable) OCID of the dedicated VM configuration
-                            host.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) OCID of the dedicated VM configuration host.
                           type: string
                         faultDomain:
-                          description: (Updatable) Fault domain of the VM configuration.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) Fault domain of the VM configuration.
                           type: string
                         msLicense:
-                          description: (Updatable) Microsoft license for the VM configuration.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) Microsoft license for the VM configuration.
                           type: string
+                        olvmTemplates:
+                          additionalProperties:
+                            type: string
+                          description: (Applicable when target_environment_type=OLVM_TARGET_ENV)
+                            (Updatable) OLVM OS type to inventory asset id of the
+                            template
+                          type: object
+                          x-kubernetes-map-type: granular
                         preferredShapeType:
                           description: (Updatable) Preferred VM shape type provided
                             by the customer.
@@ -478,6 +575,92 @@ spec:
                         vcn:
                           description: (Updatable) OCID of the VM configuration VCN.
                           type: string
+                        vnicProfileAssetId:
+                          description: (Updatable) Inventory asset Id of the vnic
+                            profile
+                          type: string
+                        vnicProfileAssetIdRef:
+                          description: Reference to a Asset in cloudbridge to populate
+                            vnicProfileAssetId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        vnicProfileAssetIdSelector:
+                          description: Selector for a Asset in cloudbridge to populate
+                            vnicProfileAssetId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
                       type: object
                     type: array
                 type: object
@@ -802,18 +985,115 @@ spec:
                     items:
                       properties:
                         availabilityDomain:
-                          description: (Updatable) Availability Domain of the VM configuration.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) Availability Domain of the VM configuration.
                           type: string
+                        clusterAssetId:
+                          description: (Updatable) Inventory asset id of the olvm
+                            cluster
+                          type: string
+                        clusterAssetIdRef:
+                          description: Reference to a Asset in cloudbridge to populate
+                            clusterAssetId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        clusterAssetIdSelector:
+                          description: Selector for a Asset in cloudbridge to populate
+                            clusterAssetId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
                         dedicatedVmHost:
-                          description: (Updatable) OCID of the dedicated VM configuration
-                            host.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) OCID of the dedicated VM configuration host.
                           type: string
                         faultDomain:
-                          description: (Updatable) Fault domain of the VM configuration.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) Fault domain of the VM configuration.
                           type: string
                         msLicense:
-                          description: (Updatable) Microsoft license for the VM configuration.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) Microsoft license for the VM configuration.
                           type: string
+                        olvmTemplates:
+                          additionalProperties:
+                            type: string
+                          description: (Applicable when target_environment_type=OLVM_TARGET_ENV)
+                            (Updatable) OLVM OS type to inventory asset id of the
+                            template
+                          type: object
+                          x-kubernetes-map-type: granular
                         preferredShapeType:
                           description: (Updatable) Preferred VM shape type provided
                             by the customer.
@@ -912,6 +1192,92 @@ spec:
                         vcn:
                           description: (Updatable) OCID of the VM configuration VCN.
                           type: string
+                        vnicProfileAssetId:
+                          description: (Updatable) Inventory asset Id of the vnic
+                            profile
+                          type: string
+                        vnicProfileAssetIdRef:
+                          description: Reference to a Asset in cloudbridge to populate
+                            vnicProfileAssetId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        vnicProfileAssetIdSelector:
+                          description: Selector for a Asset in cloudbridge to populate
+                            vnicProfileAssetId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
                       type: object
                     type: array
                 type: object
@@ -1030,6 +1396,43 @@ spec:
                     description: Status of the migration plan.
                     items:
                       properties:
+                        costToMigrate:
+                          description: Summary of costs to migrate.
+                          items:
+                            properties:
+                              assetCount:
+                                description: Number of assets used in this calculation.
+                                type: number
+                              currencyCode:
+                                description: Currency code as defined by ISO-4217.
+                                type: string
+                              ociDataTransferCosts:
+                                description: Data transfer costs from OCI.
+                                type: number
+                              sourceDataTransferCosts:
+                                description: Data transfer costs from source cloud
+                                  provider.
+                                type: number
+                            type: object
+                          type: array
+                        currentMonthlyCost:
+                          description: Current monthly compute and storage costs.
+                          items:
+                            properties:
+                              assetCount:
+                                description: Number of assets used in this calculation.
+                                type: number
+                              computeAmount:
+                                description: Current monthly compute costs.
+                                type: number
+                              currencyCode:
+                                description: Currency code as defined by ISO-4217.
+                                type: string
+                              storageAmount:
+                                description: Current monthly storage costs.
+                                type: number
+                            type: object
+                          type: array
                         timeUpdated:
                           description: The time when the migration plan was calculated.
                             An RFC3339 formatted datetime string.
@@ -1078,7 +1481,7 @@ spec:
                                   type: object
                                 type: array
                               currencyCode:
-                                description: Currency code in the ISO format.
+                                description: Currency code as defined by ISO-4217.
                                 type: string
                               osImage:
                                 description: Cost estimation for the OS image.
@@ -1192,18 +1595,33 @@ spec:
                     items:
                       properties:
                         availabilityDomain:
-                          description: (Updatable) Availability Domain of the VM configuration.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) Availability Domain of the VM configuration.
+                          type: string
+                        clusterAssetId:
+                          description: (Updatable) Inventory asset id of the olvm
+                            cluster
                           type: string
                         dedicatedVmHost:
-                          description: (Updatable) OCID of the dedicated VM configuration
-                            host.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) OCID of the dedicated VM configuration host.
                           type: string
                         faultDomain:
-                          description: (Updatable) Fault domain of the VM configuration.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) Fault domain of the VM configuration.
                           type: string
                         msLicense:
-                          description: (Updatable) Microsoft license for the VM configuration.
+                          description: (Applicable when target_environment_type=VM_TARGET_ENV)
+                            (Updatable) Microsoft license for the VM configuration.
                           type: string
+                        olvmTemplates:
+                          additionalProperties:
+                            type: string
+                          description: (Applicable when target_environment_type=OLVM_TARGET_ENV)
+                            (Updatable) OLVM OS type to inventory asset id of the
+                            template
+                          type: object
+                          x-kubernetes-map-type: granular
                         preferredShapeType:
                           description: (Updatable) Preferred VM shape type provided
                             by the customer.
@@ -1219,6 +1637,10 @@ spec:
                           type: string
                         vcn:
                           description: (Updatable) OCID of the VM configuration VCN.
+                          type: string
+                        vnicProfileAssetId:
+                          description: (Updatable) Inventory asset Id of the vnic
+                            profile
                           type: string
                       type: object
                     type: array

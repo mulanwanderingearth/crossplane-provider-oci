@@ -78,10 +78,14 @@ spec:
                             The largest supported unit is D, e.g. P365D (not P1Y)
                             or P14D (not P2W).
                           type: string
+                        timeOldestActiveBucketEnded:
+                          description: (Updatable) end time of the oldest active CoreGroup
+                          type: string
                       type: object
                     type: array
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                 type: object
               initProvider:
@@ -114,10 +118,14 @@ spec:
                             The largest supported unit is D, e.g. P365D (not P1Y)
                             or P14D (not P2W).
                           type: string
+                        timeOldestActiveBucketEnded:
+                          description: (Updatable) end time of the oldest active CoreGroup
+                          type: string
                       type: object
                     type: array
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                 type: object
               managementPolicies:
@@ -212,6 +220,9 @@ spec:
                             The largest supported unit is D, e.g. P365D (not P1Y)
                             or P14D (not P2W).
                           type: string
+                        timeOldestActiveBucketEnded:
+                          description: (Updatable) end time of the oldest active CoreGroup
+                          type: string
                       type: object
                     type: array
                   id:
@@ -221,7 +232,8 @@ spec:
                       tenancy
                     type: boolean
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                 type: object
               conditions:

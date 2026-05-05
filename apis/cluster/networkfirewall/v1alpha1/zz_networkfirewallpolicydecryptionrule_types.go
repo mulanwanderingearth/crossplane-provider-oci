@@ -15,29 +15,29 @@ import (
 
 type ConditionInitParameters struct {
 
-	// (Updatable) An array of address list names to be evaluated against the traffic destination address.
+	// (Updatable) An array of IP address list names to be evaluated against the traffic destination address.
 	DestinationAddress []*string `json:"destinationAddress,omitempty" tf:"destination_address,omitempty"`
 
-	// (Updatable) An array of address list names to be evaluated against the traffic source address.
+	// (Updatable) An array of IP address list names to be evaluated against the traffic source address.
 	SourceAddress []*string `json:"sourceAddress,omitempty" tf:"source_address,omitempty"`
 }
 
 type ConditionObservation struct {
 
-	// (Updatable) An array of address list names to be evaluated against the traffic destination address.
+	// (Updatable) An array of IP address list names to be evaluated against the traffic destination address.
 	DestinationAddress []*string `json:"destinationAddress,omitempty" tf:"destination_address,omitempty"`
 
-	// (Updatable) An array of address list names to be evaluated against the traffic source address.
+	// (Updatable) An array of IP address list names to be evaluated against the traffic source address.
 	SourceAddress []*string `json:"sourceAddress,omitempty" tf:"source_address,omitempty"`
 }
 
 type ConditionParameters struct {
 
-	// (Updatable) An array of address list names to be evaluated against the traffic destination address.
+	// (Updatable) An array of IP address list names to be evaluated against the traffic destination address.
 	// +kubebuilder:validation:Optional
 	DestinationAddress []*string `json:"destinationAddress,omitempty" tf:"destination_address,omitempty"`
 
-	// (Updatable) An array of address list names to be evaluated against the traffic source address.
+	// (Updatable) An array of IP address list names to be evaluated against the traffic source address.
 	// +kubebuilder:validation:Optional
 	SourceAddress []*string `json:"sourceAddress,omitempty" tf:"source_address,omitempty"`
 }
@@ -47,11 +47,14 @@ type NetworkFirewallPolicyDecryptionRuleInitParameters struct {
 	// (Updatable) Action:
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// (Updatable) Match criteria used in Decryption Rule used on the firewall policy rules. The resources mentioned must already be present in the policy before being referenced in the rule.
+	// (Updatable) Match criteria used in Decryption Rule used on the firewall policy rules.
 	Condition []ConditionInitParameters `json:"condition,omitempty" tf:"condition,omitempty"`
 
 	// (Updatable) The name of the decryption profile to use.
 	DecryptionProfile *string `json:"decryptionProfile,omitempty" tf:"decryption_profile,omitempty"`
+
+	// (Updatable) The description of the decryption rule. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// Name for the decryption rule, must be unique within the policy.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -83,11 +86,14 @@ type NetworkFirewallPolicyDecryptionRuleObservation struct {
 	// (Updatable) Action:
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// (Updatable) Match criteria used in Decryption Rule used on the firewall policy rules. The resources mentioned must already be present in the policy before being referenced in the rule.
+	// (Updatable) Match criteria used in Decryption Rule used on the firewall policy rules.
 	Condition []ConditionObservation `json:"condition,omitempty" tf:"condition,omitempty"`
 
 	// (Updatable) The name of the decryption profile to use.
 	DecryptionProfile *string `json:"decryptionProfile,omitempty" tf:"decryption_profile,omitempty"`
+
+	// (Updatable) The description of the decryption rule. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -115,13 +121,17 @@ type NetworkFirewallPolicyDecryptionRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// (Updatable) Match criteria used in Decryption Rule used on the firewall policy rules. The resources mentioned must already be present in the policy before being referenced in the rule.
+	// (Updatable) Match criteria used in Decryption Rule used on the firewall policy rules.
 	// +kubebuilder:validation:Optional
 	Condition []ConditionParameters `json:"condition,omitempty" tf:"condition,omitempty"`
 
 	// (Updatable) The name of the decryption profile to use.
 	// +kubebuilder:validation:Optional
 	DecryptionProfile *string `json:"decryptionProfile,omitempty" tf:"decryption_profile,omitempty"`
+
+	// (Updatable) The description of the decryption rule. This field can be used to add additional info.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// Name for the decryption rule, must be unique within the policy.
 	// +kubebuilder:validation:Optional

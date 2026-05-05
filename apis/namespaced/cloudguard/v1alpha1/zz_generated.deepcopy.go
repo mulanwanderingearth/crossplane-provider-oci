@@ -7615,6 +7615,11 @@ func (in *SecurityZoneInitParameters) DeepCopyInto(out *SecurityZoneInitParamete
 			(*out)[key] = outVal
 		}
 	}
+	if in.IsInheritanceAfterDeleteEnabled != nil {
+		in, out := &in.IsInheritanceAfterDeleteEnabled, &out.IsInheritanceAfterDeleteEnabled
+		*out = new(bool)
+		**out = **in
+	}
 	if in.SecurityZoneRecipeID != nil {
 		in, out := &in.SecurityZoneRecipeID, &out.SecurityZoneRecipeID
 		*out = new(string)
@@ -7730,6 +7735,11 @@ func (in *SecurityZoneObservation) DeepCopyInto(out *SecurityZoneObservation) {
 			}
 		}
 	}
+	if in.IsInheritanceAfterDeleteEnabled != nil {
+		in, out := &in.IsInheritanceAfterDeleteEnabled, &out.IsInheritanceAfterDeleteEnabled
+		*out = new(bool)
+		**out = **in
+	}
 	if in.LifecycleDetails != nil {
 		in, out := &in.LifecycleDetails, &out.LifecycleDetails
 		*out = new(string)
@@ -7831,6 +7841,11 @@ func (in *SecurityZoneParameters) DeepCopyInto(out *SecurityZoneParameters) {
 			}
 			(*out)[key] = outVal
 		}
+	}
+	if in.IsInheritanceAfterDeleteEnabled != nil {
+		in, out := &in.IsInheritanceAfterDeleteEnabled, &out.IsInheritanceAfterDeleteEnabled
+		*out = new(bool)
+		**out = **in
 	}
 	if in.SecurityZoneRecipeID != nil {
 		in, out := &in.SecurityZoneRecipeID, &out.SecurityZoneRecipeID

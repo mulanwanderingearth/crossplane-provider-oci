@@ -452,6 +452,116 @@ spec:
                   state:
                     description: The current state of the DR plan execution.
                     type: string
+                  stepStatusCounts:
+                    description: A categorized summary of step execution statuses
+                      and their corresponding counts.
+                    items:
+                      properties:
+                        failedSteps:
+                          description: A summary of steps that failed during a DR
+                            plan execution, including failed and timed out steps.
+                          items:
+                            properties:
+                              failed:
+                                description: The total number of failed steps in a
+                                  DR plan execution.
+                                type: number
+                              timedOut:
+                                description: The total number of steps that timed
+                                  out during a DR plan execution.
+                                type: number
+                              totalFailed:
+                                description: The total number of steps that failed
+                                  during a DR plan execution.
+                                type: number
+                            type: object
+                          type: array
+                        remainingSteps:
+                          description: A summary of remaining steps in a DR plan execution,
+                            including queued, paused, and in-progress steps.
+                          items:
+                            properties:
+                              inProgress:
+                                description: The total number of steps in progress
+                                  during a DR plan execution.
+                                type: number
+                              paused:
+                                description: The total number of paused steps in a
+                                  DR plan execution.
+                                type: number
+                              queued:
+                                description: The total number of queued steps in a
+                                  DR plan execution.
+                                type: number
+                              totalRemaining:
+                                description: The total number of remaining steps in
+                                  a DR plan execution.
+                                type: number
+                            type: object
+                          type: array
+                        skippedSteps:
+                          description: A summary of steps that were skipped during
+                            a DR plan execution, including disabled, failed but ignored,
+                            timed out but ignored, and canceled steps.
+                          items:
+                            properties:
+                              canceled:
+                                description: The total number of canceled steps in
+                                  a DR plan execution.
+                                type: number
+                              disabled:
+                                description: The total number of disabled steps in
+                                  a DR plan execution.
+                                type: number
+                              failedIgnored:
+                                description: The total number of steps that failed
+                                  but were ignored during a DR plan execution.
+                                type: number
+                              timedOutIgnored:
+                                description: The total number of steps that timed
+                                  out but were ignored during a DR plan execution.
+                                type: number
+                              totalSkipped:
+                                description: The total number of steps that were skipped
+                                  during a DR plan execution.
+                                type: number
+                            type: object
+                          type: array
+                        successfulSteps:
+                          description: A summary of steps that completed successfully
+                            during a DR plan execution.
+                          items:
+                            properties:
+                              succeeded:
+                                description: The total number of steps that succeeded
+                                  during a DR plan execution.
+                                type: number
+                              totalSuccessful:
+                                description: The total number of successful steps
+                                  in a DR plan execution.
+                                type: number
+                            type: object
+                          type: array
+                        totalSteps:
+                          description: The total number of steps in a DR plan execution.
+                          type: number
+                        warningSteps:
+                          description: A summary of steps that encountered warnings
+                            during a DR plan execution.
+                          items:
+                            properties:
+                              totalWarnings:
+                                description: The total number of steps that encountered
+                                  warnings in a DR plan execution.
+                                type: number
+                              warningsIgnored:
+                                description: The total number of steps with warnings
+                                  that were ignored during a DR plan execution.
+                                type: number
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   systemTags:
                     additionalProperties:
                       type: string

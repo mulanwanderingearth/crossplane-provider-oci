@@ -49,9 +49,6 @@ type BootstrapServersInitParameters struct {
 
 	// (Applicable when connection_type=KAFKA) (Updatable) The port of an endpoint usually specified for a connection.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
-
-	// (Applicable when connection_type=KAFKA) (Updatable) Deprecated: this field will be removed in future versions. Either specify the private IP in the connectionString or host  field, or make sure the host name is resolvable in the target VCN.
-	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 }
 
 type BootstrapServersObservation struct {
@@ -62,7 +59,7 @@ type BootstrapServersObservation struct {
 	// (Applicable when connection_type=KAFKA) (Updatable) The port of an endpoint usually specified for a connection.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
-	// (Applicable when connection_type=KAFKA) (Updatable) Deprecated: this field will be removed in future versions. Either specify the private IP in the connectionString or host  field, or make sure the host name is resolvable in the target VCN.
+	// This property is not available when creating connections. For existing deprecated connections having this value set, the value cannot be updated; set it to empty.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 }
 
@@ -75,10 +72,6 @@ type BootstrapServersParameters struct {
 	// (Applicable when connection_type=KAFKA) (Updatable) The port of an endpoint usually specified for a connection.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
-
-	// (Applicable when connection_type=KAFKA) (Updatable) Deprecated: this field will be removed in future versions. Either specify the private IP in the connectionString or host  field, or make sure the host name is resolvable in the target VCN.
-	// +kubebuilder:validation:Optional
-	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 }
 
 type CatalogInitParameters struct {
@@ -92,7 +85,10 @@ type CatalogInitParameters struct {
 	// (Updatable) The OAuth client ID used for authentication.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	// (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Snowflake platform.
+	// (Applicable when catalog_type=POLARIS) (Updatable) Client secret required to connect to Polaris.
+	ClientSecret *string `json:"clientSecret,omitempty" tf:"client_secret,omitempty"`
+
+	// (Applicable when catalog_type=POLARIS) (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Polaris.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	ClientSecretSecretID *string `json:"clientSecretSecretId,omitempty" tf:"client_secret_secret_id,omitempty"`
@@ -114,7 +110,10 @@ type CatalogInitParameters struct {
 	// (Updatable) The Snowflake role used to access Polaris.
 	PrincipalRole *string `json:"principalRole,omitempty" tf:"principal_role,omitempty"`
 
-	// (Updatable) The OCID of the Secret that stores the content of the configuration file containing additional properties for the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm
+	// (Applicable when catalog_type=REST) (Updatable) The base64 encoded content of the configuration file containing additional properties for the REST catalog.
+	Properties *string `json:"properties,omitempty" tf:"properties,omitempty"`
+
+	// (Applicable when catalog_type=REST) (Updatable) The OCID of the Secret that stores the content of the configuration file containing additional properties for the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	PropertiesSecretID *string `json:"propertiesSecretId,omitempty" tf:"properties_secret_id,omitempty"`
@@ -142,7 +141,10 @@ type CatalogObservation struct {
 	// (Updatable) The OAuth client ID used for authentication.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	// (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Snowflake platform.
+	// (Applicable when catalog_type=POLARIS) (Updatable) Client secret required to connect to Polaris.
+	ClientSecret *string `json:"clientSecret,omitempty" tf:"client_secret,omitempty"`
+
+	// (Applicable when catalog_type=POLARIS) (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Polaris.
 	ClientSecretSecretID *string `json:"clientSecretSecretId,omitempty" tf:"client_secret_secret_id,omitempty"`
 
 	// (Updatable) The AWS Glue Catalog ID where Iceberg tables are registered.
@@ -154,7 +156,10 @@ type CatalogObservation struct {
 	// (Updatable) The Snowflake role used to access Polaris.
 	PrincipalRole *string `json:"principalRole,omitempty" tf:"principal_role,omitempty"`
 
-	// (Updatable) The OCID of the Secret that stores the content of the configuration file containing additional properties for the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm
+	// (Applicable when catalog_type=REST) (Updatable) The base64 encoded content of the configuration file containing additional properties for the REST catalog.
+	Properties *string `json:"properties,omitempty" tf:"properties,omitempty"`
+
+	// (Applicable when catalog_type=REST) (Updatable) The OCID of the Secret that stores the content of the configuration file containing additional properties for the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm
 	PropertiesSecretID *string `json:"propertiesSecretId,omitempty" tf:"properties_secret_id,omitempty"`
 
 	// (Updatable) The URL endpoint for the Polaris API. e.g.: 'https://.snowflakecomputing.com/polaris/api/catalog'
@@ -175,7 +180,11 @@ type CatalogParameters struct {
 	// +kubebuilder:validation:Optional
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	// (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Snowflake platform.
+	// (Applicable when catalog_type=POLARIS) (Updatable) Client secret required to connect to Polaris.
+	// +kubebuilder:validation:Optional
+	ClientSecret *string `json:"clientSecret,omitempty" tf:"client_secret,omitempty"`
+
+	// (Applicable when catalog_type=POLARIS) (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Polaris.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -201,7 +210,11 @@ type CatalogParameters struct {
 	// +kubebuilder:validation:Optional
 	PrincipalRole *string `json:"principalRole,omitempty" tf:"principal_role,omitempty"`
 
-	// (Updatable) The OCID of the Secret that stores the content of the configuration file containing additional properties for the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm
+	// (Applicable when catalog_type=REST) (Updatable) The base64 encoded content of the configuration file containing additional properties for the REST catalog.
+	// +kubebuilder:validation:Optional
+	Properties *string `json:"properties,omitempty" tf:"properties,omitempty"`
+
+	// (Applicable when catalog_type=REST) (Updatable) The OCID of the Secret that stores the content of the configuration file containing additional properties for the REST catalog. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -278,7 +291,7 @@ type ConnectionInitParameters struct {
 	// (Updatable) The OAuth client ID used for authentication.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	// (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Snowflake platform.
+	// (Applicable when catalog_type=POLARIS) (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Polaris.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	ClientSecretSecretID *string `json:"clientSecretSecretId,omitempty" tf:"client_secret_secret_id,omitempty"`
@@ -291,7 +304,7 @@ type ConnectionInitParameters struct {
 	// +kubebuilder:validation:Optional
 	ClientSecretSecretIDSelector *v1.Selector `json:"clientSecretSecretIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when connection_type=AZURE_DATA_LAKE_STORAGE | DATABRICKS | MICROSOFT_FABRIC) (Updatable) Azure client secret (aka application password) for authentication. This property is required when 'authenticationType' is set to 'AZURE_ACTIVE_DIRECTORY'. e.g.: dO29Q~F5-VwnA.lZdd11xFF_t5NAXCaGwDl9NbT1 Deprecated: This field is deprecated and replaced by "clientSecretSecretId". This field will be removed after February 15 2026.
+	// (Applicable when catalog_type=POLARIS) (Updatable) Client secret required to connect to Polaris.
 	ClientSecretSecretRef *v1.SecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
 
 	// (Applicable when connection_type=KAFKA) (Updatable) The OCID of the Kafka cluster being referenced from Oracle Cloud Infrastructure Streaming with Apache Kafka.
@@ -414,7 +427,7 @@ type ConnectionInitParameters struct {
 	// (Updatable) Indicates that sensitive attributes are provided via Secrets.
 	DoesUseSecretIds *bool `json:"doesUseSecretIds,omitempty" tf:"does_use_secret_ids,omitempty"`
 
-	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
+	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
 	// (Applicable when connection_type=ELASTICSEARCH) (Updatable) Fingerprint required by TLS security protocol. Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
@@ -527,9 +540,6 @@ type ConnectionInitParameters struct {
 
 	// (Applicable when connection_type=KAFKA) (Updatable) The port of an endpoint usually specified for a connection.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
-
-	// (Applicable when connection_type=KAFKA) (Updatable) Deprecated: this field will be removed in future versions. Either specify the private IP in the connectionString or host  field, or make sure the host name is resolvable in the target VCN.
-	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
 	// (Applicable when connection_type=OCI_OBJECT_STORAGE | ORACLE_AI_DATA_PLATFORM | ORACLE_NOSQL | SNOWFLAKE) (Updatable) The OCID of the Secret that stores the content of the private key file (PEM file) corresponding to the API key of the fingerprint. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm Note: When provided, 'privateKeyFile' field must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
@@ -725,7 +735,7 @@ type ConnectionInitParameters struct {
 	// (Applicable when connection_type=GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The base64 encoded content of the service account key file containing the credentials required to use Google Cloud Storage. Deprecated: This field is deprecated and replaced by "serviceAccountKeyFileSecretId". This field will be removed after February 15 2026.
 	ServiceAccountKeyFileSecretRef *v1.SecretKeySelector `json:"serviceAccountKeyFileSecretRef,omitempty" tf:"-"`
 
-	// (Applicable when connection_type=ORACLE) (Updatable) The mode of the database connection session to be established by the data client. 'REDIRECT' - for a RAC database, 'DIRECT' - for a non-RAC database. Connection to a RAC database involves a redirection received from the SCAN listeners to the database node to connect to. By default the mode would be DIRECT.
+	// (Applicable when connection_type=ORACLE) (Updatable) Specifies the session mode for the database connection. Use REDIRECT only for RAC databases with SCAN listeners that return IP addresses. For RAC databases with SCAN listeners that return FQDNs, and for all other Oracle database technologies, use DIRECT. In RAC deployments, SCAN listeners redirects a connection to a specific database node, identified by either IP address or FQDN. It is recommended to configure RAC with FQDN-based SCAN listeners.
 	SessionMode *string `json:"sessionMode,omitempty" tf:"session_mode,omitempty"`
 
 	// (Updatable) If set to true, Java Naming and Directory Interface (JNDI) properties should be provided.
@@ -924,7 +934,7 @@ type ConnectionObservation struct {
 	// (Updatable) The OAuth client ID used for authentication.
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	// (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Snowflake platform.
+	// (Applicable when catalog_type=POLARIS) (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Polaris.
 	ClientSecretSecretID *string `json:"clientSecretSecretId,omitempty" tf:"client_secret_secret_id,omitempty"`
 
 	// (Applicable when connection_type=KAFKA) (Updatable) The OCID of the Kafka cluster being referenced from Oracle Cloud Infrastructure Streaming with Apache Kafka.
@@ -979,7 +989,7 @@ type ConnectionObservation struct {
 	// (Updatable) Indicates that sensitive attributes are provided via Secrets.
 	DoesUseSecretIds *bool `json:"doesUseSecretIds,omitempty" tf:"does_use_secret_ids,omitempty"`
 
-	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
+	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
 	// (Applicable when connection_type=ELASTICSEARCH) (Updatable) Fingerprint required by TLS security protocol. Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
@@ -1040,7 +1050,7 @@ type ConnectionObservation struct {
 	// (Applicable when connection_type=KAFKA) (Updatable) The port of an endpoint usually specified for a connection.
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
 
-	// (Applicable when connection_type=KAFKA) (Updatable) Deprecated: this field will be removed in future versions. Either specify the private IP in the connectionString or host  field, or make sure the host name is resolvable in the target VCN.
+	// This property is not available when creating connections. For existing deprecated connections having this value set, the value cannot be updated; set it to empty.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
 	// (Applicable when connection_type=OCI_OBJECT_STORAGE | ORACLE_AI_DATA_PLATFORM | ORACLE_NOSQL | SNOWFLAKE) (Updatable) The OCID of the Secret that stores the content of the private key file (PEM file) corresponding to the API key of the fingerprint. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm Note: When provided, 'privateKeyFile' field must not be provided.
@@ -1110,7 +1120,7 @@ type ConnectionObservation struct {
 	// (Applicable when connection_type=GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The OCID of the Secret where the content of the service account key file is stored, which contains the credentials required to use Google Cloud Storage. Note: When provided, 'serviceAccountKeyFile' field must not be provided.
 	ServiceAccountKeyFileSecretID *string `json:"serviceAccountKeyFileSecretId,omitempty" tf:"service_account_key_file_secret_id,omitempty"`
 
-	// (Applicable when connection_type=ORACLE) (Updatable) The mode of the database connection session to be established by the data client. 'REDIRECT' - for a RAC database, 'DIRECT' - for a non-RAC database. Connection to a RAC database involves a redirection received from the SCAN listeners to the database node to connect to. By default the mode would be DIRECT.
+	// (Applicable when connection_type=ORACLE) (Updatable) Specifies the session mode for the database connection. Use REDIRECT only for RAC databases with SCAN listeners that return IP addresses. For RAC databases with SCAN listeners that return FQDNs, and for all other Oracle database technologies, use DIRECT. In RAC deployments, SCAN listeners redirects a connection to a specific database node, identified by either IP address or FQDN. It is recommended to configure RAC with FQDN-based SCAN listeners.
 	SessionMode *string `json:"sessionMode,omitempty" tf:"session_mode,omitempty"`
 
 	// (Updatable) If set to true, Java Naming and Directory Interface (JNDI) properties should be provided.
@@ -1262,7 +1272,7 @@ type ConnectionParameters struct {
 	// +kubebuilder:validation:Optional
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	// (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Snowflake platform.
+	// (Applicable when catalog_type=POLARIS) (Updatable) The OCID of the Secret that stores the password Oracle GoldenGate uses to connect to Polaris.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -1276,7 +1286,7 @@ type ConnectionParameters struct {
 	// +kubebuilder:validation:Optional
 	ClientSecretSecretIDSelector *v1.Selector `json:"clientSecretSecretIdSelector,omitempty" tf:"-"`
 
-	// (Applicable when connection_type=AZURE_DATA_LAKE_STORAGE | DATABRICKS | MICROSOFT_FABRIC) (Updatable) Azure client secret (aka application password) for authentication. This property is required when 'authenticationType' is set to 'AZURE_ACTIVE_DIRECTORY'. e.g.: dO29Q~F5-VwnA.lZdd11xFF_t5NAXCaGwDl9NbT1 Deprecated: This field is deprecated and replaced by "clientSecretSecretId". This field will be removed after February 15 2026.
+	// (Applicable when catalog_type=POLARIS) (Updatable) Client secret required to connect to Polaris.
 	// +kubebuilder:validation:Optional
 	ClientSecretSecretRef *v1.SecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
 
@@ -1417,7 +1427,7 @@ type ConnectionParameters struct {
 	// +kubebuilder:validation:Optional
 	DoesUseSecretIds *bool `json:"doesUseSecretIds,omitempty" tf:"does_use_secret_ids,omitempty"`
 
-	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
+	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
 	// +kubebuilder:validation:Optional
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
@@ -1551,10 +1561,6 @@ type ConnectionParameters struct {
 	// (Applicable when connection_type=KAFKA) (Updatable) The port of an endpoint usually specified for a connection.
 	// +kubebuilder:validation:Optional
 	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
-
-	// (Applicable when connection_type=KAFKA) (Updatable) Deprecated: this field will be removed in future versions. Either specify the private IP in the connectionString or host  field, or make sure the host name is resolvable in the target VCN.
-	// +kubebuilder:validation:Optional
-	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
 	// (Applicable when connection_type=OCI_OBJECT_STORAGE | ORACLE_AI_DATA_PLATFORM | ORACLE_NOSQL | SNOWFLAKE) (Updatable) The OCID of the Secret that stores the content of the private key file (PEM file) corresponding to the API key of the fingerprint. See documentation: https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcredentials.htm Note: When provided, 'privateKeyFile' field must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
@@ -1781,7 +1787,7 @@ type ConnectionParameters struct {
 	// +kubebuilder:validation:Optional
 	ServiceAccountKeyFileSecretRef *v1.SecretKeySelector `json:"serviceAccountKeyFileSecretRef,omitempty" tf:"-"`
 
-	// (Applicable when connection_type=ORACLE) (Updatable) The mode of the database connection session to be established by the data client. 'REDIRECT' - for a RAC database, 'DIRECT' - for a non-RAC database. Connection to a RAC database involves a redirection received from the SCAN listeners to the database node to connect to. By default the mode would be DIRECT.
+	// (Applicable when connection_type=ORACLE) (Updatable) Specifies the session mode for the database connection. Use REDIRECT only for RAC databases with SCAN listeners that return IP addresses. For RAC databases with SCAN listeners that return FQDNs, and for all other Oracle database technologies, use DIRECT. In RAC deployments, SCAN listeners redirects a connection to a specific database node, identified by either IP address or FQDN. It is recommended to configure RAC with FQDN-based SCAN listeners.
 	// +kubebuilder:validation:Optional
 	SessionMode *string `json:"sessionMode,omitempty" tf:"session_mode,omitempty"`
 
@@ -2035,6 +2041,9 @@ type StorageInitParameters struct {
 	// +kubebuilder:validation:Optional
 	AccessKeyIDSelector *v1.Selector `json:"accessKeyIdSelector,omitempty" tf:"-"`
 
+	// (Applicable when connection_type=AZURE_DATA_LAKE_STORAGE) (Updatable) Azure storage account key. This property is required when 'authenticationType' is set to 'SHARED_KEY'. e.g.: pa3WbhVATzj56xD4DH1VjOUhApRGEGHvOo58eQJVWIzX+j8j4CUVFcTjpIqDSRaSa1Wo2LbWY5at+AStEgLOIQ== Deprecated: This field is deprecated and replaced by "accountKeySecretId". This field will be removed after February 15 2026.
+	AccountKey *string `json:"accountKey,omitempty" tf:"account_key,omitempty"`
+
 	// (Applicable when connection_type=AZURE_DATA_LAKE_STORAGE) (Updatable) The OCID of the Secret where the account key is stored. Note: When provided, 'accountKey' field must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
@@ -2057,7 +2066,7 @@ type StorageInitParameters struct {
 	// (Updatable) The Azure Blob Storage container where Iceberg tables are stored.
 	Container *string `json:"container,omitempty" tf:"container,omitempty"`
 
-	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
+	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
 	// (Updatable) The Google Cloud Project where the bucket exists.
@@ -2079,6 +2088,9 @@ type StorageInitParameters struct {
 	// (Updatable) The scheme of the storage.
 	SchemeType *string `json:"schemeType,omitempty" tf:"scheme_type,omitempty"`
 
+	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3) (Updatable) Secret access key to access the Amazon S3 bucket. e.g.: "this-is-not-the-secret" Deprecated: This field is deprecated and replaced by "secretAccessKeySecretId". This field will be removed after February 15 2026.
+	SecretAccessKey *string `json:"secretAccessKey,omitempty" tf:"secret_access_key,omitempty"`
+
 	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3) (Updatable) The OCID of the Secret where the secret access key is stored. Note: When provided, 'secretAccessKey' field must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
@@ -2091,6 +2103,9 @@ type StorageInitParameters struct {
 	// Selector for a Secret in vault to populate secretAccessKeySecretId.
 	// +kubebuilder:validation:Optional
 	SecretAccessKeySecretIDSelector *v1.Selector `json:"secretAccessKeySecretIdSelector,omitempty" tf:"-"`
+
+	// (Applicable when connection_type=GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The base64 encoded content of the service account key file containing the credentials required to use Google Cloud Storage. Deprecated: This field is deprecated and replaced by "serviceAccountKeyFileSecretId". This field will be removed after February 15 2026.
+	ServiceAccountKeyFile *string `json:"serviceAccountKeyFile,omitempty" tf:"service_account_key_file,omitempty"`
 
 	// (Applicable when connection_type=GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The OCID of the Secret where the content of the service account key file is stored, which contains the credentials required to use Google Cloud Storage. Note: When provided, 'serviceAccountKeyFile' field must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
@@ -2114,6 +2129,9 @@ type StorageObservation struct {
 	// (Updatable) Access key ID to access the Amazon S3 bucket. e.g.: "this-is-not-the-secret"
 	AccessKeyID *string `json:"accessKeyId,omitempty" tf:"access_key_id,omitempty"`
 
+	// (Applicable when connection_type=AZURE_DATA_LAKE_STORAGE) (Updatable) Azure storage account key. This property is required when 'authenticationType' is set to 'SHARED_KEY'. e.g.: pa3WbhVATzj56xD4DH1VjOUhApRGEGHvOo58eQJVWIzX+j8j4CUVFcTjpIqDSRaSa1Wo2LbWY5at+AStEgLOIQ== Deprecated: This field is deprecated and replaced by "accountKeySecretId". This field will be removed after February 15 2026.
+	AccountKey *string `json:"accountKey,omitempty" tf:"account_key,omitempty"`
+
 	// (Applicable when connection_type=AZURE_DATA_LAKE_STORAGE) (Updatable) The OCID of the Secret where the account key is stored. Note: When provided, 'accountKey' field must not be provided.
 	AccountKeySecretID *string `json:"accountKeySecretId,omitempty" tf:"account_key_secret_id,omitempty"`
 
@@ -2126,7 +2144,7 @@ type StorageObservation struct {
 	// (Updatable) The Azure Blob Storage container where Iceberg tables are stored.
 	Container *string `json:"container,omitempty" tf:"container,omitempty"`
 
-	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
+	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
 	// (Updatable) The Google Cloud Project where the bucket exists.
@@ -2138,8 +2156,14 @@ type StorageObservation struct {
 	// (Updatable) The scheme of the storage.
 	SchemeType *string `json:"schemeType,omitempty" tf:"scheme_type,omitempty"`
 
+	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3) (Updatable) Secret access key to access the Amazon S3 bucket. e.g.: "this-is-not-the-secret" Deprecated: This field is deprecated and replaced by "secretAccessKeySecretId". This field will be removed after February 15 2026.
+	SecretAccessKey *string `json:"secretAccessKey,omitempty" tf:"secret_access_key,omitempty"`
+
 	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3) (Updatable) The OCID of the Secret where the secret access key is stored. Note: When provided, 'secretAccessKey' field must not be provided.
 	SecretAccessKeySecretID *string `json:"secretAccessKeySecretId,omitempty" tf:"secret_access_key_secret_id,omitempty"`
+
+	// (Applicable when connection_type=GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The base64 encoded content of the service account key file containing the credentials required to use Google Cloud Storage. Deprecated: This field is deprecated and replaced by "serviceAccountKeyFileSecretId". This field will be removed after February 15 2026.
+	ServiceAccountKeyFile *string `json:"serviceAccountKeyFile,omitempty" tf:"service_account_key_file,omitempty"`
 
 	// (Applicable when connection_type=GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The OCID of the Secret where the content of the service account key file is stored, which contains the credentials required to use Google Cloud Storage. Note: When provided, 'serviceAccountKeyFile' field must not be provided.
 	ServiceAccountKeyFileSecretID *string `json:"serviceAccountKeyFileSecretId,omitempty" tf:"service_account_key_file_secret_id,omitempty"`
@@ -2164,6 +2188,10 @@ type StorageParameters struct {
 	// +kubebuilder:validation:Optional
 	AccessKeyIDSelector *v1.Selector `json:"accessKeyIdSelector,omitempty" tf:"-"`
 
+	// (Applicable when connection_type=AZURE_DATA_LAKE_STORAGE) (Updatable) Azure storage account key. This property is required when 'authenticationType' is set to 'SHARED_KEY'. e.g.: pa3WbhVATzj56xD4DH1VjOUhApRGEGHvOo58eQJVWIzX+j8j4CUVFcTjpIqDSRaSa1Wo2LbWY5at+AStEgLOIQ== Deprecated: This field is deprecated and replaced by "accountKeySecretId". This field will be removed after February 15 2026.
+	// +kubebuilder:validation:Optional
+	AccountKey *string `json:"accountKey,omitempty" tf:"account_key,omitempty"`
+
 	// (Applicable when connection_type=AZURE_DATA_LAKE_STORAGE) (Updatable) The OCID of the Secret where the account key is stored. Note: When provided, 'accountKey' field must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
@@ -2190,7 +2218,7 @@ type StorageParameters struct {
 	// +kubebuilder:validation:Optional
 	Container *string `json:"container,omitempty" tf:"container,omitempty"`
 
-	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
+	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3 | AZURE_DATA_LAKE_STORAGE | GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | MICROSOFT_FABRIC) (Updatable) The endpoint URL of the Amazon Kinesis service. e.g.: 'https://kinesis.us-east-1.amazonaws.com' If not provided, GoldenGate will default to 'https://kinesis..amazonaws.com'.
 	// +kubebuilder:validation:Optional
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
@@ -2216,6 +2244,10 @@ type StorageParameters struct {
 	// +kubebuilder:validation:Optional
 	SchemeType *string `json:"schemeType,omitempty" tf:"scheme_type,omitempty"`
 
+	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3) (Updatable) Secret access key to access the Amazon S3 bucket. e.g.: "this-is-not-the-secret" Deprecated: This field is deprecated and replaced by "secretAccessKeySecretId". This field will be removed after February 15 2026.
+	// +kubebuilder:validation:Optional
+	SecretAccessKey *string `json:"secretAccessKey,omitempty" tf:"secret_access_key,omitempty"`
+
 	// (Applicable when connection_type=AMAZON_KINESIS | AMAZON_S3) (Updatable) The OCID of the Secret where the secret access key is stored. Note: When provided, 'secretAccessKey' field must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
@@ -2229,6 +2261,10 @@ type StorageParameters struct {
 	// Selector for a Secret in vault to populate secretAccessKeySecretId.
 	// +kubebuilder:validation:Optional
 	SecretAccessKeySecretIDSelector *v1.Selector `json:"secretAccessKeySecretIdSelector,omitempty" tf:"-"`
+
+	// (Applicable when connection_type=GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The base64 encoded content of the service account key file containing the credentials required to use Google Cloud Storage. Deprecated: This field is deprecated and replaced by "serviceAccountKeyFileSecretId". This field will be removed after February 15 2026.
+	// +kubebuilder:validation:Optional
+	ServiceAccountKeyFile *string `json:"serviceAccountKeyFile,omitempty" tf:"service_account_key_file,omitempty"`
 
 	// (Applicable when connection_type=GOOGLE_BIGQUERY | GOOGLE_CLOUD_STORAGE | GOOGLE_PUBSUB) (Updatable) The OCID of the Secret where the content of the service account key file is stored, which contains the credentials required to use Google Cloud Storage. Note: When provided, 'serviceAccountKeyFile' field must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret

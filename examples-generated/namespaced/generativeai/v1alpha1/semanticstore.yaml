@@ -1,0 +1,35 @@
+apiVersion: generativeai.oci.m.upbound.io/v1alpha1
+kind: SemanticStore
+metadata:
+  annotations:
+    meta.upbound.io/example-id: generativeai/v1alpha1/semanticstore
+  labels:
+    testing.upbound.io/example-name: test_semantic_store
+  name: test-semantic-store
+  namespace: upbound-system
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    dataSource:
+    - connectionType: ${var.semantic_store_data_source_connection_type}
+      enrichmentConnectionIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_connection
+      queryingConnectionIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_connection
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.semantic_store_description}
+    displayName: ${var.semantic_store_display_name}
+    freeformTags:
+      Department: Finance
+    refreshSchedule:
+    - type: ${var.semantic_store_refresh_schedule_type}
+      value: ${var.semantic_store_refresh_schedule_value}
+    schemas:
+    - connectionType: ${var.semantic_store_schemas_connection_type}
+      schemas:
+      - name: ${var.semantic_store_schemas_schemas_name}

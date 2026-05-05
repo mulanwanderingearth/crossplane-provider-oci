@@ -444,13 +444,10 @@ spec:
                       type: object
                     type: array
                   dataStoragePercentage:
-                    description: The percentage assigned to DATA storage (user data
-                      and database files). The remaining percentage is assigned to
-                      RECO storage (database redo logs, archive logs, and recovery
-                      manager backups). Accepted values are 35, 40, 60 and 80. The
-                      default is 80 percent assigned to DATA storage. See Storage
-                      Configuration in the Exadata documentation for details on the
-                      impact of the configuration settings on storage.
+                    description: (Updatable) The percentage assigned to DATA storage
+                      (user data and database files). See Storage Configuration in
+                      the Exadata documentation for details on the impact of the configuration
+                      settings on storage.
                     type: number
                   dataStorageSizeInTbs:
                     description: (Updatable) The data disk group size to be allocated
@@ -599,14 +596,15 @@ spec:
                       and 12 characters for Exadata systems.
                     type: string
                   isLocalBackupEnabled:
-                    description: If true, database backup on local Exadata storage
-                      is configured for the cloud VM cluster. If false, database backup
-                      on local Exadata storage is not available in the cloud VM cluster.
+                    description: (Updatable) If true, database backup on local Exadata
+                      storage is configured for the cloud VM cluster. If false, database
+                      backup on local Exadata storage is not available in the cloud
+                      VM cluster.
                     type: boolean
                   isSparseDiskgroupEnabled:
-                    description: If true, the sparse disk group is configured for
-                      the cloud VM cluster. If false, the sparse disk group is not
-                      created.
+                    description: (Updatable) If true, the sparse disk group is configured
+                      for the cloud VM cluster. If false, the sparse disk group is
+                      not created.
                     type: boolean
                   licenseModel:
                     description: (Updatable) The Oracle license model that applies
@@ -707,6 +705,12 @@ spec:
                             type: string
                         type: object
                     type: object
+                  recoStoragePercentage:
+                    description: (Updatable) The percentage assigned to RECO storage
+                      (database redo logs, archive logs, and recovery manager backups).
+                      See Storage Configuration in the Exadata documentation for details
+                      on the impact of the configuration settings on storage.
+                    type: number
                   scanListenerPortTcp:
                     description: The TCP Single Client Access Name (SCAN) port. The
                       default port is 1521.
@@ -724,6 +728,12 @@ spec:
                       {"value": "42", "mode": "audit"}}}'
                     type: object
                     x-kubernetes-map-type: granular
+                  sparseStoragePercentage:
+                    description: (Updatable) The percentage assigned to SPARSE storage
+                      (Exadata snapshots). See Storage Configuration in the Exadata
+                      documentation for details on the impact of the configuration
+                      settings on storage.
+                    type: number
                   sshPublicKeys:
                     description: (Updatable) The public key portion of one or more
                       key pairs used for SSH access to the cloud VM cluster.
@@ -824,8 +834,22 @@ spec:
                     description: The time zone to use for the cloud VM cluster. For
                       details, see Time Zones.
                     type: string
+                  vmBackupStorageType:
+                    description: (Updatable) Specifies the type of VM Backups Storage
+                      and supported values are LOCAL and EXASCALE. - LOCAL if selected
+                      then VM Backups storage will be on DB Servers. - EXASCALE if
+                      selected then VM Backups storage will be on Exascale Storage
+                      Servers. Default Value is LOCAL
+                    type: string
                   vmClusterType:
                     description: The vmcluster type for the VM cluster/Cloud VM cluster.
+                    type: string
+                  vmFileSystemStorageType:
+                    description: Specifies the type of file system storage and supported
+                      values are LOCAL and EXASCALE. - LOCAL if selected then file
+                      system storage will be on DB Servers. - EXASCALE if selected
+                      then file system storage will be on Exascale Storage Servers.
+                      Default Value is LOCAL
                     type: string
                 type: object
               initProvider:
@@ -1212,13 +1236,10 @@ spec:
                       type: object
                     type: array
                   dataStoragePercentage:
-                    description: The percentage assigned to DATA storage (user data
-                      and database files). The remaining percentage is assigned to
-                      RECO storage (database redo logs, archive logs, and recovery
-                      manager backups). Accepted values are 35, 40, 60 and 80. The
-                      default is 80 percent assigned to DATA storage. See Storage
-                      Configuration in the Exadata documentation for details on the
-                      impact of the configuration settings on storage.
+                    description: (Updatable) The percentage assigned to DATA storage
+                      (user data and database files). See Storage Configuration in
+                      the Exadata documentation for details on the impact of the configuration
+                      settings on storage.
                     type: number
                   dataStorageSizeInTbs:
                     description: (Updatable) The data disk group size to be allocated
@@ -1367,14 +1388,15 @@ spec:
                       and 12 characters for Exadata systems.
                     type: string
                   isLocalBackupEnabled:
-                    description: If true, database backup on local Exadata storage
-                      is configured for the cloud VM cluster. If false, database backup
-                      on local Exadata storage is not available in the cloud VM cluster.
+                    description: (Updatable) If true, database backup on local Exadata
+                      storage is configured for the cloud VM cluster. If false, database
+                      backup on local Exadata storage is not available in the cloud
+                      VM cluster.
                     type: boolean
                   isSparseDiskgroupEnabled:
-                    description: If true, the sparse disk group is configured for
-                      the cloud VM cluster. If false, the sparse disk group is not
-                      created.
+                    description: (Updatable) If true, the sparse disk group is configured
+                      for the cloud VM cluster. If false, the sparse disk group is
+                      not created.
                     type: boolean
                   licenseModel:
                     description: (Updatable) The Oracle license model that applies
@@ -1475,6 +1497,12 @@ spec:
                             type: string
                         type: object
                     type: object
+                  recoStoragePercentage:
+                    description: (Updatable) The percentage assigned to RECO storage
+                      (database redo logs, archive logs, and recovery manager backups).
+                      See Storage Configuration in the Exadata documentation for details
+                      on the impact of the configuration settings on storage.
+                    type: number
                   scanListenerPortTcp:
                     description: The TCP Single Client Access Name (SCAN) port. The
                       default port is 1521.
@@ -1492,6 +1520,12 @@ spec:
                       {"value": "42", "mode": "audit"}}}'
                     type: object
                     x-kubernetes-map-type: granular
+                  sparseStoragePercentage:
+                    description: (Updatable) The percentage assigned to SPARSE storage
+                      (Exadata snapshots). See Storage Configuration in the Exadata
+                      documentation for details on the impact of the configuration
+                      settings on storage.
+                    type: number
                   sshPublicKeys:
                     description: (Updatable) The public key portion of one or more
                       key pairs used for SSH access to the cloud VM cluster.
@@ -1592,8 +1626,22 @@ spec:
                     description: The time zone to use for the cloud VM cluster. For
                       details, see Time Zones.
                     type: string
+                  vmBackupStorageType:
+                    description: (Updatable) Specifies the type of VM Backups Storage
+                      and supported values are LOCAL and EXASCALE. - LOCAL if selected
+                      then VM Backups storage will be on DB Servers. - EXASCALE if
+                      selected then VM Backups storage will be on Exascale Storage
+                      Servers. Default Value is LOCAL
+                    type: string
                   vmClusterType:
                     description: The vmcluster type for the VM cluster/Cloud VM cluster.
+                    type: string
+                  vmFileSystemStorageType:
+                    description: Specifies the type of file system storage and supported
+                      values are LOCAL and EXASCALE. - LOCAL if selected then file
+                      system storage will be on DB Servers. - EXASCALE if selected
+                      then file system storage will be on Exascale Storage Servers.
+                      Default Value is LOCAL
                     type: string
                 type: object
               managementPolicies:
@@ -1866,13 +1914,10 @@ spec:
                       type: object
                     type: array
                   dataStoragePercentage:
-                    description: The percentage assigned to DATA storage (user data
-                      and database files). The remaining percentage is assigned to
-                      RECO storage (database redo logs, archive logs, and recovery
-                      manager backups). Accepted values are 35, 40, 60 and 80. The
-                      default is 80 percent assigned to DATA storage. See Storage
-                      Configuration in the Exadata documentation for details on the
-                      impact of the configuration settings on storage.
+                    description: (Updatable) The percentage assigned to DATA storage
+                      (user data and database files). See Storage Configuration in
+                      the Exadata documentation for details on the impact of the configuration
+                      settings on storage.
                     type: number
                   dataStorageSizeInTbs:
                     description: (Updatable) The data disk group size to be allocated
@@ -1988,14 +2033,15 @@ spec:
                       type: object
                     type: array
                   isLocalBackupEnabled:
-                    description: If true, database backup on local Exadata storage
-                      is configured for the cloud VM cluster. If false, database backup
-                      on local Exadata storage is not available in the cloud VM cluster.
+                    description: (Updatable) If true, database backup on local Exadata
+                      storage is configured for the cloud VM cluster. If false, database
+                      backup on local Exadata storage is not available in the cloud
+                      VM cluster.
                     type: boolean
                   isSparseDiskgroupEnabled:
-                    description: If true, the sparse disk group is configured for
-                      the cloud VM cluster. If false, the sparse disk group is not
-                      created.
+                    description: (Updatable) If true, the sparse disk group is configured
+                      for the cloud VM cluster. If false, the sparse disk group is
+                      not created.
                     type: boolean
                   lastUpdateHistoryEntryId:
                     description: The OCID of the last maintenance update history entry.
@@ -2049,6 +2095,12 @@ spec:
                     description: The private zone id in which DNS records need to
                       be created.
                     type: string
+                  recoStoragePercentage:
+                    description: (Updatable) The percentage assigned to RECO storage
+                      (database redo logs, archive logs, and recovery manager backups).
+                      See Storage Configuration in the Exadata documentation for details
+                      on the impact of the configuration settings on storage.
+                    type: number
                   scanDnsName:
                     description: The FQDN of the DNS record for the SCAN IP addresses
                       that are associated with the cloud VM cluster.
@@ -2096,6 +2148,12 @@ spec:
                     description: The model name of the Exadata hardware running the
                       cloud VM cluster.
                     type: string
+                  sparseStoragePercentage:
+                    description: (Updatable) The percentage assigned to SPARSE storage
+                      (Exadata snapshots). See Storage Configuration in the Exadata
+                      documentation for details on the impact of the configuration
+                      settings on storage.
+                    type: number
                   sshPublicKeys:
                     description: (Updatable) The public key portion of one or more
                       key pairs used for SSH access to the cloud VM cluster.
@@ -2165,8 +2223,22 @@ spec:
                     items:
                       type: string
                     type: array
+                  vmBackupStorageType:
+                    description: (Updatable) Specifies the type of VM Backups Storage
+                      and supported values are LOCAL and EXASCALE. - LOCAL if selected
+                      then VM Backups storage will be on DB Servers. - EXASCALE if
+                      selected then VM Backups storage will be on Exascale Storage
+                      Servers. Default Value is LOCAL
+                    type: string
                   vmClusterType:
                     description: The vmcluster type for the VM cluster/Cloud VM cluster.
+                    type: string
+                  vmFileSystemStorageType:
+                    description: Specifies the type of file system storage and supported
+                      values are LOCAL and EXASCALE. - LOCAL if selected then file
+                      system storage will be on DB Servers. - EXASCALE if selected
+                      then file system storage will be on Exascale Storage Servers.
+                      Default Value is LOCAL
                     type: string
                   zoneId:
                     description: The OCID of the zone the cloud VM cluster is associated

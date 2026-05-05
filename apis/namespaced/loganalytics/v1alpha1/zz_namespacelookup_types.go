@@ -198,7 +198,7 @@ type NamespaceLookupInitParameters struct {
 	// (Updatable) The maximum number of matches.
 	MaxMatches *string `json:"maxMatches,omitempty" tf:"max_matches,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// Path to the file containing data for lookup creation.
@@ -271,7 +271,7 @@ type NamespaceLookupObservation struct {
 	// (Updatable) The maximum number of matches.
 	MaxMatches *string `json:"maxMatches,omitempty" tf:"max_matches,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// AutoLookups
@@ -347,7 +347,7 @@ type NamespaceLookupParameters struct {
 	// +kubebuilder:validation:Optional
 	MaxMatches *string `json:"maxMatches,omitempty" tf:"max_matches,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 

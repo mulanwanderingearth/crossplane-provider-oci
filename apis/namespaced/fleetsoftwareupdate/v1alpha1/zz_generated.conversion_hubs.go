@@ -11,3 +11,6 @@ func (tr *FsuCollection) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *FsuCycle) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *FsuReadinessCheck) Hub() {}

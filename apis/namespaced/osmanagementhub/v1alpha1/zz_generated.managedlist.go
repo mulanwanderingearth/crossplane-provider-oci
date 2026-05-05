@@ -7,6 +7,51 @@ package v1alpha1
 
 import resource "github.com/crossplane/crossplane-runtime/v2/pkg/resource"
 
+// GetItems of this DynamicSetInstallPackagesManagementList.
+func (l *DynamicSetInstallPackagesManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this DynamicSetList.
+func (l *DynamicSetList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this DynamicSetRebootManagementList.
+func (l *DynamicSetRebootManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this DynamicSetRemovePackagesManagementList.
+func (l *DynamicSetRemovePackagesManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this DynamicSetUpdatePackagesManagementList.
+func (l *DynamicSetUpdatePackagesManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this EventList.
 func (l *EventList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
@@ -70,8 +115,26 @@ func (l *ManagedInstanceAttachProfileManagementList) GetItems() []resource.Manag
 	return items
 }
 
+// GetItems of this ManagedInstanceAttachSoftwareSourcesManagementList.
+func (l *ManagedInstanceAttachSoftwareSourcesManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this ManagedInstanceDetachProfileManagementList.
 func (l *ManagedInstanceDetachProfileManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ManagedInstanceDetachSoftwareSourcesManagementList.
+func (l *ManagedInstanceDetachSoftwareSourcesManagementList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]
@@ -178,6 +241,24 @@ func (l *ManagedInstanceGroupUpdateAllPackagesManagementList) GetItems() []resou
 	return items
 }
 
+// GetItems of this ManagedInstanceInstallPackagesManagementList.
+func (l *ManagedInstanceInstallPackagesManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ManagedInstanceInstallSnapsManagementList.
+func (l *ManagedInstanceInstallSnapsManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this ManagedInstanceInstallWindowsUpdatesManagementList.
 func (l *ManagedInstanceInstallWindowsUpdatesManagementList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
@@ -205,8 +286,62 @@ func (l *ManagedInstanceRebootManagementList) GetItems() []resource.Managed {
 	return items
 }
 
+// GetItems of this ManagedInstanceRefreshSoftwareManagementList.
+func (l *ManagedInstanceRefreshSoftwareManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ManagedInstanceRemovePackagesManagementList.
+func (l *ManagedInstanceRemovePackagesManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ManagedInstanceRemoveSnapsManagementList.
+func (l *ManagedInstanceRemoveSnapsManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ManagedInstanceSwitchSnapChannelManagementList.
+func (l *ManagedInstanceSwitchSnapChannelManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this ManagedInstanceUpdatePackagesManagementList.
 func (l *ManagedInstanceUpdatePackagesManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ManagedInstancesInstallWindowsUpdatesManagementList.
+func (l *ManagedInstancesInstallWindowsUpdatesManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ManagedInstancesUpdatePackagesManagementList.
+func (l *ManagedInstancesUpdatePackagesManagementList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]
@@ -288,6 +423,15 @@ func (l *ProfileAttachManagementStationManagementList) GetItems() []resource.Man
 
 // GetItems of this ProfileAttachSoftwareSourcesManagementList.
 func (l *ProfileAttachSoftwareSourcesManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this ProfileDetachManagementStationManagementList.
+func (l *ProfileDetachManagementStationManagementList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]

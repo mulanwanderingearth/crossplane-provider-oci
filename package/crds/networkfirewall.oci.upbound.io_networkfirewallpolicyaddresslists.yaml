@@ -80,6 +80,10 @@ spec:
                     items:
                       type: string
                     type: array
+                  description:
+                    description: (Updatable) The description of the address list.
+                      This field can be used to add additional info.
+                    type: string
                   name:
                     description: Unique name to identify the group of addresses to
                       be used in the policy rules.
@@ -186,6 +190,10 @@ spec:
                     items:
                       type: string
                     type: array
+                  description:
+                    description: (Updatable) The description of the address list.
+                      This field can be used to add additional info.
+                    type: string
                   name:
                     description: Unique name to identify the group of addresses to
                       be used in the policy rules.
@@ -386,6 +394,10 @@ spec:
                     items:
                       type: string
                     type: array
+                  description:
+                    description: (Updatable) The description of the address list.
+                      This field can be used to add additional info.
+                    type: string
                   id:
                     type: string
                   name:

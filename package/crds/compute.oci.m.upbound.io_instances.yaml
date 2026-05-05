@@ -453,24 +453,106 @@ spec:
                           type: string
                         ipv6addressIpv6SubnetCidrPairDetails:
                           description: A list of IPv6 prefix ranges from which the
-                            VNIC should be assigned an IPv6 address. You can provide
-                            only the prefix ranges from which Oracle Cloud Infrastructure
-                            will select an available address from the range. You can
-                            optionally choose to leave the prefix range empty and
-                            instead provide the specific IPv6 address that should
-                            be used from within that range.
+                            VNIC is assigned an IPv6 address. You can provide only
+                            the prefix ranges from which Oracle Cloud Infrastructure
+                            selects an available address from the range. You can optionally
+                            choose to leave the prefix range empty and instead provide
+                            the specific IPv6 address within that range to use.
                           items:
                             properties:
                               ipv6address:
+                                description: 'An IPv6 address of your choice. Must
+                                  be an available IPv6 address within the subnet''s
+                                  prefix. If an IPv6 address is not provided:'
                                 type: string
+                              ipv6id:
+                                description: An OCID that specifies a previously-reserved
+                                  ipv6 to use.
+                                type: string
+                              ipv6idRef:
+                                description: Reference to a Ipv6 in networking to
+                                  populate ipv6id.
+                                properties:
+                                  name:
+                                    description: Name of the referenced object.
+                                    type: string
+                                  namespace:
+                                    description: Namespace of the referenced object
+                                    type: string
+                                  policy:
+                                    description: Policies for referencing.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                required:
+                                - name
+                                type: object
+                              ipv6idSelector:
+                                description: Selector for a Ipv6 in networking to
+                                  populate ipv6id.
+                                properties:
+                                  matchControllerRef:
+                                    description: |-
+                                      MatchControllerRef ensures an object with the same controller reference
+                                      as the selecting object is selected.
+                                    type: boolean
+                                  matchLabels:
+                                    additionalProperties:
+                                      type: string
+                                    description: MatchLabels ensures an object with
+                                      matching labels is selected.
+                                    type: object
+                                  namespace:
+                                    description: Namespace for the selector
+                                    type: string
+                                  policy:
+                                    description: Policies for selection.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                type: object
                               ipv6subnetCidr:
-                                description: 'One of the IPv4 CIDR blocks allocated
-                                  to the subnet. Represents the IP range from which
-                                  the VNIC''s private IP address will be assigned
-                                  if privateIp or privateIpId is not specified. Either
-                                  this field or the privateIp (or privateIpId, if
-                                  applicable) field must be provided, but not both
-                                  simultaneously. Example: 192.168.1.0/28'
+                                description: The IPv6 prefix allocated to the subnet.
                                 type: string
                             type: object
                           type: array
@@ -576,12 +658,98 @@ spec:
                             in the Vnic object and also the PrivateIp object returned
                             by ListPrivateIps and GetPrivateIp.
                           type: string
+                        privateIpId:
+                          description: An OCID that specifies a previously-reserved
+                            IP address to use for this VNIC.
+                          type: string
+                        privateIpIdRef:
+                          description: Reference to a PrivateIp in networking to populate
+                            privateIpId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        privateIpIdSelector:
+                          description: Selector for a PrivateIp in networking to populate
+                            privateIpId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
                         securityAttributes:
                           additionalProperties:
                             type: string
-                          description: 'Security Attributes for this resource. This
-                            is unique to ZPR, and helps identify which resources are
-                            allowed to be accessed by what permission controls.  Example:
+                          description: 'Security attributes are labels for a resource
+                            that can be referenced in a Zero Trust Packet Routing
+                            (ZPR) policy to control access to ZPR-supported resources.  Example:
                             {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42",
                             "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}'
                           type: object
@@ -1555,9 +1723,9 @@ spec:
                   securityAttributes:
                     additionalProperties:
                       type: string
-                    description: 'Security Attributes for this resource. This is unique
-                      to ZPR, and helps identify which resources are allowed to be
-                      accessed by what permission controls.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value":
+                    description: 'Security attributes are labels for a resource that
+                      can be referenced in a Zero Trust Packet Routing (ZPR) policy
+                      to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value":
                       "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}'
                     type: object
                     x-kubernetes-map-type: granular
@@ -2251,24 +2419,106 @@ spec:
                           type: string
                         ipv6addressIpv6SubnetCidrPairDetails:
                           description: A list of IPv6 prefix ranges from which the
-                            VNIC should be assigned an IPv6 address. You can provide
-                            only the prefix ranges from which Oracle Cloud Infrastructure
-                            will select an available address from the range. You can
-                            optionally choose to leave the prefix range empty and
-                            instead provide the specific IPv6 address that should
-                            be used from within that range.
+                            VNIC is assigned an IPv6 address. You can provide only
+                            the prefix ranges from which Oracle Cloud Infrastructure
+                            selects an available address from the range. You can optionally
+                            choose to leave the prefix range empty and instead provide
+                            the specific IPv6 address within that range to use.
                           items:
                             properties:
                               ipv6address:
+                                description: 'An IPv6 address of your choice. Must
+                                  be an available IPv6 address within the subnet''s
+                                  prefix. If an IPv6 address is not provided:'
                                 type: string
+                              ipv6id:
+                                description: An OCID that specifies a previously-reserved
+                                  ipv6 to use.
+                                type: string
+                              ipv6idRef:
+                                description: Reference to a Ipv6 in networking to
+                                  populate ipv6id.
+                                properties:
+                                  name:
+                                    description: Name of the referenced object.
+                                    type: string
+                                  namespace:
+                                    description: Namespace of the referenced object
+                                    type: string
+                                  policy:
+                                    description: Policies for referencing.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                required:
+                                - name
+                                type: object
+                              ipv6idSelector:
+                                description: Selector for a Ipv6 in networking to
+                                  populate ipv6id.
+                                properties:
+                                  matchControllerRef:
+                                    description: |-
+                                      MatchControllerRef ensures an object with the same controller reference
+                                      as the selecting object is selected.
+                                    type: boolean
+                                  matchLabels:
+                                    additionalProperties:
+                                      type: string
+                                    description: MatchLabels ensures an object with
+                                      matching labels is selected.
+                                    type: object
+                                  namespace:
+                                    description: Namespace for the selector
+                                    type: string
+                                  policy:
+                                    description: Policies for selection.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                type: object
                               ipv6subnetCidr:
-                                description: 'One of the IPv4 CIDR blocks allocated
-                                  to the subnet. Represents the IP range from which
-                                  the VNIC''s private IP address will be assigned
-                                  if privateIp or privateIpId is not specified. Either
-                                  this field or the privateIp (or privateIpId, if
-                                  applicable) field must be provided, but not both
-                                  simultaneously. Example: 192.168.1.0/28'
+                                description: The IPv6 prefix allocated to the subnet.
                                 type: string
                             type: object
                           type: array
@@ -2374,12 +2624,98 @@ spec:
                             in the Vnic object and also the PrivateIp object returned
                             by ListPrivateIps and GetPrivateIp.
                           type: string
+                        privateIpId:
+                          description: An OCID that specifies a previously-reserved
+                            IP address to use for this VNIC.
+                          type: string
+                        privateIpIdRef:
+                          description: Reference to a PrivateIp in networking to populate
+                            privateIpId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            namespace:
+                              description: Namespace of the referenced object
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        privateIpIdSelector:
+                          description: Selector for a PrivateIp in networking to populate
+                            privateIpId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            namespace:
+                              description: Namespace for the selector
+                              type: string
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
                         securityAttributes:
                           additionalProperties:
                             type: string
-                          description: 'Security Attributes for this resource. This
-                            is unique to ZPR, and helps identify which resources are
-                            allowed to be accessed by what permission controls.  Example:
+                          description: 'Security attributes are labels for a resource
+                            that can be referenced in a Zero Trust Packet Routing
+                            (ZPR) policy to control access to ZPR-supported resources.  Example:
                             {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42",
                             "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}'
                           type: object
@@ -3353,9 +3689,9 @@ spec:
                   securityAttributes:
                     additionalProperties:
                       type: string
-                    description: 'Security Attributes for this resource. This is unique
-                      to ZPR, and helps identify which resources are allowed to be
-                      accessed by what permission controls.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value":
+                    description: 'Security attributes are labels for a resource that
+                      can be referenced in a Zero Trust Packet Routing (ZPR) policy
+                      to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value":
                       "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}'
                     type: object
                     x-kubernetes-map-type: granular
@@ -3866,24 +4202,24 @@ spec:
                           type: string
                         ipv6addressIpv6SubnetCidrPairDetails:
                           description: A list of IPv6 prefix ranges from which the
-                            VNIC should be assigned an IPv6 address. You can provide
-                            only the prefix ranges from which Oracle Cloud Infrastructure
-                            will select an available address from the range. You can
-                            optionally choose to leave the prefix range empty and
-                            instead provide the specific IPv6 address that should
-                            be used from within that range.
+                            VNIC is assigned an IPv6 address. You can provide only
+                            the prefix ranges from which Oracle Cloud Infrastructure
+                            selects an available address from the range. You can optionally
+                            choose to leave the prefix range empty and instead provide
+                            the specific IPv6 address within that range to use.
                           items:
                             properties:
                               ipv6address:
+                                description: 'An IPv6 address of your choice. Must
+                                  be an available IPv6 address within the subnet''s
+                                  prefix. If an IPv6 address is not provided:'
+                                type: string
+                              ipv6id:
+                                description: An OCID that specifies a previously-reserved
+                                  ipv6 to use.
                                 type: string
                               ipv6subnetCidr:
-                                description: 'One of the IPv4 CIDR blocks allocated
-                                  to the subnet. Represents the IP range from which
-                                  the VNIC''s private IP address will be assigned
-                                  if privateIp or privateIpId is not specified. Either
-                                  this field or the privateIp (or privateIpId, if
-                                  applicable) field must be provided, but not both
-                                  simultaneously. Example: 192.168.1.0/28'
+                                description: The IPv6 prefix allocated to the subnet.
                                 type: string
                             type: object
                           type: array
@@ -3904,12 +4240,16 @@ spec:
                             in the Vnic object and also the PrivateIp object returned
                             by ListPrivateIps and GetPrivateIp.
                           type: string
+                        privateIpId:
+                          description: An OCID that specifies a previously-reserved
+                            IP address to use for this VNIC.
+                          type: string
                         securityAttributes:
                           additionalProperties:
                             type: string
-                          description: 'Security Attributes for this resource. This
-                            is unique to ZPR, and helps identify which resources are
-                            allowed to be accessed by what permission controls.  Example:
+                          description: 'Security attributes are labels for a resource
+                            that can be referenced in a Zero Trust Packet Routing
+                            (ZPR) policy to control access to ZPR-supported resources.  Example:
                             {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42",
                             "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}'
                           type: object
@@ -4339,9 +4679,9 @@ spec:
                   securityAttributes:
                     additionalProperties:
                       type: string
-                    description: 'Security Attributes for this resource. This is unique
-                      to ZPR, and helps identify which resources are allowed to be
-                      accessed by what permission controls.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value":
+                    description: 'Security attributes are labels for a resource that
+                      can be referenced in a Zero Trust Packet Routing (ZPR) policy
+                      to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value":
                       "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}'
                     type: object
                     x-kubernetes-map-type: granular

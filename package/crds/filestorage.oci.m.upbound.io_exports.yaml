@@ -109,8 +109,8 @@ spec:
                           type: boolean
                         source:
                           description: (Updatable) Clients these options should apply
-                            to. Must be a either single IPv4 address or single IPv4
-                            CIDR block.
+                            to. Must be a either single IPv4/IPv6 address or single
+                            IPv4/IPv6 CIDR block.
                           type: string
                       type: object
                     type: array
@@ -388,8 +388,8 @@ spec:
                           type: boolean
                         source:
                           description: (Updatable) Clients these options should apply
-                            to. Must be a either single IPv4 address or single IPv4
-                            CIDR block.
+                            to. Must be a either single IPv4/IPv6 address or single
+                            IPv4/IPv6 CIDR block.
                           type: string
                       type: object
                     type: array
@@ -724,8 +724,8 @@ spec:
                           type: boolean
                         source:
                           description: (Updatable) Clients these options should apply
-                            to. Must be a either single IPv4 address or single IPv4
-                            CIDR block.
+                            to. Must be a either single IPv4/IPv6 address or single
+                            IPv4/IPv6 CIDR block.
                           type: string
                       type: object
                     type: array

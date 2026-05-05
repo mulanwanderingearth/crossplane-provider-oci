@@ -15,6 +15,7 @@ import (
 )
 
 type OracleDbGcpKeyRingInitParameters struct {
+	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) The compartment OCID where the Oracle DB GCP Key Ring resource resides.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -52,11 +53,15 @@ type OracleDbGcpKeyRingInitParameters struct {
 	// +mapType=granular
 	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
 
+	// The target region, where resource is replicated.
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
 	// Oracle DB GCP Key Ring resource Type.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type OracleDbGcpKeyRingObservation struct {
+	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) The compartment OCID where the Oracle DB GCP Key Ring resource resides.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -91,6 +96,9 @@ type OracleDbGcpKeyRingObservation struct {
 	// +mapType=granular
 	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
 
+	// Replication metadata, it has information about replication and target region.
+	ReplicationMetadata []OracleDbGcpKeyRingReplicationMetadataObservation `json:"replicationMetadata,omitempty" tf:"replication_metadata,omitempty"`
+
 	// The lifecycle state of the Oracle DB GCP Key Ring resource.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
@@ -98,10 +106,13 @@ type OracleDbGcpKeyRingObservation struct {
 	// +mapType=granular
 	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
-	// Time when the DB GCP Key Ring resource was created in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	// The target region, where resource is replicated.
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
+	// Time when the Replication was created in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
-	// Time when the DB GCP Key Ring resource was last modified, expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	// Time when the Replication was last modified, expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// Oracle DB GCP Key Ring resource Type.
@@ -109,6 +120,9 @@ type OracleDbGcpKeyRingObservation struct {
 }
 
 type OracleDbGcpKeyRingParameters struct {
+
+	// +kubebuilder:validation:Optional
+	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) The compartment OCID where the Oracle DB GCP Key Ring resource resides.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -154,9 +168,46 @@ type OracleDbGcpKeyRingParameters struct {
 	// +mapType=granular
 	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
 
+	// The target region, where resource is replicated.
+	// +kubebuilder:validation:Optional
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
 	// Oracle DB GCP Key Ring resource Type.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type OracleDbGcpKeyRingReplicationMetadataInitParameters struct {
+}
+
+type OracleDbGcpKeyRingReplicationMetadataObservation struct {
+
+	// List of all regions and their respective resource ID.
+	ReplicationDetails []OracleDbGcpKeyRingReplicationMetadataReplicationDetailsObservation `json:"replicationDetails,omitempty" tf:"replication_details,omitempty"`
+}
+
+type OracleDbGcpKeyRingReplicationMetadataParameters struct {
+}
+
+type OracleDbGcpKeyRingReplicationMetadataReplicationDetailsInitParameters struct {
+}
+
+type OracleDbGcpKeyRingReplicationMetadataReplicationDetailsObservation struct {
+
+	// The lifecycle state of the Oracle DB Azure Vault resource.
+	ReplicationState *string `json:"replicationState,omitempty" tf:"replication_state,omitempty"`
+
+	// The target region, where resource is replicated.
+	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
+
+	// Time when the Replication was created in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
+
+	// Time when the Replication was last modified, expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
+}
+
+type OracleDbGcpKeyRingReplicationMetadataReplicationDetailsParameters struct {
 }
 
 // OracleDbGcpKeyRingSpec defines the desired state of OracleDbGcpKeyRing

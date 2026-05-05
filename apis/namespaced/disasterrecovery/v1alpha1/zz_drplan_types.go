@@ -267,7 +267,7 @@ type UserDefinedStepObservation struct {
 	// The request body for the function.  Example: { "FnParam1", "FnParam2" }
 	RequestBody *string `json:"requestBody,omitempty" tf:"request_body,omitempty"`
 
-	// The userid on the instance to be used for executing the script or command.  Example: opc
+	// The user ID on the instance that will be used to execute the script specified in 'scriptCommand'. Example: opc
 	RunAsUser *string `json:"runAsUser,omitempty" tf:"run_as_user,omitempty"`
 
 	// The OCID of the instance on which this script or command should be executed.
@@ -276,7 +276,7 @@ type UserDefinedStepObservation struct {
 	// The region of the instance where this script or command should be executed.  Example: us-ashburn-1
 	RunOnInstanceRegion *string `json:"runOnInstanceRegion,omitempty" tf:"run_on_instance_region,omitempty"`
 
-	// The script name and arguments.  Example: /usr/bin/python3 /home/opc/scripts/my_app_script.py arg1 arg2 arg3
+	// The entire path and arguments for the script that is stored in object store, or inside a compressed archive in object store. Example: /usr/bin/python3.7 scripts/start_server.py --port 8080 --env "production" --max-connections 200 --log-level "INFO"
 	ScriptCommand *string `json:"scriptCommand,omitempty" tf:"script_command,omitempty"`
 
 	// The type of the user-defined step.

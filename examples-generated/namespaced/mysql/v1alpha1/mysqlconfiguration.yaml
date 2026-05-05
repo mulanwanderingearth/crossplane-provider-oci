@@ -20,6 +20,9 @@ spec:
       bar-key: value
     initVariables:
     - lowerCaseTableNames: ${var.mysql_configuration_init_variables_lower_case_table_names}
+    options:
+    - name: ${var.mysql_configuration_options_name}
+      value: ${var.mysql_configuration_options_value}
     parentConfigurationIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_configuration

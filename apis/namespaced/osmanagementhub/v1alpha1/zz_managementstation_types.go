@@ -31,6 +31,9 @@ type HealthParameters struct {
 
 type ManagementStationInitParameters struct {
 
+	// (Updatable) The architecture type.
+	ArchType *string `json:"archType,omitempty" tf:"arch_type,omitempty"`
+
 	// (Updatable) The OCID of the compartment that contains the management station.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -66,6 +69,9 @@ type ManagementStationInitParameters struct {
 	// (Updatable) Information used to create the mirror configuration for a management station.
 	Mirror []MirrorInitParameters `json:"mirror,omitempty" tf:"mirror,omitempty"`
 
+	// (Updatable) The operating system family.
+	OsFamily *string `json:"osFamily,omitempty" tf:"os_family,omitempty"`
+
 	// (Updatable) Information used to create the proxy configuration for a management station.
 	Proxy []ProxyInitParameters `json:"proxy,omitempty" tf:"proxy,omitempty"`
 
@@ -74,6 +80,9 @@ type ManagementStationInitParameters struct {
 }
 
 type ManagementStationObservation struct {
+
+	// (Updatable) The architecture type.
+	ArchType *string `json:"archType,omitempty" tf:"arch_type,omitempty"`
 
 	// (Updatable) The OCID of the compartment that contains the management station.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -134,6 +143,9 @@ type ManagementStationObservation struct {
 	// The total number of unique packages within the mirrored software sources on the station. Each package is counted only once, regardless of how many versions it has.
 	MirrorUniquePackageCount *float64 `json:"mirrorUniquePackageCount,omitempty" tf:"mirror_unique_package_count,omitempty"`
 
+	// (Updatable) The operating system family.
+	OsFamily *string `json:"osFamily,omitempty" tf:"os_family,omitempty"`
+
 	// A decimal number representing the progress of the current mirror sync.
 	OverallPercentage *float64 `json:"overallPercentage,omitempty" tf:"overall_percentage,omitempty"`
 
@@ -167,6 +179,10 @@ type ManagementStationObservation struct {
 }
 
 type ManagementStationParameters struct {
+
+	// (Updatable) The architecture type.
+	// +kubebuilder:validation:Optional
+	ArchType *string `json:"archType,omitempty" tf:"arch_type,omitempty"`
 
 	// (Updatable) The OCID of the compartment that contains the management station.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -210,6 +226,10 @@ type ManagementStationParameters struct {
 	// (Updatable) Information used to create the mirror configuration for a management station.
 	// +kubebuilder:validation:Optional
 	Mirror []MirrorParameters `json:"mirror,omitempty" tf:"mirror,omitempty"`
+
+	// (Updatable) The operating system family.
+	// +kubebuilder:validation:Optional
+	OsFamily *string `json:"osFamily,omitempty" tf:"os_family,omitempty"`
 
 	// (Updatable) Information used to create the proxy configuration for a management station.
 	// +kubebuilder:validation:Optional
@@ -268,7 +288,7 @@ type MirrorParameters struct {
 
 	// (Updatable) Default mirror listening port for http.
 	// +kubebuilder:validation:Optional
-	Port *string `json:"port" tf:"port,omitempty"`
+	Port *string `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) Path to the SSL cerfificate.
 	// +kubebuilder:validation:Optional

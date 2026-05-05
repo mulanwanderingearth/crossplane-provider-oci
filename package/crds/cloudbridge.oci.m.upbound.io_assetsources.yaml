@@ -153,6 +153,13 @@ spec:
                             type: string
                         type: object
                     type: object
+                  awsAccountKey:
+                    description: The key of customer's aws account to be discovered/migrated.
+                    type: string
+                  awsRegion:
+                    description: AWS region information, from where the resources
+                      are discovered.
+                    type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment for the resource.
                     type: string
@@ -253,10 +260,13 @@ spec:
                       properties:
                         secretId:
                           description: '(Updatable) The OCID of the secret in a vault.
-                            If the the type of the credentials is BASIC, the secret
-                            must contain the username and password in JSON format,
-                            which is in the form of { "username": "", "password":
-                            "" }`.'
+                            If the type of the credentials is BASIC, the secret must
+                            contain the username and password in JSON format, which
+                            is in the form of { "username": "<User>", "password":
+                            "example-password" }. If the type of the credentials is
+                            API_KEY, the secret must contain the accessKeyId and secretAccessKey
+                            in JSON format, which is in the form of { "accessKeyId":
+                            "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.'
                           type: string
                         secretIdRef:
                           description: Reference to a Secret in vault to populate
@@ -522,6 +532,11 @@ spec:
                             type: string
                         type: object
                     type: object
+                  environmentType:
+                    description: (Updatable) Specifies if this is the Source or Destination
+                      point for migration - different assets may be discovered depending
+                      on setting.
+                    type: string
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -617,16 +632,28 @@ spec:
                             type: string
                         type: object
                     type: object
+                  isCostInformationCollected:
+                    description: (Applicable when type=AWS) (Updatable) Flag indicating
+                      whether cost data collection is enabled for assets, originating
+                      from this asset source.
+                    type: boolean
+                  olvmEndpoint:
+                    description: (Updatable) Endpoint for OLVM asset discovery and
+                      replication in the form of https://<host>:<port>
+                    type: string
                   replicationCredentials:
                     description: (Updatable) Credentials for an asset source.
                     items:
                       properties:
                         secretId:
                           description: '(Updatable) The OCID of the secret in a vault.
-                            If the the type of the credentials is BASIC, the secret
-                            must contain the username and password in JSON format,
-                            which is in the form of { "username": "", "password":
-                            "" }`.'
+                            If the type of the credentials is BASIC, the secret must
+                            contain the username and password in JSON format, which
+                            is in the form of { "username": "<User>", "password":
+                            "example-password" }. If the type of the credentials is
+                            API_KEY, the secret must contain the accessKeyId and secretAccessKey
+                            in JSON format, which is in the form of { "accessKeyId":
+                            "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.'
                           type: string
                         secretIdRef:
                           description: Reference to a Secret in vault to populate
@@ -840,6 +867,13 @@ spec:
                             type: string
                         type: object
                     type: object
+                  awsAccountKey:
+                    description: The key of customer's aws account to be discovered/migrated.
+                    type: string
+                  awsRegion:
+                    description: AWS region information, from where the resources
+                      are discovered.
+                    type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment for the resource.
                     type: string
@@ -940,10 +974,13 @@ spec:
                       properties:
                         secretId:
                           description: '(Updatable) The OCID of the secret in a vault.
-                            If the the type of the credentials is BASIC, the secret
-                            must contain the username and password in JSON format,
-                            which is in the form of { "username": "", "password":
-                            "" }`.'
+                            If the type of the credentials is BASIC, the secret must
+                            contain the username and password in JSON format, which
+                            is in the form of { "username": "<User>", "password":
+                            "example-password" }. If the type of the credentials is
+                            API_KEY, the secret must contain the accessKeyId and secretAccessKey
+                            in JSON format, which is in the form of { "accessKeyId":
+                            "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.'
                           type: string
                         secretIdRef:
                           description: Reference to a Secret in vault to populate
@@ -1209,6 +1246,11 @@ spec:
                             type: string
                         type: object
                     type: object
+                  environmentType:
+                    description: (Updatable) Specifies if this is the Source or Destination
+                      point for migration - different assets may be discovered depending
+                      on setting.
+                    type: string
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1304,16 +1346,28 @@ spec:
                             type: string
                         type: object
                     type: object
+                  isCostInformationCollected:
+                    description: (Applicable when type=AWS) (Updatable) Flag indicating
+                      whether cost data collection is enabled for assets, originating
+                      from this asset source.
+                    type: boolean
+                  olvmEndpoint:
+                    description: (Updatable) Endpoint for OLVM asset discovery and
+                      replication in the form of https://<host>:<port>
+                    type: string
                   replicationCredentials:
                     description: (Updatable) Credentials for an asset source.
                     items:
                       properties:
                         secretId:
                           description: '(Updatable) The OCID of the secret in a vault.
-                            If the the type of the credentials is BASIC, the secret
-                            must contain the username and password in JSON format,
-                            which is in the form of { "username": "", "password":
-                            "" }`.'
+                            If the type of the credentials is BASIC, the secret must
+                            contain the username and password in JSON format, which
+                            is in the form of { "username": "<User>", "password":
+                            "example-password" }. If the type of the credentials is
+                            API_KEY, the secret must contain the accessKeyId and secretAccessKey
+                            in JSON format, which is in the form of { "accessKeyId":
+                            "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.'
                           type: string
                         secretIdRef:
                           description: Reference to a Secret in vault to populate
@@ -1489,10 +1543,6 @@ spec:
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.type)
                 || (has(self.initProvider) && has(self.initProvider.type))'
-            - message: spec.forProvider.vcenterEndpoint is a required parameter
-              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
-                || ''Update'' in self.managementPolicies) || has(self.forProvider.vcenterEndpoint)
-                || (has(self.initProvider) && has(self.initProvider.vcenterEndpoint))'
           status:
             description: AssetSourceStatus defines the observed state of AssetSource.
             properties:
@@ -1509,6 +1559,13 @@ spec:
                   assetsCompartmentId:
                     description: (Updatable) The OCID of the compartment that is going
                       to be used to create assets.
+                    type: string
+                  awsAccountKey:
+                    description: The key of customer's aws account to be discovered/migrated.
+                    type: string
+                  awsRegion:
+                    description: AWS region information, from where the resources
+                      are discovered.
                     type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment for the resource.
@@ -1528,10 +1585,13 @@ spec:
                       properties:
                         secretId:
                           description: '(Updatable) The OCID of the secret in a vault.
-                            If the the type of the credentials is BASIC, the secret
-                            must contain the username and password in JSON format,
-                            which is in the form of { "username": "", "password":
-                            "" }`.'
+                            If the type of the credentials is BASIC, the secret must
+                            contain the username and password in JSON format, which
+                            is in the form of { "username": "<User>", "password":
+                            "example-password" }. If the type of the credentials is
+                            API_KEY, the secret must contain the accessKeyId and secretAccessKey
+                            in JSON format, which is in the form of { "accessKeyId":
+                            "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.'
                           type: string
                         type:
                           description: (Updatable) Authentication type
@@ -1551,6 +1611,11 @@ spec:
                   environmentId:
                     description: The OCID of the environment.
                     type: string
+                  environmentType:
+                    description: (Updatable) Specifies if this is the Source or Destination
+                      point for migration - different assets may be discovered depending
+                      on setting.
+                    type: string
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1567,8 +1632,17 @@ spec:
                     description: The OCID of the inventory that will contain created
                       assets.
                     type: string
+                  isCostInformationCollected:
+                    description: (Applicable when type=AWS) (Updatable) Flag indicating
+                      whether cost data collection is enabled for assets, originating
+                      from this asset source.
+                    type: boolean
                   lifecycleDetails:
                     description: The detailed state of the asset source.
+                    type: string
+                  olvmEndpoint:
+                    description: (Updatable) Endpoint for OLVM asset discovery and
+                      replication in the form of https://<host>:<port>
                     type: string
                   replicationCredentials:
                     description: (Updatable) Credentials for an asset source.
@@ -1576,10 +1650,13 @@ spec:
                       properties:
                         secretId:
                           description: '(Updatable) The OCID of the secret in a vault.
-                            If the the type of the credentials is BASIC, the secret
-                            must contain the username and password in JSON format,
-                            which is in the form of { "username": "", "password":
-                            "" }`.'
+                            If the type of the credentials is BASIC, the secret must
+                            contain the username and password in JSON format, which
+                            is in the form of { "username": "<User>", "password":
+                            "example-password" }. If the type of the credentials is
+                            API_KEY, the secret must contain the accessKeyId and secretAccessKey
+                            in JSON format, which is in the form of { "accessKeyId":
+                            "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.'
                           type: string
                         type:
                           description: (Updatable) Authentication type

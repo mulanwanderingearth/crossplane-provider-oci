@@ -40,6 +40,9 @@ spec:
       vnicSelection: ${var.instance_pool_load_balancers_vnic_selection}
     placementConfigurations:
     - availabilityDomain: ${var.instance_pool_placement_configurations_availability_domain}
+      computeClusterIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_compute_cluster
       faultDomains: ${var.instance_pool_placement_configurations_fault_domains}
       primarySubnetIdSelector:
         matchLabels:

@@ -417,11 +417,7 @@ spec:
                     type: string
                   loadBalancerSubnetId:
                     description: (Updatable) The OCID of a public subnet in the customer
-                      tenancy. Can be provided only for public deployments. If provided,
-                      the loadbalancer will be created in this subnet instead of the
-                      service tenancy. For backward compatibility, this is an optional
-                      property. It will become mandatory for public deployments after
-                      October 1, 2024.
+                      tenancy used to host the public load balancer of the deployment.
                     type: string
                   loadBalancerSubnetIdRef:
                     description: Reference to a Subnet in networking to populate loadBalancerSubnetId.
@@ -1246,7 +1242,7 @@ spec:
                         type: object
                     type: object
                   state:
-                    description: Possible lifecycle states.
+                    description: Possible lifecycle states for a Deployment.
                     type: string
                   subnetId:
                     description: (Updatable) The OCID of the subnet of the deployment's
@@ -1690,11 +1686,7 @@ spec:
                     type: string
                   loadBalancerSubnetId:
                     description: (Updatable) The OCID of a public subnet in the customer
-                      tenancy. Can be provided only for public deployments. If provided,
-                      the loadbalancer will be created in this subnet instead of the
-                      service tenancy. For backward compatibility, this is an optional
-                      property. It will become mandatory for public deployments after
-                      October 1, 2024.
+                      tenancy used to host the public load balancer of the deployment.
                     type: string
                   loadBalancerSubnetIdRef:
                     description: Reference to a Subnet in networking to populate loadBalancerSubnetId.
@@ -2519,7 +2511,7 @@ spec:
                         type: object
                     type: object
                   state:
-                    description: Possible lifecycle states.
+                    description: Possible lifecycle states for a Deployment.
                     type: string
                   subnetId:
                     description: (Updatable) The OCID of the subnet of the deployment's
@@ -2909,11 +2901,7 @@ spec:
                     type: string
                   loadBalancerSubnetId:
                     description: (Updatable) The OCID of a public subnet in the customer
-                      tenancy. Can be provided only for public deployments. If provided,
-                      the loadbalancer will be created in this subnet instead of the
-                      service tenancy. For backward compatibility, this is an optional
-                      property. It will become mandatory for public deployments after
-                      October 1, 2024.
+                      tenancy used to host the public load balancer of the deployment.
                     type: string
                   locks:
                     description: Locks associated with this resource.
@@ -3115,7 +3103,7 @@ spec:
                     description: The OCID of the deployment being referenced.
                     type: string
                   state:
-                    description: Possible lifecycle states.
+                    description: Possible lifecycle states for a Deployment.
                     type: string
                   storageUtilizationInBytes:
                     description: The amount of storage being utilized (in bytes)
@@ -3167,15 +3155,6 @@ spec:
                   timeUpdated:
                     description: The time the resource was last updated. The format
                       is defined by RFC3339, such as 2016-08-25T21:10:29.600Z.
-                    type: string
-                  timeUpgradeRequired:
-                    description: 'Note: Deprecated: Use timeOfNextMaintenance instead,
-                      or related upgrade records  to check, when deployment will be
-                      forced to upgrade to a newer version. Old description: The date
-                      the existing version in use will no longer be considered as
-                      usable and an upgrade will be required.  This date is typically
-                      6 months after the version was released for use by GGS.  The
-                      format is defined by RFC3339, such as 2016-08-25T21:10:29.600Z.'
                     type: string
                 type: object
               conditions:

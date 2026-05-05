@@ -7,6 +7,24 @@ package v1alpha1
 
 import resource "github.com/crossplane/crossplane-runtime/v2/pkg/resource"
 
+// GetItems of this LogAnalyticsEntityAssociationsAddList.
+func (l *LogAnalyticsEntityAssociationsAddList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this LogAnalyticsEntityAssociationsRemoveList.
+func (l *LogAnalyticsEntityAssociationsRemoveList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this LogAnalyticsEntityList.
 func (l *LogAnalyticsEntityList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
@@ -72,6 +90,15 @@ func (l *LogAnalyticsResourceCategoriesManagementList) GetItems() []resource.Man
 
 // GetItems of this LogAnalyticsUnprocessedDataBucketManagementList.
 func (l *LogAnalyticsUnprocessedDataBucketManagementList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this NamespaceAssociationList.
+func (l *NamespaceAssociationList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]

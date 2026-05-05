@@ -158,6 +158,8 @@ spec:
                   totalStorageInGbs:
                     description: Storage size needed for Exascale in GBs.
                     type: number
+                  totalVmStorageInGbs:
+                    type: number
                 type: object
               initProvider:
                 description: |-
@@ -253,6 +255,8 @@ spec:
                     type: object
                   totalStorageInGbs:
                     description: Storage size needed for Exascale in GBs.
+                    type: number
+                  totalVmStorageInGbs:
                     type: number
                 type: object
               managementPolicies:
@@ -491,8 +495,12 @@ spec:
                         availableStorageInGbs:
                           description: Available storage size for Exascale in GBs.
                           type: number
+                        availableVmStorageInGbs:
+                          type: number
                         totalStorageInGbs:
                           description: Storage size needed for Exascale in GBs.
+                          type: number
+                        totalVmStorageInGbs:
                           type: number
                       type: object
                     type: array
@@ -710,6 +718,8 @@ spec:
                     type: string
                   totalStorageInGbs:
                     description: Storage size needed for Exascale in GBs.
+                    type: number
+                  totalVmStorageInGbs:
                     type: number
                 type: object
               conditions:

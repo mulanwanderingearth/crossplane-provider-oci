@@ -15,6 +15,9 @@ import (
 
 type NetworkFirewallPolicyMappedSecretInitParameters struct {
 
+	// (Updatable) The description of the mapped secret. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	// Unique name to identify the group of urls to be used in the policy rules.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
@@ -55,6 +58,10 @@ type NetworkFirewallPolicyMappedSecretInitParameters struct {
 }
 
 type NetworkFirewallPolicyMappedSecretObservation struct {
+
+	// (Updatable) The description of the mapped secret. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Unique name to identify the group of urls to be used in the policy rules.
@@ -80,6 +87,10 @@ type NetworkFirewallPolicyMappedSecretObservation struct {
 }
 
 type NetworkFirewallPolicyMappedSecretParameters struct {
+
+	// (Updatable) The description of the mapped secret. This field can be used to add additional info.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// Unique name to identify the group of urls to be used in the policy rules.
 	// +kubebuilder:validation:Optional

@@ -459,6 +459,12 @@ spec:
                           type: boolean
                       type: object
                     type: array
+                  dataStoragePercentage:
+                    description: The percentage assigned to DATA storage (user data
+                      and database files). See Storage Configuration in the Exadata
+                      documentation for details on the impact of the configuration
+                      settings on storage.
+                    type: number
                   dataStorageSizeInTbs:
                     description: Size, in terabytes, of the DATA disk group.
                     type: number
@@ -546,11 +552,22 @@ spec:
                   memorySizeInGbs:
                     description: The memory allocated in GBs.
                     type: number
+                  recoStoragePercentage:
+                    description: The percentage assigned to RECO storage (database
+                      redo logs, archive logs, and recovery manager backups). See
+                      Storage Configuration in the Exadata documentation for details
+                      on the impact of the configuration settings on storage.
+                    type: number
                   shape:
                     description: The shape of the Exadata infrastructure. The shape
                       determines the amount of CPU, storage, and memory resources
                       allocated to the instance.
                     type: string
+                  sparseStoragePercentage:
+                    description: The percentage assigned to SPARSE storage (Exadata
+                      snapshots). See Storage Configuration in the Exadata documentation
+                      for details on the impact of the configuration settings on storage.
+                    type: number
                   sshPublicKeys:
                     description: The public key portion of one or more key pairs used
                       for SSH access to the VM cluster.

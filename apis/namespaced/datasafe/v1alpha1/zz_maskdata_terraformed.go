@@ -21,7 +21,7 @@ func (mg *MaskData) GetTerraformResourceType() string {
 
 // GetConnectionDetailsMapping for this MaskData
 func (tr *MaskData) GetConnectionDetailsMapping() map[string]string {
-	return nil
+	return map[string]string{"target_credentials[*].password": "targetCredentials[*].passwordSecretRef"}
 }
 
 // GetObservation of this MaskData

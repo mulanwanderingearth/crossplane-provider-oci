@@ -392,6 +392,28 @@ spec:
                     items:
                       type: string
                     type: array
+                  loadBalancerConfig:
+                    description: (Updatable) This config is used to choose the load
+                      balancer service and bandwidth for OpenSearch and OpenDashboard
+                      load balancers.
+                    items:
+                      properties:
+                        loadBalancerMaxBandwidthInMbps:
+                          description: (Updatable) Maximum bandwidth (Mbps) of OpenSearch
+                            load balancer. Not applicable for network load balancer
+                            service.
+                          type: number
+                        loadBalancerMinBandwidthInMbps:
+                          description: (Updatable) Minimum bandwidth (Mbps) of OpenSearch
+                            load balancer. Not applicable for network load balancer
+                            service.
+                          type: number
+                        loadBalancerServiceType:
+                          description: (Updatable) Load balancer service for OpenSearch
+                            and OpenDashboard load balancer. Default value is LOAD_BALANCER.
+                          type: string
+                      type: object
+                    type: array
                   maintenanceDetails:
                     description: (Updatable) Details for creation of maintenance details
                     items:
@@ -426,6 +448,28 @@ spec:
                   masterNodeHostType:
                     description: The instance type for the cluster's master nodes.
                     type: string
+                  mlNodeCount:
+                    description: (Updatable) The number of ML nodes configured for
+                      the cluster.
+                    type: number
+                  mlNodeHostMemoryGb:
+                    description: (Updatable) The amount of memory in GB, for the cluster's
+                      ML nodes.
+                    type: number
+                  mlNodeHostOcpuCount:
+                    description: (Updatable) The number of OCPUs configured for the
+                      cluster's ML nodes.
+                    type: number
+                  mlNodeHostShape:
+                    description: (Updatable) The node shape for the cluster's ML nodes.
+                    type: string
+                  mlNodeHostType:
+                    description: The instance type for the cluster's ML nodes.
+                    type: string
+                  mlNodeStorageGb:
+                    description: (Updatable) The amount of storage in GB, to configure
+                      per node for the cluster's ML nodes.
+                    type: number
                   nsgId:
                     description: The OCID of the NSG where the private endpoint vnic
                       will be attached.
@@ -1445,6 +1489,28 @@ spec:
                     items:
                       type: string
                     type: array
+                  loadBalancerConfig:
+                    description: (Updatable) This config is used to choose the load
+                      balancer service and bandwidth for OpenSearch and OpenDashboard
+                      load balancers.
+                    items:
+                      properties:
+                        loadBalancerMaxBandwidthInMbps:
+                          description: (Updatable) Maximum bandwidth (Mbps) of OpenSearch
+                            load balancer. Not applicable for network load balancer
+                            service.
+                          type: number
+                        loadBalancerMinBandwidthInMbps:
+                          description: (Updatable) Minimum bandwidth (Mbps) of OpenSearch
+                            load balancer. Not applicable for network load balancer
+                            service.
+                          type: number
+                        loadBalancerServiceType:
+                          description: (Updatable) Load balancer service for OpenSearch
+                            and OpenDashboard load balancer. Default value is LOAD_BALANCER.
+                          type: string
+                      type: object
+                    type: array
                   maintenanceDetails:
                     description: (Updatable) Details for creation of maintenance details
                     items:
@@ -1479,6 +1545,28 @@ spec:
                   masterNodeHostType:
                     description: The instance type for the cluster's master nodes.
                     type: string
+                  mlNodeCount:
+                    description: (Updatable) The number of ML nodes configured for
+                      the cluster.
+                    type: number
+                  mlNodeHostMemoryGb:
+                    description: (Updatable) The amount of memory in GB, for the cluster's
+                      ML nodes.
+                    type: number
+                  mlNodeHostOcpuCount:
+                    description: (Updatable) The number of OCPUs configured for the
+                      cluster's ML nodes.
+                    type: number
+                  mlNodeHostShape:
+                    description: (Updatable) The node shape for the cluster's ML nodes.
+                    type: string
+                  mlNodeHostType:
+                    description: The instance type for the cluster's ML nodes.
+                    type: string
+                  mlNodeStorageGb:
+                    description: (Updatable) The amount of storage in GB, to configure
+                      per node for the cluster's ML nodes.
+                    type: number
                   nsgId:
                     description: The OCID of the NSG where the private endpoint vnic
                       will be attached.
@@ -2380,6 +2468,28 @@ spec:
                     description: Additional information about the current lifecycle
                       state of the cluster.
                     type: string
+                  loadBalancerConfig:
+                    description: (Updatable) This config is used to choose the load
+                      balancer service and bandwidth for OpenSearch and OpenDashboard
+                      load balancers.
+                    items:
+                      properties:
+                        loadBalancerMaxBandwidthInMbps:
+                          description: (Updatable) Maximum bandwidth (Mbps) of OpenSearch
+                            load balancer. Not applicable for network load balancer
+                            service.
+                          type: number
+                        loadBalancerMinBandwidthInMbps:
+                          description: (Updatable) Minimum bandwidth (Mbps) of OpenSearch
+                            load balancer. Not applicable for network load balancer
+                            service.
+                          type: number
+                        loadBalancerServiceType:
+                          description: (Updatable) Load balancer service for OpenSearch
+                            and OpenDashboard load balancer. Default value is LOAD_BALANCER.
+                          type: string
+                      type: object
+                    type: array
                   maintenanceDetails:
                     description: (Updatable) Details for creation of maintenance details
                     items:
@@ -2423,6 +2533,28 @@ spec:
                   masterNodeHostType:
                     description: The instance type for the cluster's master nodes.
                     type: string
+                  mlNodeCount:
+                    description: (Updatable) The number of ML nodes configured for
+                      the cluster.
+                    type: number
+                  mlNodeHostMemoryGb:
+                    description: (Updatable) The amount of memory in GB, for the cluster's
+                      ML nodes.
+                    type: number
+                  mlNodeHostOcpuCount:
+                    description: (Updatable) The number of OCPUs configured for the
+                      cluster's ML nodes.
+                    type: number
+                  mlNodeHostShape:
+                    description: (Updatable) The node shape for the cluster's ML nodes.
+                    type: string
+                  mlNodeHostType:
+                    description: The instance type for the cluster's ML nodes.
+                    type: string
+                  mlNodeStorageGb:
+                    description: (Updatable) The amount of storage in GB, to configure
+                      per node for the cluster's ML nodes.
+                    type: number
                   nsgId:
                     description: The OCID of the NSG where the private endpoint vnic
                       will be attached.

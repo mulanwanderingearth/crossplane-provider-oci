@@ -38,7 +38,7 @@ type ProfileInitParameters struct {
 	// (Updatable) User-specified description of the registration profile.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique and you can change the name later. Avoid entering  confidential information.
+	// (Updatable) A user-friendly name. Must be unique and you can change the name later. Avoid entering  confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
@@ -64,7 +64,7 @@ type ProfileInitParameters struct {
 	// +kubebuilder:validation:Optional
 	ManagedInstanceGroupIDSelector *v1.NamespacedSelector `json:"managedInstanceGroupIdSelector,omitempty" tf:"-"`
 
-	// description: The OCID of the management station to associate  with an instance once registered. This is required when creating a profile for non-OCI instances.
+	// description: The OCID of the management station to associate  with an instance once registered. This is used when creating a profile for non-OCI instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/osmanagementhub/v1alpha1.ManagementStation
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	ManagementStationID *string `json:"managementStationId,omitempty" tf:"management_station_id,omitempty"`
@@ -86,7 +86,7 @@ type ProfileInitParameters struct {
 	// The type of instance to register.
 	RegistrationType *string `json:"registrationType,omitempty" tf:"registration_type,omitempty"`
 
-	// (Applicable when profile_type=SOFTWARESOURCE) The list of software source OCIDs that the registration profile will use.
+	// The list of software source OCIDs that the registration profile will use.
 	SoftwareSourceIds []*string `json:"softwareSourceIds,omitempty" tf:"software_source_ids,omitempty"`
 
 	// The vendor of the operating system for the instance.
@@ -98,7 +98,7 @@ type ProfileLifecycleEnvironmentInitParameters struct {
 
 type ProfileLifecycleEnvironmentObservation struct {
 
-	// (Updatable) A user-friendly name. Does not have to be unique and you can change the name later. Avoid entering  confidential information.
+	// (Updatable) A user-friendly name. Must be unique and you can change the name later. Avoid entering  confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The OCID of the registration profile.
@@ -113,7 +113,7 @@ type ProfileLifecycleStageInitParameters struct {
 
 type ProfileLifecycleStageObservation struct {
 
-	// (Updatable) A user-friendly name. Does not have to be unique and you can change the name later. Avoid entering  confidential information.
+	// (Updatable) A user-friendly name. Must be unique and you can change the name later. Avoid entering  confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The OCID of the registration profile.
@@ -128,7 +128,7 @@ type ProfileManagedInstanceGroupInitParameters struct {
 
 type ProfileManagedInstanceGroupObservation struct {
 
-	// (Updatable) A user-friendly name. Does not have to be unique and you can change the name later. Avoid entering  confidential information.
+	// (Updatable) A user-friendly name. Must be unique and you can change the name later. Avoid entering  confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The OCID of the registration profile.
@@ -153,7 +153,7 @@ type ProfileObservation struct {
 	// (Updatable) User-specified description of the registration profile.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique and you can change the name later. Avoid entering  confidential information.
+	// (Updatable) A user-friendly name. Must be unique and you can change the name later. Avoid entering  confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
@@ -184,7 +184,7 @@ type ProfileObservation struct {
 	// The OCID of the managed instance group that the instance will join after registration.
 	ManagedInstanceGroupID *string `json:"managedInstanceGroupId,omitempty" tf:"managed_instance_group_id,omitempty"`
 
-	// description: The OCID of the management station to associate  with an instance once registered. This is required when creating a profile for non-OCI instances.
+	// description: The OCID of the management station to associate  with an instance once registered. This is used when creating a profile for non-OCI instances.
 	ManagementStationID *string `json:"managementStationId,omitempty" tf:"management_station_id,omitempty"`
 
 	// The operating system family.
@@ -199,7 +199,7 @@ type ProfileObservation struct {
 	// The type of instance to register.
 	RegistrationType *string `json:"registrationType,omitempty" tf:"registration_type,omitempty"`
 
-	// (Applicable when profile_type=SOFTWARESOURCE) The list of software source OCIDs that the registration profile will use.
+	// The list of software source OCIDs that the registration profile will use.
 	SoftwareSourceIds []*string `json:"softwareSourceIds,omitempty" tf:"software_source_ids,omitempty"`
 
 	// The list of software sources that the registration profile will use.
@@ -250,7 +250,7 @@ type ProfileParameters struct {
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique and you can change the name later. Avoid entering  confidential information.
+	// (Updatable) A user-friendly name. Must be unique and you can change the name later. Avoid entering  confidential information.
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
@@ -281,7 +281,7 @@ type ProfileParameters struct {
 	// +kubebuilder:validation:Optional
 	ManagedInstanceGroupIDSelector *v1.NamespacedSelector `json:"managedInstanceGroupIdSelector,omitempty" tf:"-"`
 
-	// description: The OCID of the management station to associate  with an instance once registered. This is required when creating a profile for non-OCI instances.
+	// description: The OCID of the management station to associate  with an instance once registered. This is used when creating a profile for non-OCI instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/osmanagementhub/v1alpha1.ManagementStation
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -307,7 +307,7 @@ type ProfileParameters struct {
 	// +kubebuilder:validation:Optional
 	RegistrationType *string `json:"registrationType,omitempty" tf:"registration_type,omitempty"`
 
-	// (Applicable when profile_type=SOFTWARESOURCE) The list of software source OCIDs that the registration profile will use.
+	// The list of software source OCIDs that the registration profile will use.
 	// +kubebuilder:validation:Optional
 	SoftwareSourceIds []*string `json:"softwareSourceIds,omitempty" tf:"software_source_ids,omitempty"`
 
@@ -324,7 +324,7 @@ type ProfileSoftwareSourcesObservation struct {
 	// (Updatable) User-specified description of the registration profile.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique and you can change the name later. Avoid entering  confidential information.
+	// (Updatable) A user-friendly name. Must be unique and you can change the name later. Avoid entering  confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The OCID of the registration profile.

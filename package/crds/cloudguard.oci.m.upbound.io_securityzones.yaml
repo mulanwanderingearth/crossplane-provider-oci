@@ -167,6 +167,10 @@ spec:
                       only. Example: {"bar-key": "value"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  isInheritanceAfterDeleteEnabled:
+                    description: (Updatable) Indicates if upon deletion of the security
+                      zone the comparment should inherit parent security zone
+                    type: boolean
                   securityZoneRecipeId:
                     description: (Updatable) The OCID of the security zone recipe
                       (SecurityRecipe resource) for the security zone
@@ -293,6 +297,10 @@ spec:
                       only. Example: {"bar-key": "value"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  isInheritanceAfterDeleteEnabled:
+                    description: (Updatable) Indicates if upon deletion of the security
+                      zone the comparment should inherit parent security zone
+                    type: boolean
                   securityZoneRecipeId:
                     description: (Updatable) The OCID of the security zone recipe
                       (SecurityRecipe resource) for the security zone
@@ -406,6 +414,10 @@ spec:
                     items:
                       type: string
                     type: array
+                  isInheritanceAfterDeleteEnabled:
+                    description: (Updatable) Indicates if upon deletion of the security
+                      zone the comparment should inherit parent security zone
+                    type: boolean
                   lifecycleDetails:
                     description: A message describing the current state in more detail.
                       For example, this can be used to provide actionable information

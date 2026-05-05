@@ -98,7 +98,7 @@ type NetworkLoadBalancersBackendSetsUnifiedBackendsInitParameters struct {
 	// (Updatable) Whether the network load balancer should treat this server as a backup unit. If true, then the network load balancer forwards no ingress traffic to this backend server unless all other backend servers not marked as "isBackup" fail the health check policy.  Example: false
 	IsBackup *bool `json:"isBackup,omitempty" tf:"is_backup,omitempty"`
 
-	// (Updatable) Whether the network load balancer should drain this server. Servers marked "isDrain" receive no incoming traffic.  Example: false
+	// (Updatable) Whether the network load balancer should drain this server.  Servers marked "isDrain" stop receiving new connections but will continue to receive traffic on existing connections until the connection is terminated or times out.  Example: false
 	IsDrain *bool `json:"isDrain,omitempty" tf:"is_drain,omitempty"`
 
 	// (Updatable) Whether the network load balancer should treat this server as offline. Offline servers receive no incoming traffic.  Example: false
@@ -135,7 +135,7 @@ type NetworkLoadBalancersBackendSetsUnifiedBackendsObservation struct {
 	// (Updatable) Whether the network load balancer should treat this server as a backup unit. If true, then the network load balancer forwards no ingress traffic to this backend server unless all other backend servers not marked as "isBackup" fail the health check policy.  Example: false
 	IsBackup *bool `json:"isBackup,omitempty" tf:"is_backup,omitempty"`
 
-	// (Updatable) Whether the network load balancer should drain this server. Servers marked "isDrain" receive no incoming traffic.  Example: false
+	// (Updatable) Whether the network load balancer should drain this server.  Servers marked "isDrain" stop receiving new connections but will continue to receive traffic on existing connections until the connection is terminated or times out.  Example: false
 	IsDrain *bool `json:"isDrain,omitempty" tf:"is_drain,omitempty"`
 
 	// (Updatable) Whether the network load balancer should treat this server as offline. Offline servers receive no incoming traffic.  Example: false
@@ -164,7 +164,7 @@ type NetworkLoadBalancersBackendSetsUnifiedBackendsParameters struct {
 	// +kubebuilder:validation:Optional
 	IsBackup *bool `json:"isBackup,omitempty" tf:"is_backup,omitempty"`
 
-	// (Updatable) Whether the network load balancer should drain this server. Servers marked "isDrain" receive no incoming traffic.  Example: false
+	// (Updatable) Whether the network load balancer should drain this server.  Servers marked "isDrain" stop receiving new connections but will continue to receive traffic on existing connections until the connection is terminated or times out.  Example: false
 	// +kubebuilder:validation:Optional
 	IsDrain *bool `json:"isDrain,omitempty" tf:"is_drain,omitempty"`
 
@@ -320,7 +320,7 @@ type NetworkLoadBalancersBackendSetsUnifiedHealthCheckerParameters struct {
 
 type NetworkLoadBalancersBackendSetsUnifiedInitParameters struct {
 
-	// (Updatable) If enabled, NLB supports active-standby backends. The standby backend takes over the traffic when the active node fails, and continues to serve the traffic even when the old active node is back healthy.
+	// (Updatable) If enabled, NLB supports active-standby backends, with the initial standby being the configured backup backend. The standby backend becomes active and takes over serving traffic when the current active backend becomes unhealthy.   The new active backend continues to serve the traffic while healthy even when the old active backend becomes healthy.
 	AreOperationallyActiveBackendsPreferred *bool `json:"areOperationallyActiveBackendsPreferred,omitempty" tf:"are_operationally_active_backends_preferred,omitempty"`
 
 	// (Updatable) An array of backends to be associated with the backend set.
@@ -338,7 +338,7 @@ type NetworkLoadBalancersBackendSetsUnifiedInitParameters struct {
 	// (Updatable) If enabled existing connections will be forwarded to an alternative healthy backend as soon as current backend becomes unhealthy.
 	IsInstantFailoverEnabled *bool `json:"isInstantFailoverEnabled,omitempty" tf:"is_instant_failover_enabled,omitempty"`
 
-	// (Updatable) If enabled along with instant failover, the network load balancer will send TCP RST to the clients for the existing connections instead of failing over to a healthy backend. This only applies when using the instant failover. By default, TCP RST is enabled.
+	// (Updatable) This only applies when using instant failover. If enabled, the network load balancer will send TCP RST to clients when a backend becomes unhealthy and the traffic is moved to a healthy backend.  If disabled, the network load balancer will not send TCP RST before moving traffic to a healthy backend.  By default, TCP RST is enabled.
 	IsInstantFailoverTCPResetEnabled *bool `json:"isInstantFailoverTcpResetEnabled,omitempty" tf:"is_instant_failover_tcp_reset_enabled,omitempty"`
 
 	// (Updatable) If this parameter is enabled, then the network load balancer preserves the source IP of the packet when it is forwarded to backends. Backends see the original source IP. If the isPreserveSourceDestination parameter is enabled for the network load balancer resource, then this parameter cannot be disabled. The value is true by default.
@@ -365,7 +365,7 @@ type NetworkLoadBalancersBackendSetsUnifiedInitParameters struct {
 
 type NetworkLoadBalancersBackendSetsUnifiedObservation struct {
 
-	// (Updatable) If enabled, NLB supports active-standby backends. The standby backend takes over the traffic when the active node fails, and continues to serve the traffic even when the old active node is back healthy.
+	// (Updatable) If enabled, NLB supports active-standby backends, with the initial standby being the configured backup backend. The standby backend becomes active and takes over serving traffic when the current active backend becomes unhealthy.   The new active backend continues to serve the traffic while healthy even when the old active backend becomes healthy.
 	AreOperationallyActiveBackendsPreferred *bool `json:"areOperationallyActiveBackendsPreferred,omitempty" tf:"are_operationally_active_backends_preferred,omitempty"`
 
 	// (Updatable) An array of backends to be associated with the backend set.
@@ -385,7 +385,7 @@ type NetworkLoadBalancersBackendSetsUnifiedObservation struct {
 	// (Updatable) If enabled existing connections will be forwarded to an alternative healthy backend as soon as current backend becomes unhealthy.
 	IsInstantFailoverEnabled *bool `json:"isInstantFailoverEnabled,omitempty" tf:"is_instant_failover_enabled,omitempty"`
 
-	// (Updatable) If enabled along with instant failover, the network load balancer will send TCP RST to the clients for the existing connections instead of failing over to a healthy backend. This only applies when using the instant failover. By default, TCP RST is enabled.
+	// (Updatable) This only applies when using instant failover. If enabled, the network load balancer will send TCP RST to clients when a backend becomes unhealthy and the traffic is moved to a healthy backend.  If disabled, the network load balancer will not send TCP RST before moving traffic to a healthy backend.  By default, TCP RST is enabled.
 	IsInstantFailoverTCPResetEnabled *bool `json:"isInstantFailoverTcpResetEnabled,omitempty" tf:"is_instant_failover_tcp_reset_enabled,omitempty"`
 
 	// (Updatable) If this parameter is enabled, then the network load balancer preserves the source IP of the packet when it is forwarded to backends. Backends see the original source IP. If the isPreserveSourceDestination parameter is enabled for the network load balancer resource, then this parameter cannot be disabled. The value is true by default.
@@ -403,7 +403,7 @@ type NetworkLoadBalancersBackendSetsUnifiedObservation struct {
 
 type NetworkLoadBalancersBackendSetsUnifiedParameters struct {
 
-	// (Updatable) If enabled, NLB supports active-standby backends. The standby backend takes over the traffic when the active node fails, and continues to serve the traffic even when the old active node is back healthy.
+	// (Updatable) If enabled, NLB supports active-standby backends, with the initial standby being the configured backup backend. The standby backend becomes active and takes over serving traffic when the current active backend becomes unhealthy.   The new active backend continues to serve the traffic while healthy even when the old active backend becomes healthy.
 	// +kubebuilder:validation:Optional
 	AreOperationallyActiveBackendsPreferred *bool `json:"areOperationallyActiveBackendsPreferred,omitempty" tf:"are_operationally_active_backends_preferred,omitempty"`
 
@@ -427,7 +427,7 @@ type NetworkLoadBalancersBackendSetsUnifiedParameters struct {
 	// +kubebuilder:validation:Optional
 	IsInstantFailoverEnabled *bool `json:"isInstantFailoverEnabled,omitempty" tf:"is_instant_failover_enabled,omitempty"`
 
-	// (Updatable) If enabled along with instant failover, the network load balancer will send TCP RST to the clients for the existing connections instead of failing over to a healthy backend. This only applies when using the instant failover. By default, TCP RST is enabled.
+	// (Updatable) This only applies when using instant failover. If enabled, the network load balancer will send TCP RST to clients when a backend becomes unhealthy and the traffic is moved to a healthy backend.  If disabled, the network load balancer will not send TCP RST before moving traffic to a healthy backend.  By default, TCP RST is enabled.
 	// +kubebuilder:validation:Optional
 	IsInstantFailoverTCPResetEnabled *bool `json:"isInstantFailoverTcpResetEnabled,omitempty" tf:"is_instant_failover_tcp_reset_enabled,omitempty"`
 

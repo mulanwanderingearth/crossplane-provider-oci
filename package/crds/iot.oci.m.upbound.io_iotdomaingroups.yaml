@@ -170,6 +170,14 @@ spec:
                       {"Department": "Finance"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  type:
+                    description: Type of domain group. DEVELOPMENT uses fewer resources
+                      and has a higher Recovery Time Objective (RTO), making it suitable
+                      for development and testing. PRODUCTION is recommended for production
+                      workloads.  LIGHTWEIGHT and STANDARD are deprecated aliases
+                      for DEVELOPMENT and PRODUCTION respectively and will be removed  in
+                      a future release.
+                    type: string
                 type: object
               initProvider:
                 description: |-
@@ -295,6 +303,14 @@ spec:
                       {"Department": "Finance"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  type:
+                    description: Type of domain group. DEVELOPMENT uses fewer resources
+                      and has a higher Recovery Time Objective (RTO), making it suitable
+                      for development and testing. PRODUCTION is recommended for production
+                      workloads.  LIGHTWEIGHT and STANDARD are deprecated aliases
+                      for DEVELOPMENT and PRODUCTION respectively and will be removed  in
+                      a future release.
+                    type: string
                 type: object
               managementPolicies:
                 default:
@@ -429,6 +445,14 @@ spec:
                   timeUpdated:
                     description: 'The date and time when the resource was last updated,
                       in the format defined by RFC 3339. Example: 2016-08-25T21:10:29.600Z'
+                    type: string
+                  type:
+                    description: Type of domain group. DEVELOPMENT uses fewer resources
+                      and has a higher Recovery Time Objective (RTO), making it suitable
+                      for development and testing. PRODUCTION is recommended for production
+                      workloads.  LIGHTWEIGHT and STANDARD are deprecated aliases
+                      for DEVELOPMENT and PRODUCTION respectively and will be removed  in
+                      a future release.
                     type: string
                 type: object
               conditions:

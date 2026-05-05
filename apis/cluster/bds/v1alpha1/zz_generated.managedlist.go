@@ -34,6 +34,15 @@ func (l *BdsInstanceApiKeyList) GetItems() []resource.Managed {
 	return items
 }
 
+// GetItems of this BdsInstanceExecuteBootstrapScriptActionList.
+func (l *BdsInstanceExecuteBootstrapScriptActionList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this BdsInstanceIdentityConfigurationList.
 func (l *BdsInstanceIdentityConfigurationList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))

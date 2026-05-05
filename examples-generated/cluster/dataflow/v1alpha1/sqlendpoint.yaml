@@ -25,6 +25,14 @@ spec:
       ocpus: ${var.sql_endpoint_executor_shape_config_ocpus}
     freeformTags:
       Department: Finance
+    logCompartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_compartment
+    logDisplayName: ${var.sql_endpoint_log_display_name}
+    logGroupIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_log_group
+    logRetentionDuration: ${var.sql_endpoint_log_retention_duration}
     maxExecutorCount: ${var.sql_endpoint_max_executor_count}
     metastoreIdSelector:
       matchLabels:

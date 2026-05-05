@@ -251,6 +251,173 @@ spec:
                                   Reservation. Deprecated. Please use capacity_reservation_id
                                   of initial_cluster_configurations instead.
                                 type: string
+                              clusterByolAllocationDetails:
+                                description: The BYOL allocations used for VMware
+                                  Cluster provisioning.
+                                items:
+                                  properties:
+                                    firewallByolAllocationId:
+                                      description: The OCID of the VMware BYOL Allocation
+                                        used to deploy VMware vDefend Firewall.
+                                      type: string
+                                    firewallByolAllocationIdRef:
+                                      description: Reference to a ByolAllocation in
+                                        ocvp to populate firewallByolAllocationId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    firewallByolAllocationIdSelector:
+                                      description: Selector for a ByolAllocation in
+                                        ocvp to populate firewallByolAllocationId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    vsanByolAllocationId:
+                                      description: The OCID of the VMware BYOL Allocation
+                                        used to deploy VMware vSAN.
+                                      type: string
+                                    vsanByolAllocationIdRef:
+                                      description: Reference to a ByolAllocation in
+                                        ocvp to populate vsanByolAllocationId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    vsanByolAllocationIdSelector:
+                                      description: Selector for a ByolAllocation in
+                                        ocvp to populate vsanByolAllocationId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
                               computeAvailabilityDomain:
                                 description: (Deprecated)  The availability domain
                                   to create the SDDC's ESXi hosts in. For multi-AD
@@ -309,6 +476,86 @@ spec:
                                 description: The initial compute shape of the Cluster's
                                   ESXi hosts. ListSupportedHostShapes.
                                 type: string
+                              initialVcfByolAllocationId:
+                                description: The OCID of the initial VMware BYOL Allocation
+                                  used to deploy VMware Cloud Foundation.
+                                type: string
+                              initialVcfByolAllocationIdRef:
+                                description: Reference to a ByolAllocation in ocvp
+                                  to populate initialVcfByolAllocationId.
+                                properties:
+                                  name:
+                                    description: Name of the referenced object.
+                                    type: string
+                                  policy:
+                                    description: Policies for referencing.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                required:
+                                - name
+                                type: object
+                              initialVcfByolAllocationIdSelector:
+                                description: Selector for a ByolAllocation in ocvp
+                                  to populate initialVcfByolAllocationId.
+                                properties:
+                                  matchControllerRef:
+                                    description: |-
+                                      MatchControllerRef ensures an object with the same controller reference
+                                      as the selecting object is selected.
+                                    type: boolean
+                                  matchLabels:
+                                    additionalProperties:
+                                      type: string
+                                    description: MatchLabels ensures an object with
+                                      matching labels is selected.
+                                    type: object
+                                  policy:
+                                    description: Policies for selection.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                type: object
                               instanceDisplayNamePrefix:
                                 description: A prefix used in the name of each ESXi
                                   host and Compute instance in the Cluster. If this
@@ -1155,6 +1402,97 @@ spec:
                       can only be changed when hcx_action is updated.
                     items:
                       type: string
+                    type: array
+                  sddcByolAllocationDetails:
+                    description: (Updatable) The BYOL allocations used for VMware
+                      SDDC provisioning.
+                    items:
+                      properties:
+                        loadBalancerByolAllocationId:
+                          description: (Updatable) The OCID of the VMware BYOL Allocation
+                            used to deploy VMware Avi Load Balancer.
+                          type: string
+                        loadBalancerByolAllocationIdRef:
+                          description: Reference to a ByolAllocation in ocvp to populate
+                            loadBalancerByolAllocationId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        loadBalancerByolAllocationIdSelector:
+                          description: Selector for a ByolAllocation in ocvp to populate
+                            loadBalancerByolAllocationId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        loadBalancerInstanceCount:
+                          description: (Updatable) The number of VMware Avi Load Balancer
+                            instances to be deployed on VMware SDDC.
+                          type: number
+                      type: object
                     type: array
                   sshAuthorizedKeys:
                     description: (Updatable) One or more public SSH keys to be included
@@ -1377,6 +1715,173 @@ spec:
                                   Reservation. Deprecated. Please use capacity_reservation_id
                                   of initial_cluster_configurations instead.
                                 type: string
+                              clusterByolAllocationDetails:
+                                description: The BYOL allocations used for VMware
+                                  Cluster provisioning.
+                                items:
+                                  properties:
+                                    firewallByolAllocationId:
+                                      description: The OCID of the VMware BYOL Allocation
+                                        used to deploy VMware vDefend Firewall.
+                                      type: string
+                                    firewallByolAllocationIdRef:
+                                      description: Reference to a ByolAllocation in
+                                        ocvp to populate firewallByolAllocationId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    firewallByolAllocationIdSelector:
+                                      description: Selector for a ByolAllocation in
+                                        ocvp to populate firewallByolAllocationId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    vsanByolAllocationId:
+                                      description: The OCID of the VMware BYOL Allocation
+                                        used to deploy VMware vSAN.
+                                      type: string
+                                    vsanByolAllocationIdRef:
+                                      description: Reference to a ByolAllocation in
+                                        ocvp to populate vsanByolAllocationId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    vsanByolAllocationIdSelector:
+                                      description: Selector for a ByolAllocation in
+                                        ocvp to populate vsanByolAllocationId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
                               computeAvailabilityDomain:
                                 description: (Deprecated)  The availability domain
                                   to create the SDDC's ESXi hosts in. For multi-AD
@@ -1435,6 +1940,86 @@ spec:
                                 description: The initial compute shape of the Cluster's
                                   ESXi hosts. ListSupportedHostShapes.
                                 type: string
+                              initialVcfByolAllocationId:
+                                description: The OCID of the initial VMware BYOL Allocation
+                                  used to deploy VMware Cloud Foundation.
+                                type: string
+                              initialVcfByolAllocationIdRef:
+                                description: Reference to a ByolAllocation in ocvp
+                                  to populate initialVcfByolAllocationId.
+                                properties:
+                                  name:
+                                    description: Name of the referenced object.
+                                    type: string
+                                  policy:
+                                    description: Policies for referencing.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                required:
+                                - name
+                                type: object
+                              initialVcfByolAllocationIdSelector:
+                                description: Selector for a ByolAllocation in ocvp
+                                  to populate initialVcfByolAllocationId.
+                                properties:
+                                  matchControllerRef:
+                                    description: |-
+                                      MatchControllerRef ensures an object with the same controller reference
+                                      as the selecting object is selected.
+                                    type: boolean
+                                  matchLabels:
+                                    additionalProperties:
+                                      type: string
+                                    description: MatchLabels ensures an object with
+                                      matching labels is selected.
+                                    type: object
+                                  policy:
+                                    description: Policies for selection.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                type: object
                               instanceDisplayNamePrefix:
                                 description: A prefix used in the name of each ESXi
                                   host and Compute instance in the Cluster. If this
@@ -2281,6 +2866,97 @@ spec:
                       can only be changed when hcx_action is updated.
                     items:
                       type: string
+                    type: array
+                  sddcByolAllocationDetails:
+                    description: (Updatable) The BYOL allocations used for VMware
+                      SDDC provisioning.
+                    items:
+                      properties:
+                        loadBalancerByolAllocationId:
+                          description: (Updatable) The OCID of the VMware BYOL Allocation
+                            used to deploy VMware Avi Load Balancer.
+                          type: string
+                        loadBalancerByolAllocationIdRef:
+                          description: Reference to a ByolAllocation in ocvp to populate
+                            loadBalancerByolAllocationId.
+                          properties:
+                            name:
+                              description: Name of the referenced object.
+                              type: string
+                            policy:
+                              description: Policies for referencing.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          required:
+                          - name
+                          type: object
+                        loadBalancerByolAllocationIdSelector:
+                          description: Selector for a ByolAllocation in ocvp to populate
+                            loadBalancerByolAllocationId.
+                          properties:
+                            matchControllerRef:
+                              description: |-
+                                MatchControllerRef ensures an object with the same controller reference
+                                as the selecting object is selected.
+                              type: boolean
+                            matchLabels:
+                              additionalProperties:
+                                type: string
+                              description: MatchLabels ensures an object with matching
+                                labels is selected.
+                              type: object
+                            policy:
+                              description: Policies for selection.
+                              properties:
+                                resolution:
+                                  default: Required
+                                  description: |-
+                                    Resolution specifies whether resolution of this reference is required.
+                                    The default is 'Required', which means the reconcile will fail if the
+                                    reference cannot be resolved. 'Optional' means this reference will be
+                                    a no-op if it cannot be resolved.
+                                  enum:
+                                  - Required
+                                  - Optional
+                                  type: string
+                                resolve:
+                                  description: |-
+                                    Resolve specifies when this reference should be resolved. The default
+                                    is 'IfNotPresent', which will attempt to resolve the reference only when
+                                    the corresponding field is not present. Use 'Always' to resolve the
+                                    reference on every reconcile.
+                                  enum:
+                                  - Always
+                                  - IfNotPresent
+                                  type: string
+                              type: object
+                          type: object
+                        loadBalancerInstanceCount:
+                          description: (Updatable) The number of VMware Avi Load Balancer
+                            instances to be deployed on VMware SDDC.
+                          type: number
+                      type: object
                     type: array
                   sshAuthorizedKeys:
                     description: (Updatable) One or more public SSH keys to be included
@@ -2581,6 +3257,21 @@ spec:
                                   Reservation. Deprecated. Please use capacity_reservation_id
                                   of initial_cluster_configurations instead.
                                 type: string
+                              clusterByolAllocationDetails:
+                                description: The BYOL allocations used for VMware
+                                  Cluster provisioning.
+                                items:
+                                  properties:
+                                    firewallByolAllocationId:
+                                      description: The OCID of the VMware BYOL Allocation
+                                        used to deploy VMware vDefend Firewall.
+                                      type: string
+                                    vsanByolAllocationId:
+                                      description: The OCID of the VMware BYOL Allocation
+                                        used to deploy VMware vSAN.
+                                      type: string
+                                  type: object
+                                type: array
                               computeAvailabilityDomain:
                                 description: (Deprecated)  The availability domain
                                   to create the SDDC's ESXi hosts in. For multi-AD
@@ -2638,6 +3329,10 @@ spec:
                               initialHostShapeName:
                                 description: The initial compute shape of the Cluster's
                                   ESXi hosts. ListSupportedHostShapes.
+                                type: string
+                              initialVcfByolAllocationId:
+                                description: The OCID of the initial VMware BYOL Allocation
+                                  used to deploy VMware Cloud Foundation.
                                 type: string
                               instanceDisplayNamePrefix:
                                 description: A prefix used in the name of each ESXi
@@ -2841,6 +3536,21 @@ spec:
                     items:
                       type: string
                     type: array
+                  sddcByolAllocationDetails:
+                    description: (Updatable) The BYOL allocations used for VMware
+                      SDDC provisioning.
+                    items:
+                      properties:
+                        loadBalancerByolAllocationId:
+                          description: (Updatable) The OCID of the VMware BYOL Allocation
+                            used to deploy VMware Avi Load Balancer.
+                          type: string
+                        loadBalancerInstanceCount:
+                          description: (Updatable) The number of VMware Avi Load Balancer
+                            instances to be deployed on VMware SDDC.
+                          type: number
+                      type: object
+                    type: array
                   sshAuthorizedKeys:
                     description: (Updatable) One or more public SSH keys to be included
                       in the ~/.ssh/authorized_keys file for the default user on each
@@ -2854,6 +3564,9 @@ spec:
                   systemTags:
                     additionalProperties:
                       type: string
+                    description: 'Usage of system tag keys. These predefined keys
+                      are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain:
+                      true}}'
                     type: object
                     x-kubernetes-map-type: granular
                   timeCreated:

@@ -61,8 +61,11 @@ type MysqlConfigurationInitParameters struct {
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// User-defined service variables set only at DB system initialization. These variables cannot be changed later at runtime.
+	// DEPRECATED -- please use the options field instead. User-defined service variables set only at DB system initialization. These variables cannot be changed later at runtime.
 	InitVariables []InitVariablesInitParameters `json:"initVariables,omitempty" tf:"init_variables,omitempty"`
+
+	// The MySQL options defined in the Configuration.
+	Options []OptionsInitParameters `json:"options,omitempty" tf:"options,omitempty"`
 
 	// The OCID of the Configuration from which the new Configuration is derived. The values in CreateConfigurationDetails.variables supersede the variables of the parent Configuration.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/audit/v1alpha1.Configuration
@@ -80,7 +83,7 @@ type MysqlConfigurationInitParameters struct {
 	// The name of the associated Shape.
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
 
-	// User-defined service variables.
+	// DEPRECATED -- please use the options field instead. User-defined service variables.
 	Variables []VariablesInitParameters `json:"variables,omitempty" tf:"variables,omitempty"`
 }
 
@@ -106,8 +109,11 @@ type MysqlConfigurationObservation struct {
 	// The OCID of the Configuration.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// User-defined service variables set only at DB system initialization. These variables cannot be changed later at runtime.
+	// DEPRECATED -- please use the options field instead. User-defined service variables set only at DB system initialization. These variables cannot be changed later at runtime.
 	InitVariables []InitVariablesObservation `json:"initVariables,omitempty" tf:"init_variables,omitempty"`
+
+	// The MySQL options defined in the Configuration.
+	Options []OptionsObservation `json:"options,omitempty" tf:"options,omitempty"`
 
 	// The OCID of the Configuration from which the new Configuration is derived. The values in CreateConfigurationDetails.variables supersede the variables of the parent Configuration.
 	ParentConfigurationID *string `json:"parentConfigurationId,omitempty" tf:"parent_configuration_id,omitempty"`
@@ -131,7 +137,7 @@ type MysqlConfigurationObservation struct {
 	// The Configuration type, DEFAULT or CUSTOM.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
-	// User-defined service variables.
+	// DEPRECATED -- please use the options field instead. User-defined service variables.
 	Variables []VariablesObservation `json:"variables,omitempty" tf:"variables,omitempty"`
 }
 
@@ -168,9 +174,13 @@ type MysqlConfigurationParameters struct {
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// User-defined service variables set only at DB system initialization. These variables cannot be changed later at runtime.
+	// DEPRECATED -- please use the options field instead. User-defined service variables set only at DB system initialization. These variables cannot be changed later at runtime.
 	// +kubebuilder:validation:Optional
 	InitVariables []InitVariablesParameters `json:"initVariables,omitempty" tf:"init_variables,omitempty"`
+
+	// The MySQL options defined in the Configuration.
+	// +kubebuilder:validation:Optional
+	Options []OptionsParameters `json:"options,omitempty" tf:"options,omitempty"`
 
 	// The OCID of the Configuration from which the new Configuration is derived. The values in CreateConfigurationDetails.variables supersede the variables of the parent Configuration.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/audit/v1alpha1.Configuration
@@ -190,9 +200,38 @@ type MysqlConfigurationParameters struct {
 	// +kubebuilder:validation:Optional
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
 
-	// User-defined service variables.
+	// DEPRECATED -- please use the options field instead. User-defined service variables.
 	// +kubebuilder:validation:Optional
 	Variables []VariablesParameters `json:"variables,omitempty" tf:"variables,omitempty"`
+}
+
+type OptionsInitParameters struct {
+
+	// The option name.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// The option value.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type OptionsObservation struct {
+
+	// The option name.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// The option value.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type OptionsParameters struct {
+
+	// The option name.
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name" tf:"name,omitempty"`
+
+	// The option value.
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type VariablesInitParameters struct {

@@ -243,30 +243,6 @@ func (mg *CertificateAuthority) ResolveReferences(ctx context.Context, c client.
 		mg.Spec.ForProvider.CertificateAuthorityConfig[i3].IssuerCertificateAuthorityIDRef = rsp.ResolvedReference
 
 	}
-	for i3 := 0; i3 < len(mg.Spec.ForProvider.CertificateAuthorityConfig); i3++ {
-		for i4 := 0; i4 < len(mg.Spec.ForProvider.CertificateAuthorityConfig[i3].Subject); i4++ {
-			{
-				m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "User", "UserList")
-				if err != nil {
-					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
-				}
-				rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
-					CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CertificateAuthorityConfig[i3].Subject[i4].UserID),
-					Extract:      resource.ExtractResourceID(),
-					Namespace:    mg.GetNamespace(),
-					Reference:    mg.Spec.ForProvider.CertificateAuthorityConfig[i3].Subject[i4].UserIDRef,
-					Selector:     mg.Spec.ForProvider.CertificateAuthorityConfig[i3].Subject[i4].UserIDSelector,
-					To:           reference.To{List: l, Managed: m},
-				})
-			}
-			if err != nil {
-				return errors.Wrap(err, "mg.Spec.ForProvider.CertificateAuthorityConfig[i3].Subject[i4].UserID")
-			}
-			mg.Spec.ForProvider.CertificateAuthorityConfig[i3].Subject[i4].UserID = reference.ToPtrValue(rsp.ResolvedValue)
-			mg.Spec.ForProvider.CertificateAuthorityConfig[i3].Subject[i4].UserIDRef = rsp.ResolvedReference
-
-		}
-	}
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.CertificateRevocationListDetails); i3++ {
 		for i4 := 0; i4 < len(mg.Spec.ForProvider.CertificateRevocationListDetails[i3].ObjectStorageConfig); i4++ {
 			{
@@ -352,30 +328,6 @@ func (mg *CertificateAuthority) ResolveReferences(ctx context.Context, c client.
 		mg.Spec.InitProvider.CertificateAuthorityConfig[i3].IssuerCertificateAuthorityID = reference.ToPtrValue(rsp.ResolvedValue)
 		mg.Spec.InitProvider.CertificateAuthorityConfig[i3].IssuerCertificateAuthorityIDRef = rsp.ResolvedReference
 
-	}
-	for i3 := 0; i3 < len(mg.Spec.InitProvider.CertificateAuthorityConfig); i3++ {
-		for i4 := 0; i4 < len(mg.Spec.InitProvider.CertificateAuthorityConfig[i3].Subject); i4++ {
-			{
-				m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "User", "UserList")
-				if err != nil {
-					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
-				}
-				rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
-					CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CertificateAuthorityConfig[i3].Subject[i4].UserID),
-					Extract:      resource.ExtractResourceID(),
-					Namespace:    mg.GetNamespace(),
-					Reference:    mg.Spec.InitProvider.CertificateAuthorityConfig[i3].Subject[i4].UserIDRef,
-					Selector:     mg.Spec.InitProvider.CertificateAuthorityConfig[i3].Subject[i4].UserIDSelector,
-					To:           reference.To{List: l, Managed: m},
-				})
-			}
-			if err != nil {
-				return errors.Wrap(err, "mg.Spec.InitProvider.CertificateAuthorityConfig[i3].Subject[i4].UserID")
-			}
-			mg.Spec.InitProvider.CertificateAuthorityConfig[i3].Subject[i4].UserID = reference.ToPtrValue(rsp.ResolvedValue)
-			mg.Spec.InitProvider.CertificateAuthorityConfig[i3].Subject[i4].UserIDRef = rsp.ResolvedReference
-
-		}
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.CertificateRevocationListDetails); i3++ {
 		for i4 := 0; i4 < len(mg.Spec.InitProvider.CertificateRevocationListDetails[i3].ObjectStorageConfig); i4++ {

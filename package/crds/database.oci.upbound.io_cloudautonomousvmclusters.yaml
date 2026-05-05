@@ -409,6 +409,10 @@ spec:
                       or updating a resource and is used only to perform validation
                       on the submitted data.
                     type: boolean
+                  registerPkcsTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Register Pkcs. Could be set to any integer value.
+                    type: number
                   scanListenerPortNonTls:
                     description: The SCAN Listener Non TLS port. Default is 1521.
                     type: number
@@ -506,6 +510,9 @@ spec:
                     description: The OCID of the subscription with which resource
                       needs to be associated with.
                     type: string
+                  tdeKeyStoreType:
+                    description: TDE keystore type
+                    type: string
                   timeUpdated:
                     description: The last date and time that the cloud Autonomous
                       VM cluster was updated.
@@ -513,6 +520,10 @@ spec:
                   totalContainerDatabases:
                     description: (Updatable) The total number of Autonomous Container
                       Databases that can be created.
+                    type: number
+                  unregisterPkcsTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Unregister Pkcs. Could be set to any integer value.
                     type: number
                 type: object
               initProvider:
@@ -862,6 +873,10 @@ spec:
                       or updating a resource and is used only to perform validation
                       on the submitted data.
                     type: boolean
+                  registerPkcsTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Register Pkcs. Could be set to any integer value.
+                    type: number
                   scanListenerPortNonTls:
                     description: The SCAN Listener Non TLS port. Default is 1521.
                     type: number
@@ -959,6 +974,9 @@ spec:
                     description: The OCID of the subscription with which resource
                       needs to be associated with.
                     type: string
+                  tdeKeyStoreType:
+                    description: TDE keystore type
+                    type: string
                   timeUpdated:
                     description: The last date and time that the cloud Autonomous
                       VM cluster was updated.
@@ -966,6 +984,10 @@ spec:
                   totalContainerDatabases:
                     description: (Updatable) The total number of Autonomous Container
                       Databases that can be created.
+                    type: number
+                  unregisterPkcsTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Unregister Pkcs. Could be set to any integer value.
                     type: number
                 type: object
               managementPolicies:
@@ -1395,6 +1417,19 @@ spec:
                   memorySizeInGbs:
                     description: The memory allocated in GBs.
                     type: number
+                  multiCloudIdentityConnectorConfigs:
+                    description: Details of the multi cloud identity connectors of
+                      the VM cluster.
+                    items:
+                      properties:
+                        cloudProvider:
+                          description: Cloud provider
+                          type: string
+                        id:
+                          description: The OCID of the Cloud Autonomous VM cluster.
+                          type: string
+                      type: object
+                    type: array
                   nextMaintenanceRunId:
                     description: The OCID of the next maintenance run.
                     type: string
@@ -1447,6 +1482,10 @@ spec:
                       You can release them to the available CPUs at its parent Autonomous
                       VM Cluster level by restarting the Autonomous Container Database.
                     type: number
+                  registerPkcsTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Register Pkcs. Could be set to any integer value.
+                    type: number
                   reservedCpus:
                     description: The number of CPUs reserved in an Autonomous VM Cluster.
                     type: number
@@ -1488,6 +1527,9 @@ spec:
                       Tags.
                     type: object
                     x-kubernetes-map-type: granular
+                  tdeKeyStoreType:
+                    description: TDE keystore type
+                    type: string
                   timeCreated:
                     description: The date and time that the cloud Autonomous VM cluster
                       was created.
@@ -1512,6 +1554,10 @@ spec:
                     type: number
                   totalCpus:
                     description: The total number of CPUs in an Autonomous VM Cluster.
+                    type: number
+                  unregisterPkcsTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Unregister Pkcs. Could be set to any integer value.
                     type: number
                 type: object
               conditions:

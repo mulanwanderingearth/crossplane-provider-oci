@@ -157,6 +157,56 @@ func (mg *AwrHubSourceAwrhubsourcesManagement) SetWriteConnectionSecretToReferen
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this ChargebackPlan.
+func (mg *ChargebackPlan) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this ChargebackPlan.
+func (mg *ChargebackPlan) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this ChargebackPlan.
+func (mg *ChargebackPlan) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this ChargebackPlan.
+func (mg *ChargebackPlan) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this ChargebackPlan.
+func (mg *ChargebackPlan) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this ChargebackPlan.
+func (mg *ChargebackPlan) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this ChargebackPlan.
+func (mg *ChargebackPlan) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this ChargebackPlan.
+func (mg *ChargebackPlan) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this ChargebackPlan.
+func (mg *ChargebackPlan) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this ChargebackPlan.
+func (mg *ChargebackPlan) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this DatabaseInsight.
 func (mg *DatabaseInsight) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)

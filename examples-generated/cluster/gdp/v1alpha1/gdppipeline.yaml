@@ -1,0 +1,39 @@
+apiVersion: gdp.oci.upbound.io/v1alpha1
+kind: GdpPipeline
+metadata:
+  annotations:
+    meta.upbound.io/example-id: gdp/v1alpha1/gdppipeline
+  labels:
+    testing.upbound.io/example-name: test_gdp_pipeline
+  name: test-gdp-pipeline
+spec:
+  forProvider:
+    approvalKeyVaultIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_vault
+    authorizationDetails: ${var.gdp_pipeline_authorization_details}
+    bucketDetails:
+    - bucketType: ${var.gdp_pipeline_bucket_details_bucket_type}
+      id: ${var.gdp_pipeline_bucket_details_id}
+      name: ${var.gdp_pipeline_bucket_details_name}
+      namespace: ${var.gdp_pipeline_bucket_details_namespace}
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      foo-namespace.bar-key: value
+    description: ${var.gdp_pipeline_description}
+    displayName: ${var.gdp_pipeline_display_name}
+    env: ${var.gdp_env}
+    fileTypes: ${var.gdp_pipeline_file_types}
+    freeformTags:
+      bar-key: value
+    isApprovalNeeded: ${var.gdp_pipeline_is_approval_needed}
+    isChunkingEnabled: ${var.gdp_pipeline_is_chunking_enabled}
+    isFileOverrideInDestinationEnabled: ${var.gdp_pipeline_is_file_override_in_destination_enabled}
+    isScanningEnabled: ${var.gdp_pipeline_is_scanning_enabled}
+    peeringRegion: ${var.gdp_pipeline_peering_region}
+    pipelineType: ${var.gdp_pipeline_pipeline_type}
+    serviceLogGroupIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_log_group

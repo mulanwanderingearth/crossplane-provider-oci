@@ -218,6 +218,9 @@ type VmClusterInitParameters struct {
 	// (Updatable) Indicates user preferences for the various diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM DBCS.
 	DataCollectionOptions []VmClusterDataCollectionOptionsInitParameters `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
+	// (Updatable) The percentage assigned to DATA storage (user data and database files). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+
 	// (Updatable) The data disk group size to be allocated in GBs.
 	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
@@ -267,10 +270,10 @@ type VmClusterInitParameters struct {
 	// The Oracle Grid Infrastructure software version for the VM cluster.
 	GiVersion *string `json:"giVersion,omitempty" tf:"gi_version,omitempty"`
 
-	// If true, database backup on local Exadata storage is configured for the VM cluster. If false, database backup on local Exadata storage is not available in the VM cluster.
+	// (Updatable) If true, database backup on local Exadata storage is configured for the VM cluster. If false, database backup on local Exadata storage is not available in the VM cluster.
 	IsLocalBackupEnabled *bool `json:"isLocalBackupEnabled,omitempty" tf:"is_local_backup_enabled,omitempty"`
 
-	// If true, the sparse disk group is configured for the VM cluster. If false, the sparse disk group is not created.
+	// (Updatable) If true, the sparse disk group is configured for the VM cluster. If false, the sparse disk group is not created.
 	IsSparseDiskgroupEnabled *bool `json:"isSparseDiskgroupEnabled,omitempty" tf:"is_sparse_diskgroup_enabled,omitempty"`
 
 	// (Updatable) The Oracle license model that applies to the VM cluster. The default is BRING_YOUR_OWN_LICENSE.
@@ -281,15 +284,24 @@ type VmClusterInitParameters struct {
 
 	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
 
+	// (Updatable) The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	RecoStoragePercentage *float64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
+
 	// (Updatable) The public key portion of one or more key pairs used for SSH access to the VM cluster.
 	// +listType=set
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
+
+	// (Updatable) The percentage assigned to SPARSE storage (Exadata snapshots). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	SparseStoragePercentage *float64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
 
 	// Operating system version of the image.
 	SystemVersion *string `json:"systemVersion,omitempty" tf:"system_version,omitempty"`
 
 	// The time zone to use for the VM cluster. For details, see DB System Time Zones.
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`
+
+	// (Updatable) Specifies the type of VM Backups Storage and supported values are LOCAL and EXASCALE. - LOCAL if selected then VM Backups storage will be on DB Servers. - EXASCALE if selected then VM Backups storage will be on Exascale Storage Servers. Default Value is LOCAL
+	VMBackupStorageType *string `json:"vmBackupStorageType,omitempty" tf:"vm_backup_storage_type,omitempty"`
 
 	// The OCID of the VM cluster network.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.VmClusterNetwork
@@ -306,6 +318,9 @@ type VmClusterInitParameters struct {
 
 	// The vmcluster type for the VM cluster/Cloud VM cluster.
 	VMClusterType *string `json:"vmClusterType,omitempty" tf:"vm_cluster_type,omitempty"`
+
+	// Specifies the type of file system storage and supported values are LOCAL and EXASCALE. - LOCAL if selected then file system storage will be on DB Servers. - EXASCALE if selected then file system storage will be on Exascale Storage Servers. Default Value is LOCAL
+	VMFileSystemStorageType *string `json:"vmFileSystemStorageType,omitempty" tf:"vm_file_system_storage_type,omitempty"`
 }
 
 type VmClusterObservation struct {
@@ -336,6 +351,9 @@ type VmClusterObservation struct {
 
 	// (Updatable) Indicates user preferences for the various diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM DBCS.
 	DataCollectionOptions []VmClusterDataCollectionOptionsObservation `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
+
+	// (Updatable) The percentage assigned to DATA storage (user data and database files). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// (Updatable) The data disk group size to be allocated in GBs.
 	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
@@ -369,10 +387,10 @@ type VmClusterObservation struct {
 	// The OCID of the VM cluster.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	// If true, database backup on local Exadata storage is configured for the VM cluster. If false, database backup on local Exadata storage is not available in the VM cluster.
+	// (Updatable) If true, database backup on local Exadata storage is configured for the VM cluster. If false, database backup on local Exadata storage is not available in the VM cluster.
 	IsLocalBackupEnabled *bool `json:"isLocalBackupEnabled,omitempty" tf:"is_local_backup_enabled,omitempty"`
 
-	// If true, the sparse disk group is configured for the VM cluster. If false, the sparse disk group is not created.
+	// (Updatable) If true, the sparse disk group is configured for the VM cluster. If false, the sparse disk group is not created.
 	IsSparseDiskgroupEnabled *bool `json:"isSparseDiskgroupEnabled,omitempty" tf:"is_sparse_diskgroup_enabled,omitempty"`
 
 	// The OCID of the last patch history. This value is updated as soon as a patch operation starts.
@@ -392,12 +410,18 @@ type VmClusterObservation struct {
 	// The number of enabled CPU cores.
 	OcpusEnabled *float64 `json:"ocpusEnabled,omitempty" tf:"ocpus_enabled,omitempty"`
 
+	// (Updatable) The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	RecoStoragePercentage *float64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
+
 	// (Updatable) The public key portion of one or more key pairs used for SSH access to the VM cluster.
 	// +listType=set
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
 	// The shape of the Exadata infrastructure. The shape determines the amount of CPU, storage, and memory resources allocated to the instance.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
+
+	// (Updatable) The percentage assigned to SPARSE storage (Exadata snapshots). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	SparseStoragePercentage *float64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
 
 	// The current state of the VM cluster.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -418,11 +442,17 @@ type VmClusterObservation struct {
 	// The time zone to use for the VM cluster. For details, see DB System Time Zones.
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`
 
+	// (Updatable) Specifies the type of VM Backups Storage and supported values are LOCAL and EXASCALE. - LOCAL if selected then VM Backups storage will be on DB Servers. - EXASCALE if selected then VM Backups storage will be on Exascale Storage Servers. Default Value is LOCAL
+	VMBackupStorageType *string `json:"vmBackupStorageType,omitempty" tf:"vm_backup_storage_type,omitempty"`
+
 	// The OCID of the VM cluster network.
 	VMClusterNetworkID *string `json:"vmClusterNetworkId,omitempty" tf:"vm_cluster_network_id,omitempty"`
 
 	// The vmcluster type for the VM cluster/Cloud VM cluster.
 	VMClusterType *string `json:"vmClusterType,omitempty" tf:"vm_cluster_type,omitempty"`
+
+	// Specifies the type of file system storage and supported values are LOCAL and EXASCALE. - LOCAL if selected then file system storage will be on DB Servers. - EXASCALE if selected then file system storage will be on Exascale Storage Servers. Default Value is LOCAL
+	VMFileSystemStorageType *string `json:"vmFileSystemStorageType,omitempty" tf:"vm_file_system_storage_type,omitempty"`
 }
 
 type VmClusterParameters struct {
@@ -459,6 +489,10 @@ type VmClusterParameters struct {
 	// (Updatable) Indicates user preferences for the various diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM DBCS.
 	// +kubebuilder:validation:Optional
 	DataCollectionOptions []VmClusterDataCollectionOptionsParameters `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
+
+	// (Updatable) The percentage assigned to DATA storage (user data and database files). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	// +kubebuilder:validation:Optional
+	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// (Updatable) The data disk group size to be allocated in GBs.
 	// +kubebuilder:validation:Optional
@@ -518,11 +552,11 @@ type VmClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	GiVersion *string `json:"giVersion,omitempty" tf:"gi_version,omitempty"`
 
-	// If true, database backup on local Exadata storage is configured for the VM cluster. If false, database backup on local Exadata storage is not available in the VM cluster.
+	// (Updatable) If true, database backup on local Exadata storage is configured for the VM cluster. If false, database backup on local Exadata storage is not available in the VM cluster.
 	// +kubebuilder:validation:Optional
 	IsLocalBackupEnabled *bool `json:"isLocalBackupEnabled,omitempty" tf:"is_local_backup_enabled,omitempty"`
 
-	// If true, the sparse disk group is configured for the VM cluster. If false, the sparse disk group is not created.
+	// (Updatable) If true, the sparse disk group is configured for the VM cluster. If false, the sparse disk group is not created.
 	// +kubebuilder:validation:Optional
 	IsSparseDiskgroupEnabled *bool `json:"isSparseDiskgroupEnabled,omitempty" tf:"is_sparse_diskgroup_enabled,omitempty"`
 
@@ -537,10 +571,18 @@ type VmClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
 
+	// (Updatable) The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	// +kubebuilder:validation:Optional
+	RecoStoragePercentage *float64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
+
 	// (Updatable) The public key portion of one or more key pairs used for SSH access to the VM cluster.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
+
+	// (Updatable) The percentage assigned to SPARSE storage (Exadata snapshots). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
+	// +kubebuilder:validation:Optional
+	SparseStoragePercentage *float64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
 
 	// Operating system version of the image.
 	// +kubebuilder:validation:Optional
@@ -549,6 +591,10 @@ type VmClusterParameters struct {
 	// The time zone to use for the VM cluster. For details, see DB System Time Zones.
 	// +kubebuilder:validation:Optional
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`
+
+	// (Updatable) Specifies the type of VM Backups Storage and supported values are LOCAL and EXASCALE. - LOCAL if selected then VM Backups storage will be on DB Servers. - EXASCALE if selected then VM Backups storage will be on Exascale Storage Servers. Default Value is LOCAL
+	// +kubebuilder:validation:Optional
+	VMBackupStorageType *string `json:"vmBackupStorageType,omitempty" tf:"vm_backup_storage_type,omitempty"`
 
 	// The OCID of the VM cluster network.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.VmClusterNetwork
@@ -567,6 +613,10 @@ type VmClusterParameters struct {
 	// The vmcluster type for the VM cluster/Cloud VM cluster.
 	// +kubebuilder:validation:Optional
 	VMClusterType *string `json:"vmClusterType,omitempty" tf:"vm_cluster_type,omitempty"`
+
+	// Specifies the type of file system storage and supported values are LOCAL and EXASCALE. - LOCAL if selected then file system storage will be on DB Servers. - EXASCALE if selected then file system storage will be on Exascale Storage Servers. Default Value is LOCAL
+	// +kubebuilder:validation:Optional
+	VMFileSystemStorageType *string `json:"vmFileSystemStorageType,omitempty" tf:"vm_file_system_storage_type,omitempty"`
 }
 
 // VmClusterSpec defines the desired state of VmCluster

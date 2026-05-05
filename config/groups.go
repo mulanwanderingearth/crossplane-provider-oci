@@ -625,9 +625,11 @@ func ServiceGroupDetector(resourceName string) (group string, kind string) {
 		// "Generic Artifacts Content": "generic_artifacts_content" -> "genericartifactscontent"
 		group = "genericartifactscontent"
 
-	case "globally":
-		// "Globally Distributed Database": "globally_distributed_database" -> "globallydistributeddatabase"
-		group = "globallydistributeddatabase"
+	case "globally", "distributed":
+		// OCI provider docs now publish distributed database resources under
+		// "distributed_database", while older generated assets still use the
+		// legacy "globally_distributed_database" prefix.
+		group = "distributeddatabase"
 
 	case "golden":
 		// "Golden Gate": "golden_gate" -> "goldengate"

@@ -9,7 +9,7 @@ metadata:
   namespace: upbound-system
 spec:
   forProvider:
-    content: ${var.content}
     softwareSourceIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_software_source
+    update_software_source_manifest_details: ${var.software_source_manifest_update_software_source_manifest_details}

@@ -17,6 +17,8 @@ import (
 type MaskDataInitParameters struct {
 	MaskingPolicyID *string `json:"maskingPolicyId,omitempty" tf:"masking_policy_id,omitempty"`
 
+	TargetCredentials []TargetCredentialsInitParameters `json:"targetCredentials,omitempty" tf:"target_credentials,omitempty"`
+
 	TargetID *string `json:"targetId,omitempty" tf:"target_id,omitempty"`
 }
 
@@ -24,6 +26,8 @@ type MaskDataObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	MaskingPolicyID *string `json:"maskingPolicyId,omitempty" tf:"masking_policy_id,omitempty"`
+
+	TargetCredentials []TargetCredentialsObservation `json:"targetCredentials,omitempty" tf:"target_credentials,omitempty"`
 
 	TargetID *string `json:"targetId,omitempty" tf:"target_id,omitempty"`
 }
@@ -34,7 +38,29 @@ type MaskDataParameters struct {
 	MaskingPolicyID *string `json:"maskingPolicyId,omitempty" tf:"masking_policy_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
+	TargetCredentials []TargetCredentialsParameters `json:"targetCredentials,omitempty" tf:"target_credentials,omitempty"`
+
+	// +kubebuilder:validation:Optional
 	TargetID *string `json:"targetId,omitempty" tf:"target_id,omitempty"`
+}
+
+type TargetCredentialsInitParameters struct {
+	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+
+	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
+}
+
+type TargetCredentialsObservation struct {
+	UserName *string `json:"userName,omitempty" tf:"user_name,omitempty"`
+}
+
+type TargetCredentialsParameters struct {
+
+	// +kubebuilder:validation:Optional
+	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	UserName *string `json:"userName" tf:"user_name,omitempty"`
 }
 
 // MaskDataSpec defines the desired state of MaskData

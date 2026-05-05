@@ -83,7 +83,7 @@ type ManagementExternalExadataStorageGridObservation struct {
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// A list of monitored Exadata storage servers.
-	StorageServers []StorageServersObservation `json:"storageServers,omitempty" tf:"storage_servers,omitempty"`
+	StorageServers []ManagementExternalExadataStorageGridStorageServersObservation `json:"storageServers,omitempty" tf:"storage_servers,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +mapType=granular
@@ -126,10 +126,10 @@ type ManagementExternalExadataStorageGridParameters struct {
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
-type StorageServersInitParameters struct {
+type ManagementExternalExadataStorageGridStorageServersInitParameters struct {
 }
 
-type StorageServersObservation struct {
+type ManagementExternalExadataStorageGridStorageServersObservation struct {
 
 	// The additional details of the resource defined in {"key": "value"} format. Example: {"bar-key": "value"}
 	// +mapType=granular
@@ -205,7 +205,7 @@ type StorageServersObservation struct {
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
-type StorageServersParameters struct {
+type ManagementExternalExadataStorageGridStorageServersParameters struct {
 }
 
 // ManagementExternalExadataStorageGridSpec defines the desired state of ManagementExternalExadataStorageGrid

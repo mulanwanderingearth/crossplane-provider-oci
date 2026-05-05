@@ -14,6 +14,75 @@ import (
 	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
 )
 
+type ClusterByolAllocationDetailsInitParameters struct {
+
+	// (Updatable) The OCID of the VMware BYOL Allocation used to deploy VMware vDefend Firewall.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ocvp/v1alpha1.ByolAllocation
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	FirewallByolAllocationID *string `json:"firewallByolAllocationId,omitempty" tf:"firewall_byol_allocation_id,omitempty"`
+
+	// Reference to a ByolAllocation in ocvp to populate firewallByolAllocationId.
+	// +kubebuilder:validation:Optional
+	FirewallByolAllocationIDRef *v1.NamespacedReference `json:"firewallByolAllocationIdRef,omitempty" tf:"-"`
+
+	// Selector for a ByolAllocation in ocvp to populate firewallByolAllocationId.
+	// +kubebuilder:validation:Optional
+	FirewallByolAllocationIDSelector *v1.NamespacedSelector `json:"firewallByolAllocationIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) The OCID of the VMware BYOL Allocation used to deploy VMware vSAN.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ocvp/v1alpha1.ByolAllocation
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	VsanByolAllocationID *string `json:"vsanByolAllocationId,omitempty" tf:"vsan_byol_allocation_id,omitempty"`
+
+	// Reference to a ByolAllocation in ocvp to populate vsanByolAllocationId.
+	// +kubebuilder:validation:Optional
+	VsanByolAllocationIDRef *v1.NamespacedReference `json:"vsanByolAllocationIdRef,omitempty" tf:"-"`
+
+	// Selector for a ByolAllocation in ocvp to populate vsanByolAllocationId.
+	// +kubebuilder:validation:Optional
+	VsanByolAllocationIDSelector *v1.NamespacedSelector `json:"vsanByolAllocationIdSelector,omitempty" tf:"-"`
+}
+
+type ClusterByolAllocationDetailsObservation struct {
+
+	// (Updatable) The OCID of the VMware BYOL Allocation used to deploy VMware vDefend Firewall.
+	FirewallByolAllocationID *string `json:"firewallByolAllocationId,omitempty" tf:"firewall_byol_allocation_id,omitempty"`
+
+	// (Updatable) The OCID of the VMware BYOL Allocation used to deploy VMware vSAN.
+	VsanByolAllocationID *string `json:"vsanByolAllocationId,omitempty" tf:"vsan_byol_allocation_id,omitempty"`
+}
+
+type ClusterByolAllocationDetailsParameters struct {
+
+	// (Updatable) The OCID of the VMware BYOL Allocation used to deploy VMware vDefend Firewall.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ocvp/v1alpha1.ByolAllocation
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	FirewallByolAllocationID *string `json:"firewallByolAllocationId,omitempty" tf:"firewall_byol_allocation_id,omitempty"`
+
+	// Reference to a ByolAllocation in ocvp to populate firewallByolAllocationId.
+	// +kubebuilder:validation:Optional
+	FirewallByolAllocationIDRef *v1.NamespacedReference `json:"firewallByolAllocationIdRef,omitempty" tf:"-"`
+
+	// Selector for a ByolAllocation in ocvp to populate firewallByolAllocationId.
+	// +kubebuilder:validation:Optional
+	FirewallByolAllocationIDSelector *v1.NamespacedSelector `json:"firewallByolAllocationIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) The OCID of the VMware BYOL Allocation used to deploy VMware vSAN.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ocvp/v1alpha1.ByolAllocation
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	VsanByolAllocationID *string `json:"vsanByolAllocationId,omitempty" tf:"vsan_byol_allocation_id,omitempty"`
+
+	// Reference to a ByolAllocation in ocvp to populate vsanByolAllocationId.
+	// +kubebuilder:validation:Optional
+	VsanByolAllocationIDRef *v1.NamespacedReference `json:"vsanByolAllocationIdRef,omitempty" tf:"-"`
+
+	// Selector for a ByolAllocation in ocvp to populate vsanByolAllocationId.
+	// +kubebuilder:validation:Optional
+	VsanByolAllocationIDSelector *v1.NamespacedSelector `json:"vsanByolAllocationIdSelector,omitempty" tf:"-"`
+}
+
 type ClusterInitParameters struct {
 
 	// A list of datastore clusters.
@@ -22,8 +91,14 @@ type ClusterInitParameters struct {
 	// The OCID of the Capacity Reservation.
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
 
+	// (Updatable) The BYOL allocations used for VMware Cluster provisioning.
+	ClusterByolAllocationDetails []ClusterByolAllocationDetailsInitParameters `json:"clusterByolAllocationDetails,omitempty" tf:"cluster_byol_allocation_details,omitempty"`
+
 	// The availability domain to create the Cluster's ESXi hosts in. For multi-AD Cluster deployment, set to multi-AD.
 	ComputeAvailabilityDomain *string `json:"computeAvailabilityDomain,omitempty" tf:"compute_availability_domain,omitempty"`
+
+	// A list of datastore clusters.
+	DatastoreClusterIds []*string `json:"datastoreClusterIds,omitempty" tf:"datastore_cluster_ids,omitempty"`
 
 	// A list of datastore info for the Cluster. This value is required only when initialHostShapeName is a standard shape.
 	Datastores []DatastoresInitParameters `json:"datastores,omitempty" tf:"datastores,omitempty"`
@@ -56,6 +131,19 @@ type ClusterInitParameters struct {
 
 	// The initial compute shape of the Cluster's ESXi hosts. ListSupportedHostShapes.
 	InitialHostShapeName *string `json:"initialHostShapeName,omitempty" tf:"initial_host_shape_name,omitempty"`
+
+	// The OCID of the initial VMware BYOL Allocation used to deploy VMware Cloud Foundation.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ocvp/v1alpha1.ByolAllocation
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	InitialVcfByolAllocationID *string `json:"initialVcfByolAllocationId,omitempty" tf:"initial_vcf_byol_allocation_id,omitempty"`
+
+	// Reference to a ByolAllocation in ocvp to populate initialVcfByolAllocationId.
+	// +kubebuilder:validation:Optional
+	InitialVcfByolAllocationIDRef *v1.NamespacedReference `json:"initialVcfByolAllocationIdRef,omitempty" tf:"-"`
+
+	// Selector for a ByolAllocation in ocvp to populate initialVcfByolAllocationId.
+	// +kubebuilder:validation:Optional
+	InitialVcfByolAllocationIDSelector *v1.NamespacedSelector `json:"initialVcfByolAllocationIdSelector,omitempty" tf:"-"`
 
 	// A prefix used in the name of each ESXi host and Compute instance in the Cluster. If this isn't set, the Cluster's displayName is used as the prefix.
 	InstanceDisplayNamePrefix *string `json:"instanceDisplayNamePrefix,omitempty" tf:"instance_display_name_prefix,omitempty"`
@@ -96,6 +184,9 @@ type ClusterObservation struct {
 
 	// The OCID of the Capacity Reservation.
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
+
+	// (Updatable) The BYOL allocations used for VMware Cluster provisioning.
+	ClusterByolAllocationDetails []ClusterByolAllocationDetailsObservation `json:"clusterByolAllocationDetails,omitempty" tf:"cluster_byol_allocation_details,omitempty"`
 
 	// The OCID of the compartment that contains the Cluster.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -141,6 +232,9 @@ type ClusterObservation struct {
 	// The initial compute shape of the Cluster's ESXi hosts. ListSupportedHostShapes.
 	InitialHostShapeName *string `json:"initialHostShapeName,omitempty" tf:"initial_host_shape_name,omitempty"`
 
+	// The OCID of the initial VMware BYOL Allocation used to deploy VMware Cloud Foundation.
+	InitialVcfByolAllocationID *string `json:"initialVcfByolAllocationId,omitempty" tf:"initial_vcf_byol_allocation_id,omitempty"`
+
 	// A prefix used in the name of each ESXi host and Compute instance in the Cluster. If this isn't set, the Cluster's displayName is used as the prefix.
 	InstanceDisplayNamePrefix *string `json:"instanceDisplayNamePrefix,omitempty" tf:"instance_display_name_prefix,omitempty"`
 
@@ -155,6 +249,10 @@ type ClusterObservation struct {
 
 	// The current state of the Cluster.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
+
+	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
+	// +mapType=granular
+	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Cluster was created, in the format defined by RFC3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -188,9 +286,17 @@ type ClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
 
+	// (Updatable) The BYOL allocations used for VMware Cluster provisioning.
+	// +kubebuilder:validation:Optional
+	ClusterByolAllocationDetails []ClusterByolAllocationDetailsParameters `json:"clusterByolAllocationDetails,omitempty" tf:"cluster_byol_allocation_details,omitempty"`
+
 	// The availability domain to create the Cluster's ESXi hosts in. For multi-AD Cluster deployment, set to multi-AD.
 	// +kubebuilder:validation:Optional
 	ComputeAvailabilityDomain *string `json:"computeAvailabilityDomain,omitempty" tf:"compute_availability_domain,omitempty"`
+
+	// A list of datastore clusters.
+	// +kubebuilder:validation:Optional
+	DatastoreClusterIds []*string `json:"datastoreClusterIds,omitempty" tf:"datastore_cluster_ids,omitempty"`
 
 	// A list of datastore info for the Cluster. This value is required only when initialHostShapeName is a standard shape.
 	// +kubebuilder:validation:Optional
@@ -233,6 +339,20 @@ type ClusterParameters struct {
 	// The initial compute shape of the Cluster's ESXi hosts. ListSupportedHostShapes.
 	// +kubebuilder:validation:Optional
 	InitialHostShapeName *string `json:"initialHostShapeName,omitempty" tf:"initial_host_shape_name,omitempty"`
+
+	// The OCID of the initial VMware BYOL Allocation used to deploy VMware Cloud Foundation.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ocvp/v1alpha1.ByolAllocation
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	InitialVcfByolAllocationID *string `json:"initialVcfByolAllocationId,omitempty" tf:"initial_vcf_byol_allocation_id,omitempty"`
+
+	// Reference to a ByolAllocation in ocvp to populate initialVcfByolAllocationId.
+	// +kubebuilder:validation:Optional
+	InitialVcfByolAllocationIDRef *v1.NamespacedReference `json:"initialVcfByolAllocationIdRef,omitempty" tf:"-"`
+
+	// Selector for a ByolAllocation in ocvp to populate initialVcfByolAllocationId.
+	// +kubebuilder:validation:Optional
+	InitialVcfByolAllocationIDSelector *v1.NamespacedSelector `json:"initialVcfByolAllocationIdSelector,omitempty" tf:"-"`
 
 	// A prefix used in the name of each ESXi host and Compute instance in the Cluster. If this isn't set, the Cluster's displayName is used as the prefix.
 	// +kubebuilder:validation:Optional

@@ -490,6 +490,200 @@ spec:
                         dialect:
                           description: (Updatable) Dialect to be used for SQL generation.
                           type: string
+                        embeddingLlmCustomization:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                            (Updatable) Configuration to customize LLM.
+                          items:
+                            properties:
+                              instruction:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
+                                type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    endpointIdRef:
+                                      description: Reference to a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    endpointIdSelector:
+                                      description: Selector for a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                    modelIdRef:
+                                      description: Reference to a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    modelIdSelector:
+                                      description: Selector for a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
                         function:
                           description: (Updatable) Details of Function for Function
                             calling tool.
@@ -521,10 +715,192 @@ spec:
                           items:
                             properties:
                               instruction:
-                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG
-                                  | SQL_TOOL_CONFIG) (Updatable) If specified, the
-                                  default instruction is replaced with provided instruction.
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
                                 type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    endpointIdRef:
+                                      description: Reference to a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    endpointIdSelector:
+                                      description: Selector for a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                    modelIdRef:
+                                      description: Reference to a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    modelIdSelector:
+                                      description: Selector for a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
                             type: object
                           type: array
                         httpEndpointAuthConfig:
@@ -852,6 +1228,399 @@ spec:
                         modelSize:
                           description: (Applicable when tool_config_type=SQL_TOOL_CONFIG)
                             (Updatable) Size of the model.
+                          type: string
+                        reasoningLlmCustomization:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                            (Updatable) Configuration to customize LLM.
+                          items:
+                            properties:
+                              instruction:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
+                                type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    endpointIdRef:
+                                      description: Reference to a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    endpointIdSelector:
+                                      description: Selector for a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                    modelIdRef:
+                                      description: Reference to a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    modelIdSelector:
+                                      description: Selector for a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
+                        rerankingLlmCustomization:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                            (Updatable) Configuration to customize LLM.
+                          items:
+                            properties:
+                              instruction:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
+                                type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    endpointIdRef:
+                                      description: Reference to a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    endpointIdSelector:
+                                      description: Selector for a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                    modelIdRef:
+                                      description: Reference to a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    modelIdSelector:
+                                      description: Selector for a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
+                        runtimeVersion:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG
+                            | SQL_TOOL_CONFIG) (Updatable) The runtimeVersion of the
+                            system prompt.
                           type: string
                         shouldEnableSelfCorrection:
                           description: (Applicable when tool_config_type=SQL_TOOL_CONFIG)
@@ -1404,6 +2173,200 @@ spec:
                         dialect:
                           description: (Updatable) Dialect to be used for SQL generation.
                           type: string
+                        embeddingLlmCustomization:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                            (Updatable) Configuration to customize LLM.
+                          items:
+                            properties:
+                              instruction:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
+                                type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    endpointIdRef:
+                                      description: Reference to a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    endpointIdSelector:
+                                      description: Selector for a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                    modelIdRef:
+                                      description: Reference to a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    modelIdSelector:
+                                      description: Selector for a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
                         function:
                           description: (Updatable) Details of Function for Function
                             calling tool.
@@ -1435,10 +2398,192 @@ spec:
                           items:
                             properties:
                               instruction:
-                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG
-                                  | SQL_TOOL_CONFIG) (Updatable) If specified, the
-                                  default instruction is replaced with provided instruction.
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
                                 type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    endpointIdRef:
+                                      description: Reference to a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    endpointIdSelector:
+                                      description: Selector for a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                    modelIdRef:
+                                      description: Reference to a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    modelIdSelector:
+                                      description: Selector for a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
                             type: object
                           type: array
                         httpEndpointAuthConfig:
@@ -1766,6 +2911,399 @@ spec:
                         modelSize:
                           description: (Applicable when tool_config_type=SQL_TOOL_CONFIG)
                             (Updatable) Size of the model.
+                          type: string
+                        reasoningLlmCustomization:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                            (Updatable) Configuration to customize LLM.
+                          items:
+                            properties:
+                              instruction:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
+                                type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    endpointIdRef:
+                                      description: Reference to a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    endpointIdSelector:
+                                      description: Selector for a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                    modelIdRef:
+                                      description: Reference to a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    modelIdSelector:
+                                      description: Selector for a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
+                        rerankingLlmCustomization:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                            (Updatable) Configuration to customize LLM.
+                          items:
+                            properties:
+                              instruction:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
+                                type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    endpointIdRef:
+                                      description: Reference to a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    endpointIdSelector:
+                                      description: Selector for a Endpoint in ailanguage
+                                        to populate endpointId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                    modelIdRef:
+                                      description: Reference to a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        name:
+                                          description: Name of the referenced object.
+                                          type: string
+                                        policy:
+                                          description: Policies for referencing.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      required:
+                                      - name
+                                      type: object
+                                    modelIdSelector:
+                                      description: Selector for a Model in aidocument
+                                        to populate modelId.
+                                      properties:
+                                        matchControllerRef:
+                                          description: |-
+                                            MatchControllerRef ensures an object with the same controller reference
+                                            as the selecting object is selected.
+                                          type: boolean
+                                        matchLabels:
+                                          additionalProperties:
+                                            type: string
+                                          description: MatchLabels ensures an object
+                                            with matching labels is selected.
+                                          type: object
+                                        policy:
+                                          description: Policies for selection.
+                                          properties:
+                                            resolution:
+                                              default: Required
+                                              description: |-
+                                                Resolution specifies whether resolution of this reference is required.
+                                                The default is 'Required', which means the reconcile will fail if the
+                                                reference cannot be resolved. 'Optional' means this reference will be
+                                                a no-op if it cannot be resolved.
+                                              enum:
+                                              - Required
+                                              - Optional
+                                              type: string
+                                            resolve:
+                                              description: |-
+                                                Resolve specifies when this reference should be resolved. The default
+                                                is 'IfNotPresent', which will attempt to resolve the reference only when
+                                                the corresponding field is not present. Use 'Always' to resolve the
+                                                reference on every reconcile.
+                                              enum:
+                                              - Always
+                                              - IfNotPresent
+                                              type: string
+                                          type: object
+                                      type: object
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
+                        runtimeVersion:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG
+                            | SQL_TOOL_CONFIG) (Updatable) The runtimeVersion of the
+                            system prompt.
                           type: string
                         shouldEnableSelfCorrection:
                           description: (Applicable when tool_config_type=SQL_TOOL_CONFIG)
@@ -2125,6 +3663,48 @@ spec:
                         dialect:
                           description: (Updatable) Dialect to be used for SQL generation.
                           type: string
+                        embeddingLlmCustomization:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                            (Updatable) Configuration to customize LLM.
+                          items:
+                            properties:
+                              instruction:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
+                                type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
                         function:
                           description: (Updatable) Details of Function for Function
                             calling tool.
@@ -2156,10 +3736,40 @@ spec:
                           items:
                             properties:
                               instruction:
-                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG
-                                  | SQL_TOOL_CONFIG) (Updatable) If specified, the
-                                  default instruction is replaced with provided instruction.
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
                                 type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                  type: object
+                                type: array
                             type: object
                           type: array
                         httpEndpointAuthConfig:
@@ -2257,6 +3867,95 @@ spec:
                         modelSize:
                           description: (Applicable when tool_config_type=SQL_TOOL_CONFIG)
                             (Updatable) Size of the model.
+                          type: string
+                        reasoningLlmCustomization:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                            (Updatable) Configuration to customize LLM.
+                          items:
+                            properties:
+                              instruction:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
+                                type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
+                        rerankingLlmCustomization:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                            (Updatable) Configuration to customize LLM.
+                          items:
+                            properties:
+                              instruction:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) If specified, the default instruction
+                                  is replaced with provided instruction.
+                                type: string
+                              llmHyperParameters:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) Hyper parameters for LLM configuration.
+                                  Accepts Key-value pairs to configure various hyper
+                                  parameters.  Refer to the guide for examples and
+                                  the JSON Schema documentation for details on the
+                                  format.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              llmSelection:
+                                description: (Applicable when tool_config_type=RAG_TOOL_CONFIG)
+                                  (Updatable) LLM selection configuration - either
+                                  DEFAULT or CUSTOM.
+                                items:
+                                  properties:
+                                    endpointId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        endpoint
+                                      type: string
+                                    llmSelectionType:
+                                      description: (Updatable) Type of LLM selection
+                                      type: string
+                                    modelId:
+                                      description: (Updatable) The OCID of the GenAI
+                                        model
+                                      type: string
+                                  type: object
+                                type: array
+                            type: object
+                          type: array
+                        runtimeVersion:
+                          description: (Applicable when tool_config_type=RAG_TOOL_CONFIG
+                            | SQL_TOOL_CONFIG) (Updatable) The runtimeVersion of the
+                            system prompt.
                           type: string
                         shouldEnableSelfCorrection:
                           description: (Applicable when tool_config_type=SQL_TOOL_CONFIG)

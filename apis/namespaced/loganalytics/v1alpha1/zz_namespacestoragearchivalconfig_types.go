@@ -21,6 +21,9 @@ type ArchivingConfigurationInitParameters struct {
 
 	// (Updatable) This is the duration before archived data is deleted from object storage, as described in https://en.wikipedia.org/wiki/ISO_8601#Durations The largest supported unit is D, e.g. P365D (not P1Y) or P14D (not P2W).
 	ArchivalStorageDuration *string `json:"archivalStorageDuration,omitempty" tf:"archival_storage_duration,omitempty"`
+
+	// (Updatable) end time of the oldest active CoreGroup
+	TimeOldestActiveBucketEnded *string `json:"timeOldestActiveBucketEnded,omitempty" tf:"time_oldest_active_bucket_ended,omitempty"`
 }
 
 type ArchivingConfigurationObservation struct {
@@ -30,6 +33,9 @@ type ArchivingConfigurationObservation struct {
 
 	// (Updatable) This is the duration before archived data is deleted from object storage, as described in https://en.wikipedia.org/wiki/ISO_8601#Durations The largest supported unit is D, e.g. P365D (not P1Y) or P14D (not P2W).
 	ArchivalStorageDuration *string `json:"archivalStorageDuration,omitempty" tf:"archival_storage_duration,omitempty"`
+
+	// (Updatable) end time of the oldest active CoreGroup
+	TimeOldestActiveBucketEnded *string `json:"timeOldestActiveBucketEnded,omitempty" tf:"time_oldest_active_bucket_ended,omitempty"`
 }
 
 type ArchivingConfigurationParameters struct {
@@ -41,6 +47,10 @@ type ArchivingConfigurationParameters struct {
 	// (Updatable) This is the duration before archived data is deleted from object storage, as described in https://en.wikipedia.org/wiki/ISO_8601#Durations The largest supported unit is D, e.g. P365D (not P1Y) or P14D (not P2W).
 	// +kubebuilder:validation:Optional
 	ArchivalStorageDuration *string `json:"archivalStorageDuration,omitempty" tf:"archival_storage_duration,omitempty"`
+
+	// (Updatable) end time of the oldest active CoreGroup
+	// +kubebuilder:validation:Optional
+	TimeOldestActiveBucketEnded *string `json:"timeOldestActiveBucketEnded,omitempty" tf:"time_oldest_active_bucket_ended,omitempty"`
 }
 
 type NamespaceStorageArchivalConfigInitParameters struct {
@@ -48,7 +58,7 @@ type NamespaceStorageArchivalConfigInitParameters struct {
 	// (Updatable) This is the configuration for data archiving in object storage
 	ArchivingConfiguration []ArchivingConfigurationInitParameters `json:"archivingConfiguration,omitempty" tf:"archiving_configuration,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
@@ -62,7 +72,7 @@ type NamespaceStorageArchivalConfigObservation struct {
 	// This indicates if old data can be archived for a tenancy
 	IsArchivingEnabled *bool `json:"isArchivingEnabled,omitempty" tf:"is_archiving_enabled,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
@@ -72,7 +82,7 @@ type NamespaceStorageArchivalConfigParameters struct {
 	// +kubebuilder:validation:Optional
 	ArchivingConfiguration []ArchivingConfigurationParameters `json:"archivingConfiguration,omitempty" tf:"archiving_configuration,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }

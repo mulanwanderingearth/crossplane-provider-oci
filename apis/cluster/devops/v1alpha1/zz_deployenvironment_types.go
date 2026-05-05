@@ -144,6 +144,10 @@ type DeployEnvironmentInitParameters struct {
 	// Selector for a Project in devops to populate projectId.
 	// +kubebuilder:validation:Optional
 	ProjectIDSelector *v1.Selector `json:"projectIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) Security attributes to be added in to the deployment environment
+	// +mapType=granular
+	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 }
 
 type DeployEnvironmentObservation struct {
@@ -188,6 +192,10 @@ type DeployEnvironmentObservation struct {
 
 	// The OCID of a project.
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
+
+	// (Updatable) Security attributes to be added in to the deployment environment
+	// +mapType=granular
+	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The current state of the deployment environment.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -276,6 +284,11 @@ type DeployEnvironmentParameters struct {
 	// Selector for a Project in devops to populate projectId.
 	// +kubebuilder:validation:Optional
 	ProjectIDSelector *v1.Selector `json:"projectIdSelector,omitempty" tf:"-"`
+
+	// (Updatable) Security attributes to be added in to the deployment environment
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 }
 
 type NetworkChannelInitParameters struct {

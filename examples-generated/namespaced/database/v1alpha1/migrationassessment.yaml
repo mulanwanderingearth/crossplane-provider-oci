@@ -1,0 +1,46 @@
+apiVersion: database.oci.m.upbound.io/v1alpha1
+kind: MigrationAssessment
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/migrationassessment
+  labels:
+    testing.upbound.io/example-name: test_assessment
+  name: test-assessment
+  namespace: upbound-system
+spec:
+  forProvider:
+    acceptableDowntime: ${var.assessment_acceptable_downtime}
+    bulkIncludeExcludeData: ${var.assessment_bulk_include_exclude_data}
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    creationType: ${var.assessment_creation_type}
+    databaseCombination: ${var.assessment_database_combination}
+    databaseDataSize: ${var.assessment_database_data_size}
+    ddlExpectation: ${var.assessment_ddl_expectation}
+    definedTags:
+      foo-namespace.bar-key: value
+    description: ${var.assessment_description}
+    displayName: ${var.assessment_display_name}
+    excludeObjects:
+    - isOmitExcludedTableFromReplication: ${var.assessment_exclude_objects_is_omit_excluded_table_from_replication}
+      object: ${var.assessment_exclude_objects_object}
+      owner: ${var.assessment_exclude_objects_owner}
+      schema: ${var.assessment_exclude_objects_schema}
+      type: ${var.assessment_exclude_objects_type}
+    freeformTags: ${var.assessment_freeform_tags}
+    includeObjects:
+    - isOmitExcludedTableFromReplication: ${var.assessment_include_objects_is_omit_excluded_table_from_replication}
+      object: ${var.assessment_include_objects_object}
+      owner: ${var.assessment_include_objects_owner}
+      schema: ${var.assessment_include_objects_schema}
+      type: ${var.assessment_include_objects_type}
+    networkSpeedMegabitPerSecond: ${var.assessment_network_speed_megabit_per_second}
+    sourceDatabaseConnection:
+    - id: ${var.assessment_source_database_connection_id}
+    targetDatabaseConnection:
+    - connectionType: ${var.assessment_target_database_connection_connection_type}
+      databaseVersion: ${var.assessment_target_database_connection_database_version}
+      id: ${var.assessment_target_database_connection_id}
+      technologySubType: ${var.assessment_target_database_connection_technology_sub_type}
+      technologyType: ${var.assessment_target_database_connection_technology_type}

@@ -34,6 +34,12 @@ type AssetSourceInitParameters struct {
 	// +kubebuilder:validation:Optional
 	AssetsCompartmentIDSelector *v1.Selector `json:"assetsCompartmentIdSelector,omitempty" tf:"-"`
 
+	// The key of customer's aws account to be discovered/migrated.
+	AwsAccountKey *string `json:"awsAccountKey,omitempty" tf:"aws_account_key,omitempty"`
+
+	// AWS region information, from where the resources are discovered.
+	AwsRegion *string `json:"awsRegion,omitempty" tf:"aws_region,omitempty"`
+
 	// (Updatable) The OCID of the compartment for the resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -82,6 +88,9 @@ type AssetSourceInitParameters struct {
 	// +kubebuilder:validation:Optional
 	EnvironmentIDSelector *v1.Selector `json:"environmentIdSelector,omitempty" tf:"-"`
 
+	// (Updatable) Specifies if this is the Source or Destination point for migration - different assets may be discovered depending on setting.
+	EnvironmentType *string `json:"environmentType,omitempty" tf:"environment_type,omitempty"`
+
 	// (Updatable) The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no predefined name, type, or namespace/scope. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
@@ -98,6 +107,12 @@ type AssetSourceInitParameters struct {
 	// Selector for a Inventory in cloudbridge to populate inventoryId.
 	// +kubebuilder:validation:Optional
 	InventoryIDSelector *v1.Selector `json:"inventoryIdSelector,omitempty" tf:"-"`
+
+	// (Applicable when type=AWS) (Updatable) Flag indicating whether cost data collection is enabled for assets, originating from this asset source.
+	IsCostInformationCollected *bool `json:"isCostInformationCollected,omitempty" tf:"is_cost_information_collected,omitempty"`
+
+	// (Updatable) Endpoint for OLVM asset discovery and replication in the form of https://<host>:<port>
+	OlvmEndpoint *string `json:"olvmEndpoint,omitempty" tf:"olvm_endpoint,omitempty"`
 
 	// (Updatable) Credentials for an asset source.
 	ReplicationCredentials []ReplicationCredentialsInitParameters `json:"replicationCredentials,omitempty" tf:"replication_credentials,omitempty"`
@@ -124,6 +139,12 @@ type AssetSourceObservation struct {
 	// (Updatable) The OCID of the compartment that is going to be used to create assets.
 	AssetsCompartmentID *string `json:"assetsCompartmentId,omitempty" tf:"assets_compartment_id,omitempty"`
 
+	// The key of customer's aws account to be discovered/migrated.
+	AwsAccountKey *string `json:"awsAccountKey,omitempty" tf:"aws_account_key,omitempty"`
+
+	// AWS region information, from where the resources are discovered.
+	AwsRegion *string `json:"awsRegion,omitempty" tf:"aws_region,omitempty"`
+
 	// (Updatable) The OCID of the compartment for the resource.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
@@ -143,6 +164,9 @@ type AssetSourceObservation struct {
 	// The OCID of the environment.
 	EnvironmentID *string `json:"environmentId,omitempty" tf:"environment_id,omitempty"`
 
+	// (Updatable) Specifies if this is the Source or Destination point for migration - different assets may be discovered depending on setting.
+	EnvironmentType *string `json:"environmentType,omitempty" tf:"environment_type,omitempty"`
+
 	// (Updatable) The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no predefined name, type, or namespace/scope. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
@@ -153,8 +177,14 @@ type AssetSourceObservation struct {
 	// The OCID of the inventory that will contain created assets.
 	InventoryID *string `json:"inventoryId,omitempty" tf:"inventory_id,omitempty"`
 
+	// (Applicable when type=AWS) (Updatable) Flag indicating whether cost data collection is enabled for assets, originating from this asset source.
+	IsCostInformationCollected *bool `json:"isCostInformationCollected,omitempty" tf:"is_cost_information_collected,omitempty"`
+
 	// The detailed state of the asset source.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
+
+	// (Updatable) Endpoint for OLVM asset discovery and replication in the form of https://<host>:<port>
+	OlvmEndpoint *string `json:"olvmEndpoint,omitempty" tf:"olvm_endpoint,omitempty"`
 
 	// (Updatable) Credentials for an asset source.
 	ReplicationCredentials []ReplicationCredentialsObservation `json:"replicationCredentials,omitempty" tf:"replication_credentials,omitempty"`
@@ -202,6 +232,14 @@ type AssetSourceParameters struct {
 	// Selector for a Compartment in identity to populate assetsCompartmentId.
 	// +kubebuilder:validation:Optional
 	AssetsCompartmentIDSelector *v1.Selector `json:"assetsCompartmentIdSelector,omitempty" tf:"-"`
+
+	// The key of customer's aws account to be discovered/migrated.
+	// +kubebuilder:validation:Optional
+	AwsAccountKey *string `json:"awsAccountKey,omitempty" tf:"aws_account_key,omitempty"`
+
+	// AWS region information, from where the resources are discovered.
+	// +kubebuilder:validation:Optional
+	AwsRegion *string `json:"awsRegion,omitempty" tf:"aws_region,omitempty"`
 
 	// (Updatable) The OCID of the compartment for the resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -257,6 +295,10 @@ type AssetSourceParameters struct {
 	// +kubebuilder:validation:Optional
 	EnvironmentIDSelector *v1.Selector `json:"environmentIdSelector,omitempty" tf:"-"`
 
+	// (Updatable) Specifies if this is the Source or Destination point for migration - different assets may be discovered depending on setting.
+	// +kubebuilder:validation:Optional
+	EnvironmentType *string `json:"environmentType,omitempty" tf:"environment_type,omitempty"`
+
 	// (Updatable) The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no predefined name, type, or namespace/scope. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
@@ -275,6 +317,14 @@ type AssetSourceParameters struct {
 	// Selector for a Inventory in cloudbridge to populate inventoryId.
 	// +kubebuilder:validation:Optional
 	InventoryIDSelector *v1.Selector `json:"inventoryIdSelector,omitempty" tf:"-"`
+
+	// (Applicable when type=AWS) (Updatable) Flag indicating whether cost data collection is enabled for assets, originating from this asset source.
+	// +kubebuilder:validation:Optional
+	IsCostInformationCollected *bool `json:"isCostInformationCollected,omitempty" tf:"is_cost_information_collected,omitempty"`
+
+	// (Updatable) Endpoint for OLVM asset discovery and replication in the form of https://<host>:<port>
+	// +kubebuilder:validation:Optional
+	OlvmEndpoint *string `json:"olvmEndpoint,omitempty" tf:"olvm_endpoint,omitempty"`
 
 	// (Updatable) Credentials for an asset source.
 	// +kubebuilder:validation:Optional
@@ -296,7 +346,7 @@ type AssetSourceParameters struct {
 
 type DiscoveryCredentialsInitParameters struct {
 
-	// (Updatable) The OCID of the secret in a vault. If the the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "", "password": "" }`.
+	// (Updatable) The OCID of the secret in a vault. If the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "<User>", "password": "example-password" }. If the type of the credentials is API_KEY, the secret must contain the accessKeyId and secretAccessKey in JSON format, which is in the form of { "accessKeyId": "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
@@ -315,7 +365,7 @@ type DiscoveryCredentialsInitParameters struct {
 
 type DiscoveryCredentialsObservation struct {
 
-	// (Updatable) The OCID of the secret in a vault. If the the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "", "password": "" }`.
+	// (Updatable) The OCID of the secret in a vault. If the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "<User>", "password": "example-password" }. If the type of the credentials is API_KEY, the secret must contain the accessKeyId and secretAccessKey in JSON format, which is in the form of { "accessKeyId": "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.
 	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
 
 	// (Updatable) Authentication type
@@ -324,7 +374,7 @@ type DiscoveryCredentialsObservation struct {
 
 type DiscoveryCredentialsParameters struct {
 
-	// (Updatable) The OCID of the secret in a vault. If the the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "", "password": "" }`.
+	// (Updatable) The OCID of the secret in a vault. If the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "<User>", "password": "example-password" }. If the type of the credentials is API_KEY, the secret must contain the accessKeyId and secretAccessKey in JSON format, which is in the form of { "accessKeyId": "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -345,7 +395,7 @@ type DiscoveryCredentialsParameters struct {
 
 type ReplicationCredentialsInitParameters struct {
 
-	// (Updatable) The OCID of the secret in a vault. If the the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "", "password": "" }`.
+	// (Updatable) The OCID of the secret in a vault. If the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "<User>", "password": "example-password" }. If the type of the credentials is API_KEY, the secret must contain the accessKeyId and secretAccessKey in JSON format, which is in the form of { "accessKeyId": "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
@@ -364,7 +414,7 @@ type ReplicationCredentialsInitParameters struct {
 
 type ReplicationCredentialsObservation struct {
 
-	// (Updatable) The OCID of the secret in a vault. If the the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "", "password": "" }`.
+	// (Updatable) The OCID of the secret in a vault. If the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "<User>", "password": "example-password" }. If the type of the credentials is API_KEY, the secret must contain the accessKeyId and secretAccessKey in JSON format, which is in the form of { "accessKeyId": "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.
 	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
 
 	// (Updatable) Authentication type
@@ -373,7 +423,7 @@ type ReplicationCredentialsObservation struct {
 
 type ReplicationCredentialsParameters struct {
 
-	// (Updatable) The OCID of the secret in a vault. If the the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "", "password": "" }`.
+	// (Updatable) The OCID of the secret in a vault. If the type of the credentials is BASIC, the secret must contain the username and password in JSON format, which is in the form of { "username": "<User>", "password": "example-password" }. If the type of the credentials is API_KEY, the secret must contain the accessKeyId and secretAccessKey in JSON format, which is in the form of { "accessKeyId": "<AccessKey>", "secretAccessKey": "<AccessKeyValue>" }.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -430,7 +480,6 @@ type AssetSource struct {
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.discoveryCredentials) || (has(self.initProvider) && has(self.initProvider.discoveryCredentials))",message="spec.forProvider.discoveryCredentials is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.type) || (has(self.initProvider) && has(self.initProvider.type))",message="spec.forProvider.type is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.vcenterEndpoint) || (has(self.initProvider) && has(self.initProvider.vcenterEndpoint))",message="spec.forProvider.vcenterEndpoint is a required parameter"
 	Spec   AssetSourceSpec   `json:"spec"`
 	Status AssetSourceStatus `json:"status,omitempty"`
 }

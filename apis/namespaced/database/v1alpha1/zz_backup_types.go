@@ -14,6 +14,30 @@ import (
 	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
 )
 
+type BackupEncryptionKeyLocationDetailsInitParameters struct {
+}
+
+type BackupEncryptionKeyLocationDetailsObservation struct {
+
+	// Provide the key OCID of a registered AWS key.
+	AwsEncryptionKeyID *string `json:"awsEncryptionKeyId,omitempty" tf:"aws_encryption_key_id,omitempty"`
+
+	// Provide the key OCID of a registered Azure key.
+	AzureEncryptionKeyID *string `json:"azureEncryptionKeyId,omitempty" tf:"azure_encryption_key_id,omitempty"`
+
+	// Provide the key OCID of a registered GCP key.
+	GoogleCloudProviderEncryptionKeyID *string `json:"googleCloudProviderEncryptionKeyId,omitempty" tf:"google_cloud_provider_encryption_key_id,omitempty"`
+
+	// Provide the HSM password as you would in RDBMS for External HSM.
+	HSMPassword *string `json:"hsmPassword,omitempty" tf:"hsm_password,omitempty"`
+
+	// Use 'EXTERNAL' for creating a new database or migrating a database key to an External HSM. Use 'AZURE' for creating a new database or migrating a database key to Azure. Use 'AWS' for creating a new database or migrating a database key to Aws. Use 'GCP' for creating a new database or migrating a database key to Gcp.
+	ProviderType *string `json:"providerType,omitempty" tf:"provider_type,omitempty"`
+}
+
+type BackupEncryptionKeyLocationDetailsParameters struct {
+}
+
 type BackupInitParameters struct {
 
 	// The OCID of the database.
@@ -61,7 +85,7 @@ type BackupObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Types of providers supported for managing database encryption keys
-	EncryptionKeyLocationDetails []EncryptionKeyLocationDetailsObservation `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
+	EncryptionKeyLocationDetails []BackupEncryptionKeyLocationDetailsObservation `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// The OCID of the backup.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -138,30 +162,6 @@ type BackupParameters struct {
 
 	// +kubebuilder:validation:Optional
 	RetentionPeriodInYears *float64 `json:"retentionPeriodInYears,omitempty" tf:"retention_period_in_years,omitempty"`
-}
-
-type EncryptionKeyLocationDetailsInitParameters struct {
-}
-
-type EncryptionKeyLocationDetailsObservation struct {
-
-	// Provide the key OCID of a registered AWS key.
-	AwsEncryptionKeyID *string `json:"awsEncryptionKeyId,omitempty" tf:"aws_encryption_key_id,omitempty"`
-
-	// Provide the key OCID of a registered Azure key.
-	AzureEncryptionKeyID *string `json:"azureEncryptionKeyId,omitempty" tf:"azure_encryption_key_id,omitempty"`
-
-	// Provide the key OCID of a registered GCP key.
-	GoogleCloudProviderEncryptionKeyID *string `json:"googleCloudProviderEncryptionKeyId,omitempty" tf:"google_cloud_provider_encryption_key_id,omitempty"`
-
-	// Provide the HSM password as you would in RDBMS for External HSM.
-	HSMPassword *string `json:"hsmPassword,omitempty" tf:"hsm_password,omitempty"`
-
-	// Use 'EXTERNAL' for creating a new database or migrating a database key to an External HSM. Use 'AZURE' for creating a new database or migrating a database key to Azure. Use 'AWS' for creating a new database or migrating a database key to Aws. Use 'GCP' for creating a new database or migrating a database key to Gcp.
-	ProviderType *string `json:"providerType,omitempty" tf:"provider_type,omitempty"`
-}
-
-type EncryptionKeyLocationDetailsParameters struct {
 }
 
 // BackupSpec defines the desired state of Backup

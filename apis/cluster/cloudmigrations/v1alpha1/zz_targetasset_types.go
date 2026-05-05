@@ -18,16 +18,16 @@ type AgentConfigInitParameters struct {
 
 type AgentConfigObservation struct {
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
 	AreAllPluginsDisabled *bool `json:"areAllPluginsDisabled,omitempty" tf:"are_all_plugins_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
 	IsManagementDisabled *bool `json:"isManagementDisabled,omitempty" tf:"is_management_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
 	IsMonitoringDisabled *bool `json:"isMonitoringDisabled,omitempty" tf:"is_monitoring_disabled,omitempty"`
 
-	// (Updatable) The configuration of plugins associated with this instance.
+	// (Applicable when type=INSTANCE) (Updatable) The configuration of plugins associated with this instance.
 	PluginsConfig []PluginsConfigObservation `json:"pluginsConfig,omitempty" tf:"plugins_config,omitempty"`
 }
 
@@ -72,40 +72,40 @@ type CreateVnicDetailsInitParameters struct {
 
 type CreateVnicDetailsObservation struct {
 
-	// (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
 	AssignPrivateDNSRecord *bool `json:"assignPrivateDnsRecord,omitempty" tf:"assign_private_dns_record,omitempty"`
 
-	// (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
+	// (Applicable when type=INSTANCE) (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
-	// (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
-	// (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
 
-	// (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
-	// (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
+	// (Applicable when type=INSTANCE) (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
 	VlanID *string `json:"vlanId,omitempty" tf:"vlan_id,omitempty"`
 }
 
@@ -222,11 +222,27 @@ type InstanceOptionsInitParameters struct {
 
 type InstanceOptionsObservation struct {
 
-	// (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
 	AreLegacyImdsEndpointsDisabled *bool `json:"areLegacyImdsEndpointsDisabled,omitempty" tf:"are_legacy_imds_endpoints_disabled,omitempty"`
 }
 
 type InstanceOptionsParameters struct {
+}
+
+type MigrationAssetReplicationLocationDetailInitParameters struct {
+}
+
+type MigrationAssetReplicationLocationDetailObservation struct {
+
+	// Properties for each of the replication location types
+	// +mapType=granular
+	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+
+	// The type of replication location
+	ReplicationLocationType *string `json:"replicationLocationType,omitempty" tf:"replication_location_type,omitempty"`
+}
+
+type MigrationAssetReplicationLocationDetailParameters struct {
 }
 
 type PluginsConfigInitParameters struct {
@@ -291,60 +307,60 @@ type RecommendedSpecInitParameters struct {
 
 type RecommendedSpecObservation struct {
 
-	// (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
 	AgentConfig []AgentConfigObservation `json:"agentConfig,omitempty" tf:"agent_config,omitempty"`
 
-	// (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
+	// (Applicable when type=INSTANCE) (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
 
-	// (Updatable) The OCID of the compartment.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	// (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
+	// (Applicable when type=INSTANCE) (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
 	CreateVnicDetails []CreateVnicDetailsObservation `json:"createVnicDetails,omitempty" tf:"create_vnic_details,omitempty"`
 
-	// (Updatable) The OCID of the dedicated VM host.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the dedicated VM host.
 	DedicatedVMHostID *string `json:"dedicatedVmHostId,omitempty" tf:"dedicated_vm_host_id,omitempty"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
+	// (Applicable when type=INSTANCE) (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) Optional mutable instance options
+	// (Applicable when type=INSTANCE) (Updatable) Optional mutable instance options
 	InstanceOptions []InstanceOptionsObservation `json:"instanceOptions,omitempty" tf:"instance_options,omitempty"`
 
-	// (Updatable) This is an advanced option.
+	// (Applicable when type=INSTANCE) (Updatable) This is an advanced option.
 	IpxeScript *string `json:"ipxeScript,omitempty" tf:"ipxe_script,omitempty"`
 
-	// (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
 	IsPvEncryptionInTransitEnabled *bool `json:"isPvEncryptionInTransitEnabled,omitempty" tf:"is_pv_encryption_in_transit_enabled,omitempty"`
 
-	// (Updatable) Configuration options for preemptible instances.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for preemptible instances.
 	PreemptibleInstanceConfig []PreemptibleInstanceConfigObservation `json:"preemptibleInstanceConfig,omitempty" tf:"preemptible_instance_config,omitempty"`
 
-	// (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
-	// (Updatable) The shape configuration requested for the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape configuration requested for the instance.
 	ShapeConfig []ShapeConfigObservation `json:"shapeConfig,omitempty" tf:"shape_config,omitempty"`
 
-	// (Updatable)
+	// (Applicable when type=INSTANCE) (Updatable)
 	SourceDetails []SourceDetailsObservation `json:"sourceDetails,omitempty" tf:"source_details,omitempty"`
 }
 
@@ -356,13 +372,13 @@ type ShapeConfigInitParameters struct {
 
 type ShapeConfigObservation struct {
 
-	// (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
+	// (Applicable when type=INSTANCE) (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
 	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
-	// (Updatable) The total amount of memory in gigabytes that is available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total amount of memory in gigabytes that is available to the instance.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
-	// (Updatable) The total number of OCPUs available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
@@ -419,7 +435,7 @@ type StorageVolumesParameters struct {
 
 type TargetAssetInitParameters struct {
 
-	// (Updatable) Performance of the block volumes.
+	// (Applicable when type=INSTANCE) (Updatable) Performance of the block volumes.
 	BlockVolumesPerformance *float64 `json:"blockVolumesPerformance,omitempty" tf:"block_volumes_performance,omitempty"`
 
 	// (Updatable) A boolean indicating whether the asset should be migrated.
@@ -444,6 +460,12 @@ type TargetAssetInitParameters struct {
 	// (Updatable) Preferred VM shape type that you provide.
 	PreferredShapeType *string `json:"preferredShapeType,omitempty" tf:"preferred_shape_type,omitempty"`
 
+	// Instance launch details. Use the sourceDetails parameter to specify whether a boot volume or an image should be used to launch a new instance.
+	RecommendedSpec []RecommendedSpecInitParameters `json:"recommendedSpec,omitempty" tf:"recommended_spec,omitempty"`
+
+	// Instance launch details. Use the sourceDetails parameter to specify whether a boot volume or an image should be used to launch a new instance.
+	TestSpec []TestSpecInitParameters `json:"testSpec,omitempty" tf:"test_spec,omitempty"`
+
 	// (Updatable) The type of target asset.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
@@ -456,10 +478,10 @@ type TargetAssetMigrationAssetInitParameters struct {
 
 type TargetAssetMigrationAssetObservation struct {
 
-	// (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
+	// (Applicable when type=INSTANCE) (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) The OCID of the compartment.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// List of migration assets that depend on the asset.
@@ -468,7 +490,11 @@ type TargetAssetMigrationAssetObservation struct {
 	// List of migration assets that depends on the asset.
 	DependsOn []*string `json:"dependsOn,omitempty" tf:"depends_on,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// Mapping of source disk id to destination disk details
+	// +mapType=granular
+	DestinationDisks map[string]*string `json:"destinationDisks,omitempty" tf:"destination_disks,omitempty"`
+
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Unique identifier that is immutable on creation.
@@ -488,6 +514,9 @@ type TargetAssetMigrationAssetObservation struct {
 
 	// Replication compartment identifier
 	ReplicationCompartmentID *string `json:"replicationCompartmentId,omitempty" tf:"replication_compartment_id,omitempty"`
+
+	// Replication location detail where the snapshots reside
+	ReplicationLocationDetail []MigrationAssetReplicationLocationDetailObservation `json:"replicationLocationDetail,omitempty" tf:"replication_location_detail,omitempty"`
 
 	// Replication schedule identifier
 	ReplicationScheduleID *string `json:"replicationScheduleId,omitempty" tf:"replication_schedule_id,omitempty"`
@@ -527,10 +556,10 @@ type TargetAssetMigrationAssetParameters struct {
 
 type TargetAssetObservation struct {
 
-	// (Updatable) Performance of the block volumes.
+	// (Applicable when type=INSTANCE) (Updatable) Performance of the block volumes.
 	BlockVolumesPerformance *float64 `json:"blockVolumesPerformance,omitempty" tf:"block_volumes_performance,omitempty"`
 
-	// (Updatable) The OCID of the compartment.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Messages about the compatibility issues.
@@ -539,7 +568,7 @@ type TargetAssetObservation struct {
 	// Created resource identifier
 	CreatedResourceID *string `json:"createdResourceId,omitempty" tf:"created_resource_id,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Cost estimation description
@@ -593,7 +622,7 @@ type TargetAssetObservation struct {
 
 type TargetAssetParameters struct {
 
-	// (Updatable) Performance of the block volumes.
+	// (Applicable when type=INSTANCE) (Updatable) Performance of the block volumes.
 	// +kubebuilder:validation:Optional
 	BlockVolumesPerformance *float64 `json:"blockVolumesPerformance,omitempty" tf:"block_volumes_performance,omitempty"`
 
@@ -623,6 +652,14 @@ type TargetAssetParameters struct {
 	// +kubebuilder:validation:Optional
 	PreferredShapeType *string `json:"preferredShapeType,omitempty" tf:"preferred_shape_type,omitempty"`
 
+	// Instance launch details. Use the sourceDetails parameter to specify whether a boot volume or an image should be used to launch a new instance.
+	// +kubebuilder:validation:Optional
+	RecommendedSpec []RecommendedSpecParameters `json:"recommendedSpec,omitempty" tf:"recommended_spec,omitempty"`
+
+	// Instance launch details. Use the sourceDetails parameter to specify whether a boot volume or an image should be used to launch a new instance.
+	// +kubebuilder:validation:Optional
+	TestSpec []TestSpecParameters `json:"testSpec,omitempty" tf:"test_spec,omitempty"`
+
 	// (Updatable) The type of target asset.
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -637,16 +674,16 @@ type TestSpecAgentConfigInitParameters struct {
 
 type TestSpecAgentConfigObservation struct {
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
 	AreAllPluginsDisabled *bool `json:"areAllPluginsDisabled,omitempty" tf:"are_all_plugins_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
 	IsManagementDisabled *bool `json:"isManagementDisabled,omitempty" tf:"is_management_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
 	IsMonitoringDisabled *bool `json:"isMonitoringDisabled,omitempty" tf:"is_monitoring_disabled,omitempty"`
 
-	// (Updatable) The configuration of plugins associated with this instance.
+	// (Applicable when type=INSTANCE) (Updatable) The configuration of plugins associated with this instance.
 	PluginsConfig []AgentConfigPluginsConfigObservation `json:"pluginsConfig,omitempty" tf:"plugins_config,omitempty"`
 }
 
@@ -658,40 +695,40 @@ type TestSpecCreateVnicDetailsInitParameters struct {
 
 type TestSpecCreateVnicDetailsObservation struct {
 
-	// (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
 	AssignPrivateDNSRecord *bool `json:"assignPrivateDnsRecord,omitempty" tf:"assign_private_dns_record,omitempty"`
 
-	// (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
+	// (Applicable when type=INSTANCE) (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
-	// (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
-	// (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
 
-	// (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
-	// (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
+	// (Applicable when type=INSTANCE) (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
 	VlanID *string `json:"vlanId,omitempty" tf:"vlan_id,omitempty"`
 }
 
@@ -706,7 +743,7 @@ type TestSpecInstanceOptionsInitParameters struct {
 
 type TestSpecInstanceOptionsObservation struct {
 
-	// (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
 	AreLegacyImdsEndpointsDisabled *bool `json:"areLegacyImdsEndpointsDisabled,omitempty" tf:"are_legacy_imds_endpoints_disabled,omitempty"`
 }
 
@@ -715,60 +752,60 @@ type TestSpecInstanceOptionsParameters struct {
 
 type TestSpecObservation struct {
 
-	// (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
 	AgentConfig []TestSpecAgentConfigObservation `json:"agentConfig,omitempty" tf:"agent_config,omitempty"`
 
-	// (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
+	// (Applicable when type=INSTANCE) (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
 
-	// (Updatable) The OCID of the compartment.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	// (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
+	// (Applicable when type=INSTANCE) (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
 	CreateVnicDetails []TestSpecCreateVnicDetailsObservation `json:"createVnicDetails,omitempty" tf:"create_vnic_details,omitempty"`
 
-	// (Updatable) The OCID of the dedicated VM host.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the dedicated VM host.
 	DedicatedVMHostID *string `json:"dedicatedVmHostId,omitempty" tf:"dedicated_vm_host_id,omitempty"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
+	// (Applicable when type=INSTANCE) (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) Optional mutable instance options
+	// (Applicable when type=INSTANCE) (Updatable) Optional mutable instance options
 	InstanceOptions []TestSpecInstanceOptionsObservation `json:"instanceOptions,omitempty" tf:"instance_options,omitempty"`
 
-	// (Updatable) This is an advanced option.
+	// (Applicable when type=INSTANCE) (Updatable) This is an advanced option.
 	IpxeScript *string `json:"ipxeScript,omitempty" tf:"ipxe_script,omitempty"`
 
-	// (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
 	IsPvEncryptionInTransitEnabled *bool `json:"isPvEncryptionInTransitEnabled,omitempty" tf:"is_pv_encryption_in_transit_enabled,omitempty"`
 
-	// (Updatable) Configuration options for preemptible instances.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for preemptible instances.
 	PreemptibleInstanceConfig []TestSpecPreemptibleInstanceConfigObservation `json:"preemptibleInstanceConfig,omitempty" tf:"preemptible_instance_config,omitempty"`
 
-	// (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
-	// (Updatable) The shape configuration requested for the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape configuration requested for the instance.
 	ShapeConfig []TestSpecShapeConfigObservation `json:"shapeConfig,omitempty" tf:"shape_config,omitempty"`
 
-	// (Updatable)
+	// (Applicable when type=INSTANCE) (Updatable)
 	SourceDetails []TestSpecSourceDetailsObservation `json:"sourceDetails,omitempty" tf:"source_details,omitempty"`
 }
 
@@ -792,13 +829,13 @@ type TestSpecShapeConfigInitParameters struct {
 
 type TestSpecShapeConfigObservation struct {
 
-	// (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
+	// (Applicable when type=INSTANCE) (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
 	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
-	// (Updatable) The total amount of memory in gigabytes that is available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total amount of memory in gigabytes that is available to the instance.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
-	// (Updatable) The total number of OCPUs available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
@@ -834,49 +871,49 @@ type TestSpecSourceDetailsParameters struct {
 
 type UserSpecAgentConfigInitParameters struct {
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
 	AreAllPluginsDisabled *bool `json:"areAllPluginsDisabled,omitempty" tf:"are_all_plugins_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
 	IsManagementDisabled *bool `json:"isManagementDisabled,omitempty" tf:"is_management_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
 	IsMonitoringDisabled *bool `json:"isMonitoringDisabled,omitempty" tf:"is_monitoring_disabled,omitempty"`
 
-	// (Updatable) The configuration of plugins associated with this instance.
+	// (Applicable when type=INSTANCE) (Updatable) The configuration of plugins associated with this instance.
 	PluginsConfig []UserSpecAgentConfigPluginsConfigInitParameters `json:"pluginsConfig,omitempty" tf:"plugins_config,omitempty"`
 }
 
 type UserSpecAgentConfigObservation struct {
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
 	AreAllPluginsDisabled *bool `json:"areAllPluginsDisabled,omitempty" tf:"are_all_plugins_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
 	IsManagementDisabled *bool `json:"isManagementDisabled,omitempty" tf:"is_management_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
 	IsMonitoringDisabled *bool `json:"isMonitoringDisabled,omitempty" tf:"is_monitoring_disabled,omitempty"`
 
-	// (Updatable) The configuration of plugins associated with this instance.
+	// (Applicable when type=INSTANCE) (Updatable) The configuration of plugins associated with this instance.
 	PluginsConfig []UserSpecAgentConfigPluginsConfigObservation `json:"pluginsConfig,omitempty" tf:"plugins_config,omitempty"`
 }
 
 type UserSpecAgentConfigParameters struct {
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available plugins. This includes the management and monitoring plugins.
 	// +kubebuilder:validation:Optional
 	AreAllPluginsDisabled *bool `json:"areAllPluginsDisabled,omitempty" tf:"are_all_plugins_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can run all the available management plugins. By default, the value is false (management plugins are enabled).
 	// +kubebuilder:validation:Optional
 	IsManagementDisabled *bool `json:"isManagementDisabled,omitempty" tf:"is_management_disabled,omitempty"`
 
-	// (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
+	// (Applicable when type=INSTANCE) (Updatable) Whether Oracle Cloud Agent can gather performance metrics and monitor the instance using the monitoring plugins. By default, the value is false (monitoring plugins are enabled).
 	// +kubebuilder:validation:Optional
 	IsMonitoringDisabled *bool `json:"isMonitoringDisabled,omitempty" tf:"is_monitoring_disabled,omitempty"`
 
-	// (Updatable) The configuration of plugins associated with this instance.
+	// (Applicable when type=INSTANCE) (Updatable) The configuration of plugins associated with this instance.
 	// +kubebuilder:validation:Optional
 	PluginsConfig []UserSpecAgentConfigPluginsConfigParameters `json:"pluginsConfig,omitempty" tf:"plugins_config,omitempty"`
 }
@@ -903,46 +940,46 @@ type UserSpecAgentConfigPluginsConfigParameters struct {
 
 	// (Updatable) Whether the plugin should be enabled or disabled.
 	// +kubebuilder:validation:Optional
-	DesiredState *string `json:"desiredState" tf:"desired_state,omitempty"`
+	DesiredState *string `json:"desiredState,omitempty" tf:"desired_state,omitempty"`
 
 	// (Updatable) The plugin name. To get a list of available plugins, use the ListInstanceagentAvailablePlugins operation in the Oracle Cloud Agent API. For more information about the available plugins, see Managing Plugins with Oracle Cloud Agent.
 	// +kubebuilder:validation:Optional
-	Name *string `json:"name" tf:"name,omitempty"`
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type UserSpecCreateVnicDetailsInitParameters struct {
 
-	// (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
 	AssignPrivateDNSRecord *bool `json:"assignPrivateDnsRecord,omitempty" tf:"assign_private_dns_record,omitempty"`
 
-	// (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
+	// (Applicable when type=INSTANCE) (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
-	// (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
-	// (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
 
-	// (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
@@ -955,7 +992,7 @@ type UserSpecCreateVnicDetailsInitParameters struct {
 	// +kubebuilder:validation:Optional
 	SubnetIDSelector *v1.Selector `json:"subnetIdSelector,omitempty" tf:"-"`
 
-	// (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
+	// (Applicable when type=INSTANCE) (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Vlan
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	VlanID *string `json:"vlanId,omitempty" tf:"vlan_id,omitempty"`
@@ -971,85 +1008,85 @@ type UserSpecCreateVnicDetailsInitParameters struct {
 
 type UserSpecCreateVnicDetailsObservation struct {
 
-	// (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
 	AssignPrivateDNSRecord *bool `json:"assignPrivateDnsRecord,omitempty" tf:"assign_private_dns_record,omitempty"`
 
-	// (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
+	// (Applicable when type=INSTANCE) (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
-	// (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
-	// (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
 
-	// (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
-	// (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
+	// (Applicable when type=INSTANCE) (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
 	VlanID *string `json:"vlanId,omitempty" tf:"vlan_id,omitempty"`
 }
 
 type UserSpecCreateVnicDetailsParameters struct {
 
-	// (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a DNS record. If set to false, there will be no DNS record registration for the VNIC. If set to true, the DNS record will be registered. By default, the value is true.
 	// +kubebuilder:validation:Optional
 	AssignPrivateDNSRecord *bool `json:"assignPrivateDnsRecord,omitempty" tf:"assign_private_dns_record,omitempty"`
 
-	// (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the VNIC should be assigned a public IP address. Defaults to whether the subnet is public or private. If not set and the VNIC is being created in a private subnet (that is, where prohibitPublicIpOnVnic = true in the Subnet), then no public IP address is assigned. If not set and the subnet is public (prohibitPublicIpOnVnic = false), then a public IP address is assigned. If set to true and prohibitPublicIpOnVnic = true, an error is returned.
 	// +kubebuilder:validation:Optional
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	// +kubebuilder:validation:Optional
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
+	// (Applicable when type=INSTANCE) (Updatable) List of OCIDs of the network security groups (NSGs) that are added to the VNIC. For more information about NSGs, see NetworkSecurityGroup.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
-	// (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	// +kubebuilder:validation:Optional
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
-	// (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
+	// (Applicable when type=INSTANCE) (Updatable) Whether the source/destination check is disabled on the VNIC. Defaults to false, which means the check is performed. For information about why you should skip the source/destination check, see Using a Private IP as a Route Target.
 	// +kubebuilder:validation:Optional
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
 
-	// (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the subnet to create the VNIC. When launching an instance, use this subnetId instead of the deprecated subnetId in LaunchInstanceDetails. At least one of them is required; if you provide both, the values must match.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -1063,7 +1100,7 @@ type UserSpecCreateVnicDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	SubnetIDSelector *v1.Selector `json:"subnetIdSelector,omitempty" tf:"-"`
 
-	// (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
+	// (Applicable when type=INSTANCE) (Updatable) Provide this attribute only if you are an Oracle Cloud VMware Solution customer and creating a secondary VNIC in a VLAN. The value is the OCID of the VLAN. See Vlan.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Vlan
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -1080,22 +1117,22 @@ type UserSpecCreateVnicDetailsParameters struct {
 
 type UserSpecInitParameters struct {
 
-	// (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
 	AgentConfig []UserSpecAgentConfigInitParameters `json:"agentConfig,omitempty" tf:"agent_config,omitempty"`
 
-	// (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
+	// (Applicable when type=INSTANCE) (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
 
-	// (Updatable) The OCID of the compartment.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	// (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
+	// (Applicable when type=INSTANCE) (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
 	CreateVnicDetails []UserSpecCreateVnicDetailsInitParameters `json:"createVnicDetails,omitempty" tf:"create_vnic_details,omitempty"`
 
-	// (Updatable) The OCID of the dedicated VM host.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the dedicated VM host.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/compute/v1alpha1.DedicatedVmHost
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	DedicatedVMHostID *string `json:"dedicatedVmHostId,omitempty" tf:"dedicated_vm_host_id,omitempty"`
@@ -1108,146 +1145,146 @@ type UserSpecInitParameters struct {
 	// +kubebuilder:validation:Optional
 	DedicatedVMHostIDSelector *v1.Selector `json:"dedicatedVmHostIdSelector,omitempty" tf:"-"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
+	// (Applicable when type=INSTANCE) (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) Optional mutable instance options
+	// (Applicable when type=INSTANCE) (Updatable) Optional mutable instance options
 	InstanceOptions []UserSpecInstanceOptionsInitParameters `json:"instanceOptions,omitempty" tf:"instance_options,omitempty"`
 
-	// (Updatable) This is an advanced option.
+	// (Applicable when type=INSTANCE) (Updatable) This is an advanced option.
 	IpxeScript *string `json:"ipxeScript,omitempty" tf:"ipxe_script,omitempty"`
 
-	// (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
 	IsPvEncryptionInTransitEnabled *bool `json:"isPvEncryptionInTransitEnabled,omitempty" tf:"is_pv_encryption_in_transit_enabled,omitempty"`
 
-	// (Updatable) Configuration options for preemptible instances.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for preemptible instances.
 	PreemptibleInstanceConfig []UserSpecPreemptibleInstanceConfigInitParameters `json:"preemptibleInstanceConfig,omitempty" tf:"preemptible_instance_config,omitempty"`
 
-	// (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
-	// (Updatable) The shape configuration requested for the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape configuration requested for the instance.
 	ShapeConfig []UserSpecShapeConfigInitParameters `json:"shapeConfig,omitempty" tf:"shape_config,omitempty"`
 
-	// (Updatable)
+	// (Applicable when type=INSTANCE) (Updatable)
 	SourceDetails []UserSpecSourceDetailsInitParameters `json:"sourceDetails,omitempty" tf:"source_details,omitempty"`
 }
 
 type UserSpecInstanceOptionsInitParameters struct {
 
-	// (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
 	AreLegacyImdsEndpointsDisabled *bool `json:"areLegacyImdsEndpointsDisabled,omitempty" tf:"are_legacy_imds_endpoints_disabled,omitempty"`
 }
 
 type UserSpecInstanceOptionsObservation struct {
 
-	// (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
 	AreLegacyImdsEndpointsDisabled *bool `json:"areLegacyImdsEndpointsDisabled,omitempty" tf:"are_legacy_imds_endpoints_disabled,omitempty"`
 }
 
 type UserSpecInstanceOptionsParameters struct {
 
-	// (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to disable the legacy (/v1) instance metadata service endpoints. Customers who have migrated to /v2 should set this to true for added security. Default is false.
 	// +kubebuilder:validation:Optional
 	AreLegacyImdsEndpointsDisabled *bool `json:"areLegacyImdsEndpointsDisabled,omitempty" tf:"are_legacy_imds_endpoints_disabled,omitempty"`
 }
 
 type UserSpecObservation struct {
 
-	// (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
 	AgentConfig []UserSpecAgentConfigObservation `json:"agentConfig,omitempty" tf:"agent_config,omitempty"`
 
-	// (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
+	// (Applicable when type=INSTANCE) (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
 
-	// (Updatable) The OCID of the compartment.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	// (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
+	// (Applicable when type=INSTANCE) (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
 	CreateVnicDetails []UserSpecCreateVnicDetailsObservation `json:"createVnicDetails,omitempty" tf:"create_vnic_details,omitempty"`
 
-	// (Updatable) The OCID of the dedicated VM host.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the dedicated VM host.
 	DedicatedVMHostID *string `json:"dedicatedVmHostId,omitempty" tf:"dedicated_vm_host_id,omitempty"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
+	// (Applicable when type=INSTANCE) (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) Optional mutable instance options
+	// (Applicable when type=INSTANCE) (Updatable) Optional mutable instance options
 	InstanceOptions []UserSpecInstanceOptionsObservation `json:"instanceOptions,omitempty" tf:"instance_options,omitempty"`
 
-	// (Updatable) This is an advanced option.
+	// (Applicable when type=INSTANCE) (Updatable) This is an advanced option.
 	IpxeScript *string `json:"ipxeScript,omitempty" tf:"ipxe_script,omitempty"`
 
-	// (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
 	IsPvEncryptionInTransitEnabled *bool `json:"isPvEncryptionInTransitEnabled,omitempty" tf:"is_pv_encryption_in_transit_enabled,omitempty"`
 
-	// (Updatable) Configuration options for preemptible instances.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for preemptible instances.
 	PreemptibleInstanceConfig []UserSpecPreemptibleInstanceConfigObservation `json:"preemptibleInstanceConfig,omitempty" tf:"preemptible_instance_config,omitempty"`
 
-	// (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
-	// (Updatable) The shape configuration requested for the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape configuration requested for the instance.
 	ShapeConfig []UserSpecShapeConfigObservation `json:"shapeConfig,omitempty" tf:"shape_config,omitempty"`
 
-	// (Updatable)
+	// (Applicable when type=INSTANCE) (Updatable)
 	SourceDetails []UserSpecSourceDetailsObservation `json:"sourceDetails,omitempty" tf:"source_details,omitempty"`
 }
 
 type UserSpecParameters struct {
 
-	// (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for the Oracle Cloud Agent software running on the instance.
 	// +kubebuilder:validation:Optional
 	AgentConfig []UserSpecAgentConfigParameters `json:"agentConfig,omitempty" tf:"agent_config,omitempty"`
 
-	// (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
+	// (Applicable when type=INSTANCE) (Updatable) The availability domain of the instance.  Example: Uocm:PHX-AD-1
 	// +kubebuilder:validation:Optional
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compute capacity reservation under which this instance is launched. You can opt out of all default reservations by specifying an empty string as input for this field. For more information, see Capacity Reservations.
 	// +kubebuilder:validation:Optional
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
 
-	// (Updatable) The OCID of the compartment.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compartment.
 	// +kubebuilder:validation:Optional
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	// (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
+	// (Applicable when type=INSTANCE) (Updatable) Contains properties for a VNIC. You use this object when creating the primary VNIC during instance launch or when creating a secondary VNIC. For more information about VNICs, see Virtual Network Interface Cards (VNICs).
 	// +kubebuilder:validation:Optional
 	CreateVnicDetails []UserSpecCreateVnicDetailsParameters `json:"createVnicDetails,omitempty" tf:"create_vnic_details,omitempty"`
 
-	// (Updatable) The OCID of the dedicated VM host.
+	// (Applicable when type=INSTANCE) (Updatable) The OCID of the dedicated VM host.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/compute/v1alpha1.DedicatedVmHost
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -1261,53 +1298,53 @@ type UserSpecParameters struct {
 	// +kubebuilder:validation:Optional
 	DedicatedVMHostIDSelector *v1.Selector `json:"dedicatedVmHostIdSelector,omitempty" tf:"-"`
 
-	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
-	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
+	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
+	// (Applicable when type=INSTANCE) (Updatable) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains lets you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	// +kubebuilder:validation:Optional
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
-	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
+	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
-	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
+	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	// +kubebuilder:validation:Optional
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// (Updatable) Optional mutable instance options
+	// (Applicable when type=INSTANCE) (Updatable) Optional mutable instance options
 	// +kubebuilder:validation:Optional
 	InstanceOptions []UserSpecInstanceOptionsParameters `json:"instanceOptions,omitempty" tf:"instance_options,omitempty"`
 
-	// (Updatable) This is an advanced option.
+	// (Applicable when type=INSTANCE) (Updatable) This is an advanced option.
 	// +kubebuilder:validation:Optional
 	IpxeScript *string `json:"ipxeScript,omitempty" tf:"ipxe_script,omitempty"`
 
-	// (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
+	// (Applicable when type=INSTANCE) (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. By default, the value is false.
 	// +kubebuilder:validation:Optional
 	IsPvEncryptionInTransitEnabled *bool `json:"isPvEncryptionInTransitEnabled,omitempty" tf:"is_pv_encryption_in_transit_enabled,omitempty"`
 
-	// (Updatable) Configuration options for preemptible instances.
+	// (Applicable when type=INSTANCE) (Updatable) Configuration options for preemptible instances.
 	// +kubebuilder:validation:Optional
 	PreemptibleInstanceConfig []UserSpecPreemptibleInstanceConfigParameters `json:"preemptibleInstanceConfig,omitempty" tf:"preemptible_instance_config,omitempty"`
 
-	// (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape of an instance. The shape determines the number of CPUs, amount of memory, and other resources allocated to the instance.
 	// +kubebuilder:validation:Optional
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
-	// (Updatable) The shape configuration requested for the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The shape configuration requested for the instance.
 	// +kubebuilder:validation:Optional
 	ShapeConfig []UserSpecShapeConfigParameters `json:"shapeConfig,omitempty" tf:"shape_config,omitempty"`
 
-	// (Updatable)
+	// (Applicable when type=INSTANCE) (Updatable)
 	// +kubebuilder:validation:Optional
 	SourceDetails []UserSpecSourceDetailsParameters `json:"sourceDetails,omitempty" tf:"source_details,omitempty"`
 }
@@ -1328,7 +1365,7 @@ type UserSpecPreemptibleInstanceConfigParameters struct {
 
 	// (Updatable) The action to run when the preemptible instance is interrupted for eviction.
 	// +kubebuilder:validation:Optional
-	PreemptionAction []UserSpecPreemptibleInstanceConfigPreemptionActionParameters `json:"preemptionAction" tf:"preemption_action,omitempty"`
+	PreemptionAction []UserSpecPreemptibleInstanceConfigPreemptionActionParameters `json:"preemptionAction,omitempty" tf:"preemption_action,omitempty"`
 }
 
 type UserSpecPreemptibleInstanceConfigPreemptionActionInitParameters struct {
@@ -1362,39 +1399,39 @@ type UserSpecPreemptibleInstanceConfigPreemptionActionParameters struct {
 
 type UserSpecShapeConfigInitParameters struct {
 
-	// (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
+	// (Applicable when type=INSTANCE) (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
 	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
-	// (Updatable) The total amount of memory in gigabytes that is available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total amount of memory in gigabytes that is available to the instance.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
-	// (Updatable) The total number of OCPUs available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type UserSpecShapeConfigObservation struct {
 
-	// (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
+	// (Applicable when type=INSTANCE) (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
 	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
-	// (Updatable) The total amount of memory in gigabytes that is available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total amount of memory in gigabytes that is available to the instance.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
-	// (Updatable) The total number of OCPUs available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type UserSpecShapeConfigParameters struct {
 
-	// (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
+	// (Applicable when type=INSTANCE) (Updatable) The baseline OCPU utilization for a subcore burstable VM instance. Leave this attribute blank for a non-burstable instance, or explicitly specify non-burstable with BASELINE_1_1.
 	// +kubebuilder:validation:Optional
 	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
-	// (Updatable) The total amount of memory in gigabytes that is available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total amount of memory in gigabytes that is available to the instance.
 	// +kubebuilder:validation:Optional
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
-	// (Updatable) The total number of OCPUs available to the instance.
+	// (Applicable when type=INSTANCE) (Updatable) The total number of OCPUs available to the instance.
 	// +kubebuilder:validation:Optional
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
@@ -1565,9 +1602,7 @@ type TargetAsset struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.isExcludedFromExecution) || (has(self.initProvider) && has(self.initProvider.isExcludedFromExecution))",message="spec.forProvider.isExcludedFromExecution is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.preferredShapeType) || (has(self.initProvider) && has(self.initProvider.preferredShapeType))",message="spec.forProvider.preferredShapeType is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.type) || (has(self.initProvider) && has(self.initProvider.type))",message="spec.forProvider.type is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.userSpec) || (has(self.initProvider) && has(self.initProvider.userSpec))",message="spec.forProvider.userSpec is a required parameter"
 	Spec   TargetAssetSpec   `json:"spec"`
 	Status TargetAssetStatus `json:"status,omitempty"`
 }

@@ -198,6 +198,9 @@ type InstancePoolsObservation struct {
 	// (Updatable) The OCID of the compartment containing the cluster network.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
+	// Count of instance in running state associated to the Instance Pool.
+	CurrentSize *float64 `json:"currentSize,omitempty" tf:"current_size,omitempty"`
+
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
@@ -522,6 +525,9 @@ type PlacementConfigurationsObservation struct {
 
 	// The availability domain to place instances.  Example: Uocm:PHX-AD-1
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
+
+	// The OCID of the compute cluster that the instance will be created in.
+	ComputeClusterID *string `json:"computeClusterId,omitempty" tf:"compute_cluster_id,omitempty"`
 
 	// The fault domains to place instances.
 	FaultDomains []*string `json:"faultDomains,omitempty" tf:"fault_domains,omitempty"`

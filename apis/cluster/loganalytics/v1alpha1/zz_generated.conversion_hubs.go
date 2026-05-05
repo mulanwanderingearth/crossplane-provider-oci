@@ -10,6 +10,12 @@ package v1alpha1
 func (tr *LogAnalyticsEntity) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *LogAnalyticsEntityAssociationsAdd) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *LogAnalyticsEntityAssociationsRemove) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *LogAnalyticsEntityType) Hub() {}
 
 // Hub marks this type as a conversion hub.
@@ -32,6 +38,9 @@ func (tr *LogAnalyticsUnprocessedDataBucketManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *Namespace) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *NamespaceAssociation) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *NamespaceIngestTimeRule) Hub() {}

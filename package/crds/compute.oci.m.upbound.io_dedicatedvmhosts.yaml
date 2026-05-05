@@ -455,8 +455,6 @@ spec:
                       machine host.  Example: Uocm:PHX-AD-1'
                     type: string
                   capacityBins:
-                    description: A list of total and remaining CPU and memory per
-                      capacity bucket.
                     items:
                       properties:
                         capacityIndex:

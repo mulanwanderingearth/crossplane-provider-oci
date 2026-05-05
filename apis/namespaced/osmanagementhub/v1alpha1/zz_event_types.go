@@ -82,6 +82,9 @@ type DataObservation struct {
 	// The output log of the error.
 	ErrorLog *string `json:"errorLog,omitempty" tf:"error_log,omitempty"`
 
+	// Brief description on how this error is categorized.
+	ErrorSummary *string `json:"errorSummary,omitempty" tf:"error_summary,omitempty"`
+
 	// Number of times the event has occurred.
 	EventCount *float64 `json:"eventCount,omitempty" tf:"event_count,omitempty"`
 

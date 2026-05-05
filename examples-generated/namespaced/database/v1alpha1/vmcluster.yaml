@@ -26,6 +26,7 @@ spec:
     - isDiagnosticsEventsEnabled: ${var.vm_cluster_data_collection_options_is_diagnostics_events_enabled}
       isHealthMonitoringEnabled: ${var.vm_cluster_data_collection_options_is_health_monitoring_enabled}
       isIncidentLogsEnabled: ${var.vm_cluster_data_collection_options_is_incident_logs_enabled}
+    dataStoragePercentage: ${var.vm_cluster_data_storage_percentage}
     dataStorageSizeInTbs: ${var.vm_cluster_data_storage_size_in_tbs}
     dbNodeStorageSizeInGbs: ${var.vm_cluster_db_node_storage_size_in_gbs}
     dbServers: ${var.vm_cluster_db_servers}
@@ -47,10 +48,14 @@ spec:
     isSparseDiskgroupEnabled: ${var.vm_cluster_is_sparse_diskgroup_enabled}
     licenseModel: ${var.vm_cluster_license_model}
     memorySizeInGbs: ${var.vm_cluster_memory_size_in_gbs}
+    recoStoragePercentage: ${var.vm_cluster_reco_storage_percentage}
+    sparseStoragePercentage: ${var.vm_cluster_sparse_storage_percentage}
     sshPublicKeys: ${var.vm_cluster_ssh_public_keys}
     systemVersion: ${var.vm_cluster_system_version}
     timeZone: ${var.vm_cluster_time_zone}
+    vmBackupStorageType: ${var.vm_cluster_vm_backup_storage_type}
     vmClusterNetworkIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_vm_cluster_network
     vmClusterType: ${var.vm_cluster_vm_cluster_type}
+    vmFileSystemStorageType: ${var.vm_cluster_vm_file_system_storage_type}

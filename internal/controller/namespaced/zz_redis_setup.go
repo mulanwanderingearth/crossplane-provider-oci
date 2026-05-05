@@ -9,6 +9,8 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
+	ocicachebackup "github.com/oracle/provider-oci/internal/controller/namespaced/redis/ocicachebackup"
+	ocicachebackupexporttoobjectstorage "github.com/oracle/provider-oci/internal/controller/namespaced/redis/ocicachebackupexporttoobjectstorage"
 	ocicacheconfigset "github.com/oracle/provider-oci/internal/controller/namespaced/redis/ocicacheconfigset"
 	ocicacheconfigsetlistassociatedocicachecluster "github.com/oracle/provider-oci/internal/controller/namespaced/redis/ocicacheconfigsetlistassociatedocicachecluster"
 	ocicacheuser "github.com/oracle/provider-oci/internal/controller/namespaced/redis/ocicacheuser"
@@ -24,6 +26,8 @@ import (
 // the supplied manager.
 func Setup_redis(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		ocicachebackup.Setup,
+		ocicachebackupexporttoobjectstorage.Setup,
 		ocicacheconfigset.Setup,
 		ocicacheconfigsetlistassociatedocicachecluster.Setup,
 		ocicacheuser.Setup,
@@ -45,6 +49,8 @@ func Setup_redis(mgr ctrl.Manager, o controller.Options) error {
 // the supplied manager gated.
 func SetupGated_redis(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		ocicachebackup.SetupGated,
+		ocicachebackupexporttoobjectstorage.SetupGated,
 		ocicacheconfigset.SetupGated,
 		ocicacheconfigsetlistassociatedocicachecluster.SetupGated,
 		ocicacheuser.SetupGated,

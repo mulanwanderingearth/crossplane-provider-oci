@@ -432,6 +432,9 @@ type DbHomeDatabaseInitParameters struct {
 	// (Applicable when source=DATABASE) The point in time of the original database from which the new database is created. If not specifed, the latest backup is used to create the database.
 	TimeStampForPointInTimeRecovery *string `json:"timeStampForPointInTimeRecovery,omitempty" tf:"time_stamp_for_point_in_time_recovery,omitempty"`
 
+	// The OCID of the VM cluster.
+	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
+
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Vault
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
@@ -525,6 +528,9 @@ type DbHomeDatabaseObservation struct {
 
 	// (Applicable when source=DATABASE) The point in time of the original database from which the new database is created. If not specifed, the latest backup is used to create the database.
 	TimeStampForPointInTimeRecovery *string `json:"timeStampForPointInTimeRecovery,omitempty" tf:"time_stamp_for_point_in_time_recovery,omitempty"`
+
+	// The OCID of the VM cluster.
+	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	VaultID *string `json:"vaultId,omitempty" tf:"vault_id,omitempty"`
@@ -677,6 +683,10 @@ type DbHomeDatabaseParameters struct {
 	// (Applicable when source=DATABASE) The point in time of the original database from which the new database is created. If not specifed, the latest backup is used to create the database.
 	// +kubebuilder:validation:Optional
 	TimeStampForPointInTimeRecovery *string `json:"timeStampForPointInTimeRecovery,omitempty" tf:"time_stamp_for_point_in_time_recovery,omitempty"`
+
+	// The OCID of the VM cluster.
+	// +kubebuilder:validation:Optional
+	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Vault

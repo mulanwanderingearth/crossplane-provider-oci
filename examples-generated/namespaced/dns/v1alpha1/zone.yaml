@@ -28,6 +28,7 @@ spec:
           testing.upbound.io/example-name: test_tsig_key
     freeformTags: ${var.zone_freeform_tags}
     name: ${var.zone_name}
+    resolutionMode: ${var.zone_resolution_mode}
     scope: ${var.zone_scope}
     viewIdSelector:
       matchLabels:

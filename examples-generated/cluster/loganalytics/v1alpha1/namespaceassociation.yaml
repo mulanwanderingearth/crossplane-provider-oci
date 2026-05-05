@@ -1,0 +1,28 @@
+apiVersion: loganalytics.oci.upbound.io/v1alpha1
+kind: NamespaceAssociation
+metadata:
+  annotations:
+    meta.upbound.io/example-id: loganalytics/v1alpha1/namespaceassociation
+  labels:
+    testing.upbound.io/example-name: test_namespace_association
+  name: test-namespace-association
+spec:
+  forProvider:
+    associationProperties:
+    - name: ${var.namespace_association_association_properties_name}
+      patterns:
+      - id: ${var.namespace_association_association_properties_patterns_id}
+        value: ${var.namespace_association_association_properties_patterns_value}
+      value: ${var.namespace_association_association_properties_value}
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    entityIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_log_analytics_entity
+    isFromRepublish: ${var.namespace_association_is_from_republish}
+    logGroupIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_log_analytics_log_group
+    namespace: ${var.namespace_association_namespace}
+    sourceName: ${var.namespace_association_source_name}

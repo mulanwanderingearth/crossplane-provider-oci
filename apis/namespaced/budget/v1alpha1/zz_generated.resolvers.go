@@ -159,3 +159,256 @@ func (mg *Budget) ResolveReferences(ctx context.Context, c client.Reader) error 
 
 	return nil
 }
+
+// ResolveReferences of this CostAlertSubscription.
+func (mg *CostAlertSubscription) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this CostAnomalyEvent.
+func (mg *CostAnomalyEvent) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("budget.oci.m.upbound.io", "v1alpha1", "CostAnomalyEvent", "CostAnomalyEventList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CostAnomalyEventID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CostAnomalyEventIDRef,
+			Selector:     mg.Spec.ForProvider.CostAnomalyEventIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CostAnomalyEventID")
+	}
+	mg.Spec.ForProvider.CostAnomalyEventID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CostAnomalyEventIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("budget.oci.m.upbound.io", "v1alpha1", "CostAnomalyEvent", "CostAnomalyEventList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CostAnomalyEventID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CostAnomalyEventIDRef,
+			Selector:     mg.Spec.InitProvider.CostAnomalyEventIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CostAnomalyEventID")
+	}
+	mg.Spec.InitProvider.CostAnomalyEventID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CostAnomalyEventIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this CostAnomalyMonitor.
+func (mg *CostAnomalyMonitor) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.CostAlertSubscriptionMap); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("budget.oci.m.upbound.io", "v1alpha1", "CostAlertSubscription", "CostAlertSubscriptionList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionIDRef,
+				Selector:     mg.Spec.ForProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionID")
+		}
+		mg.Spec.ForProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionIDRef = rsp.ResolvedReference
+
+	}
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.CostAlertSubscriptionMap); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("budget.oci.m.upbound.io", "v1alpha1", "CostAlertSubscription", "CostAlertSubscriptionList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionIDRef,
+				Selector:     mg.Spec.InitProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionID")
+		}
+		mg.Spec.InitProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.CostAlertSubscriptionMap[i3].CostAlertSubscriptionIDRef = rsp.ResolvedReference
+
+	}
+
+	return nil
+}
+
+// ResolveReferences of this CostAnomalyMonitorCostanomalymonitorenabletogglesManagement.
+func (mg *CostAnomalyMonitorCostanomalymonitorenabletogglesManagement) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("budget.oci.m.upbound.io", "v1alpha1", "CostAnomalyMonitor", "CostAnomalyMonitorList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CostAnomalyMonitorID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CostAnomalyMonitorIDRef,
+			Selector:     mg.Spec.ForProvider.CostAnomalyMonitorIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CostAnomalyMonitorID")
+	}
+	mg.Spec.ForProvider.CostAnomalyMonitorID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CostAnomalyMonitorIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("budget.oci.m.upbound.io", "v1alpha1", "CostAnomalyMonitor", "CostAnomalyMonitorList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CostAnomalyMonitorID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CostAnomalyMonitorIDRef,
+			Selector:     mg.Spec.InitProvider.CostAnomalyMonitorIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CostAnomalyMonitorID")
+	}
+	mg.Spec.InitProvider.CostAnomalyMonitorID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CostAnomalyMonitorIDRef = rsp.ResolvedReference
+
+	return nil
+}

@@ -1,0 +1,17 @@
+apiVersion: database.oci.upbound.io/v1alpha1
+kind: ManagementCloudExadataStorageServer
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/managementcloudexadatastorageserver
+  labels:
+    testing.upbound.io/example-name: test_cloud_exadata_storage_server
+  name: test-cloud-exadata-storage-server
+spec:
+  forProvider:
+    cloudExadataStorageServerIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_cloud_exadata_storage_server
+    definedTags:
+      Operations.CostCenter: "42"
+    freeformTags:
+      Department: Finance

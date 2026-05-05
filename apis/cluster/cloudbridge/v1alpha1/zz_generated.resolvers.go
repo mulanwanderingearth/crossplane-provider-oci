@@ -220,12 +220,86 @@ func (mg *Asset) ResolveReferences(ctx context.Context, c client.Reader) error {
 
 	var rsp reference.ResolutionResponse
 	var err error
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.AwsEC2); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.AwsEC2[i3].NetworkInterfaces); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Group", "GroupList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupName),
+						Extract:      resource.ExtractParamPath("name", false),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupNameRef,
+						Selector:     mg.Spec.ForProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupNameSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupName")
+				}
+				mg.Spec.ForProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupName = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupNameRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.AwsEC2); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.AwsEC2[i3].Placement); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Group", "GroupList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AwsEC2[i3].Placement[i4].GroupName),
+					Extract:      resource.ExtractParamPath("name", false),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.ForProvider.AwsEC2[i3].Placement[i4].GroupNameRef,
+					Selector:     mg.Spec.ForProvider.AwsEC2[i3].Placement[i4].GroupNameSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.ForProvider.AwsEC2[i3].Placement[i4].GroupName")
+			}
+			mg.Spec.ForProvider.AwsEC2[i3].Placement[i4].GroupName = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.ForProvider.AwsEC2[i3].Placement[i4].GroupNameRef = rsp.ResolvedReference
+
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.AwsEC2); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.AwsEC2[i3].SecurityGroups); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Group", "GroupList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AwsEC2[i3].SecurityGroups[i4].GroupName),
+					Extract:      resource.ExtractParamPath("name", false),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.ForProvider.AwsEC2[i3].SecurityGroups[i4].GroupNameRef,
+					Selector:     mg.Spec.ForProvider.AwsEC2[i3].SecurityGroups[i4].GroupNameSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.ForProvider.AwsEC2[i3].SecurityGroups[i4].GroupName")
+			}
+			mg.Spec.ForProvider.AwsEC2[i3].SecurityGroups[i4].GroupName = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.ForProvider.AwsEC2[i3].SecurityGroups[i4].GroupNameRef = rsp.ResolvedReference
+
+		}
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
-
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
 			Extract:      reference.ExternalName(),
@@ -260,12 +334,86 @@ func (mg *Asset) ResolveReferences(ctx context.Context, c client.Reader) error {
 	}
 	mg.Spec.ForProvider.InventoryID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.InventoryIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.AwsEC2); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.AwsEC2[i3].NetworkInterfaces); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Group", "GroupList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupName),
+						Extract:      resource.ExtractParamPath("name", false),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupNameRef,
+						Selector:     mg.Spec.InitProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupNameSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupName")
+				}
+				mg.Spec.InitProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupName = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.AwsEC2[i3].NetworkInterfaces[i4].SecurityGroups[i5].GroupNameRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.AwsEC2); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.AwsEC2[i3].Placement); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Group", "GroupList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AwsEC2[i3].Placement[i4].GroupName),
+					Extract:      resource.ExtractParamPath("name", false),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.InitProvider.AwsEC2[i3].Placement[i4].GroupNameRef,
+					Selector:     mg.Spec.InitProvider.AwsEC2[i3].Placement[i4].GroupNameSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.InitProvider.AwsEC2[i3].Placement[i4].GroupName")
+			}
+			mg.Spec.InitProvider.AwsEC2[i3].Placement[i4].GroupName = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.InitProvider.AwsEC2[i3].Placement[i4].GroupNameRef = rsp.ResolvedReference
+
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.AwsEC2); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.AwsEC2[i3].SecurityGroups); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Group", "GroupList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AwsEC2[i3].SecurityGroups[i4].GroupName),
+					Extract:      resource.ExtractParamPath("name", false),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.InitProvider.AwsEC2[i3].SecurityGroups[i4].GroupNameRef,
+					Selector:     mg.Spec.InitProvider.AwsEC2[i3].SecurityGroups[i4].GroupNameSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.InitProvider.AwsEC2[i3].SecurityGroups[i4].GroupName")
+			}
+			mg.Spec.InitProvider.AwsEC2[i3].SecurityGroups[i4].GroupName = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.InitProvider.AwsEC2[i3].SecurityGroups[i4].GroupNameRef = rsp.ResolvedReference
+
+		}
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
-
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
 			Extract:      reference.ExternalName(),

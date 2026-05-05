@@ -15,6 +15,8 @@ import (
 )
 
 type NamespaceLookupsAppendDataManagementInitParameters struct {
+
+	// Path to the file containing data for the lookup append.
 	AppendLookupFile *string `json:"appendLookupFile,omitempty" tf:"append_lookup_file,omitempty"`
 
 	// The character encoding of the uploaded file.
@@ -29,11 +31,13 @@ type NamespaceLookupsAppendDataManagementInitParameters struct {
 	// The name of the lookup to operate on.
 	LookupName *string `json:"lookupName,omitempty" tf:"lookup_name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
 type NamespaceLookupsAppendDataManagementObservation struct {
+
+	// Path to the file containing data for the lookup append.
 	AppendLookupFile *string `json:"appendLookupFile,omitempty" tf:"append_lookup_file,omitempty"`
 
 	// The character encoding of the uploaded file.
@@ -50,12 +54,13 @@ type NamespaceLookupsAppendDataManagementObservation struct {
 	// The name of the lookup to operate on.
 	LookupName *string `json:"lookupName,omitempty" tf:"lookup_name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
 type NamespaceLookupsAppendDataManagementParameters struct {
 
+	// Path to the file containing data for the lookup append.
 	// +kubebuilder:validation:Optional
 	AppendLookupFile *string `json:"appendLookupFile,omitempty" tf:"append_lookup_file,omitempty"`
 
@@ -75,7 +80,7 @@ type NamespaceLookupsAppendDataManagementParameters struct {
 	// +kubebuilder:validation:Optional
 	LookupName *string `json:"lookupName,omitempty" tf:"lookup_name,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }

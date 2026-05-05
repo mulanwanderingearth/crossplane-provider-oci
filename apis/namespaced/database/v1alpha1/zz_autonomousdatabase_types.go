@@ -63,6 +63,26 @@ type AutonomousDatabaseCustomerContactsParameters struct {
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
 }
 
+type AutonomousDatabaseEncryptionKeyLocationDetailsInitParameters struct {
+}
+
+type AutonomousDatabaseEncryptionKeyLocationDetailsObservation struct {
+
+	// Provide the key OCID of a registered AWS key.
+	AwsEncryptionKeyID *string `json:"awsEncryptionKeyId,omitempty" tf:"aws_encryption_key_id,omitempty"`
+
+	// The OCID of the Autonomous AI Database.
+	AzureEncryptionKeyID *string `json:"azureEncryptionKeyId,omitempty" tf:"azure_encryption_key_id,omitempty"`
+
+	HSMPassword *string `json:"hsmPassword,omitempty" tf:"hsm_password,omitempty"`
+
+	// Use 'AWS' for creating a new database.
+	ProviderType *string `json:"providerType,omitempty" tf:"provider_type,omitempty"`
+}
+
+type AutonomousDatabaseEncryptionKeyLocationDetailsParameters struct {
+}
+
 type AutonomousDatabaseInitParameters struct {
 
 	// (Updatable) The password must be between 12 and 30 characters long, and must contain at least 1 uppercase, 1 lowercase, and 1 numeric character. It cannot contain the double quote symbol (") or the username "admin", regardless of casing. The password is mandatory if source value is "BACKUP_FROM_ID", "BACKUP_FROM_TIMESTAMP", "DATABASE" or "NONE".
@@ -116,6 +136,9 @@ type AutonomousDatabaseInitParameters struct {
 	// +kubebuilder:validation:Optional
 	AutonomousDatabaseIDSelector *v1.NamespacedSelector `json:"autonomousDatabaseIdSelector,omitempty" tf:"-"`
 
+	// (Updatable) Autonomous Database maintenance window. The maintenance window can be configured during database creation. To change the maintenance window of an existing Autonomous Database Serverless instance, clone the database and specify the maintenance window for the new cloned instance.
+	AutonomousDatabaseMaintenanceWindow []AutonomousDatabaseMaintenanceWindowInitParameters `json:"autonomousDatabaseMaintenanceWindow,omitempty" tf:"autonomous_database_maintenance_window,omitempty"`
+
 	// (Updatable) The maintenance schedule type of the Autonomous AI Database Serverless. An EARLY maintenance schedule follows a schedule applying patches prior to the REGULAR schedule. A REGULAR maintenance schedule follows the normal cycle
 	AutonomousMaintenanceScheduleType *string `json:"autonomousMaintenanceScheduleType,omitempty" tf:"autonomous_maintenance_schedule_type,omitempty"`
 
@@ -164,10 +187,10 @@ type AutonomousDatabaseInitParameters struct {
 	// (Updatable) The list of database tools details.
 	DBToolsDetails []DBToolsDetailsInitParameters `json:"dbToolsDetails,omitempty" tf:"db_tools_details,omitempty"`
 
-	// (Updatable) A valid Oracle AI Database version for Autonomous AI Database.db_workload AJD is only supported for db_version 19c and above.
+	// (Updatable) A valid Oracle AI Database version for Autonomous AI Database. When you specify 23ai for dbversion, the system will provision a 23ai database, but the UI will display it as 26ai. When you specify 26ai for dbversion, the system will provision and display a 26ai database as expected. For new databases, it is recommended to use either 19c or 26ai.
 	DBVersion *string `json:"dbVersion,omitempty" tf:"db_version,omitempty"`
 
-	// (Updatable) The Autonomous AI Database workload type. The following values are valid:
+	// AJD is only supported for db_version 19c and above.
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
 
 	// (Updatable) Status of the Data Safe registration for this Autonomous Database. Could be REGISTERED or NOT_REGISTERED.
@@ -253,6 +276,7 @@ type AutonomousDatabaseInitParameters struct {
 
 	IsScheduleDBVersionUpgradeToEarliest *bool `json:"isScheduleDbVersionUpgradeToEarliest,omitempty" tf:"is_schedule_db_version_upgrade_to_earliest,omitempty"`
 
+	// (Updatable) An optional property when enabled triggers the Shrinking of Autonomous Database once. To trigger Shrinking of ADB once again, this flag needs to be disabled and re-enabled again. It should not be passed during create database operation. It is only applicable on Serverless databases i.e. where is_dedicated is false.
 	IsShrinkOnly *bool `json:"isShrinkOnly,omitempty" tf:"is_shrink_only,omitempty"`
 
 	// (Updatable) The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
@@ -276,6 +300,9 @@ type AutonomousDatabaseInitParameters struct {
 
 	// Parameter that allows users to select an acceptable maximum data loss limit in seconds, up to which Automatic Failover will be triggered when necessary for a Local Autonomous Data Guard
 	LocalAdgAutoFailoverMaxDataLossLimit *float64 `json:"localAdgAutoFailoverMaxDataLossLimit,omitempty" tf:"local_adg_auto_failover_max_data_loss_limit,omitempty"`
+
+	// The OCID of the dedicated resource pool leader Autonomous Database in the same region, associated with local Autonomous Data Guard for a dedicated resource pool member.
+	LocalAdgResourcePoolLeaderID *string `json:"localAdgResourcePoolLeaderId,omitempty" tf:"local_adg_resource_pool_leader_id,omitempty"`
 
 	// Details for the long-term backup schedule.
 	LongTermBackupSchedule []LongTermBackupScheduleInitParameters `json:"longTermBackupSchedule,omitempty" tf:"long_term_backup_schedule,omitempty"`
@@ -323,6 +350,7 @@ type AutonomousDatabaseInitParameters struct {
 	// (Updatable) The configuration details for resource pool
 	ResourcePoolSummary []ResourcePoolSummaryInitParameters `json:"resourcePoolSummary,omitempty" tf:"resource_pool_summary,omitempty"`
 
+	// (Updatable) An optional property when flipped triggers rotation of KMS key. It is only applicable on dedicated databases i.e. where is_dedicated is true.
 	RotateKeyTrigger *bool `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
 
 	// (Updatable) The list of scheduled operations. Consists of values such as dayOfWeek, scheduledStartTime, scheduledStopTime.
@@ -378,10 +406,14 @@ type AutonomousDatabaseInitParameters struct {
 	// The OCID of the subscription with which resource needs to be associated with.
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
+	// It is applicable only when is_local_data_guard_enabled is true. Could be set to PRIMARY or STANDBY. Default value is PRIMARY.
 	SwitchoverTo *string `json:"switchoverTo,omitempty" tf:"switchover_to,omitempty"`
 
-	// The OCID of the Autonomous AI Database.
+	// (Updatable) It is applicable only when dataguard_region_type and role are set, and is_dedicated is false. For Autonomous Database Serverless instances, Data Guard associations have designated primary and standby regions, and these region types do not change when the database changes roles. It takes the OCID of the remote peer to switchover to and the API is called from the remote region.
 	SwitchoverToRemotePeerID *string `json:"switchoverToRemotePeerId,omitempty" tf:"switchover_to_remote_peer_id,omitempty"`
+
+	// The date until which maintenance of Autonomous Database is temporarily paused.
+	TimeMaintenancePauseUntil *string `json:"timeMaintenancePauseUntil,omitempty" tf:"time_maintenance_pause_until,omitempty"`
 
 	// (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable) The the date and time that auto-refreshing will begin for an Autonomous AI Database refreshable clone. This value controls only the start time for the first refresh operation. Subsequent (ongoing) refresh operations have start times controlled by the value of the autoRefreshFrequencyInSeconds parameter.
 	TimeOfAutoRefreshStart *string `json:"timeOfAutoRefreshStart,omitempty" tf:"time_of_auto_refresh_start,omitempty"`
@@ -391,6 +423,9 @@ type AutonomousDatabaseInitParameters struct {
 
 	// (Applicable when source=BACKUP_FROM_TIMESTAMP) The timestamp specified for the point-in-time clone of the source Autonomous AI Database. The timestamp must be in the past.
 	Timestamp *string `json:"timestamp,omitempty" tf:"timestamp,omitempty"`
+
+	// Details for importing transportable tablespace for an Autonomous Database.
+	TransportableTablespace []TransportableTablespaceInitParameters `json:"transportableTablespace,omitempty" tf:"transportable_tablespace,omitempty"`
 
 	// (Applicable when source=BACKUP_FROM_TIMESTAMP) Clone from latest available backup timestamp.
 	UseLatestAvailableBackupTimeStamp *bool `json:"useLatestAvailableBackupTimeStamp,omitempty" tf:"use_latest_available_backup_time_stamp,omitempty"`
@@ -437,6 +472,45 @@ type AutonomousDatabaseKeyHistoryEntryObservation struct {
 type AutonomousDatabaseKeyHistoryEntryParameters struct {
 }
 
+type AutonomousDatabaseMaintenanceWindowInitParameters struct {
+
+	// (Updatable) Day of the week.
+	DayOfWeek []DayOfWeekInitParameters `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
+
+	// (Updatable) The maintenance end time. The value must use the ISO-8601 format "hh:mm".
+	MaintenanceEndTime *string `json:"maintenanceEndTime,omitempty" tf:"maintenance_end_time,omitempty"`
+
+	// (Updatable) The maintenance start time. The value must use the ISO-8601 format "hh:mm".
+	MaintenanceStartTime *string `json:"maintenanceStartTime,omitempty" tf:"maintenance_start_time,omitempty"`
+}
+
+type AutonomousDatabaseMaintenanceWindowObservation struct {
+
+	// (Updatable) Day of the week.
+	DayOfWeek []DayOfWeekObservation `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
+
+	// (Updatable) The maintenance end time. The value must use the ISO-8601 format "hh:mm".
+	MaintenanceEndTime *string `json:"maintenanceEndTime,omitempty" tf:"maintenance_end_time,omitempty"`
+
+	// (Updatable) The maintenance start time. The value must use the ISO-8601 format "hh:mm".
+	MaintenanceStartTime *string `json:"maintenanceStartTime,omitempty" tf:"maintenance_start_time,omitempty"`
+}
+
+type AutonomousDatabaseMaintenanceWindowParameters struct {
+
+	// (Updatable) Day of the week.
+	// +kubebuilder:validation:Optional
+	DayOfWeek []DayOfWeekParameters `json:"dayOfWeek" tf:"day_of_week,omitempty"`
+
+	// (Updatable) The maintenance end time. The value must use the ISO-8601 format "hh:mm".
+	// +kubebuilder:validation:Optional
+	MaintenanceEndTime *string `json:"maintenanceEndTime,omitempty" tf:"maintenance_end_time,omitempty"`
+
+	// (Updatable) The maintenance start time. The value must use the ISO-8601 format "hh:mm".
+	// +kubebuilder:validation:Optional
+	MaintenanceStartTime *string `json:"maintenanceStartTime,omitempty" tf:"maintenance_start_time,omitempty"`
+}
+
 type AutonomousDatabaseObservation struct {
 
 	// The current amount of storage in use for user and system data, in terabytes (TB).
@@ -469,6 +543,9 @@ type AutonomousDatabaseObservation struct {
 
 	// The OCID of the source Autonomous AI Database that you will clone to create a new Autonomous AI Database.
 	AutonomousDatabaseID *string `json:"autonomousDatabaseId,omitempty" tf:"autonomous_database_id,omitempty"`
+
+	// (Updatable) Autonomous Database maintenance window. The maintenance window can be configured during database creation. To change the maintenance window of an existing Autonomous Database Serverless instance, clone the database and specify the maintenance window for the new cloned instance.
+	AutonomousDatabaseMaintenanceWindow []AutonomousDatabaseMaintenanceWindowObservation `json:"autonomousDatabaseMaintenanceWindow,omitempty" tf:"autonomous_database_maintenance_window,omitempty"`
 
 	// (Updatable) The maintenance schedule type of the Autonomous AI Database Serverless. An EARLY maintenance schedule follows a schedule applying patches prior to the REGULAR schedule. A REGULAR maintenance schedule follows the normal cycle
 	AutonomousMaintenanceScheduleType *string `json:"autonomousMaintenanceScheduleType,omitempty" tf:"autonomous_maintenance_schedule_type,omitempty"`
@@ -527,10 +604,10 @@ type AutonomousDatabaseObservation struct {
 	// (Updatable) The list of database tools details.
 	DBToolsDetails []DBToolsDetailsObservation `json:"dbToolsDetails,omitempty" tf:"db_tools_details,omitempty"`
 
-	// (Updatable) A valid Oracle AI Database version for Autonomous AI Database.db_workload AJD is only supported for db_version 19c and above.
+	// (Updatable) A valid Oracle AI Database version for Autonomous AI Database. When you specify 23ai for dbversion, the system will provision a 23ai database, but the UI will display it as 26ai. When you specify 26ai for dbversion, the system will provision and display a 26ai database as expected. For new databases, it is recommended to use either 19c or 26ai.
 	DBVersion *string `json:"dbVersion,omitempty" tf:"db_version,omitempty"`
 
-	// (Updatable) The Autonomous AI Database workload type. The following values are valid:
+	// AJD is only supported for db_version 19c and above.
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
 
 	// (Updatable) Status of the Data Safe registration for this Autonomous Database. Could be REGISTERED or NOT_REGISTERED.
@@ -572,6 +649,9 @@ type AutonomousDatabaseObservation struct {
 
 	// Key History Entry.
 	EncryptionKeyHistoryEntry []EncryptionKeyHistoryEntryObservation `json:"encryptionKeyHistoryEntry,omitempty" tf:"encryption_key_history_entry,omitempty"`
+
+	// Types of providers supported for managing database encryption keys
+	EncryptionKeyLocationDetails []AutonomousDatabaseEncryptionKeyLocationDetailsObservation `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// Indicates the number of seconds of data loss for a Data Guard failover.
 	FailedDataRecoveryInSeconds *float64 `json:"failedDataRecoveryInSeconds,omitempty" tf:"failed_data_recovery_in_seconds,omitempty"`
@@ -646,6 +726,7 @@ type AutonomousDatabaseObservation struct {
 
 	IsScheduleDBVersionUpgradeToEarliest *bool `json:"isScheduleDbVersionUpgradeToEarliest,omitempty" tf:"is_schedule_db_version_upgrade_to_earliest,omitempty"`
 
+	// (Updatable) An optional property when enabled triggers the Shrinking of Autonomous Database once. To trigger Shrinking of ADB once again, this flag needs to be disabled and re-enabled again. It should not be passed during create database operation. It is only applicable on Serverless databases i.e. where is_dedicated is false.
 	IsShrinkOnly *bool `json:"isShrinkOnly,omitempty" tf:"is_shrink_only,omitempty"`
 
 	// (Updatable) The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
@@ -677,6 +758,9 @@ type AutonomousDatabaseObservation struct {
 
 	// Parameter that allows users to select an acceptable maximum data loss limit in seconds, up to which Automatic Failover will be triggered when necessary for a Local Autonomous Data Guard
 	LocalAdgAutoFailoverMaxDataLossLimit *float64 `json:"localAdgAutoFailoverMaxDataLossLimit,omitempty" tf:"local_adg_auto_failover_max_data_loss_limit,omitempty"`
+
+	// The OCID of the dedicated resource pool leader Autonomous Database in the same region, associated with local Autonomous Data Guard for a dedicated resource pool member.
+	LocalAdgResourcePoolLeaderID *string `json:"localAdgResourcePoolLeaderId,omitempty" tf:"local_adg_resource_pool_leader_id,omitempty"`
 
 	// Indicates the local disaster recovery (DR) type of the Autonomous AI Database Serverless instance. Autonomous Data Guard (ADG) DR type provides business critical DR with a faster recovery time objective (RTO) during failover or switchover. Backup-based DR type provides lower cost DR with a slower RTO during failover or switchover.
 	LocalDisasterRecoveryType *string `json:"localDisasterRecoveryType,omitempty" tf:"local_disaster_recovery_type,omitempty"`
@@ -769,6 +853,7 @@ type AutonomousDatabaseObservation struct {
 	// The Data Guard role of the Autonomous Container Database or Autonomous AI Database, if Autonomous Data Guard is enabled.
 	Role *string `json:"role,omitempty" tf:"role,omitempty"`
 
+	// (Updatable) An optional property when flipped triggers rotation of KMS key. It is only applicable on dedicated databases i.e. where is_dedicated is true.
 	RotateKeyTrigger *bool `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
 
 	// (Updatable) The list of scheduled operations. Consists of values such as dayOfWeek, scheduledStartTime, scheduledStopTime.
@@ -813,9 +898,10 @@ type AutonomousDatabaseObservation struct {
 	// The list of regions that support the creation of an Autonomous AI Database clone or an Autonomous Data Guard standby database.
 	SupportedRegionsToCloneTo []*string `json:"supportedRegionsToCloneTo,omitempty" tf:"supported_regions_to_clone_to,omitempty"`
 
+	// It is applicable only when is_local_data_guard_enabled is true. Could be set to PRIMARY or STANDBY. Default value is PRIMARY.
 	SwitchoverTo *string `json:"switchoverTo,omitempty" tf:"switchover_to,omitempty"`
 
-	// The OCID of the Autonomous AI Database.
+	// (Updatable) It is applicable only when dataguard_region_type and role are set, and is_dedicated is false. For Autonomous Database Serverless instances, Data Guard associations have designated primary and standby regions, and these region types do not change when the database changes roles. It takes the OCID of the remote peer to switchover to and the API is called from the remote region.
 	SwitchoverToRemotePeerID *string `json:"switchoverToRemotePeerId,omitempty" tf:"switchover_to_remote_peer_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
@@ -848,6 +934,9 @@ type AutonomousDatabaseObservation struct {
 
 	// The date and time when maintenance will end.
 	TimeMaintenanceEnd *string `json:"timeMaintenanceEnd,omitempty" tf:"time_maintenance_end,omitempty"`
+
+	// The date until which maintenance of Autonomous Database is temporarily paused.
+	TimeMaintenancePauseUntil *string `json:"timeMaintenancePauseUntil,omitempty" tf:"time_maintenance_pause_until,omitempty"`
 
 	// (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable) The the date and time that auto-refreshing will begin for an Autonomous AI Database refreshable clone. This value controls only the start time for the first refresh operation. Subsequent (ongoing) refresh operations have start times controlled by the value of the autoRefreshFrequencyInSeconds parameter.
 	TimeOfAutoRefreshStart *string `json:"timeOfAutoRefreshStart,omitempty" tf:"time_of_auto_refresh_start,omitempty"`
@@ -887,6 +976,9 @@ type AutonomousDatabaseObservation struct {
 
 	// The backup storage to the database.
 	TotalBackupStorageSizeInGbs *float64 `json:"totalBackupStorageSizeInGbs,omitempty" tf:"total_backup_storage_size_in_gbs,omitempty"`
+
+	// Details for importing transportable tablespace for an Autonomous Database.
+	TransportableTablespace []TransportableTablespaceObservation `json:"transportableTablespace,omitempty" tf:"transportable_tablespace,omitempty"`
 
 	// (Applicable when source=BACKUP_FROM_TIMESTAMP) Clone from latest available backup timestamp.
 	UseLatestAvailableBackupTimeStamp *bool `json:"useLatestAvailableBackupTimeStamp,omitempty" tf:"use_latest_available_backup_time_stamp,omitempty"`
@@ -971,6 +1063,10 @@ type AutonomousDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	AutonomousDatabaseIDSelector *v1.NamespacedSelector `json:"autonomousDatabaseIdSelector,omitempty" tf:"-"`
 
+	// (Updatable) Autonomous Database maintenance window. The maintenance window can be configured during database creation. To change the maintenance window of an existing Autonomous Database Serverless instance, clone the database and specify the maintenance window for the new cloned instance.
+	// +kubebuilder:validation:Optional
+	AutonomousDatabaseMaintenanceWindow []AutonomousDatabaseMaintenanceWindowParameters `json:"autonomousDatabaseMaintenanceWindow,omitempty" tf:"autonomous_database_maintenance_window,omitempty"`
+
 	// (Updatable) The maintenance schedule type of the Autonomous AI Database Serverless. An EARLY maintenance schedule follows a schedule applying patches prior to the REGULAR schedule. A REGULAR maintenance schedule follows the normal cycle
 	// +kubebuilder:validation:Optional
 	AutonomousMaintenanceScheduleType *string `json:"autonomousMaintenanceScheduleType,omitempty" tf:"autonomous_maintenance_schedule_type,omitempty"`
@@ -1032,11 +1128,11 @@ type AutonomousDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	DBToolsDetails []DBToolsDetailsParameters `json:"dbToolsDetails,omitempty" tf:"db_tools_details,omitempty"`
 
-	// (Updatable) A valid Oracle AI Database version for Autonomous AI Database.db_workload AJD is only supported for db_version 19c and above.
+	// (Updatable) A valid Oracle AI Database version for Autonomous AI Database. When you specify 23ai for dbversion, the system will provision a 23ai database, but the UI will display it as 26ai. When you specify 26ai for dbversion, the system will provision and display a 26ai database as expected. For new databases, it is recommended to use either 19c or 26ai.
 	// +kubebuilder:validation:Optional
 	DBVersion *string `json:"dbVersion,omitempty" tf:"db_version,omitempty"`
 
-	// (Updatable) The Autonomous AI Database workload type. The following values are valid:
+	// AJD is only supported for db_version 19c and above.
 	// +kubebuilder:validation:Optional
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
 
@@ -1151,6 +1247,7 @@ type AutonomousDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	IsScheduleDBVersionUpgradeToEarliest *bool `json:"isScheduleDbVersionUpgradeToEarliest,omitempty" tf:"is_schedule_db_version_upgrade_to_earliest,omitempty"`
 
+	// (Updatable) An optional property when enabled triggers the Shrinking of Autonomous Database once. To trigger Shrinking of ADB once again, this flag needs to be disabled and re-enabled again. It should not be passed during create database operation. It is only applicable on Serverless databases i.e. where is_dedicated is false.
 	// +kubebuilder:validation:Optional
 	IsShrinkOnly *bool `json:"isShrinkOnly,omitempty" tf:"is_shrink_only,omitempty"`
 
@@ -1179,6 +1276,10 @@ type AutonomousDatabaseParameters struct {
 	// Parameter that allows users to select an acceptable maximum data loss limit in seconds, up to which Automatic Failover will be triggered when necessary for a Local Autonomous Data Guard
 	// +kubebuilder:validation:Optional
 	LocalAdgAutoFailoverMaxDataLossLimit *float64 `json:"localAdgAutoFailoverMaxDataLossLimit,omitempty" tf:"local_adg_auto_failover_max_data_loss_limit,omitempty"`
+
+	// The OCID of the dedicated resource pool leader Autonomous Database in the same region, associated with local Autonomous Data Guard for a dedicated resource pool member.
+	// +kubebuilder:validation:Optional
+	LocalAdgResourcePoolLeaderID *string `json:"localAdgResourcePoolLeaderId,omitempty" tf:"local_adg_resource_pool_leader_id,omitempty"`
 
 	// Details for the long-term backup schedule.
 	// +kubebuilder:validation:Optional
@@ -1241,6 +1342,7 @@ type AutonomousDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	ResourcePoolSummary []ResourcePoolSummaryParameters `json:"resourcePoolSummary,omitempty" tf:"resource_pool_summary,omitempty"`
 
+	// (Updatable) An optional property when flipped triggers rotation of KMS key. It is only applicable on dedicated databases i.e. where is_dedicated is true.
 	// +kubebuilder:validation:Optional
 	RotateKeyTrigger *bool `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
 
@@ -1308,12 +1410,17 @@ type AutonomousDatabaseParameters struct {
 	// +kubebuilder:validation:Optional
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
+	// It is applicable only when is_local_data_guard_enabled is true. Could be set to PRIMARY or STANDBY. Default value is PRIMARY.
 	// +kubebuilder:validation:Optional
 	SwitchoverTo *string `json:"switchoverTo,omitempty" tf:"switchover_to,omitempty"`
 
-	// The OCID of the Autonomous AI Database.
+	// (Updatable) It is applicable only when dataguard_region_type and role are set, and is_dedicated is false. For Autonomous Database Serverless instances, Data Guard associations have designated primary and standby regions, and these region types do not change when the database changes roles. It takes the OCID of the remote peer to switchover to and the API is called from the remote region.
 	// +kubebuilder:validation:Optional
 	SwitchoverToRemotePeerID *string `json:"switchoverToRemotePeerId,omitempty" tf:"switchover_to_remote_peer_id,omitempty"`
+
+	// The date until which maintenance of Autonomous Database is temporarily paused.
+	// +kubebuilder:validation:Optional
+	TimeMaintenancePauseUntil *string `json:"timeMaintenancePauseUntil,omitempty" tf:"time_maintenance_pause_until,omitempty"`
 
 	// (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable) The the date and time that auto-refreshing will begin for an Autonomous AI Database refreshable clone. This value controls only the start time for the first refresh operation. Subsequent (ongoing) refresh operations have start times controlled by the value of the autoRefreshFrequencyInSeconds parameter.
 	// +kubebuilder:validation:Optional
@@ -1326,6 +1433,10 @@ type AutonomousDatabaseParameters struct {
 	// (Applicable when source=BACKUP_FROM_TIMESTAMP) The timestamp specified for the point-in-time clone of the source Autonomous AI Database. The timestamp must be in the past.
 	// +kubebuilder:validation:Optional
 	Timestamp *string `json:"timestamp,omitempty" tf:"timestamp,omitempty"`
+
+	// Details for importing transportable tablespace for an Autonomous Database.
+	// +kubebuilder:validation:Optional
+	TransportableTablespace []TransportableTablespaceParameters `json:"transportableTablespace,omitempty" tf:"transportable_tablespace,omitempty"`
 
 	// (Applicable when source=BACKUP_FROM_TIMESTAMP) Clone from latest available backup timestamp.
 	// +kubebuilder:validation:Optional
@@ -1411,6 +1522,9 @@ type ConnectionUrlsObservation struct {
 
 	// Oracle SQL Developer Web URL.
 	SQLDevWebURL *string `json:"sqlDevWebUrl,omitempty" tf:"sql_dev_web_url,omitempty"`
+
+	// The URL of the Spatial Studio for the Autonomous AI Database.
+	SpatialStudioURL *string `json:"spatialStudioUrl,omitempty" tf:"spatial_studio_url,omitempty"`
 }
 
 type ConnectionUrlsParameters struct {
@@ -1427,7 +1541,7 @@ type DBToolsDetailsInitParameters struct {
 	// (Updatable) The max idle time, in minutes, after which the VM used by database tools will be terminated.
 	MaxIdleTimeInMinutes *float64 `json:"maxIdleTimeInMinutes,omitempty" tf:"max_idle_time_in_minutes,omitempty"`
 
-	// (Updatable) Name of database tool.
+	// (Updatable) Name of the day of the week.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
@@ -1442,7 +1556,7 @@ type DBToolsDetailsObservation struct {
 	// (Updatable) The max idle time, in minutes, after which the VM used by database tools will be terminated.
 	MaxIdleTimeInMinutes *float64 `json:"maxIdleTimeInMinutes,omitempty" tf:"max_idle_time_in_minutes,omitempty"`
 
-	// (Updatable) Name of database tool.
+	// (Updatable) Name of the day of the week.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
@@ -1460,26 +1574,26 @@ type DBToolsDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	MaxIdleTimeInMinutes *float64 `json:"maxIdleTimeInMinutes,omitempty" tf:"max_idle_time_in_minutes,omitempty"`
 
-	// (Updatable) Name of database tool.
+	// (Updatable) Name of the day of the week.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 }
 
 type DayOfWeekInitParameters struct {
 
-	// (Updatable) Name of database tool.
+	// (Updatable) Name of the day of the week.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type DayOfWeekObservation struct {
 
-	// (Updatable) Name of database tool.
+	// (Updatable) Name of the day of the week.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type DayOfWeekParameters struct {
 
-	// (Updatable) Name of database tool.
+	// (Updatable) Name of the day of the week.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name" tf:"name,omitempty"`
 }
@@ -1978,6 +2092,9 @@ type PublicConnectionUrlsObservation struct {
 
 	// Oracle SQL Developer Web URL.
 	SQLDevWebURL *string `json:"sqlDevWebUrl,omitempty" tf:"sql_dev_web_url,omitempty"`
+
+	// The URL of the Spatial Studio for the Autonomous AI Database.
+	SpatialStudioURL *string `json:"spatialStudioUrl,omitempty" tf:"spatial_studio_url,omitempty"`
 }
 
 type PublicConnectionUrlsParameters struct {
@@ -2006,11 +2123,17 @@ type RemoteDisasterRecoveryConfigurationParameters struct {
 
 type ResourcePoolSummaryInitParameters struct {
 
+	// (Updatable) Available storage capacity (in TB) that can be used for adding new members or scaling existing members in a dedicated elastic pool.
+	AvailableStorageCapacityInTbs *float64 `json:"availableStorageCapacityInTbs,omitempty" tf:"available_storage_capacity_in_tbs,omitempty"`
+
 	// (Updatable) Indicates if the resource pool should be deleted for the Autonomous AI Database.
 	IsDisabled *bool `json:"isDisabled,omitempty" tf:"is_disabled,omitempty"`
 
 	// (Updatable) Resource pool size.
 	PoolSize *float64 `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
+
+	// (Updatable) Resource pool storage size in TBs.
+	PoolStorageSizeInTbs *float64 `json:"poolStorageSizeInTbs,omitempty" tf:"pool_storage_size_in_tbs,omitempty"`
 }
 
 type ResourcePoolSummaryObservation struct {
@@ -2018,11 +2141,17 @@ type ResourcePoolSummaryObservation struct {
 	// (Updatable) Available capacity left for new elastic pool members provision
 	AvailableComputeCapacity *float64 `json:"availableComputeCapacity,omitempty" tf:"available_compute_capacity,omitempty"`
 
+	// (Updatable) Available storage capacity (in TB) that can be used for adding new members or scaling existing members in a dedicated elastic pool.
+	AvailableStorageCapacityInTbs *float64 `json:"availableStorageCapacityInTbs,omitempty" tf:"available_storage_capacity_in_tbs,omitempty"`
+
 	// (Updatable) Indicates if the resource pool should be deleted for the Autonomous AI Database.
 	IsDisabled *bool `json:"isDisabled,omitempty" tf:"is_disabled,omitempty"`
 
 	// (Updatable) Resource pool size.
 	PoolSize *float64 `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
+
+	// (Updatable) Resource pool storage size in TBs.
+	PoolStorageSizeInTbs *float64 `json:"poolStorageSizeInTbs,omitempty" tf:"pool_storage_size_in_tbs,omitempty"`
 
 	// Resource Pool total capacity, it's currently 4x of pool size
 	TotalComputeCapacity *float64 `json:"totalComputeCapacity,omitempty" tf:"total_compute_capacity,omitempty"`
@@ -2030,6 +2159,10 @@ type ResourcePoolSummaryObservation struct {
 
 type ResourcePoolSummaryParameters struct {
 
+	// (Updatable) Available storage capacity (in TB) that can be used for adding new members or scaling existing members in a dedicated elastic pool.
+	// +kubebuilder:validation:Optional
+	AvailableStorageCapacityInTbs *float64 `json:"availableStorageCapacityInTbs,omitempty" tf:"available_storage_capacity_in_tbs,omitempty"`
+
 	// (Updatable) Indicates if the resource pool should be deleted for the Autonomous AI Database.
 	// +kubebuilder:validation:Optional
 	IsDisabled *bool `json:"isDisabled,omitempty" tf:"is_disabled,omitempty"`
@@ -2037,12 +2170,35 @@ type ResourcePoolSummaryParameters struct {
 	// (Updatable) Resource pool size.
 	// +kubebuilder:validation:Optional
 	PoolSize *float64 `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
+
+	// (Updatable) Resource pool storage size in TBs.
+	// +kubebuilder:validation:Optional
+	PoolStorageSizeInTbs *float64 `json:"poolStorageSizeInTbs,omitempty" tf:"pool_storage_size_in_tbs,omitempty"`
+}
+
+type ScheduledOperationsDayOfWeekInitParameters struct {
+
+	// (Updatable) Name of the day of the week.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
+type ScheduledOperationsDayOfWeekObservation struct {
+
+	// (Updatable) Name of the day of the week.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
+type ScheduledOperationsDayOfWeekParameters struct {
+
+	// (Updatable) Name of the day of the week.
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name" tf:"name,omitempty"`
 }
 
 type ScheduledOperationsInitParameters struct {
 
 	// (Updatable) Day of the week.
-	DayOfWeek []DayOfWeekInitParameters `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
+	DayOfWeek []ScheduledOperationsDayOfWeekInitParameters `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
 	// (Updatable) auto start time. value must be of ISO-8601 format "HH:mm"
 	ScheduledStartTime *string `json:"scheduledStartTime,omitempty" tf:"scheduled_start_time,omitempty"`
@@ -2054,7 +2210,7 @@ type ScheduledOperationsInitParameters struct {
 type ScheduledOperationsObservation struct {
 
 	// (Updatable) Day of the week.
-	DayOfWeek []DayOfWeekObservation `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
+	DayOfWeek []ScheduledOperationsDayOfWeekObservation `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
 	// (Updatable) auto start time. value must be of ISO-8601 format "HH:mm"
 	ScheduledStartTime *string `json:"scheduledStartTime,omitempty" tf:"scheduled_start_time,omitempty"`
@@ -2067,7 +2223,7 @@ type ScheduledOperationsParameters struct {
 
 	// (Updatable) Day of the week.
 	// +kubebuilder:validation:Optional
-	DayOfWeek []DayOfWeekParameters `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
+	DayOfWeek []ScheduledOperationsDayOfWeekParameters `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
 	// (Updatable) auto start time. value must be of ISO-8601 format "HH:mm"
 	// +kubebuilder:validation:Optional
@@ -2112,6 +2268,25 @@ type StandbyDBObservation struct {
 }
 
 type StandbyDBParameters struct {
+}
+
+type TransportableTablespaceInitParameters struct {
+
+	// URL for Oracle Cloud Infrastructure Storage location for a Transportable Tablespace (TTS) bundle.
+	TtsBundleURL *string `json:"ttsBundleUrl,omitempty" tf:"tts_bundle_url,omitempty"`
+}
+
+type TransportableTablespaceObservation struct {
+
+	// URL for Oracle Cloud Infrastructure Storage location for a Transportable Tablespace (TTS) bundle.
+	TtsBundleURL *string `json:"ttsBundleUrl,omitempty" tf:"tts_bundle_url,omitempty"`
+}
+
+type TransportableTablespaceParameters struct {
+
+	// URL for Oracle Cloud Infrastructure Storage location for a Transportable Tablespace (TTS) bundle.
+	// +kubebuilder:validation:Optional
+	TtsBundleURL *string `json:"ttsBundleUrl" tf:"tts_bundle_url,omitempty"`
 }
 
 type VanityConnectionUrlsInitParameters struct {

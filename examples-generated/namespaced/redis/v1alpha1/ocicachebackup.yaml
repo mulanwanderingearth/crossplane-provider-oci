@@ -1,0 +1,25 @@
+apiVersion: redis.oci.m.upbound.io/v1alpha1
+kind: OciCacheBackup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: redis/v1alpha1/ocicachebackup
+  labels:
+    testing.upbound.io/example-name: test_oci_cache_backup
+  name: test-oci-cache-backup
+  namespace: upbound-system
+spec:
+  forProvider:
+    backupSource: ${var.oci_cache_backup_backup_source}
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      foo-namespace.bar-key: value
+    description: ${var.oci_cache_backup_description}
+    displayName: ${var.oci_cache_backup_display_name}
+    freeformTags:
+      bar-key: value
+    retentionPeriodInDays: ${var.oci_cache_backup_retention_period_in_days}
+    sourceClusterIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_redis_cluster

@@ -13,6 +13,65 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
 )
 
+type ActiveOrNextPlannedMaintenanceInitParameters struct {
+}
+
+type ActiveOrNextPlannedMaintenanceObservation struct {
+
+	// A user-friendly date. Example: 2025-04-25
+	Date *string `json:"date,omitempty" tf:"date,omitempty"`
+
+	// A user-friendly time. The format is 'HH:MM', 'HH:MM' represents the time in UTC. Example: 22:00
+	Time *string `json:"time,omitempty" tf:"time,omitempty"`
+}
+
+type ActiveOrNextPlannedMaintenanceParameters struct {
+}
+
+type DateTimeDetailsInitParameters struct {
+
+	// A user-friendly date. Example: 2025-04-25
+	Date *string `json:"date,omitempty" tf:"date,omitempty"`
+
+	// A user-friendly time. The format is 'HH:MM', 'HH:MM' represents the time in UTC. Example: 22:00
+	Time *string `json:"time,omitempty" tf:"time,omitempty"`
+}
+
+type DateTimeDetailsObservation struct {
+
+	// A user-friendly date. Example: 2025-04-25
+	Date *string `json:"date,omitempty" tf:"date,omitempty"`
+
+	// A user-friendly time. The format is 'HH:MM', 'HH:MM' represents the time in UTC. Example: 22:00
+	Time *string `json:"time,omitempty" tf:"time,omitempty"`
+}
+
+type DateTimeDetailsParameters struct {
+
+	// A user-friendly date. Example: 2025-04-25
+	// +kubebuilder:validation:Optional
+	Date *string `json:"date" tf:"date,omitempty"`
+
+	// A user-friendly time. The format is 'HH:MM', 'HH:MM' represents the time in UTC. Example: 22:00
+	// +kubebuilder:validation:Optional
+	Time *string `json:"time" tf:"time,omitempty"`
+}
+
+type FinishedMaintenanceInitParameters struct {
+}
+
+type FinishedMaintenanceObservation struct {
+
+	// A user-friendly date. Example: 2025-04-25
+	Date *string `json:"date,omitempty" tf:"date,omitempty"`
+
+	// A user-friendly time. The format is 'HH:MM', 'HH:MM' represents the time in UTC. Example: 22:00
+	Time *string `json:"time,omitempty" tf:"time,omitempty"`
+}
+
+type FinishedMaintenanceParameters struct {
+}
+
 type LustreFileSystemInitParameters struct {
 
 	// The availability domain the file system is in. May be unset as a blank or NULL value.  Example: Uocm:PHX-AD-1
@@ -45,6 +104,8 @@ type LustreFileSystemInitParameters struct {
 	// Selector for a Compartment in identity to populate compartmentId.
 	// +kubebuilder:validation:Optional
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
+
+	DateTimeDetails []DateTimeDetailsInitParameters `json:"dateTimeDetails,omitempty" tf:"date_time_details,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +mapType=granular
@@ -85,9 +146,15 @@ type LustreFileSystemInitParameters struct {
 	// +kubebuilder:validation:Optional
 	KMSKeyIDSelector *v1.Selector `json:"kmsKeyIdSelector,omitempty" tf:"-"`
 
+	// (Updatable) The preferred day and time to perform maintenance.
+	MaintenanceWindow []MaintenanceWindowInitParameters `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
+
 	// (Updatable) A list of Network Security Group OCIDs associated with this lustre file system. A maximum of 5 is allowed. Setting this to an empty array after the list is created removes the lustre file system from all NSGs. For more information about NSGs, see Security Rules.
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Override Maintenance. Could be set to any integer value.
+	OverrideMaintenanceTrigger *float64 `json:"overrideMaintenanceTrigger,omitempty" tf:"override_maintenance_trigger,omitempty"`
 
 	// The Lustre file system performance tier. A value of MBPS_PER_TB_125 represents 125 megabytes per second per terabyte.
 	PerformanceTier *string `json:"performanceTier,omitempty" tf:"performance_tier,omitempty"`
@@ -127,6 +194,8 @@ type LustreFileSystemObservation struct {
 	// (Updatable) The OCID of the compartment that contains the Lustre file system.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
+	DateTimeDetails []DateTimeDetailsObservation `json:"dateTimeDetails,omitempty" tf:"date_time_details,omitempty"`
+
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +mapType=granular
 	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
@@ -156,8 +225,11 @@ type LustreFileSystemObservation struct {
 	// Type of network used by clients to mount the file system.   Example: tcp
 	Lnet *string `json:"lnet,omitempty" tf:"lnet,omitempty"`
 
-	// The preferred day and time to perform maintenance.
+	// (Updatable) The preferred day and time to perform maintenance.
 	MaintenanceWindow []MaintenanceWindowObservation `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
+
+	// The meta-data for maintenance window.
+	MaintenanceWindowMetadata []MaintenanceWindowMetadataObservation `json:"maintenanceWindowMetadata,omitempty" tf:"maintenance_window_metadata,omitempty"`
 
 	// Major version of Lustre running in the Lustre file system.  Example: 2.15
 	MajorVersion *string `json:"majorVersion,omitempty" tf:"major_version,omitempty"`
@@ -168,6 +240,9 @@ type LustreFileSystemObservation struct {
 	// (Updatable) A list of Network Security Group OCIDs associated with this lustre file system. A maximum of 5 is allowed. Setting this to an empty array after the list is created removes the lustre file system from all NSGs. For more information about NSGs, see Security Rules.
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Override Maintenance. Could be set to any integer value.
+	OverrideMaintenanceTrigger *float64 `json:"overrideMaintenanceTrigger,omitempty" tf:"override_maintenance_trigger,omitempty"`
 
 	// The Lustre file system performance tier. A value of MBPS_PER_TB_125 represents 125 megabytes per second per terabyte.
 	PerformanceTier *string `json:"performanceTier,omitempty" tf:"performance_tier,omitempty"`
@@ -232,6 +307,9 @@ type LustreFileSystemParameters struct {
 	// +kubebuilder:validation:Optional
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
+	// +kubebuilder:validation:Optional
+	DateTimeDetails []DateTimeDetailsParameters `json:"dateTimeDetails,omitempty" tf:"date_time_details,omitempty"`
+
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
@@ -277,10 +355,18 @@ type LustreFileSystemParameters struct {
 	// +kubebuilder:validation:Optional
 	KMSKeyIDSelector *v1.Selector `json:"kmsKeyIdSelector,omitempty" tf:"-"`
 
+	// (Updatable) The preferred day and time to perform maintenance.
+	// +kubebuilder:validation:Optional
+	MaintenanceWindow []MaintenanceWindowParameters `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
+
 	// (Updatable) A list of Network Security Group OCIDs associated with this lustre file system. A maximum of 5 is allowed. Setting this to an empty array after the list is created removes the lustre file system from all NSGs. For more information about NSGs, see Security Rules.
 	// +kubebuilder:validation:Optional
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
+
+	// (Updatable) An optional property when incremented triggers Override Maintenance. Could be set to any integer value.
+	// +kubebuilder:validation:Optional
+	OverrideMaintenanceTrigger *float64 `json:"overrideMaintenanceTrigger,omitempty" tf:"override_maintenance_trigger,omitempty"`
 
 	// The Lustre file system performance tier. A value of MBPS_PER_TB_125 represents 125 megabytes per second per terabyte.
 	// +kubebuilder:validation:Optional
@@ -311,18 +397,50 @@ type LustreFileSystemParameters struct {
 }
 
 type MaintenanceWindowInitParameters struct {
+
+	// (Updatable) Day of the week when the maintainence window starts.
+	DayOfWeek *string `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
+
+	// (Updatable) The time to start the maintenance window. The format is 'HH:MM', 'HH:MM' represents the time in UTC.   Example: 22:00
+	TimeStart *string `json:"timeStart,omitempty" tf:"time_start,omitempty"`
+}
+
+type MaintenanceWindowMetadataInitParameters struct {
+}
+
+type MaintenanceWindowMetadataObservation struct {
+
+	// A generic object to show date and time in the below specified format
+	ActiveOrNextPlannedMaintenance []ActiveOrNextPlannedMaintenanceObservation `json:"activeOrNextPlannedMaintenance,omitempty" tf:"active_or_next_planned_maintenance,omitempty"`
+
+	// A generic object to show date and time in the below specified format
+	FinishedMaintenance []FinishedMaintenanceObservation `json:"finishedMaintenance,omitempty" tf:"finished_maintenance,omitempty"`
+
+	// whether or not an active maintenance is going on for the LustreFileSystem
+	IsMaintenanceInProgress *bool `json:"isMaintenanceInProgress,omitempty" tf:"is_maintenance_in_progress,omitempty"`
+}
+
+type MaintenanceWindowMetadataParameters struct {
 }
 
 type MaintenanceWindowObservation struct {
 
-	// Day of the week when the maintainence window starts.
+	// (Updatable) Day of the week when the maintainence window starts.
 	DayOfWeek *string `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
-	// The time to start the maintenance window. The format is 'HH:MM', 'HH:MM' represents the time in UTC.   Example: 22:00
+	// (Updatable) The time to start the maintenance window. The format is 'HH:MM', 'HH:MM' represents the time in UTC.   Example: 22:00
 	TimeStart *string `json:"timeStart,omitempty" tf:"time_start,omitempty"`
 }
 
 type MaintenanceWindowParameters struct {
+
+	// (Updatable) Day of the week when the maintainence window starts.
+	// +kubebuilder:validation:Optional
+	DayOfWeek *string `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
+
+	// (Updatable) The time to start the maintenance window. The format is 'HH:MM', 'HH:MM' represents the time in UTC.   Example: 22:00
+	// +kubebuilder:validation:Optional
+	TimeStart *string `json:"timeStart,omitempty" tf:"time_start,omitempty"`
 }
 
 type RootSquashConfigurationInitParameters struct {

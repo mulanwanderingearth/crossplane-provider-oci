@@ -45,6 +45,9 @@ type ApplicationInitParameters struct {
 	// (Updatable) Define the image signature verification policy for an application.
 	ImagePolicyConfig []ImagePolicyConfigInitParameters `json:"imagePolicyConfig,omitempty" tf:"image_policy_config,omitempty"`
 
+	// (Updatable) Set logging configuration for an application. This is only used if Service Logs for the application are enabled in the Oracle Cloud Infrastructure Logging service.
+	Logging []LoggingInitParameters `json:"logging,omitempty" tf:"logging,omitempty"`
+
 	// (Updatable) The OCIDs of the Network Security Groups to add the application to.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.NetworkSecurityGroup
 	// +listType=set
@@ -109,6 +112,9 @@ type ApplicationObservation struct {
 
 	// (Updatable) Define the image signature verification policy for an application.
 	ImagePolicyConfig []ImagePolicyConfigObservation `json:"imagePolicyConfig,omitempty" tf:"image_policy_config,omitempty"`
+
+	// (Updatable) Set logging configuration for an application. This is only used if Service Logs for the application are enabled in the Oracle Cloud Infrastructure Logging service.
+	Logging []LoggingObservation `json:"logging,omitempty" tf:"logging,omitempty"`
 
 	// (Updatable) The OCIDs of the Network Security Groups to add the application to.
 	// +listType=set
@@ -177,6 +183,10 @@ type ApplicationParameters struct {
 	// (Updatable) Define the image signature verification policy for an application.
 	// +kubebuilder:validation:Optional
 	ImagePolicyConfig []ImagePolicyConfigParameters `json:"imagePolicyConfig,omitempty" tf:"image_policy_config,omitempty"`
+
+	// (Updatable) Set logging configuration for an application. This is only used if Service Logs for the application are enabled in the Oracle Cloud Infrastructure Logging service.
+	// +kubebuilder:validation:Optional
+	Logging []LoggingParameters `json:"logging,omitempty" tf:"logging,omitempty"`
 
 	// (Updatable) The OCIDs of the Network Security Groups to add the application to.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.NetworkSecurityGroup
@@ -289,6 +299,25 @@ type KeyDetailsParameters struct {
 	// Selector for a Key in kms to populate kmsKeyId.
 	// +kubebuilder:validation:Optional
 	KMSKeyIDSelector *v1.Selector `json:"kmsKeyIdSelector,omitempty" tf:"-"`
+}
+
+type LoggingInitParameters struct {
+
+	// (Updatable) Specify the format of log lines emitted by functions in this application.
+	LineFormat *string `json:"lineFormat,omitempty" tf:"line_format,omitempty"`
+}
+
+type LoggingObservation struct {
+
+	// (Updatable) Specify the format of log lines emitted by functions in this application.
+	LineFormat *string `json:"lineFormat,omitempty" tf:"line_format,omitempty"`
+}
+
+type LoggingParameters struct {
+
+	// (Updatable) Specify the format of log lines emitted by functions in this application.
+	// +kubebuilder:validation:Optional
+	LineFormat *string `json:"lineFormat,omitempty" tf:"line_format,omitempty"`
 }
 
 type TraceConfigInitParameters struct {

@@ -80,19 +80,17 @@ spec:
                     type: string
                   condition:
                     description: (Updatable) Match criteria used in Decryption Rule
-                      used on the firewall policy rules. The resources mentioned must
-                      already be present in the policy before being referenced in
-                      the rule.
+                      used on the firewall policy rules.
                     items:
                       properties:
                         destinationAddress:
-                          description: (Updatable) An array of address list names
+                          description: (Updatable) An array of IP address list names
                             to be evaluated against the traffic destination address.
                           items:
                             type: string
                           type: array
                         sourceAddress:
-                          description: (Updatable) An array of address list names
+                          description: (Updatable) An array of IP address list names
                             to be evaluated against the traffic source address.
                           items:
                             type: string
@@ -102,6 +100,10 @@ spec:
                   decryptionProfile:
                     description: (Updatable) The name of the decryption profile to
                       use.
+                    type: string
+                  description:
+                    description: (Updatable) The description of the decryption rule.
+                      This field can be used to add additional info.
                     type: string
                   name:
                     description: Name for the decryption rule, must be unique within
@@ -226,19 +228,17 @@ spec:
                     type: string
                   condition:
                     description: (Updatable) Match criteria used in Decryption Rule
-                      used on the firewall policy rules. The resources mentioned must
-                      already be present in the policy before being referenced in
-                      the rule.
+                      used on the firewall policy rules.
                     items:
                       properties:
                         destinationAddress:
-                          description: (Updatable) An array of address list names
+                          description: (Updatable) An array of IP address list names
                             to be evaluated against the traffic destination address.
                           items:
                             type: string
                           type: array
                         sourceAddress:
-                          description: (Updatable) An array of address list names
+                          description: (Updatable) An array of IP address list names
                             to be evaluated against the traffic source address.
                           items:
                             type: string
@@ -248,6 +248,10 @@ spec:
                   decryptionProfile:
                     description: (Updatable) The name of the decryption profile to
                       use.
+                    type: string
+                  description:
+                    description: (Updatable) The description of the decryption rule.
+                      This field can be used to add additional info.
                     type: string
                   name:
                     description: Name for the decryption rule, must be unique within
@@ -466,19 +470,17 @@ spec:
                     type: string
                   condition:
                     description: (Updatable) Match criteria used in Decryption Rule
-                      used on the firewall policy rules. The resources mentioned must
-                      already be present in the policy before being referenced in
-                      the rule.
+                      used on the firewall policy rules.
                     items:
                       properties:
                         destinationAddress:
-                          description: (Updatable) An array of address list names
+                          description: (Updatable) An array of IP address list names
                             to be evaluated against the traffic destination address.
                           items:
                             type: string
                           type: array
                         sourceAddress:
-                          description: (Updatable) An array of address list names
+                          description: (Updatable) An array of IP address list names
                             to be evaluated against the traffic source address.
                           items:
                             type: string
@@ -488,6 +490,10 @@ spec:
                   decryptionProfile:
                     description: (Updatable) The name of the decryption profile to
                       use.
+                    type: string
+                  description:
+                    description: (Updatable) The description of the decryption rule.
+                      This field can be used to add additional info.
                     type: string
                   id:
                     type: string

@@ -1,0 +1,27 @@
+apiVersion: identitydomains.oci.m.upbound.io/v1alpha1
+kind: IdentityProofingProviderTemplate
+metadata:
+  annotations:
+    meta.upbound.io/example-id: identitydomains/v1alpha1/identityproofingprovidertemplate
+  labels:
+    testing.upbound.io/example-name: test_identity_proofing_provider_template
+  name: test-identity-proofing-provider-template
+  namespace: upbound-system
+spec:
+  forProvider:
+    attributeSets:
+    - all
+    attributes: ""
+    authorization: ${var.identity_proofing_provider_template_authorization}
+    configuration:
+    - name: ${var.identity_proofing_provider_template_configuration_name}
+      sensitivity: ${var.identity_proofing_provider_template_configuration_sensitivity}
+      type: ${var.identity_proofing_provider_template_configuration_type}
+    idcsEndpoint: ${data.oci_identity_domain.test_domain.url}
+    identityProofingProviderTemplateProvider: ${var.identity_proofing_provider_template_identity_proofing_provider_template_provider}
+    ocid: ${var.identity_proofing_provider_template_ocid}
+    resourceTypeSchemaVersion: ${var.identity_proofing_provider_template_resource_type_schema_version}
+    schemas:
+    - urn:ietf:params:scim:schemas:oracle:idcs:IdentityProofingProviderTemplate
+    serviceType: ${var.identity_proofing_provider_template_service_type}
+    verificationUrl: ${var.identity_proofing_provider_template_verification_url}

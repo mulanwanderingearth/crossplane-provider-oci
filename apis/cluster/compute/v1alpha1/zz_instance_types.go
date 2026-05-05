@@ -117,7 +117,7 @@ type CreateVnicDetailsInitParameters struct {
 	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance1 in FQDN bminstance1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges from which Oracle Cloud Infrastructure will select an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// A list of IPv6 prefix ranges from which the VNIC is assigned an IPv6 address. You can provide only the prefix ranges from which Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address within that range to use.
 	Ipv6AddressIpv6SubnetCidrPairDetails []CreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Updatable) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -136,7 +136,20 @@ type CreateVnicDetailsInitParameters struct {
 	// A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
-	// Security Attributes for this resource. This is unique to ZPR, and helps identify which resources are allowed to be accessed by what permission controls.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
+	// An OCID that specifies a previously-reserved IP address to use for this VNIC.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
+
+	// Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
 	// +mapType=granular
 	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
@@ -172,25 +185,60 @@ type CreateVnicDetailsInitParameters struct {
 }
 
 type CreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsInitParameters struct {
+
+	// An IPv6 address of your choice. Must be an available IPv6 address within the subnet's prefix. If an IPv6 address is not provided:
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// One of the IPv4 CIDR blocks allocated to the subnet. Represents the IP range from which the VNIC's private IP address will be assigned if privateIp or privateIpId is not specified. Either this field or the privateIp (or privateIpId, if applicable) field must be provided, but not both simultaneously. Example: 192.168.1.0/28
+	// An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// The IPv6 prefix allocated to the subnet.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type CreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation struct {
+
+	// An IPv6 address of your choice. Must be an available IPv6 address within the subnet's prefix. If an IPv6 address is not provided:
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// One of the IPv4 CIDR blocks allocated to the subnet. Represents the IP range from which the VNIC's private IP address will be assigned if privateIp or privateIpId is not specified. Either this field or the privateIp (or privateIpId, if applicable) field must be provided, but not both simultaneously. Example: 192.168.1.0/28
+	// An OCID that specifies a previously-reserved ipv6 to use.
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// The IPv6 prefix allocated to the subnet.
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
 
 type CreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters struct {
 
+	// An IPv6 address of your choice. Must be an available IPv6 address within the subnet's prefix. If an IPv6 address is not provided:
 	// +kubebuilder:validation:Optional
 	Ipv6Address *string `json:"ipv6address,omitempty" tf:"ipv6address,omitempty"`
 
-	// One of the IPv4 CIDR blocks allocated to the subnet. Represents the IP range from which the VNIC's private IP address will be assigned if privateIp or privateIpId is not specified. Either this field or the privateIp (or privateIpId, if applicable) field must be provided, but not both simultaneously. Example: 192.168.1.0/28
+	// An OCID that specifies a previously-reserved ipv6 to use.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Ipv6
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	Ipv6Id *string `json:"ipv6id,omitempty" tf:"ipv6id,omitempty"`
+
+	// Reference to a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdRef *v1.Reference `json:"ipv6idRef,omitempty" tf:"-"`
+
+	// Selector for a Ipv6 in networking to populate ipv6id.
+	// +kubebuilder:validation:Optional
+	Ipv6IdSelector *v1.Selector `json:"ipv6idSelector,omitempty" tf:"-"`
+
+	// The IPv6 prefix allocated to the subnet.
 	// +kubebuilder:validation:Optional
 	Ipv6SubnetCidr *string `json:"ipv6subnetCidr,omitempty" tf:"ipv6subnet_cidr,omitempty"`
 }
@@ -221,7 +269,7 @@ type CreateVnicDetailsObservation struct {
 	// (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance1 in FQDN bminstance1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges from which Oracle Cloud Infrastructure will select an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// A list of IPv6 prefix ranges from which the VNIC is assigned an IPv6 address. You can provide only the prefix ranges from which Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address within that range to use.
 	Ipv6AddressIpv6SubnetCidrPairDetails []CreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsObservation `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
 	// (Updatable) A list of the OCIDs of the network security groups (NSGs) to add the VNIC to. For more information about NSGs, see NetworkSecurityGroup.
@@ -231,7 +279,10 @@ type CreateVnicDetailsObservation struct {
 	// A private IP address of your choice to assign to the VNIC. Must be an available IP address within the subnet's CIDR. If you don't specify a value, Oracle automatically assigns a private IP address from the subnet. This is the VNIC's primary private IP address. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
-	// Security Attributes for this resource. This is unique to ZPR, and helps identify which resources are allowed to be accessed by what permission controls.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
+	// An OCID that specifies a previously-reserved IP address to use for this VNIC.
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
 	// +mapType=granular
 	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
@@ -281,7 +332,7 @@ type CreateVnicDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
 
-	// A list of IPv6 prefix ranges from which the VNIC should be assigned an IPv6 address. You can provide only the prefix ranges from which Oracle Cloud Infrastructure will select an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address that should be used from within that range.
+	// A list of IPv6 prefix ranges from which the VNIC is assigned an IPv6 address. You can provide only the prefix ranges from which Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty and instead provide the specific IPv6 address within that range to use.
 	// +kubebuilder:validation:Optional
 	Ipv6AddressIpv6SubnetCidrPairDetails []CreateVnicDetailsIpv6AddressIpv6SubnetCidrPairDetailsParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
 
@@ -303,7 +354,21 @@ type CreateVnicDetailsParameters struct {
 	// +kubebuilder:validation:Optional
 	PrivateIP *string `json:"privateIp,omitempty" tf:"private_ip,omitempty"`
 
-	// Security Attributes for this resource. This is unique to ZPR, and helps identify which resources are allowed to be accessed by what permission controls.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
+	// An OCID that specifies a previously-reserved IP address to use for this VNIC.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.PrivateIp
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
+
+	// Reference to a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDRef *v1.Reference `json:"privateIpIdRef,omitempty" tf:"-"`
+
+	// Selector for a PrivateIp in networking to populate privateIpId.
+	// +kubebuilder:validation:Optional
+	PrivateIPIDSelector *v1.Selector `json:"privateIpIdSelector,omitempty" tf:"-"`
+
+	// Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
@@ -489,7 +554,7 @@ type InstanceInitParameters struct {
 
 	PreserveDataVolumesCreatedAtLaunch *bool `json:"preserveDataVolumesCreatedAtLaunch,omitempty" tf:"preserve_data_volumes_created_at_launch,omitempty"`
 
-	// Security Attributes for this resource. This is unique to ZPR, and helps identify which resources are allowed to be accessed by what permission controls.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
+	// Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
 	// +mapType=granular
 	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
@@ -699,7 +764,7 @@ type InstanceObservation struct {
 	// The region that contains the availability domain the instance is running in.
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
 
-	// Security Attributes for this resource. This is unique to ZPR, and helps identify which resources are allowed to be accessed by what permission controls.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
+	// Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
 	// +mapType=granular
 	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
@@ -930,7 +995,7 @@ type InstanceParameters struct {
 	// +kubebuilder:validation:Optional
 	PreserveDataVolumesCreatedAtLaunch *bool `json:"preserveDataVolumesCreatedAtLaunch,omitempty" tf:"preserve_data_volumes_created_at_launch,omitempty"`
 
-	// Security Attributes for this resource. This is unique to ZPR, and helps identify which resources are allowed to be accessed by what permission controls.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
+	// Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
 	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`

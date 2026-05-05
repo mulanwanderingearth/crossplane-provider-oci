@@ -50,7 +50,7 @@ type ManagedInstanceDetailsInitParameters struct {
 	ManagedInstances []*string `json:"managedInstances,omitempty" tf:"managed_instances,omitempty"`
 
 	// Provides the name and description of the job.
-	WorkRequestDetails []WorkRequestDetailsInitParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
+	WorkRequestDetails []ManagedInstanceDetailsWorkRequestDetailsInitParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
 }
 
 type ManagedInstanceDetailsObservation struct {
@@ -59,7 +59,7 @@ type ManagedInstanceDetailsObservation struct {
 	ManagedInstances []*string `json:"managedInstances,omitempty" tf:"managed_instances,omitempty"`
 
 	// Provides the name and description of the job.
-	WorkRequestDetails []WorkRequestDetailsObservation `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
+	WorkRequestDetails []ManagedInstanceDetailsWorkRequestDetailsObservation `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
 }
 
 type ManagedInstanceDetailsParameters struct {
@@ -70,10 +70,10 @@ type ManagedInstanceDetailsParameters struct {
 
 	// Provides the name and description of the job.
 	// +kubebuilder:validation:Optional
-	WorkRequestDetails []WorkRequestDetailsParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
+	WorkRequestDetails []ManagedInstanceDetailsWorkRequestDetailsParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
 }
 
-type WorkRequestDetailsInitParameters struct {
+type ManagedInstanceDetailsWorkRequestDetailsInitParameters struct {
 
 	// User-specified information about the job. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -82,7 +82,7 @@ type WorkRequestDetailsInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 }
 
-type WorkRequestDetailsObservation struct {
+type ManagedInstanceDetailsWorkRequestDetailsObservation struct {
 
 	// User-specified information about the job. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -91,7 +91,7 @@ type WorkRequestDetailsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 }
 
-type WorkRequestDetailsParameters struct {
+type ManagedInstanceDetailsWorkRequestDetailsParameters struct {
 
 	// User-specified information about the job. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional

@@ -14,6 +14,65 @@ import (
 	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
 )
 
+type InstallSnapDetailsInitParameters struct {
+
+	// (Updatable) The snap channel to install from (e.g. stable, 1.2/edge, beta, candidate, or a custom channel).
+	Channel *string `json:"channel,omitempty" tf:"channel,omitempty"`
+
+	// (Updatable) If false, allows installing snaps not signed by the Snap Store. E.g., snaps from local file. Use with caution.
+	IsSigned *bool `json:"isSigned,omitempty" tf:"is_signed,omitempty"`
+
+	// (Updatable) The confinement mode for the snap.
+	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
+
+	// (Updatable) The name of the snap to install.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) The snap revision to install.
+	Revision *string `json:"revision,omitempty" tf:"revision,omitempty"`
+}
+
+type InstallSnapDetailsObservation struct {
+
+	// (Updatable) The snap channel to install from (e.g. stable, 1.2/edge, beta, candidate, or a custom channel).
+	Channel *string `json:"channel,omitempty" tf:"channel,omitempty"`
+
+	// (Updatable) If false, allows installing snaps not signed by the Snap Store. E.g., snaps from local file. Use with caution.
+	IsSigned *bool `json:"isSigned,omitempty" tf:"is_signed,omitempty"`
+
+	// (Updatable) The confinement mode for the snap.
+	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
+
+	// (Updatable) The name of the snap to install.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) The snap revision to install.
+	Revision *string `json:"revision,omitempty" tf:"revision,omitempty"`
+}
+
+type InstallSnapDetailsParameters struct {
+
+	// (Updatable) The snap channel to install from (e.g. stable, 1.2/edge, beta, candidate, or a custom channel).
+	// +kubebuilder:validation:Optional
+	Channel *string `json:"channel,omitempty" tf:"channel,omitempty"`
+
+	// (Updatable) If false, allows installing snaps not signed by the Snap Store. E.g., snaps from local file. Use with caution.
+	// +kubebuilder:validation:Optional
+	IsSigned *bool `json:"isSigned,omitempty" tf:"is_signed,omitempty"`
+
+	// (Updatable) The confinement mode for the snap.
+	// +kubebuilder:validation:Optional
+	Mode *string `json:"mode,omitempty" tf:"mode,omitempty"`
+
+	// (Updatable) The name of the snap to install.
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name" tf:"name,omitempty"`
+
+	// (Updatable) The snap revision to install.
+	// +kubebuilder:validation:Optional
+	Revision *string `json:"revision,omitempty" tf:"revision,omitempty"`
+}
+
 type ManageModuleStreamsDetailsDisableInitParameters struct {
 
 	// (Updatable) The name of a module.
@@ -437,6 +496,9 @@ type ManageModuleStreamsDetailsRemoveParameters struct {
 
 type OperationsInitParameters struct {
 
+	// (Updatable) Provides the information used to install a snap.
+	InstallSnapDetails []InstallSnapDetailsInitParameters `json:"installSnapDetails,omitempty" tf:"install_snap_details,omitempty"`
+
 	// (Updatable) The set of changes to make to the state of the modules, streams, and profiles on the managed target.
 	ManageModuleStreamsDetails []ManageModuleStreamsDetailsInitParameters `json:"manageModuleStreamsDetails,omitempty" tf:"manage_module_streams_details,omitempty"`
 
@@ -449,17 +511,26 @@ type OperationsInitParameters struct {
 	// (Updatable) The number of minutes the service waits for the reboot to complete. If the instance doesn't reboot within the  timeout, the service marks the reboot job as failed.
 	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
+	// (Updatable) Provides the information used to remove a snap.
+	RemoveSnapDetails []RemoveSnapDetailsInitParameters `json:"removeSnapDetails,omitempty" tf:"remove_snap_details,omitempty"`
+
 	// (Updatable) The software source OCIDs.  This parameter only applies when the scheduled job is for attaching or detaching software sources.
 	SoftwareSourceIds []*string `json:"softwareSourceIds,omitempty" tf:"software_source_ids,omitempty"`
 
 	// (Updatable) Provides the information used to update a module stream.
 	SwitchModuleStreamsDetails []SwitchModuleStreamsDetailsInitParameters `json:"switchModuleStreamsDetails,omitempty" tf:"switch_module_streams_details,omitempty"`
 
+	// (Updatable) Provides the information used to switch a snap channel.
+	SwitchSnapChannelDetails []SwitchSnapChannelDetailsInitParameters `json:"switchSnapChannelDetails,omitempty" tf:"switch_snap_channel_details,omitempty"`
+
 	// (Updatable) Unique identifier for the Windows update. This parameter only applies if the scheduled job is for installing Windows updates. Note that this is not an OCID, but is a unique identifier assigned by Microsoft. For example: '6981d463-cd91-4a26-b7c4-ea4ded9183ed'.
 	WindowsUpdateNames []*string `json:"windowsUpdateNames,omitempty" tf:"windows_update_names,omitempty"`
 }
 
 type OperationsObservation struct {
+
+	// (Updatable) Provides the information used to install a snap.
+	InstallSnapDetails []InstallSnapDetailsObservation `json:"installSnapDetails,omitempty" tf:"install_snap_details,omitempty"`
 
 	// (Updatable) The set of changes to make to the state of the modules, streams, and profiles on the managed target.
 	ManageModuleStreamsDetails []ManageModuleStreamsDetailsObservation `json:"manageModuleStreamsDetails,omitempty" tf:"manage_module_streams_details,omitempty"`
@@ -473,17 +544,27 @@ type OperationsObservation struct {
 	// (Updatable) The number of minutes the service waits for the reboot to complete. If the instance doesn't reboot within the  timeout, the service marks the reboot job as failed.
 	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
+	// (Updatable) Provides the information used to remove a snap.
+	RemoveSnapDetails []RemoveSnapDetailsObservation `json:"removeSnapDetails,omitempty" tf:"remove_snap_details,omitempty"`
+
 	// (Updatable) The software source OCIDs.  This parameter only applies when the scheduled job is for attaching or detaching software sources.
 	SoftwareSourceIds []*string `json:"softwareSourceIds,omitempty" tf:"software_source_ids,omitempty"`
 
 	// (Updatable) Provides the information used to update a module stream.
 	SwitchModuleStreamsDetails []SwitchModuleStreamsDetailsObservation `json:"switchModuleStreamsDetails,omitempty" tf:"switch_module_streams_details,omitempty"`
 
+	// (Updatable) Provides the information used to switch a snap channel.
+	SwitchSnapChannelDetails []SwitchSnapChannelDetailsObservation `json:"switchSnapChannelDetails,omitempty" tf:"switch_snap_channel_details,omitempty"`
+
 	// (Updatable) Unique identifier for the Windows update. This parameter only applies if the scheduled job is for installing Windows updates. Note that this is not an OCID, but is a unique identifier assigned by Microsoft. For example: '6981d463-cd91-4a26-b7c4-ea4ded9183ed'.
 	WindowsUpdateNames []*string `json:"windowsUpdateNames,omitempty" tf:"windows_update_names,omitempty"`
 }
 
 type OperationsParameters struct {
+
+	// (Updatable) Provides the information used to install a snap.
+	// +kubebuilder:validation:Optional
+	InstallSnapDetails []InstallSnapDetailsParameters `json:"installSnapDetails,omitempty" tf:"install_snap_details,omitempty"`
 
 	// (Updatable) The set of changes to make to the state of the modules, streams, and profiles on the managed target.
 	// +kubebuilder:validation:Optional
@@ -501,6 +582,10 @@ type OperationsParameters struct {
 	// +kubebuilder:validation:Optional
 	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
+	// (Updatable) Provides the information used to remove a snap.
+	// +kubebuilder:validation:Optional
+	RemoveSnapDetails []RemoveSnapDetailsParameters `json:"removeSnapDetails,omitempty" tf:"remove_snap_details,omitempty"`
+
 	// (Updatable) The software source OCIDs.  This parameter only applies when the scheduled job is for attaching or detaching software sources.
 	// +kubebuilder:validation:Optional
 	SoftwareSourceIds []*string `json:"softwareSourceIds,omitempty" tf:"software_source_ids,omitempty"`
@@ -509,9 +594,42 @@ type OperationsParameters struct {
 	// +kubebuilder:validation:Optional
 	SwitchModuleStreamsDetails []SwitchModuleStreamsDetailsParameters `json:"switchModuleStreamsDetails,omitempty" tf:"switch_module_streams_details,omitempty"`
 
+	// (Updatable) Provides the information used to switch a snap channel.
+	// +kubebuilder:validation:Optional
+	SwitchSnapChannelDetails []SwitchSnapChannelDetailsParameters `json:"switchSnapChannelDetails,omitempty" tf:"switch_snap_channel_details,omitempty"`
+
 	// (Updatable) Unique identifier for the Windows update. This parameter only applies if the scheduled job is for installing Windows updates. Note that this is not an OCID, but is a unique identifier assigned by Microsoft. For example: '6981d463-cd91-4a26-b7c4-ea4ded9183ed'.
 	// +kubebuilder:validation:Optional
 	WindowsUpdateNames []*string `json:"windowsUpdateNames,omitempty" tf:"windows_update_names,omitempty"`
+}
+
+type RemoveSnapDetailsInitParameters struct {
+
+	// (Updatable) The name of the snap to install.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) The snap revision to install.
+	Revision *string `json:"revision,omitempty" tf:"revision,omitempty"`
+}
+
+type RemoveSnapDetailsObservation struct {
+
+	// (Updatable) The name of the snap to install.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) The snap revision to install.
+	Revision *string `json:"revision,omitempty" tf:"revision,omitempty"`
+}
+
+type RemoveSnapDetailsParameters struct {
+
+	// (Updatable) The name of the snap to install.
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name" tf:"name,omitempty"`
+
+	// (Updatable) The snap revision to install.
+	// +kubebuilder:validation:Optional
+	Revision *string `json:"revision,omitempty" tf:"revision,omitempty"`
 }
 
 type ScheduledJobInitParameters struct {
@@ -538,6 +656,9 @@ type ScheduledJobInitParameters struct {
 	// (Updatable) User-friendly name for the scheduled job. Does not have to be unique and you can change the name later. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
+	// The dynamic set OCIDs that this scheduled job operates on. A scheduled job can only operate on one type of target. therefore this parameter is mutually exclusive with  managedInstanceIds, managedInstanceGroupIds, lifecycleStageIds, managedCompartmentIds.
+	DynamicSetIds []*string `json:"dynamicSetIds,omitempty" tf:"dynamic_set_ids,omitempty"`
+
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
@@ -548,25 +669,25 @@ type ScheduledJobInitParameters struct {
 	// Indicates whether to apply the scheduled job to all compartments in the tenancy when managedCompartmentIds specifies  the tenancy OCID (root compartment).
 	IsSubcompartmentIncluded *bool `json:"isSubcompartmentIncluded,omitempty" tf:"is_subcompartment_included,omitempty"`
 
-	// The lifecycle stage OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds,  or managedInstanceGroupIds, or managedCompartmentIds.
+	// The lifecycle stage OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds,  or managedInstanceGroupIds, or managedCompartmentIds, or dynamicSetIds.
 	LifecycleStageIds []*string `json:"lifecycleStageIds,omitempty" tf:"lifecycle_stage_ids,omitempty"`
 
 	// The list of locations this scheduled job should operate on for a job targeting on compartments. (Empty list means apply to all locations). This can only be set when managedCompartmentIds is not empty.
 	Locations []*string `json:"locations,omitempty" tf:"locations,omitempty"`
 
-	// The compartment OCIDs that this scheduled job operates on.  To apply the job to all compartments in the tenancy, set this to the tenancy OCID (root compartment) and set  isSubcompartmentIncluded to true. A scheduled job can only operate on one type of target, therefore you must  supply either this or managedInstanceIds, or managedInstanceGroupIds, or lifecycleStageIds.
+	// The compartment OCIDs that this scheduled job operates on.  To apply the job to all compartments in the tenancy, set this to the tenancy OCID (root compartment) and set  isSubcompartmentIncluded to true. A scheduled job can only operate on one type of target, therefore you must  supply either this or managedInstanceIds, or managedInstanceGroupIds, or lifecycleStageIds, or dynamicSetIds.
 	ManagedCompartmentIds []*string `json:"managedCompartmentIds,omitempty" tf:"managed_compartment_ids,omitempty"`
 
-	// The managed instance group OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds, or managedCompartmentIds, or lifecycleStageIds.
+	// The managed instance group OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds, or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
 	ManagedInstanceGroupIds []*string `json:"managedInstanceGroupIds,omitempty" tf:"managed_instance_group_ids,omitempty"`
 
-	// The managed instance OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or  managedInstanceGroupIds, or managedCompartmentIds, or lifecycleStageIds.
+	// The managed instance OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or  managedInstanceGroupIds, or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
 	ManagedInstanceIds []*string `json:"managedInstanceIds,omitempty" tf:"managed_instance_ids,omitempty"`
 
 	// (Updatable) The list of operations this scheduled job needs to perform. A scheduled job supports only one operation type, unless it is one of the following:
 	Operations []OperationsInitParameters `json:"operations,omitempty" tf:"operations,omitempty"`
 
-	// (Updatable) The frequency schedule for a recurring scheduled job.
+	// (Updatable) The frequency schedule for a recurring scheduled job in the RFC5535 format. Note: Currently, only FREQ/INTERVAL/BYMONTHDAY/BYDAY/BYSETPOS/BYMONTH/BYHOUR/BYMINUTE/BYSECOND rules are supported. In FREQ, only YEARLY, MONTHLY, WEEKLY, DAILY", HOURLY are supported.
 	RecurringRule *string `json:"recurringRule,omitempty" tf:"recurring_rule,omitempty"`
 
 	// (Updatable) The amount of time in minutes to wait until retrying the scheduled job. If set, the service will automatically  retry a failed scheduled job after the interval. For example, you could set the interval to [2,5,10]. If the initial execution of the job fails, the service waits 2 minutes and then retries. If that fails, the service  waits 5 minutes and then retries. If that fails, the service waits 10 minutes and then retries.
@@ -597,6 +718,9 @@ type ScheduledJobObservation struct {
 	// (Updatable) User-friendly name for the scheduled job. Does not have to be unique and you can change the name later. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
+	// The dynamic set OCIDs that this scheduled job operates on. A scheduled job can only operate on one type of target. therefore this parameter is mutually exclusive with  managedInstanceIds, managedInstanceGroupIds, lifecycleStageIds, managedCompartmentIds.
+	DynamicSetIds []*string `json:"dynamicSetIds,omitempty" tf:"dynamic_set_ids,omitempty"`
+
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
@@ -613,25 +737,25 @@ type ScheduledJobObservation struct {
 	// Indicates whether to apply the scheduled job to all compartments in the tenancy when managedCompartmentIds specifies  the tenancy OCID (root compartment).
 	IsSubcompartmentIncluded *bool `json:"isSubcompartmentIncluded,omitempty" tf:"is_subcompartment_included,omitempty"`
 
-	// The lifecycle stage OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds,  or managedInstanceGroupIds, or managedCompartmentIds.
+	// The lifecycle stage OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds,  or managedInstanceGroupIds, or managedCompartmentIds, or dynamicSetIds.
 	LifecycleStageIds []*string `json:"lifecycleStageIds,omitempty" tf:"lifecycle_stage_ids,omitempty"`
 
 	// The list of locations this scheduled job should operate on for a job targeting on compartments. (Empty list means apply to all locations). This can only be set when managedCompartmentIds is not empty.
 	Locations []*string `json:"locations,omitempty" tf:"locations,omitempty"`
 
-	// The compartment OCIDs that this scheduled job operates on.  To apply the job to all compartments in the tenancy, set this to the tenancy OCID (root compartment) and set  isSubcompartmentIncluded to true. A scheduled job can only operate on one type of target, therefore you must  supply either this or managedInstanceIds, or managedInstanceGroupIds, or lifecycleStageIds.
+	// The compartment OCIDs that this scheduled job operates on.  To apply the job to all compartments in the tenancy, set this to the tenancy OCID (root compartment) and set  isSubcompartmentIncluded to true. A scheduled job can only operate on one type of target, therefore you must  supply either this or managedInstanceIds, or managedInstanceGroupIds, or lifecycleStageIds, or dynamicSetIds.
 	ManagedCompartmentIds []*string `json:"managedCompartmentIds,omitempty" tf:"managed_compartment_ids,omitempty"`
 
-	// The managed instance group OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds, or managedCompartmentIds, or lifecycleStageIds.
+	// The managed instance group OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds, or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
 	ManagedInstanceGroupIds []*string `json:"managedInstanceGroupIds,omitempty" tf:"managed_instance_group_ids,omitempty"`
 
-	// The managed instance OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or  managedInstanceGroupIds, or managedCompartmentIds, or lifecycleStageIds.
+	// The managed instance OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or  managedInstanceGroupIds, or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
 	ManagedInstanceIds []*string `json:"managedInstanceIds,omitempty" tf:"managed_instance_ids,omitempty"`
 
 	// (Updatable) The list of operations this scheduled job needs to perform. A scheduled job supports only one operation type, unless it is one of the following:
 	Operations []OperationsObservation `json:"operations,omitempty" tf:"operations,omitempty"`
 
-	// (Updatable) The frequency schedule for a recurring scheduled job.
+	// (Updatable) The frequency schedule for a recurring scheduled job in the RFC5535 format. Note: Currently, only FREQ/INTERVAL/BYMONTHDAY/BYDAY/BYSETPOS/BYMONTH/BYHOUR/BYMINUTE/BYSECOND rules are supported. In FREQ, only YEARLY, MONTHLY, WEEKLY, DAILY", HOURLY are supported.
 	RecurringRule *string `json:"recurringRule,omitempty" tf:"recurring_rule,omitempty"`
 
 	// (Updatable) The amount of time in minutes to wait until retrying the scheduled job. If set, the service will automatically  retry a failed scheduled job after the interval. For example, you could set the interval to [2,5,10]. If the initial execution of the job fails, the service waits 2 minutes and then retries. If that fails, the service  waits 5 minutes and then retries. If that fails, the service waits 10 minutes and then retries.
@@ -694,6 +818,10 @@ type ScheduledJobParameters struct {
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
+	// The dynamic set OCIDs that this scheduled job operates on. A scheduled job can only operate on one type of target. therefore this parameter is mutually exclusive with  managedInstanceIds, managedInstanceGroupIds, lifecycleStageIds, managedCompartmentIds.
+	// +kubebuilder:validation:Optional
+	DynamicSetIds []*string `json:"dynamicSetIds,omitempty" tf:"dynamic_set_ids,omitempty"`
+
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
 	// +mapType=granular
@@ -707,7 +835,7 @@ type ScheduledJobParameters struct {
 	// +kubebuilder:validation:Optional
 	IsSubcompartmentIncluded *bool `json:"isSubcompartmentIncluded,omitempty" tf:"is_subcompartment_included,omitempty"`
 
-	// The lifecycle stage OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds,  or managedInstanceGroupIds, or managedCompartmentIds.
+	// The lifecycle stage OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds,  or managedInstanceGroupIds, or managedCompartmentIds, or dynamicSetIds.
 	// +kubebuilder:validation:Optional
 	LifecycleStageIds []*string `json:"lifecycleStageIds,omitempty" tf:"lifecycle_stage_ids,omitempty"`
 
@@ -715,15 +843,15 @@ type ScheduledJobParameters struct {
 	// +kubebuilder:validation:Optional
 	Locations []*string `json:"locations,omitempty" tf:"locations,omitempty"`
 
-	// The compartment OCIDs that this scheduled job operates on.  To apply the job to all compartments in the tenancy, set this to the tenancy OCID (root compartment) and set  isSubcompartmentIncluded to true. A scheduled job can only operate on one type of target, therefore you must  supply either this or managedInstanceIds, or managedInstanceGroupIds, or lifecycleStageIds.
+	// The compartment OCIDs that this scheduled job operates on.  To apply the job to all compartments in the tenancy, set this to the tenancy OCID (root compartment) and set  isSubcompartmentIncluded to true. A scheduled job can only operate on one type of target, therefore you must  supply either this or managedInstanceIds, or managedInstanceGroupIds, or lifecycleStageIds, or dynamicSetIds.
 	// +kubebuilder:validation:Optional
 	ManagedCompartmentIds []*string `json:"managedCompartmentIds,omitempty" tf:"managed_compartment_ids,omitempty"`
 
-	// The managed instance group OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds, or managedCompartmentIds, or lifecycleStageIds.
+	// The managed instance group OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or managedInstanceIds, or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
 	// +kubebuilder:validation:Optional
 	ManagedInstanceGroupIds []*string `json:"managedInstanceGroupIds,omitempty" tf:"managed_instance_group_ids,omitempty"`
 
-	// The managed instance OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or  managedInstanceGroupIds, or managedCompartmentIds, or lifecycleStageIds.
+	// The managed instance OCIDs that this scheduled job operates on.  A scheduled job can only operate on one type of target, therefore you must supply either this or  managedInstanceGroupIds, or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
 	// +kubebuilder:validation:Optional
 	ManagedInstanceIds []*string `json:"managedInstanceIds,omitempty" tf:"managed_instance_ids,omitempty"`
 
@@ -731,7 +859,7 @@ type ScheduledJobParameters struct {
 	// +kubebuilder:validation:Optional
 	Operations []OperationsParameters `json:"operations,omitempty" tf:"operations,omitempty"`
 
-	// (Updatable) The frequency schedule for a recurring scheduled job.
+	// (Updatable) The frequency schedule for a recurring scheduled job in the RFC5535 format. Note: Currently, only FREQ/INTERVAL/BYMONTHDAY/BYDAY/BYSETPOS/BYMONTH/BYHOUR/BYMINUTE/BYSECOND rules are supported. In FREQ, only YEARLY, MONTHLY, WEEKLY, DAILY", HOURLY are supported.
 	// +kubebuilder:validation:Optional
 	RecurringRule *string `json:"recurringRule,omitempty" tf:"recurring_rule,omitempty"`
 
@@ -829,6 +957,35 @@ type SwitchModuleStreamsDetailsParameters struct {
 	// Selector for a Stream in streaming to populate streamName.
 	// +kubebuilder:validation:Optional
 	StreamNameSelector *v1.NamespacedSelector `json:"streamNameSelector,omitempty" tf:"-"`
+}
+
+type SwitchSnapChannelDetailsInitParameters struct {
+
+	// (Updatable) The snap channel to install from (e.g. stable, 1.2/edge, beta, candidate, or a custom channel).
+	Channel *string `json:"channel,omitempty" tf:"channel,omitempty"`
+
+	// (Updatable) The name of the snap to install.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
+type SwitchSnapChannelDetailsObservation struct {
+
+	// (Updatable) The snap channel to install from (e.g. stable, 1.2/edge, beta, candidate, or a custom channel).
+	Channel *string `json:"channel,omitempty" tf:"channel,omitempty"`
+
+	// (Updatable) The name of the snap to install.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+}
+
+type SwitchSnapChannelDetailsParameters struct {
+
+	// (Updatable) The snap channel to install from (e.g. stable, 1.2/edge, beta, candidate, or a custom channel).
+	// +kubebuilder:validation:Optional
+	Channel *string `json:"channel,omitempty" tf:"channel,omitempty"`
+
+	// (Updatable) The name of the snap to install.
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name" tf:"name,omitempty"`
 }
 
 // ScheduledJobSpec defines the desired state of ScheduledJob

@@ -902,6 +902,9 @@ type DrProtectionGroupMembersInitParameters struct {
 	// +kubebuilder:validation:Optional
 	PeerDBSystemIDSelector *v1.NamespacedSelector `json:"peerDbSystemIdSelector,omitempty" tf:"-"`
 
+	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The list of config maps along with their corresponding namespaces. This property applies to the OKE cluster member in primary region.
+	ResourceModifierMappings []ResourceModifierMappingsInitParameters `json:"resourceModifierMappings,omitempty" tf:"resource_modifier_mappings,omitempty"`
+
 	// (Applicable when member_type=VOLUME_GROUP) (Updatable) A list of mappings between source volume IDs in the volume group and customer-managed encryption keys in the  destination region which will be used to encrypt the volume after it moves to the destination region.
 	SourceVolumeToDestinationEncryptionKeyMappings []SourceVolumeToDestinationEncryptionKeyMappingsInitParameters `json:"sourceVolumeToDestinationEncryptionKeyMappings,omitempty" tf:"source_volume_to_destination_encryption_key_mappings,omitempty"`
 
@@ -1027,6 +1030,9 @@ type DrProtectionGroupMembersObservation struct {
 
 	// (Applicable when member_type=MYSQL_DB_SYSTEM) (Updatable) The OCID of the peer HeatWave MySQL DB System from the peer region.  Example: ocid1.mysqldbsystem.oc1..uniqueID
 	PeerDBSystemID *string `json:"peerDbSystemId,omitempty" tf:"peer_db_system_id,omitempty"`
+
+	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The list of config maps along with their corresponding namespaces. This property applies to the OKE cluster member in primary region.
+	ResourceModifierMappings []ResourceModifierMappingsObservation `json:"resourceModifierMappings,omitempty" tf:"resource_modifier_mappings,omitempty"`
 
 	// (Applicable when member_type=VOLUME_GROUP) (Updatable) A list of mappings between source volume IDs in the volume group and customer-managed encryption keys in the  destination region which will be used to encrypt the volume after it moves to the destination region.
 	SourceVolumeToDestinationEncryptionKeyMappings []SourceVolumeToDestinationEncryptionKeyMappingsObservation `json:"sourceVolumeToDestinationEncryptionKeyMappings,omitempty" tf:"source_volume_to_destination_encryption_key_mappings,omitempty"`
@@ -1273,6 +1279,10 @@ type DrProtectionGroupMembersParameters struct {
 	// Selector for a DbSystem in database to populate peerDbSystemId.
 	// +kubebuilder:validation:Optional
 	PeerDBSystemIDSelector *v1.NamespacedSelector `json:"peerDbSystemIdSelector,omitempty" tf:"-"`
+
+	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The list of config maps along with their corresponding namespaces. This property applies to the OKE cluster member in primary region.
+	// +kubebuilder:validation:Optional
+	ResourceModifierMappings []ResourceModifierMappingsParameters `json:"resourceModifierMappings,omitempty" tf:"resource_modifier_mappings,omitempty"`
 
 	// (Applicable when member_type=VOLUME_GROUP) (Updatable) A list of mappings between source volume IDs in the volume group and customer-managed encryption keys in the  destination region which will be used to encrypt the volume after it moves to the destination region.
 	// +kubebuilder:validation:Optional
@@ -1801,6 +1811,35 @@ type NetworkLoadBalancerMappingsParameters struct {
 	// Selector for a NetworkLoadBalancer in networkloadbalancer to populate sourceNetworkLoadBalancerId.
 	// +kubebuilder:validation:Optional
 	SourceNetworkLoadBalancerIDSelector *v1.NamespacedSelector `json:"sourceNetworkLoadBalancerIdSelector,omitempty" tf:"-"`
+}
+
+type ResourceModifierMappingsInitParameters struct {
+
+	// (Updatable) The name of the config map containing resource modification details. Example: resource-modifier
+	ConfigMap *string `json:"configMap,omitempty" tf:"config_map,omitempty"`
+
+	// (Updatable) The namespace in object storage (Note - this is usually the tenancy name).  Example: myocitenancy
+	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
+}
+
+type ResourceModifierMappingsObservation struct {
+
+	// (Updatable) The name of the config map containing resource modification details. Example: resource-modifier
+	ConfigMap *string `json:"configMap,omitempty" tf:"config_map,omitempty"`
+
+	// (Updatable) The namespace in object storage (Note - this is usually the tenancy name).  Example: myocitenancy
+	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
+}
+
+type ResourceModifierMappingsParameters struct {
+
+	// (Updatable) The name of the config map containing resource modification details. Example: resource-modifier
+	// +kubebuilder:validation:Optional
+	ConfigMap *string `json:"configMap,omitempty" tf:"config_map,omitempty"`
+
+	// (Updatable) The namespace in object storage (Note - this is usually the tenancy name).  Example: myocitenancy
+	// +kubebuilder:validation:Optional
+	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
 type SourceVolumeToDestinationEncryptionKeyMappingsDestinationEncryptionKeyInitParameters struct {

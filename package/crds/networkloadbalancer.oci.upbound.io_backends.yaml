@@ -165,8 +165,9 @@ spec:
                     type: boolean
                   isDrain:
                     description: '(Updatable) Whether the network load balancer should
-                      drain this server. Servers marked "isDrain" receive no incoming
-                      traffic.  Example: false'
+                      drain this server.  Servers marked "isDrain" stop receiving
+                      new connections but will continue to receive traffic on existing
+                      connections until the connection is terminated.  Example: false'
                     type: boolean
                   isOffline:
                     description: '(Updatable) Whether the network load balancer should
@@ -454,8 +455,9 @@ spec:
                     type: boolean
                   isDrain:
                     description: '(Updatable) Whether the network load balancer should
-                      drain this server. Servers marked "isDrain" receive no incoming
-                      traffic.  Example: false'
+                      drain this server.  Servers marked "isDrain" stop receiving
+                      new connections but will continue to receive traffic on existing
+                      connections until the connection is terminated.  Example: false'
                     type: boolean
                   isOffline:
                     description: '(Updatable) Whether the network load balancer should
@@ -754,8 +756,9 @@ spec:
                     type: boolean
                   isDrain:
                     description: '(Updatable) Whether the network load balancer should
-                      drain this server. Servers marked "isDrain" receive no incoming
-                      traffic.  Example: false'
+                      drain this server.  Servers marked "isDrain" stop receiving
+                      new connections but will continue to receive traffic on existing
+                      connections until the connection is terminated.  Example: false'
                     type: boolean
                   isOffline:
                     description: '(Updatable) Whether the network load balancer should

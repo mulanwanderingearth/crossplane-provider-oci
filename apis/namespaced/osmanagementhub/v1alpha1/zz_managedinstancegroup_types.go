@@ -41,7 +41,7 @@ type ManagedInstanceGroupInitParameters_2 struct {
 	// The CPU architecture type of the managed instances that will be attached to this group.
 	ArchType *string `json:"archType,omitempty" tf:"arch_type,omitempty"`
 
-	// (Updatable) Updatable settings for the Autonomous Linux service.
+	// (Updatable) Updatable settings for the Autonomous Linux service. This is required when creating an Autonomous Linux Managed Instance Group. Do not include it when creating a standard (non-Autonomous) Managed Instance Group.
 	AutonomousSettings []ManagedInstanceGroupAutonomousSettingsInitParameters `json:"autonomousSettings,omitempty" tf:"autonomous_settings,omitempty"`
 
 	// (Updatable) The OCID of the compartment that contains the managed instance group.
@@ -104,7 +104,7 @@ type ManagedInstanceGroupObservation_2 struct {
 	// The CPU architecture type of the managed instances that will be attached to this group.
 	ArchType *string `json:"archType,omitempty" tf:"arch_type,omitempty"`
 
-	// (Updatable) Updatable settings for the Autonomous Linux service.
+	// (Updatable) Updatable settings for the Autonomous Linux service. This is required when creating an Autonomous Linux Managed Instance Group. Do not include it when creating a standard (non-Autonomous) Managed Instance Group.
 	AutonomousSettings []ManagedInstanceGroupAutonomousSettingsObservation `json:"autonomousSettings,omitempty" tf:"autonomous_settings,omitempty"`
 
 	// (Updatable) The OCID of the compartment that contains the managed instance group.
@@ -177,7 +177,7 @@ type ManagedInstanceGroupParameters_2 struct {
 	// +kubebuilder:validation:Optional
 	ArchType *string `json:"archType,omitempty" tf:"arch_type,omitempty"`
 
-	// (Updatable) Updatable settings for the Autonomous Linux service.
+	// (Updatable) Updatable settings for the Autonomous Linux service. This is required when creating an Autonomous Linux Managed Instance Group. Do not include it when creating a standard (non-Autonomous) Managed Instance Group.
 	// +kubebuilder:validation:Optional
 	AutonomousSettings []ManagedInstanceGroupAutonomousSettingsParameters `json:"autonomousSettings,omitempty" tf:"autonomous_settings,omitempty"`
 

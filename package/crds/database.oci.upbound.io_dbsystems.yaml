@@ -172,8 +172,8 @@ spec:
                       and is not case sensitive.
                     type: string
                   clusterPlacementGroupId:
-                    description: (Applicable when source=DB_SYSTEM | NONE) The OCID
-                      of the backup destination.
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
                     type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment the DB system  belongs
@@ -473,6 +473,25 @@ spec:
                                   set for the database.  The default is AL32UTF8.
                                   Allowed values are:'
                                 type: string
+                              databaseDefinedTags:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when source=DATAGUARD) Defined
+                                  tags for this resource. Each key is predefined and
+                                  scoped to a namespace. For more information, see
+                                  Resource Tags.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              databaseFreeformTags:
+                                additionalProperties:
+                                  type: string
+                                description: '(Applicable when source=DATAGUARD) Free-form
+                                  tags for this resource. Each tag is a simple key-value
+                                  pair with no predefined name, type, or namespace.
+                                  For more information, see Resource Tags.  Example:
+                                  {"Department": "Finance"}'
+                                type: object
+                                x-kubernetes-map-type: granular
                               databaseId:
                                 description: The database OCID.
                                 type: string
@@ -553,8 +572,8 @@ spec:
                                     type: object
                                 type: object
                               databaseSoftwareImageId:
-                                description: (Applicable when source=NONE) The database
-                                  software image OCID
+                                description: (Applicable when source=DATAGUARD | NONE)
+                                  The database software image OCID
                                 type: string
                               databaseSoftwareImageIdRef:
                                 description: Reference to a DatabaseSoftwareImage
@@ -633,33 +652,34 @@ spec:
                                     type: object
                                 type: object
                               dbBackupConfig:
-                                description: (Applicable when source=DB_SYSTEM | NONE)
-                                  (Updatable) Backup Options To use any of the API
-                                  operations, you must be authorized in an IAM policy.
-                                  If you're not authorized, talk to an administrator.
-                                  If you're an administrator who needs to write policies
-                                  to give users access, see Getting Started with Policies.
+                                description: (Applicable when source=DATAGUARD | DB_SYSTEM
+                                  | NONE) (Updatable) Backup Options To use any of
+                                  the API operations, you must be authorized in an
+                                  IAM policy. If you're not authorized, talk to an
+                                  administrator. If you're an administrator who needs
+                                  to write policies to give users access, see Getting
+                                  Started with Policies.
                                 items:
                                   properties:
                                     autoBackupEnabled:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) If set to true, configures
-                                        automatic backups. If you previously used
-                                        RMAN or dbcli to configure backups and then
-                                        you switch to using the Console or the API
-                                        for backups, a new backup configuration is
-                                        created and associated with your database.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) If set to
+                                        true, configures automatic backups. If you
+                                        previously used RMAN or dbcli to configure
+                                        backups and then you switch to using the Console
+                                        or the API for backups, a new backup configuration
+                                        is created and associated with your database.
                                         This means that you can no longer rely on
                                         your previously configured unmanaged backups
                                         to work.
                                       type: boolean
                                     autoBackupWindow:
-                                      description: '(Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) Time window selected for
-                                        initiating automatic backup for the database
-                                        system. There are twelve available two-hour
-                                        time windows. If no option is selected, a
-                                        start time between 12:00 AM to 7:00 AM in
+                                      description: '(Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) Time window
+                                        selected for initiating automatic backup for
+                                        the database system. There are twelve available
+                                        two-hour time windows. If no option is selected,
+                                        a start time between 12:00 AM to 7:00 AM in
                                         the region of the database is automatically
                                         chosen. For example, if the user selects SLOT_TWO
                                         from the enum list, the automatic backup job
@@ -667,17 +687,17 @@ spec:
                                         to 4:00 AM (exclusive).  Example: SLOT_TWO'
                                       type: string
                                     autoFullBackupDay:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) Day of the week the full backup should
-                                        be applied on the database system. If no option
-                                        is selected, the value is null and we will
-                                        default to Sunday.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) Day of the week the full
+                                        backup should be applied on the database system.
+                                        If no option is selected, the value is null
+                                        and we will default to Sunday.
                                       type: string
                                     autoFullBackupWindow:
-                                      description: '(Applicable when source=DB_SYSTEM
-                                        | NONE) Time window selected for initiating
-                                        full backup for the database system. There
-                                        are twelve available two-hour time windows.
+                                      description: '(Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) Time window selected for
+                                        initiating full backup for the database system.
+                                        There are twelve available two-hour time windows.
                                         If no option is selected, the value is null
                                         and a start time between 12:00 AM to 7:00
                                         AM in the region of the database is automatically
@@ -687,36 +707,38 @@ spec:
                                         to 4:00 AM (exclusive).  Example: SLOT_TWO'
                                       type: string
                                     backupDeletionPolicy:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) This defines when the backups will
-                                        be deleted. - DELETE_IMMEDIATELY option keep
-                                        the backup for predefined time i.e 72 hours
-                                        and then delete permanently... - DELETE_AFTER_RETENTION_PERIOD
-                                        will keep the backups as per the policy defined
-                                        for database backups.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) This defines when the
+                                        backups will be deleted. - DELETE_IMMEDIATELY
+                                        option keep the backup for predefined time
+                                        i.e 72 hours and then delete permanently...
+                                        - DELETE_AFTER_RETENTION_PERIOD will keep
+                                        the backups as per the policy defined for
+                                        database backups.
                                       type: string
                                     backupDestinationDetails:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) Backup destination details.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) Backup destination
+                                        details.
                                       items:
                                         properties:
                                           backupRetentionPolicyOnTerminate:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) Defines the automatic and manual
-                                              backup retention policy for the Autonomous
-                                              Database termination.  The retention
-                                              policy set on the Autonomous Container
-                                              Database is not applicable for cross
-                                              region remote backups and backups hosted
-                                              on recovery Appliance backup destination.
-                                              Options are 'RETAIN_PER_RETENTION_WINDOW'
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) Defines the automatic
+                                              and manual backup retention policy for
+                                              the Autonomous AI Database termination.  The
+                                              retention policy set on the Autonomous
+                                              Container Database is not applicable
+                                              for cross region remote backups and
+                                              backups hosted on recovery Appliance
+                                              backup destination. Options are 'RETAIN_PER_RETENTION_WINDOW'
                                               or 'RETAIN_FOR_72_HOURS'.The default
                                               value is 'RETAIN_FOR_72_HOURS'.
                                             type: string
                                           dbrsPolicyId:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) The OCID of the DBRS policy
-                                              used for backup.
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) The OCID of the
+                                              DBRS policy used for backup.
                                             type: string
                                           dbrsPolicyIdRef:
                                             description: Reference to a Policy in
@@ -796,24 +818,26 @@ spec:
                                                 type: object
                                             type: object
                                           id:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) The OCID of the backup destination.
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) The OCID of the
+                                              backup destination.
                                             type: string
                                           isRemote:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) Indicates whether the backup
-                                              destination is cross-region or local.
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) Indicates whether
+                                              the backup destination is cross-region
+                                              or local.
                                             type: boolean
                                           isRetentionLockEnabled:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) Indicates if backup retention
-                                              is locked for all the database backups
-                                              in the Autonomous Container Database
-                                              (ACD). The retention window cannot be
-                                              decreased if the backup retention lock
-                                              is enabled. Once applied on the Autonomous
-                                              Container Database, the retention lock
-                                              cannot be removed, or the retention
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) Indicates if backup
+                                              retention is locked for all the database
+                                              backups in the Autonomous Container
+                                              Database (ACD). The retention window
+                                              cannot be decreased if the backup retention
+                                              lock is enabled. Once applied on the
+                                              Autonomous Container Database, the retention
+                                              lock cannot be removed, or the retention
                                               period cannot be decreased after a 14-day
                                               period. If the backup is a Long Term
                                               Backup and retention lock is enabled,
@@ -825,10 +849,10 @@ spec:
                                               backup destination.
                                             type: boolean
                                           remoteRegion:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) The name of the remote region
-                                              where the remote automatic incremental
-                                              backups will be stored.           For
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) The name of the
+                                              remote region where the remote automatic
+                                              incremental backups will be stored.           For
                                               information about valid region names,
                                               see Regions and Availability Domains.
                                             type: string
@@ -839,36 +863,39 @@ spec:
                                         type: object
                                       type: array
                                     recoveryWindowInDays:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) Number of days between
-                                        the current and the earliest point of recoverability
-                                        covered by automatic backups. This value applies
-                                        to automatic backups only. After a new automatic
-                                        backup has been created, Oracle removes old
-                                        automatic backups that are created before
-                                        the window. When the value is updated, it
-                                        is applied to all existing automatic backups.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) Number of
+                                        days between the current and the earliest
+                                        point of recoverability covered by automatic
+                                        backups. This value applies to automatic backups
+                                        only. After a new automatic backup has been
+                                        created, Oracle removes old automatic backups
+                                        that are created before the window. When the
+                                        value is updated, it is applied to all existing
+                                        automatic backups.
                                       type: number
                                     runImmediateFullBackup:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) If set to true, configures automatic
-                                        full backups in the local region (the region
-                                        of the DB system) for the first backup run
-                                        immediately.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) If set to true, configures
+                                        automatic full backups in the local region
+                                        (the region of the DB system) for the first
+                                        backup run immediately.
                                       type: boolean
                                   type: object
                                 type: array
                               dbDomain:
-                                description: (Applicable when source=DB_SYSTEM) The
-                                  database domain. In a distributed database system,
+                                description: (Applicable when source=DATAGUARD | DB_SYSTEM)
+                                  The database domain. In a distributed database system,
                                   DB_DOMAIN specifies the logical location of the
                                   database within the network structure.
                                 type: string
                               dbName:
-                                description: The display name of the database to be
-                                  created from the backup. It must begin with an alphabetic
-                                  character and can contain a maximum of eight alphanumeric
-                                  characters. Special characters are not permitted.
+                                description: (Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) The display name of the database
+                                  to be created from the backup. It must begin with
+                                  an alphabetic character and can contain a maximum
+                                  of eight alphanumeric characters. Special characters
+                                  are not permitted.
                                 type: string
                               dbUniqueName:
                                 description: (Updatable) Name of the day of the week.
@@ -887,23 +914,108 @@ spec:
                               definedTags:
                                 additionalProperties:
                                   type: string
-                                description: (Applicable when source=DB_BACKUP | DB_SYSTEM
-                                  | NONE) (Updatable) Defined tags for this resource.
-                                  Each key is predefined and scoped to a namespace.
-                                  For more information, see Resource Tags.
+                                description: (Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) (Updatable) Defined tags for
+                                  this resource. Each key is predefined and scoped
+                                  to a namespace. For more information, see Resource
+                                  Tags.
                                 type: object
                                 x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Applicable when source=DB_BACKUP |
-                                  DB_SYSTEM | NONE) (Updatable) Free-form tags for
+                                description: '(Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) (Updatable) Free-form tags for
                                   this resource. Each tag is a simple key-value pair
                                   with no predefined name, type, or namespace. For
                                   more information, see Resource Tags.  Example: {"Department":
                                   "Finance"}'
                                 type: object
                                 x-kubernetes-map-type: granular
+                              isActiveDataGuardEnabled:
+                                description: (Applicable when source=DATAGUARD) True
+                                  if active Data Guard is enabled.
+                                type: boolean
+                              keyStoreId:
+                                description: (Applicable when source=NONE) The OCID
+                                  of the key store of Oracle Vault.
+                                type: string
+                              keyStoreIdRef:
+                                description: Reference to a KeyStore in database to
+                                  populate keyStoreId.
+                                properties:
+                                  name:
+                                    description: Name of the referenced object.
+                                    type: string
+                                  policy:
+                                    description: Policies for referencing.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                required:
+                                - name
+                                type: object
+                              keyStoreIdSelector:
+                                description: Selector for a KeyStore in database to
+                                  populate keyStoreId.
+                                properties:
+                                  matchControllerRef:
+                                    description: |-
+                                      MatchControllerRef ensures an object with the same controller reference
+                                      as the selecting object is selected.
+                                    type: boolean
+                                  matchLabels:
+                                    additionalProperties:
+                                      type: string
+                                    description: MatchLabels ensures an object with
+                                      matching labels is selected.
+                                    type: object
+                                  policy:
+                                    description: Policies for selection.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                type: object
                               kmsKeyId:
                                 description: (Applicable when source=NONE) The OCID
                                   of the key container that is used as the master
@@ -1092,13 +1204,24 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              protectionMode:
+                                description: The protection mode of this Data Guard
+                                  association. For more information, see Oracle Data
+                                  Guard Protection Modes in the Oracle Data Guard
+                                  documentation.
+                                type: string
+                              sidPrefix:
+                                description: (Applicable when source=DATABASE | DATAGUARD
+                                  | DB_BACKUP | NONE) Specifies a prefix for the Oracle
+                                  SID of the database to be created.
+                                type: string
                               tdeWalletPasswordSecretRef:
-                                description: '(Applicable when source=NONE) The optional
-                                  password to open the TDE wallet. The password must
-                                  be at least nine characters and contain at least
-                                  two uppercase, two lowercase, two numeric, and two
-                                  special characters. The special characters must
-                                  be _, #, or -.'
+                                description: '(Applicable when source=DATAGUARD |
+                                  NONE) The optional password to open the TDE wallet.
+                                  The password must be at least nine characters and
+                                  contain at least two uppercase, two lowercase, two
+                                  numeric, and two special characters. The special
+                                  characters must be _, #, or -.'
                                 properties:
                                   key:
                                     description: The key to select.
@@ -1119,6 +1242,11 @@ spec:
                                   point in time of the original database from which
                                   the new database is created. If not specifed, the
                                   latest backup is used to create the database.
+                                type: string
+                              transportType:
+                                description: 'The redo transport type to use for this
+                                  Data Guard association.  Valid values depend on
+                                  the specified protectionMode:'
                                 type: string
                               vaultId:
                                 description: (Applicable when source=NONE) The OCID
@@ -1204,8 +1332,8 @@ spec:
                             type: object
                           type: array
                         databaseSoftwareImageId:
-                          description: (Applicable when source=NONE) The database
-                            software image OCID
+                          description: (Applicable when source=DATAGUARD | NONE) The
+                            database software image OCID
                           type: string
                         databaseSoftwareImageIdRef:
                           description: Reference to a DatabaseSoftwareImage in database
@@ -1290,10 +1418,10 @@ spec:
                         definedTags:
                           additionalProperties:
                             type: string
-                          description: (Applicable when source=DB_BACKUP | DB_SYSTEM
-                            | NONE) (Updatable) Defined tags for this resource. Each
-                            key is predefined and scoped to a namespace. For more
-                            information, see Resource Tags.
+                          description: (Applicable when source=DATABASE | DB_BACKUP
+                            | DB_SYSTEM | NONE) (Updatable) Defined tags for this
+                            resource. Each key is predefined and scoped to a namespace.
+                            For more information, see Resource Tags.
                           type: object
                           x-kubernetes-map-type: granular
                         displayName:
@@ -1302,11 +1430,11 @@ spec:
                         freeformTags:
                           additionalProperties:
                             type: string
-                          description: '(Applicable when source=DB_BACKUP | DB_SYSTEM
-                            | NONE) (Updatable) Free-form tags for this resource.
-                            Each tag is a simple key-value pair with no predefined
-                            name, type, or namespace. For more information, see Resource
-                            Tags.  Example: {"Department": "Finance"}'
+                          description: '(Applicable when source=DATABASE | DB_BACKUP
+                            | DB_SYSTEM | NONE) (Updatable) Free-form tags for this
+                            resource. Each tag is a simple key-value pair with no
+                            predefined name, type, or namespace. For more information,
+                            see Resource Tags.  Example: {"Department": "Finance"}'
                           type: object
                           x-kubernetes-map-type: granular
                         isUnifiedAuditingEnabled:
@@ -1329,10 +1457,10 @@ spec:
                   definedTags:
                     additionalProperties:
                       type: string
-                    description: (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE)
-                      (Updatable) Defined tags for this resource. Each key is predefined
-                      and scoped to a namespace. For more information, see Resource
-                      Tags.
+                    description: (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM
+                      | NONE) (Updatable) Defined tags for this resource. Each key
+                      is predefined and scoped to a namespace. For more information,
+                      see Resource Tags.
                     type: object
                     x-kubernetes-map-type: granular
                   diskRedundancy:
@@ -1364,8 +1492,8 @@ spec:
                   freeformTags:
                     additionalProperties:
                       type: string
-                    description: '(Applicable when source=DB_BACKUP | DB_SYSTEM |
-                      NONE) (Updatable) Free-form tags for this resource. Each tag
+                    description: '(Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM
+                      | NONE) (Updatable) Free-form tags for this resource. Each tag
                       is a simple key-value pair with no predefined name, type, or
                       namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
@@ -1654,6 +1782,93 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  osPatchAction:
+                    type: string
+                  osPatchDbNodeId:
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
+                    type: string
+                  osPatchTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Os Patch. Could be set to any integer value.
+                    type: number
+                  primaryDbSystemId:
+                    description: The OCID of the DB system.
+                    type: string
+                  primaryDbSystemIdRef:
+                    description: Reference to a DbSystem in database to populate primaryDbSystemId.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                      policy:
+                        description: Policies for referencing.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    required:
+                    - name
+                    type: object
+                  primaryDbSystemIdSelector:
+                    description: Selector for a DbSystem in database to populate primaryDbSystemId.
+                    properties:
+                      matchControllerRef:
+                        description: |-
+                          MatchControllerRef ensures an object with the same controller reference
+                          as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                      policy:
+                        description: Policies for selection.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    type: object
                   privateIp:
                     description: A private IP address of your choice. Must be an available
                       IP address within the subnet's CIDR. If you don't specify a
@@ -1866,8 +2081,8 @@ spec:
                         type: object
                     type: object
                   subscriptionId:
-                    description: (Applicable when source=DB_SYSTEM | NONE) The OCID
-                      of the backup destination.
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
                     type: string
                   timeZone:
                     description: The time zone to use for the DB system. For details,
@@ -1986,8 +2201,8 @@ spec:
                       and is not case sensitive.
                     type: string
                   clusterPlacementGroupId:
-                    description: (Applicable when source=DB_SYSTEM | NONE) The OCID
-                      of the backup destination.
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
                     type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment the DB system  belongs
@@ -2287,6 +2502,25 @@ spec:
                                   set for the database.  The default is AL32UTF8.
                                   Allowed values are:'
                                 type: string
+                              databaseDefinedTags:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when source=DATAGUARD) Defined
+                                  tags for this resource. Each key is predefined and
+                                  scoped to a namespace. For more information, see
+                                  Resource Tags.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              databaseFreeformTags:
+                                additionalProperties:
+                                  type: string
+                                description: '(Applicable when source=DATAGUARD) Free-form
+                                  tags for this resource. Each tag is a simple key-value
+                                  pair with no predefined name, type, or namespace.
+                                  For more information, see Resource Tags.  Example:
+                                  {"Department": "Finance"}'
+                                type: object
+                                x-kubernetes-map-type: granular
                               databaseId:
                                 description: The database OCID.
                                 type: string
@@ -2367,8 +2601,8 @@ spec:
                                     type: object
                                 type: object
                               databaseSoftwareImageId:
-                                description: (Applicable when source=NONE) The database
-                                  software image OCID
+                                description: (Applicable when source=DATAGUARD | NONE)
+                                  The database software image OCID
                                 type: string
                               databaseSoftwareImageIdRef:
                                 description: Reference to a DatabaseSoftwareImage
@@ -2447,33 +2681,34 @@ spec:
                                     type: object
                                 type: object
                               dbBackupConfig:
-                                description: (Applicable when source=DB_SYSTEM | NONE)
-                                  (Updatable) Backup Options To use any of the API
-                                  operations, you must be authorized in an IAM policy.
-                                  If you're not authorized, talk to an administrator.
-                                  If you're an administrator who needs to write policies
-                                  to give users access, see Getting Started with Policies.
+                                description: (Applicable when source=DATAGUARD | DB_SYSTEM
+                                  | NONE) (Updatable) Backup Options To use any of
+                                  the API operations, you must be authorized in an
+                                  IAM policy. If you're not authorized, talk to an
+                                  administrator. If you're an administrator who needs
+                                  to write policies to give users access, see Getting
+                                  Started with Policies.
                                 items:
                                   properties:
                                     autoBackupEnabled:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) If set to true, configures
-                                        automatic backups. If you previously used
-                                        RMAN or dbcli to configure backups and then
-                                        you switch to using the Console or the API
-                                        for backups, a new backup configuration is
-                                        created and associated with your database.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) If set to
+                                        true, configures automatic backups. If you
+                                        previously used RMAN or dbcli to configure
+                                        backups and then you switch to using the Console
+                                        or the API for backups, a new backup configuration
+                                        is created and associated with your database.
                                         This means that you can no longer rely on
                                         your previously configured unmanaged backups
                                         to work.
                                       type: boolean
                                     autoBackupWindow:
-                                      description: '(Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) Time window selected for
-                                        initiating automatic backup for the database
-                                        system. There are twelve available two-hour
-                                        time windows. If no option is selected, a
-                                        start time between 12:00 AM to 7:00 AM in
+                                      description: '(Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) Time window
+                                        selected for initiating automatic backup for
+                                        the database system. There are twelve available
+                                        two-hour time windows. If no option is selected,
+                                        a start time between 12:00 AM to 7:00 AM in
                                         the region of the database is automatically
                                         chosen. For example, if the user selects SLOT_TWO
                                         from the enum list, the automatic backup job
@@ -2481,17 +2716,17 @@ spec:
                                         to 4:00 AM (exclusive).  Example: SLOT_TWO'
                                       type: string
                                     autoFullBackupDay:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) Day of the week the full backup should
-                                        be applied on the database system. If no option
-                                        is selected, the value is null and we will
-                                        default to Sunday.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) Day of the week the full
+                                        backup should be applied on the database system.
+                                        If no option is selected, the value is null
+                                        and we will default to Sunday.
                                       type: string
                                     autoFullBackupWindow:
-                                      description: '(Applicable when source=DB_SYSTEM
-                                        | NONE) Time window selected for initiating
-                                        full backup for the database system. There
-                                        are twelve available two-hour time windows.
+                                      description: '(Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) Time window selected for
+                                        initiating full backup for the database system.
+                                        There are twelve available two-hour time windows.
                                         If no option is selected, the value is null
                                         and a start time between 12:00 AM to 7:00
                                         AM in the region of the database is automatically
@@ -2501,36 +2736,38 @@ spec:
                                         to 4:00 AM (exclusive).  Example: SLOT_TWO'
                                       type: string
                                     backupDeletionPolicy:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) This defines when the backups will
-                                        be deleted. - DELETE_IMMEDIATELY option keep
-                                        the backup for predefined time i.e 72 hours
-                                        and then delete permanently... - DELETE_AFTER_RETENTION_PERIOD
-                                        will keep the backups as per the policy defined
-                                        for database backups.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) This defines when the
+                                        backups will be deleted. - DELETE_IMMEDIATELY
+                                        option keep the backup for predefined time
+                                        i.e 72 hours and then delete permanently...
+                                        - DELETE_AFTER_RETENTION_PERIOD will keep
+                                        the backups as per the policy defined for
+                                        database backups.
                                       type: string
                                     backupDestinationDetails:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) Backup destination details.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) Backup destination
+                                        details.
                                       items:
                                         properties:
                                           backupRetentionPolicyOnTerminate:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) Defines the automatic and manual
-                                              backup retention policy for the Autonomous
-                                              Database termination.  The retention
-                                              policy set on the Autonomous Container
-                                              Database is not applicable for cross
-                                              region remote backups and backups hosted
-                                              on recovery Appliance backup destination.
-                                              Options are 'RETAIN_PER_RETENTION_WINDOW'
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) Defines the automatic
+                                              and manual backup retention policy for
+                                              the Autonomous AI Database termination.  The
+                                              retention policy set on the Autonomous
+                                              Container Database is not applicable
+                                              for cross region remote backups and
+                                              backups hosted on recovery Appliance
+                                              backup destination. Options are 'RETAIN_PER_RETENTION_WINDOW'
                                               or 'RETAIN_FOR_72_HOURS'.The default
                                               value is 'RETAIN_FOR_72_HOURS'.
                                             type: string
                                           dbrsPolicyId:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) The OCID of the DBRS policy
-                                              used for backup.
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) The OCID of the
+                                              DBRS policy used for backup.
                                             type: string
                                           dbrsPolicyIdRef:
                                             description: Reference to a Policy in
@@ -2610,24 +2847,26 @@ spec:
                                                 type: object
                                             type: object
                                           id:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) The OCID of the backup destination.
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) The OCID of the
+                                              backup destination.
                                             type: string
                                           isRemote:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) Indicates whether the backup
-                                              destination is cross-region or local.
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) Indicates whether
+                                              the backup destination is cross-region
+                                              or local.
                                             type: boolean
                                           isRetentionLockEnabled:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) Indicates if backup retention
-                                              is locked for all the database backups
-                                              in the Autonomous Container Database
-                                              (ACD). The retention window cannot be
-                                              decreased if the backup retention lock
-                                              is enabled. Once applied on the Autonomous
-                                              Container Database, the retention lock
-                                              cannot be removed, or the retention
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) Indicates if backup
+                                              retention is locked for all the database
+                                              backups in the Autonomous Container
+                                              Database (ACD). The retention window
+                                              cannot be decreased if the backup retention
+                                              lock is enabled. Once applied on the
+                                              Autonomous Container Database, the retention
+                                              lock cannot be removed, or the retention
                                               period cannot be decreased after a 14-day
                                               period. If the backup is a Long Term
                                               Backup and retention lock is enabled,
@@ -2639,10 +2878,10 @@ spec:
                                               backup destination.
                                             type: boolean
                                           remoteRegion:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) The name of the remote region
-                                              where the remote automatic incremental
-                                              backups will be stored.           For
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) The name of the
+                                              remote region where the remote automatic
+                                              incremental backups will be stored.           For
                                               information about valid region names,
                                               see Regions and Availability Domains.
                                             type: string
@@ -2653,36 +2892,39 @@ spec:
                                         type: object
                                       type: array
                                     recoveryWindowInDays:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) Number of days between
-                                        the current and the earliest point of recoverability
-                                        covered by automatic backups. This value applies
-                                        to automatic backups only. After a new automatic
-                                        backup has been created, Oracle removes old
-                                        automatic backups that are created before
-                                        the window. When the value is updated, it
-                                        is applied to all existing automatic backups.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) Number of
+                                        days between the current and the earliest
+                                        point of recoverability covered by automatic
+                                        backups. This value applies to automatic backups
+                                        only. After a new automatic backup has been
+                                        created, Oracle removes old automatic backups
+                                        that are created before the window. When the
+                                        value is updated, it is applied to all existing
+                                        automatic backups.
                                       type: number
                                     runImmediateFullBackup:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) If set to true, configures automatic
-                                        full backups in the local region (the region
-                                        of the DB system) for the first backup run
-                                        immediately.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) If set to true, configures
+                                        automatic full backups in the local region
+                                        (the region of the DB system) for the first
+                                        backup run immediately.
                                       type: boolean
                                   type: object
                                 type: array
                               dbDomain:
-                                description: (Applicable when source=DB_SYSTEM) The
-                                  database domain. In a distributed database system,
+                                description: (Applicable when source=DATAGUARD | DB_SYSTEM)
+                                  The database domain. In a distributed database system,
                                   DB_DOMAIN specifies the logical location of the
                                   database within the network structure.
                                 type: string
                               dbName:
-                                description: The display name of the database to be
-                                  created from the backup. It must begin with an alphabetic
-                                  character and can contain a maximum of eight alphanumeric
-                                  characters. Special characters are not permitted.
+                                description: (Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) The display name of the database
+                                  to be created from the backup. It must begin with
+                                  an alphabetic character and can contain a maximum
+                                  of eight alphanumeric characters. Special characters
+                                  are not permitted.
                                 type: string
                               dbUniqueName:
                                 description: (Updatable) Name of the day of the week.
@@ -2701,23 +2943,108 @@ spec:
                               definedTags:
                                 additionalProperties:
                                   type: string
-                                description: (Applicable when source=DB_BACKUP | DB_SYSTEM
-                                  | NONE) (Updatable) Defined tags for this resource.
-                                  Each key is predefined and scoped to a namespace.
-                                  For more information, see Resource Tags.
+                                description: (Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) (Updatable) Defined tags for
+                                  this resource. Each key is predefined and scoped
+                                  to a namespace. For more information, see Resource
+                                  Tags.
                                 type: object
                                 x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Applicable when source=DB_BACKUP |
-                                  DB_SYSTEM | NONE) (Updatable) Free-form tags for
+                                description: '(Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) (Updatable) Free-form tags for
                                   this resource. Each tag is a simple key-value pair
                                   with no predefined name, type, or namespace. For
                                   more information, see Resource Tags.  Example: {"Department":
                                   "Finance"}'
                                 type: object
                                 x-kubernetes-map-type: granular
+                              isActiveDataGuardEnabled:
+                                description: (Applicable when source=DATAGUARD) True
+                                  if active Data Guard is enabled.
+                                type: boolean
+                              keyStoreId:
+                                description: (Applicable when source=NONE) The OCID
+                                  of the key store of Oracle Vault.
+                                type: string
+                              keyStoreIdRef:
+                                description: Reference to a KeyStore in database to
+                                  populate keyStoreId.
+                                properties:
+                                  name:
+                                    description: Name of the referenced object.
+                                    type: string
+                                  policy:
+                                    description: Policies for referencing.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                required:
+                                - name
+                                type: object
+                              keyStoreIdSelector:
+                                description: Selector for a KeyStore in database to
+                                  populate keyStoreId.
+                                properties:
+                                  matchControllerRef:
+                                    description: |-
+                                      MatchControllerRef ensures an object with the same controller reference
+                                      as the selecting object is selected.
+                                    type: boolean
+                                  matchLabels:
+                                    additionalProperties:
+                                      type: string
+                                    description: MatchLabels ensures an object with
+                                      matching labels is selected.
+                                    type: object
+                                  policy:
+                                    description: Policies for selection.
+                                    properties:
+                                      resolution:
+                                        default: Required
+                                        description: |-
+                                          Resolution specifies whether resolution of this reference is required.
+                                          The default is 'Required', which means the reconcile will fail if the
+                                          reference cannot be resolved. 'Optional' means this reference will be
+                                          a no-op if it cannot be resolved.
+                                        enum:
+                                        - Required
+                                        - Optional
+                                        type: string
+                                      resolve:
+                                        description: |-
+                                          Resolve specifies when this reference should be resolved. The default
+                                          is 'IfNotPresent', which will attempt to resolve the reference only when
+                                          the corresponding field is not present. Use 'Always' to resolve the
+                                          reference on every reconcile.
+                                        enum:
+                                        - Always
+                                        - IfNotPresent
+                                        type: string
+                                    type: object
+                                type: object
                               kmsKeyId:
                                 description: (Applicable when source=NONE) The OCID
                                   of the key container that is used as the master
@@ -2906,13 +3233,24 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              protectionMode:
+                                description: The protection mode of this Data Guard
+                                  association. For more information, see Oracle Data
+                                  Guard Protection Modes in the Oracle Data Guard
+                                  documentation.
+                                type: string
+                              sidPrefix:
+                                description: (Applicable when source=DATABASE | DATAGUARD
+                                  | DB_BACKUP | NONE) Specifies a prefix for the Oracle
+                                  SID of the database to be created.
+                                type: string
                               tdeWalletPasswordSecretRef:
-                                description: '(Applicable when source=NONE) The optional
-                                  password to open the TDE wallet. The password must
-                                  be at least nine characters and contain at least
-                                  two uppercase, two lowercase, two numeric, and two
-                                  special characters. The special characters must
-                                  be _, #, or -.'
+                                description: '(Applicable when source=DATAGUARD |
+                                  NONE) The optional password to open the TDE wallet.
+                                  The password must be at least nine characters and
+                                  contain at least two uppercase, two lowercase, two
+                                  numeric, and two special characters. The special
+                                  characters must be _, #, or -.'
                                 properties:
                                   key:
                                     description: The key to select.
@@ -2933,6 +3271,11 @@ spec:
                                   point in time of the original database from which
                                   the new database is created. If not specifed, the
                                   latest backup is used to create the database.
+                                type: string
+                              transportType:
+                                description: 'The redo transport type to use for this
+                                  Data Guard association.  Valid values depend on
+                                  the specified protectionMode:'
                                 type: string
                               vaultId:
                                 description: (Applicable when source=NONE) The OCID
@@ -3020,8 +3363,8 @@ spec:
                             type: object
                           type: array
                         databaseSoftwareImageId:
-                          description: (Applicable when source=NONE) The database
-                            software image OCID
+                          description: (Applicable when source=DATAGUARD | NONE) The
+                            database software image OCID
                           type: string
                         databaseSoftwareImageIdRef:
                           description: Reference to a DatabaseSoftwareImage in database
@@ -3106,10 +3449,10 @@ spec:
                         definedTags:
                           additionalProperties:
                             type: string
-                          description: (Applicable when source=DB_BACKUP | DB_SYSTEM
-                            | NONE) (Updatable) Defined tags for this resource. Each
-                            key is predefined and scoped to a namespace. For more
-                            information, see Resource Tags.
+                          description: (Applicable when source=DATABASE | DB_BACKUP
+                            | DB_SYSTEM | NONE) (Updatable) Defined tags for this
+                            resource. Each key is predefined and scoped to a namespace.
+                            For more information, see Resource Tags.
                           type: object
                           x-kubernetes-map-type: granular
                         displayName:
@@ -3118,11 +3461,11 @@ spec:
                         freeformTags:
                           additionalProperties:
                             type: string
-                          description: '(Applicable when source=DB_BACKUP | DB_SYSTEM
-                            | NONE) (Updatable) Free-form tags for this resource.
-                            Each tag is a simple key-value pair with no predefined
-                            name, type, or namespace. For more information, see Resource
-                            Tags.  Example: {"Department": "Finance"}'
+                          description: '(Applicable when source=DATABASE | DB_BACKUP
+                            | DB_SYSTEM | NONE) (Updatable) Free-form tags for this
+                            resource. Each tag is a simple key-value pair with no
+                            predefined name, type, or namespace. For more information,
+                            see Resource Tags.  Example: {"Department": "Finance"}'
                           type: object
                           x-kubernetes-map-type: granular
                         isUnifiedAuditingEnabled:
@@ -3145,10 +3488,10 @@ spec:
                   definedTags:
                     additionalProperties:
                       type: string
-                    description: (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE)
-                      (Updatable) Defined tags for this resource. Each key is predefined
-                      and scoped to a namespace. For more information, see Resource
-                      Tags.
+                    description: (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM
+                      | NONE) (Updatable) Defined tags for this resource. Each key
+                      is predefined and scoped to a namespace. For more information,
+                      see Resource Tags.
                     type: object
                     x-kubernetes-map-type: granular
                   diskRedundancy:
@@ -3180,8 +3523,8 @@ spec:
                   freeformTags:
                     additionalProperties:
                       type: string
-                    description: '(Applicable when source=DB_BACKUP | DB_SYSTEM |
-                      NONE) (Updatable) Free-form tags for this resource. Each tag
+                    description: '(Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM
+                      | NONE) (Updatable) Free-form tags for this resource. Each tag
                       is a simple key-value pair with no predefined name, type, or
                       namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
@@ -3470,6 +3813,93 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  osPatchAction:
+                    type: string
+                  osPatchDbNodeId:
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
+                    type: string
+                  osPatchTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Os Patch. Could be set to any integer value.
+                    type: number
+                  primaryDbSystemId:
+                    description: The OCID of the DB system.
+                    type: string
+                  primaryDbSystemIdRef:
+                    description: Reference to a DbSystem in database to populate primaryDbSystemId.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                      policy:
+                        description: Policies for referencing.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    required:
+                    - name
+                    type: object
+                  primaryDbSystemIdSelector:
+                    description: Selector for a DbSystem in database to populate primaryDbSystemId.
+                    properties:
+                      matchControllerRef:
+                        description: |-
+                          MatchControllerRef ensures an object with the same controller reference
+                          as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                      policy:
+                        description: Policies for selection.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: |-
+                              Resolution specifies whether resolution of this reference is required.
+                              The default is 'Required', which means the reconcile will fail if the
+                              reference cannot be resolved. 'Optional' means this reference will be
+                              a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: |-
+                              Resolve specifies when this reference should be resolved. The default
+                              is 'IfNotPresent', which will attempt to resolve the reference only when
+                              the corresponding field is not present. Use 'Always' to resolve the
+                              reference on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    type: object
                   privateIp:
                     description: A private IP address of your choice. Must be an available
                       IP address within the subnet's CIDR. If you don't specify a
@@ -3682,8 +4112,8 @@ spec:
                         type: object
                     type: object
                   subscriptionId:
-                    description: (Applicable when source=DB_SYSTEM | NONE) The OCID
-                      of the backup destination.
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
                     type: string
                   timeZone:
                     description: The time zone to use for the DB system. For details,
@@ -3829,8 +4259,8 @@ spec:
                       and is not case sensitive.
                     type: string
                   clusterPlacementGroupId:
-                    description: (Applicable when source=DB_SYSTEM | NONE) The OCID
-                      of the backup destination.
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
                     type: string
                   compartmentId:
                     description: (Updatable) The OCID of the compartment the DB system  belongs
@@ -3953,41 +4383,61 @@ spec:
                                       type: string
                                   type: object
                                 type: array
+                              databaseDefinedTags:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when source=DATAGUARD) Defined
+                                  tags for this resource. Each key is predefined and
+                                  scoped to a namespace. For more information, see
+                                  Resource Tags.
+                                type: object
+                                x-kubernetes-map-type: granular
+                              databaseFreeformTags:
+                                additionalProperties:
+                                  type: string
+                                description: '(Applicable when source=DATAGUARD) Free-form
+                                  tags for this resource. Each tag is a simple key-value
+                                  pair with no predefined name, type, or namespace.
+                                  For more information, see Resource Tags.  Example:
+                                  {"Department": "Finance"}'
+                                type: object
+                                x-kubernetes-map-type: granular
                               databaseId:
                                 description: The database OCID.
                                 type: string
                               databaseSoftwareImageId:
-                                description: (Applicable when source=NONE) The database
-                                  software image OCID
+                                description: (Applicable when source=DATAGUARD | NONE)
+                                  The database software image OCID
                                 type: string
                               dbBackupConfig:
-                                description: (Applicable when source=DB_SYSTEM | NONE)
-                                  (Updatable) Backup Options To use any of the API
-                                  operations, you must be authorized in an IAM policy.
-                                  If you're not authorized, talk to an administrator.
-                                  If you're an administrator who needs to write policies
-                                  to give users access, see Getting Started with Policies.
+                                description: (Applicable when source=DATAGUARD | DB_SYSTEM
+                                  | NONE) (Updatable) Backup Options To use any of
+                                  the API operations, you must be authorized in an
+                                  IAM policy. If you're not authorized, talk to an
+                                  administrator. If you're an administrator who needs
+                                  to write policies to give users access, see Getting
+                                  Started with Policies.
                                 items:
                                   properties:
                                     autoBackupEnabled:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) If set to true, configures
-                                        automatic backups. If you previously used
-                                        RMAN or dbcli to configure backups and then
-                                        you switch to using the Console or the API
-                                        for backups, a new backup configuration is
-                                        created and associated with your database.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) If set to
+                                        true, configures automatic backups. If you
+                                        previously used RMAN or dbcli to configure
+                                        backups and then you switch to using the Console
+                                        or the API for backups, a new backup configuration
+                                        is created and associated with your database.
                                         This means that you can no longer rely on
                                         your previously configured unmanaged backups
                                         to work.
                                       type: boolean
                                     autoBackupWindow:
-                                      description: '(Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) Time window selected for
-                                        initiating automatic backup for the database
-                                        system. There are twelve available two-hour
-                                        time windows. If no option is selected, a
-                                        start time between 12:00 AM to 7:00 AM in
+                                      description: '(Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) Time window
+                                        selected for initiating automatic backup for
+                                        the database system. There are twelve available
+                                        two-hour time windows. If no option is selected,
+                                        a start time between 12:00 AM to 7:00 AM in
                                         the region of the database is automatically
                                         chosen. For example, if the user selects SLOT_TWO
                                         from the enum list, the automatic backup job
@@ -3995,17 +4445,17 @@ spec:
                                         to 4:00 AM (exclusive).  Example: SLOT_TWO'
                                       type: string
                                     autoFullBackupDay:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) Day of the week the full backup should
-                                        be applied on the database system. If no option
-                                        is selected, the value is null and we will
-                                        default to Sunday.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) Day of the week the full
+                                        backup should be applied on the database system.
+                                        If no option is selected, the value is null
+                                        and we will default to Sunday.
                                       type: string
                                     autoFullBackupWindow:
-                                      description: '(Applicable when source=DB_SYSTEM
-                                        | NONE) Time window selected for initiating
-                                        full backup for the database system. There
-                                        are twelve available two-hour time windows.
+                                      description: '(Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) Time window selected for
+                                        initiating full backup for the database system.
+                                        There are twelve available two-hour time windows.
                                         If no option is selected, the value is null
                                         and a start time between 12:00 AM to 7:00
                                         AM in the region of the database is automatically
@@ -4015,56 +4465,60 @@ spec:
                                         to 4:00 AM (exclusive).  Example: SLOT_TWO'
                                       type: string
                                     backupDeletionPolicy:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) This defines when the backups will
-                                        be deleted. - DELETE_IMMEDIATELY option keep
-                                        the backup for predefined time i.e 72 hours
-                                        and then delete permanently... - DELETE_AFTER_RETENTION_PERIOD
-                                        will keep the backups as per the policy defined
-                                        for database backups.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) This defines when the
+                                        backups will be deleted. - DELETE_IMMEDIATELY
+                                        option keep the backup for predefined time
+                                        i.e 72 hours and then delete permanently...
+                                        - DELETE_AFTER_RETENTION_PERIOD will keep
+                                        the backups as per the policy defined for
+                                        database backups.
                                       type: string
                                     backupDestinationDetails:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) Backup destination details.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) Backup destination
+                                        details.
                                       items:
                                         properties:
                                           backupRetentionPolicyOnTerminate:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) Defines the automatic and manual
-                                              backup retention policy for the Autonomous
-                                              Database termination.  The retention
-                                              policy set on the Autonomous Container
-                                              Database is not applicable for cross
-                                              region remote backups and backups hosted
-                                              on recovery Appliance backup destination.
-                                              Options are 'RETAIN_PER_RETENTION_WINDOW'
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) Defines the automatic
+                                              and manual backup retention policy for
+                                              the Autonomous AI Database termination.  The
+                                              retention policy set on the Autonomous
+                                              Container Database is not applicable
+                                              for cross region remote backups and
+                                              backups hosted on recovery Appliance
+                                              backup destination. Options are 'RETAIN_PER_RETENTION_WINDOW'
                                               or 'RETAIN_FOR_72_HOURS'.The default
                                               value is 'RETAIN_FOR_72_HOURS'.
                                             type: string
                                           dbrsPolicyId:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) The OCID of the DBRS policy
-                                              used for backup.
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) The OCID of the
+                                              DBRS policy used for backup.
                                             type: string
                                           id:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) The OCID of the backup destination.
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) The OCID of the
+                                              backup destination.
                                             type: string
                                           isRemote:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) Indicates whether the backup
-                                              destination is cross-region or local.
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) Indicates whether
+                                              the backup destination is cross-region
+                                              or local.
                                             type: boolean
                                           isRetentionLockEnabled:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) Indicates if backup retention
-                                              is locked for all the database backups
-                                              in the Autonomous Container Database
-                                              (ACD). The retention window cannot be
-                                              decreased if the backup retention lock
-                                              is enabled. Once applied on the Autonomous
-                                              Container Database, the retention lock
-                                              cannot be removed, or the retention
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) Indicates if backup
+                                              retention is locked for all the database
+                                              backups in the Autonomous Container
+                                              Database (ACD). The retention window
+                                              cannot be decreased if the backup retention
+                                              lock is enabled. Once applied on the
+                                              Autonomous Container Database, the retention
+                                              lock cannot be removed, or the retention
                                               period cannot be decreased after a 14-day
                                               period. If the backup is a Long Term
                                               Backup and retention lock is enabled,
@@ -4076,10 +4530,10 @@ spec:
                                               backup destination.
                                             type: boolean
                                           remoteRegion:
-                                            description: (Applicable when source=DB_SYSTEM
-                                              | NONE) The name of the remote region
-                                              where the remote automatic incremental
-                                              backups will be stored.           For
+                                            description: (Applicable when source=DATAGUARD
+                                              | DB_SYSTEM | NONE) The name of the
+                                              remote region where the remote automatic
+                                              incremental backups will be stored.           For
                                               information about valid region names,
                                               see Regions and Availability Domains.
                                             type: string
@@ -4090,36 +4544,39 @@ spec:
                                         type: object
                                       type: array
                                     recoveryWindowInDays:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) (Updatable) Number of days between
-                                        the current and the earliest point of recoverability
-                                        covered by automatic backups. This value applies
-                                        to automatic backups only. After a new automatic
-                                        backup has been created, Oracle removes old
-                                        automatic backups that are created before
-                                        the window. When the value is updated, it
-                                        is applied to all existing automatic backups.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) (Updatable) Number of
+                                        days between the current and the earliest
+                                        point of recoverability covered by automatic
+                                        backups. This value applies to automatic backups
+                                        only. After a new automatic backup has been
+                                        created, Oracle removes old automatic backups
+                                        that are created before the window. When the
+                                        value is updated, it is applied to all existing
+                                        automatic backups.
                                       type: number
                                     runImmediateFullBackup:
-                                      description: (Applicable when source=DB_SYSTEM
-                                        | NONE) If set to true, configures automatic
-                                        full backups in the local region (the region
-                                        of the DB system) for the first backup run
-                                        immediately.
+                                      description: (Applicable when source=DATAGUARD
+                                        | DB_SYSTEM | NONE) If set to true, configures
+                                        automatic full backups in the local region
+                                        (the region of the DB system) for the first
+                                        backup run immediately.
                                       type: boolean
                                   type: object
                                 type: array
                               dbDomain:
-                                description: (Applicable when source=DB_SYSTEM) The
-                                  database domain. In a distributed database system,
+                                description: (Applicable when source=DATAGUARD | DB_SYSTEM)
+                                  The database domain. In a distributed database system,
                                   DB_DOMAIN specifies the logical location of the
                                   database within the network structure.
                                 type: string
                               dbName:
-                                description: The display name of the database to be
-                                  created from the backup. It must begin with an alphabetic
-                                  character and can contain a maximum of eight alphanumeric
-                                  characters. Special characters are not permitted.
+                                description: (Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) The display name of the database
+                                  to be created from the backup. It must begin with
+                                  an alphabetic character and can contain a maximum
+                                  of eight alphanumeric characters. Special characters
+                                  are not permitted.
                                 type: string
                               dbUniqueName:
                                 description: (Updatable) Name of the day of the week.
@@ -4138,17 +4595,18 @@ spec:
                               definedTags:
                                 additionalProperties:
                                   type: string
-                                description: (Applicable when source=DB_BACKUP | DB_SYSTEM
-                                  | NONE) (Updatable) Defined tags for this resource.
-                                  Each key is predefined and scoped to a namespace.
-                                  For more information, see Resource Tags.
+                                description: (Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) (Updatable) Defined tags for
+                                  this resource. Each key is predefined and scoped
+                                  to a namespace. For more information, see Resource
+                                  Tags.
                                 type: object
                                 x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
-                                description: '(Applicable when source=DB_BACKUP |
-                                  DB_SYSTEM | NONE) (Updatable) Free-form tags for
+                                description: '(Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) (Updatable) Free-form tags for
                                   this resource. Each tag is a simple key-value pair
                                   with no predefined name, type, or namespace. For
                                   more information, see Resource Tags.  Example: {"Department":
@@ -4156,8 +4614,16 @@ spec:
                                 type: object
                                 x-kubernetes-map-type: granular
                               id:
-                                description: (Applicable when source=DB_SYSTEM | NONE)
-                                  The OCID of the backup destination.
+                                description: (Applicable when source=DATAGUARD | DB_SYSTEM
+                                  | NONE) The OCID of the backup destination.
+                                type: string
+                              isActiveDataGuardEnabled:
+                                description: (Applicable when source=DATAGUARD) True
+                                  if active Data Guard is enabled.
+                                type: boolean
+                              keyStoreId:
+                                description: (Applicable when source=NONE) The OCID
+                                  of the key store of Oracle Vault.
                                 type: string
                               kmsKeyId:
                                 description: (Applicable when source=NONE) The OCID
@@ -4199,6 +4665,17 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              protectionMode:
+                                description: The protection mode of this Data Guard
+                                  association. For more information, see Oracle Data
+                                  Guard Protection Modes in the Oracle Data Guard
+                                  documentation.
+                                type: string
+                              sidPrefix:
+                                description: (Applicable when source=DATABASE | DATAGUARD
+                                  | DB_BACKUP | NONE) Specifies a prefix for the Oracle
+                                  SID of the database to be created.
+                                type: string
                               state:
                                 description: The current state of IORM configuration
                                   for the Exadata DB system.
@@ -4212,6 +4689,11 @@ spec:
                                   the new database is created. If not specifed, the
                                   latest backup is used to create the database.
                                 type: string
+                              transportType:
+                                description: 'The redo transport type to use for this
+                                  Data Guard association.  Valid values depend on
+                                  the specified protectionMode:'
+                                type: string
                               vaultId:
                                 description: (Applicable when source=NONE) The OCID
                                   of the Oracle Cloud Infrastructure vault. This parameter
@@ -4220,8 +4702,8 @@ spec:
                             type: object
                           type: array
                         databaseSoftwareImageId:
-                          description: (Applicable when source=NONE) The database
-                            software image OCID
+                          description: (Applicable when source=DATAGUARD | NONE) The
+                            database software image OCID
                           type: string
                         dbHomeLocation:
                           type: string
@@ -4232,10 +4714,10 @@ spec:
                         definedTags:
                           additionalProperties:
                             type: string
-                          description: (Applicable when source=DB_BACKUP | DB_SYSTEM
-                            | NONE) (Updatable) Defined tags for this resource. Each
-                            key is predefined and scoped to a namespace. For more
-                            information, see Resource Tags.
+                          description: (Applicable when source=DATABASE | DB_BACKUP
+                            | DB_SYSTEM | NONE) (Updatable) Defined tags for this
+                            resource. Each key is predefined and scoped to a namespace.
+                            For more information, see Resource Tags.
                           type: object
                           x-kubernetes-map-type: granular
                         displayName:
@@ -4244,16 +4726,16 @@ spec:
                         freeformTags:
                           additionalProperties:
                             type: string
-                          description: '(Applicable when source=DB_BACKUP | DB_SYSTEM
-                            | NONE) (Updatable) Free-form tags for this resource.
-                            Each tag is a simple key-value pair with no predefined
-                            name, type, or namespace. For more information, see Resource
-                            Tags.  Example: {"Department": "Finance"}'
+                          description: '(Applicable when source=DATABASE | DB_BACKUP
+                            | DB_SYSTEM | NONE) (Updatable) Free-form tags for this
+                            resource. Each tag is a simple key-value pair with no
+                            predefined name, type, or namespace. For more information,
+                            see Resource Tags.  Example: {"Department": "Finance"}'
                           type: object
                           x-kubernetes-map-type: granular
                         id:
-                          description: (Applicable when source=DB_SYSTEM | NONE) The
-                            OCID of the backup destination.
+                          description: (Applicable when source=DATAGUARD | DB_SYSTEM
+                            | NONE) The OCID of the backup destination.
                           type: string
                         isUnifiedAuditingEnabled:
                           description: (Applicable when source=DATABASE | DB_BACKUP
@@ -4289,10 +4771,10 @@ spec:
                   definedTags:
                     additionalProperties:
                       type: string
-                    description: (Applicable when source=DB_BACKUP | DB_SYSTEM | NONE)
-                      (Updatable) Defined tags for this resource. Each key is predefined
-                      and scoped to a namespace. For more information, see Resource
-                      Tags.
+                    description: (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM
+                      | NONE) (Updatable) Defined tags for this resource. Each key
+                      is predefined and scoped to a namespace. For more information,
+                      see Resource Tags.
                     type: object
                     x-kubernetes-map-type: granular
                   diskRedundancy:
@@ -4324,8 +4806,8 @@ spec:
                   freeformTags:
                     additionalProperties:
                       type: string
-                    description: '(Applicable when source=DB_BACKUP | DB_SYSTEM |
-                      NONE) (Updatable) Free-form tags for this resource. Each tag
+                    description: '(Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM
+                      | NONE) (Updatable) Free-form tags for this resource. Each tag
                       is a simple key-value pair with no predefined name, type, or
                       namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
@@ -4339,8 +4821,8 @@ spec:
                       and 12 characters for Exadata DB systems.
                     type: string
                   id:
-                    description: (Applicable when source=DB_SYSTEM | NONE) The OCID
-                      of the backup destination.
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
                     type: string
                   iormConfigCache:
                     description: The IORM settings of the Exadata DB system.
@@ -4352,10 +4834,12 @@ spec:
                           items:
                             properties:
                               dbName:
-                                description: The display name of the database to be
-                                  created from the backup. It must begin with an alphabetic
-                                  character and can contain a maximum of eight alphanumeric
-                                  characters. Special characters are not permitted.
+                                description: (Applicable when source=DATABASE | DB_BACKUP
+                                  | DB_SYSTEM | NONE) The display name of the database
+                                  to be created from the backup. It must begin with
+                                  an alphabetic character and can contain a maximum
+                                  of eight alphanumeric characters. Special characters
+                                  are not permitted.
                                 type: string
                               flashCacheLimit:
                                 description: The flash cache limit for this database.
@@ -4368,8 +4852,8 @@ spec:
                             type: object
                           type: array
                         dbSystemId:
-                          description: (Applicable when source=DB_SYSTEM | NONE) The
-                            OCID of the backup destination.
+                          description: (Applicable when source=DATAGUARD | DB_SYSTEM
+                            | NONE) The OCID of the backup destination.
                           type: string
                         lifecycleDetails:
                           description: Additional information about the current lifecycleState.
@@ -4628,6 +5112,16 @@ spec:
                       type: string
                     type: array
                     x-kubernetes-list-type: set
+                  osPatchAction:
+                    type: string
+                  osPatchDbNodeId:
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
+                    type: string
+                  osPatchTrigger:
+                    description: (Updatable) An optional property when incremented
+                      triggers Os Patch. Could be set to any integer value.
+                    type: number
                   osVersion:
                     description: The most recent OS Patch Version applied on the DB
                       system.
@@ -4636,6 +5130,9 @@ spec:
                     description: The point in time for a cloned database system when
                       the data disks were cloned from the source database system,
                       as described in RFC 3339.
+                    type: string
+                  primaryDbSystemId:
+                    description: The OCID of the DB system.
                     type: string
                   privateIp:
                     description: A private IP address of your choice. Must be an available
@@ -4731,8 +5228,8 @@ spec:
                       with.
                     type: string
                   subscriptionId:
-                    description: (Applicable when source=DB_SYSTEM | NONE) The OCID
-                      of the backup destination.
+                    description: (Applicable when source=DATAGUARD | DB_SYSTEM | NONE)
+                      The OCID of the backup destination.
                     type: string
                   systemTags:
                     additionalProperties:

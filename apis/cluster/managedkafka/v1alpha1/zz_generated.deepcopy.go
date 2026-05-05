@@ -99,6 +99,11 @@ func (in *BrokerShapeInitParameters) DeepCopyInto(out *BrokerShapeInitParameters
 		*out = new(float64)
 		**out = **in
 	}
+	if in.NodeShape != nil {
+		in, out := &in.NodeShape, &out.NodeShape
+		*out = new(string)
+		**out = **in
+	}
 	if in.OcpuCount != nil {
 		in, out := &in.OcpuCount, &out.OcpuCount
 		*out = new(float64)
@@ -129,6 +134,11 @@ func (in *BrokerShapeObservation) DeepCopyInto(out *BrokerShapeObservation) {
 		*out = new(float64)
 		**out = **in
 	}
+	if in.NodeShape != nil {
+		in, out := &in.NodeShape, &out.NodeShape
+		*out = new(string)
+		**out = **in
+	}
 	if in.OcpuCount != nil {
 		in, out := &in.OcpuCount, &out.OcpuCount
 		*out = new(float64)
@@ -157,6 +167,11 @@ func (in *BrokerShapeParameters) DeepCopyInto(out *BrokerShapeParameters) {
 	if in.NodeCount != nil {
 		in, out := &in.NodeCount, &out.NodeCount
 		*out = new(float64)
+		**out = **in
+	}
+	if in.NodeShape != nil {
+		in, out := &in.NodeShape, &out.NodeShape
+		*out = new(string)
 		**out = **in
 	}
 	if in.OcpuCount != nil {

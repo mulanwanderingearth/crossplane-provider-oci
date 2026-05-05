@@ -138,6 +138,9 @@ type MysqlReplicaObservation struct {
 	// The state of the read replica.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
+	// (Updatable) Telemetry configuration details of a DB System or a read replica.
+	TelemetryConfiguration []MysqlReplicaTelemetryConfigurationObservation `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
+
 	// The date and time the read replica was created, as described by RFC 3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
@@ -202,6 +205,51 @@ type MysqlReplicaSecureConnectionsObservation struct {
 type MysqlReplicaSecureConnectionsParameters struct {
 }
 
+type MysqlReplicaTelemetryConfigurationInitParameters struct {
+}
+
+type MysqlReplicaTelemetryConfigurationLogsDestinationConfigurationsInitParameters struct {
+}
+
+type MysqlReplicaTelemetryConfigurationLogsDestinationConfigurationsObservation struct {
+
+	// (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Updatable) Value of the destination configuration variable.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type MysqlReplicaTelemetryConfigurationLogsDestinationConfigurationsParameters struct {
+}
+
+type MysqlReplicaTelemetryConfigurationLogsInitParameters struct {
+}
+
+type MysqlReplicaTelemetryConfigurationLogsObservation struct {
+
+	// (Updatable) Type of destination where MySQL telemetry is exposed to. Use LOG_ANALYTICS to send logs to Log Analytics.
+	Destination *string `json:"destination,omitempty" tf:"destination,omitempty"`
+
+	// (Updatable) List of configuration variables for a given destination type.
+	DestinationConfigurations []MysqlReplicaTelemetryConfigurationLogsDestinationConfigurationsObservation `json:"destinationConfigurations,omitempty" tf:"destination_configurations,omitempty"`
+
+	// (Updatable) List of MySQL telemetry types that can be exposed on a telemetry destination
+	LogTypes []*string `json:"logTypes,omitempty" tf:"log_types,omitempty"`
+}
+
+type MysqlReplicaTelemetryConfigurationLogsParameters struct {
+}
+
+type MysqlReplicaTelemetryConfigurationObservation struct {
+
+	// (Updatable) Telemetry configuration details for logging.
+	Logs []MysqlReplicaTelemetryConfigurationLogsObservation `json:"logs,omitempty" tf:"logs,omitempty"`
+}
+
+type MysqlReplicaTelemetryConfigurationParameters struct {
+}
+
 type ReplicaOverridesInitParameters struct {
 
 	// (Updatable) The OCID of the Configuration to be used by the read replica.
@@ -230,6 +278,9 @@ type ReplicaOverridesInitParameters struct {
 
 	// (Updatable) The shape to be used by the read replica. The shape determines the resources allocated:  CPU cores and memory for VM shapes, CPU cores, memory and storage for non-VM (bare metal) shapes.  To get a list of shapes, use the ListShapes operation.
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
+
+	// (Updatable) Telemetry configuration details of a DB System or a read replica.
+	TelemetryConfiguration []ReplicaOverridesTelemetryConfigurationInitParameters `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
 }
 
 type ReplicaOverridesObservation struct {
@@ -250,6 +301,9 @@ type ReplicaOverridesObservation struct {
 
 	// (Updatable) The shape to be used by the read replica. The shape determines the resources allocated:  CPU cores and memory for VM shapes, CPU cores, memory and storage for non-VM (bare metal) shapes.  To get a list of shapes, use the ListShapes operation.
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
+
+	// (Updatable) Telemetry configuration details of a DB System or a read replica.
+	TelemetryConfiguration []ReplicaOverridesTelemetryConfigurationObservation `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
 }
 
 type ReplicaOverridesParameters struct {
@@ -285,6 +339,97 @@ type ReplicaOverridesParameters struct {
 	// (Updatable) The shape to be used by the read replica. The shape determines the resources allocated:  CPU cores and memory for VM shapes, CPU cores, memory and storage for non-VM (bare metal) shapes.  To get a list of shapes, use the ListShapes operation.
 	// +kubebuilder:validation:Optional
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
+
+	// (Updatable) Telemetry configuration details of a DB System or a read replica.
+	// +kubebuilder:validation:Optional
+	TelemetryConfiguration []ReplicaOverridesTelemetryConfigurationParameters `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
+}
+
+type ReplicaOverridesTelemetryConfigurationInitParameters struct {
+
+	// (Updatable) Telemetry configuration details for logging.
+	Logs []ReplicaOverridesTelemetryConfigurationLogsInitParameters `json:"logs,omitempty" tf:"logs,omitempty"`
+}
+
+type ReplicaOverridesTelemetryConfigurationLogsInitParameters struct {
+
+	// (Updatable) Type of destination where MySQL telemetry is exposed to. Use LOG_ANALYTICS to send logs to Log Analytics.
+	Destination *string `json:"destination,omitempty" tf:"destination,omitempty"`
+
+	// (Updatable) List of configuration variables for a given destination type.
+	DestinationConfigurations []TelemetryConfigurationLogsDestinationConfigurationsInitParameters `json:"destinationConfigurations,omitempty" tf:"destination_configurations,omitempty"`
+
+	// (Updatable) List of MySQL telemetry types that can be exposed on a telemetry destination
+	LogTypes []*string `json:"logTypes,omitempty" tf:"log_types,omitempty"`
+}
+
+type ReplicaOverridesTelemetryConfigurationLogsObservation struct {
+
+	// (Updatable) Type of destination where MySQL telemetry is exposed to. Use LOG_ANALYTICS to send logs to Log Analytics.
+	Destination *string `json:"destination,omitempty" tf:"destination,omitempty"`
+
+	// (Updatable) List of configuration variables for a given destination type.
+	DestinationConfigurations []TelemetryConfigurationLogsDestinationConfigurationsObservation `json:"destinationConfigurations,omitempty" tf:"destination_configurations,omitempty"`
+
+	// (Updatable) List of MySQL telemetry types that can be exposed on a telemetry destination
+	LogTypes []*string `json:"logTypes,omitempty" tf:"log_types,omitempty"`
+}
+
+type ReplicaOverridesTelemetryConfigurationLogsParameters struct {
+
+	// (Updatable) Type of destination where MySQL telemetry is exposed to. Use LOG_ANALYTICS to send logs to Log Analytics.
+	// +kubebuilder:validation:Optional
+	Destination *string `json:"destination" tf:"destination,omitempty"`
+
+	// (Updatable) List of configuration variables for a given destination type.
+	// +kubebuilder:validation:Optional
+	DestinationConfigurations []TelemetryConfigurationLogsDestinationConfigurationsParameters `json:"destinationConfigurations" tf:"destination_configurations,omitempty"`
+
+	// (Updatable) List of MySQL telemetry types that can be exposed on a telemetry destination
+	// +kubebuilder:validation:Optional
+	LogTypes []*string `json:"logTypes" tf:"log_types,omitempty"`
+}
+
+type ReplicaOverridesTelemetryConfigurationObservation struct {
+
+	// (Updatable) Telemetry configuration details for logging.
+	Logs []ReplicaOverridesTelemetryConfigurationLogsObservation `json:"logs,omitempty" tf:"logs,omitempty"`
+}
+
+type ReplicaOverridesTelemetryConfigurationParameters struct {
+
+	// (Updatable) Telemetry configuration details for logging.
+	// +kubebuilder:validation:Optional
+	Logs []ReplicaOverridesTelemetryConfigurationLogsParameters `json:"logs,omitempty" tf:"logs,omitempty"`
+}
+
+type TelemetryConfigurationLogsDestinationConfigurationsInitParameters struct {
+
+	// (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Updatable) Value of the destination configuration variable.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type TelemetryConfigurationLogsDestinationConfigurationsObservation struct {
+
+	// (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Updatable) Value of the destination configuration variable.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+}
+
+type TelemetryConfigurationLogsDestinationConfigurationsParameters struct {
+
+	// (Updatable) Name of the destination configuration variable. Use log-group-id to  specify Log Analytics Log Group OCID. Also specify log-set when using the Log Partitioning feature of Log Analytics.
+	// +kubebuilder:validation:Optional
+	Key *string `json:"key" tf:"key,omitempty"`
+
+	// (Updatable) Value of the destination configuration variable.
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 // MysqlReplicaSpec defines the desired state of MysqlReplica

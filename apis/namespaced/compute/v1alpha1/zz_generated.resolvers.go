@@ -1201,6 +1201,30 @@ func (mg *Instance) ResolveReferences(ctx context.Context, c client.Reader) erro
 	mg.Spec.ForProvider.ComputeClusterIDRef = rsp.ResolvedReference
 
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.CreateVnicDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6Id),
+					Extract:      resource.ExtractResourceID(),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.ForProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6IdRef,
+					Selector:     mg.Spec.ForProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6IdSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.ForProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6Id")
+			}
+			mg.Spec.ForProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.ForProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6IdRef = rsp.ResolvedReference
+
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.CreateVnicDetails); i3++ {
 		{
 			m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "NetworkSecurityGroup", "NetworkSecurityGroupList")
 			if err != nil {
@@ -1220,6 +1244,28 @@ func (mg *Instance) ResolveReferences(ctx context.Context, c client.Reader) erro
 		}
 		mg.Spec.ForProvider.CreateVnicDetails[i3].NsgIds = reference.ToPtrValues(mrsp.ResolvedValues)
 		mg.Spec.ForProvider.CreateVnicDetails[i3].NsgIdsRefs = mrsp.ResolvedReferences
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.CreateVnicDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CreateVnicDetails[i3].PrivateIPID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.CreateVnicDetails[i3].PrivateIPIDRef,
+				Selector:     mg.Spec.ForProvider.CreateVnicDetails[i3].PrivateIPIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.CreateVnicDetails[i3].PrivateIPID")
+		}
+		mg.Spec.ForProvider.CreateVnicDetails[i3].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.CreateVnicDetails[i3].PrivateIPIDRef = rsp.ResolvedReference
 
 	}
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.CreateVnicDetails); i3++ {
@@ -1479,6 +1525,30 @@ func (mg *Instance) ResolveReferences(ctx context.Context, c client.Reader) erro
 	mg.Spec.InitProvider.ComputeClusterIDRef = rsp.ResolvedReference
 
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.CreateVnicDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails); i4++ {
+			{
+				m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6Id),
+					Extract:      resource.ExtractResourceID(),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.InitProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6IdRef,
+					Selector:     mg.Spec.InitProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6IdSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.InitProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6Id")
+			}
+			mg.Spec.InitProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.InitProvider.CreateVnicDetails[i3].Ipv6AddressIpv6SubnetCidrPairDetails[i4].Ipv6IdRef = rsp.ResolvedReference
+
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.CreateVnicDetails); i3++ {
 		{
 			m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "NetworkSecurityGroup", "NetworkSecurityGroupList")
 			if err != nil {
@@ -1498,6 +1568,28 @@ func (mg *Instance) ResolveReferences(ctx context.Context, c client.Reader) erro
 		}
 		mg.Spec.InitProvider.CreateVnicDetails[i3].NsgIds = reference.ToPtrValues(mrsp.ResolvedValues)
 		mg.Spec.InitProvider.CreateVnicDetails[i3].NsgIdsRefs = mrsp.ResolvedReferences
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.CreateVnicDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CreateVnicDetails[i3].PrivateIPID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.CreateVnicDetails[i3].PrivateIPIDRef,
+				Selector:     mg.Spec.InitProvider.CreateVnicDetails[i3].PrivateIPIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.CreateVnicDetails[i3].PrivateIPID")
+		}
+		mg.Spec.InitProvider.CreateVnicDetails[i3].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.CreateVnicDetails[i3].PrivateIPIDRef = rsp.ResolvedReference
 
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.CreateVnicDetails); i3++ {
@@ -1856,6 +1948,60 @@ func (mg *InstanceConfiguration) ResolveReferences(ctx context.Context, c client
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.InstanceDetails); i3++ {
 		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails); i4++ {
 			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails); i6++ {
+					{
+						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+						if err != nil {
+							return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+						}
+						rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+							CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id),
+							Extract:      resource.ExtractResourceID(),
+							Namespace:    mg.GetNamespace(),
+							Reference:    mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdRef,
+							Selector:     mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdSelector,
+							To:           reference.To{List: l, Managed: m},
+						})
+					}
+					if err != nil {
+						return errors.Wrap(err, "mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id")
+					}
+					mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+					mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdRef = rsp.ResolvedReference
+
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPIDRef,
+						Selector:     mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPID")
+				}
+				mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPIDRef = rsp.ResolvedReference
+
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails); i5++ {
 				{
 					m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Subnet", "SubnetList")
 					if err != nil {
@@ -2145,6 +2291,64 @@ func (mg *InstanceConfiguration) ResolveReferences(ctx context.Context, c client
 		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options); i4++ {
 			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails); i5++ {
 				for i6 := 0; i6 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails); i6++ {
+					for i7 := 0; i7 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails); i7++ {
+						{
+							m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+							if err != nil {
+								return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+							}
+							rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+								CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id),
+								Extract:      resource.ExtractResourceID(),
+								Namespace:    mg.GetNamespace(),
+								Reference:    mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdRef,
+								Selector:     mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdSelector,
+								To:           reference.To{List: l, Managed: m},
+							})
+						}
+						if err != nil {
+							return errors.Wrap(err, "mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id")
+						}
+						mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+						mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdRef = rsp.ResolvedReference
+
+					}
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails); i6++ {
+					{
+						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+						if err != nil {
+							return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+						}
+						rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+							CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPID),
+							Extract:      resource.ExtractResourceID(),
+							Namespace:    mg.GetNamespace(),
+							Reference:    mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPIDRef,
+							Selector:     mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPIDSelector,
+							To:           reference.To{List: l, Managed: m},
+						})
+					}
+					if err != nil {
+						return errors.Wrap(err, "mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPID")
+					}
+					mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+					mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPIDRef = rsp.ResolvedReference
+
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails); i6++ {
 					{
 						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Subnet", "SubnetList")
 						if err != nil {
@@ -2283,6 +2487,64 @@ func (mg *InstanceConfiguration) ResolveReferences(ctx context.Context, c client
 		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options); i4++ {
 			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics); i5++ {
 				for i6 := 0; i6 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails); i6++ {
+					for i7 := 0; i7 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails); i7++ {
+						{
+							m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+							if err != nil {
+								return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+							}
+							rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+								CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id),
+								Extract:      resource.ExtractResourceID(),
+								Namespace:    mg.GetNamespace(),
+								Reference:    mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdRef,
+								Selector:     mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdSelector,
+								To:           reference.To{List: l, Managed: m},
+							})
+						}
+						if err != nil {
+							return errors.Wrap(err, "mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id")
+						}
+						mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+						mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdRef = rsp.ResolvedReference
+
+					}
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails); i6++ {
+					{
+						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+						if err != nil {
+							return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+						}
+						rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+							CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPID),
+							Extract:      resource.ExtractResourceID(),
+							Namespace:    mg.GetNamespace(),
+							Reference:    mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPIDRef,
+							Selector:     mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPIDSelector,
+							To:           reference.To{List: l, Managed: m},
+						})
+					}
+					if err != nil {
+						return errors.Wrap(err, "mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPID")
+					}
+					mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+					mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPIDRef = rsp.ResolvedReference
+
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails); i6++ {
 					{
 						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Subnet", "SubnetList")
 						if err != nil {
@@ -2304,6 +2566,60 @@ func (mg *InstanceConfiguration) ResolveReferences(ctx context.Context, c client
 					mg.Spec.ForProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].SubnetIDRef = rsp.ResolvedReference
 
 				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails); i6++ {
+					{
+						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+						if err != nil {
+							return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+						}
+						rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+							CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id),
+							Extract:      resource.ExtractResourceID(),
+							Namespace:    mg.GetNamespace(),
+							Reference:    mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdRef,
+							Selector:     mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdSelector,
+							To:           reference.To{List: l, Managed: m},
+						})
+					}
+					if err != nil {
+						return errors.Wrap(err, "mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id")
+					}
+					mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+					mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdRef = rsp.ResolvedReference
+
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPIDRef,
+						Selector:     mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPID")
+				}
+				mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.ForProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPIDRef = rsp.ResolvedReference
+
 			}
 		}
 	}
@@ -2495,6 +2811,60 @@ func (mg *InstanceConfiguration) ResolveReferences(ctx context.Context, c client
 			mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].ComputeClusterID = reference.ToPtrValue(rsp.ResolvedValue)
 			mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].ComputeClusterIDRef = rsp.ResolvedReference
 
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails); i6++ {
+					{
+						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+						if err != nil {
+							return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+						}
+						rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+							CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id),
+							Extract:      resource.ExtractResourceID(),
+							Namespace:    mg.GetNamespace(),
+							Reference:    mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdRef,
+							Selector:     mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdSelector,
+							To:           reference.To{List: l, Managed: m},
+						})
+					}
+					if err != nil {
+						return errors.Wrap(err, "mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id")
+					}
+					mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+					mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdRef = rsp.ResolvedReference
+
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPIDRef,
+						Selector:     mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPID")
+				}
+				mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.InstanceDetails[i3].LaunchDetails[i4].CreateVnicDetails[i5].PrivateIPIDRef = rsp.ResolvedReference
+
+			}
 		}
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.InstanceDetails); i3++ {
@@ -2789,6 +3159,64 @@ func (mg *InstanceConfiguration) ResolveReferences(ctx context.Context, c client
 		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options); i4++ {
 			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails); i5++ {
 				for i6 := 0; i6 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails); i6++ {
+					for i7 := 0; i7 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails); i7++ {
+						{
+							m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+							if err != nil {
+								return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+							}
+							rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+								CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id),
+								Extract:      resource.ExtractResourceID(),
+								Namespace:    mg.GetNamespace(),
+								Reference:    mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdRef,
+								Selector:     mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdSelector,
+								To:           reference.To{List: l, Managed: m},
+							})
+						}
+						if err != nil {
+							return errors.Wrap(err, "mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id")
+						}
+						mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+						mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdRef = rsp.ResolvedReference
+
+					}
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails); i6++ {
+					{
+						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+						if err != nil {
+							return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+						}
+						rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+							CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPID),
+							Extract:      resource.ExtractResourceID(),
+							Namespace:    mg.GetNamespace(),
+							Reference:    mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPIDRef,
+							Selector:     mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPIDSelector,
+							To:           reference.To{List: l, Managed: m},
+						})
+					}
+					if err != nil {
+						return errors.Wrap(err, "mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPID")
+					}
+					mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+					mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails[i6].PrivateIPIDRef = rsp.ResolvedReference
+
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].LaunchDetails[i5].CreateVnicDetails); i6++ {
 					{
 						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Subnet", "SubnetList")
 						if err != nil {
@@ -2927,6 +3355,64 @@ func (mg *InstanceConfiguration) ResolveReferences(ctx context.Context, c client
 		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options); i4++ {
 			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics); i5++ {
 				for i6 := 0; i6 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails); i6++ {
+					for i7 := 0; i7 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails); i7++ {
+						{
+							m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+							if err != nil {
+								return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+							}
+							rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+								CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id),
+								Extract:      resource.ExtractResourceID(),
+								Namespace:    mg.GetNamespace(),
+								Reference:    mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdRef,
+								Selector:     mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdSelector,
+								To:           reference.To{List: l, Managed: m},
+							})
+						}
+						if err != nil {
+							return errors.Wrap(err, "mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id")
+						}
+						mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+						mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].Ipv6AddressIpv6SubnetCidrPairDetails[i7].Ipv6IdRef = rsp.ResolvedReference
+
+					}
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails); i6++ {
+					{
+						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+						if err != nil {
+							return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+						}
+						rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+							CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPID),
+							Extract:      resource.ExtractResourceID(),
+							Namespace:    mg.GetNamespace(),
+							Reference:    mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPIDRef,
+							Selector:     mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPIDSelector,
+							To:           reference.To{List: l, Managed: m},
+						})
+					}
+					if err != nil {
+						return errors.Wrap(err, "mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPID")
+					}
+					mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+					mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].PrivateIPIDRef = rsp.ResolvedReference
+
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails); i6++ {
 					{
 						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Subnet", "SubnetList")
 						if err != nil {
@@ -2948,6 +3434,60 @@ func (mg *InstanceConfiguration) ResolveReferences(ctx context.Context, c client
 					mg.Spec.InitProvider.InstanceDetails[i3].Options[i4].SecondaryVnics[i5].CreateVnicDetails[i6].SubnetIDRef = rsp.ResolvedReference
 
 				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails); i5++ {
+				for i6 := 0; i6 < len(mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails); i6++ {
+					{
+						m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Ipv6", "Ipv6List")
+						if err != nil {
+							return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+						}
+						rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+							CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id),
+							Extract:      resource.ExtractResourceID(),
+							Namespace:    mg.GetNamespace(),
+							Reference:    mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdRef,
+							Selector:     mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdSelector,
+							To:           reference.To{List: l, Managed: m},
+						})
+					}
+					if err != nil {
+						return errors.Wrap(err, "mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id")
+					}
+					mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6Id = reference.ToPtrValue(rsp.ResolvedValue)
+					mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].Ipv6AddressIpv6SubnetCidrPairDetails[i6].Ipv6IdRef = rsp.ResolvedReference
+
+				}
+			}
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.InstanceDetails); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics); i4++ {
+			for i5 := 0; i5 < len(mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails); i5++ {
+				{
+					m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "PrivateIp", "PrivateIpList")
+					if err != nil {
+						return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+					}
+					rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+						CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPID),
+						Extract:      resource.ExtractResourceID(),
+						Namespace:    mg.GetNamespace(),
+						Reference:    mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPIDRef,
+						Selector:     mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPIDSelector,
+						To:           reference.To{List: l, Managed: m},
+					})
+				}
+				if err != nil {
+					return errors.Wrap(err, "mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPID")
+				}
+				mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPID = reference.ToPtrValue(rsp.ResolvedValue)
+				mg.Spec.InitProvider.InstanceDetails[i3].SecondaryVnics[i4].CreateVnicDetails[i5].PrivateIPIDRef = rsp.ResolvedReference
+
 			}
 		}
 	}
@@ -3199,6 +3739,28 @@ func (mg *InstancePool) ResolveReferences(ctx context.Context, c client.Reader) 
 	}
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.PlacementConfigurations); i3++ {
 		{
+			m, l, err = apisresolver.GetManagedResource("compute.oci.m.upbound.io", "v1alpha1", "ComputeCluster", "ComputeClusterList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.PlacementConfigurations[i3].ComputeClusterID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.PlacementConfigurations[i3].ComputeClusterIDRef,
+				Selector:     mg.Spec.ForProvider.PlacementConfigurations[i3].ComputeClusterIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.PlacementConfigurations[i3].ComputeClusterID")
+		}
+		mg.Spec.ForProvider.PlacementConfigurations[i3].ComputeClusterID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.PlacementConfigurations[i3].ComputeClusterIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.PlacementConfigurations); i3++ {
+		{
 			m, l, err = apisresolver.GetManagedResource("networking.oci.m.upbound.io", "v1alpha1", "Subnet", "SubnetList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
@@ -3349,6 +3911,28 @@ func (mg *InstancePool) ResolveReferences(ctx context.Context, c client.Reader) 
 		}
 		mg.Spec.InitProvider.LoadBalancers[i3].LoadBalancerID = reference.ToPtrValue(rsp.ResolvedValue)
 		mg.Spec.InitProvider.LoadBalancers[i3].LoadBalancerIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.PlacementConfigurations); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("compute.oci.m.upbound.io", "v1alpha1", "ComputeCluster", "ComputeClusterList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.PlacementConfigurations[i3].ComputeClusterID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.PlacementConfigurations[i3].ComputeClusterIDRef,
+				Selector:     mg.Spec.InitProvider.PlacementConfigurations[i3].ComputeClusterIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.PlacementConfigurations[i3].ComputeClusterID")
+		}
+		mg.Spec.InitProvider.PlacementConfigurations[i3].ComputeClusterID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.PlacementConfigurations[i3].ComputeClusterIDRef = rsp.ResolvedReference
 
 	}
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.PlacementConfigurations); i3++ {

@@ -101,8 +101,14 @@ type ExadataInfrastructureExascaleConfigObservation struct {
 	// Available storage size for Exascale in GBs.
 	AvailableStorageInGbs *float64 `json:"availableStorageInGbs,omitempty" tf:"available_storage_in_gbs,omitempty"`
 
+	// Available storage size for VM storage on Exascale in GBs.
+	AvailableVMStorageInGbs *float64 `json:"availableVmStorageInGbs,omitempty" tf:"available_vm_storage_in_gbs,omitempty"`
+
 	// Storage size needed for Exascale in GBs.
 	TotalStorageInGbs *float64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
+
+	// Storage size needed for VM storage on Exascale in GBs.
+	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 type ExadataInfrastructureExascaleConfigParameters struct {

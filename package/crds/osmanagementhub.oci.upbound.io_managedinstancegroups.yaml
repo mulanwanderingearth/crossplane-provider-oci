@@ -80,7 +80,9 @@ spec:
                     type: string
                   autonomousSettings:
                     description: (Updatable) Updatable settings for the Autonomous
-                      Linux service.
+                      Linux service. This is required when creating an Autonomous
+                      Linux Managed Instance Group. Do not include it when creating
+                      a standard (non-Autonomous) Managed Instance Group.
                     items:
                       properties:
                         isDataCollectionAuthorized:
@@ -320,7 +322,9 @@ spec:
                     type: string
                   autonomousSettings:
                     description: (Updatable) Updatable settings for the Autonomous
-                      Linux service.
+                      Linux service. This is required when creating an Autonomous
+                      Linux Managed Instance Group. Do not include it when creating
+                      a standard (non-Autonomous) Managed Instance Group.
                     items:
                       properties:
                         isDataCollectionAuthorized:
@@ -658,7 +662,9 @@ spec:
                     type: string
                   autonomousSettings:
                     description: (Updatable) Updatable settings for the Autonomous
-                      Linux service.
+                      Linux service. This is required when creating an Autonomous
+                      Linux Managed Instance Group. Do not include it when creating
+                      a standard (non-Autonomous) Managed Instance Group.
                     items:
                       properties:
                         isDataCollectionAuthorized:

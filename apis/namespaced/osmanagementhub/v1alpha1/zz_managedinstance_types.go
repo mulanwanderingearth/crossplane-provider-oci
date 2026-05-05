@@ -68,7 +68,7 @@ type ManagedInstanceGroupParameters struct {
 
 type ManagedInstanceInitParameters struct {
 
-	// (Updatable) Updatable settings for the Autonomous Linux service.
+	// (Updatable) Updatable settings for the Autonomous Linux service. This is required when creating an Autonomous Linux Managed Instance Group. Do not include it when creating a standard (non-Autonomous) Managed Instance Group.
 	AutonomousSettings []AutonomousSettingsInitParameters `json:"autonomousSettings,omitempty" tf:"autonomous_settings,omitempty"`
 
 	// (Updatable) User-specified description of the managed instance. Avoid entering confidential information.
@@ -150,7 +150,10 @@ type ManagedInstanceObservation struct {
 	// The CPU architecture type of the managed instance.
 	Architecture *string `json:"architecture,omitempty" tf:"architecture,omitempty"`
 
-	// (Updatable) Updatable settings for the Autonomous Linux service.
+	// Controls whether OSMH manages software sources for this instance. This defaults to false for Ubuntu and Windows instances.
+	AreSourcesManaged *bool `json:"areSourcesManaged,omitempty" tf:"are_sources_managed,omitempty"`
+
+	// (Updatable) Updatable settings for the Autonomous Linux service. This is required when creating an Autonomous Linux Managed Instance Group. Do not include it when creating a standard (non-Autonomous) Managed Instance Group.
 	AutonomousSettings []AutonomousSettingsObservation `json:"autonomousSettings,omitempty" tf:"autonomous_settings,omitempty"`
 
 	// Number of bug fix type updates available for installation.
@@ -258,6 +261,9 @@ type ManagedInstanceObservation struct {
 	// Time that the instance last checked in with the service (in RFC 3339 format).
 	TimeLastCheckin *string `json:"timeLastCheckin,omitempty" tf:"time_last_checkin,omitempty"`
 
+	// The date and time the instance's software information was last refreshed (in RFC 3339 format).
+	TimeLastSoftwareRefresh *string `json:"timeLastSoftwareRefresh,omitempty" tf:"time_last_software_refresh,omitempty"`
+
 	// The date and time the instance was last updated (in RFC 3339 format).
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
@@ -270,7 +276,7 @@ type ManagedInstanceObservation struct {
 
 type ManagedInstanceParameters struct {
 
-	// (Updatable) Updatable settings for the Autonomous Linux service.
+	// (Updatable) Updatable settings for the Autonomous Linux service. This is required when creating an Autonomous Linux Managed Instance Group. Do not include it when creating a standard (non-Autonomous) Managed Instance Group.
 	// +kubebuilder:validation:Optional
 	AutonomousSettings []AutonomousSettingsParameters `json:"autonomousSettings,omitempty" tf:"autonomous_settings,omitempty"`
 

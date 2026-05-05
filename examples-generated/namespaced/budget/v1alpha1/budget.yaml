@@ -24,6 +24,7 @@ spec:
     processingPeriodType: ${var.budget_processing_period_type}
     resetPeriod: ${var.budget_reset_period}
     startDate: ${var.budget_start_date}
+    systemTags: ${var.budget_system_tags}
     targetCompartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_compartment

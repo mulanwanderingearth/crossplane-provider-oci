@@ -93,6 +93,9 @@ type EsxiHostInitParameters struct {
 	// The compute shape name of the ESXi host. ListSupportedHostShapes.
 	HostShapeName *string `json:"hostShapeName,omitempty" tf:"host_shape_name,omitempty"`
 
+	// (Updatable) Indicates whether this host embedded VMware vSAN with BYOL Allocation.
+	IsVsanByolEnabled *bool `json:"isVsanByolEnabled,omitempty" tf:"is_vsan_byol_enabled,omitempty"`
+
 	// (Deprecated)  (Updatable) The billing option to switch to after the existing billing cycle ends. If nextSku is null or empty, currentSku continues to the next billing cycle. ListSupportedSkus.  Deprecated. Please use next_commitment instead.
 	NextSku *string `json:"nextSku,omitempty" tf:"next_sku,omitempty"`
 
@@ -101,6 +104,23 @@ type EsxiHostInitParameters struct {
 
 	// (Deprecated)  The OCID of the SDDC to add the ESXi host to. This field has been deprecated. Please use cluster_id instead. Either sddc_id or cluster_id must be configured for oci_ocvp_esxi_host resource.  Deprecated. Please use cluster_id instead.
 	SddcID *string `json:"sddcId,omitempty" tf:"sddc_id,omitempty"`
+
+	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
+	// +mapType=granular
+	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+
+	// (Updatable) The OCID of the Byol Allocation for VCF (VMware Cloud Foundation) deployment.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ocvp/v1alpha1.ByolAllocation
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	VcfByolAllocationID *string `json:"vcfByolAllocationId,omitempty" tf:"vcf_byol_allocation_id,omitempty"`
+
+	// Reference to a ByolAllocation in ocvp to populate vcfByolAllocationId.
+	// +kubebuilder:validation:Optional
+	VcfByolAllocationIDRef *v1.Reference `json:"vcfByolAllocationIdRef,omitempty" tf:"-"`
+
+	// Selector for a ByolAllocation in ocvp to populate vcfByolAllocationId.
+	// +kubebuilder:validation:Optional
+	VcfByolAllocationIDSelector *v1.Selector `json:"vcfByolAllocationIdSelector,omitempty" tf:"-"`
 }
 
 type EsxiHostObservation struct {
@@ -179,7 +199,10 @@ type EsxiHostObservation struct {
 	// Indicates whether this host is in the progress of swapping billing.
 	IsBillingSwappingInProgress *bool `json:"isBillingSwappingInProgress,omitempty" tf:"is_billing_swapping_in_progress,omitempty"`
 
-	// The billing option to switch to after the current billing cycle ends. If nextCommitment is null or empty, currentCommitment continues to the next billing cycle. ListSupportedCommitments.
+	// (Updatable) Indicates whether this host embedded VMware vSAN with BYOL Allocation.
+	IsVsanByolEnabled *bool `json:"isVsanByolEnabled,omitempty" tf:"is_vsan_byol_enabled,omitempty"`
+
+	// (Updatable) The billing option to switch to after the existing billing cycle ends. If nextCommitment is null or empty, currentCommitment continues to the next billing cycle. ListSupportedCommitments.
 	NextCommitment *string `json:"nextCommitment,omitempty" tf:"next_commitment,omitempty"`
 
 	// (Deprecated)  (Updatable) The billing option to switch to after the existing billing cycle ends. If nextSku is null or empty, currentSku continues to the next billing cycle. ListSupportedSkus.  Deprecated. Please use next_commitment instead.
@@ -187,6 +210,8 @@ type EsxiHostObservation struct {
 
 	// (Deprecated)  The OCID of the ESXi host that will be upgraded. This is an optional parameter. If this parameter is specified, an ESXi host with the new software version is created to replace the original one, and the nonUpgradedEsxiHostId field is updated in the newly created Esxi host. See Upgrading VMware Software for more information.
 	NonUpgradedEsxiHostID *string `json:"nonUpgradedEsxiHostId,omitempty" tf:"non_upgraded_esxi_host_id,omitempty"`
+
+	PrimaryVnicMacAddress *string `json:"primaryVnicMacAddress,omitempty" tf:"primary_vnic_mac_address,omitempty"`
 
 	// The OCID of the esxi host that is newly created to replace the failed node.
 	ReplacementEsxiHostID *string `json:"replacementEsxiHostId,omitempty" tf:"replacement_esxi_host_id,omitempty"`
@@ -200,6 +225,10 @@ type EsxiHostObservation struct {
 	// The OCID of the active ESXi Host to swap billing with current host.
 	SwapBillingHostID *string `json:"swapBillingHostId,omitempty" tf:"swap_billing_host_id,omitempty"`
 
+	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
+	// +mapType=granular
+	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+
 	// The date and time the ESXi host was created, in the format defined by RFC3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
@@ -208,6 +237,9 @@ type EsxiHostObservation struct {
 
 	// The OCID of the ESXi host that is newly created to upgrade the original host.
 	UpgradedReplacementEsxiHostID *string `json:"upgradedReplacementEsxiHostId,omitempty" tf:"upgraded_replacement_esxi_host_id,omitempty"`
+
+	// (Updatable) The OCID of the Byol Allocation for VCF (VMware Cloud Foundation) deployment.
+	VcfByolAllocationID *string `json:"vcfByolAllocationId,omitempty" tf:"vcf_byol_allocation_id,omitempty"`
 
 	// The version of VMware software that Oracle Cloud VMware Solution installed on the ESXi hosts.
 	VmwareSoftwareVersion *string `json:"vmwareSoftwareVersion,omitempty" tf:"vmware_software_version,omitempty"`
@@ -283,6 +315,10 @@ type EsxiHostParameters struct {
 	// +kubebuilder:validation:Optional
 	HostShapeName *string `json:"hostShapeName,omitempty" tf:"host_shape_name,omitempty"`
 
+	// (Updatable) Indicates whether this host embedded VMware vSAN with BYOL Allocation.
+	// +kubebuilder:validation:Optional
+	IsVsanByolEnabled *bool `json:"isVsanByolEnabled,omitempty" tf:"is_vsan_byol_enabled,omitempty"`
+
 	// (Deprecated)  (Updatable) The billing option to switch to after the existing billing cycle ends. If nextSku is null or empty, currentSku continues to the next billing cycle. ListSupportedSkus.  Deprecated. Please use next_commitment instead.
 	// +kubebuilder:validation:Optional
 	NextSku *string `json:"nextSku,omitempty" tf:"next_sku,omitempty"`
@@ -294,6 +330,25 @@ type EsxiHostParameters struct {
 	// (Deprecated)  The OCID of the SDDC to add the ESXi host to. This field has been deprecated. Please use cluster_id instead. Either sddc_id or cluster_id must be configured for oci_ocvp_esxi_host resource.  Deprecated. Please use cluster_id instead.
 	// +kubebuilder:validation:Optional
 	SddcID *string `json:"sddcId,omitempty" tf:"sddc_id,omitempty"`
+
+	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+
+	// (Updatable) The OCID of the Byol Allocation for VCF (VMware Cloud Foundation) deployment.
+	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ocvp/v1alpha1.ByolAllocation
+	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
+	// +kubebuilder:validation:Optional
+	VcfByolAllocationID *string `json:"vcfByolAllocationId,omitempty" tf:"vcf_byol_allocation_id,omitempty"`
+
+	// Reference to a ByolAllocation in ocvp to populate vcfByolAllocationId.
+	// +kubebuilder:validation:Optional
+	VcfByolAllocationIDRef *v1.Reference `json:"vcfByolAllocationIdRef,omitempty" tf:"-"`
+
+	// Selector for a ByolAllocation in ocvp to populate vcfByolAllocationId.
+	// +kubebuilder:validation:Optional
+	VcfByolAllocationIDSelector *v1.Selector `json:"vcfByolAllocationIdSelector,omitempty" tf:"-"`
 }
 
 // EsxiHostSpec defines the desired state of EsxiHost

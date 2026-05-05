@@ -1,0 +1,31 @@
+apiVersion: batch.oci.upbound.io/v1alpha1
+kind: BatchTaskEnvironment
+metadata:
+  annotations:
+    meta.upbound.io/example-id: batch/v1alpha1/batchtaskenvironment
+  labels:
+    testing.upbound.io/example-name: test_batch_task_environment
+  name: test-batch-task-environment
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.batch_task_environment_description}
+    displayName: ${var.batch_task_environment_display_name}
+    freeformTags:
+      Department: Finance
+    imageUrl: ${var.batch_task_environment_image_url}
+    securityContext:
+    - fsGroup: ${var.batch_task_environment_security_context_fs_group}
+      runAsGroup: ${var.batch_task_environment_security_context_run_as_group}
+      runAsUser: ${var.batch_task_environment_security_context_run_as_user}
+    volumes:
+    - localMountDirectoryPath: ${var.batch_task_environment_volumes_local_mount_directory_path}
+      mountTargetExportPath: ${var.batch_task_environment_volumes_mount_target_export_path}
+      mountTargetFqdn: ${var.batch_task_environment_volumes_mount_target_fqdn}
+      name: ${var.batch_task_environment_volumes_name}
+      type: ${var.batch_task_environment_volumes_type}
+    workingDirectory: ${var.batch_task_environment_working_directory}

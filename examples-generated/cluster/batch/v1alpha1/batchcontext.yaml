@@ -1,0 +1,49 @@
+apiVersion: batch.oci.upbound.io/v1alpha1
+kind: BatchContext
+metadata:
+  annotations:
+    meta.upbound.io/example-id: batch/v1alpha1/batchcontext
+  labels:
+    testing.upbound.io/example-name: test_batch_context
+  name: test-batch-context
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.batch_context_description}
+    displayName: ${var.batch_context_display_name}
+    entitlements: ${var.batch_context_entitlements}
+    fleets:
+    - maxConcurrentTasks: ${var.batch_context_fleets_max_concurrent_tasks}
+      name: ${var.batch_context_fleets_name}
+      shape:
+      - diskSizeInGbs: ${var.batch_context_fleets_shape_disk_size_in_gbs}
+        memoryInGbs: ${var.batch_context_fleets_shape_memory_in_gbs}
+        ocpus: ${var.batch_context_fleets_shape_ocpus}
+        shapeName: ${data.oci_batch_batch_context_shapes.test_batch_context_shapes.batch_context_shape_collection.0.items.0.name}
+        type: ${var.batch_context_fleets_shape_type}
+      type: ${var.batch_context_fleets_type}
+    freeformTags:
+      Department: Finance
+    jobPriorityConfigurations:
+    - tagKey: ${var.batch_context_job_priority_configurations_tag_key}
+      tagNamespace: ${var.batch_context_job_priority_configurations_tag_namespace}
+      values: ${var.batch_context_job_priority_configurations_values}
+      weight: ${var.batch_context_job_priority_configurations_weight}
+    loggingConfiguration:
+    - isJobTaskEventsPropagationEnabled: ${var.batch_context_logging_configuration_is_job_task_events_propagation_enabled}
+      logGroupIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_log_group
+      logIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_log
+      type: ${var.batch_context_logging_configuration_type}
+    network:
+    - nsgIds: ${var.batch_context_network_nsg_ids}
+      subnetIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_subnet

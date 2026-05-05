@@ -157,6 +157,9 @@ type MaskingPolicyObservation struct {
 	// (Updatable) An optional property when incremented triggers Add Masking Columns From Sdm. Could be set to any integer value.
 	AddMaskingColumnsFromSdmTrigger *float64 `json:"addMaskingColumnsFromSdmTrigger,omitempty" tf:"add_masking_columns_from_sdm_trigger,omitempty"`
 
+	// Specifies whether target database credentials are required to perform masking with this policy
+	AreTargetCredentialsRequired *bool `json:"areTargetCredentialsRequired,omitempty" tf:"are_target_credentials_required,omitempty"`
+
 	// (Updatable) Details to associate a column source with a masking policy.
 	ColumnSource []ColumnSourceObservation `json:"columnSource,omitempty" tf:"column_source,omitempty"`
 

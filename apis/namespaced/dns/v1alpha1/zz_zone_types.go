@@ -295,8 +295,10 @@ type ZoneInitParameters struct {
 	// The name of the zone.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Updatable) The resolution mode of a zone defines behavior related to how query responses can be handled.
+	ResolutionMode *string `json:"resolutionMode,omitempty" tf:"resolution_mode,omitempty"`
+
 	// Specifies to operate only on resources that have a matching DNS scope.
-	// This value will be null for zones in the global DNS and PRIVATE when creating a private zone.
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
 	// The OCID of the private view containing the zone. This value will be null for zones in the global DNS, which are publicly resolvable and not part of a private view.
@@ -321,7 +323,7 @@ type ZoneNameserversInitParameters struct {
 
 type ZoneNameserversObservation struct {
 
-	// The hostname of the nameserver.
+	// The name of the zone.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
 }
 
@@ -362,11 +364,12 @@ type ZoneObservation struct {
 	// The name of the zone.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// The authoritative nameservers for the zone.
 	Nameservers []ZoneNameserversObservation `json:"nameservers,omitempty" tf:"nameservers,omitempty"`
 
+	// (Updatable) The resolution mode of a zone defines behavior related to how query responses can be handled.
+	ResolutionMode *string `json:"resolutionMode,omitempty" tf:"resolution_mode,omitempty"`
+
 	// Specifies to operate only on resources that have a matching DNS scope.
-	// This value will be null for zones in the global DNS and PRIVATE when creating a private zone.
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
 	// The canonical absolute URL of the resource.
@@ -435,8 +438,11 @@ type ZoneParameters struct {
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// (Updatable) The resolution mode of a zone defines behavior related to how query responses can be handled.
+	// +kubebuilder:validation:Optional
+	ResolutionMode *string `json:"resolutionMode,omitempty" tf:"resolution_mode,omitempty"`
+
 	// Specifies to operate only on resources that have a matching DNS scope.
-	// This value will be null for zones in the global DNS and PRIVATE when creating a private zone.
 	// +kubebuilder:validation:Optional
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 

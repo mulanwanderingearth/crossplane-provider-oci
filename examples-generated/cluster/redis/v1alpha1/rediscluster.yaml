@@ -8,6 +8,9 @@ metadata:
   name: test-redis-cluster
 spec:
   forProvider:
+    backupIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_backup
     clusterMode: ${var.redis_cluster_cluster_mode}
     compartmentIdSelector:
       matchLabels:
@@ -17,6 +20,11 @@ spec:
     displayName: ${var.redis_cluster_display_name}
     freeformTags:
       bar-key: value
+    importFromObjectStorageDetails:
+    - bucket: ${var.redis_cluster_import_from_object_storage_details_bucket}
+      namespace: ${var.redis_cluster_import_from_object_storage_details_namespace}
+      objects:
+      - object: ${var.redis_cluster_import_from_object_storage_details_objects_object}
     nodeCount: ${var.redis_cluster_node_count}
     nodeMemoryInGbs: ${var.redis_cluster_node_memory_in_gbs}
     nsgIds: ${var.redis_cluster_nsg_ids}

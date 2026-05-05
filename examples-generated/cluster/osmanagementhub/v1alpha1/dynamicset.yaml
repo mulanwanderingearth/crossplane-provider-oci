@@ -1,0 +1,38 @@
+apiVersion: osmanagementhub.oci.upbound.io/v1alpha1
+kind: DynamicSet
+metadata:
+  annotations:
+    meta.upbound.io/example-id: osmanagementhub/v1alpha1/dynamicset
+  labels:
+    testing.upbound.io/example-name: test_dynamic_set
+  name: test-dynamic-set
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.dynamic_set_description}
+    displayName: ${var.dynamic_set_display_name}
+    freeformTags:
+      Department: Finance
+    matchType: ${var.dynamic_set_match_type}
+    matchingRule:
+    - architectures: ${var.dynamic_set_matching_rule_architectures}
+      displayNames: ${var.dynamic_set_matching_rule_display_names}
+      isRebootRequired: ${var.dynamic_set_matching_rule_is_reboot_required}
+      locations: ${var.dynamic_set_matching_rule_locations}
+      managedInstanceGroupIds: ${var.dynamic_set_matching_rule_managed_instance_group_ids}
+      managedInstanceIds: ${var.dynamic_set_matching_rule_managed_instance_ids}
+      osFamilies: ${var.dynamic_set_matching_rule_os_families}
+      osNames: ${var.dynamic_set_matching_rule_os_names}
+      statuses: ${var.dynamic_set_matching_rule_statuses}
+      tags:
+      - key: ${var.dynamic_set_matching_rule_tags_key}
+        namespace: ${var.dynamic_set_matching_rule_tags_namespace}
+        type: ${var.dynamic_set_matching_rule_tags_type}
+        value: ${var.dynamic_set_matching_rule_tags_value}
+    targetCompartments:
+    - compartmentId: ${var.compartment_id}
+      doesIncludeChildren: ${var.dynamic_set_target_compartments_does_include_children}

@@ -163,6 +163,14 @@ spec:
                       job. Does not have to be unique and you can change the name
                       later. Avoid entering confidential information.
                     type: string
+                  dynamicSetIds:
+                    description: The dynamic set OCIDs that this scheduled job operates
+                      on. A scheduled job can only operate on one type of target.
+                      therefore this parameter is mutually exclusive with  managedInstanceIds,
+                      managedInstanceGroupIds, lifecycleStageIds, managedCompartmentIds.
+                    items:
+                      type: string
+                    type: array
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -185,7 +193,7 @@ spec:
                     description: The lifecycle stage OCIDs that this scheduled job
                       operates on.  A scheduled job can only operate on one type of
                       target, therefore you must supply either this or managedInstanceIds,  or
-                      managedInstanceGroupIds, or managedCompartmentIds.
+                      managedInstanceGroupIds, or managedCompartmentIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -203,7 +211,7 @@ spec:
                       this to the tenancy OCID (root compartment) and set  isSubcompartmentIncluded
                       to true. A scheduled job can only operate on one type of target,
                       therefore you must  supply either this or managedInstanceIds,
-                      or managedInstanceGroupIds, or lifecycleStageIds.
+                      or managedInstanceGroupIds, or lifecycleStageIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -211,7 +219,7 @@ spec:
                     description: The managed instance group OCIDs that this scheduled
                       job operates on.  A scheduled job can only operate on one type
                       of target, therefore you must supply either this or managedInstanceIds,
-                      or managedCompartmentIds, or lifecycleStageIds.
+                      or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -219,7 +227,7 @@ spec:
                     description: The managed instance OCIDs that this scheduled job
                       operates on.  A scheduled job can only operate on one type of
                       target, therefore you must supply either this or  managedInstanceGroupIds,
-                      or managedCompartmentIds, or lifecycleStageIds.
+                      or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -229,6 +237,33 @@ spec:
                       type, unless it is one of the following:'
                     items:
                       properties:
+                        installSnapDetails:
+                          description: (Updatable) Provides the information used to
+                            install a snap.
+                          items:
+                            properties:
+                              channel:
+                                description: (Updatable) The snap channel to install
+                                  from (e.g. stable, 1.2/edge, beta, candidate, or
+                                  a custom channel).
+                                type: string
+                              isSigned:
+                                description: (Updatable) If false, allows installing
+                                  snaps not signed by the Snap Store. E.g., snaps
+                                  from local file. Use with caution.
+                                type: boolean
+                              mode:
+                                description: (Updatable) The confinement mode for
+                                  the snap.
+                                type: string
+                              name:
+                                description: (Updatable) The name of the snap to install.
+                                type: string
+                              revision:
+                                description: (Updatable) The snap revision to install.
+                                type: string
+                            type: object
+                          type: array
                         manageModuleStreamsDetails:
                           description: (Updatable) The set of changes to make to the
                             state of the modules, streams, and profiles on the managed
@@ -1164,6 +1199,19 @@ spec:
                             reboot within the  timeout, the service marks the reboot
                             job as failed.
                           type: number
+                        removeSnapDetails:
+                          description: (Updatable) Provides the information used to
+                            remove a snap.
+                          items:
+                            properties:
+                              name:
+                                description: (Updatable) The name of the snap to install.
+                                type: string
+                              revision:
+                                description: (Updatable) The snap revision to install.
+                                type: string
+                            type: object
+                          type: array
                         softwareSourceIds:
                           description: (Updatable) The software source OCIDs.  This
                             parameter only applies when the scheduled job is for attaching
@@ -1353,6 +1401,21 @@ spec:
                                 type: object
                             type: object
                           type: array
+                        switchSnapChannelDetails:
+                          description: (Updatable) Provides the information used to
+                            switch a snap channel.
+                          items:
+                            properties:
+                              channel:
+                                description: (Updatable) The snap channel to install
+                                  from (e.g. stable, 1.2/edge, beta, candidate, or
+                                  a custom channel).
+                                type: string
+                              name:
+                                description: (Updatable) The name of the snap to install.
+                                type: string
+                            type: object
+                          type: array
                         windowsUpdateNames:
                           description: '(Updatable) Unique identifier for the Windows
                             update. This parameter only applies if the scheduled job
@@ -1365,8 +1428,10 @@ spec:
                       type: object
                     type: array
                   recurringRule:
-                    description: (Updatable) The frequency schedule for a recurring
-                      scheduled job.
+                    description: '(Updatable) The frequency schedule for a recurring
+                      scheduled job in the RFC5535 format. Note: Currently, only FREQ/INTERVAL/BYMONTHDAY/BYDAY/BYSETPOS/BYMONTH/BYHOUR/BYMINUTE/BYSECOND
+                      rules are supported. In FREQ, only YEARLY, MONTHLY, WEEKLY,
+                      DAILY", HOURLY are supported.'
                     type: string
                   retryIntervals:
                     description: (Updatable) The amount of time in minutes to wait
@@ -1507,6 +1572,14 @@ spec:
                       job. Does not have to be unique and you can change the name
                       later. Avoid entering confidential information.
                     type: string
+                  dynamicSetIds:
+                    description: The dynamic set OCIDs that this scheduled job operates
+                      on. A scheduled job can only operate on one type of target.
+                      therefore this parameter is mutually exclusive with  managedInstanceIds,
+                      managedInstanceGroupIds, lifecycleStageIds, managedCompartmentIds.
+                    items:
+                      type: string
+                    type: array
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1529,7 +1602,7 @@ spec:
                     description: The lifecycle stage OCIDs that this scheduled job
                       operates on.  A scheduled job can only operate on one type of
                       target, therefore you must supply either this or managedInstanceIds,  or
-                      managedInstanceGroupIds, or managedCompartmentIds.
+                      managedInstanceGroupIds, or managedCompartmentIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -1547,7 +1620,7 @@ spec:
                       this to the tenancy OCID (root compartment) and set  isSubcompartmentIncluded
                       to true. A scheduled job can only operate on one type of target,
                       therefore you must  supply either this or managedInstanceIds,
-                      or managedInstanceGroupIds, or lifecycleStageIds.
+                      or managedInstanceGroupIds, or lifecycleStageIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -1555,7 +1628,7 @@ spec:
                     description: The managed instance group OCIDs that this scheduled
                       job operates on.  A scheduled job can only operate on one type
                       of target, therefore you must supply either this or managedInstanceIds,
-                      or managedCompartmentIds, or lifecycleStageIds.
+                      or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -1563,7 +1636,7 @@ spec:
                     description: The managed instance OCIDs that this scheduled job
                       operates on.  A scheduled job can only operate on one type of
                       target, therefore you must supply either this or  managedInstanceGroupIds,
-                      or managedCompartmentIds, or lifecycleStageIds.
+                      or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -1573,6 +1646,33 @@ spec:
                       type, unless it is one of the following:'
                     items:
                       properties:
+                        installSnapDetails:
+                          description: (Updatable) Provides the information used to
+                            install a snap.
+                          items:
+                            properties:
+                              channel:
+                                description: (Updatable) The snap channel to install
+                                  from (e.g. stable, 1.2/edge, beta, candidate, or
+                                  a custom channel).
+                                type: string
+                              isSigned:
+                                description: (Updatable) If false, allows installing
+                                  snaps not signed by the Snap Store. E.g., snaps
+                                  from local file. Use with caution.
+                                type: boolean
+                              mode:
+                                description: (Updatable) The confinement mode for
+                                  the snap.
+                                type: string
+                              name:
+                                description: (Updatable) The name of the snap to install.
+                                type: string
+                              revision:
+                                description: (Updatable) The snap revision to install.
+                                type: string
+                            type: object
+                          type: array
                         manageModuleStreamsDetails:
                           description: (Updatable) The set of changes to make to the
                             state of the modules, streams, and profiles on the managed
@@ -2508,6 +2608,19 @@ spec:
                             reboot within the  timeout, the service marks the reboot
                             job as failed.
                           type: number
+                        removeSnapDetails:
+                          description: (Updatable) Provides the information used to
+                            remove a snap.
+                          items:
+                            properties:
+                              name:
+                                description: (Updatable) The name of the snap to install.
+                                type: string
+                              revision:
+                                description: (Updatable) The snap revision to install.
+                                type: string
+                            type: object
+                          type: array
                         softwareSourceIds:
                           description: (Updatable) The software source OCIDs.  This
                             parameter only applies when the scheduled job is for attaching
@@ -2697,6 +2810,21 @@ spec:
                                 type: object
                             type: object
                           type: array
+                        switchSnapChannelDetails:
+                          description: (Updatable) Provides the information used to
+                            switch a snap channel.
+                          items:
+                            properties:
+                              channel:
+                                description: (Updatable) The snap channel to install
+                                  from (e.g. stable, 1.2/edge, beta, candidate, or
+                                  a custom channel).
+                                type: string
+                              name:
+                                description: (Updatable) The name of the snap to install.
+                                type: string
+                            type: object
+                          type: array
                         windowsUpdateNames:
                           description: '(Updatable) Unique identifier for the Windows
                             update. This parameter only applies if the scheduled job
@@ -2709,8 +2837,10 @@ spec:
                       type: object
                     type: array
                   recurringRule:
-                    description: (Updatable) The frequency schedule for a recurring
-                      scheduled job.
+                    description: '(Updatable) The frequency schedule for a recurring
+                      scheduled job in the RFC5535 format. Note: Currently, only FREQ/INTERVAL/BYMONTHDAY/BYDAY/BYSETPOS/BYMONTH/BYHOUR/BYMINUTE/BYSECOND
+                      rules are supported. In FREQ, only YEARLY, MONTHLY, WEEKLY,
+                      DAILY", HOURLY are supported.'
                     type: string
                   retryIntervals:
                     description: (Updatable) The amount of time in minutes to wait
@@ -2834,6 +2964,14 @@ spec:
                       job. Does not have to be unique and you can change the name
                       later. Avoid entering confidential information.
                     type: string
+                  dynamicSetIds:
+                    description: The dynamic set OCIDs that this scheduled job operates
+                      on. A scheduled job can only operate on one type of target.
+                      therefore this parameter is mutually exclusive with  managedInstanceIds,
+                      managedInstanceGroupIds, lifecycleStageIds, managedCompartmentIds.
+                    items:
+                      type: string
+                    type: array
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -2864,7 +3002,7 @@ spec:
                     description: The lifecycle stage OCIDs that this scheduled job
                       operates on.  A scheduled job can only operate on one type of
                       target, therefore you must supply either this or managedInstanceIds,  or
-                      managedInstanceGroupIds, or managedCompartmentIds.
+                      managedInstanceGroupIds, or managedCompartmentIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -2882,7 +3020,7 @@ spec:
                       this to the tenancy OCID (root compartment) and set  isSubcompartmentIncluded
                       to true. A scheduled job can only operate on one type of target,
                       therefore you must  supply either this or managedInstanceIds,
-                      or managedInstanceGroupIds, or lifecycleStageIds.
+                      or managedInstanceGroupIds, or lifecycleStageIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -2890,7 +3028,7 @@ spec:
                     description: The managed instance group OCIDs that this scheduled
                       job operates on.  A scheduled job can only operate on one type
                       of target, therefore you must supply either this or managedInstanceIds,
-                      or managedCompartmentIds, or lifecycleStageIds.
+                      or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -2898,7 +3036,7 @@ spec:
                     description: The managed instance OCIDs that this scheduled job
                       operates on.  A scheduled job can only operate on one type of
                       target, therefore you must supply either this or  managedInstanceGroupIds,
-                      or managedCompartmentIds, or lifecycleStageIds.
+                      or managedCompartmentIds, or lifecycleStageIds, or dynamicSetIds.
                     items:
                       type: string
                     type: array
@@ -2908,6 +3046,33 @@ spec:
                       type, unless it is one of the following:'
                     items:
                       properties:
+                        installSnapDetails:
+                          description: (Updatable) Provides the information used to
+                            install a snap.
+                          items:
+                            properties:
+                              channel:
+                                description: (Updatable) The snap channel to install
+                                  from (e.g. stable, 1.2/edge, beta, candidate, or
+                                  a custom channel).
+                                type: string
+                              isSigned:
+                                description: (Updatable) If false, allows installing
+                                  snaps not signed by the Snap Store. E.g., snaps
+                                  from local file. Use with caution.
+                                type: boolean
+                              mode:
+                                description: (Updatable) The confinement mode for
+                                  the snap.
+                                type: string
+                              name:
+                                description: (Updatable) The name of the snap to install.
+                                type: string
+                              revision:
+                                description: (Updatable) The snap revision to install.
+                                type: string
+                            type: object
+                          type: array
                         manageModuleStreamsDetails:
                           description: (Updatable) The set of changes to make to the
                             state of the modules, streams, and profiles on the managed
@@ -3013,6 +3178,19 @@ spec:
                             reboot within the  timeout, the service marks the reboot
                             job as failed.
                           type: number
+                        removeSnapDetails:
+                          description: (Updatable) Provides the information used to
+                            remove a snap.
+                          items:
+                            properties:
+                              name:
+                                description: (Updatable) The name of the snap to install.
+                                type: string
+                              revision:
+                                description: (Updatable) The snap revision to install.
+                                type: string
+                            type: object
+                          type: array
                         softwareSourceIds:
                           description: (Updatable) The software source OCIDs.  This
                             parameter only applies when the scheduled job is for attaching
@@ -3038,6 +3216,21 @@ spec:
                                 type: string
                             type: object
                           type: array
+                        switchSnapChannelDetails:
+                          description: (Updatable) Provides the information used to
+                            switch a snap channel.
+                          items:
+                            properties:
+                              channel:
+                                description: (Updatable) The snap channel to install
+                                  from (e.g. stable, 1.2/edge, beta, candidate, or
+                                  a custom channel).
+                                type: string
+                              name:
+                                description: (Updatable) The name of the snap to install.
+                                type: string
+                            type: object
+                          type: array
                         windowsUpdateNames:
                           description: '(Updatable) Unique identifier for the Windows
                             update. This parameter only applies if the scheduled job
@@ -3050,8 +3243,10 @@ spec:
                       type: object
                     type: array
                   recurringRule:
-                    description: (Updatable) The frequency schedule for a recurring
-                      scheduled job.
+                    description: '(Updatable) The frequency schedule for a recurring
+                      scheduled job in the RFC5535 format. Note: Currently, only FREQ/INTERVAL/BYMONTHDAY/BYDAY/BYSETPOS/BYMONTH/BYHOUR/BYMINUTE/BYSECOND
+                      rules are supported. In FREQ, only YEARLY, MONTHLY, WEEKLY,
+                      DAILY", HOURLY are supported.'
                     type: string
                   retryIntervals:
                     description: (Updatable) The amount of time in minutes to wait

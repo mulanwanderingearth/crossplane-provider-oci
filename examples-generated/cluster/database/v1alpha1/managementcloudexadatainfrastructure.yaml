@@ -1,0 +1,22 @@
+apiVersion: database.oci.upbound.io/v1alpha1
+kind: ManagementCloudExadataInfrastructure
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/managementcloudexadatainfrastructure
+  labels:
+    testing.upbound.io/example-name: test_cloud_exadata_infrastructure
+  name: test-cloud-exadata-infrastructure
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    discoveryKey: ${var.cloud_exadata_infrastructure_discovery_key}
+    displayName: ${var.cloud_exadata_infrastructure_display_name}
+    freeformTags:
+      Department: Finance
+    licenseModel: ${var.cloud_exadata_infrastructure_license_model}
+    storageServerNames: ${var.cloud_exadata_infrastructure_storage_server_names}
+    vmClusterIds: ${var.cloud_exadata_infrastructure_vm_cluster_ids}

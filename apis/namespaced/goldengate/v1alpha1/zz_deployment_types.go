@@ -214,7 +214,7 @@ type DeploymentInitParameters struct {
 	// (Updatable) The Oracle license model that applies to a Deployment.
 	LicenseModel *string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
 
-	// (Updatable) The OCID of a public subnet in the customer tenancy. Can be provided only for public deployments. If provided, the loadbalancer will be created in this subnet instead of the service tenancy. For backward compatibility, this is an optional property. It will become mandatory for public deployments after October 1, 2024.
+	// (Updatable) The OCID of a public subnet in the customer tenancy used to host the public load balancer of the deployment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	LoadBalancerSubnetID *string `json:"loadBalancerSubnetId,omitempty" tf:"load_balancer_subnet_id,omitempty"`
@@ -263,7 +263,7 @@ type DeploymentInitParameters struct {
 	// +kubebuilder:validation:Optional
 	SourceDeploymentIDSelector *v1.NamespacedSelector `json:"sourceDeploymentIdSelector,omitempty" tf:"-"`
 
-	// Possible lifecycle states.
+	// Possible lifecycle states for a Deployment.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) The OCID of the subnet of the deployment's private endpoint. The subnet must be a private subnet. For backward compatibility, public subnets are allowed until May 31 2025, after which the private subnet will be enforced.
@@ -417,7 +417,7 @@ type DeploymentObservation struct {
 	// The OCID of the loadbalancer in the customer's subnet. The loadbalancer of the public deployment created in the customer subnet.
 	LoadBalancerID *string `json:"loadBalancerId,omitempty" tf:"load_balancer_id,omitempty"`
 
-	// (Updatable) The OCID of a public subnet in the customer tenancy. Can be provided only for public deployments. If provided, the loadbalancer will be created in this subnet instead of the service tenancy. For backward compatibility, this is an optional property. It will become mandatory for public deployments after October 1, 2024.
+	// (Updatable) The OCID of a public subnet in the customer tenancy used to host the public load balancer of the deployment.
 	LoadBalancerSubnetID *string `json:"loadBalancerSubnetId,omitempty" tf:"load_balancer_subnet_id,omitempty"`
 
 	// Locks associated with this resource.
@@ -458,7 +458,7 @@ type DeploymentObservation struct {
 	// The OCID of the deployment being referenced.
 	SourceDeploymentID *string `json:"sourceDeploymentId,omitempty" tf:"source_deployment_id,omitempty"`
 
-	// Possible lifecycle states.
+	// Possible lifecycle states for a Deployment.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// The amount of storage being utilized (in bytes)
@@ -494,9 +494,6 @@ type DeploymentObservation struct {
 
 	// The time the resource was last updated. The format is defined by RFC3339, such as 2016-08-25T21:10:29.600Z.
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
-
-	// Note: Deprecated: Use timeOfNextMaintenance instead, or related upgrade records  to check, when deployment will be forced to upgrade to a newer version. Old description: The date the existing version in use will no longer be considered as usable and an upgrade will be required.  This date is typically 6 months after the version was released for use by GGS.  The format is defined by RFC3339, such as 2016-08-25T21:10:29.600Z.
-	TimeUpgradeRequired *string `json:"timeUpgradeRequired,omitempty" tf:"time_upgrade_required,omitempty"`
 }
 
 type DeploymentParameters struct {
@@ -611,7 +608,7 @@ type DeploymentParameters struct {
 	// +kubebuilder:validation:Optional
 	LicenseModel *string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
 
-	// (Updatable) The OCID of a public subnet in the customer tenancy. Can be provided only for public deployments. If provided, the loadbalancer will be created in this subnet instead of the service tenancy. For backward compatibility, this is an optional property. It will become mandatory for public deployments after October 1, 2024.
+	// (Updatable) The OCID of a public subnet in the customer tenancy used to host the public load balancer of the deployment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional
@@ -669,7 +666,7 @@ type DeploymentParameters struct {
 	// +kubebuilder:validation:Optional
 	SourceDeploymentIDSelector *v1.NamespacedSelector `json:"sourceDeploymentIdSelector,omitempty" tf:"-"`
 
-	// Possible lifecycle states.
+	// Possible lifecycle states for a Deployment.
 	// +kubebuilder:validation:Optional
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 

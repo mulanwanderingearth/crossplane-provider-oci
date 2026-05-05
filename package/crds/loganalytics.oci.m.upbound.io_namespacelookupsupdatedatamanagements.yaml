@@ -79,9 +79,11 @@ spec:
                     description: The name of the lookup to operate on.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   updateLookupFile:
+                    description: Path to the file containing data for the lookup update.
                     type: string
                 type: object
               initProvider:
@@ -115,9 +117,11 @@ spec:
                     description: The name of the lookup to operate on.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   updateLookupFile:
+                    description: Path to the file containing data for the lookup update.
                     type: string
                 type: object
               managementPolicies:
@@ -219,9 +223,11 @@ spec:
                     description: The name of the lookup to operate on.
                     type: string
                   namespace:
-                    description: The Logging Analytics namespace used for the request.
+                    description: The Log Analytics namespace used for the request.
+                      The namespace can be obtained by running 'oci os ns get'
                     type: string
                   updateLookupFile:
+                    description: Path to the file containing data for the lookup update.
                     type: string
                 type: object
               conditions:

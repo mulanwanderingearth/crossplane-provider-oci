@@ -72,174 +72,10 @@ spec:
                                 description: (Updatable) The OCID of a log group to
                                   work with.
                                 type: string
-                              logGroupIdRef:
-                                description: Reference to a LogGroup in logging to
-                                  populate logGroupId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              logGroupIdSelector:
-                                description: Selector for a LogGroup in logging to
-                                  populate logGroupId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                               logId:
                                 description: (Updatable) The OCID of a log to work
                                   with.
                                 type: string
-                              logIdRef:
-                                description: Reference to a Log in logging to populate
-                                  logId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              logIdSelector:
-                                description: Selector for a Log in logging to populate
-                                  logId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                             type: object
                           type: array
                         predict:
@@ -250,174 +86,10 @@ spec:
                                 description: (Updatable) The OCID of a log group to
                                   work with.
                                 type: string
-                              logGroupIdRef:
-                                description: Reference to a LogGroup in logging to
-                                  populate logGroupId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              logGroupIdSelector:
-                                description: Selector for a LogGroup in logging to
-                                  populate logGroupId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                               logId:
                                 description: (Updatable) The OCID of a log to work
                                   with.
                                 type: string
-                              logIdRef:
-                                description: Reference to a Log in logging to populate
-                                  logId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              logIdSelector:
-                                description: Selector for a Log in logging to populate
-                                  logId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                             type: object
                           type: array
                       type: object
@@ -554,6 +226,15 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              defaultEnvironmentVariables:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
+                                  Service injected Environment variables set for the
+                                  web server container and can not be set or modified
+                                  by user.
+                                type: object
+                                x-kubernetes-map-type: granular
                               entrypoint:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The container image run ENTRYPOINT as
@@ -593,15 +274,22 @@ spec:
                                   8446, 8447.
                                 type: number
                               image:
-                                description: '(Updatable) The full path to the Oracle
-                                  Container Repository (OCIR) registry, image, and
-                                  tag in a canonical format. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag>
+                                description: '(Applicable when environment_configuration_type=OCIR_CONTAINER)
+                                  (Updatable) The full path to the Oracle Container
+                                  Repository (OCIR) registry, image, and tag in a
+                                  canonical format. The container image is optional
+                                  while using service managed open source foundation
+                                  model. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag>
                                   <region>.ocir.io/<registry>/<image>:<tag>@digest'
                                 type: string
                               imageDigest:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The digest of the container image. For
                                   example, sha256:881303a6b2738834d795a32b4a98eb0e5e3d1cad590a712d1e04f9b2fa90a030
+                                type: string
+                              imageSignatureId:
+                                description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
+                                  (Updatable) OCID of the container image signature
                                 type: string
                               serverPort:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
@@ -613,6 +301,7 @@ spec:
                             type: object
                           type: array
                         infrastructureConfigurationDetails:
+                          description: The infrastructure configuration details.
                           items:
                             properties:
                               bandwidthMbps:
@@ -620,6 +309,7 @@ spec:
                                   for the model deployment.
                                 type: number
                               infrastructureType:
+                                description: The type of the model deployment infrastructure.
                                 type: string
                               instanceConfiguration:
                                 description: (Updatable) The model deployment instance
@@ -628,7 +318,10 @@ spec:
                                   properties:
                                     instanceShapeName:
                                       description: (Updatable) The shape used to launch
-                                        the model deployment instances.
+                                        the model deployment instances.  When using
+                                        service managed open source foundation model,
+                                        the supported shapes can be retrieved using
+                                        get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
                                       type: string
                                     modelDeploymentInstanceShapeConfigDetails:
                                       description: (Updatable) Details for the model-deployment
@@ -668,6 +361,10 @@ spec:
                                             type: number
                                         type: object
                                       type: array
+                                    networkAccessType:
+                                      description: (Updatable) Network Access type
+                                        of model deployment.
+                                      type: string
                                     privateEndpointId:
                                       description: (Updatable) The OCID of a Data
                                         Science private endpoint.
@@ -933,7 +630,10 @@ spec:
                                   properties:
                                     instanceShapeName:
                                       description: (Updatable) The shape used to launch
-                                        the model deployment instances.
+                                        the model deployment instances.  When using
+                                        service managed open source foundation model,
+                                        the supported shapes can be retrieved using
+                                        get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
                                       type: string
                                     modelDeploymentInstanceShapeConfigDetails:
                                       description: (Updatable) Details for the model-deployment
@@ -973,93 +673,14 @@ spec:
                                             type: number
                                         type: object
                                       type: array
+                                    networkAccessType:
+                                      description: (Updatable) Network Access type
+                                        of model deployment.
+                                      type: string
                                     privateEndpointId:
                                       description: (Updatable) The OCID of a Data
                                         Science private endpoint.
                                       type: string
-                                    privateEndpointIdRef:
-                                      description: Reference to a PrivateEndpoint
-                                        in datascience to populate privateEndpointId.
-                                      properties:
-                                        name:
-                                          description: Name of the referenced object.
-                                          type: string
-                                        namespace:
-                                          description: Namespace of the referenced
-                                            object
-                                          type: string
-                                        policy:
-                                          description: Policies for referencing.
-                                          properties:
-                                            resolution:
-                                              default: Required
-                                              description: |-
-                                                Resolution specifies whether resolution of this reference is required.
-                                                The default is 'Required', which means the reconcile will fail if the
-                                                reference cannot be resolved. 'Optional' means this reference will be
-                                                a no-op if it cannot be resolved.
-                                              enum:
-                                              - Required
-                                              - Optional
-                                              type: string
-                                            resolve:
-                                              description: |-
-                                                Resolve specifies when this reference should be resolved. The default
-                                                is 'IfNotPresent', which will attempt to resolve the reference only when
-                                                the corresponding field is not present. Use 'Always' to resolve the
-                                                reference on every reconcile.
-                                              enum:
-                                              - Always
-                                              - IfNotPresent
-                                              type: string
-                                          type: object
-                                      required:
-                                      - name
-                                      type: object
-                                    privateEndpointIdSelector:
-                                      description: Selector for a PrivateEndpoint
-                                        in datascience to populate privateEndpointId.
-                                      properties:
-                                        matchControllerRef:
-                                          description: |-
-                                            MatchControllerRef ensures an object with the same controller reference
-                                            as the selecting object is selected.
-                                          type: boolean
-                                        matchLabels:
-                                          additionalProperties:
-                                            type: string
-                                          description: MatchLabels ensures an object
-                                            with matching labels is selected.
-                                          type: object
-                                        namespace:
-                                          description: Namespace for the selector
-                                          type: string
-                                        policy:
-                                          description: Policies for selection.
-                                          properties:
-                                            resolution:
-                                              default: Required
-                                              description: |-
-                                                Resolution specifies whether resolution of this reference is required.
-                                                The default is 'Required', which means the reconcile will fail if the
-                                                reference cannot be resolved. 'Optional' means this reference will be
-                                                a no-op if it cannot be resolved.
-                                              enum:
-                                              - Required
-                                              - Optional
-                                              type: string
-                                            resolve:
-                                              description: |-
-                                                Resolve specifies when this reference should be resolved. The default
-                                                is 'IfNotPresent', which will attempt to resolve the reference only when
-                                                the corresponding field is not present. Use 'Always' to resolve the
-                                                reference on every reconcile.
-                                              enum:
-                                              - Always
-                                              - IfNotPresent
-                                              type: string
-                                          type: object
-                                      type: object
                                     subnetId:
                                       description: (Updatable) A model deployment
                                         instance is provided with a VNIC for network
@@ -1067,89 +688,6 @@ spec:
                                         to create a VNIC in.  The subnet should be
                                         in a VCN with a NAT/SGW gateway for egress.
                                       type: string
-                                    subnetIdRef:
-                                      description: Reference to a Subnet in networking
-                                        to populate subnetId.
-                                      properties:
-                                        name:
-                                          description: Name of the referenced object.
-                                          type: string
-                                        namespace:
-                                          description: Namespace of the referenced
-                                            object
-                                          type: string
-                                        policy:
-                                          description: Policies for referencing.
-                                          properties:
-                                            resolution:
-                                              default: Required
-                                              description: |-
-                                                Resolution specifies whether resolution of this reference is required.
-                                                The default is 'Required', which means the reconcile will fail if the
-                                                reference cannot be resolved. 'Optional' means this reference will be
-                                                a no-op if it cannot be resolved.
-                                              enum:
-                                              - Required
-                                              - Optional
-                                              type: string
-                                            resolve:
-                                              description: |-
-                                                Resolve specifies when this reference should be resolved. The default
-                                                is 'IfNotPresent', which will attempt to resolve the reference only when
-                                                the corresponding field is not present. Use 'Always' to resolve the
-                                                reference on every reconcile.
-                                              enum:
-                                              - Always
-                                              - IfNotPresent
-                                              type: string
-                                          type: object
-                                      required:
-                                      - name
-                                      type: object
-                                    subnetIdSelector:
-                                      description: Selector for a Subnet in networking
-                                        to populate subnetId.
-                                      properties:
-                                        matchControllerRef:
-                                          description: |-
-                                            MatchControllerRef ensures an object with the same controller reference
-                                            as the selecting object is selected.
-                                          type: boolean
-                                        matchLabels:
-                                          additionalProperties:
-                                            type: string
-                                          description: MatchLabels ensures an object
-                                            with matching labels is selected.
-                                          type: object
-                                        namespace:
-                                          description: Namespace for the selector
-                                          type: string
-                                        policy:
-                                          description: Policies for selection.
-                                          properties:
-                                            resolution:
-                                              default: Required
-                                              description: |-
-                                                Resolution specifies whether resolution of this reference is required.
-                                                The default is 'Required', which means the reconcile will fail if the
-                                                reference cannot be resolved. 'Optional' means this reference will be
-                                                a no-op if it cannot be resolved.
-                                              enum:
-                                              - Required
-                                              - Optional
-                                              type: string
-                                            resolve:
-                                              description: |-
-                                                Resolve specifies when this reference should be resolved. The default
-                                                is 'IfNotPresent', which will attempt to resolve the reference only when
-                                                the corresponding field is not present. Use 'Always' to resolve the
-                                                reference on every reconcile.
-                                              enum:
-                                              - Always
-                                              - IfNotPresent
-                                              type: string
-                                          type: object
-                                      type: object
                                   type: object
                                 type: array
                               maximumBandwidthMbps:
@@ -1160,88 +698,6 @@ spec:
                                 description: (Updatable) The OCID of the model you
                                   want to deploy.
                                 type: string
-                              modelIdRef:
-                                description: Reference to a Model in datascience to
-                                  populate modelId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              modelIdSelector:
-                                description: Selector for a Model in datascience to
-                                  populate modelId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                               scalingPolicy:
                                 description: (Updatable) The scaling policy to apply
                                   to each model of the deployment.
@@ -1476,10 +932,12 @@ spec:
                             type: object
                           type: array
                         modelGroupConfigurationDetails:
+                          description: (Updatable) The model group configuration details.
                           items:
                             properties:
                               modelGroupId:
-                                description: The OCID of the model deployment.
+                                description: (Updatable) The OCID of the model group
+                                  you want to deploy.
                                 type: string
                             type: object
                           type: array
@@ -1493,88 +951,6 @@ spec:
                     description: The OCID of the project to associate with the model
                       deployment.
                     type: string
-                  projectIdRef:
-                    description: Reference to a Project in datascience to populate
-                      projectId.
-                    properties:
-                      name:
-                        description: Name of the referenced object.
-                        type: string
-                      namespace:
-                        description: Namespace of the referenced object
-                        type: string
-                      policy:
-                        description: Policies for referencing.
-                        properties:
-                          resolution:
-                            default: Required
-                            description: |-
-                              Resolution specifies whether resolution of this reference is required.
-                              The default is 'Required', which means the reconcile will fail if the
-                              reference cannot be resolved. 'Optional' means this reference will be
-                              a no-op if it cannot be resolved.
-                            enum:
-                            - Required
-                            - Optional
-                            type: string
-                          resolve:
-                            description: |-
-                              Resolve specifies when this reference should be resolved. The default
-                              is 'IfNotPresent', which will attempt to resolve the reference only when
-                              the corresponding field is not present. Use 'Always' to resolve the
-                              reference on every reconcile.
-                            enum:
-                            - Always
-                            - IfNotPresent
-                            type: string
-                        type: object
-                    required:
-                    - name
-                    type: object
-                  projectIdSelector:
-                    description: Selector for a Project in datascience to populate
-                      projectId.
-                    properties:
-                      matchControllerRef:
-                        description: |-
-                          MatchControllerRef ensures an object with the same controller reference
-                          as the selecting object is selected.
-                        type: boolean
-                      matchLabels:
-                        additionalProperties:
-                          type: string
-                        description: MatchLabels ensures an object with matching labels
-                          is selected.
-                        type: object
-                      namespace:
-                        description: Namespace for the selector
-                        type: string
-                      policy:
-                        description: Policies for selection.
-                        properties:
-                          resolution:
-                            default: Required
-                            description: |-
-                              Resolution specifies whether resolution of this reference is required.
-                              The default is 'Required', which means the reconcile will fail if the
-                              reference cannot be resolved. 'Optional' means this reference will be
-                              a no-op if it cannot be resolved.
-                            enum:
-                            - Required
-                            - Optional
-                            type: string
-                          resolve:
-                            description: |-
-                              Resolve specifies when this reference should be resolved. The default
-                              is 'IfNotPresent', which will attempt to resolve the reference only when
-                              the corresponding field is not present. Use 'Always' to resolve the
-                              reference on every reconcile.
-                            enum:
-                            - Always
-                            - IfNotPresent
-                            type: string
-                        type: object
-                    type: object
                   state:
                     description: (Updatable) The target state for the Model Deployment.
                       Could be set to ACTIVE or INACTIVE.
@@ -1605,174 +981,10 @@ spec:
                                 description: (Updatable) The OCID of a log group to
                                   work with.
                                 type: string
-                              logGroupIdRef:
-                                description: Reference to a LogGroup in logging to
-                                  populate logGroupId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              logGroupIdSelector:
-                                description: Selector for a LogGroup in logging to
-                                  populate logGroupId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                               logId:
                                 description: (Updatable) The OCID of a log to work
                                   with.
                                 type: string
-                              logIdRef:
-                                description: Reference to a Log in logging to populate
-                                  logId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              logIdSelector:
-                                description: Selector for a Log in logging to populate
-                                  logId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                             type: object
                           type: array
                         predict:
@@ -1783,174 +995,10 @@ spec:
                                 description: (Updatable) The OCID of a log group to
                                   work with.
                                 type: string
-                              logGroupIdRef:
-                                description: Reference to a LogGroup in logging to
-                                  populate logGroupId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              logGroupIdSelector:
-                                description: Selector for a LogGroup in logging to
-                                  populate logGroupId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                               logId:
                                 description: (Updatable) The OCID of a log to work
                                   with.
                                 type: string
-                              logIdRef:
-                                description: Reference to a Log in logging to populate
-                                  logId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              logIdSelector:
-                                description: Selector for a Log in logging to populate
-                                  logId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                             type: object
                           type: array
                       type: object
@@ -2087,6 +1135,15 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              defaultEnvironmentVariables:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
+                                  Service injected Environment variables set for the
+                                  web server container and can not be set or modified
+                                  by user.
+                                type: object
+                                x-kubernetes-map-type: granular
                               entrypoint:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The container image run ENTRYPOINT as
@@ -2126,15 +1183,22 @@ spec:
                                   8446, 8447.
                                 type: number
                               image:
-                                description: '(Updatable) The full path to the Oracle
-                                  Container Repository (OCIR) registry, image, and
-                                  tag in a canonical format. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag>
+                                description: '(Applicable when environment_configuration_type=OCIR_CONTAINER)
+                                  (Updatable) The full path to the Oracle Container
+                                  Repository (OCIR) registry, image, and tag in a
+                                  canonical format. The container image is optional
+                                  while using service managed open source foundation
+                                  model. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag>
                                   <region>.ocir.io/<registry>/<image>:<tag>@digest'
                                 type: string
                               imageDigest:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The digest of the container image. For
                                   example, sha256:881303a6b2738834d795a32b4a98eb0e5e3d1cad590a712d1e04f9b2fa90a030
+                                type: string
+                              imageSignatureId:
+                                description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
+                                  (Updatable) OCID of the container image signature
                                 type: string
                               serverPort:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
@@ -2146,6 +1210,7 @@ spec:
                             type: object
                           type: array
                         infrastructureConfigurationDetails:
+                          description: The infrastructure configuration details.
                           items:
                             properties:
                               bandwidthMbps:
@@ -2153,6 +1218,7 @@ spec:
                                   for the model deployment.
                                 type: number
                               infrastructureType:
+                                description: The type of the model deployment infrastructure.
                                 type: string
                               instanceConfiguration:
                                 description: (Updatable) The model deployment instance
@@ -2161,7 +1227,10 @@ spec:
                                   properties:
                                     instanceShapeName:
                                       description: (Updatable) The shape used to launch
-                                        the model deployment instances.
+                                        the model deployment instances.  When using
+                                        service managed open source foundation model,
+                                        the supported shapes can be retrieved using
+                                        get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
                                       type: string
                                     modelDeploymentInstanceShapeConfigDetails:
                                       description: (Updatable) Details for the model-deployment
@@ -2201,6 +1270,10 @@ spec:
                                             type: number
                                         type: object
                                       type: array
+                                    networkAccessType:
+                                      description: (Updatable) Network Access type
+                                        of model deployment.
+                                      type: string
                                     privateEndpointId:
                                       description: (Updatable) The OCID of a Data
                                         Science private endpoint.
@@ -2466,7 +1539,10 @@ spec:
                                   properties:
                                     instanceShapeName:
                                       description: (Updatable) The shape used to launch
-                                        the model deployment instances.
+                                        the model deployment instances.  When using
+                                        service managed open source foundation model,
+                                        the supported shapes can be retrieved using
+                                        get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
                                       type: string
                                     modelDeploymentInstanceShapeConfigDetails:
                                       description: (Updatable) Details for the model-deployment
@@ -2506,93 +1582,14 @@ spec:
                                             type: number
                                         type: object
                                       type: array
+                                    networkAccessType:
+                                      description: (Updatable) Network Access type
+                                        of model deployment.
+                                      type: string
                                     privateEndpointId:
                                       description: (Updatable) The OCID of a Data
                                         Science private endpoint.
                                       type: string
-                                    privateEndpointIdRef:
-                                      description: Reference to a PrivateEndpoint
-                                        in datascience to populate privateEndpointId.
-                                      properties:
-                                        name:
-                                          description: Name of the referenced object.
-                                          type: string
-                                        namespace:
-                                          description: Namespace of the referenced
-                                            object
-                                          type: string
-                                        policy:
-                                          description: Policies for referencing.
-                                          properties:
-                                            resolution:
-                                              default: Required
-                                              description: |-
-                                                Resolution specifies whether resolution of this reference is required.
-                                                The default is 'Required', which means the reconcile will fail if the
-                                                reference cannot be resolved. 'Optional' means this reference will be
-                                                a no-op if it cannot be resolved.
-                                              enum:
-                                              - Required
-                                              - Optional
-                                              type: string
-                                            resolve:
-                                              description: |-
-                                                Resolve specifies when this reference should be resolved. The default
-                                                is 'IfNotPresent', which will attempt to resolve the reference only when
-                                                the corresponding field is not present. Use 'Always' to resolve the
-                                                reference on every reconcile.
-                                              enum:
-                                              - Always
-                                              - IfNotPresent
-                                              type: string
-                                          type: object
-                                      required:
-                                      - name
-                                      type: object
-                                    privateEndpointIdSelector:
-                                      description: Selector for a PrivateEndpoint
-                                        in datascience to populate privateEndpointId.
-                                      properties:
-                                        matchControllerRef:
-                                          description: |-
-                                            MatchControllerRef ensures an object with the same controller reference
-                                            as the selecting object is selected.
-                                          type: boolean
-                                        matchLabels:
-                                          additionalProperties:
-                                            type: string
-                                          description: MatchLabels ensures an object
-                                            with matching labels is selected.
-                                          type: object
-                                        namespace:
-                                          description: Namespace for the selector
-                                          type: string
-                                        policy:
-                                          description: Policies for selection.
-                                          properties:
-                                            resolution:
-                                              default: Required
-                                              description: |-
-                                                Resolution specifies whether resolution of this reference is required.
-                                                The default is 'Required', which means the reconcile will fail if the
-                                                reference cannot be resolved. 'Optional' means this reference will be
-                                                a no-op if it cannot be resolved.
-                                              enum:
-                                              - Required
-                                              - Optional
-                                              type: string
-                                            resolve:
-                                              description: |-
-                                                Resolve specifies when this reference should be resolved. The default
-                                                is 'IfNotPresent', which will attempt to resolve the reference only when
-                                                the corresponding field is not present. Use 'Always' to resolve the
-                                                reference on every reconcile.
-                                              enum:
-                                              - Always
-                                              - IfNotPresent
-                                              type: string
-                                          type: object
-                                      type: object
                                     subnetId:
                                       description: (Updatable) A model deployment
                                         instance is provided with a VNIC for network
@@ -2600,89 +1597,6 @@ spec:
                                         to create a VNIC in.  The subnet should be
                                         in a VCN with a NAT/SGW gateway for egress.
                                       type: string
-                                    subnetIdRef:
-                                      description: Reference to a Subnet in networking
-                                        to populate subnetId.
-                                      properties:
-                                        name:
-                                          description: Name of the referenced object.
-                                          type: string
-                                        namespace:
-                                          description: Namespace of the referenced
-                                            object
-                                          type: string
-                                        policy:
-                                          description: Policies for referencing.
-                                          properties:
-                                            resolution:
-                                              default: Required
-                                              description: |-
-                                                Resolution specifies whether resolution of this reference is required.
-                                                The default is 'Required', which means the reconcile will fail if the
-                                                reference cannot be resolved. 'Optional' means this reference will be
-                                                a no-op if it cannot be resolved.
-                                              enum:
-                                              - Required
-                                              - Optional
-                                              type: string
-                                            resolve:
-                                              description: |-
-                                                Resolve specifies when this reference should be resolved. The default
-                                                is 'IfNotPresent', which will attempt to resolve the reference only when
-                                                the corresponding field is not present. Use 'Always' to resolve the
-                                                reference on every reconcile.
-                                              enum:
-                                              - Always
-                                              - IfNotPresent
-                                              type: string
-                                          type: object
-                                      required:
-                                      - name
-                                      type: object
-                                    subnetIdSelector:
-                                      description: Selector for a Subnet in networking
-                                        to populate subnetId.
-                                      properties:
-                                        matchControllerRef:
-                                          description: |-
-                                            MatchControllerRef ensures an object with the same controller reference
-                                            as the selecting object is selected.
-                                          type: boolean
-                                        matchLabels:
-                                          additionalProperties:
-                                            type: string
-                                          description: MatchLabels ensures an object
-                                            with matching labels is selected.
-                                          type: object
-                                        namespace:
-                                          description: Namespace for the selector
-                                          type: string
-                                        policy:
-                                          description: Policies for selection.
-                                          properties:
-                                            resolution:
-                                              default: Required
-                                              description: |-
-                                                Resolution specifies whether resolution of this reference is required.
-                                                The default is 'Required', which means the reconcile will fail if the
-                                                reference cannot be resolved. 'Optional' means this reference will be
-                                                a no-op if it cannot be resolved.
-                                              enum:
-                                              - Required
-                                              - Optional
-                                              type: string
-                                            resolve:
-                                              description: |-
-                                                Resolve specifies when this reference should be resolved. The default
-                                                is 'IfNotPresent', which will attempt to resolve the reference only when
-                                                the corresponding field is not present. Use 'Always' to resolve the
-                                                reference on every reconcile.
-                                              enum:
-                                              - Always
-                                              - IfNotPresent
-                                              type: string
-                                          type: object
-                                      type: object
                                   type: object
                                 type: array
                               maximumBandwidthMbps:
@@ -2693,88 +1607,6 @@ spec:
                                 description: (Updatable) The OCID of the model you
                                   want to deploy.
                                 type: string
-                              modelIdRef:
-                                description: Reference to a Model in datascience to
-                                  populate modelId.
-                                properties:
-                                  name:
-                                    description: Name of the referenced object.
-                                    type: string
-                                  namespace:
-                                    description: Namespace of the referenced object
-                                    type: string
-                                  policy:
-                                    description: Policies for referencing.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                required:
-                                - name
-                                type: object
-                              modelIdSelector:
-                                description: Selector for a Model in datascience to
-                                  populate modelId.
-                                properties:
-                                  matchControllerRef:
-                                    description: |-
-                                      MatchControllerRef ensures an object with the same controller reference
-                                      as the selecting object is selected.
-                                    type: boolean
-                                  matchLabels:
-                                    additionalProperties:
-                                      type: string
-                                    description: MatchLabels ensures an object with
-                                      matching labels is selected.
-                                    type: object
-                                  namespace:
-                                    description: Namespace for the selector
-                                    type: string
-                                  policy:
-                                    description: Policies for selection.
-                                    properties:
-                                      resolution:
-                                        default: Required
-                                        description: |-
-                                          Resolution specifies whether resolution of this reference is required.
-                                          The default is 'Required', which means the reconcile will fail if the
-                                          reference cannot be resolved. 'Optional' means this reference will be
-                                          a no-op if it cannot be resolved.
-                                        enum:
-                                        - Required
-                                        - Optional
-                                        type: string
-                                      resolve:
-                                        description: |-
-                                          Resolve specifies when this reference should be resolved. The default
-                                          is 'IfNotPresent', which will attempt to resolve the reference only when
-                                          the corresponding field is not present. Use 'Always' to resolve the
-                                          reference on every reconcile.
-                                        enum:
-                                        - Always
-                                        - IfNotPresent
-                                        type: string
-                                    type: object
-                                type: object
                               scalingPolicy:
                                 description: (Updatable) The scaling policy to apply
                                   to each model of the deployment.
@@ -3009,10 +1841,12 @@ spec:
                             type: object
                           type: array
                         modelGroupConfigurationDetails:
+                          description: (Updatable) The model group configuration details.
                           items:
                             properties:
                               modelGroupId:
-                                description: The OCID of the model deployment.
+                                description: (Updatable) The OCID of the model group
+                                  you want to deploy.
                                 type: string
                             type: object
                           type: array
@@ -3026,88 +1860,6 @@ spec:
                     description: The OCID of the project to associate with the model
                       deployment.
                     type: string
-                  projectIdRef:
-                    description: Reference to a Project in datascience to populate
-                      projectId.
-                    properties:
-                      name:
-                        description: Name of the referenced object.
-                        type: string
-                      namespace:
-                        description: Namespace of the referenced object
-                        type: string
-                      policy:
-                        description: Policies for referencing.
-                        properties:
-                          resolution:
-                            default: Required
-                            description: |-
-                              Resolution specifies whether resolution of this reference is required.
-                              The default is 'Required', which means the reconcile will fail if the
-                              reference cannot be resolved. 'Optional' means this reference will be
-                              a no-op if it cannot be resolved.
-                            enum:
-                            - Required
-                            - Optional
-                            type: string
-                          resolve:
-                            description: |-
-                              Resolve specifies when this reference should be resolved. The default
-                              is 'IfNotPresent', which will attempt to resolve the reference only when
-                              the corresponding field is not present. Use 'Always' to resolve the
-                              reference on every reconcile.
-                            enum:
-                            - Always
-                            - IfNotPresent
-                            type: string
-                        type: object
-                    required:
-                    - name
-                    type: object
-                  projectIdSelector:
-                    description: Selector for a Project in datascience to populate
-                      projectId.
-                    properties:
-                      matchControllerRef:
-                        description: |-
-                          MatchControllerRef ensures an object with the same controller reference
-                          as the selecting object is selected.
-                        type: boolean
-                      matchLabels:
-                        additionalProperties:
-                          type: string
-                        description: MatchLabels ensures an object with matching labels
-                          is selected.
-                        type: object
-                      namespace:
-                        description: Namespace for the selector
-                        type: string
-                      policy:
-                        description: Policies for selection.
-                        properties:
-                          resolution:
-                            default: Required
-                            description: |-
-                              Resolution specifies whether resolution of this reference is required.
-                              The default is 'Required', which means the reconcile will fail if the
-                              reference cannot be resolved. 'Optional' means this reference will be
-                              a no-op if it cannot be resolved.
-                            enum:
-                            - Required
-                            - Optional
-                            type: string
-                          resolve:
-                            description: |-
-                              Resolve specifies when this reference should be resolved. The default
-                              is 'IfNotPresent', which will attempt to resolve the reference only when
-                              the corresponding field is not present. Use 'Always' to resolve the
-                              reference on every reconcile.
-                            enum:
-                            - Always
-                            - IfNotPresent
-                            type: string
-                        type: object
-                    type: object
                   state:
                     description: (Updatable) The target state for the Model Deployment.
                       Could be set to ACTIVE or INACTIVE.
@@ -3179,6 +1931,10 @@ spec:
               rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
                 || ''Update'' in self.managementPolicies) || has(self.forProvider.modelDeploymentConfigurationDetails)
                 || (has(self.initProvider) && has(self.initProvider.modelDeploymentConfigurationDetails))'
+            - message: spec.forProvider.projectId is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.projectId)
+                || (has(self.initProvider) && has(self.initProvider.projectId))'
           status:
             description: ModelDeploymentStatus defines the observed state of ModelDeployment.
             properties:
@@ -3277,6 +2033,15 @@ spec:
                                 items:
                                   type: string
                                 type: array
+                              defaultEnvironmentVariables:
+                                additionalProperties:
+                                  type: string
+                                description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
+                                  Service injected Environment variables set for the
+                                  web server container and can not be set or modified
+                                  by user.
+                                type: object
+                                x-kubernetes-map-type: granular
                               entrypoint:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The container image run ENTRYPOINT as
@@ -3316,15 +2081,22 @@ spec:
                                   8446, 8447.
                                 type: number
                               image:
-                                description: '(Updatable) The full path to the Oracle
-                                  Container Repository (OCIR) registry, image, and
-                                  tag in a canonical format. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag>
+                                description: '(Applicable when environment_configuration_type=OCIR_CONTAINER)
+                                  (Updatable) The full path to the Oracle Container
+                                  Repository (OCIR) registry, image, and tag in a
+                                  canonical format. The container image is optional
+                                  while using service managed open source foundation
+                                  model. Acceptable format: <region>.ocir.io/<registry>/<image>:<tag>
                                   <region>.ocir.io/<registry>/<image>:<tag>@digest'
                                 type: string
                               imageDigest:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The digest of the container image. For
                                   example, sha256:881303a6b2738834d795a32b4a98eb0e5e3d1cad590a712d1e04f9b2fa90a030
+                                type: string
+                              imageSignatureId:
+                                description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
+                                  (Updatable) OCID of the container image signature
                                 type: string
                               serverPort:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
@@ -3336,6 +2108,7 @@ spec:
                             type: object
                           type: array
                         infrastructureConfigurationDetails:
+                          description: The infrastructure configuration details.
                           items:
                             properties:
                               bandwidthMbps:
@@ -3343,6 +2116,7 @@ spec:
                                   for the model deployment.
                                 type: number
                               infrastructureType:
+                                description: The type of the model deployment infrastructure.
                                 type: string
                               instanceConfiguration:
                                 description: (Updatable) The model deployment instance
@@ -3351,7 +2125,10 @@ spec:
                                   properties:
                                     instanceShapeName:
                                       description: (Updatable) The shape used to launch
-                                        the model deployment instances.
+                                        the model deployment instances.  When using
+                                        service managed open source foundation model,
+                                        the supported shapes can be retrieved using
+                                        get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
                                       type: string
                                     modelDeploymentInstanceShapeConfigDetails:
                                       description: (Updatable) Details for the model-deployment
@@ -3391,6 +2168,10 @@ spec:
                                             type: number
                                         type: object
                                       type: array
+                                    networkAccessType:
+                                      description: (Updatable) Network Access type
+                                        of model deployment.
+                                      type: string
                                     privateEndpointId:
                                       description: (Updatable) The OCID of a Data
                                         Science private endpoint.
@@ -3656,7 +2437,10 @@ spec:
                                   properties:
                                     instanceShapeName:
                                       description: (Updatable) The shape used to launch
-                                        the model deployment instances.
+                                        the model deployment instances.  When using
+                                        service managed open source foundation model,
+                                        the supported shapes can be retrieved using
+                                        get model api /models/{modelId}/definedMetadata/deploymentConfiguration/artifact/content.
                                       type: string
                                     modelDeploymentInstanceShapeConfigDetails:
                                       description: (Updatable) Details for the model-deployment
@@ -3696,6 +2480,10 @@ spec:
                                             type: number
                                         type: object
                                       type: array
+                                    networkAccessType:
+                                      description: (Updatable) Network Access type
+                                        of model deployment.
+                                      type: string
                                     privateEndpointId:
                                       description: (Updatable) The OCID of a Data
                                         Science private endpoint.
@@ -3951,10 +2739,12 @@ spec:
                             type: object
                           type: array
                         modelGroupConfigurationDetails:
+                          description: (Updatable) The model group configuration details.
                           items:
                             properties:
                               modelGroupId:
-                                description: The OCID of the model deployment.
+                                description: (Updatable) The OCID of the model group
+                                  you want to deploy.
                                 type: string
                             type: object
                           type: array
@@ -3968,6 +2758,9 @@ spec:
                           description: This value is the current count of the model
                             deployment instances.
                           type: number
+                        modelType:
+                          description: The type of the deployed model.
+                          type: string
                         systemInfraType:
                           description: The infrastructure type of the model deployment.
                           type: string

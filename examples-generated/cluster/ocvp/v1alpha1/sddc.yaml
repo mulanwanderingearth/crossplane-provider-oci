@@ -20,6 +20,13 @@ spec:
     initialConfiguration:
     - initialClusterConfigurations:
       - capacityReservationId: ${oci_ocvp_capacity_reservation.test_capacity_reservation.id}
+        clusterByolAllocationDetails:
+        - firewallByolAllocationIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_byol_allocation
+          vsanByolAllocationIdSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_byol_allocation
         computeAvailabilityDomain: ${var.sddc_initial_configuration_initial_cluster_configurations_compute_availability_domain}
         datastoreClusterIds: ${var.sddc_initial_configuration_initial_cluster_configurations_datastore_cluster_ids}
         datastores:
@@ -30,6 +37,9 @@ spec:
         initialCommitment: ${var.sddc_initial_configuration_initial_cluster_configurations_initial_commitment}
         initialHostOcpuCount: ${var.sddc_initial_configuration_initial_cluster_configurations_initial_host_ocpu_count}
         initialHostShapeName: ${oci_core_shape.test_shape.name}
+        initialVcfByolAllocationIdSelector:
+          matchLabels:
+            testing.upbound.io/example-name: test_byol_allocation
         instanceDisplayNamePrefix: ${var.sddc_initial_configuration_initial_cluster_configurations_instance_display_name_prefix}
         isShieldedInstanceEnabled: ${var.sddc_initial_configuration_initial_cluster_configurations_is_shielded_instance_enabled}
         networkConfiguration:
@@ -66,5 +76,10 @@ spec:
         workloadNetworkCidr: ${var.sddc_initial_configuration_initial_cluster_configurations_workload_network_cidr}
     isHcxEnabled: ${var.sddc_is_hcx_enabled}
     isSingleHostSddc: ${var.sddc_is_single_host_sddc}
+    sddcByolAllocationDetails:
+    - loadBalancerByolAllocationIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_byol_allocation
+      loadBalancerInstanceCount: ${var.sddc_sddc_byol_allocation_details_load_balancer_instance_count}
     sshAuthorizedKeys: ${var.sddc_ssh_authorized_keys}
     vmwareSoftwareVersion: ${var.sddc_vmware_software_version}

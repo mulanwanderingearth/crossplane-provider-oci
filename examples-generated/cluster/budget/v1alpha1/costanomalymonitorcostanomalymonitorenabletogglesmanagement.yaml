@@ -1,0 +1,14 @@
+apiVersion: budget.oci.upbound.io/v1alpha1
+kind: CostAnomalyMonitorCostanomalymonitorenabletogglesManagement
+metadata:
+  annotations:
+    meta.upbound.io/example-id: budget/v1alpha1/costanomalymonitorcostanomalymonitorenabletogglesmanagement
+  labels:
+    testing.upbound.io/example-name: test_cost_anomaly_monitor_costanomalymonitorenabletoggles_management
+  name: test-cost-anomaly-monitor-costanomalymonitorenabletoggles-management
+spec:
+  forProvider:
+    costAnomalyMonitorIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_cost_anomaly_monitor
+    enableCostanomalymonitorenabletoggle: ${var.enable_costanomalymonitorenabletoggle}

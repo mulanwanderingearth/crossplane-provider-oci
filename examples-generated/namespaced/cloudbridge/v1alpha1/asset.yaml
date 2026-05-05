@@ -9,8 +9,127 @@ metadata:
   namespace: upbound-system
 spec:
   forProvider:
+    assetClassName: ${var.asset_asset_class_name}
+    assetClassVersion: ${var.asset_asset_class_version}
+    assetDetails: ${var.asset_asset_details}
     assetSourceIds: ${var.asset_asset_source_ids}
     assetType: ${var.asset_asset_type}
+    attachedEbsVolumesCost:
+    - amount: ${var.asset_attached_ebs_volumes_cost_amount}
+      currencyCode: ${var.asset_attached_ebs_volumes_cost_currency_code}
+    awsEbs:
+    - attachments:
+      - device: ${var.asset_aws_ebs_attachments_device}
+        instanceKey: ${var.asset_aws_ebs_attachments_instance_key}
+        isDeleteOnTermination: ${var.asset_aws_ebs_attachments_is_delete_on_termination}
+        status: ${var.asset_aws_ebs_attachments_status}
+        volumeKey: ${var.asset_aws_ebs_attachments_volume_key}
+      availabilityZone: ${var.asset_aws_ebs_availability_zone}
+      iops: ${var.asset_aws_ebs_iops}
+      isEncrypted: ${var.asset_aws_ebs_is_encrypted}
+      isMultiAttachEnabled: ${var.asset_aws_ebs_is_multi_attach_enabled}
+      sizeInGiBs: ${var.asset_aws_ebs_size_in_gi_bs}
+      status: ${var.asset_aws_ebs_status}
+      tags:
+      - key: ${var.asset_aws_ebs_tags_key}
+        value: ${var.asset_aws_ebs_tags_value}
+      throughput: ${var.asset_aws_ebs_throughput}
+      volumeKey: ${var.asset_aws_ebs_volume_key}
+      volumeType: ${var.asset_aws_ebs_volume_type}
+    awsEc2:
+    - architecture: ${var.asset_aws_ec2_architecture}
+      areElasticInferenceAcceleratorsPresent: ${var.asset_aws_ec2_are_elastic_inference_accelerators_present}
+      bootMode: ${var.asset_aws_ec2_boot_mode}
+      capacityReservationKey: ${var.asset_aws_ec2_capacity_reservation_key}
+      imageKey: ${var.asset_aws_ec2_image_key}
+      instanceKey: ${var.asset_aws_ec2_instance_key}
+      instanceLifecycle: ${var.asset_aws_ec2_instance_lifecycle}
+      instanceType: ${var.asset_aws_ec2_instance_type}
+      ipAddress: ${var.asset_aws_ec2_ip_address}
+      ipv6address: ${var.asset_aws_ec2_ipv6address}
+      isEnclaveOptions: ${var.asset_aws_ec2_is_enclave_options}
+      isHibernationOptions: ${var.asset_aws_ec2_is_hibernation_options}
+      isSourceDestCheck: ${var.asset_aws_ec2_is_source_dest_check}
+      isSpotInstance: ${var.asset_aws_ec2_is_spot_instance}
+      kernelKey: ${var.asset_aws_ec2_kernel_key}
+      licenses: ${var.asset_aws_ec2_licenses}
+      maintenanceOptions: ${var.asset_aws_ec2_maintenance_options}
+      monitoring: ${var.asset_aws_ec2_monitoring}
+      networkInterfaces:
+      - association:
+        - carrierIp: ${var.asset_aws_ec2_network_interfaces_association_carrier_ip}
+          customerOwnedIp: ${var.asset_aws_ec2_network_interfaces_association_customer_owned_ip}
+          ipOwnerKey: ${var.asset_aws_ec2_network_interfaces_association_ip_owner_key}
+          publicDnsName: ${var.asset_aws_ec2_network_interfaces_association_public_dns_name}
+          publicIp: ${var.asset_aws_ec2_network_interfaces_association_public_ip}
+        attachment:
+        - attachmentKey: ${var.asset_aws_ec2_network_interfaces_attachment_attachment_key}
+          deviceIndex: ${var.asset_aws_ec2_network_interfaces_attachment_device_index}
+          isDeleteOnTermination: ${var.asset_aws_ec2_network_interfaces_attachment_is_delete_on_termination}
+          networkCardIndex: ${var.asset_aws_ec2_network_interfaces_attachment_network_card_index}
+          status: ${var.asset_aws_ec2_network_interfaces_attachment_status}
+          timeAttach: ${var.asset_aws_ec2_network_interfaces_attachment_time_attach}
+        description: ${var.asset_aws_ec2_network_interfaces_description}
+        interfaceType: ${var.asset_aws_ec2_network_interfaces_interface_type}
+        ipv4prefixes: ${var.asset_aws_ec2_network_interfaces_ipv4prefixes}
+        ipv6addresses: ${var.asset_aws_ec2_network_interfaces_ipv6addresses}
+        ipv6prefixes: ${var.asset_aws_ec2_network_interfaces_ipv6prefixes}
+        isSourceDestCheck: ${var.asset_aws_ec2_network_interfaces_is_source_dest_check}
+        macAddress: ${var.asset_aws_ec2_network_interfaces_mac_address}
+        networkInterfaceKey: ${var.asset_aws_ec2_network_interfaces_network_interface_key}
+        ownerKey: ${var.asset_aws_ec2_network_interfaces_owner_key}
+        privateIpAddresses:
+        - association:
+          - carrierIp: ${var.asset_aws_ec2_network_interfaces_private_ip_addresses_association_carrier_ip}
+            customerOwnedIp: ${var.asset_aws_ec2_network_interfaces_private_ip_addresses_association_customer_owned_ip}
+            ipOwnerKey: ${var.asset_aws_ec2_network_interfaces_private_ip_addresses_association_ip_owner_key}
+            publicDnsName: ${var.asset_aws_ec2_network_interfaces_private_ip_addresses_association_public_dns_name}
+            publicIp: ${var.asset_aws_ec2_network_interfaces_private_ip_addresses_association_public_ip}
+          isPrimary: ${var.asset_aws_ec2_network_interfaces_private_ip_addresses_is_primary}
+          privateDnsName: ${var.asset_aws_ec2_network_interfaces_private_ip_addresses_private_dns_name}
+          privateIpAddress: ${var.asset_aws_ec2_network_interfaces_private_ip_addresses_private_ip_address}
+        securityGroups:
+        - groupKey: ${var.asset_aws_ec2_network_interfaces_security_groups_group_key}
+          groupNameSelector:
+            matchLabels:
+              testing.upbound.io/example-name: test_group
+        status: ${var.asset_aws_ec2_network_interfaces_status}
+        subnetKey: ${var.asset_aws_ec2_network_interfaces_subnet_key}
+      placement:
+      - affinity: ${var.asset_aws_ec2_placement_affinity}
+        availabilityZone: ${var.asset_aws_ec2_placement_availability_zone}
+        groupNameSelector:
+          matchLabels:
+            testing.upbound.io/example-name: test_group
+        hostKey: ${var.asset_aws_ec2_placement_host_key}
+        hostResourceGroupArn: ${var.asset_aws_ec2_placement_host_resource_group_arn}
+        partitionNumber: ${var.asset_aws_ec2_placement_partition_number}
+        spreadDomain: ${var.asset_aws_ec2_placement_spread_domain}
+        tenancy: ${var.asset_aws_ec2_placement_tenancy}
+      privateDnsName: ${var.asset_aws_ec2_private_dns_name}
+      privateIpAddress: ${var.asset_aws_ec2_private_ip_address}
+      rootDeviceName: ${var.asset_aws_ec2_root_device_name}
+      rootDeviceType: ${var.asset_aws_ec2_root_device_type}
+      securityGroups:
+      - groupKey: ${var.asset_aws_ec2_security_groups_group_key}
+        groupNameSelector:
+          matchLabels:
+            testing.upbound.io/example-name: test_group
+      sriovNetSupport: ${var.asset_aws_ec2_sriov_net_support}
+      state:
+      - code: ${var.asset_aws_ec2_state_code}
+        name: ${var.asset_aws_ec2_state_name}
+      subnetKey: ${var.asset_aws_ec2_subnet_key}
+      tags:
+      - key: ${var.asset_aws_ec2_tags_key}
+        value: ${var.asset_aws_ec2_tags_value}
+      timeLaunch: ${var.asset_aws_ec2_time_launch}
+      tpmSupport: ${var.asset_aws_ec2_tpm_support}
+      virtualizationType: ${var.asset_aws_ec2_virtualization_type}
+      vpcKey: ${var.asset_aws_ec2_vpc_key}
+    awsEc2Cost:
+    - amount: ${var.asset_aws_ec2cost_amount}
+      currencyCode: ${var.asset_aws_ec2cost_currency_code}
     compartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: example
@@ -21,6 +140,7 @@ spec:
       description: ${var.asset_compute_description}
       disks:
       - bootOrder: ${var.asset_compute_disks_boot_order}
+        isCbtEnabled: ${var.asset_compute_disks_is_cbt_enabled}
         location: ${var.asset_compute_disks_location}
         name: ${var.asset_compute_disks_name}
         persistentMode: ${var.asset_compute_disks_persistent_mode}

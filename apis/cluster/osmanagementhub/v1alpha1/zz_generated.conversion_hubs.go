@@ -7,6 +7,21 @@ Copyright 2022 Upbound Inc.
 package v1alpha1
 
 // Hub marks this type as a conversion hub.
+func (tr *DynamicSet) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *DynamicSetInstallPackagesManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *DynamicSetRebootManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *DynamicSetRemovePackagesManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *DynamicSetUpdatePackagesManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Event) Hub() {}
 
 // Hub marks this type as a conversion hub.
@@ -31,7 +46,13 @@ func (tr *ManagedInstance) Hub() {}
 func (tr *ManagedInstanceAttachProfileManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *ManagedInstanceAttachSoftwareSourcesManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *ManagedInstanceDetachProfileManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagedInstanceDetachSoftwareSourcesManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *ManagedInstanceGroup) Hub() {}
@@ -67,10 +88,34 @@ func (tr *ManagedInstanceGroupRemovePackagesManagement) Hub() {}
 func (tr *ManagedInstanceGroupUpdateAllPackagesManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *ManagedInstanceInstallPackagesManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagedInstanceInstallSnapsManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *ManagedInstanceInstallWindowsUpdatesManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *ManagedInstanceRebootManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagedInstanceRefreshSoftwareManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagedInstanceRemovePackagesManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagedInstanceRemoveSnapsManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagedInstancesInstallWindowsUpdatesManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagedInstancesUpdatePackagesManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ManagedInstanceSwitchSnapChannelManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *ManagedInstanceUpdatePackagesManagement) Hub() {}
@@ -104,6 +149,9 @@ func (tr *ProfileAttachManagementStationManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *ProfileAttachSoftwareSourcesManagement) Hub() {}
+
+// Hub marks this type as a conversion hub.
+func (tr *ProfileDetachManagementStationManagement) Hub() {}
 
 // Hub marks this type as a conversion hub.
 func (tr *ProfileDetachSoftwareSourcesManagement) Hub() {}

@@ -90,7 +90,6 @@ type DedicatedVmHostObservation struct {
 	// The availability domain of the dedicated virtual machine host.  Example: Uocm:PHX-AD-1
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// A list of total and remaining CPU and memory per capacity bucket.
 	CapacityBins []CapacityBinsObservation `json:"capacityBins,omitempty" tf:"capacity_bins,omitempty"`
 
 	// The capacity configuration selected to be configured for the Dedicated Virtual Machine host.  Run ListDedicatedVmHostShapes API first to see the capacity configuration options.

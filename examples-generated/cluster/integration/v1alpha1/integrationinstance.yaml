@@ -45,8 +45,18 @@ spec:
       allowlistedHttpVcns:
       - allowlistedIps: ${var.integration_instance_network_endpoint_details_allowlisted_http_vcns_allowlisted_ips}
         id: ${var.integration_instance_network_endpoint_details_allowlisted_http_vcns_id}
+      designTime:
+      - allowlistedHttpIps: ${var.integration_instance_network_endpoint_details_design_time_allowlisted_http_ips}
+        allowlistedHttpVcns:
+        - allowlistedIps: ${var.integration_instance_network_endpoint_details_design_time_allowlisted_http_vcns_allowlisted_ips}
+          id: ${var.integration_instance_network_endpoint_details_design_time_allowlisted_http_vcns_id}
       isIntegrationVcnAllowlisted: ${var.integration_instance_network_endpoint_details_is_integration_vcn_allowlisted}
       networkEndpointType: ${var.integration_instance_network_endpoint_details_network_endpoint_type}
+      runtime:
+      - allowlistedHttpIps: ${var.integration_instance_network_endpoint_details_runtime_allowlisted_http_ips}
+        allowlistedHttpVcns:
+        - allowlistedIps: ${var.integration_instance_network_endpoint_details_runtime_allowlisted_http_vcns_allowlisted_ips}
+          id: ${var.integration_instance_network_endpoint_details_runtime_allowlisted_http_vcns_id}
     securityAttributes:
       oracle-zpr.sensitivity.mode: enforce
       oracle-zpr.sensitivity.value: low

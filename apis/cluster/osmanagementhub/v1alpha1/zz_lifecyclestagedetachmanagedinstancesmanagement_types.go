@@ -28,7 +28,7 @@ type LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsInitPar
 	ManagedInstances []*string `json:"managedInstances,omitempty" tf:"managed_instances,omitempty"`
 
 	// Provides the name and description of the job.
-	WorkRequestDetails []ManagedInstanceDetailsWorkRequestDetailsInitParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
+	WorkRequestDetails []LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsWorkRequestDetailsInitParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
 }
 
 type LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsObservation struct {
@@ -37,7 +37,7 @@ type LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsObserva
 	ManagedInstances []*string `json:"managedInstances,omitempty" tf:"managed_instances,omitempty"`
 
 	// Provides the name and description of the job.
-	WorkRequestDetails []ManagedInstanceDetailsWorkRequestDetailsObservation `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
+	WorkRequestDetails []LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsWorkRequestDetailsObservation `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
 }
 
 type LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsParameters struct {
@@ -48,7 +48,36 @@ type LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsParamet
 
 	// Provides the name and description of the job.
 	// +kubebuilder:validation:Optional
-	WorkRequestDetails []ManagedInstanceDetailsWorkRequestDetailsParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
+	WorkRequestDetails []LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsWorkRequestDetailsParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
+}
+
+type LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsWorkRequestDetailsInitParameters struct {
+
+	// User-specified information about the job. Avoid entering confidential information.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// A user-friendly name for the job. The name does not have to be unique. Avoid entering confidential information.
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+}
+
+type LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsWorkRequestDetailsObservation struct {
+
+	// User-specified information about the job. Avoid entering confidential information.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// A user-friendly name for the job. The name does not have to be unique. Avoid entering confidential information.
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+}
+
+type LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsWorkRequestDetailsParameters struct {
+
+	// User-specified information about the job. Avoid entering confidential information.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// A user-friendly name for the job. The name does not have to be unique. Avoid entering confidential information.
+	// +kubebuilder:validation:Optional
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 }
 
 type LifecycleStageDetachManagedInstancesManagementObservation struct {
@@ -70,35 +99,6 @@ type LifecycleStageDetachManagedInstancesManagementParameters struct {
 	// The details about the managed instances.
 	// +kubebuilder:validation:Optional
 	ManagedInstanceDetails []LifecycleStageDetachManagedInstancesManagementManagedInstanceDetailsParameters `json:"managedInstanceDetails,omitempty" tf:"managed_instance_details,omitempty"`
-}
-
-type ManagedInstanceDetailsWorkRequestDetailsInitParameters struct {
-
-	// User-specified information about the job. Avoid entering confidential information.
-	Description *string `json:"description,omitempty" tf:"description,omitempty"`
-
-	// A user-friendly name for the job. The name does not have to be unique. Avoid entering confidential information.
-	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
-}
-
-type ManagedInstanceDetailsWorkRequestDetailsObservation struct {
-
-	// User-specified information about the job. Avoid entering confidential information.
-	Description *string `json:"description,omitempty" tf:"description,omitempty"`
-
-	// A user-friendly name for the job. The name does not have to be unique. Avoid entering confidential information.
-	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
-}
-
-type ManagedInstanceDetailsWorkRequestDetailsParameters struct {
-
-	// User-specified information about the job. Avoid entering confidential information.
-	// +kubebuilder:validation:Optional
-	Description *string `json:"description,omitempty" tf:"description,omitempty"`
-
-	// A user-friendly name for the job. The name does not have to be unique. Avoid entering confidential information.
-	// +kubebuilder:validation:Optional
-	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 }
 
 // LifecycleStageDetachManagedInstancesManagementSpec defines the desired state of LifecycleStageDetachManagedInstancesManagement

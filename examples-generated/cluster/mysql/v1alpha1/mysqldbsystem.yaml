@@ -42,6 +42,9 @@ spec:
     - isAutoExpandStorageEnabled: ${var.mysql_db_system_data_storage_is_auto_expand_storage_enabled}
       maxStorageSizeInGbs: ${var.mysql_db_system_data_storage_max_storage_size_in_gbs}
     dataStorageSizeInGb: ${var.mysql_db_system_data_storage_size_in_gb}
+    databaseConsole:
+    - port: ${var.mysql_db_system_database_console_port}
+      status: ${var.mysql_db_system_database_console_status}
     databaseManagement: ${var.mysql_db_system_database_management}
     databaseMode: ${var.mysql_db_system_database_mode}
     definedTags:
@@ -64,7 +67,10 @@ spec:
     ipAddress: ${var.mysql_db_system_ip_address}
     isHighlyAvailable: ${var.mysql_db_system_is_highly_available}
     maintenance:
-    - maintenanceScheduleType: ${var.mysql_db_system_maintenance_maintenance_schedule_type}
+    - maintenanceDisabledWindows:
+      - timeEnd: ${var.mysql_db_system_maintenance_maintenance_disabled_windows_time_end}
+        timeStart: ${var.mysql_db_system_maintenance_maintenance_disabled_windows_time_start}
+      maintenanceScheduleType: ${var.mysql_db_system_maintenance_maintenance_schedule_type}
       versionPreference: ${var.mysql_db_system_maintenance_version_preference}
       versionTrackPreference: ${var.mysql_db_system_maintenance_version_track_preference}
       windowStartTime: ${var.mysql_db_system_maintenance_window_start_time}
@@ -94,3 +100,10 @@ spec:
     subnetIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_subnet
+    telemetryConfiguration:
+    - logs:
+      - destination: ${var.mysql_db_system_telemetry_configuration_logs_destination}
+        destinationConfigurations:
+        - key: ${var.mysql_db_system_telemetry_configuration_logs_destination_configurations_key}
+          value: ${var.mysql_db_system_telemetry_configuration_logs_destination_configurations_value}
+        logTypes: ${var.mysql_db_system_telemetry_configuration_logs_log_types}

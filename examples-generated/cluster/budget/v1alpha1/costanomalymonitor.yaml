@@ -1,0 +1,27 @@
+apiVersion: budget.oci.upbound.io/v1alpha1
+kind: CostAnomalyMonitor
+metadata:
+  annotations:
+    meta.upbound.io/example-id: budget/v1alpha1/costanomalymonitor
+  labels:
+    testing.upbound.io/example-name: test_cost_anomaly_monitor
+  name: test-cost-anomaly-monitor
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    costAlertSubscriptionMap:
+    - costAlertSubscriptionIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_cost_alert_subscription
+      operator: ${var.cost_anomaly_monitor_cost_alert_subscription_map_operator}
+      thresholdAbsoluteValue: ${var.cost_anomaly_monitor_cost_alert_subscription_map_threshold_absolute_value}
+      thresholdRelativePercent: ${var.cost_anomaly_monitor_cost_alert_subscription_map_threshold_relative_percent}
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.cost_anomaly_monitor_description}
+    freeformTags:
+      Department: Finance
+    name: ${var.cost_anomaly_monitor_name}
+    targetResourceFilter: ${var.cost_anomaly_monitor_target_resource_filter}

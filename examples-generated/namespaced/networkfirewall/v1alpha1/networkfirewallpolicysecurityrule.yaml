@@ -16,6 +16,7 @@ spec:
       service: ${var.network_firewall_policy_security_rule_condition_service}
       sourceAddress: ${var.network_firewall_policy_security_rule_condition_source_address}
       url: ${var.network_firewall_policy_security_rule_condition_url}
+    description: ${var.network_firewall_policy_security_rule_description}
     inspection: ${var.network_firewall_policy_security_rule_inspection}
     name: ${var.network_firewall_policy_security_rule_name}
     networkFirewallPolicyIdSelector:

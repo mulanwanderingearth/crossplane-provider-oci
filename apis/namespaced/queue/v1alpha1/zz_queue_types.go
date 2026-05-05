@@ -14,7 +14,69 @@ import (
 	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
 )
 
+type CapabilitiesInitParameters struct {
+
+	// (Applicable when type=CONSUMER_GROUPS) (Updatable) Specifies if the primary consumer group should be automatically enabled after adding the capability.
+	IsPrimaryConsumerGroupEnabled *bool `json:"isPrimaryConsumerGroupEnabled,omitempty" tf:"is_primary_consumer_group_enabled,omitempty"`
+
+	// (Applicable when type=CONSUMER_GROUPS) (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue.  A value of 0 indicates that the DLQ is not used. If the value isn't set, it will be using the value defined at the queue level.
+	PrimaryConsumerGroupDeadLetterQueueDeliveryCount *float64 `json:"primaryConsumerGroupDeadLetterQueueDeliveryCount,omitempty" tf:"primary_consumer_group_dead_letter_queue_delivery_count,omitempty"`
+
+	// (Applicable when type=CONSUMER_GROUPS) (Updatable) Name of the primary consumer group. If omitted, it will be named "Primary Consumer Group".
+	PrimaryConsumerGroupDisplayName *string `json:"primaryConsumerGroupDisplayName,omitempty" tf:"primary_consumer_group_display_name,omitempty"`
+
+	// (Applicable when type=CONSUMER_GROUPS) The primary consumer group cannot have any filter hence this field will always be empty. An empty value means that all messages will be available in the primary consumer group.
+	PrimaryConsumerGroupFilter *string `json:"primaryConsumerGroupFilter,omitempty" tf:"primary_consumer_group_filter,omitempty"`
+
+	// (Updatable) The type of the capability. Could be CONSUMER_GROUPS and/or LARGE_MESSAGES
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type CapabilitiesObservation struct {
+
+	// (Applicable when type=CONSUMER_GROUPS) (Updatable) Specifies if the primary consumer group should be automatically enabled after adding the capability.
+	IsPrimaryConsumerGroupEnabled *bool `json:"isPrimaryConsumerGroupEnabled,omitempty" tf:"is_primary_consumer_group_enabled,omitempty"`
+
+	// (Applicable when type=CONSUMER_GROUPS) (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue.  A value of 0 indicates that the DLQ is not used. If the value isn't set, it will be using the value defined at the queue level.
+	PrimaryConsumerGroupDeadLetterQueueDeliveryCount *float64 `json:"primaryConsumerGroupDeadLetterQueueDeliveryCount,omitempty" tf:"primary_consumer_group_dead_letter_queue_delivery_count,omitempty"`
+
+	// (Applicable when type=CONSUMER_GROUPS) (Updatable) Name of the primary consumer group. If omitted, it will be named "Primary Consumer Group".
+	PrimaryConsumerGroupDisplayName *string `json:"primaryConsumerGroupDisplayName,omitempty" tf:"primary_consumer_group_display_name,omitempty"`
+
+	// (Applicable when type=CONSUMER_GROUPS) The primary consumer group cannot have any filter hence this field will always be empty. An empty value means that all messages will be available in the primary consumer group.
+	PrimaryConsumerGroupFilter *string `json:"primaryConsumerGroupFilter,omitempty" tf:"primary_consumer_group_filter,omitempty"`
+
+	// (Updatable) The type of the capability. Could be CONSUMER_GROUPS and/or LARGE_MESSAGES
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
+type CapabilitiesParameters struct {
+
+	// (Applicable when type=CONSUMER_GROUPS) (Updatable) Specifies if the primary consumer group should be automatically enabled after adding the capability.
+	// +kubebuilder:validation:Optional
+	IsPrimaryConsumerGroupEnabled *bool `json:"isPrimaryConsumerGroupEnabled,omitempty" tf:"is_primary_consumer_group_enabled,omitempty"`
+
+	// (Applicable when type=CONSUMER_GROUPS) (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue.  A value of 0 indicates that the DLQ is not used. If the value isn't set, it will be using the value defined at the queue level.
+	// +kubebuilder:validation:Optional
+	PrimaryConsumerGroupDeadLetterQueueDeliveryCount *float64 `json:"primaryConsumerGroupDeadLetterQueueDeliveryCount,omitempty" tf:"primary_consumer_group_dead_letter_queue_delivery_count,omitempty"`
+
+	// (Applicable when type=CONSUMER_GROUPS) (Updatable) Name of the primary consumer group. If omitted, it will be named "Primary Consumer Group".
+	// +kubebuilder:validation:Optional
+	PrimaryConsumerGroupDisplayName *string `json:"primaryConsumerGroupDisplayName,omitempty" tf:"primary_consumer_group_display_name,omitempty"`
+
+	// (Applicable when type=CONSUMER_GROUPS) The primary consumer group cannot have any filter hence this field will always be empty. An empty value means that all messages will be available in the primary consumer group.
+	// +kubebuilder:validation:Optional
+	PrimaryConsumerGroupFilter *string `json:"primaryConsumerGroupFilter,omitempty" tf:"primary_consumer_group_filter,omitempty"`
+
+	// (Updatable) The type of the capability. Could be CONSUMER_GROUPS and/or LARGE_MESSAGES
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+}
+
 type QueueInitParameters struct {
+
+	// (Updatable) The capability to add on the queue
+	Capabilities []CapabilitiesInitParameters `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
 
 	// (Updatable) The percentage of allocated queue resources that can be consumed by a single channel. For example, if a queue has a storage limit of 2Gb, and a single channel consumption limit is 0.1 (10%), that means data size of a single channel  can't exceed 200Mb. Consumption limit of 100% (default) means that a single channel can consume up-to all allocated queue's resources.
 	ChannelConsumptionLimit *float64 `json:"channelConsumptionLimit,omitempty" tf:"channel_consumption_limit,omitempty"`
@@ -75,6 +137,9 @@ type QueueInitParameters struct {
 }
 
 type QueueObservation struct {
+
+	// (Updatable) The capability to add on the queue
+	Capabilities []CapabilitiesObservation `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
 
 	// (Updatable) The percentage of allocated queue resources that can be consumed by a single channel. For example, if a queue has a storage limit of 2Gb, and a single channel consumption limit is 0.1 (10%), that means data size of a single channel  can't exceed 200Mb. Consumption limit of 100% (default) means that a single channel can consume up-to all allocated queue's resources.
 	ChannelConsumptionLimit *float64 `json:"channelConsumptionLimit,omitempty" tf:"channel_consumption_limit,omitempty"`
@@ -138,6 +203,10 @@ type QueueObservation struct {
 }
 
 type QueueParameters struct {
+
+	// (Updatable) The capability to add on the queue
+	// +kubebuilder:validation:Optional
+	Capabilities []CapabilitiesParameters `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
 
 	// (Updatable) The percentage of allocated queue resources that can be consumed by a single channel. For example, if a queue has a storage limit of 2Gb, and a single channel consumption limit is 0.1 (10%), that means data size of a single channel  can't exceed 200Mb. Consumption limit of 100% (default) means that a single channel can consume up-to all allocated queue's resources.
 	// +kubebuilder:validation:Optional

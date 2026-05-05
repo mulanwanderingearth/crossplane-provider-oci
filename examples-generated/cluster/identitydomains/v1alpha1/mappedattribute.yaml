@@ -1,0 +1,35 @@
+apiVersion: identitydomains.oci.upbound.io/v1alpha1
+kind: MappedAttribute
+metadata:
+  annotations:
+    meta.upbound.io/example-id: identitydomains/v1alpha1/mappedattribute
+  labels:
+    testing.upbound.io/example-name: test_mapped_attribute
+  name: test-mapped-attribute
+spec:
+  forProvider:
+    attributeMappings:
+    - appliesToActions: ${var.mapped_attribute_attribute_mappings_applies_to_actions}
+      idcsAttributeName: ${var.mapped_attribute_attribute_mappings_idcs_attribute_name}
+      managedObjectAttributeName: ${var.mapped_attribute_attribute_mappings_managed_object_attribute_name}
+      required: ${var.mapped_attribute_attribute_mappings_required}
+      samlFormat: ${var.mapped_attribute_attribute_mappings_saml_format}
+    attributeSets:
+    - all
+    attributes: ""
+    authorization: ${var.mapped_attribute_authorization}
+    direction: ${var.mapped_attribute_direction}
+    idcsEndpoint: ${data.oci_identity_domain.test_domain.url}
+    idcsResourceType: ${var.mapped_attribute_idcs_resource_type}
+    mappedAttributeIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_mapped_attribute
+    ocid: ${var.mapped_attribute_ocid}
+    refResourceId: ${var.mapped_attribute_ref_resource_id}
+    refResourceType: ${var.mapped_attribute_ref_resource_type}
+    resourceTypeSchemaVersion: ${var.mapped_attribute_resource_type_schema_version}
+    schemas:
+    - urn:ietf:params:scim:schemas:oracle:idcs:MappedAttribute
+    tags:
+    - key: ${var.mapped_attribute_tags_key}
+      value: ${var.mapped_attribute_tags_value}

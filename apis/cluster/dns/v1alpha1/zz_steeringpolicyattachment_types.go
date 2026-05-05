@@ -34,7 +34,7 @@ type SteeringPolicyAttachmentInitParameters struct {
 	// +kubebuilder:validation:Optional
 	SteeringPolicyIDSelector *v1.Selector `json:"steeringPolicyIdSelector,omitempty" tf:"-"`
 
-	// The OCID of the attached zone.
+	// The OCID of the attached zone. Must be a public zone.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/dns/v1alpha1.Zone
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
@@ -77,7 +77,7 @@ type SteeringPolicyAttachmentObservation struct {
 	// The date and time the resource was created, expressed in RFC 3339 timestamp format.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
-	// The OCID of the attached zone.
+	// The OCID of the attached zone. Must be a public zone.
 	ZoneID *string `json:"zoneId,omitempty" tf:"zone_id,omitempty"`
 }
 
@@ -105,7 +105,7 @@ type SteeringPolicyAttachmentParameters struct {
 	// +kubebuilder:validation:Optional
 	SteeringPolicyIDSelector *v1.Selector `json:"steeringPolicyIdSelector,omitempty" tf:"-"`
 
-	// The OCID of the attached zone.
+	// The OCID of the attached zone. Must be a public zone.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/dns/v1alpha1.Zone
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
 	// +kubebuilder:validation:Optional

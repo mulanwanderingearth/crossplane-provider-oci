@@ -1,0 +1,18 @@
+apiVersion: database.oci.upbound.io/v1alpha1
+kind: MigrationAssessmentAssessorAction
+metadata:
+  annotations:
+    meta.upbound.io/example-id: database/v1alpha1/migrationassessmentassessoraction
+  labels:
+    testing.upbound.io/example-name: test_assessment_assessor_action
+  name: test-assessment-assessor-action
+spec:
+  forProvider:
+    assessmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_assessment
+    assessorAction: ${var.assessment_assessor_action_assessor_action}
+    assessorName: ${var.assessment_assessor_action_assessor_name}
+    items:
+    - name: ${var.assessment_assessor_action_items_name}
+      value: ${var.assessment_assessor_action_items_value}

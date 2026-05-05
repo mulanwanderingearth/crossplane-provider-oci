@@ -138,7 +138,7 @@ type ResolverInitParameters struct {
 	// +kubebuilder:validation:Optional
 	ResolverIDSelector *v1.Selector `json:"resolverIdSelector,omitempty" tf:"-"`
 
-	// (Updatable) Rules for the resolver. Rules are evaluated in order.
+	// (Updatable) Rules for the resolver. Rules are evaluated in order, and only the first matching rule will have its action applied.
 	Rules []RulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
 	// Specifies to operate only on resources that have a matching DNS scope.
@@ -182,7 +182,7 @@ type ResolverObservation struct {
 	// The OCID of the target resolver.
 	ResolverID *string `json:"resolverId,omitempty" tf:"resolver_id,omitempty"`
 
-	// (Updatable) Rules for the resolver. Rules are evaluated in order.
+	// (Updatable) Rules for the resolver. Rules are evaluated in order, and only the first matching rule will have its action applied.
 	Rules []RulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
 
 	// Specifies to operate only on resources that have a matching DNS scope.
@@ -248,7 +248,7 @@ type ResolverParameters struct {
 	// +kubebuilder:validation:Optional
 	ResolverIDSelector *v1.Selector `json:"resolverIdSelector,omitempty" tf:"-"`
 
-	// (Updatable) Rules for the resolver. Rules are evaluated in order.
+	// (Updatable) Rules for the resolver. Rules are evaluated in order, and only the first matching rule will have its action applied.
 	// +kubebuilder:validation:Optional
 	Rules []RulesParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
@@ -262,13 +262,13 @@ type RulesInitParameters struct {
 	// (Updatable) The action determines the behavior of the rule. If a query matches a supplied condition, the action will apply. If there are no conditions on the rule, all queries are subject to the specified action.
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// (Updatable) A list of CIDR blocks. The query must come from a client within one of the blocks in order for the rule action to apply.
+	// (Updatable) A list of CIDR blocks. In order for the rule action to apply, the query must come from a client within one of the CIDR blocks.
 	ClientAddressConditions []*string `json:"clientAddressConditions,omitempty" tf:"client_address_conditions,omitempty"`
 
 	// (Updatable) IP addresses to which queries should be forwarded. Currently limited to a single address.
 	DestinationAddresses []*string `json:"destinationAddresses,omitempty" tf:"destination_addresses,omitempty"`
 
-	// (Updatable) A list of domain names. The query must be covered by one of the domains in order for the rule action to apply.
+	// (Updatable) A list of domain names. In order for the rule action to apply, the query must either match or be a subdomain of one of the listed domains.
 	QnameCoverConditions []*string `json:"qnameCoverConditions,omitempty" tf:"qname_cover_conditions,omitempty"`
 
 	// (Updatable) Case-insensitive name of an endpoint, that is a sub-resource of the resolver, to use as the forwarding interface. The endpoint must have isForwarding set to true.
@@ -280,13 +280,13 @@ type RulesObservation struct {
 	// (Updatable) The action determines the behavior of the rule. If a query matches a supplied condition, the action will apply. If there are no conditions on the rule, all queries are subject to the specified action.
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
-	// (Updatable) A list of CIDR blocks. The query must come from a client within one of the blocks in order for the rule action to apply.
+	// (Updatable) A list of CIDR blocks. In order for the rule action to apply, the query must come from a client within one of the CIDR blocks.
 	ClientAddressConditions []*string `json:"clientAddressConditions,omitempty" tf:"client_address_conditions,omitempty"`
 
 	// (Updatable) IP addresses to which queries should be forwarded. Currently limited to a single address.
 	DestinationAddresses []*string `json:"destinationAddresses,omitempty" tf:"destination_addresses,omitempty"`
 
-	// (Updatable) A list of domain names. The query must be covered by one of the domains in order for the rule action to apply.
+	// (Updatable) A list of domain names. In order for the rule action to apply, the query must either match or be a subdomain of one of the listed domains.
 	QnameCoverConditions []*string `json:"qnameCoverConditions,omitempty" tf:"qname_cover_conditions,omitempty"`
 
 	// (Updatable) Case-insensitive name of an endpoint, that is a sub-resource of the resolver, to use as the forwarding interface. The endpoint must have isForwarding set to true.
@@ -299,7 +299,7 @@ type RulesParameters struct {
 	// +kubebuilder:validation:Optional
 	Action *string `json:"action" tf:"action,omitempty"`
 
-	// (Updatable) A list of CIDR blocks. The query must come from a client within one of the blocks in order for the rule action to apply.
+	// (Updatable) A list of CIDR blocks. In order for the rule action to apply, the query must come from a client within one of the CIDR blocks.
 	// +kubebuilder:validation:Optional
 	ClientAddressConditions []*string `json:"clientAddressConditions,omitempty" tf:"client_address_conditions,omitempty"`
 
@@ -307,7 +307,7 @@ type RulesParameters struct {
 	// +kubebuilder:validation:Optional
 	DestinationAddresses []*string `json:"destinationAddresses" tf:"destination_addresses,omitempty"`
 
-	// (Updatable) A list of domain names. The query must be covered by one of the domains in order for the rule action to apply.
+	// (Updatable) A list of domain names. In order for the rule action to apply, the query must either match or be a subdomain of one of the listed domains.
 	// +kubebuilder:validation:Optional
 	QnameCoverConditions []*string `json:"qnameCoverConditions,omitempty" tf:"qname_cover_conditions,omitempty"`
 

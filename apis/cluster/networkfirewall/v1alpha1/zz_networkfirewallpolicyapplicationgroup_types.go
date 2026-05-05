@@ -15,8 +15,11 @@ import (
 
 type NetworkFirewallPolicyApplicationGroupInitParameters struct {
 
-	// (Updatable) Collection of application names. The apps referenced in the application group must already be present in the policy before being used in the application group.
+	// (Updatable) Collection of application names.
 	Apps []*string `json:"apps,omitempty" tf:"apps,omitempty"`
+
+	// (Updatable) The description of the application group. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// Name of the application group.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -37,8 +40,11 @@ type NetworkFirewallPolicyApplicationGroupInitParameters struct {
 
 type NetworkFirewallPolicyApplicationGroupObservation struct {
 
-	// (Updatable) Collection of application names. The apps referenced in the application group must already be present in the policy before being used in the application group.
+	// (Updatable) Collection of application names.
 	Apps []*string `json:"apps,omitempty" tf:"apps,omitempty"`
+
+	// (Updatable) The description of the application group. This field can be used to add additional info.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -57,9 +63,13 @@ type NetworkFirewallPolicyApplicationGroupObservation struct {
 
 type NetworkFirewallPolicyApplicationGroupParameters struct {
 
-	// (Updatable) Collection of application names. The apps referenced in the application group must already be present in the policy before being used in the application group.
+	// (Updatable) Collection of application names.
 	// +kubebuilder:validation:Optional
 	Apps []*string `json:"apps,omitempty" tf:"apps,omitempty"`
+
+	// (Updatable) The description of the application group. This field can be used to add additional info.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// Name of the application group.
 	// +kubebuilder:validation:Optional

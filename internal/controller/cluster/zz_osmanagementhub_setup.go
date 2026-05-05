@@ -9,6 +9,11 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
+	dynamicset "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/dynamicset"
+	dynamicsetinstallpackagesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/dynamicsetinstallpackagesmanagement"
+	dynamicsetrebootmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/dynamicsetrebootmanagement"
+	dynamicsetremovepackagesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/dynamicsetremovepackagesmanagement"
+	dynamicsetupdatepackagesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/dynamicsetupdatepackagesmanagement"
 	event "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/event"
 	lifecycleenvironment "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/lifecycleenvironment"
 	lifecyclestageattachmanagedinstancesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/lifecyclestageattachmanagedinstancesmanagement"
@@ -17,7 +22,9 @@ import (
 	lifecyclestagerebootmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/lifecyclestagerebootmanagement"
 	managedinstance "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstance"
 	managedinstanceattachprofilemanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstanceattachprofilemanagement"
+	managedinstanceattachsoftwaresourcesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstanceattachsoftwaresourcesmanagement"
 	managedinstancedetachprofilemanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancedetachprofilemanagement"
+	managedinstancedetachsoftwaresourcesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancedetachsoftwaresourcesmanagement"
 	managedinstancegroup "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancegroup"
 	managedinstancegroupattachmanagedinstancesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancegroupattachmanagedinstancesmanagement"
 	managedinstancegroupattachsoftwaresourcesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancegroupattachsoftwaresourcesmanagement"
@@ -29,8 +36,16 @@ import (
 	managedinstancegrouprebootmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancegrouprebootmanagement"
 	managedinstancegroupremovepackagesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancegroupremovepackagesmanagement"
 	managedinstancegroupupdateallpackagesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancegroupupdateallpackagesmanagement"
+	managedinstanceinstallpackagesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstanceinstallpackagesmanagement"
+	managedinstanceinstallsnapsmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstanceinstallsnapsmanagement"
 	managedinstanceinstallwindowsupdatesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstanceinstallwindowsupdatesmanagement"
 	managedinstancerebootmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancerebootmanagement"
+	managedinstancerefreshsoftwaremanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancerefreshsoftwaremanagement"
+	managedinstanceremovepackagesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstanceremovepackagesmanagement"
+	managedinstanceremovesnapsmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstanceremovesnapsmanagement"
+	managedinstancesinstallwindowsupdatesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancesinstallwindowsupdatesmanagement"
+	managedinstancesupdatepackagesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstancesupdatepackagesmanagement"
+	managedinstanceswitchsnapchannelmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstanceswitchsnapchannelmanagement"
 	managedinstanceupdatepackagesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managedinstanceupdatepackagesmanagement"
 	managementstation "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managementstation"
 	managementstationassociatemanagedinstancesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/managementstationassociatemanagedinstancesmanagement"
@@ -42,6 +57,7 @@ import (
 	profileattachmanagedinstancegroupmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/profileattachmanagedinstancegroupmanagement"
 	profileattachmanagementstationmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/profileattachmanagementstationmanagement"
 	profileattachsoftwaresourcesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/profileattachsoftwaresourcesmanagement"
+	profiledetachmanagementstationmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/profiledetachmanagementstationmanagement"
 	profiledetachsoftwaresourcesmanagement "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/profiledetachsoftwaresourcesmanagement"
 	scheduledjob "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/scheduledjob"
 	softwaresource "github.com/oracle/provider-oci/internal/controller/cluster/osmanagementhub/softwaresource"
@@ -58,6 +74,11 @@ import (
 // the supplied manager.
 func Setup_osmanagementhub(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		dynamicset.Setup,
+		dynamicsetinstallpackagesmanagement.Setup,
+		dynamicsetrebootmanagement.Setup,
+		dynamicsetremovepackagesmanagement.Setup,
+		dynamicsetupdatepackagesmanagement.Setup,
 		event.Setup,
 		lifecycleenvironment.Setup,
 		lifecyclestageattachmanagedinstancesmanagement.Setup,
@@ -66,7 +87,9 @@ func Setup_osmanagementhub(mgr ctrl.Manager, o controller.Options) error {
 		lifecyclestagerebootmanagement.Setup,
 		managedinstance.Setup,
 		managedinstanceattachprofilemanagement.Setup,
+		managedinstanceattachsoftwaresourcesmanagement.Setup,
 		managedinstancedetachprofilemanagement.Setup,
+		managedinstancedetachsoftwaresourcesmanagement.Setup,
 		managedinstancegroup.Setup,
 		managedinstancegroupattachmanagedinstancesmanagement.Setup,
 		managedinstancegroupattachsoftwaresourcesmanagement.Setup,
@@ -78,8 +101,16 @@ func Setup_osmanagementhub(mgr ctrl.Manager, o controller.Options) error {
 		managedinstancegrouprebootmanagement.Setup,
 		managedinstancegroupremovepackagesmanagement.Setup,
 		managedinstancegroupupdateallpackagesmanagement.Setup,
+		managedinstanceinstallpackagesmanagement.Setup,
+		managedinstanceinstallsnapsmanagement.Setup,
 		managedinstanceinstallwindowsupdatesmanagement.Setup,
 		managedinstancerebootmanagement.Setup,
+		managedinstancerefreshsoftwaremanagement.Setup,
+		managedinstanceremovepackagesmanagement.Setup,
+		managedinstanceremovesnapsmanagement.Setup,
+		managedinstancesinstallwindowsupdatesmanagement.Setup,
+		managedinstancesupdatepackagesmanagement.Setup,
+		managedinstanceswitchsnapchannelmanagement.Setup,
 		managedinstanceupdatepackagesmanagement.Setup,
 		managementstation.Setup,
 		managementstationassociatemanagedinstancesmanagement.Setup,
@@ -91,6 +122,7 @@ func Setup_osmanagementhub(mgr ctrl.Manager, o controller.Options) error {
 		profileattachmanagedinstancegroupmanagement.Setup,
 		profileattachmanagementstationmanagement.Setup,
 		profileattachsoftwaresourcesmanagement.Setup,
+		profiledetachmanagementstationmanagement.Setup,
 		profiledetachsoftwaresourcesmanagement.Setup,
 		scheduledjob.Setup,
 		softwaresource.Setup,
@@ -113,6 +145,11 @@ func Setup_osmanagementhub(mgr ctrl.Manager, o controller.Options) error {
 // the supplied manager gated.
 func SetupGated_osmanagementhub(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		dynamicset.SetupGated,
+		dynamicsetinstallpackagesmanagement.SetupGated,
+		dynamicsetrebootmanagement.SetupGated,
+		dynamicsetremovepackagesmanagement.SetupGated,
+		dynamicsetupdatepackagesmanagement.SetupGated,
 		event.SetupGated,
 		lifecycleenvironment.SetupGated,
 		lifecyclestageattachmanagedinstancesmanagement.SetupGated,
@@ -121,7 +158,9 @@ func SetupGated_osmanagementhub(mgr ctrl.Manager, o controller.Options) error {
 		lifecyclestagerebootmanagement.SetupGated,
 		managedinstance.SetupGated,
 		managedinstanceattachprofilemanagement.SetupGated,
+		managedinstanceattachsoftwaresourcesmanagement.SetupGated,
 		managedinstancedetachprofilemanagement.SetupGated,
+		managedinstancedetachsoftwaresourcesmanagement.SetupGated,
 		managedinstancegroup.SetupGated,
 		managedinstancegroupattachmanagedinstancesmanagement.SetupGated,
 		managedinstancegroupattachsoftwaresourcesmanagement.SetupGated,
@@ -133,8 +172,16 @@ func SetupGated_osmanagementhub(mgr ctrl.Manager, o controller.Options) error {
 		managedinstancegrouprebootmanagement.SetupGated,
 		managedinstancegroupremovepackagesmanagement.SetupGated,
 		managedinstancegroupupdateallpackagesmanagement.SetupGated,
+		managedinstanceinstallpackagesmanagement.SetupGated,
+		managedinstanceinstallsnapsmanagement.SetupGated,
 		managedinstanceinstallwindowsupdatesmanagement.SetupGated,
 		managedinstancerebootmanagement.SetupGated,
+		managedinstancerefreshsoftwaremanagement.SetupGated,
+		managedinstanceremovepackagesmanagement.SetupGated,
+		managedinstanceremovesnapsmanagement.SetupGated,
+		managedinstancesinstallwindowsupdatesmanagement.SetupGated,
+		managedinstancesupdatepackagesmanagement.SetupGated,
+		managedinstanceswitchsnapchannelmanagement.SetupGated,
 		managedinstanceupdatepackagesmanagement.SetupGated,
 		managementstation.SetupGated,
 		managementstationassociatemanagedinstancesmanagement.SetupGated,
@@ -146,6 +193,7 @@ func SetupGated_osmanagementhub(mgr ctrl.Manager, o controller.Options) error {
 		profileattachmanagedinstancegroupmanagement.SetupGated,
 		profileattachmanagementstationmanagement.SetupGated,
 		profileattachsoftwaresourcesmanagement.SetupGated,
+		profiledetachmanagementstationmanagement.SetupGated,
 		profiledetachsoftwaresourcesmanagement.SetupGated,
 		scheduledjob.SetupGated,
 		softwaresource.SetupGated,

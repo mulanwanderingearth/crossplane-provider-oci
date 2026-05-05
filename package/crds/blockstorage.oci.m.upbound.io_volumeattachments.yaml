@@ -781,6 +781,9 @@ spec:
                   ipv4:
                     description: 'The volume''s iSCSI IP address.  Example: 169.254.0.2'
                     type: string
+                  ipv6:
+                    description: 'The volume''s iSCSI IPv6 address.  Example: 2001:db8::1/64'
+                    type: string
                   iqn:
                     description: 'The target volume''s iSCSI Qualified Name in the
                       format defined by RFC 3720.  Example: iqn.2015-12.us.oracle.com:<CHAP_username>'

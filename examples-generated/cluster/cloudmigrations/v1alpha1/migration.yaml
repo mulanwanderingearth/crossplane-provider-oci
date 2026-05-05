@@ -17,6 +17,11 @@ spec:
     freeformTags:
       bar-key: value
     isCompleted: ${var.migration_is_completed}
+    migrationConfig:
+    - subnetIdSelector:
+        matchLabels:
+          testing.upbound.io/example-name: test_subnet
+    migrationType: ${var.migration_migration_type}
     replicationScheduleIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_replication_schedule

@@ -148,6 +148,26 @@ type AutonomousContainerDatabaseAddStandbyDataguardObservation struct {
 type AutonomousContainerDatabaseAddStandbyDataguardParameters struct {
 }
 
+type AutonomousContainerDatabaseAddStandbyEncryptionKeyLocationDetailsInitParameters struct {
+}
+
+type AutonomousContainerDatabaseAddStandbyEncryptionKeyLocationDetailsObservation struct {
+
+	// Provide the key OCID of a registered AWS key.
+	AwsEncryptionKeyID *string `json:"awsEncryptionKeyId,omitempty" tf:"aws_encryption_key_id,omitempty"`
+
+	// The OCID of the backup destination.
+	AzureEncryptionKeyID *string `json:"azureEncryptionKeyId,omitempty" tf:"azure_encryption_key_id,omitempty"`
+
+	HSMPassword *string `json:"hsmPassword,omitempty" tf:"hsm_password,omitempty"`
+
+	// Use 'AWS' for creating a new database.
+	ProviderType *string `json:"providerType,omitempty" tf:"provider_type,omitempty"`
+}
+
+type AutonomousContainerDatabaseAddStandbyEncryptionKeyLocationDetailsParameters struct {
+}
+
 type AutonomousContainerDatabaseAddStandbyInitParameters struct {
 
 	// The Autonomous Container Database OCID.
@@ -346,6 +366,9 @@ type AutonomousContainerDatabaseAddStandbyObservation struct {
 
 	// DST Time-Zone File version of the Autonomous Container Database.
 	DstFileVersion *string `json:"dstFileVersion,omitempty" tf:"dst_file_version,omitempty"`
+
+	// Types of providers supported for managing database encryption keys
+	EncryptionKeyLocationDetails []AutonomousContainerDatabaseAddStandbyEncryptionKeyLocationDetailsObservation `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// The lag time for my preference based on data loss tolerance in seconds.
 	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`

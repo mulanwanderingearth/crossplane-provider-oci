@@ -1,0 +1,20 @@
+apiVersion: osmanagementhub.oci.m.upbound.io/v1alpha1
+kind: ManagedInstanceRemoveSnapsManagement
+metadata:
+  annotations:
+    meta.upbound.io/example-id: osmanagementhub/v1alpha1/managedinstanceremovesnapsmanagement
+  labels:
+    testing.upbound.io/example-name: test_managed_instance_remove_snaps_management
+  name: test-managed-instance-remove-snaps-management
+  namespace: upbound-system
+spec:
+  forProvider:
+    managedInstanceIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_managed_instance
+    snapDetails:
+    - name: ${var.managed_instance_remove_snaps_management_snap_details_name}
+      revision: ${var.managed_instance_remove_snaps_management_snap_details_revision}
+    workRequestDetails:
+    - description: ${var.managed_instance_remove_snaps_management_work_request_details_description}
+      displayName: ${var.managed_instance_remove_snaps_management_work_request_details_display_name}

@@ -41,6 +41,8 @@ spec:
           name: example-secret
           namespace: upbound-system
         characterSet: ${var.db_system_db_home_database_character_set}
+        databaseDefinedTags: ${var.db_system_db_home_database_database_defined_tags}
+        databaseFreeformTags: ${var.db_system_db_home_database_database_freeform_tags}
         databaseIdSelector:
           matchLabels:
             testing.upbound.io/example-name: test_database
@@ -74,7 +76,10 @@ spec:
           hsm_password: ${var.db_system_db_home_database_encryption_key_location_details_hsm_password}
           provider_type: ${var.db_system_db_home_database_encryption_key_location_details_provider_type}
         freeformTags: ${var.db_system_db_home_database_freeform_tags}
-        key_store_id: ${oci_database_key_store.test_key_store.id}
+        isActiveDataGuardEnabled: ${var.db_system_db_home_database_is_active_data_guard_enabled}
+        keyStoreIdSelector:
+          matchLabels:
+            testing.upbound.io/example-name: test_key_store
         kmsKeyIdSelector:
           matchLabels:
             testing.upbound.io/example-name: test_key
@@ -84,7 +89,8 @@ spec:
         ncharacterSet: ${var.db_system_db_home_database_ncharacter_set}
         pdbName: ${var.db_system_db_home_database_pdb_name}
         pluggableDatabases: ${var.db_system_db_home_database_pluggable_databases}
-        sid_prefix: ${var.db_system_db_home_database_sid_prefix}
+        protectionMode: ${var.db_system_db_home_database_protection_mode}
+        sidPrefix: ${var.db_system_db_home_database_sid_prefix}
         source_encryption_key_location_details:
         - azure_encryption_key_id: ${oci_kms_key.test_key.id}
           hsm_password: ${var.db_system_db_home_database_source_encryption_key_location_details_hsm_password}
@@ -94,6 +100,7 @@ spec:
           name: example-secret
           namespace: upbound-system
         timeStampForPointInTimeRecovery: ${var.db_system_db_home_database_time_stamp_for_point_in_time_recovery}
+        transportType: ${var.db_system_db_home_database_transport_type}
         vaultIdSelector:
           matchLabels:
             testing.upbound.io/example-name: test_vault
@@ -138,6 +145,10 @@ spec:
       weeksOfMonth: ${var.db_system_maintenance_window_details_weeks_of_month}
     nodeCount: ${var.db_system_node_count}
     nsgIds: ${var.db_system_nsg_ids}
+    opc_dry_run: ${var.db_system_opc_dry_run}
+    primaryDbSystemIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_db_system
     privateIp: ${var.db_system_private_ip}
     privateIpV6: ${var.db_system_private_ip_v6}
     securityAttributes: ${var.db_system_security_attributes}

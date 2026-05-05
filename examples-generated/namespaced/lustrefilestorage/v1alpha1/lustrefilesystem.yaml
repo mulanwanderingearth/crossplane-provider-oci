@@ -29,6 +29,9 @@ spec:
     kmsKeyIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_key
+    maintenanceWindow:
+    - dayOfWeek: ${var.lustre_file_system_maintenance_window_day_of_week}
+      timeStart: ${var.lustre_file_system_maintenance_window_time_start}
     nsgIds: ${var.lustre_file_system_nsg_ids}
     performanceTier: ${var.lustre_file_system_performance_tier}
     rootSquashConfiguration:

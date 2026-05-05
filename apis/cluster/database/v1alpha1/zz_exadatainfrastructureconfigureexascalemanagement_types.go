@@ -66,8 +66,12 @@ type ExadataInfrastructureConfigureExascaleManagementExascaleConfigObservation s
 	// Available storage size for Exascale in GBs.
 	AvailableStorageInGbs *float64 `json:"availableStorageInGbs,omitempty" tf:"available_storage_in_gbs,omitempty"`
 
+	AvailableVMStorageInGbs *float64 `json:"availableVmStorageInGbs,omitempty" tf:"available_vm_storage_in_gbs,omitempty"`
+
 	// Storage size needed for Exascale in GBs.
 	TotalStorageInGbs *float64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
+
+	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 type ExadataInfrastructureConfigureExascaleManagementExascaleConfigParameters struct {
@@ -89,6 +93,8 @@ type ExadataInfrastructureConfigureExascaleManagementInitParameters struct {
 
 	// Storage size needed for Exascale in GBs.
 	TotalStorageInGbs *float64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
+
+	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 type ExadataInfrastructureConfigureExascaleManagementMaintenanceWindowDaysOfWeekInitParameters struct {
@@ -331,6 +337,8 @@ type ExadataInfrastructureConfigureExascaleManagementObservation struct {
 
 	// Storage size needed for Exascale in GBs.
 	TotalStorageInGbs *float64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
+
+	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 type ExadataInfrastructureConfigureExascaleManagementParameters struct {
@@ -351,6 +359,9 @@ type ExadataInfrastructureConfigureExascaleManagementParameters struct {
 	// Storage size needed for Exascale in GBs.
 	// +kubebuilder:validation:Optional
 	TotalStorageInGbs *float64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 // ExadataInfrastructureConfigureExascaleManagementSpec defines the desired state of ExadataInfrastructureConfigureExascaleManagement

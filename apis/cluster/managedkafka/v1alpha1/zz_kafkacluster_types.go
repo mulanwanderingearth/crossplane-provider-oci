@@ -37,6 +37,9 @@ type BrokerShapeInitParameters struct {
 	// (Updatable) Number of Kafka broker nodes
 	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
+	// (Updatable) Node shape for broker is passed as part of cluster creation, similar to VM.Standard.A1.Flex
+	NodeShape *string `json:"nodeShape,omitempty" tf:"node_shape,omitempty"`
+
 	// (Updatable) Number of OCPUs per nodes
 	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
 
@@ -48,6 +51,9 @@ type BrokerShapeObservation struct {
 
 	// (Updatable) Number of Kafka broker nodes
 	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+
+	// (Updatable) Node shape for broker is passed as part of cluster creation, similar to VM.Standard.A1.Flex
+	NodeShape *string `json:"nodeShape,omitempty" tf:"node_shape,omitempty"`
 
 	// (Updatable) Number of OCPUs per nodes
 	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
@@ -61,6 +67,10 @@ type BrokerShapeParameters struct {
 	// (Updatable) Number of Kafka broker nodes
 	// +kubebuilder:validation:Optional
 	NodeCount *float64 `json:"nodeCount" tf:"node_count,omitempty"`
+
+	// (Updatable) Node shape for broker is passed as part of cluster creation, similar to VM.Standard.A1.Flex
+	// +kubebuilder:validation:Optional
+	NodeShape *string `json:"nodeShape,omitempty" tf:"node_shape,omitempty"`
 
 	// (Updatable) Number of OCPUs per nodes
 	// +kubebuilder:validation:Optional

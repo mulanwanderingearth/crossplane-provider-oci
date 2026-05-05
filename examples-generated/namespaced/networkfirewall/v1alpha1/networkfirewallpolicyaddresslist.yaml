@@ -10,6 +10,7 @@ metadata:
 spec:
   forProvider:
     addresses: ${var.network_firewall_policy_address_list_addresses}
+    description: ${var.network_firewall_policy_address_list_description}
     name: ${var.network_firewall_policy_address_list_name}
     networkFirewallPolicyIdSelector:
       matchLabels:

@@ -536,6 +536,10 @@ spec:
                                       type: string
                                   type: object
                                 type: array
+                              groupDisplayName:
+                                description: 'Job Phase group display name e.g. ''Step
+                                  1: Migration'''
+                                type: string
                               isAdvisorReportAvailable:
                                 description: True if a Pre-Migration Advisor report
                                   is available for this phase. False or null if no

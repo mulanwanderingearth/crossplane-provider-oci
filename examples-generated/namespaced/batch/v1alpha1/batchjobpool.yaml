@@ -1,0 +1,23 @@
+apiVersion: batch.oci.m.upbound.io/v1alpha1
+kind: BatchJobPool
+metadata:
+  annotations:
+    meta.upbound.io/example-id: batch/v1alpha1/batchjobpool
+  labels:
+    testing.upbound.io/example-name: test_batch_job_pool
+  name: test-batch-job-pool
+  namespace: upbound-system
+spec:
+  forProvider:
+    batchContextIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_batch_context
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.batch_job_pool_description}
+    displayName: ${var.batch_job_pool_display_name}
+    freeformTags:
+      Department: Finance

@@ -161,7 +161,8 @@ spec:
                           description: (Applicable when config_category=PRODUCT) (Updatable)
                             Products compatible with this Product. Provide products
                             from the list of other products you have created that
-                            are compatible with the present one
+                            are compatible with the present one. This property is
+                            not applicable if isSoftlink is set to true.
                           items:
                             properties:
                               displayName:
@@ -181,7 +182,8 @@ spec:
                             server or node manager can be the components of the Oracle
                             WebLogic Application server. Forms server or concurrent
                             manager can be the components of the Oracle E-Business
-                            Suite.
+                            Suite. This property is not applicable if isSoftlink is
+                            set to true.
                           items:
                             type: string
                           type: array
@@ -193,7 +195,8 @@ spec:
                             OCID for the Credential name to be associated with the
                             Product. These are useful for target discovery or lifecycle
                             management activities, for example, Oracle WebLogic admin
-                            credentials for Oracle WebLogic Application server.
+                            credentials for Oracle WebLogic Application server. This
+                            property is not applicable if isSoftlink is set to true.
                           items:
                             properties:
                               displayName:
@@ -368,9 +371,26 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        isCompliancePolicyRequiredForSoftlink:
+                          description: (Applicable when config_category=PRODUCT) (Updatable)
+                            If set true ,compliance policies will be created for softlink
+                            product. This property is applicable only if isSoftlink
+                            is set to true
+                          type: boolean
+                        isSoftlink:
+                          description: (Applicable when config_category=PRODUCT) (Updatable)
+                            Specify if the product is softlink product or not
+                          type: boolean
+                        linkProductId:
+                          description: (Applicable when config_category=PRODUCT) (Updatable)
+                            The OCID of the product that would be the target for the
+                            softlink. This property is applicable only if isSoftlink
+                            is set to true
+                          type: string
                         patchTypes:
                           description: (Applicable when config_category=PRODUCT) (Updatable)
-                            Patch Types associated with this Product.
+                            Patch Types associated with this Product. This property
+                            is not applicable if isSoftlink is set to true.
                           items:
                             properties:
                               displayName:
@@ -412,7 +432,9 @@ spec:
                                   example:The administration server or node manager
                                   can be the components of the Oracle WebLogic Application
                                   server. Forms server or concurrent manager can be
-                                  the components of the Oracle E-Business Suite.
+                                  the components of the Oracle E-Business Suite. This
+                                  property is not applicable if isSoftlink is set
+                                  to true.
                                 items:
                                   type: string
                                 type: array
@@ -422,7 +444,8 @@ spec:
                                   with the Product. These are useful for target discovery
                                   or lifecycle management activities, for example,
                                   Oracle WebLogic admin credentials for Oracle WebLogic
-                                  Application server.
+                                  Application server. This property is not applicable
+                                  if isSoftlink is set to true.
                                 items:
                                   properties:
                                     displayName:
@@ -440,6 +463,8 @@ spec:
                               patchTypes:
                                 description: (Applicable when config_category=PRODUCT)
                                   (Updatable) Patch Types associated with this Product.
+                                  This property is not applicable if isSoftlink is
+                                  set to true.
                                 items:
                                   properties:
                                     displayName:
@@ -601,7 +626,8 @@ spec:
                           description: (Applicable when config_category=PRODUCT) (Updatable)
                             Products compatible with this Product. Provide products
                             from the list of other products you have created that
-                            are compatible with the present one
+                            are compatible with the present one. This property is
+                            not applicable if isSoftlink is set to true.
                           items:
                             properties:
                               displayName:
@@ -621,7 +647,8 @@ spec:
                             server or node manager can be the components of the Oracle
                             WebLogic Application server. Forms server or concurrent
                             manager can be the components of the Oracle E-Business
-                            Suite.
+                            Suite. This property is not applicable if isSoftlink is
+                            set to true.
                           items:
                             type: string
                           type: array
@@ -633,7 +660,8 @@ spec:
                             OCID for the Credential name to be associated with the
                             Product. These are useful for target discovery or lifecycle
                             management activities, for example, Oracle WebLogic admin
-                            credentials for Oracle WebLogic Application server.
+                            credentials for Oracle WebLogic Application server. This
+                            property is not applicable if isSoftlink is set to true.
                           items:
                             properties:
                               displayName:
@@ -808,9 +836,26 @@ spec:
                                   type: string
                               type: object
                           type: object
+                        isCompliancePolicyRequiredForSoftlink:
+                          description: (Applicable when config_category=PRODUCT) (Updatable)
+                            If set true ,compliance policies will be created for softlink
+                            product. This property is applicable only if isSoftlink
+                            is set to true
+                          type: boolean
+                        isSoftlink:
+                          description: (Applicable when config_category=PRODUCT) (Updatable)
+                            Specify if the product is softlink product or not
+                          type: boolean
+                        linkProductId:
+                          description: (Applicable when config_category=PRODUCT) (Updatable)
+                            The OCID of the product that would be the target for the
+                            softlink. This property is applicable only if isSoftlink
+                            is set to true
+                          type: string
                         patchTypes:
                           description: (Applicable when config_category=PRODUCT) (Updatable)
-                            Patch Types associated with this Product.
+                            Patch Types associated with this Product. This property
+                            is not applicable if isSoftlink is set to true.
                           items:
                             properties:
                               displayName:
@@ -852,7 +897,9 @@ spec:
                                   example:The administration server or node manager
                                   can be the components of the Oracle WebLogic Application
                                   server. Forms server or concurrent manager can be
-                                  the components of the Oracle E-Business Suite.
+                                  the components of the Oracle E-Business Suite. This
+                                  property is not applicable if isSoftlink is set
+                                  to true.
                                 items:
                                   type: string
                                 type: array
@@ -862,7 +909,8 @@ spec:
                                   with the Product. These are useful for target discovery
                                   or lifecycle management activities, for example,
                                   Oracle WebLogic admin credentials for Oracle WebLogic
-                                  Application server.
+                                  Application server. This property is not applicable
+                                  if isSoftlink is set to true.
                                 items:
                                   properties:
                                     displayName:
@@ -880,6 +928,8 @@ spec:
                               patchTypes:
                                 description: (Applicable when config_category=PRODUCT)
                                   (Updatable) Patch Types associated with this Product.
+                                  This property is not applicable if isSoftlink is
+                                  set to true.
                                 items:
                                   properties:
                                     displayName:
@@ -1055,7 +1105,8 @@ spec:
                           description: (Applicable when config_category=PRODUCT) (Updatable)
                             Products compatible with this Product. Provide products
                             from the list of other products you have created that
-                            are compatible with the present one
+                            are compatible with the present one. This property is
+                            not applicable if isSoftlink is set to true.
                           items:
                             properties:
                               displayName:
@@ -1075,7 +1126,8 @@ spec:
                             server or node manager can be the components of the Oracle
                             WebLogic Application server. Forms server or concurrent
                             manager can be the components of the Oracle E-Business
-                            Suite.
+                            Suite. This property is not applicable if isSoftlink is
+                            set to true.
                           items:
                             type: string
                           type: array
@@ -1087,7 +1139,8 @@ spec:
                             OCID for the Credential name to be associated with the
                             Product. These are useful for target discovery or lifecycle
                             management activities, for example, Oracle WebLogic admin
-                            credentials for Oracle WebLogic Application server.
+                            credentials for Oracle WebLogic Application server. This
+                            property is not applicable if isSoftlink is set to true.
                           items:
                             properties:
                               displayName:
@@ -1110,9 +1163,26 @@ spec:
                             unique, and it''s changeable. Avoid entering confidential
                             information.  Example: My new resource'
                           type: string
+                        isCompliancePolicyRequiredForSoftlink:
+                          description: (Applicable when config_category=PRODUCT) (Updatable)
+                            If set true ,compliance policies will be created for softlink
+                            product. This property is applicable only if isSoftlink
+                            is set to true
+                          type: boolean
+                        isSoftlink:
+                          description: (Applicable when config_category=PRODUCT) (Updatable)
+                            Specify if the product is softlink product or not
+                          type: boolean
+                        linkProductId:
+                          description: (Applicable when config_category=PRODUCT) (Updatable)
+                            The OCID of the product that would be the target for the
+                            softlink. This property is applicable only if isSoftlink
+                            is set to true
+                          type: string
                         patchTypes:
                           description: (Applicable when config_category=PRODUCT) (Updatable)
-                            Patch Types associated with this Product.
+                            Patch Types associated with this Product. This property
+                            is not applicable if isSoftlink is set to true.
                           items:
                             properties:
                               displayName:
@@ -1154,7 +1224,9 @@ spec:
                                   example:The administration server or node manager
                                   can be the components of the Oracle WebLogic Application
                                   server. Forms server or concurrent manager can be
-                                  the components of the Oracle E-Business Suite.
+                                  the components of the Oracle E-Business Suite. This
+                                  property is not applicable if isSoftlink is set
+                                  to true.
                                 items:
                                   type: string
                                 type: array
@@ -1164,7 +1236,8 @@ spec:
                                   with the Product. These are useful for target discovery
                                   or lifecycle management activities, for example,
                                   Oracle WebLogic admin credentials for Oracle WebLogic
-                                  Application server.
+                                  Application server. This property is not applicable
+                                  if isSoftlink is set to true.
                                 items:
                                   properties:
                                     displayName:
@@ -1182,6 +1255,8 @@ spec:
                               patchTypes:
                                 description: (Applicable when config_category=PRODUCT)
                                   (Updatable) Patch Types associated with this Product.
+                                  This property is not applicable if isSoftlink is
+                                  set to true.
                                 items:
                                   properties:
                                     displayName:

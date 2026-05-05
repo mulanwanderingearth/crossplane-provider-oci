@@ -16,8 +16,100 @@ import (
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-func (mg *ApplicationVip) ResolveReferences( // ResolveReferences of this ApplicationVip.
+func (mg *AdvancedClusterFileSystem) ResolveReferences( // ResolveReferences of this AdvancedClusterFileSystem.
 	ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "VmCluster", "VmClusterList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.VMClusterID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.VMClusterIDRef,
+			Selector:     mg.Spec.ForProvider.VMClusterIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.VMClusterID")
+	}
+	mg.Spec.ForProvider.VMClusterID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.VMClusterIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "VmCluster", "VmClusterList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.VMClusterID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.VMClusterIDRef,
+			Selector:     mg.Spec.InitProvider.VMClusterIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.VMClusterID")
+	}
+	mg.Spec.InitProvider.VMClusterID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.VMClusterIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ApplicationVip.
+func (mg *ApplicationVip) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
 	var l xpresource.ManagedList
 	r := reference.NewAPINamespacedResolver(c, mg)
@@ -256,12 +348,34 @@ func (mg *AutonomousContainerDatabase) ResolveReferences(ctx context.Context, c 
 	}
 	mg.Spec.ForProvider.DatabaseSoftwareImageID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.DatabaseSoftwareImageIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.EncryptionKeyLocationDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("kms.oci.m.upbound.io", "v1alpha1", "Key", "KeyList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyIDRef,
+				Selector:     mg.Spec.ForProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyID")
+		}
+		mg.Spec.ForProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyIDRef = rsp.ResolvedReference
+
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("kms.oci.m.upbound.io", "v1alpha1", "Key", "KeyList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
-
 		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.KMSKeyID),
 			Extract:      resource.ExtractResourceID(),
@@ -516,12 +630,34 @@ func (mg *AutonomousContainerDatabase) ResolveReferences(ctx context.Context, c 
 	}
 	mg.Spec.InitProvider.DatabaseSoftwareImageID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.DatabaseSoftwareImageIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.EncryptionKeyLocationDetails); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("kms.oci.m.upbound.io", "v1alpha1", "Key", "KeyList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyIDRef,
+				Selector:     mg.Spec.InitProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyID")
+		}
+		mg.Spec.InitProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.EncryptionKeyLocationDetails[i3].AwsEncryptionKeyIDRef = rsp.ResolvedReference
+
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("kms.oci.m.upbound.io", "v1alpha1", "Key", "KeyList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
-
 		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.KMSKeyID),
 			Extract:      resource.ExtractResourceID(),
@@ -3548,6 +3684,99 @@ func (mg *DataGuardAssociation) ResolveReferences(ctx context.Context, c client.
 	return nil
 }
 
+// ResolveReferences of this DataPatch.
+func (mg *DataPatch) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var mrsp reference.MultiNamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "Database", "DatabaseList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.DatabaseID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.DatabaseIDRef,
+			Selector:     mg.Spec.ForProvider.DatabaseIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.DatabaseID")
+	}
+	mg.Spec.ForProvider.DatabaseID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.DatabaseIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "PluggableDatabase", "PluggableDatabaseList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		mrsp, err = r.ResolveMultiple(ctx, reference.MultiNamespacedResolutionRequest{
+			CurrentValues: reference.FromPtrValues(mg.Spec.ForProvider.PluggableDatabases),
+			Extract:       resource.ExtractResourceID(),
+			Namespace:     mg.GetNamespace(),
+			References:    mg.Spec.ForProvider.PluggableDatabasesRefs,
+			Selector:      mg.Spec.ForProvider.PluggableDatabasesSelector,
+			To:            reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.PluggableDatabases")
+	}
+	mg.Spec.ForProvider.PluggableDatabases = reference.ToPtrValues(mrsp.ResolvedValues)
+	mg.Spec.ForProvider.PluggableDatabasesRefs = mrsp.ResolvedReferences
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "Database", "DatabaseList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.DatabaseID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.DatabaseIDRef,
+			Selector:     mg.Spec.InitProvider.DatabaseIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.DatabaseID")
+	}
+	mg.Spec.InitProvider.DatabaseID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.DatabaseIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "PluggableDatabase", "PluggableDatabaseList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		mrsp, err = r.ResolveMultiple(ctx, reference.MultiNamespacedResolutionRequest{
+			CurrentValues: reference.FromPtrValues(mg.Spec.InitProvider.PluggableDatabases),
+			Extract:       resource.ExtractResourceID(),
+			Namespace:     mg.GetNamespace(),
+			References:    mg.Spec.InitProvider.PluggableDatabasesRefs,
+			Selector:      mg.Spec.InitProvider.PluggableDatabasesSelector,
+			To:            reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.PluggableDatabases")
+	}
+	mg.Spec.InitProvider.PluggableDatabases = reference.ToPtrValues(mrsp.ResolvedValues)
+	mg.Spec.InitProvider.PluggableDatabasesRefs = mrsp.ResolvedReferences
+
+	return nil
+}
+
 // ResolveReferences of this Database.
 func (mg *Database) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -5409,6 +5638,30 @@ func (mg *DbSystem) ResolveReferences(ctx context.Context, c client.Reader) erro
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.DBHome); i3++ {
 		for i4 := 0; i4 < len(mg.Spec.ForProvider.DBHome[i3].Database); i4++ {
 			{
+				m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "KeyStore", "KeyStoreList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.DBHome[i3].Database[i4].KeyStoreID),
+					Extract:      resource.ExtractResourceID(),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.ForProvider.DBHome[i3].Database[i4].KeyStoreIDRef,
+					Selector:     mg.Spec.ForProvider.DBHome[i3].Database[i4].KeyStoreIDSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.ForProvider.DBHome[i3].Database[i4].KeyStoreID")
+			}
+			mg.Spec.ForProvider.DBHome[i3].Database[i4].KeyStoreID = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.ForProvider.DBHome[i3].Database[i4].KeyStoreIDRef = rsp.ResolvedReference
+
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.DBHome); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.ForProvider.DBHome[i3].Database); i4++ {
+			{
 				m, l, err = apisresolver.GetManagedResource("kms.oci.m.upbound.io", "v1alpha1", "Vault", "VaultList")
 				if err != nil {
 					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
@@ -5491,6 +5744,26 @@ func (mg *DbSystem) ResolveReferences(ctx context.Context, c client.Reader) erro
 	}
 	mg.Spec.ForProvider.KMSKeyVersionID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.KMSKeyVersionIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "DbSystem", "DbSystemList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.PrimaryDBSystemID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.PrimaryDBSystemIDRef,
+			Selector:     mg.Spec.ForProvider.PrimaryDBSystemIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.PrimaryDBSystemID")
+	}
+	mg.Spec.ForProvider.PrimaryDBSystemID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.PrimaryDBSystemIDRef = rsp.ResolvedReference
 	{
 		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "DbSystem", "DbSystemList")
 		if err != nil {
@@ -5723,6 +5996,30 @@ func (mg *DbSystem) ResolveReferences(ctx context.Context, c client.Reader) erro
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.DBHome); i3++ {
 		for i4 := 0; i4 < len(mg.Spec.InitProvider.DBHome[i3].Database); i4++ {
 			{
+				m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "KeyStore", "KeyStoreList")
+				if err != nil {
+					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+				}
+				rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+					CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.DBHome[i3].Database[i4].KeyStoreID),
+					Extract:      resource.ExtractResourceID(),
+					Namespace:    mg.GetNamespace(),
+					Reference:    mg.Spec.InitProvider.DBHome[i3].Database[i4].KeyStoreIDRef,
+					Selector:     mg.Spec.InitProvider.DBHome[i3].Database[i4].KeyStoreIDSelector,
+					To:           reference.To{List: l, Managed: m},
+				})
+			}
+			if err != nil {
+				return errors.Wrap(err, "mg.Spec.InitProvider.DBHome[i3].Database[i4].KeyStoreID")
+			}
+			mg.Spec.InitProvider.DBHome[i3].Database[i4].KeyStoreID = reference.ToPtrValue(rsp.ResolvedValue)
+			mg.Spec.InitProvider.DBHome[i3].Database[i4].KeyStoreIDRef = rsp.ResolvedReference
+
+		}
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.DBHome); i3++ {
+		for i4 := 0; i4 < len(mg.Spec.InitProvider.DBHome[i3].Database); i4++ {
+			{
 				m, l, err = apisresolver.GetManagedResource("kms.oci.m.upbound.io", "v1alpha1", "Vault", "VaultList")
 				if err != nil {
 					return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
@@ -5805,6 +6102,26 @@ func (mg *DbSystem) ResolveReferences(ctx context.Context, c client.Reader) erro
 	}
 	mg.Spec.InitProvider.KMSKeyVersionID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.KMSKeyVersionIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "DbSystem", "DbSystemList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.PrimaryDBSystemID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.PrimaryDBSystemIDRef,
+			Selector:     mg.Spec.InitProvider.PrimaryDBSystemIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.PrimaryDBSystemID")
+	}
+	mg.Spec.InitProvider.PrimaryDBSystemID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.PrimaryDBSystemIDRef = rsp.ResolvedReference
 	{
 		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "DbSystem", "DbSystemList")
 		if err != nil {
@@ -8715,6 +9032,266 @@ func (mg *ManagementCloudDbSystemDiscovery) ResolveReferences(ctx context.Contex
 	return nil
 }
 
+// ResolveReferences of this ManagementCloudExadataInfrastructure.
+func (mg *ManagementCloudExadataInfrastructure) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagementCloudExadataInfrastructureManagedexadata.
+func (mg *ManagementCloudExadataInfrastructureManagedexadata) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "ManagementCloudExadataInfrastructure", "ManagementCloudExadataInfrastructureList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CloudExadataInfrastructureID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CloudExadataInfrastructureIDRef,
+			Selector:     mg.Spec.ForProvider.CloudExadataInfrastructureIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CloudExadataInfrastructureID")
+	}
+	mg.Spec.ForProvider.CloudExadataInfrastructureID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CloudExadataInfrastructureIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "ManagementCloudExadataInfrastructure", "ManagementCloudExadataInfrastructureList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CloudExadataInfrastructureID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CloudExadataInfrastructureIDRef,
+			Selector:     mg.Spec.InitProvider.CloudExadataInfrastructureIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CloudExadataInfrastructureID")
+	}
+	mg.Spec.InitProvider.CloudExadataInfrastructureID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CloudExadataInfrastructureIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagementCloudExadataStorageConnector.
+func (mg *ManagementCloudExadataStorageConnector) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("cloudbridge.oci.m.upbound.io", "v1alpha1", "Agent", "AgentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AgentID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.AgentIDRef,
+			Selector:     mg.Spec.ForProvider.AgentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.AgentID")
+	}
+	mg.Spec.ForProvider.AgentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.AgentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("cloudbridge.oci.m.upbound.io", "v1alpha1", "Agent", "AgentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AgentID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.AgentIDRef,
+			Selector:     mg.Spec.InitProvider.AgentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.AgentID")
+	}
+	mg.Spec.InitProvider.AgentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.AgentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagementCloudExadataStorageGrid.
+func (mg *ManagementCloudExadataStorageGrid) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "ManagementCloudExadataStorageGrid", "ManagementCloudExadataStorageGridList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CloudExadataStorageGridID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CloudExadataStorageGridIDRef,
+			Selector:     mg.Spec.ForProvider.CloudExadataStorageGridIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CloudExadataStorageGridID")
+	}
+	mg.Spec.ForProvider.CloudExadataStorageGridID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CloudExadataStorageGridIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "ManagementCloudExadataStorageGrid", "ManagementCloudExadataStorageGridList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CloudExadataStorageGridID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CloudExadataStorageGridIDRef,
+			Selector:     mg.Spec.InitProvider.CloudExadataStorageGridIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CloudExadataStorageGridID")
+	}
+	mg.Spec.InitProvider.CloudExadataStorageGridID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CloudExadataStorageGridIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this ManagementCloudExadataStorageServer.
+func (mg *ManagementCloudExadataStorageServer) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "ManagementCloudExadataStorageServer", "ManagementCloudExadataStorageServerList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CloudExadataStorageServerID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CloudExadataStorageServerIDRef,
+			Selector:     mg.Spec.ForProvider.CloudExadataStorageServerIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CloudExadataStorageServerID")
+	}
+	mg.Spec.ForProvider.CloudExadataStorageServerID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CloudExadataStorageServerIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "ManagementCloudExadataStorageServer", "ManagementCloudExadataStorageServerList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CloudExadataStorageServerID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CloudExadataStorageServerIDRef,
+			Selector:     mg.Spec.InitProvider.CloudExadataStorageServerIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CloudExadataStorageServerID")
+	}
+	mg.Spec.InitProvider.CloudExadataStorageServerID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CloudExadataStorageServerIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this ManagementCloudListener.
 func (mg *ManagementCloudListener) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -11465,6 +12042,110 @@ func (mg *Migration) ResolveReferences(ctx context.Context, c client.Reader) err
 	return nil
 }
 
+// ResolveReferences of this MigrationAssessment.
+func (mg *MigrationAssessment) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.CompartmentIDRef,
+			Selector:     mg.Spec.ForProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.CompartmentID")
+	}
+	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.CompartmentID),
+			Extract:      reference.ExternalName(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.CompartmentIDRef,
+			Selector:     mg.Spec.InitProvider.CompartmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.CompartmentID")
+	}
+	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
+// ResolveReferences of this MigrationAssessmentAssessorAction.
+func (mg *MigrationAssessmentAssessorAction) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "MigrationAssessment", "MigrationAssessmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AssessmentID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.AssessmentIDRef,
+			Selector:     mg.Spec.ForProvider.AssessmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.AssessmentID")
+	}
+	mg.Spec.ForProvider.AssessmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.AssessmentIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "MigrationAssessment", "MigrationAssessmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AssessmentID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.AssessmentIDRef,
+			Selector:     mg.Spec.InitProvider.AssessmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.AssessmentID")
+	}
+	mg.Spec.InitProvider.AssessmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.AssessmentIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this MigrationConnection.
 func (mg *MigrationConnection) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -11809,6 +12490,58 @@ func (mg *MigrationJob) ResolveReferences(ctx context.Context, c client.Reader) 
 	return nil
 }
 
+// ResolveReferences of this MigrationJobAdvisorReportCheck.
+func (mg *MigrationJobAdvisorReportCheck) ResolveReferences(ctx context.Context, c client.Reader) error {
+	var m xpresource.Managed
+	var l xpresource.ManagedList
+	r := reference.NewAPINamespacedResolver(c, mg)
+
+	var rsp reference.NamespacedResolutionResponse
+	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "MigrationJob", "MigrationJobList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.JobID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.JobIDRef,
+			Selector:     mg.Spec.ForProvider.JobIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.JobID")
+	}
+	mg.Spec.ForProvider.JobID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.JobIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "MigrationJob", "MigrationJobList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.JobID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.JobIDRef,
+			Selector:     mg.Spec.InitProvider.JobIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.JobID")
+	}
+	mg.Spec.InitProvider.JobID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.JobIDRef = rsp.ResolvedReference
+
+	return nil
+}
+
 // ResolveReferences of this MigrationMigration.
 func (mg *MigrationMigration) ResolveReferences(ctx context.Context, c client.Reader) error {
 	var m xpresource.Managed
@@ -11817,6 +12550,26 @@ func (mg *MigrationMigration) ResolveReferences(ctx context.Context, c client.Re
 
 	var rsp reference.NamespacedResolutionResponse
 	var err error
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "MigrationAssessment", "MigrationAssessmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AssessmentID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.ForProvider.AssessmentIDRef,
+			Selector:     mg.Spec.ForProvider.AssessmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.AssessmentID")
+	}
+	mg.Spec.ForProvider.AssessmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.AssessmentIDRef = rsp.ResolvedReference
 	{
 		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 		if err != nil {
@@ -12005,6 +12758,26 @@ func (mg *MigrationMigration) ResolveReferences(ctx context.Context, c client.Re
 	}
 	mg.Spec.ForProvider.TargetDatabaseConnectionID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.TargetDatabaseConnectionIDRef = rsp.ResolvedReference
+	{
+		m, l, err = apisresolver.GetManagedResource("database.oci.m.upbound.io", "v1alpha1", "MigrationAssessment", "MigrationAssessmentList")
+		if err != nil {
+			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+		}
+
+		rsp, err = r.Resolve(ctx, reference.NamespacedResolutionRequest{
+			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.AssessmentID),
+			Extract:      resource.ExtractResourceID(),
+			Namespace:    mg.GetNamespace(),
+			Reference:    mg.Spec.InitProvider.AssessmentIDRef,
+			Selector:     mg.Spec.InitProvider.AssessmentIDSelector,
+			To:           reference.To{List: l, Managed: m},
+		})
+	}
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.InitProvider.AssessmentID")
+	}
+	mg.Spec.InitProvider.AssessmentID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.InitProvider.AssessmentIDRef = rsp.ResolvedReference
 	{
 		m, l, err = apisresolver.GetManagedResource("identity.oci.m.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 		if err != nil {

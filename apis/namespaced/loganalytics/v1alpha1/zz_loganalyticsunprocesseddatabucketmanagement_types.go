@@ -16,19 +16,19 @@ import (
 
 type LogAnalyticsUnprocessedDataBucketManagementInitParameters struct {
 
-	// Name of the Object Storage bucket.
+	// Name of the Object Storage bucket. Bucket name can be obtained by running 'oci os bucket list --namespace-name  --compartment-id '. The json output 'name' parameter value contains the bucket name.
 	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 
 	// Flag that specifies if this configuration is enabled or not.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }
 
 type LogAnalyticsUnprocessedDataBucketManagementObservation struct {
 
-	// Name of the Object Storage bucket.
+	// Name of the Object Storage bucket. Bucket name can be obtained by running 'oci os bucket list --namespace-name  --compartment-id '. The json output 'name' parameter value contains the bucket name.
 	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -36,7 +36,7 @@ type LogAnalyticsUnprocessedDataBucketManagementObservation struct {
 	// Flag that specifies if this configuration is enabled or not.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// The time when this record is created. An RFC3339 formatted datetime string.
@@ -48,7 +48,7 @@ type LogAnalyticsUnprocessedDataBucketManagementObservation struct {
 
 type LogAnalyticsUnprocessedDataBucketManagementParameters struct {
 
-	// Name of the Object Storage bucket.
+	// Name of the Object Storage bucket. Bucket name can be obtained by running 'oci os bucket list --namespace-name  --compartment-id '. The json output 'name' parameter value contains the bucket name.
 	// +kubebuilder:validation:Optional
 	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
 
@@ -56,7 +56,7 @@ type LogAnalyticsUnprocessedDataBucketManagementParameters struct {
 	// +kubebuilder:validation:Optional
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
-	// The Logging Analytics namespace used for the request.
+	// The Log Analytics namespace used for the request. The namespace can be obtained by running 'oci os ns get'
 	// +kubebuilder:validation:Optional
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 }

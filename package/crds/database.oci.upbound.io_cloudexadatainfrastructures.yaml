@@ -750,8 +750,16 @@ spec:
                         availableStorageInGbs:
                           description: Available storage size for Exascale in GBs.
                           type: number
+                        availableVmStorageInGbs:
+                          description: Available storage size for VM storage on Exascale
+                            in GBs.
+                          type: number
                         totalStorageInGbs:
                           description: Storage size needed for Exascale in GBs.
+                          type: number
+                        totalVmStorageInGbs:
+                          description: Storage size needed for VM storage on Exascale
+                            in GBs.
                           type: number
                       type: object
                     type: array

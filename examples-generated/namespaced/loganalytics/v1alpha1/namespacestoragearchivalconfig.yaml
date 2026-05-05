@@ -12,4 +12,5 @@ spec:
     archivingConfiguration:
     - activeStorageDuration: ${var.namespace_storage_archival_config_archiving_configuration_active_storage_duration}
       archivalStorageDuration: ${var.namespace_storage_archival_config_archiving_configuration_archival_storage_duration}
+      timeOldestActiveBucketEnded: ${var.namespace_storage_archival_config_archiving_configuration_time_oldest_active_bucket_ended}
     namespace: ${var.namespace_storage_archival_config_namespace}

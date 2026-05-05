@@ -18,6 +18,7 @@ spec:
     - hostname: ${var.vm_cluster_network_dr_scans_hostname}
       ips: ${var.vm_cluster_network_dr_scans_ips}
       scanListenerPortTcp: ${var.vm_cluster_network_dr_scans_scan_listener_port_tcp}
+      scanListenerPortTcpSsl: ${var.vm_cluster_network_dr_scans_scan_listener_port_tcp_ssl}
     exadataInfrastructureIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_exadata_infrastructure

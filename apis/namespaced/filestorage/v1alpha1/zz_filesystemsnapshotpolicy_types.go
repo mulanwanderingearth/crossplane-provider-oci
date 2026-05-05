@@ -203,6 +203,45 @@ type FilesystemSnapshotPolicyParameters struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 }
 
+type LockDurationDetailsInitParameters struct {
+
+	// (Updatable) For snapshots in compliance mode, a cooling-off period (measured in days) begins. During this time, you can still edit or remove the lock. Once this period ends, the snapshot becomes immutable until the specified retention date expires, permanently preventing any deletion or modification. The cool off duration can be set for a minimum of 0 days and a maximum of 365. It defaults to 14 days if not set.
+	CoolOffDuration *float64 `json:"coolOffDuration,omitempty" tf:"cool_off_duration,omitempty"`
+
+	// (Updatable) The retention period (measured in days) defines how long a snapshot remains locked, preventing user modifications or deletions. In governance mode this period can be adjusted, but in compliance mode it becomes permanent after a cool-off period. Snapshots can be locked for a minimum of 0 days and a maximum of 36,500 days. A value of 0 days stands for an indefinite retention period and it is used for a legal hold.
+	LockDuration *float64 `json:"lockDuration,omitempty" tf:"lock_duration,omitempty"`
+
+	// (Updatable) Can be GOVERNANCE or COMPLIANCE. GOVERNANCE MODE: locks snapshots based on either a retention period or a legal hold. COMPLIANCE MODE: the customer can only remove the snapshot during its cooling-off period. Once that time ends, the snapshot becomes immutable; customers cannot delete or modify it until its set retention date passes. After the snapshot is locked, customers can only increase its retention period.
+	LockMode *string `json:"lockMode,omitempty" tf:"lock_mode,omitempty"`
+}
+
+type LockDurationDetailsObservation struct {
+
+	// (Updatable) For snapshots in compliance mode, a cooling-off period (measured in days) begins. During this time, you can still edit or remove the lock. Once this period ends, the snapshot becomes immutable until the specified retention date expires, permanently preventing any deletion or modification. The cool off duration can be set for a minimum of 0 days and a maximum of 365. It defaults to 14 days if not set.
+	CoolOffDuration *float64 `json:"coolOffDuration,omitempty" tf:"cool_off_duration,omitempty"`
+
+	// (Updatable) The retention period (measured in days) defines how long a snapshot remains locked, preventing user modifications or deletions. In governance mode this period can be adjusted, but in compliance mode it becomes permanent after a cool-off period. Snapshots can be locked for a minimum of 0 days and a maximum of 36,500 days. A value of 0 days stands for an indefinite retention period and it is used for a legal hold.
+	LockDuration *float64 `json:"lockDuration,omitempty" tf:"lock_duration,omitempty"`
+
+	// (Updatable) Can be GOVERNANCE or COMPLIANCE. GOVERNANCE MODE: locks snapshots based on either a retention period or a legal hold. COMPLIANCE MODE: the customer can only remove the snapshot during its cooling-off period. Once that time ends, the snapshot becomes immutable; customers cannot delete or modify it until its set retention date passes. After the snapshot is locked, customers can only increase its retention period.
+	LockMode *string `json:"lockMode,omitempty" tf:"lock_mode,omitempty"`
+}
+
+type LockDurationDetailsParameters struct {
+
+	// (Updatable) For snapshots in compliance mode, a cooling-off period (measured in days) begins. During this time, you can still edit or remove the lock. Once this period ends, the snapshot becomes immutable until the specified retention date expires, permanently preventing any deletion or modification. The cool off duration can be set for a minimum of 0 days and a maximum of 365. It defaults to 14 days if not set.
+	// +kubebuilder:validation:Optional
+	CoolOffDuration *float64 `json:"coolOffDuration,omitempty" tf:"cool_off_duration,omitempty"`
+
+	// (Updatable) The retention period (measured in days) defines how long a snapshot remains locked, preventing user modifications or deletions. In governance mode this period can be adjusted, but in compliance mode it becomes permanent after a cool-off period. Snapshots can be locked for a minimum of 0 days and a maximum of 36,500 days. A value of 0 days stands for an indefinite retention period and it is used for a legal hold.
+	// +kubebuilder:validation:Optional
+	LockDuration *float64 `json:"lockDuration" tf:"lock_duration,omitempty"`
+
+	// (Updatable) Can be GOVERNANCE or COMPLIANCE. GOVERNANCE MODE: locks snapshots based on either a retention period or a legal hold. COMPLIANCE MODE: the customer can only remove the snapshot during its cooling-off period. Once that time ends, the snapshot becomes immutable; customers cannot delete or modify it until its set retention date passes. After the snapshot is locked, customers can only increase its retention period.
+	// +kubebuilder:validation:Optional
+	LockMode *string `json:"lockMode" tf:"lock_mode,omitempty"`
+}
+
 type SchedulesInitParameters struct {
 
 	// (Updatable) The day of the month to create a scheduled snapshot. If the day does not exist for the month, snapshot creation will be skipped. Used for MONTHLY and YEARLY snapshot schedules. If not set, the system chooses a value at creation time.
@@ -213,6 +252,9 @@ type SchedulesInitParameters struct {
 
 	// (Updatable) The hour of the day to create a DAILY, WEEKLY, MONTHLY, or YEARLY snapshot. If not set, the system chooses a value at creation time.
 	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+
+	// (Updatable) Details for setting a retention date or legal hold.
+	LockDurationDetails []LockDurationDetailsInitParameters `json:"lockDurationDetails,omitempty" tf:"lock_duration_details,omitempty"`
 
 	// (Updatable) The month to create a scheduled snapshot. Used only for YEARLY snapshot schedules. If not set, the system chooses a value at creation time.
 	Month *string `json:"month,omitempty" tf:"month,omitempty"`
@@ -243,6 +285,9 @@ type SchedulesObservation struct {
 
 	// (Updatable) The hour of the day to create a DAILY, WEEKLY, MONTHLY, or YEARLY snapshot. If not set, the system chooses a value at creation time.
 	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+
+	// (Updatable) Details for setting a retention date or legal hold.
+	LockDurationDetails []LockDurationDetailsObservation `json:"lockDurationDetails,omitempty" tf:"lock_duration_details,omitempty"`
 
 	// (Updatable) The month to create a scheduled snapshot. Used only for YEARLY snapshot schedules. If not set, the system chooses a value at creation time.
 	Month *string `json:"month,omitempty" tf:"month,omitempty"`
@@ -276,6 +321,10 @@ type SchedulesParameters struct {
 	// (Updatable) The hour of the day to create a DAILY, WEEKLY, MONTHLY, or YEARLY snapshot. If not set, the system chooses a value at creation time.
 	// +kubebuilder:validation:Optional
 	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+
+	// (Updatable) Details for setting a retention date or legal hold.
+	// +kubebuilder:validation:Optional
+	LockDurationDetails []LockDurationDetailsParameters `json:"lockDurationDetails,omitempty" tf:"lock_duration_details,omitempty"`
 
 	// (Updatable) The month to create a scheduled snapshot. Used only for YEARLY snapshot schedules. If not set, the system chooses a value at creation time.
 	// +kubebuilder:validation:Optional

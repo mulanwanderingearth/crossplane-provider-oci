@@ -1,0 +1,16 @@
+apiVersion: loganalytics.oci.m.upbound.io/v1alpha1
+kind: LogAnalyticsEntityAssociationsRemove
+metadata:
+  annotations:
+    meta.upbound.io/example-id: loganalytics/v1alpha1/loganalyticsentityassociationsremove
+  labels:
+    testing.upbound.io/example-name: test_log_analytics_entity_associations_remove
+  name: test-log-analytics-entity-associations-remove
+  namespace: upbound-system
+spec:
+  forProvider:
+    associationEntities: ${var.log_analytics_entity_associations_remove_association_entities}
+    logAnalyticsEntityIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: test_log_analytics_entity
+    namespace: ${var.log_analytics_entity_associations_remove_namespace}

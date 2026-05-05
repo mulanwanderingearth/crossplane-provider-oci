@@ -57,6 +57,106 @@ func (mg *LogAnalyticsEntity) SetWriteConnectionSecretToReference(r *xpv1.Secret
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this LogAnalyticsEntityAssociationsAdd.
+func (mg *LogAnalyticsEntityAssociationsAdd) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this LogAnalyticsEntityAssociationsRemove.
+func (mg *LogAnalyticsEntityAssociationsRemove) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this LogAnalyticsEntityType.
 func (mg *LogAnalyticsEntityType) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
@@ -454,6 +554,56 @@ func (mg *Namespace) SetProviderConfigReference(r *xpv1.Reference) {
 
 // SetWriteConnectionSecretToReference of this Namespace.
 func (mg *Namespace) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this NamespaceAssociation.
+func (mg *NamespaceAssociation) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this NamespaceAssociation.
+func (mg *NamespaceAssociation) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicies of this NamespaceAssociation.
+func (mg *NamespaceAssociation) GetManagementPolicies() xpv1.ManagementPolicies {
+	return mg.Spec.ManagementPolicies
+}
+
+// GetProviderConfigReference of this NamespaceAssociation.
+func (mg *NamespaceAssociation) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+// GetWriteConnectionSecretToReference of this NamespaceAssociation.
+func (mg *NamespaceAssociation) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this NamespaceAssociation.
+func (mg *NamespaceAssociation) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this NamespaceAssociation.
+func (mg *NamespaceAssociation) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicies of this NamespaceAssociation.
+func (mg *NamespaceAssociation) SetManagementPolicies(r xpv1.ManagementPolicies) {
+	mg.Spec.ManagementPolicies = r
+}
+
+// SetProviderConfigReference of this NamespaceAssociation.
+func (mg *NamespaceAssociation) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+// SetWriteConnectionSecretToReference of this NamespaceAssociation.
+func (mg *NamespaceAssociation) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 

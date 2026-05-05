@@ -24,14 +24,8 @@ spec:
     stages:
     - definedTags:
         Operations.CostCenter: "42"
-      displayName: ${var.lifecycle_environment_stages_display_name_1}
+      displayName: ${var.lifecycle_environment_stages_display_name}
       freeformTags:
         Department: Finance
-      rank: ${var.lifecycle_environment_stages_rank_1}
-    - definedTags:
-        Operations.CostCenter: "42"
-      displayName: ${var.lifecycle_environment_stages_display_name_2}
-      freeformTags:
-        Department: Finance
-      rank: ${var.lifecycle_environment_stages_rank_2}
+      rank: ${var.lifecycle_environment_stages_rank}
     vendorName: ${var.lifecycle_environment_vendor_name}

@@ -1,0 +1,21 @@
+apiVersion: email.oci.upbound.io/v1alpha1
+kind: EmailIpPool
+metadata:
+  annotations:
+    meta.upbound.io/example-id: email/v1alpha1/emailippool
+  labels:
+    testing.upbound.io/example-name: test_email_ip_pool
+  name: test-email-ip-pool
+spec:
+  forProvider:
+    compartmentIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: example
+    definedTags:
+      Operations.CostCenter: "42"
+    description: ${var.email_ip_pool_description}
+    freeformTags:
+      Department: Finance
+    lastIpDrainPeriodInHours: ${var.email_ip_pool_last_ip_drain_period_in_hours}
+    name: ${var.email_ip_pool_name}
+    outboundIps: []

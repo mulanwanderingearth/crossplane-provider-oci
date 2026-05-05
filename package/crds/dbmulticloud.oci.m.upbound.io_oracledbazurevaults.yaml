@@ -60,6 +60,8 @@ spec:
             properties:
               forProvider:
                 properties:
+                  action:
+                    type: string
                   azureVaultId:
                     description: (Updatable) Azure Vault ID.
                     type: string
@@ -265,6 +267,9 @@ spec:
                     description: (Updatable) resource's properties.
                     type: object
                     x-kubernetes-map-type: granular
+                  targetRegion:
+                    description: The target region, where resource is replicated.
+                    type: string
                   type:
                     description: (Updatable) Oracle DB Azure Vault resource type.
                     type: string
@@ -282,6 +287,8 @@ spec:
                   for example because of an external controller is managing them, like an
                   autoscaler.
                 properties:
+                  action:
+                    type: string
                   azureVaultId:
                     description: (Updatable) Azure Vault ID.
                     type: string
@@ -487,6 +494,9 @@ spec:
                     description: (Updatable) resource's properties.
                     type: object
                     x-kubernetes-map-type: granular
+                  targetRegion:
+                    description: The target region, where resource is replicated.
+                    type: string
                   type:
                     description: (Updatable) Oracle DB Azure Vault resource type.
                     type: string
@@ -565,6 +575,8 @@ spec:
             properties:
               atProvider:
                 properties:
+                  action:
+                    type: string
                   azureVaultId:
                     description: (Updatable) Azure Vault ID.
                     type: string
@@ -619,6 +631,36 @@ spec:
                     description: (Updatable) resource's properties.
                     type: object
                     x-kubernetes-map-type: granular
+                  replicationMetadata:
+                    description: Replication metadata, it has information about replication
+                      and target region.
+                    items:
+                      properties:
+                        replicationDetails:
+                          description: List of all regions and their respective resource
+                            ID.
+                          items:
+                            properties:
+                              replicationState:
+                                description: The lifecycle state of the Oracle DB
+                                  Azure Vault resource.
+                                type: string
+                              targetRegion:
+                                description: The target region, where resource is
+                                  replicated.
+                                type: string
+                              timeCreated:
+                                description: Time when the Replication was created
+                                  in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+                                type: string
+                              timeUpdated:
+                                description: Time when the Replication was last modified,
+                                  expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    type: array
                   state:
                     description: The lifecycle state of the Oracle DB Azure Vault
                       resource.
@@ -631,13 +673,16 @@ spec:
                       "true"}'
                     type: object
                     x-kubernetes-map-type: granular
+                  targetRegion:
+                    description: The target region, where resource is replicated.
+                    type: string
                   timeCreated:
-                    description: Time when the DB Azure Vault resource was created
-                      in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+                    description: Time when the Replication was created in RFC 3339
+                      timestamp format, e.g. '2020-05-23T21:10:29.600Z'
                     type: string
                   timeUpdated:
-                    description: Time when the DB Azure Vault resource was last modified,
-                      expressed in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
+                    description: Time when the Replication was last modified, expressed
+                      in RFC 3339 timestamp format, e.g. '2020-05-23T21:10:29.600Z'
                     type: string
                   type:
                     description: (Updatable) Oracle DB Azure Vault resource type.

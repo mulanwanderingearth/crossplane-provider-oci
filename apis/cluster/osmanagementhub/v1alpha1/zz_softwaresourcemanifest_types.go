@@ -14,8 +14,6 @@ import (
 )
 
 type SoftwareSourceManifestInitParameters struct {
-
-	// (Updatable) Provides the manifest content used to update the package list of the software source.
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
 	// The OCID of the software source.
@@ -33,10 +31,9 @@ type SoftwareSourceManifestInitParameters struct {
 }
 
 type SoftwareSourceManifestObservation struct {
-
-	// (Updatable) Provides the manifest content used to update the package list of the software source.
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 
+	// The OCID of the software source.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The OCID of the software source.
@@ -45,7 +42,6 @@ type SoftwareSourceManifestObservation struct {
 
 type SoftwareSourceManifestParameters struct {
 
-	// (Updatable) Provides the manifest content used to update the package list of the software source.
 	// +kubebuilder:validation:Optional
 	Content *string `json:"content,omitempty" tf:"content,omitempty"`
 

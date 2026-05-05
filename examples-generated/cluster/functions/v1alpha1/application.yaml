@@ -23,6 +23,8 @@ spec:
       - kmsKeyIdSelector:
           matchLabels:
             testing.upbound.io/example-name: test_key
+    logging:
+    - lineFormat: ${var.application_logging_line_format}
     networkSecurityGroupIdsSelector:
       matchLabels:
         testing.upbound.io/example-name: example

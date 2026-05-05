@@ -53,6 +53,9 @@ type MigrationAssetInitParameters struct {
 	// +kubebuilder:validation:Optional
 	ReplicationCompartmentIDSelector *v1.Selector `json:"replicationCompartmentIdSelector,omitempty" tf:"-"`
 
+	// Replication location detail where the snapshots reside
+	ReplicationLocationDetail []ReplicationLocationDetailInitParameters `json:"replicationLocationDetail,omitempty" tf:"replication_location_detail,omitempty"`
+
 	// (Updatable) Replication schedule identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudmigrations/v1alpha1.ReplicationSchedule
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
@@ -91,6 +94,10 @@ type MigrationAssetObservation struct {
 	// List of migration assets that depend on the asset.
 	DependedOnBy []*string `json:"dependedOnBy,omitempty" tf:"depended_on_by,omitempty"`
 
+	// Mapping of source disk id to destination disk details
+	// +mapType=granular
+	DestinationDisks map[string]*string `json:"destinationDisks,omitempty" tf:"destination_disks,omitempty"`
+
 	// (Updatable) A user-friendly name. If empty, then source asset name will be used. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
@@ -117,6 +124,9 @@ type MigrationAssetObservation struct {
 
 	// Replication compartment identifier
 	ReplicationCompartmentID *string `json:"replicationCompartmentId,omitempty" tf:"replication_compartment_id,omitempty"`
+
+	// Replication location detail where the snapshots reside
+	ReplicationLocationDetail []ReplicationLocationDetailObservation `json:"replicationLocationDetail,omitempty" tf:"replication_location_detail,omitempty"`
 
 	// (Updatable) Replication schedule identifier
 	ReplicationScheduleID *string `json:"replicationScheduleId,omitempty" tf:"replication_schedule_id,omitempty"`
@@ -193,6 +203,10 @@ type MigrationAssetParameters struct {
 	// +kubebuilder:validation:Optional
 	ReplicationCompartmentIDSelector *v1.Selector `json:"replicationCompartmentIdSelector,omitempty" tf:"-"`
 
+	// Replication location detail where the snapshots reside
+	// +kubebuilder:validation:Optional
+	ReplicationLocationDetail []ReplicationLocationDetailParameters `json:"replicationLocationDetail,omitempty" tf:"replication_location_detail,omitempty"`
+
 	// (Updatable) Replication schedule identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudmigrations/v1alpha1.ReplicationSchedule
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()
@@ -220,6 +234,38 @@ type MigrationAssetParameters struct {
 	// Selector for a Bucket in objectstorage to populate snapShotBucketName.
 	// +kubebuilder:validation:Optional
 	SnapShotBucketNameSelector *v1.Selector `json:"snapShotBucketNameSelector,omitempty" tf:"-"`
+}
+
+type ReplicationLocationDetailInitParameters struct {
+
+	// Properties for each of the replication location types
+	// +mapType=granular
+	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+
+	// The type of replication location
+	ReplicationLocationType *string `json:"replicationLocationType,omitempty" tf:"replication_location_type,omitempty"`
+}
+
+type ReplicationLocationDetailObservation struct {
+
+	// Properties for each of the replication location types
+	// +mapType=granular
+	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+
+	// The type of replication location
+	ReplicationLocationType *string `json:"replicationLocationType,omitempty" tf:"replication_location_type,omitempty"`
+}
+
+type ReplicationLocationDetailParameters struct {
+
+	// Properties for each of the replication location types
+	// +kubebuilder:validation:Optional
+	// +mapType=granular
+	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+
+	// The type of replication location
+	// +kubebuilder:validation:Optional
+	ReplicationLocationType *string `json:"replicationLocationType,omitempty" tf:"replication_location_type,omitempty"`
 }
 
 // MigrationAssetSpec defines the desired state of MigrationAsset

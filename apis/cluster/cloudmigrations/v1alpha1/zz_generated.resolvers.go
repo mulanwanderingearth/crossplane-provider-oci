@@ -44,12 +44,34 @@ func (mg *Migration) ResolveReferences( // ResolveReferences of this Migration.
 	}
 	mg.Spec.ForProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.MigrationConfig); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("networking.oci.upbound.io", "v1alpha1", "Subnet", "SubnetList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.MigrationConfig[i3].SubnetID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.MigrationConfig[i3].SubnetIDRef,
+				Selector:     mg.Spec.ForProvider.MigrationConfig[i3].SubnetIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.MigrationConfig[i3].SubnetID")
+		}
+		mg.Spec.ForProvider.MigrationConfig[i3].SubnetID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.MigrationConfig[i3].SubnetIDRef = rsp.ResolvedReference
+
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("cloudmigrations.oci.upbound.io", "v1alpha1", "ReplicationSchedule", "ReplicationScheduleList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
-
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ReplicationScheduleID),
 			Extract:      resource.ExtractResourceID(),
@@ -84,12 +106,34 @@ func (mg *Migration) ResolveReferences( // ResolveReferences of this Migration.
 	}
 	mg.Spec.InitProvider.CompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.InitProvider.CompartmentIDRef = rsp.ResolvedReference
+
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.MigrationConfig); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("networking.oci.upbound.io", "v1alpha1", "Subnet", "SubnetList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.MigrationConfig[i3].SubnetID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.MigrationConfig[i3].SubnetIDRef,
+				Selector:     mg.Spec.InitProvider.MigrationConfig[i3].SubnetIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.MigrationConfig[i3].SubnetID")
+		}
+		mg.Spec.InitProvider.MigrationConfig[i3].SubnetID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.MigrationConfig[i3].SubnetIDRef = rsp.ResolvedReference
+
+	}
 	{
 		m, l, err = apisresolver.GetManagedResource("cloudmigrations.oci.upbound.io", "v1alpha1", "ReplicationSchedule", "ReplicationScheduleList")
 		if err != nil {
 			return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
 		}
-
 		rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 			CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.ReplicationScheduleID),
 			Extract:      resource.ExtractResourceID(),
@@ -351,6 +395,28 @@ func (mg *MigrationPlan) ResolveReferences(ctx context.Context, c client.Reader)
 
 	for i3 := 0; i3 < len(mg.Spec.ForProvider.TargetEnvironments); i3++ {
 		{
+			m, l, err = apisresolver.GetManagedResource("cloudbridge.oci.upbound.io", "v1alpha1", "Asset", "AssetList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.TargetEnvironments[i3].ClusterAssetID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.TargetEnvironments[i3].ClusterAssetIDRef,
+				Selector:     mg.Spec.ForProvider.TargetEnvironments[i3].ClusterAssetIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.TargetEnvironments[i3].ClusterAssetID")
+		}
+		mg.Spec.ForProvider.TargetEnvironments[i3].ClusterAssetID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.TargetEnvironments[i3].ClusterAssetIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.TargetEnvironments); i3++ {
+		{
 			m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
@@ -369,6 +435,28 @@ func (mg *MigrationPlan) ResolveReferences(ctx context.Context, c client.Reader)
 		}
 		mg.Spec.ForProvider.TargetEnvironments[i3].TargetCompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 		mg.Spec.ForProvider.TargetEnvironments[i3].TargetCompartmentIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.ForProvider.TargetEnvironments); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("cloudbridge.oci.upbound.io", "v1alpha1", "Asset", "AssetList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.TargetEnvironments[i3].VnicProfileAssetID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.ForProvider.TargetEnvironments[i3].VnicProfileAssetIDRef,
+				Selector:     mg.Spec.ForProvider.TargetEnvironments[i3].VnicProfileAssetIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.ForProvider.TargetEnvironments[i3].VnicProfileAssetID")
+		}
+		mg.Spec.ForProvider.TargetEnvironments[i3].VnicProfileAssetID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.ForProvider.TargetEnvironments[i3].VnicProfileAssetIDRef = rsp.ResolvedReference
 
 	}
 	{
@@ -433,6 +521,28 @@ func (mg *MigrationPlan) ResolveReferences(ctx context.Context, c client.Reader)
 
 	for i3 := 0; i3 < len(mg.Spec.InitProvider.TargetEnvironments); i3++ {
 		{
+			m, l, err = apisresolver.GetManagedResource("cloudbridge.oci.upbound.io", "v1alpha1", "Asset", "AssetList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.TargetEnvironments[i3].ClusterAssetID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.TargetEnvironments[i3].ClusterAssetIDRef,
+				Selector:     mg.Spec.InitProvider.TargetEnvironments[i3].ClusterAssetIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.TargetEnvironments[i3].ClusterAssetID")
+		}
+		mg.Spec.InitProvider.TargetEnvironments[i3].ClusterAssetID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.TargetEnvironments[i3].ClusterAssetIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.TargetEnvironments); i3++ {
+		{
 			m, l, err = apisresolver.GetManagedResource("identity.oci.upbound.io", "v1alpha1", "Compartment", "CompartmentList")
 			if err != nil {
 				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
@@ -451,6 +561,28 @@ func (mg *MigrationPlan) ResolveReferences(ctx context.Context, c client.Reader)
 		}
 		mg.Spec.InitProvider.TargetEnvironments[i3].TargetCompartmentID = reference.ToPtrValue(rsp.ResolvedValue)
 		mg.Spec.InitProvider.TargetEnvironments[i3].TargetCompartmentIDRef = rsp.ResolvedReference
+
+	}
+	for i3 := 0; i3 < len(mg.Spec.InitProvider.TargetEnvironments); i3++ {
+		{
+			m, l, err = apisresolver.GetManagedResource("cloudbridge.oci.upbound.io", "v1alpha1", "Asset", "AssetList")
+			if err != nil {
+				return errors.Wrap(err, "failed to get the reference target managed resource and its list for reference resolution")
+			}
+			rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+				CurrentValue: reference.FromPtrValue(mg.Spec.InitProvider.TargetEnvironments[i3].VnicProfileAssetID),
+				Extract:      resource.ExtractResourceID(),
+				Namespace:    mg.GetNamespace(),
+				Reference:    mg.Spec.InitProvider.TargetEnvironments[i3].VnicProfileAssetIDRef,
+				Selector:     mg.Spec.InitProvider.TargetEnvironments[i3].VnicProfileAssetIDSelector,
+				To:           reference.To{List: l, Managed: m},
+			})
+		}
+		if err != nil {
+			return errors.Wrap(err, "mg.Spec.InitProvider.TargetEnvironments[i3].VnicProfileAssetID")
+		}
+		mg.Spec.InitProvider.TargetEnvironments[i3].VnicProfileAssetID = reference.ToPtrValue(rsp.ResolvedValue)
+		mg.Spec.InitProvider.TargetEnvironments[i3].VnicProfileAssetIDRef = rsp.ResolvedReference
 
 	}
 

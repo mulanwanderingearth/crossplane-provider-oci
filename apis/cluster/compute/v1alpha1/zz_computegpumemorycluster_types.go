@@ -15,10 +15,10 @@ import (
 
 type ComputeGpuMemoryClusterInitParameters struct {
 
-	// The availability domain of the GPU memory cluster.
+	// The availability domain of the GPU Memory Cluster.
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) The OCID of the compartment that contains the compute GPU memory cluster. compartment.
+	// (Updatable) The OCID of the compartment that contains the compute GPU Memory Cluster. compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
@@ -53,6 +53,9 @@ type ComputeGpuMemoryClusterInitParameters struct {
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
+	// (Updatable) Configuration settings for GPU Memory Cluster scaling.
+	GpuMemoryClusterScaleConfig []GpuMemoryClusterScaleConfigInitParameters `json:"gpuMemoryClusterScaleConfig,omitempty" tf:"gpu_memory_cluster_scale_config,omitempty"`
+
 	// The OCID of the GPU memory fabric.
 	GpuMemoryFabricID *string `json:"gpuMemoryFabricId,omitempty" tf:"gpu_memory_fabric_id,omitempty"`
 
@@ -68,16 +71,20 @@ type ComputeGpuMemoryClusterInitParameters struct {
 	// +kubebuilder:validation:Optional
 	InstanceConfigurationIDSelector *v1.Selector `json:"instanceConfigurationIdSelector,omitempty" tf:"-"`
 
-	// (Updatable) The number of instances currently running in the GpuMemoryCluster
+	// (Updatable) Unique list of OCIDs for private IPs (IPv4/IPv6) associated with the GPU Memory Cluster
+	// +listType=set
+	PrivateIPIds []*string `json:"privateIpIds,omitempty" tf:"private_ip_ids,omitempty"`
+
+	// (Updatable) The desired number of instances for the GPU Memory Cluster.
 	Size *string `json:"size,omitempty" tf:"size,omitempty"`
 }
 
 type ComputeGpuMemoryClusterObservation struct {
 
-	// The availability domain of the GPU memory cluster.
+	// The availability domain of the GPU Memory Cluster.
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) The OCID of the compartment that contains the compute GPU memory cluster. compartment.
+	// (Updatable) The OCID of the compartment that contains the compute GPU Memory Cluster. compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// The OCID of the compute cluster.
@@ -94,36 +101,43 @@ type ComputeGpuMemoryClusterObservation struct {
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
+	// (Updatable) Configuration settings for GPU Memory Cluster scaling.
+	GpuMemoryClusterScaleConfig []GpuMemoryClusterScaleConfigObservation `json:"gpuMemoryClusterScaleConfig,omitempty" tf:"gpu_memory_cluster_scale_config,omitempty"`
+
 	// The OCID of the GPU memory fabric.
 	GpuMemoryFabricID *string `json:"gpuMemoryFabricId,omitempty" tf:"gpu_memory_fabric_id,omitempty"`
 
-	// The OCID for the Customer-unique GPU memory cluster
+	// The OCID for the Customer-unique GPU Memory Cluster
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) Instance Configuration to be used for this GPU Memory Cluster
 	InstanceConfigurationID *string `json:"instanceConfigurationId,omitempty" tf:"instance_configuration_id,omitempty"`
 
-	// (Updatable) The number of instances currently running in the GpuMemoryCluster
+	// (Updatable) Unique list of OCIDs for private IPs (IPv4/IPv6) associated with the GPU Memory Cluster
+	// +listType=set
+	PrivateIPIds []*string `json:"privateIpIds,omitempty" tf:"private_ip_ids,omitempty"`
+
+	// (Updatable) The desired number of instances for the GPU Memory Cluster.
 	Size *string `json:"size,omitempty" tf:"size,omitempty"`
 
-	// The lifecycle state of the GPU memory cluster
+	// The lifecycle state of the GPU Memory Cluster
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +mapType=granular
 	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
-	// The date and time the GPU memory cluster was created.  Example: 2016-09-15T21:10:29.600Z
+	// The date and time the GPU Memory Cluster was created.  Example: 2016-09-15T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 }
 
 type ComputeGpuMemoryClusterParameters struct {
 
-	// The availability domain of the GPU memory cluster.
+	// The availability domain of the GPU Memory Cluster.
 	// +kubebuilder:validation:Optional
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
-	// (Updatable) The OCID of the compartment that contains the compute GPU memory cluster. compartment.
+	// (Updatable) The OCID of the compartment that contains the compute GPU Memory Cluster. compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
 	// +kubebuilder:validation:Optional
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -163,6 +177,10 @@ type ComputeGpuMemoryClusterParameters struct {
 	// +mapType=granular
 	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
+	// (Updatable) Configuration settings for GPU Memory Cluster scaling.
+	// +kubebuilder:validation:Optional
+	GpuMemoryClusterScaleConfig []GpuMemoryClusterScaleConfigParameters `json:"gpuMemoryClusterScaleConfig,omitempty" tf:"gpu_memory_cluster_scale_config,omitempty"`
+
 	// The OCID of the GPU memory fabric.
 	// +kubebuilder:validation:Optional
 	GpuMemoryFabricID *string `json:"gpuMemoryFabricId,omitempty" tf:"gpu_memory_fabric_id,omitempty"`
@@ -180,9 +198,53 @@ type ComputeGpuMemoryClusterParameters struct {
 	// +kubebuilder:validation:Optional
 	InstanceConfigurationIDSelector *v1.Selector `json:"instanceConfigurationIdSelector,omitempty" tf:"-"`
 
-	// (Updatable) The number of instances currently running in the GpuMemoryCluster
+	// (Updatable) Unique list of OCIDs for private IPs (IPv4/IPv6) associated with the GPU Memory Cluster
+	// +kubebuilder:validation:Optional
+	// +listType=set
+	PrivateIPIds []*string `json:"privateIpIds,omitempty" tf:"private_ip_ids,omitempty"`
+
+	// (Updatable) The desired number of instances for the GPU Memory Cluster.
 	// +kubebuilder:validation:Optional
 	Size *string `json:"size,omitempty" tf:"size,omitempty"`
+}
+
+type GpuMemoryClusterScaleConfigInitParameters struct {
+
+	// (Updatable) Enables downsizing towards the target size.
+	IsDownsizeEnabled *bool `json:"isDownsizeEnabled,omitempty" tf:"is_downsize_enabled,omitempty"`
+
+	// (Updatable) Enables upsizing towards the target size.
+	IsUpsizeEnabled *bool `json:"isUpsizeEnabled,omitempty" tf:"is_upsize_enabled,omitempty"`
+
+	// (Updatable) The configured target size for the GPU Memory Cluster.
+	TargetSize *string `json:"targetSize,omitempty" tf:"target_size,omitempty"`
+}
+
+type GpuMemoryClusterScaleConfigObservation struct {
+
+	// (Updatable) Enables downsizing towards the target size.
+	IsDownsizeEnabled *bool `json:"isDownsizeEnabled,omitempty" tf:"is_downsize_enabled,omitempty"`
+
+	// (Updatable) Enables upsizing towards the target size.
+	IsUpsizeEnabled *bool `json:"isUpsizeEnabled,omitempty" tf:"is_upsize_enabled,omitempty"`
+
+	// (Updatable) The configured target size for the GPU Memory Cluster.
+	TargetSize *string `json:"targetSize,omitempty" tf:"target_size,omitempty"`
+}
+
+type GpuMemoryClusterScaleConfigParameters struct {
+
+	// (Updatable) Enables downsizing towards the target size.
+	// +kubebuilder:validation:Optional
+	IsDownsizeEnabled *bool `json:"isDownsizeEnabled,omitempty" tf:"is_downsize_enabled,omitempty"`
+
+	// (Updatable) Enables upsizing towards the target size.
+	// +kubebuilder:validation:Optional
+	IsUpsizeEnabled *bool `json:"isUpsizeEnabled" tf:"is_upsize_enabled,omitempty"`
+
+	// (Updatable) The configured target size for the GPU Memory Cluster.
+	// +kubebuilder:validation:Optional
+	TargetSize *string `json:"targetSize,omitempty" tf:"target_size,omitempty"`
 }
 
 // ComputeGpuMemoryClusterSpec defines the desired state of ComputeGpuMemoryCluster

@@ -21,8 +21,13 @@ spec:
     displayName: ${var.compute_gpu_memory_cluster_display_name}
     freeformTags:
       Department: Finance
+    gpuMemoryClusterScaleConfig:
+    - isDownsizeEnabled: ${var.compute_gpu_memory_cluster_gpu_memory_cluster_scale_config_is_downsize_enabled}
+      isUpsizeEnabled: ${var.compute_gpu_memory_cluster_gpu_memory_cluster_scale_config_is_upsize_enabled}
+      targetSize: ${var.compute_gpu_memory_cluster_gpu_memory_cluster_scale_config_target_size}
     gpuMemoryFabricId: ${oci_core_gpu_memory_fabric.test_gpu_memory_fabric.id}
     instanceConfigurationIdSelector:
       matchLabels:
         testing.upbound.io/example-name: test_instance_configuration
+    privateIpIds: ${var.compute_gpu_memory_cluster_private_ip_ids}
     size: ${var.compute_gpu_memory_cluster_size}
