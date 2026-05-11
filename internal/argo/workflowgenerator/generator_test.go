@@ -11,7 +11,7 @@ func TestRunGeneratesWorkflow(t *testing.T) {
 	root := t.TempDir()
 	cfg := NewConfig(root, "v1alpha1", nil)
 
-	writeTestFile(t, filepath.Join(cfg.InputDir, "network-v1alpha1.yaml"), `
+	writeTestFile(t, filepath.Join(cfg.InputDir, "cluster", "network-cluster-v1alpha1.yaml"), `
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
@@ -23,7 +23,7 @@ spec:
     - name: compartment_ocid
       value: foo
 `)
-	writeTestFile(t, filepath.Join(cfg.InputDir, "identity-v1alpha1.yaml"), `
+	writeTestFile(t, filepath.Join(cfg.InputDir, "namespaced", "identity-namespaced-v1alpha1.yaml"), `
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
@@ -39,21 +39,38 @@ spec:
 		t.Fatalf("Run() unexpected error: %v", err)
 	}
 
-	outputPath := filepath.Join(cfg.OutputDir, "crossplane-provider-oci-v1alpha1.yaml")
-	data, err := os.ReadFile(outputPath)
+	clusterOutputPath := filepath.Join(cfg.OutputDir, "crossplane-provider-oci-cluster-v1alpha1.yaml")
+	clusterData, err := os.ReadFile(clusterOutputPath)
 	if err != nil {
-		t.Fatalf("expected output file: %v", err)
+		t.Fatalf("expected cluster output file: %v", err)
 	}
 
-	output := string(data)
-	if !strings.Contains(output, "name: run_identity_tests") {
-		t.Fatalf("generated workflow missing identity run param: %s", output)
+	clusterOutput := string(clusterData)
+	if strings.Contains(clusterOutput, "identity-template") {
+		t.Fatalf("cluster workflow unexpectedly referenced namespaced service: %s", clusterOutput)
 	}
-	if !strings.Contains(output, "name: run_network_tests") {
-		t.Fatalf("generated workflow missing network run param: %s", output)
+	if !strings.Contains(clusterOutput, "name: run_network_cluster_tests") {
+		t.Fatalf("cluster workflow missing network run param: %s", clusterOutput)
 	}
-	if !strings.Contains(output, "name: compartment_ocid") || !strings.Contains(output, "name: tenancy_ocid") {
-		t.Fatalf("generated workflow missing merged parameters: %s", output)
+	if strings.Contains(clusterOutput, "namespace_list") {
+		t.Fatalf("cluster workflow should not declare namespace_list parameter: %s", clusterOutput)
+	}
+
+	namespacedOutputPath := filepath.Join(cfg.OutputDir, "crossplane-provider-oci-namespaced-v1alpha1.yaml")
+	namespacedData, err := os.ReadFile(namespacedOutputPath)
+	if err != nil {
+		t.Fatalf("expected namespaced output file: %v", err)
+	}
+
+	namespacedOutput := string(namespacedData)
+	if !strings.Contains(namespacedOutput, "name: run_identity_namespaced_tests") {
+		t.Fatalf("namespaced workflow missing identity run param: %s", namespacedOutput)
+	}
+	if !strings.Contains(namespacedOutput, "name: namespace_list") {
+		t.Fatalf("namespaced workflow missing namespace_list parameter: %s", namespacedOutput)
+	}
+	if !strings.Contains(namespacedOutput, "{{item}}") {
+		t.Fatalf("namespaced workflow missing namespace iteration: %s", namespacedOutput)
 	}
 }
 
@@ -61,7 +78,7 @@ func TestRunFiltersRequestedServices(t *testing.T) {
 	root := t.TempDir()
 	cfg := NewConfig(root, "v1alpha1", []string{"network"})
 
-	writeTestFile(t, filepath.Join(cfg.InputDir, "network-v1alpha1.yaml"), `
+	writeTestFile(t, filepath.Join(cfg.InputDir, "cluster", "network-cluster-v1alpha1.yaml"), `
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
@@ -69,30 +86,35 @@ metadata:
 spec:
   entrypoint: network-tests
 `)
-	writeTestFile(t, filepath.Join(cfg.InputDir, "identity-v1alpha1.yaml"), `
+	writeTestFile(t, filepath.Join(cfg.InputDir, "namespaced", "network-namespaced-v1alpha1.yaml"), `
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
-  name: identity-template
+  name: network-template-namespaced
 spec:
-  entrypoint: identity-tests
+  entrypoint: network-tests-namespaced
 `)
 
 	if err := Run(cfg); err != nil {
 		t.Fatalf("Run() unexpected error: %v", err)
 	}
 
-	outputPath := filepath.Join(cfg.OutputDir, "crossplane-provider-oci-v1alpha1.yaml")
-	data, err := os.ReadFile(outputPath)
+	clusterOutputPath := filepath.Join(cfg.OutputDir, "crossplane-provider-oci-cluster-v1alpha1.yaml")
+	clusterData, err := os.ReadFile(clusterOutputPath)
 	if err != nil {
-		t.Fatalf("expected output file: %v", err)
+		t.Fatalf("expected cluster output file: %v", err)
 	}
-	output := string(data)
-	if strings.Contains(output, "identity-template") {
-		t.Fatalf("generated workflow unexpectedly included filtered service: %s", output)
+	clusterOutput := string(clusterData)
+	if strings.Contains(clusterOutput, "identity-template") {
+		t.Fatalf("cluster workflow unexpectedly included filtered service: %s", clusterOutput)
 	}
-	if !strings.Contains(output, "network-template") {
-		t.Fatalf("generated workflow missing requested service: %s", output)
+	if !strings.Contains(clusterOutput, "network-template") {
+		t.Fatalf("cluster workflow missing requested service: %s", clusterOutput)
+	}
+
+	namespacedOutputPath := filepath.Join(cfg.OutputDir, "crossplane-provider-oci-namespaced-v1alpha1.yaml")
+	if _, err := os.Stat(namespacedOutputPath); err != nil {
+		t.Fatalf("expected namespaced output file: %v", err)
 	}
 }
 

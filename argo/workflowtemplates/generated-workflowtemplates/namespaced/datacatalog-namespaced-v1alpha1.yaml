@@ -1,0 +1,127 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: oci-datacatalog-namespaced-v1alpha1-tests-template
+spec:
+  serviceAccountName: argo-workflow
+  entrypoint: datacatalog-namespaced-tests-workflow
+  volumes:
+    - name: git-repo
+      persistentVolumeClaim:
+        claimName: git-repo-pvc
+  arguments:
+    parameters:
+    - name: target_namespace
+    - name: compartment_ocid
+    - name: create_compartment
+      value: "true"
+    - name: create_subnet
+      value: "true"
+    - name: create_vcn
+      value: "true"
+    - name: create_resources
+      value: "true"
+    - name: delete_resources
+      value: "true"
+  templates:
+    - name: datacatalog-namespaced-tests-workflow
+      inputs:
+        parameters:
+          - name: target_namespace
+            value: "{{workflow.parameters.target_namespace}}"
+      dag:
+        tasks:
+        - name: create-compartment
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_compartment}} == true"
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/identity/v1alpha1/compartment.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+              - name: envVars
+                value: "COMPARTMENT_OCID={{workflow.parameters.compartment_ocid}}"
+        - name: create-subnet
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_subnet}} == true"
+          dependencies: [create-compartment, create-vcn]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/networking/v1alpha1/subnet.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-vcn
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_vcn}} == true"
+          dependencies: [create-compartment]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/networking/v1alpha1/vcn.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-catalog
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-compartment]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/datacatalog/v1alpha1/catalog.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: create-catalogprivateendpoint
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-compartment, create-subnet]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/datacatalog/v1alpha1/catalogprivateendpoint.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-catalog
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-catalog"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-catalog.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-catalog.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-catalog.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-catalogprivateendpoint
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-catalogprivateendpoint"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-catalogprivateendpoint.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-catalogprivateendpoint.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-catalogprivateendpoint.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"

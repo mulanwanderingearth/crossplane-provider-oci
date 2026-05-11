@@ -14,12 +14,18 @@ spec:
           value: "" # Default value, can be overridden
         - name: setupEnvVars
           value: "" # Default value, can be overridden
+        - name: namespace
+          value: "" # Optional namespace
       container:
         image: docker.io/alpine/k8s:1.31.13
         command: [bash, -c]
         args:
         - |
           set -e
+          ns_arg=""
+          if [ -n "{{inputs.parameters.namespace}}" ]; then
+            ns_arg="--namespace {{inputs.parameters.namespace}}"
+          fi
           # Apply setup YAML if provided
           if [ -n "{{inputs.parameters.setupFile}}" ]; then
             echo "Applying setup from file: {{inputs.parameters.setupFile}}"
@@ -52,10 +58,10 @@ spec:
               export $envVar
             done
           fi
-          envsubst < /git-repo/{{inputs.parameters.resourceFile}} | kubectl apply -f - 
+          envsubst < /git-repo/{{inputs.parameters.resourceFile}} | kubectl apply ${ns_arg} -f -
           echo "Validating ${kind,,} ${name,,} creation..."
-          echo "kubectl wait --for=condition=Ready=True ${kind,,}.${group}/${name,,} --timeout=900s"
-          kubectl wait --for=condition=Ready=True ${kind,,}.${group}/${name,,} --timeout=900s
+          echo "kubectl wait --for=condition=Ready=True ${kind,,}.${group}/${name,,} ${ns_arg} --timeout=900s"
+          kubectl wait --for=condition=Ready=True ${kind,,}.${group}/${name,,} ${ns_arg} --timeout=900s
           echo "Resource created successfully."
         volumeMounts:
         - name: git-repo
@@ -81,12 +87,18 @@ spec:
           value: "" # Default value, can be overridden
         - name: teardownEnvVars
           value: "" # Default value, can be overridden
+        - name: namespace
+          value: "" # Optional namespace
       container:
         image: docker.io/alpine/k8s:1.31.13
         command: [bash, -c]
         args:
         - |
           set -e
+          ns_arg=""
+          if [ -n "{{inputs.parameters.namespace}}" ]; then
+            ns_arg="--namespace {{inputs.parameters.namespace}}"
+          fi
           # Apply teardown YAML if provided
           if [ -n "{{inputs.parameters.teardownFile}}" ]; then
             echo "Applying teardown from file: {{inputs.parameters.teardownFile}}"
@@ -101,9 +113,9 @@ spec:
 
           # Delete the main resource
           echo "Deleting {{inputs.parameters.resourceKind}}.{{inputs.parameters.resourceGroup}} {{inputs.parameters.resourceName}}"
-          kubectl delete {{inputs.parameters.resourceKind}}.{{inputs.parameters.resourceGroup}}/{{inputs.parameters.resourceName}}
+          kubectl delete {{inputs.parameters.resourceKind}}.{{inputs.parameters.resourceGroup}}/{{inputs.parameters.resourceName}} ${ns_arg}
           echo "Waiting for {{inputs.parameters.resourceKind}} {{inputs.parameters.resourceName}} deletion..."
-          kubectl wait --for=delete {{inputs.parameters.resourceKind}}.{{inputs.parameters.resourceGroup}}/{{inputs.parameters.resourceName}} --timeout=900s
+          kubectl wait --for=delete {{inputs.parameters.resourceKind}}.{{inputs.parameters.resourceGroup}}/{{inputs.parameters.resourceName}} ${ns_arg} --timeout=900s
           echo "Resource deleted successfully."
         volumeMounts:
         - name: git-repo
@@ -113,14 +125,20 @@ spec:
         parameters:
         - name: resourceKind
         - name: resourceName
+        - name: namespace
+          value: "" # Optional namespace
       container:
         image: docker.io/alpine/k8s:1.31.13
         command: [bash, -c]
         args:
         - |
           set -e
+          ns_arg=""
+          if [ -n "{{inputs.parameters.namespace}}" ]; then
+            ns_arg="--namespace {{inputs.parameters.namespace}}"
+          fi
           echo "Describing {{inputs.parameters.resourceKind}} {{inputs.parameters.resourceName}}"
-          kubectl describe {{inputs.parameters.resourceKind}}/{{inputs.parameters.resourceName}} > /tmp/{{inputs.parameters.resourceName}}-description.txt
+          kubectl describe {{inputs.parameters.resourceKind}}/{{inputs.parameters.resourceName}} ${ns_arg} > /tmp/{{inputs.parameters.resourceName}}-description.txt
           cat /tmp/{{inputs.parameters.resourceName}}-description.txt
         volumeMounts:
         - name: git-repo

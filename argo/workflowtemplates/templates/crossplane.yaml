@@ -13,6 +13,8 @@ spec:
         - name: provider-image-repo-name
         - name: family-provider-version
         - name: tenancy
+        - name: test-namespaces
+          value: "" # Comma-separated list of namespaces that should receive ProviderConfigs and secrets
       container:
         image: docker.io/alpine/k8s:1.31.13
         command: [bash, -c]
@@ -23,6 +25,7 @@ spec:
           echo "Region: {{inputs.parameters.region}}"
           echo "Providers: {{inputs.parameters.providers}}"
           echo "Family Provider Version: {{inputs.parameters.family-provider-version}}"
+          echo "Test Namespaces: {{inputs.parameters.test-namespaces}}"
           /git-repo/argo/scripts/setup_crossplane.sh
         volumeMounts:
         - name: git-repo
@@ -40,6 +43,8 @@ spec:
           value: "{{inputs.parameters.tenancy}}"
         - name: PROVIDER_IMAGE_REPO_NAME
           value: "{{inputs.parameters.provider-image-repo-name}}"
+        - name: TEST_NAMESPACES
+          value: "{{inputs.parameters.test-namespaces}}"
     - name: delete-crossplane
       inputs:
         parameters:

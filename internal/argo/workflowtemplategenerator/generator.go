@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"text/template"
@@ -21,6 +22,9 @@ const (
 	createResourcesWhen = "{{workflow.parameters.create_resources}}"
 	deleteResourcesWhen = "{{workflow.parameters.delete_resources}}"
 	templateFileName    = "workflowtemplate.yaml.tmpl"
+
+	scopeCluster    = "cluster"
+	scopeNamespaced = "namespaced"
 )
 
 //go:embed templates/*.tmpl
@@ -28,10 +32,11 @@ var templateFS embed.FS
 
 // Config contains resolved paths and runtime inputs for workflowtemplate generation.
 type Config struct {
-	RootDir     string // Repository root used to derive default paths.
-	Version     string // Target version directory under each service in examples/.
-	ExamplesDir string // Root directory containing service example manifests.
-	OutputDir   string // Directory where generated WorkflowTemplates are written.
+	RootDir     string   // Repository root used to derive default paths.
+	Version     string   // Target version directory under each service in examples/.
+	ExamplesDir string   // Root directory containing service example manifests.
+	OutputDir   string   // Directory where generated WorkflowTemplates are written.
+	Services    []string // Optional allow-list of services to generate.
 }
 
 // Prerequisite represents a resource dependency resolved from selectors.
@@ -57,6 +62,9 @@ type ResourceFile struct {
 type TemplateData struct {
 	Service                   string         // Service name used in WorkflowTemplate metadata and task names.
 	Version                   string         // Version being rendered for the service.
+	Scope                     string         // Scope identifier: cluster or namespaced.
+	NeedsNamespace            bool           // Indicates if rendered template requires namespace parameter.
+	NamespaceParameter        string         // Parameter name used for namespace injection when needed.
 	ResourceFiles             []ResourceFile // In-service resources rendered as create/delete tasks.
 	PrerequisiteResourceFiles []ResourceFile // Cross-service prerequisite resources rendered ahead of main tasks.
 	EnvVars                   []string       // Normalized workflow parameters required by the service resources.
@@ -64,9 +72,9 @@ type TemplateData struct {
 
 // Generator owns config, embedded template state, and the per-run prerequisite lookup cache.
 type Generator struct {
-	config                    Config                  // Immutable runtime configuration for the current generation run.
-	workflowTemplate          *template.Template      // Parsed embedded template reused across all rendered services.
-	resourceKindToFileMapping map[Prerequisite]string // Cache of prerequisite key to example file path.
+	config                    Config                             // Immutable runtime configuration for the current generation run.
+	workflowTemplate          *template.Template                 // Parsed embedded template reused across all rendered services.
+	resourceKindToFileMapping map[Prerequisite]map[string]string // Cache of prerequisite key to example file path, keyed by scope.
 }
 
 var selectorKindOverrides = map[string]map[string]string{
@@ -146,6 +154,11 @@ var selectorKindOverrides = map[string]map[string]string{
 	},
 }
 
+var (
+	versionDirRegexp      = regexp.MustCompile(`^v\d+.*`)
+	envVarNameSanitizerRe = regexp.MustCompile(`[^A-Za-z0-9_]`)
+)
+
 // NewConfig builds the default example input and generated-workflowtemplate output paths.
 func NewConfig(rootDir, version string) Config {
 	return Config{
@@ -186,7 +199,7 @@ func NewGenerator(config Config) (*Generator, error) {
 
 	g := &Generator{
 		config:                    cfg,
-		resourceKindToFileMapping: map[Prerequisite]string{},
+		resourceKindToFileMapping: map[Prerequisite]map[string]string{},
 	}
 
 	workflowTemplate, err := g.loadWorkflowTemplate()
@@ -206,9 +219,12 @@ func (g *Generator) Run() error {
 // loadWorkflowTemplate parses the embedded Argo template file and wires helper functions.
 func (g *Generator) loadWorkflowTemplate() (*template.Template, error) {
 	funcs := template.FuncMap{
+		"normalizeTaskName":       normalizeTaskName,
 		"quoteJoin":               quoteJoin,
 		"resolveEnvVars":          resolveEnvVars,
 		"resolveWhen":             resolveWhen,
+		"resolveParameter":        resolveWorkflowParameter,
+		"resolveInputParameter":   resolveInputParameter,
 		"resolveResourceFile":     resolveResourceFile,
 		"joinCreateDependencies":  g.joinCreateDependencies,
 		"joinDeleteDependencies":  joinDeleteDependencies,
@@ -238,7 +254,8 @@ func resolveEnvVars(envVars map[string]string) string {
 	parts := make([]string, 0, len(keys))
 	for _, key := range keys {
 		value := envVars[key]
-		parts = append(parts, fmt.Sprintf("%s=${%s}", key, strings.ToLower(value)))
+		escapedKey := strings.ReplaceAll(key, "\"", "\\\"")
+		parts = append(parts, fmt.Sprintf("%s=${%s}", escapedKey, strings.ToLower(value)))
 	}
 
 	joined := strings.Join(parts, ",")
@@ -266,6 +283,16 @@ func resolveWhen(mode string, kind ...string) string {
 // resolveResourceFile prefixes resource paths with the examples root for templates.
 func resolveResourceFile(path string) string {
 	return fmt.Sprintf("examples/%s", path)
+}
+
+// resolveWorkflowParameter renders an Argo workflow parameter reference expression.
+func resolveWorkflowParameter(parameterName string) string {
+	return fmt.Sprintf("{{workflow.parameters.%s}}", parameterName)
+}
+
+// resolveInputParameter renders an Argo template input parameter reference expression.
+func resolveInputParameter(parameterName string) string {
+	return fmt.Sprintf("{{inputs.parameters.%s}}", parameterName)
 }
 
 // joinCreateDependencies returns comma-separated create task dependencies.
@@ -305,33 +332,63 @@ func normalizeTaskName(name string) string {
 
 // processExamples loads the workflow template and processes each service/version.
 func (g *Generator) processExamples() error {
-	services, err := os.ReadDir(g.config.ExamplesDir)
-	if err != nil {
-		return err
-	}
-	sort.Slice(services, func(i, j int) bool { return services[i].Name() < services[j].Name() })
+	clusterRoot := filepath.Join(g.config.ExamplesDir, "cluster")
+	namespacedRoot := filepath.Join(g.config.ExamplesDir, "namespaced")
 
 	if err := os.MkdirAll(g.config.OutputDir, os.ModePerm); err != nil {
 		return err
 	}
 
+	serviceSet := make(map[string]struct{})
+	addServicesFromDir(serviceSet, clusterRoot)
+	addServicesFromDir(serviceSet, namespacedRoot)
+
+	services := make([]string, 0, len(serviceSet))
+	for service := range serviceSet {
+		services = append(services, service)
+	}
+	sort.Strings(services)
+
+	if len(g.config.Services) > 0 {
+		discovered := make(map[string]struct{}, len(services))
+		for _, svc := range services {
+			discovered[svc] = struct{}{}
+		}
+
+		allowed := make(map[string]struct{}, len(g.config.Services))
+		missing := make([]string, 0)
+		for _, svc := range g.config.Services {
+			if trimmed := strings.TrimSpace(svc); trimmed != "" {
+				allowed[trimmed] = struct{}{}
+				if _, ok := discovered[trimmed]; !ok {
+					missing = append(missing, trimmed)
+				}
+			}
+		}
+		if len(missing) > 0 {
+			sort.Strings(missing)
+			return fmt.Errorf("unknown service(s): %s", strings.Join(missing, ", "))
+		}
+
+		filtered := services[:0]
+		for _, svc := range services {
+			if _, ok := allowed[svc]; ok {
+				filtered = append(filtered, svc)
+			}
+		}
+		services = filtered
+	}
+
 	serviceErrors := make([]error, 0)
-	for _, service := range services {
-		if !service.IsDir() {
-			continue
-		}
+	for _, serviceName := range services {
+		version := g.config.Version
+		clusterVersionPath := filepath.Join(clusterRoot, serviceName, version)
+		namespacedVersionPath := filepath.Join(namespacedRoot, serviceName, version)
 
-		servicePath := filepath.Join(g.config.ExamplesDir, service.Name())
-		// Only process a service if the requested version directory exists.
-		versionPath := filepath.Join(servicePath, g.config.Version)
-		if _, err := os.Stat(versionPath); err != nil {
-			continue
-		}
-
-		log.Printf("Processing %s/%s", service.Name(), g.config.Version)
-		if err := g.processService(service.Name(), versionPath); err != nil {
-			log.Printf("Error processing service %s: %v", service.Name(), err)
-			serviceErrors = append(serviceErrors, fmt.Errorf("%s: %w", service.Name(), err))
+		log.Printf("Processing %s/%s", serviceName, version)
+		if err := g.processService(serviceName, version, clusterVersionPath, namespacedVersionPath); err != nil {
+			log.Printf("Error processing service %s version %s: %v", serviceName, version, err)
+			serviceErrors = append(serviceErrors, fmt.Errorf("%s/%s: %w", serviceName, version, err))
 		}
 	}
 
@@ -341,39 +398,147 @@ func (g *Generator) processExamples() error {
 	return nil
 }
 
-// processService builds template data for a single service/version and writes output.
-func (g *Generator) processService(serviceName, versionPath string) error {
-	resourceFiles, err := g.getResourceFiles(versionPath)
+func addServicesFromDir(serviceSet map[string]struct{}, root string) {
+	entries, err := os.ReadDir(root)
 	if err != nil {
-		return err
+		return
+	}
+	for _, entry := range entries {
+		if entry.IsDir() {
+			serviceSet[entry.Name()] = struct{}{}
+		}
+	}
+}
+
+// processService builds template data for a single service/version and writes output.
+func (g *Generator) processService(serviceName, version string, clusterVersionPath, namespacedVersionPath string) error {
+	scopeConfigs := []struct {
+		name           string
+		needsNamespace bool
+	}{
+		{name: scopeCluster, needsNamespace: false},
+		{name: scopeNamespaced, needsNamespace: true},
+	}
+
+	var scopeErrors []error
+	for _, scopeCfg := range scopeConfigs {
+		var scopePath string
+		switch scopeCfg.name {
+		case scopeCluster:
+			scopePath = clusterVersionPath
+		case scopeNamespaced:
+			scopePath = namespacedVersionPath
+		default:
+			scopeErrors = append(scopeErrors, fmt.Errorf("unknown scope %s for service %s", scopeCfg.name, serviceName))
+			continue
+		}
+
+		exists, err := directoryContainsYAML(scopePath)
+		if err != nil {
+			scopeErrors = append(scopeErrors, err)
+			continue
+		}
+		if !exists {
+			continue
+		}
+
+		data, err := g.buildTemplateData(serviceName, version, scopeCfg.name, scopePath, scopeCfg.needsNamespace)
+		if err != nil {
+			scopeErrors = append(scopeErrors, err)
+			continue
+		}
+
+		scopeOutputDir := filepath.Join(g.config.OutputDir, scopeCfg.name)
+		if err := os.MkdirAll(scopeOutputDir, os.ModePerm); err != nil {
+			scopeErrors = append(scopeErrors, err)
+			continue
+		}
+
+		outputFileName := fmt.Sprintf("%s-%s-%s.yaml", serviceName, scopeCfg.name, g.config.Version)
+		outputPath := filepath.Join(scopeOutputDir, outputFileName)
+		if err := g.generateWorkflowTemplateFile(outputPath, data); err != nil {
+			scopeErrors = append(scopeErrors, err)
+		}
+	}
+
+	if len(scopeErrors) > 0 {
+		return errors.Join(scopeErrors...)
+	}
+	return nil
+}
+
+func directoryContainsYAML(path string) (bool, error) {
+	info, err := os.Stat(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return false, nil
+		}
+		return false, err
+	}
+	if !info.IsDir() {
+		return false, fmt.Errorf("%s is not a directory", path)
+	}
+
+	entries, err := os.ReadDir(path)
+	if err != nil {
+		return false, err
+	}
+	for _, entry := range entries {
+		if entry.IsDir() {
+			continue
+		}
+		switch strings.ToLower(filepath.Ext(entry.Name())) {
+		case ".yaml", ".yml":
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+func (g *Generator) buildTemplateData(serviceName, version, scope, scopePath string, needsNamespace bool) (TemplateData, error) {
+	resourceFiles, err := g.getResourceFiles(scopePath)
+	if err != nil {
+		return TemplateData{}, err
+	}
+	if len(resourceFiles) == 0 {
+		return TemplateData{}, fmt.Errorf("no resource files found in %s", scopePath)
 	}
 	sortResourceFiles(resourceFiles)
 
-	resourceIndex := g.indexResources(resourceFiles)
+	resourceIndex := g.indexResources(resourceFiles, scope)
 	updateDependentNames(resourceIndex)
 	resourceFiles = applyDependentNames(resourceFiles, resourceIndex)
 
-	prerequisiteResourceFiles, envVars := g.collectPrerequisitesAndEnvVars(resourceFiles)
+	prerequisiteResourceFiles, envVars := g.collectPrerequisitesAndEnvVars(resourceFiles, scope)
 
 	data := TemplateData{
 		Service:                   serviceName,
-		Version:                   g.config.Version,
+		Version:                   version,
+		Scope:                     scope,
+		NeedsNamespace:            needsNamespace,
+		NamespaceParameter:        "target_namespace",
 		ResourceFiles:             resourceFiles,
 		PrerequisiteResourceFiles: prerequisiteResourceFiles,
 		EnvVars:                   envVars,
 	}
 
-	workflowOutputPath := filepath.Join(g.config.OutputDir, fmt.Sprintf("%s-%s.yaml", serviceName, g.config.Version))
-	return g.generateWorkflowTemplateFile(workflowOutputPath, data)
+	if !needsNamespace {
+		data.NamespaceParameter = ""
+	}
+
+	return data, nil
 }
 
 // indexResources indexes resources by (kind, selector) and seeds the lookup cache.
-func (g *Generator) indexResources(resourceFiles []ResourceFile) map[Prerequisite]ResourceFile {
+func (g *Generator) indexResources(resourceFiles []ResourceFile, scope string) map[Prerequisite]ResourceFile {
 	index := make(map[Prerequisite]ResourceFile, len(resourceFiles))
 	for _, resourceFile := range resourceFiles {
 		key := Prerequisite{Kind: resourceFile.Kind, SelectorId: resourceFile.SelectorId}
 		index[key] = resourceFile
-		g.resourceKindToFileMapping[key] = resourceFile.Path
+		if _, ok := g.resourceKindToFileMapping[key]; !ok {
+			g.resourceKindToFileMapping[key] = make(map[string]string)
+		}
+		g.resourceKindToFileMapping[key][scope] = resourceFile.Path
 	}
 	return index
 }
@@ -408,8 +573,9 @@ func applyDependentNames(resourceFiles []ResourceFile, resourceIndex map[Prerequ
 }
 
 // collectPrerequisitesAndEnvVars recursively discovers external prerequisites and env vars.
-func (g *Generator) collectPrerequisitesAndEnvVars(resourceFiles []ResourceFile) ([]ResourceFile, []string) {
+func (g *Generator) collectPrerequisitesAndEnvVars(resourceFiles []ResourceFile, scope string) ([]ResourceFile, []string) {
 	collector := &prerequisiteCollector{
+		scope:             scope,
 		generator:         g,
 		resourceFiles:     resourceFiles,
 		visited:           map[Prerequisite]bool{},
@@ -429,6 +595,7 @@ func (g *Generator) collectPrerequisitesAndEnvVars(resourceFiles []ResourceFile)
 
 // prerequisiteCollector tracks recursive traversal state for prerequisite discovery.
 type prerequisiteCollector struct {
+	scope             string                // Current scope to prefer when resolving cross-service prerequisites.
 	generator         *Generator            // Parent generator used for cross-service lookups and parsing.
 	resourceFiles     []ResourceFile        // Resources already present in the current service.
 	visited           map[Prerequisite]bool // Guards against cycles while traversing prerequisites.
@@ -467,7 +634,7 @@ func (c *prerequisiteCollector) collectFrom(resourceFile ResourceFile) {
 			continue
 		}
 
-		resourceFilePath, err := c.generator.searchForResourceFile(prerequisite)
+		resourceFilePath, err := c.generator.searchForResourceFile(prerequisite, c.scope)
 		if err != nil {
 			log.Printf("Error finding resource file for %s: %v", prerequisite.Kind, err)
 			continue
@@ -486,8 +653,8 @@ func (c *prerequisiteCollector) collectFrom(resourceFile ResourceFile) {
 }
 
 // getResourceFiles reads all YAML resources from a specific service version directory.
-func (g *Generator) getResourceFiles(versionPath string) ([]ResourceFile, error) {
-	files, err := os.ReadDir(versionPath)
+func (g *Generator) getResourceFiles(dirPath string) ([]ResourceFile, error) {
+	files, err := os.ReadDir(dirPath)
 	if err != nil {
 		return nil, err
 	}
@@ -499,7 +666,7 @@ func (g *Generator) getResourceFiles(versionPath string) ([]ResourceFile, error)
 			continue
 		}
 
-		resourceFile, err := g.processResourceFile(versionPath, file.Name())
+		resourceFile, err := g.processResourceFile(dirPath, file.Name())
 		if err != nil {
 			return nil, err
 		}
@@ -623,9 +790,13 @@ func extractMetadataFromForProvider(forProvider map[string]interface{}, kind str
 			if !strings.HasPrefix(typed, "${") || !strings.HasSuffix(typed, "}") {
 				return
 			}
-			// Normalize env var names to shell-friendly parameter names.
 			envVarName := strings.TrimSpace(strings.Trim(typed, "${}"))
 			normalized := strings.NewReplacer(".", "_", "-", "_").Replace(envVarName)
+			normalized = envVarNameSanitizerRe.ReplaceAllString(normalized, "_")
+			normalized = strings.Trim(normalized, "_")
+			if normalized == "" {
+				normalized = "var"
+			}
 			envVars[envVarName] = normalized
 		}
 	}
@@ -718,37 +889,71 @@ func isResourceFilePresent(resourceFiles []ResourceFile, prerequisite Prerequisi
 }
 
 // searchForResourceFile resolves a prerequisite by scanning all services for this version.
-func (g *Generator) searchForResourceFile(prerequisite Prerequisite) (string, error) {
-	if resourceFilePath, ok := g.resourceKindToFileMapping[prerequisite]; ok {
-		return resourceFilePath, nil
-	}
-
-	services, err := os.ReadDir(g.config.ExamplesDir)
-	if err != nil {
-		return "", err
-	}
-
-	for _, service := range services {
-		if !service.IsDir() {
-			continue
-		}
-
-		// This keeps prerequisite resolution version-scoped while crossing services.
-		versionPath := filepath.Join(g.config.ExamplesDir, service.Name(), g.config.Version)
-		if _, err := os.Stat(versionPath); err != nil {
-			continue
-		}
-
-		resourceFiles, err := g.getResourceFiles(versionPath)
-		if err != nil {
-			return "", err
-		}
-
-		for _, resourceFile := range resourceFiles {
-			if resourceFile.Kind == prerequisite.Kind && resourceFile.SelectorId == prerequisite.SelectorId {
-				g.resourceKindToFileMapping[prerequisite] = resourceFile.Path
-				return resourceFile.Path, nil
+func (g *Generator) searchForResourceFile(prerequisite Prerequisite, preferredScope string) (string, error) {
+	var cached map[string]string
+	if scopePaths, ok := g.resourceKindToFileMapping[prerequisite]; ok {
+		cached = scopePaths
+		if preferredScope != "" {
+			if path, found := scopePaths[preferredScope]; found {
+				return path, nil
 			}
+		} else {
+			for _, path := range scopePaths {
+				return path, nil
+			}
+		}
+	}
+
+	scopeOrder := make([]string, 0, 2)
+	seenScopes := map[string]bool{}
+	if preferredScope != "" {
+		scopeOrder = append(scopeOrder, preferredScope)
+		seenScopes[preferredScope] = true
+	}
+	for _, scopeName := range []string{scopeCluster, scopeNamespaced} {
+		if !seenScopes[scopeName] {
+			scopeOrder = append(scopeOrder, scopeName)
+		}
+	}
+
+	for _, scopeName := range scopeOrder {
+		scopeRoot := filepath.Join(g.config.ExamplesDir, scopeName)
+		scopeServices, err := os.ReadDir(scopeRoot)
+		if err != nil {
+			// Ignore missing scope directories and keep searching others.
+			continue
+		}
+
+		for _, service := range scopeServices {
+			if !service.IsDir() {
+				continue
+			}
+
+			versionPath := filepath.Join(scopeRoot, service.Name(), g.config.Version)
+			if _, err := os.Stat(versionPath); err != nil {
+				continue
+			}
+
+			resourceFiles, err := g.getResourceFiles(versionPath)
+			if err != nil {
+				return "", err
+			}
+
+			for _, resourceFile := range resourceFiles {
+				if resourceFile.Kind == prerequisite.Kind && resourceFile.SelectorId == prerequisite.SelectorId {
+					if _, ok := g.resourceKindToFileMapping[prerequisite]; !ok {
+						g.resourceKindToFileMapping[prerequisite] = make(map[string]string)
+					}
+					g.resourceKindToFileMapping[prerequisite][scopeName] = resourceFile.Path
+					return resourceFile.Path, nil
+				}
+			}
+		}
+	}
+
+	if cached != nil {
+		for _, path := range cached {
+			return path, nil
 		}
 	}
 
@@ -773,10 +978,22 @@ func (g *Generator) generateWorkflowTemplateFile(workflowTemplateFile string, da
 
 // getResourceFileName resolves a prerequisite file and returns its basename without extension.
 func (g *Generator) getResourceFileName(prerequisite Prerequisite) (string, error) {
-	resourceFilePath, ok := g.resourceKindToFileMapping[prerequisite]
-	if !ok {
+	var resourceFilePath string
+	if scopePaths, ok := g.resourceKindToFileMapping[prerequisite]; ok {
+		if path, found := scopePaths[scopeCluster]; found {
+			resourceFilePath = path
+		} else if path, found := scopePaths[scopeNamespaced]; found {
+			resourceFilePath = path
+		} else {
+			for _, path := range scopePaths {
+				resourceFilePath = path
+				break
+			}
+		}
+	}
+	if resourceFilePath == "" {
 		var err error
-		resourceFilePath, err = g.searchForResourceFile(prerequisite)
+		resourceFilePath, err = g.searchForResourceFile(prerequisite, "")
 		if err != nil {
 			return "", fmt.Errorf("resource file for kind %s not found", prerequisite.Kind)
 		}

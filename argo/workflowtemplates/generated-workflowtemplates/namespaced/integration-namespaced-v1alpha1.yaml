@@ -1,0 +1,71 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: oci-integration-namespaced-v1alpha1-tests-template
+spec:
+  serviceAccountName: argo-workflow
+  entrypoint: integration-namespaced-tests-workflow
+  volumes:
+    - name: git-repo
+      persistentVolumeClaim:
+        claimName: git-repo-pvc
+  arguments:
+    parameters:
+    - name: target_namespace
+    - name: compartment_ocid
+    - name: create_compartment
+      value: "true"
+    - name: create_resources
+      value: "true"
+    - name: delete_resources
+      value: "true"
+  templates:
+    - name: integration-namespaced-tests-workflow
+      inputs:
+        parameters:
+          - name: target_namespace
+            value: "{{workflow.parameters.target_namespace}}"
+      dag:
+        tasks:
+        - name: create-compartment
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_compartment}} == true"
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/identity/v1alpha1/compartment.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+              - name: envVars
+                value: "COMPARTMENT_OCID={{workflow.parameters.compartment_ocid}}"
+        - name: create-integrationinstance
+          templateRef:
+            name: test-template
+            template: create-resource
+          when: "{{workflow.parameters.create_resources}} == true"
+          dependencies: [create-compartment]
+          arguments:
+            parameters:
+              - name: resourceFile
+                value: "examples/namespaced/integration/v1alpha1/integrationinstance.yaml"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
+        - name: delete-integrationinstance
+          templateRef:
+            name: test-template
+            template: delete-resource
+          when: "{{workflow.parameters.delete_resources}} == true"
+          dependencies: ["create-integrationinstance"]
+          arguments:
+            parameters:
+              - name: resourceKind
+                value: "{{tasks.create-integrationinstance.outputs.parameters.resourceKind}}"
+              - name: resourceName
+                value: "{{tasks.create-integrationinstance.outputs.parameters.resourceName}}"
+              - name: resourceGroup
+                value: "{{tasks.create-integrationinstance.outputs.parameters.resourceGroup}}"
+              - name: namespace
+                value: "{{inputs.parameters.target_namespace}}"
