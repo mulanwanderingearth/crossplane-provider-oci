@@ -8,7 +8,7 @@ spec:
   forProvider:
     # Refer to following terraform example for brief resource fields
     # https://registry.terraform.io/providers/oracle/oci/7.27.0/docs/resources/objectstorage_replication_policy
-    bucket: bucketwithretnetionrule1
+    bucket: bucketwithretentionrule1
     destinationBucketName: ${OBJECTSTORAGE_BUCKET_NAME}
     destinationRegionName: us-ashburn-1
     name: replicationpolicy1

@@ -2,8 +2,8 @@ apiVersion: objectstorage.oci.upbound.io/v1alpha1
 kind: Bucket
 metadata:
   labels:
-    testing.upbound.io/example-name: bucketwithretnetionrule_label_1
-  name: bucketwithretnetionrule1
+    testing.upbound.io/example-name: bucketwithretentionrule_label_1
+  name: bucketwithretentionrule1
 spec:
   forProvider:
     # Refer to following terraform example for brief resource fields
@@ -12,7 +12,7 @@ spec:
     compartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: compartment_label_1
-    name: bucketwithretnetionrule1
+    name: bucketwithretentionrule1
     namespace: ${OBJECTSTORAGE_NAMESPACE}
     retentionRules:
       - displayName: retentionrule1
