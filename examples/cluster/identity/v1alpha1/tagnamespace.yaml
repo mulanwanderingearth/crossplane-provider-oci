@@ -11,4 +11,4 @@ spec:
         testing.upbound.io/example-name: compartment_label_1
     description: "Test Tag Namespace"
     isRetired: false
-    name: tagnamespace1
+    name: "${IDENTITY_TAGNAMESPACE_NAME}"

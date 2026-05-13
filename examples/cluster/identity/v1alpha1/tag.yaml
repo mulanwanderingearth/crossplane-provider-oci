@@ -9,7 +9,7 @@ spec:
     description: "Test Tag"
     isCostTracking: false
     isRetired: false
-    name: tag1
+    name: "${IDENTITY_TAG_NAME}"
     tagNamespaceIdSelector:
       matchLabels:
         testing.upbound.io/example-name: tagnamespace_label_1

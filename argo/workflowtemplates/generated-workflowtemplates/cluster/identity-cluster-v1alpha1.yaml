@@ -13,6 +13,12 @@ spec:
   arguments:
     parameters:
     - name: compartment_ocid
+    - name: identity_policy_name
+      value: policy-cluster-v1alpha1
+    - name: identity_tagnamespace_name
+      value: tagnamespace-cluster-v1alpha1
+    - name: identity_tag_name
+      value: tag-cluster-v1alpha1
     - name: create_resources
       value: "true"
     - name: delete_resources
@@ -42,6 +48,8 @@ spec:
             parameters:
               - name: resourceFile
                 value: "examples/cluster/identity/v1alpha1/policy.yaml"
+              - name: envVars
+                value: "IDENTITY_POLICY_NAME={{workflow.parameters.identity_policy_name}}"
         - name: create-tag
           templateRef:
             name: test-template
@@ -52,6 +60,8 @@ spec:
             parameters:
               - name: resourceFile
                 value: "examples/cluster/identity/v1alpha1/tag.yaml"
+              - name: envVars
+                value: "IDENTITY_TAG_NAME={{workflow.parameters.identity_tag_name}}"
         - name: create-tagnamespace
           templateRef:
             name: test-template
@@ -62,6 +72,8 @@ spec:
             parameters:
               - name: resourceFile
                 value: "examples/cluster/identity/v1alpha1/tagnamespace.yaml"
+              - name: envVars
+                value: "IDENTITY_TAGNAMESPACE_NAME={{workflow.parameters.identity_tagnamespace_name}}"
         - name: delete-compartment
           templateRef:
             name: test-template

@@ -10,7 +10,7 @@ spec:
       matchLabels:
         testing.upbound.io/example-name: compartment_label_1
     description: "Test Policy"
-    name: policy1
+    name: "${IDENTITY_POLICY_NAME}"
     statements:
       - Allow group group1 to read instances in compartment compartment1
       - Allow group group1 to inspect instances in compartment compartment1
