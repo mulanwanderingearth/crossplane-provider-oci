@@ -12,7 +12,7 @@ spec:
     compartmentIdSelector:
       matchLabels:
         testing.upbound.io/example-name: compartment_label_1
-    name: bucket1
+    name: ${OBJECTSTORAGE_BUCKET_NAME}
     namespace: ${OBJECTSTORAGE_NAMESPACE}
   # providerConfig defaults to "ClusterProviderConfig"; set providerConfigRef to "ProviderConfig" to use namespaced providerConfig.
   providerConfigRef:

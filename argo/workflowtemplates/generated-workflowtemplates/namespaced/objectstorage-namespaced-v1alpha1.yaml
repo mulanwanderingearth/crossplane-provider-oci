@@ -15,6 +15,8 @@ spec:
     - name: target_namespace
     - name: compartment_ocid
     - name: objectstorage_namespace
+    - name: objectstorage_bucket_name
+      value: bucket-oci-namespaced-v1alpha1
     - name: create_compartment
       value: "true"
     - name: create_resources
@@ -55,7 +57,7 @@ spec:
               - name: namespace
                 value: "{{inputs.parameters.target_namespace}}"
               - name: envVars
-                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}}"
+                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}},OBJECTSTORAGE_BUCKET_NAME={{workflow.parameters.objectstorage_bucket_name}}"
         - name: create-bucketwithretentionrule
           templateRef:
             name: test-template
@@ -69,7 +71,7 @@ spec:
               - name: namespace
                 value: "{{inputs.parameters.target_namespace}}"
               - name: envVars
-                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}}"
+                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}},OBJECTSTORAGE_BUCKET_NAME={{workflow.parameters.objectstorage_bucket_name}}"
         - name: create-object
           templateRef:
             name: test-template
@@ -82,7 +84,7 @@ spec:
               - name: namespace
                 value: "{{inputs.parameters.target_namespace}}"
               - name: envVars
-                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}}"
+                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}},OBJECTSTORAGE_BUCKET_NAME={{workflow.parameters.objectstorage_bucket_name}}"
         - name: create-objectlifecyclepolicy
           templateRef:
             name: test-template
@@ -95,7 +97,7 @@ spec:
               - name: namespace
                 value: "{{inputs.parameters.target_namespace}}"
               - name: envVars
-                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}}"
+                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}},OBJECTSTORAGE_BUCKET_NAME={{workflow.parameters.objectstorage_bucket_name}}"
         - name: create-preauthrequest
           templateRef:
             name: test-template
@@ -108,7 +110,7 @@ spec:
               - name: namespace
                 value: "{{inputs.parameters.target_namespace}}"
               - name: envVars
-                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}}"
+                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}},OBJECTSTORAGE_BUCKET_NAME={{workflow.parameters.objectstorage_bucket_name}}"
         - name: create-replicationpolicy
           templateRef:
             name: test-template
@@ -121,7 +123,7 @@ spec:
               - name: namespace
                 value: "{{inputs.parameters.target_namespace}}"
               - name: envVars
-                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}}"
+                value: "OBJECTSTORAGE_NAMESPACE={{workflow.parameters.objectstorage_namespace}},OBJECTSTORAGE_BUCKET_NAME={{workflow.parameters.objectstorage_bucket_name}}"
         - name: delete-bucket
           templateRef:
             name: test-template
