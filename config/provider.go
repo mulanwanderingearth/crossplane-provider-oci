@@ -39,10 +39,6 @@ var providerSchema string
 //go:embed provider-metadata.yaml
 var providerMetadata string
 
-var ServiceWildcards = []string{
-	".*",
-}
-
 // ProblematicResources returns a list of regex patterns for resources that should be
 // skipped during generation due to known issues or incompatibilities.
 // These resources can be added to support later after resolving their specific issues.
@@ -74,8 +70,13 @@ func ProblematicResources() []string {
 func newProvider(rootGroup string, register func(*ujconfig.Provider)) *ujconfig.Provider {
 	pc := ujconfig.NewProvider([]byte(providerSchema), resourcePrefix, modulePath, []byte(providerMetadata),
 		ujconfig.WithRootGroup(rootGroup),
-		// This will include manually configured resources + resources corresponding to services listed in wildcards
-		ujconfig.WithIncludeList(append(ExternalNameConfigured(), ServiceWildcards...)),
+		// Disable Upjet's Terraform CLI route. All generated OCI resources are
+		// routed through in-process no-fork connectors.
+		ujconfig.WithIncludeList(nil),
+		ujconfig.WithTerraformProvider(terraformSDKProvider()),
+		ujconfig.WithTerraformPluginSDKIncludeList(terraformPluginSDKIncludeList()),
+		ujconfig.WithTerraformPluginFrameworkProvider(terraformFrameworkProvider()),
+		ujconfig.WithTerraformPluginFrameworkIncludeList(terraformPluginFrameworkIncludeList),
 		ujconfig.WithSkipList(ProblematicResources()),
 		ujconfig.WithDefaultResourceOptions(
 			GroupKindOverrides(),
