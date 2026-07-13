@@ -50,7 +50,7 @@ GO_TEST_PARALLEL := $(shell echo $$(( $(NPROCS) / 2 )))
 GO_REQUIRED_VERSION ?= 1.25
 GOLANGCILINT_VERSION ?= 1.50.0
 GO_STATIC_PACKAGES = $(GO_PROJECT)/cmd/provider/monolith $(GO_PROJECT)/cmd/generator
-GO_LDFLAGS += -X $(GO_PROJECT)/internal/version.Version=$(VERSION)
+GO_LDFLAGS += -X main.terraformProviderVersion=$(TERRAFORM_PROVIDER_VERSION)
 GO_SUBDIRS += cmd internal apis
 -include build/makelib/golang.mk
 
@@ -86,23 +86,6 @@ monolith.binary.alias: go.build
 	fi
 
 .PHONY: monolith.binary.alias
-endif
-
-# ====================================================================================
-# Override build target for sub-packages
-# This overrides the default build target from golang.mk when SUBPACKAGES is set
-
-ifneq ($(SUBPACKAGES),monolith)
-# Override the build target for sub-package builds
-build: $(UP)
-	@$(INFO) Building sub-packages: $(SUBPACKAGES)
-	@for pkg in $(SUBPACKAGE_LIST); do \
-		$(MAKE) build.subpackage.$$pkg PLATFORMS="$(PLATFORMS)" || exit 1; \
-	done
-	@$(OK) Built sub-packages: $(SUBPACKAGES)
-
-# Also override go.build for consistency
-go.build: build
 endif
 
 # ====================================================================================
@@ -209,9 +192,14 @@ $(TERRAFORM_PROVIDER_SCHEMA): $(TERRAFORM)
 	@$(OK) generating provider schema for $(TERRAFORM_PROVIDER_SOURCE) $(TERRAFORM_PROVIDER_VERSION)
 
 pull-docs:
-	@if [ ! -d "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" ]; then \
+	@if [ ! -d "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)/.git" ]; then \
+		rm -rf "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" && \
   		mkdir -p "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" && \
 		git clone -c advice.detachedHead=false --depth 1 --filter=blob:none --branch "v$(TERRAFORM_PROVIDER_VERSION)" --sparse "$(TERRAFORM_PROVIDER_REPO)" "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)"; \
+	fi
+	@if [ "$$(git -C "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" describe --tags --exact-match HEAD 2>/dev/null || true)" != "v$(TERRAFORM_PROVIDER_VERSION)" ]; then \
+		git -C "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" fetch --depth 1 origin "refs/tags/v$(TERRAFORM_PROVIDER_VERSION):refs/tags/v$(TERRAFORM_PROVIDER_VERSION)" && \
+		git -C "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" checkout --detach "v$(TERRAFORM_PROVIDER_VERSION)"; \
 	fi
 	@git -C "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" sparse-checkout set "$(TERRAFORM_DOCS_PATH)"
 
@@ -230,6 +218,104 @@ build.complete: generate.resolve build
 	@$(OK) complete build workflow finished
 
 .PHONY: $(TERRAFORM_PROVIDER_SCHEMA) pull-docs generate.resolve build.complete
+
+PATCH_STAMP := .patch-stamp-$(TERRAFORM_PROVIDER_VERSION)
+NOFORK_PATCH_FILE ?= $(CURDIR)/build/nofork/patches/terraform-provider-oci.patch
+NOFORK_PROVIDER_DIR ?= $(CURDIR)/.work/nofork/terraform-provider-oci
+NOFORK_STATE_DIR ?= $(CURDIR)/.work/nofork/state
+NOFORK_GOCACHE ?= $(CURDIR)/.cache/nofork-go-build
+NOFORK_GOMODCACHE ?= $(CURDIR)/.cache/nofork-go-mod
+NOFORK_GOPATH ?= $(CURDIR)/.work/nofork-gopath
+NOFORK_GOFLAGS ?= $(strip $(GOFLAGS) -tags=nofork)
+NOFORK_GO_TAGS ?= $(strip $(GO_TAGS) nofork)
+NOFORK_PATCHER := GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)" go run ./cmd/noforkpatcher
+
+build:
+ifneq ($(SUBPACKAGES),monolith)
+	@set -e; \
+	trap '$(MAKE) clean-patch' EXIT; \
+	$(MAKE) $(PATCH_STAMP) GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	$(INFO) Building sub-packages: $(SUBPACKAGES); \
+	for pkg in $(SUBPACKAGE_LIST); do \
+		GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) build.subpackage.$$pkg PLATFORMS="$(PLATFORMS)" GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)" || exit 1; \
+	done; \
+	$(OK) Built sub-packages: $(SUBPACKAGES)
+else
+ifneq ($(BUILD_PLATFORMS),)
+	@set -e; \
+	trap '$(MAKE) clean-patch' EXIT; \
+	$(MAKE) $(PATCH_STAMP) GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) build.all PLATFORMS="$(BUILD_PLATFORMS)" GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
+else
+	@:
+endif
+endif
+
+ifneq ($(SUBPACKAGES),monolith)
+go.build: build
+endif
+
+generate:
+	@set -e; \
+	trap '$(MAKE) clean-patch' EXIT; \
+	$(MAKE) $(PATCH_STAMP) GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) generate.init GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) generate.run GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) generate.done GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
+
+test:
+	@set -e; \
+	trap '$(MAKE) clean-patch' EXIT; \
+	$(MAKE) $(PATCH_STAMP) GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) test.init GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) test.run GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) test.done GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
+
+lint:
+	@set -e; \
+	trap '$(MAKE) clean-patch' EXIT; \
+	$(MAKE) $(PATCH_STAMP) GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) lint.init GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) lint.run GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) lint.done GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
+
+$(PATCH_STAMP):
+	@mkdir -p "$(NOFORK_GOCACHE)" "$(NOFORK_GOMODCACHE)" "$(NOFORK_GOPATH)" "$(dir $(NOFORK_PROVIDER_DIR))" "$(NOFORK_STATE_DIR)"
+	@$(NOFORK_PATCHER) apply \
+		--provider-version "$(TERRAFORM_PROVIDER_VERSION)" \
+		--provider-dir "$(NOFORK_PROVIDER_DIR)" \
+		--state-dir "$(NOFORK_STATE_DIR)" \
+		--patch-file "$(NOFORK_PATCH_FILE)" \
+		--repo-url "$(TERRAFORM_PROVIDER_REPO)" \
+		--gocache "$(NOFORK_GOCACHE)" \
+		--gomodcache "$(NOFORK_GOMODCACHE)" \
+		--gopath "$(NOFORK_GOPATH)"
+	@touch $(PATCH_STAMP)
+
+clean-patch:
+	@mkdir -p "$(NOFORK_GOCACHE)" "$(NOFORK_GOMODCACHE)" "$(NOFORK_GOPATH)" "$(NOFORK_STATE_DIR)"
+	@$(NOFORK_PATCHER) clean \
+		--provider-dir "$(NOFORK_PROVIDER_DIR)" \
+		--state-dir "$(NOFORK_STATE_DIR)" \
+		--patch-file "$(NOFORK_PATCH_FILE)" \
+		--gocache "$(NOFORK_GOCACHE)" \
+		--gomodcache "$(NOFORK_GOMODCACHE)" \
+		--gopath "$(NOFORK_GOPATH)"
+	@rm -f .patch-stamp-*
+
+validate-patch:
+	@mkdir -p "$(NOFORK_GOCACHE)" "$(NOFORK_GOMODCACHE)" "$(NOFORK_GOPATH)" "$(dir $(NOFORK_PROVIDER_DIR))" "$(NOFORK_STATE_DIR)"
+	@$(NOFORK_PATCHER) validate \
+		--provider-version "$(TERRAFORM_PROVIDER_VERSION)" \
+		--patch-file "$(NOFORK_PATCH_FILE)" \
+		--repo-url "$(TERRAFORM_PROVIDER_REPO)" \
+		--provider-dir "$(NOFORK_PROVIDER_DIR)" \
+		--state-dir "$(NOFORK_STATE_DIR)" \
+		--gocache "$(NOFORK_GOCACHE)" \
+		--gomodcache "$(NOFORK_GOMODCACHE)" \
+		--gopath "$(NOFORK_GOPATH)"
+
+.PHONY: clean-patch validate-patch
 # ====================================================================================
 # Targets
 
@@ -318,7 +404,7 @@ build.subpackage.%:
 		echo "  Building for $$GOOS/$$GOARCH..."; \
 		output_name="$*"; \
 		mkdir -p $(OUTPUT_DIR)/bin/$${GOOS}_$${GOARCH}; \
-		CGO_ENABLED=0 GOOS=$$GOOS GOARCH=$$GOARCH $(GO) build -ldflags '$(GO_LDFLAGS)' \
+		CGO_ENABLED=0 GOOS=$$GOOS GOARCH=$$GOARCH $(GO) build $(GO_BUILDFLAGS) -ldflags '$(GO_LDFLAGS)' \
 			-o $(OUTPUT_DIR)/bin/$${GOOS}_$${GOARCH}/$$output_name$(BINARY_EXT) \
 			$(GO_PROJECT)/cmd/provider/$*/ || exit 1; \
 	done
