@@ -398,16 +398,22 @@ build.subpackage.%:
 		echo "For now, this is expected behavior as we're implementing the build system first."; \
 		exit 1; \
 	fi
-	@for platform in $(PLATFORMS); do \
+	@package_started=$$(date +%s); \
+	for platform in $(PLATFORMS); do \
 		GOOS=$$(echo $$platform | cut -d_ -f1); \
 		GOARCH=$$(echo $$platform | cut -d_ -f2); \
+		platform_started=$$(date +%s); \
 		echo "  Building for $$GOOS/$$GOARCH..."; \
 		output_name="$*"; \
 		mkdir -p $(OUTPUT_DIR)/bin/$${GOOS}_$${GOARCH}; \
+		output_path=$(OUTPUT_DIR)/bin/$${GOOS}_$${GOARCH}/$$output_name$(BINARY_EXT); \
 		CGO_ENABLED=0 GOOS=$$GOOS GOARCH=$$GOARCH $(GO) build $(GO_BUILDFLAGS) -ldflags '$(GO_LDFLAGS)' \
-			-o $(OUTPUT_DIR)/bin/$${GOOS}_$${GOARCH}/$$output_name$(BINARY_EXT) \
-			$(GO_PROJECT)/cmd/provider/$*/ || exit 1; \
-	done
+			-o $$output_path $(GO_PROJECT)/cmd/provider/$*/ || exit 1; \
+		binary_size=$$(du -h "$$output_path" | awk '{print $$1}'); \
+		echo "  Built $$GOOS/$$GOARCH in $$(( $$(date +%s) - $$platform_started ))s ($$binary_size)"; \
+	done; \
+	echo "  Completed $* in $$(( $$(date +%s) - $$package_started ))s"; \
+	df -h "$(OUTPUT_DIR)" | tail -n 1
 	@if [ "$*" = "config" ]; then \
 		$(OK) Built sub-package provider-family-oci for platforms: $(PLATFORMS); \
 	else \
