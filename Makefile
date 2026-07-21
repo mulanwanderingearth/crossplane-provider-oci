@@ -230,6 +230,76 @@ NOFORK_GOFLAGS ?= $(strip $(GOFLAGS) -tags=nofork)
 NOFORK_GO_TAGS ?= $(strip $(GO_TAGS) nofork)
 NOFORK_PATCHER := GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)" go run ./cmd/noforkpatcher
 
+# Internal operations below assume the no-fork patch is already active. Public
+# developer targets continue to own the apply/clean lifecycle.
+nofork.generate.inner:
+	@GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) generate.init GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
+	@GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) generate.run GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
+	@GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) generate.done GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
+
+nofork.build.config.inner:
+	@GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) build.subpackage.config SUBPACKAGES="config" PLATFORMS="$(PLATFORMS)" GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
+
+nofork.check-generated-diff:
+	@set -e; \
+	for path in "$(PATCH_STAMP)" "config/terraform_provider_nofork.go" "internal/clients/oci_provider_nofork.go"; do \
+		if [ ! -f "$$path" ]; then \
+			echo "Expected active no-fork patch file is missing: $$path" >&2; \
+			$(FAIL); \
+		fi; \
+	done; \
+	if ! git diff --quiet HEAD -- . ':(exclude)go.mod' ':(exclude)go.sum'; then \
+		echo "Generation produced tracked changes:" >&2; \
+		git diff --name-status HEAD -- . ':(exclude)go.mod' ':(exclude)go.sum' >&2; \
+		$(FAIL); \
+	fi; \
+	unexpected_untracked="$$(git ls-files --others --exclude-standard | grep -Fvx \
+		-e "$(PATCH_STAMP)" \
+		-e "config/terraform_provider_nofork.go" \
+		-e "internal/clients/oci_provider_nofork.go" || true)"; \
+	if [ -n "$$unexpected_untracked" ]; then \
+		echo "Generation produced unexpected untracked files:" >&2; \
+		printf '%s\n' "$$unexpected_untracked" >&2; \
+		$(FAIL); \
+	fi; \
+	$(OK) generated files are current
+
+nofork.check-clean:
+	@set -e; \
+	status="$$(git status --porcelain --untracked-files=all)"; \
+	if [ -n "$$status" ]; then \
+		printf '%s\n' "$$status"; \
+		$(FAIL); \
+	else \
+		$(OK) branch is clean; \
+	fi
+
+# CI-only family flow. It validates generation and builds the family binaries
+# before cleaning the patch, while retaining failure-safe cleanup semantics.
+ci-family-check-build:
+	@set -euo pipefail; \
+	cleanup() { \
+		status=$$?; \
+		trap - EXIT INT TERM; \
+		cleanup_status=0; \
+		$(MAKE) clean-patch || cleanup_status=$$?; \
+		if [ "$$cleanup_status" -ne 0 ]; then \
+			echo "No-fork cleanup failed with status $$cleanup_status." >&2; \
+			if [ "$$status" -eq 0 ]; then status=$$cleanup_status; fi; \
+		fi; \
+		exit "$$status"; \
+	}; \
+	trap cleanup EXIT; \
+	trap 'exit 130' INT; \
+	trap 'exit 143' TERM; \
+	$(MAKE) $(PATCH_STAMP) GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	$(MAKE) nofork.generate.inner GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	$(MAKE) nofork.check-generated-diff; \
+	$(MAKE) nofork.build.config.inner PLATFORMS="$(PLATFORMS)" GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
+	$(MAKE) clean-patch; \
+	trap - EXIT INT TERM; \
+	$(MAKE) nofork.check-clean
+
 build:
 ifneq ($(SUBPACKAGES),monolith)
 	@set -e; \
@@ -259,9 +329,7 @@ generate:
 	@set -e; \
 	trap '$(MAKE) clean-patch' EXIT; \
 	$(MAKE) $(PATCH_STAMP) GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
-	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) generate.init GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
-	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) generate.run GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"; \
-	GOFLAGS="$(NOFORK_GOFLAGS)" GO_TAGS="$(NOFORK_GO_TAGS)" $(MAKE) generate.done GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
+	$(MAKE) nofork.generate.inner GOCACHE="$(NOFORK_GOCACHE)" GOMODCACHE="$(NOFORK_GOMODCACHE)" GOPATH="$(NOFORK_GOPATH)"
 
 test:
 	@set -e; \
@@ -315,7 +383,7 @@ validate-patch:
 		--gomodcache "$(NOFORK_GOMODCACHE)" \
 		--gopath "$(NOFORK_GOPATH)"
 
-.PHONY: clean-patch validate-patch
+.PHONY: nofork.generate.inner nofork.build.config.inner nofork.check-generated-diff nofork.check-clean ci-family-check-build clean-patch validate-patch
 # ====================================================================================
 # Targets
 

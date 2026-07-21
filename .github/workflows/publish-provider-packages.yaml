@@ -249,10 +249,7 @@ jobs:
       - name: Install goimports
         run: go install golang.org/x/tools/cmd/goimports@latest
 
-      - name: Check Generated Diff
-        run: make check-diff
-
-      - name: Build Family Provider Binaries
+      - name: Check Generated Diff and Build Family Provider Binaries
         env:
           INPUT_PLATFORM: ${{ inputs.platform }}
           GOTMPDIR: ${{ runner.temp }}/go-build
@@ -267,12 +264,11 @@ jobs:
           df -h
           make \
             NOFORK_GOMODCACHE="$gomodcache" \
-            SUBPACKAGES="config" \
             PLATFORMS="$INPUT_PLATFORM" \
-            build
+            ci-family-check-build
           du -sh "${{ env.NOFORK_GOCACHE_PATH }}"
           df -h
-          echo "Family binary build completed in $(( $(date +%s) - started ))s"
+          echo "Family generation validation and binary build completed in $(( $(date +%s) - started ))s"
 
       - name: Save Family No-Fork Go Build Cache
         if: ${{ needs.index.outputs.has_services == 'true' && steps.nofork-family-cache.outputs.cache-hit != 'true' }}
