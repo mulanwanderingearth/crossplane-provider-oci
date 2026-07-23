@@ -84,7 +84,7 @@ type InstanceShapeConfigInitParameters struct {
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
@@ -99,7 +99,7 @@ type InstanceShapeConfigObservation struct {
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
@@ -117,7 +117,7 @@ type InstanceShapeConfigParameters struct {
 
 	// The number of NVMe drives to be used for storage.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the instance.
 	// +kubebuilder:validation:Optional

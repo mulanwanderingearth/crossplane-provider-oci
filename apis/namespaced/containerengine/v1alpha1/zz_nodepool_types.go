@@ -26,18 +26,16 @@ type CreateVnicDetailsInitParameters struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Display name for secondary vnic
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The number of ip addresses to attach to secondary vnic
-	IPCount *float64 `json:"ipCount,omitempty" tf:"ip_count,omitempty"`
+	IPCount *int64 `json:"ipCount,omitempty" tf:"ip_count,omitempty"`
 
 	// (Updatable) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix  and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty  and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []Ipv6AddressIpv6SubnetCidrPairDetailsInitParameters `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
@@ -47,8 +45,7 @@ type CreateVnicDetailsInitParameters struct {
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
 	// (Updatable) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) Whether the source/destination check is disabled on the VNIC
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -79,18 +76,16 @@ type CreateVnicDetailsObservation struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Display name for secondary vnic
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The number of ip addresses to attach to secondary vnic
-	IPCount *float64 `json:"ipCount,omitempty" tf:"ip_count,omitempty"`
+	IPCount *int64 `json:"ipCount,omitempty" tf:"ip_count,omitempty"`
 
 	// (Updatable) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix  and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty  and instead provide the specific IPv6 address that should be used from within that range.
 	Ipv6AddressIpv6SubnetCidrPairDetails []Ipv6AddressIpv6SubnetCidrPairDetailsObservation `json:"ipv6addressIpv6SubnetCidrPairDetails,omitempty" tf:"ipv6address_ipv6subnet_cidr_pair_details,omitempty"`
@@ -100,8 +95,7 @@ type CreateVnicDetailsObservation struct {
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
 	// (Updatable) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) Whether the source/destination check is disabled on the VNIC
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -126,8 +120,7 @@ type CreateVnicDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Display name for secondary vnic
 	// +kubebuilder:validation:Optional
@@ -135,12 +128,11 @@ type CreateVnicDetailsParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The number of ip addresses to attach to secondary vnic
 	// +kubebuilder:validation:Optional
-	IPCount *float64 `json:"ipCount,omitempty" tf:"ip_count,omitempty"`
+	IPCount *int64 `json:"ipCount,omitempty" tf:"ip_count,omitempty"`
 
 	// (Updatable) A list of IPv6 prefixes from which the VNIC should be assigned an IPv6 address. You can provide only the prefix  and Oracle Cloud Infrastructure selects an available address from the range. You can optionally choose to leave the prefix range empty  and instead provide the specific IPv6 address that should be used from within that range.
 	// +kubebuilder:validation:Optional
@@ -153,8 +145,7 @@ type CreateVnicDetailsParameters struct {
 
 	// (Updatable) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) Whether the source/destination check is disabled on the VNIC
 	// +kubebuilder:validation:Optional
@@ -267,12 +258,10 @@ type NodeConfigDetailsInitParameters struct {
 	ComputeClusterIDSelector *v1.NamespacedSelector `json:"computeClusterIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. The default value is false.
 	IsPvEncryptionInTransitEnabled *bool `json:"isPvEncryptionInTransitEnabled,omitempty" tf:"is_pv_encryption_in_transit_enabled,omitempty"`
@@ -310,7 +299,7 @@ type NodeConfigDetailsInitParameters struct {
 	PlacementConfigs []PlacementConfigsInitParameters `json:"placementConfigs,omitempty" tf:"placement_configs,omitempty"`
 
 	// (Updatable) The number of nodes that should be in the node pool.
-	Size *float64 `json:"size,omitempty" tf:"size,omitempty"`
+	Size *int64 `json:"size,omitempty" tf:"size,omitempty"`
 }
 
 type NodeConfigDetailsObservation struct {
@@ -319,12 +308,10 @@ type NodeConfigDetailsObservation struct {
 	ComputeClusterID *string `json:"computeClusterId,omitempty" tf:"compute_cluster_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. The default value is false.
 	IsPvEncryptionInTransitEnabled *bool `json:"isPvEncryptionInTransitEnabled,omitempty" tf:"is_pv_encryption_in_transit_enabled,omitempty"`
@@ -343,7 +330,7 @@ type NodeConfigDetailsObservation struct {
 	PlacementConfigs []PlacementConfigsObservation `json:"placementConfigs,omitempty" tf:"placement_configs,omitempty"`
 
 	// (Updatable) The number of nodes that should be in the node pool.
-	Size *float64 `json:"size,omitempty" tf:"size,omitempty"`
+	Size *int64 `json:"size,omitempty" tf:"size,omitempty"`
 }
 
 type NodeConfigDetailsParameters struct {
@@ -364,13 +351,11 @@ type NodeConfigDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether to enable in-transit encryption for the data volume's paravirtualized attachment. This field applies to both block volumes and boot volumes. The default value is false.
 	// +kubebuilder:validation:Optional
@@ -414,7 +399,7 @@ type NodeConfigDetailsParameters struct {
 
 	// (Updatable) The number of nodes that should be in the node pool.
 	// +kubebuilder:validation:Optional
-	Size *float64 `json:"size" tf:"size,omitempty"`
+	Size *int64 `json:"size" tf:"size,omitempty"`
 }
 
 type NodeEvictionNodePoolSettingsInitParameters struct {
@@ -532,12 +517,10 @@ type NodePoolInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A list of key/value pairs to add to nodes after they join the Kubernetes cluster.
 	InitialNodeLabels []InitialNodeLabelsInitParameters `json:"initialNodeLabels,omitempty" tf:"initial_node_labels,omitempty"`
@@ -573,8 +556,7 @@ type NodePoolInitParameters struct {
 	NodeImageNameSelector *v1.NamespacedSelector `json:"nodeImageNameSelector,omitempty" tf:"-"`
 
 	// (Updatable) A list of key/value pairs to add to each underlying Oracle Cloud Infrastructure instance in the node pool on launch.
-	// +mapType=granular
-	NodeMetadata map[string]*string `json:"nodeMetadata,omitempty" tf:"node_metadata,omitempty"`
+	NodeMetadata map[string]string `json:"nodeMetadata,omitempty" tf:"node_metadata,omitempty"`
 
 	// (Updatable) Node Pool Cycling Details
 	NodePoolCyclingDetails []NodePoolCyclingDetailsInitParameters `json:"nodePoolCyclingDetails,omitempty" tf:"node_pool_cycling_details,omitempty"`
@@ -592,7 +574,7 @@ type NodePoolInitParameters struct {
 	PrimaryVnic []PrimaryVnicInitParameters `json:"primaryVnic,omitempty" tf:"primary_vnic,omitempty"`
 
 	// (Updatable) Optional, default to 1. The number of nodes to create in each subnet specified in subnetIds property. When used, subnetIds is required. This property is deprecated, use nodeConfigDetails instead.
-	QuantityPerSubnet *float64 `json:"quantityPerSubnet,omitempty" tf:"quantity_per_subnet,omitempty"`
+	QuantityPerSubnet *int64 `json:"quantityPerSubnet,omitempty" tf:"quantity_per_subnet,omitempty"`
 
 	// (Updatable) The SSH public key on each node in the node pool on launch.
 	SSHPublicKey *string `json:"sshPublicKey,omitempty" tf:"ssh_public_key,omitempty"`
@@ -614,12 +596,10 @@ type NodePoolObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the node pool.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -652,8 +632,7 @@ type NodePoolObservation struct {
 	NodeImageName *string `json:"nodeImageName,omitempty" tf:"node_image_name,omitempty"`
 
 	// (Updatable) A list of key/value pairs to add to each underlying Oracle Cloud Infrastructure instance in the node pool on launch.
-	// +mapType=granular
-	NodeMetadata map[string]*string `json:"nodeMetadata,omitempty" tf:"node_metadata,omitempty"`
+	NodeMetadata map[string]string `json:"nodeMetadata,omitempty" tf:"node_metadata,omitempty"`
 
 	// (Updatable) Node Pool Cycling Details
 	NodePoolCyclingDetails []NodePoolCyclingDetailsObservation `json:"nodePoolCyclingDetails,omitempty" tf:"node_pool_cycling_details,omitempty"`
@@ -677,7 +656,7 @@ type NodePoolObservation struct {
 	PrimaryVnic []PrimaryVnicObservation `json:"primaryVnic,omitempty" tf:"primary_vnic,omitempty"`
 
 	// (Updatable) Optional, default to 1. The number of nodes to create in each subnet specified in subnetIds property. When used, subnetIds is required. This property is deprecated, use nodeConfigDetails instead.
-	QuantityPerSubnet *float64 `json:"quantityPerSubnet,omitempty" tf:"quantity_per_subnet,omitempty"`
+	QuantityPerSubnet *int64 `json:"quantityPerSubnet,omitempty" tf:"quantity_per_subnet,omitempty"`
 
 	// (Updatable) The SSH public key on each node in the node pool on launch.
 	SSHPublicKey *string `json:"sshPublicKey,omitempty" tf:"ssh_public_key,omitempty"`
@@ -723,13 +702,11 @@ type NodePoolParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A list of key/value pairs to add to nodes after they join the Kubernetes cluster.
 	// +kubebuilder:validation:Optional
@@ -774,8 +751,7 @@ type NodePoolParameters struct {
 
 	// (Updatable) A list of key/value pairs to add to each underlying Oracle Cloud Infrastructure instance in the node pool on launch.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	NodeMetadata map[string]*string `json:"nodeMetadata,omitempty" tf:"node_metadata,omitempty"`
+	NodeMetadata map[string]string `json:"nodeMetadata,omitempty" tf:"node_metadata,omitempty"`
 
 	// (Updatable) Node Pool Cycling Details
 	// +kubebuilder:validation:Optional
@@ -799,7 +775,7 @@ type NodePoolParameters struct {
 
 	// (Updatable) Optional, default to 1. The number of nodes to create in each subnet specified in subnetIds property. When used, subnetIds is required. This property is deprecated, use nodeConfigDetails instead.
 	// +kubebuilder:validation:Optional
-	QuantityPerSubnet *float64 `json:"quantityPerSubnet,omitempty" tf:"quantity_per_subnet,omitempty"`
+	QuantityPerSubnet *int64 `json:"quantityPerSubnet,omitempty" tf:"quantity_per_subnet,omitempty"`
 
 	// (Updatable) The SSH public key on each node in the node pool on launch.
 	// +kubebuilder:validation:Optional
@@ -821,7 +797,7 @@ type NodePoolPodNetworkOptionDetailsInitParameters struct {
 	CniType *string `json:"cniType,omitempty" tf:"cni_type,omitempty"`
 
 	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The max number of pods per node in the node pool. This value will be limited by the number of VNICs attachable to the node pool shape
-	MaxPodsPerNode *float64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
+	MaxPodsPerNode *int64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
 
 	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The OCIDs of the Network Security Group(s) to associate pods for this node pool with. For more information about NSGs, see NetworkSecurityGroup.
 	PodNsgIds []*string `json:"podNsgIds,omitempty" tf:"pod_nsg_ids,omitempty"`
@@ -836,7 +812,7 @@ type NodePoolPodNetworkOptionDetailsObservation struct {
 	CniType *string `json:"cniType,omitempty" tf:"cni_type,omitempty"`
 
 	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The max number of pods per node in the node pool. This value will be limited by the number of VNICs attachable to the node pool shape
-	MaxPodsPerNode *float64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
+	MaxPodsPerNode *int64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
 
 	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The OCIDs of the Network Security Group(s) to associate pods for this node pool with. For more information about NSGs, see NetworkSecurityGroup.
 	PodNsgIds []*string `json:"podNsgIds,omitempty" tf:"pod_nsg_ids,omitempty"`
@@ -853,7 +829,7 @@ type NodePoolPodNetworkOptionDetailsParameters struct {
 
 	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The max number of pods per node in the node pool. This value will be limited by the number of VNICs attachable to the node pool shape
 	// +kubebuilder:validation:Optional
-	MaxPodsPerNode *float64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
+	MaxPodsPerNode *int64 `json:"maxPodsPerNode,omitempty" tf:"max_pods_per_node,omitempty"`
 
 	// (Applicable when cni_type=OCI_VCN_IP_NATIVE) (Updatable) The OCIDs of the Network Security Group(s) to associate pods for this node pool with. For more information about NSGs, see NetworkSecurityGroup.
 	// +kubebuilder:validation:Optional
@@ -979,8 +955,7 @@ type NodesObservation struct {
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// An error that may be associated with the node.
 	Error []ErrorObservation `json:"error,omitempty" tf:"error,omitempty"`
@@ -989,8 +964,7 @@ type NodesObservation struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the node pool.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -1181,23 +1155,20 @@ type PreemptionActionParameters struct {
 type PrimaryVnicInitParameters struct {
 
 	// (Updatable) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 }
 
 type PrimaryVnicObservation struct {
 
 	// (Updatable) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 }
 
 type PrimaryVnicParameters struct {
 
 	// (Updatable) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 }
 
 type SecondaryVnicsInitParameters struct {
@@ -1209,7 +1180,7 @@ type SecondaryVnicsInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Which physical network interface card (NIC) the VNIC will use
-	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+	NicIndex *int64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 type SecondaryVnicsObservation struct {
@@ -1221,7 +1192,7 @@ type SecondaryVnicsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Which physical network interface card (NIC) the VNIC will use
-	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+	NicIndex *int64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 type SecondaryVnicsParameters struct {
@@ -1236,7 +1207,7 @@ type SecondaryVnicsParameters struct {
 
 	// (Updatable) Which physical network interface card (NIC) the VNIC will use
 	// +kubebuilder:validation:Optional
-	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+	NicIndex *int64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 // NodePoolSpec defines the desired state of NodePool

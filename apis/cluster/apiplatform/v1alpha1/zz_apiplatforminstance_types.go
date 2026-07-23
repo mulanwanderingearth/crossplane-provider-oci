@@ -28,15 +28,13 @@ type ApiPlatformInstanceInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-provided changeable and non-unique description of the instance
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A regionally unique, non-changeable instance name provided by the user during creation
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -48,15 +46,13 @@ type ApiPlatformInstanceObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-provided changeable and non-unique description of the instance
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the instance
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -74,8 +70,7 @@ type ApiPlatformInstanceObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the instance was created, in the format defined by RFC 3339  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -104,8 +99,7 @@ type ApiPlatformInstanceParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-provided changeable and non-unique description of the instance
 	// +kubebuilder:validation:Optional
@@ -113,8 +107,7 @@ type ApiPlatformInstanceParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A regionally unique, non-changeable instance name provided by the user during creation
 	// +kubebuilder:validation:Optional

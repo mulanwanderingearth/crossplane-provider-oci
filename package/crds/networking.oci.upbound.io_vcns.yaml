@@ -186,7 +186,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -205,7 +204,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ipv6privateCidrBlocks:
                     description: 'The list of one or more ULA or Private IPv6 CIDR
                       blocks for the vcn that meets the following criteria:'
@@ -237,7 +235,6 @@ spec:
                       {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode":
                       "audit"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -365,7 +362,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -384,7 +380,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ipv6privateCidrBlocks:
                     description: 'The list of one or more ULA or Private IPv6 CIDR
                       blocks for the vcn that meets the following criteria:'
@@ -416,7 +411,6 @@ spec:
                       {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode":
                       "audit"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -563,7 +557,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -582,7 +575,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The VCN's Oracle ID (OCID).
                     type: string
@@ -624,7 +616,6 @@ spec:
                       {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode":
                       "audit"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: The VCN's current state.
                     type: string

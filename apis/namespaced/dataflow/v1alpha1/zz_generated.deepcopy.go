@@ -128,7 +128,7 @@ func (in *ActivelyUsedNodeCountObservation) DeepCopyInto(out *ActivelyUsedNodeCo
 	}
 	if in.PoolCount != nil {
 		in, out := &in.PoolCount, &out.PoolCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -233,34 +233,16 @@ func (in *ApplicationInitParameters) DeepCopyInto(out *ApplicationInitParameters
 	}
 	if in.Configuration != nil {
 		in, out := &in.Configuration, &out.Configuration
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -309,18 +291,9 @@ func (in *ApplicationInitParameters) DeepCopyInto(out *ApplicationInitParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdleTimeoutInMinutes != nil {
@@ -350,7 +323,7 @@ func (in *ApplicationInitParameters) DeepCopyInto(out *ApplicationInitParameters
 	}
 	if in.NumExecutors != nil {
 		in, out := &in.NumExecutors, &out.NumExecutors
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Parameters != nil {
@@ -607,34 +580,16 @@ func (in *ApplicationObservation) DeepCopyInto(out *ApplicationObservation) {
 	}
 	if in.Configuration != nil {
 		in, out := &in.Configuration, &out.Configuration
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -683,18 +638,9 @@ func (in *ApplicationObservation) DeepCopyInto(out *ApplicationObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -729,7 +675,7 @@ func (in *ApplicationObservation) DeepCopyInto(out *ApplicationObservation) {
 	}
 	if in.NumExecutors != nil {
 		in, out := &in.NumExecutors, &out.NumExecutors
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OwnerPrincipalID != nil {
@@ -854,34 +800,16 @@ func (in *ApplicationParameters) DeepCopyInto(out *ApplicationParameters) {
 	}
 	if in.Configuration != nil {
 		in, out := &in.Configuration, &out.Configuration
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -930,18 +858,9 @@ func (in *ApplicationParameters) DeepCopyInto(out *ApplicationParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdleTimeoutInMinutes != nil {
@@ -971,7 +890,7 @@ func (in *ApplicationParameters) DeepCopyInto(out *ApplicationParameters) {
 	}
 	if in.NumExecutors != nil {
 		in, out := &in.NumExecutors, &out.NumExecutors
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Parameters != nil {
@@ -1083,12 +1002,12 @@ func (in *ConfigurationsInitParameters) DeepCopyInto(out *ConfigurationsInitPara
 	*out = *in
 	if in.Max != nil {
 		in, out := &in.Max, &out.Max
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Min != nil {
 		in, out := &in.Min, &out.Min
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -1120,12 +1039,12 @@ func (in *ConfigurationsObservation) DeepCopyInto(out *ConfigurationsObservation
 	*out = *in
 	if in.Max != nil {
 		in, out := &in.Max, &out.Max
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Min != nil {
 		in, out := &in.Min, &out.Min
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -1157,12 +1076,12 @@ func (in *ConfigurationsParameters) DeepCopyInto(out *ConfigurationsParameters) 
 	*out = *in
 	if in.Max != nil {
 		in, out := &in.Max, &out.Max
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Min != nil {
 		in, out := &in.Min, &out.Min
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -1749,34 +1668,16 @@ func (in *InvokeRunInitParameters) DeepCopyInto(out *InvokeRunInitParameters) {
 	}
 	if in.Configuration != nil {
 		in, out := &in.Configuration, &out.Configuration
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1815,18 +1716,9 @@ func (in *InvokeRunInitParameters) DeepCopyInto(out *InvokeRunInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdleTimeoutInMinutes != nil {
@@ -1851,7 +1743,7 @@ func (in *InvokeRunInitParameters) DeepCopyInto(out *InvokeRunInitParameters) {
 	}
 	if in.NumExecutors != nil {
 		in, out := &in.NumExecutors, &out.NumExecutors
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OpcParentRptURL != nil {
@@ -1988,18 +1880,9 @@ func (in *InvokeRunObservation) DeepCopyInto(out *InvokeRunObservation) {
 	}
 	if in.Configuration != nil {
 		in, out := &in.Configuration, &out.Configuration
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DataReadInBytes != nil {
@@ -2014,18 +1897,9 @@ func (in *InvokeRunObservation) DeepCopyInto(out *InvokeRunObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2069,18 +1943,9 @@ func (in *InvokeRunObservation) DeepCopyInto(out *InvokeRunObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -2120,7 +1985,7 @@ func (in *InvokeRunObservation) DeepCopyInto(out *InvokeRunObservation) {
 	}
 	if in.NumExecutors != nil {
 		in, out := &in.NumExecutors, &out.NumExecutors
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OpcParentRptURL != nil {
@@ -2173,7 +2038,7 @@ func (in *InvokeRunObservation) DeepCopyInto(out *InvokeRunObservation) {
 	}
 	if in.PrivateEndpointMaxHostCount != nil {
 		in, out := &in.PrivateEndpointMaxHostCount, &out.PrivateEndpointMaxHostCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrivateEndpointNsgIds != nil {
@@ -2219,7 +2084,7 @@ func (in *InvokeRunObservation) DeepCopyInto(out *InvokeRunObservation) {
 	}
 	if in.TotalOcpu != nil {
 		in, out := &in.TotalOcpu, &out.TotalOcpu
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Type != nil {
@@ -2307,34 +2172,16 @@ func (in *InvokeRunParameters) DeepCopyInto(out *InvokeRunParameters) {
 	}
 	if in.Configuration != nil {
 		in, out := &in.Configuration, &out.Configuration
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2373,18 +2220,9 @@ func (in *InvokeRunParameters) DeepCopyInto(out *InvokeRunParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdleTimeoutInMinutes != nil {
@@ -2409,7 +2247,7 @@ func (in *InvokeRunParameters) DeepCopyInto(out *InvokeRunParameters) {
 	}
 	if in.NumExecutors != nil {
 		in, out := &in.NumExecutors, &out.NumExecutors
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OpcParentRptURL != nil {
@@ -2992,18 +2830,9 @@ func (in *PoolInitParameters) DeepCopyInto(out *PoolInitParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3018,23 +2847,14 @@ func (in *PoolInitParameters) DeepCopyInto(out *PoolInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdleTimeoutInMinutes != nil {
 		in, out := &in.IdleTimeoutInMinutes, &out.IdleTimeoutInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Schedules != nil {
@@ -3187,18 +3007,9 @@ func (in *PoolObservation) DeepCopyInto(out *PoolObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3213,18 +3024,9 @@ func (in *PoolObservation) DeepCopyInto(out *PoolObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -3234,7 +3036,7 @@ func (in *PoolObservation) DeepCopyInto(out *PoolObservation) {
 	}
 	if in.IdleTimeoutInMinutes != nil {
 		in, out := &in.IdleTimeoutInMinutes, &out.IdleTimeoutInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.LifecycleDetails != nil {
@@ -3320,18 +3122,9 @@ func (in *PoolParameters) DeepCopyInto(out *PoolParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3346,23 +3139,14 @@ func (in *PoolParameters) DeepCopyInto(out *PoolParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdleTimeoutInMinutes != nil {
 		in, out := &in.IdleTimeoutInMinutes, &out.IdleTimeoutInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Schedules != nil {
@@ -3482,18 +3266,9 @@ func (in *PrivateEndpointInitParameters) DeepCopyInto(out *PrivateEndpointInitPa
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3508,23 +3283,14 @@ func (in *PrivateEndpointInitParameters) DeepCopyInto(out *PrivateEndpointInitPa
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.MaxHostCount != nil {
 		in, out := &in.MaxHostCount, &out.MaxHostCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NsgIds != nil {
@@ -3625,18 +3391,9 @@ func (in *PrivateEndpointObservation) DeepCopyInto(out *PrivateEndpointObservati
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3651,18 +3408,9 @@ func (in *PrivateEndpointObservation) DeepCopyInto(out *PrivateEndpointObservati
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -3677,7 +3425,7 @@ func (in *PrivateEndpointObservation) DeepCopyInto(out *PrivateEndpointObservati
 	}
 	if in.MaxHostCount != nil {
 		in, out := &in.MaxHostCount, &out.MaxHostCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NsgIds != nil {
@@ -3771,18 +3519,9 @@ func (in *PrivateEndpointParameters) DeepCopyInto(out *PrivateEndpointParameters
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3797,23 +3536,14 @@ func (in *PrivateEndpointParameters) DeepCopyInto(out *PrivateEndpointParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.MaxHostCount != nil {
 		in, out := &in.MaxHostCount, &out.MaxHostCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NsgIds != nil {
@@ -4182,12 +3912,12 @@ func (in *SchedulesInitParameters) DeepCopyInto(out *SchedulesInitParameters) {
 	}
 	if in.StartTime != nil {
 		in, out := &in.StartTime, &out.StartTime
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StopTime != nil {
 		in, out := &in.StopTime, &out.StopTime
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4212,12 +3942,12 @@ func (in *SchedulesObservation) DeepCopyInto(out *SchedulesObservation) {
 	}
 	if in.StartTime != nil {
 		in, out := &in.StartTime, &out.StartTime
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StopTime != nil {
 		in, out := &in.StopTime, &out.StopTime
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4242,12 +3972,12 @@ func (in *SchedulesParameters) DeepCopyInto(out *SchedulesParameters) {
 	}
 	if in.StartTime != nil {
 		in, out := &in.StartTime, &out.StartTime
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StopTime != nil {
 		in, out := &in.StopTime, &out.StopTime
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4534,18 +4264,9 @@ func (in *SqlEndpointInitParameters) DeepCopyInto(out *SqlEndpointInitParameters
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -4584,18 +4305,9 @@ func (in *SqlEndpointInitParameters) DeepCopyInto(out *SqlEndpointInitParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.LogCompartmentID != nil {
@@ -4635,12 +4347,12 @@ func (in *SqlEndpointInitParameters) DeepCopyInto(out *SqlEndpointInitParameters
 	}
 	if in.LogRetentionDuration != nil {
 		in, out := &in.LogRetentionDuration, &out.LogRetentionDuration
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxExecutorCount != nil {
 		in, out := &in.MaxExecutorCount, &out.MaxExecutorCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MetastoreID != nil {
@@ -4660,7 +4372,7 @@ func (in *SqlEndpointInitParameters) DeepCopyInto(out *SqlEndpointInitParameters
 	}
 	if in.MinExecutorCount != nil {
 		in, out := &in.MinExecutorCount, &out.MinExecutorCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NetworkConfiguration != nil {
@@ -4677,18 +4389,9 @@ func (in *SqlEndpointInitParameters) DeepCopyInto(out *SqlEndpointInitParameters
 	}
 	if in.SparkAdvancedConfigurations != nil {
 		in, out := &in.SparkAdvancedConfigurations, &out.SparkAdvancedConfigurations
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.State != nil {
@@ -4750,18 +4453,9 @@ func (in *SqlEndpointObservation) DeepCopyInto(out *SqlEndpointObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -4800,18 +4494,9 @@ func (in *SqlEndpointObservation) DeepCopyInto(out *SqlEndpointObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -4846,12 +4531,12 @@ func (in *SqlEndpointObservation) DeepCopyInto(out *SqlEndpointObservation) {
 	}
 	if in.LogRetentionDuration != nil {
 		in, out := &in.LogRetentionDuration, &out.LogRetentionDuration
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxExecutorCount != nil {
 		in, out := &in.MaxExecutorCount, &out.MaxExecutorCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MetastoreID != nil {
@@ -4861,7 +4546,7 @@ func (in *SqlEndpointObservation) DeepCopyInto(out *SqlEndpointObservation) {
 	}
 	if in.MinExecutorCount != nil {
 		in, out := &in.MinExecutorCount, &out.MinExecutorCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NetworkConfiguration != nil {
@@ -4878,18 +4563,9 @@ func (in *SqlEndpointObservation) DeepCopyInto(out *SqlEndpointObservation) {
 	}
 	if in.SparkAdvancedConfigurations != nil {
 		in, out := &in.SparkAdvancedConfigurations, &out.SparkAdvancedConfigurations
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.State != nil {
@@ -4904,18 +4580,9 @@ func (in *SqlEndpointObservation) DeepCopyInto(out *SqlEndpointObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -4965,18 +4632,9 @@ func (in *SqlEndpointParameters) DeepCopyInto(out *SqlEndpointParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -5015,18 +4673,9 @@ func (in *SqlEndpointParameters) DeepCopyInto(out *SqlEndpointParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.LogCompartmentID != nil {
@@ -5066,12 +4715,12 @@ func (in *SqlEndpointParameters) DeepCopyInto(out *SqlEndpointParameters) {
 	}
 	if in.LogRetentionDuration != nil {
 		in, out := &in.LogRetentionDuration, &out.LogRetentionDuration
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxExecutorCount != nil {
 		in, out := &in.MaxExecutorCount, &out.MaxExecutorCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MetastoreID != nil {
@@ -5091,7 +4740,7 @@ func (in *SqlEndpointParameters) DeepCopyInto(out *SqlEndpointParameters) {
 	}
 	if in.MinExecutorCount != nil {
 		in, out := &in.MinExecutorCount, &out.MinExecutorCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NetworkConfiguration != nil {
@@ -5108,18 +4757,9 @@ func (in *SqlEndpointParameters) DeepCopyInto(out *SqlEndpointParameters) {
 	}
 	if in.SparkAdvancedConfigurations != nil {
 		in, out := &in.SparkAdvancedConfigurations, &out.SparkAdvancedConfigurations
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.State != nil {

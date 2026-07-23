@@ -35,8 +35,7 @@ type WorkspaceInitParameters struct {
 	DNSServerZone *string `json:"dnsServerZone,omitempty" tf:"dns_server_zone,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user defined description for the workspace.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -64,15 +63,14 @@ type WorkspaceInitParameters struct {
 	EndpointName *string `json:"endpointName,omitempty" tf:"endpoint_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	IsForceOperation *bool `json:"isForceOperation,omitempty" tf:"is_force_operation,omitempty"`
 
 	// Specifies whether the private network connection is enabled or disabled.
 	IsPrivateNetworkEnabled *bool `json:"isPrivateNetworkEnabled,omitempty" tf:"is_private_network_enabled,omitempty"`
 
-	QuiesceTimeout *float64 `json:"quiesceTimeout,omitempty" tf:"quiesce_timeout,omitempty"`
+	QuiesceTimeout *int64 `json:"quiesceTimeout,omitempty" tf:"quiesce_timeout,omitempty"`
 
 	// DCMS Data Asset Registry Compartment Identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -132,8 +130,7 @@ type WorkspaceObservation struct {
 	DNSServerZone *string `json:"dnsServerZone,omitempty" tf:"dns_server_zone,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user defined description for the workspace.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -151,8 +148,7 @@ type WorkspaceObservation struct {
 	EndpointName *string `json:"endpointName,omitempty" tf:"endpoint_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A system-generated and immutable identifier assigned to the workspace upon creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -162,7 +158,7 @@ type WorkspaceObservation struct {
 	// Specifies whether the private network connection is enabled or disabled.
 	IsPrivateNetworkEnabled *bool `json:"isPrivateNetworkEnabled,omitempty" tf:"is_private_network_enabled,omitempty"`
 
-	QuiesceTimeout *float64 `json:"quiesceTimeout,omitempty" tf:"quiesce_timeout,omitempty"`
+	QuiesceTimeout *int64 `json:"quiesceTimeout,omitempty" tf:"quiesce_timeout,omitempty"`
 
 	// DCMS Data Asset Registry Compartment Identifier
 	RegistryCompartmentID *string `json:"registryCompartmentId,omitempty" tf:"registry_compartment_id,omitempty"`
@@ -217,8 +213,7 @@ type WorkspaceParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user defined description for the workspace.
 	// +kubebuilder:validation:Optional
@@ -252,8 +247,7 @@ type WorkspaceParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	IsForceOperation *bool `json:"isForceOperation,omitempty" tf:"is_force_operation,omitempty"`
@@ -263,7 +257,7 @@ type WorkspaceParameters struct {
 	IsPrivateNetworkEnabled *bool `json:"isPrivateNetworkEnabled,omitempty" tf:"is_private_network_enabled,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	QuiesceTimeout *float64 `json:"quiesceTimeout,omitempty" tf:"quiesce_timeout,omitempty"`
+	QuiesceTimeout *int64 `json:"quiesceTimeout,omitempty" tf:"quiesce_timeout,omitempty"`
 
 	// DCMS Data Asset Registry Compartment Identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment

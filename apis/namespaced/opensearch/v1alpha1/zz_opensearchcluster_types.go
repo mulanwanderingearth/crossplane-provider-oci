@@ -106,10 +106,10 @@ type CertificateConfigParameters struct {
 type LoadBalancerConfigInitParameters struct {
 
 	// (Updatable) Maximum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
-	LoadBalancerMaxBandwidthInMbps *float64 `json:"loadBalancerMaxBandwidthInMbps,omitempty" tf:"load_balancer_max_bandwidth_in_mbps,omitempty"`
+	LoadBalancerMaxBandwidthInMbps *int64 `json:"loadBalancerMaxBandwidthInMbps,omitempty" tf:"load_balancer_max_bandwidth_in_mbps,omitempty"`
 
 	// (Updatable) Minimum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
-	LoadBalancerMinBandwidthInMbps *float64 `json:"loadBalancerMinBandwidthInMbps,omitempty" tf:"load_balancer_min_bandwidth_in_mbps,omitempty"`
+	LoadBalancerMinBandwidthInMbps *int64 `json:"loadBalancerMinBandwidthInMbps,omitempty" tf:"load_balancer_min_bandwidth_in_mbps,omitempty"`
 
 	// (Updatable) Load balancer service for OpenSearch and OpenDashboard load balancer. Default value is LOAD_BALANCER.
 	LoadBalancerServiceType *string `json:"loadBalancerServiceType,omitempty" tf:"load_balancer_service_type,omitempty"`
@@ -118,10 +118,10 @@ type LoadBalancerConfigInitParameters struct {
 type LoadBalancerConfigObservation struct {
 
 	// (Updatable) Maximum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
-	LoadBalancerMaxBandwidthInMbps *float64 `json:"loadBalancerMaxBandwidthInMbps,omitempty" tf:"load_balancer_max_bandwidth_in_mbps,omitempty"`
+	LoadBalancerMaxBandwidthInMbps *int64 `json:"loadBalancerMaxBandwidthInMbps,omitempty" tf:"load_balancer_max_bandwidth_in_mbps,omitempty"`
 
 	// (Updatable) Minimum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
-	LoadBalancerMinBandwidthInMbps *float64 `json:"loadBalancerMinBandwidthInMbps,omitempty" tf:"load_balancer_min_bandwidth_in_mbps,omitempty"`
+	LoadBalancerMinBandwidthInMbps *int64 `json:"loadBalancerMinBandwidthInMbps,omitempty" tf:"load_balancer_min_bandwidth_in_mbps,omitempty"`
 
 	// (Updatable) Load balancer service for OpenSearch and OpenDashboard load balancer. Default value is LOAD_BALANCER.
 	LoadBalancerServiceType *string `json:"loadBalancerServiceType,omitempty" tf:"load_balancer_service_type,omitempty"`
@@ -131,11 +131,11 @@ type LoadBalancerConfigParameters struct {
 
 	// (Updatable) Maximum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
 	// +kubebuilder:validation:Optional
-	LoadBalancerMaxBandwidthInMbps *float64 `json:"loadBalancerMaxBandwidthInMbps,omitempty" tf:"load_balancer_max_bandwidth_in_mbps,omitempty"`
+	LoadBalancerMaxBandwidthInMbps *int64 `json:"loadBalancerMaxBandwidthInMbps,omitempty" tf:"load_balancer_max_bandwidth_in_mbps,omitempty"`
 
 	// (Updatable) Minimum bandwidth (Mbps) of OpenSearch load balancer. Not applicable for network load balancer service.
 	// +kubebuilder:validation:Optional
-	LoadBalancerMinBandwidthInMbps *float64 `json:"loadBalancerMinBandwidthInMbps,omitempty" tf:"load_balancer_min_bandwidth_in_mbps,omitempty"`
+	LoadBalancerMinBandwidthInMbps *int64 `json:"loadBalancerMinBandwidthInMbps,omitempty" tf:"load_balancer_min_bandwidth_in_mbps,omitempty"`
 
 	// (Updatable) Load balancer service for OpenSearch and OpenDashboard load balancer. Default value is LOAD_BALANCER.
 	// +kubebuilder:validation:Optional
@@ -188,16 +188,16 @@ type OpensearchClusterInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Configure Outbound Cluster. Could be set to any integer value.
-	ConfigureOutboundClusterTrigger *float64 `json:"configureOutboundClusterTrigger,omitempty" tf:"configure_outbound_cluster_trigger,omitempty"`
+	ConfigureOutboundClusterTrigger *int64 `json:"configureOutboundClusterTrigger,omitempty" tf:"configure_outbound_cluster_trigger,omitempty"`
 
 	// (Updatable) The number of coordinator nodes configured for the cluster.
-	CoordinatorNodeCount *float64 `json:"coordinatorNodeCount,omitempty" tf:"coordinator_node_count,omitempty"`
+	CoordinatorNodeCount *int64 `json:"coordinatorNodeCount,omitempty" tf:"coordinator_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for the cluster's coordinator nodes.
-	CoordinatorNodeHostMemoryGb *float64 `json:"coordinatorNodeHostMemoryGb,omitempty" tf:"coordinator_node_host_memory_gb,omitempty"`
+	CoordinatorNodeHostMemoryGb *int64 `json:"coordinatorNodeHostMemoryGb,omitempty" tf:"coordinator_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for the cluster's coordinator nodes.
-	CoordinatorNodeHostOcpuCount *float64 `json:"coordinatorNodeHostOcpuCount,omitempty" tf:"coordinator_node_host_ocpu_count,omitempty"`
+	CoordinatorNodeHostOcpuCount *int64 `json:"coordinatorNodeHostOcpuCount,omitempty" tf:"coordinator_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's coordinator nodes.
 	CoordinatorNodeHostShape *string `json:"coordinatorNodeHostShape,omitempty" tf:"coordinator_node_host_shape,omitempty"`
@@ -206,16 +206,16 @@ type OpensearchClusterInitParameters struct {
 	CoordinatorNodeHostType *string `json:"coordinatorNodeHostType,omitempty" tf:"coordinator_node_host_type,omitempty"`
 
 	// (Updatable) The number of data nodes to configure for the cluster.
-	DataNodeCount *float64 `json:"dataNodeCount,omitempty" tf:"data_node_count,omitempty"`
+	DataNodeCount *int64 `json:"dataNodeCount,omitempty" tf:"data_node_count,omitempty"`
 
 	// The bare metal shape for the cluster's data nodes.
 	DataNodeHostBareMetalShape *string `json:"dataNodeHostBareMetalShape,omitempty" tf:"data_node_host_bare_metal_shape,omitempty"`
 
 	// (Updatable) The amount of memory in GB, to configure per node for the cluster's data nodes.
-	DataNodeHostMemoryGb *float64 `json:"dataNodeHostMemoryGb,omitempty" tf:"data_node_host_memory_gb,omitempty"`
+	DataNodeHostMemoryGb *int64 `json:"dataNodeHostMemoryGb,omitempty" tf:"data_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs to configure for the cluster's data nodes.
-	DataNodeHostOcpuCount *float64 `json:"dataNodeHostOcpuCount,omitempty" tf:"data_node_host_ocpu_count,omitempty"`
+	DataNodeHostOcpuCount *int64 `json:"dataNodeHostOcpuCount,omitempty" tf:"data_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's data nodes.
 	DataNodeHostShape *string `json:"dataNodeHostShape,omitempty" tf:"data_node_host_shape,omitempty"`
@@ -224,18 +224,16 @@ type OpensearchClusterInitParameters struct {
 	DataNodeHostType *string `json:"dataNodeHostType,omitempty" tf:"data_node_host_type,omitempty"`
 
 	// (Updatable) The amount of storage in GB, to configure per node for the cluster's data nodes.
-	DataNodeStorageGb *float64 `json:"dataNodeStorageGb,omitempty" tf:"data_node_storage_gb,omitempty"`
+	DataNodeStorageGb *int64 `json:"dataNodeStorageGb,omitempty" tf:"data_node_storage_gb,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The name of the cluster. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// List of inbound clusters that will be queried using cross cluster search
 	InboundClusterIds []*string `json:"inboundClusterIds,omitempty" tf:"inbound_cluster_ids,omitempty"`
@@ -244,13 +242,13 @@ type OpensearchClusterInitParameters struct {
 	LoadBalancerConfig []LoadBalancerConfigInitParameters `json:"loadBalancerConfig,omitempty" tf:"load_balancer_config,omitempty"`
 
 	// (Updatable) The number of ML nodes configured for the cluster.
-	MLNodeCount *float64 `json:"mlNodeCount,omitempty" tf:"ml_node_count,omitempty"`
+	MLNodeCount *int64 `json:"mlNodeCount,omitempty" tf:"ml_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for the cluster's ML nodes.
-	MLNodeHostMemoryGb *float64 `json:"mlNodeHostMemoryGb,omitempty" tf:"ml_node_host_memory_gb,omitempty"`
+	MLNodeHostMemoryGb *int64 `json:"mlNodeHostMemoryGb,omitempty" tf:"ml_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for the cluster's ML nodes.
-	MLNodeHostOcpuCount *float64 `json:"mlNodeHostOcpuCount,omitempty" tf:"ml_node_host_ocpu_count,omitempty"`
+	MLNodeHostOcpuCount *int64 `json:"mlNodeHostOcpuCount,omitempty" tf:"ml_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's ML nodes.
 	MLNodeHostShape *string `json:"mlNodeHostShape,omitempty" tf:"ml_node_host_shape,omitempty"`
@@ -259,22 +257,22 @@ type OpensearchClusterInitParameters struct {
 	MLNodeHostType *string `json:"mlNodeHostType,omitempty" tf:"ml_node_host_type,omitempty"`
 
 	// (Updatable) The amount of storage in GB, to configure per node for the cluster's ML nodes.
-	MLNodeStorageGb *float64 `json:"mlNodeStorageGb,omitempty" tf:"ml_node_storage_gb,omitempty"`
+	MLNodeStorageGb *int64 `json:"mlNodeStorageGb,omitempty" tf:"ml_node_storage_gb,omitempty"`
 
 	// (Updatable) Details for creation of maintenance details
 	MaintenanceDetails []MaintenanceDetailsInitParameters `json:"maintenanceDetails,omitempty" tf:"maintenance_details,omitempty"`
 
 	// (Updatable) The number of master nodes to configure for the cluster.
-	MasterNodeCount *float64 `json:"masterNodeCount,omitempty" tf:"master_node_count,omitempty"`
+	MasterNodeCount *int64 `json:"masterNodeCount,omitempty" tf:"master_node_count,omitempty"`
 
 	// The bare metal shape for the cluster's master nodes.
 	MasterNodeHostBareMetalShape *string `json:"masterNodeHostBareMetalShape,omitempty" tf:"master_node_host_bare_metal_shape,omitempty"`
 
 	// (Updatable) The amount of memory in GB, to configure per node for the cluster's master nodes.
-	MasterNodeHostMemoryGb *float64 `json:"masterNodeHostMemoryGb,omitempty" tf:"master_node_host_memory_gb,omitempty"`
+	MasterNodeHostMemoryGb *int64 `json:"masterNodeHostMemoryGb,omitempty" tf:"master_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs to configure for the cluser's master nodes.
-	MasterNodeHostOcpuCount *float64 `json:"masterNodeHostOcpuCount,omitempty" tf:"master_node_host_ocpu_count,omitempty"`
+	MasterNodeHostOcpuCount *int64 `json:"masterNodeHostOcpuCount,omitempty" tf:"master_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's master nodes.
 	MasterNodeHostShape *string `json:"masterNodeHostShape,omitempty" tf:"master_node_host_shape,omitempty"`
@@ -286,13 +284,13 @@ type OpensearchClusterInitParameters struct {
 	NsgID *string `json:"nsgId,omitempty" tf:"nsg_id,omitempty"`
 
 	// (Updatable) The number of OpenSearch Dashboard nodes to configure for the cluster.
-	OpendashboardNodeCount *float64 `json:"opendashboardNodeCount,omitempty" tf:"opendashboard_node_count,omitempty"`
+	OpendashboardNodeCount *int64 `json:"opendashboardNodeCount,omitempty" tf:"opendashboard_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, to configure for the cluster's OpenSearch Dashboard nodes.
-	OpendashboardNodeHostMemoryGb *float64 `json:"opendashboardNodeHostMemoryGb,omitempty" tf:"opendashboard_node_host_memory_gb,omitempty"`
+	OpendashboardNodeHostMemoryGb *int64 `json:"opendashboardNodeHostMemoryGb,omitempty" tf:"opendashboard_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs to configure for the cluster's OpenSearch Dashboard nodes.
-	OpendashboardNodeHostOcpuCount *float64 `json:"opendashboardNodeHostOcpuCount,omitempty" tf:"opendashboard_node_host_ocpu_count,omitempty"`
+	OpendashboardNodeHostOcpuCount *int64 `json:"opendashboardNodeHostOcpuCount,omitempty" tf:"opendashboard_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's OpenSearch Dashboard nodes.
 	OpendashboardNodeHostShape *string `json:"opendashboardNodeHostShape,omitempty" tf:"opendashboard_node_host_shape,omitempty"`
@@ -304,13 +302,13 @@ type OpensearchClusterInitParameters struct {
 	ReverseConnectionEndpointCustomerIps []*string `json:"reverseConnectionEndpointCustomerIps,omitempty" tf:"reverse_connection_endpoint_customer_ips,omitempty"`
 
 	// (Updatable) The number of search nodes configured for the cluster.
-	SearchNodeCount *float64 `json:"searchNodeCount,omitempty" tf:"search_node_count,omitempty"`
+	SearchNodeCount *int64 `json:"searchNodeCount,omitempty" tf:"search_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for the cluster's search nodes.
-	SearchNodeHostMemoryGb *float64 `json:"searchNodeHostMemoryGb,omitempty" tf:"search_node_host_memory_gb,omitempty"`
+	SearchNodeHostMemoryGb *int64 `json:"searchNodeHostMemoryGb,omitempty" tf:"search_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for the cluster's search nodes.
-	SearchNodeHostOcpuCount *float64 `json:"searchNodeHostOcpuCount,omitempty" tf:"search_node_host_ocpu_count,omitempty"`
+	SearchNodeHostOcpuCount *int64 `json:"searchNodeHostOcpuCount,omitempty" tf:"search_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's search nodes.
 	SearchNodeHostShape *string `json:"searchNodeHostShape,omitempty" tf:"search_node_host_shape,omitempty"`
@@ -319,11 +317,10 @@ type OpensearchClusterInitParameters struct {
 	SearchNodeHostType *string `json:"searchNodeHostType,omitempty" tf:"search_node_host_type,omitempty"`
 
 	// (Updatable) The amount of storage in GB, to configure per node for the cluster's search nodes.
-	SearchNodeStorageGb *float64 `json:"searchNodeStorageGb,omitempty" tf:"search_node_storage_gb,omitempty"`
+	SearchNodeStorageGb *int64 `json:"searchNodeStorageGb,omitempty" tf:"search_node_storage_gb,omitempty"`
 
 	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The name of the master user that are used to manage security config
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.User
@@ -377,11 +374,10 @@ type OpensearchClusterInitParameters struct {
 	SubnetIDSelector *v1.NamespacedSelector `json:"subnetIdSelector,omitempty" tf:"-"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// An optional property to upgrade the major version of the cluster. This workflow upgrades the cluster without creating a clone. If you want to create a clone and upgrade the clone for testing please use SDK or CLI.
-	UpgradeMajorVersionTrigger *float64 `json:"upgradeMajorVersionTrigger,omitempty" tf:"upgrade_major_version_trigger,omitempty"`
+	UpgradeMajorVersionTrigger *int64 `json:"upgradeMajorVersionTrigger,omitempty" tf:"upgrade_major_version_trigger,omitempty"`
 
 	// The OCID for the compartment where the cluster's VCN is located.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -422,16 +418,16 @@ type OpensearchClusterObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Configure Outbound Cluster. Could be set to any integer value.
-	ConfigureOutboundClusterTrigger *float64 `json:"configureOutboundClusterTrigger,omitempty" tf:"configure_outbound_cluster_trigger,omitempty"`
+	ConfigureOutboundClusterTrigger *int64 `json:"configureOutboundClusterTrigger,omitempty" tf:"configure_outbound_cluster_trigger,omitempty"`
 
 	// (Updatable) The number of coordinator nodes configured for the cluster.
-	CoordinatorNodeCount *float64 `json:"coordinatorNodeCount,omitempty" tf:"coordinator_node_count,omitempty"`
+	CoordinatorNodeCount *int64 `json:"coordinatorNodeCount,omitempty" tf:"coordinator_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for the cluster's coordinator nodes.
-	CoordinatorNodeHostMemoryGb *float64 `json:"coordinatorNodeHostMemoryGb,omitempty" tf:"coordinator_node_host_memory_gb,omitempty"`
+	CoordinatorNodeHostMemoryGb *int64 `json:"coordinatorNodeHostMemoryGb,omitempty" tf:"coordinator_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for the cluster's coordinator nodes.
-	CoordinatorNodeHostOcpuCount *float64 `json:"coordinatorNodeHostOcpuCount,omitempty" tf:"coordinator_node_host_ocpu_count,omitempty"`
+	CoordinatorNodeHostOcpuCount *int64 `json:"coordinatorNodeHostOcpuCount,omitempty" tf:"coordinator_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's coordinator nodes.
 	CoordinatorNodeHostShape *string `json:"coordinatorNodeHostShape,omitempty" tf:"coordinator_node_host_shape,omitempty"`
@@ -440,16 +436,16 @@ type OpensearchClusterObservation struct {
 	CoordinatorNodeHostType *string `json:"coordinatorNodeHostType,omitempty" tf:"coordinator_node_host_type,omitempty"`
 
 	// (Updatable) The number of data nodes to configure for the cluster.
-	DataNodeCount *float64 `json:"dataNodeCount,omitempty" tf:"data_node_count,omitempty"`
+	DataNodeCount *int64 `json:"dataNodeCount,omitempty" tf:"data_node_count,omitempty"`
 
 	// The bare metal shape for the cluster's data nodes.
 	DataNodeHostBareMetalShape *string `json:"dataNodeHostBareMetalShape,omitempty" tf:"data_node_host_bare_metal_shape,omitempty"`
 
 	// (Updatable) The amount of memory in GB, to configure per node for the cluster's data nodes.
-	DataNodeHostMemoryGb *float64 `json:"dataNodeHostMemoryGb,omitempty" tf:"data_node_host_memory_gb,omitempty"`
+	DataNodeHostMemoryGb *int64 `json:"dataNodeHostMemoryGb,omitempty" tf:"data_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs to configure for the cluster's data nodes.
-	DataNodeHostOcpuCount *float64 `json:"dataNodeHostOcpuCount,omitempty" tf:"data_node_host_ocpu_count,omitempty"`
+	DataNodeHostOcpuCount *int64 `json:"dataNodeHostOcpuCount,omitempty" tf:"data_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's data nodes.
 	DataNodeHostShape *string `json:"dataNodeHostShape,omitempty" tf:"data_node_host_shape,omitempty"`
@@ -458,11 +454,10 @@ type OpensearchClusterObservation struct {
 	DataNodeHostType *string `json:"dataNodeHostType,omitempty" tf:"data_node_host_type,omitempty"`
 
 	// (Updatable) The amount of storage in GB, to configure per node for the cluster's data nodes.
-	DataNodeStorageGb *float64 `json:"dataNodeStorageGb,omitempty" tf:"data_node_storage_gb,omitempty"`
+	DataNodeStorageGb *int64 `json:"dataNodeStorageGb,omitempty" tf:"data_node_storage_gb,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The name of the cluster. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -471,8 +466,7 @@ type OpensearchClusterObservation struct {
 	Fqdn *string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the cluster.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -487,13 +481,13 @@ type OpensearchClusterObservation struct {
 	LoadBalancerConfig []LoadBalancerConfigObservation `json:"loadBalancerConfig,omitempty" tf:"load_balancer_config,omitempty"`
 
 	// (Updatable) The number of ML nodes configured for the cluster.
-	MLNodeCount *float64 `json:"mlNodeCount,omitempty" tf:"ml_node_count,omitempty"`
+	MLNodeCount *int64 `json:"mlNodeCount,omitempty" tf:"ml_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for the cluster's ML nodes.
-	MLNodeHostMemoryGb *float64 `json:"mlNodeHostMemoryGb,omitempty" tf:"ml_node_host_memory_gb,omitempty"`
+	MLNodeHostMemoryGb *int64 `json:"mlNodeHostMemoryGb,omitempty" tf:"ml_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for the cluster's ML nodes.
-	MLNodeHostOcpuCount *float64 `json:"mlNodeHostOcpuCount,omitempty" tf:"ml_node_host_ocpu_count,omitempty"`
+	MLNodeHostOcpuCount *int64 `json:"mlNodeHostOcpuCount,omitempty" tf:"ml_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's ML nodes.
 	MLNodeHostShape *string `json:"mlNodeHostShape,omitempty" tf:"ml_node_host_shape,omitempty"`
@@ -502,22 +496,22 @@ type OpensearchClusterObservation struct {
 	MLNodeHostType *string `json:"mlNodeHostType,omitempty" tf:"ml_node_host_type,omitempty"`
 
 	// (Updatable) The amount of storage in GB, to configure per node for the cluster's ML nodes.
-	MLNodeStorageGb *float64 `json:"mlNodeStorageGb,omitempty" tf:"ml_node_storage_gb,omitempty"`
+	MLNodeStorageGb *int64 `json:"mlNodeStorageGb,omitempty" tf:"ml_node_storage_gb,omitempty"`
 
 	// (Updatable) Details for creation of maintenance details
 	MaintenanceDetails []MaintenanceDetailsObservation `json:"maintenanceDetails,omitempty" tf:"maintenance_details,omitempty"`
 
 	// (Updatable) The number of master nodes to configure for the cluster.
-	MasterNodeCount *float64 `json:"masterNodeCount,omitempty" tf:"master_node_count,omitempty"`
+	MasterNodeCount *int64 `json:"masterNodeCount,omitempty" tf:"master_node_count,omitempty"`
 
 	// The bare metal shape for the cluster's master nodes.
 	MasterNodeHostBareMetalShape *string `json:"masterNodeHostBareMetalShape,omitempty" tf:"master_node_host_bare_metal_shape,omitempty"`
 
 	// (Updatable) The amount of memory in GB, to configure per node for the cluster's master nodes.
-	MasterNodeHostMemoryGb *float64 `json:"masterNodeHostMemoryGb,omitempty" tf:"master_node_host_memory_gb,omitempty"`
+	MasterNodeHostMemoryGb *int64 `json:"masterNodeHostMemoryGb,omitempty" tf:"master_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs to configure for the cluser's master nodes.
-	MasterNodeHostOcpuCount *float64 `json:"masterNodeHostOcpuCount,omitempty" tf:"master_node_host_ocpu_count,omitempty"`
+	MasterNodeHostOcpuCount *int64 `json:"masterNodeHostOcpuCount,omitempty" tf:"master_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's master nodes.
 	MasterNodeHostShape *string `json:"masterNodeHostShape,omitempty" tf:"master_node_host_shape,omitempty"`
@@ -532,13 +526,13 @@ type OpensearchClusterObservation struct {
 	OpendashboardFqdn *string `json:"opendashboardFqdn,omitempty" tf:"opendashboard_fqdn,omitempty"`
 
 	// (Updatable) The number of OpenSearch Dashboard nodes to configure for the cluster.
-	OpendashboardNodeCount *float64 `json:"opendashboardNodeCount,omitempty" tf:"opendashboard_node_count,omitempty"`
+	OpendashboardNodeCount *int64 `json:"opendashboardNodeCount,omitempty" tf:"opendashboard_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, to configure for the cluster's OpenSearch Dashboard nodes.
-	OpendashboardNodeHostMemoryGb *float64 `json:"opendashboardNodeHostMemoryGb,omitempty" tf:"opendashboard_node_host_memory_gb,omitempty"`
+	OpendashboardNodeHostMemoryGb *int64 `json:"opendashboardNodeHostMemoryGb,omitempty" tf:"opendashboard_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs to configure for the cluster's OpenSearch Dashboard nodes.
-	OpendashboardNodeHostOcpuCount *float64 `json:"opendashboardNodeHostOcpuCount,omitempty" tf:"opendashboard_node_host_ocpu_count,omitempty"`
+	OpendashboardNodeHostOcpuCount *int64 `json:"opendashboardNodeHostOcpuCount,omitempty" tf:"opendashboard_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's OpenSearch Dashboard nodes.
 	OpendashboardNodeHostShape *string `json:"opendashboardNodeHostShape,omitempty" tf:"opendashboard_node_host_shape,omitempty"`
@@ -562,13 +556,13 @@ type OpensearchClusterObservation struct {
 	ReverseConnectionEndpoints []ReverseConnectionEndpointsObservation `json:"reverseConnectionEndpoints,omitempty" tf:"reverse_connection_endpoints,omitempty"`
 
 	// (Updatable) The number of search nodes configured for the cluster.
-	SearchNodeCount *float64 `json:"searchNodeCount,omitempty" tf:"search_node_count,omitempty"`
+	SearchNodeCount *int64 `json:"searchNodeCount,omitempty" tf:"search_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for the cluster's search nodes.
-	SearchNodeHostMemoryGb *float64 `json:"searchNodeHostMemoryGb,omitempty" tf:"search_node_host_memory_gb,omitempty"`
+	SearchNodeHostMemoryGb *int64 `json:"searchNodeHostMemoryGb,omitempty" tf:"search_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for the cluster's search nodes.
-	SearchNodeHostOcpuCount *float64 `json:"searchNodeHostOcpuCount,omitempty" tf:"search_node_host_ocpu_count,omitempty"`
+	SearchNodeHostOcpuCount *int64 `json:"searchNodeHostOcpuCount,omitempty" tf:"search_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's search nodes.
 	SearchNodeHostShape *string `json:"searchNodeHostShape,omitempty" tf:"search_node_host_shape,omitempty"`
@@ -577,11 +571,10 @@ type OpensearchClusterObservation struct {
 	SearchNodeHostType *string `json:"searchNodeHostType,omitempty" tf:"search_node_host_type,omitempty"`
 
 	// (Updatable) The amount of storage in GB, to configure per node for the cluster's search nodes.
-	SearchNodeStorageGb *float64 `json:"searchNodeStorageGb,omitempty" tf:"search_node_storage_gb,omitempty"`
+	SearchNodeStorageGb *int64 `json:"searchNodeStorageGb,omitempty" tf:"search_node_storage_gb,omitempty"`
 
 	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The name of the master user that are used to manage security config
 	SecurityMasterUserName *string `json:"securityMasterUserName,omitempty" tf:"security_master_user_name,omitempty"`
@@ -605,8 +598,7 @@ type OpensearchClusterObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The amount of time in milliseconds since the cluster was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -618,10 +610,10 @@ type OpensearchClusterObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// The size in GB of the cluster's total storage.
-	TotalStorageGb *float64 `json:"totalStorageGb,omitempty" tf:"total_storage_gb,omitempty"`
+	TotalStorageGb *int64 `json:"totalStorageGb,omitempty" tf:"total_storage_gb,omitempty"`
 
 	// An optional property to upgrade the major version of the cluster. This workflow upgrades the cluster without creating a clone. If you want to create a clone and upgrade the clone for testing please use SDK or CLI.
-	UpgradeMajorVersionTrigger *float64 `json:"upgradeMajorVersionTrigger,omitempty" tf:"upgrade_major_version_trigger,omitempty"`
+	UpgradeMajorVersionTrigger *int64 `json:"upgradeMajorVersionTrigger,omitempty" tf:"upgrade_major_version_trigger,omitempty"`
 
 	// The OCID for the compartment where the cluster's VCN is located.
 	VcnCompartmentID *string `json:"vcnCompartmentId,omitempty" tf:"vcn_compartment_id,omitempty"`
@@ -651,19 +643,19 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Configure Outbound Cluster. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ConfigureOutboundClusterTrigger *float64 `json:"configureOutboundClusterTrigger,omitempty" tf:"configure_outbound_cluster_trigger,omitempty"`
+	ConfigureOutboundClusterTrigger *int64 `json:"configureOutboundClusterTrigger,omitempty" tf:"configure_outbound_cluster_trigger,omitempty"`
 
 	// (Updatable) The number of coordinator nodes configured for the cluster.
 	// +kubebuilder:validation:Optional
-	CoordinatorNodeCount *float64 `json:"coordinatorNodeCount,omitempty" tf:"coordinator_node_count,omitempty"`
+	CoordinatorNodeCount *int64 `json:"coordinatorNodeCount,omitempty" tf:"coordinator_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for the cluster's coordinator nodes.
 	// +kubebuilder:validation:Optional
-	CoordinatorNodeHostMemoryGb *float64 `json:"coordinatorNodeHostMemoryGb,omitempty" tf:"coordinator_node_host_memory_gb,omitempty"`
+	CoordinatorNodeHostMemoryGb *int64 `json:"coordinatorNodeHostMemoryGb,omitempty" tf:"coordinator_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for the cluster's coordinator nodes.
 	// +kubebuilder:validation:Optional
-	CoordinatorNodeHostOcpuCount *float64 `json:"coordinatorNodeHostOcpuCount,omitempty" tf:"coordinator_node_host_ocpu_count,omitempty"`
+	CoordinatorNodeHostOcpuCount *int64 `json:"coordinatorNodeHostOcpuCount,omitempty" tf:"coordinator_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's coordinator nodes.
 	// +kubebuilder:validation:Optional
@@ -675,7 +667,7 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The number of data nodes to configure for the cluster.
 	// +kubebuilder:validation:Optional
-	DataNodeCount *float64 `json:"dataNodeCount,omitempty" tf:"data_node_count,omitempty"`
+	DataNodeCount *int64 `json:"dataNodeCount,omitempty" tf:"data_node_count,omitempty"`
 
 	// The bare metal shape for the cluster's data nodes.
 	// +kubebuilder:validation:Optional
@@ -683,11 +675,11 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The amount of memory in GB, to configure per node for the cluster's data nodes.
 	// +kubebuilder:validation:Optional
-	DataNodeHostMemoryGb *float64 `json:"dataNodeHostMemoryGb,omitempty" tf:"data_node_host_memory_gb,omitempty"`
+	DataNodeHostMemoryGb *int64 `json:"dataNodeHostMemoryGb,omitempty" tf:"data_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs to configure for the cluster's data nodes.
 	// +kubebuilder:validation:Optional
-	DataNodeHostOcpuCount *float64 `json:"dataNodeHostOcpuCount,omitempty" tf:"data_node_host_ocpu_count,omitempty"`
+	DataNodeHostOcpuCount *int64 `json:"dataNodeHostOcpuCount,omitempty" tf:"data_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's data nodes.
 	// +kubebuilder:validation:Optional
@@ -699,12 +691,11 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The amount of storage in GB, to configure per node for the cluster's data nodes.
 	// +kubebuilder:validation:Optional
-	DataNodeStorageGb *float64 `json:"dataNodeStorageGb,omitempty" tf:"data_node_storage_gb,omitempty"`
+	DataNodeStorageGb *int64 `json:"dataNodeStorageGb,omitempty" tf:"data_node_storage_gb,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The name of the cluster. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -712,8 +703,7 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// List of inbound clusters that will be queried using cross cluster search
 	// +kubebuilder:validation:Optional
@@ -725,15 +715,15 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The number of ML nodes configured for the cluster.
 	// +kubebuilder:validation:Optional
-	MLNodeCount *float64 `json:"mlNodeCount,omitempty" tf:"ml_node_count,omitempty"`
+	MLNodeCount *int64 `json:"mlNodeCount,omitempty" tf:"ml_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for the cluster's ML nodes.
 	// +kubebuilder:validation:Optional
-	MLNodeHostMemoryGb *float64 `json:"mlNodeHostMemoryGb,omitempty" tf:"ml_node_host_memory_gb,omitempty"`
+	MLNodeHostMemoryGb *int64 `json:"mlNodeHostMemoryGb,omitempty" tf:"ml_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for the cluster's ML nodes.
 	// +kubebuilder:validation:Optional
-	MLNodeHostOcpuCount *float64 `json:"mlNodeHostOcpuCount,omitempty" tf:"ml_node_host_ocpu_count,omitempty"`
+	MLNodeHostOcpuCount *int64 `json:"mlNodeHostOcpuCount,omitempty" tf:"ml_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's ML nodes.
 	// +kubebuilder:validation:Optional
@@ -745,7 +735,7 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The amount of storage in GB, to configure per node for the cluster's ML nodes.
 	// +kubebuilder:validation:Optional
-	MLNodeStorageGb *float64 `json:"mlNodeStorageGb,omitempty" tf:"ml_node_storage_gb,omitempty"`
+	MLNodeStorageGb *int64 `json:"mlNodeStorageGb,omitempty" tf:"ml_node_storage_gb,omitempty"`
 
 	// (Updatable) Details for creation of maintenance details
 	// +kubebuilder:validation:Optional
@@ -753,7 +743,7 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The number of master nodes to configure for the cluster.
 	// +kubebuilder:validation:Optional
-	MasterNodeCount *float64 `json:"masterNodeCount,omitempty" tf:"master_node_count,omitempty"`
+	MasterNodeCount *int64 `json:"masterNodeCount,omitempty" tf:"master_node_count,omitempty"`
 
 	// The bare metal shape for the cluster's master nodes.
 	// +kubebuilder:validation:Optional
@@ -761,11 +751,11 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The amount of memory in GB, to configure per node for the cluster's master nodes.
 	// +kubebuilder:validation:Optional
-	MasterNodeHostMemoryGb *float64 `json:"masterNodeHostMemoryGb,omitempty" tf:"master_node_host_memory_gb,omitempty"`
+	MasterNodeHostMemoryGb *int64 `json:"masterNodeHostMemoryGb,omitempty" tf:"master_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs to configure for the cluser's master nodes.
 	// +kubebuilder:validation:Optional
-	MasterNodeHostOcpuCount *float64 `json:"masterNodeHostOcpuCount,omitempty" tf:"master_node_host_ocpu_count,omitempty"`
+	MasterNodeHostOcpuCount *int64 `json:"masterNodeHostOcpuCount,omitempty" tf:"master_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's master nodes.
 	// +kubebuilder:validation:Optional
@@ -781,15 +771,15 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The number of OpenSearch Dashboard nodes to configure for the cluster.
 	// +kubebuilder:validation:Optional
-	OpendashboardNodeCount *float64 `json:"opendashboardNodeCount,omitempty" tf:"opendashboard_node_count,omitempty"`
+	OpendashboardNodeCount *int64 `json:"opendashboardNodeCount,omitempty" tf:"opendashboard_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, to configure for the cluster's OpenSearch Dashboard nodes.
 	// +kubebuilder:validation:Optional
-	OpendashboardNodeHostMemoryGb *float64 `json:"opendashboardNodeHostMemoryGb,omitempty" tf:"opendashboard_node_host_memory_gb,omitempty"`
+	OpendashboardNodeHostMemoryGb *int64 `json:"opendashboardNodeHostMemoryGb,omitempty" tf:"opendashboard_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs to configure for the cluster's OpenSearch Dashboard nodes.
 	// +kubebuilder:validation:Optional
-	OpendashboardNodeHostOcpuCount *float64 `json:"opendashboardNodeHostOcpuCount,omitempty" tf:"opendashboard_node_host_ocpu_count,omitempty"`
+	OpendashboardNodeHostOcpuCount *int64 `json:"opendashboardNodeHostOcpuCount,omitempty" tf:"opendashboard_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's OpenSearch Dashboard nodes.
 	// +kubebuilder:validation:Optional
@@ -805,15 +795,15 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The number of search nodes configured for the cluster.
 	// +kubebuilder:validation:Optional
-	SearchNodeCount *float64 `json:"searchNodeCount,omitempty" tf:"search_node_count,omitempty"`
+	SearchNodeCount *int64 `json:"searchNodeCount,omitempty" tf:"search_node_count,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for the cluster's search nodes.
 	// +kubebuilder:validation:Optional
-	SearchNodeHostMemoryGb *float64 `json:"searchNodeHostMemoryGb,omitempty" tf:"search_node_host_memory_gb,omitempty"`
+	SearchNodeHostMemoryGb *int64 `json:"searchNodeHostMemoryGb,omitempty" tf:"search_node_host_memory_gb,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for the cluster's search nodes.
 	// +kubebuilder:validation:Optional
-	SearchNodeHostOcpuCount *float64 `json:"searchNodeHostOcpuCount,omitempty" tf:"search_node_host_ocpu_count,omitempty"`
+	SearchNodeHostOcpuCount *int64 `json:"searchNodeHostOcpuCount,omitempty" tf:"search_node_host_ocpu_count,omitempty"`
 
 	// (Updatable) The node shape for the cluster's search nodes.
 	// +kubebuilder:validation:Optional
@@ -825,12 +815,11 @@ type OpensearchClusterParameters struct {
 
 	// (Updatable) The amount of storage in GB, to configure per node for the cluster's search nodes.
 	// +kubebuilder:validation:Optional
-	SearchNodeStorageGb *float64 `json:"searchNodeStorageGb,omitempty" tf:"search_node_storage_gb,omitempty"`
+	SearchNodeStorageGb *int64 `json:"searchNodeStorageGb,omitempty" tf:"search_node_storage_gb,omitempty"`
 
 	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The name of the master user that are used to manage security config
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.User
@@ -892,12 +881,11 @@ type OpensearchClusterParameters struct {
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// An optional property to upgrade the major version of the cluster. This workflow upgrades the cluster without creating a clone. If you want to create a clone and upgrade the clone for testing please use SDK or CLI.
 	// +kubebuilder:validation:Optional
-	UpgradeMajorVersionTrigger *float64 `json:"upgradeMajorVersionTrigger,omitempty" tf:"upgrade_major_version_trigger,omitempty"`
+	UpgradeMajorVersionTrigger *int64 `json:"upgradeMajorVersionTrigger,omitempty" tf:"upgrade_major_version_trigger,omitempty"`
 
 	// The OCID for the compartment where the cluster's VCN is located.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -1060,7 +1048,7 @@ type SecuritySAMLConfigInitParameters struct {
 	IdpEntityID *string `json:"idpEntityId,omitempty" tf:"idp_entity_id,omitempty"`
 
 	// The content of identity provider metadata
-	IdpMetadataContent *string `json:"idpMetadataContent,omitempty" tf:"idp_metadata_content,omitempty"`
+	IdpMetadataContentSecretRef v1.LocalSecretKeySelector `json:"idpMetadataContentSecretRef" tf:"-"`
 
 	// (Updatable) Flag to indicate whether outbound cluster configuration is enabled
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -1082,9 +1070,6 @@ type SecuritySAMLConfigObservation struct {
 
 	// The unique name for a identity provider entity
 	IdpEntityID *string `json:"idpEntityId,omitempty" tf:"idp_entity_id,omitempty"`
-
-	// The content of identity provider metadata
-	IdpMetadataContent *string `json:"idpMetadataContent,omitempty" tf:"idp_metadata_content,omitempty"`
 
 	// (Updatable) Flag to indicate whether outbound cluster configuration is enabled
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -1111,7 +1096,7 @@ type SecuritySAMLConfigParameters struct {
 
 	// The content of identity provider metadata
 	// +kubebuilder:validation:Optional
-	IdpMetadataContent *string `json:"idpMetadataContent" tf:"idp_metadata_content,omitempty"`
+	IdpMetadataContentSecretRef v1.LocalSecretKeySelector `json:"idpMetadataContentSecretRef" tf:"-"`
 
 	// (Updatable) Flag to indicate whether outbound cluster configuration is enabled
 	// +kubebuilder:validation:Optional

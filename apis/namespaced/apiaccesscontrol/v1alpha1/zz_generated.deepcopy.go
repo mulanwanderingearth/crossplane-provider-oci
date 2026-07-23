@@ -141,18 +141,9 @@ func (in *PrivilegedApiControlInitParameters) DeepCopyInto(out *PrivilegedApiCon
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -167,18 +158,9 @@ func (in *PrivilegedApiControlInitParameters) DeepCopyInto(out *PrivilegedApiCon
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.NotificationTopicID != nil {
@@ -198,7 +180,7 @@ func (in *PrivilegedApiControlInitParameters) DeepCopyInto(out *PrivilegedApiCon
 	}
 	if in.NumberOfApprovers != nil {
 		in, out := &in.NumberOfApprovers, &out.NumberOfApprovers
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrivilegedOperationList != nil {
@@ -289,18 +271,9 @@ func (in *PrivilegedApiControlObservation) DeepCopyInto(out *PrivilegedApiContro
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -315,18 +288,9 @@ func (in *PrivilegedApiControlObservation) DeepCopyInto(out *PrivilegedApiContro
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -346,7 +310,7 @@ func (in *PrivilegedApiControlObservation) DeepCopyInto(out *PrivilegedApiContro
 	}
 	if in.NumberOfApprovers != nil {
 		in, out := &in.NumberOfApprovers, &out.NumberOfApprovers
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrivilegedOperationList != nil {
@@ -384,18 +348,9 @@ func (in *PrivilegedApiControlObservation) DeepCopyInto(out *PrivilegedApiContro
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -456,18 +411,9 @@ func (in *PrivilegedApiControlParameters) DeepCopyInto(out *PrivilegedApiControl
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -482,18 +428,9 @@ func (in *PrivilegedApiControlParameters) DeepCopyInto(out *PrivilegedApiControl
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.NotificationTopicID != nil {
@@ -513,7 +450,7 @@ func (in *PrivilegedApiControlParameters) DeepCopyInto(out *PrivilegedApiControl
 	}
 	if in.NumberOfApprovers != nil {
 		in, out := &in.NumberOfApprovers, &out.NumberOfApprovers
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrivilegedOperationList != nil {
@@ -633,39 +570,21 @@ func (in *PrivilegedApiRequestInitParameters) DeepCopyInto(out *PrivilegedApiReq
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DurationInHrs != nil {
 		in, out := &in.DurationInHrs, &out.DurationInHrs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.NotificationTopicID != nil {
@@ -803,18 +722,9 @@ func (in *PrivilegedApiRequestObservation) DeepCopyInto(out *PrivilegedApiReques
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -824,7 +734,7 @@ func (in *PrivilegedApiRequestObservation) DeepCopyInto(out *PrivilegedApiReques
 	}
 	if in.DurationInHrs != nil {
 		in, out := &in.DurationInHrs, &out.DurationInHrs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.EntityType != nil {
@@ -834,18 +744,9 @@ func (in *PrivilegedApiRequestObservation) DeepCopyInto(out *PrivilegedApiReques
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -865,7 +766,7 @@ func (in *PrivilegedApiRequestObservation) DeepCopyInto(out *PrivilegedApiReques
 	}
 	if in.NumberOfApproversRequired != nil {
 		in, out := &in.NumberOfApproversRequired, &out.NumberOfApproversRequired
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrivilegedAPIControlID != nil {
@@ -954,18 +855,9 @@ func (in *PrivilegedApiRequestObservation) DeepCopyInto(out *PrivilegedApiReques
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TicketNumbers != nil {
@@ -1026,39 +918,21 @@ func (in *PrivilegedApiRequestParameters) DeepCopyInto(out *PrivilegedApiRequest
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DurationInHrs != nil {
 		in, out := &in.DurationInHrs, &out.DurationInHrs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.NotificationTopicID != nil {

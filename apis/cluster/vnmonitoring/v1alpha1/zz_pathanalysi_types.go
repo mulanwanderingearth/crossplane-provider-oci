@@ -288,7 +288,7 @@ type PathAnalysiInitParameters struct {
 	PathAnalyzerTestID *string `json:"pathAnalyzerTestId,omitempty" tf:"path_analyzer_test_id,omitempty"`
 
 	// The IP protocol to used for the path analysis.
-	Protocol *float64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	Protocol *int64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
 	// (Applicable when type=ADHOC_QUERY) Defines the IP protocol parameters for a PathAnalyzerTest resource.
 	ProtocolParameters []ProtocolParametersInitParameters `json:"protocolParameters,omitempty" tf:"protocol_parameters,omitempty"`
@@ -320,7 +320,7 @@ type PathAnalysiObservation struct {
 	PathAnalyzerTestID *string `json:"pathAnalyzerTestId,omitempty" tf:"path_analyzer_test_id,omitempty"`
 
 	// The IP protocol to used for the path analysis.
-	Protocol *float64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	Protocol *int64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
 	// (Applicable when type=ADHOC_QUERY) Defines the IP protocol parameters for a PathAnalyzerTest resource.
 	ProtocolParameters []ProtocolParametersObservation `json:"protocolParameters,omitempty" tf:"protocol_parameters,omitempty"`
@@ -364,7 +364,7 @@ type PathAnalysiParameters struct {
 
 	// The IP protocol to used for the path analysis.
 	// +kubebuilder:validation:Optional
-	Protocol *float64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
+	Protocol *int64 `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
 	// (Applicable when type=ADHOC_QUERY) Defines the IP protocol parameters for a PathAnalyzerTest resource.
 	// +kubebuilder:validation:Optional
@@ -386,16 +386,16 @@ type PathAnalysiParameters struct {
 type ProtocolParametersInitParameters struct {
 
 	// The destination port to use in a PathAnalyzerTest resource.
-	DestinationPort *float64 `json:"destinationPort,omitempty" tf:"destination_port,omitempty"`
+	DestinationPort *int64 `json:"destinationPort,omitempty" tf:"destination_port,omitempty"`
 
 	// (Applicable when type=ICMP) The ICMP code.
-	IcmpCode *float64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	IcmpCode *int64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
 
 	// The ICMP type.
-	IcmpType *float64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	IcmpType *int64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 
 	// (Applicable when type=TCP | UDP) The source port to use in a PathAnalyzerTest resource.
-	SourcePort *float64 `json:"sourcePort,omitempty" tf:"source_port,omitempty"`
+	SourcePort *int64 `json:"sourcePort,omitempty" tf:"source_port,omitempty"`
 
 	// The type of the Endpoint.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -404,16 +404,16 @@ type ProtocolParametersInitParameters struct {
 type ProtocolParametersObservation struct {
 
 	// The destination port to use in a PathAnalyzerTest resource.
-	DestinationPort *float64 `json:"destinationPort,omitempty" tf:"destination_port,omitempty"`
+	DestinationPort *int64 `json:"destinationPort,omitempty" tf:"destination_port,omitempty"`
 
 	// (Applicable when type=ICMP) The ICMP code.
-	IcmpCode *float64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	IcmpCode *int64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
 
 	// The ICMP type.
-	IcmpType *float64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	IcmpType *int64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 
 	// (Applicable when type=TCP | UDP) The source port to use in a PathAnalyzerTest resource.
-	SourcePort *float64 `json:"sourcePort,omitempty" tf:"source_port,omitempty"`
+	SourcePort *int64 `json:"sourcePort,omitempty" tf:"source_port,omitempty"`
 
 	// The type of the Endpoint.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -423,19 +423,19 @@ type ProtocolParametersParameters struct {
 
 	// The destination port to use in a PathAnalyzerTest resource.
 	// +kubebuilder:validation:Optional
-	DestinationPort *float64 `json:"destinationPort,omitempty" tf:"destination_port,omitempty"`
+	DestinationPort *int64 `json:"destinationPort,omitempty" tf:"destination_port,omitempty"`
 
 	// (Applicable when type=ICMP) The ICMP code.
 	// +kubebuilder:validation:Optional
-	IcmpCode *float64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	IcmpCode *int64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
 
 	// The ICMP type.
 	// +kubebuilder:validation:Optional
-	IcmpType *float64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	IcmpType *int64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 
 	// (Applicable when type=TCP | UDP) The source port to use in a PathAnalyzerTest resource.
 	// +kubebuilder:validation:Optional
-	SourcePort *float64 `json:"sourcePort,omitempty" tf:"source_port,omitempty"`
+	SourcePort *int64 `json:"sourcePort,omitempty" tf:"source_port,omitempty"`
 
 	// The type of the Endpoint.
 	// +kubebuilder:validation:Optional

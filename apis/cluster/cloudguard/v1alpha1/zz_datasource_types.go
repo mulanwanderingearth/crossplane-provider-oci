@@ -16,7 +16,7 @@ import (
 type DataSourceDetailsInitParameters struct {
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) The additional entities count used for data source query
-	AdditionalEntitiesCount *float64 `json:"additionalEntitiesCount,omitempty" tf:"additional_entities_count,omitempty"`
+	AdditionalEntitiesCount *int64 `json:"additionalEntitiesCount,omitempty" tf:"additional_entities_count,omitempty"`
 
 	// (Updatable) Type of data source feed provider (LoggingQuery)
 	DataSourceFeedProvider *string `json:"dataSourceFeedProvider,omitempty" tf:"data_source_feed_provider,omitempty"`
@@ -25,10 +25,10 @@ type DataSourceDetailsInitParameters struct {
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Interval in minutes that query is run periodically.
-	IntervalInMinutes *float64 `json:"intervalInMinutes,omitempty" tf:"interval_in_minutes,omitempty"`
+	IntervalInMinutes *int64 `json:"intervalInMinutes,omitempty" tf:"interval_in_minutes,omitempty"`
 
 	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Interval in seconds which query is run periodically.
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Details for a logging query for a data source.
 	LoggingQueryDetails []LoggingQueryDetailsInitParameters `json:"loggingQueryDetails,omitempty" tf:"logging_query_details,omitempty"`
@@ -52,13 +52,13 @@ type DataSourceDetailsInitParameters struct {
 	ScheduledQueryScopeDetails []ScheduledQueryScopeDetailsInitParameters `json:"scheduledQueryScopeDetails,omitempty" tf:"scheduled_query_scope_details,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - The integer value that must be exceeded, fall below or equal to (depending on the operator), for the query result to trigger an event
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
 type DataSourceDetailsObservation struct {
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) The additional entities count used for data source query
-	AdditionalEntitiesCount *float64 `json:"additionalEntitiesCount,omitempty" tf:"additional_entities_count,omitempty"`
+	AdditionalEntitiesCount *int64 `json:"additionalEntitiesCount,omitempty" tf:"additional_entities_count,omitempty"`
 
 	// (Updatable) Type of data source feed provider (LoggingQuery)
 	DataSourceFeedProvider *string `json:"dataSourceFeedProvider,omitempty" tf:"data_source_feed_provider,omitempty"`
@@ -67,10 +67,10 @@ type DataSourceDetailsObservation struct {
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Interval in minutes that query is run periodically.
-	IntervalInMinutes *float64 `json:"intervalInMinutes,omitempty" tf:"interval_in_minutes,omitempty"`
+	IntervalInMinutes *int64 `json:"intervalInMinutes,omitempty" tf:"interval_in_minutes,omitempty"`
 
 	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Interval in seconds which query is run periodically.
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Details for a logging query for a data source.
 	LoggingQueryDetails []LoggingQueryDetailsObservation `json:"loggingQueryDetails,omitempty" tf:"logging_query_details,omitempty"`
@@ -94,14 +94,14 @@ type DataSourceDetailsObservation struct {
 	ScheduledQueryScopeDetails []ScheduledQueryScopeDetailsObservation `json:"scheduledQueryScopeDetails,omitempty" tf:"scheduled_query_scope_details,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - The integer value that must be exceeded, fall below or equal to (depending on the operator), for the query result to trigger an event
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
 type DataSourceDetailsParameters struct {
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) The additional entities count used for data source query
 	// +kubebuilder:validation:Optional
-	AdditionalEntitiesCount *float64 `json:"additionalEntitiesCount,omitempty" tf:"additional_entities_count,omitempty"`
+	AdditionalEntitiesCount *int64 `json:"additionalEntitiesCount,omitempty" tf:"additional_entities_count,omitempty"`
 
 	// (Updatable) Type of data source feed provider (LoggingQuery)
 	// +kubebuilder:validation:Optional
@@ -113,11 +113,11 @@ type DataSourceDetailsParameters struct {
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Interval in minutes that query is run periodically.
 	// +kubebuilder:validation:Optional
-	IntervalInMinutes *float64 `json:"intervalInMinutes,omitempty" tf:"interval_in_minutes,omitempty"`
+	IntervalInMinutes *int64 `json:"intervalInMinutes,omitempty" tf:"interval_in_minutes,omitempty"`
 
 	// (Applicable when data_source_feed_provider=SCHEDULEDQUERY) (Updatable) Interval in seconds which query is run periodically.
 	// +kubebuilder:validation:Optional
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) Details for a logging query for a data source.
 	// +kubebuilder:validation:Optional
@@ -149,7 +149,7 @@ type DataSourceDetailsParameters struct {
 
 	// (Applicable when data_source_feed_provider=LOGGINGQUERY) (Updatable) DEPRECATED - The integer value that must be exceeded, fall below or equal to (depending on the operator), for the query result to trigger an event
 	// +kubebuilder:validation:Optional
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
 type DataSourceDetectorMappingInfoInitParameters struct {
@@ -188,15 +188,13 @@ type DataSourceInitParameters struct {
 	DataSourceFeedProvider *string `json:"dataSourceFeedProvider,omitempty" tf:"data_source_feed_provider,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Data source display name
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Enablement status of data source.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -217,15 +215,13 @@ type DataSourceObservation struct {
 	DataSourceFeedProvider *string `json:"dataSourceFeedProvider,omitempty" tf:"data_source_feed_provider,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Data source display name
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// OCID for the data source
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -240,8 +236,7 @@ type DataSourceObservation struct {
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Data source was created. Format defined by RFC3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -275,8 +270,7 @@ type DataSourceParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Data source display name
 	// +kubebuilder:validation:Optional
@@ -284,8 +278,7 @@ type DataSourceParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Enablement status of data source.
 	// +kubebuilder:validation:Optional
@@ -295,7 +288,7 @@ type DataSourceParameters struct {
 type LoggingQueryDetailsInitParameters struct {
 
 	// (Updatable) The key entities count used for data source query
-	KeyEntitiesCount *float64 `json:"keyEntitiesCount,omitempty" tf:"key_entities_count,omitempty"`
+	KeyEntitiesCount *int64 `json:"keyEntitiesCount,omitempty" tf:"key_entities_count,omitempty"`
 
 	// (Updatable) Logging query type for data source
 	LoggingQueryType *string `json:"loggingQueryType,omitempty" tf:"logging_query_type,omitempty"`
@@ -304,7 +297,7 @@ type LoggingQueryDetailsInitParameters struct {
 type LoggingQueryDetailsObservation struct {
 
 	// (Updatable) The key entities count used for data source query
-	KeyEntitiesCount *float64 `json:"keyEntitiesCount,omitempty" tf:"key_entities_count,omitempty"`
+	KeyEntitiesCount *int64 `json:"keyEntitiesCount,omitempty" tf:"key_entities_count,omitempty"`
 
 	// (Updatable) Logging query type for data source
 	LoggingQueryType *string `json:"loggingQueryType,omitempty" tf:"logging_query_type,omitempty"`
@@ -314,7 +307,7 @@ type LoggingQueryDetailsParameters struct {
 
 	// (Updatable) The key entities count used for data source query
 	// +kubebuilder:validation:Optional
-	KeyEntitiesCount *float64 `json:"keyEntitiesCount,omitempty" tf:"key_entities_count,omitempty"`
+	KeyEntitiesCount *int64 `json:"keyEntitiesCount,omitempty" tf:"key_entities_count,omitempty"`
 
 	// (Updatable) Logging query type for data source
 	// +kubebuilder:validation:Optional

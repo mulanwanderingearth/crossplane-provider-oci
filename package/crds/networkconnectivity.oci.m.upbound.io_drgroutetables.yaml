@@ -66,7 +66,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -165,7 +164,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   importDrgRouteDistributionId:
                     description: (Updatable) The OCID of the import route distribution
                       used to specify how incoming route advertisements through referenced
@@ -284,7 +282,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -383,7 +380,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   importDrgRouteDistributionId:
                     description: (Updatable) The OCID of the import route distribution
                       used to specify how incoming route advertisements through referenced
@@ -558,7 +554,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -575,7 +570,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the DRG route table.
                     type: string

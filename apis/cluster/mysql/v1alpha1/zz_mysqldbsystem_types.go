@@ -16,7 +16,7 @@ import (
 type BackupPolicyCopyPoliciesInitParameters struct {
 
 	// (Updatable) Number of days to retain the copied DB system backup.
-	BackupCopyRetentionInDays *float64 `json:"backupCopyRetentionInDays,omitempty" tf:"backup_copy_retention_in_days,omitempty"`
+	BackupCopyRetentionInDays *int64 `json:"backupCopyRetentionInDays,omitempty" tf:"backup_copy_retention_in_days,omitempty"`
 
 	// (Updatable) The destination region name to which the DB system backup will be copied.
 	CopyToRegion *string `json:"copyToRegion,omitempty" tf:"copy_to_region,omitempty"`
@@ -25,7 +25,7 @@ type BackupPolicyCopyPoliciesInitParameters struct {
 type BackupPolicyCopyPoliciesObservation struct {
 
 	// (Updatable) Number of days to retain the copied DB system backup.
-	BackupCopyRetentionInDays *float64 `json:"backupCopyRetentionInDays,omitempty" tf:"backup_copy_retention_in_days,omitempty"`
+	BackupCopyRetentionInDays *int64 `json:"backupCopyRetentionInDays,omitempty" tf:"backup_copy_retention_in_days,omitempty"`
 
 	// (Updatable) The destination region name to which the DB system backup will be copied.
 	CopyToRegion *string `json:"copyToRegion,omitempty" tf:"copy_to_region,omitempty"`
@@ -35,7 +35,7 @@ type BackupPolicyCopyPoliciesParameters struct {
 
 	// (Updatable) Number of days to retain the copied DB system backup.
 	// +kubebuilder:validation:Optional
-	BackupCopyRetentionInDays *float64 `json:"backupCopyRetentionInDays,omitempty" tf:"backup_copy_retention_in_days,omitempty"`
+	BackupCopyRetentionInDays *int64 `json:"backupCopyRetentionInDays,omitempty" tf:"backup_copy_retention_in_days,omitempty"`
 
 	// (Updatable) The destination region name to which the DB system backup will be copied.
 	// +kubebuilder:validation:Optional
@@ -155,15 +155,13 @@ type ChannelsObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the DB System. It does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Channel.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -181,8 +179,7 @@ type ChannelsObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Details about the Channel target.
 	Target []ChannelsTargetObservation `json:"target,omitempty" tf:"target,omitempty"`
@@ -212,7 +209,7 @@ type ChannelsSourceObservation struct {
 	MustUseIpv6OnDualStack *bool `json:"mustUseIpv6OnDualStack,omitempty" tf:"must_use_ipv6on_dual_stack,omitempty"`
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Applicable when source_type=DBSYSTEM) The CA certificate of the server used for VERIFY_IDENTITY and VERIFY_CA ssl modes.
 	SSLCACertificate []SourceSSLCACertificateObservation `json:"sslCaCertificate,omitempty" tf:"ssl_ca_certificate,omitempty"`
@@ -245,7 +242,7 @@ type ChannelsTargetObservation struct {
 	DBSystemID *string `json:"dbSystemId,omitempty" tf:"db_system_id,omitempty"`
 
 	// Specifies the amount of time, in seconds, that the channel waits before  applying a transaction received from the source.
-	DelayInSeconds *float64 `json:"delayInSeconds,omitempty" tf:"delay_in_seconds,omitempty"`
+	DelayInSeconds *int64 `json:"delayInSeconds,omitempty" tf:"delay_in_seconds,omitempty"`
 
 	// Replication filter rules to be applied at the DB System Channel target.
 	Filters []TargetFiltersObservation `json:"filters,omitempty" tf:"filters,omitempty"`
@@ -300,7 +297,7 @@ type HeatWaveClusterInitParameters struct {
 type HeatWaveClusterObservation struct {
 
 	// The number of analytics-processing compute instances, of the specified shape, in the HeatWave cluster.
-	ClusterSize *float64 `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
+	ClusterSize *int64 `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
 
 	// Lakehouse enabled status for the HeatWave cluster.
 	IsLakehouseEnabled *bool `json:"isLakehouseEnabled,omitempty" tf:"is_lakehouse_enabled,omitempty"`
@@ -414,12 +411,10 @@ type MysqlDbSystemBackupPolicyInitParameters struct {
 	CopyPolicies []BackupPolicyCopyPoliciesInitParameters `json:"copyPolicies,omitempty" tf:"copy_policies,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Specifies if automatic backups are enabled.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -428,7 +423,7 @@ type MysqlDbSystemBackupPolicyInitParameters struct {
 	PitrPolicy []BackupPolicyPitrPolicyInitParameters `json:"pitrPolicy,omitempty" tf:"pitr_policy,omitempty"`
 
 	// (Updatable) Number of days to retain an automatic backup.
-	RetentionInDays *float64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	RetentionInDays *int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 
 	// (Updatable) Retains the backup to be deleted due to the retention policy in DELETE SCHEDULED state for 7 days before permanently deleting it.
 	SoftDelete *string `json:"softDelete,omitempty" tf:"soft_delete,omitempty"`
@@ -443,12 +438,10 @@ type MysqlDbSystemBackupPolicyObservation struct {
 	CopyPolicies []BackupPolicyCopyPoliciesObservation `json:"copyPolicies,omitempty" tf:"copy_policies,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Specifies if automatic backups are enabled.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -457,7 +450,7 @@ type MysqlDbSystemBackupPolicyObservation struct {
 	PitrPolicy []BackupPolicyPitrPolicyObservation `json:"pitrPolicy,omitempty" tf:"pitr_policy,omitempty"`
 
 	// (Updatable) Number of days to retain an automatic backup.
-	RetentionInDays *float64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	RetentionInDays *int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 
 	// (Updatable) Retains the backup to be deleted due to the retention policy in DELETE SCHEDULED state for 7 days before permanently deleting it.
 	SoftDelete *string `json:"softDelete,omitempty" tf:"soft_delete,omitempty"`
@@ -474,13 +467,11 @@ type MysqlDbSystemBackupPolicyParameters struct {
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Specifies if automatic backups are enabled.
 	// +kubebuilder:validation:Optional
@@ -492,7 +483,7 @@ type MysqlDbSystemBackupPolicyParameters struct {
 
 	// (Updatable) Number of days to retain an automatic backup.
 	// +kubebuilder:validation:Optional
-	RetentionInDays *float64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	RetentionInDays *int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 
 	// (Updatable) Retains the backup to be deleted due to the retention policy in DELETE SCHEDULED state for 7 days before permanently deleting it.
 	// +kubebuilder:validation:Optional
@@ -509,25 +500,25 @@ type MysqlDbSystemDataStorageInitParameters struct {
 	IsAutoExpandStorageEnabled *bool `json:"isAutoExpandStorageEnabled,omitempty" tf:"is_auto_expand_storage_enabled,omitempty"`
 
 	// (Updatable) Maximum storage size this DB System can expand to. When isAutoExpandStorageEnabled is set to true, the DB System will add storage incrementally up to this value.
-	MaxStorageSizeInGbs *float64 `json:"maxStorageSizeInGbs,omitempty" tf:"max_storage_size_in_gbs,omitempty"`
+	MaxStorageSizeInGbs *int64 `json:"maxStorageSizeInGbs,omitempty" tf:"max_storage_size_in_gbs,omitempty"`
 }
 
 type MysqlDbSystemDataStorageObservation struct {
 
 	// The actual allocated storage size for the DB System. This may be higher than dataStorageSizeInGBs if an automatic storage expansion has occurred.
-	AllocatedStorageSizeInGbs *float64 `json:"allocatedStorageSizeInGbs,omitempty" tf:"allocated_storage_size_in_gbs,omitempty"`
+	AllocatedStorageSizeInGbs *int64 `json:"allocatedStorageSizeInGbs,omitempty" tf:"allocated_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) Initial size of the data volume in GBs that will be created and attached. Keep in mind that this only specifies the size of the database data volume, the log volume for the database will be scaled appropriately with its shape. It is required if you are creating a new database. It cannot be set if you are creating a database from a backup.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The absolute limit the DB System's storage size may ever expand to, either manually or automatically. This limit is based based on the initial dataStorageSizeInGBs when the DB System was first created. Both dataStorageSizeInGBs and maxDataStorageSizeInGBs can not exceed this value.
-	DataStorageSizeLimitInGbs *float64 `json:"dataStorageSizeLimitInGbs,omitempty" tf:"data_storage_size_limit_in_gbs,omitempty"`
+	DataStorageSizeLimitInGbs *int64 `json:"dataStorageSizeLimitInGbs,omitempty" tf:"data_storage_size_limit_in_gbs,omitempty"`
 
 	// (Updatable) Enable/disable automatic storage expansion. When set to true, the DB System will automatically add storage incrementally up to the value specified in maxStorageSizeInGBs.
 	IsAutoExpandStorageEnabled *bool `json:"isAutoExpandStorageEnabled,omitempty" tf:"is_auto_expand_storage_enabled,omitempty"`
 
 	// (Updatable) Maximum storage size this DB System can expand to. When isAutoExpandStorageEnabled is set to true, the DB System will add storage incrementally up to this value.
-	MaxStorageSizeInGbs *float64 `json:"maxStorageSizeInGbs,omitempty" tf:"max_storage_size_in_gbs,omitempty"`
+	MaxStorageSizeInGbs *int64 `json:"maxStorageSizeInGbs,omitempty" tf:"max_storage_size_in_gbs,omitempty"`
 }
 
 type MysqlDbSystemDataStorageParameters struct {
@@ -538,13 +529,13 @@ type MysqlDbSystemDataStorageParameters struct {
 
 	// (Updatable) Maximum storage size this DB System can expand to. When isAutoExpandStorageEnabled is set to true, the DB System will add storage incrementally up to this value.
 	// +kubebuilder:validation:Optional
-	MaxStorageSizeInGbs *float64 `json:"maxStorageSizeInGbs,omitempty" tf:"max_storage_size_in_gbs,omitempty"`
+	MaxStorageSizeInGbs *int64 `json:"maxStorageSizeInGbs,omitempty" tf:"max_storage_size_in_gbs,omitempty"`
 }
 
 type MysqlDbSystemDatabaseConsoleInitParameters struct {
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) Enable/disable the database console on the DB System.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -553,7 +544,7 @@ type MysqlDbSystemDatabaseConsoleInitParameters struct {
 type MysqlDbSystemDatabaseConsoleObservation struct {
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) Enable/disable the database console on the DB System.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -563,7 +554,7 @@ type MysqlDbSystemDatabaseConsoleParameters struct {
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) Enable/disable the database console on the DB System.
 	// +kubebuilder:validation:Optional
@@ -676,10 +667,10 @@ type MysqlDbSystemEndpointsObservation struct {
 	Modes []*string `json:"modes,omitempty" tf:"modes,omitempty"`
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The TCP network port on which X Plugin listens for connections. This is the X Plugin equivalent of port.
-	PortX *float64 `json:"portX,omitempty" tf:"port_x,omitempty"`
+	PortX *int64 `json:"portX,omitempty" tf:"port_x,omitempty"`
 
 	// The OCID of the resource that this endpoint is attached to.
 	ResourceID *string `json:"resourceId,omitempty" tf:"resource_id,omitempty"`
@@ -749,7 +740,7 @@ type MysqlDbSystemInitParameters struct {
 	DataStorage []MysqlDbSystemDataStorageInitParameters `json:"dataStorage,omitempty" tf:"data_storage,omitempty"`
 
 	// (Updatable) Initial size of the data volume in GBs that will be created and attached. Keep in mind that this only specifies the size of the database data volume, the log volume for the database will be scaled appropriately with its shape. It is required if you are creating a new database. It cannot be set if you are creating a database from a backup.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// (Updatable) Details required to configure the database console while creating a DB System.
 	DatabaseConsole []MysqlDbSystemDatabaseConsoleInitParameters `json:"databaseConsole,omitempty" tf:"database_console,omitempty"`
@@ -761,8 +752,7 @@ type MysqlDbSystemInitParameters struct {
 	DatabaseMode *string `json:"databaseMode,omitempty" tf:"database_mode,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Policy for how the DB System and related resources should be handled at the time of its deletion.
 	DeletionPolicy []MysqlDbSystemDeletionPolicyInitParameters `json:"deletionPolicy,omitempty" tf:"deletion_policy,omitempty"`
@@ -780,8 +770,7 @@ type MysqlDbSystemInitParameters struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hostname for the primary endpoint of the DB System. Used for DNS.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -809,10 +798,10 @@ type MysqlDbSystemInitParameters struct {
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The TCP network port on which X Plugin listens for connections. This is the X Plugin equivalent of port.
-	PortX *float64 `json:"portX,omitempty" tf:"port_x,omitempty"`
+	PortX *int64 `json:"portX,omitempty" tf:"port_x,omitempty"`
 
 	// (Updatable) Details required to create a Read Endpoint.
 	ReadEndpoint []MysqlDbSystemReadEndpointInitParameters `json:"readEndpoint,omitempty" tf:"read_endpoint,omitempty"`
@@ -824,8 +813,7 @@ type MysqlDbSystemInitParameters struct {
 	SecureConnections []MysqlDbSystemSecureConnectionsInitParameters `json:"secureConnections,omitempty" tf:"secure_connections,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see ZPR Artifacts. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The name of the shape. The shape determines the resources allocated
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
@@ -956,7 +944,7 @@ type MysqlDbSystemObservation struct {
 	DataStorage []MysqlDbSystemDataStorageObservation `json:"dataStorage,omitempty" tf:"data_storage,omitempty"`
 
 	// (Updatable) Initial size of the data volume in GBs that will be created and attached. Keep in mind that this only specifies the size of the database data volume, the log volume for the database will be scaled appropriately with its shape. It is required if you are creating a new database. It cannot be set if you are creating a database from a backup.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// (Updatable) Details required to configure the database console while creating a DB System.
 	DatabaseConsole []MysqlDbSystemDatabaseConsoleObservation `json:"databaseConsole,omitempty" tf:"database_console,omitempty"`
@@ -968,8 +956,7 @@ type MysqlDbSystemObservation struct {
 	DatabaseMode *string `json:"databaseMode,omitempty" tf:"database_mode,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Policy for how the DB System and related resources should be handled at the time of its deletion.
 	DeletionPolicy []MysqlDbSystemDeletionPolicyObservation `json:"deletionPolicy,omitempty" tf:"deletion_policy,omitempty"`
@@ -990,8 +977,7 @@ type MysqlDbSystemObservation struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A summary of a HeatWave cluster.
 	HeatWaveCluster []HeatWaveClusterObservation `json:"heatWaveCluster,omitempty" tf:"heat_wave_cluster,omitempty"`
@@ -1034,10 +1020,10 @@ type MysqlDbSystemObservation struct {
 	PointInTimeRecoveryDetails []PointInTimeRecoveryDetailsObservation `json:"pointInTimeRecoveryDetails,omitempty" tf:"point_in_time_recovery_details,omitempty"`
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The TCP network port on which X Plugin listens for connections. This is the X Plugin equivalent of port.
-	PortX *float64 `json:"portX,omitempty" tf:"port_x,omitempty"`
+	PortX *int64 `json:"portX,omitempty" tf:"port_x,omitempty"`
 
 	// (Updatable) Details required to create a Read Endpoint.
 	ReadEndpoint []MysqlDbSystemReadEndpointObservation `json:"readEndpoint,omitempty" tf:"read_endpoint,omitempty"`
@@ -1049,8 +1035,7 @@ type MysqlDbSystemObservation struct {
 	SecureConnections []MysqlDbSystemSecureConnectionsObservation `json:"secureConnections,omitempty" tf:"secure_connections,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see ZPR Artifacts. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The name of the shape. The shape determines the resources allocated
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
@@ -1068,8 +1053,7 @@ type MysqlDbSystemObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) Details required to configure how MySQL telemetry should be exposed.
 	TelemetryConfiguration []MysqlDbSystemTelemetryConfigurationObservation `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
@@ -1144,7 +1128,7 @@ type MysqlDbSystemParameters struct {
 
 	// (Updatable) Initial size of the data volume in GBs that will be created and attached. Keep in mind that this only specifies the size of the database data volume, the log volume for the database will be scaled appropriately with its shape. It is required if you are creating a new database. It cannot be set if you are creating a database from a backup.
 	// +kubebuilder:validation:Optional
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// (Updatable) Details required to configure the database console while creating a DB System.
 	// +kubebuilder:validation:Optional
@@ -1160,8 +1144,7 @@ type MysqlDbSystemParameters struct {
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Policy for how the DB System and related resources should be handled at the time of its deletion.
 	// +kubebuilder:validation:Optional
@@ -1185,8 +1168,7 @@ type MysqlDbSystemParameters struct {
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hostname for the primary endpoint of the DB System. Used for DNS.
 	// +kubebuilder:validation:Optional
@@ -1223,11 +1205,11 @@ type MysqlDbSystemParameters struct {
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The TCP network port on which X Plugin listens for connections. This is the X Plugin equivalent of port.
 	// +kubebuilder:validation:Optional
-	PortX *float64 `json:"portX,omitempty" tf:"port_x,omitempty"`
+	PortX *int64 `json:"portX,omitempty" tf:"port_x,omitempty"`
 
 	// (Updatable) Details required to create a Read Endpoint.
 	// +kubebuilder:validation:Optional
@@ -1243,8 +1225,7 @@ type MysqlDbSystemParameters struct {
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see ZPR Artifacts. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The name of the shape. The shape determines the resources allocated
 	// +kubebuilder:validation:Optional
@@ -1345,7 +1326,7 @@ type MysqlDbSystemRestInitParameters struct {
 	Configuration *string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type MysqlDbSystemRestObservation struct {
@@ -1354,7 +1335,7 @@ type MysqlDbSystemRestObservation struct {
 	Configuration *string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type MysqlDbSystemRestParameters struct {
@@ -1365,7 +1346,7 @@ type MysqlDbSystemRestParameters struct {
 
 	// (Updatable) The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type MysqlDbSystemSecureConnectionsInitParameters struct {

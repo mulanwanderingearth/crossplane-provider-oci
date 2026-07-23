@@ -82,7 +82,8 @@ spec:
                   computeCount:
                     description: (Applicable when creation_type=NewDbSystem) The number
                       of compute servers for the DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   computeModel:
                     description: (Applicable when creation_type=NewDbSystem) The compute
                       model for Base Database Service. This is required if using the
@@ -94,7 +95,8 @@ spec:
                   cpuCoreCount:
                     description: (Applicable when creation_type=NewDbSystem) The number
                       of CPU cores available for AMD-based virtual machine DB systems.
-                    type: number
+                    format: int64
+                    type: integer
                   createAsync:
                     type: boolean
                   creationType:
@@ -167,7 +169,6 @@ spec:
                       tags for this resource. Each key is predefined and scoped to
                       a namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   databaseFreeformTags:
                     additionalProperties:
                       type: string
@@ -176,7 +177,6 @@ spec:
                       with no predefined name, type, or namespace. For more information,
                       see Resource Tags.  Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   databaseId:
                     description: The database OCID.
                     type: string
@@ -354,7 +354,6 @@ spec:
                       tags for this resource. Each key is predefined and scoped to
                       a namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   dbSystemFreeformTags:
                     additionalProperties:
                       type: string
@@ -363,7 +362,6 @@ spec:
                       with no predefined name, type, or namespace. For more information,
                       see Resource Tags.  Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   dbSystemSecurityAttributes:
                     additionalProperties:
                       type: string
@@ -372,7 +370,6 @@ spec:
                       to a namespace. For more information, see Resource Tags. Example:
                       {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deleteStandbyDbHomeOnDelete:
                     description: (Updatable) if set to true the destroy operation
                       will destroy the standby dbHome/dbSystem that is referenced
@@ -420,14 +417,16 @@ spec:
                   migrateTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Migrate. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   nodeCount:
                     description: (Applicable when creation_type=NewDbSystem) The number
                       of nodes to launch for the DB system of the standby in the Data
                       Guard association. For a 2-node RAC virtual machine DB system,
                       specify either 1 or 2. If you do not supply this parameter,
                       the default is the node count of the primary DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: '(Applicable when creation_type=NewDbSystem) The
                       list of OCIDs for the network security groups (NSGs) to which
@@ -873,7 +872,8 @@ spec:
                   computeCount:
                     description: (Applicable when creation_type=NewDbSystem) The number
                       of compute servers for the DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   computeModel:
                     description: (Applicable when creation_type=NewDbSystem) The compute
                       model for Base Database Service. This is required if using the
@@ -885,7 +885,8 @@ spec:
                   cpuCoreCount:
                     description: (Applicable when creation_type=NewDbSystem) The number
                       of CPU cores available for AMD-based virtual machine DB systems.
-                    type: number
+                    format: int64
+                    type: integer
                   createAsync:
                     type: boolean
                   creationType:
@@ -958,7 +959,6 @@ spec:
                       tags for this resource. Each key is predefined and scoped to
                       a namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   databaseFreeformTags:
                     additionalProperties:
                       type: string
@@ -967,7 +967,6 @@ spec:
                       with no predefined name, type, or namespace. For more information,
                       see Resource Tags.  Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   databaseId:
                     description: The database OCID.
                     type: string
@@ -1145,7 +1144,6 @@ spec:
                       tags for this resource. Each key is predefined and scoped to
                       a namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   dbSystemFreeformTags:
                     additionalProperties:
                       type: string
@@ -1154,7 +1152,6 @@ spec:
                       with no predefined name, type, or namespace. For more information,
                       see Resource Tags.  Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   dbSystemSecurityAttributes:
                     additionalProperties:
                       type: string
@@ -1163,7 +1160,6 @@ spec:
                       to a namespace. For more information, see Resource Tags. Example:
                       {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deleteStandbyDbHomeOnDelete:
                     description: (Updatable) if set to true the destroy operation
                       will destroy the standby dbHome/dbSystem that is referenced
@@ -1211,14 +1207,16 @@ spec:
                   migrateTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Migrate. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   nodeCount:
                     description: (Applicable when creation_type=NewDbSystem) The number
                       of nodes to launch for the DB system of the standby in the Data
                       Guard association. For a 2-node RAC virtual machine DB system,
                       specify either 1 or 2. If you do not supply this parameter,
                       the default is the node count of the primary DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: '(Applicable when creation_type=NewDbSystem) The
                       list of OCIDs for the network security groups (NSGs) to which
@@ -1750,7 +1748,8 @@ spec:
                   computeCount:
                     description: (Applicable when creation_type=NewDbSystem) The number
                       of compute servers for the DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   computeModel:
                     description: (Applicable when creation_type=NewDbSystem) The compute
                       model for Base Database Service. This is required if using the
@@ -1762,7 +1761,8 @@ spec:
                   cpuCoreCount:
                     description: (Applicable when creation_type=NewDbSystem) The number
                       of CPU cores available for AMD-based virtual machine DB systems.
-                    type: number
+                    format: int64
+                    type: integer
                   createAsync:
                     type: boolean
                   creationType:
@@ -1822,7 +1822,6 @@ spec:
                       tags for this resource. Each key is predefined and scoped to
                       a namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   databaseFreeformTags:
                     additionalProperties:
                       type: string
@@ -1831,7 +1830,6 @@ spec:
                       with no predefined name, type, or namespace. For more information,
                       see Resource Tags.  Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   databaseId:
                     description: The database OCID.
                     type: string
@@ -1847,7 +1845,6 @@ spec:
                       tags for this resource. Each key is predefined and scoped to
                       a namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   dbSystemFreeformTags:
                     additionalProperties:
                       type: string
@@ -1856,7 +1853,6 @@ spec:
                       with no predefined name, type, or namespace. For more information,
                       see Resource Tags.  Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   dbSystemSecurityAttributes:
                     additionalProperties:
                       type: string
@@ -1865,7 +1861,6 @@ spec:
                       to a namespace. For more information, see Resource Tags. Example:
                       {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deleteStandbyDbHomeOnDelete:
                     description: (Updatable) if set to true the destroy operation
                       will destroy the standby dbHome/dbSystem that is referenced
@@ -1920,14 +1915,16 @@ spec:
                   migrateTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Migrate. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   nodeCount:
                     description: (Applicable when creation_type=NewDbSystem) The number
                       of nodes to launch for the DB system of the standby in the Data
                       Guard association. For a 2-node RAC virtual machine DB system,
                       specify either 1 or 2. If you do not supply this parameter,
                       the default is the node count of the primary DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: '(Applicable when creation_type=NewDbSystem) The
                       list of OCIDs for the network security groups (NSGs) to which

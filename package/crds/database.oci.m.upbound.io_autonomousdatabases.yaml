@@ -94,7 +94,8 @@ spec:
                       is enabled. The minimum is 1 hour. The maximum is 7 days. The
                       date and time that auto-refresh is enabled is controlled by
                       the timeOfAutoRefreshStart parameter.
-                    type: number
+                    format: int64
+                    type: integer
                   autoRefreshPointLagInSeconds:
                     description: (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable)
                       The time, in seconds, the data of the refreshable clone lags
@@ -102,7 +103,8 @@ spec:
                       0 minutes (0 mins means refresh to the latest available timestamp).
                       The maximum is 7 days. The lag time increases after refreshing
                       until the next data refresh happens.
-                    type: number
+                    format: int64
+                    type: integer
                   autonomousContainerDatabaseId:
                     description: The Autonomous Container Database OCID. Used only
                       by Autonomous AI Database on Dedicated Exadata Infrastructure.
@@ -397,7 +399,8 @@ spec:
                   backupRetentionPeriodInDays:
                     description: (Updatable) Retention period, in days, for long-term
                       backups
-                    type: number
+                    format: int64
+                    type: integer
                   byolComputeCountLimit:
                     description: (Updatable) The maximum number of CPUs allowed with
                       a Bring Your Own License (BYOL), including those used for auto-scaling,
@@ -415,7 +418,8 @@ spec:
                       A list of the source Autonomous AI Database's table space number(s)
                       used to create this partial clone from the backup.
                     items:
-                      type: number
+                      format: int64
+                      type: integer
                     type: array
                   cloneType:
                     description: The Autonomous AI Database clone type.
@@ -532,7 +536,8 @@ spec:
                       infrastructure, the maximum number of cores is determined by
                       the infrastructure shape. See Characteristics of Infrastructure
                       Shapes for shape details.
-                    type: number
+                    format: int64
+                    type: integer
                   customerContacts:
                     description: (Updatable) Customer Contacts.
                     items:
@@ -553,7 +558,8 @@ spec:
                       can later be scaled up if needed. The maximum storage value
                       is determined by the infrastructure shape. See Characteristics
                       of Infrastructure Shapes for shape details.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInTbs:
                     description: (Updatable) The size, in terabytes, of the data volume
                       that will be created and attached to the database. This storage
@@ -563,7 +569,8 @@ spec:
                       of Infrastructure Shapes for shape details. A full Exadata service
                       is allocated when the Autonomous AI Database size is set to
                       the upper limit (384 TB).
-                    type: number
+                    format: int64
+                    type: integer
                   databaseEdition:
                     description: (Updatable) The Oracle AI Database Edition that applies
                       to the Autonomous AI Databases. This parameter accepts options
@@ -604,7 +611,8 @@ spec:
                         maxIdleTimeInMinutes:
                           description: (Updatable) The max idle time, in minutes,
                             after which the VM used by database tools will be terminated.
-                          type: number
+                          format: int64
+                          type: integer
                         name:
                           description: (Updatable) Name of the day of the week.
                           type: string
@@ -628,7 +636,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   disasterRecoveryType:
                     description: Indicates the disaster recovery (DR) type of the
                       standby Autonomous AI Database Serverless instance. Autonomous
@@ -1045,13 +1052,13 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inMemoryPercentage:
                     description: (Updatable) The percentage of the System Global Area(SGA)
                       assigned to In-Memory tables in Autonomous AI Database. This
                       property is applicable only to Autonomous AI Databases on the
                       Exadata Cloud@Customer platform.
-                    type: number
+                    format: int64
+                    type: integer
                   isAccessControlEnabled:
                     description: (Updatable) Indicates if the database-level access
                       control is enabled. If disabled, database access is defined
@@ -1259,7 +1266,8 @@ spec:
                       maximum data loss limit in seconds, up to which Automatic Failover
                       will be triggered when necessary for a Local Autonomous Data
                       Guard
-                    type: number
+                    format: int64
+                    type: integer
                   localAdgResourcePoolLeaderId:
                     description: The OCID of the dedicated resource pool leader Autonomous
                       Database in the same region, associated with local Autonomous
@@ -1278,7 +1286,8 @@ spec:
                           type: string
                         retentionPeriodInDays:
                           description: Retention period, in days, for long-term backups
-                          type: number
+                          format: int64
+                          type: integer
                         timeOfBackup:
                           description: The timestamp for the long-term backup schedule.
                             For a MONTHLY cadence, months having fewer days than the
@@ -1293,7 +1302,8 @@ spec:
                       infrastructure, the maximum number of cores is determined by
                       the infrastructure shape. See Characteristics of Infrastructure
                       Shapes for shape details.
-                    type: number
+                    format: int64
+                    type: integer
                   ncharacterSet:
                     description: 'The character set for the Autonomous AI Database.
                       The default is AL32UTF8. Use List Autonomous AI Database Character
@@ -1372,10 +1382,12 @@ spec:
                           type: boolean
                         poolSize:
                           description: (Updatable) Resource pool size.
-                          type: number
+                          format: int64
+                          type: integer
                         poolStorageSizeInTbs:
                           description: (Updatable) Resource pool storage size in TBs.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   rotateKeyTrigger:
@@ -1494,7 +1506,8 @@ spec:
                   secretVersionNumber:
                     description: (Updatable) The version of the vault secret. If no
                       version is specified, the latest version will be used.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -1503,9 +1516,9 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shrinkAdbTrigger:
-                    type: number
+                    format: int64
+                    type: integer
                   source:
                     description: 'The source of the database: Use NONE for creating
                       a new Autonomous AI Database. Use DATABASE for creating a new
@@ -1835,7 +1848,8 @@ spec:
                       is enabled. The minimum is 1 hour. The maximum is 7 days. The
                       date and time that auto-refresh is enabled is controlled by
                       the timeOfAutoRefreshStart parameter.
-                    type: number
+                    format: int64
+                    type: integer
                   autoRefreshPointLagInSeconds:
                     description: (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable)
                       The time, in seconds, the data of the refreshable clone lags
@@ -1843,7 +1857,8 @@ spec:
                       0 minutes (0 mins means refresh to the latest available timestamp).
                       The maximum is 7 days. The lag time increases after refreshing
                       until the next data refresh happens.
-                    type: number
+                    format: int64
+                    type: integer
                   autonomousContainerDatabaseId:
                     description: The Autonomous Container Database OCID. Used only
                       by Autonomous AI Database on Dedicated Exadata Infrastructure.
@@ -2138,7 +2153,8 @@ spec:
                   backupRetentionPeriodInDays:
                     description: (Updatable) Retention period, in days, for long-term
                       backups
-                    type: number
+                    format: int64
+                    type: integer
                   byolComputeCountLimit:
                     description: (Updatable) The maximum number of CPUs allowed with
                       a Bring Your Own License (BYOL), including those used for auto-scaling,
@@ -2156,7 +2172,8 @@ spec:
                       A list of the source Autonomous AI Database's table space number(s)
                       used to create this partial clone from the backup.
                     items:
-                      type: number
+                      format: int64
+                      type: integer
                     type: array
                   cloneType:
                     description: The Autonomous AI Database clone type.
@@ -2273,7 +2290,8 @@ spec:
                       infrastructure, the maximum number of cores is determined by
                       the infrastructure shape. See Characteristics of Infrastructure
                       Shapes for shape details.
-                    type: number
+                    format: int64
+                    type: integer
                   customerContacts:
                     description: (Updatable) Customer Contacts.
                     items:
@@ -2294,7 +2312,8 @@ spec:
                       can later be scaled up if needed. The maximum storage value
                       is determined by the infrastructure shape. See Characteristics
                       of Infrastructure Shapes for shape details.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInTbs:
                     description: (Updatable) The size, in terabytes, of the data volume
                       that will be created and attached to the database. This storage
@@ -2304,7 +2323,8 @@ spec:
                       of Infrastructure Shapes for shape details. A full Exadata service
                       is allocated when the Autonomous AI Database size is set to
                       the upper limit (384 TB).
-                    type: number
+                    format: int64
+                    type: integer
                   databaseEdition:
                     description: (Updatable) The Oracle AI Database Edition that applies
                       to the Autonomous AI Databases. This parameter accepts options
@@ -2345,7 +2365,8 @@ spec:
                         maxIdleTimeInMinutes:
                           description: (Updatable) The max idle time, in minutes,
                             after which the VM used by database tools will be terminated.
-                          type: number
+                          format: int64
+                          type: integer
                         name:
                           description: (Updatable) Name of the day of the week.
                           type: string
@@ -2369,7 +2390,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   disasterRecoveryType:
                     description: Indicates the disaster recovery (DR) type of the
                       standby Autonomous AI Database Serverless instance. Autonomous
@@ -2786,13 +2806,13 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inMemoryPercentage:
                     description: (Updatable) The percentage of the System Global Area(SGA)
                       assigned to In-Memory tables in Autonomous AI Database. This
                       property is applicable only to Autonomous AI Databases on the
                       Exadata Cloud@Customer platform.
-                    type: number
+                    format: int64
+                    type: integer
                   isAccessControlEnabled:
                     description: (Updatable) Indicates if the database-level access
                       control is enabled. If disabled, database access is defined
@@ -3000,7 +3020,8 @@ spec:
                       maximum data loss limit in seconds, up to which Automatic Failover
                       will be triggered when necessary for a Local Autonomous Data
                       Guard
-                    type: number
+                    format: int64
+                    type: integer
                   localAdgResourcePoolLeaderId:
                     description: The OCID of the dedicated resource pool leader Autonomous
                       Database in the same region, associated with local Autonomous
@@ -3019,7 +3040,8 @@ spec:
                           type: string
                         retentionPeriodInDays:
                           description: Retention period, in days, for long-term backups
-                          type: number
+                          format: int64
+                          type: integer
                         timeOfBackup:
                           description: The timestamp for the long-term backup schedule.
                             For a MONTHLY cadence, months having fewer days than the
@@ -3034,7 +3056,8 @@ spec:
                       infrastructure, the maximum number of cores is determined by
                       the infrastructure shape. See Characteristics of Infrastructure
                       Shapes for shape details.
-                    type: number
+                    format: int64
+                    type: integer
                   ncharacterSet:
                     description: 'The character set for the Autonomous AI Database.
                       The default is AL32UTF8. Use List Autonomous AI Database Character
@@ -3113,10 +3136,12 @@ spec:
                           type: boolean
                         poolSize:
                           description: (Updatable) Resource pool size.
-                          type: number
+                          format: int64
+                          type: integer
                         poolStorageSizeInTbs:
                           description: (Updatable) Resource pool storage size in TBs.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   rotateKeyTrigger:
@@ -3235,7 +3260,8 @@ spec:
                   secretVersionNumber:
                     description: (Updatable) The version of the vault secret. If no
                       version is specified, the latest version will be used.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -3244,9 +3270,9 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shrinkAdbTrigger:
-                    type: number
+                    format: int64
+                    type: integer
                   source:
                     description: 'The source of the database: Use NONE for creating
                       a new Autonomous AI Database. Use DATABASE for creating a new
@@ -3610,7 +3636,6 @@ spec:
                       is a simple key-value pair with no predefined name, type, or
                       namespace. Example: { "gcpAccountName": "gcpName" }'
                     type: object
-                    x-kubernetes-map-type: granular
                   allocatedStorageSizeInTbs:
                     description: The amount of storage currently allocated for the
                       database tables and billed for, rounded up. When auto-scaling
@@ -3649,7 +3674,8 @@ spec:
                       is enabled. The minimum is 1 hour. The maximum is 7 days. The
                       date and time that auto-refresh is enabled is controlled by
                       the timeOfAutoRefreshStart parameter.
-                    type: number
+                    format: int64
+                    type: integer
                   autoRefreshPointLagInSeconds:
                     description: (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable)
                       The time, in seconds, the data of the refreshable clone lags
@@ -3657,7 +3683,8 @@ spec:
                       0 minutes (0 mins means refresh to the latest available timestamp).
                       The maximum is 7 days. The lag time increases after refreshing
                       until the next data refresh happens.
-                    type: number
+                    format: int64
+                    type: integer
                   autonomousContainerDatabaseId:
                     description: The Autonomous Container Database OCID. Used only
                       by Autonomous AI Database on Dedicated Exadata Infrastructure.
@@ -3731,7 +3758,8 @@ spec:
                   backupRetentionPeriodInDays:
                     description: (Updatable) Retention period, in days, for long-term
                       backups
-                    type: number
+                    format: int64
+                    type: integer
                   byolComputeCountLimit:
                     description: (Updatable) The maximum number of CPUs allowed with
                       a Bring Your Own License (BYOL), including those used for auto-scaling,
@@ -3749,7 +3777,8 @@ spec:
                       A list of the source Autonomous AI Database's table space number(s)
                       used to create this partial clone from the backup.
                     items:
-                      type: number
+                      format: int64
+                      type: integer
                     type: array
                   cloneType:
                     description: The Autonomous AI Database clone type.
@@ -3797,7 +3826,6 @@ spec:
                             information, please see Predefined Database Service Names
                             for Autonomous AI Transaction Processing
                           type: object
-                          x-kubernetes-map-type: granular
                         dedicated:
                           description: The database service provides the least level
                             of resources to each SQL statement, but supports the most
@@ -3920,7 +3948,8 @@ spec:
                       infrastructure, the maximum number of cores is determined by
                       the infrastructure shape. See Characteristics of Infrastructure
                       Shapes for shape details.
-                    type: number
+                    format: int64
+                    type: integer
                   customerContacts:
                     description: (Updatable) Customer Contacts.
                     items:
@@ -3941,7 +3970,8 @@ spec:
                       can later be scaled up if needed. The maximum storage value
                       is determined by the infrastructure shape. See Characteristics
                       of Infrastructure Shapes for shape details.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInTbs:
                     description: (Updatable) The size, in terabytes, of the data volume
                       that will be created and attached to the database. This storage
@@ -3951,7 +3981,8 @@ spec:
                       of Infrastructure Shapes for shape details. A full Exadata service
                       is allocated when the Autonomous AI Database size is set to
                       the upper limit (384 TB).
-                    type: number
+                    format: int64
+                    type: integer
                   databaseEdition:
                     description: (Updatable) The Oracle AI Database Edition that applies
                       to the Autonomous AI Databases. This parameter accepts options
@@ -4005,7 +4036,8 @@ spec:
                         maxIdleTimeInMinutes:
                           description: (Updatable) The max idle time, in minutes,
                             after which the VM used by database tools will be terminated.
-                          type: number
+                          format: int64
+                          type: integer
                         name:
                           description: (Updatable) Name of the day of the week.
                           type: string
@@ -4029,7 +4061,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   disasterRecoveryRegionType:
                     description: Deprecated. The disaster recovery (DR) region type
                       of the Autonomous AI Database. For Autonomous AI Database Serverless
@@ -4235,7 +4266,8 @@ spec:
                   failedDataRecoveryInSeconds:
                     description: Indicates the number of seconds of data loss for
                       a Data Guard failover.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -4244,20 +4276,21 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Autonomous AI Database.
                     type: string
                   inMemoryAreaInGbs:
                     description: The area assigned to In-Memory tables in Autonomous
                       AI Database.
-                    type: number
+                    format: int64
+                    type: integer
                   inMemoryPercentage:
                     description: (Updatable) The percentage of the System Global Area(SGA)
                       assigned to In-Memory tables in Autonomous AI Database. This
                       property is applicable only to Autonomous AI Databases on the
                       Exadata Cloud@Customer platform.
-                    type: number
+                    format: int64
+                    type: integer
                   infrastructureType:
                     description: The infrastructure type this resource belongs to.
                     type: string
@@ -4449,7 +4482,8 @@ spec:
                       maximum data loss limit in seconds, up to which Automatic Failover
                       will be triggered when necessary for a Local Autonomous Data
                       Guard
-                    type: number
+                    format: int64
+                    type: integer
                   localAdgResourcePoolLeaderId:
                     description: The OCID of the dedicated resource pool leader Autonomous
                       Database in the same region, associated with local Autonomous
@@ -4481,7 +4515,8 @@ spec:
                             of the standby database lags the data of the primary database.
                             Can be used to determine the potential data loss in the
                             event of a failover.
-                          type: number
+                          format: int64
+                          type: integer
                         lifecycleDetails:
                           description: Information about the current lifecycle state.
                           type: string
@@ -4520,7 +4555,8 @@ spec:
                           type: string
                         retentionPeriodInDays:
                           description: Retention period, in days, for long-term backups
-                          type: number
+                          format: int64
+                          type: integer
                         timeOfBackup:
                           description: The timestamp for the long-term backup schedule.
                             For a MONTHLY cadence, months having fewer days than the
@@ -4538,7 +4574,8 @@ spec:
                       infrastructure, the maximum number of cores is determined by
                       the infrastructure shape. See Characteristics of Infrastructure
                       Shapes for shape details.
-                    type: number
+                    format: int64
+                    type: integer
                   memoryPerComputeUnitInGbs:
                     description: The amount of memory (in GBs) to be enabled per OCPU
                       or ECPU.
@@ -4547,7 +4584,8 @@ spec:
                     description: The amount of memory (in GBs, rounded off to nearest
                       integer value) to be enabled per OCPU or ECPU. This is deprecated.
                       Please refer to memoryPerComputeUnitInGBs for accurate value.
-                    type: number
+                    format: int64
+                    type: integer
                   ncharacterSet:
                     description: 'The character set for the Autonomous AI Database.
                       The default is AL32UTF8. Use List Autonomous AI Database Character
@@ -4730,7 +4768,8 @@ spec:
                         availableComputeCapacity:
                           description: (Updatable) Available capacity left for new
                             elastic pool members provision
-                          type: number
+                          format: int64
+                          type: integer
                         availableStorageCapacityInTbs:
                           description: (Updatable) Available storage capacity (in
                             TB) that can be used for adding new members or scaling
@@ -4742,14 +4781,17 @@ spec:
                           type: boolean
                         poolSize:
                           description: (Updatable) Resource pool size.
-                          type: number
+                          format: int64
+                          type: integer
                         poolStorageSizeInTbs:
                           description: (Updatable) Resource pool storage size in TBs.
-                          type: number
+                          format: int64
+                          type: integer
                         totalComputeCapacity:
                           description: Resource Pool total capacity, it's currently
                             4x of pool size
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   role:
@@ -4792,7 +4834,8 @@ spec:
                   secretVersionNumber:
                     description: (Updatable) The version of the vault secret. If no
                       version is specified, the latest version will be used.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -4801,13 +4844,13 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   serviceConsoleUrl:
                     description: The URL of the Service Console for the Autonomous
                       AI Database.
                     type: string
                   shrinkAdbTrigger:
-                    type: number
+                    format: int64
+                    type: integer
                   source:
                     description: 'The source of the database: Use NONE for creating
                       a new Autonomous AI Database. Use DATABASE for creating a new
@@ -4839,7 +4882,8 @@ spec:
                             of the standby database lags the data of the primary database.
                             Can be used to determine the potential data loss in the
                             event of a failover.
-                          type: number
+                          format: int64
+                          type: integer
                         lifecycleDetails:
                           description: Information about the current lifecycle state.
                           type: string
@@ -4916,7 +4960,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the Autonomous AI Database was
                       created.
@@ -5033,11 +5076,13 @@ spec:
                   usedDataStorageSizeInGbs:
                     description: The storage space consumed by Autonomous AI Database
                       in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   usedDataStorageSizeInTbs:
                     description: The amount of storage that has been used for Autonomous
                       AI Databases in dedicated infrastructure, in terabytes.
-                    type: number
+                    format: int64
+                    type: integer
                   vanityConnectionUrls:
                     description: 'The URLs for accessing Oracle Application Express
                       (APEX) and SQL Developer Web with a browser from a Compute instance

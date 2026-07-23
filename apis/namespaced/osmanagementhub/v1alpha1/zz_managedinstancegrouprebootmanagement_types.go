@@ -30,7 +30,7 @@ type ManagedInstanceGroupRebootManagementInitParameters struct {
 	ManagedInstanceGroupIDSelector *v1.NamespacedSelector `json:"managedInstanceGroupIdSelector,omitempty" tf:"-"`
 
 	// The number of minutes the service waits for the reboot to complete. If the instances in the group don't reboot  within this time, the reboot job status is set to failed.
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// Provides the name and description of the job.
 	WorkRequestDetails []ManagedInstanceGroupRebootManagementWorkRequestDetailsInitParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
@@ -43,7 +43,7 @@ type ManagedInstanceGroupRebootManagementObservation struct {
 	ManagedInstanceGroupID *string `json:"managedInstanceGroupId,omitempty" tf:"managed_instance_group_id,omitempty"`
 
 	// The number of minutes the service waits for the reboot to complete. If the instances in the group don't reboot  within this time, the reboot job status is set to failed.
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// Provides the name and description of the job.
 	WorkRequestDetails []ManagedInstanceGroupRebootManagementWorkRequestDetailsObservation `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
@@ -67,7 +67,7 @@ type ManagedInstanceGroupRebootManagementParameters struct {
 
 	// The number of minutes the service waits for the reboot to complete. If the instances in the group don't reboot  within this time, the reboot job status is set to failed.
 	// +kubebuilder:validation:Optional
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// Provides the name and description of the job.
 	// +kubebuilder:validation:Optional

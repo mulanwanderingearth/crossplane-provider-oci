@@ -258,7 +258,8 @@ spec:
                   computeCount:
                     description: (Updatable) The number of compute servers for the
                       DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   computeModel:
                     description: (Updatable) The compute model for Base Database Service.
                       This is required if using the computeCount parameter. If using
@@ -270,7 +271,8 @@ spec:
                     description: '(Updatable) The number of CPU cores to enable for
                       a bare metal or Exadata DB system or AMD VMDB Systems. The valid
                       values depend on the specified shape:'
-                    type: number
+                    format: int64
+                    type: integer
                   dataCollectionOptions:
                     description: (Updatable) Indicates user preferences for the various
                       diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM
@@ -323,7 +325,8 @@ spec:
                       manager backups). Specify 80 or 40. The default is 80 percent
                       assigned to DATA storage. Not applicable for virtual machine
                       DB systems. Required for BMDBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInGb:
                     description: (Updatable) Size (in GB) of the initial data volume
                       that will be created and attached to a virtual machine DB system.
@@ -331,7 +334,8 @@ spec:
                       that the total storage size attached will be more than the amount
                       you specify to allow for REDO/RECO space and software volume.
                       By default this will be set to 256. Required for VMDBs.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseEdition:
                     description: The Oracle Database Edition that applies to all the
                       databases on the DB system. Exadata DB systems and 2-node RAC
@@ -481,7 +485,6 @@ spec:
                                   scoped to a namespace. For more information, see
                                   Resource Tags.
                                 type: object
-                                x-kubernetes-map-type: granular
                               databaseFreeformTags:
                                 additionalProperties:
                                   type: string
@@ -491,7 +494,6 @@ spec:
                                   For more information, see Resource Tags.  Example:
                                   {"Department": "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               databaseId:
                                 description: The database OCID.
                                 type: string
@@ -875,7 +877,8 @@ spec:
                                         that are created before the window. When the
                                         value is updated, it is applied to all existing
                                         automatic backups.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     runImmediateFullBackup:
                                       description: (Applicable when source=DATAGUARD
                                         | DB_SYSTEM | NONE) If set to true, configures
@@ -922,7 +925,6 @@ spec:
                                   to a namespace. For more information, see Resource
                                   Tags.
                                 type: object
-                                x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
@@ -933,7 +935,6 @@ spec:
                                   more information, see Resource Tags.  Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               isActiveDataGuardEnabled:
                                 description: (Applicable when source=DATAGUARD) True
                                   if active Data Guard is enabled.
@@ -1425,7 +1426,6 @@ spec:
                             resource. Each key is predefined and scoped to a namespace.
                             For more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: The user-provided name of the Database Home.
                           type: string
@@ -1438,7 +1438,6 @@ spec:
                             predefined name, type, or namespace. For more information,
                             see Resource Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         isUnifiedAuditingEnabled:
                           description: (Applicable when source=DATABASE | DB_BACKUP
                             | NONE) Indicates whether unified auditing is enabled
@@ -1464,7 +1463,6 @@ spec:
                       is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   diskRedundancy:
                     description: (Applicable when source=DATABASE | DB_BACKUP | NONE)
                       The type of redundancy configured for the DB system. Normal
@@ -1500,7 +1498,6 @@ spec:
                       namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostname:
                     description: The hostname for the DB system. The hostname must
                       begin with an alphabetic character, and can contain alphanumeric
@@ -1686,7 +1683,8 @@ spec:
                             of each database server patching operation. Custom action
                             timeout is in minutes and valid value is between 15 to
                             120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: The update should be applied on the database
                             for the selected days of the week.
@@ -1707,7 +1705,8 @@ spec:
                             UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20
                             - represents time slot 20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Applicable when source=NONE) (Updatable) If
@@ -1723,7 +1722,8 @@ spec:
                             time window allows user to set a lead time to prepare
                             for a down time. The lead time is in weeks and valid value
                             is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Applicable when source=NONE) (Updatable) Months
                             during the year when maintenance should be performed.
@@ -1766,7 +1766,8 @@ spec:
                             and hoursOfDay parameters to allow you to specify specific
                             days of the week and hours that maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -1774,7 +1775,8 @@ spec:
                     description: The number of nodes to launch for a virtual machine
                       DB system. Specify either 1 or 2. By default this will be set
                       to 1.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: '(Updatable) The list of OCIDs for the network security
                       groups (NSGs) to which this resource belongs. Setting this to
@@ -1793,7 +1795,8 @@ spec:
                   osPatchTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Os Patch. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   primaryDbSystemId:
                     description: The OCID of the DB system.
                     type: string
@@ -1887,7 +1890,8 @@ spec:
                     description: The RECO/REDO storage size, in gigabytes, that is
                       currently allocated to the DB system. Applies only for virtual
                       machine DB systems.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -1896,7 +1900,6 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: (Updatable) The shape of the DB system. The shape
                       determines resources allocated to the DB system.
@@ -2286,7 +2289,8 @@ spec:
                   computeCount:
                     description: (Updatable) The number of compute servers for the
                       DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   computeModel:
                     description: (Updatable) The compute model for Base Database Service.
                       This is required if using the computeCount parameter. If using
@@ -2298,7 +2302,8 @@ spec:
                     description: '(Updatable) The number of CPU cores to enable for
                       a bare metal or Exadata DB system or AMD VMDB Systems. The valid
                       values depend on the specified shape:'
-                    type: number
+                    format: int64
+                    type: integer
                   dataCollectionOptions:
                     description: (Updatable) Indicates user preferences for the various
                       diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM
@@ -2351,7 +2356,8 @@ spec:
                       manager backups). Specify 80 or 40. The default is 80 percent
                       assigned to DATA storage. Not applicable for virtual machine
                       DB systems. Required for BMDBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInGb:
                     description: (Updatable) Size (in GB) of the initial data volume
                       that will be created and attached to a virtual machine DB system.
@@ -2359,7 +2365,8 @@ spec:
                       that the total storage size attached will be more than the amount
                       you specify to allow for REDO/RECO space and software volume.
                       By default this will be set to 256. Required for VMDBs.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseEdition:
                     description: The Oracle Database Edition that applies to all the
                       databases on the DB system. Exadata DB systems and 2-node RAC
@@ -2509,7 +2516,6 @@ spec:
                                   scoped to a namespace. For more information, see
                                   Resource Tags.
                                 type: object
-                                x-kubernetes-map-type: granular
                               databaseFreeformTags:
                                 additionalProperties:
                                   type: string
@@ -2519,7 +2525,6 @@ spec:
                                   For more information, see Resource Tags.  Example:
                                   {"Department": "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               databaseId:
                                 description: The database OCID.
                                 type: string
@@ -2903,7 +2908,8 @@ spec:
                                         that are created before the window. When the
                                         value is updated, it is applied to all existing
                                         automatic backups.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     runImmediateFullBackup:
                                       description: (Applicable when source=DATAGUARD
                                         | DB_SYSTEM | NONE) If set to true, configures
@@ -2950,7 +2956,6 @@ spec:
                                   to a namespace. For more information, see Resource
                                   Tags.
                                 type: object
-                                x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
@@ -2961,7 +2966,6 @@ spec:
                                   more information, see Resource Tags.  Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               isActiveDataGuardEnabled:
                                 description: (Applicable when source=DATAGUARD) True
                                   if active Data Guard is enabled.
@@ -3455,7 +3459,6 @@ spec:
                             resource. Each key is predefined and scoped to a namespace.
                             For more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: The user-provided name of the Database Home.
                           type: string
@@ -3468,7 +3471,6 @@ spec:
                             predefined name, type, or namespace. For more information,
                             see Resource Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         isUnifiedAuditingEnabled:
                           description: (Applicable when source=DATABASE | DB_BACKUP
                             | NONE) Indicates whether unified auditing is enabled
@@ -3494,7 +3496,6 @@ spec:
                       is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   diskRedundancy:
                     description: (Applicable when source=DATABASE | DB_BACKUP | NONE)
                       The type of redundancy configured for the DB system. Normal
@@ -3530,7 +3531,6 @@ spec:
                       namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostname:
                     description: The hostname for the DB system. The hostname must
                       begin with an alphabetic character, and can contain alphanumeric
@@ -3716,7 +3716,8 @@ spec:
                             of each database server patching operation. Custom action
                             timeout is in minutes and valid value is between 15 to
                             120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: The update should be applied on the database
                             for the selected days of the week.
@@ -3737,7 +3738,8 @@ spec:
                             UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20
                             - represents time slot 20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Applicable when source=NONE) (Updatable) If
@@ -3753,7 +3755,8 @@ spec:
                             time window allows user to set a lead time to prepare
                             for a down time. The lead time is in weeks and valid value
                             is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Applicable when source=NONE) (Updatable) Months
                             during the year when maintenance should be performed.
@@ -3796,7 +3799,8 @@ spec:
                             and hoursOfDay parameters to allow you to specify specific
                             days of the week and hours that maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -3804,7 +3808,8 @@ spec:
                     description: The number of nodes to launch for a virtual machine
                       DB system. Specify either 1 or 2. By default this will be set
                       to 1.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: '(Updatable) The list of OCIDs for the network security
                       groups (NSGs) to which this resource belongs. Setting this to
@@ -3823,7 +3828,8 @@ spec:
                   osPatchTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Os Patch. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   primaryDbSystemId:
                     description: The OCID of the DB system.
                     type: string
@@ -3917,7 +3923,8 @@ spec:
                     description: The RECO/REDO storage size, in gigabytes, that is
                       currently allocated to the DB system. Applies only for virtual
                       machine DB systems.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -3926,7 +3933,6 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: (Updatable) The shape of the DB system. The shape
                       determines resources allocated to the DB system.
@@ -4267,7 +4273,8 @@ spec:
                   computeCount:
                     description: (Updatable) The number of compute servers for the
                       DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   computeModel:
                     description: (Updatable) The compute model for Base Database Service.
                       This is required if using the computeCount parameter. If using
@@ -4279,7 +4286,8 @@ spec:
                     description: '(Updatable) The number of CPU cores to enable for
                       a bare metal or Exadata DB system or AMD VMDB Systems. The valid
                       values depend on the specified shape:'
-                    type: number
+                    format: int64
+                    type: integer
                   dataCollectionOptions:
                     description: (Updatable) Indicates user preferences for the various
                       diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM
@@ -4332,7 +4340,8 @@ spec:
                       manager backups). Specify 80 or 40. The default is 80 percent
                       assigned to DATA storage. Not applicable for virtual machine
                       DB systems. Required for BMDBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInGb:
                     description: (Updatable) Size (in GB) of the initial data volume
                       that will be created and attached to a virtual machine DB system.
@@ -4340,7 +4349,8 @@ spec:
                       that the total storage size attached will be more than the amount
                       you specify to allow for REDO/RECO space and software volume.
                       By default this will be set to 256. Required for VMDBs.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseEdition:
                     description: The Oracle Database Edition that applies to all the
                       databases on the DB system. Exadata DB systems and 2-node RAC
@@ -4374,7 +4384,6 @@ spec:
                                       additionalProperties:
                                         type: string
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     cdbDefault:
                                       type: string
                                     cdbIpDefault:
@@ -4389,7 +4398,6 @@ spec:
                                   scoped to a namespace. For more information, see
                                   Resource Tags.
                                 type: object
-                                x-kubernetes-map-type: granular
                               databaseFreeformTags:
                                 additionalProperties:
                                   type: string
@@ -4399,7 +4407,6 @@ spec:
                                   For more information, see Resource Tags.  Example:
                                   {"Department": "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               databaseId:
                                 description: The database OCID.
                                 type: string
@@ -4554,7 +4561,8 @@ spec:
                                         that are created before the window. When the
                                         value is updated, it is applied to all existing
                                         automatic backups.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     runImmediateFullBackup:
                                       description: (Applicable when source=DATAGUARD
                                         | DB_SYSTEM | NONE) If set to true, configures
@@ -4601,7 +4609,6 @@ spec:
                                   to a namespace. For more information, see Resource
                                   Tags.
                                 type: object
-                                x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
@@ -4612,7 +4619,6 @@ spec:
                                   more information, see Resource Tags.  Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               id:
                                 description: (Applicable when source=DATAGUARD | DB_SYSTEM
                                   | NONE) The OCID of the backup destination.
@@ -4719,7 +4725,6 @@ spec:
                             resource. Each key is predefined and scoped to a namespace.
                             For more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: The user-provided name of the Database Home.
                           type: string
@@ -4732,7 +4737,6 @@ spec:
                             predefined name, type, or namespace. For more information,
                             see Resource Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         id:
                           description: (Applicable when source=DATAGUARD | DB_SYSTEM
                             | NONE) The OCID of the backup destination.
@@ -4776,7 +4780,6 @@ spec:
                       is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   diskRedundancy:
                     description: (Applicable when source=DATABASE | DB_BACKUP | NONE)
                       The type of redundancy configured for the DB system. Normal
@@ -4812,7 +4815,6 @@ spec:
                       namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostname:
                     description: The hostname for the DB system. The hostname must
                       begin with an alphabetic character, and can contain alphanumeric
@@ -4848,7 +4850,8 @@ spec:
                                 type: string
                               share:
                                 description: The relative priority of this database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         dbSystemId:
@@ -4899,7 +4902,8 @@ spec:
                   listenerPort:
                     description: The port number configured for the listener on the
                       DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   maintenanceWindow:
                     description: The scheduling details for the quarterly maintenance
                       window. Patching and system updates take place during the maintenance
@@ -4912,7 +4916,8 @@ spec:
                             of each database server patching operation. Custom action
                             timeout is in minutes and valid value is between 15 to
                             120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: The update should be applied on the database
                             for the selected days of the week.
@@ -4933,7 +4938,8 @@ spec:
                             UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20
                             - represents time slot 20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Applicable when source=NONE) (Updatable) If
@@ -4949,7 +4955,8 @@ spec:
                             time window allows user to set a lead time to prepare
                             for a down time. The lead time is in weeks and valid value
                             is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Applicable when source=NONE) (Updatable) Months
                             during the year when maintenance should be performed.
@@ -4992,7 +4999,8 @@ spec:
                             and hoursOfDay parameters to allow you to specify specific
                             days of the week and hours that maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -5008,7 +5016,8 @@ spec:
                             of each database server patching operation. Custom action
                             timeout is in minutes and valid value is between 15 to
                             120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: The update should be applied on the database
                             for the selected days of the week.
@@ -5029,7 +5038,8 @@ spec:
                             UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20
                             - represents time slot 20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Applicable when source=NONE) (Updatable) If
@@ -5045,7 +5055,8 @@ spec:
                             time window allows user to set a lead time to prepare
                             for a down time. The lead time is in weeks and valid value
                             is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Applicable when source=NONE) (Updatable) Months
                             during the year when maintenance should be performed.
@@ -5088,13 +5099,15 @@ spec:
                             and hoursOfDay parameters to allow you to specify specific
                             days of the week and hours that maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
                   memorySizeInGbs:
                     description: Memory allocated to the DB system, in gigabytes.
-                    type: number
+                    format: int64
+                    type: integer
                   nextMaintenanceRunId:
                     description: The OCID of the next maintenance run.
                     type: string
@@ -5102,7 +5115,8 @@ spec:
                     description: The number of nodes to launch for a virtual machine
                       DB system. Specify either 1 or 2. By default this will be set
                       to 1.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: '(Updatable) The list of OCIDs for the network security
                       groups (NSGs) to which this resource belongs. Setting this to
@@ -5121,7 +5135,8 @@ spec:
                   osPatchTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Os Patch. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   osVersion:
                     description: The most recent OS Patch Version applied on the DB
                       system.
@@ -5150,7 +5165,8 @@ spec:
                     description: The RECO/REDO storage size, in gigabytes, that is
                       currently allocated to the DB system. Applies only for virtual
                       machine DB systems.
-                    type: number
+                    format: int64
+                    type: integer
                   scanDnsName:
                     description: The FQDN of the DNS record for the SCAN IP addresses
                       that are associated with the DB system.
@@ -5185,7 +5201,6 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: (Updatable) The shape of the DB system. The shape
                       determines resources allocated to the DB system.
@@ -5235,7 +5250,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the DB system was created.
                     type: string

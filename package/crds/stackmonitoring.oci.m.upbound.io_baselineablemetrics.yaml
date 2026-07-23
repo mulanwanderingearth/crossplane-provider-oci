@@ -365,7 +365,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -373,7 +372,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: OCID of the metric
                     type: string
@@ -405,7 +403,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   tenancyId:
                     description: OCID of the tenancy
                     type: string

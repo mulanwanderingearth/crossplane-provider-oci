@@ -111,7 +111,7 @@ type CloudVmClusterInitParameters struct {
 	BackupSubnetIDSelector *v1.Selector `json:"backupSubnetIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) For fixed shapes, this is the total number of OCPUs to enable across the VM cluster.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// (Updatable) Specifies the properties necessary for cloud automation updates. This includes modifying the apply update time preference, enabling or disabling early adoption, and enabling, modifying, or disabling the update freeze period.
 	CloudAutomationUpdateDetails []CloudAutomationUpdateDetailsInitParameters `json:"cloudAutomationUpdateDetails,omitempty" tf:"cloud_automation_update_details,omitempty"`
@@ -147,7 +147,7 @@ type CloudVmClusterInitParameters struct {
 	CreateAsync *bool `json:"createAsync,omitempty" tf:"create_async,omitempty"`
 
 	// (Updatable) The local node storage to be allocated in GBs.
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	// The list of DB servers.
 	DBServers []*string `json:"dbServers,omitempty" tf:"db_servers,omitempty"`
@@ -156,14 +156,13 @@ type CloudVmClusterInitParameters struct {
 	DataCollectionOptions []DataCollectionOptionsInitParameters `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
 	// (Updatable) The percentage assigned to DATA storage (user data and database files). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+	DataStoragePercentage *int64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// (Updatable) The data disk group size to be allocated in TBs.
 	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the cloud VM cluster. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -188,8 +187,7 @@ type CloudVmClusterInitParameters struct {
 	FileSystemConfigurationDetails []FileSystemConfigurationDetailsInitParameters `json:"fileSystemConfigurationDetails,omitempty" tf:"file_system_configuration_details,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A valid Oracle Grid Infrastructure (GI) software version.
 	GiVersion *string `json:"giVersion,omitempty" tf:"gi_version,omitempty"`
@@ -207,10 +205,10 @@ type CloudVmClusterInitParameters struct {
 	LicenseModel *string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
 
 	// (Updatable) The memory to be allocated in GBs.
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// The number of nodes in the cloud VM cluster.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
@@ -233,23 +231,22 @@ type CloudVmClusterInitParameters struct {
 	PrivateZoneIDSelector *v1.Selector `json:"privateZoneIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	RecoStoragePercentage *float64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
+	RecoStoragePercentage *int64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
 
 	// (Updatable) The public key portion of one or more key pairs used for SSH access to the cloud VM cluster.
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
 	// The TCP Single Client Access Name (SCAN) port. The default port is 1521.
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// The TCPS Single Client Access Name (SCAN) port. The default port is 2484.
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The percentage assigned to SPARSE storage (Exadata snapshots). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	SparseStoragePercentage *float64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
+	SparseStoragePercentage *int64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
 
 	// The OCID of the subnet associated with the cloud VM cluster.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet
@@ -314,7 +311,7 @@ type CloudVmClusterObservation struct {
 	BackupSubnetID *string `json:"backupSubnetId,omitempty" tf:"backup_subnet_id,omitempty"`
 
 	// (Updatable) For fixed shapes, this is the total number of OCPUs to enable across the VM cluster.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// (Updatable) Specifies the properties necessary for cloud automation updates. This includes modifying the apply update time preference, enabling or disabling early adoption, and enabling, modifying, or disabling the update freeze period.
 	CloudAutomationUpdateDetails []CloudAutomationUpdateDetailsObservation `json:"cloudAutomationUpdateDetails,omitempty" tf:"cloud_automation_update_details,omitempty"`
@@ -334,7 +331,7 @@ type CloudVmClusterObservation struct {
 	CreateAsync *bool `json:"createAsync,omitempty" tf:"create_async,omitempty"`
 
 	// (Updatable) The local node storage to be allocated in GBs.
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	// The list of DB servers.
 	DBServers []*string `json:"dbServers,omitempty" tf:"db_servers,omitempty"`
@@ -343,14 +340,13 @@ type CloudVmClusterObservation struct {
 	DataCollectionOptions []DataCollectionOptionsObservation `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
 	// (Updatable) The percentage assigned to DATA storage (user data and database files). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+	DataStoragePercentage *int64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// (Updatable) The data disk group size to be allocated in TBs.
 	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The type of redundancy configured for the cloud Vm cluster. NORMAL is 2-way redundancy. HIGH is 3-way redundancy.
 	DiskRedundancy *string `json:"diskRedundancy,omitempty" tf:"disk_redundancy,omitempty"`
@@ -368,8 +364,7 @@ type CloudVmClusterObservation struct {
 	FileSystemConfigurationDetails []FileSystemConfigurationDetailsObservation `json:"fileSystemConfigurationDetails,omitempty" tf:"file_system_configuration_details,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A valid Oracle Grid Infrastructure (GI) software version.
 	GiVersion *string `json:"giVersion,omitempty" tf:"gi_version,omitempty"`
@@ -402,13 +397,13 @@ type CloudVmClusterObservation struct {
 	ListenerPort *string `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Updatable) The memory to be allocated in GBs.
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// Details of the multi cloud identity connectors of the VM cluster.
 	MultiCloudIdentityConnectorConfigs []CloudVmClusterMultiCloudIdentityConnectorConfigsObservation `json:"multiCloudIdentityConnectorConfigs,omitempty" tf:"multi_cloud_identity_connector_configs,omitempty"`
 
 	// The number of nodes in the cloud VM cluster.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
@@ -421,7 +416,7 @@ type CloudVmClusterObservation struct {
 	PrivateZoneID *string `json:"privateZoneId,omitempty" tf:"private_zone_id,omitempty"`
 
 	// (Updatable) The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	RecoStoragePercentage *float64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
+	RecoStoragePercentage *int64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
 
 	// (Updatable) The public key portion of one or more key pairs used for SSH access to the cloud VM cluster.
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
@@ -439,20 +434,19 @@ type CloudVmClusterObservation struct {
 	ScanIpv6Ids []*string `json:"scanIpv6Ids,omitempty" tf:"scan_ipv6ids,omitempty"`
 
 	// The TCP Single Client Access Name (SCAN) port. The default port is 1521.
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// The TCPS Single Client Access Name (SCAN) port. The default port is 2484.
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The model name of the Exadata hardware running the cloud VM cluster.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// (Updatable) The percentage assigned to SPARSE storage (Exadata snapshots). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	SparseStoragePercentage *float64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
+	SparseStoragePercentage *int64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
 
 	// The current state of IORM configuration for the Exadata DB system.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -461,7 +455,7 @@ type CloudVmClusterObservation struct {
 	StorageManagementType *string `json:"storageManagementType,omitempty" tf:"storage_management_type,omitempty"`
 
 	// The storage allocation for the disk group, in gigabytes (GB).
-	StorageSizeInGbs *float64 `json:"storageSizeInGbs,omitempty" tf:"storage_size_in_gbs,omitempty"`
+	StorageSizeInGbs *int64 `json:"storageSizeInGbs,omitempty" tf:"storage_size_in_gbs,omitempty"`
 
 	// The OCID of the subnet associated with the cloud VM cluster.
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
@@ -470,8 +464,7 @@ type CloudVmClusterObservation struct {
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Operating system version of the image.
 	SystemVersion *string `json:"systemVersion,omitempty" tf:"system_version,omitempty"`
@@ -527,7 +520,7 @@ type CloudVmClusterParameters struct {
 
 	// (Updatable) For fixed shapes, this is the total number of OCPUs to enable across the VM cluster.
 	// +kubebuilder:validation:Optional
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// (Updatable) Specifies the properties necessary for cloud automation updates. This includes modifying the apply update time preference, enabling or disabling early adoption, and enabling, modifying, or disabling the update freeze period.
 	// +kubebuilder:validation:Optional
@@ -569,7 +562,7 @@ type CloudVmClusterParameters struct {
 
 	// (Updatable) The local node storage to be allocated in GBs.
 	// +kubebuilder:validation:Optional
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	// The list of DB servers.
 	// +kubebuilder:validation:Optional
@@ -581,7 +574,7 @@ type CloudVmClusterParameters struct {
 
 	// (Updatable) The percentage assigned to DATA storage (user data and database files). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
 	// +kubebuilder:validation:Optional
-	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+	DataStoragePercentage *int64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// (Updatable) The data disk group size to be allocated in TBs.
 	// +kubebuilder:validation:Optional
@@ -589,8 +582,7 @@ type CloudVmClusterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the cloud VM cluster. The name does not need to be unique.
 	// +kubebuilder:validation:Optional
@@ -620,8 +612,7 @@ type CloudVmClusterParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A valid Oracle Grid Infrastructure (GI) software version.
 	// +kubebuilder:validation:Optional
@@ -645,11 +636,11 @@ type CloudVmClusterParameters struct {
 
 	// (Updatable) The memory to be allocated in GBs.
 	// +kubebuilder:validation:Optional
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// The number of nodes in the cloud VM cluster.
 	// +kubebuilder:validation:Optional
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +kubebuilder:validation:Optional
@@ -676,7 +667,7 @@ type CloudVmClusterParameters struct {
 
 	// (Updatable) The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
 	// +kubebuilder:validation:Optional
-	RecoStoragePercentage *float64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
+	RecoStoragePercentage *int64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
 
 	// (Updatable) The public key portion of one or more key pairs used for SSH access to the cloud VM cluster.
 	// +kubebuilder:validation:Optional
@@ -684,20 +675,19 @@ type CloudVmClusterParameters struct {
 
 	// The TCP Single Client Access Name (SCAN) port. The default port is 1521.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// The TCPS Single Client Access Name (SCAN) port. The default port is 2484.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The percentage assigned to SPARSE storage (Exadata snapshots). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
 	// +kubebuilder:validation:Optional
-	SparseStoragePercentage *float64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
+	SparseStoragePercentage *int64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
 
 	// The OCID of the subnet associated with the cloud VM cluster.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet
@@ -754,7 +744,7 @@ type DBPlansObservation struct {
 	FlashCacheLimit *string `json:"flashCacheLimit,omitempty" tf:"flash_cache_limit,omitempty"`
 
 	// The relative priority of this database.
-	Share *float64 `json:"share,omitempty" tf:"share,omitempty"`
+	Share *int64 `json:"share,omitempty" tf:"share,omitempty"`
 }
 
 type DBPlansParameters struct {
@@ -802,7 +792,7 @@ type DataCollectionOptionsParameters struct {
 type FileSystemConfigurationDetailsInitParameters struct {
 
 	// (Updatable) The file system size to be allocated in GBs.
-	FileSystemSizeGb *float64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
+	FileSystemSizeGb *int64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
 
 	// (Updatable) The mount point of file system.
 	MountPoint *string `json:"mountPoint,omitempty" tf:"mount_point,omitempty"`
@@ -811,7 +801,7 @@ type FileSystemConfigurationDetailsInitParameters struct {
 type FileSystemConfigurationDetailsObservation struct {
 
 	// (Updatable) The file system size to be allocated in GBs.
-	FileSystemSizeGb *float64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
+	FileSystemSizeGb *int64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
 
 	// (Updatable) The mount point of file system.
 	MountPoint *string `json:"mountPoint,omitempty" tf:"mount_point,omitempty"`
@@ -821,7 +811,7 @@ type FileSystemConfigurationDetailsParameters struct {
 
 	// (Updatable) The file system size to be allocated in GBs.
 	// +kubebuilder:validation:Optional
-	FileSystemSizeGb *float64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
+	FileSystemSizeGb *int64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
 
 	// (Updatable) The mount point of file system.
 	// +kubebuilder:validation:Optional

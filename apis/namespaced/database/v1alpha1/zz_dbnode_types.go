@@ -30,12 +30,10 @@ type DbNodeInitParameters struct {
 	DBNodeIDSelector *v1.NamespacedSelector `json:"dbNodeIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type DbNodeObservation struct {
@@ -56,10 +54,10 @@ type DbNodeObservation struct {
 	BackupVnicID *string `json:"backupVnicId,omitempty" tf:"backup_vnic_id,omitempty"`
 
 	// The number of CPU cores enabled on the Db node.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The number of compute servers for the DB system.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// The compute model for Base Database Service. This is required if using the computeCount parameter. If using cpuCoreCount then it is an error to specify computeModel to a non-null value. The ECPU compute model is the recommended model, and the OCPU compute model is legacy.
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
@@ -68,7 +66,7 @@ type DbNodeObservation struct {
 	DBNodeID *string `json:"dbNodeId,omitempty" tf:"db_node_id,omitempty"`
 
 	// The allocated local node storage in GBs on the Db node.
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	// The OCID of the Exacc Db server associated with the database node.
 	DBServerID *string `json:"dbServerId,omitempty" tf:"db_server_id,omitempty"`
@@ -77,15 +75,13 @@ type DbNodeObservation struct {
 	DBSystemID *string `json:"dbSystemId,omitempty" tf:"db_system_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The name of the Fault Domain the instance is contained in.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the host IPv4 address associated with the database node. Use this OCID with either the GetPrivateIp or the GetPublicIpByPrivateIpId API to get the IPv4 address needed to make a database connection.
 	HostIPID *string `json:"hostIpId,omitempty" tf:"host_ip_id,omitempty"`
@@ -109,17 +105,16 @@ type DbNodeObservation struct {
 	MaintenanceType *string `json:"maintenanceType,omitempty" tf:"maintenance_type,omitempty"`
 
 	// The allocated memory in GBs on the Db node.
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// The size (in GB) of the block storage volume allocation for the DB system. This attribute applies only for virtual machine DB systems.
-	SoftwareStorageSizeInGb *float64 `json:"softwareStorageSizeInGb,omitempty" tf:"software_storage_size_in_gb,omitempty"`
+	SoftwareStorageSizeInGb *int64 `json:"softwareStorageSizeInGb,omitempty" tf:"software_storage_size_in_gb,omitempty"`
 
 	// The current state of the database node.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time that the database node was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -131,7 +126,7 @@ type DbNodeObservation struct {
 	TimeMaintenanceWindowStart *string `json:"timeMaintenanceWindowStart,omitempty" tf:"time_maintenance_window_start,omitempty"`
 
 	// The total number of CPU cores reserved on the Db node.
-	TotalCPUCoreCount *float64 `json:"totalCpuCoreCount,omitempty" tf:"total_cpu_core_count,omitempty"`
+	TotalCPUCoreCount *int64 `json:"totalCpuCoreCount,omitempty" tf:"total_cpu_core_count,omitempty"`
 
 	// The OCID of the second VNIC.
 	Vnic2Id *string `json:"vnic2id,omitempty" tf:"vnic2id,omitempty"`
@@ -158,13 +153,11 @@ type DbNodeParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 // DbNodeSpec defines the desired state of DbNode

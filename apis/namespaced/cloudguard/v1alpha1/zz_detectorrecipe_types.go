@@ -428,8 +428,7 @@ type DetectorRecipeInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Detector recipe description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -444,8 +443,7 @@ type DetectorRecipeInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The ID of the source detector recipe
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/cloudguard/v1alpha1.DetectorRecipe
@@ -467,8 +465,7 @@ type DetectorRecipeObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Detector recipe description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -489,8 +486,7 @@ type DetectorRecipeObservation struct {
 	EffectiveDetectorRules []EffectiveDetectorRulesObservation `json:"effectiveDetectorRules,omitempty" tf:"effective_detector_rules,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The unique identifier of the responder rule
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -505,8 +501,7 @@ type DetectorRecipeObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// List of target IDs to which the recipe is attached
 	TargetIds []*string `json:"targetIds,omitempty" tf:"target_ids,omitempty"`
@@ -535,8 +530,7 @@ type DetectorRecipeParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Detector recipe description.
 	// +kubebuilder:validation:Optional
@@ -556,8 +550,7 @@ type DetectorRecipeParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The ID of the source detector recipe
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/cloudguard/v1alpha1.DetectorRecipe

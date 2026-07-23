@@ -34,15 +34,13 @@ type OperationsInsightsWarehouseInitParameters struct {
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-friedly name of Ops Insights Warehouse that does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Storage allocated to OPSI Warehouse ADW.
 	StorageAllocatedInGbs *float64 `json:"storageAllocatedInGbs,omitempty" tf:"storage_allocated_in_gbs,omitempty"`
@@ -63,8 +61,7 @@ type OperationsInsightsWarehouseObservation struct {
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-friedly name of Ops Insights Warehouse that does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -73,8 +70,7 @@ type OperationsInsightsWarehouseObservation struct {
 	DynamicGroupID *string `json:"dynamicGroupId,omitempty" tf:"dynamic_group_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// OPSI Warehouse OCID
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -95,8 +91,7 @@ type OperationsInsightsWarehouseObservation struct {
 	StorageUsedInGbs *float64 `json:"storageUsedInGbs,omitempty" tf:"storage_used_in_gbs,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time at which the resource was first created. An RFC3339 formatted datetime string
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -133,8 +128,7 @@ type OperationsInsightsWarehouseParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-friedly name of Ops Insights Warehouse that does not have to be unique.
 	// +kubebuilder:validation:Optional
@@ -142,8 +136,7 @@ type OperationsInsightsWarehouseParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Storage allocated to OPSI Warehouse ADW.
 	// +kubebuilder:validation:Optional

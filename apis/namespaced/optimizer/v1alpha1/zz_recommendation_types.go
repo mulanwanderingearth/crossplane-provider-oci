@@ -51,8 +51,7 @@ type RecommendationObservation struct {
 	EstimatedCostSaving *float64 `json:"estimatedCostSaving,omitempty" tf:"estimated_cost_saving,omitempty"`
 
 	// Additional metadata key/value pairs for the recommendation.
-	// +mapType=granular
-	ExtendedMetadata map[string]*string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
+	ExtendedMetadata map[string]string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
 
 	// The unique OCID associated with the recommendation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -122,7 +121,7 @@ type ResourceCountsInitParameters struct {
 type ResourceCountsObservation struct {
 
 	// The count of resources.
-	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+	Count *int64 `json:"count,omitempty" tf:"count,omitempty"`
 
 	// (Updatable) The status of the recommendation.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`

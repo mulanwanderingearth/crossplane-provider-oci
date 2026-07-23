@@ -160,11 +160,13 @@ spec:
                         maximumPort:
                           description: (Updatable) The maximum port in the range (inclusive),
                             which may be absent for a single-port range.
-                          type: number
+                          format: int64
+                          type: integer
                         minimumPort:
                           description: (Updatable) The minimum port in the range (inclusive),
                             or the sole port of a single-port range.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   type:
@@ -284,11 +286,13 @@ spec:
                         maximumPort:
                           description: (Updatable) The maximum port in the range (inclusive),
                             which may be absent for a single-port range.
-                          type: number
+                          format: int64
+                          type: integer
                         minimumPort:
                           description: (Updatable) The minimum port in the range (inclusive),
                             or the sole port of a single-port range.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   type:
@@ -398,11 +402,13 @@ spec:
                         maximumPort:
                           description: (Updatable) The maximum port in the range (inclusive),
                             which may be absent for a single-port range.
-                          type: number
+                          format: int64
+                          type: integer
                         minimumPort:
                           description: (Updatable) The minimum port in the range (inclusive),
                             or the sole port of a single-port range.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   type:

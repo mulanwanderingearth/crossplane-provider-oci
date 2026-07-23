@@ -156,7 +156,8 @@ spec:
                   clockSkewSeconds:
                     description: (Updatable) The clock skew (in secs) that's allowed
                       for the token issue and expiry time.
-                    type: number
+                    format: int64
+                    type: integer
                   description:
                     description: (Updatable) The description of the Identity Propagation
                       Trust.
@@ -284,7 +285,8 @@ spec:
                           description: (Updatable) The version of the secret. When
                             the version is not specified, then the latest secret version
                             is used during runtime.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   name:
@@ -471,7 +473,8 @@ spec:
                   clockSkewSeconds:
                     description: (Updatable) The clock skew (in secs) that's allowed
                       for the token issue and expiry time.
-                    type: number
+                    format: int64
+                    type: integer
                   description:
                     description: (Updatable) The description of the Identity Propagation
                       Trust.
@@ -599,7 +602,8 @@ spec:
                           description: (Updatable) The version of the secret. When
                             the version is not specified, then the latest secret version
                             is used during runtime.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   name:
@@ -860,7 +864,8 @@ spec:
                   clockSkewSeconds:
                     description: (Updatable) The clock skew (in secs) that's allowed
                       for the token issue and expiry time.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentOcid:
                     description: (Updatable) Oracle Cloud Infrastructure Compartment
                       Id (ocid) in which the resource lives.
@@ -990,7 +995,8 @@ spec:
                           description: (Updatable) The version of the secret. When
                             the version is not specified, then the latest secret version
                             is used during runtime.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   meta:

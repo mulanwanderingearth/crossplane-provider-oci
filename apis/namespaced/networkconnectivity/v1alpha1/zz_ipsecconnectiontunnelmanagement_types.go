@@ -91,7 +91,7 @@ type DpdConfigInitParameters struct {
 	DpdMode *string `json:"dpdMode,omitempty" tf:"dpd_mode,omitempty"`
 
 	// DPD timeout in seconds. This sets the longest interval between CPE device health messages before the IPSec connection indicates it has lost contact with the CPE. The default is 20 seconds.
-	DpdTimeoutInSec *float64 `json:"dpdTimeoutInSec,omitempty" tf:"dpd_timeout_in_sec,omitempty"`
+	DpdTimeoutInSec *int64 `json:"dpdTimeoutInSec,omitempty" tf:"dpd_timeout_in_sec,omitempty"`
 }
 
 type DpdConfigObservation struct {
@@ -100,7 +100,7 @@ type DpdConfigObservation struct {
 	DpdMode *string `json:"dpdMode,omitempty" tf:"dpd_mode,omitempty"`
 
 	// DPD timeout in seconds. This sets the longest interval between CPE device health messages before the IPSec connection indicates it has lost contact with the CPE. The default is 20 seconds.
-	DpdTimeoutInSec *float64 `json:"dpdTimeoutInSec,omitempty" tf:"dpd_timeout_in_sec,omitempty"`
+	DpdTimeoutInSec *int64 `json:"dpdTimeoutInSec,omitempty" tf:"dpd_timeout_in_sec,omitempty"`
 }
 
 type DpdConfigParameters struct {
@@ -111,7 +111,7 @@ type DpdConfigParameters struct {
 
 	// DPD timeout in seconds. This sets the longest interval between CPE device health messages before the IPSec connection indicates it has lost contact with the CPE. The default is 20 seconds.
 	// +kubebuilder:validation:Optional
-	DpdTimeoutInSec *float64 `json:"dpdTimeoutInSec,omitempty" tf:"dpd_timeout_in_sec,omitempty"`
+	DpdTimeoutInSec *int64 `json:"dpdTimeoutInSec,omitempty" tf:"dpd_timeout_in_sec,omitempty"`
 }
 
 type EncryptionDomainConfigInitParameters struct {
@@ -217,7 +217,7 @@ type IpsecConnectionTunnelManagementObservation struct {
 	DpdMode *string `json:"dpdMode,omitempty" tf:"dpd_mode,omitempty"`
 
 	// DPD timeout in seconds. This sets the longest interval between CPE device health messages before the IPSec connection indicates it has lost contact with the CPE. The default is 20 seconds.
-	DpdTimeoutInSec *float64 `json:"dpdTimeoutInSec,omitempty" tf:"dpd_timeout_in_sec,omitempty"`
+	DpdTimeoutInSec *int64 `json:"dpdTimeoutInSec,omitempty" tf:"dpd_timeout_in_sec,omitempty"`
 
 	// Configuration information used by the encryption domain policy. Required if the tunnel uses POLICY routing.
 	EncryptionDomainConfig []EncryptionDomainConfigObservation `json:"encryptionDomainConfig,omitempty" tf:"encryption_domain_config,omitempty"`
@@ -344,7 +344,7 @@ type PhaseOneDetailsInitParameters struct {
 	IsCustomPhaseOneConfig *bool `json:"isCustomPhaseOneConfig,omitempty" tf:"is_custom_phase_one_config,omitempty"`
 
 	// Internet key association (IKE) session key lifetime in seconds for IPSec phase one. The default is 28800 which is equivalent to 8 hours.
-	Lifetime *float64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
+	Lifetime *int64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
 }
 
 type PhaseOneDetailsObservation struct {
@@ -365,7 +365,7 @@ type PhaseOneDetailsObservation struct {
 	IsIkeEstablished *bool `json:"isIkeEstablished,omitempty" tf:"is_ike_established,omitempty"`
 
 	// Internet key association (IKE) session key lifetime in seconds for IPSec phase one. The default is 28800 which is equivalent to 8 hours.
-	Lifetime *float64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
+	Lifetime *int64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
 
 	// The negotiated authentication algorithm.
 	NegotiatedAuthenticationAlgorithm *string `json:"negotiatedAuthenticationAlgorithm,omitempty" tf:"negotiated_authentication_algorithm,omitempty"`
@@ -380,7 +380,7 @@ type PhaseOneDetailsObservation struct {
 	RemainingLifetime *string `json:"remainingLifetime,omitempty" tf:"remaining_lifetime,omitempty"`
 
 	// The remaining lifetime before the key is refreshed.
-	RemainingLifetimeInt *float64 `json:"remainingLifetimeInt,omitempty" tf:"remaining_lifetime_int,omitempty"`
+	RemainingLifetimeInt *int64 `json:"remainingLifetimeInt,omitempty" tf:"remaining_lifetime_int,omitempty"`
 
 	// The date and time we retrieved the remaining lifetime, in the format defined by RFC3339. Example: 2016-08-25T21:10:29.600Z
 	RemainingLifetimeLastRetrieved *string `json:"remainingLifetimeLastRetrieved,omitempty" tf:"remaining_lifetime_last_retrieved,omitempty"`
@@ -406,7 +406,7 @@ type PhaseOneDetailsParameters struct {
 
 	// Internet key association (IKE) session key lifetime in seconds for IPSec phase one. The default is 28800 which is equivalent to 8 hours.
 	// +kubebuilder:validation:Optional
-	Lifetime *float64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
+	Lifetime *int64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
 }
 
 type PhaseTwoDetailsInitParameters struct {
@@ -427,7 +427,7 @@ type PhaseTwoDetailsInitParameters struct {
 	IsPfsEnabled *bool `json:"isPfsEnabled,omitempty" tf:"is_pfs_enabled,omitempty"`
 
 	// Internet key association (IKE) session key lifetime in seconds for IPSec phase one. The default is 28800 which is equivalent to 8 hours.
-	Lifetime *float64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
+	Lifetime *int64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
 }
 
 type PhaseTwoDetailsObservation struct {
@@ -451,7 +451,7 @@ type PhaseTwoDetailsObservation struct {
 	IsPfsEnabled *bool `json:"isPfsEnabled,omitempty" tf:"is_pfs_enabled,omitempty"`
 
 	// Internet key association (IKE) session key lifetime in seconds for IPSec phase one. The default is 28800 which is equivalent to 8 hours.
-	Lifetime *float64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
+	Lifetime *int64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
 
 	// The negotiated authentication algorithm.
 	NegotiatedAuthenticationAlgorithm *string `json:"negotiatedAuthenticationAlgorithm,omitempty" tf:"negotiated_authentication_algorithm,omitempty"`
@@ -466,7 +466,7 @@ type PhaseTwoDetailsObservation struct {
 	RemainingLifetime *string `json:"remainingLifetime,omitempty" tf:"remaining_lifetime,omitempty"`
 
 	// The remaining lifetime before the key is refreshed.
-	RemainingLifetimeInt *float64 `json:"remainingLifetimeInt,omitempty" tf:"remaining_lifetime_int,omitempty"`
+	RemainingLifetimeInt *int64 `json:"remainingLifetimeInt,omitempty" tf:"remaining_lifetime_int,omitempty"`
 
 	// The date and time we retrieved the remaining lifetime, in the format defined by RFC3339. Example: 2016-08-25T21:10:29.600Z
 	RemainingLifetimeLastRetrieved *string `json:"remainingLifetimeLastRetrieved,omitempty" tf:"remaining_lifetime_last_retrieved,omitempty"`
@@ -496,7 +496,7 @@ type PhaseTwoDetailsParameters struct {
 
 	// Internet key association (IKE) session key lifetime in seconds for IPSec phase one. The default is 28800 which is equivalent to 8 hours.
 	// +kubebuilder:validation:Optional
-	Lifetime *float64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
+	Lifetime *int64 `json:"lifetime,omitempty" tf:"lifetime,omitempty"`
 }
 
 // IpsecConnectionTunnelManagementSpec defines the desired state of IpsecConnectionTunnelManagement

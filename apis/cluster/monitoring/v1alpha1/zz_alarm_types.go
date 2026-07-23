@@ -34,8 +34,7 @@ type AlarmInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A list of destinations for alarm notifications. Each destination is represented by the OCID of a related resource, such as a topic. Supported destination services: Notifications, Streaming. Limit: One destination per supported destination service.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ons/v1alpha1.NotificationTopic
@@ -57,8 +56,7 @@ type AlarmInitParameters struct {
 	EvaluationSlackDuration *string `json:"evaluationSlackDuration,omitempty" tf:"evaluation_slack_duration,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether the alarm is enabled.  Example: true
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -142,8 +140,7 @@ type AlarmObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A list of destinations for alarm notifications. Each destination is represented by the OCID of a related resource, such as a topic. Supported destination services: Notifications, Streaming. Limit: One destination per supported destination service.
 	Destinations []*string `json:"destinations,omitempty" tf:"destinations,omitempty"`
@@ -155,8 +152,7 @@ type AlarmObservation struct {
 	EvaluationSlackDuration *string `json:"evaluationSlackDuration,omitempty" tf:"evaluation_slack_duration,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the alarm.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -247,8 +243,7 @@ type AlarmParameters struct {
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A list of destinations for alarm notifications. Each destination is represented by the OCID of a related resource, such as a topic. Supported destination services: Notifications, Streaming. Limit: One destination per supported destination service.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ons/v1alpha1.NotificationTopic
@@ -274,8 +269,7 @@ type AlarmParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether the alarm is enabled.  Example: true
 	// +kubebuilder:validation:Optional

@@ -161,7 +161,8 @@ spec:
                   fastStartFailOverLagLimitInSeconds:
                     description: (Updatable) The lag time for my preference based
                       on data loss tolerance in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   isAutomaticFailoverEnabled:
                     description: '(Updatable) Indicates whether Automatic Failover
                       is enabled for Autonomous Container Database Dataguard Association.
@@ -171,7 +172,8 @@ spec:
                   migrateTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Migrate. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   peerAutonomousContainerDatabaseBackupConfig:
                     description: Backup options for the standby Autonomous Container
                       Database.
@@ -338,7 +340,8 @@ spec:
                             old automatic backups that are created before the window.
                             When the value is updated, it is applied to all existing
                             automatic backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   peerAutonomousContainerDatabaseCompartmentId:
@@ -598,7 +601,8 @@ spec:
                       window of the standby Autonomous Container Database. This value
                       represents the number of days before scheduled maintenance of
                       the primary database.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -698,7 +702,8 @@ spec:
                   fastStartFailOverLagLimitInSeconds:
                     description: (Updatable) The lag time for my preference based
                       on data loss tolerance in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   isAutomaticFailoverEnabled:
                     description: '(Updatable) Indicates whether Automatic Failover
                       is enabled for Autonomous Container Database Dataguard Association.
@@ -708,7 +713,8 @@ spec:
                   migrateTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Migrate. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   peerAutonomousContainerDatabaseBackupConfig:
                     description: Backup options for the standby Autonomous Container
                       Database.
@@ -875,7 +881,8 @@ spec:
                             old automatic backups that are created before the window.
                             When the value is updated, it is applied to all existing
                             automatic backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   peerAutonomousContainerDatabaseCompartmentId:
@@ -1135,7 +1142,8 @@ spec:
                       window of the standby Autonomous Container Database. This value
                       represents the number of days before scheduled maintenance of
                       the primary database.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -1261,7 +1269,8 @@ spec:
                   fastStartFailOverLagLimitInSeconds:
                     description: (Updatable) The lag time for my preference based
                       on data loss tolerance in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     description: The OCID of the backup destination.
                     type: string
@@ -1278,7 +1287,8 @@ spec:
                   migrateTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Migrate. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   peerAutonomousContainerDatabaseBackupConfig:
                     description: Backup options for the standby Autonomous Container
                       Database.
@@ -1350,7 +1360,8 @@ spec:
                             old automatic backups that are created before the window.
                             When the value is updated, it is applied to all existing
                             automatic backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   peerAutonomousContainerDatabaseCompartmentId:
@@ -1400,7 +1411,8 @@ spec:
                       window of the standby Autonomous Container Database. This value
                       represents the number of days before scheduled maintenance of
                       the primary database.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of Autonomous Data Guard.
                     type: string

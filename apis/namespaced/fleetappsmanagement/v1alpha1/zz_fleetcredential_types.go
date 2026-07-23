@@ -159,8 +159,7 @@ type FleetCredentialObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time this resource was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`

@@ -231,7 +231,6 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The headers for the REST call.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   configProviderDelegate:
@@ -275,7 +274,8 @@ spec:
                                               that can be set to value 1 for shallow
                                               references across objects, other values
                                               reserved.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     simpleValue:
@@ -408,7 +408,6 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The headers for the REST call.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   identifier:
@@ -434,7 +433,8 @@ spec:
                                     intValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An integer value of the parameter.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     objectValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An object value of the parameter.
@@ -503,7 +503,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         parentRef:
                           description: (Updatable) A reference to the object's parent.
                           items:
@@ -546,7 +547,8 @@ spec:
                     description: (Applicable when model_type=REST_TASK) (Updatable)
                       The status of an object that can be set to value 1 for shallow
                       references across objects, other values reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   opConfigValues:
                     description: (Updatable) Configuration values can be string, objects,
                       or parameters.
@@ -563,7 +565,8 @@ spec:
                                     intValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An integer value of the parameter.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     objectValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An object value of the parameter.
@@ -602,7 +605,8 @@ spec:
                                               that can be set to value 1 for shallow
                                               references across objects, other values
                                               reserved.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     rootObjectValue:
@@ -631,7 +635,8 @@ spec:
                                               that can be set to value 1 for shallow
                                               references across objects, other values
                                               reserved.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     stringValue:
@@ -682,7 +687,8 @@ spec:
                                     intValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An integer value of the parameter.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     objectValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An object value of the parameter.
@@ -751,7 +757,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         parentRef:
                           description: (Updatable) A reference to the object's parent.
                           items:
@@ -774,7 +781,8 @@ spec:
                     description: (Applicable when model_type=DATA_LOADER_TASK) (Updatable)
                       Defines the number of entities being loaded in parallel at a
                       time for a Data Loader task
-                    type: number
+                    format: int64
+                    type: integer
                   parameters:
                     description: (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK)
                       (Updatable) An array of parameters.
@@ -797,7 +805,8 @@ spec:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An integer value of the
                                               parameter.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           objectValue:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An object value of the parameter.
@@ -837,7 +846,8 @@ spec:
                                                     that can be set to value 1 for
                                                     shallow references across objects,
                                                     other values reserved.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                           rootObjectValue:
@@ -866,7 +876,8 @@ spec:
                                                     that can be set to value 1 for
                                                     shallow references across objects,
                                                     other values reserved.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                           stringValue:
@@ -936,7 +947,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         outputAggregationType:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) The output aggregation
@@ -1184,7 +1196,6 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The headers for the REST call.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   registryMetadata:
@@ -1219,7 +1230,8 @@ spec:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) The registry version of
                             the object.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   typedExpressions:
@@ -1244,7 +1256,8 @@ spec:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An integer value of the
                                               parameter.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     scale:
@@ -1254,7 +1267,8 @@ spec:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An integer value of the
                                               parameter.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -1302,7 +1316,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         parentRef:
                           description: (Updatable) A reference to the object's parent.
                           items:
@@ -1572,7 +1587,6 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The headers for the REST call.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   configProviderDelegate:
@@ -1616,7 +1630,8 @@ spec:
                                               that can be set to value 1 for shallow
                                               references across objects, other values
                                               reserved.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     simpleValue:
@@ -1749,7 +1764,6 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The headers for the REST call.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   identifier:
@@ -1775,7 +1789,8 @@ spec:
                                     intValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An integer value of the parameter.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     objectValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An object value of the parameter.
@@ -1844,7 +1859,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         parentRef:
                           description: (Updatable) A reference to the object's parent.
                           items:
@@ -1887,7 +1903,8 @@ spec:
                     description: (Applicable when model_type=REST_TASK) (Updatable)
                       The status of an object that can be set to value 1 for shallow
                       references across objects, other values reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   opConfigValues:
                     description: (Updatable) Configuration values can be string, objects,
                       or parameters.
@@ -1904,7 +1921,8 @@ spec:
                                     intValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An integer value of the parameter.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     objectValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An object value of the parameter.
@@ -1943,7 +1961,8 @@ spec:
                                               that can be set to value 1 for shallow
                                               references across objects, other values
                                               reserved.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     rootObjectValue:
@@ -1972,7 +1991,8 @@ spec:
                                               that can be set to value 1 for shallow
                                               references across objects, other values
                                               reserved.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     stringValue:
@@ -2023,7 +2043,8 @@ spec:
                                     intValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An integer value of the parameter.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     objectValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An object value of the parameter.
@@ -2092,7 +2113,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         parentRef:
                           description: (Updatable) A reference to the object's parent.
                           items:
@@ -2115,7 +2137,8 @@ spec:
                     description: (Applicable when model_type=DATA_LOADER_TASK) (Updatable)
                       Defines the number of entities being loaded in parallel at a
                       time for a Data Loader task
-                    type: number
+                    format: int64
+                    type: integer
                   parameters:
                     description: (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK)
                       (Updatable) An array of parameters.
@@ -2138,7 +2161,8 @@ spec:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An integer value of the
                                               parameter.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           objectValue:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An object value of the parameter.
@@ -2178,7 +2202,8 @@ spec:
                                                     that can be set to value 1 for
                                                     shallow references across objects,
                                                     other values reserved.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                           rootObjectValue:
@@ -2207,7 +2232,8 @@ spec:
                                                     that can be set to value 1 for
                                                     shallow references across objects,
                                                     other values reserved.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                           stringValue:
@@ -2277,7 +2303,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         outputAggregationType:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) The output aggregation
@@ -2525,7 +2552,6 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The headers for the REST call.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   registryMetadata:
@@ -2560,7 +2586,8 @@ spec:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) The registry version of
                             the object.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   typedExpressions:
@@ -2585,7 +2612,8 @@ spec:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An integer value of the
                                               parameter.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     scale:
@@ -2595,7 +2623,8 @@ spec:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An integer value of the
                                               parameter.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -2643,7 +2672,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         parentRef:
                           description: (Updatable) A reference to the object's parent.
                           items:
@@ -3010,7 +3040,6 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The headers for the REST call.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   configProviderDelegate:
@@ -3054,7 +3083,8 @@ spec:
                                               that can be set to value 1 for shallow
                                               references across objects, other values
                                               reserved.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     simpleValue:
@@ -3187,7 +3217,6 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The headers for the REST call.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   id:
@@ -3215,7 +3244,8 @@ spec:
                                     intValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An integer value of the parameter.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     objectValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An object value of the parameter.
@@ -3284,7 +3314,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         parentRef:
                           description: (Updatable) A reference to the object's parent.
                           items:
@@ -3320,7 +3351,6 @@ spec:
                       key. This structure provides mapping between user provided key
                       and generated key.
                     type: object
-                    x-kubernetes-map-type: granular
                   metadata:
                     description: (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK)
                       (Updatable) A summary type containing information about the
@@ -3410,7 +3440,6 @@ spec:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) Information property fields.
                           type: object
-                          x-kubernetes-map-type: granular
                         isFavorite:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) Specifies whether this
@@ -3429,7 +3458,8 @@ spec:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) The registry version of
                             the object.
-                          type: number
+                          format: int64
+                          type: integer
                         timeCreated:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) The date and time that
@@ -3467,12 +3497,14 @@ spec:
                     description: (Applicable when model_type=REST_TASK) (Updatable)
                       The status of an object that can be set to value 1 for shallow
                       references across objects, other values reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   objectVersion:
                     description: (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK)
                       (Updatable) The version of the object that is used to track
                       changes in the object instance.
-                    type: number
+                    format: int64
+                    type: integer
                   opConfigValues:
                     description: (Updatable) Configuration values can be string, objects,
                       or parameters.
@@ -3489,7 +3521,8 @@ spec:
                                     intValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An integer value of the parameter.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     objectValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An object value of the parameter.
@@ -3528,7 +3561,8 @@ spec:
                                               that can be set to value 1 for shallow
                                               references across objects, other values
                                               reserved.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     rootObjectValue:
@@ -3557,7 +3591,8 @@ spec:
                                               that can be set to value 1 for shallow
                                               references across objects, other values
                                               reserved.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     stringValue:
@@ -3608,7 +3643,8 @@ spec:
                                     intValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An integer value of the parameter.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     objectValue:
                                       description: (Applicable when model_type=REST_TASK)
                                         (Updatable) An object value of the parameter.
@@ -3677,7 +3713,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         parentRef:
                           description: (Updatable) A reference to the object's parent.
                           items:
@@ -3700,7 +3737,8 @@ spec:
                     description: (Applicable when model_type=DATA_LOADER_TASK) (Updatable)
                       Defines the number of entities being loaded in parallel at a
                       time for a Data Loader task
-                    type: number
+                    format: int64
+                    type: integer
                   parameters:
                     description: (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK)
                       (Updatable) An array of parameters.
@@ -3723,7 +3761,8 @@ spec:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An integer value of the
                                               parameter.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           objectValue:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An object value of the parameter.
@@ -3763,7 +3802,8 @@ spec:
                                                     that can be set to value 1 for
                                                     shallow references across objects,
                                                     other values reserved.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                           rootObjectValue:
@@ -3792,7 +3832,8 @@ spec:
                                                     that can be set to value 1 for
                                                     shallow references across objects,
                                                     other values reserved.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                           stringValue:
@@ -3862,7 +3903,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         outputAggregationType:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) The output aggregation
@@ -4110,7 +4152,6 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The headers for the REST call.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   registryMetadata:
@@ -4145,7 +4186,8 @@ spec:
                           description: (Applicable when model_type=DATA_LOADER_TASK
                             | INTEGRATION_TASK) (Updatable) The registry version of
                             the object.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   typedExpressions:
@@ -4170,7 +4212,8 @@ spec:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An integer value of the
                                               parameter.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     scale:
@@ -4180,7 +4223,8 @@ spec:
                                             description: (Applicable when model_type=REST_TASK)
                                               (Updatable) An integer value of the
                                               parameter.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -4228,7 +4272,8 @@ spec:
                           description: (Applicable when model_type=REST_TASK) (Updatable)
                             The status of an object that can be set to value 1 for
                             shallow references across objects, other values reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         parentRef:
                           description: (Updatable) A reference to the object's parent.
                           items:

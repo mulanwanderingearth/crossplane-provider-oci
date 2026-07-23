@@ -115,23 +115,20 @@ type DiscoveryDetailsParameters struct {
 type DiscoveryDetailsPropertiesInitParameters struct {
 
 	// Key/Value pair of Property
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type DiscoveryDetailsPropertiesObservation struct {
 
 	// Key/Value pair of Property
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type DiscoveryDetailsPropertiesParameters struct {
 
 	// Key/Value pair of Property
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type DiscoveryJobInitParameters struct {
@@ -149,8 +146,7 @@ type DiscoveryJobInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Client who submits discovery job.
 	DiscoveryClient *string `json:"discoveryClient,omitempty" tf:"discovery_client,omitempty"`
@@ -162,8 +158,7 @@ type DiscoveryJobInitParameters struct {
 	DiscoveryType *string `json:"discoveryType,omitempty" tf:"discovery_type,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// If this parameter set to true, the specified tags will be applied  to all resources discovered in the current request.  Default is true.
 	ShouldPropagateTagsToDiscoveredResources *bool `json:"shouldPropagateTagsToDiscoveredResources,omitempty" tf:"should_propagate_tags_to_discovered_resources,omitempty"`
@@ -175,8 +170,7 @@ type DiscoveryJobObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Client who submits discovery job.
 	DiscoveryClient *string `json:"discoveryClient,omitempty" tf:"discovery_client,omitempty"`
@@ -188,8 +182,7 @@ type DiscoveryJobObservation struct {
 	DiscoveryType *string `json:"discoveryType,omitempty" tf:"discovery_type,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of Discovery job
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -207,8 +200,7 @@ type DiscoveryJobObservation struct {
 	StatusMessage *string `json:"statusMessage,omitempty" tf:"status_message,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The OCID of Tenant
 	TenantID *string `json:"tenantId,omitempty" tf:"tenant_id,omitempty"`
@@ -237,8 +229,7 @@ type DiscoveryJobParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Client who submits discovery job.
 	// +kubebuilder:validation:Optional
@@ -254,8 +245,7 @@ type DiscoveryJobParameters struct {
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// If this parameter set to true, the specified tags will be applied  to all resources discovered in the current request.  Default is true.
 	// +kubebuilder:validation:Optional
@@ -304,45 +294,39 @@ type ItemsParameters struct {
 type PropertiesInitParameters struct {
 
 	// Key/Value pair of Property
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type PropertiesObservation struct {
 
 	// Key/Value pair of Property
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type PropertiesParameters struct {
 
 	// Key/Value pair of Property
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type TagsInitParameters struct {
 
 	// Key/Value pair of Property
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type TagsObservation struct {
 
 	// Key/Value pair of Property
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type TagsParameters struct {
 
 	// Key/Value pair of Property
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 // DiscoveryJobSpec defines the desired state of DiscoveryJob

@@ -37,13 +37,13 @@ type FileSystemQuotaRuleInitParameters struct {
 	IsHardQuota *bool `json:"isHardQuota,omitempty" tf:"is_hard_quota,omitempty"`
 
 	// An identifier for the owner of this usage and quota rule. Unix-like operating systems use this integer value to identify a user or group to manage access control.
-	PrincipalID *float64 `json:"principalId,omitempty" tf:"principal_id,omitempty"`
+	PrincipalID *int64 `json:"principalId,omitempty" tf:"principal_id,omitempty"`
 
 	// The type of the owner of this quota rule and usage.
 	PrincipalType *string `json:"principalType,omitempty" tf:"principal_type,omitempty"`
 
 	// (Updatable) The value of the quota rule. The unit is Gigabyte.
-	QuotaLimitInGigabytes *float64 `json:"quotaLimitInGigabytes,omitempty" tf:"quota_limit_in_gigabytes,omitempty"`
+	QuotaLimitInGigabytes *int64 `json:"quotaLimitInGigabytes,omitempty" tf:"quota_limit_in_gigabytes,omitempty"`
 
 	// The identifier of the quota rule. It is the base64 encoded string of the tuple <principalId, principalType, isHardQuota>.
 	QuotaRuleID *string `json:"quotaRuleId,omitempty" tf:"quota_rule_id,omitempty"`
@@ -65,13 +65,13 @@ type FileSystemQuotaRuleObservation struct {
 	IsHardQuota *bool `json:"isHardQuota,omitempty" tf:"is_hard_quota,omitempty"`
 
 	// An identifier for the owner of this usage and quota rule. Unix-like operating systems use this integer value to identify a user or group to manage access control.
-	PrincipalID *float64 `json:"principalId,omitempty" tf:"principal_id,omitempty"`
+	PrincipalID *int64 `json:"principalId,omitempty" tf:"principal_id,omitempty"`
 
 	// The type of the owner of this quota rule and usage.
 	PrincipalType *string `json:"principalType,omitempty" tf:"principal_type,omitempty"`
 
 	// (Updatable) The value of the quota rule. The unit is Gigabyte.
-	QuotaLimitInGigabytes *float64 `json:"quotaLimitInGigabytes,omitempty" tf:"quota_limit_in_gigabytes,omitempty"`
+	QuotaLimitInGigabytes *int64 `json:"quotaLimitInGigabytes,omitempty" tf:"quota_limit_in_gigabytes,omitempty"`
 
 	// The identifier of the quota rule. It is the base64 encoded string of the tuple <principalId, principalType, isHardQuota>.
 	QuotaRuleID *string `json:"quotaRuleId,omitempty" tf:"quota_rule_id,omitempty"`
@@ -112,7 +112,7 @@ type FileSystemQuotaRuleParameters struct {
 
 	// An identifier for the owner of this usage and quota rule. Unix-like operating systems use this integer value to identify a user or group to manage access control.
 	// +kubebuilder:validation:Optional
-	PrincipalID *float64 `json:"principalId,omitempty" tf:"principal_id,omitempty"`
+	PrincipalID *int64 `json:"principalId,omitempty" tf:"principal_id,omitempty"`
 
 	// The type of the owner of this quota rule and usage.
 	// +kubebuilder:validation:Optional
@@ -120,7 +120,7 @@ type FileSystemQuotaRuleParameters struct {
 
 	// (Updatable) The value of the quota rule. The unit is Gigabyte.
 	// +kubebuilder:validation:Optional
-	QuotaLimitInGigabytes *float64 `json:"quotaLimitInGigabytes,omitempty" tf:"quota_limit_in_gigabytes,omitempty"`
+	QuotaLimitInGigabytes *int64 `json:"quotaLimitInGigabytes,omitempty" tf:"quota_limit_in_gigabytes,omitempty"`
 
 	// The identifier of the quota rule. It is the base64 encoded string of the tuple <principalId, principalType, isHardQuota>.
 	// +kubebuilder:validation:Optional

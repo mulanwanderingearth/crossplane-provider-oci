@@ -178,7 +178,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the column
                     type: string
@@ -193,7 +192,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   instructions:
                     description: (Updatable) Instructions on how to use the SQL report.
                       Step-by-step guidance for an AI agent on how to execute or fill
@@ -366,7 +364,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the column
                     type: string
@@ -381,7 +378,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   instructions:
                     description: (Updatable) Instructions on how to use the SQL report.
                       Step-by-step guidance for an AI agent on how to execute or fill
@@ -572,7 +568,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the column
                     type: string
@@ -587,7 +582,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Database Tools SQL report.
                     type: string
@@ -640,7 +634,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the lock was created.
                     type: string

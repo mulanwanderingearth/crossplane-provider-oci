@@ -28,8 +28,7 @@ type BatchContextInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Summarized information about the batch context.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -38,15 +37,13 @@ type BatchContextInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Mapping of concurrent/shared resources used in job tasks to their limits.
-	// +mapType=granular
-	Entitlements map[string]*string `json:"entitlements,omitempty" tf:"entitlements,omitempty"`
+	Entitlements map[string]string `json:"entitlements,omitempty" tf:"entitlements,omitempty"`
 
 	// List of fleet configurations related to the batch context.
 	Fleets []FleetsInitParameters `json:"fleets,omitempty" tf:"fleets,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) List of job priority configurations related to the batch context.
 	JobPriorityConfigurations []JobPriorityConfigurationsInitParameters `json:"jobPriorityConfigurations,omitempty" tf:"job_priority_configurations,omitempty"`
@@ -67,8 +64,7 @@ type BatchContextObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Summarized information about the batch context.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -77,15 +73,13 @@ type BatchContextObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Mapping of concurrent/shared resources used in job tasks to their limits.
-	// +mapType=granular
-	Entitlements map[string]*string `json:"entitlements,omitempty" tf:"entitlements,omitempty"`
+	Entitlements map[string]string `json:"entitlements,omitempty" tf:"entitlements,omitempty"`
 
 	// List of fleet configurations related to the batch context.
 	Fleets []FleetsObservation `json:"fleets,omitempty" tf:"fleets,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the batch context.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -106,8 +100,7 @@ type BatchContextObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the batch context was created, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -133,8 +126,7 @@ type BatchContextParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Summarized information about the batch context.
 	// +kubebuilder:validation:Optional
@@ -146,8 +138,7 @@ type BatchContextParameters struct {
 
 	// (Updatable) Mapping of concurrent/shared resources used in job tasks to their limits.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Entitlements map[string]*string `json:"entitlements,omitempty" tf:"entitlements,omitempty"`
+	Entitlements map[string]string `json:"entitlements,omitempty" tf:"entitlements,omitempty"`
 
 	// List of fleet configurations related to the batch context.
 	// +kubebuilder:validation:Optional
@@ -155,8 +146,7 @@ type BatchContextParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) List of job priority configurations related to the batch context.
 	// +kubebuilder:validation:Optional
@@ -178,7 +168,7 @@ type BatchContextParameters struct {
 type FleetsInitParameters struct {
 
 	// Maximum number of concurrent tasks for the service managed fleet.
-	MaxConcurrentTasks *float64 `json:"maxConcurrentTasks,omitempty" tf:"max_concurrent_tasks,omitempty"`
+	MaxConcurrentTasks *int64 `json:"maxConcurrentTasks,omitempty" tf:"max_concurrent_tasks,omitempty"`
 
 	// Name of the service managed fleet.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -196,7 +186,7 @@ type FleetsObservation struct {
 	Details *string `json:"details,omitempty" tf:"details,omitempty"`
 
 	// Maximum number of concurrent tasks for the service managed fleet.
-	MaxConcurrentTasks *float64 `json:"maxConcurrentTasks,omitempty" tf:"max_concurrent_tasks,omitempty"`
+	MaxConcurrentTasks *int64 `json:"maxConcurrentTasks,omitempty" tf:"max_concurrent_tasks,omitempty"`
 
 	// Name of the service managed fleet.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -215,7 +205,7 @@ type FleetsParameters struct {
 
 	// Maximum number of concurrent tasks for the service managed fleet.
 	// +kubebuilder:validation:Optional
-	MaxConcurrentTasks *float64 `json:"maxConcurrentTasks" tf:"max_concurrent_tasks,omitempty"`
+	MaxConcurrentTasks *int64 `json:"maxConcurrentTasks" tf:"max_concurrent_tasks,omitempty"`
 
 	// Name of the service managed fleet.
 	// +kubebuilder:validation:Optional
@@ -239,11 +229,10 @@ type JobPriorityConfigurationsInitParameters struct {
 	TagNamespace *string `json:"tagNamespace,omitempty" tf:"tag_namespace,omitempty"`
 
 	// (Updatable) Mapping of tag value to its priority.
-	// +mapType=granular
-	Values map[string]*string `json:"values,omitempty" tf:"values,omitempty"`
+	Values map[string]string `json:"values,omitempty" tf:"values,omitempty"`
 
 	// (Updatable) Weight associated with the tag key. Percentage point is the unit of measurement.
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type JobPriorityConfigurationsObservation struct {
@@ -255,11 +244,10 @@ type JobPriorityConfigurationsObservation struct {
 	TagNamespace *string `json:"tagNamespace,omitempty" tf:"tag_namespace,omitempty"`
 
 	// (Updatable) Mapping of tag value to its priority.
-	// +mapType=granular
-	Values map[string]*string `json:"values,omitempty" tf:"values,omitempty"`
+	Values map[string]string `json:"values,omitempty" tf:"values,omitempty"`
 
 	// (Updatable) Weight associated with the tag key. Percentage point is the unit of measurement.
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type JobPriorityConfigurationsParameters struct {
@@ -274,12 +262,11 @@ type JobPriorityConfigurationsParameters struct {
 
 	// (Updatable) Mapping of tag value to its priority.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Values map[string]*string `json:"values" tf:"values,omitempty"`
+	Values map[string]string `json:"values" tf:"values,omitempty"`
 
 	// (Updatable) Weight associated with the tag key. Percentage point is the unit of measurement.
 	// +kubebuilder:validation:Optional
-	Weight *float64 `json:"weight" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight" tf:"weight,omitempty"`
 }
 
 type LoggingConfigurationInitParameters struct {
@@ -429,13 +416,13 @@ type NetworkParameters struct {
 type ShapeInitParameters struct {
 
 	// (Applicable when fleets.type=SERVICE_MANAGED_GPU_FLEET and type=FIXED_GPU_FLEET_SHAPE) Amount of disk space in GBs required for the shape.
-	DiskSizeInGbs *float64 `json:"diskSizeInGbs,omitempty" tf:"disk_size_in_gbs,omitempty"`
+	DiskSizeInGbs *int64 `json:"diskSizeInGbs,omitempty" tf:"disk_size_in_gbs,omitempty"`
 
 	// Amount of memory in GBs required for the shape.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// Number of OCPUs required for the shape.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 
 	// The name of the shape.
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
@@ -447,13 +434,13 @@ type ShapeInitParameters struct {
 type ShapeObservation struct {
 
 	// (Applicable when fleets.type=SERVICE_MANAGED_GPU_FLEET and type=FIXED_GPU_FLEET_SHAPE) Amount of disk space in GBs required for the shape.
-	DiskSizeInGbs *float64 `json:"diskSizeInGbs,omitempty" tf:"disk_size_in_gbs,omitempty"`
+	DiskSizeInGbs *int64 `json:"diskSizeInGbs,omitempty" tf:"disk_size_in_gbs,omitempty"`
 
 	// Amount of memory in GBs required for the shape.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// Number of OCPUs required for the shape.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 
 	// The name of the shape.
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
@@ -466,15 +453,15 @@ type ShapeParameters struct {
 
 	// (Applicable when fleets.type=SERVICE_MANAGED_GPU_FLEET and type=FIXED_GPU_FLEET_SHAPE) Amount of disk space in GBs required for the shape.
 	// +kubebuilder:validation:Optional
-	DiskSizeInGbs *float64 `json:"diskSizeInGbs,omitempty" tf:"disk_size_in_gbs,omitempty"`
+	DiskSizeInGbs *int64 `json:"diskSizeInGbs,omitempty" tf:"disk_size_in_gbs,omitempty"`
 
 	// Amount of memory in GBs required for the shape.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs" tf:"memory_in_gbs,omitempty"`
 
 	// Number of OCPUs required for the shape.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus" tf:"ocpus,omitempty"`
 
 	// The name of the shape.
 	// +kubebuilder:validation:Optional

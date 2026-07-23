@@ -32,8 +32,7 @@ type ObjectStorageLinkInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My Object Storage Link
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -42,8 +41,7 @@ type ObjectStorageLinkInitParameters struct {
 	FileSystemPath *string `json:"fileSystemPath,omitempty" tf:"file_system_path,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The flag is an identifier to tell whether the job run has overwrite enabled. If isOverwrite is false, the file to be imported or exported will be skipped if it already exists. If isOverwrite is true, the file to be imported or exported will be overwritten if it already exists.
 	IsOverwrite *bool `json:"isOverwrite,omitempty" tf:"is_overwrite,omitempty"`
@@ -65,16 +63,16 @@ type ObjectStorageLinkInitParameters struct {
 	ObjectStoragePrefix *string `json:"objectStoragePrefix,omitempty" tf:"object_storage_prefix,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Start Export To Object. Could be set to any integer value.
-	StartExportToObjectTrigger *float64 `json:"startExportToObjectTrigger,omitempty" tf:"start_export_to_object_trigger,omitempty"`
+	StartExportToObjectTrigger *int64 `json:"startExportToObjectTrigger,omitempty" tf:"start_export_to_object_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Start Import From Object. Could be set to any integer value.
-	StartImportFromObjectTrigger *float64 `json:"startImportFromObjectTrigger,omitempty" tf:"start_import_from_object_trigger,omitempty"`
+	StartImportFromObjectTrigger *int64 `json:"startImportFromObjectTrigger,omitempty" tf:"start_import_from_object_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Stop Export To Object. Could be set to any integer value.
-	StopExportToObjectTrigger *float64 `json:"stopExportToObjectTrigger,omitempty" tf:"stop_export_to_object_trigger,omitempty"`
+	StopExportToObjectTrigger *int64 `json:"stopExportToObjectTrigger,omitempty" tf:"stop_export_to_object_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Stop Import From Object. Could be set to any integer value.
-	StopImportFromObjectTrigger *float64 `json:"stopImportFromObjectTrigger,omitempty" tf:"stop_import_from_object_trigger,omitempty"`
+	StopImportFromObjectTrigger *int64 `json:"stopImportFromObjectTrigger,omitempty" tf:"stop_import_from_object_trigger,omitempty"`
 }
 
 type ObjectStorageLinkObservation struct {
@@ -89,8 +87,7 @@ type ObjectStorageLinkObservation struct {
 	CurrentJobID *string `json:"currentJobId,omitempty" tf:"current_job_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My Object Storage Link
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -99,8 +96,7 @@ type ObjectStorageLinkObservation struct {
 	FileSystemPath *string `json:"fileSystemPath,omitempty" tf:"file_system_path,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the ObjectStorageLink.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -121,23 +117,22 @@ type ObjectStorageLinkObservation struct {
 	ObjectStoragePrefix *string `json:"objectStoragePrefix,omitempty" tf:"object_storage_prefix,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Start Export To Object. Could be set to any integer value.
-	StartExportToObjectTrigger *float64 `json:"startExportToObjectTrigger,omitempty" tf:"start_export_to_object_trigger,omitempty"`
+	StartExportToObjectTrigger *int64 `json:"startExportToObjectTrigger,omitempty" tf:"start_export_to_object_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Start Import From Object. Could be set to any integer value.
-	StartImportFromObjectTrigger *float64 `json:"startImportFromObjectTrigger,omitempty" tf:"start_import_from_object_trigger,omitempty"`
+	StartImportFromObjectTrigger *int64 `json:"startImportFromObjectTrigger,omitempty" tf:"start_import_from_object_trigger,omitempty"`
 
 	// The current state of the Object Storage link.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Stop Export To Object. Could be set to any integer value.
-	StopExportToObjectTrigger *float64 `json:"stopExportToObjectTrigger,omitempty" tf:"stop_export_to_object_trigger,omitempty"`
+	StopExportToObjectTrigger *int64 `json:"stopExportToObjectTrigger,omitempty" tf:"stop_export_to_object_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Stop Import From Object. Could be set to any integer value.
-	StopImportFromObjectTrigger *float64 `json:"stopImportFromObjectTrigger,omitempty" tf:"stop_import_from_object_trigger,omitempty"`
+	StopImportFromObjectTrigger *int64 `json:"stopImportFromObjectTrigger,omitempty" tf:"stop_import_from_object_trigger,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Lustre file system was created, expressed in RFC 3339 timestamp format.  Example: 2024-04-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -167,8 +162,7 @@ type ObjectStorageLinkParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My Object Storage Link
 	// +kubebuilder:validation:Optional
@@ -180,8 +174,7 @@ type ObjectStorageLinkParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The flag is an identifier to tell whether the job run has overwrite enabled. If isOverwrite is false, the file to be imported or exported will be skipped if it already exists. If isOverwrite is true, the file to be imported or exported will be overwritten if it already exists.
 	// +kubebuilder:validation:Optional
@@ -207,19 +200,19 @@ type ObjectStorageLinkParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Start Export To Object. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	StartExportToObjectTrigger *float64 `json:"startExportToObjectTrigger,omitempty" tf:"start_export_to_object_trigger,omitempty"`
+	StartExportToObjectTrigger *int64 `json:"startExportToObjectTrigger,omitempty" tf:"start_export_to_object_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Start Import From Object. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	StartImportFromObjectTrigger *float64 `json:"startImportFromObjectTrigger,omitempty" tf:"start_import_from_object_trigger,omitempty"`
+	StartImportFromObjectTrigger *int64 `json:"startImportFromObjectTrigger,omitempty" tf:"start_import_from_object_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Stop Export To Object. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	StopExportToObjectTrigger *float64 `json:"stopExportToObjectTrigger,omitempty" tf:"stop_export_to_object_trigger,omitempty"`
+	StopExportToObjectTrigger *int64 `json:"stopExportToObjectTrigger,omitempty" tf:"stop_export_to_object_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Stop Import From Object. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	StopImportFromObjectTrigger *float64 `json:"stopImportFromObjectTrigger,omitempty" tf:"stop_import_from_object_trigger,omitempty"`
+	StopImportFromObjectTrigger *int64 `json:"stopImportFromObjectTrigger,omitempty" tf:"stop_import_from_object_trigger,omitempty"`
 }
 
 // ObjectStorageLinkSpec defines the desired state of ObjectStorageLink

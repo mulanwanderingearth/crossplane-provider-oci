@@ -42,8 +42,7 @@ type AutomaticDrConfigurationInitParameters struct {
 	DefaultSwitchoverDrPlanIDSelector *v1.Selector `json:"defaultSwitchoverDrPlanIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the Automatic DR configuration being created.  Example: Automatic DR Configuration
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -62,8 +61,7 @@ type AutomaticDrConfigurationInitParameters struct {
 	DrProtectionGroupIDSelector *v1.Selector `json:"drProtectionGroupIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A list of members for Automatic DR configuration.
 	Members []MembersInitParameters `json:"members,omitempty" tf:"members,omitempty"`
@@ -81,8 +79,7 @@ type AutomaticDrConfigurationObservation struct {
 	DefaultSwitchoverDrPlanID *string `json:"defaultSwitchoverDrPlanId,omitempty" tf:"default_switchover_dr_plan_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the Automatic DR configuration being created.  Example: Automatic DR Configuration
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -91,8 +88,7 @@ type AutomaticDrConfigurationObservation struct {
 	DrProtectionGroupID *string `json:"drProtectionGroupId,omitempty" tf:"dr_protection_group_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Automatic DR configuration.  Example: ocid1.automaticdrconfiguration.oc1..uniqueID
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -113,8 +109,7 @@ type AutomaticDrConfigurationObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Automatic DR configuration was created. An RFC3339 formatted datetime string.  Example: 2024-03-29T09:36:42Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -158,8 +153,7 @@ type AutomaticDrConfigurationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the Automatic DR configuration being created.  Example: Automatic DR Configuration
 	// +kubebuilder:validation:Optional
@@ -181,8 +175,7 @@ type AutomaticDrConfigurationParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A list of members for Automatic DR configuration.
 	// +kubebuilder:validation:Optional

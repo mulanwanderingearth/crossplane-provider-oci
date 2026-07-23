@@ -225,7 +225,7 @@ type FeatureDetailsDatabaseConnectionDetailsConnectionStringInitParameters struc
 	ConnectionType *string `json:"connectionType,omitempty" tf:"connection_type,omitempty"`
 
 	// The port number used to connect to the database.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the database.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -240,7 +240,7 @@ type FeatureDetailsDatabaseConnectionDetailsConnectionStringObservation struct {
 	ConnectionType *string `json:"connectionType,omitempty" tf:"connection_type,omitempty"`
 
 	// The port number used to connect to the database.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the database.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -257,7 +257,7 @@ type FeatureDetailsDatabaseConnectionDetailsConnectionStringParameters struct {
 
 	// The port number used to connect to the database.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the database.
 	// +kubebuilder:validation:Optional

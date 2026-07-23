@@ -81,7 +81,6 @@ spec:
                       type: string
                     description: (Updatable) Advanced pool properties.
                     type: object
-                    x-kubernetes-map-type: granular
                   databaseActionsStatus:
                     description: (Updatable) Specifies to enable the Database Actions
                       feature.
@@ -253,7 +252,8 @@ spec:
                   initialPoolSize:
                     description: (Updatable) Specifies the initial size for the number
                       of database connections that will be created for the pool.
-                    type: number
+                    format: int64
+                    type: integer
                   jwtProfileAudience:
                     description: (Updatable) Specifies the expected audience for the
                       JWT token. This value is used to validate the aud claim in the
@@ -274,11 +274,13 @@ spec:
                   maxPoolSize:
                     description: (Updatable) Specifies the maximum number of database
                       connections allowed for the pool.
-                    type: number
+                    format: int64
+                    type: integer
                   minPoolSize:
                     description: (Updatable) Specifies the minimum number of database
                       connections allowed for the pool.
-                    type: number
+                    format: int64
+                    type: integer
                   poolRouteValue:
                     description: (Updatable) The pool route value provided in requests
                       to target this pool.
@@ -310,7 +312,6 @@ spec:
                       type: string
                     description: (Updatable) Advanced pool properties.
                     type: object
-                    x-kubernetes-map-type: granular
                   databaseActionsStatus:
                     description: (Updatable) Specifies to enable the Database Actions
                       feature.
@@ -482,7 +483,8 @@ spec:
                   initialPoolSize:
                     description: (Updatable) Specifies the initial size for the number
                       of database connections that will be created for the pool.
-                    type: number
+                    format: int64
+                    type: integer
                   jwtProfileAudience:
                     description: (Updatable) Specifies the expected audience for the
                       JWT token. This value is used to validate the aud claim in the
@@ -503,11 +505,13 @@ spec:
                   maxPoolSize:
                     description: (Updatable) Specifies the maximum number of database
                       connections allowed for the pool.
-                    type: number
+                    format: int64
+                    type: integer
                   minPoolSize:
                     description: (Updatable) Specifies the minimum number of database
                       connections allowed for the pool.
-                    type: number
+                    format: int64
+                    type: integer
                   poolRouteValue:
                     description: (Updatable) The pool route value provided in requests
                       to target this pool.
@@ -633,7 +637,6 @@ spec:
                       type: string
                     description: (Updatable) Advanced pool properties.
                     type: object
-                    x-kubernetes-map-type: granular
                   databaseActionsStatus:
                     description: (Updatable) Specifies to enable the Database Actions
                       feature.
@@ -657,7 +660,8 @@ spec:
                   initialPoolSize:
                     description: (Updatable) Specifies the initial size for the number
                       of database connections that will be created for the pool.
-                    type: number
+                    format: int64
+                    type: integer
                   jwtProfileAudience:
                     description: (Updatable) Specifies the expected audience for the
                       JWT token. This value is used to validate the aud claim in the
@@ -682,11 +686,13 @@ spec:
                   maxPoolSize:
                     description: (Updatable) Specifies the maximum number of database
                       connections allowed for the pool.
-                    type: number
+                    format: int64
+                    type: integer
                   minPoolSize:
                     description: (Updatable) Specifies the minimum number of database
                       connections allowed for the pool.
-                    type: number
+                    format: int64
+                    type: integer
                   poolRouteValue:
                     description: (Updatable) The pool route value provided in requests
                       to target this pool.

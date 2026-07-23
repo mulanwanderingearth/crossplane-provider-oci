@@ -61,10 +61,10 @@ type KafkaSettingsInitParameters struct {
 	AutoCreateTopicsEnable *bool `json:"autoCreateTopicsEnable,omitempty" tf:"auto_create_topics_enable,omitempty"`
 
 	// (Updatable) The number of hours to keep a log file before deleting it (in hours).
-	LogRetentionHours *float64 `json:"logRetentionHours,omitempty" tf:"log_retention_hours,omitempty"`
+	LogRetentionHours *int64 `json:"logRetentionHours,omitempty" tf:"log_retention_hours,omitempty"`
 
 	// (Updatable) The default number of log partitions per topic.
-	NumPartitions *float64 `json:"numPartitions,omitempty" tf:"num_partitions,omitempty"`
+	NumPartitions *int64 `json:"numPartitions,omitempty" tf:"num_partitions,omitempty"`
 }
 
 type KafkaSettingsObservation struct {
@@ -76,10 +76,10 @@ type KafkaSettingsObservation struct {
 	BootstrapServers *string `json:"bootstrapServers,omitempty" tf:"bootstrap_servers,omitempty"`
 
 	// (Updatable) The number of hours to keep a log file before deleting it (in hours).
-	LogRetentionHours *float64 `json:"logRetentionHours,omitempty" tf:"log_retention_hours,omitempty"`
+	LogRetentionHours *int64 `json:"logRetentionHours,omitempty" tf:"log_retention_hours,omitempty"`
 
 	// (Updatable) The default number of log partitions per topic.
-	NumPartitions *float64 `json:"numPartitions,omitempty" tf:"num_partitions,omitempty"`
+	NumPartitions *int64 `json:"numPartitions,omitempty" tf:"num_partitions,omitempty"`
 }
 
 type KafkaSettingsParameters struct {
@@ -90,11 +90,11 @@ type KafkaSettingsParameters struct {
 
 	// (Updatable) The number of hours to keep a log file before deleting it (in hours).
 	// +kubebuilder:validation:Optional
-	LogRetentionHours *float64 `json:"logRetentionHours,omitempty" tf:"log_retention_hours,omitempty"`
+	LogRetentionHours *int64 `json:"logRetentionHours,omitempty" tf:"log_retention_hours,omitempty"`
 
 	// (Updatable) The default number of log partitions per topic.
 	// +kubebuilder:validation:Optional
-	NumPartitions *float64 `json:"numPartitions,omitempty" tf:"num_partitions,omitempty"`
+	NumPartitions *int64 `json:"numPartitions,omitempty" tf:"num_partitions,omitempty"`
 }
 
 type PrivateEndpointSettingsInitParameters struct {
@@ -213,12 +213,10 @@ type StreamPoolInitParameters struct {
 	CustomEncryptionKey []CustomEncryptionKeyInitParameters `json:"customEncryptionKey,omitempty" tf:"custom_encryption_key,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair that is applied with no predefined name, type, or namespace. Exists for cross-compatibility only. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Settings for the Kafka compatibility layer.
 	KafkaSettings []KafkaSettingsInitParameters `json:"kafkaSettings,omitempty" tf:"kafka_settings,omitempty"`
@@ -230,8 +228,7 @@ type StreamPoolInitParameters struct {
 	PrivateEndpointSettings []PrivateEndpointSettingsInitParameters `json:"privateEndpointSettings,omitempty" tf:"private_endpoint_settings,omitempty"`
 
 	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 }
 
 type StreamPoolObservation struct {
@@ -243,15 +240,13 @@ type StreamPoolObservation struct {
 	CustomEncryptionKey []CustomEncryptionKeyObservation `json:"customEncryptionKey,omitempty" tf:"custom_encryption_key,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The FQDN used to access the streams inside the stream pool (same FQDN as the messagesEndpoint attribute of a Stream object). If the stream pool is private, the FQDN is customized and can only be accessed from inside the associated subnetId, otherwise the FQDN is publicly resolvable. Depending on which protocol you attempt to use, you need to either prepend https or append the Kafka port.
 	EndpointFqdn *string `json:"endpointFqdn,omitempty" tf:"endpoint_fqdn,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair that is applied with no predefined name, type, or namespace. Exists for cross-compatibility only. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the stream pool.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -272,8 +267,7 @@ type StreamPoolObservation struct {
 	PrivateEndpointSettings []PrivateEndpointSettingsObservation `json:"privateEndpointSettings,omitempty" tf:"private_endpoint_settings,omitempty"`
 
 	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The current state of the stream pool.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -303,13 +297,11 @@ type StreamPoolParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair that is applied with no predefined name, type, or namespace. Exists for cross-compatibility only. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Settings for the Kafka compatibility layer.
 	// +kubebuilder:validation:Optional
@@ -325,8 +317,7 @@ type StreamPoolParameters struct {
 
 	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 }
 
 // StreamPoolSpec defines the desired state of StreamPool

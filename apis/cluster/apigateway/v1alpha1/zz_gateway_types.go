@@ -73,8 +73,7 @@ type GatewayInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -83,8 +82,7 @@ type GatewayInitParameters struct {
 	EndpointType *string `json:"endpointType,omitempty" tf:"endpoint_type,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Determines whether the gateway has an IPv4 or IPv6 address assigned to it, or both. IPV4 means the gateway will only have an IPv4 address assigned to it, and IPV6 means the gateway will only have an IPv6 address assigned to it. DUAL_STACK means the gateway will have both an IPv4 and IPv6 address assigned to it. Example: IPV4 or IPV6 or DUAL_STACK
 	IPMode *string `json:"ipMode,omitempty" tf:"ip_mode,omitempty"`
@@ -168,8 +166,7 @@ type GatewayObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -178,8 +175,7 @@ type GatewayObservation struct {
 	EndpointType *string `json:"endpointType,omitempty" tf:"endpoint_type,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for APIs deployed on the gateway.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -221,8 +217,7 @@ type GatewayObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// When the lock was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -256,8 +251,7 @@ type GatewayParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	// +kubebuilder:validation:Optional
@@ -269,8 +263,7 @@ type GatewayParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Determines whether the gateway has an IPv4 or IPv6 address assigned to it, or both. IPV4 means the gateway will only have an IPv4 address assigned to it, and IPV6 means the gateway will only have an IPv6 address assigned to it. DUAL_STACK means the gateway will have both an IPv4 and IPv6 address assigned to it. Example: IPV4 or IPV6 or DUAL_STACK
 	// +kubebuilder:validation:Optional
@@ -394,7 +387,7 @@ type ResponseCacheDetailsInitParameters struct {
 	AuthenticationSecretVersionNumber *string `json:"authenticationSecretVersionNumber,omitempty" tf:"authentication_secret_version_number,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines the timeout for establishing a connection with the Response Cache.
-	ConnectTimeoutInMs *float64 `json:"connectTimeoutInMs,omitempty" tf:"connect_timeout_in_ms,omitempty"`
+	ConnectTimeoutInMs *int64 `json:"connectTimeoutInMs,omitempty" tf:"connect_timeout_in_ms,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines if the connection should be over SSL.
 	IsSSLEnabled *bool `json:"isSslEnabled,omitempty" tf:"is_ssl_enabled,omitempty"`
@@ -403,10 +396,10 @@ type ResponseCacheDetailsInitParameters struct {
 	IsSSLVerifyDisabled *bool `json:"isSslVerifyDisabled,omitempty" tf:"is_ssl_verify_disabled,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines the timeout for reading data from the Response Cache.
-	ReadTimeoutInMs *float64 `json:"readTimeoutInMs,omitempty" tf:"read_timeout_in_ms,omitempty"`
+	ReadTimeoutInMs *int64 `json:"readTimeoutInMs,omitempty" tf:"read_timeout_in_ms,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines the timeout for transmitting data to the Response Cache.
-	SendTimeoutInMs *float64 `json:"sendTimeoutInMs,omitempty" tf:"send_timeout_in_ms,omitempty"`
+	SendTimeoutInMs *int64 `json:"sendTimeoutInMs,omitempty" tf:"send_timeout_in_ms,omitempty"`
 
 	// (Updatable) The set of cache store members to connect to. At present only a single server is supported.
 	Servers []ServersInitParameters `json:"servers,omitempty" tf:"servers,omitempty"`
@@ -424,7 +417,7 @@ type ResponseCacheDetailsObservation struct {
 	AuthenticationSecretVersionNumber *string `json:"authenticationSecretVersionNumber,omitempty" tf:"authentication_secret_version_number,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines the timeout for establishing a connection with the Response Cache.
-	ConnectTimeoutInMs *float64 `json:"connectTimeoutInMs,omitempty" tf:"connect_timeout_in_ms,omitempty"`
+	ConnectTimeoutInMs *int64 `json:"connectTimeoutInMs,omitempty" tf:"connect_timeout_in_ms,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines if the connection should be over SSL.
 	IsSSLEnabled *bool `json:"isSslEnabled,omitempty" tf:"is_ssl_enabled,omitempty"`
@@ -433,10 +426,10 @@ type ResponseCacheDetailsObservation struct {
 	IsSSLVerifyDisabled *bool `json:"isSslVerifyDisabled,omitempty" tf:"is_ssl_verify_disabled,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines the timeout for reading data from the Response Cache.
-	ReadTimeoutInMs *float64 `json:"readTimeoutInMs,omitempty" tf:"read_timeout_in_ms,omitempty"`
+	ReadTimeoutInMs *int64 `json:"readTimeoutInMs,omitempty" tf:"read_timeout_in_ms,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines the timeout for transmitting data to the Response Cache.
-	SendTimeoutInMs *float64 `json:"sendTimeoutInMs,omitempty" tf:"send_timeout_in_ms,omitempty"`
+	SendTimeoutInMs *int64 `json:"sendTimeoutInMs,omitempty" tf:"send_timeout_in_ms,omitempty"`
 
 	// (Updatable) The set of cache store members to connect to. At present only a single server is supported.
 	Servers []ServersObservation `json:"servers,omitempty" tf:"servers,omitempty"`
@@ -467,7 +460,7 @@ type ResponseCacheDetailsParameters struct {
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines the timeout for establishing a connection with the Response Cache.
 	// +kubebuilder:validation:Optional
-	ConnectTimeoutInMs *float64 `json:"connectTimeoutInMs,omitempty" tf:"connect_timeout_in_ms,omitempty"`
+	ConnectTimeoutInMs *int64 `json:"connectTimeoutInMs,omitempty" tf:"connect_timeout_in_ms,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines if the connection should be over SSL.
 	// +kubebuilder:validation:Optional
@@ -479,11 +472,11 @@ type ResponseCacheDetailsParameters struct {
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines the timeout for reading data from the Response Cache.
 	// +kubebuilder:validation:Optional
-	ReadTimeoutInMs *float64 `json:"readTimeoutInMs,omitempty" tf:"read_timeout_in_ms,omitempty"`
+	ReadTimeoutInMs *int64 `json:"readTimeoutInMs,omitempty" tf:"read_timeout_in_ms,omitempty"`
 
 	// (Applicable when type=EXTERNAL_RESP_CACHE) (Updatable) Defines the timeout for transmitting data to the Response Cache.
 	// +kubebuilder:validation:Optional
-	SendTimeoutInMs *float64 `json:"sendTimeoutInMs,omitempty" tf:"send_timeout_in_ms,omitempty"`
+	SendTimeoutInMs *int64 `json:"sendTimeoutInMs,omitempty" tf:"send_timeout_in_ms,omitempty"`
 
 	// (Updatable) The set of cache store members to connect to. At present only a single server is supported.
 	// +kubebuilder:validation:Optional
@@ -500,7 +493,7 @@ type ServersInitParameters struct {
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
 	// (Updatable) The port the cache store is exposed on.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ServersObservation struct {
@@ -509,7 +502,7 @@ type ServersObservation struct {
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
 
 	// (Updatable) The port the cache store is exposed on.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ServersParameters struct {
@@ -520,7 +513,7 @@ type ServersParameters struct {
 
 	// (Updatable) The port the cache store is exposed on.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 // GatewaySpec defines the desired state of Gateway

@@ -298,7 +298,6 @@ spec:
                       type: string
                     description: Criteria based on resource property.
                     type: object
-                    x-kubernetes-map-type: granular
                   resourceCategory:
                     description: Resource category filter.
                     type: string
@@ -606,7 +605,6 @@ spec:
                       type: string
                     description: Criteria based on resource property.
                     type: object
-                    x-kubernetes-map-type: granular
                   resourceCategory:
                     description: Resource category filter.
                     type: string
@@ -795,7 +793,6 @@ spec:
                             predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: Monitored resource display name.
                           type: string
@@ -813,7 +810,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostName:
                           description: A filter to return resources with host name
                             match.
@@ -862,7 +858,6 @@ spec:
                             keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                             "true"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         timeCreated:
                           description: Monitored resource creation time. An RFC3339
                             formatted datetime string.
@@ -902,7 +897,6 @@ spec:
                       type: string
                     description: Criteria based on resource property.
                     type: object
-                    x-kubernetes-map-type: granular
                   resourceCategory:
                     description: Resource category filter.
                     type: string

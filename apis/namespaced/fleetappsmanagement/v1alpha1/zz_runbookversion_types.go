@@ -144,7 +144,7 @@ type GroupsPropertiesNotificationPreferencesParameters struct {
 type PropertiesPauseDetailsInitParameters struct {
 
 	// (Updatable) Time in minutes to apply Pause.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) Pause based On.
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
@@ -153,7 +153,7 @@ type PropertiesPauseDetailsInitParameters struct {
 type PropertiesPauseDetailsObservation struct {
 
 	// (Updatable) Time in minutes to apply Pause.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) Pause based On.
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
@@ -163,7 +163,7 @@ type PropertiesPauseDetailsParameters struct {
 
 	// (Updatable) Time in minutes to apply Pause.
 	// +kubebuilder:validation:Optional
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) Pause based On.
 	// +kubebuilder:validation:Optional
@@ -457,16 +457,14 @@ type RunbookVersionInitParameters_2 struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example:
 	// {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Execution Workflow details.
 	// <<<<<<< ours
 	ExecutionWorkflowDetails []RunbookVersionExecutionWorkflowDetailsInitParameters `json:"executionWorkflowDetails,omitempty" tf:"execution_workflow_details,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The groups of the runbook version.
 	Groups []RunbookVersionGroupsInitParameters `json:"groups,omitempty" tf:"groups,omitempty"`
@@ -487,16 +485,14 @@ type RunbookVersionObservation_2 struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example:
 	// {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Execution Workflow details.
 	// <<<<<<< ours
 	ExecutionWorkflowDetails []RunbookVersionExecutionWorkflowDetailsObservation `json:"executionWorkflowDetails,omitempty" tf:"execution_workflow_details,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The groups of the runbook version.
 	Groups []RunbookVersionGroupsObservation `json:"groups,omitempty" tf:"groups,omitempty"`
@@ -523,8 +519,7 @@ type RunbookVersionObservation_2 struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) A set of tasks to execute in the runbook.
 	// <<<<<<< ours
@@ -542,8 +537,7 @@ type RunbookVersionParameters_2 struct {
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example:
 	// {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Execution Workflow details.
 	// <<<<<<< ours
@@ -552,8 +546,7 @@ type RunbookVersionParameters_2 struct {
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The groups of the runbook version.
 	// +kubebuilder:validation:Optional
@@ -1165,7 +1158,7 @@ type TasksStepPropertiesParameters struct {
 type TasksStepPropertiesPauseDetailsInitParameters struct {
 
 	// (Updatable) Time in minutes to apply Pause.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) Pause based On.
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
@@ -1174,7 +1167,7 @@ type TasksStepPropertiesPauseDetailsInitParameters struct {
 type TasksStepPropertiesPauseDetailsObservation struct {
 
 	// (Updatable) Time in minutes to apply Pause.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) Pause based On.
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
@@ -1184,7 +1177,7 @@ type TasksStepPropertiesPauseDetailsParameters struct {
 
 	// (Updatable) Time in minutes to apply Pause.
 	// +kubebuilder:validation:Optional
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) Pause based On.
 	// +kubebuilder:validation:Optional
@@ -1362,30 +1355,30 @@ type TasksTaskRecordDetailsParameters struct {
 type TasksTaskRecordDetailsPropertiesInitParameters struct {
 
 	// (Updatable) The number of retries allowed.
-	NumRetries *float64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
+	NumRetries *int64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
 
 	// (Updatable) The timeout in seconds for the task.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type TasksTaskRecordDetailsPropertiesObservation struct {
 
 	// (Updatable) The number of retries allowed.
-	NumRetries *float64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
+	NumRetries *int64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
 
 	// (Updatable) The timeout in seconds for the task.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type TasksTaskRecordDetailsPropertiesParameters struct {
 
 	// (Updatable) The number of retries allowed.
 	// +kubebuilder:validation:Optional
-	NumRetries *float64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
+	NumRetries *int64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
 
 	// (Updatable) The timeout in seconds for the task.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type VariablesInputVariablesInitParameters struct {

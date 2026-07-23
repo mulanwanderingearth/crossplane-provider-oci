@@ -238,7 +238,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -247,7 +246,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   initialNodeLabels:
                     description: (Updatable) A list of key/value pairs to add to nodes
                       after they join the Kubernetes cluster.
@@ -373,7 +371,6 @@ spec:
                             more information, see Resource Tags. Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -382,7 +379,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags. Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         isPvEncryptionInTransitEnabled:
                           description: (Updatable) Whether to enable in-transit encryption
                             for the data volume's paravirtualized attachment. This
@@ -487,7 +483,8 @@ spec:
                                   (Updatable) The max number of pods per node in the
                                   node pool. This value will be limited by the number
                                   of VNICs attachable to the node pool shape
-                                type: number
+                                format: int64
+                                type: integer
                               podNsgIds:
                                 description: (Applicable when cni_type=OCI_VCN_IP_NATIVE)
                                   (Updatable) The OCIDs of the Network Security Group(s)
@@ -823,7 +820,8 @@ spec:
                         size:
                           description: (Updatable) The number of nodes that should
                             be in the node pool.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   nodeEvictionNodePoolSettings:
@@ -945,7 +943,6 @@ spec:
                       underlying Oracle Cloud Infrastructure instance in the node
                       pool on launch.
                     type: object
-                    x-kubernetes-map-type: granular
                   nodePoolCyclingDetails:
                     description: (Updatable) Node Pool Cycling Details
                     items:
@@ -1109,7 +1106,6 @@ spec:
                             Packet Routing (ZPR) policy to control access to ZPR-supported
                             resources.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   quantityPerSubnet:
@@ -1117,7 +1113,8 @@ spec:
                       nodes to create in each subnet specified in subnetIds property.
                       When used, subnetIds is required. This property is deprecated,
                       use nodeConfigDetails instead.
-                    type: number
+                    format: int64
+                    type: integer
                   secondaryVnics:
                     description: (Updatable) A list of secondary vnics to attach to
                       nodes
@@ -1152,7 +1149,6 @@ spec:
                                   For more information, see Resource Tags. Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Updatable) Display name for secondary
                                   vnic
@@ -1166,11 +1162,11 @@ spec:
                                   information, see Resource Tags. Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               ipCount:
                                 description: (Updatable) The number of ip addresses
                                   to attach to secondary vnic
-                                type: number
+                                format: int64
+                                type: integer
                               ipv6addressIpv6SubnetCidrPairDetails:
                                 description: (Updatable) A list of IPv6 prefixes from
                                   which the VNIC should be assigned an IPv6 address.
@@ -1210,7 +1206,6 @@ spec:
                                   Trust Packet Routing (ZPR) policy to control access
                                   to ZPR-supported resources.
                                 type: object
-                                x-kubernetes-map-type: granular
                               skipSourceDestCheck:
                                 description: (Updatable) Whether the source/destination
                                   check is disabled on the VNIC
@@ -1309,7 +1304,8 @@ spec:
                         nicIndex:
                           description: (Updatable) Which physical network interface
                             card (NIC) the VNIC will use
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   sshPublicKey:
@@ -1519,7 +1515,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1528,7 +1523,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   initialNodeLabels:
                     description: (Updatable) A list of key/value pairs to add to nodes
                       after they join the Kubernetes cluster.
@@ -1654,7 +1648,6 @@ spec:
                             more information, see Resource Tags. Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -1663,7 +1656,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags. Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         isPvEncryptionInTransitEnabled:
                           description: (Updatable) Whether to enable in-transit encryption
                             for the data volume's paravirtualized attachment. This
@@ -1768,7 +1760,8 @@ spec:
                                   (Updatable) The max number of pods per node in the
                                   node pool. This value will be limited by the number
                                   of VNICs attachable to the node pool shape
-                                type: number
+                                format: int64
+                                type: integer
                               podNsgIds:
                                 description: (Applicable when cni_type=OCI_VCN_IP_NATIVE)
                                   (Updatable) The OCIDs of the Network Security Group(s)
@@ -2104,7 +2097,8 @@ spec:
                         size:
                           description: (Updatable) The number of nodes that should
                             be in the node pool.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   nodeEvictionNodePoolSettings:
@@ -2226,7 +2220,6 @@ spec:
                       underlying Oracle Cloud Infrastructure instance in the node
                       pool on launch.
                     type: object
-                    x-kubernetes-map-type: granular
                   nodePoolCyclingDetails:
                     description: (Updatable) Node Pool Cycling Details
                     items:
@@ -2390,7 +2383,6 @@ spec:
                             Packet Routing (ZPR) policy to control access to ZPR-supported
                             resources.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   quantityPerSubnet:
@@ -2398,7 +2390,8 @@ spec:
                       nodes to create in each subnet specified in subnetIds property.
                       When used, subnetIds is required. This property is deprecated,
                       use nodeConfigDetails instead.
-                    type: number
+                    format: int64
+                    type: integer
                   secondaryVnics:
                     description: (Updatable) A list of secondary vnics to attach to
                       nodes
@@ -2433,7 +2426,6 @@ spec:
                                   For more information, see Resource Tags. Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Updatable) Display name for secondary
                                   vnic
@@ -2447,11 +2439,11 @@ spec:
                                   information, see Resource Tags. Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               ipCount:
                                 description: (Updatable) The number of ip addresses
                                   to attach to secondary vnic
-                                type: number
+                                format: int64
+                                type: integer
                               ipv6addressIpv6SubnetCidrPairDetails:
                                 description: (Updatable) A list of IPv6 prefixes from
                                   which the VNIC should be assigned an IPv6 address.
@@ -2491,7 +2483,6 @@ spec:
                                   Trust Packet Routing (ZPR) policy to control access
                                   to ZPR-supported resources.
                                 type: object
-                                x-kubernetes-map-type: granular
                               skipSourceDestCheck:
                                 description: (Updatable) Whether the source/destination
                                   check is disabled on the VNIC
@@ -2590,7 +2581,8 @@ spec:
                         nicIndex:
                           description: (Updatable) Which physical network interface
                             card (NIC) the VNIC will use
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   sshPublicKey:
@@ -2697,7 +2689,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -2706,7 +2697,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the node pool.
                     type: string
@@ -2756,7 +2746,6 @@ spec:
                             more information, see Resource Tags. Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -2765,7 +2754,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags. Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         isPvEncryptionInTransitEnabled:
                           description: (Updatable) Whether to enable in-transit encryption
                             for the data volume's paravirtualized attachment. This
@@ -2790,7 +2778,8 @@ spec:
                                   (Updatable) The max number of pods per node in the
                                   node pool. This value will be limited by the number
                                   of VNICs attachable to the node pool shape
-                                type: number
+                                format: int64
+                                type: integer
                               podNsgIds:
                                 description: (Applicable when cni_type=OCI_VCN_IP_NATIVE)
                                   (Updatable) The OCIDs of the Network Security Group(s)
@@ -2877,7 +2866,8 @@ spec:
                         size:
                           description: (Updatable) The number of nodes that should
                             be in the node pool.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   nodeEvictionNodePoolSettings:
@@ -2919,7 +2909,6 @@ spec:
                       underlying Oracle Cloud Infrastructure instance in the node
                       pool on launch.
                     type: object
-                    x-kubernetes-map-type: granular
                   nodePoolCyclingDetails:
                     description: (Updatable) Node Pool Cycling Details
                     items:
@@ -3024,7 +3013,6 @@ spec:
                             more information, see Resource Tags. Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         error:
                           description: An error that may be associated with the node.
                           items:
@@ -3054,7 +3042,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags. Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         id:
                           description: The OCID of the node pool.
                           type: string
@@ -3101,7 +3088,6 @@ spec:
                             Packet Routing (ZPR) policy to control access to ZPR-supported
                             resources.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   quantityPerSubnet:
@@ -3109,7 +3095,8 @@ spec:
                       nodes to create in each subnet specified in subnetIds property.
                       When used, subnetIds is required. This property is deprecated,
                       use nodeConfigDetails instead.
-                    type: number
+                    format: int64
+                    type: integer
                   secondaryVnics:
                     description: (Updatable) A list of secondary vnics to attach to
                       nodes
@@ -3144,7 +3131,6 @@ spec:
                                   For more information, see Resource Tags. Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Updatable) Display name for secondary
                                   vnic
@@ -3158,11 +3144,11 @@ spec:
                                   information, see Resource Tags. Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               ipCount:
                                 description: (Updatable) The number of ip addresses
                                   to attach to secondary vnic
-                                type: number
+                                format: int64
+                                type: integer
                               ipv6addressIpv6SubnetCidrPairDetails:
                                 description: (Updatable) A list of IPv6 prefixes from
                                   which the VNIC should be assigned an IPv6 address.
@@ -3202,7 +3188,6 @@ spec:
                                   Trust Packet Routing (ZPR) policy to control access
                                   to ZPR-supported resources.
                                 type: object
-                                x-kubernetes-map-type: granular
                               skipSourceDestCheck:
                                 description: (Updatable) Whether the source/destination
                                   check is disabled on the VNIC
@@ -3219,7 +3204,8 @@ spec:
                         nicIndex:
                           description: (Updatable) Which physical network interface
                             card (NIC) the VNIC will use
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   sshPublicKey:

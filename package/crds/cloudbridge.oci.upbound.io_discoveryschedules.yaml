@@ -162,7 +162,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the discovery
                       schedule. Does not have to be unique, and it's mutable. Avoid
@@ -181,7 +180,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -284,7 +282,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the discovery
                       schedule. Does not have to be unique, and it's mutable. Avoid
@@ -303,7 +300,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -415,7 +411,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the discovery
                       schedule. Does not have to be unique, and it's mutable. Avoid
@@ -434,7 +429,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the discovery schedule.
                     type: string
@@ -453,7 +447,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time when the discovery schedule was created
                       in RFC3339 format.

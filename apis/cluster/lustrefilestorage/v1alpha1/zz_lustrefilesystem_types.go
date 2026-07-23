@@ -78,7 +78,7 @@ type LustreFileSystemInitParameters struct {
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
 	// (Updatable) Capacity of the Lustre file system in GB. You can increase capacity only in multiples of 5 TB.
-	CapacityInGbs *float64 `json:"capacityInGbs,omitempty" tf:"capacity_in_gbs,omitempty"`
+	CapacityInGbs *int64 `json:"capacityInGbs,omitempty" tf:"capacity_in_gbs,omitempty"`
 
 	// The OCID of the cluster placement group in which the Lustre file system exists.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/clusterplacementgroups/v1alpha1.ClusterPlacementGroup
@@ -108,8 +108,7 @@ type LustreFileSystemInitParameters struct {
 	DateTimeDetails []DateTimeDetailsInitParameters `json:"dateTimeDetails,omitempty" tf:"date_time_details,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My Lustre file system
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -130,8 +129,7 @@ type LustreFileSystemInitParameters struct {
 	FileSystemNameSelector *v1.Selector `json:"fileSystemNameSelector,omitempty" tf:"-"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the KMS key used to encrypt the encryption keys associated with this file system.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -154,7 +152,7 @@ type LustreFileSystemInitParameters struct {
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Override Maintenance. Could be set to any integer value.
-	OverrideMaintenanceTrigger *float64 `json:"overrideMaintenanceTrigger,omitempty" tf:"override_maintenance_trigger,omitempty"`
+	OverrideMaintenanceTrigger *int64 `json:"overrideMaintenanceTrigger,omitempty" tf:"override_maintenance_trigger,omitempty"`
 
 	// The Lustre file system performance tier. A value of MBPS_PER_TB_125 represents 125 megabytes per second per terabyte.
 	PerformanceTier *string `json:"performanceTier,omitempty" tf:"performance_tier,omitempty"`
@@ -176,8 +174,7 @@ type LustreFileSystemInitParameters struct {
 	SubnetIDSelector *v1.Selector `json:"subnetIdSelector,omitempty" tf:"-"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type LustreFileSystemObservation struct {
@@ -186,7 +183,7 @@ type LustreFileSystemObservation struct {
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
 	// (Updatable) Capacity of the Lustre file system in GB. You can increase capacity only in multiples of 5 TB.
-	CapacityInGbs *float64 `json:"capacityInGbs,omitempty" tf:"capacity_in_gbs,omitempty"`
+	CapacityInGbs *int64 `json:"capacityInGbs,omitempty" tf:"capacity_in_gbs,omitempty"`
 
 	// The OCID of the cluster placement group in which the Lustre file system exists.
 	ClusterPlacementGroupID *string `json:"clusterPlacementGroupId,omitempty" tf:"cluster_placement_group_id,omitempty"`
@@ -197,8 +194,7 @@ type LustreFileSystemObservation struct {
 	DateTimeDetails []DateTimeDetailsObservation `json:"dateTimeDetails,omitempty" tf:"date_time_details,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My Lustre file system
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -210,8 +206,7 @@ type LustreFileSystemObservation struct {
 	FileSystemName *string `json:"fileSystemName,omitempty" tf:"file_system_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Lustre file system.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -242,7 +237,7 @@ type LustreFileSystemObservation struct {
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Override Maintenance. Could be set to any integer value.
-	OverrideMaintenanceTrigger *float64 `json:"overrideMaintenanceTrigger,omitempty" tf:"override_maintenance_trigger,omitempty"`
+	OverrideMaintenanceTrigger *int64 `json:"overrideMaintenanceTrigger,omitempty" tf:"override_maintenance_trigger,omitempty"`
 
 	// The Lustre file system performance tier. A value of MBPS_PER_TB_125 represents 125 megabytes per second per terabyte.
 	PerformanceTier *string `json:"performanceTier,omitempty" tf:"performance_tier,omitempty"`
@@ -257,8 +252,7 @@ type LustreFileSystemObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time that the current billing cycle for the file system will end, expressed in RFC 3339 timestamp format. After the current cycle ends, this date is updated automatically to the next timestamp, which is 30 days later. File systems deleted earlier than this time will still incur charges until the billing cycle ends.  Example: 2016-08-25T21:10:29.600Z
 	TimeBillingCycleEnd *string `json:"timeBillingCycleEnd,omitempty" tf:"time_billing_cycle_end,omitempty"`
@@ -278,7 +272,7 @@ type LustreFileSystemParameters struct {
 
 	// (Updatable) Capacity of the Lustre file system in GB. You can increase capacity only in multiples of 5 TB.
 	// +kubebuilder:validation:Optional
-	CapacityInGbs *float64 `json:"capacityInGbs,omitempty" tf:"capacity_in_gbs,omitempty"`
+	CapacityInGbs *int64 `json:"capacityInGbs,omitempty" tf:"capacity_in_gbs,omitempty"`
 
 	// The OCID of the cluster placement group in which the Lustre file system exists.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/clusterplacementgroups/v1alpha1.ClusterPlacementGroup
@@ -312,8 +306,7 @@ type LustreFileSystemParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My Lustre file system
 	// +kubebuilder:validation:Optional
@@ -338,8 +331,7 @@ type LustreFileSystemParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the KMS key used to encrypt the encryption keys associated with this file system.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -366,7 +358,7 @@ type LustreFileSystemParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Override Maintenance. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	OverrideMaintenanceTrigger *float64 `json:"overrideMaintenanceTrigger,omitempty" tf:"override_maintenance_trigger,omitempty"`
+	OverrideMaintenanceTrigger *int64 `json:"overrideMaintenanceTrigger,omitempty" tf:"override_maintenance_trigger,omitempty"`
 
 	// The Lustre file system performance tier. A value of MBPS_PER_TB_125 represents 125 megabytes per second per terabyte.
 	// +kubebuilder:validation:Optional
@@ -392,8 +384,7 @@ type LustreFileSystemParameters struct {
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type MaintenanceWindowInitParameters struct {

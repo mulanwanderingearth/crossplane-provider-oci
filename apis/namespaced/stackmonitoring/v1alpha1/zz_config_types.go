@@ -17,23 +17,20 @@ import (
 type AdditionalConfigurationsInitParameters struct {
 
 	// (Applicable when config_type=ONBOARD) (Updatable) Key/Value pair of Property
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type AdditionalConfigurationsObservation struct {
 
 	// (Applicable when config_type=ONBOARD) (Updatable) Key/Value pair of Property
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type AdditionalConfigurationsParameters struct {
 
 	// (Applicable when config_type=ONBOARD) (Updatable) Key/Value pair of Property
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	PropertiesMap map[string]*string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
+	PropertiesMap map[string]string `json:"propertiesMap,omitempty" tf:"properties_map,omitempty"`
 }
 
 type ConfigInitParameters struct {
@@ -57,8 +54,7 @@ type ConfigInitParameters struct {
 	ConfigType *string `json:"configType,omitempty" tf:"config_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the configuration.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -67,8 +63,7 @@ type ConfigInitParameters struct {
 	DynamicGroups []DynamicGroupsInitParameters `json:"dynamicGroups,omitempty" tf:"dynamic_groups,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) True if enterprise extensibility is enabled, false if it is not enabled.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -104,8 +99,7 @@ type ConfigObservation struct {
 	ConfigType *string `json:"configType,omitempty" tf:"config_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the configuration.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -114,8 +108,7 @@ type ConfigObservation struct {
 	DynamicGroups []DynamicGroupsObservation `json:"dynamicGroups,omitempty" tf:"dynamic_groups,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The Unique Oracle ID (OCID) that is immutable on creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -139,8 +132,7 @@ type ConfigObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the configuration was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -180,8 +172,7 @@ type ConfigParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the configuration.
 	// +kubebuilder:validation:Optional
@@ -193,8 +184,7 @@ type ConfigParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) True if enterprise extensibility is enabled, false if it is not enabled.
 	// +kubebuilder:validation:Optional

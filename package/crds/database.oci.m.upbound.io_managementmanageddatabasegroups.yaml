@@ -154,7 +154,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The information specified by the user
                       about the Managed Database Group.
@@ -167,7 +166,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   managedDatabases:
                     description: (Updatable) Set of Managed Databases that the user
                       wants to add to the Managed Database Group. Specifying a block
@@ -300,7 +298,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The information specified by the user
                       about the Managed Database Group.
@@ -313,7 +310,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   managedDatabases:
                     description: (Updatable) Set of Managed Databases that the user
                       wants to add to the Managed Database Group. Specifying a block
@@ -422,7 +418,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The information specified by the user
                       about the Managed Database Group.
@@ -435,7 +430,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the managed database that needs to be
                       added to the Managed Database Group.
@@ -469,7 +463,6 @@ spec:
                             more information, see Resource Tags. Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         deploymentType:
                           description: The infrastructure used to deploy the Oracle
                             Database.
@@ -482,7 +475,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags. Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         id:
                           description: The OCID of the managed database that needs
                             to be added to the Managed Database Group.
@@ -503,7 +495,6 @@ spec:
                             but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained":
                             "true"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         timeAdded:
                           description: The date and time the Managed Database was
                             added to the group.
@@ -532,7 +523,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the Managed Database Group was
                       created.

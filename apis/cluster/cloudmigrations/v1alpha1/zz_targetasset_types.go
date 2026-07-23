@@ -79,15 +79,13 @@ type CreateVnicDetailsObservation struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -230,19 +228,32 @@ type InstanceOptionsParameters struct {
 }
 
 type MigrationAssetReplicationLocationDetailInitParameters struct {
+
+	// Properties for each of the replication location types
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+
+	// The type of replication location
+	ReplicationLocationType *string `json:"replicationLocationType,omitempty" tf:"replication_location_type,omitempty"`
 }
 
 type MigrationAssetReplicationLocationDetailObservation struct {
 
 	// Properties for each of the replication location types
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The type of replication location
 	ReplicationLocationType *string `json:"replicationLocationType,omitempty" tf:"replication_location_type,omitempty"`
 }
 
 type MigrationAssetReplicationLocationDetailParameters struct {
+
+	// Properties for each of the replication location types
+	// +kubebuilder:validation:Optional
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+
+	// The type of replication location
+	// +kubebuilder:validation:Optional
+	ReplicationLocationType *string `json:"replicationLocationType,omitempty" tf:"replication_location_type,omitempty"`
 }
 
 type PluginsConfigInitParameters struct {
@@ -326,8 +337,7 @@ type RecommendedSpecObservation struct {
 	DedicatedVMHostID *string `json:"dedicatedVmHostId,omitempty" tf:"dedicated_vm_host_id,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -336,8 +346,7 @@ type RecommendedSpecObservation struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -436,7 +445,7 @@ type StorageVolumesParameters struct {
 type TargetAssetInitParameters struct {
 
 	// (Applicable when type=INSTANCE) (Updatable) Performance of the block volumes.
-	BlockVolumesPerformance *float64 `json:"blockVolumesPerformance,omitempty" tf:"block_volumes_performance,omitempty"`
+	BlockVolumesPerformance *int64 `json:"blockVolumesPerformance,omitempty" tf:"block_volumes_performance,omitempty"`
 
 	// (Updatable) A boolean indicating whether the asset should be migrated.
 	IsExcludedFromExecution *bool `json:"isExcludedFromExecution,omitempty" tf:"is_excluded_from_execution,omitempty"`
@@ -474,6 +483,9 @@ type TargetAssetInitParameters struct {
 }
 
 type TargetAssetMigrationAssetInitParameters struct {
+
+	// Replication location detail where the snapshots reside
+	ReplicationLocationDetail []MigrationAssetReplicationLocationDetailInitParameters `json:"replicationLocationDetail,omitempty" tf:"replication_location_detail,omitempty"`
 }
 
 type TargetAssetMigrationAssetObservation struct {
@@ -491,8 +503,7 @@ type TargetAssetMigrationAssetObservation struct {
 	DependsOn []*string `json:"dependsOn,omitempty" tf:"depends_on,omitempty"`
 
 	// Mapping of source disk id to destination disk details
-	// +mapType=granular
-	DestinationDisks map[string]*string `json:"destinationDisks,omitempty" tf:"destination_disks,omitempty"`
+	DestinationDisks map[string]string `json:"destinationDisks,omitempty" tf:"destination_disks,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -525,12 +536,10 @@ type TargetAssetMigrationAssetObservation struct {
 	SnapShotBucketName *string `json:"snapShotBucketName,omitempty" tf:"snap_shot_bucket_name,omitempty"`
 
 	// Key-value pair representing disks ID mapped to the OCIDs of replicated or hydration server volume snapshots. Example: {"bar-key": "value"}
-	// +mapType=granular
-	Snapshots map[string]*string `json:"snapshots,omitempty" tf:"snapshots,omitempty"`
+	Snapshots map[string]string `json:"snapshots,omitempty" tf:"snapshots,omitempty"`
 
 	// Key-value pair representing asset metadata keys and values scoped to a namespace. Example: {"bar-key": "value"}
-	// +mapType=granular
-	SourceAssetData map[string]*string `json:"sourceAssetData,omitempty" tf:"source_asset_data,omitempty"`
+	SourceAssetData map[string]string `json:"sourceAssetData,omitempty" tf:"source_asset_data,omitempty"`
 
 	// OCID that is referenced to an asset for an inventory.
 	SourceAssetID *string `json:"sourceAssetId,omitempty" tf:"source_asset_id,omitempty"`
@@ -552,12 +561,16 @@ type TargetAssetMigrationAssetObservation struct {
 }
 
 type TargetAssetMigrationAssetParameters struct {
+
+	// Replication location detail where the snapshots reside
+	// +kubebuilder:validation:Optional
+	ReplicationLocationDetail []MigrationAssetReplicationLocationDetailParameters `json:"replicationLocationDetail,omitempty" tf:"replication_location_detail,omitempty"`
 }
 
 type TargetAssetObservation struct {
 
 	// (Applicable when type=INSTANCE) (Updatable) Performance of the block volumes.
-	BlockVolumesPerformance *float64 `json:"blockVolumesPerformance,omitempty" tf:"block_volumes_performance,omitempty"`
+	BlockVolumesPerformance *int64 `json:"blockVolumesPerformance,omitempty" tf:"block_volumes_performance,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -624,7 +637,7 @@ type TargetAssetParameters struct {
 
 	// (Applicable when type=INSTANCE) (Updatable) Performance of the block volumes.
 	// +kubebuilder:validation:Optional
-	BlockVolumesPerformance *float64 `json:"blockVolumesPerformance,omitempty" tf:"block_volumes_performance,omitempty"`
+	BlockVolumesPerformance *int64 `json:"blockVolumesPerformance,omitempty" tf:"block_volumes_performance,omitempty"`
 
 	// (Updatable) A boolean indicating whether the asset should be migrated.
 	// +kubebuilder:validation:Optional
@@ -702,15 +715,13 @@ type TestSpecCreateVnicDetailsObservation struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -771,8 +782,7 @@ type TestSpecObservation struct {
 	DedicatedVMHostID *string `json:"dedicatedVmHostId,omitempty" tf:"dedicated_vm_host_id,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -781,8 +791,7 @@ type TestSpecObservation struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -956,15 +965,13 @@ type UserSpecCreateVnicDetailsInitParameters struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -1015,15 +1022,13 @@ type UserSpecCreateVnicDetailsObservation struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -1057,8 +1062,7 @@ type UserSpecCreateVnicDetailsParameters struct {
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -1066,8 +1070,7 @@ type UserSpecCreateVnicDetailsParameters struct {
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	// +kubebuilder:validation:Optional
@@ -1146,8 +1149,7 @@ type UserSpecInitParameters struct {
 	DedicatedVMHostIDSelector *v1.Selector `json:"dedicatedVmHostIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -1156,8 +1158,7 @@ type UserSpecInitParameters struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -1224,8 +1225,7 @@ type UserSpecObservation struct {
 	DedicatedVMHostID *string `json:"dedicatedVmHostId,omitempty" tf:"dedicated_vm_host_id,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -1234,8 +1234,7 @@ type UserSpecObservation struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -1300,8 +1299,7 @@ type UserSpecParameters struct {
 
 	// (Applicable when type=INSTANCE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -1313,8 +1311,7 @@ type UserSpecParameters struct {
 
 	// (Applicable when type=INSTANCE) (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=INSTANCE) (Updatable) The hostname for the VNIC's primary private IP. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, bminstance-1 in FQDN bminstance-1.subnet123.vcn1.oraclevcn.com). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123. The value appears in the Vnic object and also the PrivateIp object returned by ListPrivateIps and GetPrivateIp.
 	// +kubebuilder:validation:Optional

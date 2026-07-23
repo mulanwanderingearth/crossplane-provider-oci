@@ -100,8 +100,7 @@ type ModelInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the model.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -113,8 +112,7 @@ type ModelInitParameters struct {
 	FineTuneDetails []FineTuneDetailsInitParameters `json:"fineTuneDetails,omitempty" tf:"fine_tune_details,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The provider of the model.
 	Vendor *string `json:"vendor,omitempty" tf:"vendor,omitempty"`
@@ -153,8 +151,7 @@ type ModelObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the model.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -166,8 +163,7 @@ type ModelObservation struct {
 	FineTuneDetails []FineTuneDetailsObservation `json:"fineTuneDetails,omitempty" tf:"fine_tune_details,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// An ID that uniquely identifies a pretrained or fine-tuned model.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -185,8 +181,7 @@ type ModelObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time that the model was created in the format of an RFC3339 datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -238,8 +233,7 @@ type ModelParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the model.
 	// +kubebuilder:validation:Optional
@@ -255,8 +249,7 @@ type ModelParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The provider of the model.
 	// +kubebuilder:validation:Optional
@@ -270,7 +263,7 @@ type ModelParameters struct {
 type TrainingConfigInitParameters struct {
 
 	// Stop training if the loss metric does not improve beyond 'early_stopping_threshold' for this many times of evaluation.
-	EarlyStoppingPatience *float64 `json:"earlyStoppingPatience,omitempty" tf:"early_stopping_patience,omitempty"`
+	EarlyStoppingPatience *int64 `json:"earlyStoppingPatience,omitempty" tf:"early_stopping_patience,omitempty"`
 
 	// How much the loss must improve to prevent early stopping.
 	EarlyStoppingThreshold *float64 `json:"earlyStoppingThreshold,omitempty" tf:"early_stopping_threshold,omitempty"`
@@ -279,25 +272,25 @@ type TrainingConfigInitParameters struct {
 	LearningRate *float64 `json:"learningRate,omitempty" tf:"learning_rate,omitempty"`
 
 	// Determines how frequently to log model metrics.
-	LogModelMetricsIntervalInSteps *float64 `json:"logModelMetricsIntervalInSteps,omitempty" tf:"log_model_metrics_interval_in_steps,omitempty"`
+	LogModelMetricsIntervalInSteps *int64 `json:"logModelMetricsIntervalInSteps,omitempty" tf:"log_model_metrics_interval_in_steps,omitempty"`
 
 	// (Applicable when training_config_type=LORA_TRAINING_CONFIG) This parameter represents the scaling factor for the weight matrices in LoRA.
-	LoraAlpha *float64 `json:"loraAlpha,omitempty" tf:"lora_alpha,omitempty"`
+	LoraAlpha *int64 `json:"loraAlpha,omitempty" tf:"lora_alpha,omitempty"`
 
 	// (Applicable when training_config_type=LORA_TRAINING_CONFIG) This parameter indicates the dropout probability for LoRA layers.
 	LoraDropout *float64 `json:"loraDropout,omitempty" tf:"lora_dropout,omitempty"`
 
 	// (Applicable when training_config_type=LORA_TRAINING_CONFIG) This parameter represents the LoRA rank of the update matrices.
-	LoraR *float64 `json:"loraR,omitempty" tf:"lora_r,omitempty"`
+	LoraR *int64 `json:"loraR,omitempty" tf:"lora_r,omitempty"`
 
 	// (Applicable when training_config_type=VANILLA_TRAINING_CONFIG) The number of last layers to be fine-tuned.
-	NumOfLastLayers *float64 `json:"numOfLastLayers,omitempty" tf:"num_of_last_layers,omitempty"`
+	NumOfLastLayers *int64 `json:"numOfLastLayers,omitempty" tf:"num_of_last_layers,omitempty"`
 
 	// The maximum number of training epochs to run for.
-	TotalTrainingEpochs *float64 `json:"totalTrainingEpochs,omitempty" tf:"total_training_epochs,omitempty"`
+	TotalTrainingEpochs *int64 `json:"totalTrainingEpochs,omitempty" tf:"total_training_epochs,omitempty"`
 
 	// The batch size used during training.
-	TrainingBatchSize *float64 `json:"trainingBatchSize,omitempty" tf:"training_batch_size,omitempty"`
+	TrainingBatchSize *int64 `json:"trainingBatchSize,omitempty" tf:"training_batch_size,omitempty"`
 
 	// The fine-tuning method for training a custom model.
 	TrainingConfigType *string `json:"trainingConfigType,omitempty" tf:"training_config_type,omitempty"`
@@ -306,7 +299,7 @@ type TrainingConfigInitParameters struct {
 type TrainingConfigObservation struct {
 
 	// Stop training if the loss metric does not improve beyond 'early_stopping_threshold' for this many times of evaluation.
-	EarlyStoppingPatience *float64 `json:"earlyStoppingPatience,omitempty" tf:"early_stopping_patience,omitempty"`
+	EarlyStoppingPatience *int64 `json:"earlyStoppingPatience,omitempty" tf:"early_stopping_patience,omitempty"`
 
 	// How much the loss must improve to prevent early stopping.
 	EarlyStoppingThreshold *float64 `json:"earlyStoppingThreshold,omitempty" tf:"early_stopping_threshold,omitempty"`
@@ -315,25 +308,25 @@ type TrainingConfigObservation struct {
 	LearningRate *float64 `json:"learningRate,omitempty" tf:"learning_rate,omitempty"`
 
 	// Determines how frequently to log model metrics.
-	LogModelMetricsIntervalInSteps *float64 `json:"logModelMetricsIntervalInSteps,omitempty" tf:"log_model_metrics_interval_in_steps,omitempty"`
+	LogModelMetricsIntervalInSteps *int64 `json:"logModelMetricsIntervalInSteps,omitempty" tf:"log_model_metrics_interval_in_steps,omitempty"`
 
 	// (Applicable when training_config_type=LORA_TRAINING_CONFIG) This parameter represents the scaling factor for the weight matrices in LoRA.
-	LoraAlpha *float64 `json:"loraAlpha,omitempty" tf:"lora_alpha,omitempty"`
+	LoraAlpha *int64 `json:"loraAlpha,omitempty" tf:"lora_alpha,omitempty"`
 
 	// (Applicable when training_config_type=LORA_TRAINING_CONFIG) This parameter indicates the dropout probability for LoRA layers.
 	LoraDropout *float64 `json:"loraDropout,omitempty" tf:"lora_dropout,omitempty"`
 
 	// (Applicable when training_config_type=LORA_TRAINING_CONFIG) This parameter represents the LoRA rank of the update matrices.
-	LoraR *float64 `json:"loraR,omitempty" tf:"lora_r,omitempty"`
+	LoraR *int64 `json:"loraR,omitempty" tf:"lora_r,omitempty"`
 
 	// (Applicable when training_config_type=VANILLA_TRAINING_CONFIG) The number of last layers to be fine-tuned.
-	NumOfLastLayers *float64 `json:"numOfLastLayers,omitempty" tf:"num_of_last_layers,omitempty"`
+	NumOfLastLayers *int64 `json:"numOfLastLayers,omitempty" tf:"num_of_last_layers,omitempty"`
 
 	// The maximum number of training epochs to run for.
-	TotalTrainingEpochs *float64 `json:"totalTrainingEpochs,omitempty" tf:"total_training_epochs,omitempty"`
+	TotalTrainingEpochs *int64 `json:"totalTrainingEpochs,omitempty" tf:"total_training_epochs,omitempty"`
 
 	// The batch size used during training.
-	TrainingBatchSize *float64 `json:"trainingBatchSize,omitempty" tf:"training_batch_size,omitempty"`
+	TrainingBatchSize *int64 `json:"trainingBatchSize,omitempty" tf:"training_batch_size,omitempty"`
 
 	// The fine-tuning method for training a custom model.
 	TrainingConfigType *string `json:"trainingConfigType,omitempty" tf:"training_config_type,omitempty"`
@@ -343,7 +336,7 @@ type TrainingConfigParameters struct {
 
 	// Stop training if the loss metric does not improve beyond 'early_stopping_threshold' for this many times of evaluation.
 	// +kubebuilder:validation:Optional
-	EarlyStoppingPatience *float64 `json:"earlyStoppingPatience,omitempty" tf:"early_stopping_patience,omitempty"`
+	EarlyStoppingPatience *int64 `json:"earlyStoppingPatience,omitempty" tf:"early_stopping_patience,omitempty"`
 
 	// How much the loss must improve to prevent early stopping.
 	// +kubebuilder:validation:Optional
@@ -355,11 +348,11 @@ type TrainingConfigParameters struct {
 
 	// Determines how frequently to log model metrics.
 	// +kubebuilder:validation:Optional
-	LogModelMetricsIntervalInSteps *float64 `json:"logModelMetricsIntervalInSteps,omitempty" tf:"log_model_metrics_interval_in_steps,omitempty"`
+	LogModelMetricsIntervalInSteps *int64 `json:"logModelMetricsIntervalInSteps,omitempty" tf:"log_model_metrics_interval_in_steps,omitempty"`
 
 	// (Applicable when training_config_type=LORA_TRAINING_CONFIG) This parameter represents the scaling factor for the weight matrices in LoRA.
 	// +kubebuilder:validation:Optional
-	LoraAlpha *float64 `json:"loraAlpha,omitempty" tf:"lora_alpha,omitempty"`
+	LoraAlpha *int64 `json:"loraAlpha,omitempty" tf:"lora_alpha,omitempty"`
 
 	// (Applicable when training_config_type=LORA_TRAINING_CONFIG) This parameter indicates the dropout probability for LoRA layers.
 	// +kubebuilder:validation:Optional
@@ -367,19 +360,19 @@ type TrainingConfigParameters struct {
 
 	// (Applicable when training_config_type=LORA_TRAINING_CONFIG) This parameter represents the LoRA rank of the update matrices.
 	// +kubebuilder:validation:Optional
-	LoraR *float64 `json:"loraR,omitempty" tf:"lora_r,omitempty"`
+	LoraR *int64 `json:"loraR,omitempty" tf:"lora_r,omitempty"`
 
 	// (Applicable when training_config_type=VANILLA_TRAINING_CONFIG) The number of last layers to be fine-tuned.
 	// +kubebuilder:validation:Optional
-	NumOfLastLayers *float64 `json:"numOfLastLayers,omitempty" tf:"num_of_last_layers,omitempty"`
+	NumOfLastLayers *int64 `json:"numOfLastLayers,omitempty" tf:"num_of_last_layers,omitempty"`
 
 	// The maximum number of training epochs to run for.
 	// +kubebuilder:validation:Optional
-	TotalTrainingEpochs *float64 `json:"totalTrainingEpochs,omitempty" tf:"total_training_epochs,omitempty"`
+	TotalTrainingEpochs *int64 `json:"totalTrainingEpochs,omitempty" tf:"total_training_epochs,omitempty"`
 
 	// The batch size used during training.
 	// +kubebuilder:validation:Optional
-	TrainingBatchSize *float64 `json:"trainingBatchSize,omitempty" tf:"training_batch_size,omitempty"`
+	TrainingBatchSize *int64 `json:"trainingBatchSize,omitempty" tf:"training_batch_size,omitempty"`
 
 	// The fine-tuning method for training a custom model.
 	// +kubebuilder:validation:Optional

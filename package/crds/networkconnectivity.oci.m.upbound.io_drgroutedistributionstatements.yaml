@@ -263,7 +263,8 @@ spec:
                       statements are applied in the order defined by their priority.
                       The first matching rule dictates the action that will be taken
                       on the route.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -480,7 +481,8 @@ spec:
                       statements are applied in the order defined by their priority.
                       The first matching rule dictates the action that will be taken
                       on the route.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -603,7 +605,8 @@ spec:
                       statements are applied in the order defined by their priority.
                       The first matching rule dictates the action that will be taken
                       on the route.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

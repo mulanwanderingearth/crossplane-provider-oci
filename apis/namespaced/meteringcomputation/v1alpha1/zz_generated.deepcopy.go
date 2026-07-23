@@ -1164,7 +1164,7 @@ func (in *QueryDefinitionReportQueryInitParameters) DeepCopyInto(out *QueryDefin
 	*out = *in
 	if in.CompartmentDepth != nil {
 		in, out := &in.CompartmentDepth, &out.CompartmentDepth
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DateRangeName != nil {
@@ -1247,7 +1247,7 @@ func (in *QueryDefinitionReportQueryObservation) DeepCopyInto(out *QueryDefiniti
 	*out = *in
 	if in.CompartmentDepth != nil {
 		in, out := &in.CompartmentDepth, &out.CompartmentDepth
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DateRangeName != nil {
@@ -1330,7 +1330,7 @@ func (in *QueryDefinitionReportQueryParameters) DeepCopyInto(out *QueryDefinitio
 	*out = *in
 	if in.CompartmentDepth != nil {
 		in, out := &in.CompartmentDepth, &out.CompartmentDepth
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DateRangeName != nil {
@@ -2645,18 +2645,9 @@ func (in *ScheduleInitParameters) DeepCopyInto(out *ScheduleInitParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2666,18 +2657,9 @@ func (in *ScheduleInitParameters) DeepCopyInto(out *ScheduleInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Name != nil {
@@ -2783,18 +2765,9 @@ func (in *ScheduleObservation) DeepCopyInto(out *ScheduleObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2804,18 +2777,9 @@ func (in *ScheduleObservation) DeepCopyInto(out *ScheduleObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -2864,18 +2828,9 @@ func (in *ScheduleObservation) DeepCopyInto(out *ScheduleObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -2925,18 +2880,9 @@ func (in *ScheduleParameters) DeepCopyInto(out *ScheduleParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2946,18 +2892,9 @@ func (in *ScheduleParameters) DeepCopyInto(out *ScheduleParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Name != nil {
@@ -3265,7 +3202,7 @@ func (in *UsageCarbonEmissionInitParameters) DeepCopyInto(out *UsageCarbonEmissi
 	*out = *in
 	if in.CompartmentDepth != nil {
 		in, out := &in.CompartmentDepth, &out.CompartmentDepth
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.EmissionCalculationMethod != nil {
@@ -3522,7 +3459,7 @@ func (in *UsageCarbonEmissionObservation) DeepCopyInto(out *UsageCarbonEmissionO
 	*out = *in
 	if in.CompartmentDepth != nil {
 		in, out := &in.CompartmentDepth, &out.CompartmentDepth
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.EmissionCalculationMethod != nil {
@@ -3612,7 +3549,7 @@ func (in *UsageCarbonEmissionParameters) DeepCopyInto(out *UsageCarbonEmissionPa
 	*out = *in
 	if in.CompartmentDepth != nil {
 		in, out := &in.CompartmentDepth, &out.CompartmentDepth
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.EmissionCalculationMethod != nil {
@@ -3909,7 +3846,7 @@ func (in *UsageCarbonEmissionsQueryQueryDefinitionInitParameters) DeepCopyInto(o
 	}
 	if in.Version != nil {
 		in, out := &in.Version, &out.Version
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -3948,7 +3885,7 @@ func (in *UsageCarbonEmissionsQueryQueryDefinitionObservation) DeepCopyInto(out 
 	}
 	if in.Version != nil {
 		in, out := &in.Version, &out.Version
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -3987,7 +3924,7 @@ func (in *UsageCarbonEmissionsQueryQueryDefinitionParameters) DeepCopyInto(out *
 	}
 	if in.Version != nil {
 		in, out := &in.Version, &out.Version
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

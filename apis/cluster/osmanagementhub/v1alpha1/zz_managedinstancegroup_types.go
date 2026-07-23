@@ -56,8 +56,7 @@ type ManagedInstanceGroupInitParameters_2 struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-specified description of the managed instance group. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -66,8 +65,7 @@ type ManagedInstanceGroupInitParameters_2 struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The location of managed instances attached to the group. If no location is provided, the default is on premises.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
@@ -110,8 +108,7 @@ type ManagedInstanceGroupObservation_2 struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-specified description of the managed instance group. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -120,8 +117,7 @@ type ManagedInstanceGroupObservation_2 struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the managed instance group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -133,7 +129,7 @@ type ManagedInstanceGroupObservation_2 struct {
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
 
 	// The number of managed instances in the group.
-	ManagedInstanceCount *float64 `json:"managedInstanceCount,omitempty" tf:"managed_instance_count,omitempty"`
+	ManagedInstanceCount *int64 `json:"managedInstanceCount,omitempty" tf:"managed_instance_count,omitempty"`
 
 	// The list of managed instance OCIDs to be added to the group.
 	ManagedInstanceIds []*string `json:"managedInstanceIds,omitempty" tf:"managed_instance_ids,omitempty"`
@@ -145,7 +141,7 @@ type ManagedInstanceGroupObservation_2 struct {
 	OsFamily *string `json:"osFamily,omitempty" tf:"os_family,omitempty"`
 
 	// The number of scheduled jobs pending against the managed instance group.
-	PendingJobCount *float64 `json:"pendingJobCount,omitempty" tf:"pending_job_count,omitempty"`
+	PendingJobCount *int64 `json:"pendingJobCount,omitempty" tf:"pending_job_count,omitempty"`
 
 	// The list of software source OCIDs available to the managed instances in the group.
 	SoftwareSourceIds []*string `json:"softwareSourceIds,omitempty" tf:"software_source_ids,omitempty"`
@@ -157,8 +153,7 @@ type ManagedInstanceGroupObservation_2 struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the managed instance group was created (in RFC 3339 format).
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -195,8 +190,7 @@ type ManagedInstanceGroupParameters_2 struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-specified description of the managed instance group. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -208,8 +202,7 @@ type ManagedInstanceGroupParameters_2 struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The location of managed instances attached to the group. If no location is provided, the default is on premises.
 	// +kubebuilder:validation:Optional

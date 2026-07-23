@@ -175,7 +175,6 @@ spec:
                       are scoped to namespaces. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: Human-readable reason for this alarm suppression.
                       It does not have to be unique, and it's changeable. Avoid entering
@@ -191,7 +190,6 @@ spec:
                       and "resourceId": "instance.region1.phx.exampleuniqueID"}, then
                       this alarm will be included for suppression.'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: A user-friendly name for the alarm suppression. It
                       does not have to be unique, and it's changeable. Avoid entering
@@ -204,7 +202,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   level:
                     description: The level of this alarm suppression. ALARM indicates
                       a suppression of the entire alarm, regardless of dimension.
@@ -368,7 +365,6 @@ spec:
                       are scoped to namespaces. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: Human-readable reason for this alarm suppression.
                       It does not have to be unique, and it's changeable. Avoid entering
@@ -384,7 +380,6 @@ spec:
                       and "resourceId": "instance.region1.phx.exampleuniqueID"}, then
                       this alarm will be included for suppression.'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: A user-friendly name for the alarm suppression. It
                       does not have to be unique, and it's changeable. Avoid entering
@@ -397,7 +392,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   level:
                     description: The level of this alarm suppression. ALARM indicates
                       a suppression of the entire alarm, regardless of dimension.
@@ -552,7 +546,6 @@ spec:
                       are scoped to namespaces. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: Human-readable reason for this alarm suppression.
                       It does not have to be unique, and it's changeable. Avoid entering
@@ -568,7 +561,6 @@ spec:
                       and "resourceId": "instance.region1.phx.exampleuniqueID"}, then
                       this alarm will be included for suppression.'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: A user-friendly name for the alarm suppression. It
                       does not have to be unique, and it's changeable. Avoid entering
@@ -581,7 +573,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the alarm suppression.
                     type: string

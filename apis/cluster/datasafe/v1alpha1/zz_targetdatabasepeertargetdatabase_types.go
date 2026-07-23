@@ -64,7 +64,7 @@ type TargetDatabasePeerTargetDatabaseDatabaseDetailsInitParameters struct {
 	InstanceIDSelector *v1.Selector `json:"instanceIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The port number of the database listener.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.PluggableDatabase
@@ -117,7 +117,7 @@ type TargetDatabasePeerTargetDatabaseDatabaseDetailsObservation struct {
 	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
 
 	// (Updatable) The port number of the database listener.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	PluggableDatabaseID *string `json:"pluggableDatabaseId,omitempty" tf:"pluggable_database_id,omitempty"`
@@ -187,7 +187,7 @@ type TargetDatabasePeerTargetDatabaseDatabaseDetailsParameters struct {
 
 	// (Updatable) The port number of the database listener.
 	// +kubebuilder:validation:Optional
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.PluggableDatabase
@@ -273,7 +273,7 @@ type TargetDatabasePeerTargetDatabaseObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The secondary key assigned for the peer target database in Data Safe.
-	Key *float64 `json:"key,omitempty" tf:"key,omitempty"`
+	Key *int64 `json:"key,omitempty" tf:"key,omitempty"`
 
 	// Details about the current state of the peer target database in Data Safe.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`

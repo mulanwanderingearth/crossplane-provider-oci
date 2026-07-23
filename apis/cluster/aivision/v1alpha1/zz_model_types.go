@@ -28,8 +28,7 @@ type ModelInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the model.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -38,8 +37,7 @@ type ModelInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Set to true when experimenting with a new model type or dataset, so the model training is quick, with a predefined low number of passes through the training data.
 	IsQuickMode *bool `json:"isQuickMode,omitempty" tf:"is_quick_mode,omitempty"`
@@ -88,8 +86,7 @@ type ModelObservation struct {
 	ConfidenceThreshold *float64 `json:"confidenceThreshold,omitempty" tf:"confidence_threshold,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the model.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -98,8 +95,7 @@ type ModelObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A unique identifier that is immutable after creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -135,11 +131,10 @@ type ModelObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. For example: {"orcl-cloud": {"free-tier-retained": "true"}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The number of images set aside for evaluating model performance metrics after training.
-	TestImageCount *float64 `json:"testImageCount,omitempty" tf:"test_image_count,omitempty"`
+	TestImageCount *int64 `json:"testImageCount,omitempty" tf:"test_image_count,omitempty"`
 
 	// The base entity which is the input for creating and training a model.
 	TestingDataset []TestingDatasetObservation `json:"testingDataset,omitempty" tf:"testing_dataset,omitempty"`
@@ -151,7 +146,7 @@ type ModelObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// The number of images in the dataset used to train, validate, and test the model.
-	TotalImageCount *float64 `json:"totalImageCount,omitempty" tf:"total_image_count,omitempty"`
+	TotalImageCount *int64 `json:"totalImageCount,omitempty" tf:"total_image_count,omitempty"`
 
 	// The total hours actually used for model training.
 	TrainedDurationInHours *float64 `json:"trainedDurationInHours,omitempty" tf:"trained_duration_in_hours,omitempty"`
@@ -180,8 +175,7 @@ type ModelParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the model.
 	// +kubebuilder:validation:Optional
@@ -193,8 +187,7 @@ type ModelParameters struct {
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Set to true when experimenting with a new model type or dataset, so the model training is quick, with a predefined low number of passes through the training data.
 	// +kubebuilder:validation:Optional

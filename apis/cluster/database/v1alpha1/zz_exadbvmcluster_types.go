@@ -93,8 +93,7 @@ type ExadbVmClusterInitParameters struct {
 	DataCollectionOptions []ExadbVmClusterDataCollectionOptionsInitParameters `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the Exadata VM cluster on Exascale Infrastructure. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -116,8 +115,7 @@ type ExadbVmClusterInitParameters struct {
 	ExascaleDBStorageVaultIDSelector *v1.Selector `json:"exascaleDbStorageVaultIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Grid Setup will be done using this grid image id.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/compute/v1alpha1.Image
@@ -165,14 +163,13 @@ type ExadbVmClusterInitParameters struct {
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
 	// The TCP Single Client Access Name (SCAN) port. The default port is 1521.
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// The Secured Communication (TCPS) protocol Single Client Access Name (SCAN) port. The default port is 2484.
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The shape of the Exadata VM cluster on Exascale Infrastructure resource
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -215,7 +212,7 @@ type ExadbVmClusterIormConfigCacheDBPlansObservation struct {
 	FlashCacheLimit *string `json:"flashCacheLimit,omitempty" tf:"flash_cache_limit,omitempty"`
 
 	// The relative priority of this database.
-	Share *float64 `json:"share,omitempty" tf:"share,omitempty"`
+	Share *int64 `json:"share,omitempty" tf:"share,omitempty"`
 }
 
 type ExadbVmClusterIormConfigCacheDBPlansParameters struct {
@@ -267,8 +264,7 @@ type ExadbVmClusterObservation struct {
 	DataCollectionOptions []ExadbVmClusterDataCollectionOptionsObservation `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the Exadata VM cluster on Exascale Infrastructure. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -280,8 +276,7 @@ type ExadbVmClusterObservation struct {
 	ExascaleDBStorageVaultID *string `json:"exascaleDbStorageVaultId,omitempty" tf:"exascale_db_storage_vault_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A valid Oracle Grid Infrastructure (GI) software version.
 	GiVersion *string `json:"giVersion,omitempty" tf:"gi_version,omitempty"`
@@ -339,14 +334,13 @@ type ExadbVmClusterObservation struct {
 	ScanIPIds []*string `json:"scanIpIds,omitempty" tf:"scan_ip_ids,omitempty"`
 
 	// The TCP Single Client Access Name (SCAN) port. The default port is 1521.
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// The Secured Communication (TCPS) protocol Single Client Access Name (SCAN) port. The default port is 2484.
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The shape of the Exadata VM cluster on Exascale Infrastructure resource
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -364,8 +358,7 @@ type ExadbVmClusterObservation struct {
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) Operating system version of the image.
 	SystemVersion *string `json:"systemVersion,omitempty" tf:"system_version,omitempty"`
@@ -431,8 +424,7 @@ type ExadbVmClusterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the Exadata VM cluster on Exascale Infrastructure. The name does not need to be unique.
 	// +kubebuilder:validation:Optional
@@ -458,8 +450,7 @@ type ExadbVmClusterParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Grid Setup will be done using this grid image id.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/compute/v1alpha1.Image
@@ -516,16 +507,15 @@ type ExadbVmClusterParameters struct {
 
 	// The TCP Single Client Access Name (SCAN) port. The default port is 1521.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// The Secured Communication (TCPS) protocol Single Client Access Name (SCAN) port. The default port is 2484.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The shape of the Exadata VM cluster on Exascale Infrastructure resource
 	// +kubebuilder:validation:Optional
@@ -565,49 +555,49 @@ type ExadbVmClusterParameters struct {
 type NodeConfigInitParameters struct {
 
 	// (Updatable) The number of ECPUs to enable for each node.
-	EnabledEcpuCountPerNode *float64 `json:"enabledEcpuCountPerNode,omitempty" tf:"enabled_ecpu_count_per_node,omitempty"`
+	EnabledEcpuCountPerNode *int64 `json:"enabledEcpuCountPerNode,omitempty" tf:"enabled_ecpu_count_per_node,omitempty"`
 
 	// (Updatable) The number of Total ECPUs for each node.
-	TotalEcpuCountPerNode *float64 `json:"totalEcpuCountPerNode,omitempty" tf:"total_ecpu_count_per_node,omitempty"`
+	TotalEcpuCountPerNode *int64 `json:"totalEcpuCountPerNode,omitempty" tf:"total_ecpu_count_per_node,omitempty"`
 
 	// (Updatable) The file system storage in GBs for each node.
-	VMFileSystemStorageSizeGbsPerNode *float64 `json:"vmFileSystemStorageSizeGbsPerNode,omitempty" tf:"vm_file_system_storage_size_gbs_per_node,omitempty"`
+	VMFileSystemStorageSizeGbsPerNode *int64 `json:"vmFileSystemStorageSizeGbsPerNode,omitempty" tf:"vm_file_system_storage_size_gbs_per_node,omitempty"`
 }
 
 type NodeConfigObservation struct {
 
 	// (Updatable) The number of ECPUs to enable for each node.
-	EnabledEcpuCountPerNode *float64 `json:"enabledEcpuCountPerNode,omitempty" tf:"enabled_ecpu_count_per_node,omitempty"`
+	EnabledEcpuCountPerNode *int64 `json:"enabledEcpuCountPerNode,omitempty" tf:"enabled_ecpu_count_per_node,omitempty"`
 
 	// The memory that you want to be allocated in GBs to each node. Memory is calculated based on 11 GB per VM core reserved.
-	MemorySizeInGbsPerNode *float64 `json:"memorySizeInGbsPerNode,omitempty" tf:"memory_size_in_gbs_per_node,omitempty"`
+	MemorySizeInGbsPerNode *int64 `json:"memorySizeInGbsPerNode,omitempty" tf:"memory_size_in_gbs_per_node,omitempty"`
 
 	// The file system storage in GBs for snapshot for each node.
-	SnapshotFileSystemStorageSizeGbsPerNode *float64 `json:"snapshotFileSystemStorageSizeGbsPerNode,omitempty" tf:"snapshot_file_system_storage_size_gbs_per_node,omitempty"`
+	SnapshotFileSystemStorageSizeGbsPerNode *int64 `json:"snapshotFileSystemStorageSizeGbsPerNode,omitempty" tf:"snapshot_file_system_storage_size_gbs_per_node,omitempty"`
 
 	// (Updatable) The number of Total ECPUs for each node.
-	TotalEcpuCountPerNode *float64 `json:"totalEcpuCountPerNode,omitempty" tf:"total_ecpu_count_per_node,omitempty"`
+	TotalEcpuCountPerNode *int64 `json:"totalEcpuCountPerNode,omitempty" tf:"total_ecpu_count_per_node,omitempty"`
 
 	// Total file system storage in GBs for each node.
-	TotalFileSystemStorageSizeGbsPerNode *float64 `json:"totalFileSystemStorageSizeGbsPerNode,omitempty" tf:"total_file_system_storage_size_gbs_per_node,omitempty"`
+	TotalFileSystemStorageSizeGbsPerNode *int64 `json:"totalFileSystemStorageSizeGbsPerNode,omitempty" tf:"total_file_system_storage_size_gbs_per_node,omitempty"`
 
 	// (Updatable) The file system storage in GBs for each node.
-	VMFileSystemStorageSizeGbsPerNode *float64 `json:"vmFileSystemStorageSizeGbsPerNode,omitempty" tf:"vm_file_system_storage_size_gbs_per_node,omitempty"`
+	VMFileSystemStorageSizeGbsPerNode *int64 `json:"vmFileSystemStorageSizeGbsPerNode,omitempty" tf:"vm_file_system_storage_size_gbs_per_node,omitempty"`
 }
 
 type NodeConfigParameters struct {
 
 	// (Updatable) The number of ECPUs to enable for each node.
 	// +kubebuilder:validation:Optional
-	EnabledEcpuCountPerNode *float64 `json:"enabledEcpuCountPerNode" tf:"enabled_ecpu_count_per_node,omitempty"`
+	EnabledEcpuCountPerNode *int64 `json:"enabledEcpuCountPerNode" tf:"enabled_ecpu_count_per_node,omitempty"`
 
 	// (Updatable) The number of Total ECPUs for each node.
 	// +kubebuilder:validation:Optional
-	TotalEcpuCountPerNode *float64 `json:"totalEcpuCountPerNode" tf:"total_ecpu_count_per_node,omitempty"`
+	TotalEcpuCountPerNode *int64 `json:"totalEcpuCountPerNode" tf:"total_ecpu_count_per_node,omitempty"`
 
 	// (Updatable) The file system storage in GBs for each node.
 	// +kubebuilder:validation:Optional
-	VMFileSystemStorageSizeGbsPerNode *float64 `json:"vmFileSystemStorageSizeGbsPerNode" tf:"vm_file_system_storage_size_gbs_per_node,omitempty"`
+	VMFileSystemStorageSizeGbsPerNode *int64 `json:"vmFileSystemStorageSizeGbsPerNode" tf:"vm_file_system_storage_size_gbs_per_node,omitempty"`
 }
 
 type NodeResourceInitParameters struct {

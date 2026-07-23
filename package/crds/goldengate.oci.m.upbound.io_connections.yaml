@@ -302,7 +302,8 @@ spec:
                         port:
                           description: (Applicable when connection_type=KAFKA) (Updatable)
                             The port of an endpoint usually specified for a connection.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   catalog:
@@ -1166,7 +1167,6 @@ spec:
                       key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deploymentId:
                     description: (Applicable when connection_type=GOLDENGATE) (Updatable)
                       The OCID of the deployment being referenced.
@@ -1282,7 +1282,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only.  Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   host:
                     description: (Updatable) The name or address of a host.
                     type: string
@@ -1838,7 +1837,8 @@ spec:
                   port:
                     description: (Applicable when connection_type=KAFKA) (Updatable)
                       The port of an endpoint usually specified for a connection.
-                    type: number
+                    format: int64
+                    type: integer
                   privateKeyFileSecretId:
                     description: '(Applicable when connection_type=OCI_OBJECT_STORAGE
                       | ORACLE_AI_DATA_PLATFORM | ORACLE_NOSQL | SNOWFLAKE) (Updatable)
@@ -2375,7 +2375,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   securityProtocol:
                     description: (Updatable) Security protocol for Java Message Service.
                       If not provided, default is PLAIN. Optional until 2024-06-27,
@@ -4539,7 +4538,8 @@ spec:
                         port:
                           description: (Applicable when connection_type=KAFKA) (Updatable)
                             The port of an endpoint usually specified for a connection.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   catalog:
@@ -5403,7 +5403,6 @@ spec:
                       key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deploymentId:
                     description: (Applicable when connection_type=GOLDENGATE) (Updatable)
                       The OCID of the deployment being referenced.
@@ -5519,7 +5518,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only.  Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   host:
                     description: (Updatable) The name or address of a host.
                     type: string
@@ -6075,7 +6073,8 @@ spec:
                   port:
                     description: (Applicable when connection_type=KAFKA) (Updatable)
                       The port of an endpoint usually specified for a connection.
-                    type: number
+                    format: int64
+                    type: integer
                   privateKeyFileSecretId:
                     description: '(Applicable when connection_type=OCI_OBJECT_STORAGE
                       | ORACLE_AI_DATA_PLATFORM | ORACLE_NOSQL | SNOWFLAKE) (Updatable)
@@ -6612,7 +6611,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   securityProtocol:
                     description: (Updatable) Security protocol for Java Message Service.
                       If not provided, default is PLAIN. Optional until 2024-06-27,
@@ -8664,7 +8662,8 @@ spec:
                         port:
                           description: (Applicable when connection_type=KAFKA) (Updatable)
                             The port of an endpoint usually specified for a connection.
-                          type: number
+                          format: int64
+                          type: integer
                         privateIp:
                           description: This property is not available when creating
                             connections. For existing deprecated connections having
@@ -8791,7 +8790,6 @@ spec:
                       key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deploymentId:
                     description: (Applicable when connection_type=GOLDENGATE) (Updatable)
                       The OCID of the deployment being referenced.
@@ -8825,7 +8823,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only.  Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   host:
                     description: (Updatable) The name or address of a host.
                     type: string
@@ -8942,7 +8939,8 @@ spec:
                   port:
                     description: (Applicable when connection_type=KAFKA) (Updatable)
                       The port of an endpoint usually specified for a connection.
-                    type: number
+                    format: int64
+                    type: integer
                   privateIp:
                     description: This property is not available when creating connections.
                       For existing deprecated connections having this value set, the
@@ -9015,7 +9013,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   securityProtocol:
                     description: (Updatable) Security protocol for Java Message Service.
                       If not provided, default is PLAIN. Optional until 2024-06-27,
@@ -9247,7 +9244,6 @@ spec:
                       more information, see Resource Tags.  Example: {orcl-cloud:
                       {free-tier-retain: true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   technologyType:
                     description: The Kafka (e.g. Confluent) Schema Registry technology
                       type.

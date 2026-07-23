@@ -171,7 +171,8 @@ spec:
                     type: string
                   sessionTtlInSeconds:
                     description: The amount of time the session can remain active.
-                    type: number
+                    format: int64
+                    type: integer
                   targetResourceDetails:
                     description: Details about a bastion session's target resource.
                     items:
@@ -273,7 +274,8 @@ spec:
                           description: (Applicable when session_type=MANAGED_SSH |
                             PORT_FORWARDING) The port number to connect to on the
                             target resource.
-                          type: number
+                          format: int64
+                          type: integer
                         targetResourcePrivateIpAddress:
                           description: (Applicable when session_type=MANAGED_SSH |
                             PORT_FORWARDING) The private IP address of the target
@@ -393,7 +395,8 @@ spec:
                     type: string
                   sessionTtlInSeconds:
                     description: The amount of time the session can remain active.
-                    type: number
+                    format: int64
+                    type: integer
                   targetResourceDetails:
                     description: Details about a bastion session's target resource.
                     items:
@@ -495,7 +498,8 @@ spec:
                           description: (Applicable when session_type=MANAGED_SSH |
                             PORT_FORWARDING) The port number to connect to on the
                             target resource.
-                          type: number
+                          format: int64
+                          type: integer
                         targetResourcePrivateIpAddress:
                           description: (Applicable when session_type=MANAGED_SSH |
                             PORT_FORWARDING) The private IP address of the target
@@ -649,13 +653,13 @@ spec:
                     type: string
                   sessionTtlInSeconds:
                     description: The amount of time the session can remain active.
-                    type: number
+                    format: int64
+                    type: integer
                   sshMetadata:
                     additionalProperties:
                       type: string
                     description: The connection message for the session.
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: The current state of the session.
                     type: string
@@ -688,7 +692,8 @@ spec:
                           description: (Applicable when session_type=MANAGED_SSH |
                             PORT_FORWARDING) The port number to connect to on the
                             target resource.
-                          type: number
+                          format: int64
+                          type: integer
                         targetResourcePrivateIpAddress:
                           description: (Applicable when session_type=MANAGED_SSH |
                             PORT_FORWARDING) The private IP address of the target

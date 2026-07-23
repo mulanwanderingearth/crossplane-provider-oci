@@ -923,7 +923,7 @@ func (in *ReplicasObservation) DeepCopyInto(out *ReplicasObservation) {
 	}
 	if in.MaxWriteUnits != nil {
 		in, out := &in.MaxWriteUnits, &out.MaxWriteUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Region != nil {
@@ -1024,7 +1024,7 @@ func (in *SchemaObservation) DeepCopyInto(out *SchemaObservation) {
 	}
 	if in.TTL != nil {
 		in, out := &in.TTL, &out.TTL
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1106,34 +1106,16 @@ func (in *TableInitParameters) DeepCopyInto(out *TableInitParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsAutoReclaimable != nil {
@@ -1175,17 +1157,17 @@ func (in *TableLimitsInitParameters) DeepCopyInto(out *TableLimitsInitParameters
 	}
 	if in.MaxReadUnits != nil {
 		in, out := &in.MaxReadUnits, &out.MaxReadUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxStorageInGbs != nil {
 		in, out := &in.MaxStorageInGbs, &out.MaxStorageInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxWriteUnits != nil {
 		in, out := &in.MaxWriteUnits, &out.MaxWriteUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1210,17 +1192,17 @@ func (in *TableLimitsObservation) DeepCopyInto(out *TableLimitsObservation) {
 	}
 	if in.MaxReadUnits != nil {
 		in, out := &in.MaxReadUnits, &out.MaxReadUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxStorageInGbs != nil {
 		in, out := &in.MaxStorageInGbs, &out.MaxStorageInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxWriteUnits != nil {
 		in, out := &in.MaxWriteUnits, &out.MaxWriteUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1245,17 +1227,17 @@ func (in *TableLimitsParameters) DeepCopyInto(out *TableLimitsParameters) {
 	}
 	if in.MaxReadUnits != nil {
 		in, out := &in.MaxReadUnits, &out.MaxReadUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxStorageInGbs != nil {
 		in, out := &in.MaxStorageInGbs, &out.MaxStorageInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxWriteUnits != nil {
 		in, out := &in.MaxWriteUnits, &out.MaxWriteUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1317,34 +1299,16 @@ func (in *TableObservation) DeepCopyInto(out *TableObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1369,7 +1333,7 @@ func (in *TableObservation) DeepCopyInto(out *TableObservation) {
 	}
 	if in.LocalReplicaInitializationInPercent != nil {
 		in, out := &in.LocalReplicaInitializationInPercent, &out.LocalReplicaInitializationInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -1403,18 +1367,9 @@ func (in *TableObservation) DeepCopyInto(out *TableObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TableLimits != nil {
@@ -1476,34 +1431,16 @@ func (in *TableParameters) DeepCopyInto(out *TableParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsAutoReclaimable != nil {
@@ -1582,12 +1519,12 @@ func (in *TableReplicaInitParameters) DeepCopyInto(out *TableReplicaInitParamete
 	}
 	if in.MaxReadUnits != nil {
 		in, out := &in.MaxReadUnits, &out.MaxReadUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxWriteUnits != nil {
 		in, out := &in.MaxWriteUnits, &out.MaxWriteUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Region != nil {
@@ -1669,12 +1606,12 @@ func (in *TableReplicaObservation) DeepCopyInto(out *TableReplicaObservation) {
 	}
 	if in.MaxReadUnits != nil {
 		in, out := &in.MaxReadUnits, &out.MaxReadUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxWriteUnits != nil {
 		in, out := &in.MaxWriteUnits, &out.MaxWriteUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Region != nil {
@@ -1719,12 +1656,12 @@ func (in *TableReplicaParameters) DeepCopyInto(out *TableReplicaParameters) {
 	}
 	if in.MaxReadUnits != nil {
 		in, out := &in.MaxReadUnits, &out.MaxReadUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxWriteUnits != nil {
 		in, out := &in.MaxWriteUnits, &out.MaxWriteUnits
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Region != nil {

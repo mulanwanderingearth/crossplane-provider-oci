@@ -23,7 +23,7 @@ type AnswerDataInitParameters struct {
 	ShouldKeep *bool `json:"shouldKeep,omitempty" tf:"should_keep,omitempty"`
 
 	// The rank assigned to the set of answers that match the expression in answerCondition. Answers with the lowest values move to the beginning of the list without changing the relative order of those with the same value. Answers can be given a value between 0 and 255.
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AnswerDataObservation struct {
@@ -35,7 +35,7 @@ type AnswerDataObservation struct {
 	ShouldKeep *bool `json:"shouldKeep,omitempty" tf:"should_keep,omitempty"`
 
 	// The rank assigned to the set of answers that match the expression in answerCondition. Answers with the lowest values move to the beginning of the list without changing the relative order of those with the same value. Answers can be given a value between 0 and 255.
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AnswerDataParameters struct {
@@ -50,7 +50,7 @@ type AnswerDataParameters struct {
 
 	// The rank assigned to the set of answers that match the expression in answerCondition. Answers with the lowest values move to the beginning of the list without changing the relative order of those with the same value. Answers can be given a value between 0 and 255.
 	// +kubebuilder:validation:Optional
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AnswersInitParameters struct {
@@ -121,7 +121,7 @@ type CasesInitParameters struct {
 	CaseCondition *string `json:"caseCondition,omitempty" tf:"case_condition,omitempty"`
 
 	// The number of answers allowed to remain after the limit rule has been processed, keeping only the first of the remaining answers in the list. Example: If the count property is set to 2 and four answers remain before the limit rule is processed, only the first two answers in the list will remain after the limit rule has been processed.
-	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+	Count *int64 `json:"count,omitempty" tf:"count,omitempty"`
 }
 
 type CasesObservation struct {
@@ -133,7 +133,7 @@ type CasesObservation struct {
 	CaseCondition *string `json:"caseCondition,omitempty" tf:"case_condition,omitempty"`
 
 	// The number of answers allowed to remain after the limit rule has been processed, keeping only the first of the remaining answers in the list. Example: If the count property is set to 2 and four answers remain before the limit rule is processed, only the first two answers in the list will remain after the limit rule has been processed.
-	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+	Count *int64 `json:"count,omitempty" tf:"count,omitempty"`
 }
 
 type CasesParameters struct {
@@ -148,7 +148,7 @@ type CasesParameters struct {
 
 	// The number of answers allowed to remain after the limit rule has been processed, keeping only the first of the remaining answers in the list. Example: If the count property is set to 2 and four answers remain before the limit rule is processed, only the first two answers in the list will remain after the limit rule has been processed.
 	// +kubebuilder:validation:Optional
-	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+	Count *int64 `json:"count,omitempty" tf:"count,omitempty"`
 }
 
 type DefaultAnswerDataInitParameters struct {
@@ -160,7 +160,7 @@ type DefaultAnswerDataInitParameters struct {
 	ShouldKeep *bool `json:"shouldKeep,omitempty" tf:"should_keep,omitempty"`
 
 	// The rank assigned to the set of answers that match the expression in answerCondition. Answers with the lowest values move to the beginning of the list without changing the relative order of those with the same value. Answers can be given a value between 0 and 255.
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DefaultAnswerDataObservation struct {
@@ -172,7 +172,7 @@ type DefaultAnswerDataObservation struct {
 	ShouldKeep *bool `json:"shouldKeep,omitempty" tf:"should_keep,omitempty"`
 
 	// The rank assigned to the set of answers that match the expression in answerCondition. Answers with the lowest values move to the beginning of the list without changing the relative order of those with the same value. Answers can be given a value between 0 and 255.
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DefaultAnswerDataParameters struct {
@@ -187,7 +187,7 @@ type DefaultAnswerDataParameters struct {
 
 	// The rank assigned to the set of answers that match the expression in answerCondition. Answers with the lowest values move to the beginning of the list without changing the relative order of those with the same value. Answers can be given a value between 0 and 255.
 	// +kubebuilder:validation:Optional
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SteeringPolicyInitParameters struct {
@@ -208,15 +208,13 @@ type SteeringPolicyInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name for the steering policy. Does not have to be unique and can be changed. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the health check monitor providing health data about the answers of the steering policy. A steering policy answer with rdata matching a monitored endpoint will use the health data of that endpoint. A steering policy answer with rdata not matching any monitored endpoint will be assumed healthy.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/healthchecks/v1alpha1.HTTPMonitor
@@ -235,7 +233,7 @@ type SteeringPolicyInitParameters struct {
 	Rules []SteeringPolicyRulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
 
 	// (Updatable) The Time To Live (TTL) for responses from the steering policy, in seconds. If not specified during creation, a value of 30 seconds will be used.
-	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
 	// (Updatable) A set of predefined rules based on the desired purpose of the steering policy. Each template utilizes Traffic Management's rules in a different order to produce the desired results when answering DNS queries.
 	Template *string `json:"template,omitempty" tf:"template,omitempty"`
@@ -250,15 +248,13 @@ type SteeringPolicyObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name for the steering policy. Does not have to be unique and can be changed. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the health check monitor providing health data about the answers of the steering policy. A steering policy answer with rdata matching a monitored endpoint will use the health data of that endpoint. A steering policy answer with rdata not matching any monitored endpoint will be assumed healthy.
 	HealthCheckMonitorID *string `json:"healthCheckMonitorId,omitempty" tf:"health_check_monitor_id,omitempty"`
@@ -276,7 +272,7 @@ type SteeringPolicyObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) The Time To Live (TTL) for responses from the steering policy, in seconds. If not specified during creation, a value of 30 seconds will be used.
-	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
 	// (Updatable) A set of predefined rules based on the desired purpose of the steering policy. Each template utilizes Traffic Management's rules in a different order to produce the desired results when answering DNS queries.
 	Template *string `json:"template,omitempty" tf:"template,omitempty"`
@@ -306,8 +302,7 @@ type SteeringPolicyParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name for the steering policy. Does not have to be unique and can be changed. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -315,8 +310,7 @@ type SteeringPolicyParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the health check monitor providing health data about the answers of the steering policy. A steering policy answer with rdata matching a monitored endpoint will use the health data of that endpoint. A steering policy answer with rdata not matching any monitored endpoint will be assumed healthy.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/healthchecks/v1alpha1.HTTPMonitor
@@ -338,7 +332,7 @@ type SteeringPolicyParameters struct {
 
 	// (Updatable) The Time To Live (TTL) for responses from the steering policy, in seconds. If not specified during creation, a value of 30 seconds will be used.
 	// +kubebuilder:validation:Optional
-	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
 	// (Updatable) A set of predefined rules based on the desired purpose of the steering policy. Each template utilizes Traffic Management's rules in a different order to produce the desired results when answering DNS queries.
 	// +kubebuilder:validation:Optional
@@ -354,7 +348,7 @@ type SteeringPolicyRulesInitParameters struct {
 	DefaultAnswerData []DefaultAnswerDataInitParameters `json:"defaultAnswerData,omitempty" tf:"default_answer_data,omitempty"`
 
 	// (Applicable when rule_type=LIMIT) Defines a default count if cases is not defined for the rule or a matching case does not define count. defaultCount is not applied if cases is defined and there are no matching cases. In this scenario, the next rule will be processed. If no rules remain to be processed, the answer will be chosen from the remaining list of answers.
-	DefaultCount *float64 `json:"defaultCount,omitempty" tf:"default_count,omitempty"`
+	DefaultCount *int64 `json:"defaultCount,omitempty" tf:"default_count,omitempty"`
 
 	// A user-defined description of the rule's purpose or behavior.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -372,7 +366,7 @@ type SteeringPolicyRulesObservation struct {
 	DefaultAnswerData []DefaultAnswerDataObservation `json:"defaultAnswerData,omitempty" tf:"default_answer_data,omitempty"`
 
 	// (Applicable when rule_type=LIMIT) Defines a default count if cases is not defined for the rule or a matching case does not define count. defaultCount is not applied if cases is defined and there are no matching cases. In this scenario, the next rule will be processed. If no rules remain to be processed, the answer will be chosen from the remaining list of answers.
-	DefaultCount *float64 `json:"defaultCount,omitempty" tf:"default_count,omitempty"`
+	DefaultCount *int64 `json:"defaultCount,omitempty" tf:"default_count,omitempty"`
 
 	// A user-defined description of the rule's purpose or behavior.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -393,7 +387,7 @@ type SteeringPolicyRulesParameters struct {
 
 	// (Applicable when rule_type=LIMIT) Defines a default count if cases is not defined for the rule or a matching case does not define count. defaultCount is not applied if cases is defined and there are no matching cases. In this scenario, the next rule will be processed. If no rules remain to be processed, the answer will be chosen from the remaining list of answers.
 	// +kubebuilder:validation:Optional
-	DefaultCount *float64 `json:"defaultCount,omitempty" tf:"default_count,omitempty"`
+	DefaultCount *int64 `json:"defaultCount,omitempty" tf:"default_count,omitempty"`
 
 	// A user-defined description of the rule's purpose or behavior.
 	// +kubebuilder:validation:Optional

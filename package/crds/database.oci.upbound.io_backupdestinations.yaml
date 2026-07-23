@@ -164,7 +164,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-provided name of the backup destination.
                     type: string
@@ -176,7 +175,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   localMountPointPath:
                     description: (Applicable when type=NFS) (Updatable) Deprecated.
                       The local directory path on each VM cluster node where the NFS
@@ -329,7 +327,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-provided name of the backup destination.
                     type: string
@@ -341,7 +338,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   localMountPointPath:
                     description: (Applicable when type=NFS) (Updatable) Deprecated.
                       The local directory path on each VM cluster node where the NFS
@@ -509,7 +505,8 @@ spec:
                   associatedLongTermBackupCount:
                     description: Indicates the number of long term backups of Autonomous
                       Databases associated with this backup destination.
-                    type: number
+                    format: int64
+                    type: integer
                   associatedLongTermBackups:
                     description: List of long term backups of Autonomous Databases
                       associated with this backup destination.The maximum associated
@@ -538,7 +535,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-provided name of the backup destination.
                     type: string
@@ -550,7 +546,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The database OCID.
                     type: string
@@ -619,7 +614,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeAtWhichStorageDetailsAreUpdated:
                     description: The time when the total storage size and the utilized
                       storage size of the backup destination are updated.
@@ -630,14 +624,16 @@ spec:
                   totalStorageSizeInGbs:
                     description: The total storage size of the backup destination
                       in GBs, rounded to the nearest integer.
-                    type: number
+                    format: int64
+                    type: integer
                   type:
                     description: Type of the backup destination.
                     type: string
                   utilizedStorageSizeInGbs:
                     description: The total amount of space utilized on the backup
                       destination (in GBs), rounded to the nearest integer.
-                    type: number
+                    format: int64
+                    type: integer
                   vpcUsers:
                     description: (Updatable) The Virtual Private Catalog (VPC) users
                       that are used to access the Recovery Appliance.

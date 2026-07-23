@@ -36,7 +36,7 @@ type AdvancedUsageTrackingParameters struct {
 type CertpathInitParameters struct {
 
 	// (Updatable) Key size for the encryption algorithm. Allowed values: 256 for EC, 2048 for DH/DSA/RSA
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 
 	// (Updatable) The algorithm name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -45,7 +45,7 @@ type CertpathInitParameters struct {
 type CertpathObservation struct {
 
 	// (Updatable) Key size for the encryption algorithm. Allowed values: 256 for EC, 2048 for DH/DSA/RSA
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 
 	// (Updatable) The algorithm name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -55,7 +55,7 @@ type CertpathParameters struct {
 
 	// (Updatable) Key size for the encryption algorithm. Allowed values: 256 for EC, 2048 for DH/DSA/RSA
 	// +kubebuilder:validation:Optional
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 
 	// (Updatable) The algorithm name.
 	// +kubebuilder:validation:Optional
@@ -238,7 +238,7 @@ type FleetAdvancedFeatureConfigurationParameters struct {
 type JarInitParameters struct {
 
 	// (Updatable) Key size for the encryption algorithm. Allowed values: 256 for EC, 2048 for DH/DSA/RSA
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 
 	// (Updatable) The algorithm name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -247,7 +247,7 @@ type JarInitParameters struct {
 type JarObservation struct {
 
 	// (Updatable) Key size for the encryption algorithm. Allowed values: 256 for EC, 2048 for DH/DSA/RSA
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 
 	// (Updatable) The algorithm name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -257,7 +257,7 @@ type JarParameters struct {
 
 	// (Updatable) Key size for the encryption algorithm. Allowed values: 256 for EC, 2048 for DH/DSA/RSA
 	// +kubebuilder:validation:Optional
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 
 	// (Updatable) The algorithm name.
 	// +kubebuilder:validation:Optional
@@ -464,25 +464,25 @@ type ProxiesInitParameters struct {
 	FtpProxyHost *string `json:"ftpProxyHost,omitempty" tf:"ftp_proxy_host,omitempty"`
 
 	// (Updatable) Ftp port number to be set in net.properties file.
-	FtpProxyPort *float64 `json:"ftpProxyPort,omitempty" tf:"ftp_proxy_port,omitempty"`
+	FtpProxyPort *int64 `json:"ftpProxyPort,omitempty" tf:"ftp_proxy_port,omitempty"`
 
 	// (Updatable) Http host to be set in net.properties file.
 	HTTPProxyHost *string `json:"httpProxyHost,omitempty" tf:"http_proxy_host,omitempty"`
 
 	// (Updatable) Http port number to be set in net.properties file.
-	HTTPProxyPort *float64 `json:"httpProxyPort,omitempty" tf:"http_proxy_port,omitempty"`
+	HTTPProxyPort *int64 `json:"httpProxyPort,omitempty" tf:"http_proxy_port,omitempty"`
 
 	// (Updatable) Https host to be set in net.properties file.
 	HTTPSProxyHost *string `json:"httpsProxyHost,omitempty" tf:"https_proxy_host,omitempty"`
 
 	// (Updatable) Https port number to be set in net.properties file.
-	HTTPSProxyPort *float64 `json:"httpsProxyPort,omitempty" tf:"https_proxy_port,omitempty"`
+	HTTPSProxyPort *int64 `json:"httpsProxyPort,omitempty" tf:"https_proxy_port,omitempty"`
 
 	// (Updatable) Socks host to be set in net.properties file.
 	SocksProxyHost *string `json:"socksProxyHost,omitempty" tf:"socks_proxy_host,omitempty"`
 
 	// (Updatable) Socks port number to be set in net.properties file.
-	SocksProxyPort *float64 `json:"socksProxyPort,omitempty" tf:"socks_proxy_port,omitempty"`
+	SocksProxyPort *int64 `json:"socksProxyPort,omitempty" tf:"socks_proxy_port,omitempty"`
 
 	// (Updatable) Sets "java.net.useSystemProxies=true" in net.properties when they exist.
 	UseSystemProxies *bool `json:"useSystemProxies,omitempty" tf:"use_system_proxies,omitempty"`
@@ -494,25 +494,25 @@ type ProxiesObservation struct {
 	FtpProxyHost *string `json:"ftpProxyHost,omitempty" tf:"ftp_proxy_host,omitempty"`
 
 	// (Updatable) Ftp port number to be set in net.properties file.
-	FtpProxyPort *float64 `json:"ftpProxyPort,omitempty" tf:"ftp_proxy_port,omitempty"`
+	FtpProxyPort *int64 `json:"ftpProxyPort,omitempty" tf:"ftp_proxy_port,omitempty"`
 
 	// (Updatable) Http host to be set in net.properties file.
 	HTTPProxyHost *string `json:"httpProxyHost,omitempty" tf:"http_proxy_host,omitempty"`
 
 	// (Updatable) Http port number to be set in net.properties file.
-	HTTPProxyPort *float64 `json:"httpProxyPort,omitempty" tf:"http_proxy_port,omitempty"`
+	HTTPProxyPort *int64 `json:"httpProxyPort,omitempty" tf:"http_proxy_port,omitempty"`
 
 	// (Updatable) Https host to be set in net.properties file.
 	HTTPSProxyHost *string `json:"httpsProxyHost,omitempty" tf:"https_proxy_host,omitempty"`
 
 	// (Updatable) Https port number to be set in net.properties file.
-	HTTPSProxyPort *float64 `json:"httpsProxyPort,omitempty" tf:"https_proxy_port,omitempty"`
+	HTTPSProxyPort *int64 `json:"httpsProxyPort,omitempty" tf:"https_proxy_port,omitempty"`
 
 	// (Updatable) Socks host to be set in net.properties file.
 	SocksProxyHost *string `json:"socksProxyHost,omitempty" tf:"socks_proxy_host,omitempty"`
 
 	// (Updatable) Socks port number to be set in net.properties file.
-	SocksProxyPort *float64 `json:"socksProxyPort,omitempty" tf:"socks_proxy_port,omitempty"`
+	SocksProxyPort *int64 `json:"socksProxyPort,omitempty" tf:"socks_proxy_port,omitempty"`
 
 	// (Updatable) Sets "java.net.useSystemProxies=true" in net.properties when they exist.
 	UseSystemProxies *bool `json:"useSystemProxies,omitempty" tf:"use_system_proxies,omitempty"`
@@ -526,7 +526,7 @@ type ProxiesParameters struct {
 
 	// (Updatable) Ftp port number to be set in net.properties file.
 	// +kubebuilder:validation:Optional
-	FtpProxyPort *float64 `json:"ftpProxyPort,omitempty" tf:"ftp_proxy_port,omitempty"`
+	FtpProxyPort *int64 `json:"ftpProxyPort,omitempty" tf:"ftp_proxy_port,omitempty"`
 
 	// (Updatable) Http host to be set in net.properties file.
 	// +kubebuilder:validation:Optional
@@ -534,7 +534,7 @@ type ProxiesParameters struct {
 
 	// (Updatable) Http port number to be set in net.properties file.
 	// +kubebuilder:validation:Optional
-	HTTPProxyPort *float64 `json:"httpProxyPort,omitempty" tf:"http_proxy_port,omitempty"`
+	HTTPProxyPort *int64 `json:"httpProxyPort,omitempty" tf:"http_proxy_port,omitempty"`
 
 	// (Updatable) Https host to be set in net.properties file.
 	// +kubebuilder:validation:Optional
@@ -542,7 +542,7 @@ type ProxiesParameters struct {
 
 	// (Updatable) Https port number to be set in net.properties file.
 	// +kubebuilder:validation:Optional
-	HTTPSProxyPort *float64 `json:"httpsProxyPort,omitempty" tf:"https_proxy_port,omitempty"`
+	HTTPSProxyPort *int64 `json:"httpsProxyPort,omitempty" tf:"https_proxy_port,omitempty"`
 
 	// (Updatable) Socks host to be set in net.properties file.
 	// +kubebuilder:validation:Optional
@@ -550,7 +550,7 @@ type ProxiesParameters struct {
 
 	// (Updatable) Socks port number to be set in net.properties file.
 	// +kubebuilder:validation:Optional
-	SocksProxyPort *float64 `json:"socksProxyPort,omitempty" tf:"socks_proxy_port,omitempty"`
+	SocksProxyPort *int64 `json:"socksProxyPort,omitempty" tf:"socks_proxy_port,omitempty"`
 
 	// (Updatable) Sets "java.net.useSystemProxies=true" in net.properties when they exist.
 	// +kubebuilder:validation:Optional
@@ -629,7 +629,7 @@ type SummarizedEventsLogParameters struct {
 type TLSInitParameters struct {
 
 	// (Updatable) Key size for the encryption algorithm. Allowed values: 256 for EC, 2048 for DH/DSA/RSA
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 
 	// (Updatable) The algorithm name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -638,7 +638,7 @@ type TLSInitParameters struct {
 type TLSObservation struct {
 
 	// (Updatable) Key size for the encryption algorithm. Allowed values: 256 for EC, 2048 for DH/DSA/RSA
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 
 	// (Updatable) The algorithm name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -648,7 +648,7 @@ type TLSParameters struct {
 
 	// (Updatable) Key size for the encryption algorithm. Allowed values: 256 for EC, 2048 for DH/DSA/RSA
 	// +kubebuilder:validation:Optional
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 
 	// (Updatable) The algorithm name.
 	// +kubebuilder:validation:Optional

@@ -83,7 +83,8 @@ spec:
                         numberOfApprovalsRequired:
                           description: (Updatable) A minimum number of approvals required
                             for stage to proceed.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   areHooksEnabled:
@@ -548,7 +549,6 @@ spec:
                       (Updatable) User provided key and value pair configuration,
                       which is assigned through constants or parameter.
                     type: object
-                    x-kubernetes-map-type: granular
                   containerConfig:
                     description: (Updatable) Specifies the container configuration.
                     items:
@@ -689,7 +689,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deployArtifactId:
                     description: (Applicable when deploy_stage_type=INVOKE_FUNCTION)
                       (Updatable) Optional artifact OCID. The artifact will be included
@@ -1070,14 +1069,16 @@ spec:
                           description: (Updatable) The threshold count of failed instances
                             in the group, which when reached or exceeded sets the
                             stage as FAILED.
-                          type: number
+                          format: int64
+                          type: integer
                         failurePercentage:
                           description: (Updatable) The failure percentage threshold,
                             which when reached or exceeded sets the stage as FAILED.
                             Percentage is computed as the ceiling value of the number
                             of failed instances over the total count of the instances
                             in the group.
-                          type: number
+                          format: int64
+                          type: integer
                         policyType:
                           description: (Updatable) Specifies if the failure instance
                             size is given by absolute number or by percentage.
@@ -1091,7 +1092,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   functionDeployEnvironmentId:
                     description: (Updatable) Function environment OCID.
                     type: string
@@ -1175,7 +1175,8 @@ spec:
                     description: (Applicable when deploy_stage_type=DEPLOY_FUNCTION)
                       (Updatable) Timeout for execution of the Function. Value in
                       seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   greenBackendIps:
                     description: (Updatable) Collection of backend environment IP
                       addresses.
@@ -1315,7 +1316,8 @@ spec:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT
                             | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port
                             for the backend server.
-                          type: number
+                          format: int64
+                          type: integer
                         listenerName:
                           description: (Updatable) Name of the load balancer listener.
                           type: string
@@ -1480,7 +1482,8 @@ spec:
                     description: (Applicable when deploy_stage_type=OKE_HELM_CHART_DEPLOYMENT)
                       (Updatable) Limit the maximum number of revisions saved per
                       release. Use 0 for no limit. Set to 10 by default
-                    type: number
+                    format: int64
+                    type: integer
                   maxMemoryInMbs:
                     description: (Applicable when deploy_stage_type=DEPLOY_FUNCTION)
                       (Updatable) Maximum usable memory for the Function (in MB).
@@ -1820,7 +1823,8 @@ spec:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT
                             | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port
                             for the backend server.
-                          type: number
+                          format: int64
+                          type: integer
                         listenerName:
                           description: (Updatable) Name of the load balancer listener.
                           type: string
@@ -2010,18 +2014,21 @@ spec:
                         batchCount:
                           description: (Updatable) The number that will be used to
                             determine how many instances will be deployed concurrently.
-                          type: number
+                          format: int64
+                          type: integer
                         batchDelayInSeconds:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_BLUE_GREEN_DEPLOYMENT
                             | COMPUTE_INSTANCE_GROUP_CANARY_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_TRAFFIC_SHIFT
                             | COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT
                             | OKE_CANARY_TRAFFIC_SHIFT) (Updatable) The duration of
                             delay between batch rollout. The default delay is 1 minute.
-                          type: number
+                          format: int64
+                          type: integer
                         batchPercentage:
                           description: (Updatable) The percentage that will be used
                             to determine how many instances will be deployed concurrently.
-                          type: number
+                          format: int64
+                          type: integer
                         policyType:
                           description: (Updatable) Specifies if the failure instance
                             size is given by absolute number or by percentage.
@@ -2120,7 +2127,8 @@ spec:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT
                             | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port
                             for the backend server.
-                          type: number
+                          format: int64
+                          type: integer
                         listenerName:
                           description: (Updatable) Name of the load balancer listener.
                           type: string
@@ -2286,7 +2294,8 @@ spec:
                       (Updatable) Time to wait for execution of a Shell/Helm stage.
                       Defaults to 36000 seconds for Shell and 300 seconds for Helm
                       Stage
-                    type: number
+                    format: int64
+                    type: integer
                   trafficShiftTarget:
                     description: (Updatable) Specifies the target or destination backend
                       set.
@@ -2337,7 +2346,8 @@ spec:
                         numberOfApprovalsRequired:
                           description: (Updatable) A minimum number of approvals required
                             for stage to proceed.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   areHooksEnabled:
@@ -2802,7 +2812,6 @@ spec:
                       (Updatable) User provided key and value pair configuration,
                       which is assigned through constants or parameter.
                     type: object
-                    x-kubernetes-map-type: granular
                   containerConfig:
                     description: (Updatable) Specifies the container configuration.
                     items:
@@ -2943,7 +2952,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deployArtifactId:
                     description: (Applicable when deploy_stage_type=INVOKE_FUNCTION)
                       (Updatable) Optional artifact OCID. The artifact will be included
@@ -3324,14 +3332,16 @@ spec:
                           description: (Updatable) The threshold count of failed instances
                             in the group, which when reached or exceeded sets the
                             stage as FAILED.
-                          type: number
+                          format: int64
+                          type: integer
                         failurePercentage:
                           description: (Updatable) The failure percentage threshold,
                             which when reached or exceeded sets the stage as FAILED.
                             Percentage is computed as the ceiling value of the number
                             of failed instances over the total count of the instances
                             in the group.
-                          type: number
+                          format: int64
+                          type: integer
                         policyType:
                           description: (Updatable) Specifies if the failure instance
                             size is given by absolute number or by percentage.
@@ -3345,7 +3355,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   functionDeployEnvironmentId:
                     description: (Updatable) Function environment OCID.
                     type: string
@@ -3429,7 +3438,8 @@ spec:
                     description: (Applicable when deploy_stage_type=DEPLOY_FUNCTION)
                       (Updatable) Timeout for execution of the Function. Value in
                       seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   greenBackendIps:
                     description: (Updatable) Collection of backend environment IP
                       addresses.
@@ -3569,7 +3579,8 @@ spec:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT
                             | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port
                             for the backend server.
-                          type: number
+                          format: int64
+                          type: integer
                         listenerName:
                           description: (Updatable) Name of the load balancer listener.
                           type: string
@@ -3734,7 +3745,8 @@ spec:
                     description: (Applicable when deploy_stage_type=OKE_HELM_CHART_DEPLOYMENT)
                       (Updatable) Limit the maximum number of revisions saved per
                       release. Use 0 for no limit. Set to 10 by default
-                    type: number
+                    format: int64
+                    type: integer
                   maxMemoryInMbs:
                     description: (Applicable when deploy_stage_type=DEPLOY_FUNCTION)
                       (Updatable) Maximum usable memory for the Function (in MB).
@@ -4074,7 +4086,8 @@ spec:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT
                             | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port
                             for the backend server.
-                          type: number
+                          format: int64
+                          type: integer
                         listenerName:
                           description: (Updatable) Name of the load balancer listener.
                           type: string
@@ -4264,18 +4277,21 @@ spec:
                         batchCount:
                           description: (Updatable) The number that will be used to
                             determine how many instances will be deployed concurrently.
-                          type: number
+                          format: int64
+                          type: integer
                         batchDelayInSeconds:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_BLUE_GREEN_DEPLOYMENT
                             | COMPUTE_INSTANCE_GROUP_CANARY_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_TRAFFIC_SHIFT
                             | COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT
                             | OKE_CANARY_TRAFFIC_SHIFT) (Updatable) The duration of
                             delay between batch rollout. The default delay is 1 minute.
-                          type: number
+                          format: int64
+                          type: integer
                         batchPercentage:
                           description: (Updatable) The percentage that will be used
                             to determine how many instances will be deployed concurrently.
-                          type: number
+                          format: int64
+                          type: integer
                         policyType:
                           description: (Updatable) Specifies if the failure instance
                             size is given by absolute number or by percentage.
@@ -4374,7 +4390,8 @@ spec:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT
                             | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port
                             for the backend server.
-                          type: number
+                          format: int64
+                          type: integer
                         listenerName:
                           description: (Updatable) Name of the load balancer listener.
                           type: string
@@ -4540,7 +4557,8 @@ spec:
                       (Updatable) Time to wait for execution of a Shell/Helm stage.
                       Defaults to 36000 seconds for Shell and 300 seconds for Helm
                       Stage
-                    type: number
+                    format: int64
+                    type: integer
                   trafficShiftTarget:
                     description: (Updatable) Specifies the target or destination backend
                       set.
@@ -4681,7 +4699,8 @@ spec:
                         numberOfApprovalsRequired:
                           description: (Updatable) A minimum number of approvals required
                             for stage to proceed.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   areHooksEnabled:
@@ -4770,7 +4789,6 @@ spec:
                       (Updatable) User provided key and value pair configuration,
                       which is assigned through constants or parameter.
                     type: object
-                    x-kubernetes-map-type: granular
                   containerConfig:
                     description: (Updatable) Specifies the container configuration.
                     items:
@@ -4835,7 +4853,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deployArtifactId:
                     description: (Applicable when deploy_stage_type=INVOKE_FUNCTION)
                       (Updatable) Optional artifact OCID. The artifact will be included
@@ -4912,14 +4929,16 @@ spec:
                           description: (Updatable) The threshold count of failed instances
                             in the group, which when reached or exceeded sets the
                             stage as FAILED.
-                          type: number
+                          format: int64
+                          type: integer
                         failurePercentage:
                           description: (Updatable) The failure percentage threshold,
                             which when reached or exceeded sets the stage as FAILED.
                             Percentage is computed as the ceiling value of the number
                             of failed instances over the total count of the instances
                             in the group.
-                          type: number
+                          format: int64
+                          type: integer
                         policyType:
                           description: (Updatable) Specifies if the failure instance
                             size is given by absolute number or by percentage.
@@ -4933,7 +4952,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   functionDeployEnvironmentId:
                     description: (Updatable) Function environment OCID.
                     type: string
@@ -4941,7 +4959,8 @@ spec:
                     description: (Applicable when deploy_stage_type=DEPLOY_FUNCTION)
                       (Updatable) Timeout for execution of the Function. Value in
                       seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   greenBackendIps:
                     description: (Updatable) Collection of backend environment IP
                       addresses.
@@ -5015,7 +5034,8 @@ spec:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT
                             | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port
                             for the backend server.
-                          type: number
+                          format: int64
+                          type: integer
                         listenerName:
                           description: (Updatable) Name of the load balancer listener.
                           type: string
@@ -5031,7 +5051,8 @@ spec:
                     description: (Applicable when deploy_stage_type=OKE_HELM_CHART_DEPLOYMENT)
                       (Updatable) Limit the maximum number of revisions saved per
                       release. Use 0 for no limit. Set to 10 by default
-                    type: number
+                    format: int64
+                    type: integer
                   maxMemoryInMbs:
                     description: (Applicable when deploy_stage_type=DEPLOY_FUNCTION)
                       (Updatable) Maximum usable memory for the Function (in MB).
@@ -5067,7 +5088,8 @@ spec:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT
                             | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port
                             for the backend server.
-                          type: number
+                          format: int64
+                          type: integer
                         listenerName:
                           description: (Updatable) Name of the load balancer listener.
                           type: string
@@ -5111,18 +5133,21 @@ spec:
                         batchCount:
                           description: (Updatable) The number that will be used to
                             determine how many instances will be deployed concurrently.
-                          type: number
+                          format: int64
+                          type: integer
                         batchDelayInSeconds:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_BLUE_GREEN_DEPLOYMENT
                             | COMPUTE_INSTANCE_GROUP_CANARY_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_TRAFFIC_SHIFT
                             | COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT
                             | OKE_CANARY_TRAFFIC_SHIFT) (Updatable) The duration of
                             delay between batch rollout. The default delay is 1 minute.
-                          type: number
+                          format: int64
+                          type: integer
                         batchPercentage:
                           description: (Updatable) The percentage that will be used
                             to determine how many instances will be deployed concurrently.
-                          type: number
+                          format: int64
+                          type: integer
                         policyType:
                           description: (Updatable) Specifies if the failure instance
                             size is given by absolute number or by percentage.
@@ -5219,7 +5244,6 @@ spec:
                       are scoped to namespaces. See Resource Tags. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   testLoadBalancerConfig:
                     description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_BLUE_GREEN_DEPLOYMENT
                       | COMPUTE_INSTANCE_GROUP_CANARY_DEPLOYMENT) (Updatable) Specifies
@@ -5232,7 +5256,8 @@ spec:
                           description: (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT
                             | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port
                             for the backend server.
-                          type: number
+                          format: int64
+                          type: integer
                         listenerName:
                           description: (Updatable) Name of the load balancer listener.
                           type: string
@@ -5257,7 +5282,8 @@ spec:
                       (Updatable) Time to wait for execution of a Shell/Helm stage.
                       Defaults to 36000 seconds for Shell and 300 seconds for Helm
                       Stage
-                    type: number
+                    format: int64
+                    type: integer
                   trafficShiftTarget:
                     description: (Updatable) Specifies the target or destination backend
                       set.

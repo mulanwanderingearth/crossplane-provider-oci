@@ -166,7 +166,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Data catalog identifier.
                     type: string
@@ -177,7 +176,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -285,7 +283,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Data catalog identifier.
                     type: string
@@ -296,7 +293,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -408,7 +404,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Data catalog identifier.
                     type: string
@@ -419,7 +414,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Unique identifier that is immutable on creation.
                     type: string
@@ -454,7 +448,8 @@ spec:
                     description: The number of data objects added to the data catalog.
                       Please see the data catalog documentation for further information
                       on how this is calculated.
-                    type: number
+                    format: int64
+                    type: integer
                   serviceApiUrl:
                     description: The REST front endpoint URL to the data catalog instance.
                     type: string
@@ -473,7 +468,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the lock was created.
                     type: string

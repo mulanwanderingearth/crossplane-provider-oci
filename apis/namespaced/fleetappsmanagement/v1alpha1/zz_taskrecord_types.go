@@ -333,30 +333,30 @@ type DetailsExecutionDetailsVariablesParameters struct {
 type DetailsPropertiesInitParameters struct {
 
 	// (Updatable) The number of retries allowed.
-	NumRetries *float64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
+	NumRetries *int64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
 
 	// (Updatable) The timeout in seconds for the task.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type DetailsPropertiesObservation struct {
 
 	// (Updatable) The number of retries allowed.
-	NumRetries *float64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
+	NumRetries *int64 `json:"numRetries,omitempty" tf:"num_retries,omitempty"`
 
 	// (Updatable) The timeout in seconds for the task.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type DetailsPropertiesParameters struct {
 
 	// (Updatable) The number of retries allowed.
 	// +kubebuilder:validation:Optional
-	NumRetries *float64 `json:"numRetries" tf:"num_retries,omitempty"`
+	NumRetries *int64 `json:"numRetries" tf:"num_retries,omitempty"`
 
 	// (Updatable) The timeout in seconds for the task.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds" tf:"timeout_in_seconds,omitempty"`
 }
 
 type ExecutionDetailsVariablesInputVariablesInitParameters struct {
@@ -502,8 +502,7 @@ type TaskRecordInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. To provide some insight about the resource. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -515,8 +514,7 @@ type TaskRecordInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type TaskRecordObservation struct {
@@ -525,8 +523,7 @@ type TaskRecordObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. To provide some insight about the resource. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -538,8 +535,7 @@ type TaskRecordObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -554,8 +550,7 @@ type TaskRecordObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time this resource was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -587,8 +582,7 @@ type TaskRecordParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. To provide some insight about the resource. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -604,8 +598,7 @@ type TaskRecordParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 // TaskRecordSpec defines the desired state of TaskRecord

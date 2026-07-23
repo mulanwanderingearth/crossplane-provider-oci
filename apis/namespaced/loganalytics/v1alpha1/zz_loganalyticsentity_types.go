@@ -71,15 +71,13 @@ type LogAnalyticsEntityInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Log analytics entity type name.
 	EntityTypeName *string `json:"entityTypeName,omitempty" tf:"entity_type_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hostname where the entity represented here is actually present. This would be the output one would get if they run echo $HOSTNAME on Linux or an equivalent OS command. This may be different from management agents host since logs may be collected remotely.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -107,8 +105,7 @@ type LogAnalyticsEntityInitParameters struct {
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// (Updatable) The name/value pairs for parameter values to be used in file patterns specified in log sources.
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// This indicates the type of source. It is primarily for Enterprise Manager Repository ID.
 	SourceID *string `json:"sourceId,omitempty" tf:"source_id,omitempty"`
@@ -126,7 +123,7 @@ type LogAnalyticsEntityObservation struct {
 	AreLogsCollected *bool `json:"areLogsCollected,omitempty" tf:"are_logs_collected,omitempty"`
 
 	// The count of associated log sources for a given log analytics entity.
-	AssociatedSourcesCount *float64 `json:"associatedSourcesCount,omitempty" tf:"associated_sources_count,omitempty"`
+	AssociatedSourcesCount *int64 `json:"associatedSourcesCount,omitempty" tf:"associated_sources_count,omitempty"`
 
 	// (Updatable) The OCID of the Cloud resource which this entity is a representation of. This may be blank when the entity represents a non-cloud resource that the customer may have on their premises.
 	CloudResourceID *string `json:"cloudResourceId,omitempty" tf:"cloud_resource_id,omitempty"`
@@ -135,8 +132,7 @@ type LogAnalyticsEntityObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Internal name for the log analytics entity type.
 	EntityTypeInternalName *string `json:"entityTypeInternalName,omitempty" tf:"entity_type_internal_name,omitempty"`
@@ -145,8 +141,7 @@ type LogAnalyticsEntityObservation struct {
 	EntityTypeName *string `json:"entityTypeName,omitempty" tf:"entity_type_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hostname where the entity represented here is actually present. This would be the output one would get if they run echo $HOSTNAME on Linux or an equivalent OS command. This may be different from management agents host since logs may be collected remotely.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -176,8 +171,7 @@ type LogAnalyticsEntityObservation struct {
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// (Updatable) The name/value pairs for parameter values to be used in file patterns specified in log sources.
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// This indicates the type of source. It is primarily for Enterprise Manager Repository ID.
 	SourceID *string `json:"sourceId,omitempty" tf:"source_id,omitempty"`
@@ -219,8 +213,7 @@ type LogAnalyticsEntityParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Log analytics entity type name.
 	// +kubebuilder:validation:Optional
@@ -228,8 +221,7 @@ type LogAnalyticsEntityParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hostname where the entity represented here is actually present. This would be the output one would get if they run echo $HOSTNAME on Linux or an equivalent OS command. This may be different from management agents host since logs may be collected remotely.
 	// +kubebuilder:validation:Optional
@@ -263,8 +255,7 @@ type LogAnalyticsEntityParameters struct {
 
 	// (Updatable) The name/value pairs for parameter values to be used in file patterns specified in log sources.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// This indicates the type of source. It is primarily for Enterprise Manager Repository ID.
 	// +kubebuilder:validation:Optional

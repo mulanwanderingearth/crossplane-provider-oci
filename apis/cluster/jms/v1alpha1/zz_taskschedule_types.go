@@ -45,32 +45,32 @@ type AddInstallationSiteTaskRequestParameters struct {
 type CryptoTaskRequestInitParameters struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Duration of the JFR recording in minutes.
-	RecordingDurationInMinutes *float64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
+	RecordingDurationInMinutes *int64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) The attachment targets to start JFR.
 	Targets []TargetsInitParameters `json:"targets,omitempty" tf:"targets,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Period to looking for JVMs. In addition to attach to running JVMs when given the command, JVM started within the waiting period will also be attached for JFR. The value should be larger than the agent polling interval setting for the fleet to ensure agent can get the instructions. If not specified, the agent polling interval for the fleet is used.
-	WaitingPeriodInMinutes *float64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
+	WaitingPeriodInMinutes *int64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
 }
 
 type CryptoTaskRequestObservation struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Duration of the JFR recording in minutes.
-	RecordingDurationInMinutes *float64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
+	RecordingDurationInMinutes *int64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) The attachment targets to start JFR.
 	Targets []TargetsObservation `json:"targets,omitempty" tf:"targets,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Period to looking for JVMs. In addition to attach to running JVMs when given the command, JVM started within the waiting period will also be attached for JFR. The value should be larger than the agent polling interval setting for the fleet to ensure agent can get the instructions. If not specified, the agent polling interval for the fleet is used.
-	WaitingPeriodInMinutes *float64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
+	WaitingPeriodInMinutes *int64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
 }
 
 type CryptoTaskRequestParameters struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Duration of the JFR recording in minutes.
 	// +kubebuilder:validation:Optional
-	RecordingDurationInMinutes *float64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
+	RecordingDurationInMinutes *int64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) The attachment targets to start JFR.
 	// +kubebuilder:validation:Optional
@@ -78,7 +78,7 @@ type CryptoTaskRequestParameters struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Period to looking for JVMs. In addition to attach to running JVMs when given the command, JVM started within the waiting period will also be attached for JFR. The value should be larger than the agent polling interval setting for the fleet to ensure agent can get the instructions. If not specified, the agent polling interval for the fleet is used.
 	// +kubebuilder:validation:Optional
-	WaitingPeriodInMinutes *float64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
+	WaitingPeriodInMinutes *int64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
 }
 
 type DeployedApplicationMigrationTaskRequestInitParameters struct {
@@ -338,16 +338,16 @@ type JfrTaskRequestInitParameters struct {
 	JfcV2 *string `json:"jfcV2,omitempty" tf:"jfc_v2,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Duration of the JFR recording in minutes.
-	RecordingDurationInMinutes *float64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
+	RecordingDurationInMinutes *int64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=JFR) (Updatable) The maximum size limit for the JFR file collected.
-	RecordingSizeInMb *float64 `json:"recordingSizeInMb,omitempty" tf:"recording_size_in_mb,omitempty"`
+	RecordingSizeInMb *int64 `json:"recordingSizeInMb,omitempty" tf:"recording_size_in_mb,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) The attachment targets to start JFR.
 	Targets []JfrTaskRequestTargetsInitParameters `json:"targets,omitempty" tf:"targets,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Period to looking for JVMs. In addition to attach to running JVMs when given the command, JVM started within the waiting period will also be attached for JFR. The value should be larger than the agent polling interval setting for the fleet to ensure agent can get the instructions. If not specified, the agent polling interval for the fleet is used.
-	WaitingPeriodInMinutes *float64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
+	WaitingPeriodInMinutes *int64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
 }
 
 type JfrTaskRequestObservation struct {
@@ -362,16 +362,16 @@ type JfrTaskRequestObservation struct {
 	JfcV2 *string `json:"jfcV2,omitempty" tf:"jfc_v2,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Duration of the JFR recording in minutes.
-	RecordingDurationInMinutes *float64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
+	RecordingDurationInMinutes *int64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=JFR) (Updatable) The maximum size limit for the JFR file collected.
-	RecordingSizeInMb *float64 `json:"recordingSizeInMb,omitempty" tf:"recording_size_in_mb,omitempty"`
+	RecordingSizeInMb *int64 `json:"recordingSizeInMb,omitempty" tf:"recording_size_in_mb,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) The attachment targets to start JFR.
 	Targets []JfrTaskRequestTargetsObservation `json:"targets,omitempty" tf:"targets,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Period to looking for JVMs. In addition to attach to running JVMs when given the command, JVM started within the waiting period will also be attached for JFR. The value should be larger than the agent polling interval setting for the fleet to ensure agent can get the instructions. If not specified, the agent polling interval for the fleet is used.
-	WaitingPeriodInMinutes *float64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
+	WaitingPeriodInMinutes *int64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
 }
 
 type JfrTaskRequestParameters struct {
@@ -390,11 +390,11 @@ type JfrTaskRequestParameters struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Duration of the JFR recording in minutes.
 	// +kubebuilder:validation:Optional
-	RecordingDurationInMinutes *float64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
+	RecordingDurationInMinutes *int64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=JFR) (Updatable) The maximum size limit for the JFR file collected.
 	// +kubebuilder:validation:Optional
-	RecordingSizeInMb *float64 `json:"recordingSizeInMb,omitempty" tf:"recording_size_in_mb,omitempty"`
+	RecordingSizeInMb *int64 `json:"recordingSizeInMb,omitempty" tf:"recording_size_in_mb,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) The attachment targets to start JFR.
 	// +kubebuilder:validation:Optional
@@ -402,7 +402,7 @@ type JfrTaskRequestParameters struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Period to looking for JVMs. In addition to attach to running JVMs when given the command, JVM started within the waiting period will also be attached for JFR. The value should be larger than the agent polling interval setting for the fleet to ensure agent can get the instructions. If not specified, the agent polling interval for the fleet is used.
 	// +kubebuilder:validation:Optional
-	WaitingPeriodInMinutes *float64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
+	WaitingPeriodInMinutes *int64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
 }
 
 type JfrTaskRequestTargetsInitParameters struct {
@@ -467,32 +467,32 @@ type JfrTaskRequestTargetsParameters struct {
 type PerformanceTuningTaskRequestInitParameters struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Duration of the JFR recording in minutes.
-	RecordingDurationInMinutes *float64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
+	RecordingDurationInMinutes *int64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) The attachment targets to start JFR.
 	Targets []PerformanceTuningTaskRequestTargetsInitParameters `json:"targets,omitempty" tf:"targets,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Period to looking for JVMs. In addition to attach to running JVMs when given the command, JVM started within the waiting period will also be attached for JFR. The value should be larger than the agent polling interval setting for the fleet to ensure agent can get the instructions. If not specified, the agent polling interval for the fleet is used.
-	WaitingPeriodInMinutes *float64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
+	WaitingPeriodInMinutes *int64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
 }
 
 type PerformanceTuningTaskRequestObservation struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Duration of the JFR recording in minutes.
-	RecordingDurationInMinutes *float64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
+	RecordingDurationInMinutes *int64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) The attachment targets to start JFR.
 	Targets []PerformanceTuningTaskRequestTargetsObservation `json:"targets,omitempty" tf:"targets,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Period to looking for JVMs. In addition to attach to running JVMs when given the command, JVM started within the waiting period will also be attached for JFR. The value should be larger than the agent polling interval setting for the fleet to ensure agent can get the instructions. If not specified, the agent polling interval for the fleet is used.
-	WaitingPeriodInMinutes *float64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
+	WaitingPeriodInMinutes *int64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
 }
 
 type PerformanceTuningTaskRequestParameters struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Duration of the JFR recording in minutes.
 	// +kubebuilder:validation:Optional
-	RecordingDurationInMinutes *float64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
+	RecordingDurationInMinutes *int64 `json:"recordingDurationInMinutes,omitempty" tf:"recording_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=CRYPTO) (Updatable) The attachment targets to start JFR.
 	// +kubebuilder:validation:Optional
@@ -500,7 +500,7 @@ type PerformanceTuningTaskRequestParameters struct {
 
 	// (Applicable when task_type=CRYPTO) (Updatable) Period to looking for JVMs. In addition to attach to running JVMs when given the command, JVM started within the waiting period will also be attached for JFR. The value should be larger than the agent polling interval setting for the fleet to ensure agent can get the instructions. If not specified, the agent polling interval for the fleet is used.
 	// +kubebuilder:validation:Optional
-	WaitingPeriodInMinutes *float64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
+	WaitingPeriodInMinutes *int64 `json:"waitingPeriodInMinutes,omitempty" tf:"waiting_period_in_minutes,omitempty"`
 }
 
 type PerformanceTuningTaskRequestTargetsInitParameters struct {
@@ -632,7 +632,7 @@ type ScanJavaServerTaskRequestParameters struct {
 type ScanLibraryTaskRequestInitParameters struct {
 
 	// (Applicable when task_type=SCAN_LIBRARY) (Updatable) The duration of the dynamic scan in minutes.
-	DynamicScanDurationInMinutes *float64 `json:"dynamicScanDurationInMinutes,omitempty" tf:"dynamic_scan_duration_in_minutes,omitempty"`
+	DynamicScanDurationInMinutes *int64 `json:"dynamicScanDurationInMinutes,omitempty" tf:"dynamic_scan_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=SCAN_LIBRARY) (Updatable) Indicates whether the scan is dynamic or static.
 	IsDynamicScan *bool `json:"isDynamicScan,omitempty" tf:"is_dynamic_scan,omitempty"`
@@ -644,7 +644,7 @@ type ScanLibraryTaskRequestInitParameters struct {
 type ScanLibraryTaskRequestObservation struct {
 
 	// (Applicable when task_type=SCAN_LIBRARY) (Updatable) The duration of the dynamic scan in minutes.
-	DynamicScanDurationInMinutes *float64 `json:"dynamicScanDurationInMinutes,omitempty" tf:"dynamic_scan_duration_in_minutes,omitempty"`
+	DynamicScanDurationInMinutes *int64 `json:"dynamicScanDurationInMinutes,omitempty" tf:"dynamic_scan_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=SCAN_LIBRARY) (Updatable) Indicates whether the scan is dynamic or static.
 	IsDynamicScan *bool `json:"isDynamicScan,omitempty" tf:"is_dynamic_scan,omitempty"`
@@ -657,7 +657,7 @@ type ScanLibraryTaskRequestParameters struct {
 
 	// (Applicable when task_type=SCAN_LIBRARY) (Updatable) The duration of the dynamic scan in minutes.
 	// +kubebuilder:validation:Optional
-	DynamicScanDurationInMinutes *float64 `json:"dynamicScanDurationInMinutes,omitempty" tf:"dynamic_scan_duration_in_minutes,omitempty"`
+	DynamicScanDurationInMinutes *int64 `json:"dynamicScanDurationInMinutes,omitempty" tf:"dynamic_scan_duration_in_minutes,omitempty"`
 
 	// (Applicable when task_type=SCAN_LIBRARY) (Updatable) Indicates whether the scan is dynamic or static.
 	// +kubebuilder:validation:Optional

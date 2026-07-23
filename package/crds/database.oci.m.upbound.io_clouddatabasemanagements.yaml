@@ -166,7 +166,8 @@ spec:
                     type: string
                   port:
                     description: The port used to connect to the database.
-                    type: number
+                    format: int64
+                    type: integer
                   privateEndPointId:
                     description: The OCID of the private endpoint.
                     type: string
@@ -383,7 +384,8 @@ spec:
                     type: string
                   port:
                     description: The port used to connect to the database.
-                    type: number
+                    format: int64
+                    type: integer
                   privateEndPointId:
                     description: The OCID of the private endpoint.
                     type: string
@@ -597,7 +599,8 @@ spec:
                     type: string
                   port:
                     description: The port used to connect to the database.
-                    type: number
+                    format: int64
+                    type: integer
                   privateEndPointId:
                     description: The OCID of the private endpoint.
                     type: string

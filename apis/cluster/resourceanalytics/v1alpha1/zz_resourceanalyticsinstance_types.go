@@ -84,11 +84,10 @@ type ResourceAnalyticsInstanceInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// The compute amount (CPUs) available to the Autonomous Database.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the ResourceAnalyticsInstance instance.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -97,8 +96,7 @@ type ResourceAnalyticsInstanceInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Require mutual TLS (mTLS) when authenticating connections to the ADW database.
 	IsMutualTLSRequired *bool `json:"isMutualTlsRequired,omitempty" tf:"is_mutual_tls_required,omitempty"`
@@ -136,11 +134,10 @@ type ResourceAnalyticsInstanceObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// The compute amount (CPUs) available to the Autonomous Database.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the ResourceAnalyticsInstance instance.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -149,8 +146,7 @@ type ResourceAnalyticsInstanceObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the ResourceAnalyticsInstance.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -178,8 +174,7 @@ type ResourceAnalyticsInstanceObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the ResourceAnalyticsInstance was created, in the format defined by RFC 3339. Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -209,12 +204,11 @@ type ResourceAnalyticsInstanceParameters struct {
 
 	// The compute amount (CPUs) available to the Autonomous Database.
 	// +kubebuilder:validation:Optional
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the ResourceAnalyticsInstance instance.
 	// +kubebuilder:validation:Optional
@@ -226,8 +220,7 @@ type ResourceAnalyticsInstanceParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Require mutual TLS (mTLS) when authenticating connections to the ADW database.
 	// +kubebuilder:validation:Optional

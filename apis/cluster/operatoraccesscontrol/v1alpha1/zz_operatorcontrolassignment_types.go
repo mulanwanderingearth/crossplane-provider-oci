@@ -31,12 +31,10 @@ type OperatorControlAssignmentInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The boolean if true would autoApprove during maintenance.
 	IsAutoApproveDuringMaintenance *bool `json:"isAutoApproveDuringMaintenance,omitempty" tf:"is_auto_approve_during_maintenance,omitempty"`
@@ -70,7 +68,7 @@ type OperatorControlAssignmentInitParameters struct {
 	RemoteSyslogServerCACert *string `json:"remoteSyslogServerCaCert,omitempty" tf:"remote_syslog_server_ca_cert,omitempty"`
 
 	// (Updatable) The listening port of the remote syslog server. The port range is 0 - 65535. Only TCP supported.
-	RemoteSyslogServerPort *float64 `json:"remoteSyslogServerPort,omitempty" tf:"remote_syslog_server_port,omitempty"`
+	RemoteSyslogServerPort *int64 `json:"remoteSyslogServerPort,omitempty" tf:"remote_syslog_server_port,omitempty"`
 
 	// The OCID of the compartment that contains the target resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -101,7 +99,7 @@ type OperatorControlAssignmentInitParameters struct {
 	TimeAssignmentTo *string `json:"timeAssignmentTo,omitempty" tf:"time_assignment_to,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Assignment. Could be set to any integer value.
-	ValidateAssignmentTrigger *float64 `json:"validateAssignmentTrigger,omitempty" tf:"validate_assignment_trigger,omitempty"`
+	ValidateAssignmentTrigger *int64 `json:"validateAssignmentTrigger,omitempty" tf:"validate_assignment_trigger,omitempty"`
 }
 
 type OperatorControlAssignmentObservation struct {
@@ -116,21 +114,19 @@ type OperatorControlAssignmentObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// description containing reason for releasing of OperatorControl.
 	DetachmentDescription *string `json:"detachmentDescription,omitempty" tf:"detachment_description,omitempty"`
 
 	// The code identifying the error occurred during Assignment operation.
-	ErrorCode *float64 `json:"errorCode,omitempty" tf:"error_code,omitempty"`
+	ErrorCode *int64 `json:"errorCode,omitempty" tf:"error_code,omitempty"`
 
 	// The message describing the error occurred during Assignment operation.
 	ErrorMessage *string `json:"errorMessage,omitempty" tf:"error_message,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the operator control assignment.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -166,7 +162,7 @@ type OperatorControlAssignmentObservation struct {
 	RemoteSyslogServerCACert *string `json:"remoteSyslogServerCaCert,omitempty" tf:"remote_syslog_server_ca_cert,omitempty"`
 
 	// (Updatable) The listening port of the remote syslog server. The port range is 0 - 65535. Only TCP supported.
-	RemoteSyslogServerPort *float64 `json:"remoteSyslogServerPort,omitempty" tf:"remote_syslog_server_port,omitempty"`
+	RemoteSyslogServerPort *int64 `json:"remoteSyslogServerPort,omitempty" tf:"remote_syslog_server_port,omitempty"`
 
 	// The OCID of the compartment that contains the target resource.
 	ResourceCompartmentID *string `json:"resourceCompartmentId,omitempty" tf:"resource_compartment_id,omitempty"`
@@ -199,7 +195,7 @@ type OperatorControlAssignmentObservation struct {
 	UnassignerID *string `json:"unassignerId,omitempty" tf:"unassigner_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Assignment. Could be set to any integer value.
-	ValidateAssignmentTrigger *float64 `json:"validateAssignmentTrigger,omitempty" tf:"validate_assignment_trigger,omitempty"`
+	ValidateAssignmentTrigger *int64 `json:"validateAssignmentTrigger,omitempty" tf:"validate_assignment_trigger,omitempty"`
 }
 
 type OperatorControlAssignmentParameters struct {
@@ -223,13 +219,11 @@ type OperatorControlAssignmentParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The boolean if true would autoApprove during maintenance.
 	// +kubebuilder:validation:Optional
@@ -271,7 +265,7 @@ type OperatorControlAssignmentParameters struct {
 
 	// (Updatable) The listening port of the remote syslog server. The port range is 0 - 65535. Only TCP supported.
 	// +kubebuilder:validation:Optional
-	RemoteSyslogServerPort *float64 `json:"remoteSyslogServerPort,omitempty" tf:"remote_syslog_server_port,omitempty"`
+	RemoteSyslogServerPort *int64 `json:"remoteSyslogServerPort,omitempty" tf:"remote_syslog_server_port,omitempty"`
 
 	// The OCID of the compartment that contains the target resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -309,7 +303,7 @@ type OperatorControlAssignmentParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Validate Assignment. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ValidateAssignmentTrigger *float64 `json:"validateAssignmentTrigger,omitempty" tf:"validate_assignment_trigger,omitempty"`
+	ValidateAssignmentTrigger *int64 `json:"validateAssignmentTrigger,omitempty" tf:"validate_assignment_trigger,omitempty"`
 }
 
 // OperatorControlAssignmentSpec defines the desired state of OperatorControlAssignment

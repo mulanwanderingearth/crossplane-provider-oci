@@ -31,7 +31,7 @@ type AutonomousDatabaseSaasAdminUserInitParameters struct {
 	AutonomousDatabaseIDSelector *v1.Selector `json:"autonomousDatabaseIdSelector,omitempty" tf:"-"`
 
 	// How long, in hours, the SaaS administrative user will stay enabled. If no duration is specified, the default value 1 will be used.
-	Duration *float64 `json:"duration,omitempty" tf:"duration,omitempty"`
+	Duration *int64 `json:"duration,omitempty" tf:"duration,omitempty"`
 
 	// A strong password for SaaS administrative user. The password must be a minimum of nine (9) characters and contain a minimum of two (2) uppercase, two (2) lowercase, two (2) numbers, and two (2) special characters from _ (underscore), # (hashtag), or - (dash).
 	PasswordSecretRef *v1.SecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
@@ -40,7 +40,7 @@ type AutonomousDatabaseSaasAdminUserInitParameters struct {
 	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
 
 	// The version of the vault secret. If no version is specified, the latest version will be used.
-	SecretVersionNumber *float64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
+	SecretVersionNumber *int64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
 
 	// The date and time the SaaS administrative user was enabled at, for the Autonomous AI Database.
 	TimeSaasAdminUserEnabled *string `json:"timeSaasAdminUserEnabled,omitempty" tf:"time_saas_admin_user_enabled,omitempty"`
@@ -55,7 +55,7 @@ type AutonomousDatabaseSaasAdminUserObservation struct {
 	AutonomousDatabaseID *string `json:"autonomousDatabaseId,omitempty" tf:"autonomous_database_id,omitempty"`
 
 	// How long, in hours, the SaaS administrative user will stay enabled. If no duration is specified, the default value 1 will be used.
-	Duration *float64 `json:"duration,omitempty" tf:"duration,omitempty"`
+	Duration *int64 `json:"duration,omitempty" tf:"duration,omitempty"`
 
 	// The OCID of the Autonomous AI Database.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -64,7 +64,7 @@ type AutonomousDatabaseSaasAdminUserObservation struct {
 	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
 
 	// The version of the vault secret. If no version is specified, the latest version will be used.
-	SecretVersionNumber *float64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
+	SecretVersionNumber *int64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
 
 	// The date and time the SaaS administrative user was enabled at, for the Autonomous AI Database.
 	TimeSaasAdminUserEnabled *string `json:"timeSaasAdminUserEnabled,omitempty" tf:"time_saas_admin_user_enabled,omitempty"`
@@ -91,7 +91,7 @@ type AutonomousDatabaseSaasAdminUserParameters struct {
 
 	// How long, in hours, the SaaS administrative user will stay enabled. If no duration is specified, the default value 1 will be used.
 	// +kubebuilder:validation:Optional
-	Duration *float64 `json:"duration,omitempty" tf:"duration,omitempty"`
+	Duration *int64 `json:"duration,omitempty" tf:"duration,omitempty"`
 
 	// A strong password for SaaS administrative user. The password must be a minimum of nine (9) characters and contain a minimum of two (2) uppercase, two (2) lowercase, two (2) numbers, and two (2) special characters from _ (underscore), # (hashtag), or - (dash).
 	// +kubebuilder:validation:Optional
@@ -103,7 +103,7 @@ type AutonomousDatabaseSaasAdminUserParameters struct {
 
 	// The version of the vault secret. If no version is specified, the latest version will be used.
 	// +kubebuilder:validation:Optional
-	SecretVersionNumber *float64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
+	SecretVersionNumber *int64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
 
 	// The date and time the SaaS administrative user was enabled at, for the Autonomous AI Database.
 	// +kubebuilder:validation:Optional

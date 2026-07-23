@@ -20,13 +20,13 @@ type DataPopulationInitParameters struct {
 type DataPopulationObservation struct {
 
 	// The number of data population tasks currently in progress.
-	InProgressCount *float64 `json:"inProgressCount,omitempty" tf:"in_progress_count,omitempty"`
+	InProgressCount *int64 `json:"inProgressCount,omitempty" tf:"in_progress_count,omitempty"`
 
 	// The overall status of the data population from the monitored region of the tenancy.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// The number of data population tasks that have succeeded.
-	SucceededCount *float64 `json:"succeededCount,omitempty" tf:"succeeded_count,omitempty"`
+	SucceededCount *int64 `json:"succeededCount,omitempty" tf:"succeeded_count,omitempty"`
 
 	// The date and time the data population task completed, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeEnded *string `json:"timeEnded,omitempty" tf:"time_ended,omitempty"`
@@ -35,7 +35,7 @@ type DataPopulationObservation struct {
 	TimeStarted *string `json:"timeStarted,omitempty" tf:"time_started,omitempty"`
 
 	// The total number of data population tasks.
-	TotalCount *float64 `json:"totalCount,omitempty" tf:"total_count,omitempty"`
+	TotalCount *int64 `json:"totalCount,omitempty" tf:"total_count,omitempty"`
 }
 
 type DataPopulationParameters struct {
@@ -105,8 +105,7 @@ type TenancyAttachmentObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The OCID of the tenancy associated with this TenancyAttachment.
 	TenancyID *string `json:"tenancyId,omitempty" tf:"tenancy_id,omitempty"`

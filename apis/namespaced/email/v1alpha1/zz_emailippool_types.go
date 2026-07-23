@@ -29,18 +29,16 @@ type EmailIpPoolInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the IpPool. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Last IP will be unassigned from the IP Pool after the period of time (in hours) specified by this parameter. Default is 24 hours.
-	LastIPDrainPeriodInHours *float64 `json:"lastIpDrainPeriodInHours,omitempty" tf:"last_ip_drain_period_in_hours,omitempty"`
+	LastIPDrainPeriodInHours *int64 `json:"lastIpDrainPeriodInHours,omitempty" tf:"last_ip_drain_period_in_hours,omitempty"`
 
 	// The name of the IpPool. The name must be unique within a region.  The name is case sensitive and supported characters include alphanumeric, hyphens ("-") and underscore ("_") characters.  Example: green_pool-1
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -50,6 +48,9 @@ type EmailIpPoolInitParameters struct {
 }
 
 type EmailIpPoolLocksInitParameters struct {
+
+	// (Updatable) The OCID of the compartment for this IpPool.
+	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 }
 
 type EmailIpPoolLocksObservation struct {
@@ -71,6 +72,10 @@ type EmailIpPoolLocksObservation struct {
 }
 
 type EmailIpPoolLocksParameters struct {
+
+	// (Updatable) The OCID of the compartment for this IpPool.
+	// +kubebuilder:validation:Optional
+	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 }
 
 type EmailIpPoolObservation struct {
@@ -79,21 +84,19 @@ type EmailIpPoolObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the IpPool. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The unique OCID of the IpPool resource that is immutable on creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) Last IP will be unassigned from the IP Pool after the period of time (in hours) specified by this parameter. Default is 24 hours.
-	LastIPDrainPeriodInHours *float64 `json:"lastIpDrainPeriodInHours,omitempty" tf:"last_ip_drain_period_in_hours,omitempty"`
+	LastIPDrainPeriodInHours *int64 `json:"lastIpDrainPeriodInHours,omitempty" tf:"last_ip_drain_period_in_hours,omitempty"`
 
 	// A message describing the current state in more detail. For example, can be used to provide actionable information for a resource in 'INACTIVE' state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
@@ -113,8 +116,7 @@ type EmailIpPoolObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Indicates when the lock was created, in the format defined by RFC 3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -140,8 +142,7 @@ type EmailIpPoolParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the IpPool. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -149,12 +150,11 @@ type EmailIpPoolParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Last IP will be unassigned from the IP Pool after the period of time (in hours) specified by this parameter. Default is 24 hours.
 	// +kubebuilder:validation:Optional
-	LastIPDrainPeriodInHours *float64 `json:"lastIpDrainPeriodInHours,omitempty" tf:"last_ip_drain_period_in_hours,omitempty"`
+	LastIPDrainPeriodInHours *int64 `json:"lastIpDrainPeriodInHours,omitempty" tf:"last_ip_drain_period_in_hours,omitempty"`
 
 	// The name of the IpPool. The name must be unique within a region.  The name is case sensitive and supported characters include alphanumeric, hyphens ("-") and underscore ("_") characters.  Example: green_pool-1
 	// +kubebuilder:validation:Optional

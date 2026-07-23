@@ -586,7 +586,8 @@ spec:
                                   are created before the window. When the value is
                                   updated, it is applied to all existing automatic
                                   backups.
-                                type: number
+                                format: int64
+                                type: integer
                               runImmediateFullBackup:
                                 description: (Applicable when source=NONE | VM_CLUSTER_NEW)
                                   If set to true, configures automatic full backups
@@ -620,7 +621,6 @@ spec:
                             tags for this resource. Each key is predefined and scoped
                             to a namespace. For more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         encryptionKeyLocationDetails:
                           description: (Applicable when source=NONE | VM_CLUSTER_NEW)
                             Types of providers supported for managing database encryption
@@ -751,7 +751,6 @@ spec:
                             more information, see Resource Tags.  Example: {"Department":
                             "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         keyStoreId:
                           description: (Applicable when source=NONE | VM_CLUSTER_NEW)
                             The OCID of the key store of Oracle Vault.
@@ -1028,11 +1027,13 @@ spec:
                               dataStorageSizeInGb:
                                 description: The DATA storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                               recoStorageSizeInGbs:
                                 description: The RECO storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         tdeWalletPasswordSecretRef:
@@ -1395,7 +1396,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-provided name of the Database Home.
                     type: string
@@ -1410,7 +1410,6 @@ spec:
                       type, or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   homeType:
                     description: Represents database home will be managed by oracle
                       or customer
@@ -2197,7 +2196,8 @@ spec:
                                   are created before the window. When the value is
                                   updated, it is applied to all existing automatic
                                   backups.
-                                type: number
+                                format: int64
+                                type: integer
                               runImmediateFullBackup:
                                 description: (Applicable when source=NONE | VM_CLUSTER_NEW)
                                   If set to true, configures automatic full backups
@@ -2231,7 +2231,6 @@ spec:
                             tags for this resource. Each key is predefined and scoped
                             to a namespace. For more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         encryptionKeyLocationDetails:
                           description: (Applicable when source=NONE | VM_CLUSTER_NEW)
                             Types of providers supported for managing database encryption
@@ -2362,7 +2361,6 @@ spec:
                             more information, see Resource Tags.  Example: {"Department":
                             "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         keyStoreId:
                           description: (Applicable when source=NONE | VM_CLUSTER_NEW)
                             The OCID of the key store of Oracle Vault.
@@ -2639,11 +2637,13 @@ spec:
                               dataStorageSizeInGb:
                                 description: The DATA storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                               recoStorageSizeInGbs:
                                 description: The RECO storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         tdeWalletPasswordSecretRef:
@@ -3008,7 +3008,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-provided name of the Database Home.
                     type: string
@@ -3023,7 +3022,6 @@ spec:
                       type, or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   homeType:
                     description: Represents database home will be managed by oracle
                       or customer
@@ -3399,7 +3397,6 @@ spec:
                                 additionalProperties:
                                   type: string
                                 type: object
-                                x-kubernetes-map-type: granular
                               cdbDefault:
                                 type: string
                               cdbIpDefault:
@@ -3546,7 +3543,8 @@ spec:
                                   are created before the window. When the value is
                                   updated, it is applied to all existing automatic
                                   backups.
-                                type: number
+                                format: int64
+                                type: integer
                               runImmediateFullBackup:
                                 description: (Applicable when source=NONE | VM_CLUSTER_NEW)
                                   If set to true, configures automatic full backups
@@ -3582,7 +3580,6 @@ spec:
                             tags for this resource. Each key is predefined and scoped
                             to a namespace. For more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         encryptionKeyLocationDetails:
                           description: (Applicable when source=NONE | VM_CLUSTER_NEW)
                             Types of providers supported for managing database encryption
@@ -3619,7 +3616,6 @@ spec:
                             more information, see Resource Tags.  Example: {"Department":
                             "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         id:
                           description: (Applicable when source=NONE | VM_CLUSTER_NEW)
                             The OCID of the backup destination.
@@ -3691,13 +3687,16 @@ spec:
                               dataStorageSizeInGb:
                                 description: The DATA storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                               recoStorageSizeInGbs:
                                 description: The RECO storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                               redoLogStorageSizeInGbs:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         timeCreated:
@@ -3745,7 +3744,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-provided name of the Database Home.
                     type: string
@@ -3760,7 +3758,6 @@ spec:
                       type, or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   homeType:
                     description: Represents database home will be managed by oracle
                       or customer
@@ -3814,7 +3811,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the Database Home was created.
                     type: string

@@ -71,7 +71,7 @@ type DependentObjectMetadataObservation struct {
 	NamePath *string `json:"namePath,omitempty" tf:"name_path,omitempty"`
 
 	// The object version.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// The type of the object in patch.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -104,8 +104,7 @@ type MetadataObservation struct {
 	IdentifierPath *string `json:"identifierPath,omitempty" tf:"identifier_path,omitempty"`
 
 	// Information property fields.
-	// +mapType=granular
-	InfoFields map[string]*string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
+	InfoFields map[string]string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
 
 	// Specifies whether this object is a favorite or not.
 	IsFavorite *bool `json:"isFavorite,omitempty" tf:"is_favorite,omitempty"`
@@ -114,7 +113,7 @@ type MetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 
 	// The date and time that the object was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -183,7 +182,7 @@ type PublishedObjectMetadataObservation struct {
 	NamePath *string `json:"namePath,omitempty" tf:"name_path,omitempty"`
 
 	// The object version.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// The type of the object in patch.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -207,7 +206,7 @@ type RegistryMetadataInitParameters struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type RegistryMetadataObservation struct {
@@ -225,7 +224,7 @@ type RegistryMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type RegistryMetadataParameters struct {
@@ -248,7 +247,7 @@ type RegistryMetadataParameters struct {
 
 	// The registry version.
 	// +kubebuilder:validation:Optional
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type SourceApplicationInfoInitParameters struct {
@@ -319,8 +318,7 @@ type SourceApplicationInfoParameters struct {
 type WorkspaceApplicationInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Detailed description for the object.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -329,8 +327,7 @@ type WorkspaceApplicationInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Value can only contain upper case letters, underscore, and numbers. It should begin with upper case letter or underscore. The value can be modified.
 	Identifier *string `json:"identifier,omitempty" tf:"identifier,omitempty"`
@@ -348,7 +345,7 @@ type WorkspaceApplicationInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// Information about the object and its parent.
 	RegistryMetadata []RegistryMetadataInitParameters `json:"registryMetadata,omitempty" tf:"registry_metadata,omitempty"`
@@ -376,14 +373,13 @@ type WorkspaceApplicationInitParameters struct {
 type WorkspaceApplicationObservation struct {
 
 	// The application's version.
-	ApplicationVersion *float64 `json:"applicationVersion,omitempty" tf:"application_version,omitempty"`
+	ApplicationVersion *int64 `json:"applicationVersion,omitempty" tf:"application_version,omitempty"`
 
 	// OCID of the compartment that this resource belongs to. Defaults to compartment of the Workspace.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A list of dependent objects in this patch.
 	DependentObjectMetadata []DependentObjectMetadataObservation `json:"dependentObjectMetadata,omitempty" tf:"dependent_object_metadata,omitempty"`
@@ -395,8 +391,7 @@ type WorkspaceApplicationObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// OCID of the resource that is used to uniquely identify the application
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -408,8 +403,7 @@ type WorkspaceApplicationObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// A key map. If provided, key is replaced with generated key. This structure provides mapping between user provided key and generated key.
-	// +mapType=granular
-	KeyMap map[string]*string `json:"keyMap,omitempty" tf:"key_map,omitempty"`
+	KeyMap map[string]string `json:"keyMap,omitempty" tf:"key_map,omitempty"`
 
 	// A summary type containing information about the object including its key, name and when/who created/updated it.
 	Metadata []MetadataObservation `json:"metadata,omitempty" tf:"metadata,omitempty"`
@@ -424,10 +418,10 @@ type WorkspaceApplicationObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// The object version.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// A reference to the object's parent.
 	ParentRef []ParentRefObservation `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -461,8 +455,7 @@ type WorkspaceApplicationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Detailed description for the object.
 	// +kubebuilder:validation:Optional
@@ -474,8 +467,7 @@ type WorkspaceApplicationParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Value can only contain upper case letters, underscore, and numbers. It should begin with upper case letter or underscore. The value can be modified.
 	// +kubebuilder:validation:Optional
@@ -499,7 +491,7 @@ type WorkspaceApplicationParameters struct {
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// Information about the object and its parent.
 	// +kubebuilder:validation:Optional

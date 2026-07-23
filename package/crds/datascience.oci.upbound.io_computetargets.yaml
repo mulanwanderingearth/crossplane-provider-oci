@@ -170,7 +170,8 @@ spec:
                               bootVolumeSizeInGbs:
                                 description: (Updatable) The size of the boot volume
                                   to attach to the instance.
-                                type: number
+                                format: int64
+                                type: integer
                               instanceShape:
                                 description: (Updatable) The shape used to launch
                                   the instances in compute target. Supported shapes
@@ -220,21 +221,24 @@ spec:
                                         of instances is automatically adjusted from
                                         this initial number to a number that is based
                                         on the limits that you set.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maximumInstanceCount:
                                       description: (Updatable) For a threshold-based
                                         autoscaling policy, this value is the maximum
                                         number of instances the managed compute cluster
                                         type compute target is allowed to increase
                                         to (scale out).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     minimumInstanceCount:
                                       description: (Updatable) For a threshold-based
                                         autoscaling policy, this value is the minimum
                                         number of instances the managed compute cluster
                                         type compute target is allowed to decrease
                                         to (scale in).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     rules:
                                       description: (Updatable) The list of autoscaling
                                         policy rules.
@@ -260,7 +264,8 @@ spec:
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: '(Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -317,7 +322,8 @@ spec:
                                                   description: (Updatable) A metric
                                                     value at which the scaling operation
                                                     will be triggered.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                           scaleOutConfiguration:
@@ -331,7 +337,8 @@ spec:
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: '(Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -388,7 +395,8 @@ spec:
                                                   description: (Updatable) A metric
                                                     value at which the scaling operation
                                                     will be triggered.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                         type: object
@@ -405,11 +413,13 @@ spec:
                                   default. The cooldown period starts when the managed
                                   compute cluster type compute target  becomes ACTIVE
                                   after the scaling operation.
-                                type: number
+                                format: int64
+                                type: integer
                               instanceCount:
                                 description: (Updatable) The number of instances for
                                   the managed compute cluster type compute target.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Applicable when policy_type=AUTOSCALING)
                                   (Updatable) Whether the autoscaling policy is enabled.
@@ -428,7 +438,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the compute target.
                     type: string
@@ -443,7 +452,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   metadata:
                     additionalProperties:
                       type: string
@@ -457,7 +465,6 @@ spec:
                       is limited to 2048 bytes. Key can't be reserved Compute Target
                       metadata.
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -568,7 +575,8 @@ spec:
                               bootVolumeSizeInGbs:
                                 description: (Updatable) The size of the boot volume
                                   to attach to the instance.
-                                type: number
+                                format: int64
+                                type: integer
                               instanceShape:
                                 description: (Updatable) The shape used to launch
                                   the instances in compute target. Supported shapes
@@ -618,21 +626,24 @@ spec:
                                         of instances is automatically adjusted from
                                         this initial number to a number that is based
                                         on the limits that you set.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maximumInstanceCount:
                                       description: (Updatable) For a threshold-based
                                         autoscaling policy, this value is the maximum
                                         number of instances the managed compute cluster
                                         type compute target is allowed to increase
                                         to (scale out).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     minimumInstanceCount:
                                       description: (Updatable) For a threshold-based
                                         autoscaling policy, this value is the minimum
                                         number of instances the managed compute cluster
                                         type compute target is allowed to decrease
                                         to (scale in).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     rules:
                                       description: (Updatable) The list of autoscaling
                                         policy rules.
@@ -658,7 +669,8 @@ spec:
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: '(Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -715,7 +727,8 @@ spec:
                                                   description: (Updatable) A metric
                                                     value at which the scaling operation
                                                     will be triggered.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                           scaleOutConfiguration:
@@ -729,7 +742,8 @@ spec:
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: '(Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -786,7 +800,8 @@ spec:
                                                   description: (Updatable) A metric
                                                     value at which the scaling operation
                                                     will be triggered.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                         type: object
@@ -803,11 +818,13 @@ spec:
                                   default. The cooldown period starts when the managed
                                   compute cluster type compute target  becomes ACTIVE
                                   after the scaling operation.
-                                type: number
+                                format: int64
+                                type: integer
                               instanceCount:
                                 description: (Updatable) The number of instances for
                                   the managed compute cluster type compute target.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Applicable when policy_type=AUTOSCALING)
                                   (Updatable) Whether the autoscaling policy is enabled.
@@ -826,7 +843,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the compute target.
                     type: string
@@ -841,7 +857,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   metadata:
                     additionalProperties:
                       type: string
@@ -855,7 +870,6 @@ spec:
                       is limited to 2048 bytes. Key can't be reserved Compute Target
                       metadata.
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -976,7 +990,8 @@ spec:
                               bootVolumeSizeInGbs:
                                 description: (Updatable) The size of the boot volume
                                   to attach to the instance.
-                                type: number
+                                format: int64
+                                type: integer
                               instanceShape:
                                 description: (Updatable) The shape used to launch
                                   the instances in compute target. Supported shapes
@@ -1026,21 +1041,24 @@ spec:
                                         of instances is automatically adjusted from
                                         this initial number to a number that is based
                                         on the limits that you set.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maximumInstanceCount:
                                       description: (Updatable) For a threshold-based
                                         autoscaling policy, this value is the maximum
                                         number of instances the managed compute cluster
                                         type compute target is allowed to increase
                                         to (scale out).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     minimumInstanceCount:
                                       description: (Updatable) For a threshold-based
                                         autoscaling policy, this value is the minimum
                                         number of instances the managed compute cluster
                                         type compute target is allowed to decrease
                                         to (scale in).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     rules:
                                       description: (Updatable) The list of autoscaling
                                         policy rules.
@@ -1066,7 +1084,8 @@ spec:
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: '(Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -1123,7 +1142,8 @@ spec:
                                                   description: (Updatable) A metric
                                                     value at which the scaling operation
                                                     will be triggered.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                           scaleOutConfiguration:
@@ -1137,7 +1157,8 @@ spec:
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: '(Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -1194,7 +1215,8 @@ spec:
                                                   description: (Updatable) A metric
                                                     value at which the scaling operation
                                                     will be triggered.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                               type: object
                                             type: array
                                         type: object
@@ -1211,11 +1233,13 @@ spec:
                                   default. The cooldown period starts when the managed
                                   compute cluster type compute target  becomes ACTIVE
                                   after the scaling operation.
-                                type: number
+                                format: int64
+                                type: integer
                               instanceCount:
                                 description: (Updatable) The number of instances for
                                   the managed compute cluster type compute target.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Applicable when policy_type=AUTOSCALING)
                                   (Updatable) Whether the autoscaling policy is enabled.
@@ -1237,7 +1261,8 @@ spec:
                         currentInstanceCount:
                           description: Current count of the instances in managed compute
                             cluster type compute target.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   createdBy:
@@ -1250,7 +1275,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the compute target.
                     type: string
@@ -1265,7 +1289,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the compute target.
                     type: string
@@ -1285,7 +1308,6 @@ spec:
                       is limited to 2048 bytes. Key can't be reserved Compute Target
                       metadata.
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: The state of the compute target.
                     type: string

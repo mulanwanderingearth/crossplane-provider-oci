@@ -22,12 +22,10 @@ type BackupPolicyObservation struct {
 	CopyPolicies []CopyPoliciesObservation `json:"copyPolicies,omitempty" tf:"copy_policies,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// If automated backups are enabled or disabled.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -36,7 +34,7 @@ type BackupPolicyObservation struct {
 	PitrPolicy []PitrPolicyObservation `json:"pitrPolicy,omitempty" tf:"pitr_policy,omitempty"`
 
 	// (Updatable) Number of days to retain this backup.
-	RetentionInDays *float64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	RetentionInDays *int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 
 	// (Updatable) Retains the backup to be deleted due to the retention policy in DELETE SCHEDULED state for 7 days before permanently deleting it.
 	SoftDelete *string `json:"softDelete,omitempty" tf:"soft_delete,omitempty"`
@@ -81,7 +79,7 @@ type CopyPoliciesInitParameters struct {
 type CopyPoliciesObservation struct {
 
 	// Number of days to retain the copied DB system backup.
-	BackupCopyRetentionInDays *float64 `json:"backupCopyRetentionInDays,omitempty" tf:"backup_copy_retention_in_days,omitempty"`
+	BackupCopyRetentionInDays *int64 `json:"backupCopyRetentionInDays,omitempty" tf:"backup_copy_retention_in_days,omitempty"`
 
 	// The destination region name to which the DB system backup will be copied.
 	CopyToRegion *string `json:"copyToRegion,omitempty" tf:"copy_to_region,omitempty"`
@@ -91,6 +89,12 @@ type CopyPoliciesParameters struct {
 }
 
 type DBSystemSnapshotInitParameters struct {
+
+	// (Updatable) The OCID of the compartment the backup exists in.
+	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
+
+	// Telemetry configuration details of a DB System or a read replica.
+	TelemetryConfiguration []TelemetryConfigurationInitParameters `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
 }
 
 type DBSystemSnapshotObservation struct {
@@ -117,7 +121,7 @@ type DBSystemSnapshotObservation struct {
 	DataStorage []DataStorageObservation `json:"dataStorage,omitempty" tf:"data_storage,omitempty"`
 
 	// Initial size of the data volume in GiBs.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// Database console configuration details.
 	DatabaseConsole []DatabaseConsoleObservation `json:"databaseConsole,omitempty" tf:"database_console,omitempty"`
@@ -126,8 +130,7 @@ type DBSystemSnapshotObservation struct {
 	DatabaseManagement *string `json:"databaseManagement,omitempty" tf:"database_management,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The Deletion policy for the DB System.
 	DeletionPolicy []DeletionPolicyObservation `json:"deletionPolicy,omitempty" tf:"deletion_policy,omitempty"`
@@ -148,8 +151,7 @@ type DBSystemSnapshotObservation struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the primary endpoint of the DB System. Used for DNS. The value is the hostname portion of the primary private IP's fully qualified domain name (FQDN) (for example, "dbsystem-1" in FQDN "dbsystem-1.subnet123.vcn1.oraclevcn.com"). Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -177,10 +179,10 @@ type DBSystemSnapshotObservation struct {
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
 	// The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The network port where to connect to use this endpoint using the X protocol.
-	PortX *float64 `json:"portX,omitempty" tf:"port_x,omitempty"`
+	PortX *int64 `json:"portX,omitempty" tf:"port_x,omitempty"`
 
 	// The read endpoint of a DB System.
 	ReadEndpoint []ReadEndpointObservation `json:"readEndpoint,omitempty" tf:"read_endpoint,omitempty"`
@@ -195,8 +197,7 @@ type DBSystemSnapshotObservation struct {
 	SecureConnections []SecureConnectionsObservation `json:"secureConnections,omitempty" tf:"secure_connections,omitempty"`
 
 	// Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see ZPR Artifacts. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The shape of the primary instances of the DB System. The shape determines resources allocated to a DB System - CPU cores and memory for VM shapes; CPU cores, memory and storage for non-VM (or bare metal) shapes. To get a list of shapes, use (the ListShapes operation.
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
@@ -209,6 +210,14 @@ type DBSystemSnapshotObservation struct {
 }
 
 type DBSystemSnapshotParameters struct {
+
+	// (Updatable) The OCID of the compartment the backup exists in.
+	// +kubebuilder:validation:Optional
+	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
+
+	// Telemetry configuration details of a DB System or a read replica.
+	// +kubebuilder:validation:Optional
+	TelemetryConfiguration []TelemetryConfigurationParameters `json:"telemetryConfiguration,omitempty" tf:"telemetry_configuration,omitempty"`
 }
 
 type DBSystemSnapshotSummaryInitParameters struct {
@@ -256,19 +265,19 @@ type DataStorageInitParameters struct {
 type DataStorageObservation struct {
 
 	// The actual allocated storage size for the DB System. This may be higher than dataStorageSizeInGBs if an automatic storage expansion has occurred.
-	AllocatedStorageSizeInGbs *float64 `json:"allocatedStorageSizeInGbs,omitempty" tf:"allocated_storage_size_in_gbs,omitempty"`
+	AllocatedStorageSizeInGbs *int64 `json:"allocatedStorageSizeInGbs,omitempty" tf:"allocated_storage_size_in_gbs,omitempty"`
 
 	// Initial size of the data volume in GiBs.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The absolute limit the DB System's storage size may ever expand to, either manually or automatically. This limit is based based on the initial dataStorageSizeInGBs when the DB System was first created. Both dataStorageSizeInGBs and maxDataStorageSizeInGBs can not exceed this value.
-	DataStorageSizeLimitInGbs *float64 `json:"dataStorageSizeLimitInGbs,omitempty" tf:"data_storage_size_limit_in_gbs,omitempty"`
+	DataStorageSizeLimitInGbs *int64 `json:"dataStorageSizeLimitInGbs,omitempty" tf:"data_storage_size_limit_in_gbs,omitempty"`
 
 	// Enable/disable automatic storage expansion. When set to true, the DB System will automatically add storage incrementally up to the value specified in maxStorageSizeInGBs.
 	IsAutoExpandStorageEnabled *bool `json:"isAutoExpandStorageEnabled,omitempty" tf:"is_auto_expand_storage_enabled,omitempty"`
 
 	// Maximum storage size this DB System can expand to. When isAutoExpandStorageEnabled is set to true, the DB System will add storage incrementally up to this value.
-	MaxStorageSizeInGbs *float64 `json:"maxStorageSizeInGbs,omitempty" tf:"max_storage_size_in_gbs,omitempty"`
+	MaxStorageSizeInGbs *int64 `json:"maxStorageSizeInGbs,omitempty" tf:"max_storage_size_in_gbs,omitempty"`
 }
 
 type DataStorageParameters struct {
@@ -280,7 +289,7 @@ type DatabaseConsoleInitParameters struct {
 type DatabaseConsoleObservation struct {
 
 	// The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Whether the database console is enabled on the DB System.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -308,6 +317,12 @@ type DeletionPolicyParameters struct {
 }
 
 type DestinationConfigurationsInitParameters struct {
+
+	// Name of the destination configuration variable.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// Value of the destination configuration variable.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DestinationConfigurationsObservation struct {
@@ -320,6 +335,14 @@ type DestinationConfigurationsObservation struct {
 }
 
 type DestinationConfigurationsParameters struct {
+
+	// Name of the destination configuration variable.
+	// +kubebuilder:validation:Optional
+	Key *string `json:"key" tf:"key,omitempty"`
+
+	// Value of the destination configuration variable.
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type EncryptDataInitParameters struct {
@@ -355,10 +378,10 @@ type EndpointsObservation struct {
 	Modes []*string `json:"modes,omitempty" tf:"modes,omitempty"`
 
 	// The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The network port where to connect to use this endpoint using the X protocol.
-	PortX *float64 `json:"portX,omitempty" tf:"port_x,omitempty"`
+	PortX *int64 `json:"portX,omitempty" tf:"port_x,omitempty"`
 
 	// The OCID of the resource that this endpoint is attached to.
 	ResourceID *string `json:"resourceId,omitempty" tf:"resource_id,omitempty"`
@@ -377,6 +400,15 @@ type EndpointsParameters struct {
 }
 
 type LogsInitParameters struct {
+
+	// Type of destination where MySQL telemetry is exposed to.
+	Destination *string `json:"destination,omitempty" tf:"destination,omitempty"`
+
+	// List of configuration variables for a given destination type.
+	DestinationConfigurations []DestinationConfigurationsInitParameters `json:"destinationConfigurations,omitempty" tf:"destination_configurations,omitempty"`
+
+	// List of MySQL telemetry types that can be exposed on a telemetry destination
+	LogTypes []*string `json:"logTypes,omitempty" tf:"log_types,omitempty"`
 }
 
 type LogsObservation struct {
@@ -392,6 +424,18 @@ type LogsObservation struct {
 }
 
 type LogsParameters struct {
+
+	// Type of destination where MySQL telemetry is exposed to.
+	// +kubebuilder:validation:Optional
+	Destination *string `json:"destination" tf:"destination,omitempty"`
+
+	// List of configuration variables for a given destination type.
+	// +kubebuilder:validation:Optional
+	DestinationConfigurations []DestinationConfigurationsParameters `json:"destinationConfigurations" tf:"destination_configurations,omitempty"`
+
+	// List of MySQL telemetry types that can be exposed on a telemetry destination
+	// +kubebuilder:validation:Optional
+	LogTypes []*string `json:"logTypes" tf:"log_types,omitempty"`
 }
 
 type MaintenanceDisabledWindowsInitParameters struct {
@@ -500,8 +544,7 @@ type MysqlBackupInitParameters struct {
 	DBSystemSnapshotSummary []DBSystemSnapshotSummaryInitParameters `json:"dbSystemSnapshotSummary,omitempty" tf:"db_system_snapshot_summary,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-supplied description for the backup.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -513,11 +556,10 @@ type MysqlBackupInitParameters struct {
 	EncryptData []MysqlBackupEncryptDataInitParameters `json:"encryptData,omitempty" tf:"encrypt_data,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Number of days to retain this backup.
-	RetentionInDays *float64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	RetentionInDays *int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 
 	// (Updatable) Retains the backup to be deleted due to the retention policy in DELETE SCHEDULED state for 7 days before permanently deleting it.
 	SoftDelete *string `json:"softDelete,omitempty" tf:"soft_delete,omitempty"`
@@ -528,13 +570,13 @@ type MysqlBackupInitParameters struct {
 	ValidateBackupDetails []ValidateBackupDetailsInitParameters `json:"validateBackupDetails,omitempty" tf:"validate_backup_details,omitempty"`
 
 	// (Updatable) An optional integer property when incremented will trigger a validation of the backup. Set the integer to 1 initially and increment it by 1 to re-trigger validation.
-	ValidateTrigger *float64 `json:"validateTrigger,omitempty" tf:"validate_trigger,omitempty"`
+	ValidateTrigger *int64 `json:"validateTrigger,omitempty" tf:"validate_trigger,omitempty"`
 }
 
 type MysqlBackupObservation struct {
 
 	// The size of the backup in base-2 (IEC) gibibytes. (GiB).
-	BackupSizeInGbs *float64 `json:"backupSizeInGbs,omitempty" tf:"backup_size_in_gbs,omitempty"`
+	BackupSizeInGbs *int64 `json:"backupSizeInGbs,omitempty" tf:"backup_size_in_gbs,omitempty"`
 
 	// The type of backup.
 	BackupType *string `json:"backupType,omitempty" tf:"backup_type,omitempty"`
@@ -557,11 +599,10 @@ type MysqlBackupObservation struct {
 	DBSystemSnapshotSummary []DBSystemSnapshotSummaryObservation `json:"dbSystemSnapshotSummary,omitempty" tf:"db_system_snapshot_summary,omitempty"`
 
 	// Initial size of the data volume in GiBs.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-supplied description for the backup.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -573,8 +614,7 @@ type MysqlBackupObservation struct {
 	EncryptData []MysqlBackupEncryptDataObservation `json:"encryptData,omitempty" tf:"encrypt_data,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the DB System.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -592,7 +632,7 @@ type MysqlBackupObservation struct {
 	OriginalSourceBackupID *string `json:"originalSourceBackupId,omitempty" tf:"original_source_backup_id,omitempty"`
 
 	// (Updatable) Number of days to retain this backup.
-	RetentionInDays *float64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	RetentionInDays *int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 
 	// The shape of the primary instances of the DB System. The shape determines resources allocated to a DB System - CPU cores and memory for VM shapes; CPU cores, memory and storage for non-VM (or bare metal) shapes. To get a list of shapes, use (the ListShapes operation.
 	ShapeName *string `json:"shapeName,omitempty" tf:"shape_name,omitempty"`
@@ -607,8 +647,7 @@ type MysqlBackupObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the DB system backup copy was created, as described by RFC 3339.
 	TimeCopyCreated *string `json:"timeCopyCreated,omitempty" tf:"time_copy_created,omitempty"`
@@ -622,7 +661,7 @@ type MysqlBackupObservation struct {
 	ValidateBackupDetails []ValidateBackupDetailsObservation `json:"validateBackupDetails,omitempty" tf:"validate_backup_details,omitempty"`
 
 	// (Updatable) An optional integer property when incremented will trigger a validation of the backup. Set the integer to 1 initially and increment it by 1 to re-trigger validation.
-	ValidateTrigger *float64 `json:"validateTrigger,omitempty" tf:"validate_trigger,omitempty"`
+	ValidateTrigger *int64 `json:"validateTrigger,omitempty" tf:"validate_trigger,omitempty"`
 }
 
 type MysqlBackupParameters struct {
@@ -662,8 +701,7 @@ type MysqlBackupParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-supplied description for the backup.
 	// +kubebuilder:validation:Optional
@@ -679,12 +717,11 @@ type MysqlBackupParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Number of days to retain this backup.
 	// +kubebuilder:validation:Optional
-	RetentionInDays *float64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
+	RetentionInDays *int64 `json:"retentionInDays,omitempty" tf:"retention_in_days,omitempty"`
 
 	// (Updatable) Retains the backup to be deleted due to the retention policy in DELETE SCHEDULED state for 7 days before permanently deleting it.
 	// +kubebuilder:validation:Optional
@@ -699,7 +736,7 @@ type MysqlBackupParameters struct {
 
 	// (Updatable) An optional integer property when incremented will trigger a validation of the backup. Set the integer to 1 initially and increment it by 1 to re-trigger validation.
 	// +kubebuilder:validation:Optional
-	ValidateTrigger *float64 `json:"validateTrigger,omitempty" tf:"validate_trigger,omitempty"`
+	ValidateTrigger *int64 `json:"validateTrigger,omitempty" tf:"validate_trigger,omitempty"`
 }
 
 type PitrPolicyInitParameters struct {
@@ -720,7 +757,7 @@ type PreparedBackupDetailsInitParameters struct {
 type PreparedBackupDetailsObservation struct {
 
 	// The estimated time saving when this prepared backup is restored.
-	PreparedBackupRestoreReductionInMinutes *float64 `json:"preparedBackupRestoreReductionInMinutes,omitempty" tf:"prepared_backup_restore_reduction_in_minutes,omitempty"`
+	PreparedBackupRestoreReductionInMinutes *int64 `json:"preparedBackupRestoreReductionInMinutes,omitempty" tf:"prepared_backup_restore_reduction_in_minutes,omitempty"`
 
 	// The date and time the backup was prepared.
 	TimePrepared *string `json:"timePrepared,omitempty" tf:"time_prepared,omitempty"`
@@ -777,7 +814,7 @@ type RestObservation struct {
 	Configuration *string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// The port on which the database console can be accessed. Supported port numbers are 443 and from 1024 to 65535.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type RestParameters struct {
@@ -838,6 +875,9 @@ type SourceDetailsParameters struct {
 }
 
 type TelemetryConfigurationInitParameters struct {
+
+	// Telemetry configuration details for logging.
+	Logs []LogsInitParameters `json:"logs,omitempty" tf:"logs,omitempty"`
 }
 
 type TelemetryConfigurationObservation struct {
@@ -847,6 +887,10 @@ type TelemetryConfigurationObservation struct {
 }
 
 type TelemetryConfigurationParameters struct {
+
+	// Telemetry configuration details for logging.
+	// +kubebuilder:validation:Optional
+	Logs []LogsParameters `json:"logs,omitempty" tf:"logs,omitempty"`
 }
 
 type ValidateBackupDetailsInitParameters struct {

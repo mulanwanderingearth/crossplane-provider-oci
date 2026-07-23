@@ -152,7 +152,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the APM domain.
                     type: string
@@ -166,7 +165,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isFreeTier:
                     description: Indicates whether this is an "Always Free" resource.
                       The default value is false.
@@ -363,7 +361,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the APM domain.
                     type: string
@@ -377,7 +374,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isFreeTier:
                     description: Indicates whether this is an "Always Free" resource.
                       The default value is false.
@@ -553,7 +549,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the APM domain.
                     type: string
@@ -567,7 +562,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Unique identifier that is immutable on creation.
                     type: string

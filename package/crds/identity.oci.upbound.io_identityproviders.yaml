@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description you assign to the IdentityProvider
                       during creation. Does not have to be unique, and it's changeable.
@@ -171,7 +170,6 @@ spec:
                     description: '(Updatable) Extra name value pairs associated with
                       this identity provider. Example: {"clientId": "app_sf3kdjf3"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -180,7 +178,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   metadata:
                     description: (Updatable) The XML that contains the information
                       required for federating.
@@ -304,7 +301,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description you assign to the IdentityProvider
                       during creation. Does not have to be unique, and it's changeable.
@@ -315,7 +311,6 @@ spec:
                     description: '(Updatable) Extra name value pairs associated with
                       this identity provider. Example: {"clientId": "app_sf3kdjf3"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -324,7 +319,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   metadata:
                     description: (Updatable) The XML that contains the information
                       required for federating.
@@ -477,7 +471,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description you assign to the IdentityProvider
                       during creation. Does not have to be unique, and it's changeable.
@@ -488,7 +481,6 @@ spec:
                     description: '(Updatable) Extra name value pairs associated with
                       this identity provider. Example: {"clientId": "app_sf3kdjf3"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -497,7 +489,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the IdentityProvider.
                     type: string

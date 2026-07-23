@@ -140,8 +140,7 @@ type WorkspaceImportRequestObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// Contains key of the error
-	// +mapType=granular
-	ErrorMessages map[string]*string `json:"errorMessages,omitempty" tf:"error_messages,omitempty"`
+	ErrorMessages map[string]string `json:"errorMessages,omitempty" tf:"error_messages,omitempty"`
 
 	// Name of the zip file to be imported.
 	FileName *string `json:"fileName,omitempty" tf:"file_name,omitempty"`
@@ -179,7 +178,7 @@ type WorkspaceImportRequestObservation struct {
 	TimeStartedInMillis *string `json:"timeStartedInMillis,omitempty" tf:"time_started_in_millis,omitempty"`
 
 	// Number of objects that are imported.
-	TotalImportedObjectCount *float64 `json:"totalImportedObjectCount,omitempty" tf:"total_imported_object_count,omitempty"`
+	TotalImportedObjectCount *int64 `json:"totalImportedObjectCount,omitempty" tf:"total_imported_object_count,omitempty"`
 
 	// The workspace ID.
 	WorkspaceID *string `json:"workspaceId,omitempty" tf:"workspace_id,omitempty"`

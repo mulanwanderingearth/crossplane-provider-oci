@@ -100,30 +100,30 @@ type NetworkFirewallPolicyServiceParameters struct {
 type PortRangesInitParameters struct {
 
 	// (Updatable) The maximum port in the range (inclusive), which may be absent for a single-port range.
-	MaximumPort *float64 `json:"maximumPort,omitempty" tf:"maximum_port,omitempty"`
+	MaximumPort *int64 `json:"maximumPort,omitempty" tf:"maximum_port,omitempty"`
 
 	// (Updatable) The minimum port in the range (inclusive), or the sole port of a single-port range.
-	MinimumPort *float64 `json:"minimumPort,omitempty" tf:"minimum_port,omitempty"`
+	MinimumPort *int64 `json:"minimumPort,omitempty" tf:"minimum_port,omitempty"`
 }
 
 type PortRangesObservation struct {
 
 	// (Updatable) The maximum port in the range (inclusive), which may be absent for a single-port range.
-	MaximumPort *float64 `json:"maximumPort,omitempty" tf:"maximum_port,omitempty"`
+	MaximumPort *int64 `json:"maximumPort,omitempty" tf:"maximum_port,omitempty"`
 
 	// (Updatable) The minimum port in the range (inclusive), or the sole port of a single-port range.
-	MinimumPort *float64 `json:"minimumPort,omitempty" tf:"minimum_port,omitempty"`
+	MinimumPort *int64 `json:"minimumPort,omitempty" tf:"minimum_port,omitempty"`
 }
 
 type PortRangesParameters struct {
 
 	// (Updatable) The maximum port in the range (inclusive), which may be absent for a single-port range.
 	// +kubebuilder:validation:Optional
-	MaximumPort *float64 `json:"maximumPort,omitempty" tf:"maximum_port,omitempty"`
+	MaximumPort *int64 `json:"maximumPort,omitempty" tf:"maximum_port,omitempty"`
 
 	// (Updatable) The minimum port in the range (inclusive), or the sole port of a single-port range.
 	// +kubebuilder:validation:Optional
-	MinimumPort *float64 `json:"minimumPort" tf:"minimum_port,omitempty"`
+	MinimumPort *int64 `json:"minimumPort" tf:"minimum_port,omitempty"`
 }
 
 // NetworkFirewallPolicyServiceSpec defines the desired state of NetworkFirewallPolicyService

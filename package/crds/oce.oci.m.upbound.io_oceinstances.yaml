@@ -161,7 +161,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) OceInstance description
                     type: string
@@ -175,7 +174,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idcsAccessTokenSecretRef:
                     description: Identity Cloud Service access token identifying a
                       stripe and service administrator user
@@ -336,7 +334,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) OceInstance description
                     type: string
@@ -350,7 +347,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idcsAccessTokenSecretRef:
                     description: Identity Cloud Service access token identifying a
                       stripe and service administrator user
@@ -507,7 +503,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) OceInstance description
                     type: string
@@ -521,7 +516,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   guid:
                     description: Unique GUID identifier that is immutable on creation
                     type: string
@@ -556,7 +550,6 @@ spec:
                       type: string
                     description: 'SERVICE data. Example: {"service": {"IDCS": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: The current state of the instance lifecycle.
                     type: string
@@ -572,7 +565,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   tenancyId:
                     description: Tenancy Identifier
                     type: string

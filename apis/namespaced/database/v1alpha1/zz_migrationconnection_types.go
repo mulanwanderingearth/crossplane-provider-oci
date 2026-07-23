@@ -117,8 +117,7 @@ type MigrationConnectionInitParameters struct {
 	DatabaseNameSelector *v1.NamespacedSelector `json:"databaseNameSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Does not have to be unique, and it's changeable.  Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -127,8 +126,7 @@ type MigrationConnectionInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when connection_type=MYSQL) (Updatable) The IP Address of the host.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
@@ -154,7 +152,7 @@ type MigrationConnectionInitParameters struct {
 	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// (Applicable when connection_type=MYSQL) (Updatable) The port to be used for the connection.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The password (credential) used when creating or updating this resource.
 	ReplicationPasswordSecretRef *v1.LocalSecretKeySelector `json:"replicationPasswordSecretRef,omitempty" tf:"-"`
@@ -252,8 +250,7 @@ type MigrationConnectionObservation struct {
 	DatabaseName *string `json:"databaseName,omitempty" tf:"database_name,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Does not have to be unique, and it's changeable.  Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -262,8 +259,7 @@ type MigrationConnectionObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when connection_type=MYSQL) (Updatable) The IP Address of the host.
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
@@ -285,7 +281,7 @@ type MigrationConnectionObservation struct {
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
 	// (Applicable when connection_type=MYSQL) (Updatable) The port to be used for the connection.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The OCID of the resource being referenced.
 	PrivateEndpointID *string `json:"privateEndpointId,omitempty" tf:"private_endpoint_id,omitempty"`
@@ -333,8 +329,7 @@ type MigrationConnectionObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The type of MySQL source or target connection. Example: OCI_MYSQL represents Oracle Cloud Infrastructure MySQL HeatWave Database Service
 	TechnologyType *string `json:"technologyType,omitempty" tf:"technology_type,omitempty"`
@@ -425,8 +420,7 @@ type MigrationConnectionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Does not have to be unique, and it's changeable.  Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -438,8 +432,7 @@ type MigrationConnectionParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when connection_type=MYSQL) (Updatable) The IP Address of the host.
 	// +kubebuilder:validation:Optional
@@ -470,7 +463,7 @@ type MigrationConnectionParameters struct {
 
 	// (Applicable when connection_type=MYSQL) (Updatable) The port to be used for the connection.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The password (credential) used when creating or updating this resource.
 	// +kubebuilder:validation:Optional

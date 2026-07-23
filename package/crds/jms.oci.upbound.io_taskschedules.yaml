@@ -149,7 +149,8 @@ spec:
                               recordingDurationInMinutes:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   Duration of the JFR recording in minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               targets:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   The attachment targets to start JFR.
@@ -190,7 +191,8 @@ spec:
                                   polling interval setting for the fleet to ensure
                                   agent can get the instructions. If not specified,
                                   the agent polling interval for the fleet is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         deployedApplicationMigrationTaskRequest:
@@ -330,11 +332,13 @@ spec:
                               recordingDurationInMinutes:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   Duration of the JFR recording in minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               recordingSizeInMb:
                                 description: (Applicable when task_type=JFR) (Updatable)
                                   The maximum size limit for the JFR file collected.
-                                type: number
+                                format: int64
+                                type: integer
                               targets:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   The attachment targets to start JFR.
@@ -375,7 +379,8 @@ spec:
                                   polling interval setting for the fleet to ensure
                                   agent can get the instructions. If not specified,
                                   the agent polling interval for the fleet is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         performanceTuningTaskRequest:
@@ -387,7 +392,8 @@ spec:
                               recordingDurationInMinutes:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   Duration of the JFR recording in minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               targets:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   The attachment targets to start JFR.
@@ -428,7 +434,8 @@ spec:
                                   polling interval setting for the fleet to ensure
                                   agent can get the instructions. If not specified,
                                   the agent polling interval for the fleet is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         removeInstallationSiteTaskRequest:
@@ -477,7 +484,8 @@ spec:
                                 description: (Applicable when task_type=SCAN_LIBRARY)
                                   (Updatable) The duration of the dynamic scan in
                                   minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               isDynamicScan:
                                 description: (Applicable when task_type=SCAN_LIBRARY)
                                   (Updatable) Indicates whether the scan is dynamic
@@ -587,7 +595,8 @@ spec:
                               recordingDurationInMinutes:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   Duration of the JFR recording in minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               targets:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   The attachment targets to start JFR.
@@ -628,7 +637,8 @@ spec:
                                   polling interval setting for the fleet to ensure
                                   agent can get the instructions. If not specified,
                                   the agent polling interval for the fleet is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         deployedApplicationMigrationTaskRequest:
@@ -768,11 +778,13 @@ spec:
                               recordingDurationInMinutes:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   Duration of the JFR recording in minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               recordingSizeInMb:
                                 description: (Applicable when task_type=JFR) (Updatable)
                                   The maximum size limit for the JFR file collected.
-                                type: number
+                                format: int64
+                                type: integer
                               targets:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   The attachment targets to start JFR.
@@ -813,7 +825,8 @@ spec:
                                   polling interval setting for the fleet to ensure
                                   agent can get the instructions. If not specified,
                                   the agent polling interval for the fleet is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         performanceTuningTaskRequest:
@@ -825,7 +838,8 @@ spec:
                               recordingDurationInMinutes:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   Duration of the JFR recording in minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               targets:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   The attachment targets to start JFR.
@@ -866,7 +880,8 @@ spec:
                                   polling interval setting for the fleet to ensure
                                   agent can get the instructions. If not specified,
                                   the agent polling interval for the fleet is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         removeInstallationSiteTaskRequest:
@@ -915,7 +930,8 @@ spec:
                                 description: (Applicable when task_type=SCAN_LIBRARY)
                                   (Updatable) The duration of the dynamic scan in
                                   minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               isDynamicScan:
                                 description: (Applicable when task_type=SCAN_LIBRARY)
                                   (Updatable) Indicates whether the scan is dynamic
@@ -1130,7 +1146,8 @@ spec:
                               recordingDurationInMinutes:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   Duration of the JFR recording in minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               targets:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   The attachment targets to start JFR.
@@ -1171,7 +1188,8 @@ spec:
                                   polling interval setting for the fleet to ensure
                                   agent can get the instructions. If not specified,
                                   the agent polling interval for the fleet is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         deployedApplicationMigrationTaskRequest:
@@ -1311,11 +1329,13 @@ spec:
                               recordingDurationInMinutes:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   Duration of the JFR recording in minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               recordingSizeInMb:
                                 description: (Applicable when task_type=JFR) (Updatable)
                                   The maximum size limit for the JFR file collected.
-                                type: number
+                                format: int64
+                                type: integer
                               targets:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   The attachment targets to start JFR.
@@ -1356,7 +1376,8 @@ spec:
                                   polling interval setting for the fleet to ensure
                                   agent can get the instructions. If not specified,
                                   the agent polling interval for the fleet is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         performanceTuningTaskRequest:
@@ -1368,7 +1389,8 @@ spec:
                               recordingDurationInMinutes:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   Duration of the JFR recording in minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               targets:
                                 description: (Applicable when task_type=CRYPTO) (Updatable)
                                   The attachment targets to start JFR.
@@ -1409,7 +1431,8 @@ spec:
                                   polling interval setting for the fleet to ensure
                                   agent can get the instructions. If not specified,
                                   the agent polling interval for the fleet is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         removeInstallationSiteTaskRequest:
@@ -1458,7 +1481,8 @@ spec:
                                 description: (Applicable when task_type=SCAN_LIBRARY)
                                   (Updatable) The duration of the dynamic scan in
                                   minutes.
-                                type: number
+                                format: int64
+                                type: integer
                               isDynamicScan:
                                 description: (Applicable when task_type=SCAN_LIBRARY)
                                   (Updatable) Indicates whether the scan is dynamic

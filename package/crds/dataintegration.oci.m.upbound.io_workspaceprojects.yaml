@@ -85,7 +85,8 @@ spec:
                     description: (Updatable) The status of an object that can be set
                       to value 1 for shallow references across objects, other values
                       reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   projectKey:
                     description: (Updatable) Generated key that can be used in API
                       calls to identify project.
@@ -116,7 +117,8 @@ spec:
                           type: array
                         registryVersion:
                           description: (Updatable) The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   workspaceId:
@@ -243,7 +245,8 @@ spec:
                     description: (Updatable) The status of an object that can be set
                       to value 1 for shallow references across objects, other values
                       reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   projectKey:
                     description: (Updatable) Generated key that can be used in API
                       calls to identify project.
@@ -274,7 +277,8 @@ spec:
                           type: array
                         registryVersion:
                           description: (Updatable) The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   workspaceId:
@@ -458,7 +462,6 @@ spec:
                       generated key. This structure provides mapping between user
                       provided key and generated key.
                     type: object
-                    x-kubernetes-map-type: granular
                   metadata:
                     description: A summary type containing information about the object
                       including its key, name and when/who created/updated it.
@@ -533,7 +536,6 @@ spec:
                             type: string
                           description: Information property fields.
                           type: object
-                          x-kubernetes-map-type: granular
                         isFavorite:
                           description: (Updatable) Specifies whether this object is
                             a favorite or not.
@@ -547,7 +549,8 @@ spec:
                           type: array
                         registryVersion:
                           description: (Updatable) The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                         timeCreated:
                           description: The date and time that the object was created.
                           type: string
@@ -578,11 +581,13 @@ spec:
                     description: (Updatable) The status of an object that can be set
                       to value 1 for shallow references across objects, other values
                       reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   objectVersion:
                     description: The version of the object that is used to track changes
                       in the object instance.
-                    type: number
+                    format: int64
+                    type: integer
                   parentRef:
                     description: A reference to the object's parent.
                     items:
@@ -625,7 +630,8 @@ spec:
                           type: array
                         registryVersion:
                           description: (Updatable) The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   workspaceId:

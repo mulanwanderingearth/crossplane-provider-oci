@@ -112,7 +112,8 @@ spec:
                     description: (Updatable) The maximum number of CPUs allowed with
                       a 'Bring Your Own License' (BYOL) license type. Any CPU usage
                       above this limit is considered as License Included and billed.
-                    type: number
+                    format: int64
+                    type: integer
                   clusterPlacementGroupId:
                     description: The OCID(https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)
                       of the cluster placement group for the resource. Only applicable
@@ -278,7 +279,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) The Minimum number of OCPUs to be made
                       available for this Deployment.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -286,7 +288,6 @@ spec:
                       key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deploymentBackupId:
                     description: The OCID of the backup being referenced.
                     type: string
@@ -402,7 +403,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only.  Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoScalingEnabled:
                     description: (Updatable) Indicates if auto scaling is enabled
                       for the Deployment's CPU core count.
@@ -525,12 +525,14 @@ spec:
                             This period must be shorter or equal to major release
                             upgrade period. Not passing this field during create will
                             equate to using the service default.
-                          type: number
+                          format: int64
+                          type: integer
                         interimReleaseUpgradePeriodInDays:
                           description: (Updatable) Defines auto upgrade period for
                             interim releases. This period must be shorter or equal
                             to bundle release upgrade period.
-                          type: number
+                          format: int64
+                          type: integer
                         isInterimReleaseAutoUpgradeEnabled:
                           description: (Updatable) By default auto upgrade for interim
                             releases are not enabled. If auto-upgrade is enabled for
@@ -543,14 +545,16 @@ spec:
                             than service defined period for major releases. Not passing
                             this field during create will equate to using the service
                             default.
-                          type: number
+                          format: int64
+                          type: integer
                         securityPatchUpgradePeriodInDays:
                           description: (Updatable) Defines auto upgrade period for
                             releases with security fix. Manually configured period
                             cannot be longer than service defined period for security
                             releases. Not passing this field during create will equate
                             to using the service default.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   maintenanceWindow:
@@ -564,7 +568,8 @@ spec:
                         startHour:
                           description: (Updatable) Start hour for maintenance period.
                             Hour is in UTC.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   nsgIds:
@@ -1248,7 +1253,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sourceDeploymentId:
                     description: The OCID of the deployment being referenced.
                     type: string
@@ -1468,7 +1472,8 @@ spec:
                     description: (Updatable) The maximum number of CPUs allowed with
                       a 'Bring Your Own License' (BYOL) license type. Any CPU usage
                       above this limit is considered as License Included and billed.
-                    type: number
+                    format: int64
+                    type: integer
                   clusterPlacementGroupId:
                     description: The OCID(https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm)
                       of the cluster placement group for the resource. Only applicable
@@ -1634,7 +1639,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) The Minimum number of OCPUs to be made
                       available for this Deployment.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -1642,7 +1648,6 @@ spec:
                       key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deploymentBackupId:
                     description: The OCID of the backup being referenced.
                     type: string
@@ -1758,7 +1763,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only.  Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoScalingEnabled:
                     description: (Updatable) Indicates if auto scaling is enabled
                       for the Deployment's CPU core count.
@@ -1881,12 +1885,14 @@ spec:
                             This period must be shorter or equal to major release
                             upgrade period. Not passing this field during create will
                             equate to using the service default.
-                          type: number
+                          format: int64
+                          type: integer
                         interimReleaseUpgradePeriodInDays:
                           description: (Updatable) Defines auto upgrade period for
                             interim releases. This period must be shorter or equal
                             to bundle release upgrade period.
-                          type: number
+                          format: int64
+                          type: integer
                         isInterimReleaseAutoUpgradeEnabled:
                           description: (Updatable) By default auto upgrade for interim
                             releases are not enabled. If auto-upgrade is enabled for
@@ -1899,14 +1905,16 @@ spec:
                             than service defined period for major releases. Not passing
                             this field during create will equate to using the service
                             default.
-                          type: number
+                          format: int64
+                          type: integer
                         securityPatchUpgradePeriodInDays:
                           description: (Updatable) Defines auto upgrade period for
                             releases with security fix. Manually configured period
                             cannot be longer than service defined period for security
                             releases. Not passing this field during create will equate
                             to using the service default.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   maintenanceWindow:
@@ -1920,7 +1928,8 @@ spec:
                         startHour:
                           description: (Updatable) Start hour for maintenance period.
                             Hour is in UTC.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   nsgIds:
@@ -2604,7 +2613,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sourceDeploymentId:
                     description: The OCID of the deployment being referenced.
                     type: string
@@ -2909,7 +2917,8 @@ spec:
                     description: (Updatable) The maximum number of CPUs allowed with
                       a 'Bring Your Own License' (BYOL) license type. Any CPU usage
                       above this limit is considered as License Included and billed.
-                    type: number
+                    format: int64
+                    type: integer
                   category:
                     description: The deployment category defines the broad separation
                       of the deployment type into three categories. Currently the
@@ -2928,7 +2937,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) The Minimum number of OCPUs to be made
                       available for this Deployment.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -2936,7 +2946,6 @@ spec:
                       key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deploymentBackupId:
                     description: The OCID of the backup being referenced.
                     type: string
@@ -3013,7 +3022,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only.  Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the deployment being referenced.
                     type: string
@@ -3117,12 +3125,14 @@ spec:
                             This period must be shorter or equal to major release
                             upgrade period. Not passing this field during create will
                             equate to using the service default.
-                          type: number
+                          format: int64
+                          type: integer
                         interimReleaseUpgradePeriodInDays:
                           description: (Updatable) Defines auto upgrade period for
                             interim releases. This period must be shorter or equal
                             to bundle release upgrade period.
-                          type: number
+                          format: int64
+                          type: integer
                         isInterimReleaseAutoUpgradeEnabled:
                           description: (Updatable) By default auto upgrade for interim
                             releases are not enabled. If auto-upgrade is enabled for
@@ -3135,14 +3145,16 @@ spec:
                             than service defined period for major releases. Not passing
                             this field during create will equate to using the service
                             default.
-                          type: number
+                          format: int64
+                          type: integer
                         securityPatchUpgradePeriodInDays:
                           description: (Updatable) Defines auto upgrade period for
                             releases with security fix. Manually configured period
                             cannot be longer than service defined period for security
                             releases. Not passing this field during create will equate
                             to using the service default.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   maintenanceWindow:
@@ -3156,7 +3168,8 @@ spec:
                         startHour:
                           description: (Updatable) Start hour for maintenance period.
                             Hour is in UTC.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   nextMaintenanceActionType:
@@ -3283,7 +3296,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sourceDeploymentId:
                     description: The OCID of the deployment being referenced.
                     type: string
@@ -3312,7 +3324,6 @@ spec:
                       more information, see Resource Tags.  Example: {orcl-cloud:
                       {free-tier-retain: true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the lock was created.
                     type: string

@@ -152,7 +152,8 @@ spec:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
                             (Updatable) The additional entities count used for data
                             source query
-                          type: number
+                          format: int64
+                          type: integer
                         dataSourceFeedProvider:
                           description: (Updatable) Type of data source feed provider
                             (LoggingQuery)
@@ -164,11 +165,13 @@ spec:
                         intervalInMinutes:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
                             (Updatable) Interval in minutes that query is run periodically.
-                          type: number
+                          format: int64
+                          type: integer
                         intervalInSeconds:
                           description: (Applicable when data_source_feed_provider=SCHEDULEDQUERY)
                             (Updatable) Interval in seconds which query is run periodically.
-                          type: number
+                          format: int64
+                          type: integer
                         loggingQueryDetails:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
                             (Updatable) Details for a logging query for a data source.
@@ -177,7 +180,8 @@ spec:
                               keyEntitiesCount:
                                 description: (Updatable) The key entities count used
                                   for data source query
-                                type: number
+                                format: int64
+                                type: integer
                               loggingQueryType:
                                 description: (Updatable) Logging query type for data
                                   source
@@ -245,7 +249,8 @@ spec:
                             (Updatable) DEPRECATED - The integer value that must be
                             exceeded, fall below or equal to (depending on the operator),
                             for the query result to trigger an event
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dataSourceFeedProvider:
@@ -258,7 +263,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Data source display name
                     type: string
@@ -269,7 +273,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   status:
                     description: (Updatable) Enablement status of data source.
                     type: string
@@ -380,7 +383,8 @@ spec:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
                             (Updatable) The additional entities count used for data
                             source query
-                          type: number
+                          format: int64
+                          type: integer
                         dataSourceFeedProvider:
                           description: (Updatable) Type of data source feed provider
                             (LoggingQuery)
@@ -392,11 +396,13 @@ spec:
                         intervalInMinutes:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
                             (Updatable) Interval in minutes that query is run periodically.
-                          type: number
+                          format: int64
+                          type: integer
                         intervalInSeconds:
                           description: (Applicable when data_source_feed_provider=SCHEDULEDQUERY)
                             (Updatable) Interval in seconds which query is run periodically.
-                          type: number
+                          format: int64
+                          type: integer
                         loggingQueryDetails:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
                             (Updatable) Details for a logging query for a data source.
@@ -405,7 +411,8 @@ spec:
                               keyEntitiesCount:
                                 description: (Updatable) The key entities count used
                                   for data source query
-                                type: number
+                                format: int64
+                                type: integer
                               loggingQueryType:
                                 description: (Updatable) Logging query type for data
                                   source
@@ -473,7 +480,8 @@ spec:
                             (Updatable) DEPRECATED - The integer value that must be
                             exceeded, fall below or equal to (depending on the operator),
                             for the query result to trigger an event
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dataSourceFeedProvider:
@@ -486,7 +494,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Data source display name
                     type: string
@@ -497,7 +504,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   status:
                     description: (Updatable) Enablement status of data source.
                     type: string
@@ -587,7 +593,8 @@ spec:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
                             (Updatable) The additional entities count used for data
                             source query
-                          type: number
+                          format: int64
+                          type: integer
                         dataSourceFeedProvider:
                           description: (Updatable) Type of data source feed provider
                             (LoggingQuery)
@@ -599,11 +606,13 @@ spec:
                         intervalInMinutes:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
                             (Updatable) Interval in minutes that query is run periodically.
-                          type: number
+                          format: int64
+                          type: integer
                         intervalInSeconds:
                           description: (Applicable when data_source_feed_provider=SCHEDULEDQUERY)
                             (Updatable) Interval in seconds which query is run periodically.
-                          type: number
+                          format: int64
+                          type: integer
                         loggingQueryDetails:
                           description: (Applicable when data_source_feed_provider=LOGGINGQUERY)
                             (Updatable) Details for a logging query for a data source.
@@ -612,7 +621,8 @@ spec:
                               keyEntitiesCount:
                                 description: (Updatable) The key entities count used
                                   for data source query
-                                type: number
+                                format: int64
+                                type: integer
                               loggingQueryType:
                                 description: (Updatable) Logging query type for data
                                   source
@@ -680,7 +690,8 @@ spec:
                             (Updatable) DEPRECATED - The integer value that must be
                             exceeded, fall below or equal to (depending on the operator),
                             for the query result to trigger an event
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dataSourceDetectorMappingInfo:
@@ -707,7 +718,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Data source display name
                     type: string
@@ -718,7 +728,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: OCID for the data source
                     type: string
@@ -751,7 +760,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the Data source was created. Format
                       defined by RFC3339.

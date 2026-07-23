@@ -39,7 +39,7 @@ type BdsInstanceNodeBackupConfigurationInitParameters struct {
 	LevelTypeDetails []BdsInstanceNodeBackupConfigurationLevelTypeDetailsInitParameters `json:"levelTypeDetails,omitempty" tf:"level_type_details,omitempty"`
 
 	// (Updatable) Number of backup copies to retain.
-	NumberOfBackupsToRetain *float64 `json:"numberOfBackupsToRetain,omitempty" tf:"number_of_backups_to_retain,omitempty"`
+	NumberOfBackupsToRetain *int64 `json:"numberOfBackupsToRetain,omitempty" tf:"number_of_backups_to_retain,omitempty"`
 
 	// (Updatable) Day/time recurrence (specified following RFC 5545) at which to trigger the backup process. Currently only DAILY, WEEKLY and MONTHLY frequency is supported. Days of the week are specified using BYDAY field. Time of the day is specified using BYHOUR. Other fields are not supported.
 	Schedule *string `json:"schedule,omitempty" tf:"schedule,omitempty"`
@@ -105,7 +105,7 @@ type BdsInstanceNodeBackupConfigurationObservation struct {
 	LevelTypeDetails []BdsInstanceNodeBackupConfigurationLevelTypeDetailsObservation `json:"levelTypeDetails,omitempty" tf:"level_type_details,omitempty"`
 
 	// (Updatable) Number of backup copies to retain.
-	NumberOfBackupsToRetain *float64 `json:"numberOfBackupsToRetain,omitempty" tf:"number_of_backups_to_retain,omitempty"`
+	NumberOfBackupsToRetain *int64 `json:"numberOfBackupsToRetain,omitempty" tf:"number_of_backups_to_retain,omitempty"`
 
 	// (Updatable) Day/time recurrence (specified following RFC 5545) at which to trigger the backup process. Currently only DAILY, WEEKLY and MONTHLY frequency is supported. Days of the week are specified using BYDAY field. Time of the day is specified using BYHOUR. Other fields are not supported.
 	Schedule *string `json:"schedule,omitempty" tf:"schedule,omitempty"`
@@ -153,7 +153,7 @@ type BdsInstanceNodeBackupConfigurationParameters struct {
 
 	// (Updatable) Number of backup copies to retain.
 	// +kubebuilder:validation:Optional
-	NumberOfBackupsToRetain *float64 `json:"numberOfBackupsToRetain,omitempty" tf:"number_of_backups_to_retain,omitempty"`
+	NumberOfBackupsToRetain *int64 `json:"numberOfBackupsToRetain,omitempty" tf:"number_of_backups_to_retain,omitempty"`
 
 	// (Updatable) Day/time recurrence (specified following RFC 5545) at which to trigger the backup process. Currently only DAILY, WEEKLY and MONTHLY frequency is supported. Days of the week are specified using BYDAY field. Time of the day is specified using BYHOUR. Other fields are not supported.
 	// +kubebuilder:validation:Optional

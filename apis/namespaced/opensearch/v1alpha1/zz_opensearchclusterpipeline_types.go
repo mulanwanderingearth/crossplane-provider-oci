@@ -32,21 +32,19 @@ type OpensearchClusterPipelineInitParameters struct {
 	DataPrepperConfigurationBody *string `json:"dataPrepperConfigurationBody,omitempty" tf:"data_prepper_configuration_body,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The name of the cluster pipeline. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for each pipeline node.
-	MemoryGb *float64 `json:"memoryGb,omitempty" tf:"memory_gb,omitempty"`
+	MemoryGb *int64 `json:"memoryGb,omitempty" tf:"memory_gb,omitempty"`
 
 	// (Updatable) The number of nodes configured for the pipeline.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The pipeline node shape.
 	NodeShape *string `json:"nodeShape,omitempty" tf:"node_shape,omitempty"`
@@ -55,7 +53,7 @@ type OpensearchClusterPipelineInitParameters struct {
 	NsgID *string `json:"nsgId,omitempty" tf:"nsg_id,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for each pipeline node.
-	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
+	OcpuCount *int64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
 
 	// (Updatable) Indicates that the request is a dry run, if set to "true". A dry run request does not modify the configuration item details and is used only to perform validation on the submitted data.
 	OpcDryRun *bool `json:"opcDryRun,omitempty" tf:"opc_dry_run,omitempty"`
@@ -128,24 +126,22 @@ type OpensearchClusterPipelineObservation struct {
 	DataPrepperConfigurationBody *string `json:"dataPrepperConfigurationBody,omitempty" tf:"data_prepper_configuration_body,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The name of the cluster pipeline. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the cluster pipeline.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for each pipeline node.
-	MemoryGb *float64 `json:"memoryGb,omitempty" tf:"memory_gb,omitempty"`
+	MemoryGb *int64 `json:"memoryGb,omitempty" tf:"memory_gb,omitempty"`
 
 	// (Updatable) The number of nodes configured for the pipeline.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The pipeline node shape.
 	NodeShape *string `json:"nodeShape,omitempty" tf:"node_shape,omitempty"`
@@ -154,7 +150,7 @@ type OpensearchClusterPipelineObservation struct {
 	NsgID *string `json:"nsgId,omitempty" tf:"nsg_id,omitempty"`
 
 	// (Updatable) The number of OCPUs configured for each pipeline node.
-	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
+	OcpuCount *int64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
 
 	// (Updatable) Indicates that the request is a dry run, if set to "true". A dry run request does not modify the configuration item details and is used only to perform validation on the submitted data.
 	OpcDryRun *bool `json:"opcDryRun,omitempty" tf:"opc_dry_run,omitempty"`
@@ -184,8 +180,7 @@ type OpensearchClusterPipelineObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the cluster pipeline was created. Format defined by RFC3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -221,8 +216,7 @@ type OpensearchClusterPipelineParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The name of the cluster pipeline. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -230,16 +224,15 @@ type OpensearchClusterPipelineParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The amount of memory in GB, for each pipeline node.
 	// +kubebuilder:validation:Optional
-	MemoryGb *float64 `json:"memoryGb,omitempty" tf:"memory_gb,omitempty"`
+	MemoryGb *int64 `json:"memoryGb,omitempty" tf:"memory_gb,omitempty"`
 
 	// (Updatable) The number of nodes configured for the pipeline.
 	// +kubebuilder:validation:Optional
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The pipeline node shape.
 	// +kubebuilder:validation:Optional
@@ -251,7 +244,7 @@ type OpensearchClusterPipelineParameters struct {
 
 	// (Updatable) The number of OCPUs configured for each pipeline node.
 	// +kubebuilder:validation:Optional
-	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
+	OcpuCount *int64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
 
 	// (Updatable) Indicates that the request is a dry run, if set to "true". A dry run request does not modify the configuration item details and is used only to perform validation on the submitted data.
 	// +kubebuilder:validation:Optional

@@ -59,7 +59,7 @@ type HandlerConfigMetricMappingsObservation struct {
 	IsSkipUpload *bool `json:"isSkipUpload,omitempty" tf:"is_skip_upload,omitempty"`
 
 	// Metric upload interval in seconds. Any metric sent by telegraf/collectd before the  configured interval expires will be dropped.
-	MetricUploadIntervalInSeconds *float64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
+	MetricUploadIntervalInSeconds *int64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
 
 	// Metric name to be upload to telemetry.
 	TelemetryMetricName *string `json:"telemetryMetricName,omitempty" tf:"telemetry_metric_name,omitempty"`
@@ -122,8 +122,7 @@ type MetadataInitParameters struct {
 	ValidPropertiesForUpdate []*string `json:"validPropertiesForUpdate,omitempty" tf:"valid_properties_for_update,omitempty"`
 
 	// (Updatable) List of valid values for the properties. This is useful when resource type wants to restrict only certain values for some properties. For instance for 'osType' property,  supported values can be restricted to be either Linux or Windows. Example: { "osType": "Linux,Windows,Solaris"}
-	// +mapType=granular
-	ValidPropertyValues map[string]*string `json:"validPropertyValues,omitempty" tf:"valid_property_values,omitempty"`
+	ValidPropertyValues map[string]string `json:"validPropertyValues,omitempty" tf:"valid_property_values,omitempty"`
 
 	// (Updatable) List of valid sub-resource types for a composite resource type. The sub-resource types will be obtained from the valid association pairs corresponding to the composite resource types. It will be empty for non composite resource types
 	ValidSubResourceTypes []*string `json:"validSubResourceTypes,omitempty" tf:"valid_sub_resource_types,omitempty"`
@@ -150,8 +149,7 @@ type MetadataObservation struct {
 	ValidPropertiesForUpdate []*string `json:"validPropertiesForUpdate,omitempty" tf:"valid_properties_for_update,omitempty"`
 
 	// (Updatable) List of valid values for the properties. This is useful when resource type wants to restrict only certain values for some properties. For instance for 'osType' property,  supported values can be restricted to be either Linux or Windows. Example: { "osType": "Linux,Windows,Solaris"}
-	// +mapType=granular
-	ValidPropertyValues map[string]*string `json:"validPropertyValues,omitempty" tf:"valid_property_values,omitempty"`
+	ValidPropertyValues map[string]string `json:"validPropertyValues,omitempty" tf:"valid_property_values,omitempty"`
 
 	// (Updatable) List of valid sub-resource types for a composite resource type. The sub-resource types will be obtained from the valid association pairs corresponding to the composite resource types. It will be empty for non composite resource types
 	ValidSubResourceTypes []*string `json:"validSubResourceTypes,omitempty" tf:"valid_sub_resource_types,omitempty"`
@@ -185,8 +183,7 @@ type MetadataParameters struct {
 
 	// (Updatable) List of valid values for the properties. This is useful when resource type wants to restrict only certain values for some properties. For instance for 'osType' property,  supported values can be restricted to be either Linux or Windows. Example: { "osType": "Linux,Windows,Solaris"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	ValidPropertyValues map[string]*string `json:"validPropertyValues,omitempty" tf:"valid_property_values,omitempty"`
+	ValidPropertyValues map[string]string `json:"validPropertyValues,omitempty" tf:"valid_property_values,omitempty"`
 
 	// (Updatable) List of valid sub-resource types for a composite resource type. The sub-resource types will be obtained from the valid association pairs corresponding to the composite resource types. It will be empty for non composite resource types
 	// +kubebuilder:validation:Optional
@@ -199,7 +196,7 @@ type MonitoredResourceTypeAvailabilityMetricsConfigInitParameters struct {
 type MonitoredResourceTypeAvailabilityMetricsConfigObservation struct {
 
 	// Availability metric collection internal in seconds.
-	CollectionIntervalInSeconds *float64 `json:"collectionIntervalInSeconds,omitempty" tf:"collection_interval_in_seconds,omitempty"`
+	CollectionIntervalInSeconds *int64 `json:"collectionIntervalInSeconds,omitempty" tf:"collection_interval_in_seconds,omitempty"`
 
 	// List of metrics used for availability calculation for the resource.
 	Metrics []*string `json:"metrics,omitempty" tf:"metrics,omitempty"`
@@ -229,7 +226,7 @@ type MonitoredResourceTypeHandlerConfigObservation struct {
 	MetricNameConfig []HandlerConfigMetricNameConfigObservation `json:"metricNameConfig,omitempty" tf:"metric_name_config,omitempty"`
 
 	// Metric upload interval in seconds. Any metric sent by telegraf/collectd before the  configured interval expires will be dropped.
-	MetricUploadIntervalInSeconds *float64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
+	MetricUploadIntervalInSeconds *int64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
 
 	// Resource name generation overriding configurations for telegraf resource types.
 	TelegrafResourceNameConfig []HandlerConfigTelegrafResourceNameConfigObservation `json:"telegrafResourceNameConfig,omitempty" tf:"telegraf_resource_name_config,omitempty"`
@@ -256,8 +253,7 @@ type MonitoredResourceTypeInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A friendly description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -266,8 +262,7 @@ type MonitoredResourceTypeInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The metadata details for resource type.
 	Metadata []MetadataInitParameters `json:"metadata,omitempty" tf:"metadata,omitempty"`
@@ -288,8 +283,7 @@ type MonitoredResourceTypeInitParameters struct {
 type MonitoredResourceTypeObservation struct {
 
 	// Key/Value pair for additional namespaces used by stack monitoring services for SYSTEM (SMB) resource types.
-	// +mapType=granular
-	AdditionalNamespaceMap map[string]*string `json:"additionalNamespaceMap,omitempty" tf:"additional_namespace_map,omitempty"`
+	AdditionalNamespaceMap map[string]string `json:"additionalNamespaceMap,omitempty" tf:"additional_namespace_map,omitempty"`
 
 	// Availability metrics details.
 	AvailabilityMetricsConfig []MonitoredResourceTypeAvailabilityMetricsConfigObservation `json:"availabilityMetricsConfig,omitempty" tf:"availability_metrics_config,omitempty"`
@@ -298,8 +292,7 @@ type MonitoredResourceTypeObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A friendly description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -308,8 +301,7 @@ type MonitoredResourceTypeObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Specific resource mapping configurations for Agent Extension Handlers.
 	HandlerConfig []MonitoredResourceTypeHandlerConfigObservation `json:"handlerConfig,omitempty" tf:"handler_config,omitempty"`
@@ -339,8 +331,7 @@ type MonitoredResourceTypeObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Tenancy Identifier OCID.
 	TenancyID *string `json:"tenancyId,omitempty" tf:"tenancy_id,omitempty"`
@@ -369,8 +360,7 @@ type MonitoredResourceTypeParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A friendly description.
 	// +kubebuilder:validation:Optional
@@ -382,8 +372,7 @@ type MonitoredResourceTypeParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The metadata details for resource type.
 	// +kubebuilder:validation:Optional

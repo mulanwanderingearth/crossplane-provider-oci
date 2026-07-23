@@ -15,6 +15,18 @@ import (
 )
 
 type Oauth2clientCredentialIdcsCreatedByInitParameters struct {
+
+	// The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type Oauth2clientCredentialIdcsCreatedByObservation struct {
@@ -36,9 +48,37 @@ type Oauth2clientCredentialIdcsCreatedByObservation struct {
 }
 
 type Oauth2clientCredentialIdcsCreatedByParameters struct {
+
+	// The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type Oauth2clientCredentialIdcsLastModifiedByInitParameters struct {
+
+	// The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type Oauth2clientCredentialIdcsLastModifiedByObservation struct {
@@ -60,6 +100,22 @@ type Oauth2clientCredentialIdcsLastModifiedByObservation struct {
 }
 
 type Oauth2clientCredentialIdcsLastModifiedByParameters struct {
+
+	// The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type Oauth2clientCredentialInitParameters struct {
@@ -114,6 +170,21 @@ type Oauth2clientCredentialInitParameters struct {
 }
 
 type Oauth2clientCredentialMetaInitParameters struct {
+
+	// The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type Oauth2clientCredentialMetaObservation struct {
@@ -135,6 +206,26 @@ type Oauth2clientCredentialMetaObservation struct {
 }
 
 type Oauth2clientCredentialMetaParameters struct {
+
+	// The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type Oauth2clientCredentialObservation struct {

@@ -668,7 +668,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: masking report,
                     type: string
@@ -679,7 +678,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the pre-masking report.
                     type: string

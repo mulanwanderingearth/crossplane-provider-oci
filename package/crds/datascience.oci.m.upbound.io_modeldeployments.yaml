@@ -515,7 +515,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the model deployment.
                     type: string
@@ -531,7 +530,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   modelDeploymentConfigurationDetails:
                     description: (Updatable) The model deployment configuration details.
                     items:
@@ -581,7 +579,6 @@ spec:
                                   web server container and can not be set or modified
                                   by user.
                                 type: object
-                                x-kubernetes-map-type: granular
                               entrypoint:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The container image run ENTRYPOINT as
@@ -612,14 +609,14 @@ spec:
                                   Key can't be reserved Model Deployment environment
                                   variables.
                                 type: object
-                                x-kubernetes-map-type: granular
                               healthCheckPort:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The port on which the container HEALTHCHECK
                                   would listen. The port can be anything between 1024
                                   and 65535. The following ports cannot be used 24224,
                                   8446, 8447.
-                                type: number
+                                format: int64
+                                type: integer
                               image:
                                 description: '(Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The full path to the Oracle Container
@@ -652,7 +649,8 @@ spec:
                                   the inference is running. The port can be anything
                                   between 1024 and 65535. The following ports cannot
                                   be used 24224, 8446, 8447.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         infrastructureConfigurationDetails:
@@ -662,7 +660,8 @@ spec:
                               bandwidthMbps:
                                 description: (Updatable) The minimum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               computeTargetId:
                                 description: The OCID of a Compute Target.
                                 type: string
@@ -821,7 +820,8 @@ spec:
                               maximumBandwidthMbps:
                                 description: (Updatable) The maximum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               modelDeploymentResourceConfiguration:
                                 description: Resource configuration details for model
                                   deploy on managed compute cluster type compute target.
@@ -863,7 +863,8 @@ spec:
                                           gpus:
                                             description: The total number of gpus
                                               required to be allocated to the workload.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           memoryInGbs:
                                             description: (Updatable) A model-deployment
                                               instance of type VM.Standard.E3.Flex
@@ -914,21 +915,24 @@ spec:
                                               automatically adjusted from this initial
                                               number to a number that is based on
                                               the limits that you set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           maximumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               maximum number of instances the model
                                               deployment is allowed to increase to
                                               (scale out).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           minimumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               minimum number of instances the model
                                               deployment is allowed to decrease to
                                               (scale in).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           rules:
                                             description: (Updatable) The list of autoscaling
                                               policy rules.
@@ -1007,7 +1011,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -1063,7 +1068,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                                 scaleOutConfiguration:
@@ -1079,7 +1085,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -1135,7 +1142,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                               type: object
@@ -1159,13 +1167,15 @@ spec:
                                                     default. The cooldown period starts
                                                     when the model deployment becomes
                                                     ACTIVE after the scaling operation.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 instanceCountAdjustment:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -1205,13 +1215,15 @@ spec:
                                                     default. The cooldown period starts
                                                     when the model deployment becomes
                                                     ACTIVE after the scaling operation.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 instanceCountAdjustment:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -1244,11 +1256,13 @@ spec:
                                         seconds, which is also the default. The cooldown
                                         period starts when the model deployment becomes
                                         ACTIVE after the scaling operation.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     instanceCount:
                                       description: (Updatable) The number of instances
                                         for the model deployment.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isEnabled:
                                       description: (Applicable when policy_type=AUTOSCALING)
                                         (Updatable) Whether the autoscaling policy
@@ -1269,7 +1283,8 @@ spec:
                               bandwidthMbps:
                                 description: (Updatable) The minimum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               instanceConfiguration:
                                 description: (Updatable) The model deployment instance
                                   configuration.
@@ -1340,7 +1355,8 @@ spec:
                               maximumBandwidthMbps:
                                 description: (Updatable) The maximum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               modelId:
                                 description: (Updatable) The OCID of the model you
                                   want to deploy.
@@ -1454,21 +1470,24 @@ spec:
                                               automatically adjusted from this initial
                                               number to a number that is based on
                                               the limits that you set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           maximumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               maximum number of instances the model
                                               deployment is allowed to increase to
                                               (scale out).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           minimumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               minimum number of instances the model
                                               deployment is allowed to decrease to
                                               (scale in).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           rules:
                                             description: (Updatable) The list of autoscaling
                                               policy rules.
@@ -1497,7 +1516,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -1553,7 +1573,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                                 scaleOutConfiguration:
@@ -1569,7 +1590,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -1625,7 +1647,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                               type: object
@@ -1642,11 +1665,13 @@ spec:
                                         seconds, which is also the default. The cooldown
                                         period starts when the model deployment becomes
                                         ACTIVE after the scaling operation.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     instanceCount:
                                       description: (Updatable) The number of instances
                                         for the model deployment.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isEnabled:
                                       description: (Applicable when policy_type=AUTOSCALING)
                                         (Updatable) Whether the autoscaling policy
@@ -2235,7 +2260,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the model deployment.
                     type: string
@@ -2251,7 +2275,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   modelDeploymentConfigurationDetails:
                     description: (Updatable) The model deployment configuration details.
                     items:
@@ -2301,7 +2324,6 @@ spec:
                                   web server container and can not be set or modified
                                   by user.
                                 type: object
-                                x-kubernetes-map-type: granular
                               entrypoint:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The container image run ENTRYPOINT as
@@ -2332,14 +2354,14 @@ spec:
                                   Key can't be reserved Model Deployment environment
                                   variables.
                                 type: object
-                                x-kubernetes-map-type: granular
                               healthCheckPort:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The port on which the container HEALTHCHECK
                                   would listen. The port can be anything between 1024
                                   and 65535. The following ports cannot be used 24224,
                                   8446, 8447.
-                                type: number
+                                format: int64
+                                type: integer
                               image:
                                 description: '(Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The full path to the Oracle Container
@@ -2372,7 +2394,8 @@ spec:
                                   the inference is running. The port can be anything
                                   between 1024 and 65535. The following ports cannot
                                   be used 24224, 8446, 8447.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         infrastructureConfigurationDetails:
@@ -2382,7 +2405,8 @@ spec:
                               bandwidthMbps:
                                 description: (Updatable) The minimum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               computeTargetId:
                                 description: The OCID of a Compute Target.
                                 type: string
@@ -2541,7 +2565,8 @@ spec:
                               maximumBandwidthMbps:
                                 description: (Updatable) The maximum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               modelDeploymentResourceConfiguration:
                                 description: Resource configuration details for model
                                   deploy on managed compute cluster type compute target.
@@ -2583,7 +2608,8 @@ spec:
                                           gpus:
                                             description: The total number of gpus
                                               required to be allocated to the workload.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           memoryInGbs:
                                             description: (Updatable) A model-deployment
                                               instance of type VM.Standard.E3.Flex
@@ -2634,21 +2660,24 @@ spec:
                                               automatically adjusted from this initial
                                               number to a number that is based on
                                               the limits that you set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           maximumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               maximum number of instances the model
                                               deployment is allowed to increase to
                                               (scale out).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           minimumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               minimum number of instances the model
                                               deployment is allowed to decrease to
                                               (scale in).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           rules:
                                             description: (Updatable) The list of autoscaling
                                               policy rules.
@@ -2727,7 +2756,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -2783,7 +2813,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                                 scaleOutConfiguration:
@@ -2799,7 +2830,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -2855,7 +2887,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                               type: object
@@ -2879,13 +2912,15 @@ spec:
                                                     default. The cooldown period starts
                                                     when the model deployment becomes
                                                     ACTIVE after the scaling operation.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 instanceCountAdjustment:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -2925,13 +2960,15 @@ spec:
                                                     default. The cooldown period starts
                                                     when the model deployment becomes
                                                     ACTIVE after the scaling operation.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 instanceCountAdjustment:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -2964,11 +3001,13 @@ spec:
                                         seconds, which is also the default. The cooldown
                                         period starts when the model deployment becomes
                                         ACTIVE after the scaling operation.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     instanceCount:
                                       description: (Updatable) The number of instances
                                         for the model deployment.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isEnabled:
                                       description: (Applicable when policy_type=AUTOSCALING)
                                         (Updatable) Whether the autoscaling policy
@@ -2989,7 +3028,8 @@ spec:
                               bandwidthMbps:
                                 description: (Updatable) The minimum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               instanceConfiguration:
                                 description: (Updatable) The model deployment instance
                                   configuration.
@@ -3060,7 +3100,8 @@ spec:
                               maximumBandwidthMbps:
                                 description: (Updatable) The maximum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               modelId:
                                 description: (Updatable) The OCID of the model you
                                   want to deploy.
@@ -3174,21 +3215,24 @@ spec:
                                               automatically adjusted from this initial
                                               number to a number that is based on
                                               the limits that you set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           maximumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               maximum number of instances the model
                                               deployment is allowed to increase to
                                               (scale out).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           minimumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               minimum number of instances the model
                                               deployment is allowed to decrease to
                                               (scale in).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           rules:
                                             description: (Updatable) The list of autoscaling
                                               policy rules.
@@ -3217,7 +3261,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -3273,7 +3318,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                                 scaleOutConfiguration:
@@ -3289,7 +3335,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -3345,7 +3392,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                               type: object
@@ -3362,11 +3410,13 @@ spec:
                                         seconds, which is also the default. The cooldown
                                         period starts when the model deployment becomes
                                         ACTIVE after the scaling operation.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     instanceCount:
                                       description: (Updatable) The number of instances
                                         for the model deployment.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isEnabled:
                                       description: (Applicable when policy_type=AUTOSCALING)
                                         (Updatable) Whether the autoscaling policy
@@ -3606,7 +3656,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the model deployment.
                     type: string
@@ -3622,7 +3671,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the model deployment.
                     type: string
@@ -3678,7 +3726,6 @@ spec:
                                   web server container and can not be set or modified
                                   by user.
                                 type: object
-                                x-kubernetes-map-type: granular
                               entrypoint:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The container image run ENTRYPOINT as
@@ -3709,14 +3756,14 @@ spec:
                                   Key can't be reserved Model Deployment environment
                                   variables.
                                 type: object
-                                x-kubernetes-map-type: granular
                               healthCheckPort:
                                 description: (Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The port on which the container HEALTHCHECK
                                   would listen. The port can be anything between 1024
                                   and 65535. The following ports cannot be used 24224,
                                   8446, 8447.
-                                type: number
+                                format: int64
+                                type: integer
                               image:
                                 description: '(Applicable when environment_configuration_type=OCIR_CONTAINER)
                                   (Updatable) The full path to the Oracle Container
@@ -3749,7 +3796,8 @@ spec:
                                   the inference is running. The port can be anything
                                   between 1024 and 65535. The following ports cannot
                                   be used 24224, 8446, 8447.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         infrastructureConfigurationDetails:
@@ -3759,7 +3807,8 @@ spec:
                               bandwidthMbps:
                                 description: (Updatable) The minimum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               computeTargetId:
                                 description: The OCID of a Compute Target.
                                 type: string
@@ -3836,7 +3885,8 @@ spec:
                               maximumBandwidthMbps:
                                 description: (Updatable) The maximum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               modelDeploymentResourceConfiguration:
                                 description: Resource configuration details for model
                                   deploy on managed compute cluster type compute target.
@@ -3878,7 +3928,8 @@ spec:
                                           gpus:
                                             description: The total number of gpus
                                               required to be allocated to the workload.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           memoryInGbs:
                                             description: (Updatable) A model-deployment
                                               instance of type VM.Standard.E3.Flex
@@ -3929,21 +3980,24 @@ spec:
                                               automatically adjusted from this initial
                                               number to a number that is based on
                                               the limits that you set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           maximumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               maximum number of instances the model
                                               deployment is allowed to increase to
                                               (scale out).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           minimumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               minimum number of instances the model
                                               deployment is allowed to decrease to
                                               (scale in).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           rules:
                                             description: (Updatable) The list of autoscaling
                                               policy rules.
@@ -4022,7 +4076,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -4078,7 +4133,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                                 scaleOutConfiguration:
@@ -4094,7 +4150,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -4150,7 +4207,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                               type: object
@@ -4174,13 +4232,15 @@ spec:
                                                     default. The cooldown period starts
                                                     when the model deployment becomes
                                                     ACTIVE after the scaling operation.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 instanceCountAdjustment:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -4220,13 +4280,15 @@ spec:
                                                     default. The cooldown period starts
                                                     when the model deployment becomes
                                                     ACTIVE after the scaling operation.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 instanceCountAdjustment:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
                                                     The value is used for adjusting
                                                     the count of instances by.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 pendingDuration:
                                                   description: (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION
                                                     | PREDEFINED_EXPRESSION) (Updatable)
@@ -4259,11 +4321,13 @@ spec:
                                         seconds, which is also the default. The cooldown
                                         period starts when the model deployment becomes
                                         ACTIVE after the scaling operation.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     instanceCount:
                                       description: (Updatable) The number of instances
                                         for the model deployment.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isEnabled:
                                       description: (Applicable when policy_type=AUTOSCALING)
                                         (Updatable) Whether the autoscaling policy
@@ -4284,7 +4348,8 @@ spec:
                               bandwidthMbps:
                                 description: (Updatable) The minimum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               instanceConfiguration:
                                 description: (Updatable) The model deployment instance
                                   configuration.
@@ -4355,7 +4420,8 @@ spec:
                               maximumBandwidthMbps:
                                 description: (Updatable) The maximum network bandwidth
                                   for the model deployment.
-                                type: number
+                                format: int64
+                                type: integer
                               modelId:
                                 description: (Updatable) The OCID of the model you
                                   want to deploy.
@@ -4387,21 +4453,24 @@ spec:
                                               automatically adjusted from this initial
                                               number to a number that is based on
                                               the limits that you set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           maximumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               maximum number of instances the model
                                               deployment is allowed to increase to
                                               (scale out).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           minimumInstanceCount:
                                             description: (Updatable) For a threshold-based
                                               autoscaling policy, this value is the
                                               minimum number of instances the model
                                               deployment is allowed to decrease to
                                               (scale in).
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           rules:
                                             description: (Updatable) The list of autoscaling
                                               policy rules.
@@ -4430,7 +4499,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -4486,7 +4556,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                                 scaleOutConfiguration:
@@ -4502,7 +4573,8 @@ spec:
                                                           (Updatable) The value is
                                                           used for adjusting the count
                                                           of instances by.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                       pendingDuration:
                                                         description: (Applicable when
                                                           metric_expression_rule_type=CUSTOM_EXPRESSION
@@ -4558,7 +4630,8 @@ spec:
                                                           metric value at which the
                                                           scaling operation will be
                                                           triggered.
-                                                        type: number
+                                                        format: int64
+                                                        type: integer
                                                     type: object
                                                   type: array
                                               type: object
@@ -4575,11 +4648,13 @@ spec:
                                         seconds, which is also the default. The cooldown
                                         period starts when the model deployment becomes
                                         ACTIVE after the scaling operation.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     instanceCount:
                                       description: (Updatable) The number of instances
                                         for the model deployment.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isEnabled:
                                       description: (Applicable when policy_type=AUTOSCALING)
                                         (Updatable) Whether the autoscaling policy
@@ -4612,7 +4687,8 @@ spec:
                         currentInstanceCount:
                           description: This value is the current count of the model
                             deployment instances.
-                          type: number
+                          format: int64
+                          type: integer
                         modelType:
                           description: The type of the deployed model.
                           type: string

@@ -33,19 +33,16 @@ type ManagementCloudClusterInitParameters struct {
 	CloudConnectorID *string `json:"cloudConnectorId,omitempty" tf:"cloud_connector_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type ManagementCloudClusterObservation struct {
 
 	// The additional details of the cloud cluster defined in {"key": "value"} format. Example: {"bar-key": "value"}
-	// +mapType=granular
-	AdditionalDetails map[string]*string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
+	AdditionalDetails map[string]string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
 
 	// The OCID of the cloud cluster.
 	CloudClusterID *string `json:"cloudClusterId,omitempty" tf:"cloud_cluster_id,omitempty"`
@@ -66,15 +63,13 @@ type ManagementCloudClusterObservation struct {
 	DbaasID *string `json:"dbaasId,omitempty" tf:"dbaas_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the cloud cluster. The name does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The directory in which Oracle Grid Infrastructure is installed.
 	GridHome *string `json:"gridHome,omitempty" tf:"grid_home,omitempty"`
@@ -101,8 +96,7 @@ type ManagementCloudClusterObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the cloud cluster was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -139,13 +133,11 @@ type ManagementCloudClusterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type NetworkConfigurationsInitParameters struct {
@@ -154,7 +146,7 @@ type NetworkConfigurationsInitParameters struct {
 type NetworkConfigurationsObservation struct {
 
 	// The network number.
-	NetworkNumber *float64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
+	NetworkNumber *int64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
 
 	// The network type.
 	NetworkType *string `json:"networkType,omitempty" tf:"network_type,omitempty"`
@@ -172,13 +164,13 @@ type ScanConfigurationsInitParameters struct {
 type ScanConfigurationsObservation struct {
 
 	// The network number.
-	NetworkNumber *float64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
+	NetworkNumber *int64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
 
 	// The name of the SCAN listener.
 	ScanName *string `json:"scanName,omitempty" tf:"scan_name,omitempty"`
 
 	// The port number of the SCAN listener.
-	ScanPort *float64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
+	ScanPort *int64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
 
 	// The protocol of the SCAN listener.
 	ScanProtocol *string `json:"scanProtocol,omitempty" tf:"scan_protocol,omitempty"`
@@ -196,7 +188,7 @@ type VipConfigurationsObservation struct {
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
 	// The network number.
-	NetworkNumber *float64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
+	NetworkNumber *int64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
 
 	// The name of the node with the VIP.
 	NodeName *string `json:"nodeName,omitempty" tf:"node_name,omitempty"`

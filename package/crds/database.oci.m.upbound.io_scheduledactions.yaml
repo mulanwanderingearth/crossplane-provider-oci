@@ -67,14 +67,16 @@ spec:
                         estimatedTimeInMins:
                           description: (Updatable) The estimated time for the intended
                             action member.
-                          type: number
+                          format: int64
+                          type: integer
                         memberId:
                           description: (Updatable) The ocid of the action member.
                           type: string
                         memberOrder:
                           description: (Updatable) The order of the action member
                             in a scheduled action.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   actionParams:
@@ -84,7 +86,6 @@ spec:
                       value pair describes the specific action parameter. Example:
                       {"count": "3"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   actionType:
                     description: The type of the scheduled action being performed
                     type: string
@@ -180,7 +181,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -189,7 +189,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   schedulingPlanId:
                     description: The OCID of the Scheduling Plan.
                     type: string
@@ -300,14 +299,16 @@ spec:
                         estimatedTimeInMins:
                           description: (Updatable) The estimated time for the intended
                             action member.
-                          type: number
+                          format: int64
+                          type: integer
                         memberId:
                           description: (Updatable) The ocid of the action member.
                           type: string
                         memberOrder:
                           description: (Updatable) The order of the action member
                             in a scheduled action.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   actionParams:
@@ -317,7 +318,6 @@ spec:
                       value pair describes the specific action parameter. Example:
                       {"count": "3"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   actionType:
                     description: The type of the scheduled action being performed
                     type: string
@@ -413,7 +413,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -422,7 +421,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   schedulingPlanId:
                     description: The OCID of the Scheduling Plan.
                     type: string
@@ -594,19 +592,22 @@ spec:
                         estimatedTimeInMins:
                           description: (Updatable) The estimated time for the intended
                             action member.
-                          type: number
+                          format: int64
+                          type: integer
                         memberId:
                           description: (Updatable) The ocid of the action member.
                           type: string
                         memberOrder:
                           description: (Updatable) The order of the action member
                             in a scheduled action.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   actionOrder:
                     description: The order of the scheduled action.
-                    type: number
+                    format: int64
+                    type: integer
                   actionParams:
                     additionalProperties:
                       type: string
@@ -614,7 +615,6 @@ spec:
                       value pair describes the specific action parameter. Example:
                       {"count": "3"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   actionType:
                     description: The type of the scheduled action being performed
                     type: string
@@ -628,14 +628,14 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The display name of the Scheduled Action.
                     type: string
                   estimatedTimeInMins:
                     description: (Updatable) The estimated time for the intended action
                       member.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -644,7 +644,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Scheduled Action.
                     type: string
@@ -666,7 +665,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the Scheduled Action Resource was
                       created.

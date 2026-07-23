@@ -29,7 +29,7 @@ type ManagedInstanceRebootManagementInitParameters struct {
 	ManagedInstanceIDSelector *v1.Selector `json:"managedInstanceIdSelector,omitempty" tf:"-"`
 
 	// The number of minutes the service waits for the reboot to complete. If the instance doesn't reboot within this  time, the reboot job status is set to failed.
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// Provides the name and description of the job.
 	WorkRequestDetails []ManagedInstanceRebootManagementWorkRequestDetailsInitParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
@@ -42,7 +42,7 @@ type ManagedInstanceRebootManagementObservation struct {
 	ManagedInstanceID *string `json:"managedInstanceId,omitempty" tf:"managed_instance_id,omitempty"`
 
 	// The number of minutes the service waits for the reboot to complete. If the instance doesn't reboot within this  time, the reboot job status is set to failed.
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// Provides the name and description of the job.
 	WorkRequestDetails []ManagedInstanceRebootManagementWorkRequestDetailsObservation `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
@@ -66,7 +66,7 @@ type ManagedInstanceRebootManagementParameters struct {
 
 	// The number of minutes the service waits for the reboot to complete. If the instance doesn't reboot within this  time, the reboot job status is set to failed.
 	// +kubebuilder:validation:Optional
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// Provides the name and description of the job.
 	// +kubebuilder:validation:Optional

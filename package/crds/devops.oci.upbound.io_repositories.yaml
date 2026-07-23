@@ -83,7 +83,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Details of the repository. Avoid entering
                       confidential information.
@@ -95,7 +94,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   mirrorRepositoryConfig:
                     description: (Updatable) Configuration information for mirroring
                       the repository.
@@ -320,7 +318,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Details of the repository. Avoid entering
                       confidential information.
@@ -332,7 +329,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   mirrorRepositoryConfig:
                     description: (Updatable) Configuration information for mirroring
                       the repository.
@@ -638,10 +634,12 @@ spec:
                 properties:
                   branchCount:
                     description: The count of the branches present in the repository.
-                    type: number
+                    format: int64
+                    type: integer
                   commitCount:
                     description: The count of the commits present in the repository.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: The OCID of the repository's compartment.
                     type: string
@@ -655,7 +653,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Details of the repository. Avoid entering
                       confidential information.
@@ -667,7 +664,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   httpUrl:
                     description: HTTP URL that you use to git clone, pull and push.
                     type: string
@@ -754,7 +750,6 @@ spec:
                       are scoped to namespaces. See Resource Tags. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the repository was created. Format defined
                       by RFC3339.

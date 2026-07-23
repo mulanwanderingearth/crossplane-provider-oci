@@ -28,7 +28,7 @@ type EnabledOnResourcesParameters struct {
 type InParamDetailsInitParameters struct {
 
 	// (Updatable) Position of IN parameter
-	InParamPosition *float64 `json:"inParamPosition,omitempty" tf:"in_param_position,omitempty"`
+	InParamPosition *int64 `json:"inParamPosition,omitempty" tf:"in_param_position,omitempty"`
 
 	// (Updatable) Value of IN parameter
 	InParamValue *string `json:"inParamValue,omitempty" tf:"in_param_value,omitempty"`
@@ -37,7 +37,7 @@ type InParamDetailsInitParameters struct {
 type InParamDetailsObservation struct {
 
 	// (Updatable) Position of IN parameter
-	InParamPosition *float64 `json:"inParamPosition,omitempty" tf:"in_param_position,omitempty"`
+	InParamPosition *int64 `json:"inParamPosition,omitempty" tf:"in_param_position,omitempty"`
 
 	// (Updatable) Value of IN parameter
 	InParamValue *string `json:"inParamValue,omitempty" tf:"in_param_value,omitempty"`
@@ -47,7 +47,7 @@ type InParamDetailsParameters struct {
 
 	// (Updatable) Position of IN parameter
 	// +kubebuilder:validation:Optional
-	InParamPosition *float64 `json:"inParamPosition" tf:"in_param_position,omitempty"`
+	InParamPosition *int64 `json:"inParamPosition" tf:"in_param_position,omitempty"`
 
 	// (Updatable) Value of IN parameter
 	// +kubebuilder:validation:Optional
@@ -117,7 +117,7 @@ type MetricExtensionObservation struct {
 	EnabledOnResources []EnabledOnResourcesObservation `json:"enabledOnResources,omitempty" tf:"enabled_on_resources,omitempty"`
 
 	// Count of resources on which this metric extension is enabled.
-	EnabledOnResourcesCount *float64 `json:"enabledOnResourcesCount,omitempty" tf:"enabled_on_resources_count,omitempty"`
+	EnabledOnResourcesCount *int64 `json:"enabledOnResourcesCount,omitempty" tf:"enabled_on_resources_count,omitempty"`
 
 	// The OCID of Metric Extension resource
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -302,7 +302,7 @@ type OutParamDetailsInitParameters struct {
 	OutParamName *string `json:"outParamName,omitempty" tf:"out_param_name,omitempty"`
 
 	// (Updatable) Position of PL/SQL procedure OUT parameter. The value of this property is ignored during update, if "outParamType" is set to NO_OUT_PARAM value.
-	OutParamPosition *float64 `json:"outParamPosition,omitempty" tf:"out_param_position,omitempty"`
+	OutParamPosition *int64 `json:"outParamPosition,omitempty" tf:"out_param_position,omitempty"`
 
 	// (Updatable) SQL Type of PL/SQL procedure OUT parameter. During the update, to completely remove the out parameter, use the value NO_OUT_PARAM. In that case, the value of "outParamPosition" will be ignored.
 	OutParamType *string `json:"outParamType,omitempty" tf:"out_param_type,omitempty"`
@@ -314,7 +314,7 @@ type OutParamDetailsObservation struct {
 	OutParamName *string `json:"outParamName,omitempty" tf:"out_param_name,omitempty"`
 
 	// (Updatable) Position of PL/SQL procedure OUT parameter. The value of this property is ignored during update, if "outParamType" is set to NO_OUT_PARAM value.
-	OutParamPosition *float64 `json:"outParamPosition,omitempty" tf:"out_param_position,omitempty"`
+	OutParamPosition *int64 `json:"outParamPosition,omitempty" tf:"out_param_position,omitempty"`
 
 	// (Updatable) SQL Type of PL/SQL procedure OUT parameter. During the update, to completely remove the out parameter, use the value NO_OUT_PARAM. In that case, the value of "outParamPosition" will be ignored.
 	OutParamType *string `json:"outParamType,omitempty" tf:"out_param_type,omitempty"`
@@ -328,7 +328,7 @@ type OutParamDetailsParameters struct {
 
 	// (Updatable) Position of PL/SQL procedure OUT parameter. The value of this property is ignored during update, if "outParamType" is set to NO_OUT_PARAM value.
 	// +kubebuilder:validation:Optional
-	OutParamPosition *float64 `json:"outParamPosition" tf:"out_param_position,omitempty"`
+	OutParamPosition *int64 `json:"outParamPosition" tf:"out_param_position,omitempty"`
 
 	// (Updatable) SQL Type of PL/SQL procedure OUT parameter. During the update, to completely remove the out parameter, use the value NO_OUT_PARAM. In that case, the value of "outParamPosition" will be ignored.
 	// +kubebuilder:validation:Optional

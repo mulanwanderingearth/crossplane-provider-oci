@@ -18,9 +18,7 @@ type DBHomeDatabaseConnectionStringsInitParameters struct {
 }
 
 type DBHomeDatabaseConnectionStringsObservation struct {
-
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 
 	CdbDefault *string `json:"cdbDefault,omitempty" tf:"cdb_default,omitempty"`
 
@@ -157,7 +155,7 @@ type DBHomeDatabaseDBBackupConfigInitParameters struct {
 	BackupDestinationDetails []DBHomeDatabaseDBBackupConfigBackupDestinationDetailsInitParameters `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
@@ -184,7 +182,7 @@ type DBHomeDatabaseDBBackupConfigObservation struct {
 	BackupDestinationDetails []DBHomeDatabaseDBBackupConfigBackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
@@ -218,7 +216,7 @@ type DBHomeDatabaseDBBackupConfigParameters struct {
 
 	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
 	// +kubebuilder:validation:Optional
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	// +kubebuilder:validation:Optional
@@ -265,12 +263,10 @@ type DBHomeDatabaseInitParameters struct {
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
 
 	// (Applicable when source=DATAGUARD) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DatabaseDefinedTags map[string]*string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
+	DatabaseDefinedTags map[string]string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	DatabaseFreeformTags map[string]*string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
+	DatabaseFreeformTags map[string]string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
 
 	// The database OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.Database
@@ -299,12 +295,10 @@ type DBHomeDatabaseInitParameters struct {
 	DatabaseSoftwareImageIDSelector *v1.NamespacedSelector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD) True if active Data Guard is enabled.
 	IsActiveDataGuardEnabled *bool `json:"isActiveDataGuardEnabled,omitempty" tf:"is_active_data_guard_enabled,omitempty"`
@@ -412,12 +406,10 @@ type DBHomeDatabaseObservation struct {
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
 
 	// (Applicable when source=DATAGUARD) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DatabaseDefinedTags map[string]*string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
+	DatabaseDefinedTags map[string]string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	DatabaseFreeformTags map[string]*string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
+	DatabaseFreeformTags map[string]string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
 
 	// The database OCID.
 	DatabaseID *string `json:"databaseId,omitempty" tf:"database_id,omitempty"`
@@ -426,12 +418,10 @@ type DBHomeDatabaseObservation struct {
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -532,13 +522,11 @@ type DBHomeDatabaseParameters struct {
 
 	// (Applicable when source=DATAGUARD) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DatabaseDefinedTags map[string]*string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
+	DatabaseDefinedTags map[string]string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DatabaseFreeformTags map[string]*string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
+	DatabaseFreeformTags map[string]string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
 
 	// The database OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.Database
@@ -570,13 +558,11 @@ type DBHomeDatabaseParameters struct {
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD) True if active Data Guard is enabled.
 	// +kubebuilder:validation:Optional
@@ -694,15 +680,13 @@ type DBHomeInitParameters struct {
 	DatabaseSoftwareImageIDSelector *v1.NamespacedSelector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the Database Home.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | NONE) Indicates whether unified auditing is enabled or not
 	IsUnifiedAuditingEnabled *bool `json:"isUnifiedAuditingEnabled,omitempty" tf:"is_unified_auditing_enabled,omitempty"`
@@ -723,15 +707,13 @@ type DBHomeObservation struct {
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the Database Home.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD | DB_SYSTEM | NONE) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -781,8 +763,7 @@ type DBHomeParameters struct {
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the Database Home.
 	// +kubebuilder:validation:Optional
@@ -790,8 +771,7 @@ type DBHomeParameters struct {
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | NONE) Indicates whether unified auditing is enabled or not
 	// +kubebuilder:validation:Optional
@@ -879,7 +859,7 @@ type DbSystemInitParameters struct {
 	BackupSubnetIDSelector *v1.NamespacedSelector `json:"backupSubnetIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The number of CPU cores to enable for a bare metal or Exadata DB system or AMD VMDB Systems. The valid values depend on the specified shape:
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The cluster name for Exadata and 2-node RAC virtual machine DB systems. The cluster name must begin with an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
@@ -900,7 +880,7 @@ type DbSystemInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The number of compute servers for the DB system.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Updatable) The compute model for Base Database Service. This is required if using the computeCount parameter. If using cpuCoreCount then it is an error to specify computeModel to a non-null value. The ECPU compute model is the recommended model, and the OCPU compute model is legacy.
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
@@ -915,17 +895,16 @@ type DbSystemInitParameters struct {
 	DataCollectionOptions []DbSystemDataCollectionOptionsInitParameters `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
 	// The percentage assigned to DATA storage (user data and database files). The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Specify 80 or 40. The default is 80 percent assigned to DATA storage. Not applicable for virtual machine DB systems. Required for BMDBs.
-	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+	DataStoragePercentage *int64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// (Updatable) Size (in GB) of the initial data volume that will be created and attached to a virtual machine DB system. You can scale up storage after provisioning, as needed. Note that the total storage size attached will be more than the amount you specify to allow for REDO/RECO space and software volume. By default this will be set to 256. Required for VMDBs.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The Oracle Database Edition that applies to all the databases on the DB system. Exadata DB systems and 2-node RAC DB systems require ENTERPRISE_EDITION_EXTREME_PERFORMANCE.
 	DatabaseEdition *string `json:"databaseEdition,omitempty" tf:"database_edition,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | NONE) The type of redundancy configured for the DB system. Normal is 2-way redundancy, recommended for test and development systems. High is 3-way redundancy, recommended for production systems.
 	DiskRedundancy *string `json:"diskRedundancy,omitempty" tf:"disk_redundancy,omitempty"`
@@ -940,8 +919,7 @@ type DbSystemInitParameters struct {
 	FaultDomains []*string `json:"faultDomains,omitempty" tf:"fault_domains,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the DB system. The hostname must begin with an alphabetic character, and can contain alphanumeric characters and hyphens (-). The maximum length of the hostname is 16 characters for bare metal and virtual machine DB systems, and 12 characters for Exadata DB systems.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -979,7 +957,7 @@ type DbSystemInitParameters struct {
 	MaintenanceWindowDetails []DbSystemMaintenanceWindowDetailsInitParameters `json:"maintenanceWindowDetails,omitempty" tf:"maintenance_window_details,omitempty"`
 
 	// The number of nodes to launch for a virtual machine DB system. Specify either 1 or 2. By default this will be set to 1.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
@@ -991,7 +969,7 @@ type DbSystemInitParameters struct {
 	OsPatchDBNodeID *string `json:"osPatchDbNodeId,omitempty" tf:"os_patch_db_node_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Os Patch. Could be set to any integer value.
-	OsPatchTrigger *float64 `json:"osPatchTrigger,omitempty" tf:"os_patch_trigger,omitempty"`
+	OsPatchTrigger *int64 `json:"osPatchTrigger,omitempty" tf:"os_patch_trigger,omitempty"`
 
 	// The OCID of the DB system.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.DbSystem
@@ -1013,15 +991,14 @@ type DbSystemInitParameters struct {
 	PrivateIPV6 *string `json:"privateIpV6,omitempty" tf:"private_ip_v6,omitempty"`
 
 	// The RECO/REDO storage size, in gigabytes, that is currently allocated to the DB system. Applies only for virtual machine DB systems.
-	RecoStorageSizeInGb *float64 `json:"recoStorageSizeInGb,omitempty" tf:"reco_storage_size_in_gb,omitempty"`
+	RecoStorageSizeInGb *int64 `json:"recoStorageSizeInGb,omitempty" tf:"reco_storage_size_in_gb,omitempty"`
 
 	// (Updatable) The public key portion of the key pair to use for SSH access to the DB system. Multiple public keys can be provided. The length of the combined keys cannot exceed 40,000 characters.
 	// +listType=set
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The shape of the DB system. The shape determines resources allocated to the DB system.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -1126,13 +1103,13 @@ type DbSystemMaintenanceWindowDetailsDaysOfWeekParameters struct {
 type DbSystemMaintenanceWindowDetailsInitParameters struct {
 
 	// (Applicable when source=NONE) (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// The update should be applied on the database for the selected days of the week.
 	DaysOfWeek []DbSystemMaintenanceWindowDetailsDaysOfWeekInitParameters `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are - 0 - represents time slot 0:00 - 3:59 UTC - 4 - represents time slot 4:00 - 7:59 UTC - 8 - represents time slot 8:00 - 11:59 UTC - 12 - represents time slot 12:00 - 15:59 UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -1141,7 +1118,7 @@ type DbSystemMaintenanceWindowDetailsInitParameters struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Months during the year when maintenance should be performed.
 	Months []DbSystemMaintenanceWindowDetailsMonthsInitParameters `json:"months,omitempty" tf:"months,omitempty"`
@@ -1156,7 +1133,7 @@ type DbSystemMaintenanceWindowDetailsInitParameters struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type DbSystemMaintenanceWindowDetailsMonthsInitParameters struct {
@@ -1181,13 +1158,13 @@ type DbSystemMaintenanceWindowDetailsMonthsParameters struct {
 type DbSystemMaintenanceWindowDetailsObservation struct {
 
 	// (Applicable when source=NONE) (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// The update should be applied on the database for the selected days of the week.
 	DaysOfWeek []DbSystemMaintenanceWindowDetailsDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are - 0 - represents time slot 0:00 - 3:59 UTC - 4 - represents time slot 4:00 - 7:59 UTC - 8 - represents time slot 8:00 - 11:59 UTC - 12 - represents time slot 12:00 - 15:59 UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -1196,7 +1173,7 @@ type DbSystemMaintenanceWindowDetailsObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Months during the year when maintenance should be performed.
 	Months []DbSystemMaintenanceWindowDetailsMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -1211,14 +1188,14 @@ type DbSystemMaintenanceWindowDetailsObservation struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type DbSystemMaintenanceWindowDetailsParameters struct {
 
 	// (Applicable when source=NONE) (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
 	// +kubebuilder:validation:Optional
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// The update should be applied on the database for the selected days of the week.
 	// +kubebuilder:validation:Optional
@@ -1226,7 +1203,7 @@ type DbSystemMaintenanceWindowDetailsParameters struct {
 
 	// (Applicable when source=NONE) (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are - 0 - represents time slot 0:00 - 3:59 UTC - 4 - represents time slot 4:00 - 7:59 UTC - 8 - represents time slot 8:00 - 11:59 UTC - 12 - represents time slot 12:00 - 15:59 UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
 	// +kubebuilder:validation:Optional
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	// +kubebuilder:validation:Optional
@@ -1238,7 +1215,7 @@ type DbSystemMaintenanceWindowDetailsParameters struct {
 
 	// (Applicable when source=NONE) (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
 	// +kubebuilder:validation:Optional
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Months during the year when maintenance should be performed.
 	// +kubebuilder:validation:Optional
@@ -1258,7 +1235,7 @@ type DbSystemMaintenanceWindowDetailsParameters struct {
 
 	// (Applicable when source=NONE) (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
 	// +kubebuilder:validation:Optional
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type DbSystemMaintenanceWindowInitParameters struct {
@@ -1279,13 +1256,13 @@ type DbSystemMaintenanceWindowMonthsParameters struct {
 type DbSystemMaintenanceWindowObservation struct {
 
 	// (Applicable when source=NONE) (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// The update should be applied on the database for the selected days of the week.
 	DaysOfWeek []DbSystemMaintenanceWindowDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are - 0 - represents time slot 0:00 - 3:59 UTC - 4 - represents time slot 4:00 - 7:59 UTC - 8 - represents time slot 8:00 - 11:59 UTC - 12 - represents time slot 12:00 - 15:59 UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -1294,7 +1271,7 @@ type DbSystemMaintenanceWindowObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Months during the year when maintenance should be performed.
 	Months []DbSystemMaintenanceWindowMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -1309,7 +1286,7 @@ type DbSystemMaintenanceWindowObservation struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type DbSystemMaintenanceWindowParameters struct {
@@ -1328,7 +1305,7 @@ type DbSystemObservation struct {
 	BackupSubnetID *string `json:"backupSubnetId,omitempty" tf:"backup_subnet_id,omitempty"`
 
 	// (Updatable) The number of CPU cores to enable for a bare metal or Exadata DB system or AMD VMDB Systems. The valid values depend on the specified shape:
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The cluster name for Exadata and 2-node RAC virtual machine DB systems. The cluster name must begin with an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
@@ -1340,7 +1317,7 @@ type DbSystemObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) The number of compute servers for the DB system.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Updatable) The compute model for Base Database Service. This is required if using the computeCount parameter. If using cpuCoreCount then it is an error to specify computeModel to a non-null value. The ECPU compute model is the recommended model, and the OCPU compute model is legacy.
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
@@ -1355,17 +1332,16 @@ type DbSystemObservation struct {
 	DataCollectionOptions []DbSystemDataCollectionOptionsObservation `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
 	// The percentage assigned to DATA storage (user data and database files). The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Specify 80 or 40. The default is 80 percent assigned to DATA storage. Not applicable for virtual machine DB systems. Required for BMDBs.
-	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+	DataStoragePercentage *int64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// (Updatable) Size (in GB) of the initial data volume that will be created and attached to a virtual machine DB system. You can scale up storage after provisioning, as needed. Note that the total storage size attached will be more than the amount you specify to allow for REDO/RECO space and software volume. By default this will be set to 256. Required for VMDBs.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The Oracle Database Edition that applies to all the databases on the DB system. Exadata DB systems and 2-node RAC DB systems require ENTERPRISE_EDITION_EXTREME_PERFORMANCE.
 	DatabaseEdition *string `json:"databaseEdition,omitempty" tf:"database_edition,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | NONE) The type of redundancy configured for the DB system. Normal is 2-way redundancy, recommended for test and development systems. High is 3-way redundancy, recommended for production systems.
 	DiskRedundancy *string `json:"diskRedundancy,omitempty" tf:"disk_redundancy,omitempty"`
@@ -1380,8 +1356,7 @@ type DbSystemObservation struct {
 	FaultDomains []*string `json:"faultDomains,omitempty" tf:"fault_domains,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the DB system. The hostname must begin with an alphabetic character, and can contain alphanumeric characters and hyphens (-). The maximum length of the hostname is 16 characters for bare metal and virtual machine DB systems, and 12 characters for Exadata DB systems.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -1411,7 +1386,7 @@ type DbSystemObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The port number configured for the listener on the DB system.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// The scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
 	MaintenanceWindow []DbSystemMaintenanceWindowObservation `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
@@ -1420,13 +1395,13 @@ type DbSystemObservation struct {
 	MaintenanceWindowDetails []DbSystemMaintenanceWindowDetailsObservation `json:"maintenanceWindowDetails,omitempty" tf:"maintenance_window_details,omitempty"`
 
 	// Memory allocated to the DB system, in gigabytes.
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// The OCID of the next maintenance run.
 	NextMaintenanceRunID *string `json:"nextMaintenanceRunId,omitempty" tf:"next_maintenance_run_id,omitempty"`
 
 	// The number of nodes to launch for a virtual machine DB system. Specify either 1 or 2. By default this will be set to 1.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
@@ -1438,7 +1413,7 @@ type DbSystemObservation struct {
 	OsPatchDBNodeID *string `json:"osPatchDbNodeId,omitempty" tf:"os_patch_db_node_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Os Patch. Could be set to any integer value.
-	OsPatchTrigger *float64 `json:"osPatchTrigger,omitempty" tf:"os_patch_trigger,omitempty"`
+	OsPatchTrigger *int64 `json:"osPatchTrigger,omitempty" tf:"os_patch_trigger,omitempty"`
 
 	// The most recent OS Patch Version applied on the DB system.
 	OsVersion *string `json:"osVersion,omitempty" tf:"os_version,omitempty"`
@@ -1456,7 +1431,7 @@ type DbSystemObservation struct {
 	PrivateIPV6 *string `json:"privateIpV6,omitempty" tf:"private_ip_v6,omitempty"`
 
 	// The RECO/REDO storage size, in gigabytes, that is currently allocated to the DB system. Applies only for virtual machine DB systems.
-	RecoStorageSizeInGb *float64 `json:"recoStorageSizeInGb,omitempty" tf:"reco_storage_size_in_gb,omitempty"`
+	RecoStorageSizeInGb *int64 `json:"recoStorageSizeInGb,omitempty" tf:"reco_storage_size_in_gb,omitempty"`
 
 	// (Updatable) The public key portion of the key pair to use for SSH access to the DB system. Multiple public keys can be provided. The length of the combined keys cannot exceed 40,000 characters.
 	// +listType=set
@@ -1475,8 +1450,7 @@ type DbSystemObservation struct {
 	ScanIpv6Ids []*string `json:"scanIpv6Ids,omitempty" tf:"scan_ipv6ids,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The shape of the DB system. The shape determines resources allocated to the DB system.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -1503,8 +1477,7 @@ type DbSystemObservation struct {
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the DB system was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -1552,7 +1525,7 @@ type DbSystemParameters struct {
 
 	// (Updatable) The number of CPU cores to enable for a bare metal or Exadata DB system or AMD VMDB Systems. The valid values depend on the specified shape:
 	// +kubebuilder:validation:Optional
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The cluster name for Exadata and 2-node RAC virtual machine DB systems. The cluster name must begin with an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
 	// +kubebuilder:validation:Optional
@@ -1577,7 +1550,7 @@ type DbSystemParameters struct {
 
 	// (Updatable) The number of compute servers for the DB system.
 	// +kubebuilder:validation:Optional
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Updatable) The compute model for Base Database Service. This is required if using the computeCount parameter. If using cpuCoreCount then it is an error to specify computeModel to a non-null value. The ECPU compute model is the recommended model, and the OCPU compute model is legacy.
 	// +kubebuilder:validation:Optional
@@ -1597,11 +1570,11 @@ type DbSystemParameters struct {
 
 	// The percentage assigned to DATA storage (user data and database files). The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Specify 80 or 40. The default is 80 percent assigned to DATA storage. Not applicable for virtual machine DB systems. Required for BMDBs.
 	// +kubebuilder:validation:Optional
-	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+	DataStoragePercentage *int64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// (Updatable) Size (in GB) of the initial data volume that will be created and attached to a virtual machine DB system. You can scale up storage after provisioning, as needed. Note that the total storage size attached will be more than the amount you specify to allow for REDO/RECO space and software volume. By default this will be set to 256. Required for VMDBs.
 	// +kubebuilder:validation:Optional
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The Oracle Database Edition that applies to all the databases on the DB system. Exadata DB systems and 2-node RAC DB systems require ENTERPRISE_EDITION_EXTREME_PERFORMANCE.
 	// +kubebuilder:validation:Optional
@@ -1609,8 +1582,7 @@ type DbSystemParameters struct {
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=DATABASE | DB_BACKUP | NONE) The type of redundancy configured for the DB system. Normal is 2-way redundancy, recommended for test and development systems. High is 3-way redundancy, recommended for production systems.
 	// +kubebuilder:validation:Optional
@@ -1630,8 +1602,7 @@ type DbSystemParameters struct {
 
 	// (Applicable when source=DATABASE | DB_BACKUP | DB_SYSTEM | NONE) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the DB system. The hostname must begin with an alphabetic character, and can contain alphanumeric characters and hyphens (-). The maximum length of the hostname is 16 characters for bare metal and virtual machine DB systems, and 12 characters for Exadata DB systems.
 	// +kubebuilder:validation:Optional
@@ -1675,7 +1646,7 @@ type DbSystemParameters struct {
 
 	// The number of nodes to launch for a virtual machine DB system. Specify either 1 or 2. By default this will be set to 1.
 	// +kubebuilder:validation:Optional
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +kubebuilder:validation:Optional
@@ -1691,7 +1662,7 @@ type DbSystemParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Os Patch. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	OsPatchTrigger *float64 `json:"osPatchTrigger,omitempty" tf:"os_patch_trigger,omitempty"`
+	OsPatchTrigger *int64 `json:"osPatchTrigger,omitempty" tf:"os_patch_trigger,omitempty"`
 
 	// The OCID of the DB system.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.DbSystem
@@ -1717,7 +1688,7 @@ type DbSystemParameters struct {
 
 	// The RECO/REDO storage size, in gigabytes, that is currently allocated to the DB system. Applies only for virtual machine DB systems.
 	// +kubebuilder:validation:Optional
-	RecoStorageSizeInGb *float64 `json:"recoStorageSizeInGb,omitempty" tf:"reco_storage_size_in_gb,omitempty"`
+	RecoStorageSizeInGb *int64 `json:"recoStorageSizeInGb,omitempty" tf:"reco_storage_size_in_gb,omitempty"`
 
 	// (Updatable) The public key portion of the key pair to use for SSH access to the DB system. Multiple public keys can be provided. The length of the combined keys cannot exceed 40,000 characters.
 	// +kubebuilder:validation:Optional
@@ -1726,8 +1697,7 @@ type DbSystemParameters struct {
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The shape of the DB system. The shape determines resources allocated to the DB system.
 	// +kubebuilder:validation:Optional
@@ -1794,7 +1764,7 @@ type IormConfigCacheDBPlansObservation struct {
 	FlashCacheLimit *string `json:"flashCacheLimit,omitempty" tf:"flash_cache_limit,omitempty"`
 
 	// The relative priority of this database.
-	Share *float64 `json:"share,omitempty" tf:"share,omitempty"`
+	Share *int64 `json:"share,omitempty" tf:"share,omitempty"`
 }
 
 type IormConfigCacheDBPlansParameters struct {

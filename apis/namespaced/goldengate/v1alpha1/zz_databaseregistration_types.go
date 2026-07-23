@@ -48,8 +48,7 @@ type DatabaseRegistrationInitParameters struct {
 	DatabaseIDSelector *v1.NamespacedSelector `json:"databaseIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Tags defined for this resource. Each key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Metadata about this specific object.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -61,8 +60,7 @@ type DatabaseRegistrationInitParameters struct {
 	Fqdn *string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only.  Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The private IP address in the customer's VCN of the customer's endpoint, typically a database.
 	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
@@ -150,8 +148,7 @@ type DatabaseRegistrationObservation struct {
 	DatabaseID *string `json:"databaseId,omitempty" tf:"database_id,omitempty"`
 
 	// (Updatable) Tags defined for this resource. Each key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Metadata about this specific object.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -163,8 +160,7 @@ type DatabaseRegistrationObservation struct {
 	Fqdn *string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only.  Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the databaseRegistration being referenced.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -197,8 +193,7 @@ type DatabaseRegistrationObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// The system tags associated with this resource, if any. The system tags are set by Oracle Cloud Infrastructure services. Each key is predefined and scoped to namespaces.  For more information, see Resource Tags.  Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the resource was created. The format is defined by RFC3339, such as 2016-08-25T21:10:29.600Z.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -255,8 +250,7 @@ type DatabaseRegistrationParameters struct {
 
 	// (Updatable) Tags defined for this resource. Each key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Metadata about this specific object.
 	// +kubebuilder:validation:Optional
@@ -272,8 +266,7 @@ type DatabaseRegistrationParameters struct {
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only.  Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The private IP address in the customer's VCN of the customer's endpoint, typically a database.
 	// +kubebuilder:validation:Optional

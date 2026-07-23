@@ -63,13 +63,13 @@ type DataGuardAssociationInitParameters struct {
 	BackupNetworkNsgIds []*string `json:"backupNetworkNsgIds,omitempty" tf:"backup_network_nsg_ids,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The number of CPU cores available for AMD-based virtual machine DB systems.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The OCID of the Data Guard association.
 	ClusterPlacementGroupID *string `json:"clusterPlacementGroupId,omitempty" tf:"cluster_placement_group_id,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The number of compute servers for the DB system.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The compute model for Base Database Service. This is required if using the computeCount parameter. If using cpuCoreCount then it is an error to specify computeModel to a non-null value. The ECPU compute model is the recommended model, and the OCPU compute model is legacy.
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
@@ -80,16 +80,13 @@ type DataGuardAssociationInitParameters struct {
 	CreationType *string `json:"creationType,omitempty" tf:"creation_type,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DBSystemDefinedTags map[string]*string `json:"dbSystemDefinedTags,omitempty" tf:"db_system_defined_tags,omitempty"`
+	DBSystemDefinedTags map[string]string `json:"dbSystemDefinedTags,omitempty" tf:"db_system_defined_tags,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	DBSystemFreeformTags map[string]*string `json:"dbSystemFreeformTags,omitempty" tf:"db_system_freeform_tags,omitempty"`
+	DBSystemFreeformTags map[string]string `json:"dbSystemFreeformTags,omitempty" tf:"db_system_freeform_tags,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	DBSystemSecurityAttributes map[string]*string `json:"dbSystemSecurityAttributes,omitempty" tf:"db_system_security_attributes,omitempty"`
+	DBSystemSecurityAttributes map[string]string `json:"dbSystemSecurityAttributes,omitempty" tf:"db_system_security_attributes,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Indicates user preferences for the various diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM DBCS.
 	DataCollectionOptions []DataGuardAssociationDataCollectionOptionsInitParameters `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
@@ -98,12 +95,10 @@ type DataGuardAssociationInitParameters struct {
 	DatabaseAdminPasswordSecretRef v1.LocalSecretKeySelector `json:"databaseAdminPasswordSecretRef" tf:"-"`
 
 	// (Applicable when creation_type=NewDbSystem) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DatabaseDefinedTags map[string]*string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
+	DatabaseDefinedTags map[string]string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	DatabaseFreeformTags map[string]*string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
+	DatabaseFreeformTags map[string]string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
 
 	// The database OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.Database
@@ -153,10 +148,10 @@ type DataGuardAssociationInitParameters struct {
 	LicenseModel *string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Migrate. Could be set to any integer value.
-	MigrateTrigger *float64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
+	MigrateTrigger *int64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The number of nodes to launch for the DB system of the standby in the Data Guard association. For a 2-node RAC virtual machine DB system, specify either 1 or 2. If you do not supply this parameter, the default is the node count of the primary DB system.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
@@ -261,13 +256,13 @@ type DataGuardAssociationObservation struct {
 	BackupNetworkNsgIds []*string `json:"backupNetworkNsgIds,omitempty" tf:"backup_network_nsg_ids,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The number of CPU cores available for AMD-based virtual machine DB systems.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The OCID of the Data Guard association.
 	ClusterPlacementGroupID *string `json:"clusterPlacementGroupId,omitempty" tf:"cluster_placement_group_id,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The number of compute servers for the DB system.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The compute model for Base Database Service. This is required if using the computeCount parameter. If using cpuCoreCount then it is an error to specify computeModel to a non-null value. The ECPU compute model is the recommended model, and the OCPU compute model is legacy.
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
@@ -278,27 +273,22 @@ type DataGuardAssociationObservation struct {
 	CreationType *string `json:"creationType,omitempty" tf:"creation_type,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DBSystemDefinedTags map[string]*string `json:"dbSystemDefinedTags,omitempty" tf:"db_system_defined_tags,omitempty"`
+	DBSystemDefinedTags map[string]string `json:"dbSystemDefinedTags,omitempty" tf:"db_system_defined_tags,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	DBSystemFreeformTags map[string]*string `json:"dbSystemFreeformTags,omitempty" tf:"db_system_freeform_tags,omitempty"`
+	DBSystemFreeformTags map[string]string `json:"dbSystemFreeformTags,omitempty" tf:"db_system_freeform_tags,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	DBSystemSecurityAttributes map[string]*string `json:"dbSystemSecurityAttributes,omitempty" tf:"db_system_security_attributes,omitempty"`
+	DBSystemSecurityAttributes map[string]string `json:"dbSystemSecurityAttributes,omitempty" tf:"db_system_security_attributes,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Indicates user preferences for the various diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM DBCS.
 	DataCollectionOptions []DataGuardAssociationDataCollectionOptionsObservation `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DatabaseDefinedTags map[string]*string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
+	DatabaseDefinedTags map[string]string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	DatabaseFreeformTags map[string]*string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
+	DatabaseFreeformTags map[string]string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
 
 	// The database OCID.
 	DatabaseID *string `json:"databaseId,omitempty" tf:"database_id,omitempty"`
@@ -334,10 +324,10 @@ type DataGuardAssociationObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Migrate. Could be set to any integer value.
-	MigrateTrigger *float64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
+	MigrateTrigger *int64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The number of nodes to launch for the DB system of the standby in the Data Guard association. For a 2-node RAC virtual machine DB system, specify either 1 or 2. If you do not supply this parameter, the default is the node count of the primary DB system.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
@@ -417,7 +407,7 @@ type DataGuardAssociationParameters struct {
 
 	// (Applicable when creation_type=NewDbSystem) The number of CPU cores available for AMD-based virtual machine DB systems.
 	// +kubebuilder:validation:Optional
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The OCID of the Data Guard association.
 	// +kubebuilder:validation:Optional
@@ -425,7 +415,7 @@ type DataGuardAssociationParameters struct {
 
 	// (Applicable when creation_type=NewDbSystem) The number of compute servers for the DB system.
 	// +kubebuilder:validation:Optional
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The compute model for Base Database Service. This is required if using the computeCount parameter. If using cpuCoreCount then it is an error to specify computeModel to a non-null value. The ECPU compute model is the recommended model, and the OCPU compute model is legacy.
 	// +kubebuilder:validation:Optional
@@ -440,18 +430,15 @@ type DataGuardAssociationParameters struct {
 
 	// (Applicable when creation_type=NewDbSystem) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DBSystemDefinedTags map[string]*string `json:"dbSystemDefinedTags,omitempty" tf:"db_system_defined_tags,omitempty"`
+	DBSystemDefinedTags map[string]string `json:"dbSystemDefinedTags,omitempty" tf:"db_system_defined_tags,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DBSystemFreeformTags map[string]*string `json:"dbSystemFreeformTags,omitempty" tf:"db_system_freeform_tags,omitempty"`
+	DBSystemFreeformTags map[string]string `json:"dbSystemFreeformTags,omitempty" tf:"db_system_freeform_tags,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DBSystemSecurityAttributes map[string]*string `json:"dbSystemSecurityAttributes,omitempty" tf:"db_system_security_attributes,omitempty"`
+	DBSystemSecurityAttributes map[string]string `json:"dbSystemSecurityAttributes,omitempty" tf:"db_system_security_attributes,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Indicates user preferences for the various diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM DBCS.
 	// +kubebuilder:validation:Optional
@@ -463,13 +450,11 @@ type DataGuardAssociationParameters struct {
 
 	// (Applicable when creation_type=NewDbSystem) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DatabaseDefinedTags map[string]*string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
+	DatabaseDefinedTags map[string]string `json:"databaseDefinedTags,omitempty" tf:"database_defined_tags,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DatabaseFreeformTags map[string]*string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
+	DatabaseFreeformTags map[string]string `json:"databaseFreeformTags,omitempty" tf:"database_freeform_tags,omitempty"`
 
 	// The database OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.Database
@@ -529,11 +514,11 @@ type DataGuardAssociationParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Migrate. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	MigrateTrigger *float64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
+	MigrateTrigger *int64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The number of nodes to launch for the DB system of the standby in the Data Guard association. For a 2-node RAC virtual machine DB system, specify either 1 or 2. If you do not supply this parameter, the default is the node count of the primary DB system.
 	// +kubebuilder:validation:Optional
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Applicable when creation_type=NewDbSystem) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +kubebuilder:validation:Optional

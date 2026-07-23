@@ -114,14 +114,16 @@ spec:
                     type: string
                   minimumApprovals:
                     description: Minimum number of Approvals required for this step.
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: The unique Oracle Cloud Infrastructure identifier
                       of the approver.
                     type: string
                   order:
                     description: Order of the ApprovalWorkflowStep.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceTypeSchemaVersion:
                     description: An endpoint-specific schema version number to use
                       in the Request. Allowed version values are Earliest Version
@@ -228,14 +230,16 @@ spec:
                     type: string
                   minimumApprovals:
                     description: Minimum number of Approvals required for this step.
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: The unique Oracle Cloud Infrastructure identifier
                       of the approver.
                     type: string
                   order:
                     description: Order of the ApprovalWorkflowStep.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceTypeSchemaVersion:
                     description: An endpoint-specific schema version number to use
                       in the Request. Allowed version values are Earliest Version
@@ -528,14 +532,16 @@ spec:
                     type: array
                   minimumApprovals:
                     description: Minimum number of Approvals required for this step.
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: The unique Oracle Cloud Infrastructure identifier
                       of the approver.
                     type: string
                   order:
                     description: Order of the ApprovalWorkflowStep.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceTypeSchemaVersion:
                     description: An endpoint-specific schema version number to use
                       in the Request. Allowed version values are Earliest Version

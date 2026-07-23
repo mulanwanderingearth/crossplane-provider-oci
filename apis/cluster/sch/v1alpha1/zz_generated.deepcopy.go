@@ -779,18 +779,9 @@ func (in *ServiceConnectorInitParameters) DeepCopyInto(out *ServiceConnectorInit
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -805,18 +796,9 @@ func (in *ServiceConnectorInitParameters) DeepCopyInto(out *ServiceConnectorInit
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Source != nil {
@@ -899,18 +881,9 @@ func (in *ServiceConnectorObservation) DeepCopyInto(out *ServiceConnectorObserva
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -925,18 +898,9 @@ func (in *ServiceConnectorObservation) DeepCopyInto(out *ServiceConnectorObserva
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -968,18 +932,9 @@ func (in *ServiceConnectorObservation) DeepCopyInto(out *ServiceConnectorObserva
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Target != nil {
@@ -1038,18 +993,9 @@ func (in *ServiceConnectorParameters) DeepCopyInto(out *ServiceConnectorParamete
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1064,18 +1010,9 @@ func (in *ServiceConnectorParameters) DeepCopyInto(out *ServiceConnectorParamete
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Source != nil {
@@ -1351,27 +1288,27 @@ func (in *TargetInitParameters) DeepCopyInto(out *TargetInitParameters) {
 	*out = *in
 	if in.BatchRolloverSizeInMbs != nil {
 		in, out := &in.BatchRolloverSizeInMbs, &out.BatchRolloverSizeInMbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchRolloverTimeInMs != nil {
 		in, out := &in.BatchRolloverTimeInMs, &out.BatchRolloverTimeInMs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchSizeInKbs != nil {
 		in, out := &in.BatchSizeInKbs, &out.BatchSizeInKbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchSizeInNum != nil {
 		in, out := &in.BatchSizeInNum, &out.BatchSizeInNum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchTimeInSec != nil {
 		in, out := &in.BatchTimeInSec, &out.BatchTimeInSec
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Bucket != nil {
@@ -1503,27 +1440,27 @@ func (in *TargetObservation) DeepCopyInto(out *TargetObservation) {
 	*out = *in
 	if in.BatchRolloverSizeInMbs != nil {
 		in, out := &in.BatchRolloverSizeInMbs, &out.BatchRolloverSizeInMbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchRolloverTimeInMs != nil {
 		in, out := &in.BatchRolloverTimeInMs, &out.BatchRolloverTimeInMs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchSizeInKbs != nil {
 		in, out := &in.BatchSizeInKbs, &out.BatchSizeInKbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchSizeInNum != nil {
 		in, out := &in.BatchSizeInNum, &out.BatchSizeInNum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchTimeInSec != nil {
 		in, out := &in.BatchTimeInSec, &out.BatchTimeInSec
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Bucket != nil {
@@ -1622,27 +1559,27 @@ func (in *TargetParameters) DeepCopyInto(out *TargetParameters) {
 	*out = *in
 	if in.BatchRolloverSizeInMbs != nil {
 		in, out := &in.BatchRolloverSizeInMbs, &out.BatchRolloverSizeInMbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchRolloverTimeInMs != nil {
 		in, out := &in.BatchRolloverTimeInMs, &out.BatchRolloverTimeInMs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchSizeInKbs != nil {
 		in, out := &in.BatchSizeInKbs, &out.BatchSizeInKbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchSizeInNum != nil {
 		in, out := &in.BatchSizeInNum, &out.BatchSizeInNum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchTimeInSec != nil {
 		in, out := &in.BatchTimeInSec, &out.BatchTimeInSec
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Bucket != nil {
@@ -1829,12 +1766,12 @@ func (in *TasksInitParameters) DeepCopyInto(out *TasksInitParameters) {
 	*out = *in
 	if in.BatchSizeInKbs != nil {
 		in, out := &in.BatchSizeInKbs, &out.BatchSizeInKbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchTimeInSec != nil {
 		in, out := &in.BatchTimeInSec, &out.BatchTimeInSec
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Condition != nil {
@@ -1879,12 +1816,12 @@ func (in *TasksObservation) DeepCopyInto(out *TasksObservation) {
 	*out = *in
 	if in.BatchSizeInKbs != nil {
 		in, out := &in.BatchSizeInKbs, &out.BatchSizeInKbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchTimeInSec != nil {
 		in, out := &in.BatchTimeInSec, &out.BatchTimeInSec
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Condition != nil {
@@ -1926,12 +1863,12 @@ func (in *TasksParameters) DeepCopyInto(out *TasksParameters) {
 	*out = *in
 	if in.BatchSizeInKbs != nil {
 		in, out := &in.BatchSizeInKbs, &out.BatchSizeInKbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BatchTimeInSec != nil {
 		in, out := &in.BatchTimeInSec, &out.BatchTimeInSec
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Condition != nil {

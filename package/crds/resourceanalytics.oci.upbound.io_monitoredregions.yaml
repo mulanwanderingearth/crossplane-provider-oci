@@ -379,7 +379,6 @@ spec:
                       and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: 'The date and time the MonitoredRegion was created,
                       in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z'

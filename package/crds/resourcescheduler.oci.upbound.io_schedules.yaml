@@ -164,7 +164,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) This is the description of the schedule.
                     type: string
@@ -180,7 +179,6 @@ spec:
                       type, or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   recurrenceDetails:
                     description: (Updatable) This is the frequency of recurrence of
                       a schedule. The frequency field can either conform to RFC-5545
@@ -248,7 +246,6 @@ spec:
                             (Updatable) This is additional information that helps to identity the resource for the schedule.
                             { "id": "<OCID_of_bucket>" "metadata": { "namespaceName": "sampleNamespace", "bucketName": "sampleBucket" } }
                           type: object
-                          x-kubernetes-map-type: granular
                         parameters:
                           description: (Updatable) This is the user input parameters
                             to use when acting on the resource.
@@ -386,7 +383,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) This is the description of the schedule.
                     type: string
@@ -402,7 +398,6 @@ spec:
                       type, or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   recurrenceDetails:
                     description: (Updatable) This is the frequency of recurrence of
                       a schedule. The frequency field can either conform to RFC-5545
@@ -470,7 +465,6 @@ spec:
                             (Updatable) This is additional information that helps to identity the resource for the schedule.
                             { "id": "<OCID_of_bucket>" "metadata": { "namespaceName": "sampleNamespace", "bucketName": "sampleBucket" } }
                           type: object
-                          x-kubernetes-map-type: granular
                         parameters:
                           description: (Updatable) This is the user input parameters
                             to use when acting on the resource.
@@ -625,7 +619,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) This is the description of the schedule.
                     type: string
@@ -641,7 +634,6 @@ spec:
                       type, or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: (Updatable) This is the resource OCID.
                     type: string
@@ -715,7 +707,6 @@ spec:
                             (Updatable) This is additional information that helps to identity the resource for the schedule.
                             { "id": "<OCID_of_bucket>" "metadata": { "namespaceName": "sampleNamespace", "bucketName": "sampleBucket" } }
                           type: object
-                          x-kubernetes-map-type: granular
                         parameters:
                           description: (Updatable) This is the user input parameters
                             to use when acting on the resource.
@@ -747,7 +738,6 @@ spec:
                       is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: 'This is the date and time the schedule was created,
                       in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z'

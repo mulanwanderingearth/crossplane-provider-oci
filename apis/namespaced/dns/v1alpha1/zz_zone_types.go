@@ -26,10 +26,10 @@ type DNSSECConfigKskDNSSECKeyVersionsObservation struct {
 	DsData []KskDNSSECKeyVersionsDsDataObservation `json:"dsData,omitempty" tf:"ds_data,omitempty"`
 
 	// The key tag associated with the DnssecKeyVersion. This key tag will be present in the RRSIG and DS records associated with the key material for this DnssecKeyVersion. For more information about key tags, see RFC 4034.
-	KeyTag *float64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
+	KeyTag *int64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
 
 	// The length of the corresponding private key in bytes, expressed as an integer.
-	LengthInBytes *float64 `json:"lengthInBytes,omitempty" tf:"length_in_bytes,omitempty"`
+	LengthInBytes *int64 `json:"lengthInBytes,omitempty" tf:"length_in_bytes,omitempty"`
 
 	// When populated, this is the UUID of the DnssecKeyVersion that this DnssecKeyVersion will replace or has replaced.
 	PredecessorDNSSECKeyVersionUUID *string `json:"predecessorDnssecKeyVersionUuid,omitempty" tf:"predecessor_dnssec_key_version_uuid,omitempty"`
@@ -74,10 +74,10 @@ type DNSSECConfigZskDNSSECKeyVersionsObservation struct {
 	Algorithm *string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
 	// The key tag associated with the DnssecKeyVersion. This key tag will be present in the RRSIG and DS records associated with the key material for this DnssecKeyVersion. For more information about key tags, see RFC 4034.
-	KeyTag *float64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
+	KeyTag *int64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
 
 	// The length of the corresponding private key in bytes, expressed as an integer.
-	LengthInBytes *float64 `json:"lengthInBytes,omitempty" tf:"length_in_bytes,omitempty"`
+	LengthInBytes *int64 `json:"lengthInBytes,omitempty" tf:"length_in_bytes,omitempty"`
 
 	// When populated, this is the UUID of the DnssecKeyVersion that this DnssecKeyVersion will replace or has replaced.
 	PredecessorDNSSECKeyVersionUUID *string `json:"predecessorDnssecKeyVersionUuid,omitempty" tf:"predecessor_dnssec_key_version_uuid,omitempty"`
@@ -149,7 +149,7 @@ type ZoneExternalDownstreamsInitParameters struct {
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
 	// (Updatable) The server's port. Port value must be a value of 53, otherwise omit the port value.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The OCID of the TSIG key. A TSIG key is used to secure DNS messages (in this case, zone transfers) between two systems that both have the (shared) secret.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/dns/v1alpha1.TsigKey
@@ -171,7 +171,7 @@ type ZoneExternalDownstreamsObservation struct {
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
 	// (Updatable) The server's port. Port value must be a value of 53, otherwise omit the port value.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The OCID of the TSIG key. A TSIG key is used to secure DNS messages (in this case, zone transfers) between two systems that both have the (shared) secret.
 	TsigKeyID *string `json:"tsigKeyId,omitempty" tf:"tsig_key_id,omitempty"`
@@ -185,7 +185,7 @@ type ZoneExternalDownstreamsParameters struct {
 
 	// (Updatable) The server's port. Port value must be a value of 53, otherwise omit the port value.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The OCID of the TSIG key. A TSIG key is used to secure DNS messages (in this case, zone transfers) between two systems that both have the (shared) secret.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/dns/v1alpha1.TsigKey
@@ -208,7 +208,7 @@ type ZoneExternalMastersInitParameters struct {
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
 	// (Updatable) The server's port. Port value must be a value of 53, otherwise omit the port value.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The OCID of the TSIG key. A TSIG key is used to secure DNS messages (in this case, zone transfers) between two systems that both have the (shared) secret.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/dns/v1alpha1.TsigKey
@@ -230,7 +230,7 @@ type ZoneExternalMastersObservation struct {
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
 	// (Updatable) The server's port. Port value must be a value of 53, otherwise omit the port value.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The OCID of the TSIG key. A TSIG key is used to secure DNS messages (in this case, zone transfers) between two systems that both have the (shared) secret.
 	TsigKeyID *string `json:"tsigKeyId,omitempty" tf:"tsig_key_id,omitempty"`
@@ -244,7 +244,7 @@ type ZoneExternalMastersParameters struct {
 
 	// (Updatable) The server's port. Port value must be a value of 53, otherwise omit the port value.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The OCID of the TSIG key. A TSIG key is used to secure DNS messages (in this case, zone transfers) between two systems that both have the (shared) secret.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/dns/v1alpha1.TsigKey
@@ -279,8 +279,7 @@ type ZoneInitParameters struct {
 	DNSSECState *string `json:"dnssecState,omitempty" tf:"dnssec_state,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) External secondary servers for the zone. This field is currently not supported when zoneType is SECONDARY or scope is PRIVATE.
 	ExternalDownstreams []ZoneExternalDownstreamsInitParameters `json:"externalDownstreams,omitempty" tf:"external_downstreams,omitempty"`
@@ -289,8 +288,7 @@ type ZoneInitParameters struct {
 	ExternalMasters []ZoneExternalMastersInitParameters `json:"externalMasters,omitempty" tf:"external_masters,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The name of the zone.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -342,8 +340,7 @@ type ZoneObservation struct {
 	DNSSECState *string `json:"dnssecState,omitempty" tf:"dnssec_state,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) External secondary servers for the zone. This field is currently not supported when zoneType is SECONDARY or scope is PRIVATE.
 	ExternalDownstreams []ZoneExternalDownstreamsObservation `json:"externalDownstreams,omitempty" tf:"external_downstreams,omitempty"`
@@ -352,8 +349,7 @@ type ZoneObservation struct {
 	ExternalMasters []ZoneExternalMastersObservation `json:"externalMasters,omitempty" tf:"external_masters,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the zone.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -377,7 +373,7 @@ type ZoneObservation struct {
 	Self *string `json:"self,omitempty" tf:"self,omitempty"`
 
 	// The current serial of the zone. As seen in the zone's SOA record.
-	Serial *float64 `json:"serial,omitempty" tf:"serial,omitempty"`
+	Serial *int64 `json:"serial,omitempty" tf:"serial,omitempty"`
 
 	// The current state of the zone resource.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -419,8 +415,7 @@ type ZoneParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) External secondary servers for the zone. This field is currently not supported when zoneType is SECONDARY or scope is PRIVATE.
 	// +kubebuilder:validation:Optional
@@ -432,8 +427,7 @@ type ZoneParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The name of the zone.
 	// +kubebuilder:validation:Optional
@@ -481,7 +475,7 @@ type ZoneZoneTransferServersObservation struct {
 	IsTransferSource *bool `json:"isTransferSource,omitempty" tf:"is_transfer_source,omitempty"`
 
 	// (Updatable) The server's port. Port value must be a value of 53, otherwise omit the port value.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ZoneZoneTransferServersParameters struct {

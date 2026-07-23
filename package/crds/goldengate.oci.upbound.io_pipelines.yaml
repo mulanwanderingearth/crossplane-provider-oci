@@ -155,7 +155,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) The Minimum number of OCPUs to be made
                       available for this Deployment.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -163,7 +164,6 @@ spec:
                       key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Metadata about this specific object.
                     type: string
@@ -177,7 +177,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only.  Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoScalingEnabled:
                     description: (Updatable) Indicates if auto scaling is enabled
                       for the Deployment's CPU core count.
@@ -647,7 +646,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) The Minimum number of OCPUs to be made
                       available for this Deployment.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -655,7 +655,6 @@ spec:
                       key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Metadata about this specific object.
                     type: string
@@ -669,7 +668,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only.  Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoScalingEnabled:
                     description: (Updatable) Indicates if auto scaling is enabled
                       for the Deployment's CPU core count.
@@ -1164,7 +1162,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) The Minimum number of OCPUs to be made
                       available for this Deployment.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -1172,7 +1171,6 @@ spec:
                       key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Metadata about this specific object.
                     type: string
@@ -1186,7 +1184,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only.  Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the pipeline. This option applies when
                       retrieving a pipeline.
@@ -1410,7 +1407,6 @@ spec:
                       more information, see Resource Tags.  Example: {orcl-cloud:
                       {free-tier-retain: true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   targetConnectionDetails:
                     description: The target connection details for creating a pipeline.
                     items:

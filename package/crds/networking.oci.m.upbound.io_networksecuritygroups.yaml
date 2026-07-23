@@ -153,7 +153,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -167,7 +166,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   vcnId:
                     description: The OCID of the VCN to create the network security
                       group in.
@@ -359,7 +357,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -373,7 +370,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   vcnId:
                     description: The OCID of the VCN to create the network security
                       group in.
@@ -536,7 +532,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -550,7 +545,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the network security group.
                     type: string

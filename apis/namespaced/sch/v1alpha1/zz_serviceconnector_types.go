@@ -316,8 +316,7 @@ type ServiceConnectorInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the resource. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -326,8 +325,7 @@ type ServiceConnectorInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable)
 	Source []SourceInitParameters `json:"source,omitempty" tf:"source,omitempty"`
@@ -348,8 +346,7 @@ type ServiceConnectorObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the resource. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -358,8 +355,7 @@ type ServiceConnectorObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the connector.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -377,8 +373,7 @@ type ServiceConnectorObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// The system tags associated with this resource, if any. The system tags are set by Oracle Cloud Infrastructure services. Each key is predefined and scoped to namespaces. For more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable)
 	Target []TargetObservation `json:"target,omitempty" tf:"target,omitempty"`
@@ -410,8 +405,7 @@ type ServiceConnectorParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the resource. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -423,8 +417,7 @@ type ServiceConnectorParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
@@ -548,19 +541,19 @@ type SourceParameters struct {
 type TargetInitParameters struct {
 
 	// (Applicable when kind=objectStorage) (Updatable) The batch rollover size in megabytes.
-	BatchRolloverSizeInMbs *float64 `json:"batchRolloverSizeInMbs,omitempty" tf:"batch_rollover_size_in_mbs,omitempty"`
+	BatchRolloverSizeInMbs *int64 `json:"batchRolloverSizeInMbs,omitempty" tf:"batch_rollover_size_in_mbs,omitempty"`
 
 	// (Applicable when kind=objectStorage) (Updatable) The batch rollover time in milliseconds.
-	BatchRolloverTimeInMs *float64 `json:"batchRolloverTimeInMs,omitempty" tf:"batch_rollover_time_in_ms,omitempty"`
+	BatchRolloverTimeInMs *int64 `json:"batchRolloverTimeInMs,omitempty" tf:"batch_rollover_time_in_ms,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover size in kilobytes. Only one size option can be specified: batchSizeInKbs or batchSizeInNum.
-	BatchSizeInKbs *float64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
+	BatchSizeInKbs *int64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover size in number of messages. Only one size option can be specified: batchSizeInKbs or batchSizeInNum.
-	BatchSizeInNum *float64 `json:"batchSizeInNum,omitempty" tf:"batch_size_in_num,omitempty"`
+	BatchSizeInNum *int64 `json:"batchSizeInNum,omitempty" tf:"batch_size_in_num,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover time in seconds.
-	BatchTimeInSec *float64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
+	BatchTimeInSec *int64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
 
 	// (Updatable) The name of the bucket. Valid characters are letters (upper or lower case), numbers, hyphens (-), underscores(_), and periods (.). Bucket names must be unique within an Object Storage namespace. Avoid entering confidential information. Example: my-new-bucket1
 	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
@@ -648,19 +641,19 @@ type TargetInitParameters struct {
 type TargetObservation struct {
 
 	// (Applicable when kind=objectStorage) (Updatable) The batch rollover size in megabytes.
-	BatchRolloverSizeInMbs *float64 `json:"batchRolloverSizeInMbs,omitempty" tf:"batch_rollover_size_in_mbs,omitempty"`
+	BatchRolloverSizeInMbs *int64 `json:"batchRolloverSizeInMbs,omitempty" tf:"batch_rollover_size_in_mbs,omitempty"`
 
 	// (Applicable when kind=objectStorage) (Updatable) The batch rollover time in milliseconds.
-	BatchRolloverTimeInMs *float64 `json:"batchRolloverTimeInMs,omitempty" tf:"batch_rollover_time_in_ms,omitempty"`
+	BatchRolloverTimeInMs *int64 `json:"batchRolloverTimeInMs,omitempty" tf:"batch_rollover_time_in_ms,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover size in kilobytes. Only one size option can be specified: batchSizeInKbs or batchSizeInNum.
-	BatchSizeInKbs *float64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
+	BatchSizeInKbs *int64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover size in number of messages. Only one size option can be specified: batchSizeInKbs or batchSizeInNum.
-	BatchSizeInNum *float64 `json:"batchSizeInNum,omitempty" tf:"batch_size_in_num,omitempty"`
+	BatchSizeInNum *int64 `json:"batchSizeInNum,omitempty" tf:"batch_size_in_num,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover time in seconds.
-	BatchTimeInSec *float64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
+	BatchTimeInSec *int64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
 
 	// (Updatable) The name of the bucket. Valid characters are letters (upper or lower case), numbers, hyphens (-), underscores(_), and periods (.). Bucket names must be unique within an Object Storage namespace. Avoid entering confidential information. Example: my-new-bucket1
 	Bucket *string `json:"bucket,omitempty" tf:"bucket,omitempty"`
@@ -712,23 +705,23 @@ type TargetParameters struct {
 
 	// (Applicable when kind=objectStorage) (Updatable) The batch rollover size in megabytes.
 	// +kubebuilder:validation:Optional
-	BatchRolloverSizeInMbs *float64 `json:"batchRolloverSizeInMbs,omitempty" tf:"batch_rollover_size_in_mbs,omitempty"`
+	BatchRolloverSizeInMbs *int64 `json:"batchRolloverSizeInMbs,omitempty" tf:"batch_rollover_size_in_mbs,omitempty"`
 
 	// (Applicable when kind=objectStorage) (Updatable) The batch rollover time in milliseconds.
 	// +kubebuilder:validation:Optional
-	BatchRolloverTimeInMs *float64 `json:"batchRolloverTimeInMs,omitempty" tf:"batch_rollover_time_in_ms,omitempty"`
+	BatchRolloverTimeInMs *int64 `json:"batchRolloverTimeInMs,omitempty" tf:"batch_rollover_time_in_ms,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover size in kilobytes. Only one size option can be specified: batchSizeInKbs or batchSizeInNum.
 	// +kubebuilder:validation:Optional
-	BatchSizeInKbs *float64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
+	BatchSizeInKbs *int64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover size in number of messages. Only one size option can be specified: batchSizeInKbs or batchSizeInNum.
 	// +kubebuilder:validation:Optional
-	BatchSizeInNum *float64 `json:"batchSizeInNum,omitempty" tf:"batch_size_in_num,omitempty"`
+	BatchSizeInNum *int64 `json:"batchSizeInNum,omitempty" tf:"batch_size_in_num,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover time in seconds.
 	// +kubebuilder:validation:Optional
-	BatchTimeInSec *float64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
+	BatchTimeInSec *int64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
 
 	// (Updatable) The name of the bucket. Valid characters are letters (upper or lower case), numbers, hyphens (-), underscores(_), and periods (.). Bucket names must be unique within an Object Storage namespace. Avoid entering confidential information. Example: my-new-bucket1
 	// +kubebuilder:validation:Optional
@@ -845,10 +838,10 @@ type TargetPrivateEndpointMetadataParameters struct {
 type TasksInitParameters struct {
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover size in kilobytes. Only one size option can be specified: batchSizeInKbs or batchSizeInNum.
-	BatchSizeInKbs *float64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
+	BatchSizeInKbs *int64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover time in seconds.
-	BatchTimeInSec *float64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
+	BatchTimeInSec *int64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
 
 	// (Updatable) A filter or mask to limit the source used in the flow defined by the connector.
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
@@ -873,10 +866,10 @@ type TasksInitParameters struct {
 type TasksObservation struct {
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover size in kilobytes. Only one size option can be specified: batchSizeInKbs or batchSizeInNum.
-	BatchSizeInKbs *float64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
+	BatchSizeInKbs *int64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover time in seconds.
-	BatchTimeInSec *float64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
+	BatchTimeInSec *int64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
 
 	// (Updatable) A filter or mask to limit the source used in the flow defined by the connector.
 	Condition *string `json:"condition,omitempty" tf:"condition,omitempty"`
@@ -895,11 +888,11 @@ type TasksParameters struct {
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover size in kilobytes. Only one size option can be specified: batchSizeInKbs or batchSizeInNum.
 	// +kubebuilder:validation:Optional
-	BatchSizeInKbs *float64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
+	BatchSizeInKbs *int64 `json:"batchSizeInKbs,omitempty" tf:"batch_size_in_kbs,omitempty"`
 
 	// (Applicable when kind=functions) (Updatable) The batch rollover time in seconds.
 	// +kubebuilder:validation:Optional
-	BatchTimeInSec *float64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
+	BatchTimeInSec *int64 `json:"batchTimeInSec,omitempty" tf:"batch_time_in_sec,omitempty"`
 
 	// (Updatable) A filter or mask to limit the source used in the flow defined by the connector.
 	// +kubebuilder:validation:Optional

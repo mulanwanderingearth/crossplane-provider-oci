@@ -67,8 +67,7 @@ type DatasetInitParameters struct {
 	DatasetSourceDetails []DatasetSourceDetailsInitParameters `json:"datasetSourceDetails,omitempty" tf:"dataset_source_details,omitempty"`
 
 	// (Updatable) The defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user provided description of the dataset
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -77,8 +76,7 @@ type DatasetInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Initial import dataset configuration. Allows user to create dataset from existing dataset files.
 	InitialImportDatasetConfiguration []InitialImportDatasetConfigurationInitParameters `json:"initialImportDatasetConfiguration,omitempty" tf:"initial_import_dataset_configuration,omitempty"`
@@ -96,8 +94,7 @@ type DatasetInitParameters struct {
 type DatasetObservation struct {
 
 	// A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
-	// +mapType=granular
-	AdditionalProperties map[string]*string `json:"additionalProperties,omitempty" tf:"additional_properties,omitempty"`
+	AdditionalProperties map[string]string `json:"additionalProperties,omitempty" tf:"additional_properties,omitempty"`
 
 	// The annotation format name required for labeling records.
 	AnnotationFormat *string `json:"annotationFormat,omitempty" tf:"annotation_format,omitempty"`
@@ -112,8 +109,7 @@ type DatasetObservation struct {
 	DatasetSourceDetails []DatasetSourceDetailsObservation `json:"datasetSourceDetails,omitempty" tf:"dataset_source_details,omitempty"`
 
 	// (Updatable) The defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user provided description of the dataset
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -122,8 +118,7 @@ type DatasetObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Dataset.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -185,8 +180,7 @@ type DatasetParameters struct {
 
 	// (Updatable) The defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user provided description of the dataset
 	// +kubebuilder:validation:Optional
@@ -198,8 +192,7 @@ type DatasetParameters struct {
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Initial import dataset configuration. Allows user to create dataset from existing dataset files.
 	// +kubebuilder:validation:Optional
@@ -427,7 +420,7 @@ type TextFileTypeMetadataInitParameters struct {
 	ColumnDelimiter *string `json:"columnDelimiter,omitempty" tf:"column_delimiter,omitempty"`
 
 	// The index of a selected column. This is a zero-based index.
-	ColumnIndex *float64 `json:"columnIndex,omitempty" tf:"column_index,omitempty"`
+	ColumnIndex *int64 `json:"columnIndex,omitempty" tf:"column_index,omitempty"`
 
 	// The name of a selected column.
 	ColumnName *string `json:"columnName,omitempty" tf:"column_name,omitempty"`
@@ -448,7 +441,7 @@ type TextFileTypeMetadataObservation struct {
 	ColumnDelimiter *string `json:"columnDelimiter,omitempty" tf:"column_delimiter,omitempty"`
 
 	// The index of a selected column. This is a zero-based index.
-	ColumnIndex *float64 `json:"columnIndex,omitempty" tf:"column_index,omitempty"`
+	ColumnIndex *int64 `json:"columnIndex,omitempty" tf:"column_index,omitempty"`
 
 	// The name of a selected column.
 	ColumnName *string `json:"columnName,omitempty" tf:"column_name,omitempty"`
@@ -471,7 +464,7 @@ type TextFileTypeMetadataParameters struct {
 
 	// The index of a selected column. This is a zero-based index.
 	// +kubebuilder:validation:Optional
-	ColumnIndex *float64 `json:"columnIndex" tf:"column_index,omitempty"`
+	ColumnIndex *int64 `json:"columnIndex" tf:"column_index,omitempty"`
 
 	// The name of a selected column.
 	// +kubebuilder:validation:Optional

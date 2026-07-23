@@ -29,15 +29,13 @@ type ExecutionWindowInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The OCID of the execution resource the execution window belongs to.
 	ExecutionResourceID *string `json:"executionResourceId,omitempty" tf:"execution_resource_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates if duration the user plans to allocate for scheduling window is strictly enforced. The default value is FALSE.
 	IsEnforcedDuration *bool `json:"isEnforcedDuration,omitempty" tf:"is_enforced_duration,omitempty"`
@@ -46,7 +44,7 @@ type ExecutionWindowInitParameters struct {
 	TimeScheduled *string `json:"timeScheduled,omitempty" tf:"time_scheduled,omitempty"`
 
 	// (Updatable) Duration window allows user to set a duration they plan to allocate for Scheduling window. The duration is in minutes.
-	WindowDurationInMins *float64 `json:"windowDurationInMins,omitempty" tf:"window_duration_in_mins,omitempty"`
+	WindowDurationInMins *int64 `json:"windowDurationInMins,omitempty" tf:"window_duration_in_mins,omitempty"`
 }
 
 type ExecutionWindowObservation struct {
@@ -55,8 +53,7 @@ type ExecutionWindowObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Description of the execution window.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -65,14 +62,13 @@ type ExecutionWindowObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The estimated time of the execution window in minutes.
-	EstimatedTimeInMins *float64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
+	EstimatedTimeInMins *int64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
 
 	// The OCID of the execution resource the execution window belongs to.
 	ExecutionResourceID *string `json:"executionResourceId,omitempty" tf:"execution_resource_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the execution window.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -105,10 +101,10 @@ type ExecutionWindowObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// The total time taken by corresponding resource activity in minutes.
-	TotalTimeTakenInMins *float64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
+	TotalTimeTakenInMins *int64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
 
 	// (Updatable) Duration window allows user to set a duration they plan to allocate for Scheduling window. The duration is in minutes.
-	WindowDurationInMins *float64 `json:"windowDurationInMins,omitempty" tf:"window_duration_in_mins,omitempty"`
+	WindowDurationInMins *int64 `json:"windowDurationInMins,omitempty" tf:"window_duration_in_mins,omitempty"`
 
 	// The execution window is of PLANNED or UNPLANNED type.
 	WindowType *string `json:"windowType,omitempty" tf:"window_type,omitempty"`
@@ -131,8 +127,7 @@ type ExecutionWindowParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The OCID of the execution resource the execution window belongs to.
 	// +kubebuilder:validation:Optional
@@ -140,8 +135,7 @@ type ExecutionWindowParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates if duration the user plans to allocate for scheduling window is strictly enforced. The default value is FALSE.
 	// +kubebuilder:validation:Optional
@@ -153,7 +147,7 @@ type ExecutionWindowParameters struct {
 
 	// (Updatable) Duration window allows user to set a duration they plan to allocate for Scheduling window. The duration is in minutes.
 	// +kubebuilder:validation:Optional
-	WindowDurationInMins *float64 `json:"windowDurationInMins,omitempty" tf:"window_duration_in_mins,omitempty"`
+	WindowDurationInMins *int64 `json:"windowDurationInMins,omitempty" tf:"window_duration_in_mins,omitempty"`
 }
 
 // ExecutionWindowSpec defines the desired state of ExecutionWindow

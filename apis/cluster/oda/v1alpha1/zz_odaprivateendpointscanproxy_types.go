@@ -100,7 +100,7 @@ type ScanListenerInfosInitParameters struct {
 	ScanListenerIP *string `json:"scanListenerIp,omitempty" tf:"scan_listener_ip,omitempty"`
 
 	// The port that customer's Real Application Cluster (RAC)'s SCAN listeners are listening on.
-	ScanListenerPort *float64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
+	ScanListenerPort *int64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
 }
 
 type ScanListenerInfosObservation struct {
@@ -112,7 +112,7 @@ type ScanListenerInfosObservation struct {
 	ScanListenerIP *string `json:"scanListenerIp,omitempty" tf:"scan_listener_ip,omitempty"`
 
 	// The port that customer's Real Application Cluster (RAC)'s SCAN listeners are listening on.
-	ScanListenerPort *float64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
+	ScanListenerPort *int64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
 }
 
 type ScanListenerInfosParameters struct {
@@ -127,7 +127,7 @@ type ScanListenerInfosParameters struct {
 
 	// The port that customer's Real Application Cluster (RAC)'s SCAN listeners are listening on.
 	// +kubebuilder:validation:Optional
-	ScanListenerPort *float64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
+	ScanListenerPort *int64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
 }
 
 // OdaPrivateEndpointScanProxySpec defines the desired state of OdaPrivateEndpointScanProxy

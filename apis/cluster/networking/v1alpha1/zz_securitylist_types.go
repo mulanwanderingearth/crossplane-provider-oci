@@ -16,39 +16,39 @@ import (
 type EgressSecurityRulesIcmpOptionsInitParameters struct {
 
 	// (Updatable) The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type EgressSecurityRulesIcmpOptionsObservation struct {
 
 	// (Updatable) The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type EgressSecurityRulesIcmpOptionsParameters struct {
 
 	// (Updatable) The ICMP code .
 	// +kubebuilder:validation:Optional
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
 	// +kubebuilder:validation:Optional
-	Type *float64 `json:"type" tf:"type,omitempty"`
+	Type *int64 `json:"type" tf:"type,omitempty"`
 }
 
 type EgressSecurityRulesTCPOptionsInitParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	SourcePortRange []EgressSecurityRulesTCPOptionsSourcePortRangeInitParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
@@ -57,10 +57,10 @@ type EgressSecurityRulesTCPOptionsInitParameters struct {
 type EgressSecurityRulesTCPOptionsObservation struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	SourcePortRange []EgressSecurityRulesTCPOptionsSourcePortRangeObservation `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
@@ -70,11 +70,11 @@ type EgressSecurityRulesTCPOptionsParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
@@ -84,39 +84,39 @@ type EgressSecurityRulesTCPOptionsParameters struct {
 type EgressSecurityRulesTCPOptionsSourcePortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type EgressSecurityRulesTCPOptionsSourcePortRangeObservation struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type EgressSecurityRulesTCPOptionsSourcePortRangeParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type EgressSecurityRulesUDPOptionsInitParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	SourcePortRange []EgressSecurityRulesUDPOptionsSourcePortRangeInitParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
@@ -125,10 +125,10 @@ type EgressSecurityRulesUDPOptionsInitParameters struct {
 type EgressSecurityRulesUDPOptionsObservation struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	SourcePortRange []EgressSecurityRulesUDPOptionsSourcePortRangeObservation `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
@@ -138,11 +138,11 @@ type EgressSecurityRulesUDPOptionsParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
@@ -152,59 +152,59 @@ type EgressSecurityRulesUDPOptionsParameters struct {
 type EgressSecurityRulesUDPOptionsSourcePortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type EgressSecurityRulesUDPOptionsSourcePortRangeObservation struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type EgressSecurityRulesUDPOptionsSourcePortRangeParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type IngressSecurityRulesTCPOptionsSourcePortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type IngressSecurityRulesTCPOptionsSourcePortRangeObservation struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type IngressSecurityRulesTCPOptionsSourcePortRangeParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type SecurityListEgressSecurityRulesInitParameters struct {
@@ -299,30 +299,30 @@ type SecurityListEgressSecurityRulesParameters struct {
 type SecurityListIngressSecurityRulesIcmpOptionsInitParameters struct {
 
 	// (Updatable) The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type SecurityListIngressSecurityRulesIcmpOptionsObservation struct {
 
 	// (Updatable) The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type SecurityListIngressSecurityRulesIcmpOptionsParameters struct {
 
 	// (Updatable) The ICMP code .
 	// +kubebuilder:validation:Optional
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
 	// +kubebuilder:validation:Optional
-	Type *float64 `json:"type" tf:"type,omitempty"`
+	Type *int64 `json:"type" tf:"type,omitempty"`
 }
 
 type SecurityListIngressSecurityRulesInitParameters struct {
@@ -417,10 +417,10 @@ type SecurityListIngressSecurityRulesParameters struct {
 type SecurityListIngressSecurityRulesTCPOptionsInitParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	SourcePortRange []IngressSecurityRulesTCPOptionsSourcePortRangeInitParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
@@ -429,10 +429,10 @@ type SecurityListIngressSecurityRulesTCPOptionsInitParameters struct {
 type SecurityListIngressSecurityRulesTCPOptionsObservation struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	SourcePortRange []IngressSecurityRulesTCPOptionsSourcePortRangeObservation `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
@@ -442,11 +442,11 @@ type SecurityListIngressSecurityRulesTCPOptionsParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
@@ -456,10 +456,10 @@ type SecurityListIngressSecurityRulesTCPOptionsParameters struct {
 type SecurityListIngressSecurityRulesUDPOptionsInitParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	SourcePortRange []SecurityListIngressSecurityRulesUDPOptionsSourcePortRangeInitParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
@@ -468,10 +468,10 @@ type SecurityListIngressSecurityRulesUDPOptionsInitParameters struct {
 type SecurityListIngressSecurityRulesUDPOptionsObservation struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	SourcePortRange []SecurityListIngressSecurityRulesUDPOptionsSourcePortRangeObservation `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
@@ -481,11 +481,11 @@ type SecurityListIngressSecurityRulesUDPOptionsParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
@@ -495,30 +495,30 @@ type SecurityListIngressSecurityRulesUDPOptionsParameters struct {
 type SecurityListIngressSecurityRulesUDPOptionsSourcePortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type SecurityListIngressSecurityRulesUDPOptionsSourcePortRangeObservation struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type SecurityListIngressSecurityRulesUDPOptionsSourcePortRangeParameters struct {
 
 	// (Updatable) The maximum port number. Must not be lower than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number. Must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type SecurityListInitParameters struct {
@@ -536,8 +536,7 @@ type SecurityListInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -546,8 +545,7 @@ type SecurityListInitParameters struct {
 	EgressSecurityRules []SecurityListEgressSecurityRulesInitParameters `json:"egressSecurityRules,omitempty" tf:"egress_security_rules,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Rules for allowing ingress IP packets.
 	IngressSecurityRules []SecurityListIngressSecurityRulesInitParameters `json:"ingressSecurityRules,omitempty" tf:"ingress_security_rules,omitempty"`
@@ -571,8 +569,7 @@ type SecurityListObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -581,8 +578,7 @@ type SecurityListObservation struct {
 	EgressSecurityRules []SecurityListEgressSecurityRulesObservation `json:"egressSecurityRules,omitempty" tf:"egress_security_rules,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The security list's Oracle Cloud ID (OCID).
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -617,8 +613,7 @@ type SecurityListParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -630,8 +625,7 @@ type SecurityListParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Rules for allowing ingress IP packets.
 	// +kubebuilder:validation:Optional

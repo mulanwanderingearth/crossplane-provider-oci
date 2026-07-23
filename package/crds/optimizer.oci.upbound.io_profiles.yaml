@@ -76,7 +76,8 @@ spec:
                   aggregationIntervalInDays:
                     description: (Updatable) The time period over which to collect
                       data for the recommendations, measured in number of days.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: The OCID of the tenancy. The tenancy is the root
                       compartment.
@@ -164,7 +165,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Text describing the profile. Avoid entering
                       confidential information.
@@ -177,7 +177,6 @@ spec:
                       see Resource Tags. Exists for cross-compatibility only.  Example:
                       {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   levelsConfiguration:
                     description: (Updatable) A list of configuration levels for each
                       recommendation.
@@ -414,7 +413,8 @@ spec:
                   aggregationIntervalInDays:
                     description: (Updatable) The time period over which to collect
                       data for the recommendations, measured in number of days.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: The OCID of the tenancy. The tenancy is the root
                       compartment.
@@ -502,7 +502,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Text describing the profile. Avoid entering
                       confidential information.
@@ -515,7 +514,6 @@ spec:
                       see Resource Tags. Exists for cross-compatibility only.  Example:
                       {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   levelsConfiguration:
                     description: (Updatable) A list of configuration levels for each
                       recommendation.
@@ -845,7 +843,8 @@ spec:
                   aggregationIntervalInDays:
                     description: (Updatable) The time period over which to collect
                       data for the recommendations, measured in number of days.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: The OCID of the tenancy. The tenancy is the root
                       compartment.
@@ -857,7 +856,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Text describing the profile. Avoid entering
                       confidential information.
@@ -870,7 +868,6 @@ spec:
                       see Resource Tags. Exists for cross-compatibility only.  Example:
                       {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The unique OCID of the profile.
                     type: string
@@ -904,7 +901,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   targetCompartments:
                     description: (Updatable) Optional. The compartments specified
                       in the profile override for a recommendation.

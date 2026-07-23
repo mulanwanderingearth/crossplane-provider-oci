@@ -125,7 +125,8 @@ spec:
                   bootVolumeSizeInGbs:
                     description: (Updatable) The size in GBs of the boot volume for
                       the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the compartment which will
                       contain the desktop pool.
@@ -217,7 +218,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user friendly description providing
                       additional information about the resource. Avoid entering confidential
@@ -284,7 +284,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   image:
                     description: (Updatable) Provides information about the desktop
                       image.
@@ -385,7 +384,8 @@ spec:
                   maximumSize:
                     description: (Updatable) The maximum number of desktops permitted
                       in the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   networkConfiguration:
                     description: (Updatable) Provides information about the network
                       configuration of the desktop pool.
@@ -400,7 +400,6 @@ spec:
                             resources.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                             {"value": "42", "mode": "audit"}}}'
                           type: object
-                          x-kubernetes-map-type: granular
                         subnetId:
                           description: The OCID of the subnet in the customer VCN
                             where the connectivity will be established.
@@ -596,7 +595,6 @@ spec:
                             resources.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                             {"value": "42", "mode": "audit"}}}'
                           type: object
-                          x-kubernetes-map-type: granular
                         subnetId:
                           description: The OCID of the subnet in the customer VCN
                             where the connectivity will be established.
@@ -687,7 +685,6 @@ spec:
                       (ZPR) policy to control access to ZPR-supported resources.  Example:
                       {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sessionLifecycleActions:
                     description: The details of action to be triggered in case of
                       inactivity or disconnect
@@ -705,7 +702,8 @@ spec:
                                 description: (Updatable) The period of time (in minutes)
                                   after disconnect before any action occurs. If the
                                   value is not provided, a default value is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         inactivity:
@@ -720,7 +718,8 @@ spec:
                                 description: (Updatable) The period of time (in minutes)
                                   after disconnect before any action occurs. If the
                                   value is not provided, a default value is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -753,13 +752,15 @@ spec:
                   standbySize:
                     description: (Updatable) The maximum number of standby desktops
                       available in the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   storageBackupPolicyId:
                     description: The backup policy OCID of the storage.
                     type: string
                   storageSizeInGbs:
                     description: The size in GBs of the storage for the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   timeStartScheduled:
                     description: (Updatable) The start time of the desktop pool.
                     type: string
@@ -836,7 +837,8 @@ spec:
                   bootVolumeSizeInGbs:
                     description: (Updatable) The size in GBs of the boot volume for
                       the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the compartment which will
                       contain the desktop pool.
@@ -928,7 +930,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user friendly description providing
                       additional information about the resource. Avoid entering confidential
@@ -995,7 +996,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   image:
                     description: (Updatable) Provides information about the desktop
                       image.
@@ -1096,7 +1096,8 @@ spec:
                   maximumSize:
                     description: (Updatable) The maximum number of desktops permitted
                       in the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   networkConfiguration:
                     description: (Updatable) Provides information about the network
                       configuration of the desktop pool.
@@ -1111,7 +1112,6 @@ spec:
                             resources.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                             {"value": "42", "mode": "audit"}}}'
                           type: object
-                          x-kubernetes-map-type: granular
                         subnetId:
                           description: The OCID of the subnet in the customer VCN
                             where the connectivity will be established.
@@ -1307,7 +1307,6 @@ spec:
                             resources.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                             {"value": "42", "mode": "audit"}}}'
                           type: object
-                          x-kubernetes-map-type: granular
                         subnetId:
                           description: The OCID of the subnet in the customer VCN
                             where the connectivity will be established.
@@ -1398,7 +1397,6 @@ spec:
                       (ZPR) policy to control access to ZPR-supported resources.  Example:
                       {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sessionLifecycleActions:
                     description: The details of action to be triggered in case of
                       inactivity or disconnect
@@ -1416,7 +1414,8 @@ spec:
                                 description: (Updatable) The period of time (in minutes)
                                   after disconnect before any action occurs. If the
                                   value is not provided, a default value is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         inactivity:
@@ -1431,7 +1430,8 @@ spec:
                                 description: (Updatable) The period of time (in minutes)
                                   after disconnect before any action occurs. If the
                                   value is not provided, a default value is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -1464,13 +1464,15 @@ spec:
                   standbySize:
                     description: (Updatable) The maximum number of standby desktops
                       available in the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   storageBackupPolicyId:
                     description: The backup policy OCID of the storage.
                     type: string
                   storageSizeInGbs:
                     description: The size in GBs of the storage for the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   timeStartScheduled:
                     description: (Updatable) The start time of the desktop pool.
                     type: string
@@ -1634,7 +1636,8 @@ spec:
                 properties:
                   activeDesktops:
                     description: The number of active desktops in the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   arePrivilegedUsers:
                     description: Indicates whether desktop pool users have administrative
                       privileges on their desktop.
@@ -1687,7 +1690,8 @@ spec:
                   bootVolumeSizeInGbs:
                     description: (Updatable) The size in GBs of the boot volume for
                       the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the compartment which will
                       contain the desktop pool.
@@ -1703,7 +1707,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user friendly description providing
                       additional information about the resource. Avoid entering confidential
@@ -1770,7 +1773,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the desktop pool.
                     type: string
@@ -1798,7 +1800,8 @@ spec:
                   maximumSize:
                     description: (Updatable) The maximum number of desktops permitted
                       in the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   networkConfiguration:
                     description: (Updatable) Provides information about the network
                       configuration of the desktop pool.
@@ -1813,7 +1816,6 @@ spec:
                             resources.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                             {"value": "42", "mode": "audit"}}}'
                           type: object
-                          x-kubernetes-map-type: granular
                         subnetId:
                           description: The OCID of the subnet in the customer VCN
                             where the connectivity will be established.
@@ -1864,7 +1866,6 @@ spec:
                             resources.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                             {"value": "42", "mode": "audit"}}}'
                           type: object
-                          x-kubernetes-map-type: granular
                         subnetId:
                           description: The OCID of the subnet in the customer VCN
                             where the connectivity will be established.
@@ -1882,7 +1883,6 @@ spec:
                       (ZPR) policy to control access to ZPR-supported resources.  Example:
                       {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sessionLifecycleActions:
                     description: The details of action to be triggered in case of
                       inactivity or disconnect
@@ -1900,7 +1900,8 @@ spec:
                                 description: (Updatable) The period of time (in minutes)
                                   after disconnect before any action occurs. If the
                                   value is not provided, a default value is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         inactivity:
@@ -1915,7 +1916,8 @@ spec:
                                 description: (Updatable) The period of time (in minutes)
                                   after disconnect before any action occurs. If the
                                   value is not provided, a default value is used.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -1948,7 +1950,8 @@ spec:
                   standbySize:
                     description: (Updatable) The maximum number of standby desktops
                       available in the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of the desktop pool.
                     type: string
@@ -1957,7 +1960,8 @@ spec:
                     type: string
                   storageSizeInGbs:
                     description: The size in GBs of the storage for the desktop pool.
-                    type: number
+                    format: int64
+                    type: integer
                   timeCreated:
                     description: The date and time the resource was created.
                     type: string

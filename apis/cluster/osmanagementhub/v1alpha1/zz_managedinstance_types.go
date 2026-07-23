@@ -156,7 +156,7 @@ type ManagedInstanceObservation struct {
 	AutonomousSettings []AutonomousSettingsObservation `json:"autonomousSettings,omitempty" tf:"autonomous_settings,omitempty"`
 
 	// Number of bug fix type updates available for installation.
-	BugUpdatesAvailable *float64 `json:"bugUpdatesAvailable,omitempty" tf:"bug_updates_available,omitempty"`
+	BugUpdatesAvailable *int64 `json:"bugUpdatesAvailable,omitempty" tf:"bug_updates_available,omitempty"`
 
 	// The OCID of the compartment that contains the managed instance.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -168,16 +168,16 @@ type ManagedInstanceObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Number of enhancement type updates available for installation.
-	EnhancementUpdatesAvailable *float64 `json:"enhancementUpdatesAvailable,omitempty" tf:"enhancement_updates_available,omitempty"`
+	EnhancementUpdatesAvailable *int64 `json:"enhancementUpdatesAvailable,omitempty" tf:"enhancement_updates_available,omitempty"`
 
 	// The OCID of the managed instance.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Number of packages installed on the instance.
-	InstalledPackages *float64 `json:"installedPackages,omitempty" tf:"installed_packages,omitempty"`
+	InstalledPackages *int64 `json:"installedPackages,omitempty" tf:"installed_packages,omitempty"`
 
 	// Number of Windows updates installed on the instance.
-	InstalledWindowsUpdates *float64 `json:"installedWindowsUpdates,omitempty" tf:"installed_windows_updates,omitempty"`
+	InstalledWindowsUpdates *int64 `json:"installedWindowsUpdates,omitempty" tf:"installed_windows_updates,omitempty"`
 
 	// Indicates whether the Autonomous Linux service manages the instance.
 	IsManagedByAutonomousLinux *bool `json:"isManagedByAutonomousLinux,omitempty" tf:"is_managed_by_autonomous_linux,omitempty"`
@@ -222,7 +222,7 @@ type ManagedInstanceObservation struct {
 	OsVersion *string `json:"osVersion,omitempty" tf:"os_version,omitempty"`
 
 	// Number of non-classified (other) updates available for installation.
-	OtherUpdatesAvailable *float64 `json:"otherUpdatesAvailable,omitempty" tf:"other_updates_available,omitempty"`
+	OtherUpdatesAvailable *int64 `json:"otherUpdatesAvailable,omitempty" tf:"other_updates_available,omitempty"`
 
 	// (Updatable) The OCID of the management station for the instance to use as primary management station.
 	PrimaryManagementStationID *string `json:"primaryManagementStationId,omitempty" tf:"primary_management_station_id,omitempty"`
@@ -234,13 +234,13 @@ type ManagedInstanceObservation struct {
 	ProfileVersion *string `json:"profileVersion,omitempty" tf:"profile_version,omitempty"`
 
 	// Number of scheduled jobs associated with this instance.
-	ScheduledJobCount *float64 `json:"scheduledJobCount,omitempty" tf:"scheduled_job_count,omitempty"`
+	ScheduledJobCount *int64 `json:"scheduledJobCount,omitempty" tf:"scheduled_job_count,omitempty"`
 
 	// (Updatable) The OCID of the management station for the instance to use as secondary management station.
 	SecondaryManagementStationID *string `json:"secondaryManagementStationId,omitempty" tf:"secondary_management_station_id,omitempty"`
 
 	// Number of security type updates available for installation.
-	SecurityUpdatesAvailable *float64 `json:"securityUpdatesAvailable,omitempty" tf:"security_updates_available,omitempty"`
+	SecurityUpdatesAvailable *int64 `json:"securityUpdatesAvailable,omitempty" tf:"security_updates_available,omitempty"`
 
 	// The list of software sources currently attached to the managed instance.
 	SoftwareSources []SoftwareSourcesObservation `json:"softwareSources,omitempty" tf:"software_sources,omitempty"`
@@ -267,10 +267,10 @@ type ManagedInstanceObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// Number of updates available for installation.
-	UpdatesAvailable *float64 `json:"updatesAvailable,omitempty" tf:"updates_available,omitempty"`
+	UpdatesAvailable *int64 `json:"updatesAvailable,omitempty" tf:"updates_available,omitempty"`
 
 	// Number of work requests associated with this instance.
-	WorkRequestCount *float64 `json:"workRequestCount,omitempty" tf:"work_request_count,omitempty"`
+	WorkRequestCount *int64 `json:"workRequestCount,omitempty" tf:"work_request_count,omitempty"`
 }
 
 type ManagedInstanceParameters struct {

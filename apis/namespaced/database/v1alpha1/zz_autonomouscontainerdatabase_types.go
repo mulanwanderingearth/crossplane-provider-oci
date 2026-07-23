@@ -38,10 +38,10 @@ type AssociatedBackupConfigurationDetailsObservation struct {
 	IsRetentionLockEnabled *bool `json:"isRetentionLockEnabled,omitempty" tf:"is_retention_lock_enabled,omitempty"`
 
 	// (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// The total space utilized (in GBs) by this Autonomous Container Database on this backup destination, rounded to the nearest integer.
-	SpaceUtilizedInGbs *float64 `json:"spaceUtilizedInGbs,omitempty" tf:"space_utilized_in_gbs,omitempty"`
+	SpaceUtilizedInGbs *int64 `json:"spaceUtilizedInGbs,omitempty" tf:"space_utilized_in_gbs,omitempty"`
 
 	// The latest timestamp when the backup destination details, such as 'spaceUtilized,' are updated.
 	TimeAtWhichStorageDetailsAreUpdated *string `json:"timeAtWhichStorageDetailsAreUpdated,omitempty" tf:"time_at_which_storage_details_are_updated,omitempty"`
@@ -125,7 +125,7 @@ type AutonomousContainerDatabaseInitParameters struct {
 	DBName *string `json:"dbName,omitempty" tf:"db_name,omitempty"`
 
 	// (Updatable) The CPU value beyond which an Autonomous AI Database will be opened across multiple nodes. The default value of this attribute is 16 for OCPUs and 64 for ECPUs.
-	DBSplitThreshold *float64 `json:"dbSplitThreshold,omitempty" tf:"db_split_threshold,omitempty"`
+	DBSplitThreshold *int64 `json:"dbSplitThreshold,omitempty" tf:"db_split_threshold,omitempty"`
 
 	// Deprecated. The DB_UNIQUE_NAME value is set by Oracle Cloud Infrastructure.  Do not specify a value for this parameter.
 	DBUniqueName *string `json:"dbUniqueName,omitempty" tf:"db_unique_name,omitempty"`
@@ -147,8 +147,7 @@ type AutonomousContainerDatabaseInitParameters struct {
 	DatabaseSoftwareImageIDSelector *v1.NamespacedSelector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name for the Autonomous Container Database.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -160,14 +159,13 @@ type AutonomousContainerDatabaseInitParameters struct {
 	EncryptionKeyLocationDetails []EncryptionKeyLocationDetailsInitParameters `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
-	FailoverTrigger *float64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
+	FailoverTrigger *int64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
 
 	// (Updatable) The lag time for my preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates whether Automatic Failover is enabled for Autonomous Container Database Dataguard Association
 	IsAutomaticFailoverEnabled *bool `json:"isAutomaticFailoverEnabled,omitempty" tf:"is_automatic_failover_enabled,omitempty"`
@@ -291,7 +289,7 @@ type AutonomousContainerDatabaseInitParameters struct {
 	ProtectionMode *string `json:"protectionMode,omitempty" tf:"protection_mode,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Reinstate. Could be set to any integer value.
-	ReinstateTrigger *float64 `json:"reinstateTrigger,omitempty" tf:"reinstate_trigger,omitempty"`
+	ReinstateTrigger *int64 `json:"reinstateTrigger,omitempty" tf:"reinstate_trigger,omitempty"`
 
 	RotateKeyTrigger *bool `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
 
@@ -302,13 +300,13 @@ type AutonomousContainerDatabaseInitParameters struct {
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
 	// (Updatable) The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before scheduled maintenance of the primary database.
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Switchover. Could be set to any integer value.
-	SwitchoverTrigger *float64 `json:"switchoverTrigger,omitempty" tf:"switchover_trigger,omitempty"`
+	SwitchoverTrigger *int64 `json:"switchoverTrigger,omitempty" tf:"switchover_trigger,omitempty"`
 
 	// (Updatable) The percentage of CPUs reserved across nodes to support node failover. Allowed values are 0%, 25%, 50%, 75%, and 100%, with 50% being the default option.
-	VMFailoverReservation *float64 `json:"vmFailoverReservation,omitempty" tf:"vm_failover_reservation,omitempty"`
+	VMFailoverReservation *int64 `json:"vmFailoverReservation,omitempty" tf:"vm_failover_reservation,omitempty"`
 
 	// The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/kms/v1alpha1.Vault
@@ -369,7 +367,7 @@ type AutonomousContainerDatabaseObservation struct {
 	DBName *string `json:"dbName,omitempty" tf:"db_name,omitempty"`
 
 	// (Updatable) The CPU value beyond which an Autonomous AI Database will be opened across multiple nodes. The default value of this attribute is 16 for OCPUs and 64 for ECPUs.
-	DBSplitThreshold *float64 `json:"dbSplitThreshold,omitempty" tf:"db_split_threshold,omitempty"`
+	DBSplitThreshold *int64 `json:"dbSplitThreshold,omitempty" tf:"db_split_threshold,omitempty"`
 
 	// Deprecated. The DB_UNIQUE_NAME value is set by Oracle Cloud Infrastructure.  Do not specify a value for this parameter.
 	DBUniqueName *string `json:"dbUniqueName,omitempty" tf:"db_unique_name,omitempty"`
@@ -387,8 +385,7 @@ type AutonomousContainerDatabaseObservation struct {
 	DataguardGroupMembers []DataguardGroupMembersObservation `json:"dataguardGroupMembers,omitempty" tf:"dataguard_group_members,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name for the Autonomous Container Database.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -403,14 +400,13 @@ type AutonomousContainerDatabaseObservation struct {
 	EncryptionKeyLocationDetails []EncryptionKeyLocationDetailsObservation `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
-	FailoverTrigger *float64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
+	FailoverTrigger *int64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
 
 	// (Updatable) The lag time for my preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -470,7 +466,7 @@ type AutonomousContainerDatabaseObservation struct {
 	MemoryPerComputeUnitInGbs *float64 `json:"memoryPerComputeUnitInGbs,omitempty" tf:"memory_per_compute_unit_in_gbs,omitempty"`
 
 	// The amount of memory (in GBs, rounded off to nearest integer value) enabled per ECPU or OCPU in the Autonomous VM Cluster. This is deprecated. Please refer to memoryPerComputeUnitInGBs for accurate value.
-	MemoryPerOracleComputeUnitInGbs *float64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
+	MemoryPerOracleComputeUnitInGbs *int64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
 
 	// (Updatable) Enabling SHARED server architecture enables a database server to allow many client processes to share very few server processes, thereby increasing the number of supported users.
 	NetServicesArchitecture *string `json:"netServicesArchitecture,omitempty" tf:"net_services_architecture,omitempty"`
@@ -524,7 +520,7 @@ type AutonomousContainerDatabaseObservation struct {
 	RecoveryApplianceDetails []RecoveryApplianceDetailsObservation `json:"recoveryApplianceDetails,omitempty" tf:"recovery_appliance_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Reinstate. Could be set to any integer value.
-	ReinstateTrigger *float64 `json:"reinstateTrigger,omitempty" tf:"reinstate_trigger,omitempty"`
+	ReinstateTrigger *int64 `json:"reinstateTrigger,omitempty" tf:"reinstate_trigger,omitempty"`
 
 	// The number of CPUs reserved in an Autonomous Container Database.
 	ReservedCpus *float64 `json:"reservedCpus,omitempty" tf:"reserved_cpus,omitempty"`
@@ -541,17 +537,16 @@ type AutonomousContainerDatabaseObservation struct {
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
 
 	// (Updatable) The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before scheduled maintenance of the primary database.
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 
 	// The current state of Autonomous Data Guard.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Switchover. Could be set to any integer value.
-	SwitchoverTrigger *float64 `json:"switchoverTrigger,omitempty" tf:"switchover_trigger,omitempty"`
+	SwitchoverTrigger *int64 `json:"switchoverTrigger,omitempty" tf:"switchover_trigger,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Autonomous DataGuard association was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -563,10 +558,10 @@ type AutonomousContainerDatabaseObservation struct {
 	TimeSnapshotStandbyRevert *string `json:"timeSnapshotStandbyRevert,omitempty" tf:"time_snapshot_standby_revert,omitempty"`
 
 	// The number of CPUs allocated to the Autonomous VM cluster.
-	TotalCpus *float64 `json:"totalCpus,omitempty" tf:"total_cpus,omitempty"`
+	TotalCpus *int64 `json:"totalCpus,omitempty" tf:"total_cpus,omitempty"`
 
 	// (Updatable) The percentage of CPUs reserved across nodes to support node failover. Allowed values are 0%, 25%, 50%, 75%, and 100%, with 50% being the default option.
-	VMFailoverReservation *float64 `json:"vmFailoverReservation,omitempty" tf:"vm_failover_reservation,omitempty"`
+	VMFailoverReservation *int64 `json:"vmFailoverReservation,omitempty" tf:"vm_failover_reservation,omitempty"`
 
 	// The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	VaultID *string `json:"vaultId,omitempty" tf:"vault_id,omitempty"`
@@ -650,7 +645,7 @@ type AutonomousContainerDatabaseParameters struct {
 
 	// (Updatable) The CPU value beyond which an Autonomous AI Database will be opened across multiple nodes. The default value of this attribute is 16 for OCPUs and 64 for ECPUs.
 	// +kubebuilder:validation:Optional
-	DBSplitThreshold *float64 `json:"dbSplitThreshold,omitempty" tf:"db_split_threshold,omitempty"`
+	DBSplitThreshold *int64 `json:"dbSplitThreshold,omitempty" tf:"db_split_threshold,omitempty"`
 
 	// Deprecated. The DB_UNIQUE_NAME value is set by Oracle Cloud Infrastructure.  Do not specify a value for this parameter.
 	// +kubebuilder:validation:Optional
@@ -676,8 +671,7 @@ type AutonomousContainerDatabaseParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name for the Autonomous Container Database.
 	// +kubebuilder:validation:Optional
@@ -693,16 +687,15 @@ type AutonomousContainerDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	FailoverTrigger *float64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
+	FailoverTrigger *int64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
 
 	// (Updatable) The lag time for my preference based on data loss tolerance in seconds.
 	// +kubebuilder:validation:Optional
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates whether Automatic Failover is enabled for Autonomous Container Database Dataguard Association
 	// +kubebuilder:validation:Optional
@@ -844,7 +837,7 @@ type AutonomousContainerDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Reinstate. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ReinstateTrigger *float64 `json:"reinstateTrigger,omitempty" tf:"reinstate_trigger,omitempty"`
+	ReinstateTrigger *int64 `json:"reinstateTrigger,omitempty" tf:"reinstate_trigger,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	RotateKeyTrigger *bool `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
@@ -859,15 +852,15 @@ type AutonomousContainerDatabaseParameters struct {
 
 	// (Updatable) The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before scheduled maintenance of the primary database.
 	// +kubebuilder:validation:Optional
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Switchover. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	SwitchoverTrigger *float64 `json:"switchoverTrigger,omitempty" tf:"switchover_trigger,omitempty"`
+	SwitchoverTrigger *int64 `json:"switchoverTrigger,omitempty" tf:"switchover_trigger,omitempty"`
 
 	// (Updatable) The percentage of CPUs reserved across nodes to support node failover. Allowed values are 0%, 25%, 50%, 75%, and 100%, with 50% being the default option.
 	// +kubebuilder:validation:Optional
-	VMFailoverReservation *float64 `json:"vmFailoverReservation,omitempty" tf:"vm_failover_reservation,omitempty"`
+	VMFailoverReservation *int64 `json:"vmFailoverReservation,omitempty" tf:"vm_failover_reservation,omitempty"`
 
 	// The OCID of the Oracle Cloud Infrastructure vault. This parameter and secretId are required for Customer Managed Keys.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/kms/v1alpha1.Vault
@@ -894,7 +887,7 @@ type BackupConfigInitParameters struct {
 	BackupDestinationDetails []BackupDestinationDetailsInitParameters `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type BackupConfigObservation struct {
@@ -903,7 +896,7 @@ type BackupConfigObservation struct {
 	BackupDestinationDetails []BackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type BackupConfigParameters struct {
@@ -914,7 +907,7 @@ type BackupConfigParameters struct {
 
 	// (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
 	// +kubebuilder:validation:Optional
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type BackupDestinationDetailsInitParameters struct {
@@ -1022,7 +1015,7 @@ type BackupDestinationPropertiesListObservation struct {
 	BackupDestinationAttachHistory []*string `json:"backupDestinationAttachHistory,omitempty" tf:"backup_destination_attach_history,omitempty"`
 
 	// The total space utilized (in GBs) by this Autonomous Container Database on this backup destination, rounded to the nearest integer.
-	SpaceUtilizedInGbs *float64 `json:"spaceUtilizedInGbs,omitempty" tf:"space_utilized_in_gbs,omitempty"`
+	SpaceUtilizedInGbs *int64 `json:"spaceUtilizedInGbs,omitempty" tf:"space_utilized_in_gbs,omitempty"`
 
 	// The latest timestamp when the backup destination details, such as 'spaceUtilized,' are updated.
 	TimeAtWhichStorageDetailsAreUpdated *string `json:"timeAtWhichStorageDetailsAreUpdated,omitempty" tf:"time_at_which_storage_details_are_updated,omitempty"`
@@ -1071,7 +1064,7 @@ type DataguardGroupMembersObservation struct {
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
 	// (Updatable) The lag time for my preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// (Updatable) Indicates whether Automatic Failover is enabled for Autonomous Container Database Dataguard Association
 	IsAutomaticFailoverEnabled *bool `json:"isAutomaticFailoverEnabled,omitempty" tf:"is_automatic_failover_enabled,omitempty"`
@@ -1131,7 +1124,7 @@ type DataguardObservation struct {
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
 	// (Updatable) The lag time for my preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// (Updatable) Indicates whether Automatic Failover is enabled for Autonomous Container Database Dataguard Association
 	IsAutomaticFailoverEnabled *bool `json:"isAutomaticFailoverEnabled,omitempty" tf:"is_automatic_failover_enabled,omitempty"`
@@ -1291,13 +1284,13 @@ type MaintenanceWindowDetailsDaysOfWeekParameters struct {
 type MaintenanceWindowDetailsInitParameters struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []MaintenanceWindowDetailsDaysOfWeekInitParameters `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are - 0 - represents time slot 0:00 - 3:59 UTC - 4 - represents time slot 4:00 - 7:59 UTC - 8 - represents time slot 8:00 - 11:59 UTC - 12 - represents time slot 12:00 - 15:59 UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -1306,7 +1299,7 @@ type MaintenanceWindowDetailsInitParameters struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []MaintenanceWindowDetailsMonthsInitParameters `json:"months,omitempty" tf:"months,omitempty"`
@@ -1321,7 +1314,7 @@ type MaintenanceWindowDetailsInitParameters struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type MaintenanceWindowDetailsMonthsInitParameters struct {
@@ -1346,13 +1339,13 @@ type MaintenanceWindowDetailsMonthsParameters struct {
 type MaintenanceWindowDetailsObservation struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []MaintenanceWindowDetailsDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are - 0 - represents time slot 0:00 - 3:59 UTC - 4 - represents time slot 4:00 - 7:59 UTC - 8 - represents time slot 8:00 - 11:59 UTC - 12 - represents time slot 12:00 - 15:59 UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -1361,7 +1354,7 @@ type MaintenanceWindowDetailsObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []MaintenanceWindowDetailsMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -1376,14 +1369,14 @@ type MaintenanceWindowDetailsObservation struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type MaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
 	// +kubebuilder:validation:Optional
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	// +kubebuilder:validation:Optional
@@ -1391,7 +1384,7 @@ type MaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are - 0 - represents time slot 0:00 - 3:59 UTC - 4 - represents time slot 4:00 - 7:59 UTC - 8 - represents time slot 8:00 - 11:59 UTC - 12 - represents time slot 12:00 - 15:59 UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
 	// +kubebuilder:validation:Optional
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	// +kubebuilder:validation:Optional
@@ -1403,7 +1396,7 @@ type MaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
 	// +kubebuilder:validation:Optional
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	// +kubebuilder:validation:Optional
@@ -1423,7 +1416,7 @@ type MaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
 	// +kubebuilder:validation:Optional
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type MaintenanceWindowInitParameters struct {
@@ -1432,13 +1425,13 @@ type MaintenanceWindowInitParameters struct {
 type MaintenanceWindowObservation struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []DaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are - 0 - represents time slot 0:00 - 3:59 UTC - 4 - represents time slot 4:00 - 7:59 UTC - 8 - represents time slot 8:00 - 11:59 UTC - 12 - represents time slot 12:00 - 15:59 UTC - 16 - represents time slot 16:00 - 19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -1447,7 +1440,7 @@ type MaintenanceWindowObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []MonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -1462,7 +1455,7 @@ type MaintenanceWindowObservation struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type MaintenanceWindowParameters struct {
@@ -1582,7 +1575,7 @@ type PeerAutonomousContainerDatabaseBackupConfigInitParameters struct {
 	BackupDestinationDetails []PeerAutonomousContainerDatabaseBackupConfigBackupDestinationDetailsInitParameters `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type PeerAutonomousContainerDatabaseBackupConfigObservation struct {
@@ -1591,7 +1584,7 @@ type PeerAutonomousContainerDatabaseBackupConfigObservation struct {
 	BackupDestinationDetails []PeerAutonomousContainerDatabaseBackupConfigBackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type PeerAutonomousContainerDatabaseBackupConfigParameters struct {
@@ -1602,7 +1595,7 @@ type PeerAutonomousContainerDatabaseBackupConfigParameters struct {
 
 	// (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
 	// +kubebuilder:validation:Optional
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type RecoveryApplianceDetailsInitParameters struct {
@@ -1611,10 +1604,10 @@ type RecoveryApplianceDetailsInitParameters struct {
 type RecoveryApplianceDetailsObservation struct {
 
 	// The storage size of the backup destination allocated for an Autonomous Container Database to store backups on the recovery appliance, in GBs, rounded to the nearest integer.
-	AllocatedStorageSizeInGbs *float64 `json:"allocatedStorageSizeInGbs,omitempty" tf:"allocated_storage_size_in_gbs,omitempty"`
+	AllocatedStorageSizeInGbs *int64 `json:"allocatedStorageSizeInGbs,omitempty" tf:"allocated_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// The time when the recovery appliance details are updated.
 	TimeRecoveryApplianceDetailsUpdated *string `json:"timeRecoveryApplianceDetailsUpdated,omitempty" tf:"time_recovery_appliance_details_updated,omitempty"`

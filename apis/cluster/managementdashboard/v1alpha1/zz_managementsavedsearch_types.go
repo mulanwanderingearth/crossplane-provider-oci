@@ -31,8 +31,7 @@ type ManagementSavedSearchInitParameters struct {
 	DataConfig *string `json:"dataConfig,omitempty" tf:"data_config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the saved search.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -44,7 +43,8 @@ type ManagementSavedSearchInitParameters struct {
 	DrilldownConfig *string `json:"drilldownConfig,omitempty" tf:"drilldown_config,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	FreeformTags map[string]map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	// +mapType=granular
+	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Determines whether the saved search is an Out-of-the-Box (OOB) saved search. Note that OOB saved searches are only provided by Oracle and cannot be modified.
 	IsOobSavedSearch *bool `json:"isOobSavedSearch,omitempty" tf:"is_oob_saved_search,omitempty"`
@@ -95,8 +95,7 @@ type ManagementSavedSearchObservation struct {
 	DataConfig *string `json:"dataConfig,omitempty" tf:"data_config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the saved search.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -108,7 +107,8 @@ type ManagementSavedSearchObservation struct {
 	DrilldownConfig *string `json:"drilldownConfig,omitempty" tf:"drilldown_config,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	FreeformTags map[string]map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	// +mapType=granular
+	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// ID of the saved search, which must only be provided for Out-of-the-Box (OOB) saved search.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -141,8 +141,7 @@ type ManagementSavedSearchObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Date and time the saved search was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -187,8 +186,7 @@ type ManagementSavedSearchParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the saved search.
 	// +kubebuilder:validation:Optional
@@ -204,7 +202,8 @@ type ManagementSavedSearchParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	FreeformTags map[string]map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	// +mapType=granular
+	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Determines whether the saved search is an Out-of-the-Box (OOB) saved search. Note that OOB saved searches are only provided by Oracle and cannot be modified.
 	// +kubebuilder:validation:Optional

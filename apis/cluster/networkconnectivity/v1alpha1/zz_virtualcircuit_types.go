@@ -34,7 +34,7 @@ type CrossConnectMappingsInitParameters struct {
 	OracleBGPPeeringIPv6 *string `json:"oracleBgpPeeringIpv6,omitempty" tf:"oracle_bgp_peering_ipv6,omitempty"`
 
 	// (Updatable) The number of the specific VLAN (on the cross-connect or cross-connect group) that is assigned to this virtual circuit. Specified by the owner of the cross-connect or cross-connect group (the customer if the customer is colocated with Oracle, or the provider if the customer is connecting via provider).  Example: 200
-	Vlan *float64 `json:"vlan,omitempty" tf:"vlan,omitempty"`
+	Vlan *int64 `json:"vlan,omitempty" tf:"vlan,omitempty"`
 }
 
 type CrossConnectMappingsObservation struct {
@@ -58,7 +58,7 @@ type CrossConnectMappingsObservation struct {
 	OracleBGPPeeringIPv6 *string `json:"oracleBgpPeeringIpv6,omitempty" tf:"oracle_bgp_peering_ipv6,omitempty"`
 
 	// (Updatable) The number of the specific VLAN (on the cross-connect or cross-connect group) that is assigned to this virtual circuit. Specified by the owner of the cross-connect or cross-connect group (the customer if the customer is colocated with Oracle, or the provider if the customer is connecting via provider).  Example: 200
-	Vlan *float64 `json:"vlan,omitempty" tf:"vlan,omitempty"`
+	Vlan *int64 `json:"vlan,omitempty" tf:"vlan,omitempty"`
 }
 
 type CrossConnectMappingsParameters struct {
@@ -89,7 +89,7 @@ type CrossConnectMappingsParameters struct {
 
 	// (Updatable) The number of the specific VLAN (on the cross-connect or cross-connect group) that is assigned to this virtual circuit. Specified by the owner of the cross-connect or cross-connect group (the customer if the customer is colocated with Oracle, or the provider if the customer is connecting via provider).  Example: 200
 	// +kubebuilder:validation:Optional
-	Vlan *float64 `json:"vlan,omitempty" tf:"vlan,omitempty"`
+	Vlan *int64 `json:"vlan,omitempty" tf:"vlan,omitempty"`
 }
 
 type PublicPrefixesInitParameters struct {
@@ -138,18 +138,16 @@ type VirtualCircuitInitParameters struct {
 	CustomerAsn *string `json:"customerAsn,omitempty" tf:"customer_asn,omitempty"`
 
 	// (Updatable) Deprecated. Instead use customerAsn. If you specify values for both, the request will be rejected.
-	CustomerBGPAsn *float64 `json:"customerBgpAsn,omitempty" tf:"customer_bgp_asn,omitempty"`
+	CustomerBGPAsn *int64 `json:"customerBgpAsn,omitempty" tf:"customer_bgp_asn,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) For private virtual circuits only. The OCID of the dynamic routing gateway (DRG) that this virtual circuit uses.
 	GatewayID *string `json:"gatewayId,omitempty" tf:"gateway_id,omitempty"`
@@ -209,18 +207,16 @@ type VirtualCircuitObservation struct {
 	CustomerAsn *string `json:"customerAsn,omitempty" tf:"customer_asn,omitempty"`
 
 	// (Updatable) Deprecated. Instead use customerAsn. If you specify values for both, the request will be rejected.
-	CustomerBGPAsn *float64 `json:"customerBgpAsn,omitempty" tf:"customer_bgp_asn,omitempty"`
+	CustomerBGPAsn *int64 `json:"customerBgpAsn,omitempty" tf:"customer_bgp_asn,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) For private virtual circuits only. The OCID of the dynamic routing gateway (DRG) that this virtual circuit uses.
 	GatewayID *string `json:"gatewayId,omitempty" tf:"gateway_id,omitempty"`
@@ -238,7 +234,7 @@ type VirtualCircuitObservation struct {
 	IsTransportMode *bool `json:"isTransportMode,omitempty" tf:"is_transport_mode,omitempty"`
 
 	// The Oracle BGP ASN.
-	OracleBGPAsn *float64 `json:"oracleBgpAsn,omitempty" tf:"oracle_bgp_asn,omitempty"`
+	OracleBGPAsn *int64 `json:"oracleBgpAsn,omitempty" tf:"oracle_bgp_asn,omitempty"`
 
 	// The OCID of the service offered by the provider (if you're connecting via a provider). To get a list of the available service offerings, see ListFastConnectProviderServices.
 	ProviderServiceID *string `json:"providerServiceId,omitempty" tf:"provider_service_id,omitempty"`
@@ -310,12 +306,11 @@ type VirtualCircuitParameters struct {
 
 	// (Updatable) Deprecated. Instead use customerAsn. If you specify values for both, the request will be rejected.
 	// +kubebuilder:validation:Optional
-	CustomerBGPAsn *float64 `json:"customerBgpAsn,omitempty" tf:"customer_bgp_asn,omitempty"`
+	CustomerBGPAsn *int64 `json:"customerBgpAsn,omitempty" tf:"customer_bgp_asn,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -323,8 +318,7 @@ type VirtualCircuitParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) For private virtual circuits only. The OCID of the dynamic routing gateway (DRG) that this virtual circuit uses.
 	// +kubebuilder:validation:Optional

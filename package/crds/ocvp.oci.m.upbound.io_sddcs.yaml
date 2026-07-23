@@ -180,7 +180,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A descriptive name for the SDDC. SDDC
                       name requirements are 1-16 character length limit, Must start
@@ -194,7 +193,8 @@ spec:
                       Creating a SDDC with a ESXi host count of 1 will be considered
                       a single ESXi host SDDC. Deprecated. Please use esxi_hosts_count
                       of initial_cluster_configurations instead.
-                    type: number
+                    format: int64
+                    type: integer
                   esxiSoftwareVersion:
                     description: (Updatable) The ESXi software bundle to install on
                       the ESXi hosts in the SDDC.  Only versions under the same vmwareSoftwareVersion
@@ -209,7 +209,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hcxAction:
                     description: '(Updatable) The action to be performed upon HCX
                       licenses. "UPGRADE" will upgrade the SDDC from HCX Advanced
@@ -469,7 +468,8 @@ spec:
                                   host count of 1 will be considered a single ESXi
                                   host SDDC. Deprecated. Please use esxi_hosts_count
                                   of initial_cluster_configurations instead.
-                                type: number
+                                format: int64
+                                type: integer
                               initialCommitment:
                                 description: The billing option selected during Cluster
                                   creation. ListSupportedCommitments.
@@ -1572,7 +1572,8 @@ spec:
                         loadBalancerInstanceCount:
                           description: (Updatable) The number of VMware Avi Load Balancer
                             instances to be deployed on VMware SDDC.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   sshAuthorizedKeys:
@@ -1739,7 +1740,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A descriptive name for the SDDC. SDDC
                       name requirements are 1-16 character length limit, Must start
@@ -1753,7 +1753,8 @@ spec:
                       Creating a SDDC with a ESXi host count of 1 will be considered
                       a single ESXi host SDDC. Deprecated. Please use esxi_hosts_count
                       of initial_cluster_configurations instead.
-                    type: number
+                    format: int64
+                    type: integer
                   esxiSoftwareVersion:
                     description: (Updatable) The ESXi software bundle to install on
                       the ESXi hosts in the SDDC.  Only versions under the same vmwareSoftwareVersion
@@ -1768,7 +1769,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hcxAction:
                     description: '(Updatable) The action to be performed upon HCX
                       licenses. "UPGRADE" will upgrade the SDDC from HCX Advanced
@@ -2028,7 +2028,8 @@ spec:
                                   host count of 1 will be considered a single ESXi
                                   host SDDC. Deprecated. Please use esxi_hosts_count
                                   of initial_cluster_configurations instead.
-                                type: number
+                                format: int64
+                                type: integer
                               initialCommitment:
                                 description: The billing option selected during Cluster
                                   creation. ListSupportedCommitments.
@@ -3131,7 +3132,8 @@ spec:
                         loadBalancerInstanceCount:
                           description: (Updatable) The number of VMware Avi Load Balancer
                             instances to be deployed on VMware SDDC.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   sshAuthorizedKeys:
@@ -3243,7 +3245,8 @@ spec:
                       SDDC on the cloud. This attribute will be different when esxi
                       Host is added to an existing SDDC. Deprecated. Please use actual_esxi_hosts_count
                       of initial_cluster_configurations instead.
-                    type: number
+                    format: int64
+                    type: integer
                   capacityReservationId:
                     description: (Deprecated)  The OCID of the Capacity Reservation.
                       Deprecated. Please use capacity_reservation_id of initial_cluster_configurations
@@ -3251,7 +3254,8 @@ spec:
                     type: string
                   clustersCount:
                     description: The number of Clusters in the SDDC.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the compartment to contain
                       the SDDC.
@@ -3289,7 +3293,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A descriptive name for the SDDC. SDDC
                       name requirements are 1-16 character length limit, Must start
@@ -3303,7 +3306,8 @@ spec:
                       Creating a SDDC with a ESXi host count of 1 will be considered
                       a single ESXi host SDDC. Deprecated. Please use esxi_hosts_count
                       of initial_cluster_configurations instead.
-                    type: number
+                    format: int64
+                    type: integer
                   esxiSoftwareVersion:
                     description: (Updatable) The ESXi software bundle to install on
                       the ESXi hosts in the SDDC.  Only versions under the same vmwareSoftwareVersion
@@ -3318,7 +3322,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hcxAction:
                     description: '(Updatable) The action to be performed upon HCX
                       licenses. "UPGRADE" will upgrade the SDDC from HCX Advanced
@@ -3399,7 +3402,8 @@ spec:
                                   be different when esxi Host is added to an existing
                                   SDDC. Deprecated. Please use actual_esxi_hosts_count
                                   of initial_cluster_configurations instead.
-                                type: number
+                                format: int64
+                                type: integer
                               capacityReservationId:
                                 description: (Deprecated)  The OCID of the Capacity
                                   Reservation. Deprecated. Please use capacity_reservation_id
@@ -3465,7 +3469,8 @@ spec:
                                   host count of 1 will be considered a single ESXi
                                   host SDDC. Deprecated. Please use esxi_hosts_count
                                   of initial_cluster_configurations instead.
-                                type: number
+                                format: int64
+                                type: integer
                               initialCommitment:
                                 description: The billing option selected during Cluster
                                   creation. ListSupportedCommitments.
@@ -3696,7 +3701,8 @@ spec:
                         loadBalancerInstanceCount:
                           description: (Updatable) The number of VMware Avi Load Balancer
                             instances to be deployed on VMware SDDC.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   sshAuthorizedKeys:
@@ -3716,7 +3722,6 @@ spec:
                       are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: 'The date and time the SDDC was created, in the format
                       defined by RFC3339.  Example: 2016-08-25T21:10:29.600Z'

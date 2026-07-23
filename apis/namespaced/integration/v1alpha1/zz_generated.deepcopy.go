@@ -156,7 +156,7 @@ func (in *AlternateCustomEndpointsObservation) DeepCopyInto(out *AlternateCustom
 	}
 	if in.CertificateSecretVersion != nil {
 		in, out := &in.CertificateSecretVersion, &out.CertificateSecretVersion
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DNSType != nil {
@@ -421,7 +421,7 @@ func (in *CustomEndpointObservation) DeepCopyInto(out *CustomEndpointObservation
 	}
 	if in.CertificateSecretVersion != nil {
 		in, out := &in.CertificateSecretVersion, &out.CertificateSecretVersion
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DNSType != nil {
@@ -889,7 +889,7 @@ func (in *IntegrationInstanceInitParameters) DeepCopyInto(out *IntegrationInstan
 	}
 	if in.ConvertInstanceTrigger != nil {
 		in, out := &in.ConvertInstanceTrigger, &out.ConvertInstanceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CustomEndpoint != nil {
@@ -906,23 +906,14 @@ func (in *IntegrationInstanceInitParameters) DeepCopyInto(out *IntegrationInstan
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisableProcessAutomationTrigger != nil {
 		in, out := &in.DisableProcessAutomationTrigger, &out.DisableProcessAutomationTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DisplayName != nil {
@@ -947,33 +938,24 @@ func (in *IntegrationInstanceInitParameters) DeepCopyInto(out *IntegrationInstan
 	}
 	if in.EnableProcessAutomationTrigger != nil {
 		in, out := &in.EnableProcessAutomationTrigger, &out.EnableProcessAutomationTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ExtendDataRetentionTrigger != nil {
 		in, out := &in.ExtendDataRetentionTrigger, &out.ExtendDataRetentionTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailoverTrigger != nil {
 		in, out := &in.FailoverTrigger, &out.FailoverTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdcsAtSecretRef != nil {
@@ -1013,7 +995,7 @@ func (in *IntegrationInstanceInitParameters) DeepCopyInto(out *IntegrationInstan
 	}
 	if in.MessagePacks != nil {
 		in, out := &in.MessagePacks, &out.MessagePacks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NetworkEndpointDetails != nil {
@@ -1051,18 +1033,9 @@ func (in *IntegrationInstanceInitParameters) DeepCopyInto(out *IntegrationInstan
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -1143,7 +1116,7 @@ func (in *IntegrationInstanceObservation) DeepCopyInto(out *IntegrationInstanceO
 	}
 	if in.ConvertInstanceTrigger != nil {
 		in, out := &in.ConvertInstanceTrigger, &out.ConvertInstanceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CustomEndpoint != nil {
@@ -1160,23 +1133,14 @@ func (in *IntegrationInstanceObservation) DeepCopyInto(out *IntegrationInstanceO
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisableProcessAutomationTrigger != nil {
 		in, out := &in.DisableProcessAutomationTrigger, &out.DisableProcessAutomationTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DisasterRecoveryDetails != nil {
@@ -1198,33 +1162,24 @@ func (in *IntegrationInstanceObservation) DeepCopyInto(out *IntegrationInstanceO
 	}
 	if in.EnableProcessAutomationTrigger != nil {
 		in, out := &in.EnableProcessAutomationTrigger, &out.EnableProcessAutomationTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ExtendDataRetentionTrigger != nil {
 		in, out := &in.ExtendDataRetentionTrigger, &out.ExtendDataRetentionTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailoverTrigger != nil {
 		in, out := &in.FailoverTrigger, &out.FailoverTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1286,7 +1241,7 @@ func (in *IntegrationInstanceObservation) DeepCopyInto(out *IntegrationInstanceO
 	}
 	if in.MessagePacks != nil {
 		in, out := &in.MessagePacks, &out.MessagePacks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NetworkEndpointDetails != nil {
@@ -1341,18 +1296,9 @@ func (in *IntegrationInstanceObservation) DeepCopyInto(out *IntegrationInstanceO
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1414,7 +1360,7 @@ func (in *IntegrationInstanceParameters) DeepCopyInto(out *IntegrationInstancePa
 	}
 	if in.ConvertInstanceTrigger != nil {
 		in, out := &in.ConvertInstanceTrigger, &out.ConvertInstanceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CustomEndpoint != nil {
@@ -1431,23 +1377,14 @@ func (in *IntegrationInstanceParameters) DeepCopyInto(out *IntegrationInstancePa
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisableProcessAutomationTrigger != nil {
 		in, out := &in.DisableProcessAutomationTrigger, &out.DisableProcessAutomationTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DisplayName != nil {
@@ -1472,33 +1409,24 @@ func (in *IntegrationInstanceParameters) DeepCopyInto(out *IntegrationInstancePa
 	}
 	if in.EnableProcessAutomationTrigger != nil {
 		in, out := &in.EnableProcessAutomationTrigger, &out.EnableProcessAutomationTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ExtendDataRetentionTrigger != nil {
 		in, out := &in.ExtendDataRetentionTrigger, &out.ExtendDataRetentionTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailoverTrigger != nil {
 		in, out := &in.FailoverTrigger, &out.FailoverTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdcsAtSecretRef != nil {
@@ -1538,7 +1466,7 @@ func (in *IntegrationInstanceParameters) DeepCopyInto(out *IntegrationInstancePa
 	}
 	if in.MessagePacks != nil {
 		in, out := &in.MessagePacks, &out.MessagePacks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NetworkEndpointDetails != nil {
@@ -1576,18 +1504,9 @@ func (in *IntegrationInstanceParameters) DeepCopyInto(out *IntegrationInstancePa
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }

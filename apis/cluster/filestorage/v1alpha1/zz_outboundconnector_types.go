@@ -66,8 +66,7 @@ type OutboundConnectorInitParameters struct {
 	ConnectorType *string `json:"connectorType,omitempty" tf:"connector_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My outbound connector
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -76,8 +75,7 @@ type OutboundConnectorInitParameters struct {
 	Endpoints []EndpointsInitParameters `json:"endpoints,omitempty" tf:"endpoints,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	IsLockOverride *bool `json:"isLockOverride,omitempty" tf:"is_lock_override,omitempty"`
 
@@ -98,7 +96,7 @@ type OutboundConnectorInitParameters struct {
 	PasswordSecretIDSelector *v1.Selector `json:"passwordSecretIdSelector,omitempty" tf:"-"`
 
 	// Version of the password secret in the Vault to use.
-	PasswordSecretVersion *float64 `json:"passwordSecretVersion,omitempty" tf:"password_secret_version,omitempty"`
+	PasswordSecretVersion *int64 `json:"passwordSecretVersion,omitempty" tf:"password_secret_version,omitempty"`
 
 	// The OCID of the trusted certificate for the LDAP server in the Vault.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
@@ -114,7 +112,7 @@ type OutboundConnectorInitParameters struct {
 	TrustedCertificateSecretIDSelector *v1.Selector `json:"trustedCertificateSecretIdSelector,omitempty" tf:"-"`
 
 	// Version of the trusted certificate secret in the Vault to use.
-	TrustedCertificateSecretVersion *float64 `json:"trustedCertificateSecretVersion,omitempty" tf:"trusted_certificate_secret_version,omitempty"`
+	TrustedCertificateSecretVersion *int64 `json:"trustedCertificateSecretVersion,omitempty" tf:"trusted_certificate_secret_version,omitempty"`
 }
 
 type OutboundConnectorLocksInitParameters struct {
@@ -181,8 +179,7 @@ type OutboundConnectorObservation struct {
 	ConnectorType *string `json:"connectorType,omitempty" tf:"connector_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My outbound connector
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -191,8 +188,7 @@ type OutboundConnectorObservation struct {
 	Endpoints []EndpointsObservation `json:"endpoints,omitempty" tf:"endpoints,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the outbound connector.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -206,14 +202,13 @@ type OutboundConnectorObservation struct {
 	PasswordSecretID *string `json:"passwordSecretId,omitempty" tf:"password_secret_id,omitempty"`
 
 	// Version of the password secret in the Vault to use.
-	PasswordSecretVersion *float64 `json:"passwordSecretVersion,omitempty" tf:"password_secret_version,omitempty"`
+	PasswordSecretVersion *int64 `json:"passwordSecretVersion,omitempty" tf:"password_secret_version,omitempty"`
 
 	// The current state of this outbound connector.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. System tags are applied to resources by internal Oracle Cloud Infrastructure services.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// When the lock was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -222,7 +217,7 @@ type OutboundConnectorObservation struct {
 	TrustedCertificateSecretID *string `json:"trustedCertificateSecretId,omitempty" tf:"trusted_certificate_secret_id,omitempty"`
 
 	// Version of the trusted certificate secret in the Vault to use.
-	TrustedCertificateSecretVersion *float64 `json:"trustedCertificateSecretVersion,omitempty" tf:"trusted_certificate_secret_version,omitempty"`
+	TrustedCertificateSecretVersion *int64 `json:"trustedCertificateSecretVersion,omitempty" tf:"trusted_certificate_secret_version,omitempty"`
 }
 
 type OutboundConnectorParameters struct {
@@ -254,8 +249,7 @@ type OutboundConnectorParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My outbound connector
 	// +kubebuilder:validation:Optional
@@ -267,8 +261,7 @@ type OutboundConnectorParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	IsLockOverride *bool `json:"isLockOverride,omitempty" tf:"is_lock_override,omitempty"`
@@ -293,7 +286,7 @@ type OutboundConnectorParameters struct {
 
 	// Version of the password secret in the Vault to use.
 	// +kubebuilder:validation:Optional
-	PasswordSecretVersion *float64 `json:"passwordSecretVersion,omitempty" tf:"password_secret_version,omitempty"`
+	PasswordSecretVersion *int64 `json:"passwordSecretVersion,omitempty" tf:"password_secret_version,omitempty"`
 
 	// The OCID of the trusted certificate for the LDAP server in the Vault.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
@@ -311,7 +304,7 @@ type OutboundConnectorParameters struct {
 
 	// Version of the trusted certificate secret in the Vault to use.
 	// +kubebuilder:validation:Optional
-	TrustedCertificateSecretVersion *float64 `json:"trustedCertificateSecretVersion,omitempty" tf:"trusted_certificate_secret_version,omitempty"`
+	TrustedCertificateSecretVersion *int64 `json:"trustedCertificateSecretVersion,omitempty" tf:"trusted_certificate_secret_version,omitempty"`
 }
 
 // OutboundConnectorSpec defines the desired state of OutboundConnector

@@ -27,15 +27,13 @@ type DefaultSecurityListInitParameters struct {
 	// +kubebuilder:validation:Optional
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	EgressSecurityRules []EgressSecurityRulesInitParameters `json:"egressSecurityRules,omitempty" tf:"egress_security_rules,omitempty"`
 
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	IngressSecurityRules []IngressSecurityRulesInitParameters `json:"ingressSecurityRules,omitempty" tf:"ingress_security_rules,omitempty"`
 
@@ -45,15 +43,13 @@ type DefaultSecurityListInitParameters struct {
 type DefaultSecurityListObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	EgressSecurityRules []EgressSecurityRulesObservation `json:"egressSecurityRules,omitempty" tf:"egress_security_rules,omitempty"`
 
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -81,8 +77,7 @@ type DefaultSecurityListParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -91,8 +86,7 @@ type DefaultSecurityListParameters struct {
 	EgressSecurityRules []EgressSecurityRulesParameters `json:"egressSecurityRules,omitempty" tf:"egress_security_rules,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	IngressSecurityRules []IngressSecurityRulesParameters `json:"ingressSecurityRules,omitempty" tf:"ingress_security_rules,omitempty"`
@@ -165,45 +159,45 @@ type EgressSecurityRulesParameters struct {
 }
 
 type IcmpOptionsInitParameters struct {
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type IcmpOptionsObservation struct {
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type IcmpOptionsParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Type *float64 `json:"type" tf:"type,omitempty"`
+	Type *int64 `json:"type" tf:"type,omitempty"`
 }
 
 type IngressSecurityRulesIcmpOptionsInitParameters struct {
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type IngressSecurityRulesIcmpOptionsObservation struct {
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type IngressSecurityRulesIcmpOptionsParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Type *float64 `json:"type" tf:"type,omitempty"`
+	Type *int64 `json:"type" tf:"type,omitempty"`
 }
 
 type IngressSecurityRulesInitParameters struct {
@@ -270,17 +264,17 @@ type IngressSecurityRulesParameters struct {
 }
 
 type IngressSecurityRulesTCPOptionsInitParameters struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	SourcePortRange []TCPOptionsSourcePortRangeInitParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
 
 type IngressSecurityRulesTCPOptionsObservation struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	SourcePortRange []TCPOptionsSourcePortRangeObservation `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
@@ -288,27 +282,27 @@ type IngressSecurityRulesTCPOptionsObservation struct {
 type IngressSecurityRulesTCPOptionsParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	SourcePortRange []TCPOptionsSourcePortRangeParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
 
 type IngressSecurityRulesUDPOptionsInitParameters struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	SourcePortRange []IngressSecurityRulesUDPOptionsSourcePortRangeInitParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
 
 type IngressSecurityRulesUDPOptionsObservation struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	SourcePortRange []IngressSecurityRulesUDPOptionsSourcePortRangeObservation `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
@@ -316,69 +310,69 @@ type IngressSecurityRulesUDPOptionsObservation struct {
 type IngressSecurityRulesUDPOptionsParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	SourcePortRange []IngressSecurityRulesUDPOptionsSourcePortRangeParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
 
 type IngressSecurityRulesUDPOptionsSourcePortRangeInitParameters struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type IngressSecurityRulesUDPOptionsSourcePortRangeObservation struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type IngressSecurityRulesUDPOptionsSourcePortRangeParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type SourcePortRangeInitParameters struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type SourcePortRangeObservation struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type SourcePortRangeParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type TCPOptionsInitParameters struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	SourcePortRange []SourcePortRangeInitParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
 
 type TCPOptionsObservation struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	SourcePortRange []SourcePortRangeObservation `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
@@ -386,48 +380,48 @@ type TCPOptionsObservation struct {
 type TCPOptionsParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	SourcePortRange []SourcePortRangeParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
 
 type TCPOptionsSourcePortRangeInitParameters struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type TCPOptionsSourcePortRangeObservation struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type TCPOptionsSourcePortRangeParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type UDPOptionsInitParameters struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	SourcePortRange []UDPOptionsSourcePortRangeInitParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
 
 type UDPOptionsObservation struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	SourcePortRange []UDPOptionsSourcePortRangeObservation `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
@@ -435,34 +429,34 @@ type UDPOptionsObservation struct {
 type UDPOptionsParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	SourcePortRange []UDPOptionsSourcePortRangeParameters `json:"sourcePortRange,omitempty" tf:"source_port_range,omitempty"`
 }
 
 type UDPOptionsSourcePortRangeInitParameters struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type UDPOptionsSourcePortRangeObservation struct {
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type UDPOptionsSourcePortRangeParameters struct {
 
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 // DefaultSecurityListSpec defines the desired state of DefaultSecurityList

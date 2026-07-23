@@ -360,18 +360,9 @@ func (in *AutomaticDrConfigurationInitParameters) DeepCopyInto(out *AutomaticDrC
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -396,18 +387,9 @@ func (in *AutomaticDrConfigurationInitParameters) DeepCopyInto(out *AutomaticDrC
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Members != nil {
@@ -481,18 +463,9 @@ func (in *AutomaticDrConfigurationObservation) DeepCopyInto(out *AutomaticDrConf
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -507,18 +480,9 @@ func (in *AutomaticDrConfigurationObservation) DeepCopyInto(out *AutomaticDrConf
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -555,18 +519,9 @@ func (in *AutomaticDrConfigurationObservation) DeepCopyInto(out *AutomaticDrConf
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -631,18 +586,9 @@ func (in *AutomaticDrConfigurationParameters) DeepCopyInto(out *AutomaticDrConfi
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -667,18 +613,9 @@ func (in *AutomaticDrConfigurationParameters) DeepCopyInto(out *AutomaticDrConfi
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Members != nil {
@@ -956,7 +893,7 @@ func (in *BackupConfigInitParameters) DeepCopyInto(out *BackupConfigInitParamete
 	}
 	if in.MaxNumberOfBackupsRetained != nil {
 		in, out := &in.MaxNumberOfBackupsRetained, &out.MaxNumberOfBackupsRetained
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Namespaces != nil {
@@ -1013,7 +950,7 @@ func (in *BackupConfigObservation) DeepCopyInto(out *BackupConfigObservation) {
 	}
 	if in.MaxNumberOfBackupsRetained != nil {
 		in, out := &in.MaxNumberOfBackupsRetained, &out.MaxNumberOfBackupsRetained
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Namespaces != nil {
@@ -1080,7 +1017,7 @@ func (in *BackupConfigParameters) DeepCopyInto(out *BackupConfigParameters) {
 	}
 	if in.MaxNumberOfBackupsRetained != nil {
 		in, out := &in.MaxNumberOfBackupsRetained, &out.MaxNumberOfBackupsRetained
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Namespaces != nil {
@@ -1829,18 +1766,9 @@ func (in *DrPlanExecutionInitParameters) DeepCopyInto(out *DrPlanExecutionInitPa
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1857,18 +1785,9 @@ func (in *DrPlanExecutionInitParameters) DeepCopyInto(out *DrPlanExecutionInitPa
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.PlanID != nil {
@@ -1997,18 +1916,9 @@ func (in *DrPlanExecutionObservation) DeepCopyInto(out *DrPlanExecutionObservati
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2023,7 +1933,7 @@ func (in *DrPlanExecutionObservation) DeepCopyInto(out *DrPlanExecutionObservati
 	}
 	if in.ExecutionDurationInSec != nil {
 		in, out := &in.ExecutionDurationInSec, &out.ExecutionDurationInSec
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ExecutionOptions != nil {
@@ -2035,18 +1945,9 @@ func (in *DrPlanExecutionObservation) DeepCopyInto(out *DrPlanExecutionObservati
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GroupExecutions != nil {
@@ -2112,18 +2013,9 @@ func (in *DrPlanExecutionObservation) DeepCopyInto(out *DrPlanExecutionObservati
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -2163,18 +2055,9 @@ func (in *DrPlanExecutionParameters) DeepCopyInto(out *DrPlanExecutionParameters
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2191,18 +2074,9 @@ func (in *DrPlanExecutionParameters) DeepCopyInto(out *DrPlanExecutionParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.PlanID != nil {
@@ -2262,18 +2136,9 @@ func (in *DrPlanInitParameters) DeepCopyInto(out *DrPlanInitParameters) {
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2298,23 +2163,14 @@ func (in *DrPlanInitParameters) DeepCopyInto(out *DrPlanInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.RefreshTrigger != nil {
 		in, out := &in.RefreshTrigger, &out.RefreshTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SourcePlanID != nil {
@@ -2329,7 +2185,7 @@ func (in *DrPlanInitParameters) DeepCopyInto(out *DrPlanInitParameters) {
 	}
 	if in.VerifyTrigger != nil {
 		in, out := &in.VerifyTrigger, &out.VerifyTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2386,18 +2242,9 @@ func (in *DrPlanObservation) DeepCopyInto(out *DrPlanObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2412,18 +2259,9 @@ func (in *DrPlanObservation) DeepCopyInto(out *DrPlanObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -2460,7 +2298,7 @@ func (in *DrPlanObservation) DeepCopyInto(out *DrPlanObservation) {
 	}
 	if in.RefreshTrigger != nil {
 		in, out := &in.RefreshTrigger, &out.RefreshTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SourcePlanID != nil {
@@ -2475,18 +2313,9 @@ func (in *DrPlanObservation) DeepCopyInto(out *DrPlanObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -2506,7 +2335,7 @@ func (in *DrPlanObservation) DeepCopyInto(out *DrPlanObservation) {
 	}
 	if in.VerifyTrigger != nil {
 		in, out := &in.VerifyTrigger, &out.VerifyTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2526,18 +2355,9 @@ func (in *DrPlanParameters) DeepCopyInto(out *DrPlanParameters) {
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2562,23 +2382,14 @@ func (in *DrPlanParameters) DeepCopyInto(out *DrPlanParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.RefreshTrigger != nil {
 		in, out := &in.RefreshTrigger, &out.RefreshTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SourcePlanID != nil {
@@ -2593,7 +2404,7 @@ func (in *DrPlanParameters) DeepCopyInto(out *DrPlanParameters) {
 	}
 	if in.VerifyTrigger != nil {
 		in, out := &in.VerifyTrigger, &out.VerifyTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2697,23 +2508,14 @@ func (in *DrProtectionGroupInitParameters) DeepCopyInto(out *DrProtectionGroupIn
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisassociateTrigger != nil {
 		in, out := &in.DisassociateTrigger, &out.DisassociateTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DisplayName != nil {
@@ -2723,18 +2525,9 @@ func (in *DrProtectionGroupInitParameters) DeepCopyInto(out *DrProtectionGroupIn
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.LogLocation != nil {
@@ -3072,7 +2865,7 @@ func (in *DrProtectionGroupMembersInitParameters) DeepCopyInto(out *DrProtection
 	}
 	if in.GtidReconciliationTimeout != nil {
 		in, out := &in.GtidReconciliationTimeout, &out.GtidReconciliationTimeout
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsContinueOnGtidReconciliationTimeout != nil {
@@ -3362,7 +3155,7 @@ func (in *DrProtectionGroupMembersObservation) DeepCopyInto(out *DrProtectionGro
 	}
 	if in.GtidReconciliationTimeout != nil {
 		in, out := &in.GtidReconciliationTimeout, &out.GtidReconciliationTimeout
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsContinueOnGtidReconciliationTimeout != nil {
@@ -3687,7 +3480,7 @@ func (in *DrProtectionGroupMembersParameters) DeepCopyInto(out *DrProtectionGrou
 	}
 	if in.GtidReconciliationTimeout != nil {
 		in, out := &in.GtidReconciliationTimeout, &out.GtidReconciliationTimeout
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsContinueOnGtidReconciliationTimeout != nil {
@@ -3857,23 +3650,14 @@ func (in *DrProtectionGroupObservation) DeepCopyInto(out *DrProtectionGroupObser
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisassociateTrigger != nil {
 		in, out := &in.DisassociateTrigger, &out.DisassociateTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DisplayName != nil {
@@ -3883,18 +3667,9 @@ func (in *DrProtectionGroupObservation) DeepCopyInto(out *DrProtectionGroupObser
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -3948,18 +3723,9 @@ func (in *DrProtectionGroupObservation) DeepCopyInto(out *DrProtectionGroupObser
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -4011,23 +3777,14 @@ func (in *DrProtectionGroupParameters) DeepCopyInto(out *DrProtectionGroupParame
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisassociateTrigger != nil {
 		in, out := &in.DisassociateTrigger, &out.DisassociateTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DisplayName != nil {
@@ -4037,18 +3794,9 @@ func (in *DrProtectionGroupParameters) DeepCopyInto(out *DrProtectionGroupParame
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.LogLocation != nil {
@@ -4337,17 +4085,17 @@ func (in *FailedStepsObservation) DeepCopyInto(out *FailedStepsObservation) {
 	*out = *in
 	if in.Failed != nil {
 		in, out := &in.Failed, &out.Failed
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimedOut != nil {
 		in, out := &in.TimedOut, &out.TimedOut
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TotalFailed != nil {
 		in, out := &in.TotalFailed, &out.TotalFailed
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4634,7 +4382,7 @@ func (in *GroupExecutionsObservation) DeepCopyInto(out *GroupExecutionsObservati
 	}
 	if in.ExecutionDurationInSec != nil {
 		in, out := &in.ExecutionDurationInSec, &out.ExecutionDurationInSec
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GroupID != nil {
@@ -4886,12 +4634,12 @@ func (in *ManagedNodePoolConfigsInitParameters) DeepCopyInto(out *ManagedNodePoo
 	}
 	if in.Maximum != nil {
 		in, out := &in.Maximum, &out.Maximum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Minimum != nil {
 		in, out := &in.Minimum, &out.Minimum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4916,12 +4664,12 @@ func (in *ManagedNodePoolConfigsObservation) DeepCopyInto(out *ManagedNodePoolCo
 	}
 	if in.Maximum != nil {
 		in, out := &in.Maximum, &out.Maximum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Minimum != nil {
 		in, out := &in.Minimum, &out.Minimum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4946,12 +4694,12 @@ func (in *ManagedNodePoolConfigsParameters) DeepCopyInto(out *ManagedNodePoolCon
 	}
 	if in.Maximum != nil {
 		in, out := &in.Maximum, &out.Maximum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Minimum != nil {
 		in, out := &in.Minimum, &out.Minimum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -5463,22 +5211,22 @@ func (in *RemainingStepsObservation) DeepCopyInto(out *RemainingStepsObservation
 	*out = *in
 	if in.InProgress != nil {
 		in, out := &in.InProgress, &out.InProgress
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Paused != nil {
 		in, out := &in.Paused, &out.Paused
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Queued != nil {
 		in, out := &in.Queued, &out.Queued
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TotalRemaining != nil {
 		in, out := &in.TotalRemaining, &out.TotalRemaining
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -5603,27 +5351,27 @@ func (in *SkippedStepsObservation) DeepCopyInto(out *SkippedStepsObservation) {
 	*out = *in
 	if in.Canceled != nil {
 		in, out := &in.Canceled, &out.Canceled
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Disabled != nil {
 		in, out := &in.Disabled, &out.Disabled
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailedIgnored != nil {
 		in, out := &in.FailedIgnored, &out.FailedIgnored
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimedOutIgnored != nil {
 		in, out := &in.TimedOutIgnored, &out.TimedOutIgnored
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TotalSkipped != nil {
 		in, out := &in.TotalSkipped, &out.TotalSkipped
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -5894,7 +5642,7 @@ func (in *StepExecutionsObservation) DeepCopyInto(out *StepExecutionsObservation
 	}
 	if in.ExecutionDurationInSec != nil {
 		in, out := &in.ExecutionDurationInSec, &out.ExecutionDurationInSec
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GroupID != nil {
@@ -6019,7 +5767,7 @@ func (in *StepStatusCountsObservation) DeepCopyInto(out *StepStatusCountsObserva
 	}
 	if in.TotalSteps != nil {
 		in, out := &in.TotalSteps, &out.TotalSteps
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WarningSteps != nil {
@@ -6111,7 +5859,7 @@ func (in *StepsObservation) DeepCopyInto(out *StepsObservation) {
 	}
 	if in.Timeout != nil {
 		in, out := &in.Timeout, &out.Timeout
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Type != nil {
@@ -6178,12 +5926,12 @@ func (in *SuccessfulStepsObservation) DeepCopyInto(out *SuccessfulStepsObservati
 	*out = *in
 	if in.Succeeded != nil {
 		in, out := &in.Succeeded, &out.Succeeded
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TotalSuccessful != nil {
 		in, out := &in.TotalSuccessful, &out.TotalSuccessful
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6510,12 +6258,12 @@ func (in *VirtualNodePoolConfigsInitParameters) DeepCopyInto(out *VirtualNodePoo
 	}
 	if in.Maximum != nil {
 		in, out := &in.Maximum, &out.Maximum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Minimum != nil {
 		in, out := &in.Minimum, &out.Minimum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6540,12 +6288,12 @@ func (in *VirtualNodePoolConfigsObservation) DeepCopyInto(out *VirtualNodePoolCo
 	}
 	if in.Maximum != nil {
 		in, out := &in.Maximum, &out.Maximum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Minimum != nil {
 		in, out := &in.Minimum, &out.Minimum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6570,12 +6318,12 @@ func (in *VirtualNodePoolConfigsParameters) DeepCopyInto(out *VirtualNodePoolCon
 	}
 	if in.Maximum != nil {
 		in, out := &in.Maximum, &out.Maximum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Minimum != nil {
 		in, out := &in.Minimum, &out.Minimum
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6931,12 +6679,12 @@ func (in *WarningStepsObservation) DeepCopyInto(out *WarningStepsObservation) {
 	*out = *in
 	if in.TotalWarnings != nil {
 		in, out := &in.TotalWarnings, &out.TotalWarnings
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WarningsIgnored != nil {
 		in, out := &in.WarningsIgnored, &out.WarningsIgnored
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

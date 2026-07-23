@@ -20,13 +20,13 @@ type AutoScalingPoliciesInitParameters struct {
 	AutoScalingPolicyType *string `json:"autoScalingPolicyType,omitempty" tf:"auto_scaling_policy_type,omitempty"`
 
 	// (Updatable) For a threshold-based autoscaling policy, this value is the initial number of instances to launch in the managed compute cluster type compute target immediately after autoscaling is enabled. Note that anytime this value is updated, the number of instances will be reset to this value. After autoscaling retrieves performance metrics, the number of instances is automatically adjusted from this initial number to a number that is based on the limits that you set.
-	InitialInstanceCount *float64 `json:"initialInstanceCount,omitempty" tf:"initial_instance_count,omitempty"`
+	InitialInstanceCount *int64 `json:"initialInstanceCount,omitempty" tf:"initial_instance_count,omitempty"`
 
 	// (Updatable) For a threshold-based autoscaling policy, this value is the maximum number of instances the managed compute cluster type compute target is allowed to increase to (scale out).
-	MaximumInstanceCount *float64 `json:"maximumInstanceCount,omitempty" tf:"maximum_instance_count,omitempty"`
+	MaximumInstanceCount *int64 `json:"maximumInstanceCount,omitempty" tf:"maximum_instance_count,omitempty"`
 
 	// (Updatable) For a threshold-based autoscaling policy, this value is the minimum number of instances the managed compute cluster type compute target is allowed to decrease to (scale in).
-	MinimumInstanceCount *float64 `json:"minimumInstanceCount,omitempty" tf:"minimum_instance_count,omitempty"`
+	MinimumInstanceCount *int64 `json:"minimumInstanceCount,omitempty" tf:"minimum_instance_count,omitempty"`
 
 	// (Updatable) The list of autoscaling policy rules.
 	Rules []RulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
@@ -38,13 +38,13 @@ type AutoScalingPoliciesObservation struct {
 	AutoScalingPolicyType *string `json:"autoScalingPolicyType,omitempty" tf:"auto_scaling_policy_type,omitempty"`
 
 	// (Updatable) For a threshold-based autoscaling policy, this value is the initial number of instances to launch in the managed compute cluster type compute target immediately after autoscaling is enabled. Note that anytime this value is updated, the number of instances will be reset to this value. After autoscaling retrieves performance metrics, the number of instances is automatically adjusted from this initial number to a number that is based on the limits that you set.
-	InitialInstanceCount *float64 `json:"initialInstanceCount,omitempty" tf:"initial_instance_count,omitempty"`
+	InitialInstanceCount *int64 `json:"initialInstanceCount,omitempty" tf:"initial_instance_count,omitempty"`
 
 	// (Updatable) For a threshold-based autoscaling policy, this value is the maximum number of instances the managed compute cluster type compute target is allowed to increase to (scale out).
-	MaximumInstanceCount *float64 `json:"maximumInstanceCount,omitempty" tf:"maximum_instance_count,omitempty"`
+	MaximumInstanceCount *int64 `json:"maximumInstanceCount,omitempty" tf:"maximum_instance_count,omitempty"`
 
 	// (Updatable) For a threshold-based autoscaling policy, this value is the minimum number of instances the managed compute cluster type compute target is allowed to decrease to (scale in).
-	MinimumInstanceCount *float64 `json:"minimumInstanceCount,omitempty" tf:"minimum_instance_count,omitempty"`
+	MinimumInstanceCount *int64 `json:"minimumInstanceCount,omitempty" tf:"minimum_instance_count,omitempty"`
 
 	// (Updatable) The list of autoscaling policy rules.
 	Rules []RulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
@@ -58,15 +58,15 @@ type AutoScalingPoliciesParameters struct {
 
 	// (Updatable) For a threshold-based autoscaling policy, this value is the initial number of instances to launch in the managed compute cluster type compute target immediately after autoscaling is enabled. Note that anytime this value is updated, the number of instances will be reset to this value. After autoscaling retrieves performance metrics, the number of instances is automatically adjusted from this initial number to a number that is based on the limits that you set.
 	// +kubebuilder:validation:Optional
-	InitialInstanceCount *float64 `json:"initialInstanceCount" tf:"initial_instance_count,omitempty"`
+	InitialInstanceCount *int64 `json:"initialInstanceCount" tf:"initial_instance_count,omitempty"`
 
 	// (Updatable) For a threshold-based autoscaling policy, this value is the maximum number of instances the managed compute cluster type compute target is allowed to increase to (scale out).
 	// +kubebuilder:validation:Optional
-	MaximumInstanceCount *float64 `json:"maximumInstanceCount" tf:"maximum_instance_count,omitempty"`
+	MaximumInstanceCount *int64 `json:"maximumInstanceCount" tf:"maximum_instance_count,omitempty"`
 
 	// (Updatable) For a threshold-based autoscaling policy, this value is the minimum number of instances the managed compute cluster type compute target is allowed to decrease to (scale in).
 	// +kubebuilder:validation:Optional
-	MinimumInstanceCount *float64 `json:"minimumInstanceCount" tf:"minimum_instance_count,omitempty"`
+	MinimumInstanceCount *int64 `json:"minimumInstanceCount" tf:"minimum_instance_count,omitempty"`
 
 	// (Updatable) The list of autoscaling policy rules.
 	// +kubebuilder:validation:Optional
@@ -130,8 +130,7 @@ type ComputeTargetInitParameters struct {
 	ComputeConfigurationDetails []ComputeConfigurationDetailsInitParameters `json:"computeConfigurationDetails,omitempty" tf:"compute_configuration_details,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the compute target.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -140,12 +139,10 @@ type ComputeTargetInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Metadata for the compute target. The size of metadata must be less than 2048 bytes. Key should be under 32 characters. Key should contain only letters, digits and underscore (_) Key should start with a letter. Key should have at least 2 characters. Key should not end with underscore eg. TEST_ Key if added cannot be empty. Value can be empty. No specific size limits on individual Values. But overall metadata is limited to 2048 bytes. Key can't be reserved Compute Target metadata.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 }
 
 type ComputeTargetObservation struct {
@@ -163,8 +160,7 @@ type ComputeTargetObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the compute target.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -173,8 +169,7 @@ type ComputeTargetObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the compute target.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -183,8 +178,7 @@ type ComputeTargetObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// (Updatable) Metadata for the compute target. The size of metadata must be less than 2048 bytes. Key should be under 32 characters. Key should contain only letters, digits and underscore (_) Key should start with a letter. Key should have at least 2 characters. Key should not end with underscore eg. TEST_ Key if added cannot be empty. Value can be empty. No specific size limits on individual Values. But overall metadata is limited to 2048 bytes. Key can't be reserved Compute Target metadata.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The state of the compute target.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -214,8 +208,7 @@ type ComputeTargetParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the compute target.
 	// +kubebuilder:validation:Optional
@@ -227,13 +220,11 @@ type ComputeTargetParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Metadata for the compute target. The size of metadata must be less than 2048 bytes. Key should be under 32 characters. Key should contain only letters, digits and underscore (_) Key should start with a letter. Key should have at least 2 characters. Key should not end with underscore eg. TEST_ Key if added cannot be empty. Value can be empty. No specific size limits on individual Values. But overall metadata is limited to 2048 bytes. Key can't be reserved Compute Target metadata.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 }
 
 type ComputeTargetSystemDataInitParameters struct {
@@ -245,7 +236,7 @@ type ComputeTargetSystemDataObservation struct {
 	ComputeType *string `json:"computeType,omitempty" tf:"compute_type,omitempty"`
 
 	// Current count of the instances in managed compute cluster type compute target.
-	CurrentInstanceCount *float64 `json:"currentInstanceCount,omitempty" tf:"current_instance_count,omitempty"`
+	CurrentInstanceCount *int64 `json:"currentInstanceCount,omitempty" tf:"current_instance_count,omitempty"`
 }
 
 type ComputeTargetSystemDataParameters struct {
@@ -254,7 +245,7 @@ type ComputeTargetSystemDataParameters struct {
 type InstanceConfigurationInitParameters struct {
 
 	// (Updatable) The size of the boot volume to attach to the instance.
-	BootVolumeSizeInGbs *float64 `json:"bootVolumeSizeInGbs,omitempty" tf:"boot_volume_size_in_gbs,omitempty"`
+	BootVolumeSizeInGbs *int64 `json:"bootVolumeSizeInGbs,omitempty" tf:"boot_volume_size_in_gbs,omitempty"`
 
 	// (Updatable) The shape used to launch the instances in compute target. Supported shapes can be retrieved using compute target shapes api.
 	InstanceShape *string `json:"instanceShape,omitempty" tf:"instance_shape,omitempty"`
@@ -266,7 +257,7 @@ type InstanceConfigurationInitParameters struct {
 type InstanceConfigurationObservation struct {
 
 	// (Updatable) The size of the boot volume to attach to the instance.
-	BootVolumeSizeInGbs *float64 `json:"bootVolumeSizeInGbs,omitempty" tf:"boot_volume_size_in_gbs,omitempty"`
+	BootVolumeSizeInGbs *int64 `json:"bootVolumeSizeInGbs,omitempty" tf:"boot_volume_size_in_gbs,omitempty"`
 
 	// (Updatable) The shape used to launch the instances in compute target. Supported shapes can be retrieved using compute target shapes api.
 	InstanceShape *string `json:"instanceShape,omitempty" tf:"instance_shape,omitempty"`
@@ -279,7 +270,7 @@ type InstanceConfigurationParameters struct {
 
 	// (Updatable) The size of the boot volume to attach to the instance.
 	// +kubebuilder:validation:Optional
-	BootVolumeSizeInGbs *float64 `json:"bootVolumeSizeInGbs,omitempty" tf:"boot_volume_size_in_gbs,omitempty"`
+	BootVolumeSizeInGbs *int64 `json:"bootVolumeSizeInGbs,omitempty" tf:"boot_volume_size_in_gbs,omitempty"`
 
 	// (Updatable) The shape used to launch the instances in compute target. Supported shapes can be retrieved using compute target shapes api.
 	// +kubebuilder:validation:Optional
@@ -371,7 +362,7 @@ type RulesParameters struct {
 type ScaleInConfigurationInitParameters struct {
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The value is used for adjusting the count of instances by.
-	InstanceCountAdjustment *float64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
+	InstanceCountAdjustment *int64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The period of time that the condition defined in the alarm must persist before the alarm state changes from "OK" to "FIRING" or vice versa. For example, a value of 5 minutes means that the alarm must persist in breaching the condition for five minutes before the alarm updates its state to "FIRING"; likewise, the alarm must persist in not breaching the condition for five minutes before the alarm updates its state to "OK." The duration is specified as a string in ISO 8601 format (PT10M for ten minutes or PT1H for one hour). Minimum: PT3M. Maximum: PT1H. Default: PT3M.
 	PendingDuration *string `json:"pendingDuration,omitempty" tf:"pending_duration,omitempty"`
@@ -383,13 +374,13 @@ type ScaleInConfigurationInitParameters struct {
 	ScalingConfigurationType *string `json:"scalingConfigurationType,omitempty" tf:"scaling_configuration_type,omitempty"`
 
 	// (Updatable) A metric value at which the scaling operation will be triggered.
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
 type ScaleInConfigurationObservation struct {
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The value is used for adjusting the count of instances by.
-	InstanceCountAdjustment *float64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
+	InstanceCountAdjustment *int64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The period of time that the condition defined in the alarm must persist before the alarm state changes from "OK" to "FIRING" or vice versa. For example, a value of 5 minutes means that the alarm must persist in breaching the condition for five minutes before the alarm updates its state to "FIRING"; likewise, the alarm must persist in not breaching the condition for five minutes before the alarm updates its state to "OK." The duration is specified as a string in ISO 8601 format (PT10M for ten minutes or PT1H for one hour). Minimum: PT3M. Maximum: PT1H. Default: PT3M.
 	PendingDuration *string `json:"pendingDuration,omitempty" tf:"pending_duration,omitempty"`
@@ -401,14 +392,14 @@ type ScaleInConfigurationObservation struct {
 	ScalingConfigurationType *string `json:"scalingConfigurationType,omitempty" tf:"scaling_configuration_type,omitempty"`
 
 	// (Updatable) A metric value at which the scaling operation will be triggered.
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
 type ScaleInConfigurationParameters struct {
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The value is used for adjusting the count of instances by.
 	// +kubebuilder:validation:Optional
-	InstanceCountAdjustment *float64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
+	InstanceCountAdjustment *int64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The period of time that the condition defined in the alarm must persist before the alarm state changes from "OK" to "FIRING" or vice versa. For example, a value of 5 minutes means that the alarm must persist in breaching the condition for five minutes before the alarm updates its state to "FIRING"; likewise, the alarm must persist in not breaching the condition for five minutes before the alarm updates its state to "OK." The duration is specified as a string in ISO 8601 format (PT10M for ten minutes or PT1H for one hour). Minimum: PT3M. Maximum: PT1H. Default: PT3M.
 	// +kubebuilder:validation:Optional
@@ -424,13 +415,13 @@ type ScaleInConfigurationParameters struct {
 
 	// (Updatable) A metric value at which the scaling operation will be triggered.
 	// +kubebuilder:validation:Optional
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
 type ScaleOutConfigurationInitParameters struct {
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The value is used for adjusting the count of instances by.
-	InstanceCountAdjustment *float64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
+	InstanceCountAdjustment *int64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The period of time that the condition defined in the alarm must persist before the alarm state changes from "OK" to "FIRING" or vice versa. For example, a value of 5 minutes means that the alarm must persist in breaching the condition for five minutes before the alarm updates its state to "FIRING"; likewise, the alarm must persist in not breaching the condition for five minutes before the alarm updates its state to "OK." The duration is specified as a string in ISO 8601 format (PT10M for ten minutes or PT1H for one hour). Minimum: PT3M. Maximum: PT1H. Default: PT3M.
 	PendingDuration *string `json:"pendingDuration,omitempty" tf:"pending_duration,omitempty"`
@@ -442,13 +433,13 @@ type ScaleOutConfigurationInitParameters struct {
 	ScalingConfigurationType *string `json:"scalingConfigurationType,omitempty" tf:"scaling_configuration_type,omitempty"`
 
 	// (Updatable) A metric value at which the scaling operation will be triggered.
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
 type ScaleOutConfigurationObservation struct {
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The value is used for adjusting the count of instances by.
-	InstanceCountAdjustment *float64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
+	InstanceCountAdjustment *int64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The period of time that the condition defined in the alarm must persist before the alarm state changes from "OK" to "FIRING" or vice versa. For example, a value of 5 minutes means that the alarm must persist in breaching the condition for five minutes before the alarm updates its state to "FIRING"; likewise, the alarm must persist in not breaching the condition for five minutes before the alarm updates its state to "OK." The duration is specified as a string in ISO 8601 format (PT10M for ten minutes or PT1H for one hour). Minimum: PT3M. Maximum: PT1H. Default: PT3M.
 	PendingDuration *string `json:"pendingDuration,omitempty" tf:"pending_duration,omitempty"`
@@ -460,14 +451,14 @@ type ScaleOutConfigurationObservation struct {
 	ScalingConfigurationType *string `json:"scalingConfigurationType,omitempty" tf:"scaling_configuration_type,omitempty"`
 
 	// (Updatable) A metric value at which the scaling operation will be triggered.
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
 type ScaleOutConfigurationParameters struct {
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The value is used for adjusting the count of instances by.
 	// +kubebuilder:validation:Optional
-	InstanceCountAdjustment *float64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
+	InstanceCountAdjustment *int64 `json:"instanceCountAdjustment,omitempty" tf:"instance_count_adjustment,omitempty"`
 
 	// (Applicable when metric_expression_rule_type=CUSTOM_EXPRESSION | PREDEFINED_EXPRESSION) (Updatable) The period of time that the condition defined in the alarm must persist before the alarm state changes from "OK" to "FIRING" or vice versa. For example, a value of 5 minutes means that the alarm must persist in breaching the condition for five minutes before the alarm updates its state to "FIRING"; likewise, the alarm must persist in not breaching the condition for five minutes before the alarm updates its state to "OK." The duration is specified as a string in ISO 8601 format (PT10M for ten minutes or PT1H for one hour). Minimum: PT3M. Maximum: PT1H. Default: PT3M.
 	// +kubebuilder:validation:Optional
@@ -483,7 +474,7 @@ type ScaleOutConfigurationParameters struct {
 
 	// (Updatable) A metric value at which the scaling operation will be triggered.
 	// +kubebuilder:validation:Optional
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 }
 
 type ScalingPolicyInitParameters struct {
@@ -492,10 +483,10 @@ type ScalingPolicyInitParameters struct {
 	AutoScalingPolicies []AutoScalingPoliciesInitParameters `json:"autoScalingPolicies,omitempty" tf:"auto_scaling_policies,omitempty"`
 
 	// (Applicable when policy_type=AUTOSCALING) (Updatable) For threshold-based autoscaling policies, this value is the minimum period of time to wait between scaling actions. The cooldown period gives the system time to stabilize before rescaling. The minimum value is 300 seconds, which is also the default. The cooldown period starts when the managed compute cluster type compute target  becomes ACTIVE after the scaling operation.
-	CoolDownInSeconds *float64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
+	CoolDownInSeconds *int64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
 
 	// (Updatable) The number of instances for the managed compute cluster type compute target.
-	InstanceCount *float64 `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceCount *int64 `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 
 	// (Applicable when policy_type=AUTOSCALING) (Updatable) Whether the autoscaling policy is enabled.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -510,10 +501,10 @@ type ScalingPolicyObservation struct {
 	AutoScalingPolicies []AutoScalingPoliciesObservation `json:"autoScalingPolicies,omitempty" tf:"auto_scaling_policies,omitempty"`
 
 	// (Applicable when policy_type=AUTOSCALING) (Updatable) For threshold-based autoscaling policies, this value is the minimum period of time to wait between scaling actions. The cooldown period gives the system time to stabilize before rescaling. The minimum value is 300 seconds, which is also the default. The cooldown period starts when the managed compute cluster type compute target  becomes ACTIVE after the scaling operation.
-	CoolDownInSeconds *float64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
+	CoolDownInSeconds *int64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
 
 	// (Updatable) The number of instances for the managed compute cluster type compute target.
-	InstanceCount *float64 `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceCount *int64 `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 
 	// (Applicable when policy_type=AUTOSCALING) (Updatable) Whether the autoscaling policy is enabled.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -530,11 +521,11 @@ type ScalingPolicyParameters struct {
 
 	// (Applicable when policy_type=AUTOSCALING) (Updatable) For threshold-based autoscaling policies, this value is the minimum period of time to wait between scaling actions. The cooldown period gives the system time to stabilize before rescaling. The minimum value is 300 seconds, which is also the default. The cooldown period starts when the managed compute cluster type compute target  becomes ACTIVE after the scaling operation.
 	// +kubebuilder:validation:Optional
-	CoolDownInSeconds *float64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
+	CoolDownInSeconds *int64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
 
 	// (Updatable) The number of instances for the managed compute cluster type compute target.
 	// +kubebuilder:validation:Optional
-	InstanceCount *float64 `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
+	InstanceCount *int64 `json:"instanceCount,omitempty" tf:"instance_count,omitempty"`
 
 	// (Applicable when policy_type=AUTOSCALING) (Updatable) Whether the autoscaling policy is enabled.
 	// +kubebuilder:validation:Optional

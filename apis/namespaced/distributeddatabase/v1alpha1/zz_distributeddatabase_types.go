@@ -64,8 +64,7 @@ type CatalogDetailsPeerDetailsMetadataInitParameters struct {
 type CatalogDetailsPeerDetailsMetadataObservation struct {
 
 	// The map containing key-value pair of additional metadata.
-	// +mapType=granular
-	Map map[string]*string `json:"map,omitempty" tf:"map,omitempty"`
+	Map map[string]string `json:"map,omitempty" tf:"map,omitempty"`
 }
 
 type CatalogDetailsPeerDetailsMetadataParameters struct {
@@ -173,7 +172,7 @@ type CatalogDetailsVMClusterDetailsInitParameters struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	IsDiagnosticsEventsEnabled *bool `json:"isDiagnosticsEventsEnabled,omitempty" tf:"is_diagnostics_events_enabled,omitempty"`
@@ -221,10 +220,10 @@ type CatalogDetailsVMClusterDetailsInitParameters struct {
 	SubnetIDSelector *v1.NamespacedSelector `json:"subnetIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type CatalogDetailsVMClusterDetailsObservation struct {
@@ -243,7 +242,7 @@ type CatalogDetailsVMClusterDetailsObservation struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	IsDiagnosticsEventsEnabled *bool `json:"isDiagnosticsEventsEnabled,omitempty" tf:"is_diagnostics_events_enabled,omitempty"`
@@ -271,13 +270,13 @@ type CatalogDetailsVMClusterDetailsObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// The OCID of the VM Cluster for the catalog peer.
 	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type CatalogDetailsVMClusterDetailsParameters struct {
@@ -307,7 +306,7 @@ type CatalogDetailsVMClusterDetailsParameters struct {
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
 	// +kubebuilder:validation:Optional
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	// +kubebuilder:validation:Optional
@@ -364,11 +363,11 @@ type CatalogDetailsVMClusterDetailsParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
 	// +kubebuilder:validation:Optional
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
 	// +kubebuilder:validation:Optional
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type DBBackupConfigBackupDestinationDetailsInitParameters struct {
@@ -490,16 +489,16 @@ type DBBackupConfigBackupDestinationDetailsParameters struct {
 type DBStorageVaultDetailsInitParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type DBStorageVaultDetailsObservation struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// The OCID of the Database Vault Storage.
 	DBStorageVaultID *string `json:"dbStorageVaultId,omitempty" tf:"db_storage_vault_id,omitempty"`
@@ -508,18 +507,18 @@ type DBStorageVaultDetailsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type DBStorageVaultDetailsParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
 	// +kubebuilder:validation:Optional
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
 	// +kubebuilder:validation:Optional
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type DistributedDatabaseCatalogDetailsInitParameters struct {
@@ -761,8 +760,7 @@ type DistributedDatabaseConnectionStringsInitParameters struct {
 type DistributedDatabaseConnectionStringsObservation struct {
 
 	// Collection of connection strings.
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 }
 
 type DistributedDatabaseConnectionStringsParameters struct {
@@ -795,7 +793,7 @@ type DistributedDatabaseDBBackupConfigInitParameters struct {
 	IsRemoteBackupEnabled *bool `json:"isRemoteBackupEnabled,omitempty" tf:"is_remote_backup_enabled,omitempty"`
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// The name of the remote region where the remote automatic incremental backups will be stored. For information about valid region names, see Regions and Availability Domains.
 	RemoteRegion *string `json:"remoteRegion,omitempty" tf:"remote_region,omitempty"`
@@ -828,7 +826,7 @@ type DistributedDatabaseDBBackupConfigObservation struct {
 	IsRemoteBackupEnabled *bool `json:"isRemoteBackupEnabled,omitempty" tf:"is_remote_backup_enabled,omitempty"`
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// The name of the remote region where the remote automatic incremental backups will be stored. For information about valid region names, see Regions and Availability Domains.
 	RemoteRegion *string `json:"remoteRegion,omitempty" tf:"remote_region,omitempty"`
@@ -870,7 +868,7 @@ type DistributedDatabaseDBBackupConfigParameters struct {
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
 	// +kubebuilder:validation:Optional
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// The name of the remote region where the remote automatic incremental backups will be stored. For information about valid region names, see Regions and Availability Domains.
 	// +kubebuilder:validation:Optional
@@ -935,13 +933,13 @@ type DistributedDatabaseInitParameters struct {
 	CatalogDetails []DistributedDatabaseCatalogDetailsInitParameters `json:"catalogDetails,omitempty" tf:"catalog_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Change Db Backup Config. Could be set to any integer value.
-	ChangeDBBackupConfigTrigger *float64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
+	ChangeDBBackupConfigTrigger *int64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
 
 	// The character set for the database.
 	CharacterSet *string `json:"characterSet,omitempty" tf:"character_set,omitempty"`
 
 	// Number of chunks in a shardspace. The value of chunks must be greater than 2 times the size of the largest shardgroup in any shardspace. Chunks is required to be provided for distributed databases being created with SYSTEM shardingMethod. For USER shardingMethod, chunks should not be set in create payload.
-	Chunks *float64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
+	Chunks *int64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
 
 	// (Updatable) The OCID of the Globally distributed database compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -958,7 +956,7 @@ type DistributedDatabaseInitParameters struct {
 	ConfigureShardingIsRebalanceRequired *bool `json:"configureShardingIsRebalanceRequired,omitempty" tf:"configure_sharding_is_rebalance_required,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Configure Sharding. Could be set to any integer value.
-	ConfigureShardingTrigger *float64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
+	ConfigureShardingTrigger *int64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
 
 	// Backup Options To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies.
 	DBBackupConfig []DistributedDatabaseDBBackupConfigInitParameters `json:"dbBackupConfig,omitempty" tf:"db_backup_config,omitempty"`
@@ -970,47 +968,45 @@ type DistributedDatabaseInitParameters struct {
 	DatabaseVersion *string `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the Globally distributed database.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Download Gsm Certificate Signing Request. Could be set to any integer value.
-	DownloadGsmCertificateSigningRequestTrigger *float64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
+	DownloadGsmCertificateSigningRequestTrigger *int64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Gsm Certificate Signing Request. Could be set to any integer value.
-	GenerateGsmCertificateSigningRequestTrigger *float64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
+	GenerateGsmCertificateSigningRequestTrigger *int64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
 
 	GenerateWalletPasswordSecretRef *v1.LocalSecretKeySelector `json:"generateWalletPasswordSecretRef,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Generate Wallet. Could be set to any integer value.
-	GenerateWalletTrigger *float64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
+	GenerateWalletTrigger *int64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
 
 	// The SSH public key for Global service manager instances.
 	GsmSSHPublicKey *string `json:"gsmSshPublicKey,omitempty" tf:"gsm_ssh_public_key,omitempty"`
 
 	// The listener port number for the Globally distributed database. The listener port number has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// The TLS listener port number for the Globally distributed database. The TLS listener port number has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database. For BASE_DB and EXADB_XS based distributed databases, tls is not supported hence the listenerPortTls is not needed to be provided in create payload.
-	ListenerPortTLS *float64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
+	ListenerPortTLS *int64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Move Replication Unit. Could be set to any integer value.
-	MoveReplicationUnitTrigger *float64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
+	MoveReplicationUnitTrigger *int64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
 
 	// The national character set for the database.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
 
 	// The ons local port number for the Globally distributed database. The onsPortLocal has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database.
-	OnsPortLocal *float64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
+	OnsPortLocal *int64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
 
 	// The ons remote port number for the Globally distributed database. The onsPortRemote has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database.
-	OnsPortRemote *float64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
+	OnsPortRemote *int64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
 
 	// (Updatable)
 	PatchOperations []DistributedDatabasePatchOperationsInitParameters `json:"patchOperations,omitempty" tf:"patch_operations,omitempty"`
@@ -1022,19 +1018,19 @@ type DistributedDatabaseInitParameters struct {
 	PrivateEndpointIds []*string `json:"privateEndpointIds,omitempty" tf:"private_endpoint_ids,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Recreate Failed Resource. Could be set to any integer value.
-	RecreateFailedResourceTrigger *float64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
+	RecreateFailedResourceTrigger *int64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
 
 	// The Replication factor for RAFT replication based Globally distributed database. Currently supported values are 3, 5 and 7.
-	ReplicationFactor *float64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
+	ReplicationFactor *int64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
 
 	// The Replication method for Globally distributed database. Use RAFT for Raft based replication. With RAFT replication, shards cannot have peers details set on them. In case shards need to have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
 	ReplicationMethod *string `json:"replicationMethod,omitempty" tf:"replication_method,omitempty"`
 
 	// The replication unit count for RAFT based distributed database. For RAFT replication based Globally distributed database, the value should be at least twice the number of shards.
-	ReplicationUnit *float64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
+	ReplicationUnit *int64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
 
 	// The TCP Single Client Access Name (SCAN) port for clusters created for Globally distributed database. The scanListenerPort number should only be provided if shard and catalog have source type NEW_VAULT_AND_CLUSTER. If shard and catalog have source type NEW_VAULT_AND_CLUSTER and scanListenerPort is not provided then the scanListenerPort will default to value 1521.
-	ScanListenerPort *float64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
+	ScanListenerPort *int64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
 
 	// Collection of shards for the Globally distributed database.
 	ShardDetails []DistributedDatabaseShardDetailsInitParameters `json:"shardDetails,omitempty" tf:"shard_details,omitempty"`
@@ -1043,21 +1039,21 @@ type DistributedDatabaseInitParameters struct {
 	ShardingMethod *string `json:"shardingMethod,omitempty" tf:"sharding_method,omitempty"`
 
 	// Increment this value to trigger StartDistributedDatabase action.
-	StartDatabaseTrigger *float64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
+	StartDatabaseTrigger *int64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
 
 	// (Updatable) The target state for the Distributed Database. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Increment this value to trigger StopDistributedDatabase action.
-	StopDatabaseTrigger *float64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
+	StopDatabaseTrigger *int64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Upload Signed Certificate And Generate Wallet. Could be set to any integer value.
-	UploadSignedCertificateAndGenerateWalletTrigger *float64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
+	UploadSignedCertificateAndGenerateWalletTrigger *int64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
 
 	ValidateNetworkDetails []DistributedDatabaseValidateNetworkDetailsInitParameters `json:"validateNetworkDetails,omitempty" tf:"validate_network_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Network. Could be set to any integer value.
-	ValidateNetworkTrigger *float64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
+	ValidateNetworkTrigger *int64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
 }
 
 type DistributedDatabaseMetadataInitParameters struct {
@@ -1079,13 +1075,13 @@ type DistributedDatabaseObservation struct {
 	CatalogDetails []DistributedDatabaseCatalogDetailsObservation `json:"catalogDetails,omitempty" tf:"catalog_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Change Db Backup Config. Could be set to any integer value.
-	ChangeDBBackupConfigTrigger *float64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
+	ChangeDBBackupConfigTrigger *int64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
 
 	// The character set for the database.
 	CharacterSet *string `json:"characterSet,omitempty" tf:"character_set,omitempty"`
 
 	// Number of chunks in a shardspace. The value of chunks must be greater than 2 times the size of the largest shardgroup in any shardspace. Chunks is required to be provided for distributed databases being created with SYSTEM shardingMethod. For USER shardingMethod, chunks should not be set in create payload.
-	Chunks *float64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
+	Chunks *int64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
 
 	// (Updatable) The OCID of the Globally distributed database compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -1093,7 +1089,7 @@ type DistributedDatabaseObservation struct {
 	ConfigureShardingIsRebalanceRequired *bool `json:"configureShardingIsRebalanceRequired,omitempty" tf:"configure_sharding_is_rebalance_required,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Configure Sharding. Could be set to any integer value.
-	ConfigureShardingTrigger *float64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
+	ConfigureShardingTrigger *int64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
 
 	// Details of Globally distributed database connection String.
 	ConnectionStrings []DistributedDatabaseConnectionStringsObservation `json:"connectionStrings,omitempty" tf:"connection_strings,omitempty"`
@@ -1108,33 +1104,31 @@ type DistributedDatabaseObservation struct {
 	DatabaseVersion *string `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the Globally distributed database.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Download Gsm Certificate Signing Request. Could be set to any integer value.
-	DownloadGsmCertificateSigningRequestTrigger *float64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
+	DownloadGsmCertificateSigningRequestTrigger *int64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// The replication unit count for RAFT based distributed database. For RAFT replication based Globally distributed database, the value should be at least twice the number of shards.
-	EffectiveReplicationUnit *float64 `json:"effectiveReplicationUnit,omitempty" tf:"effective_replication_unit,omitempty"`
+	EffectiveReplicationUnit *int64 `json:"effectiveReplicationUnit,omitempty" tf:"effective_replication_unit,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Gsm Certificate Signing Request. Could be set to any integer value.
-	GenerateGsmCertificateSigningRequestTrigger *float64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
+	GenerateGsmCertificateSigningRequestTrigger *int64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
 
-	GenerateWalletDownloadedWalletContentLength *float64 `json:"generateWalletDownloadedWalletContentLength,omitempty" tf:"generate_wallet_downloaded_wallet_content_length,omitempty"`
+	GenerateWalletDownloadedWalletContentLength *int64 `json:"generateWalletDownloadedWalletContentLength,omitempty" tf:"generate_wallet_downloaded_wallet_content_length,omitempty"`
 
 	GenerateWalletDownloadedWalletEtag *string `json:"generateWalletDownloadedWalletEtag,omitempty" tf:"generate_wallet_downloaded_wallet_etag,omitempty"`
 
 	GenerateWalletDownloadedWalletLastModified *string `json:"generateWalletDownloadedWalletLastModified,omitempty" tf:"generate_wallet_downloaded_wallet_last_modified,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Wallet. Could be set to any integer value.
-	GenerateWalletTrigger *float64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
+	GenerateWalletTrigger *int64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
 
 	// Collection of catalogs associated with the Globally distributed database.
 	GsmDetails []DistributedDatabaseGsmDetailsObservation `json:"gsmDetails,omitempty" tf:"gsm_details,omitempty"`
@@ -1152,25 +1146,25 @@ type DistributedDatabaseObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The listener port number for the Globally distributed database. The listener port number has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// The TLS listener port number for the Globally distributed database. The TLS listener port number has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database. For BASE_DB and EXADB_XS based distributed databases, tls is not supported hence the listenerPortTls is not needed to be provided in create payload.
-	ListenerPortTLS *float64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
+	ListenerPortTLS *int64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
 
 	// Additional metadata related to Globally distributed database resources.
 	Metadata []DistributedDatabaseMetadataObservation `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Move Replication Unit. Could be set to any integer value.
-	MoveReplicationUnitTrigger *float64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
+	MoveReplicationUnitTrigger *int64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
 
 	// The national character set for the database.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
 
 	// The ons local port number for the Globally distributed database. The onsPortLocal has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database.
-	OnsPortLocal *float64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
+	OnsPortLocal *int64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
 
 	// The ons remote port number for the Globally distributed database. The onsPortRemote has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database.
-	OnsPortRemote *float64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
+	OnsPortRemote *int64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
 
 	// (Updatable)
 	PatchOperations []DistributedDatabasePatchOperationsObservation `json:"patchOperations,omitempty" tf:"patch_operations,omitempty"`
@@ -1182,19 +1176,19 @@ type DistributedDatabaseObservation struct {
 	PrivateEndpointIds []*string `json:"privateEndpointIds,omitempty" tf:"private_endpoint_ids,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Recreate Failed Resource. Could be set to any integer value.
-	RecreateFailedResourceTrigger *float64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
+	RecreateFailedResourceTrigger *int64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
 
 	// The Replication factor for RAFT replication based Globally distributed database. Currently supported values are 3, 5 and 7.
-	ReplicationFactor *float64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
+	ReplicationFactor *int64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
 
 	// The Replication method for Globally distributed database. Use RAFT for Raft based replication. With RAFT replication, shards cannot have peers details set on them. In case shards need to have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
 	ReplicationMethod *string `json:"replicationMethod,omitempty" tf:"replication_method,omitempty"`
 
 	// The replication unit count for RAFT based distributed database. For RAFT replication based Globally distributed database, the value should be at least twice the number of shards.
-	ReplicationUnit *float64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
+	ReplicationUnit *int64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
 
 	// The TCP Single Client Access Name (SCAN) port for clusters created for Globally distributed database. The scanListenerPort number should only be provided if shard and catalog have source type NEW_VAULT_AND_CLUSTER. If shard and catalog have source type NEW_VAULT_AND_CLUSTER and scanListenerPort is not provided then the scanListenerPort will default to value 1521.
-	ScanListenerPort *float64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
+	ScanListenerPort *int64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
 
 	// Collection of shards for the Globally distributed database.
 	ShardDetails []DistributedDatabaseShardDetailsObservation `json:"shardDetails,omitempty" tf:"shard_details,omitempty"`
@@ -1203,17 +1197,16 @@ type DistributedDatabaseObservation struct {
 	ShardingMethod *string `json:"shardingMethod,omitempty" tf:"sharding_method,omitempty"`
 
 	// Increment this value to trigger StartDistributedDatabase action.
-	StartDatabaseTrigger *float64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
+	StartDatabaseTrigger *int64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
 
 	// (Updatable) The target state for the Distributed Database. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Increment this value to trigger StopDistributedDatabase action.
-	StopDatabaseTrigger *float64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
+	StopDatabaseTrigger *int64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the catalog peer was created. An RFC3339 formatted datetime string
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -1222,12 +1215,12 @@ type DistributedDatabaseObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Upload Signed Certificate And Generate Wallet. Could be set to any integer value.
-	UploadSignedCertificateAndGenerateWalletTrigger *float64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
+	UploadSignedCertificateAndGenerateWalletTrigger *int64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
 
 	ValidateNetworkDetails []DistributedDatabaseValidateNetworkDetailsObservation `json:"validateNetworkDetails,omitempty" tf:"validate_network_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Network. Could be set to any integer value.
-	ValidateNetworkTrigger *float64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
+	ValidateNetworkTrigger *int64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
 }
 
 type DistributedDatabaseParameters struct {
@@ -1238,7 +1231,7 @@ type DistributedDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Change Db Backup Config. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ChangeDBBackupConfigTrigger *float64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
+	ChangeDBBackupConfigTrigger *int64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
 
 	// The character set for the database.
 	// +kubebuilder:validation:Optional
@@ -1246,7 +1239,7 @@ type DistributedDatabaseParameters struct {
 
 	// Number of chunks in a shardspace. The value of chunks must be greater than 2 times the size of the largest shardgroup in any shardspace. Chunks is required to be provided for distributed databases being created with SYSTEM shardingMethod. For USER shardingMethod, chunks should not be set in create payload.
 	// +kubebuilder:validation:Optional
-	Chunks *float64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
+	Chunks *int64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
 
 	// (Updatable) The OCID of the Globally distributed database compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -1266,7 +1259,7 @@ type DistributedDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Configure Sharding. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ConfigureShardingTrigger *float64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
+	ConfigureShardingTrigger *int64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
 
 	// Backup Options To use any of the API operations, you must be authorized in an IAM policy. If you're not authorized, talk to an administrator. If you're an administrator who needs to write policies to give users access, see Getting Started with Policies.
 	// +kubebuilder:validation:Optional
@@ -1282,8 +1275,7 @@ type DistributedDatabaseParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the Globally distributed database.
 	// +kubebuilder:validation:Optional
@@ -1291,23 +1283,22 @@ type DistributedDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Download Gsm Certificate Signing Request. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	DownloadGsmCertificateSigningRequestTrigger *float64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
+	DownloadGsmCertificateSigningRequestTrigger *int64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Gsm Certificate Signing Request. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	GenerateGsmCertificateSigningRequestTrigger *float64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
+	GenerateGsmCertificateSigningRequestTrigger *int64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	GenerateWalletPasswordSecretRef *v1.LocalSecretKeySelector `json:"generateWalletPasswordSecretRef,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Generate Wallet. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	GenerateWalletTrigger *float64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
+	GenerateWalletTrigger *int64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
 
 	// The SSH public key for Global service manager instances.
 	// +kubebuilder:validation:Optional
@@ -1315,15 +1306,15 @@ type DistributedDatabaseParameters struct {
 
 	// The listener port number for the Globally distributed database. The listener port number has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database.
 	// +kubebuilder:validation:Optional
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// The TLS listener port number for the Globally distributed database. The TLS listener port number has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database. For BASE_DB and EXADB_XS based distributed databases, tls is not supported hence the listenerPortTls is not needed to be provided in create payload.
 	// +kubebuilder:validation:Optional
-	ListenerPortTLS *float64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
+	ListenerPortTLS *int64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Move Replication Unit. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	MoveReplicationUnitTrigger *float64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
+	MoveReplicationUnitTrigger *int64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
 
 	// The national character set for the database.
 	// +kubebuilder:validation:Optional
@@ -1331,11 +1322,11 @@ type DistributedDatabaseParameters struct {
 
 	// The ons local port number for the Globally distributed database. The onsPortLocal has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database.
 	// +kubebuilder:validation:Optional
-	OnsPortLocal *float64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
+	OnsPortLocal *int64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
 
 	// The ons remote port number for the Globally distributed database. The onsPortRemote has to be unique for a customer tenancy across all distributed databases. Same port number should not be re-used for any other distributed database.
 	// +kubebuilder:validation:Optional
-	OnsPortRemote *float64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
+	OnsPortRemote *int64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
@@ -1351,11 +1342,11 @@ type DistributedDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Recreate Failed Resource. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	RecreateFailedResourceTrigger *float64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
+	RecreateFailedResourceTrigger *int64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
 
 	// The Replication factor for RAFT replication based Globally distributed database. Currently supported values are 3, 5 and 7.
 	// +kubebuilder:validation:Optional
-	ReplicationFactor *float64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
+	ReplicationFactor *int64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
 
 	// The Replication method for Globally distributed database. Use RAFT for Raft based replication. With RAFT replication, shards cannot have peers details set on them. In case shards need to have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
 	// +kubebuilder:validation:Optional
@@ -1363,11 +1354,11 @@ type DistributedDatabaseParameters struct {
 
 	// The replication unit count for RAFT based distributed database. For RAFT replication based Globally distributed database, the value should be at least twice the number of shards.
 	// +kubebuilder:validation:Optional
-	ReplicationUnit *float64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
+	ReplicationUnit *int64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
 
 	// The TCP Single Client Access Name (SCAN) port for clusters created for Globally distributed database. The scanListenerPort number should only be provided if shard and catalog have source type NEW_VAULT_AND_CLUSTER. If shard and catalog have source type NEW_VAULT_AND_CLUSTER and scanListenerPort is not provided then the scanListenerPort will default to value 1521.
 	// +kubebuilder:validation:Optional
-	ScanListenerPort *float64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
+	ScanListenerPort *int64 `json:"scanListenerPort,omitempty" tf:"scan_listener_port,omitempty"`
 
 	// Collection of shards for the Globally distributed database.
 	// +kubebuilder:validation:Optional
@@ -1379,7 +1370,7 @@ type DistributedDatabaseParameters struct {
 
 	// Increment this value to trigger StartDistributedDatabase action.
 	// +kubebuilder:validation:Optional
-	StartDatabaseTrigger *float64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
+	StartDatabaseTrigger *int64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
 
 	// (Updatable) The target state for the Distributed Database. Could be set to ACTIVE or INACTIVE.
 	// +kubebuilder:validation:Optional
@@ -1387,18 +1378,18 @@ type DistributedDatabaseParameters struct {
 
 	// Increment this value to trigger StopDistributedDatabase action.
 	// +kubebuilder:validation:Optional
-	StopDatabaseTrigger *float64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
+	StopDatabaseTrigger *int64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Upload Signed Certificate And Generate Wallet. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	UploadSignedCertificateAndGenerateWalletTrigger *float64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
+	UploadSignedCertificateAndGenerateWalletTrigger *int64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	ValidateNetworkDetails []DistributedDatabaseValidateNetworkDetailsParameters `json:"validateNetworkDetails,omitempty" tf:"validate_network_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Network. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ValidateNetworkTrigger *float64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
+	ValidateNetworkTrigger *int64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
 }
 
 type DistributedDatabasePatchOperationsInitParameters struct {
@@ -1852,7 +1843,7 @@ type GsmDetailsGsmImageDetailsObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The version number associated with the image identified by id.
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 type GsmDetailsGsmImageDetailsParameters struct {
@@ -1867,7 +1858,7 @@ type LatestGsmImageDetailsObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The version number associated with the image identified by id.
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 type LatestGsmImageDetailsParameters struct {
@@ -1876,16 +1867,16 @@ type LatestGsmImageDetailsParameters struct {
 type PeerDetailsDBStorageVaultDetailsInitParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type PeerDetailsDBStorageVaultDetailsObservation struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// The OCID of the Database Vault Storage.
 	DBStorageVaultID *string `json:"dbStorageVaultId,omitempty" tf:"db_storage_vault_id,omitempty"`
@@ -1894,18 +1885,18 @@ type PeerDetailsDBStorageVaultDetailsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type PeerDetailsDBStorageVaultDetailsParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
 	// +kubebuilder:validation:Optional
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
 	// +kubebuilder:validation:Optional
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type PeerDetailsVMClusterDetailsInitParameters struct {
@@ -1931,7 +1922,7 @@ type PeerDetailsVMClusterDetailsInitParameters struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	IsDiagnosticsEventsEnabled *bool `json:"isDiagnosticsEventsEnabled,omitempty" tf:"is_diagnostics_events_enabled,omitempty"`
@@ -1979,10 +1970,10 @@ type PeerDetailsVMClusterDetailsInitParameters struct {
 	SubnetIDSelector *v1.NamespacedSelector `json:"subnetIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type PeerDetailsVMClusterDetailsObservation struct {
@@ -2001,7 +1992,7 @@ type PeerDetailsVMClusterDetailsObservation struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	IsDiagnosticsEventsEnabled *bool `json:"isDiagnosticsEventsEnabled,omitempty" tf:"is_diagnostics_events_enabled,omitempty"`
@@ -2029,13 +2020,13 @@ type PeerDetailsVMClusterDetailsObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// The OCID of the VM Cluster for the catalog peer.
 	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type PeerDetailsVMClusterDetailsParameters struct {
@@ -2065,7 +2056,7 @@ type PeerDetailsVMClusterDetailsParameters struct {
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
 	// +kubebuilder:validation:Optional
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	// +kubebuilder:validation:Optional
@@ -2122,26 +2113,26 @@ type PeerDetailsVMClusterDetailsParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
 	// +kubebuilder:validation:Optional
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
 	// +kubebuilder:validation:Optional
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type ShardDetailsDBStorageVaultDetailsInitParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type ShardDetailsDBStorageVaultDetailsObservation struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// The OCID of the Database Vault Storage.
 	DBStorageVaultID *string `json:"dbStorageVaultId,omitempty" tf:"db_storage_vault_id,omitempty"`
@@ -2150,33 +2141,33 @@ type ShardDetailsDBStorageVaultDetailsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type ShardDetailsDBStorageVaultDetailsParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
 	// +kubebuilder:validation:Optional
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
 	// +kubebuilder:validation:Optional
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type ShardDetailsPeerDetailsDBStorageVaultDetailsInitParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type ShardDetailsPeerDetailsDBStorageVaultDetailsObservation struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// The OCID of the Database Vault Storage.
 	DBStorageVaultID *string `json:"dbStorageVaultId,omitempty" tf:"db_storage_vault_id,omitempty"`
@@ -2185,18 +2176,18 @@ type ShardDetailsPeerDetailsDBStorageVaultDetailsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type ShardDetailsPeerDetailsDBStorageVaultDetailsParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The size of additional Flash Cache in percentage of High Capacity database storage.
 	// +kubebuilder:validation:Optional
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// Total storage capacity in GB for vault storage.
 	// +kubebuilder:validation:Optional
-	HighCapacityDatabaseStorage *float64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
+	HighCapacityDatabaseStorage *int64 `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
 }
 
 type ShardDetailsVMClusterDetailsInitParameters struct {
@@ -2222,7 +2213,7 @@ type ShardDetailsVMClusterDetailsInitParameters struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	IsDiagnosticsEventsEnabled *bool `json:"isDiagnosticsEventsEnabled,omitempty" tf:"is_diagnostics_events_enabled,omitempty"`
@@ -2270,10 +2261,10 @@ type ShardDetailsVMClusterDetailsInitParameters struct {
 	SubnetIDSelector *v1.NamespacedSelector `json:"subnetIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type ShardDetailsVMClusterDetailsObservation struct {
@@ -2292,7 +2283,7 @@ type ShardDetailsVMClusterDetailsObservation struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	IsDiagnosticsEventsEnabled *bool `json:"isDiagnosticsEventsEnabled,omitempty" tf:"is_diagnostics_events_enabled,omitempty"`
@@ -2320,13 +2311,13 @@ type ShardDetailsVMClusterDetailsObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// The OCID of the VM Cluster for the catalog peer.
 	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type ShardDetailsVMClusterDetailsParameters struct {
@@ -2356,7 +2347,7 @@ type ShardDetailsVMClusterDetailsParameters struct {
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
 	// +kubebuilder:validation:Optional
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	// +kubebuilder:validation:Optional
@@ -2413,11 +2404,11 @@ type ShardDetailsVMClusterDetailsParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
 	// +kubebuilder:validation:Optional
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
 	// +kubebuilder:validation:Optional
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type VMClusterDetailsInitParameters struct {
@@ -2443,7 +2434,7 @@ type VMClusterDetailsInitParameters struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	IsDiagnosticsEventsEnabled *bool `json:"isDiagnosticsEventsEnabled,omitempty" tf:"is_diagnostics_events_enabled,omitempty"`
@@ -2491,10 +2482,10 @@ type VMClusterDetailsInitParameters struct {
 	SubnetIDSelector *v1.NamespacedSelector `json:"subnetIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type VMClusterDetailsObservation struct {
@@ -2513,7 +2504,7 @@ type VMClusterDetailsObservation struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	IsDiagnosticsEventsEnabled *bool `json:"isDiagnosticsEventsEnabled,omitempty" tf:"is_diagnostics_events_enabled,omitempty"`
@@ -2541,13 +2532,13 @@ type VMClusterDetailsObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// The OCID of the VM Cluster for the catalog peer.
 	VMClusterID *string `json:"vmClusterId,omitempty" tf:"vm_cluster_id,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 type VMClusterDetailsParameters struct {
@@ -2577,7 +2568,7 @@ type VMClusterDetailsParameters struct {
 
 	// The number of ECPUs to enable for an Exadata VM cluster on Exascale Infrastructure.
 	// +kubebuilder:validation:Optional
-	EnabledEcpuCount *float64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
+	EnabledEcpuCount *int64 `json:"enabledEcpuCount,omitempty" tf:"enabled_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) Indicates whether diagnostic collection is enabled for the VM cluster.  Enabling diagnostic collection allows you to receive Events service notifications for guest VM issues.  Diagnostic collection also allows Oracle to provide enhanced service and proactive support for your Exadata system.  You can enable diagnostic collection during VM cluster provisioning. You can also disable or enable it at any time using the UpdateVmCluster API.
 	// +kubebuilder:validation:Optional
@@ -2634,11 +2625,11 @@ type VMClusterDetailsParameters struct {
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) The number of Total ECPUs for an Exadata VM cluster on Exascale Infrastructure.
 	// +kubebuilder:validation:Optional
-	TotalEcpuCount *float64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
+	TotalEcpuCount *int64 `json:"totalEcpuCount,omitempty" tf:"total_ecpu_count,omitempty"`
 
 	// (Applicable when source=NEW_VAULT_AND_CLUSTER) File System Storage Size in GBs for Exadata VM cluster.
 	// +kubebuilder:validation:Optional
-	VMFileSystemStorageSize *float64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
+	VMFileSystemStorageSize *int64 `json:"vmFileSystemStorageSize,omitempty" tf:"vm_file_system_storage_size,omitempty"`
 }
 
 // DistributedDatabaseSpec defines the desired state of DistributedDatabase

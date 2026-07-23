@@ -153,7 +153,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the library masking
                       format.
@@ -184,7 +183,8 @@ spec:
                             the generated strings should have. It can  be any integer
                             greater than zero, but it must be greater than or equal
                             to  the start length.
-                          type: number
+                          format: int64
+                          type: integer
                         endValue:
                           description: (Updatable) The upper bound of the range within
                             which random decimal numbers should be generated. It must
@@ -212,7 +212,8 @@ spec:
                           description: (Updatable) The number of characters that should
                             be there in the substring. It should be an integer and
                             greater than zero.
-                          type: number
+                          format: int64
+                          type: integer
                         libraryMaskingFormatId:
                           description: (Updatable) The OCID of the library masking
                             format.
@@ -354,13 +355,15 @@ spec:
                             the generated strings should have. It can  be any integer
                             greater than zero, but it must be less than or equal to
                             the  end length.
-                          type: number
+                          format: int64
+                          type: integer
                         startPosition:
                           description: (Updatable) The starting position in the original
                             string from where the substring should be extracted. It
                             can be either a positive or a negative integer. If It's
                             negative, the counting starts from the end of the string.
-                          type: number
+                          format: int64
+                          type: integer
                         startValue:
                           description: (Updatable) The lower bound of the range within
                             which random decimal numbers should  be generated. It
@@ -469,7 +472,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sensitiveTypeIds:
                     description: (Updatable) An array of OCIDs of the sensitive types
                       compatible with the library masking format. It helps track the
@@ -585,7 +587,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the library masking
                       format.
@@ -616,7 +617,8 @@ spec:
                             the generated strings should have. It can  be any integer
                             greater than zero, but it must be greater than or equal
                             to  the start length.
-                          type: number
+                          format: int64
+                          type: integer
                         endValue:
                           description: (Updatable) The upper bound of the range within
                             which random decimal numbers should be generated. It must
@@ -644,7 +646,8 @@ spec:
                           description: (Updatable) The number of characters that should
                             be there in the substring. It should be an integer and
                             greater than zero.
-                          type: number
+                          format: int64
+                          type: integer
                         libraryMaskingFormatId:
                           description: (Updatable) The OCID of the library masking
                             format.
@@ -786,13 +789,15 @@ spec:
                             the generated strings should have. It can  be any integer
                             greater than zero, but it must be less than or equal to
                             the  end length.
-                          type: number
+                          format: int64
+                          type: integer
                         startPosition:
                           description: (Updatable) The starting position in the original
                             string from where the substring should be extracted. It
                             can be either a positive or a negative integer. If It's
                             negative, the counting starts from the end of the string.
-                          type: number
+                          format: int64
+                          type: integer
                         startValue:
                           description: (Updatable) The lower bound of the range within
                             which random decimal numbers should  be generated. It
@@ -901,7 +906,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sensitiveTypeIds:
                     description: (Updatable) An array of OCIDs of the sensitive types
                       compatible with the library masking format. It helps track the
@@ -993,7 +997,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the library masking
                       format.
@@ -1024,7 +1027,8 @@ spec:
                             the generated strings should have. It can  be any integer
                             greater than zero, but it must be greater than or equal
                             to  the start length.
-                          type: number
+                          format: int64
+                          type: integer
                         endValue:
                           description: (Updatable) The upper bound of the range within
                             which random decimal numbers should be generated. It must
@@ -1052,7 +1056,8 @@ spec:
                           description: (Updatable) The number of characters that should
                             be there in the substring. It should be an integer and
                             greater than zero.
-                          type: number
+                          format: int64
+                          type: integer
                         libraryMaskingFormatId:
                           description: (Updatable) The OCID of the library masking
                             format.
@@ -1112,13 +1117,15 @@ spec:
                             the generated strings should have. It can  be any integer
                             greater than zero, but it must be less than or equal to
                             the  end length.
-                          type: number
+                          format: int64
+                          type: integer
                         startPosition:
                           description: (Updatable) The starting position in the original
                             string from where the substring should be extracted. It
                             can be either a positive or a negative integer. If It's
                             negative, the counting starts from the end of the string.
-                          type: number
+                          format: int64
+                          type: integer
                         startValue:
                           description: (Updatable) The lower bound of the range within
                             which random decimal numbers should  be generated. It
@@ -1147,7 +1154,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the library masking format.
                     type: string

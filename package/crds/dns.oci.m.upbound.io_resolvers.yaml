@@ -241,7 +241,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name of the resolver.
                     type: string
@@ -252,7 +251,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   resolverId:
                     description: The OCID of the target resolver.
                     type: string
@@ -576,7 +574,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name of the resolver.
                     type: string
@@ -587,7 +584,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   resolverId:
                     description: The OCID of the target resolver.
                     type: string
@@ -807,7 +803,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name of the resolver.
                     type: string
@@ -825,7 +820,6 @@ spec:
                             Each key is predefined and scoped to a namespace. For
                             more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         endpointType:
                           description: The type of resolver endpoint. VNIC is currently
                             the only supported type.
@@ -844,7 +838,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         id:
                           type: string
                         isForwarding:
@@ -880,7 +873,6 @@ spec:
                             (ZPR) policy to control access to ZPR-supported resources.  Example:
                             {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                           type: object
-                          x-kubernetes-map-type: granular
                         self:
                           description: The canonical absolute URL of the resource.
                           type: string
@@ -914,7 +906,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   isProtected:

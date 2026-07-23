@@ -74,12 +74,10 @@ type OnPremiseVantagePointWorkerInitParameters struct {
 	ConfigurationDetails *string `json:"configurationDetails,omitempty" tf:"configuration_details,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique On-premise VP worker name that cannot be edited. The name should not contain any confidential information.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -98,7 +96,7 @@ type OnPremiseVantagePointWorkerInitParameters struct {
 	OnPremiseVantagePointIDSelector *v1.Selector `json:"onPremiseVantagePointIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Priority of the On-premise VP worker to schedule monitors.
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// public key for resource Principal Token based validation to be used in further calls.
 	ResourcePrincipalTokenPublicKey *string `json:"resourcePrincipalTokenPublicKey,omitempty" tf:"resource_principal_token_public_key,omitempty"`
@@ -122,15 +120,13 @@ type OnPremiseVantagePointWorkerObservation struct {
 	ConfigurationDetails *string `json:"configurationDetails,omitempty" tf:"configuration_details,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Unique On-premise VP worker name that cannot be edited. The name should not contain any confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Geographical information of the On-premise VP worker.
 	GeoInfo *string `json:"geoInfo,omitempty" tf:"geo_info,omitempty"`
@@ -157,7 +153,7 @@ type OnPremiseVantagePointWorkerObservation struct {
 	OpvpName *string `json:"opvpName,omitempty" tf:"opvp_name,omitempty"`
 
 	// (Updatable) Priority of the On-premise VP worker to schedule monitors.
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// public key for resource Principal Token based validation to be used in further calls.
 	ResourcePrincipalTokenPublicKey *string `json:"resourcePrincipalTokenPublicKey,omitempty" tf:"resource_principal_token_public_key,omitempty"`
@@ -209,13 +205,11 @@ type OnPremiseVantagePointWorkerParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique On-premise VP worker name that cannot be edited. The name should not contain any confidential information.
 	// +kubebuilder:validation:Optional
@@ -237,7 +231,7 @@ type OnPremiseVantagePointWorkerParameters struct {
 
 	// (Updatable) Priority of the On-premise VP worker to schedule monitors.
 	// +kubebuilder:validation:Optional
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// public key for resource Principal Token based validation to be used in further calls.
 	// +kubebuilder:validation:Optional

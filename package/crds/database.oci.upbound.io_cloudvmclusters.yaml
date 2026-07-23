@@ -395,7 +395,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) For fixed shapes, this is the total number
                       of OCPUs to enable across the VM cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   createAsync:
                     type: boolean
                   dataCollectionOptions:
@@ -448,7 +449,8 @@ spec:
                       (user data and database files). See Storage Configuration in
                       the Exadata documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInTbs:
                     description: (Updatable) The data disk group size to be allocated
                       in TBs.
@@ -456,7 +458,8 @@ spec:
                   dbNodeStorageSizeInGbs:
                     description: (Updatable) The local node storage to be allocated
                       in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of DB servers.
                     items:
@@ -469,7 +472,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the cloud
                       VM cluster. The name does not need to be unique.
@@ -569,7 +571,8 @@ spec:
                         fileSystemSizeGb:
                           description: (Updatable) The file system size to be allocated
                             in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         mountPoint:
                           description: (Updatable) The mount point of file system.
                           type: string
@@ -583,7 +586,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   giVersion:
                     description: A valid Oracle Grid Infrastructure (GI) software
                       version.
@@ -612,10 +614,12 @@ spec:
                     type: string
                   memorySizeInGbs:
                     description: (Updatable) The memory to be allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   nodeCount:
                     description: The number of nodes in the cloud VM cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: '(Updatable) The list of OCIDs for the network security
                       groups (NSGs) to which this resource belongs. Setting this to
@@ -713,15 +717,18 @@ spec:
                       (database redo logs, archive logs, and recovery manager backups).
                       See Storage Configuration in the Exadata documentation for details
                       on the impact of the configuration settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTcp:
                     description: The TCP Single Client Access Name (SCAN) port. The
                       default port is 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTcpSsl:
                     description: The TCPS Single Client Access Name (SCAN) port. The
                       default port is 2484.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -730,13 +737,13 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sparseStoragePercentage:
                     description: (Updatable) The percentage assigned to SPARSE storage
                       (Exadata snapshots). See Storage Configuration in the Exadata
                       documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   sshPublicKeys:
                     description: (Updatable) The public key portion of one or more
                       key pairs used for SSH access to the cloud VM cluster.
@@ -1190,7 +1197,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) For fixed shapes, this is the total number
                       of OCPUs to enable across the VM cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   createAsync:
                     type: boolean
                   dataCollectionOptions:
@@ -1243,7 +1251,8 @@ spec:
                       (user data and database files). See Storage Configuration in
                       the Exadata documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInTbs:
                     description: (Updatable) The data disk group size to be allocated
                       in TBs.
@@ -1251,7 +1260,8 @@ spec:
                   dbNodeStorageSizeInGbs:
                     description: (Updatable) The local node storage to be allocated
                       in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of DB servers.
                     items:
@@ -1264,7 +1274,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the cloud
                       VM cluster. The name does not need to be unique.
@@ -1364,7 +1373,8 @@ spec:
                         fileSystemSizeGb:
                           description: (Updatable) The file system size to be allocated
                             in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         mountPoint:
                           description: (Updatable) The mount point of file system.
                           type: string
@@ -1378,7 +1388,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   giVersion:
                     description: A valid Oracle Grid Infrastructure (GI) software
                       version.
@@ -1407,10 +1416,12 @@ spec:
                     type: string
                   memorySizeInGbs:
                     description: (Updatable) The memory to be allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   nodeCount:
                     description: The number of nodes in the cloud VM cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: '(Updatable) The list of OCIDs for the network security
                       groups (NSGs) to which this resource belongs. Setting this to
@@ -1508,15 +1519,18 @@ spec:
                       (database redo logs, archive logs, and recovery manager backups).
                       See Storage Configuration in the Exadata documentation for details
                       on the impact of the configuration settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTcp:
                     description: The TCP Single Client Access Name (SCAN) port. The
                       default port is 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTcpSsl:
                     description: The TCPS Single Client Access Name (SCAN) port. The
                       default port is 2484.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -1525,13 +1539,13 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sparseStoragePercentage:
                     description: (Updatable) The percentage assigned to SPARSE storage
                       (Exadata snapshots). See Storage Configuration in the Exadata
                       documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   sshPublicKeys:
                     description: (Updatable) The public key portion of one or more
                       key pairs used for SSH access to the cloud VM cluster.
@@ -1871,7 +1885,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) For fixed shapes, this is the total number
                       of OCPUs to enable across the VM cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   createAsync:
                     type: boolean
                   dataCollectionOptions:
@@ -1924,7 +1939,8 @@ spec:
                       (user data and database files). See Storage Configuration in
                       the Exadata documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInTbs:
                     description: (Updatable) The data disk group size to be allocated
                       in TBs.
@@ -1932,7 +1948,8 @@ spec:
                   dbNodeStorageSizeInGbs:
                     description: (Updatable) The local node storage to be allocated
                       in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of DB servers.
                     items:
@@ -1945,7 +1962,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   diskRedundancy:
                     description: The type of redundancy configured for the cloud Vm
                       cluster. NORMAL is 2-way redundancy. HIGH is 3-way redundancy.
@@ -1973,7 +1989,8 @@ spec:
                         fileSystemSizeGb:
                           description: (Updatable) The file system size to be allocated
                             in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         mountPoint:
                           description: (Updatable) The mount point of file system.
                           type: string
@@ -1987,7 +2004,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   giVersion:
                     description: A valid Oracle Grid Infrastructure (GI) software
                       version.
@@ -2022,7 +2038,8 @@ spec:
                                 type: string
                               share:
                                 description: The relative priority of this database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         lifecycleDetails:
@@ -2066,7 +2083,8 @@ spec:
                     type: string
                   memorySizeInGbs:
                     description: (Updatable) The memory to be allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   multiCloudIdentityConnectorConfigs:
                     description: Details of the multi cloud identity connectors of
                       the VM cluster.
@@ -2082,7 +2100,8 @@ spec:
                     type: array
                   nodeCount:
                     description: The number of nodes in the cloud VM cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: '(Updatable) The list of OCIDs for the network security
                       groups (NSGs) to which this resource belongs. Setting this to
@@ -2106,7 +2125,8 @@ spec:
                       (database redo logs, archive logs, and recovery manager backups).
                       See Storage Configuration in the Exadata documentation for details
                       on the impact of the configuration settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   scanDnsName:
                     description: The FQDN of the DNS record for the SCAN IP addresses
                       that are associated with the cloud VM cluster.
@@ -2136,11 +2156,13 @@ spec:
                   scanListenerPortTcp:
                     description: The TCP Single Client Access Name (SCAN) port. The
                       default port is 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTcpSsl:
                     description: The TCPS Single Client Access Name (SCAN) port. The
                       default port is 2484.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -2149,7 +2171,6 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: The model name of the Exadata hardware running the
                       cloud VM cluster.
@@ -2159,7 +2180,8 @@ spec:
                       (Exadata snapshots). See Storage Configuration in the Exadata
                       documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   sshPublicKeys:
                     description: (Updatable) The public key portion of one or more
                       key pairs used for SSH access to the cloud VM cluster.
@@ -2177,7 +2199,8 @@ spec:
                   storageSizeInGbs:
                     description: The storage allocation for the disk group, in gigabytes
                       (GB).
-                    type: number
+                    format: int64
+                    type: integer
                   subnetId:
                     description: The OCID of the subnet associated with the cloud
                       VM cluster.
@@ -2193,7 +2216,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   systemVersion:
                     description: Operating system version of the image.
                     type: string

@@ -96,7 +96,7 @@ func (in *BrokerShapeInitParameters) DeepCopyInto(out *BrokerShapeInitParameters
 	*out = *in
 	if in.NodeCount != nil {
 		in, out := &in.NodeCount, &out.NodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NodeShape != nil {
@@ -106,12 +106,12 @@ func (in *BrokerShapeInitParameters) DeepCopyInto(out *BrokerShapeInitParameters
 	}
 	if in.OcpuCount != nil {
 		in, out := &in.OcpuCount, &out.OcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StorageSizeInGbs != nil {
 		in, out := &in.StorageSizeInGbs, &out.StorageSizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -131,7 +131,7 @@ func (in *BrokerShapeObservation) DeepCopyInto(out *BrokerShapeObservation) {
 	*out = *in
 	if in.NodeCount != nil {
 		in, out := &in.NodeCount, &out.NodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NodeShape != nil {
@@ -141,12 +141,12 @@ func (in *BrokerShapeObservation) DeepCopyInto(out *BrokerShapeObservation) {
 	}
 	if in.OcpuCount != nil {
 		in, out := &in.OcpuCount, &out.OcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StorageSizeInGbs != nil {
 		in, out := &in.StorageSizeInGbs, &out.StorageSizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -166,7 +166,7 @@ func (in *BrokerShapeParameters) DeepCopyInto(out *BrokerShapeParameters) {
 	*out = *in
 	if in.NodeCount != nil {
 		in, out := &in.NodeCount, &out.NodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NodeShape != nil {
@@ -176,12 +176,12 @@ func (in *BrokerShapeParameters) DeepCopyInto(out *BrokerShapeParameters) {
 	}
 	if in.OcpuCount != nil {
 		in, out := &in.OcpuCount, &out.OcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StorageSizeInGbs != nil {
 		in, out := &in.StorageSizeInGbs, &out.StorageSizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -617,18 +617,9 @@ func (in *KafkaClusterConfigInitParameters) DeepCopyInto(out *KafkaClusterConfig
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -638,18 +629,9 @@ func (in *KafkaClusterConfigInitParameters) DeepCopyInto(out *KafkaClusterConfig
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.LatestConfig != nil {
@@ -713,18 +695,9 @@ func (in *KafkaClusterConfigObservation) DeepCopyInto(out *KafkaClusterConfigObs
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -734,18 +707,9 @@ func (in *KafkaClusterConfigObservation) DeepCopyInto(out *KafkaClusterConfigObs
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -772,18 +736,9 @@ func (in *KafkaClusterConfigObservation) DeepCopyInto(out *KafkaClusterConfigObs
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -828,18 +783,9 @@ func (in *KafkaClusterConfigParameters) DeepCopyInto(out *KafkaClusterConfigPara
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -849,18 +795,9 @@ func (in *KafkaClusterConfigParameters) DeepCopyInto(out *KafkaClusterConfigPara
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.LatestConfig != nil {
@@ -956,7 +893,7 @@ func (in *KafkaClusterInitParameters) DeepCopyInto(out *KafkaClusterInitParamete
 	}
 	if in.ClusterConfigVersion != nil {
 		in, out := &in.ClusterConfigVersion, &out.ClusterConfigVersion
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ClusterType != nil {
@@ -986,18 +923,9 @@ func (in *KafkaClusterInitParameters) DeepCopyInto(out *KafkaClusterInitParamete
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1007,18 +935,9 @@ func (in *KafkaClusterInitParameters) DeepCopyInto(out *KafkaClusterInitParamete
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.KafkaVersion != nil {
@@ -1099,7 +1018,7 @@ func (in *KafkaClusterObservation) DeepCopyInto(out *KafkaClusterObservation) {
 	}
 	if in.ClusterConfigVersion != nil {
 		in, out := &in.ClusterConfigVersion, &out.ClusterConfigVersion
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ClusterType != nil {
@@ -1119,18 +1038,9 @@ func (in *KafkaClusterObservation) DeepCopyInto(out *KafkaClusterObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1140,18 +1050,9 @@ func (in *KafkaClusterObservation) DeepCopyInto(out *KafkaClusterObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1188,18 +1089,9 @@ func (in *KafkaClusterObservation) DeepCopyInto(out *KafkaClusterObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1263,7 +1155,7 @@ func (in *KafkaClusterParameters) DeepCopyInto(out *KafkaClusterParameters) {
 	}
 	if in.ClusterConfigVersion != nil {
 		in, out := &in.ClusterConfigVersion, &out.ClusterConfigVersion
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ClusterType != nil {
@@ -1293,18 +1185,9 @@ func (in *KafkaClusterParameters) DeepCopyInto(out *KafkaClusterParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1314,18 +1197,9 @@ func (in *KafkaClusterParameters) DeepCopyInto(out *KafkaClusterParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.KafkaVersion != nil {
@@ -1664,23 +1538,14 @@ func (in *LatestConfigInitParameters) DeepCopyInto(out *LatestConfigInitParamete
 	}
 	if in.Properties != nil {
 		in, out := &in.Properties, &out.Properties
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1705,18 +1570,9 @@ func (in *LatestConfigObservation) DeepCopyInto(out *LatestConfigObservation) {
 	}
 	if in.Properties != nil {
 		in, out := &in.Properties, &out.Properties
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1726,7 +1582,7 @@ func (in *LatestConfigObservation) DeepCopyInto(out *LatestConfigObservation) {
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1761,23 +1617,14 @@ func (in *LatestConfigParameters) DeepCopyInto(out *LatestConfigParameters) {
 	}
 	if in.Properties != nil {
 		in, out := &in.Properties, &out.Properties
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

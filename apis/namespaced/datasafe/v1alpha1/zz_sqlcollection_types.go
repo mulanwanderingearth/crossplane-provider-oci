@@ -42,8 +42,7 @@ type SqlCollectionInitParameters struct {
 	DBUserNameSelector *v1.NamespacedSelector `json:"dbUserNameSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the SQL collection.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -52,8 +51,7 @@ type SqlCollectionInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Sql Firewall Policy. Could be set to any integer value.
 	GenerateSQLFirewallPolicyTrigger *bool `json:"generateSqlFirewallPolicyTrigger,omitempty" tf:"generate_sql_firewall_policy_trigger,omitempty"`
@@ -99,8 +97,7 @@ type SqlCollectionObservation struct {
 	DBUserName *string `json:"dbUserName,omitempty" tf:"db_user_name,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the SQL collection.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -109,8 +106,7 @@ type SqlCollectionObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Sql Firewall Policy. Could be set to any integer value.
 	GenerateSQLFirewallPolicyTrigger *bool `json:"generateSqlFirewallPolicyTrigger,omitempty" tf:"generate_sql_firewall_policy_trigger,omitempty"`
@@ -143,8 +139,7 @@ type SqlCollectionObservation struct {
 	StopTrigger *bool `json:"stopTrigger,omitempty" tf:"stop_trigger,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The OCID of the target corresponding to the security policy deployment.
 	TargetID *string `json:"targetId,omitempty" tf:"target_id,omitempty"`
@@ -193,8 +188,7 @@ type SqlCollectionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the SQL collection.
 	// +kubebuilder:validation:Optional
@@ -206,8 +200,7 @@ type SqlCollectionParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Sql Firewall Policy. Could be set to any integer value.
 	// +kubebuilder:validation:Optional

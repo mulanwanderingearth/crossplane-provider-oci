@@ -81,39 +81,21 @@ func (in *BastionInitParameters) DeepCopyInto(out *BastionInitParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.MaxSessionTTLInSeconds != nil {
 		in, out := &in.MaxSessionTTLInSeconds, &out.MaxSessionTTLInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -128,18 +110,9 @@ func (in *BastionInitParameters) DeepCopyInto(out *BastionInitParameters) {
 	}
 	if in.SecurityAttributes != nil {
 		in, out := &in.SecurityAttributes, &out.SecurityAttributes
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.StaticJumpHostIPAddresses != nil {
@@ -243,34 +216,16 @@ func (in *BastionObservation) DeepCopyInto(out *BastionObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -285,12 +240,12 @@ func (in *BastionObservation) DeepCopyInto(out *BastionObservation) {
 	}
 	if in.MaxSessionTTLInSeconds != nil {
 		in, out := &in.MaxSessionTTLInSeconds, &out.MaxSessionTTLInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxSessionsAllowed != nil {
 		in, out := &in.MaxSessionsAllowed, &out.MaxSessionsAllowed
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -310,18 +265,9 @@ func (in *BastionObservation) DeepCopyInto(out *BastionObservation) {
 	}
 	if in.SecurityAttributes != nil {
 		in, out := &in.SecurityAttributes, &out.SecurityAttributes
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.State != nil {
@@ -342,18 +288,9 @@ func (in *BastionObservation) DeepCopyInto(out *BastionObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TargetSubnetID != nil {
@@ -429,39 +366,21 @@ func (in *BastionParameters) DeepCopyInto(out *BastionParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.MaxSessionTTLInSeconds != nil {
 		in, out := &in.MaxSessionTTLInSeconds, &out.MaxSessionTTLInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -476,18 +395,9 @@ func (in *BastionParameters) DeepCopyInto(out *BastionParameters) {
 	}
 	if in.SecurityAttributes != nil {
 		in, out := &in.SecurityAttributes, &out.SecurityAttributes
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.StaticJumpHostIPAddresses != nil {
@@ -687,7 +597,7 @@ func (in *SessionInitParameters) DeepCopyInto(out *SessionInitParameters) {
 	}
 	if in.SessionTTLInSeconds != nil {
 		in, out := &in.SessionTTLInSeconds, &out.SessionTTLInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetResourceDetails != nil {
@@ -793,23 +703,14 @@ func (in *SessionObservation) DeepCopyInto(out *SessionObservation) {
 	}
 	if in.SSHMetadata != nil {
 		in, out := &in.SSHMetadata, &out.SSHMetadata
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.SessionTTLInSeconds != nil {
 		in, out := &in.SessionTTLInSeconds, &out.SessionTTLInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -883,7 +784,7 @@ func (in *SessionParameters) DeepCopyInto(out *SessionParameters) {
 	}
 	if in.SessionTTLInSeconds != nil {
 		in, out := &in.SessionTTLInSeconds, &out.SessionTTLInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetResourceDetails != nil {
@@ -975,7 +876,7 @@ func (in *TargetResourceDetailsInitParameters) DeepCopyInto(out *TargetResourceD
 	}
 	if in.TargetResourcePort != nil {
 		in, out := &in.TargetResourcePort, &out.TargetResourcePort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetResourcePrivateIPAddress != nil {
@@ -1025,7 +926,7 @@ func (in *TargetResourceDetailsObservation) DeepCopyInto(out *TargetResourceDeta
 	}
 	if in.TargetResourcePort != nil {
 		in, out := &in.TargetResourcePort, &out.TargetResourcePort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetResourcePrivateIPAddress != nil {
@@ -1080,7 +981,7 @@ func (in *TargetResourceDetailsParameters) DeepCopyInto(out *TargetResourceDetai
 	}
 	if in.TargetResourcePort != nil {
 		in, out := &in.TargetResourcePort, &out.TargetResourcePort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetResourcePrivateIPAddress != nil {

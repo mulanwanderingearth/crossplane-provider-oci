@@ -162,7 +162,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the Multicloud Resource
                       Discovery resource.
@@ -175,7 +174,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   oracleDbConnectorId:
                     description: (Updatable) The OCID of the Oracle DB Connector resource.
                     type: string
@@ -191,7 +189,6 @@ spec:
                       or {"keyRing": "dbmci-keyring"} Azure Example {"keyVault": "/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/yumfei0808Test/providers/Microsoft.KeyVault/managedHSMs/orp7HSM001"}
                       or {"keyVault": "orp7HSM001"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -293,7 +290,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the Multicloud Resource
                       Discovery resource.
@@ -306,7 +302,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   oracleDbConnectorId:
                     description: (Updatable) The OCID of the Oracle DB Connector resource.
                     type: string
@@ -322,7 +317,6 @@ spec:
                       or {"keyRing": "dbmci-keyring"} Azure Example {"keyVault": "/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/yumfei0808Test/providers/Microsoft.KeyVault/managedHSMs/orp7HSM001"}
                       or {"keyVault": "orp7HSM001"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -442,7 +436,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the Multicloud Resource
                       Discovery resource.
@@ -455,7 +448,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Multicloud Resource Discovery resource
                     type: string
@@ -492,7 +484,6 @@ spec:
                             type: string
                           description: Discovered Resource's properties.
                           type: object
-                          x-kubernetes-map-type: granular
                         resourceGroup:
                           description: Discovered Resource Group Name.
                           type: string
@@ -510,7 +501,6 @@ spec:
                       or {"keyRing": "dbmci-keyring"} Azure Example {"keyVault": "/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/yumfei0808Test/providers/Microsoft.KeyVault/managedHSMs/orp7HSM001"}
                       or {"keyVault": "orp7HSM001"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: The current lifecycle state of the discovered resource.
                     type: string
@@ -521,7 +511,6 @@ spec:
                       and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: Time when the Multicloud Discovery Resource was created
                       in RFC 3339 timestamp format, e.g. '2020-05-22T21:10:29.600Z'

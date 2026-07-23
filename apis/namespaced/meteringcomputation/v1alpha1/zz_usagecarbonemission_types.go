@@ -74,7 +74,7 @@ type UsageCarbonEmissionGroupByTagParameters struct {
 type UsageCarbonEmissionInitParameters struct {
 
 	// The compartment depth level.
-	CompartmentDepth *float64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
+	CompartmentDepth *int64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
 
 	// Specifies the method used for emission calculation, such as POWER_BASED or SPEND_BASED
 	EmissionCalculationMethod *string `json:"emissionCalculationMethod,omitempty" tf:"emission_calculation_method,omitempty"`
@@ -179,7 +179,7 @@ type UsageCarbonEmissionItemsParameters struct {
 type UsageCarbonEmissionObservation struct {
 
 	// The compartment depth level.
-	CompartmentDepth *float64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
+	CompartmentDepth *int64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
 
 	// Specifies the method used for emission calculation, such as POWER_BASED or SPEND_BASED
 	EmissionCalculationMethod *string `json:"emissionCalculationMethod,omitempty" tf:"emission_calculation_method,omitempty"`
@@ -221,7 +221,7 @@ type UsageCarbonEmissionParameters struct {
 
 	// The compartment depth level.
 	// +kubebuilder:validation:Optional
-	CompartmentDepth *float64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
+	CompartmentDepth *int64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
 
 	// Specifies the method used for emission calculation, such as POWER_BASED or SPEND_BASED
 	// +kubebuilder:validation:Optional

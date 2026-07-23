@@ -25,7 +25,7 @@ type FormatEntriesInitParameters struct {
 	EndDate *string `json:"endDate,omitempty" tf:"end_date,omitempty"`
 
 	// (Updatable) The maximum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be greater than or equal to  the start length.
-	EndLength *float64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
+	EndLength *int64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
 
 	// (Updatable) The upper bound of the range within which random decimal numbers should be generated. It must be greater than or equal to the start value. It supports  input of double type.
 	EndValue *float64 `json:"endValue,omitempty" tf:"end_value,omitempty"`
@@ -40,7 +40,7 @@ type FormatEntriesInitParameters struct {
 	GroupingColumns []*string `json:"groupingColumns,omitempty" tf:"grouping_columns,omitempty"`
 
 	// (Updatable) The number of characters that should be there in the substring. It should be an integer and greater than zero.
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 
 	// (Updatable) The OCID of the library masking format.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/datasafe/v1alpha1.LibraryMaskingFormat
@@ -80,10 +80,10 @@ type FormatEntriesInitParameters struct {
 	StartDate *string `json:"startDate,omitempty" tf:"start_date,omitempty"`
 
 	// (Updatable) The minimum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be less than or equal to the  end length.
-	StartLength *float64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
+	StartLength *int64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
 
 	// (Updatable) The starting position in the original string from where the substring should be extracted. It can be either a positive or a negative integer. If It's negative, the counting starts from the end of the string.
-	StartPosition *float64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
+	StartPosition *int64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
 
 	// (Updatable) The lower bound of the range within which random decimal numbers should  be generated. It must be less than or equal to the end value. It supports  input of double type.
 	StartValue *float64 `json:"startValue,omitempty" tf:"start_value,omitempty"`
@@ -120,7 +120,7 @@ type FormatEntriesObservation struct {
 	EndDate *string `json:"endDate,omitempty" tf:"end_date,omitempty"`
 
 	// (Updatable) The maximum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be greater than or equal to  the start length.
-	EndLength *float64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
+	EndLength *int64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
 
 	// (Updatable) The upper bound of the range within which random decimal numbers should be generated. It must be greater than or equal to the start value. It supports  input of double type.
 	EndValue *float64 `json:"endValue,omitempty" tf:"end_value,omitempty"`
@@ -135,7 +135,7 @@ type FormatEntriesObservation struct {
 	GroupingColumns []*string `json:"groupingColumns,omitempty" tf:"grouping_columns,omitempty"`
 
 	// (Updatable) The number of characters that should be there in the substring. It should be an integer and greater than zero.
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 
 	// (Updatable) The OCID of the library masking format.
 	LibraryMaskingFormatID *string `json:"libraryMaskingFormatId,omitempty" tf:"library_masking_format_id,omitempty"`
@@ -165,10 +165,10 @@ type FormatEntriesObservation struct {
 	StartDate *string `json:"startDate,omitempty" tf:"start_date,omitempty"`
 
 	// (Updatable) The minimum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be less than or equal to the  end length.
-	StartLength *float64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
+	StartLength *int64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
 
 	// (Updatable) The starting position in the original string from where the substring should be extracted. It can be either a positive or a negative integer. If It's negative, the counting starts from the end of the string.
-	StartPosition *float64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
+	StartPosition *int64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
 
 	// (Updatable) The lower bound of the range within which random decimal numbers should  be generated. It must be less than or equal to the end value. It supports  input of double type.
 	StartValue *float64 `json:"startValue,omitempty" tf:"start_value,omitempty"`
@@ -199,7 +199,7 @@ type FormatEntriesParameters struct {
 
 	// (Updatable) The maximum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be greater than or equal to  the start length.
 	// +kubebuilder:validation:Optional
-	EndLength *float64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
+	EndLength *int64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
 
 	// (Updatable) The upper bound of the range within which random decimal numbers should be generated. It must be greater than or equal to the start value. It supports  input of double type.
 	// +kubebuilder:validation:Optional
@@ -219,7 +219,7 @@ type FormatEntriesParameters struct {
 
 	// (Updatable) The number of characters that should be there in the substring. It should be an integer and greater than zero.
 	// +kubebuilder:validation:Optional
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 
 	// (Updatable) The OCID of the library masking format.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/datasafe/v1alpha1.LibraryMaskingFormat
@@ -269,11 +269,11 @@ type FormatEntriesParameters struct {
 
 	// (Updatable) The minimum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be less than or equal to the  end length.
 	// +kubebuilder:validation:Optional
-	StartLength *float64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
+	StartLength *int64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
 
 	// (Updatable) The starting position in the original string from where the substring should be extracted. It can be either a positive or a negative integer. If It's negative, the counting starts from the end of the string.
 	// +kubebuilder:validation:Optional
-	StartPosition *float64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
+	StartPosition *int64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
 
 	// (Updatable) The lower bound of the range within which random decimal numbers should  be generated. It must be less than or equal to the end value. It supports  input of double type.
 	// +kubebuilder:validation:Optional
@@ -317,8 +317,7 @@ type LibraryMaskingFormatInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the library masking format.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -330,8 +329,7 @@ type LibraryMaskingFormatInitParameters struct {
 	FormatEntries []FormatEntriesInitParameters `json:"formatEntries,omitempty" tf:"format_entries,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An array of OCIDs of the sensitive types compatible with the library masking format. It helps track the sensitive types for which the library masking format is being created.
 	SensitiveTypeIds []*string `json:"sensitiveTypeIds,omitempty" tf:"sensitive_type_ids,omitempty"`
@@ -343,8 +341,7 @@ type LibraryMaskingFormatObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the library masking format.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -356,8 +353,7 @@ type LibraryMaskingFormatObservation struct {
 	FormatEntries []FormatEntriesObservation `json:"formatEntries,omitempty" tf:"format_entries,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the library masking format.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -395,8 +391,7 @@ type LibraryMaskingFormatParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the library masking format.
 	// +kubebuilder:validation:Optional
@@ -412,8 +407,7 @@ type LibraryMaskingFormatParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An array of OCIDs of the sensitive types compatible with the library masking format. It helps track the sensitive types for which the library masking format is being created.
 	// +kubebuilder:validation:Optional

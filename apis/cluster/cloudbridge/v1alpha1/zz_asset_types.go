@@ -58,8 +58,7 @@ type AssetInitParameters struct {
 	Compute []ComputeInitParameters `json:"compute,omitempty" tf:"compute,omitempty"`
 
 	// (Updatable) The defined tags associated with this resource, if any. Each key is predefined and scoped to namespaces. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Asset display name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -68,8 +67,7 @@ type AssetInitParameters struct {
 	ExternalAssetKey *string `json:"externalAssetKey,omitempty" tf:"external_asset_key,omitempty"`
 
 	// (Updatable) The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no predefined name, type, or namespace/scope. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Inventory ID to which an asset belongs.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudbridge/v1alpha1.Inventory
@@ -133,8 +131,7 @@ type AssetObservation struct {
 	Compute []ComputeObservation `json:"compute,omitempty" tf:"compute,omitempty"`
 
 	// (Updatable) The defined tags associated with this resource, if any. Each key is predefined and scoped to namespaces. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Asset display name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -146,8 +143,7 @@ type AssetObservation struct {
 	ExternalAssetKey *string `json:"externalAssetKey,omitempty" tf:"external_asset_key,omitempty"`
 
 	// (Updatable) The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no predefined name, type, or namespace/scope. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Asset OCID that is immutable on creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -162,8 +158,7 @@ type AssetObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// The system tags associated with this resource, if any. The system tags are set by Oracle cloud infrastructure services. Each key is predefined and scoped to namespaces. For more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time when the asset was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -238,8 +233,7 @@ type AssetParameters struct {
 
 	// (Updatable) The defined tags associated with this resource, if any. Each key is predefined and scoped to namespaces. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Asset display name.
 	// +kubebuilder:validation:Optional
@@ -251,8 +245,7 @@ type AssetParameters struct {
 
 	// (Updatable) The freeform tags associated with this resource, if any. Each tag is a simple key-value pair with no predefined name, type, or namespace/scope. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Inventory ID to which an asset belongs.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudbridge/v1alpha1.Inventory
@@ -379,13 +372,13 @@ type AttachmentInitParameters struct {
 	AttachmentKey *string `json:"attachmentKey,omitempty" tf:"attachment_key,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the device on the instance for the network interface attachment.
-	DeviceIndex *float64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
+	DeviceIndex *int64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) Indicates whether the EBS volume is deleted on instance termination.
 	IsDeleteOnTermination *bool `json:"isDeleteOnTermination,omitempty" tf:"is_delete_on_termination,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the network card.
-	NetworkCardIndex *float64 `json:"networkCardIndex,omitempty" tf:"network_card_index,omitempty"`
+	NetworkCardIndex *int64 `json:"networkCardIndex,omitempty" tf:"network_card_index,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -400,13 +393,13 @@ type AttachmentObservation struct {
 	AttachmentKey *string `json:"attachmentKey,omitempty" tf:"attachment_key,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the device on the instance for the network interface attachment.
-	DeviceIndex *float64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
+	DeviceIndex *int64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) Indicates whether the EBS volume is deleted on instance termination.
 	IsDeleteOnTermination *bool `json:"isDeleteOnTermination,omitempty" tf:"is_delete_on_termination,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the network card.
-	NetworkCardIndex *float64 `json:"networkCardIndex,omitempty" tf:"network_card_index,omitempty"`
+	NetworkCardIndex *int64 `json:"networkCardIndex,omitempty" tf:"network_card_index,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -423,7 +416,7 @@ type AttachmentParameters struct {
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the device on the instance for the network interface attachment.
 	// +kubebuilder:validation:Optional
-	DeviceIndex *float64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
+	DeviceIndex *int64 `json:"deviceIndex,omitempty" tf:"device_index,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) Indicates whether the EBS volume is deleted on instance termination.
 	// +kubebuilder:validation:Optional
@@ -431,7 +424,7 @@ type AttachmentParameters struct {
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The index of the network card.
 	// +kubebuilder:validation:Optional
-	NetworkCardIndex *float64 `json:"networkCardIndex,omitempty" tf:"network_card_index,omitempty"`
+	NetworkCardIndex *int64 `json:"networkCardIndex,omitempty" tf:"network_card_index,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
 	// +kubebuilder:validation:Optional
@@ -510,7 +503,7 @@ type AwsEBSInitParameters struct {
 	AvailabilityZone *string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The number of I/O operations per second.
-	Iops *float64 `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops *int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 
 	// (Updatable) Indicates whether the volume is encrypted.
 	IsEncrypted *bool `json:"isEncrypted,omitempty" tf:"is_encrypted,omitempty"`
@@ -519,7 +512,7 @@ type AwsEBSInitParameters struct {
 	IsMultiAttachEnabled *bool `json:"isMultiAttachEnabled,omitempty" tf:"is_multi_attach_enabled,omitempty"`
 
 	// (Updatable) The size of the volume, in GiBs.
-	SizeInGiBs *float64 `json:"sizeInGiBs,omitempty" tf:"size_in_gi_bs,omitempty"`
+	SizeInGiBs *int64 `json:"sizeInGiBs,omitempty" tf:"size_in_gi_bs,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -528,7 +521,7 @@ type AwsEBSInitParameters struct {
 	Tags []TagsInitParameters `json:"tags,omitempty" tf:"tags,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The throughput that the volume supports, in MiB/s.
-	Throughput *float64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
+	Throughput *int64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the volume.
 	VolumeKey *string `json:"volumeKey,omitempty" tf:"volume_key,omitempty"`
@@ -546,7 +539,7 @@ type AwsEBSObservation struct {
 	AvailabilityZone *string `json:"availabilityZone,omitempty" tf:"availability_zone,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The number of I/O operations per second.
-	Iops *float64 `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops *int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 
 	// (Updatable) Indicates whether the volume is encrypted.
 	IsEncrypted *bool `json:"isEncrypted,omitempty" tf:"is_encrypted,omitempty"`
@@ -555,7 +548,7 @@ type AwsEBSObservation struct {
 	IsMultiAttachEnabled *bool `json:"isMultiAttachEnabled,omitempty" tf:"is_multi_attach_enabled,omitempty"`
 
 	// (Updatable) The size of the volume, in GiBs.
-	SizeInGiBs *float64 `json:"sizeInGiBs,omitempty" tf:"size_in_gi_bs,omitempty"`
+	SizeInGiBs *int64 `json:"sizeInGiBs,omitempty" tf:"size_in_gi_bs,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -564,7 +557,7 @@ type AwsEBSObservation struct {
 	Tags []TagsObservation `json:"tags,omitempty" tf:"tags,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The throughput that the volume supports, in MiB/s.
-	Throughput *float64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
+	Throughput *int64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the volume.
 	VolumeKey *string `json:"volumeKey,omitempty" tf:"volume_key,omitempty"`
@@ -585,7 +578,7 @@ type AwsEBSParameters struct {
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The number of I/O operations per second.
 	// +kubebuilder:validation:Optional
-	Iops *float64 `json:"iops,omitempty" tf:"iops,omitempty"`
+	Iops *int64 `json:"iops,omitempty" tf:"iops,omitempty"`
 
 	// (Updatable) Indicates whether the volume is encrypted.
 	// +kubebuilder:validation:Optional
@@ -597,7 +590,7 @@ type AwsEBSParameters struct {
 
 	// (Updatable) The size of the volume, in GiBs.
 	// +kubebuilder:validation:Optional
-	SizeInGiBs *float64 `json:"sizeInGiBs,omitempty" tf:"size_in_gi_bs,omitempty"`
+	SizeInGiBs *int64 `json:"sizeInGiBs,omitempty" tf:"size_in_gi_bs,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The attachment state of the volume.
 	// +kubebuilder:validation:Optional
@@ -609,7 +602,7 @@ type AwsEBSParameters struct {
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The throughput that the volume supports, in MiB/s.
 	// +kubebuilder:validation:Optional
-	Throughput *float64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
+	Throughput *int64 `json:"throughput,omitempty" tf:"throughput,omitempty"`
 
 	// (Applicable when asset_type=AWS_EBS) (Updatable) The ID of the volume.
 	// +kubebuilder:validation:Optional
@@ -1072,10 +1065,10 @@ type ComputeInitParameters struct {
 	CPUModel *string `json:"cpuModel,omitempty" tf:"cpu_model,omitempty"`
 
 	// (Updatable) Number of connected networks.
-	ConnectedNetworks *float64 `json:"connectedNetworks,omitempty" tf:"connected_networks,omitempty"`
+	ConnectedNetworks *int64 `json:"connectedNetworks,omitempty" tf:"connected_networks,omitempty"`
 
 	// (Updatable) Number of CPUs.
-	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
+	CoresCount *int64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
 	// (Updatable) Fully Qualified DNS Name.
 	DNSName *string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
@@ -1087,7 +1080,7 @@ type ComputeInitParameters struct {
 	Disks []DisksInitParameters `json:"disks,omitempty" tf:"disks,omitempty"`
 
 	// (Updatable) Number of disks.
-	DisksCount *float64 `json:"disksCount,omitempty" tf:"disks_count,omitempty"`
+	DisksCount *int64 `json:"disksCount,omitempty" tf:"disks_count,omitempty"`
 
 	// (Updatable) Information about firmware type for this virtual machine.
 	Firmware *string `json:"firmware,omitempty" tf:"firmware,omitempty"`
@@ -1096,7 +1089,7 @@ type ComputeInitParameters struct {
 	GpuDevices []GpuDevicesInitParameters `json:"gpuDevices,omitempty" tf:"gpu_devices,omitempty"`
 
 	// (Updatable) Number of GPU devices.
-	GpuDevicesCount *float64 `json:"gpuDevicesCount,omitempty" tf:"gpu_devices_count,omitempty"`
+	GpuDevicesCount *int64 `json:"gpuDevicesCount,omitempty" tf:"gpu_devices_count,omitempty"`
 
 	// (Updatable) Guest state.
 	GuestState *string `json:"guestState,omitempty" tf:"guest_state,omitempty"`
@@ -1123,7 +1116,7 @@ type ComputeInitParameters struct {
 	Nics []NicsInitParameters `json:"nics,omitempty" tf:"nics,omitempty"`
 
 	// (Updatable) Number of network ethernet cards.
-	NicsCount *float64 `json:"nicsCount,omitempty" tf:"nics_count,omitempty"`
+	NicsCount *int64 `json:"nicsCount,omitempty" tf:"nics_count,omitempty"`
 
 	// (Updatable) The asset's NVDIMM configuration.
 	NvdimmController []NvdimmControllerInitParameters `json:"nvdimmController,omitempty" tf:"nvdimm_controller,omitempty"`
@@ -1153,7 +1146,7 @@ type ComputeInitParameters struct {
 	StorageProvisionedInMbs *string `json:"storageProvisionedInMbs,omitempty" tf:"storage_provisioned_in_mbs,omitempty"`
 
 	// (Updatable) Number of threads per core.
-	ThreadsPerCoreCount *float64 `json:"threadsPerCoreCount,omitempty" tf:"threads_per_core_count,omitempty"`
+	ThreadsPerCoreCount *int64 `json:"threadsPerCoreCount,omitempty" tf:"threads_per_core_count,omitempty"`
 }
 
 type ComputeObservation struct {
@@ -1162,10 +1155,10 @@ type ComputeObservation struct {
 	CPUModel *string `json:"cpuModel,omitempty" tf:"cpu_model,omitempty"`
 
 	// (Updatable) Number of connected networks.
-	ConnectedNetworks *float64 `json:"connectedNetworks,omitempty" tf:"connected_networks,omitempty"`
+	ConnectedNetworks *int64 `json:"connectedNetworks,omitempty" tf:"connected_networks,omitempty"`
 
 	// (Updatable) Number of CPUs.
-	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
+	CoresCount *int64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
 	// (Updatable) Fully Qualified DNS Name.
 	DNSName *string `json:"dnsName,omitempty" tf:"dns_name,omitempty"`
@@ -1177,7 +1170,7 @@ type ComputeObservation struct {
 	Disks []DisksObservation `json:"disks,omitempty" tf:"disks,omitempty"`
 
 	// (Updatable) Number of disks.
-	DisksCount *float64 `json:"disksCount,omitempty" tf:"disks_count,omitempty"`
+	DisksCount *int64 `json:"disksCount,omitempty" tf:"disks_count,omitempty"`
 
 	// (Updatable) Information about firmware type for this virtual machine.
 	Firmware *string `json:"firmware,omitempty" tf:"firmware,omitempty"`
@@ -1186,7 +1179,7 @@ type ComputeObservation struct {
 	GpuDevices []GpuDevicesObservation `json:"gpuDevices,omitempty" tf:"gpu_devices,omitempty"`
 
 	// (Updatable) Number of GPU devices.
-	GpuDevicesCount *float64 `json:"gpuDevicesCount,omitempty" tf:"gpu_devices_count,omitempty"`
+	GpuDevicesCount *int64 `json:"gpuDevicesCount,omitempty" tf:"gpu_devices_count,omitempty"`
 
 	// (Updatable) Guest state.
 	GuestState *string `json:"guestState,omitempty" tf:"guest_state,omitempty"`
@@ -1213,7 +1206,7 @@ type ComputeObservation struct {
 	Nics []NicsObservation `json:"nics,omitempty" tf:"nics,omitempty"`
 
 	// (Updatable) Number of network ethernet cards.
-	NicsCount *float64 `json:"nicsCount,omitempty" tf:"nics_count,omitempty"`
+	NicsCount *int64 `json:"nicsCount,omitempty" tf:"nics_count,omitempty"`
 
 	// (Updatable) The asset's NVDIMM configuration.
 	NvdimmController []NvdimmControllerObservation `json:"nvdimmController,omitempty" tf:"nvdimm_controller,omitempty"`
@@ -1243,7 +1236,7 @@ type ComputeObservation struct {
 	StorageProvisionedInMbs *string `json:"storageProvisionedInMbs,omitempty" tf:"storage_provisioned_in_mbs,omitempty"`
 
 	// (Updatable) Number of threads per core.
-	ThreadsPerCoreCount *float64 `json:"threadsPerCoreCount,omitempty" tf:"threads_per_core_count,omitempty"`
+	ThreadsPerCoreCount *int64 `json:"threadsPerCoreCount,omitempty" tf:"threads_per_core_count,omitempty"`
 }
 
 type ComputeParameters struct {
@@ -1254,11 +1247,11 @@ type ComputeParameters struct {
 
 	// (Updatable) Number of connected networks.
 	// +kubebuilder:validation:Optional
-	ConnectedNetworks *float64 `json:"connectedNetworks,omitempty" tf:"connected_networks,omitempty"`
+	ConnectedNetworks *int64 `json:"connectedNetworks,omitempty" tf:"connected_networks,omitempty"`
 
 	// (Updatable) Number of CPUs.
 	// +kubebuilder:validation:Optional
-	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
+	CoresCount *int64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
 	// (Updatable) Fully Qualified DNS Name.
 	// +kubebuilder:validation:Optional
@@ -1274,7 +1267,7 @@ type ComputeParameters struct {
 
 	// (Updatable) Number of disks.
 	// +kubebuilder:validation:Optional
-	DisksCount *float64 `json:"disksCount,omitempty" tf:"disks_count,omitempty"`
+	DisksCount *int64 `json:"disksCount,omitempty" tf:"disks_count,omitempty"`
 
 	// (Updatable) Information about firmware type for this virtual machine.
 	// +kubebuilder:validation:Optional
@@ -1286,7 +1279,7 @@ type ComputeParameters struct {
 
 	// (Updatable) Number of GPU devices.
 	// +kubebuilder:validation:Optional
-	GpuDevicesCount *float64 `json:"gpuDevicesCount,omitempty" tf:"gpu_devices_count,omitempty"`
+	GpuDevicesCount *int64 `json:"gpuDevicesCount,omitempty" tf:"gpu_devices_count,omitempty"`
 
 	// (Updatable) Guest state.
 	// +kubebuilder:validation:Optional
@@ -1322,7 +1315,7 @@ type ComputeParameters struct {
 
 	// (Updatable) Number of network ethernet cards.
 	// +kubebuilder:validation:Optional
-	NicsCount *float64 `json:"nicsCount,omitempty" tf:"nics_count,omitempty"`
+	NicsCount *int64 `json:"nicsCount,omitempty" tf:"nics_count,omitempty"`
 
 	// (Updatable) The asset's NVDIMM configuration.
 	// +kubebuilder:validation:Optional
@@ -1362,7 +1355,7 @@ type ComputeParameters struct {
 
 	// (Updatable) Number of threads per core.
 	// +kubebuilder:validation:Optional
-	ThreadsPerCoreCount *float64 `json:"threadsPerCoreCount,omitempty" tf:"threads_per_core_count,omitempty"`
+	ThreadsPerCoreCount *int64 `json:"threadsPerCoreCount,omitempty" tf:"threads_per_core_count,omitempty"`
 }
 
 type CustomerTagsInitParameters struct {
@@ -1397,7 +1390,7 @@ type CustomerTagsParameters struct {
 type DisksInitParameters struct {
 
 	// (Updatable) Order of boot volumes.
-	BootOrder *float64 `json:"bootOrder,omitempty" tf:"boot_order,omitempty"`
+	BootOrder *int64 `json:"bootOrder,omitempty" tf:"boot_order,omitempty"`
 
 	// (Updatable) Indicates that CBT (change disk tracking) is enabled for this virtual disk.
 	IsCbtEnabled *bool `json:"isCbtEnabled,omitempty" tf:"is_cbt_enabled,omitempty"`
@@ -1424,7 +1417,7 @@ type DisksInitParameters struct {
 type DisksObservation struct {
 
 	// (Updatable) Order of boot volumes.
-	BootOrder *float64 `json:"bootOrder,omitempty" tf:"boot_order,omitempty"`
+	BootOrder *int64 `json:"bootOrder,omitempty" tf:"boot_order,omitempty"`
 
 	// (Updatable) Indicates that CBT (change disk tracking) is enabled for this virtual disk.
 	IsCbtEnabled *bool `json:"isCbtEnabled,omitempty" tf:"is_cbt_enabled,omitempty"`
@@ -1452,7 +1445,7 @@ type DisksParameters struct {
 
 	// (Updatable) Order of boot volumes.
 	// +kubebuilder:validation:Optional
-	BootOrder *float64 `json:"bootOrder,omitempty" tf:"boot_order,omitempty"`
+	BootOrder *int64 `json:"bootOrder,omitempty" tf:"boot_order,omitempty"`
 
 	// (Updatable) Indicates that CBT (change disk tracking) is enabled for this virtual disk.
 	// +kubebuilder:validation:Optional
@@ -1486,7 +1479,7 @@ type DisksParameters struct {
 type GpuDevicesInitParameters struct {
 
 	// (Updatable) Number of CPUs.
-	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
+	CoresCount *int64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -1504,7 +1497,7 @@ type GpuDevicesInitParameters struct {
 type GpuDevicesObservation struct {
 
 	// (Updatable) Number of CPUs.
-	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
+	CoresCount *int64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -1523,7 +1516,7 @@ type GpuDevicesParameters struct {
 
 	// (Updatable) Number of CPUs.
 	// +kubebuilder:validation:Optional
-	CoresCount *float64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
+	CoresCount *int64 `json:"coresCount,omitempty" tf:"cores_count,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The description.
 	// +kubebuilder:validation:Optional
@@ -1773,7 +1766,7 @@ type NicsParameters struct {
 type NvdimmControllerInitParameters struct {
 
 	// (Updatable) Bus number.
-	BusNumber *float64 `json:"busNumber,omitempty" tf:"bus_number,omitempty"`
+	BusNumber *int64 `json:"busNumber,omitempty" tf:"bus_number,omitempty"`
 
 	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
@@ -1782,7 +1775,7 @@ type NvdimmControllerInitParameters struct {
 type NvdimmControllerObservation struct {
 
 	// (Updatable) Bus number.
-	BusNumber *float64 `json:"busNumber,omitempty" tf:"bus_number,omitempty"`
+	BusNumber *int64 `json:"busNumber,omitempty" tf:"bus_number,omitempty"`
 
 	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
@@ -1792,7 +1785,7 @@ type NvdimmControllerParameters struct {
 
 	// (Updatable) Bus number.
 	// +kubebuilder:validation:Optional
-	BusNumber *float64 `json:"busNumber,omitempty" tf:"bus_number,omitempty"`
+	BusNumber *int64 `json:"busNumber,omitempty" tf:"bus_number,omitempty"`
 
 	// (Updatable) Provides a label and summary information for the device.
 	// +kubebuilder:validation:Optional
@@ -1802,32 +1795,32 @@ type NvdimmControllerParameters struct {
 type NvdimmsInitParameters struct {
 
 	// (Updatable) Controller key.
-	ControllerKey *float64 `json:"controllerKey,omitempty" tf:"controller_key,omitempty"`
+	ControllerKey *int64 `json:"controllerKey,omitempty" tf:"controller_key,omitempty"`
 
 	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
 	// (Updatable) The unit number of NVDIMM.
-	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
+	UnitNumber *int64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type NvdimmsObservation struct {
 
 	// (Updatable) Controller key.
-	ControllerKey *float64 `json:"controllerKey,omitempty" tf:"controller_key,omitempty"`
+	ControllerKey *int64 `json:"controllerKey,omitempty" tf:"controller_key,omitempty"`
 
 	// (Updatable) Provides a label and summary information for the device.
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
 	// (Updatable) The unit number of NVDIMM.
-	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
+	UnitNumber *int64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type NvdimmsParameters struct {
 
 	// (Updatable) Controller key.
 	// +kubebuilder:validation:Optional
-	ControllerKey *float64 `json:"controllerKey,omitempty" tf:"controller_key,omitempty"`
+	ControllerKey *int64 `json:"controllerKey,omitempty" tf:"controller_key,omitempty"`
 
 	// (Updatable) Provides a label and summary information for the device.
 	// +kubebuilder:validation:Optional
@@ -1835,7 +1828,7 @@ type NvdimmsParameters struct {
 
 	// (Updatable) The unit number of NVDIMM.
 	// +kubebuilder:validation:Optional
-	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
+	UnitNumber *int64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type PlacementInitParameters struct {
@@ -1866,7 +1859,7 @@ type PlacementInitParameters struct {
 	HostResourceGroupArn *string `json:"hostResourceGroupArn,omitempty" tf:"host_resource_group_arn,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The number of the partition that the instance is in.
-	PartitionNumber *float64 `json:"partitionNumber,omitempty" tf:"partition_number,omitempty"`
+	PartitionNumber *int64 `json:"partitionNumber,omitempty" tf:"partition_number,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) Reserved for future use.
 	SpreadDomain *string `json:"spreadDomain,omitempty" tf:"spread_domain,omitempty"`
@@ -1893,7 +1886,7 @@ type PlacementObservation struct {
 	HostResourceGroupArn *string `json:"hostResourceGroupArn,omitempty" tf:"host_resource_group_arn,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The number of the partition that the instance is in.
-	PartitionNumber *float64 `json:"partitionNumber,omitempty" tf:"partition_number,omitempty"`
+	PartitionNumber *int64 `json:"partitionNumber,omitempty" tf:"partition_number,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) Reserved for future use.
 	SpreadDomain *string `json:"spreadDomain,omitempty" tf:"spread_domain,omitempty"`
@@ -1936,7 +1929,7 @@ type PlacementParameters struct {
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The number of the partition that the instance is in.
 	// +kubebuilder:validation:Optional
-	PartitionNumber *float64 `json:"partitionNumber,omitempty" tf:"partition_number,omitempty"`
+	PartitionNumber *int64 `json:"partitionNumber,omitempty" tf:"partition_number,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) Reserved for future use.
 	// +kubebuilder:validation:Optional
@@ -2064,7 +2057,7 @@ type ScsiControllerInitParameters struct {
 	SharedBus *string `json:"sharedBus,omitempty" tf:"shared_bus,omitempty"`
 
 	// (Updatable) The unit number of NVDIMM.
-	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
+	UnitNumber *int64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type ScsiControllerObservation struct {
@@ -2076,7 +2069,7 @@ type ScsiControllerObservation struct {
 	SharedBus *string `json:"sharedBus,omitempty" tf:"shared_bus,omitempty"`
 
 	// (Updatable) The unit number of NVDIMM.
-	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
+	UnitNumber *int64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type ScsiControllerParameters struct {
@@ -2091,7 +2084,7 @@ type ScsiControllerParameters struct {
 
 	// (Updatable) The unit number of NVDIMM.
 	// +kubebuilder:validation:Optional
-	UnitNumber *float64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
+	UnitNumber *int64 `json:"unitNumber,omitempty" tf:"unit_number,omitempty"`
 }
 
 type SecurityGroupsInitParameters struct {
@@ -2146,7 +2139,7 @@ type SecurityGroupsParameters struct {
 type StateInitParameters struct {
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The state of the instance as a 16-bit unsigned integer.
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -2155,7 +2148,7 @@ type StateInitParameters struct {
 type StateObservation struct {
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The state of the instance as a 16-bit unsigned integer.
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -2165,7 +2158,7 @@ type StateParameters struct {
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The state of the instance as a 16-bit unsigned integer.
 	// +kubebuilder:validation:Optional
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Applicable when asset_type=AWS_EC2) (Updatable) The current state of the instance.
 	// +kubebuilder:validation:Optional
@@ -2252,10 +2245,10 @@ type VmwareVMInitParameters struct {
 	CustomerTags []CustomerTagsInitParameters `json:"customerTags,omitempty" tf:"customer_tags,omitempty"`
 
 	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance bandwidth.
-	FaultToleranceBandwidth *float64 `json:"faultToleranceBandwidth,omitempty" tf:"fault_tolerance_bandwidth,omitempty"`
+	FaultToleranceBandwidth *int64 `json:"faultToleranceBandwidth,omitempty" tf:"fault_tolerance_bandwidth,omitempty"`
 
 	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance to secondary latency.
-	FaultToleranceSecondaryLatency *float64 `json:"faultToleranceSecondaryLatency,omitempty" tf:"fault_tolerance_secondary_latency,omitempty"`
+	FaultToleranceSecondaryLatency *int64 `json:"faultToleranceSecondaryLatency,omitempty" tf:"fault_tolerance_secondary_latency,omitempty"`
 
 	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance state.
 	FaultToleranceState *string `json:"faultToleranceState,omitempty" tf:"fault_tolerance_state,omitempty"`
@@ -2288,10 +2281,10 @@ type VmwareVMObservation struct {
 	CustomerTags []CustomerTagsObservation `json:"customerTags,omitempty" tf:"customer_tags,omitempty"`
 
 	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance bandwidth.
-	FaultToleranceBandwidth *float64 `json:"faultToleranceBandwidth,omitempty" tf:"fault_tolerance_bandwidth,omitempty"`
+	FaultToleranceBandwidth *int64 `json:"faultToleranceBandwidth,omitempty" tf:"fault_tolerance_bandwidth,omitempty"`
 
 	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance to secondary latency.
-	FaultToleranceSecondaryLatency *float64 `json:"faultToleranceSecondaryLatency,omitempty" tf:"fault_tolerance_secondary_latency,omitempty"`
+	FaultToleranceSecondaryLatency *int64 `json:"faultToleranceSecondaryLatency,omitempty" tf:"fault_tolerance_secondary_latency,omitempty"`
 
 	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance state.
 	FaultToleranceState *string `json:"faultToleranceState,omitempty" tf:"fault_tolerance_state,omitempty"`
@@ -2328,11 +2321,11 @@ type VmwareVMParameters struct {
 
 	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance bandwidth.
 	// +kubebuilder:validation:Optional
-	FaultToleranceBandwidth *float64 `json:"faultToleranceBandwidth,omitempty" tf:"fault_tolerance_bandwidth,omitempty"`
+	FaultToleranceBandwidth *int64 `json:"faultToleranceBandwidth,omitempty" tf:"fault_tolerance_bandwidth,omitempty"`
 
 	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance to secondary latency.
 	// +kubebuilder:validation:Optional
-	FaultToleranceSecondaryLatency *float64 `json:"faultToleranceSecondaryLatency,omitempty" tf:"fault_tolerance_secondary_latency,omitempty"`
+	FaultToleranceSecondaryLatency *int64 `json:"faultToleranceSecondaryLatency,omitempty" tf:"fault_tolerance_secondary_latency,omitempty"`
 
 	// (Applicable when asset_type=VMWARE_VM) (Updatable) Fault tolerance state.
 	// +kubebuilder:validation:Optional

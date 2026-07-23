@@ -22,7 +22,7 @@ type ActivelyUsedNodeCountObservation struct {
 	LogicalShape *string `json:"logicalShape,omitempty" tf:"logical_shape,omitempty"`
 
 	// The node count of this compute shape.
-	PoolCount *float64 `json:"poolCount,omitempty" tf:"pool_count,omitempty"`
+	PoolCount *int64 `json:"poolCount,omitempty" tf:"pool_count,omitempty"`
 }
 
 type ActivelyUsedNodeCountParameters struct {
@@ -31,10 +31,10 @@ type ActivelyUsedNodeCountParameters struct {
 type ConfigurationsInitParameters struct {
 
 	// (Updatable) Maximum number of compute instances in the pool for a given compute shape.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) Minimum number of compute instances in the pool for a given compute shape.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable) The compute shape of the resources you would like to provision.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -46,10 +46,10 @@ type ConfigurationsInitParameters struct {
 type ConfigurationsObservation struct {
 
 	// (Updatable) Maximum number of compute instances in the pool for a given compute shape.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) Minimum number of compute instances in the pool for a given compute shape.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable) The compute shape of the resources you would like to provision.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -62,11 +62,11 @@ type ConfigurationsParameters struct {
 
 	// (Updatable) Maximum number of compute instances in the pool for a given compute shape.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) Minimum number of compute instances in the pool for a given compute shape.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 
 	// (Updatable) The compute shape of the resources you would like to provision.
 	// +kubebuilder:validation:Optional
@@ -95,8 +95,7 @@ type PoolInitParameters struct {
 	Configurations []ConfigurationsInitParameters `json:"configurations,omitempty" tf:"configurations,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -105,11 +104,10 @@ type PoolInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Optional timeout value in minutes used to auto stop Pools. A Pool will be auto stopped after inactivity for this amount of time period. If value not set, pool will not be auto stopped auto.
-	IdleTimeoutInMinutes *float64 `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	IdleTimeoutInMinutes *int64 `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
 
 	// (Updatable) A list of schedules for pool to auto start and stop.
 	Schedules []SchedulesInitParameters `json:"schedules,omitempty" tf:"schedules,omitempty"`
@@ -154,8 +152,7 @@ type PoolObservation struct {
 	Configurations []ConfigurationsObservation `json:"configurations,omitempty" tf:"configurations,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -164,14 +161,13 @@ type PoolObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of a pool. Unique Id to indentify a dataflow pool resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) Optional timeout value in minutes used to auto stop Pools. A Pool will be auto stopped after inactivity for this amount of time period. If value not set, pool will not be auto stopped auto.
-	IdleTimeoutInMinutes *float64 `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	IdleTimeoutInMinutes *int64 `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
 
 	// The detailed messages about the lifecycle state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
@@ -219,8 +215,7 @@ type PoolParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -232,12 +227,11 @@ type PoolParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Optional timeout value in minutes used to auto stop Pools. A Pool will be auto stopped after inactivity for this amount of time period. If value not set, pool will not be auto stopped auto.
 	// +kubebuilder:validation:Optional
-	IdleTimeoutInMinutes *float64 `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
+	IdleTimeoutInMinutes *int64 `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
 
 	// (Updatable) A list of schedules for pool to auto start and stop.
 	// +kubebuilder:validation:Optional
@@ -254,10 +248,10 @@ type SchedulesInitParameters struct {
 	DayOfWeek *string `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
 	// (Updatable) Hour of the day to start or stop pool.
-	StartTime *float64 `json:"startTime,omitempty" tf:"start_time,omitempty"`
+	StartTime *int64 `json:"startTime,omitempty" tf:"start_time,omitempty"`
 
 	// (Updatable) Hour of the day to stop the pool.
-	StopTime *float64 `json:"stopTime,omitempty" tf:"stop_time,omitempty"`
+	StopTime *int64 `json:"stopTime,omitempty" tf:"stop_time,omitempty"`
 }
 
 type SchedulesObservation struct {
@@ -266,10 +260,10 @@ type SchedulesObservation struct {
 	DayOfWeek *string `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
 	// (Updatable) Hour of the day to start or stop pool.
-	StartTime *float64 `json:"startTime,omitempty" tf:"start_time,omitempty"`
+	StartTime *int64 `json:"startTime,omitempty" tf:"start_time,omitempty"`
 
 	// (Updatable) Hour of the day to stop the pool.
-	StopTime *float64 `json:"stopTime,omitempty" tf:"stop_time,omitempty"`
+	StopTime *int64 `json:"stopTime,omitempty" tf:"stop_time,omitempty"`
 }
 
 type SchedulesParameters struct {
@@ -280,11 +274,11 @@ type SchedulesParameters struct {
 
 	// (Updatable) Hour of the day to start or stop pool.
 	// +kubebuilder:validation:Optional
-	StartTime *float64 `json:"startTime,omitempty" tf:"start_time,omitempty"`
+	StartTime *int64 `json:"startTime,omitempty" tf:"start_time,omitempty"`
 
 	// (Updatable) Hour of the day to stop the pool.
 	// +kubebuilder:validation:Optional
-	StopTime *float64 `json:"stopTime,omitempty" tf:"stop_time,omitempty"`
+	StopTime *int64 `json:"stopTime,omitempty" tf:"stop_time,omitempty"`
 }
 
 type ShapeConfigInitParameters struct {

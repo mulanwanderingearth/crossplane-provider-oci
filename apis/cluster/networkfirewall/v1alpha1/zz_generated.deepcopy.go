@@ -247,18 +247,9 @@ func (in *NetworkFirewallInitParameters) DeepCopyInto(out *NetworkFirewallInitPa
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -268,18 +259,9 @@ func (in *NetworkFirewallInitParameters) DeepCopyInto(out *NetworkFirewallInitPa
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Ipv4Address != nil {
@@ -327,18 +309,9 @@ func (in *NetworkFirewallInitParameters) DeepCopyInto(out *NetworkFirewallInitPa
 	}
 	if in.SecurityAttributes != nil {
 		in, out := &in.SecurityAttributes, &out.SecurityAttributes
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Shape != nil {
@@ -420,18 +393,9 @@ func (in *NetworkFirewallObservation) DeepCopyInto(out *NetworkFirewallObservati
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -441,18 +405,9 @@ func (in *NetworkFirewallObservation) DeepCopyInto(out *NetworkFirewallObservati
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -500,18 +455,9 @@ func (in *NetworkFirewallObservation) DeepCopyInto(out *NetworkFirewallObservati
 	}
 	if in.SecurityAttributes != nil {
 		in, out := &in.SecurityAttributes, &out.SecurityAttributes
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Shape != nil {
@@ -531,18 +477,9 @@ func (in *NetworkFirewallObservation) DeepCopyInto(out *NetworkFirewallObservati
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -592,18 +529,9 @@ func (in *NetworkFirewallParameters) DeepCopyInto(out *NetworkFirewallParameters
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -613,18 +541,9 @@ func (in *NetworkFirewallParameters) DeepCopyInto(out *NetworkFirewallParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Ipv4Address != nil {
@@ -672,18 +591,9 @@ func (in *NetworkFirewallParameters) DeepCopyInto(out *NetworkFirewallParameters
 	}
 	if in.SecurityAttributes != nil {
 		in, out := &in.SecurityAttributes, &out.SecurityAttributes
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Shape != nil {
@@ -901,7 +811,7 @@ func (in *NetworkFirewallPolicyAddressListObservation) DeepCopyInto(out *Network
 	}
 	if in.TotalAddresses != nil {
 		in, out := &in.TotalAddresses, &out.TotalAddresses
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Type != nil {
@@ -1190,7 +1100,7 @@ func (in *NetworkFirewallPolicyApplicationGroupObservation) DeepCopyInto(out *Ne
 	}
 	if in.TotalApps != nil {
 		in, out := &in.TotalApps, &out.TotalApps
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1301,12 +1211,12 @@ func (in *NetworkFirewallPolicyApplicationInitParameters) DeepCopyInto(out *Netw
 	}
 	if in.IcmpCode != nil {
 		in, out := &in.IcmpCode, &out.IcmpCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IcmpType != nil {
 		in, out := &in.IcmpType, &out.IcmpType
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -1393,12 +1303,12 @@ func (in *NetworkFirewallPolicyApplicationObservation) DeepCopyInto(out *Network
 	}
 	if in.IcmpCode != nil {
 		in, out := &in.IcmpCode, &out.IcmpCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IcmpType != nil {
 		in, out := &in.IcmpType, &out.IcmpType
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -1443,12 +1353,12 @@ func (in *NetworkFirewallPolicyApplicationParameters) DeepCopyInto(out *NetworkF
 	}
 	if in.IcmpCode != nil {
 		in, out := &in.IcmpCode, &out.IcmpCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IcmpType != nil {
 		in, out := &in.IcmpType, &out.IcmpType
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -2256,18 +2166,9 @@ func (in *NetworkFirewallPolicyInitParameters) DeepCopyInto(out *NetworkFirewall
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2282,18 +2183,9 @@ func (in *NetworkFirewallPolicyInitParameters) DeepCopyInto(out *NetworkFirewall
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -2422,7 +2314,7 @@ func (in *NetworkFirewallPolicyMappedSecretInitParameters) DeepCopyInto(out *Net
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2514,7 +2406,7 @@ func (in *NetworkFirewallPolicyMappedSecretObservation) DeepCopyInto(out *Networ
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2584,7 +2476,7 @@ func (in *NetworkFirewallPolicyMappedSecretParameters) DeepCopyInto(out *Network
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -3131,7 +3023,7 @@ func (in *NetworkFirewallPolicyObservation) DeepCopyInto(out *NetworkFirewallPol
 	*out = *in
 	if in.AttachedNetworkFirewallCount != nil {
 		in, out := &in.AttachedNetworkFirewallCount, &out.AttachedNetworkFirewallCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -3141,18 +3033,9 @@ func (in *NetworkFirewallPolicyObservation) DeepCopyInto(out *NetworkFirewallPol
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3167,18 +3050,9 @@ func (in *NetworkFirewallPolicyObservation) DeepCopyInto(out *NetworkFirewallPol
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -3198,18 +3072,9 @@ func (in *NetworkFirewallPolicyObservation) DeepCopyInto(out *NetworkFirewallPol
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -3254,18 +3119,9 @@ func (in *NetworkFirewallPolicyParameters) DeepCopyInto(out *NetworkFirewallPoli
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3280,18 +3136,9 @@ func (in *NetworkFirewallPolicyParameters) DeepCopyInto(out *NetworkFirewallPoli
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -4715,12 +4562,12 @@ func (in *PortRangesInitParameters) DeepCopyInto(out *PortRangesInitParameters) 
 	*out = *in
 	if in.MaximumPort != nil {
 		in, out := &in.MaximumPort, &out.MaximumPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinimumPort != nil {
 		in, out := &in.MinimumPort, &out.MinimumPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4740,12 +4587,12 @@ func (in *PortRangesObservation) DeepCopyInto(out *PortRangesObservation) {
 	*out = *in
 	if in.MaximumPort != nil {
 		in, out := &in.MaximumPort, &out.MaximumPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinimumPort != nil {
 		in, out := &in.MinimumPort, &out.MinimumPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4765,12 +4612,12 @@ func (in *PortRangesParameters) DeepCopyInto(out *PortRangesParameters) {
 	*out = *in
 	if in.MaximumPort != nil {
 		in, out := &in.MaximumPort, &out.MaximumPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinimumPort != nil {
 		in, out := &in.MinimumPort, &out.MinimumPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

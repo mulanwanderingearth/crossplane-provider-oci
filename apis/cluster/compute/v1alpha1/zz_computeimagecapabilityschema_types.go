@@ -31,15 +31,13 @@ type ComputeImageCapabilitySchemaInitParameters struct {
 	ComputeGlobalImageCapabilitySchemaVersionName *string `json:"computeGlobalImageCapabilitySchemaVersionName,omitempty" tf:"compute_global_image_capability_schema_version_name,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The ocid of the image
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/compute/v1alpha1.Image
@@ -54,8 +52,7 @@ type ComputeImageCapabilitySchemaInitParameters struct {
 	ImageIDSelector *v1.Selector `json:"imageIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The map of each capability name to its ImageCapabilitySchemaDescriptor.
-	// +mapType=granular
-	SchemaData map[string]*string `json:"schemaData,omitempty" tf:"schema_data,omitempty"`
+	SchemaData map[string]string `json:"schemaData,omitempty" tf:"schema_data,omitempty"`
 }
 
 type ComputeImageCapabilitySchemaObservation struct {
@@ -70,15 +67,13 @@ type ComputeImageCapabilitySchemaObservation struct {
 	ComputeGlobalImageCapabilitySchemaVersionName *string `json:"computeGlobalImageCapabilitySchemaVersionName,omitempty" tf:"compute_global_image_capability_schema_version_name,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The compute image capability schema OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -87,8 +82,7 @@ type ComputeImageCapabilitySchemaObservation struct {
 	ImageID *string `json:"imageId,omitempty" tf:"image_id,omitempty"`
 
 	// (Updatable) The map of each capability name to its ImageCapabilitySchemaDescriptor.
-	// +mapType=granular
-	SchemaData map[string]*string `json:"schemaData,omitempty" tf:"schema_data,omitempty"`
+	SchemaData map[string]string `json:"schemaData,omitempty" tf:"schema_data,omitempty"`
 
 	// The date and time the compute image capability schema was created, in the format defined by RFC3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -115,8 +109,7 @@ type ComputeImageCapabilitySchemaParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -124,8 +117,7 @@ type ComputeImageCapabilitySchemaParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The ocid of the image
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/compute/v1alpha1.Image
@@ -142,8 +134,7 @@ type ComputeImageCapabilitySchemaParameters struct {
 
 	// (Updatable) The map of each capability name to its ImageCapabilitySchemaDescriptor.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SchemaData map[string]*string `json:"schemaData,omitempty" tf:"schema_data,omitempty"`
+	SchemaData map[string]string `json:"schemaData,omitempty" tf:"schema_data,omitempty"`
 }
 
 // ComputeImageCapabilitySchemaSpec defines the desired state of ComputeImageCapabilitySchema

@@ -268,7 +268,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A descriptive name for the management
                       appliance. It must be unique, start with a letter, and contain
@@ -283,7 +282,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   publicSshKeys:
                     description: One or more public SSH keys to be included in ~/.ssh/authorized_keys
                       file for Management Appliance compute instance. Several public
@@ -595,7 +593,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A descriptive name for the management
                       appliance. It must be unique, start with a letter, and contain
@@ -610,7 +607,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   publicSshKeys:
                     description: One or more public SSH keys to be included in ~/.ssh/authorized_keys
                       file for Management Appliance compute instance. Several public
@@ -831,7 +827,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A descriptive name for the management
                       appliance. It must be unique, start with a letter, and contain
@@ -846,7 +841,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   heartbeatConnectionStates:
                     description: Current states of connections.
                     items:
@@ -902,7 +896,6 @@ spec:
                       are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeConfigurationUpdated:
                     description: The date and time the configuration of management
                       appliance was last updated in the format defined by RFC3339.

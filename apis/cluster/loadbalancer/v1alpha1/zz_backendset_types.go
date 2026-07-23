@@ -14,6 +14,27 @@ import (
 )
 
 type BackendSetBackendInitParameters struct {
+
+	// (Updatable) Whether the load balancer should treat this server as a backup unit. If true, the load balancer forwards no ingress traffic to this backend server unless all other backend servers not marked as "backup" fail the health check policy.
+	Backup *bool `json:"backup,omitempty" tf:"backup,omitempty"`
+
+	// (Updatable) Whether the load balancer should drain this server. Servers marked "drain" receive no new incoming traffic.  Example: false
+	Drain *bool `json:"drain,omitempty" tf:"drain,omitempty"`
+
+	// (Updatable) The IP address of the backend server.  Example: 10.0.0.3
+	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
+
+	// (Updatable) The maximum number of simultaneous connections the load balancer can make to the backend. If this is not set or set to 0 then the maximum number of simultaneous connections the load balancer can make to the backend is unlimited.
+	MaxConnections *int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+
+	// (Updatable) Whether the load balancer should treat this server as offline. Offline servers receive no incoming traffic.  Example: false
+	Offline *bool `json:"offline,omitempty" tf:"offline,omitempty"`
+
+	// (Updatable) The communication port for the backend server.  Example: 8080
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
+
+	// (Updatable) The load balancing policy weight assigned to the server. Backend servers with a higher weight receive a larger proportion of incoming traffic. For example, a server weighted '3' receives 3 times the number of new connections as a server weighted '1'. For more information on load balancing policies, see How Load Balancing Policies Work.  Example: 3
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type BackendSetBackendObservation struct {
@@ -28,7 +49,7 @@ type BackendSetBackendObservation struct {
 	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 
 	// (Updatable) The maximum number of simultaneous connections the load balancer can make to the backend. If this is not set or set to 0 then the maximum number of simultaneous connections the load balancer can make to the backend is unlimited.
-	MaxConnections *float64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+	MaxConnections *int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
 
 	// A friendly name for the backend set. It must be unique and it cannot be changed.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -37,19 +58,47 @@ type BackendSetBackendObservation struct {
 	Offline *bool `json:"offline,omitempty" tf:"offline,omitempty"`
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The load balancing policy weight assigned to the server. Backend servers with a higher weight receive a larger proportion of incoming traffic. For example, a server weighted '3' receives 3 times the number of new connections as a server weighted '1'. For more information on load balancing policies, see How Load Balancing Policies Work.  Example: 3
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type BackendSetBackendParameters struct {
+
+	// (Updatable) Whether the load balancer should treat this server as a backup unit. If true, the load balancer forwards no ingress traffic to this backend server unless all other backend servers not marked as "backup" fail the health check policy.
+	// +kubebuilder:validation:Optional
+	Backup *bool `json:"backup,omitempty" tf:"backup,omitempty"`
+
+	// (Updatable) Whether the load balancer should drain this server. Servers marked "drain" receive no new incoming traffic.  Example: false
+	// +kubebuilder:validation:Optional
+	Drain *bool `json:"drain,omitempty" tf:"drain,omitempty"`
+
+	// (Updatable) The IP address of the backend server.  Example: 10.0.0.3
+	// +kubebuilder:validation:Optional
+	IPAddress *string `json:"ipAddress" tf:"ip_address,omitempty"`
+
+	// (Updatable) The maximum number of simultaneous connections the load balancer can make to the backend. If this is not set or set to 0 then the maximum number of simultaneous connections the load balancer can make to the backend is unlimited.
+	// +kubebuilder:validation:Optional
+	MaxConnections *int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+
+	// (Updatable) Whether the load balancer should treat this server as offline. Offline servers receive no incoming traffic.  Example: false
+	// +kubebuilder:validation:Optional
+	Offline *bool `json:"offline,omitempty" tf:"offline,omitempty"`
+
+	// (Updatable) The communication port for the backend server.  Example: 8080
+	// +kubebuilder:validation:Optional
+	Port *int64 `json:"port" tf:"port,omitempty"`
+
+	// (Updatable) The load balancing policy weight assigned to the server. Backend servers with a higher weight receive a larger proportion of incoming traffic. For example, a server weighted '3' receives 3 times the number of new connections as a server weighted '1'. For more information on load balancing policies, see How Load Balancing Policies Work.  Example: 3
+	// +kubebuilder:validation:Optional
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type BackendSetInitParameters struct {
 
 	// (Updatable) The maximum number of simultaneous connections the load balancer can make to any backend in the backend set unless the backend has its own maxConnections setting. If this is not set or set to 0 then the number of simultaneous connections the load balancer can make to any backend in the backend set unless the backend has its own maxConnections setting is unlimited.
-	BackendMaxConnections *float64 `json:"backendMaxConnections,omitempty" tf:"backend_max_connections,omitempty"`
+	BackendMaxConnections *int64 `json:"backendMaxConnections,omitempty" tf:"backend_max_connections,omitempty"`
 
 	// (Updatable) The health check policy's configuration details.
 	HealthChecker []HealthCheckerInitParameters `json:"healthChecker,omitempty" tf:"health_checker,omitempty"`
@@ -88,7 +137,7 @@ type BackendSetObservation struct {
 	Backend []BackendSetBackendObservation `json:"backend,omitempty" tf:"backend,omitempty"`
 
 	// (Updatable) The maximum number of simultaneous connections the load balancer can make to any backend in the backend set unless the backend has its own maxConnections setting. If this is not set or set to 0 then the number of simultaneous connections the load balancer can make to any backend in the backend set unless the backend has its own maxConnections setting is unlimited.
-	BackendMaxConnections *float64 `json:"backendMaxConnections,omitempty" tf:"backend_max_connections,omitempty"`
+	BackendMaxConnections *int64 `json:"backendMaxConnections,omitempty" tf:"backend_max_connections,omitempty"`
 
 	// (Updatable) The health check policy's configuration details.
 	HealthChecker []HealthCheckerObservation `json:"healthChecker,omitempty" tf:"health_checker,omitempty"`
@@ -120,7 +169,7 @@ type BackendSetParameters struct {
 
 	// (Updatable) The maximum number of simultaneous connections the load balancer can make to any backend in the backend set unless the backend has its own maxConnections setting. If this is not set or set to 0 then the number of simultaneous connections the load balancer can make to any backend in the backend set unless the backend has its own maxConnections setting is unlimited.
 	// +kubebuilder:validation:Optional
-	BackendMaxConnections *float64 `json:"backendMaxConnections,omitempty" tf:"backend_max_connections,omitempty"`
+	BackendMaxConnections *int64 `json:"backendMaxConnections,omitempty" tf:"backend_max_connections,omitempty"`
 
 	// (Updatable) The health check policy's configuration details.
 	// +kubebuilder:validation:Optional
@@ -163,13 +212,13 @@ type BackendSetParameters struct {
 type HealthCheckerInitParameters struct {
 
 	// (Updatable) The interval between health checks, in milliseconds.  Example: 10000
-	IntervalMs *float64 `json:"intervalMs,omitempty" tf:"interval_ms,omitempty"`
+	IntervalMs *int64 `json:"intervalMs,omitempty" tf:"interval_ms,omitempty"`
 
 	// (Updatable) Specifies if health checks should always be done using plain text instead of depending on whether or not the associated backend set is using SSL.
 	IsForcePlainText *bool `json:"isForcePlainText,omitempty" tf:"is_force_plain_text,omitempty"`
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol the health check must use; either HTTP or TCP.  Example: HTTP
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -178,13 +227,13 @@ type HealthCheckerInitParameters struct {
 	ResponseBodyRegex *string `json:"responseBodyRegex,omitempty" tf:"response_body_regex,omitempty"`
 
 	// (Updatable) The number of retries to attempt before a backend server is considered "unhealthy". This number also applies when recovering a server to the "healthy" state.  Example: 3
-	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
+	Retries *int64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
 	// (Updatable) The status code a healthy backend server should return.  Example: 200
-	ReturnCode *float64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
+	ReturnCode *int64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
 
 	// (Updatable) The maximum time, in milliseconds, to wait for a reply to a health check. A health check is successful only if a reply returns within this timeout period.  Example: 3000
-	TimeoutInMillis *float64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
+	TimeoutInMillis *int64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
 
 	// (Updatable) The path against which to run the health check.  Example: /healthcheck
 	URLPath *string `json:"urlPath,omitempty" tf:"url_path,omitempty"`
@@ -193,13 +242,13 @@ type HealthCheckerInitParameters struct {
 type HealthCheckerObservation struct {
 
 	// (Updatable) The interval between health checks, in milliseconds.  Example: 10000
-	IntervalMs *float64 `json:"intervalMs,omitempty" tf:"interval_ms,omitempty"`
+	IntervalMs *int64 `json:"intervalMs,omitempty" tf:"interval_ms,omitempty"`
 
 	// (Updatable) Specifies if health checks should always be done using plain text instead of depending on whether or not the associated backend set is using SSL.
 	IsForcePlainText *bool `json:"isForcePlainText,omitempty" tf:"is_force_plain_text,omitempty"`
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol the health check must use; either HTTP or TCP.  Example: HTTP
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -208,13 +257,13 @@ type HealthCheckerObservation struct {
 	ResponseBodyRegex *string `json:"responseBodyRegex,omitempty" tf:"response_body_regex,omitempty"`
 
 	// (Updatable) The number of retries to attempt before a backend server is considered "unhealthy". This number also applies when recovering a server to the "healthy" state.  Example: 3
-	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
+	Retries *int64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
 	// (Updatable) The status code a healthy backend server should return.  Example: 200
-	ReturnCode *float64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
+	ReturnCode *int64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
 
 	// (Updatable) The maximum time, in milliseconds, to wait for a reply to a health check. A health check is successful only if a reply returns within this timeout period.  Example: 3000
-	TimeoutInMillis *float64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
+	TimeoutInMillis *int64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
 
 	// (Updatable) The path against which to run the health check.  Example: /healthcheck
 	URLPath *string `json:"urlPath,omitempty" tf:"url_path,omitempty"`
@@ -224,7 +273,7 @@ type HealthCheckerParameters struct {
 
 	// (Updatable) The interval between health checks, in milliseconds.  Example: 10000
 	// +kubebuilder:validation:Optional
-	IntervalMs *float64 `json:"intervalMs,omitempty" tf:"interval_ms,omitempty"`
+	IntervalMs *int64 `json:"intervalMs,omitempty" tf:"interval_ms,omitempty"`
 
 	// (Updatable) Specifies if health checks should always be done using plain text instead of depending on whether or not the associated backend set is using SSL.
 	// +kubebuilder:validation:Optional
@@ -232,7 +281,7 @@ type HealthCheckerParameters struct {
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol the health check must use; either HTTP or TCP.  Example: HTTP
 	// +kubebuilder:validation:Optional
@@ -244,15 +293,15 @@ type HealthCheckerParameters struct {
 
 	// (Updatable) The number of retries to attempt before a backend server is considered "unhealthy". This number also applies when recovering a server to the "healthy" state.  Example: 3
 	// +kubebuilder:validation:Optional
-	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
+	Retries *int64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
 	// (Updatable) The status code a healthy backend server should return.  Example: 200
 	// +kubebuilder:validation:Optional
-	ReturnCode *float64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
+	ReturnCode *int64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
 
 	// (Updatable) The maximum time, in milliseconds, to wait for a reply to a health check. A health check is successful only if a reply returns within this timeout period.  Example: 3000
 	// +kubebuilder:validation:Optional
-	TimeoutInMillis *float64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
+	TimeoutInMillis *int64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
 
 	// (Updatable) The path against which to run the health check.  Example: /healthcheck
 	// +kubebuilder:validation:Optional
@@ -277,7 +326,7 @@ type LBCookieSessionPersistenceConfigurationInitParameters struct {
 	IsSecure *bool `json:"isSecure,omitempty" tf:"is_secure,omitempty"`
 
 	// (Updatable) The amount of time the cookie remains valid. The Set-cookie header inserted by the load balancer contains a Max-Age attribute with the specified value.
-	MaxAgeInSeconds *float64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
+	MaxAgeInSeconds *int64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
 
 	// (Updatable) The path in which the cookie is valid. The Set-cookie header inserted by the load balancer contains a Path attribute with the specified value.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
@@ -301,7 +350,7 @@ type LBCookieSessionPersistenceConfigurationObservation struct {
 	IsSecure *bool `json:"isSecure,omitempty" tf:"is_secure,omitempty"`
 
 	// (Updatable) The amount of time the cookie remains valid. The Set-cookie header inserted by the load balancer contains a Max-Age attribute with the specified value.
-	MaxAgeInSeconds *float64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
+	MaxAgeInSeconds *int64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
 
 	// (Updatable) The path in which the cookie is valid. The Set-cookie header inserted by the load balancer contains a Path attribute with the specified value.
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
@@ -331,7 +380,7 @@ type LBCookieSessionPersistenceConfigurationParameters struct {
 
 	// (Updatable) The amount of time the cookie remains valid. The Set-cookie header inserted by the load balancer contains a Max-Age attribute with the specified value.
 	// +kubebuilder:validation:Optional
-	MaxAgeInSeconds *float64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
+	MaxAgeInSeconds *int64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
 
 	// (Updatable) The path in which the cookie is valid. The Set-cookie header inserted by the load balancer contains a Path attribute with the specified value.
 	// +kubebuilder:validation:Optional
@@ -368,7 +417,7 @@ type SSLConfigurationInitParameters struct {
 	TrustedCertificateAuthorityIds []*string `json:"trustedCertificateAuthorityIds,omitempty" tf:"trusted_certificate_authority_ids,omitempty"`
 
 	// (Updatable) The maximum depth for peer certificate chain verification.  Example: 3
-	VerifyDepth *float64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
+	VerifyDepth *int64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
 
 	// (Updatable) Whether the load balancer listener should verify peer certificates.  Example: true
 	VerifyPeerCertificate *bool `json:"verifyPeerCertificate,omitempty" tf:"verify_peer_certificate,omitempty"`
@@ -395,7 +444,7 @@ type SSLConfigurationObservation struct {
 	TrustedCertificateAuthorityIds []*string `json:"trustedCertificateAuthorityIds,omitempty" tf:"trusted_certificate_authority_ids,omitempty"`
 
 	// (Updatable) The maximum depth for peer certificate chain verification.  Example: 3
-	VerifyDepth *float64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
+	VerifyDepth *int64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
 
 	// (Updatable) Whether the load balancer listener should verify peer certificates.  Example: true
 	VerifyPeerCertificate *bool `json:"verifyPeerCertificate,omitempty" tf:"verify_peer_certificate,omitempty"`
@@ -438,7 +487,7 @@ type SSLConfigurationParameters struct {
 
 	// (Updatable) The maximum depth for peer certificate chain verification.  Example: 3
 	// +kubebuilder:validation:Optional
-	VerifyDepth *float64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
+	VerifyDepth *int64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
 
 	// (Updatable) Whether the load balancer listener should verify peer certificates.  Example: true
 	// +kubebuilder:validation:Optional

@@ -162,7 +162,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   dnsLabel:
@@ -171,7 +170,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   ipv6privateCidrBlocks:
                     items:
                       type: string
@@ -184,7 +182,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -302,7 +299,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   dnsLabel:
@@ -311,7 +307,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   ipv6privateCidrBlocks:
                     items:
                       type: string
@@ -324,7 +319,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -422,7 +416,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   dnsLabel:
@@ -431,7 +424,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   ipv6cidrBlocks:
@@ -450,7 +442,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     type: string
                   timeCreated:

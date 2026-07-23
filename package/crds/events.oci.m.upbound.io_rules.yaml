@@ -499,7 +499,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A string that describes the details of
                       the action. It does not have to be unique, and you can change
@@ -518,7 +517,6 @@ spec:
                       or namespace. Exists for cross-compatibility only. For more
                       information, see Resource Tags.  Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isEnabled:
                     description: '(Updatable) Whether or not this action is currently
                       enabled.  Example: true'
@@ -977,7 +975,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A string that describes the details of
                       the action. It does not have to be unique, and you can change
@@ -996,7 +993,6 @@ spec:
                       or namespace. Exists for cross-compatibility only. For more
                       information, see Resource Tags.  Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isEnabled:
                     description: '(Updatable) Whether or not this action is currently
                       enabled.  Example: true'
@@ -1212,7 +1208,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A string that describes the details of
                       the action. It does not have to be unique, and you can change
@@ -1231,7 +1226,6 @@ spec:
                       or namespace. Exists for cross-compatibility only. For more
                       information, see Resource Tags.  Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the action.
                     type: string

@@ -275,7 +275,8 @@ spec:
                     type: string
                   numberOfDaysRedirectUrlIsValid:
                     description: (Updatable) Number of days redirect URL is valid
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -338,7 +339,8 @@ spec:
                           type: string
                         seqNumber:
                           description: '(Updatable) SCIM++ Properties:'
-                          type: number
+                          format: int64
+                          type: integer
                         value:
                           description: (Updatable) Localized value of after submit
                             text in corresponding locale
@@ -559,7 +561,8 @@ spec:
                     type: string
                   numberOfDaysRedirectUrlIsValid:
                     description: (Updatable) Number of days redirect URL is valid
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -622,7 +625,8 @@ spec:
                           type: string
                         seqNumber:
                           description: '(Updatable) SCIM++ Properties:'
-                          type: number
+                          format: int64
+                          type: integer
                         value:
                           description: (Updatable) Localized value of after submit
                             text in corresponding locale
@@ -1098,7 +1102,8 @@ spec:
                     type: string
                   numberOfDaysRedirectUrlIsValid:
                     description: (Updatable) Number of days redirect URL is valid
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -1171,7 +1176,8 @@ spec:
                           type: string
                         seqNumber:
                           description: '(Updatable) SCIM++ Properties:'
-                          type: number
+                          format: int64
+                          type: integer
                         value:
                           description: (Updatable) Localized value of after submit
                             text in corresponding locale

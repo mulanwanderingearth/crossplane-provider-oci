@@ -37,11 +37,10 @@ type FileSystemInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Detach Clone. Could be set to any integer value.
-	DetachCloneTrigger *float64 `json:"detachCloneTrigger,omitempty" tf:"detach_clone_trigger,omitempty"`
+	DetachCloneTrigger *int64 `json:"detachCloneTrigger,omitempty" tf:"detach_clone_trigger,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My file system
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -60,8 +59,7 @@ type FileSystemInitParameters struct {
 	FilesystemSnapshotPolicyIDSelector *v1.Selector `json:"filesystemSnapshotPolicyIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	IsLockOverride *bool `json:"isLockOverride,omitempty" tf:"is_lock_override,omitempty"`
 
@@ -156,17 +154,16 @@ type FileSystemObservation struct {
 	CloneAttachStatus *string `json:"cloneAttachStatus,omitempty" tf:"clone_attach_status,omitempty"`
 
 	// Specifies the total number of children of a file system.
-	CloneCount *float64 `json:"cloneCount,omitempty" tf:"clone_count,omitempty"`
+	CloneCount *int64 `json:"cloneCount,omitempty" tf:"clone_count,omitempty"`
 
 	// (Updatable) The OCID of the compartment to create the file system in.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Detach Clone. Could be set to any integer value.
-	DetachCloneTrigger *float64 `json:"detachCloneTrigger,omitempty" tf:"detach_clone_trigger,omitempty"`
+	DetachCloneTrigger *int64 `json:"detachCloneTrigger,omitempty" tf:"detach_clone_trigger,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My file system
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -175,8 +172,7 @@ type FileSystemObservation struct {
 	FilesystemSnapshotPolicyID *string `json:"filesystemSnapshotPolicyId,omitempty" tf:"filesystem_snapshot_policy_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the file system.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -208,7 +204,7 @@ type FileSystemObservation struct {
 	QuotaEnforcementState *string `json:"quotaEnforcementState,omitempty" tf:"quota_enforcement_state,omitempty"`
 
 	// Specifies the total number of replications for which this file system is a source.
-	ReplicationSourceCount *float64 `json:"replicationSourceCount,omitempty" tf:"replication_source_count,omitempty"`
+	ReplicationSourceCount *int64 `json:"replicationSourceCount,omitempty" tf:"replication_source_count,omitempty"`
 
 	// The OCID of the replication target associated with the file system. Empty if the file system is not being used as target in a replication.
 	ReplicationTargetID *string `json:"replicationTargetId,omitempty" tf:"replication_target_id,omitempty"`
@@ -223,8 +219,7 @@ type FileSystemObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. System tags are applied to resources by internal Oracle Cloud Infrastructure services.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// When the lock was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -259,12 +254,11 @@ type FileSystemParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Detach Clone. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	DetachCloneTrigger *float64 `json:"detachCloneTrigger,omitempty" tf:"detach_clone_trigger,omitempty"`
+	DetachCloneTrigger *int64 `json:"detachCloneTrigger,omitempty" tf:"detach_clone_trigger,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My file system
 	// +kubebuilder:validation:Optional
@@ -286,8 +280,7 @@ type FileSystemParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	IsLockOverride *bool `json:"isLockOverride,omitempty" tf:"is_lock_override,omitempty"`

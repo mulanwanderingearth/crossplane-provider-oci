@@ -26,7 +26,7 @@ type MaskingFormatsFormatEntriesInitParameters struct {
 	EndDate *string `json:"endDate,omitempty" tf:"end_date,omitempty"`
 
 	// (Updatable) The maximum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be greater than or equal to  the start length.
-	EndLength *float64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
+	EndLength *int64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
 
 	// (Updatable) The upper bound of the range within which random decimal numbers should be generated. It must be greater than or equal to the start value. It supports  input of double type.
 	EndValue *float64 `json:"endValue,omitempty" tf:"end_value,omitempty"`
@@ -41,7 +41,7 @@ type MaskingFormatsFormatEntriesInitParameters struct {
 	GroupingColumns []*string `json:"groupingColumns,omitempty" tf:"grouping_columns,omitempty"`
 
 	// (Updatable) The number of characters that should be there in the substring. It should be an integer and greater than zero.
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 
 	// (Updatable) The OCID of the library masking format.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datasafe/v1alpha1.LibraryMaskingFormat
@@ -81,10 +81,10 @@ type MaskingFormatsFormatEntriesInitParameters struct {
 	StartDate *string `json:"startDate,omitempty" tf:"start_date,omitempty"`
 
 	// (Updatable) The minimum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be less than or equal to the  end length.
-	StartLength *float64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
+	StartLength *int64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
 
 	// (Updatable) The starting position in the original string from where the substring should be extracted. It can be either a positive or a negative integer. If It's negative, the counting starts from the end of the string.
-	StartPosition *float64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
+	StartPosition *int64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
 
 	// (Updatable) The lower bound of the range within which random decimal numbers should  be generated. It must be less than or equal to the end value. It supports  input of double type.
 	StartValue *float64 `json:"startValue,omitempty" tf:"start_value,omitempty"`
@@ -121,7 +121,7 @@ type MaskingFormatsFormatEntriesObservation struct {
 	EndDate *string `json:"endDate,omitempty" tf:"end_date,omitempty"`
 
 	// (Updatable) The maximum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be greater than or equal to  the start length.
-	EndLength *float64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
+	EndLength *int64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
 
 	// (Updatable) The upper bound of the range within which random decimal numbers should be generated. It must be greater than or equal to the start value. It supports  input of double type.
 	EndValue *float64 `json:"endValue,omitempty" tf:"end_value,omitempty"`
@@ -136,7 +136,7 @@ type MaskingFormatsFormatEntriesObservation struct {
 	GroupingColumns []*string `json:"groupingColumns,omitempty" tf:"grouping_columns,omitempty"`
 
 	// (Updatable) The number of characters that should be there in the substring. It should be an integer and greater than zero.
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 
 	// (Updatable) The OCID of the library masking format.
 	LibraryMaskingFormatID *string `json:"libraryMaskingFormatId,omitempty" tf:"library_masking_format_id,omitempty"`
@@ -166,10 +166,10 @@ type MaskingFormatsFormatEntriesObservation struct {
 	StartDate *string `json:"startDate,omitempty" tf:"start_date,omitempty"`
 
 	// (Updatable) The minimum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be less than or equal to the  end length.
-	StartLength *float64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
+	StartLength *int64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
 
 	// (Updatable) The starting position in the original string from where the substring should be extracted. It can be either a positive or a negative integer. If It's negative, the counting starts from the end of the string.
-	StartPosition *float64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
+	StartPosition *int64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
 
 	// (Updatable) The lower bound of the range within which random decimal numbers should  be generated. It must be less than or equal to the end value. It supports  input of double type.
 	StartValue *float64 `json:"startValue,omitempty" tf:"start_value,omitempty"`
@@ -200,7 +200,7 @@ type MaskingFormatsFormatEntriesParameters struct {
 
 	// (Updatable) The maximum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be greater than or equal to  the start length.
 	// +kubebuilder:validation:Optional
-	EndLength *float64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
+	EndLength *int64 `json:"endLength,omitempty" tf:"end_length,omitempty"`
 
 	// (Updatable) The upper bound of the range within which random decimal numbers should be generated. It must be greater than or equal to the start value. It supports  input of double type.
 	// +kubebuilder:validation:Optional
@@ -220,7 +220,7 @@ type MaskingFormatsFormatEntriesParameters struct {
 
 	// (Updatable) The number of characters that should be there in the substring. It should be an integer and greater than zero.
 	// +kubebuilder:validation:Optional
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 
 	// (Updatable) The OCID of the library masking format.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datasafe/v1alpha1.LibraryMaskingFormat
@@ -270,11 +270,11 @@ type MaskingFormatsFormatEntriesParameters struct {
 
 	// (Updatable) The minimum number of characters the generated strings should have. It can  be any integer greater than zero, but it must be less than or equal to the  end length.
 	// +kubebuilder:validation:Optional
-	StartLength *float64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
+	StartLength *int64 `json:"startLength,omitempty" tf:"start_length,omitempty"`
 
 	// (Updatable) The starting position in the original string from where the substring should be extracted. It can be either a positive or a negative integer. If It's negative, the counting starts from the end of the string.
 	// +kubebuilder:validation:Optional
-	StartPosition *float64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
+	StartPosition *int64 `json:"startPosition,omitempty" tf:"start_position,omitempty"`
 
 	// (Updatable) The lower bound of the range within which random decimal numbers should  be generated. It must be less than or equal to the end value. It supports  input of double type.
 	// +kubebuilder:validation:Optional

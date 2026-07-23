@@ -151,7 +151,6 @@ spec:
                       key is predefined and scoped to a namespace. For example: {"foo-namespace":
                       {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Stream job display name.
                     type: string
@@ -166,7 +165,8 @@ spec:
                         maxResults:
                           description: (Applicable when feature_type=FACE_DETECTION)
                             (Updatable) The maximum number of results to return.
-                          type: number
+                          format: int64
+                          type: integer
                         shouldReturnLandmarks:
                           description: (Applicable when feature_type=FACE_DETECTION)
                             (Updatable) Whether or not return face landmarks.
@@ -355,7 +355,8 @@ spec:
                               maxResults:
                                 description: (Applicable when feature_type=FACE_DETECTION)
                                   (Updatable) The maximum number of results to return.
-                                type: number
+                                format: int64
+                                type: integer
                               objects:
                                 description: (Updatable) List of the objects to be
                                   tracked.
@@ -463,7 +464,6 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: (Updatable) The target state for the Stream Job.
                       Could be set to ACTIVE or INACTIVE.
@@ -682,7 +682,6 @@ spec:
                       key is predefined and scoped to a namespace. For example: {"foo-namespace":
                       {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Stream job display name.
                     type: string
@@ -697,7 +696,8 @@ spec:
                         maxResults:
                           description: (Applicable when feature_type=FACE_DETECTION)
                             (Updatable) The maximum number of results to return.
-                          type: number
+                          format: int64
+                          type: integer
                         shouldReturnLandmarks:
                           description: (Applicable when feature_type=FACE_DETECTION)
                             (Updatable) Whether or not return face landmarks.
@@ -886,7 +886,8 @@ spec:
                               maxResults:
                                 description: (Applicable when feature_type=FACE_DETECTION)
                                   (Updatable) The maximum number of results to return.
-                                type: number
+                                format: int64
+                                type: integer
                               objects:
                                 description: (Updatable) List of the objects to be
                                   tracked.
@@ -994,7 +995,6 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: (Updatable) The target state for the Stream Job.
                       Could be set to ACTIVE or INACTIVE.
@@ -1196,7 +1196,6 @@ spec:
                       key is predefined and scoped to a namespace. For example: {"foo-namespace":
                       {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Stream job display name.
                     type: string
@@ -1211,7 +1210,8 @@ spec:
                         maxResults:
                           description: (Applicable when feature_type=FACE_DETECTION)
                             (Updatable) The maximum number of results to return.
-                          type: number
+                          format: int64
+                          type: integer
                         shouldReturnLandmarks:
                           description: (Applicable when feature_type=FACE_DETECTION)
                             (Updatable) Whether or not return face landmarks.
@@ -1236,7 +1236,8 @@ spec:
                               maxResults:
                                 description: (Applicable when feature_type=FACE_DETECTION)
                                   (Updatable) The maximum number of results to return.
-                                type: number
+                                format: int64
+                                type: integer
                               objects:
                                 description: (Updatable) List of the objects to be
                                   tracked.
@@ -1262,7 +1263,6 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: OCID of the streamJob.
                     type: string
@@ -1306,7 +1306,6 @@ spec:
                       are scoped to namespaces. For example: {"orcl-cloud": {"free-tier-retained":
                       "true"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the streamJob was created, as an RFC3339 datetime
                       string.

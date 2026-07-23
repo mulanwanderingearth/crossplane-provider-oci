@@ -46,8 +46,7 @@ type JavaLicenseAcceptanceRecordInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}. (See Understanding Free-form Tags).
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Status of license acceptance.
 	LicenseAcceptanceStatus *string `json:"licenseAcceptanceStatus,omitempty" tf:"license_acceptance_status,omitempty"`
@@ -83,12 +82,10 @@ type JavaLicenseAcceptanceRecordObservation struct {
 	CreatedBy []JavaLicenseAcceptanceRecordCreatedByObservation `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}. (See Understanding Free-form Tags).
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}. (See Managing Tags and Tag Namespaces.)
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the principal.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -106,8 +103,7 @@ type JavaLicenseAcceptanceRecordObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time of license acceptance (formatted according to RFC3339).
 	TimeAccepted *string `json:"timeAccepted,omitempty" tf:"time_accepted,omitempty"`
@@ -133,8 +129,7 @@ type JavaLicenseAcceptanceRecordParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}. (See Understanding Free-form Tags).
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Status of license acceptance.
 	// +kubebuilder:validation:Optional

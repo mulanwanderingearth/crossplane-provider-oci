@@ -165,7 +165,6 @@ spec:
                     description: (Updatable) Defined tags for this resource. Each
                       key is predefined and scoped to a namespace.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -173,7 +172,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoApproveDuringMaintenance:
                     description: (Updatable) The boolean if true would autoApprove
                       during maintenance.
@@ -283,7 +281,8 @@ spec:
                   remoteSyslogServerPort:
                     description: (Updatable) The listening port of the remote syslog
                       server. The port range is 0 - 65535. Only TCP supported.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceCompartmentId:
                     description: The OCID of the compartment that contains the target
                       resource.
@@ -387,7 +386,8 @@ spec:
                   validateAssignmentTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Assignment. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -492,7 +492,6 @@ spec:
                     description: (Updatable) Defined tags for this resource. Each
                       key is predefined and scoped to a namespace.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -500,7 +499,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoApproveDuringMaintenance:
                     description: (Updatable) The boolean if true would autoApprove
                       during maintenance.
@@ -610,7 +608,8 @@ spec:
                   remoteSyslogServerPort:
                     description: (Updatable) The listening port of the remote syslog
                       server. The port range is 0 - 65535. Only TCP supported.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceCompartmentId:
                     description: The OCID of the compartment that contains the target
                       resource.
@@ -714,7 +713,8 @@ spec:
                   validateAssignmentTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Assignment. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -845,14 +845,14 @@ spec:
                     description: (Updatable) Defined tags for this resource. Each
                       key is predefined and scoped to a namespace.
                     type: object
-                    x-kubernetes-map-type: granular
                   detachmentDescription:
                     description: description containing reason for releasing of OperatorControl.
                     type: string
                   errorCode:
                     description: The code identifying the error occurred during Assignment
                       operation.
-                    type: number
+                    format: int64
+                    type: integer
                   errorMessage:
                     description: The message describing the error occurred during
                       Assignment operation.
@@ -864,7 +864,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the operator control assignment.
                     type: string
@@ -910,7 +909,8 @@ spec:
                   remoteSyslogServerPort:
                     description: (Updatable) The listening port of the remote syslog
                       server. The port range is 0 - 65535. Only TCP supported.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceCompartmentId:
                     description: The OCID of the compartment that contains the target
                       resource.
@@ -952,7 +952,8 @@ spec:
                   validateAssignmentTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Assignment. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

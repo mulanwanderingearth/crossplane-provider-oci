@@ -58,7 +58,7 @@ type NetworkFirewallPolicyApplicationGroupObservation struct {
 	ParentResourceID *string `json:"parentResourceId,omitempty" tf:"parent_resource_id,omitempty"`
 
 	// Count of total applications in the given application group.
-	TotalApps *float64 `json:"totalApps,omitempty" tf:"total_apps,omitempty"`
+	TotalApps *int64 `json:"totalApps,omitempty" tf:"total_apps,omitempty"`
 }
 
 type NetworkFirewallPolicyApplicationGroupParameters struct {

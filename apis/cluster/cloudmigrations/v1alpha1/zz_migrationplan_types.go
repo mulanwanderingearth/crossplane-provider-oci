@@ -61,7 +61,7 @@ type CostToMigrateInitParameters struct {
 type CostToMigrateObservation struct {
 
 	// Number of assets used in this calculation.
-	AssetCount *float64 `json:"assetCount,omitempty" tf:"asset_count,omitempty"`
+	AssetCount *int64 `json:"assetCount,omitempty" tf:"asset_count,omitempty"`
 
 	// Currency code as defined by ISO-4217.
 	CurrencyCode *string `json:"currencyCode,omitempty" tf:"currency_code,omitempty"`
@@ -82,7 +82,7 @@ type CurrentMonthlyCostInitParameters struct {
 type CurrentMonthlyCostObservation struct {
 
 	// Number of assets used in this calculation.
-	AssetCount *float64 `json:"assetCount,omitempty" tf:"asset_count,omitempty"`
+	AssetCount *int64 `json:"assetCount,omitempty" tf:"asset_count,omitempty"`
 
 	// Current monthly compute costs.
 	ComputeAmount *float64 `json:"computeAmount,omitempty" tf:"compute_amount,omitempty"`
@@ -112,15 +112,13 @@ type MigrationPlanInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Migration plan identifier
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the associated migration.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudmigrations/v1alpha1.Migration
@@ -158,22 +156,19 @@ type MigrationPlanInitParameters struct {
 type MigrationPlanObservation struct {
 
 	// Limits of the resources that are needed for migration. Example: {"BlockVolume": 2, "VCN": 1}
-	// +mapType=granular
-	CalculatedLimits map[string]*string `json:"calculatedLimits,omitempty" tf:"calculated_limits,omitempty"`
+	CalculatedLimits map[string]string `json:"calculatedLimits,omitempty" tf:"calculated_limits,omitempty"`
 
 	// (Updatable) Compartment identifier
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Migration plan identifier
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The unique Oracle ID (OCID) that is immutable on creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -200,8 +195,7 @@ type MigrationPlanObservation struct {
 	Strategies []StrategiesObservation `json:"strategies,omitempty" tf:"strategies,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) List of target environments.
 	TargetEnvironments []TargetEnvironmentsObservation `json:"targetEnvironments,omitempty" tf:"target_environments,omitempty"`
@@ -230,8 +224,7 @@ type MigrationPlanParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Migration plan identifier
 	// +kubebuilder:validation:Optional
@@ -239,8 +232,7 @@ type MigrationPlanParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. It exists only for cross-compatibility. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the associated migration.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudmigrations/v1alpha1.Migration
@@ -297,7 +289,7 @@ type MigrationPlanStatsObservation struct {
 	TotalEstimatedCost []TotalEstimatedCostObservation `json:"totalEstimatedCost,omitempty" tf:"total_estimated_cost,omitempty"`
 
 	// The total count of VMs in migration
-	VMCount *float64 `json:"vmCount,omitempty" tf:"vm_count,omitempty"`
+	VMCount *int64 `json:"vmCount,omitempty" tf:"vm_count,omitempty"`
 }
 
 type MigrationPlanStatsParameters struct {
@@ -433,8 +425,7 @@ type TargetEnvironmentsInitParameters struct {
 	MsLicense *string `json:"msLicense,omitempty" tf:"ms_license,omitempty"`
 
 	// (Applicable when target_environment_type=OLVM_TARGET_ENV) (Updatable) OLVM OS type to inventory asset id of the template
-	// +mapType=granular
-	OlvmTemplates map[string]*string `json:"olvmTemplates,omitempty" tf:"olvm_templates,omitempty"`
+	OlvmTemplates map[string]string `json:"olvmTemplates,omitempty" tf:"olvm_templates,omitempty"`
 
 	// (Updatable) Preferred VM shape type provided by the customer.
 	PreferredShapeType *string `json:"preferredShapeType,omitempty" tf:"preferred_shape_type,omitempty"`
@@ -493,8 +484,7 @@ type TargetEnvironmentsObservation struct {
 	MsLicense *string `json:"msLicense,omitempty" tf:"ms_license,omitempty"`
 
 	// (Applicable when target_environment_type=OLVM_TARGET_ENV) (Updatable) OLVM OS type to inventory asset id of the template
-	// +mapType=granular
-	OlvmTemplates map[string]*string `json:"olvmTemplates,omitempty" tf:"olvm_templates,omitempty"`
+	OlvmTemplates map[string]string `json:"olvmTemplates,omitempty" tf:"olvm_templates,omitempty"`
 
 	// (Updatable) Preferred VM shape type provided by the customer.
 	PreferredShapeType *string `json:"preferredShapeType,omitempty" tf:"preferred_shape_type,omitempty"`
@@ -549,8 +539,7 @@ type TargetEnvironmentsParameters struct {
 
 	// (Applicable when target_environment_type=OLVM_TARGET_ENV) (Updatable) OLVM OS type to inventory asset id of the template
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	OlvmTemplates map[string]*string `json:"olvmTemplates,omitempty" tf:"olvm_templates,omitempty"`
+	OlvmTemplates map[string]string `json:"olvmTemplates,omitempty" tf:"olvm_templates,omitempty"`
 
 	// (Updatable) Preferred VM shape type provided by the customer.
 	// +kubebuilder:validation:Optional

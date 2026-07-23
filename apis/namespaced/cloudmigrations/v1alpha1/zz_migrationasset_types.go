@@ -96,8 +96,7 @@ type MigrationAssetObservation struct {
 	DependedOnBy []*string `json:"dependedOnBy,omitempty" tf:"depended_on_by,omitempty"`
 
 	// Mapping of source disk id to destination disk details
-	// +mapType=granular
-	DestinationDisks map[string]*string `json:"destinationDisks,omitempty" tf:"destination_disks,omitempty"`
+	DestinationDisks map[string]string `json:"destinationDisks,omitempty" tf:"destination_disks,omitempty"`
 
 	// (Updatable) A user-friendly name. If empty, then source asset name will be used. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -136,8 +135,7 @@ type MigrationAssetObservation struct {
 	SnapShotBucketName *string `json:"snapShotBucketName,omitempty" tf:"snap_shot_bucket_name,omitempty"`
 
 	// Key-value pair representing disks ID mapped to the OCIDs of replicated or hydration server volume snapshots. Example: {"bar-key": "value"}
-	// +mapType=granular
-	Snapshots map[string]*string `json:"snapshots,omitempty" tf:"snapshots,omitempty"`
+	Snapshots map[string]string `json:"snapshots,omitempty" tf:"snapshots,omitempty"`
 
 	// OCID that is referenced to an asset for an inventory.
 	SourceAssetID *string `json:"sourceAssetId,omitempty" tf:"source_asset_id,omitempty"`
@@ -240,8 +238,7 @@ type MigrationAssetParameters struct {
 type ReplicationLocationDetailInitParameters struct {
 
 	// Properties for each of the replication location types
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The type of replication location
 	ReplicationLocationType *string `json:"replicationLocationType,omitempty" tf:"replication_location_type,omitempty"`
@@ -250,8 +247,7 @@ type ReplicationLocationDetailInitParameters struct {
 type ReplicationLocationDetailObservation struct {
 
 	// Properties for each of the replication location types
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The type of replication location
 	ReplicationLocationType *string `json:"replicationLocationType,omitempty" tf:"replication_location_type,omitempty"`
@@ -261,8 +257,7 @@ type ReplicationLocationDetailParameters struct {
 
 	// Properties for each of the replication location types
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The type of replication location
 	// +kubebuilder:validation:Optional

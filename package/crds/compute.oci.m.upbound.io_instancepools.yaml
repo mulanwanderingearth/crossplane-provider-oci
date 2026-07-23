@@ -152,7 +152,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -166,7 +165,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   instanceConfigurationId:
                     description: (Updatable) The OCID of the instance configuration
                       associated with the instance pool.
@@ -303,7 +301,8 @@ spec:
                                       description: (Updatable) The timeout in seconds
                                         for pre-termination action for an instance
                                         pool(min = 0 sec, max = 7200 secs).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -492,7 +491,8 @@ spec:
                         port:
                           description: The port value to use when creating the backend
                             set.
-                          type: number
+                          format: int64
+                          type: integer
                         vnicSelection:
                           description: Indicates which VNIC on each instance in the
                             pool should be used to associate with the load balancer.
@@ -946,7 +946,8 @@ spec:
                       size may differ from the configured size if it is associated
                       with an autoscaling configuration, instance pool's actual size
                       will be reflected in this size attribute.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: (Updatable) The target state for the instance pool
                       update operation (ignored at create time and should not be set).
@@ -1059,7 +1060,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -1073,7 +1073,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   instanceConfigurationId:
                     description: (Updatable) The OCID of the instance configuration
                       associated with the instance pool.
@@ -1210,7 +1209,8 @@ spec:
                                       description: (Updatable) The timeout in seconds
                                         for pre-termination action for an instance
                                         pool(min = 0 sec, max = 7200 secs).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -1399,7 +1399,8 @@ spec:
                         port:
                           description: The port value to use when creating the backend
                             set.
-                          type: number
+                          format: int64
+                          type: integer
                         vnicSelection:
                           description: Indicates which VNIC on each instance in the
                             pool should be used to associate with the load balancer.
@@ -1853,7 +1854,8 @@ spec:
                       size may differ from the configured size if it is associated
                       with an autoscaling configuration, instance pool's actual size
                       will be reflected in this size attribute.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: (Updatable) The target state for the instance pool
                       update operation (ignored at create time and should not be set).
@@ -1938,7 +1940,8 @@ spec:
                     description: The number of actual instances in the instance pool
                       on the cloud. This attribute will be different when instance
                       pool is used along with autoScaling Configuration.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the compartment containing
                       the instance pool.
@@ -1946,7 +1949,8 @@ spec:
                   currentSize:
                     description: Count of instance in running state associated to
                       the Instance Pool.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -1954,7 +1958,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -1968,7 +1971,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the instance pool.
                     type: string
@@ -2026,7 +2028,8 @@ spec:
                                       description: (Updatable) The timeout in seconds
                                         for pre-termination action for an instance
                                         pool(min = 0 sec, max = 7200 secs).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -2058,7 +2061,8 @@ spec:
                         port:
                           description: The port value to use when creating the backend
                             set.
-                          type: number
+                          format: int64
+                          type: integer
                         state:
                           description: (Updatable) The target state for the instance
                             pool update operation (ignored at create time and should
@@ -2189,7 +2193,8 @@ spec:
                       size may differ from the configured size if it is associated
                       with an autoscaling configuration, instance pool's actual size
                       will be reflected in this size attribute.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: (Updatable) The target state for the instance pool
                       update operation (ignored at create time and should not be set).

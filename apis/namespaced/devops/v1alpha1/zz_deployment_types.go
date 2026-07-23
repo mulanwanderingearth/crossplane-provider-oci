@@ -338,8 +338,7 @@ type DeploymentExecutionProgressInitParameters struct {
 type DeploymentExecutionProgressObservation struct {
 
 	// Map of stage OCIDs to deploy stage execution progress model.
-	// +mapType=granular
-	DeployStageExecutionProgress map[string]*string `json:"deployStageExecutionProgress,omitempty" tf:"deploy_stage_execution_progress,omitempty"`
+	DeployStageExecutionProgress map[string]string `json:"deployStageExecutionProgress,omitempty" tf:"deploy_stage_execution_progress,omitempty"`
 
 	// Time when the step finished.
 	TimeFinished *string `json:"timeFinished,omitempty" tf:"time_finished,omitempty"`
@@ -354,8 +353,7 @@ type DeploymentExecutionProgressParameters struct {
 type DeploymentInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when deployment_type=PIPELINE_DEPLOYMENT | SINGLE_STAGE_DEPLOYMENT) Specifies the list of artifact override arguments at the time of deployment.
 	DeployArtifactOverrideArguments []DeployArtifactOverrideArgumentsInitParameters `json:"deployArtifactOverrideArguments,omitempty" tf:"deploy_artifact_override_arguments,omitempty"`
@@ -399,8 +397,7 @@ type DeploymentInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Specifies the OCID of the previous deployment to be redeployed.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/devops/v1alpha1.Deployment
@@ -425,8 +422,7 @@ type DeploymentObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when deployment_type=PIPELINE_DEPLOYMENT | SINGLE_STAGE_DEPLOYMENT) Specifies the list of artifact override arguments at the time of deployment.
 	DeployArtifactOverrideArguments []DeployArtifactOverrideArgumentsObservation `json:"deployArtifactOverrideArguments,omitempty" tf:"deploy_artifact_override_arguments,omitempty"`
@@ -459,8 +455,7 @@ type DeploymentObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the predecessor stage. If a stage is the first stage in the pipeline, then the ID is the pipeline's OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -478,8 +473,7 @@ type DeploymentObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. See Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Time the deployment was created. Format defined by RFC3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -495,8 +489,7 @@ type DeploymentParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when deployment_type=PIPELINE_DEPLOYMENT | SINGLE_STAGE_DEPLOYMENT) Specifies the list of artifact override arguments at the time of deployment.
 	// +kubebuilder:validation:Optional
@@ -548,8 +541,7 @@ type DeploymentParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Specifies the OCID of the previous deployment to be redeployed.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/devops/v1alpha1.Deployment

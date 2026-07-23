@@ -77,7 +77,8 @@ spec:
                   blockVolumesPerformance:
                     description: (Applicable when type=INSTANCE) (Updatable) Performance
                       of the block volumes.
-                    type: number
+                    format: int64
+                    type: integer
                   isExcludedFromExecution:
                     description: (Updatable) A boolean indicating whether the asset
                       should be migrated.
@@ -286,7 +287,6 @@ spec:
                                   and scoped to a namespace. Example: {"foo-namespace.bar-key":
                                   "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   A user-friendly name. Does not have to be unique,
@@ -301,7 +301,6 @@ spec:
                                   predefined name, type or scope. It exists only for
                                   cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               hostnameLabel:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   The hostname for the VNIC's primary private IP.
@@ -598,7 +597,6 @@ spec:
                             and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             A user-friendly name. Does not have to be unique, and
@@ -623,7 +621,6 @@ spec:
                             name, type or scope. It exists only for cross-compatibility.
                             Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             The hostname for the VNIC's primary private IP. Used for
@@ -998,7 +995,8 @@ spec:
                   blockVolumesPerformance:
                     description: (Applicable when type=INSTANCE) (Updatable) Performance
                       of the block volumes.
-                    type: number
+                    format: int64
+                    type: integer
                   isExcludedFromExecution:
                     description: (Updatable) A boolean indicating whether the asset
                       should be migrated.
@@ -1207,7 +1205,6 @@ spec:
                                   and scoped to a namespace. Example: {"foo-namespace.bar-key":
                                   "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   A user-friendly name. Does not have to be unique,
@@ -1222,7 +1219,6 @@ spec:
                                   predefined name, type or scope. It exists only for
                                   cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               hostnameLabel:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   The hostname for the VNIC's primary private IP.
@@ -1519,7 +1515,6 @@ spec:
                             and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             A user-friendly name. Does not have to be unique, and
@@ -1544,7 +1539,6 @@ spec:
                             name, type or scope. It exists only for cross-compatibility.
                             Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             The hostname for the VNIC's primary private IP. Used for
@@ -2008,7 +2002,8 @@ spec:
                   blockVolumesPerformance:
                     description: (Applicable when type=INSTANCE) (Updatable) Performance
                       of the block volumes.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Applicable when type=INSTANCE) (Updatable) The OCID
                       of the compartment.
@@ -2183,7 +2178,6 @@ spec:
                           description: Mapping of source disk id to destination disk
                             details
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             A user-friendly name. Does not have to be unique, and
@@ -2223,7 +2217,6 @@ spec:
                                 description: Properties for each of the replication
                                   location types
                                 type: object
-                                x-kubernetes-map-type: granular
                               replicationLocationType:
                                 description: The type of replication location
                                 type: string
@@ -2242,7 +2235,6 @@ spec:
                             to the OCIDs of replicated or hydration server volume
                             snapshots. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         sourceAssetData:
                           additionalProperties:
                             type: string
@@ -2250,7 +2242,6 @@ spec:
                             keys and values scoped to a namespace. Example: {"bar-key":
                             "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         sourceAssetId:
                           description: OCID that is referenced to an asset for an
                             inventory.
@@ -2385,7 +2376,6 @@ spec:
                                   and scoped to a namespace. Example: {"foo-namespace.bar-key":
                                   "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   A user-friendly name. Does not have to be unique,
@@ -2400,7 +2390,6 @@ spec:
                                   predefined name, type or scope. It exists only for
                                   cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               hostnameLabel:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   The hostname for the VNIC's primary private IP.
@@ -2469,7 +2458,6 @@ spec:
                             and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             A user-friendly name. Does not have to be unique, and
@@ -2494,7 +2482,6 @@ spec:
                             name, type or scope. It exists only for cross-compatibility.
                             Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             The hostname for the VNIC's primary private IP. Used for
@@ -2729,7 +2716,6 @@ spec:
                                   and scoped to a namespace. Example: {"foo-namespace.bar-key":
                                   "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   A user-friendly name. Does not have to be unique,
@@ -2744,7 +2730,6 @@ spec:
                                   predefined name, type or scope. It exists only for
                                   cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               hostnameLabel:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   The hostname for the VNIC's primary private IP.
@@ -2813,7 +2798,6 @@ spec:
                             and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             A user-friendly name. Does not have to be unique, and
@@ -2838,7 +2822,6 @@ spec:
                             name, type or scope. It exists only for cross-compatibility.
                             Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             The hostname for the VNIC's primary private IP. Used for
@@ -3085,7 +3068,6 @@ spec:
                                   and scoped to a namespace. Example: {"foo-namespace.bar-key":
                                   "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   A user-friendly name. Does not have to be unique,
@@ -3100,7 +3082,6 @@ spec:
                                   predefined name, type or scope. It exists only for
                                   cross-compatibility. Example: {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               hostnameLabel:
                                 description: (Applicable when type=INSTANCE) (Updatable)
                                   The hostname for the VNIC's primary private IP.
@@ -3169,7 +3150,6 @@ spec:
                             and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             A user-friendly name. Does not have to be unique, and
@@ -3194,7 +3174,6 @@ spec:
                             name, type or scope. It exists only for cross-compatibility.
                             Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: (Applicable when type=INSTANCE) (Updatable)
                             The hostname for the VNIC's primary private IP. Used for

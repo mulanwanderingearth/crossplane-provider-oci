@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user defined description for the workspace.
                     type: string
@@ -269,7 +268,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isForceOperation:
                     type: boolean
                   isPrivateNetworkEnabled:
@@ -277,7 +275,8 @@ spec:
                       is enabled or disabled.
                     type: boolean
                   quiesceTimeout:
-                    type: number
+                    format: int64
+                    type: integer
                   registryCompartmentId:
                     description: DCMS Data Asset Registry Compartment Identifier
                     type: string
@@ -619,7 +618,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user defined description for the workspace.
                     type: string
@@ -728,7 +726,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isForceOperation:
                     type: boolean
                   isPrivateNetworkEnabled:
@@ -736,7 +733,8 @@ spec:
                       is enabled or disabled.
                     type: boolean
                   quiesceTimeout:
-                    type: number
+                    format: int64
+                    type: integer
                   registryCompartmentId:
                     description: DCMS Data Asset Registry Compartment Identifier
                     type: string
@@ -1087,7 +1085,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user defined description for the workspace.
                     type: string
@@ -1120,7 +1117,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: A system-generated and immutable identifier assigned
                       to the workspace upon creation.
@@ -1132,7 +1128,8 @@ spec:
                       is enabled or disabled.
                     type: boolean
                   quiesceTimeout:
-                    type: number
+                    format: int64
+                    type: integer
                   registryCompartmentId:
                     description: DCMS Data Asset Registry Compartment Identifier
                     type: string

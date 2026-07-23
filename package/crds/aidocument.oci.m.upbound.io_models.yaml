@@ -244,7 +244,6 @@ spec:
                       key is predefined and scoped to a namespace. For example: {"foo-namespace":
                       {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) An optional description of the model.
                     type: string
@@ -259,11 +258,11 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inferenceUnits:
                     description: (Updatable) Number of replicas required for this
                       model.
-                    type: number
+                    format: int64
+                    type: integer
                   isQuickMode:
                     description: Set to true when experimenting with a new model type
                       or dataset, so the model training is quick, with a predefined
@@ -929,7 +928,6 @@ spec:
                       key is predefined and scoped to a namespace. For example: {"foo-namespace":
                       {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) An optional description of the model.
                     type: string
@@ -944,11 +942,11 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inferenceUnits:
                     description: (Updatable) Number of replicas required for this
                       model.
-                    type: number
+                    format: int64
+                    type: integer
                   isQuickMode:
                     description: Set to true when experimenting with a new model type
                       or dataset, so the model training is quick, with a predefined
@@ -1507,7 +1505,6 @@ spec:
                       key is predefined and scoped to a namespace. For example: {"foo-namespace":
                       {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) An optional description of the model.
                     type: string
@@ -1522,14 +1519,14 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: A unique identifier that is immutable after creation.
                     type: string
                   inferenceUnits:
                     description: (Updatable) Number of replicas required for this
                       model.
-                    type: number
+                    format: int64
+                    type: integer
                   isComposedModel:
                     description: Set to true when the model is created by using multiple
                       key value extraction models.
@@ -1593,15 +1590,18 @@ spec:
                               testSampleCount:
                                 description: Number of samples used for testing the
                                   model.
-                                type: number
+                                format: int64
+                                type: integer
                               trainingSampleCount:
                                 description: Number of samples used for training the
                                   model.
-                                type: number
+                                format: int64
+                                type: integer
                               validationSampleCount:
                                 description: Number of samples used for validating
                                   the model.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         labelMetricsReport:
@@ -1633,7 +1633,8 @@ spec:
                                 type: array
                               documentCount:
                                 description: Total test documents in the label.
-                                type: number
+                                format: int64
+                                type: integer
                               label:
                                 description: Label name
                                 type: string
@@ -1677,7 +1678,8 @@ spec:
                                 type: array
                               documentCount:
                                 description: Total test documents in the label.
-                                type: number
+                                format: int64
+                                type: integer
                               meanAveragePrecision:
                                 description: Mean average precision under different
                                   thresholds
@@ -1725,7 +1727,6 @@ spec:
                       are scoped to namespaces. For example: {"orcl-cloud": {"free-tier-retained":
                       "true"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   tenancyId:
                     description: The tenancy id of the model.
                     type: string

@@ -435,7 +435,8 @@ spec:
                           type: array
                         objectCount:
                           description: Number of database objects to migrate.
-                          type: number
+                          format: int64
+                          type: integer
                         resultType:
                           description: Pre-Migration advisor result.
                           type: string
@@ -451,23 +452,28 @@ spec:
                         blockerResultsTotalCount:
                           description: Number of BLOCKER results in the extended advisor
                             report.
-                          type: number
+                          format: int64
+                          type: integer
                         fatalResultsTotalCount:
                           description: Number of FATAL results in the extended advisor
                             report.
-                          type: number
+                          format: int64
+                          type: integer
                         informationalResultsTotalCount:
                           description: Number of INFORMATIONAL results in the extended
                             advisor report.
-                          type: number
+                          format: int64
+                          type: integer
                         passResultsTotalCount:
                           description: Number of PASS results in the extended advisor
                             report.
-                          type: number
+                          format: int64
+                          type: integer
                         warningResultsTotalCount:
                           description: Number of WARNING results in the extended advisor
                             report.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object

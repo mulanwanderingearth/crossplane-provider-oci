@@ -152,7 +152,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   discoveryClient:
                     description: Client who submits discovery job.
                     type: string
@@ -186,7 +185,6 @@ spec:
                                               type: string
                                             description: Key/Value pair of Property
                                             type: object
-                                            x-kubernetes-map-type: granular
                                         type: object
                                       type: array
                                   type: object
@@ -205,7 +203,6 @@ spec:
                                   type: string
                                 description: Key/Value pair of Property
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         resourceName:
@@ -223,7 +220,6 @@ spec:
                                   type: string
                                 description: Key/Value pair of Property
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                       type: object
@@ -240,7 +236,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shouldPropagateTagsToDiscoveredResources:
                     description: If this parameter set to true, the specified tags
                       will be applied  to all resources discovered in the current
@@ -352,7 +347,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   discoveryClient:
                     description: Client who submits discovery job.
                     type: string
@@ -386,7 +380,6 @@ spec:
                                               type: string
                                             description: Key/Value pair of Property
                                             type: object
-                                            x-kubernetes-map-type: granular
                                         type: object
                                       type: array
                                   type: object
@@ -405,7 +398,6 @@ spec:
                                   type: string
                                 description: Key/Value pair of Property
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         resourceName:
@@ -423,7 +415,6 @@ spec:
                                   type: string
                                 description: Key/Value pair of Property
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                       type: object
@@ -440,7 +431,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shouldPropagateTagsToDiscoveredResources:
                     description: If this parameter set to true, the specified tags
                       will be applied  to all resources discovered in the current
@@ -527,7 +517,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   discoveryClient:
                     description: Client who submits discovery job.
                     type: string
@@ -561,7 +550,6 @@ spec:
                                               type: string
                                             description: Key/Value pair of Property
                                             type: object
-                                            x-kubernetes-map-type: granular
                                         type: object
                                       type: array
                                   type: object
@@ -580,7 +568,6 @@ spec:
                                   type: string
                                 description: Key/Value pair of Property
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         resourceName:
@@ -598,7 +585,6 @@ spec:
                                   type: string
                                 description: Key/Value pair of Property
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                       type: object
@@ -615,7 +601,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of Discovery job
                     type: string
@@ -641,7 +626,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   tenantId:
                     description: The OCID of Tenant
                     type: string

@@ -62,7 +62,7 @@ type ActionGroupsInitParameters struct {
 	RunbookVersionNameSelector *v1.NamespacedSelector `json:"runbookVersionNameSelector,omitempty" tf:"-"`
 
 	// (Updatable) Sequence of the Action Group. Action groups will be executed in a seuential order. All Action Groups having the same sequence will be executed parallely. If no value is provided a default value of 1 will be given.
-	Sequence *float64 `json:"sequence,omitempty" tf:"sequence,omitempty"`
+	Sequence *int64 `json:"sequence,omitempty" tf:"sequence,omitempty"`
 }
 
 type ActionGroupsObservation struct {
@@ -83,7 +83,7 @@ type ActionGroupsObservation struct {
 	RunbookVersionName *string `json:"runbookVersionName,omitempty" tf:"runbook_version_name,omitempty"`
 
 	// (Updatable) Sequence of the Action Group. Action groups will be executed in a seuential order. All Action Groups having the same sequence will be executed parallely. If no value is provided a default value of 1 will be given.
-	Sequence *float64 `json:"sequence,omitempty" tf:"sequence,omitempty"`
+	Sequence *int64 `json:"sequence,omitempty" tf:"sequence,omitempty"`
 }
 
 type ActionGroupsParameters struct {
@@ -140,7 +140,7 @@ type ActionGroupsParameters struct {
 
 	// (Updatable) Sequence of the Action Group. Action groups will be executed in a seuential order. All Action Groups having the same sequence will be executed parallely. If no value is provided a default value of 1 will be given.
 	// +kubebuilder:validation:Optional
-	Sequence *float64 `json:"sequence,omitempty" tf:"sequence,omitempty"`
+	Sequence *int64 `json:"sequence,omitempty" tf:"sequence,omitempty"`
 }
 
 type ArgumentsContentInitParameters struct {
@@ -456,8 +456,7 @@ type SchedulerDefinitionInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. To provide some insight about the resource. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -466,8 +465,7 @@ type SchedulerDefinitionInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Runbooks.
 	RunBooks []RunBooksInitParameters `json:"runBooks,omitempty" tf:"run_books,omitempty"`
@@ -485,17 +483,16 @@ type SchedulerDefinitionObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Count of Action Groups affected by the Schedule.
-	CountOfAffectedActionGroups *float64 `json:"countOfAffectedActionGroups,omitempty" tf:"count_of_affected_action_groups,omitempty"`
+	CountOfAffectedActionGroups *int64 `json:"countOfAffectedActionGroups,omitempty" tf:"count_of_affected_action_groups,omitempty"`
 
 	// Count of Resources affected by the Schedule.
-	CountOfAffectedResources *float64 `json:"countOfAffectedResources,omitempty" tf:"count_of_affected_resources,omitempty"`
+	CountOfAffectedResources *int64 `json:"countOfAffectedResources,omitempty" tf:"count_of_affected_resources,omitempty"`
 
 	// Count of Targets affected by the Schedule.
-	CountOfAffectedTargets *float64 `json:"countOfAffectedTargets,omitempty" tf:"count_of_affected_targets,omitempty"`
+	CountOfAffectedTargets *int64 `json:"countOfAffectedTargets,omitempty" tf:"count_of_affected_targets,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. To provide some insight about the resource. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -504,8 +501,7 @@ type SchedulerDefinitionObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -532,8 +528,7 @@ type SchedulerDefinitionObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time this resource was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -566,8 +561,7 @@ type SchedulerDefinitionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. To provide some insight about the resource. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -579,8 +573,7 @@ type SchedulerDefinitionParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Runbooks.
 	// +kubebuilder:validation:Optional

@@ -250,7 +250,8 @@ spec:
                             properties:
                               inParamPosition:
                                 description: (Updatable) Position of IN parameter
-                                type: number
+                                format: int64
+                                type: integer
                               inParamValue:
                                 description: (Updatable) Value of IN parameter
                                 type: string
@@ -282,7 +283,8 @@ spec:
                                   OUT parameter. The value of this property is ignored
                                   during update, if "outParamType" is set to NO_OUT_PARAM
                                   value.
-                                type: number
+                                format: int64
+                                type: integer
                               outParamType:
                                 description: (Updatable) SQL Type of PL/SQL procedure
                                   OUT parameter. During the update, to completely
@@ -543,7 +545,8 @@ spec:
                             properties:
                               inParamPosition:
                                 description: (Updatable) Position of IN parameter
-                                type: number
+                                format: int64
+                                type: integer
                               inParamValue:
                                 description: (Updatable) Value of IN parameter
                                 type: string
@@ -575,7 +578,8 @@ spec:
                                   OUT parameter. The value of this property is ignored
                                   during update, if "outParamType" is set to NO_OUT_PARAM
                                   value.
-                                type: number
+                                format: int64
+                                type: integer
                               outParamType:
                                 description: (Updatable) SQL Type of PL/SQL procedure
                                   OUT parameter. During the update, to completely
@@ -802,7 +806,8 @@ spec:
                   enabledOnResourcesCount:
                     description: Count of resources on which this metric extension
                       is enabled.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     description: The OCID of Metric Extension resource
                     type: string
@@ -892,7 +897,8 @@ spec:
                             properties:
                               inParamPosition:
                                 description: (Updatable) Position of IN parameter
-                                type: number
+                                format: int64
+                                type: integer
                               inParamValue:
                                 description: (Updatable) Value of IN parameter
                                 type: string
@@ -924,7 +930,8 @@ spec:
                                   OUT parameter. The value of this property is ignored
                                   during update, if "outParamType" is set to NO_OUT_PARAM
                                   value.
-                                type: number
+                                format: int64
+                                type: integer
                               outParamType:
                                 description: (Updatable) SQL Type of PL/SQL procedure
                                   OUT parameter. During the update, to completely

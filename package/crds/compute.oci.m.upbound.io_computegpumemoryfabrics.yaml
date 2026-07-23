@@ -238,7 +238,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -252,7 +251,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   memoryFabricPreferences:
                     description: (Updatable) The preference object specified by customer.
                       Contains customerDesiredFirmwareBundleId, fabricRecycleLevel.
@@ -460,7 +458,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -474,7 +471,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   memoryFabricPreferences:
                     description: (Updatable) The preference object specified by customer.
                       Contains customerDesiredFirmwareBundleId, fabricRecycleLevel.
@@ -563,7 +559,6 @@ spec:
                     description: Additional data that can be exposed to the customer.
                       Right now it will include the switch tray ids.
                     type: object
-                    x-kubernetes-map-type: granular
                   availableHostCount:
                     description: The total number of available bare metal hosts located
                       in this compute GPU memory fabric.
@@ -600,7 +595,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -624,7 +618,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   healthyHostCount:
                     description: The total number of healthy bare metal hosts located
                       in this compute GPU memory fabric.
@@ -663,7 +656,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   targetFirmwareBundleId:
                     description: The OCID for targeted firmware bundle
                     type: string

@@ -161,7 +161,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -175,7 +174,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   instanceDetails:
                     items:
                       properties:
@@ -302,7 +300,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -317,7 +314,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     isAutoTuneEnabled:
                                       description: (Applicable when instance_type=compute)
                                         Specifies whether the auto-tune performance
@@ -893,7 +889,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -908,7 +903,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     hostnameLabel:
                                       description: (Applicable when instance_type=compute)
                                         The hostname for the VNIC's primary private
@@ -1131,7 +1125,6 @@ spec:
                                         ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR":
                                         {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     skipSourceDestCheck:
                                       description: (Applicable when instance_type=compute)
                                         Whether the source/destination check is disabled
@@ -1323,7 +1316,6 @@ spec:
                                   For more information, see Resource Tags.  Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Updatable) A user-friendly name. Does
                                   not have to be unique, and it's changeable. Avoid
@@ -1337,7 +1329,6 @@ spec:
                                   They serve the same purpose and functionality as
                                   fields in the metadata object.
                                 type: object
-                                x-kubernetes-map-type: granular
                               faultDomain:
                                 description: (Applicable when instance_type=compute)
                                   A fault domain is a grouping of hardware and infrastructure
@@ -1358,7 +1349,6 @@ spec:
                                   information, see Resource Tags.  Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               instanceOptions:
                                 description: (Applicable when instance_type=compute)
                                   Optional mutable instance options. As a part of
@@ -1455,7 +1445,6 @@ spec:
                                   objects (whereas metadata fields are string/string
                                   maps only).
                                 type: object
-                                x-kubernetes-map-type: granular
                               placementConstraintDetails:
                                 description: (Applicable when instance_type=compute)
                                   The details for providing placement constraints.
@@ -1570,7 +1559,6 @@ spec:
                                         Instance Platform Configuration Configuration
                                         Map for flexible setting input.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     isAccessControlServiceEnabled:
                                       description: (Applicable when type=AMD_MILAN_BM
                                         | AMD_MILAN_BM_GPU | AMD_ROME_BM | AMD_ROME_BM_GPU
@@ -1631,7 +1619,8 @@ spec:
                                         number of cores, the system rounds up the
                                         number of cores across processors and provisions
                                         an instance with a whole number of cores.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     type:
                                       description: The type of volume. The only supported
                                         values are "iscsi" and "paravirtualized"
@@ -1678,7 +1667,6 @@ spec:
                                   resources.  Example: {"Oracle-DataSecurity-ZPR":
                                   {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               shape:
                                 description: that you specify. If you don't provide
                                   the parameter, the default values for the shape
@@ -1705,7 +1693,8 @@ spec:
                                         the value must be null (if specified);  any
                                         non-null value for a non-DenseLV shape results
                                         in an error.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     memoryInGbs:
                                       description: (Applicable when instance_type=compute)
                                         The total amount of memory available to the
@@ -1715,7 +1704,8 @@ spec:
                                       description: (Applicable when instance_type=compute)
                                         The number of NVMe drives to be used for storage.
                                         A single drive has 6.8 TB available.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     ocpus:
                                       description: (Applicable when instance_type=compute)
                                         The total number of OCPUs available to the
@@ -1733,7 +1723,8 @@ spec:
                                         be calculated based on this value and the
                                         actual hardware. This must be a multiple of
                                         2.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourceDetails:
@@ -1935,7 +1926,6 @@ spec:
                                               a namespace. For more information, see
                                               Resource Tags.
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           operatingSystem:
                                             description: '(Applicable when source_type=image)
                                               The image''s operating system.  Example:
@@ -2174,7 +2164,6 @@ spec:
                                               information, see Resource Tags.  Example:
                                               {"Operations.CostCenter": "42"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           displayName:
                                             description: (Updatable) A user-friendly
                                               name. Does not have to be unique, and
@@ -2191,7 +2180,6 @@ spec:
                                               see Resource Tags.  Example: {"Department":
                                               "Finance"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           isAutoTuneEnabled:
                                             description: (Applicable when instance_type=compute)
                                               Specifies whether the auto-tune performance
@@ -2780,7 +2768,6 @@ spec:
                                               information, see Resource Tags.  Example:
                                               {"Operations.CostCenter": "42"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           displayName:
                                             description: (Updatable) A user-friendly
                                               name. Does not have to be unique, and
@@ -2797,7 +2784,6 @@ spec:
                                               see Resource Tags.  Example: {"Department":
                                               "Finance"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           hostnameLabel:
                                             description: (Applicable when instance_type=compute)
                                               The hostname for the VNIC's primary
@@ -3027,7 +3013,6 @@ spec:
                                               {"Oracle-DataSecurity-ZPR": {"MaxEgressCount":
                                               {"value":"42","mode":"audit"}}}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           skipSourceDestCheck:
                                             description: (Applicable when instance_type=compute)
                                               Whether the source/destination check
@@ -3223,7 +3208,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -3237,7 +3221,6 @@ spec:
                                         provide. They serve the same purpose and functionality
                                         as fields in the metadata object.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     faultDomain:
                                       description: (Applicable when instance_type=compute)
                                         A fault domain is a grouping of hardware and
@@ -3259,7 +3242,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     instanceOptions:
                                       description: (Applicable when instance_type=compute)
                                         Optional mutable instance options. As a part
@@ -3358,7 +3340,6 @@ spec:
                                         JSON objects (whereas metadata fields are
                                         string/string maps only).
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     placementConstraintDetails:
                                       description: (Applicable when instance_type=compute)
                                         The details for providing placement constraints.
@@ -3531,7 +3512,8 @@ spec:
                                               the system rounds up the number of cores
                                               across processors and provisions an
                                               instance with a whole number of cores.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           type:
                                             description: The type of volume. The only
                                               supported values are "iscsi" and "paravirtualized"
@@ -3581,7 +3563,6 @@ spec:
                                         ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR":
                                         {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     shape:
                                       description: that you specify. If you don't
                                         provide the parameter, the default values
@@ -3611,7 +3592,8 @@ spec:
                                               be null (if specified);  any non-null
                                               value for a non-DenseLV shape results
                                               in an error.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           memoryInGbs:
                                             description: (Applicable when instance_type=compute)
                                               The total amount of memory available
@@ -3622,7 +3604,8 @@ spec:
                                               The number of NVMe drives to be used
                                               for storage. A single drive has 6.8
                                               TB available.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           ocpus:
                                             description: (Applicable when instance_type=compute)
                                               The total number of OCPUs available
@@ -3641,7 +3624,8 @@ spec:
                                               of OCPUs will be calculated based on
                                               this value and the actual hardware.
                                               This must be a multiple of 2.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     sourceDetails:
@@ -3848,7 +3832,6 @@ spec:
                                                     scoped to a namespace. For more
                                                     information, see Resource Tags.
                                                   type: object
-                                                  x-kubernetes-map-type: granular
                                                 operatingSystem:
                                                   description: '(Applicable when source_type=image)
                                                     The image''s operating system.  Example:
@@ -3923,7 +3906,6 @@ spec:
                                               information, see Resource Tags.  Example:
                                               {"Operations.CostCenter": "42"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           displayName:
                                             description: (Updatable) A user-friendly
                                               name. Does not have to be unique, and
@@ -3940,7 +3922,6 @@ spec:
                                               see Resource Tags.  Example: {"Department":
                                               "Finance"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           hostnameLabel:
                                             description: (Applicable when instance_type=compute)
                                               The hostname for the VNIC's primary
@@ -4170,7 +4151,6 @@ spec:
                                               {"Oracle-DataSecurity-ZPR": {"MaxEgressCount":
                                               {"value":"42","mode":"audit"}}}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           skipSourceDestCheck:
                                             description: (Applicable when instance_type=compute)
                                               Whether the source/destination check
@@ -4290,7 +4270,8 @@ spec:
                                         VNIC to one of these instances, you can specify
                                         which NIC the VNIC will use. For more information,
                                         see Virtual Network Interface Cards (VNICs).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -4338,7 +4319,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -4353,7 +4333,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     hostnameLabel:
                                       description: (Applicable when instance_type=compute)
                                         The hostname for the VNIC's primary private
@@ -4576,7 +4555,6 @@ spec:
                                         ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR":
                                         {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     skipSourceDestCheck:
                                       description: (Applicable when instance_type=compute)
                                         Whether the source/destination check is disabled
@@ -4693,7 +4671,8 @@ spec:
                                   instances, you can specify which NIC the VNIC will
                                   use. For more information, see Virtual Network Interface
                                   Cards (VNICs).
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -4885,7 +4864,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -4899,7 +4877,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   instanceDetails:
                     items:
                       properties:
@@ -5026,7 +5003,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -5041,7 +5017,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     isAutoTuneEnabled:
                                       description: (Applicable when instance_type=compute)
                                         Specifies whether the auto-tune performance
@@ -5617,7 +5592,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -5632,7 +5606,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     hostnameLabel:
                                       description: (Applicable when instance_type=compute)
                                         The hostname for the VNIC's primary private
@@ -5855,7 +5828,6 @@ spec:
                                         ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR":
                                         {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     skipSourceDestCheck:
                                       description: (Applicable when instance_type=compute)
                                         Whether the source/destination check is disabled
@@ -6047,7 +6019,6 @@ spec:
                                   For more information, see Resource Tags.  Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Updatable) A user-friendly name. Does
                                   not have to be unique, and it's changeable. Avoid
@@ -6061,7 +6032,6 @@ spec:
                                   They serve the same purpose and functionality as
                                   fields in the metadata object.
                                 type: object
-                                x-kubernetes-map-type: granular
                               faultDomain:
                                 description: (Applicable when instance_type=compute)
                                   A fault domain is a grouping of hardware and infrastructure
@@ -6082,7 +6052,6 @@ spec:
                                   information, see Resource Tags.  Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               instanceOptions:
                                 description: (Applicable when instance_type=compute)
                                   Optional mutable instance options. As a part of
@@ -6179,7 +6148,6 @@ spec:
                                   objects (whereas metadata fields are string/string
                                   maps only).
                                 type: object
-                                x-kubernetes-map-type: granular
                               placementConstraintDetails:
                                 description: (Applicable when instance_type=compute)
                                   The details for providing placement constraints.
@@ -6294,7 +6262,6 @@ spec:
                                         Instance Platform Configuration Configuration
                                         Map for flexible setting input.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     isAccessControlServiceEnabled:
                                       description: (Applicable when type=AMD_MILAN_BM
                                         | AMD_MILAN_BM_GPU | AMD_ROME_BM | AMD_ROME_BM_GPU
@@ -6355,7 +6322,8 @@ spec:
                                         number of cores, the system rounds up the
                                         number of cores across processors and provisions
                                         an instance with a whole number of cores.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     type:
                                       description: The type of volume. The only supported
                                         values are "iscsi" and "paravirtualized"
@@ -6402,7 +6370,6 @@ spec:
                                   resources.  Example: {"Oracle-DataSecurity-ZPR":
                                   {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               shape:
                                 description: that you specify. If you don't provide
                                   the parameter, the default values for the shape
@@ -6429,7 +6396,8 @@ spec:
                                         the value must be null (if specified);  any
                                         non-null value for a non-DenseLV shape results
                                         in an error.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     memoryInGbs:
                                       description: (Applicable when instance_type=compute)
                                         The total amount of memory available to the
@@ -6439,7 +6407,8 @@ spec:
                                       description: (Applicable when instance_type=compute)
                                         The number of NVMe drives to be used for storage.
                                         A single drive has 6.8 TB available.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     ocpus:
                                       description: (Applicable when instance_type=compute)
                                         The total number of OCPUs available to the
@@ -6457,7 +6426,8 @@ spec:
                                         be calculated based on this value and the
                                         actual hardware. This must be a multiple of
                                         2.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourceDetails:
@@ -6659,7 +6629,6 @@ spec:
                                               a namespace. For more information, see
                                               Resource Tags.
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           operatingSystem:
                                             description: '(Applicable when source_type=image)
                                               The image''s operating system.  Example:
@@ -6898,7 +6867,6 @@ spec:
                                               information, see Resource Tags.  Example:
                                               {"Operations.CostCenter": "42"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           displayName:
                                             description: (Updatable) A user-friendly
                                               name. Does not have to be unique, and
@@ -6915,7 +6883,6 @@ spec:
                                               see Resource Tags.  Example: {"Department":
                                               "Finance"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           isAutoTuneEnabled:
                                             description: (Applicable when instance_type=compute)
                                               Specifies whether the auto-tune performance
@@ -7504,7 +7471,6 @@ spec:
                                               information, see Resource Tags.  Example:
                                               {"Operations.CostCenter": "42"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           displayName:
                                             description: (Updatable) A user-friendly
                                               name. Does not have to be unique, and
@@ -7521,7 +7487,6 @@ spec:
                                               see Resource Tags.  Example: {"Department":
                                               "Finance"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           hostnameLabel:
                                             description: (Applicable when instance_type=compute)
                                               The hostname for the VNIC's primary
@@ -7751,7 +7716,6 @@ spec:
                                               {"Oracle-DataSecurity-ZPR": {"MaxEgressCount":
                                               {"value":"42","mode":"audit"}}}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           skipSourceDestCheck:
                                             description: (Applicable when instance_type=compute)
                                               Whether the source/destination check
@@ -7947,7 +7911,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -7961,7 +7924,6 @@ spec:
                                         provide. They serve the same purpose and functionality
                                         as fields in the metadata object.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     faultDomain:
                                       description: (Applicable when instance_type=compute)
                                         A fault domain is a grouping of hardware and
@@ -7983,7 +7945,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     instanceOptions:
                                       description: (Applicable when instance_type=compute)
                                         Optional mutable instance options. As a part
@@ -8082,7 +8043,6 @@ spec:
                                         JSON objects (whereas metadata fields are
                                         string/string maps only).
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     placementConstraintDetails:
                                       description: (Applicable when instance_type=compute)
                                         The details for providing placement constraints.
@@ -8255,7 +8215,8 @@ spec:
                                               the system rounds up the number of cores
                                               across processors and provisions an
                                               instance with a whole number of cores.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           type:
                                             description: The type of volume. The only
                                               supported values are "iscsi" and "paravirtualized"
@@ -8305,7 +8266,6 @@ spec:
                                         ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR":
                                         {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     shape:
                                       description: that you specify. If you don't
                                         provide the parameter, the default values
@@ -8335,7 +8295,8 @@ spec:
                                               be null (if specified);  any non-null
                                               value for a non-DenseLV shape results
                                               in an error.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           memoryInGbs:
                                             description: (Applicable when instance_type=compute)
                                               The total amount of memory available
@@ -8346,7 +8307,8 @@ spec:
                                               The number of NVMe drives to be used
                                               for storage. A single drive has 6.8
                                               TB available.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           ocpus:
                                             description: (Applicable when instance_type=compute)
                                               The total number of OCPUs available
@@ -8365,7 +8327,8 @@ spec:
                                               of OCPUs will be calculated based on
                                               this value and the actual hardware.
                                               This must be a multiple of 2.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     sourceDetails:
@@ -8572,7 +8535,6 @@ spec:
                                                     scoped to a namespace. For more
                                                     information, see Resource Tags.
                                                   type: object
-                                                  x-kubernetes-map-type: granular
                                                 operatingSystem:
                                                   description: '(Applicable when source_type=image)
                                                     The image''s operating system.  Example:
@@ -8647,7 +8609,6 @@ spec:
                                               information, see Resource Tags.  Example:
                                               {"Operations.CostCenter": "42"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           displayName:
                                             description: (Updatable) A user-friendly
                                               name. Does not have to be unique, and
@@ -8664,7 +8625,6 @@ spec:
                                               see Resource Tags.  Example: {"Department":
                                               "Finance"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           hostnameLabel:
                                             description: (Applicable when instance_type=compute)
                                               The hostname for the VNIC's primary
@@ -8894,7 +8854,6 @@ spec:
                                               {"Oracle-DataSecurity-ZPR": {"MaxEgressCount":
                                               {"value":"42","mode":"audit"}}}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           skipSourceDestCheck:
                                             description: (Applicable when instance_type=compute)
                                               Whether the source/destination check
@@ -9014,7 +8973,8 @@ spec:
                                         VNIC to one of these instances, you can specify
                                         which NIC the VNIC will use. For more information,
                                         see Virtual Network Interface Cards (VNICs).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -9062,7 +9022,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -9077,7 +9036,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     hostnameLabel:
                                       description: (Applicable when instance_type=compute)
                                         The hostname for the VNIC's primary private
@@ -9300,7 +9258,6 @@ spec:
                                         ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR":
                                         {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     skipSourceDestCheck:
                                       description: (Applicable when instance_type=compute)
                                         Whether the source/destination check is disabled
@@ -9417,7 +9374,8 @@ spec:
                                   instances, you can specify which NIC the VNIC will
                                   use. For more information, see Virtual Network Interface
                                   Cards (VNICs).
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -9622,7 +9580,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -9636,7 +9593,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the volume backup.
                     type: string
@@ -9766,7 +9722,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -9781,7 +9736,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     isAutoTuneEnabled:
                                       description: (Applicable when instance_type=compute)
                                         Specifies whether the auto-tune performance
@@ -9977,7 +9931,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -9992,7 +9945,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     hostnameLabel:
                                       description: (Applicable when instance_type=compute)
                                         The hostname for the VNIC's primary private
@@ -10062,7 +10014,6 @@ spec:
                                         ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR":
                                         {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     skipSourceDestCheck:
                                       description: (Applicable when instance_type=compute)
                                         Whether the source/destination check is disabled
@@ -10102,7 +10053,6 @@ spec:
                                   For more information, see Resource Tags.  Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               displayName:
                                 description: (Updatable) A user-friendly name. Does
                                   not have to be unique, and it's changeable. Avoid
@@ -10116,7 +10066,6 @@ spec:
                                   They serve the same purpose and functionality as
                                   fields in the metadata object.
                                 type: object
-                                x-kubernetes-map-type: granular
                               faultDomain:
                                 description: (Applicable when instance_type=compute)
                                   A fault domain is a grouping of hardware and infrastructure
@@ -10137,7 +10086,6 @@ spec:
                                   information, see Resource Tags.  Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               instanceOptions:
                                 description: (Applicable when instance_type=compute)
                                   Optional mutable instance options. As a part of
@@ -10234,7 +10182,6 @@ spec:
                                   objects (whereas metadata fields are string/string
                                   maps only).
                                 type: object
-                                x-kubernetes-map-type: granular
                               placementConstraintDetails:
                                 description: (Applicable when instance_type=compute)
                                   The details for providing placement constraints.
@@ -10273,7 +10220,6 @@ spec:
                                         Instance Platform Configuration Configuration
                                         Map for flexible setting input.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     isAccessControlServiceEnabled:
                                       description: (Applicable when type=AMD_MILAN_BM
                                         | AMD_MILAN_BM_GPU | AMD_ROME_BM | AMD_ROME_BM_GPU
@@ -10334,7 +10280,8 @@ spec:
                                         number of cores, the system rounds up the
                                         number of cores across processors and provisions
                                         an instance with a whole number of cores.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     type:
                                       description: The type of volume. The only supported
                                         values are "iscsi" and "paravirtualized"
@@ -10381,7 +10328,6 @@ spec:
                                   resources.  Example: {"Oracle-DataSecurity-ZPR":
                                   {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               shape:
                                 description: that you specify. If you don't provide
                                   the parameter, the default values for the shape
@@ -10408,7 +10354,8 @@ spec:
                                         the value must be null (if specified);  any
                                         non-null value for a non-DenseLV shape results
                                         in an error.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     memoryInGbs:
                                       description: (Applicable when instance_type=compute)
                                         The total amount of memory available to the
@@ -10418,7 +10365,8 @@ spec:
                                       description: (Applicable when instance_type=compute)
                                         The number of NVMe drives to be used for storage.
                                         A single drive has 6.8 TB available.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     ocpus:
                                       description: (Applicable when instance_type=compute)
                                         The total number of OCPUs available to the
@@ -10436,7 +10384,8 @@ spec:
                                         be calculated based on this value and the
                                         actual hardware. This must be a multiple of
                                         2.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourceDetails:
@@ -10486,7 +10435,6 @@ spec:
                                               a namespace. For more information, see
                                               Resource Tags.
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           operatingSystem:
                                             description: '(Applicable when source_type=image)
                                               The image''s operating system.  Example:
@@ -10649,7 +10597,6 @@ spec:
                                               information, see Resource Tags.  Example:
                                               {"Operations.CostCenter": "42"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           displayName:
                                             description: (Updatable) A user-friendly
                                               name. Does not have to be unique, and
@@ -10666,7 +10613,6 @@ spec:
                                               see Resource Tags.  Example: {"Department":
                                               "Finance"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           isAutoTuneEnabled:
                                             description: (Applicable when instance_type=compute)
                                               Specifies whether the auto-tune performance
@@ -10873,7 +10819,6 @@ spec:
                                               information, see Resource Tags.  Example:
                                               {"Operations.CostCenter": "42"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           displayName:
                                             description: (Updatable) A user-friendly
                                               name. Does not have to be unique, and
@@ -10890,7 +10835,6 @@ spec:
                                               see Resource Tags.  Example: {"Department":
                                               "Finance"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           hostnameLabel:
                                             description: (Applicable when instance_type=compute)
                                               The hostname for the VNIC's primary
@@ -10965,7 +10909,6 @@ spec:
                                               {"Oracle-DataSecurity-ZPR": {"MaxEgressCount":
                                               {"value":"42","mode":"audit"}}}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           skipSourceDestCheck:
                                             description: (Applicable when instance_type=compute)
                                               Whether the source/destination check
@@ -11008,7 +10951,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -11022,7 +10964,6 @@ spec:
                                         provide. They serve the same purpose and functionality
                                         as fields in the metadata object.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     faultDomain:
                                       description: (Applicable when instance_type=compute)
                                         A fault domain is a grouping of hardware and
@@ -11044,7 +10985,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     instanceOptions:
                                       description: (Applicable when instance_type=compute)
                                         Optional mutable instance options. As a part
@@ -11143,7 +11083,6 @@ spec:
                                         JSON objects (whereas metadata fields are
                                         string/string maps only).
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     placementConstraintDetails:
                                       description: (Applicable when instance_type=compute)
                                         The details for providing placement constraints.
@@ -11239,7 +11178,8 @@ spec:
                                               the system rounds up the number of cores
                                               across processors and provisions an
                                               instance with a whole number of cores.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           type:
                                             description: The type of volume. The only
                                               supported values are "iscsi" and "paravirtualized"
@@ -11289,7 +11229,6 @@ spec:
                                         ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR":
                                         {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     shape:
                                       description: that you specify. If you don't
                                         provide the parameter, the default values
@@ -11319,7 +11258,8 @@ spec:
                                               be null (if specified);  any non-null
                                               value for a non-DenseLV shape results
                                               in an error.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           memoryInGbs:
                                             description: (Applicable when instance_type=compute)
                                               The total amount of memory available
@@ -11330,7 +11270,8 @@ spec:
                                               The number of NVMe drives to be used
                                               for storage. A single drive has 6.8
                                               TB available.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           ocpus:
                                             description: (Applicable when instance_type=compute)
                                               The total number of OCPUs available
@@ -11349,7 +11290,8 @@ spec:
                                               of OCPUs will be calculated based on
                                               this value and the actual hardware.
                                               This must be a multiple of 2.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     sourceDetails:
@@ -11402,7 +11344,6 @@ spec:
                                                     scoped to a namespace. For more
                                                     information, see Resource Tags.
                                                   type: object
-                                                  x-kubernetes-map-type: granular
                                                 operatingSystem:
                                                   description: '(Applicable when source_type=image)
                                                     The image''s operating system.  Example:
@@ -11477,7 +11418,6 @@ spec:
                                               information, see Resource Tags.  Example:
                                               {"Operations.CostCenter": "42"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           displayName:
                                             description: (Updatable) A user-friendly
                                               name. Does not have to be unique, and
@@ -11494,7 +11434,6 @@ spec:
                                               see Resource Tags.  Example: {"Department":
                                               "Finance"}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           hostnameLabel:
                                             description: (Applicable when instance_type=compute)
                                               The hostname for the VNIC's primary
@@ -11569,7 +11508,6 @@ spec:
                                               {"Oracle-DataSecurity-ZPR": {"MaxEgressCount":
                                               {"value":"42","mode":"audit"}}}'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           skipSourceDestCheck:
                                             description: (Applicable when instance_type=compute)
                                               Whether the source/destination check
@@ -11612,7 +11550,8 @@ spec:
                                         VNIC to one of these instances, you can specify
                                         which NIC the VNIC will use. For more information,
                                         see Virtual Network Interface Cards (VNICs).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -11660,7 +11599,6 @@ spec:
                                         Resource Tags.  Example: {"Operations.CostCenter":
                                         "42"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     displayName:
                                       description: (Updatable) A user-friendly name.
                                         Does not have to be unique, and it's changeable.
@@ -11675,7 +11613,6 @@ spec:
                                         For more information, see Resource Tags.  Example:
                                         {"Department": "Finance"}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     hostnameLabel:
                                       description: (Applicable when instance_type=compute)
                                         The hostname for the VNIC's primary private
@@ -11745,7 +11682,6 @@ spec:
                                         ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR":
                                         {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     skipSourceDestCheck:
                                       description: (Applicable when instance_type=compute)
                                         Whether the source/destination check is disabled
@@ -11786,7 +11722,8 @@ spec:
                                   instances, you can specify which NIC the VNIC will
                                   use. For more information, see Virtual Network Interface
                                   Cards (VNICs).
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object

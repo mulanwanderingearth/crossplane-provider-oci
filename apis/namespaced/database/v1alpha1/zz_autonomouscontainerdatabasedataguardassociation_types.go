@@ -33,13 +33,13 @@ type AutonomousContainerDatabaseDataguardAssociationInitParameters struct {
 	AutonomousContainerDatabaseIDSelector *v1.NamespacedSelector `json:"autonomousContainerDatabaseIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The lag time for my preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// (Updatable) Indicates whether Automatic Failover is enabled for Autonomous Container Database Dataguard Association. Input DataType: boolean. Example : is_automatic_failover_enabled = true.
 	IsAutomaticFailoverEnabled *bool `json:"isAutomaticFailoverEnabled,omitempty" tf:"is_automatic_failover_enabled,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Migrate. Could be set to any integer value.
-	MigrateTrigger *float64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
+	MigrateTrigger *int64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
 
 	// Backup options for the standby Autonomous Container Database.
 	PeerAutonomousContainerDatabaseBackupConfig []AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatabaseBackupConfigInitParameters `json:"peerAutonomousContainerDatabaseBackupConfig,omitempty" tf:"peer_autonomous_container_database_backup_config,omitempty"`
@@ -93,7 +93,7 @@ type AutonomousContainerDatabaseDataguardAssociationInitParameters struct {
 	ProtectionMode *string `json:"protectionMode,omitempty" tf:"protection_mode,omitempty"`
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before scheduled maintenance of the primary database.
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 }
 
 type AutonomousContainerDatabaseDataguardAssociationObservation struct {
@@ -111,7 +111,7 @@ type AutonomousContainerDatabaseDataguardAssociationObservation struct {
 	AutonomousContainerDatabaseID *string `json:"autonomousContainerDatabaseId,omitempty" tf:"autonomous_container_database_id,omitempty"`
 
 	// (Updatable) The lag time for my preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -123,7 +123,7 @@ type AutonomousContainerDatabaseDataguardAssociationObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Migrate. Could be set to any integer value.
-	MigrateTrigger *float64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
+	MigrateTrigger *int64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
 
 	// Backup options for the standby Autonomous Container Database.
 	PeerAutonomousContainerDatabaseBackupConfig []AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatabaseBackupConfigObservation `json:"peerAutonomousContainerDatabaseBackupConfig,omitempty" tf:"peer_autonomous_container_database_backup_config,omitempty"`
@@ -162,7 +162,7 @@ type AutonomousContainerDatabaseDataguardAssociationObservation struct {
 	Role *string `json:"role,omitempty" tf:"role,omitempty"`
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before scheduled maintenance of the primary database.
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 
 	// The current state of Autonomous Data Guard.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -202,7 +202,7 @@ type AutonomousContainerDatabaseDataguardAssociationParameters struct {
 
 	// (Updatable) The lag time for my preference based on data loss tolerance in seconds.
 	// +kubebuilder:validation:Optional
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// (Updatable) Indicates whether Automatic Failover is enabled for Autonomous Container Database Dataguard Association. Input DataType: boolean. Example : is_automatic_failover_enabled = true.
 	// +kubebuilder:validation:Optional
@@ -210,7 +210,7 @@ type AutonomousContainerDatabaseDataguardAssociationParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Migrate. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	MigrateTrigger *float64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
+	MigrateTrigger *int64 `json:"migrateTrigger,omitempty" tf:"migrate_trigger,omitempty"`
 
 	// Backup options for the standby Autonomous Container Database.
 	// +kubebuilder:validation:Optional
@@ -272,7 +272,7 @@ type AutonomousContainerDatabaseDataguardAssociationParameters struct {
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before scheduled maintenance of the primary database.
 	// +kubebuilder:validation:Optional
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 }
 
 type AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatabaseBackupConfigBackupDestinationDetailsInitParameters struct {
@@ -407,7 +407,7 @@ type AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatab
 	BackupDestinationDetails []AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatabaseBackupConfigBackupDestinationDetailsInitParameters `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatabaseBackupConfigObservation struct {
@@ -416,7 +416,7 @@ type AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatab
 	BackupDestinationDetails []AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatabaseBackupConfigBackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatabaseBackupConfigParameters struct {
@@ -427,7 +427,7 @@ type AutonomousContainerDatabaseDataguardAssociationPeerAutonomousContainerDatab
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
 	// +kubebuilder:validation:Optional
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 // AutonomousContainerDatabaseDataguardAssociationSpec defines the desired state of AutonomousContainerDatabaseDataguardAssociation

@@ -152,7 +152,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the private endpoint
                       resource being created.
@@ -171,7 +170,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -180,7 +178,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: The OCID of subnet to which the reverse connection
                       is to be created
@@ -371,7 +368,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the private endpoint
                       resource being created.
@@ -390,7 +386,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -399,7 +394,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: The OCID of subnet to which the reverse connection
                       is to be created
@@ -572,7 +566,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the private endpoint
                       resource being created.
@@ -591,7 +584,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Unique identifier that is immutable
                     type: string
@@ -630,7 +622,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: The current state of the private endpoint resource.
                     type: string
@@ -646,7 +637,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the lock was created.
                     type: string

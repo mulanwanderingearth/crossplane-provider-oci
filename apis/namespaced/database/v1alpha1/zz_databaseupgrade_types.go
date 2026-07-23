@@ -20,8 +20,7 @@ type DatabaseUpgradeConnectionStringsInitParameters struct {
 type DatabaseUpgradeConnectionStringsObservation struct {
 
 	// All connection strings to use to connect to the Database.
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 
 	// Host name based CDB Connection String.
 	CdbDefault *string `json:"cdbDefault,omitempty" tf:"cdb_default,omitempty"`
@@ -96,7 +95,7 @@ type DatabaseUpgradeDBBackupConfigObservation struct {
 	BackupDestinationDetails []DatabaseUpgradeDBBackupConfigBackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
@@ -241,12 +240,10 @@ type DatabaseUpgradeObservation struct {
 	DatabaseUpgradeSourceDetails []DatabaseUpgradeSourceDetailsObservation `json:"databaseUpgradeSourceDetails,omitempty" tf:"database_upgrade_source_details,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -267,7 +264,7 @@ type DatabaseUpgradeObservation struct {
 	KeyStoreWalletName *string `json:"keyStoreWalletName,omitempty" tf:"key_store_wallet_name,omitempty"`
 
 	// The duration when the latest database backup created.
-	LastBackupDurationInSeconds *float64 `json:"lastBackupDurationInSeconds,omitempty" tf:"last_backup_duration_in_seconds,omitempty"`
+	LastBackupDurationInSeconds *int64 `json:"lastBackupDurationInSeconds,omitempty" tf:"last_backup_duration_in_seconds,omitempty"`
 
 	// The date and time when the latest database backup was created.
 	LastBackupTimestamp *string `json:"lastBackupTimestamp,omitempty" tf:"last_backup_timestamp,omitempty"`
@@ -294,8 +291,7 @@ type DatabaseUpgradeObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the database was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`

@@ -151,7 +151,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   executionResourceId:
                     description: The OCID of the execution resource the execution
                       window belongs to.
@@ -164,7 +163,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isEnforcedDuration:
                     description: (Updatable) Indicates if duration the user plans
                       to allocate for scheduling window is strictly enforced. The
@@ -178,7 +176,8 @@ spec:
                     description: (Updatable) Duration window allows user to set a
                       duration they plan to allocate for Scheduling window. The duration
                       is in minutes.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -285,7 +284,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   executionResourceId:
                     description: The OCID of the execution resource the execution
                       window belongs to.
@@ -298,7 +296,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isEnforcedDuration:
                     description: (Updatable) Indicates if duration the user plans
                       to allocate for scheduling window is strictly enforced. The
@@ -312,7 +309,8 @@ spec:
                     description: (Updatable) Duration window allows user to set a
                       duration they plan to allocate for Scheduling window. The duration
                       is in minutes.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -402,7 +400,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: Description of the execution window.
                     type: string
@@ -412,7 +409,8 @@ spec:
                     type: string
                   estimatedTimeInMins:
                     description: The estimated time of the execution window in minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   executionResourceId:
                     description: The OCID of the execution resource the execution
                       window belongs to.
@@ -425,7 +423,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the execution window.
                     type: string
@@ -467,12 +464,14 @@ spec:
                   totalTimeTakenInMins:
                     description: The total time taken by corresponding resource activity
                       in minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   windowDurationInMins:
                     description: (Updatable) Duration window allows user to set a
                       duration they plan to allocate for Scheduling window. The duration
                       is in minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   windowType:
                     description: The execution window is of PLANNED or UNPLANNED type.
                     type: string

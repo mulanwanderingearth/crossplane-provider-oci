@@ -259,7 +259,8 @@ spec:
                   port:
                     description: 'The communication port for the backend server.  Example:
                       8080'
-                    type: number
+                    format: int64
+                    type: integer
                   targetId:
                     description: 'The IP OCID/Instance OCID associated with the backend
                       server. Example: ocid1.privateip..oc1.<var>&lt;unique_ID&gt;</var>'
@@ -352,7 +353,8 @@ spec:
                       connections as a server weighted ''1''. For more information
                       about network load balancer policies, see Network Load Balancer
                       Policies.  Example: 3'
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -567,7 +569,8 @@ spec:
                   port:
                     description: 'The communication port for the backend server.  Example:
                       8080'
-                    type: number
+                    format: int64
+                    type: integer
                   targetId:
                     description: 'The IP OCID/Instance OCID associated with the backend
                       server. Example: ocid1.privateip..oc1.<var>&lt;unique_ID&gt;</var>'
@@ -660,7 +663,8 @@ spec:
                       connections as a server weighted ''1''. For more information
                       about network load balancer policies, see Network Load Balancer
                       Policies.  Example: 3'
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -770,7 +774,8 @@ spec:
                   port:
                     description: 'The communication port for the backend server.  Example:
                       8080'
-                    type: number
+                    format: int64
+                    type: integer
                   targetId:
                     description: 'The IP OCID/Instance OCID associated with the backend
                       server. Example: ocid1.privateip..oc1.<var>&lt;unique_ID&gt;</var>'
@@ -783,7 +788,8 @@ spec:
                       connections as a server weighted ''1''. For more information
                       about network load balancer policies, see Network Load Balancer
                       Policies.  Example: 3'
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

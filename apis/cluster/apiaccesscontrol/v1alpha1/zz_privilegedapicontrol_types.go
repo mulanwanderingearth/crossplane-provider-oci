@@ -31,8 +31,7 @@ type PrivilegedApiControlInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the privilegedApi control.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -41,8 +40,7 @@ type PrivilegedApiControlInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the Oracle Cloud Infrastructure Notification topic to publish messages related to this Delegation Control.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ons/v1alpha1.NotificationTopic
@@ -58,7 +56,7 @@ type PrivilegedApiControlInitParameters struct {
 	NotificationTopicIDSelector *v1.Selector `json:"notificationTopicIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Number of approvers required to approve an privilegedApi request.
-	NumberOfApprovers *float64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
+	NumberOfApprovers *int64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
 
 	// (Updatable) List of privileged operator operations. If Privileged API Managment is enabled for a resource it will be validated whether the operation done by the operator is a part of privileged operation.
 	PrivilegedOperationList []PrivilegedOperationListInitParameters `json:"privilegedOperationList,omitempty" tf:"privileged_operation_list,omitempty"`
@@ -79,8 +77,7 @@ type PrivilegedApiControlObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the privilegedApi control.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -89,8 +86,7 @@ type PrivilegedApiControlObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the PrivilegedApiControl.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -102,7 +98,7 @@ type PrivilegedApiControlObservation struct {
 	NotificationTopicID *string `json:"notificationTopicId,omitempty" tf:"notification_topic_id,omitempty"`
 
 	// (Updatable) Number of approvers required to approve an privilegedApi request.
-	NumberOfApprovers *float64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
+	NumberOfApprovers *int64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
 
 	// (Updatable) List of privileged operator operations. If Privileged API Managment is enabled for a resource it will be validated whether the operation done by the operator is a part of privileged operation.
 	PrivilegedOperationList []PrivilegedOperationListObservation `json:"privilegedOperationList,omitempty" tf:"privileged_operation_list,omitempty"`
@@ -120,8 +116,7 @@ type PrivilegedApiControlObservation struct {
 	StateDetails *string `json:"stateDetails,omitempty" tf:"state_details,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the PrivilegedApiControl was created, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -154,8 +149,7 @@ type PrivilegedApiControlParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the privilegedApi control.
 	// +kubebuilder:validation:Optional
@@ -167,8 +161,7 @@ type PrivilegedApiControlParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the Oracle Cloud Infrastructure Notification topic to publish messages related to this Delegation Control.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ons/v1alpha1.NotificationTopic
@@ -186,7 +179,7 @@ type PrivilegedApiControlParameters struct {
 
 	// (Updatable) Number of approvers required to approve an privilegedApi request.
 	// +kubebuilder:validation:Optional
-	NumberOfApprovers *float64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
+	NumberOfApprovers *int64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
 
 	// (Updatable) List of privileged operator operations. If Privileged API Managment is enabled for a resource it will be validated whether the operation done by the operator is a part of privileged operation.
 	// +kubebuilder:validation:Optional

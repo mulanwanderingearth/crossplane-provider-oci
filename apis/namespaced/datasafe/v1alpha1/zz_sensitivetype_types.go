@@ -38,8 +38,7 @@ type SensitiveTypeInitParameters struct {
 	DefaultMaskingFormatID *string `json:"defaultMaskingFormatId,omitempty" tf:"default_masking_format_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the sensitive type.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -51,8 +50,7 @@ type SensitiveTypeInitParameters struct {
 	EntityType *string `json:"entityType,omitempty" tf:"entity_type,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when entity_type=SENSITIVE_TYPE) (Updatable) A regular expression to be used by data discovery for matching column names.
 	NamePattern *string `json:"namePattern,omitempty" tf:"name_pattern,omitempty"`
@@ -82,8 +80,7 @@ type SensitiveTypeObservation struct {
 	DefaultMaskingFormatID *string `json:"defaultMaskingFormatId,omitempty" tf:"default_masking_format_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the sensitive type.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -95,8 +92,7 @@ type SensitiveTypeObservation struct {
 	EntityType *string `json:"entityType,omitempty" tf:"entity_type,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the sensitive type.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -123,8 +119,7 @@ type SensitiveTypeObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the sensitive type was created, in the format defined by RFC3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -162,8 +157,7 @@ type SensitiveTypeParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the sensitive type.
 	// +kubebuilder:validation:Optional
@@ -179,8 +173,7 @@ type SensitiveTypeParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when entity_type=SENSITIVE_TYPE) (Updatable) A regular expression to be used by data discovery for matching column names.
 	// +kubebuilder:validation:Optional

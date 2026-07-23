@@ -15,6 +15,18 @@ import (
 )
 
 type IdentitySettingIdcsCreatedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type IdentitySettingIdcsCreatedByObservation struct {
@@ -36,9 +48,37 @@ type IdentitySettingIdcsCreatedByObservation struct {
 }
 
 type IdentitySettingIdcsCreatedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type IdentitySettingIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type IdentitySettingIdcsLastModifiedByObservation struct {
@@ -60,6 +100,22 @@ type IdentitySettingIdcsLastModifiedByObservation struct {
 }
 
 type IdentitySettingIdcsLastModifiedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type IdentitySettingInitParameters struct {
@@ -130,6 +186,21 @@ type IdentitySettingInitParameters struct {
 }
 
 type IdentitySettingMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type IdentitySettingMetaObservation struct {
@@ -151,6 +222,26 @@ type IdentitySettingMetaObservation struct {
 }
 
 type IdentitySettingMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type IdentitySettingObservation struct {
@@ -409,65 +500,65 @@ type MyProfileParameters struct {
 type PosixGIDInitParameters struct {
 
 	// (Updatable) The number at which the Posix Gid Manual assignment ends.
-	ManualAssignmentEndsAt *float64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
+	ManualAssignmentEndsAt *int64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
 
 	// (Updatable) The number from which the Posix Gid Manual assignment starts.
-	ManualAssignmentStartsFrom *float64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
+	ManualAssignmentStartsFrom *int64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
 }
 
 type PosixGIDObservation struct {
 
 	// (Updatable) The number at which the Posix Gid Manual assignment ends.
-	ManualAssignmentEndsAt *float64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
+	ManualAssignmentEndsAt *int64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
 
 	// (Updatable) The number from which the Posix Gid Manual assignment starts.
-	ManualAssignmentStartsFrom *float64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
+	ManualAssignmentStartsFrom *int64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
 }
 
 type PosixGIDParameters struct {
 
 	// (Updatable) The number at which the Posix Gid Manual assignment ends.
 	// +kubebuilder:validation:Optional
-	ManualAssignmentEndsAt *float64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
+	ManualAssignmentEndsAt *int64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
 
 	// (Updatable) The number from which the Posix Gid Manual assignment starts.
 	// +kubebuilder:validation:Optional
-	ManualAssignmentStartsFrom *float64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
+	ManualAssignmentStartsFrom *int64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
 }
 
 type PosixUIDInitParameters struct {
 
 	// (Updatable) The number at which the Posix Gid Manual assignment ends.
-	ManualAssignmentEndsAt *float64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
+	ManualAssignmentEndsAt *int64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
 
 	// (Updatable) The number from which the Posix Gid Manual assignment starts.
-	ManualAssignmentStartsFrom *float64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
+	ManualAssignmentStartsFrom *int64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
 }
 
 type PosixUIDObservation struct {
 
 	// (Updatable) The number at which the Posix Gid Manual assignment ends.
-	ManualAssignmentEndsAt *float64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
+	ManualAssignmentEndsAt *int64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
 
 	// (Updatable) The number from which the Posix Gid Manual assignment starts.
-	ManualAssignmentStartsFrom *float64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
+	ManualAssignmentStartsFrom *int64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
 }
 
 type PosixUIDParameters struct {
 
 	// (Updatable) The number at which the Posix Gid Manual assignment ends.
 	// +kubebuilder:validation:Optional
-	ManualAssignmentEndsAt *float64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
+	ManualAssignmentEndsAt *int64 `json:"manualAssignmentEndsAt,omitempty" tf:"manual_assignment_ends_at,omitempty"`
 
 	// (Updatable) The number from which the Posix Gid Manual assignment starts.
 	// +kubebuilder:validation:Optional
-	ManualAssignmentStartsFrom *float64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
+	ManualAssignmentStartsFrom *int64 `json:"manualAssignmentStartsFrom,omitempty" tf:"manual_assignment_starts_from,omitempty"`
 }
 
 type TokensInitParameters struct {
 
 	// (Updatable) Indicates the number of minutes after which the token expires automatically.
-	ExpiresAfter *float64 `json:"expiresAfter,omitempty" tf:"expires_after,omitempty"`
+	ExpiresAfter *int64 `json:"expiresAfter,omitempty" tf:"expires_after,omitempty"`
 
 	// (Updatable) The type of resource, User or App, that created this Resource
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -476,7 +567,7 @@ type TokensInitParameters struct {
 type TokensObservation struct {
 
 	// (Updatable) Indicates the number of minutes after which the token expires automatically.
-	ExpiresAfter *float64 `json:"expiresAfter,omitempty" tf:"expires_after,omitempty"`
+	ExpiresAfter *int64 `json:"expiresAfter,omitempty" tf:"expires_after,omitempty"`
 
 	// (Updatable) The type of resource, User or App, that created this Resource
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -486,7 +577,7 @@ type TokensParameters struct {
 
 	// (Updatable) Indicates the number of minutes after which the token expires automatically.
 	// +kubebuilder:validation:Optional
-	ExpiresAfter *float64 `json:"expiresAfter,omitempty" tf:"expires_after,omitempty"`
+	ExpiresAfter *int64 `json:"expiresAfter,omitempty" tf:"expires_after,omitempty"`
 
 	// (Updatable) The type of resource, User or App, that created this Resource
 	// +kubebuilder:validation:Optional

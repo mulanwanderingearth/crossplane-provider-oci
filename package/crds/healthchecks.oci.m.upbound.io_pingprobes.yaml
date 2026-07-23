@@ -147,7 +147,8 @@ spec:
                   port:
                     description: The port on which to probe endpoints. If unspecified,
                       probes will use the default port of their protocol.
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: The protocols for ping probes.
                     type: string
@@ -161,7 +162,8 @@ spec:
                     description: 'The probe timeout in seconds. Valid values: 10,
                       20, 30, and 60. The probe timeout must be less than or equal
                       to intervalInSeconds for monitors.'
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePointNames:
                     description: A list of names of vantage points from which to execute
                       the probe.
@@ -270,7 +272,8 @@ spec:
                   port:
                     description: The port on which to probe endpoints. If unspecified,
                       probes will use the default port of their protocol.
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: The protocols for ping probes.
                     type: string
@@ -284,7 +287,8 @@ spec:
                     description: 'The probe timeout in seconds. Valid values: 10,
                       20, 30, and 60. The probe timeout must be less than or equal
                       to intervalInSeconds for monitors.'
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePointNames:
                     description: A list of names of vantage points from which to execute
                       the probe.
@@ -379,7 +383,8 @@ spec:
                   port:
                     description: The port on which to probe endpoints. If unspecified,
                       probes will use the default port of their protocol.
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: The protocols for ping probes.
                     type: string
@@ -400,7 +405,8 @@ spec:
                     description: 'The probe timeout in seconds. Valid values: 10,
                       20, 30, and 60. The probe timeout must be less than or equal
                       to intervalInSeconds for monitors.'
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePointNames:
                     description: A list of names of vantage points from which to execute
                       the probe.

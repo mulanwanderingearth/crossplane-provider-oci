@@ -161,16 +161,19 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
                                   This parameter is used only for dense shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -290,16 +293,19 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
                                   This parameter is used only for dense shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -429,16 +435,19 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
                                   This parameter is used only for dense shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object

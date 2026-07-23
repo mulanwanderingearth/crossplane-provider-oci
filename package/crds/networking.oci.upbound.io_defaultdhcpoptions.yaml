@@ -155,7 +155,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   domainNameType:
@@ -164,7 +163,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   manageDefaultResourceId:
                     type: string
                   options:
@@ -280,7 +278,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   domainNameType:
@@ -289,7 +286,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   manageDefaultResourceId:
                     type: string
                   options:
@@ -418,7 +414,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   domainNameType:
@@ -427,7 +422,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   manageDefaultResourceId:

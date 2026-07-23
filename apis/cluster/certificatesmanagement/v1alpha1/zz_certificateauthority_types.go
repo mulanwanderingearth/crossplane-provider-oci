@@ -461,8 +461,7 @@ type CertificateAuthorityInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A brief description of the CA.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -471,8 +470,7 @@ type CertificateAuthorityInitParameters struct {
 	ExternalKeyDescription *string `json:"externalKeyDescription,omitempty" tf:"external_key_description,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Oracle Cloud Infrastructure Vault key used to encrypt the CA.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -511,8 +509,7 @@ type CertificateAuthorityObservation struct {
 	CurrentVersion []CertificateAuthorityCurrentVersionObservation `json:"currentVersion,omitempty" tf:"current_version,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A brief description of the CA.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -521,8 +518,7 @@ type CertificateAuthorityObservation struct {
 	ExternalKeyDescription *string `json:"externalKeyDescription,omitempty" tf:"external_key_description,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the CA.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -584,8 +580,7 @@ type CertificateAuthorityParameters struct {
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A brief description of the CA.
 	// +kubebuilder:validation:Optional
@@ -597,8 +592,7 @@ type CertificateAuthorityParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Oracle Cloud Infrastructure Vault key used to encrypt the CA.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -630,7 +624,7 @@ type CertificateAuthorityRulesInitParameters struct {
 	NameConstraint []NameConstraintInitParameters `json:"nameConstraint,omitempty" tf:"name_constraint,omitempty"`
 
 	// (Applicable when rule_type=CERTIFICATE_AUTHORITY_ISSUANCE_RULE) The number of levels of descendants that this certificate authority (CA) can issue. When set to zero, the CA can issue only leaf certificates. There is no limit if the constraint isn't specified. Path length constraints cannot be updated.
-	PathLengthConstraint *float64 `json:"pathLengthConstraint,omitempty" tf:"path_length_constraint,omitempty"`
+	PathLengthConstraint *int64 `json:"pathLengthConstraint,omitempty" tf:"path_length_constraint,omitempty"`
 
 	// (Updatable) The type of rule, whether an issuance rule that defines the constraints which restricts the hierarchical name forms in certificates or number of levels of descendants that any CA in the certificate chain issues or an issuance expiry rule that governs how long the certificates and CAs issued by the CA are valid.
 	RuleType *string `json:"ruleType,omitempty" tf:"rule_type,omitempty"`
@@ -648,7 +642,7 @@ type CertificateAuthorityRulesObservation struct {
 	NameConstraint []NameConstraintObservation `json:"nameConstraint,omitempty" tf:"name_constraint,omitempty"`
 
 	// (Applicable when rule_type=CERTIFICATE_AUTHORITY_ISSUANCE_RULE) The number of levels of descendants that this certificate authority (CA) can issue. When set to zero, the CA can issue only leaf certificates. There is no limit if the constraint isn't specified. Path length constraints cannot be updated.
-	PathLengthConstraint *float64 `json:"pathLengthConstraint,omitempty" tf:"path_length_constraint,omitempty"`
+	PathLengthConstraint *int64 `json:"pathLengthConstraint,omitempty" tf:"path_length_constraint,omitempty"`
 
 	// (Updatable) The type of rule, whether an issuance rule that defines the constraints which restricts the hierarchical name forms in certificates or number of levels of descendants that any CA in the certificate chain issues or an issuance expiry rule that governs how long the certificates and CAs issued by the CA are valid.
 	RuleType *string `json:"ruleType,omitempty" tf:"rule_type,omitempty"`
@@ -670,7 +664,7 @@ type CertificateAuthorityRulesParameters struct {
 
 	// (Applicable when rule_type=CERTIFICATE_AUTHORITY_ISSUANCE_RULE) The number of levels of descendants that this certificate authority (CA) can issue. When set to zero, the CA can issue only leaf certificates. There is no limit if the constraint isn't specified. Path length constraints cannot be updated.
 	// +kubebuilder:validation:Optional
-	PathLengthConstraint *float64 `json:"pathLengthConstraint,omitempty" tf:"path_length_constraint,omitempty"`
+	PathLengthConstraint *int64 `json:"pathLengthConstraint,omitempty" tf:"path_length_constraint,omitempty"`
 
 	// (Updatable) The type of rule, whether an issuance rule that defines the constraints which restricts the hierarchical name forms in certificates or number of levels of descendants that any CA in the certificate chain issues or an issuance expiry rule that governs how long the certificates and CAs issued by the CA are valid.
 	// +kubebuilder:validation:Optional

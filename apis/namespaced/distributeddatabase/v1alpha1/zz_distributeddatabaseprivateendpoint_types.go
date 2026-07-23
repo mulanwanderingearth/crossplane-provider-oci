@@ -29,8 +29,7 @@ type DistributedDatabasePrivateEndpointInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) DistributedDatabasePrivateEndpoint description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -39,15 +38,14 @@ type DistributedDatabasePrivateEndpointInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCIDs of the network security groups that the private endpoint belongs to.
 	// +listType=set
 	NsgIds []*string `json:"nsgIds,omitempty" tf:"nsg_ids,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Reinstate Proxy Instance. Could be set to any integer value.
-	ReinstateProxyInstanceTrigger *float64 `json:"reinstateProxyInstanceTrigger,omitempty" tf:"reinstate_proxy_instance_trigger,omitempty"`
+	ReinstateProxyInstanceTrigger *int64 `json:"reinstateProxyInstanceTrigger,omitempty" tf:"reinstate_proxy_instance_trigger,omitempty"`
 
 	// Identifier of the customer subnet against which private endpoint is to be created.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet
@@ -69,8 +67,7 @@ type DistributedDatabasePrivateEndpointObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) DistributedDatabasePrivateEndpoint description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -79,8 +76,7 @@ type DistributedDatabasePrivateEndpointObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// This field is deprecated. Support for this field will be removed after Mon, 1 Mar 2027 00:00:00 GMT.
 	GloballyDistributedAutonomousDatabases []GloballyDistributedAutonomousDatabasesObservation `json:"globallyDistributedAutonomousDatabases,omitempty" tf:"globally_distributed_autonomous_databases,omitempty"`
@@ -105,7 +101,7 @@ type DistributedDatabasePrivateEndpointObservation struct {
 	ProxyComputeInstanceID *string `json:"proxyComputeInstanceId,omitempty" tf:"proxy_compute_instance_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Reinstate Proxy Instance. Could be set to any integer value.
-	ReinstateProxyInstanceTrigger *float64 `json:"reinstateProxyInstanceTrigger,omitempty" tf:"reinstate_proxy_instance_trigger,omitempty"`
+	ReinstateProxyInstanceTrigger *int64 `json:"reinstateProxyInstanceTrigger,omitempty" tf:"reinstate_proxy_instance_trigger,omitempty"`
 
 	// Lifecycle states for private endpoint.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -114,8 +110,7 @@ type DistributedDatabasePrivateEndpointObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the DistributedDatabasePrivateEndpoint was first created. An RFC3339 formatted datetime string
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -144,8 +139,7 @@ type DistributedDatabasePrivateEndpointParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) DistributedDatabasePrivateEndpoint description.
 	// +kubebuilder:validation:Optional
@@ -157,8 +151,7 @@ type DistributedDatabasePrivateEndpointParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCIDs of the network security groups that the private endpoint belongs to.
 	// +kubebuilder:validation:Optional
@@ -167,7 +160,7 @@ type DistributedDatabasePrivateEndpointParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Reinstate Proxy Instance. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ReinstateProxyInstanceTrigger *float64 `json:"reinstateProxyInstanceTrigger,omitempty" tf:"reinstate_proxy_instance_trigger,omitempty"`
+	ReinstateProxyInstanceTrigger *int64 `json:"reinstateProxyInstanceTrigger,omitempty" tf:"reinstate_proxy_instance_trigger,omitempty"`
 
 	// Identifier of the customer subnet against which private endpoint is to be created.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/networking/v1alpha1.Subnet

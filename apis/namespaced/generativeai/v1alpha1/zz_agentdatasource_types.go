@@ -32,8 +32,7 @@ type AgentDataSourceInitParameters struct {
 	DataSourceConfig []DataSourceConfigInitParameters `json:"dataSourceConfig,omitempty" tf:"data_source_config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the data source.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -42,8 +41,7 @@ type AgentDataSourceInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the parent KnowledgeBase.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/generativeai/v1alpha1.AgentKnowledgeBase
@@ -59,8 +57,7 @@ type AgentDataSourceInitParameters struct {
 	KnowledgeBaseIDSelector *v1.NamespacedSelector `json:"knowledgeBaseIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Key-value pairs to allow additional configurations.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 }
 
 type AgentDataSourceObservation struct {
@@ -72,8 +69,7 @@ type AgentDataSourceObservation struct {
 	DataSourceConfig []DataSourceConfigObservation `json:"dataSourceConfig,omitempty" tf:"data_source_config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the data source.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -82,8 +78,7 @@ type AgentDataSourceObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the data source.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -95,15 +90,13 @@ type AgentDataSourceObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// (Updatable) Key-value pairs to allow additional configurations.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The current state of the data source.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the data source was created, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -133,8 +126,7 @@ type AgentDataSourceParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the data source.
 	// +kubebuilder:validation:Optional
@@ -146,8 +138,7 @@ type AgentDataSourceParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the parent KnowledgeBase.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/generativeai/v1alpha1.AgentKnowledgeBase
@@ -165,8 +156,7 @@ type AgentDataSourceParameters struct {
 
 	// (Updatable) Key-value pairs to allow additional configurations.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 }
 
 type DataSourceConfigInitParameters struct {

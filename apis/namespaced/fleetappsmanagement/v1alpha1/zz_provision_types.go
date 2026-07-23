@@ -66,8 +66,7 @@ type ProvisionInitParameters struct {
 	ConfigCatalogItemIDSelector *v1.NamespacedSelector `json:"configCatalogItemIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -86,8 +85,7 @@ type ProvisionInitParameters struct {
 	FleetIDSelector *v1.NamespacedSelector `json:"fleetIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Catalog Item.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/fleetappsmanagement/v1alpha1.CatalogItem
@@ -156,8 +154,7 @@ type ProvisionObservation struct {
 	ConfigCatalogItemListingVersion *string `json:"configCatalogItemListingVersion,omitempty" tf:"config_catalog_item_listing_version,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The deployed resources and their summary
 	DeployedResources []DeployedResourcesObservation `json:"deployedResources,omitempty" tf:"deployed_resources,omitempty"`
@@ -169,8 +166,7 @@ type ProvisionObservation struct {
 	FleetID *string `json:"fleetId,omitempty" tf:"fleet_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the instance.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -203,8 +199,7 @@ type ProvisionObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// outputs from the provider apply job
 	TfOutputs []TfOutputsObservation `json:"tfOutputs,omitempty" tf:"tf_outputs,omitempty"`
@@ -259,8 +254,7 @@ type ProvisionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -282,8 +276,7 @@ type ProvisionParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Catalog Item.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/fleetappsmanagement/v1alpha1.CatalogItem
@@ -341,6 +334,9 @@ type ProvisionParameters struct {
 }
 
 type ResourceInstanceListInitParameters struct {
+
+	// (Updatable) The OCID of the compartment to create the FamProvision in.
+	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 }
 
 type ResourceInstanceListObservation struct {
@@ -356,6 +352,10 @@ type ResourceInstanceListObservation struct {
 }
 
 type ResourceInstanceListParameters struct {
+
+	// (Updatable) The OCID of the compartment to create the FamProvision in.
+	// +kubebuilder:validation:Optional
+	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 }
 
 type TfOutputsInitParameters struct {

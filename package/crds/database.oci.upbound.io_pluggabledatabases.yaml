@@ -172,7 +172,8 @@ spec:
                   convertToRegularTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Convert To Regular. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -180,7 +181,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -189,7 +189,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   kmsKeyVersionId:
                     description: The OCID of the key container version that is used
                       in database transparent data encryption (TDE) operations KMS
@@ -536,11 +535,13 @@ spec:
                   refreshTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Refresh. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   rotateKeyTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Rotate Key. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   shouldCreatePdbBackup:
                     description: Indicates whether to take Pluggable Database Backup
                       after the operation.
@@ -680,7 +681,8 @@ spec:
                   convertToRegularTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Convert To Regular. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -688,7 +690,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -697,7 +698,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   kmsKeyVersionId:
                     description: The OCID of the key container version that is used
                       in database transparent data encryption (TDE) operations KMS
@@ -1044,11 +1044,13 @@ spec:
                   refreshTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Refresh. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   rotateKeyTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Rotate Key. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   shouldCreatePdbBackup:
                     description: Indicates whether to take Pluggable Database Backup
                       after the operation.
@@ -1189,7 +1191,6 @@ spec:
                           description: All connection strings to use to connect to
                             the pluggable database.
                           type: object
-                          x-kubernetes-map-type: granular
                         pdbDefault:
                           description: A host name-based PDB connection string.
                           type: string
@@ -1204,7 +1205,8 @@ spec:
                   convertToRegularTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Convert To Regular. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -1212,7 +1214,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1221,7 +1222,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the pluggable database.
                     type: string
@@ -1336,7 +1336,8 @@ spec:
                   refreshTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Refresh. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   refreshableCloneConfig:
                     description: Pluggable Database Refreshable Clone Configuration.
                     items:
@@ -1351,7 +1352,8 @@ spec:
                   rotateKeyTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Rotate Key. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   shouldCreatePdbBackup:
                     description: Indicates whether to take Pluggable Database Backup
                       after the operation.
@@ -1372,7 +1374,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the pluggable database was created.
                     type: string

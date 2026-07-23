@@ -28,8 +28,7 @@ type HttpRedirectInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name of the HTTP Redirect. The name can be changed and does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -38,11 +37,10 @@ type HttpRedirectInitParameters struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The response code returned for the redirect to the client. For more information, see RFC 7231.
-	ResponseCode *float64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
+	ResponseCode *int64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
 
 	// (Updatable) The redirect target object including all the redirect data.
 	Target []TargetInitParameters `json:"target,omitempty" tf:"target,omitempty"`
@@ -54,8 +52,7 @@ type HttpRedirectObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name of the HTTP Redirect. The name can be changed and does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -64,14 +61,13 @@ type HttpRedirectObservation struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the HTTP Redirect.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) The response code returned for the redirect to the client. For more information, see RFC 7231.
-	ResponseCode *float64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
+	ResponseCode *int64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
 
 	// The current lifecycle state of the HTTP Redirect.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -100,8 +96,7 @@ type HttpRedirectParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name of the HTTP Redirect. The name can be changed and does not need to be unique.
 	// +kubebuilder:validation:Optional
@@ -113,12 +108,11 @@ type HttpRedirectParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The response code returned for the redirect to the client. For more information, see RFC 7231.
 	// +kubebuilder:validation:Optional
-	ResponseCode *float64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
+	ResponseCode *int64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
 
 	// (Updatable) The redirect target object including all the redirect data.
 	// +kubebuilder:validation:Optional
@@ -134,7 +128,7 @@ type TargetInitParameters struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// (Updatable) Port number of the target destination of the redirect, default to match protocol
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol used for the target, http or https.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -152,7 +146,7 @@ type TargetObservation struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// (Updatable) Port number of the target destination of the redirect, default to match protocol
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol used for the target, http or https.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -173,7 +167,7 @@ type TargetParameters struct {
 
 	// (Updatable) Port number of the target destination of the redirect, default to match protocol
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol used for the target, http or https.
 	// +kubebuilder:validation:Optional

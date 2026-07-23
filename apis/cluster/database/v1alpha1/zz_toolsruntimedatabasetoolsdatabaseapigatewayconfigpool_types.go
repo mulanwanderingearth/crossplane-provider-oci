@@ -16,8 +16,7 @@ import (
 type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolInitParameters struct {
 
 	// (Updatable) Advanced pool properties.
-	// +mapType=granular
-	AdvancedProperties map[string]*string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
+	AdvancedProperties map[string]string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
 
 	// (Updatable) Specifies to enable the Database Actions feature.
 	DatabaseActionsStatus *string `json:"databaseActionsStatus,omitempty" tf:"database_actions_status,omitempty"`
@@ -52,7 +51,7 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolInitParameters struct 
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Specifies the initial size for the number of database connections that will be created for the pool.
-	InitialPoolSize *float64 `json:"initialPoolSize,omitempty" tf:"initial_pool_size,omitempty"`
+	InitialPoolSize *int64 `json:"initialPoolSize,omitempty" tf:"initial_pool_size,omitempty"`
 
 	// (Updatable) Specifies the expected audience for the JWT token. This value is used to validate the aud claim in the JWT token.
 	JwtProfileAudience *string `json:"jwtProfileAudience,omitempty" tf:"jwt_profile_audience,omitempty"`
@@ -67,10 +66,10 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolInitParameters struct 
 	JwtProfileRoleClaimName *string `json:"jwtProfileRoleClaimName,omitempty" tf:"jwt_profile_role_claim_name,omitempty"`
 
 	// (Updatable) Specifies the maximum number of database connections allowed for the pool.
-	MaxPoolSize *float64 `json:"maxPoolSize,omitempty" tf:"max_pool_size,omitempty"`
+	MaxPoolSize *int64 `json:"maxPoolSize,omitempty" tf:"max_pool_size,omitempty"`
 
 	// (Updatable) Specifies the minimum number of database connections allowed for the pool.
-	MinPoolSize *float64 `json:"minPoolSize,omitempty" tf:"min_pool_size,omitempty"`
+	MinPoolSize *int64 `json:"minPoolSize,omitempty" tf:"min_pool_size,omitempty"`
 
 	// (Updatable) The pool route value provided in requests to target this pool.
 	PoolRouteValue *string `json:"poolRouteValue,omitempty" tf:"pool_route_value,omitempty"`
@@ -85,8 +84,7 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolInitParameters struct 
 type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolObservation struct {
 
 	// (Updatable) Advanced pool properties.
-	// +mapType=granular
-	AdvancedProperties map[string]*string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
+	AdvancedProperties map[string]string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
 
 	// (Updatable) Specifies to enable the Database Actions feature.
 	DatabaseActionsStatus *string `json:"databaseActionsStatus,omitempty" tf:"database_actions_status,omitempty"`
@@ -103,7 +101,7 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) Specifies the initial size for the number of database connections that will be created for the pool.
-	InitialPoolSize *float64 `json:"initialPoolSize,omitempty" tf:"initial_pool_size,omitempty"`
+	InitialPoolSize *int64 `json:"initialPoolSize,omitempty" tf:"initial_pool_size,omitempty"`
 
 	// (Updatable) Specifies the expected audience for the JWT token. This value is used to validate the aud claim in the JWT token.
 	JwtProfileAudience *string `json:"jwtProfileAudience,omitempty" tf:"jwt_profile_audience,omitempty"`
@@ -121,10 +119,10 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) Specifies the maximum number of database connections allowed for the pool.
-	MaxPoolSize *float64 `json:"maxPoolSize,omitempty" tf:"max_pool_size,omitempty"`
+	MaxPoolSize *int64 `json:"maxPoolSize,omitempty" tf:"max_pool_size,omitempty"`
 
 	// (Updatable) Specifies the minimum number of database connections allowed for the pool.
-	MinPoolSize *float64 `json:"minPoolSize,omitempty" tf:"min_pool_size,omitempty"`
+	MinPoolSize *int64 `json:"minPoolSize,omitempty" tf:"min_pool_size,omitempty"`
 
 	// (Updatable) The pool route value provided in requests to target this pool.
 	PoolRouteValue *string `json:"poolRouteValue,omitempty" tf:"pool_route_value,omitempty"`
@@ -146,8 +144,7 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolParameters struct {
 
 	// (Updatable) Advanced pool properties.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	AdvancedProperties map[string]*string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
+	AdvancedProperties map[string]string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
 
 	// (Updatable) Specifies to enable the Database Actions feature.
 	// +kubebuilder:validation:Optional
@@ -187,7 +184,7 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolParameters struct {
 
 	// (Updatable) Specifies the initial size for the number of database connections that will be created for the pool.
 	// +kubebuilder:validation:Optional
-	InitialPoolSize *float64 `json:"initialPoolSize,omitempty" tf:"initial_pool_size,omitempty"`
+	InitialPoolSize *int64 `json:"initialPoolSize,omitempty" tf:"initial_pool_size,omitempty"`
 
 	// (Updatable) Specifies the expected audience for the JWT token. This value is used to validate the aud claim in the JWT token.
 	// +kubebuilder:validation:Optional
@@ -207,11 +204,11 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigPoolParameters struct {
 
 	// (Updatable) Specifies the maximum number of database connections allowed for the pool.
 	// +kubebuilder:validation:Optional
-	MaxPoolSize *float64 `json:"maxPoolSize,omitempty" tf:"max_pool_size,omitempty"`
+	MaxPoolSize *int64 `json:"maxPoolSize,omitempty" tf:"max_pool_size,omitempty"`
 
 	// (Updatable) Specifies the minimum number of database connections allowed for the pool.
 	// +kubebuilder:validation:Optional
-	MinPoolSize *float64 `json:"minPoolSize,omitempty" tf:"min_pool_size,omitempty"`
+	MinPoolSize *int64 `json:"minPoolSize,omitempty" tf:"min_pool_size,omitempty"`
 
 	// (Updatable) The pool route value provided in requests to target this pool.
 	// +kubebuilder:validation:Optional

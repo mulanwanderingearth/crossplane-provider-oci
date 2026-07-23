@@ -80,7 +80,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Check Connection Status. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) OCID of compartment for the External
                       MySQL Database.
@@ -266,7 +267,8 @@ spec:
                         port:
                           description: (Updatable) Port number to connect to External
                             MySQL Database.
-                          type: number
+                          format: int64
+                          type: integer
                         sslSecretId:
                           description: (Updatable) If using existing SSL secret to
                             connect, OCID for the secret resource.
@@ -371,7 +373,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Check Connection Status. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) OCID of compartment for the External
                       MySQL Database.
@@ -557,7 +560,8 @@ spec:
                         port:
                           description: (Updatable) Port number to connect to External
                             MySQL Database.
-                          type: number
+                          format: int64
+                          type: integer
                         sslSecretId:
                           description: (Updatable) If using existing SSL secret to
                             connect, OCID for the secret resource.
@@ -756,7 +760,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Check Connection Status. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) OCID of compartment for the External
                       MySQL Database.
@@ -793,7 +798,8 @@ spec:
                         port:
                           description: (Updatable) Port number to connect to External
                             MySQL Database.
-                          type: number
+                          format: int64
+                          type: integer
                         sslSecretId:
                           description: (Updatable) If using existing SSL secret to
                             connect, OCID for the secret resource.
@@ -832,7 +838,8 @@ spec:
                   port:
                     description: (Updatable) Port number to connect to External MySQL
                       Database.
-                    type: number
+                    format: int64
+                    type: integer
                   sourceDatabase:
                     description: Name of MySQL Database.
                     type: string

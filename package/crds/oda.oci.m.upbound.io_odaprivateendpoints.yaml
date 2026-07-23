@@ -153,7 +153,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the ODA private endpoint.
                     type: string
@@ -169,7 +168,6 @@ spec:
                       without any predefined name, type, or scope. Example: {"bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   nsgIds:
                     description: (Updatable) List of OCIDs of network security groups
                     items:
@@ -367,7 +365,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the ODA private endpoint.
                     type: string
@@ -383,7 +380,6 @@ spec:
                       without any predefined name, type, or scope. Example: {"bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   nsgIds:
                     description: (Updatable) List of OCIDs of network security groups
                     items:
@@ -551,7 +547,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the ODA private endpoint.
                     type: string
@@ -567,7 +562,6 @@ spec:
                       without any predefined name, type, or scope. Example: {"bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID that was assigned when the ODA private endpoint
                       was created.

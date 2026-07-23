@@ -17,7 +17,7 @@ import (
 type NotebookSessionConfigDetailsInitParameters struct {
 
 	// A notebook session instance is provided with a block storage volume. This specifies the size of the volume in GBs.
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// Details for the notebook session shape configuration.
 	NotebookSessionShapeConfigDetails []NotebookSessionShapeConfigDetailsInitParameters `json:"notebookSessionShapeConfigDetails,omitempty" tf:"notebook_session_shape_config_details,omitempty"`
@@ -55,7 +55,7 @@ type NotebookSessionConfigDetailsInitParameters struct {
 type NotebookSessionConfigDetailsObservation struct {
 
 	// A notebook session instance is provided with a block storage volume. This specifies the size of the volume in GBs.
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// Details for the notebook session shape configuration.
 	NotebookSessionShapeConfigDetails []NotebookSessionShapeConfigDetailsObservation `json:"notebookSessionShapeConfigDetails,omitempty" tf:"notebook_session_shape_config_details,omitempty"`
@@ -74,7 +74,7 @@ type NotebookSessionConfigDetailsParameters struct {
 
 	// A notebook session instance is provided with a block storage volume. This specifies the size of the volume in GBs.
 	// +kubebuilder:validation:Optional
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// Details for the notebook session shape configuration.
 	// +kubebuilder:validation:Optional
@@ -116,7 +116,7 @@ type NotebookSessionConfigDetailsParameters struct {
 type NotebookSessionConfigurationDetailsInitParameters struct {
 
 	// A notebook session instance is provided with a block storage volume. This specifies the size of the volume in GBs.
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// Details for the notebook session shape configuration.
 	NotebookSessionShapeConfigDetails []NotebookSessionConfigurationDetailsNotebookSessionShapeConfigDetailsInitParameters `json:"notebookSessionShapeConfigDetails,omitempty" tf:"notebook_session_shape_config_details,omitempty"`
@@ -193,7 +193,7 @@ type NotebookSessionConfigurationDetailsNotebookSessionShapeConfigDetailsParamet
 type NotebookSessionConfigurationDetailsObservation struct {
 
 	// A notebook session instance is provided with a block storage volume. This specifies the size of the volume in GBs.
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// Details for the notebook session shape configuration.
 	NotebookSessionShapeConfigDetails []NotebookSessionConfigurationDetailsNotebookSessionShapeConfigDetailsObservation `json:"notebookSessionShapeConfigDetails,omitempty" tf:"notebook_session_shape_config_details,omitempty"`
@@ -212,7 +212,7 @@ type NotebookSessionConfigurationDetailsParameters struct {
 
 	// A notebook session instance is provided with a block storage volume. This specifies the size of the volume in GBs.
 	// +kubebuilder:validation:Optional
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// Details for the notebook session shape configuration.
 	// +kubebuilder:validation:Optional
@@ -304,15 +304,13 @@ type NotebookSessionInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly display name for the resource. It does not have to be unique and can be modified. Avoid entering confidential information. Example: My NotebookSession
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Details for the notebook session configuration.
 	NotebookSessionConfigDetails []NotebookSessionConfigDetailsInitParameters `json:"notebookSessionConfigDetails,omitempty" tf:"notebook_session_config_details,omitempty"`
@@ -352,15 +350,13 @@ type NotebookSessionObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly display name for the resource. It does not have to be unique and can be modified. Avoid entering confidential information. Example: My NotebookSession
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the notebook session.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -410,8 +406,7 @@ type NotebookSessionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly display name for the resource. It does not have to be unique and can be modified. Avoid entering confidential information. Example: My NotebookSession
 	// +kubebuilder:validation:Optional
@@ -419,8 +414,7 @@ type NotebookSessionParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Details for the notebook session configuration.
 	// +kubebuilder:validation:Optional
@@ -460,8 +454,7 @@ type NotebookSessionParameters struct {
 type NotebookSessionRuntimeConfigDetailsInitParameters struct {
 
 	// (Updatable) Custom environment variables for Notebook Session. These key-value pairs will be available for customers in Notebook Sessions.
-	// +mapType=granular
-	CustomEnvironmentVariables map[string]*string `json:"customEnvironmentVariables,omitempty" tf:"custom_environment_variables,omitempty"`
+	CustomEnvironmentVariables map[string]string `json:"customEnvironmentVariables,omitempty" tf:"custom_environment_variables,omitempty"`
 
 	// (Updatable) Git configuration Details.
 	NotebookSessionGitConfigDetails []NotebookSessionGitConfigDetailsInitParameters `json:"notebookSessionGitConfigDetails,omitempty" tf:"notebook_session_git_config_details,omitempty"`
@@ -470,8 +463,7 @@ type NotebookSessionRuntimeConfigDetailsInitParameters struct {
 type NotebookSessionRuntimeConfigDetailsObservation struct {
 
 	// (Updatable) Custom environment variables for Notebook Session. These key-value pairs will be available for customers in Notebook Sessions.
-	// +mapType=granular
-	CustomEnvironmentVariables map[string]*string `json:"customEnvironmentVariables,omitempty" tf:"custom_environment_variables,omitempty"`
+	CustomEnvironmentVariables map[string]string `json:"customEnvironmentVariables,omitempty" tf:"custom_environment_variables,omitempty"`
 
 	// (Updatable) Git configuration Details.
 	NotebookSessionGitConfigDetails []NotebookSessionGitConfigDetailsObservation `json:"notebookSessionGitConfigDetails,omitempty" tf:"notebook_session_git_config_details,omitempty"`
@@ -481,8 +473,7 @@ type NotebookSessionRuntimeConfigDetailsParameters struct {
 
 	// (Updatable) Custom environment variables for Notebook Session. These key-value pairs will be available for customers in Notebook Sessions.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	CustomEnvironmentVariables map[string]*string `json:"customEnvironmentVariables,omitempty" tf:"custom_environment_variables,omitempty"`
+	CustomEnvironmentVariables map[string]string `json:"customEnvironmentVariables,omitempty" tf:"custom_environment_variables,omitempty"`
 
 	// (Updatable) Git configuration Details.
 	// +kubebuilder:validation:Optional

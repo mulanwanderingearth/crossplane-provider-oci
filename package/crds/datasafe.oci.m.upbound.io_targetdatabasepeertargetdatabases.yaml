@@ -344,7 +344,8 @@ spec:
                         listenerPort:
                           description: (Updatable) The port number of the database
                             listener.
-                          type: number
+                          format: int64
+                          type: integer
                         pluggableDatabaseId:
                           description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                             (Updatable) The OCID of the pluggable database registered
@@ -956,7 +957,8 @@ spec:
                         listenerPort:
                           description: (Updatable) The port number of the database
                             listener.
-                          type: number
+                          format: int64
+                          type: integer
                         pluggableDatabaseId:
                           description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                             (Updatable) The OCID of the pluggable database registered
@@ -1380,7 +1382,8 @@ spec:
                         listenerPort:
                           description: (Updatable) The port number of the database
                             listener.
-                          type: number
+                          format: int64
+                          type: integer
                         pluggableDatabaseId:
                           description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                             (Updatable) The OCID of the pluggable database registered
@@ -1420,7 +1423,8 @@ spec:
                   key:
                     description: The secondary key assigned for the peer target database
                       in Data Safe.
-                    type: number
+                    format: int64
+                    type: integer
                   lifecycleDetails:
                     description: Details about the current state of the peer target
                       database in Data Safe.

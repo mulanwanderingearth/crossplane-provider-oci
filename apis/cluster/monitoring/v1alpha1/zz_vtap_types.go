@@ -41,8 +41,7 @@ type VtapInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -51,14 +50,13 @@ type VtapInitParameters struct {
 	EncapsulationProtocol *string `json:"encapsulationProtocol,omitempty" tf:"encapsulation_protocol,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Used to start or stop a Vtap resource.
 	IsVtapEnabled *bool `json:"isVtapEnabled,omitempty" tf:"is_vtap_enabled,omitempty"`
 
 	// (Updatable) The maximum size of the packets to be included in the filter.
-	MaxPacketSize *float64 `json:"maxPacketSize,omitempty" tf:"max_packet_size,omitempty"`
+	MaxPacketSize *int64 `json:"maxPacketSize,omitempty" tf:"max_packet_size,omitempty"`
 
 	// (Updatable) The OCID of the source point where packets are captured.
 	SourceID *string `json:"sourceId,omitempty" tf:"source_id,omitempty"`
@@ -130,8 +128,7 @@ type VtapObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -140,8 +137,7 @@ type VtapObservation struct {
 	EncapsulationProtocol *string `json:"encapsulationProtocol,omitempty" tf:"encapsulation_protocol,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The VTAP's Oracle ID (OCID).
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -153,7 +149,7 @@ type VtapObservation struct {
 	LifecycleStateDetails *string `json:"lifecycleStateDetails,omitempty" tf:"lifecycle_state_details,omitempty"`
 
 	// (Updatable) The maximum size of the packets to be included in the filter.
-	MaxPacketSize *float64 `json:"maxPacketSize,omitempty" tf:"max_packet_size,omitempty"`
+	MaxPacketSize *int64 `json:"maxPacketSize,omitempty" tf:"max_packet_size,omitempty"`
 
 	// (Updatable) The OCID of the source point where packets are captured.
 	SourceID *string `json:"sourceId,omitempty" tf:"source_id,omitempty"`
@@ -223,8 +219,7 @@ type VtapParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -236,8 +231,7 @@ type VtapParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Used to start or stop a Vtap resource.
 	// +kubebuilder:validation:Optional
@@ -245,7 +239,7 @@ type VtapParameters struct {
 
 	// (Updatable) The maximum size of the packets to be included in the filter.
 	// +kubebuilder:validation:Optional
-	MaxPacketSize *float64 `json:"maxPacketSize,omitempty" tf:"max_packet_size,omitempty"`
+	MaxPacketSize *int64 `json:"maxPacketSize,omitempty" tf:"max_packet_size,omitempty"`
 
 	// (Updatable) The OCID of the source point where packets are captured.
 	// +kubebuilder:validation:Optional

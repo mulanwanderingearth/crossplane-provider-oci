@@ -180,7 +180,8 @@ spec:
                     type: array
                   numberOfBackupsToRetain:
                     description: (Updatable) Number of backup copies to retain.
-                    type: number
+                    format: int64
+                    type: integer
                   schedule:
                     description: (Updatable) Day/time recurrence (specified following
                       RFC 5545) at which to trigger the backup process. Currently
@@ -325,7 +326,8 @@ spec:
                     type: array
                   numberOfBackupsToRetain:
                     description: (Updatable) Number of backup copies to retain.
-                    type: number
+                    format: int64
+                    type: integer
                   schedule:
                     description: (Updatable) Day/time recurrence (specified following
                       RFC 5545) at which to trigger the backup process. Currently
@@ -456,7 +458,8 @@ spec:
                     type: array
                   numberOfBackupsToRetain:
                     description: (Updatable) Number of backup copies to retain.
-                    type: number
+                    format: int64
+                    type: integer
                   schedule:
                     description: (Updatable) Day/time recurrence (specified following
                       RFC 5545) at which to trigger the backup process. Currently

@@ -156,7 +156,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the SSL certificate.
                       The name can be changed and does not need to be unique.
@@ -169,7 +168,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isTrustVerificationDisabled:
                     description: Set to true if the SSL certificate is self-signed.
                     type: boolean
@@ -295,7 +293,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the SSL certificate.
                       The name can be changed and does not need to be unique.
@@ -308,7 +305,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isTrustVerificationDisabled:
                     description: Set to true if the SSL certificate is self-signed.
                     type: boolean
@@ -414,7 +410,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the SSL certificate.
                       The name can be changed and does not need to be unique.
@@ -445,7 +440,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the SSL certificate.
                     type: string
@@ -495,11 +489,13 @@ spec:
                           type: string
                         exponent:
                           description: The private key exponent.
-                          type: number
+                          format: int64
+                          type: integer
                         keySize:
                           description: The number of bits in a key used by a cryptographic
                             algorithm.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   serialNumber:
@@ -558,7 +554,8 @@ spec:
                     type: string
                   version:
                     description: The version of the encoded certificate.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

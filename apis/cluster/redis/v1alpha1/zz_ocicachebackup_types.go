@@ -31,8 +31,7 @@ type OciCacheBackupInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Backup description
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -41,14 +40,13 @@ type OciCacheBackupInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Export To Object Storage. Could be set to any integer value.
-	ExportToObjectStorageTrigger *float64 `json:"exportToObjectStorageTrigger,omitempty" tf:"export_to_object_storage_trigger,omitempty"`
+	ExportToObjectStorageTrigger *int64 `json:"exportToObjectStorageTrigger,omitempty" tf:"export_to_object_storage_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Backup retention period in days.
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
 	// Oracle Cloud Infrastructure Cache cluster identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/redis/v1alpha1.RedisCluster
@@ -85,8 +83,7 @@ type OciCacheBackupObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Backup description
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -95,20 +92,19 @@ type OciCacheBackupObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Export To Object Storage. Could be set to any integer value.
-	ExportToObjectStorageTrigger *float64 `json:"exportToObjectStorageTrigger,omitempty" tf:"export_to_object_storage_trigger,omitempty"`
+	ExportToObjectStorageTrigger *int64 `json:"exportToObjectStorageTrigger,omitempty" tf:"export_to_object_storage_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique identifier that is immutable on creation
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) Backup retention period in days.
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
 	// The number of shards in a sharded cluster. Only applicable when clusterMode is SHARDED.
-	ShardCount *float64 `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
+	ShardCount *int64 `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
 
 	// The Oracle Cloud Infrastructure Cache engine version that the cluster is running.
 	SoftwareVersion *string `json:"softwareVersion,omitempty" tf:"software_version,omitempty"`
@@ -120,8 +116,7 @@ type OciCacheBackupObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the backup was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -151,8 +146,7 @@ type OciCacheBackupParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Backup description
 	// +kubebuilder:validation:Optional
@@ -164,16 +158,15 @@ type OciCacheBackupParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Export To Object Storage. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ExportToObjectStorageTrigger *float64 `json:"exportToObjectStorageTrigger,omitempty" tf:"export_to_object_storage_trigger,omitempty"`
+	ExportToObjectStorageTrigger *int64 `json:"exportToObjectStorageTrigger,omitempty" tf:"export_to_object_storage_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Backup retention period in days.
 	// +kubebuilder:validation:Optional
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
 	// Oracle Cloud Infrastructure Cache cluster identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/redis/v1alpha1.RedisCluster

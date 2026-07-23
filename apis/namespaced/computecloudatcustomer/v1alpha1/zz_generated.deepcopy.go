@@ -85,18 +85,9 @@ func (in *CccInfrastructureInitParameters) DeepCopyInto(out *CccInfrastructureIn
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -111,18 +102,9 @@ func (in *CccInfrastructureInitParameters) DeepCopyInto(out *CccInfrastructureIn
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.SubnetID != nil {
@@ -209,18 +191,9 @@ func (in *CccInfrastructureObservation) DeepCopyInto(out *CccInfrastructureObser
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -235,18 +208,9 @@ func (in *CccInfrastructureObservation) DeepCopyInto(out *CccInfrastructureObser
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -300,18 +264,9 @@ func (in *CccInfrastructureObservation) DeepCopyInto(out *CccInfrastructureObser
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -388,18 +343,9 @@ func (in *CccInfrastructureParameters) DeepCopyInto(out *CccInfrastructureParame
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -414,18 +360,9 @@ func (in *CccInfrastructureParameters) DeepCopyInto(out *CccInfrastructureParame
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.SubnetID != nil {
@@ -537,18 +474,9 @@ func (in *CccUpgradeScheduleInitParameters) DeepCopyInto(out *CccUpgradeSchedule
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -570,18 +498,9 @@ func (in *CccUpgradeScheduleInitParameters) DeepCopyInto(out *CccUpgradeSchedule
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -638,18 +557,9 @@ func (in *CccUpgradeScheduleObservation) DeepCopyInto(out *CccUpgradeScheduleObs
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -671,18 +581,9 @@ func (in *CccUpgradeScheduleObservation) DeepCopyInto(out *CccUpgradeScheduleObs
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -713,18 +614,9 @@ func (in *CccUpgradeScheduleObservation) DeepCopyInto(out *CccUpgradeScheduleObs
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -769,18 +661,9 @@ func (in *CccUpgradeScheduleParameters) DeepCopyInto(out *CccUpgradeSchedulePara
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -802,18 +685,9 @@ func (in *CccUpgradeScheduleParameters) DeepCopyInto(out *CccUpgradeSchedulePara
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -993,22 +867,22 @@ func (in *InfrastructureInventoryObservation) DeepCopyInto(out *InfrastructureIn
 	*out = *in
 	if in.CapacityStorageTrayCount != nil {
 		in, out := &in.CapacityStorageTrayCount, &out.CapacityStorageTrayCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ComputeNodeCount != nil {
 		in, out := &in.ComputeNodeCount, &out.ComputeNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ManagementNodeCount != nil {
 		in, out := &in.ManagementNodeCount, &out.ManagementNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PerformanceStorageTrayCount != nil {
 		in, out := &in.PerformanceStorageTrayCount, &out.PerformanceStorageTrayCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SerialNumber != nil {
@@ -1136,7 +1010,7 @@ func (in *InfrastructureNetworkConfigurationObservation) DeepCopyInto(out *Infra
 	}
 	if in.UplinkPortCount != nil {
 		in, out := &in.UplinkPortCount, &out.UplinkPortCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UplinkPortForwardErrorCorrection != nil {
@@ -1146,12 +1020,12 @@ func (in *InfrastructureNetworkConfigurationObservation) DeepCopyInto(out *Infra
 	}
 	if in.UplinkPortSpeedInGbps != nil {
 		in, out := &in.UplinkPortSpeedInGbps, &out.UplinkPortSpeedInGbps
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UplinkVlanMtu != nil {
 		in, out := &in.UplinkVlanMtu, &out.UplinkVlanMtu
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1206,7 +1080,7 @@ func (in *InfrastructureRoutingDynamicObservation) DeepCopyInto(out *Infrastruct
 	}
 	if in.OracleAsn != nil {
 		in, out := &in.OracleAsn, &out.OracleAsn
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PeerInformation != nil {
@@ -1263,12 +1137,12 @@ func (in *InfrastructureRoutingStaticObservation) DeepCopyInto(out *Infrastructu
 	*out = *in
 	if in.UplinkHsrpGroup != nil {
 		in, out := &in.UplinkHsrpGroup, &out.UplinkHsrpGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UplinkVlan != nil {
 		in, out := &in.UplinkVlan, &out.UplinkVlan
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1373,7 +1247,7 @@ func (in *PeerInformationObservation) DeepCopyInto(out *PeerInformationObservati
 	*out = *in
 	if in.Asn != nil {
 		in, out := &in.Asn, &out.Asn
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IP != nil {

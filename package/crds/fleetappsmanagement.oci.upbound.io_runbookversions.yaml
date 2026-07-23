@@ -81,7 +81,6 @@ spec:
                       Defined tags for this resource. Each key is predefined and scoped to a namespace. Example:
                       {"foo-namespace.bar-key": "value"}
                     type: object
-                    x-kubernetes-map-type: granular
                   executionWorkflowDetails:
                     description: |-
                       (Updatable) Execution Workflow details.
@@ -130,7 +129,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   groups:
                     description: (Updatable) The groups of the runbook version.
                     items:
@@ -172,7 +170,8 @@ spec:
                                     durationInMinutes:
                                       description: (Updatable) Time in minutes to
                                         apply Pause.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     kind:
                                       description: (Updatable) Pause based On.
                                       type: string
@@ -351,7 +350,8 @@ spec:
                                     durationInMinutes:
                                       description: (Updatable) Time in minutes to
                                         apply Pause.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     kind:
                                       description: (Updatable) Pause based On.
                                       type: string
@@ -572,11 +572,13 @@ spec:
                                     numRetries:
                                       description: (Updatable) The number of retries
                                         allowed.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     timeoutInSeconds:
                                       description: (Updatable) The timeout in seconds
                                         for the task.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               scope:
@@ -610,7 +612,6 @@ spec:
                       Defined tags for this resource. Each key is predefined and scoped to a namespace. Example:
                       {"foo-namespace.bar-key": "value"}
                     type: object
-                    x-kubernetes-map-type: granular
                   executionWorkflowDetails:
                     description: |-
                       (Updatable) Execution Workflow details.
@@ -659,7 +660,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   groups:
                     description: (Updatable) The groups of the runbook version.
                     items:
@@ -701,7 +701,8 @@ spec:
                                     durationInMinutes:
                                       description: (Updatable) Time in minutes to
                                         apply Pause.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     kind:
                                       description: (Updatable) Pause based On.
                                       type: string
@@ -880,7 +881,8 @@ spec:
                                     durationInMinutes:
                                       description: (Updatable) Time in minutes to
                                         apply Pause.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     kind:
                                       description: (Updatable) Pause based On.
                                       type: string
@@ -1101,11 +1103,13 @@ spec:
                                     numRetries:
                                       description: (Updatable) The number of retries
                                         allowed.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     timeoutInSeconds:
                                       description: (Updatable) The timeout in seconds
                                         for the task.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               scope:
@@ -1238,7 +1242,6 @@ spec:
                       Defined tags for this resource. Each key is predefined and scoped to a namespace. Example:
                       {"foo-namespace.bar-key": "value"}
                     type: object
-                    x-kubernetes-map-type: granular
                   executionWorkflowDetails:
                     description: |-
                       (Updatable) Execution Workflow details.
@@ -1287,7 +1290,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   groups:
                     description: (Updatable) The groups of the runbook version.
                     items:
@@ -1329,7 +1331,8 @@ spec:
                                     durationInMinutes:
                                       description: (Updatable) Time in minutes to
                                         apply Pause.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     kind:
                                       description: (Updatable) Pause based On.
                                       type: string
@@ -1463,7 +1466,6 @@ spec:
                       and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   tasks:
                     description: |-
                       (Updatable) A set of tasks to execute in the runbook.
@@ -1532,7 +1534,8 @@ spec:
                                     durationInMinutes:
                                       description: (Updatable) Time in minutes to
                                         apply Pause.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     kind:
                                       description: (Updatable) Pause based On.
                                       type: string
@@ -1759,11 +1762,13 @@ spec:
                                     numRetries:
                                       description: (Updatable) The number of retries
                                         allowed.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     timeoutInSeconds:
                                       description: (Updatable) The timeout in seconds
                                         for the task.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               scope:

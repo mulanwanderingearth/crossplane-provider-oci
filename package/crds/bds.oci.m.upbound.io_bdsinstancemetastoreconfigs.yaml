@@ -64,7 +64,8 @@ spec:
                   activateTrigger:
                     description: (Updatable) An optional integer, when flipped triggers
                       activation of metastore config.
-                    type: number
+                    format: int64
+                    type: integer
                   bdsApiKeyId:
                     description: (Updatable) The ID of BDS Api Key used for Data Catalog
                       metastore integration.
@@ -363,7 +364,8 @@ spec:
                   activateTrigger:
                     description: (Updatable) An optional integer, when flipped triggers
                       activation of metastore config.
-                    type: number
+                    format: int64
+                    type: integer
                   bdsApiKeyId:
                     description: (Updatable) The ID of BDS Api Key used for Data Catalog
                       metastore integration.
@@ -727,7 +729,8 @@ spec:
                   activateTrigger:
                     description: (Updatable) An optional integer, when flipped triggers
                       activation of metastore config.
-                    type: number
+                    format: int64
+                    type: integer
                   bdsApiKeyId:
                     description: (Updatable) The ID of BDS Api Key used for Data Catalog
                       metastore integration.

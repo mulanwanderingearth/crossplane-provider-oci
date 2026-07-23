@@ -19,7 +19,7 @@ type ExadataIormConfigDBPlansInitParameters struct {
 	DBName *string `json:"dbName,omitempty" tf:"db_name,omitempty"`
 
 	// (Updatable) The relative priority of this database.
-	Share *float64 `json:"share,omitempty" tf:"share,omitempty"`
+	Share *int64 `json:"share,omitempty" tf:"share,omitempty"`
 }
 
 type ExadataIormConfigDBPlansObservation struct {
@@ -31,7 +31,7 @@ type ExadataIormConfigDBPlansObservation struct {
 	FlashCacheLimit *string `json:"flashCacheLimit,omitempty" tf:"flash_cache_limit,omitempty"`
 
 	// (Updatable) The relative priority of this database.
-	Share *float64 `json:"share,omitempty" tf:"share,omitempty"`
+	Share *int64 `json:"share,omitempty" tf:"share,omitempty"`
 }
 
 type ExadataIormConfigDBPlansParameters struct {
@@ -42,7 +42,7 @@ type ExadataIormConfigDBPlansParameters struct {
 
 	// (Updatable) The relative priority of this database.
 	// +kubebuilder:validation:Optional
-	Share *float64 `json:"share" tf:"share,omitempty"`
+	Share *int64 `json:"share" tf:"share,omitempty"`
 }
 
 type ExadataIormConfigInitParameters struct {

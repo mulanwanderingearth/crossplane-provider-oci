@@ -19,8 +19,7 @@ type PluggableDatabasesLocalCloneConnectionStringsInitParameters struct {
 type PluggableDatabasesLocalCloneConnectionStringsObservation struct {
 
 	// All connection strings to use to connect to the pluggable database.
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 
 	// A host name-based PDB connection string.
 	PdbDefault *string `json:"pdbDefault,omitempty" tf:"pdb_default,omitempty"`
@@ -75,12 +74,10 @@ type PluggableDatabasesLocalCloneObservation struct {
 	ContainerDatabaseID *string `json:"containerDatabaseId,omitempty" tf:"container_database_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the pluggable database.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -116,8 +113,7 @@ type PluggableDatabasesLocalCloneObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the pluggable database was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`

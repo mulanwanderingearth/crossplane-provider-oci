@@ -96,11 +96,13 @@ spec:
                             must not be less than the minimum port number. To specify
                             a single port number, set both the min and max to the
                             same value.
-                          type: number
+                          format: int64
+                          type: integer
                         minDestinationPort:
                           description: (Updatable) The minimum port number, which
                             must not be greater than the maximum port number.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   additionalLanguagePacks:
@@ -214,7 +216,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) FusionEnvironment Identifier can be renamed.
                     type: string
@@ -228,7 +229,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   fusionEnvironmentFamilyId:
                     description: The unique identifier (OCID) of the Fusion Environment
                       Family that the Fusion Environment belongs to.
@@ -481,11 +481,13 @@ spec:
                             must not be less than the minimum port number. To specify
                             a single port number, set both the min and max to the
                             same value.
-                          type: number
+                          format: int64
+                          type: integer
                         minDestinationPort:
                           description: (Updatable) The minimum port number, which
                             must not be greater than the maximum port number.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   additionalLanguagePacks:
@@ -599,7 +601,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) FusionEnvironment Identifier can be renamed.
                     type: string
@@ -613,7 +614,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   fusionEnvironmentFamilyId:
                     description: The unique identifier (OCID) of the Fusion Environment
                       Family that the Fusion Environment belongs to.
@@ -960,11 +960,13 @@ spec:
                             must not be less than the minimum port number. To specify
                             a single port number, set both the min and max to the
                             same value.
-                          type: number
+                          format: int64
+                          type: integer
                         minDestinationPort:
                           description: (Updatable) The minimum port number, which
                             must not be greater than the maximum port number.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   additionalLanguagePacks:
@@ -1007,7 +1009,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) FusionEnvironment Identifier can be renamed.
                     type: string
@@ -1024,7 +1025,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   fusionEnvironmentFamilyId:
                     description: The unique identifier (OCID) of the Fusion Environment
                       Family that the Fusion Environment belongs to.

@@ -54,6 +54,18 @@ type IPAddressesParameters struct {
 }
 
 type NetworkPerimeterIdcsCreatedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type NetworkPerimeterIdcsCreatedByObservation struct {
@@ -75,9 +87,37 @@ type NetworkPerimeterIdcsCreatedByObservation struct {
 }
 
 type NetworkPerimeterIdcsCreatedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type NetworkPerimeterIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type NetworkPerimeterIdcsLastModifiedByObservation struct {
@@ -99,6 +139,22 @@ type NetworkPerimeterIdcsLastModifiedByObservation struct {
 }
 
 type NetworkPerimeterIdcsLastModifiedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type NetworkPerimeterInitParameters struct {
@@ -141,6 +197,21 @@ type NetworkPerimeterInitParameters struct {
 }
 
 type NetworkPerimeterMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) Indicates the type of Ip Address example, IPV4 or IPV6
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type NetworkPerimeterMetaObservation struct {
@@ -162,6 +233,26 @@ type NetworkPerimeterMetaObservation struct {
 }
 
 type NetworkPerimeterMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) Indicates the type of Ip Address example, IPV4 or IPV6
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type NetworkPerimeterObservation struct {

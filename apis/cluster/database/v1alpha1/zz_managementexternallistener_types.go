@@ -25,7 +25,7 @@ type ManagementExternalListenerEndpointsObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// The port number.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The listener protocol.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -40,8 +40,7 @@ type ManagementExternalListenerEndpointsParameters struct {
 type ManagementExternalListenerInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The OCID of the external connector.
 	ExternalConnectorID *string `json:"externalConnectorId,omitempty" tf:"external_connector_id,omitempty"`
@@ -60,15 +59,13 @@ type ManagementExternalListenerInitParameters struct {
 	ExternalListenerIDSelector *v1.Selector `json:"externalListenerIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type ManagementExternalListenerObservation struct {
 
 	// The additional details of the external listener defined in {"key": "value"} format. Example: {"bar-key": "value"}
-	// +mapType=granular
-	AdditionalDetails map[string]*string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
+	AdditionalDetails map[string]string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
 
 	// The directory that stores tracing and logging incidents when Automatic Diagnostic Repository (ADR) is enabled.
 	AdrHomeDirectory *string `json:"adrHomeDirectory,omitempty" tf:"adr_home_directory,omitempty"`
@@ -80,8 +77,7 @@ type ManagementExternalListenerObservation struct {
 	ComponentName *string `json:"componentName,omitempty" tf:"component_name,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the external listener. The name does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -105,8 +101,7 @@ type ManagementExternalListenerObservation struct {
 	ExternalListenerID *string `json:"externalListenerId,omitempty" tf:"external_listener_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The name of the host on which the external listener is running.
 	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
@@ -142,8 +137,7 @@ type ManagementExternalListenerObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the external listener was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -162,8 +156,7 @@ type ManagementExternalListenerParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The OCID of the external connector.
 	// +kubebuilder:validation:Optional
@@ -185,8 +178,7 @@ type ManagementExternalListenerParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type ManagementExternalListenerServicedAsmsInitParameters struct {

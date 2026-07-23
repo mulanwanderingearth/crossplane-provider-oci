@@ -127,15 +127,13 @@ type CreateJobRunDetailsInitParameters struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) A user-friendly display name for the resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) The job configuration details
 	JobConfigurationOverrideDetails []CreateJobRunDetailsJobConfigurationOverrideDetailsInitParameters `json:"jobConfigurationOverrideDetails,omitempty" tf:"job_configuration_override_details,omitempty"`
@@ -179,8 +177,7 @@ type CreateJobRunDetailsJobConfigurationOverrideDetailsInitParameters struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) The type of job.
 	JobType *string `json:"jobType,omitempty" tf:"job_type,omitempty"`
@@ -195,8 +192,7 @@ type CreateJobRunDetailsJobConfigurationOverrideDetailsObservation struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) The type of job.
 	JobType *string `json:"jobType,omitempty" tf:"job_type,omitempty"`
@@ -213,8 +209,7 @@ type CreateJobRunDetailsJobConfigurationOverrideDetailsParameters struct {
 
 	// (Updatable) Environment variables to set for the job.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) The type of job.
 	// +kubebuilder:validation:Optional
@@ -389,15 +384,13 @@ type CreateJobRunDetailsObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) A user-friendly display name for the resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) The job configuration details
 	JobConfigurationOverrideDetails []CreateJobRunDetailsJobConfigurationOverrideDetailsObservation `json:"jobConfigurationOverrideDetails,omitempty" tf:"job_configuration_override_details,omitempty"`
@@ -423,8 +416,7 @@ type CreateJobRunDetailsParameters struct {
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) A user-friendly display name for the resource.
 	// +kubebuilder:validation:Optional
@@ -432,8 +424,7 @@ type CreateJobRunDetailsParameters struct {
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) The job configuration details
 	// +kubebuilder:validation:Optional
@@ -482,8 +473,7 @@ type CreatePipelineRunDetailsConfigurationOverrideDetailsInitParameters struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the job. Timer starts when the job becomes active.
 	MaximumRuntimeInMinutes *string `json:"maximumRuntimeInMinutes,omitempty" tf:"maximum_runtime_in_minutes,omitempty"`
@@ -498,8 +488,7 @@ type CreatePipelineRunDetailsConfigurationOverrideDetailsObservation struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the job. Timer starts when the job becomes active.
 	MaximumRuntimeInMinutes *string `json:"maximumRuntimeInMinutes,omitempty" tf:"maximum_runtime_in_minutes,omitempty"`
@@ -516,8 +505,7 @@ type CreatePipelineRunDetailsConfigurationOverrideDetailsParameters struct {
 
 	// (Updatable) Environment variables to set for the job.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the job. Timer starts when the job becomes active.
 	// +kubebuilder:validation:Optional
@@ -537,15 +525,13 @@ type CreatePipelineRunDetailsInitParameters struct {
 	ConfigurationOverrideDetails []CreatePipelineRunDetailsConfigurationOverrideDetailsInitParameters `json:"configurationOverrideDetails,omitempty" tf:"configuration_override_details,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) A user-friendly display name for the resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_PIPELINE_RUN) (Updatable) The pipeline log configuration details.
 	LogConfigurationOverrideDetails []CreatePipelineRunDetailsLogConfigurationOverrideDetailsInitParameters `json:"logConfigurationOverrideDetails,omitempty" tf:"log_configuration_override_details,omitempty"`
@@ -580,8 +566,7 @@ type CreatePipelineRunDetailsInitParameters struct {
 	StepOverrideDetails []CreatePipelineRunDetailsStepOverrideDetailsInitParameters `json:"stepOverrideDetails,omitempty" tf:"step_override_details,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_PIPELINE_RUN) (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type CreatePipelineRunDetailsLogConfigurationOverrideDetailsInitParameters struct {
@@ -682,15 +667,13 @@ type CreatePipelineRunDetailsObservation struct {
 	ConfigurationOverrideDetails []CreatePipelineRunDetailsConfigurationOverrideDetailsObservation `json:"configurationOverrideDetails,omitempty" tf:"configuration_override_details,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) A user-friendly display name for the resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_PIPELINE_RUN) (Updatable) The pipeline log configuration details.
 	LogConfigurationOverrideDetails []CreatePipelineRunDetailsLogConfigurationOverrideDetailsObservation `json:"logConfigurationOverrideDetails,omitempty" tf:"log_configuration_override_details,omitempty"`
@@ -705,8 +688,7 @@ type CreatePipelineRunDetailsObservation struct {
 	StepOverrideDetails []CreatePipelineRunDetailsStepOverrideDetailsObservation `json:"stepOverrideDetails,omitempty" tf:"step_override_details,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_PIPELINE_RUN) (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type CreatePipelineRunDetailsParameters struct {
@@ -721,8 +703,7 @@ type CreatePipelineRunDetailsParameters struct {
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) A user-friendly display name for the resource.
 	// +kubebuilder:validation:Optional
@@ -730,8 +711,7 @@ type CreatePipelineRunDetailsParameters struct {
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_PIPELINE_RUN) (Updatable) The pipeline log configuration details.
 	// +kubebuilder:validation:Optional
@@ -771,8 +751,7 @@ type CreatePipelineRunDetailsParameters struct {
 
 	// (Applicable when http_action_type=CREATE_PIPELINE_RUN) (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type CreatePipelineRunDetailsStepOverrideDetailsInitParameters struct {
@@ -820,8 +799,7 @@ type CreatePipelineRunDetailsStepOverrideDetailsStepConfigurationDetailsInitPara
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the job. Timer starts when the job becomes active.
 	MaximumRuntimeInMinutes *string `json:"maximumRuntimeInMinutes,omitempty" tf:"maximum_runtime_in_minutes,omitempty"`
@@ -833,8 +811,7 @@ type CreatePipelineRunDetailsStepOverrideDetailsStepConfigurationDetailsObservat
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the job. Timer starts when the job becomes active.
 	MaximumRuntimeInMinutes *string `json:"maximumRuntimeInMinutes,omitempty" tf:"maximum_runtime_in_minutes,omitempty"`
@@ -848,8 +825,7 @@ type CreatePipelineRunDetailsStepOverrideDetailsStepConfigurationDetailsParamete
 
 	// (Updatable) Environment variables to set for the job.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the job. Timer starts when the job becomes active.
 	// +kubebuilder:validation:Optional
@@ -972,8 +948,7 @@ type ScheduleInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the schedule.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -982,8 +957,7 @@ type ScheduleInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Custom logging details for schedule execution.
 	LogDetails []ScheduleLogDetailsInitParameters `json:"logDetails,omitempty" tf:"log_details,omitempty"`
@@ -1086,8 +1060,7 @@ type ScheduleObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the schedule.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -1096,8 +1069,7 @@ type ScheduleObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the schedule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -1118,8 +1090,7 @@ type ScheduleObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Applicable when http_action_type=CREATE_PIPELINE_RUN) (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the schedule was created. Format is defined by RFC3339.           Example: 2022-08-05T01:02:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -1158,8 +1129,7 @@ type ScheduleParameters struct {
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the schedule.
 	// +kubebuilder:validation:Optional
@@ -1171,8 +1141,7 @@ type ScheduleParameters struct {
 
 	// (Applicable when http_action_type=CREATE_JOB_RUN) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Custom logging details for schedule execution.
 	// +kubebuilder:validation:Optional
@@ -1206,10 +1175,10 @@ type TriggerInitParameters struct {
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
 
 	// (Applicable when trigger_type=INTERVAL) (Updatable) Maximum number of minutes after time_start that the scheduler may use to randomly select the first execution time. This value is considered only when is_random_start_time is true. If omitted and is_random_start_time is true, the service defaults the jitter window to half of the configured interval duration.
-	InitialJitterInMinutes *float64 `json:"initialJitterInMinutes,omitempty" tf:"initial_jitter_in_minutes,omitempty"`
+	InitialJitterInMinutes *int64 `json:"initialJitterInMinutes,omitempty" tf:"initial_jitter_in_minutes,omitempty"`
 
 	// (Updatable) The interval of frequency.
-	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval *int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
 	// (Applicable when trigger_type=INTERVAL) (Updatable) when true and timeStart is null, system generate a random start time between now and now + interval;  isRandomStartTime can be true if timeStart is null.
 	IsRandomStartTime *bool `json:"isRandomStartTime,omitempty" tf:"is_random_start_time,omitempty"`
@@ -1283,10 +1252,10 @@ type TriggerObservation struct {
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
 
 	// (Applicable when trigger_type=INTERVAL) (Updatable) Maximum number of minutes after time_start that the scheduler may use to randomly select the first execution time. This value is considered only when is_random_start_time is true. If omitted and is_random_start_time is true, the service defaults the jitter window to half of the configured interval duration.
-	InitialJitterInMinutes *float64 `json:"initialJitterInMinutes,omitempty" tf:"initial_jitter_in_minutes,omitempty"`
+	InitialJitterInMinutes *int64 `json:"initialJitterInMinutes,omitempty" tf:"initial_jitter_in_minutes,omitempty"`
 
 	// (Updatable) The interval of frequency.
-	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval *int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
 	// (Applicable when trigger_type=INTERVAL) (Updatable) when true and timeStart is null, system generate a random start time between now and now + interval;  isRandomStartTime can be true if timeStart is null.
 	IsRandomStartTime *bool `json:"isRandomStartTime,omitempty" tf:"is_random_start_time,omitempty"`
@@ -1316,11 +1285,11 @@ type TriggerParameters struct {
 
 	// (Applicable when trigger_type=INTERVAL) (Updatable) Maximum number of minutes after time_start that the scheduler may use to randomly select the first execution time. This value is considered only when is_random_start_time is true. If omitted and is_random_start_time is true, the service defaults the jitter window to half of the configured interval duration.
 	// +kubebuilder:validation:Optional
-	InitialJitterInMinutes *float64 `json:"initialJitterInMinutes,omitempty" tf:"initial_jitter_in_minutes,omitempty"`
+	InitialJitterInMinutes *int64 `json:"initialJitterInMinutes,omitempty" tf:"initial_jitter_in_minutes,omitempty"`
 
 	// (Updatable) The interval of frequency.
 	// +kubebuilder:validation:Optional
-	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval *int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
 	// (Applicable when trigger_type=INTERVAL) (Updatable) when true and timeStart is null, system generate a random start time between now and now + interval;  isRandomStartTime can be true if timeStart is null.
 	// +kubebuilder:validation:Optional

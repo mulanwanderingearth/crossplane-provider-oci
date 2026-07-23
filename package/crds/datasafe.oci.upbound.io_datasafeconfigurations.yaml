@@ -368,7 +368,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -377,7 +376,6 @@ spec:
                       For more information, see Resource Tags  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   globalSettings:
                     description: Details of the tenancy level global settings in Data
                       Safe.
@@ -389,10 +387,12 @@ spec:
                           type: boolean
                         offlineRetentionPeriod:
                           description: The offline retention period in months.
-                          type: number
+                          format: int64
+                          type: integer
                         onlineRetentionPeriod:
                           description: The online retention period in months.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   id:

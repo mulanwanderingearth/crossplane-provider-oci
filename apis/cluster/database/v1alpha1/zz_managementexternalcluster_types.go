@@ -16,8 +16,7 @@ import (
 type ManagementExternalClusterInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The OCID of the external cluster.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.ManagementExternalCluster
@@ -36,8 +35,7 @@ type ManagementExternalClusterInitParameters struct {
 	ExternalConnectorID *string `json:"externalConnectorId,omitempty" tf:"external_connector_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type ManagementExternalClusterNetworkConfigurationsInitParameters struct {
@@ -46,7 +44,7 @@ type ManagementExternalClusterNetworkConfigurationsInitParameters struct {
 type ManagementExternalClusterNetworkConfigurationsObservation struct {
 
 	// The network number.
-	NetworkNumber *float64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
+	NetworkNumber *int64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
 
 	// The network type.
 	NetworkType *string `json:"networkType,omitempty" tf:"network_type,omitempty"`
@@ -61,8 +59,7 @@ type ManagementExternalClusterNetworkConfigurationsParameters struct {
 type ManagementExternalClusterObservation struct {
 
 	// The additional details of the external cluster defined in {"key": "value"} format. Example: {"bar-key": "value"}
-	// +mapType=granular
-	AdditionalDetails map[string]*string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
+	AdditionalDetails map[string]string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
 
 	// The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -71,8 +68,7 @@ type ManagementExternalClusterObservation struct {
 	ComponentName *string `json:"componentName,omitempty" tf:"component_name,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the external cluster. The name does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -87,8 +83,7 @@ type ManagementExternalClusterObservation struct {
 	ExternalDBSystemID *string `json:"externalDbSystemId,omitempty" tf:"external_db_system_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The directory in which Oracle Grid Infrastructure is installed.
 	GridHome *string `json:"gridHome,omitempty" tf:"grid_home,omitempty"`
@@ -115,8 +110,7 @@ type ManagementExternalClusterObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the external cluster was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -135,8 +129,7 @@ type ManagementExternalClusterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The OCID of the external cluster.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.ManagementExternalCluster
@@ -158,8 +151,7 @@ type ManagementExternalClusterParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type ManagementExternalClusterScanConfigurationsInitParameters struct {
@@ -168,13 +160,13 @@ type ManagementExternalClusterScanConfigurationsInitParameters struct {
 type ManagementExternalClusterScanConfigurationsObservation struct {
 
 	// The network number.
-	NetworkNumber *float64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
+	NetworkNumber *int64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
 
 	// The name of the SCAN listener.
 	ScanName *string `json:"scanName,omitempty" tf:"scan_name,omitempty"`
 
 	// The port number of the SCAN listener.
-	ScanPort *float64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
+	ScanPort *int64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
 
 	// The protocol of the SCAN listener.
 	ScanProtocol *string `json:"scanProtocol,omitempty" tf:"scan_protocol,omitempty"`
@@ -192,7 +184,7 @@ type ManagementExternalClusterVipConfigurationsObservation struct {
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
 	// The network number.
-	NetworkNumber *float64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
+	NetworkNumber *int64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
 
 	// The name of the node with the VIP.
 	NodeName *string `json:"nodeName,omitempty" tf:"node_name,omitempty"`

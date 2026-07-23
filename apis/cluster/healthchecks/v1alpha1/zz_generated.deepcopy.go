@@ -60,18 +60,9 @@ func (in *HTTPMonitorInitParameters) DeepCopyInto(out *HTTPMonitorInitParameters
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -81,39 +72,21 @@ func (in *HTTPMonitorInitParameters) DeepCopyInto(out *HTTPMonitorInitParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -133,7 +106,7 @@ func (in *HTTPMonitorInitParameters) DeepCopyInto(out *HTTPMonitorInitParameters
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -154,7 +127,7 @@ func (in *HTTPMonitorInitParameters) DeepCopyInto(out *HTTPMonitorInitParameters
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -222,18 +195,9 @@ func (in *HTTPMonitorObservation) DeepCopyInto(out *HTTPMonitorObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -243,34 +207,16 @@ func (in *HTTPMonitorObservation) DeepCopyInto(out *HTTPMonitorObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HomeRegion != nil {
@@ -285,7 +231,7 @@ func (in *HTTPMonitorObservation) DeepCopyInto(out *HTTPMonitorObservation) {
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -305,7 +251,7 @@ func (in *HTTPMonitorObservation) DeepCopyInto(out *HTTPMonitorObservation) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -336,7 +282,7 @@ func (in *HTTPMonitorObservation) DeepCopyInto(out *HTTPMonitorObservation) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -382,18 +328,9 @@ func (in *HTTPMonitorParameters) DeepCopyInto(out *HTTPMonitorParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -403,39 +340,21 @@ func (in *HTTPMonitorParameters) DeepCopyInto(out *HTTPMonitorParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -455,7 +374,7 @@ func (in *HTTPMonitorParameters) DeepCopyInto(out *HTTPMonitorParameters) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -476,7 +395,7 @@ func (in *HTTPMonitorParameters) DeepCopyInto(out *HTTPMonitorParameters) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -584,18 +503,9 @@ func (in *HttpProbeInitParameters) DeepCopyInto(out *HttpProbeInitParameters) {
 	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Method != nil {
@@ -610,7 +520,7 @@ func (in *HttpProbeInitParameters) DeepCopyInto(out *HttpProbeInitParameters) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -631,7 +541,7 @@ func (in *HttpProbeInitParameters) DeepCopyInto(out *HttpProbeInitParameters) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -699,18 +609,9 @@ func (in *HttpProbeObservation) DeepCopyInto(out *HttpProbeObservation) {
 	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HomeRegion != nil {
@@ -735,7 +636,7 @@ func (in *HttpProbeObservation) DeepCopyInto(out *HttpProbeObservation) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -766,7 +667,7 @@ func (in *HttpProbeObservation) DeepCopyInto(out *HttpProbeObservation) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -812,18 +713,9 @@ func (in *HttpProbeParameters) DeepCopyInto(out *HttpProbeParameters) {
 	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Method != nil {
@@ -838,7 +730,7 @@ func (in *HttpProbeParameters) DeepCopyInto(out *HttpProbeParameters) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -859,7 +751,7 @@ func (in *HttpProbeParameters) DeepCopyInto(out *HttpProbeParameters) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -967,18 +859,9 @@ func (in *PingMonitorInitParameters) DeepCopyInto(out *PingMonitorInitParameters
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -988,23 +871,14 @@ func (in *PingMonitorInitParameters) DeepCopyInto(out *PingMonitorInitParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -1014,7 +888,7 @@ func (in *PingMonitorInitParameters) DeepCopyInto(out *PingMonitorInitParameters
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -1035,7 +909,7 @@ func (in *PingMonitorInitParameters) DeepCopyInto(out *PingMonitorInitParameters
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -1103,18 +977,9 @@ func (in *PingMonitorObservation) DeepCopyInto(out *PingMonitorObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1124,18 +989,9 @@ func (in *PingMonitorObservation) DeepCopyInto(out *PingMonitorObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HomeRegion != nil {
@@ -1150,7 +1006,7 @@ func (in *PingMonitorObservation) DeepCopyInto(out *PingMonitorObservation) {
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -1160,7 +1016,7 @@ func (in *PingMonitorObservation) DeepCopyInto(out *PingMonitorObservation) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -1191,7 +1047,7 @@ func (in *PingMonitorObservation) DeepCopyInto(out *PingMonitorObservation) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -1237,18 +1093,9 @@ func (in *PingMonitorParameters) DeepCopyInto(out *PingMonitorParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1258,23 +1105,14 @@ func (in *PingMonitorParameters) DeepCopyInto(out *PingMonitorParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -1284,7 +1122,7 @@ func (in *PingMonitorParameters) DeepCopyInto(out *PingMonitorParameters) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -1305,7 +1143,7 @@ func (in *PingMonitorParameters) DeepCopyInto(out *PingMonitorParameters) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -1413,7 +1251,7 @@ func (in *PingProbeInitParameters) DeepCopyInto(out *PingProbeInitParameters) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -1434,7 +1272,7 @@ func (in *PingProbeInitParameters) DeepCopyInto(out *PingProbeInitParameters) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -1512,7 +1350,7 @@ func (in *PingProbeObservation) DeepCopyInto(out *PingProbeObservation) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -1543,7 +1381,7 @@ func (in *PingProbeObservation) DeepCopyInto(out *PingProbeObservation) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {
@@ -1589,7 +1427,7 @@ func (in *PingProbeParameters) DeepCopyInto(out *PingProbeParameters) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -1610,7 +1448,7 @@ func (in *PingProbeParameters) DeepCopyInto(out *PingProbeParameters) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VantagePointNames != nil {

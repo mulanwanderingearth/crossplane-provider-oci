@@ -20,7 +20,7 @@ type AttachmentDetailsInitParameters struct {
 	CapacityType *string `json:"capacityType,omitempty" tf:"capacity_type,omitempty"`
 
 	// The capacity value selected, either the number of OCPUs (OLPU_COUNT) or the number of users (USER_COUNT). This parameter affects the number of OCPUs, amount of memory, and other resources allocated to the Analytics Instance.
-	CapacityValue *float64 `json:"capacityValue,omitempty" tf:"capacity_value,omitempty"`
+	CapacityValue *int64 `json:"capacityValue,omitempty" tf:"capacity_value,omitempty"`
 
 	// IDCS domain OCID identifying a stripe and service administrator user.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Domain
@@ -55,7 +55,7 @@ type AttachmentDetailsObservation struct {
 	CapacityType *string `json:"capacityType,omitempty" tf:"capacity_type,omitempty"`
 
 	// The capacity value selected, either the number of OCPUs (OLPU_COUNT) or the number of users (USER_COUNT). This parameter affects the number of OCPUs, amount of memory, and other resources allocated to the Analytics Instance.
-	CapacityValue *float64 `json:"capacityValue,omitempty" tf:"capacity_value,omitempty"`
+	CapacityValue *int64 `json:"capacityValue,omitempty" tf:"capacity_value,omitempty"`
 
 	// IDCS domain OCID identifying a stripe and service administrator user.
 	IdcsDomainID *string `json:"idcsDomainId,omitempty" tf:"idcs_domain_id,omitempty"`
@@ -82,7 +82,7 @@ type AttachmentDetailsParameters struct {
 
 	// The capacity value selected, either the number of OCPUs (OLPU_COUNT) or the number of users (USER_COUNT). This parameter affects the number of OCPUs, amount of memory, and other resources allocated to the Analytics Instance.
 	// +kubebuilder:validation:Optional
-	CapacityValue *float64 `json:"capacityValue,omitempty" tf:"capacity_value,omitempty"`
+	CapacityValue *int64 `json:"capacityValue,omitempty" tf:"capacity_value,omitempty"`
 
 	// IDCS domain OCID identifying a stripe and service administrator user.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Domain

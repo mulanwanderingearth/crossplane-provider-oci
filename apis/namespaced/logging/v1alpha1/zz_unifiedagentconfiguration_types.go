@@ -156,8 +156,7 @@ type CustomSectionsInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when filter_type=CUSTOM_FILTER) (Updatable) Parameters in the custom section
-	// +mapType=granular
-	Params map[string]*string `json:"params,omitempty" tf:"params,omitempty"`
+	Params map[string]string `json:"params,omitempty" tf:"params,omitempty"`
 }
 
 type CustomSectionsObservation struct {
@@ -166,8 +165,7 @@ type CustomSectionsObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when filter_type=CUSTOM_FILTER) (Updatable) Parameters in the custom section
-	// +mapType=granular
-	Params map[string]*string `json:"params,omitempty" tf:"params,omitempty"`
+	Params map[string]string `json:"params,omitempty" tf:"params,omitempty"`
 }
 
 type CustomSectionsParameters struct {
@@ -178,8 +176,7 @@ type CustomSectionsParameters struct {
 
 	// (Applicable when filter_type=CUSTOM_FILTER) (Updatable) Parameters in the custom section
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Params map[string]*string `json:"params,omitempty" tf:"params,omitempty"`
+	Params map[string]string `json:"params,omitempty" tf:"params,omitempty"`
 }
 
 type DenyListInitParameters struct {
@@ -502,11 +499,10 @@ type ParserInitParameters struct {
 	TimeType *string `json:"timeType,omitempty" tf:"time_type,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify the timeout for parse processing. This is mainly for detecting an incorrect regexp pattern.
-	TimeoutInMilliseconds *float64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
+	TimeoutInMilliseconds *int64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify types for converting a field into another type. For example, With this configuration:  @type csv keys time,host,req_id,user time_key time
-	// +mapType=granular
-	Types map[string]*string `json:"types,omitempty" tf:"types,omitempty"`
+	Types map[string]string `json:"types,omitempty" tf:"types,omitempty"`
 }
 
 type ParserNestedParserInitParameters struct {
@@ -665,11 +661,10 @@ type ParserObservation struct {
 	TimeType *string `json:"timeType,omitempty" tf:"time_type,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify the timeout for parse processing. This is mainly for detecting an incorrect regexp pattern.
-	TimeoutInMilliseconds *float64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
+	TimeoutInMilliseconds *int64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify types for converting a field into another type. For example, With this configuration:  @type csv keys time,host,req_id,user time_key time
-	// +mapType=granular
-	Types map[string]*string `json:"types,omitempty" tf:"types,omitempty"`
+	Types map[string]string `json:"types,omitempty" tf:"types,omitempty"`
 }
 
 type ParserParameters struct {
@@ -788,12 +783,11 @@ type ParserParameters struct {
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify the timeout for parse processing. This is mainly for detecting an incorrect regexp pattern.
 	// +kubebuilder:validation:Optional
-	TimeoutInMilliseconds *float64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
+	TimeoutInMilliseconds *int64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify types for converting a field into another type. For example, With this configuration:  @type csv keys time,host,req_id,user time_key time
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Types map[string]*string `json:"types,omitempty" tf:"types,omitempty"`
+	Types map[string]string `json:"types,omitempty" tf:"types,omitempty"`
 }
 
 type ParserPatternsInitParameters struct {
@@ -858,8 +852,7 @@ type ParserPatternsParameters struct {
 type ParserRecordInputInitParameters struct {
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Dimensions to be added for metrics.
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Namespace to emit metrics.
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
@@ -871,8 +864,7 @@ type ParserRecordInputInitParameters struct {
 type ParserRecordInputObservation struct {
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Dimensions to be added for metrics.
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Namespace to emit metrics.
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
@@ -885,8 +877,7 @@ type ParserRecordInputParameters struct {
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Dimensions to be added for metrics.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Namespace to emit metrics.
 	// +kubebuilder:validation:Optional
@@ -959,8 +950,7 @@ type PatternsParameters struct {
 type RecordInputInitParameters struct {
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Dimensions to be added for metrics.
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Namespace to emit metrics.
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
@@ -972,8 +962,7 @@ type RecordInputInitParameters struct {
 type RecordInputObservation struct {
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Dimensions to be added for metrics.
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Namespace to emit metrics.
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
@@ -986,8 +975,7 @@ type RecordInputParameters struct {
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Dimensions to be added for metrics.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Namespace to emit metrics.
 	// +kubebuilder:validation:Optional
@@ -1337,8 +1325,7 @@ type ServiceConfigurationUnifiedAgentConfigurationFilterInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when filter_type=CUSTOM_FILTER) (Updatable) Parameters in the custom section
-	// +mapType=granular
-	Params map[string]*string `json:"params,omitempty" tf:"params,omitempty"`
+	Params map[string]string `json:"params,omitempty" tf:"params,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Source parser object.
 	Parser []UnifiedAgentConfigurationFilterParserInitParameters `json:"parser,omitempty" tf:"parser,omitempty"`
@@ -1410,8 +1397,7 @@ type ServiceConfigurationUnifiedAgentConfigurationFilterObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when filter_type=CUSTOM_FILTER) (Updatable) Parameters in the custom section
-	// +mapType=granular
-	Params map[string]*string `json:"params,omitempty" tf:"params,omitempty"`
+	Params map[string]string `json:"params,omitempty" tf:"params,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Source parser object.
 	Parser []UnifiedAgentConfigurationFilterParserObservation `json:"parser,omitempty" tf:"parser,omitempty"`
@@ -1507,8 +1493,7 @@ type ServiceConfigurationUnifiedAgentConfigurationFilterParameters struct {
 
 	// (Applicable when filter_type=CUSTOM_FILTER) (Updatable) Parameters in the custom section
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Params map[string]*string `json:"params,omitempty" tf:"params,omitempty"`
+	Params map[string]string `json:"params,omitempty" tf:"params,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Source parser object.
 	// +kubebuilder:validation:Optional
@@ -1737,11 +1722,10 @@ type SourcesParserInitParameters struct {
 	TimeType *string `json:"timeType,omitempty" tf:"time_type,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify the timeout for parse processing. This is mainly for detecting an incorrect regexp pattern.
-	TimeoutInMilliseconds *float64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
+	TimeoutInMilliseconds *int64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify types for converting a field into another type. For example, With this configuration:  @type csv keys time,host,req_id,user time_key time
-	// +mapType=granular
-	Types map[string]*string `json:"types,omitempty" tf:"types,omitempty"`
+	Types map[string]string `json:"types,omitempty" tf:"types,omitempty"`
 }
 
 type SourcesParserObservation struct {
@@ -1831,11 +1815,10 @@ type SourcesParserObservation struct {
 	TimeType *string `json:"timeType,omitempty" tf:"time_type,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify the timeout for parse processing. This is mainly for detecting an incorrect regexp pattern.
-	TimeoutInMilliseconds *float64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
+	TimeoutInMilliseconds *int64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify types for converting a field into another type. For example, With this configuration:  @type csv keys time,host,req_id,user time_key time
-	// +mapType=granular
-	Types map[string]*string `json:"types,omitempty" tf:"types,omitempty"`
+	Types map[string]string `json:"types,omitempty" tf:"types,omitempty"`
 }
 
 type SourcesParserParameters struct {
@@ -1954,12 +1937,11 @@ type SourcesParserParameters struct {
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify the timeout for parse processing. This is mainly for detecting an incorrect regexp pattern.
 	// +kubebuilder:validation:Optional
-	TimeoutInMilliseconds *float64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
+	TimeoutInMilliseconds *int64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify types for converting a field into another type. For example, With this configuration:  @type csv keys time,host,req_id,user time_key time
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Types map[string]*string `json:"types,omitempty" tf:"types,omitempty"`
+	Types map[string]string `json:"types,omitempty" tf:"types,omitempty"`
 }
 
 type UnifiedAgentConfigurationFilterInitParameters struct {
@@ -2098,11 +2080,10 @@ type UnifiedAgentConfigurationFilterParserInitParameters struct {
 	TimeType *string `json:"timeType,omitempty" tf:"time_type,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify the timeout for parse processing. This is mainly for detecting an incorrect regexp pattern.
-	TimeoutInMilliseconds *float64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
+	TimeoutInMilliseconds *int64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify types for converting a field into another type. For example, With this configuration:  @type csv keys time,host,req_id,user time_key time
-	// +mapType=granular
-	Types map[string]*string `json:"types,omitempty" tf:"types,omitempty"`
+	Types map[string]string `json:"types,omitempty" tf:"types,omitempty"`
 }
 
 type UnifiedAgentConfigurationFilterParserNestedParserInitParameters struct {
@@ -2261,11 +2242,10 @@ type UnifiedAgentConfigurationFilterParserObservation struct {
 	TimeType *string `json:"timeType,omitempty" tf:"time_type,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify the timeout for parse processing. This is mainly for detecting an incorrect regexp pattern.
-	TimeoutInMilliseconds *float64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
+	TimeoutInMilliseconds *int64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify types for converting a field into another type. For example, With this configuration:  @type csv keys time,host,req_id,user time_key time
-	// +mapType=granular
-	Types map[string]*string `json:"types,omitempty" tf:"types,omitempty"`
+	Types map[string]string `json:"types,omitempty" tf:"types,omitempty"`
 }
 
 type UnifiedAgentConfigurationFilterParserParameters struct {
@@ -2384,12 +2364,11 @@ type UnifiedAgentConfigurationFilterParserParameters struct {
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify the timeout for parse processing. This is mainly for detecting an incorrect regexp pattern.
 	// +kubebuilder:validation:Optional
-	TimeoutInMilliseconds *float64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
+	TimeoutInMilliseconds *int64 `json:"timeoutInMilliseconds,omitempty" tf:"timeout_in_milliseconds,omitempty"`
 
 	// (Applicable when source_type=TAIL) (Updatable) Specify types for converting a field into another type. For example, With this configuration:  @type csv keys time,host,req_id,user time_key time
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Types map[string]*string `json:"types,omitempty" tf:"types,omitempty"`
+	Types map[string]string `json:"types,omitempty" tf:"types,omitempty"`
 }
 
 type UnifiedAgentConfigurationFilterParserPatternsInitParameters struct {
@@ -2454,8 +2433,7 @@ type UnifiedAgentConfigurationFilterParserPatternsParameters struct {
 type UnifiedAgentConfigurationFilterParserRecordInputInitParameters struct {
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Dimensions to be added for metrics.
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Namespace to emit metrics.
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
@@ -2467,8 +2445,7 @@ type UnifiedAgentConfigurationFilterParserRecordInputInitParameters struct {
 type UnifiedAgentConfigurationFilterParserRecordInputObservation struct {
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Dimensions to be added for metrics.
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Namespace to emit metrics.
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
@@ -2481,8 +2458,7 @@ type UnifiedAgentConfigurationFilterParserRecordInputParameters struct {
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Dimensions to be added for metrics.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// (Applicable when parser_type=OPENMETRICS) (Updatable) Namespace to emit metrics.
 	// +kubebuilder:validation:Optional
@@ -2508,8 +2484,7 @@ type UnifiedAgentConfigurationInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description for this resource.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -2518,8 +2493,7 @@ type UnifiedAgentConfigurationInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Groups using the configuration.
 	GroupAssociation []GroupAssociationInitParameters `json:"groupAssociation,omitempty" tf:"group_association,omitempty"`
@@ -2540,8 +2514,7 @@ type UnifiedAgentConfigurationObservation struct {
 	ConfigurationState *string `json:"configurationState,omitempty" tf:"configuration_state,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description for this resource.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -2550,8 +2523,7 @@ type UnifiedAgentConfigurationObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Groups using the configuration.
 	GroupAssociation []GroupAssociationObservation `json:"groupAssociation,omitempty" tf:"group_association,omitempty"`
@@ -2592,8 +2564,7 @@ type UnifiedAgentConfigurationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description for this resource.
 	// +kubebuilder:validation:Optional
@@ -2605,8 +2576,7 @@ type UnifiedAgentConfigurationParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Groups using the configuration.
 	// +kubebuilder:validation:Optional

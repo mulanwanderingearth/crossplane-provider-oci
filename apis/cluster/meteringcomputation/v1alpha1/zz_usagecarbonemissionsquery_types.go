@@ -84,7 +84,7 @@ type QueryDefinitionReportQueryGroupByTagParameters struct {
 type QueryDefinitionReportQueryInitParameters struct {
 
 	// (Updatable) The compartment depth level.
-	CompartmentDepth *float64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
+	CompartmentDepth *int64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
 
 	// (Updatable) The user interface date range, for example, LAST_THREE_MONTHS. Overrides the timeUsageStarted and timeUsageEnded properties.
 	DateRangeName *string `json:"dateRangeName,omitempty" tf:"date_range_name,omitempty"`
@@ -123,7 +123,7 @@ type QueryDefinitionReportQueryInitParameters struct {
 type QueryDefinitionReportQueryObservation struct {
 
 	// (Updatable) The compartment depth level.
-	CompartmentDepth *float64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
+	CompartmentDepth *int64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
 
 	// (Updatable) The user interface date range, for example, LAST_THREE_MONTHS. Overrides the timeUsageStarted and timeUsageEnded properties.
 	DateRangeName *string `json:"dateRangeName,omitempty" tf:"date_range_name,omitempty"`
@@ -163,7 +163,7 @@ type QueryDefinitionReportQueryParameters struct {
 
 	// (Updatable) The compartment depth level.
 	// +kubebuilder:validation:Optional
-	CompartmentDepth *float64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
+	CompartmentDepth *int64 `json:"compartmentDepth,omitempty" tf:"compartment_depth,omitempty"`
 
 	// (Updatable) The user interface date range, for example, LAST_THREE_MONTHS. Overrides the timeUsageStarted and timeUsageEnded properties.
 	// +kubebuilder:validation:Optional
@@ -272,7 +272,7 @@ type UsageCarbonEmissionsQueryQueryDefinitionInitParameters struct {
 	ReportQuery []QueryDefinitionReportQueryInitParameters `json:"reportQuery,omitempty" tf:"report_query,omitempty"`
 
 	// (Updatable) The saved query version.
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type UsageCarbonEmissionsQueryQueryDefinitionObservation struct {
@@ -287,7 +287,7 @@ type UsageCarbonEmissionsQueryQueryDefinitionObservation struct {
 	ReportQuery []QueryDefinitionReportQueryObservation `json:"reportQuery,omitempty" tf:"report_query,omitempty"`
 
 	// (Updatable) The saved query version.
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type UsageCarbonEmissionsQueryQueryDefinitionParameters struct {
@@ -306,7 +306,7 @@ type UsageCarbonEmissionsQueryQueryDefinitionParameters struct {
 
 	// (Updatable) The saved query version.
 	// +kubebuilder:validation:Optional
-	Version *float64 `json:"version" tf:"version,omitempty"`
+	Version *int64 `json:"version" tf:"version,omitempty"`
 }
 
 // UsageCarbonEmissionsQuerySpec defines the desired state of UsageCarbonEmissionsQuery

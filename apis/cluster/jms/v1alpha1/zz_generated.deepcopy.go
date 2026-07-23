@@ -177,7 +177,7 @@ func (in *CertpathInitParameters) DeepCopyInto(out *CertpathInitParameters) {
 	*out = *in
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -202,7 +202,7 @@ func (in *CertpathObservation) DeepCopyInto(out *CertpathObservation) {
 	*out = *in
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -227,7 +227,7 @@ func (in *CertpathParameters) DeepCopyInto(out *CertpathParameters) {
 	*out = *in
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -333,7 +333,7 @@ func (in *CryptoTaskRequestInitParameters) DeepCopyInto(out *CryptoTaskRequestIn
 	*out = *in
 	if in.RecordingDurationInMinutes != nil {
 		in, out := &in.RecordingDurationInMinutes, &out.RecordingDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Targets != nil {
@@ -345,7 +345,7 @@ func (in *CryptoTaskRequestInitParameters) DeepCopyInto(out *CryptoTaskRequestIn
 	}
 	if in.WaitingPeriodInMinutes != nil {
 		in, out := &in.WaitingPeriodInMinutes, &out.WaitingPeriodInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -365,7 +365,7 @@ func (in *CryptoTaskRequestObservation) DeepCopyInto(out *CryptoTaskRequestObser
 	*out = *in
 	if in.RecordingDurationInMinutes != nil {
 		in, out := &in.RecordingDurationInMinutes, &out.RecordingDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Targets != nil {
@@ -377,7 +377,7 @@ func (in *CryptoTaskRequestObservation) DeepCopyInto(out *CryptoTaskRequestObser
 	}
 	if in.WaitingPeriodInMinutes != nil {
 		in, out := &in.WaitingPeriodInMinutes, &out.WaitingPeriodInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -397,7 +397,7 @@ func (in *CryptoTaskRequestParameters) DeepCopyInto(out *CryptoTaskRequestParame
 	*out = *in
 	if in.RecordingDurationInMinutes != nil {
 		in, out := &in.RecordingDurationInMinutes, &out.RecordingDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Targets != nil {
@@ -409,7 +409,7 @@ func (in *CryptoTaskRequestParameters) DeepCopyInto(out *CryptoTaskRequestParame
 	}
 	if in.WaitingPeriodInMinutes != nil {
 		in, out := &in.WaitingPeriodInMinutes, &out.WaitingPeriodInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1080,7 +1080,7 @@ func (in *FleetAgentConfigurationInitParameters) DeepCopyInto(out *FleetAgentCon
 	*out = *in
 	if in.AgentPollingIntervalInMinutes != nil {
 		in, out := &in.AgentPollingIntervalInMinutes, &out.AgentPollingIntervalInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FleetID != nil {
@@ -1120,12 +1120,12 @@ func (in *FleetAgentConfigurationInitParameters) DeepCopyInto(out *FleetAgentCon
 	}
 	if in.JavaUsageTrackerProcessingFrequencyInMinutes != nil {
 		in, out := &in.JavaUsageTrackerProcessingFrequencyInMinutes, &out.JavaUsageTrackerProcessingFrequencyInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.JreScanFrequencyInMinutes != nil {
 		in, out := &in.JreScanFrequencyInMinutes, &out.JreScanFrequencyInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.LinuxConfiguration != nil {
@@ -1151,7 +1151,7 @@ func (in *FleetAgentConfigurationInitParameters) DeepCopyInto(out *FleetAgentCon
 	}
 	if in.WorkRequestValidityPeriodInDays != nil {
 		in, out := &in.WorkRequestValidityPeriodInDays, &out.WorkRequestValidityPeriodInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1203,7 +1203,7 @@ func (in *FleetAgentConfigurationObservation) DeepCopyInto(out *FleetAgentConfig
 	*out = *in
 	if in.AgentPollingIntervalInMinutes != nil {
 		in, out := &in.AgentPollingIntervalInMinutes, &out.AgentPollingIntervalInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FleetID != nil {
@@ -1238,12 +1238,12 @@ func (in *FleetAgentConfigurationObservation) DeepCopyInto(out *FleetAgentConfig
 	}
 	if in.JavaUsageTrackerProcessingFrequencyInMinutes != nil {
 		in, out := &in.JavaUsageTrackerProcessingFrequencyInMinutes, &out.JavaUsageTrackerProcessingFrequencyInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.JreScanFrequencyInMinutes != nil {
 		in, out := &in.JreScanFrequencyInMinutes, &out.JreScanFrequencyInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.LinuxConfiguration != nil {
@@ -1274,7 +1274,7 @@ func (in *FleetAgentConfigurationObservation) DeepCopyInto(out *FleetAgentConfig
 	}
 	if in.WorkRequestValidityPeriodInDays != nil {
 		in, out := &in.WorkRequestValidityPeriodInDays, &out.WorkRequestValidityPeriodInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1294,7 +1294,7 @@ func (in *FleetAgentConfigurationParameters) DeepCopyInto(out *FleetAgentConfigu
 	*out = *in
 	if in.AgentPollingIntervalInMinutes != nil {
 		in, out := &in.AgentPollingIntervalInMinutes, &out.AgentPollingIntervalInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FleetID != nil {
@@ -1334,12 +1334,12 @@ func (in *FleetAgentConfigurationParameters) DeepCopyInto(out *FleetAgentConfigu
 	}
 	if in.JavaUsageTrackerProcessingFrequencyInMinutes != nil {
 		in, out := &in.JavaUsageTrackerProcessingFrequencyInMinutes, &out.JavaUsageTrackerProcessingFrequencyInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.JreScanFrequencyInMinutes != nil {
 		in, out := &in.JreScanFrequencyInMinutes, &out.JreScanFrequencyInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.LinuxConfiguration != nil {
@@ -1365,7 +1365,7 @@ func (in *FleetAgentConfigurationParameters) DeepCopyInto(out *FleetAgentConfigu
 	}
 	if in.WorkRequestValidityPeriodInDays != nil {
 		in, out := &in.WorkRequestValidityPeriodInDays, &out.WorkRequestValidityPeriodInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1435,18 +1435,9 @@ func (in *FleetInitParameters) DeepCopyInto(out *FleetInitParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1461,18 +1452,9 @@ func (in *FleetInitParameters) DeepCopyInto(out *FleetInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.InventoryLog != nil {
@@ -1543,37 +1525,37 @@ func (in *FleetObservation) DeepCopyInto(out *FleetObservation) {
 	*out = *in
 	if in.ApproximateApplicationCount != nil {
 		in, out := &in.ApproximateApplicationCount, &out.ApproximateApplicationCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ApproximateInstallationCount != nil {
 		in, out := &in.ApproximateInstallationCount, &out.ApproximateInstallationCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ApproximateJavaServerCount != nil {
 		in, out := &in.ApproximateJavaServerCount, &out.ApproximateJavaServerCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ApproximateJreCount != nil {
 		in, out := &in.ApproximateJreCount, &out.ApproximateJreCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ApproximateLibraryCount != nil {
 		in, out := &in.ApproximateLibraryCount, &out.ApproximateLibraryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ApproximateLibraryVulnerabilityCount != nil {
 		in, out := &in.ApproximateLibraryVulnerabilityCount, &out.ApproximateLibraryVulnerabilityCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ApproximateManagedInstanceCount != nil {
 		in, out := &in.ApproximateManagedInstanceCount, &out.ApproximateManagedInstanceCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -1583,18 +1565,9 @@ func (in *FleetObservation) DeepCopyInto(out *FleetObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1609,18 +1582,9 @@ func (in *FleetObservation) DeepCopyInto(out *FleetObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1659,18 +1623,9 @@ func (in *FleetObservation) DeepCopyInto(out *FleetObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1710,18 +1665,9 @@ func (in *FleetParameters) DeepCopyInto(out *FleetParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1736,18 +1682,9 @@ func (in *FleetParameters) DeepCopyInto(out *FleetParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.InventoryLog != nil {
@@ -2071,7 +2008,7 @@ func (in *JarInitParameters) DeepCopyInto(out *JarInitParameters) {
 	*out = *in
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -2096,7 +2033,7 @@ func (in *JarObservation) DeepCopyInto(out *JarObservation) {
 	*out = *in
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -2121,7 +2058,7 @@ func (in *JarParameters) DeepCopyInto(out *JarParameters) {
 	*out = *in
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -2518,12 +2455,12 @@ func (in *JfrTaskRequestInitParameters) DeepCopyInto(out *JfrTaskRequestInitPara
 	}
 	if in.RecordingDurationInMinutes != nil {
 		in, out := &in.RecordingDurationInMinutes, &out.RecordingDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RecordingSizeInMb != nil {
 		in, out := &in.RecordingSizeInMb, &out.RecordingSizeInMb
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Targets != nil {
@@ -2535,7 +2472,7 @@ func (in *JfrTaskRequestInitParameters) DeepCopyInto(out *JfrTaskRequestInitPara
 	}
 	if in.WaitingPeriodInMinutes != nil {
 		in, out := &in.WaitingPeriodInMinutes, &out.WaitingPeriodInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2570,12 +2507,12 @@ func (in *JfrTaskRequestObservation) DeepCopyInto(out *JfrTaskRequestObservation
 	}
 	if in.RecordingDurationInMinutes != nil {
 		in, out := &in.RecordingDurationInMinutes, &out.RecordingDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RecordingSizeInMb != nil {
 		in, out := &in.RecordingSizeInMb, &out.RecordingSizeInMb
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Targets != nil {
@@ -2587,7 +2524,7 @@ func (in *JfrTaskRequestObservation) DeepCopyInto(out *JfrTaskRequestObservation
 	}
 	if in.WaitingPeriodInMinutes != nil {
 		in, out := &in.WaitingPeriodInMinutes, &out.WaitingPeriodInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2622,12 +2559,12 @@ func (in *JfrTaskRequestParameters) DeepCopyInto(out *JfrTaskRequestParameters) 
 	}
 	if in.RecordingDurationInMinutes != nil {
 		in, out := &in.RecordingDurationInMinutes, &out.RecordingDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RecordingSizeInMb != nil {
 		in, out := &in.RecordingSizeInMb, &out.RecordingSizeInMb
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Targets != nil {
@@ -2639,7 +2576,7 @@ func (in *JfrTaskRequestParameters) DeepCopyInto(out *JfrTaskRequestParameters) 
 	}
 	if in.WaitingPeriodInMinutes != nil {
 		in, out := &in.WaitingPeriodInMinutes, &out.WaitingPeriodInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2831,18 +2768,9 @@ func (in *JmsPluginInitParameters) DeepCopyInto(out *JmsPluginInitParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FleetID != nil {
@@ -2862,18 +2790,9 @@ func (in *JmsPluginInitParameters) DeepCopyInto(out *JmsPluginInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -2945,18 +2864,9 @@ func (in *JmsPluginObservation) DeepCopyInto(out *JmsPluginObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FleetID != nil {
@@ -2966,18 +2876,9 @@ func (in *JmsPluginObservation) DeepCopyInto(out *JmsPluginObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Hostname != nil {
@@ -3017,18 +2918,9 @@ func (in *JmsPluginObservation) DeepCopyInto(out *JmsPluginObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeLastSeen != nil {
@@ -3083,18 +2975,9 @@ func (in *JmsPluginParameters) DeepCopyInto(out *JmsPluginParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FleetID != nil {
@@ -3114,18 +2997,9 @@ func (in *JmsPluginParameters) DeepCopyInto(out *JmsPluginParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -3766,7 +3640,7 @@ func (in *PerformanceTuningTaskRequestInitParameters) DeepCopyInto(out *Performa
 	*out = *in
 	if in.RecordingDurationInMinutes != nil {
 		in, out := &in.RecordingDurationInMinutes, &out.RecordingDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Targets != nil {
@@ -3778,7 +3652,7 @@ func (in *PerformanceTuningTaskRequestInitParameters) DeepCopyInto(out *Performa
 	}
 	if in.WaitingPeriodInMinutes != nil {
 		in, out := &in.WaitingPeriodInMinutes, &out.WaitingPeriodInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -3798,7 +3672,7 @@ func (in *PerformanceTuningTaskRequestObservation) DeepCopyInto(out *Performance
 	*out = *in
 	if in.RecordingDurationInMinutes != nil {
 		in, out := &in.RecordingDurationInMinutes, &out.RecordingDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Targets != nil {
@@ -3810,7 +3684,7 @@ func (in *PerformanceTuningTaskRequestObservation) DeepCopyInto(out *Performance
 	}
 	if in.WaitingPeriodInMinutes != nil {
 		in, out := &in.WaitingPeriodInMinutes, &out.WaitingPeriodInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -3830,7 +3704,7 @@ func (in *PerformanceTuningTaskRequestParameters) DeepCopyInto(out *PerformanceT
 	*out = *in
 	if in.RecordingDurationInMinutes != nil {
 		in, out := &in.RecordingDurationInMinutes, &out.RecordingDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Targets != nil {
@@ -3842,7 +3716,7 @@ func (in *PerformanceTuningTaskRequestParameters) DeepCopyInto(out *PerformanceT
 	}
 	if in.WaitingPeriodInMinutes != nil {
 		in, out := &in.WaitingPeriodInMinutes, &out.WaitingPeriodInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4152,7 +4026,7 @@ func (in *ProxiesInitParameters) DeepCopyInto(out *ProxiesInitParameters) {
 	}
 	if in.FtpProxyPort != nil {
 		in, out := &in.FtpProxyPort, &out.FtpProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HTTPProxyHost != nil {
@@ -4162,7 +4036,7 @@ func (in *ProxiesInitParameters) DeepCopyInto(out *ProxiesInitParameters) {
 	}
 	if in.HTTPProxyPort != nil {
 		in, out := &in.HTTPProxyPort, &out.HTTPProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HTTPSProxyHost != nil {
@@ -4172,7 +4046,7 @@ func (in *ProxiesInitParameters) DeepCopyInto(out *ProxiesInitParameters) {
 	}
 	if in.HTTPSProxyPort != nil {
 		in, out := &in.HTTPSProxyPort, &out.HTTPSProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SocksProxyHost != nil {
@@ -4182,7 +4056,7 @@ func (in *ProxiesInitParameters) DeepCopyInto(out *ProxiesInitParameters) {
 	}
 	if in.SocksProxyPort != nil {
 		in, out := &in.SocksProxyPort, &out.SocksProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UseSystemProxies != nil {
@@ -4212,7 +4086,7 @@ func (in *ProxiesObservation) DeepCopyInto(out *ProxiesObservation) {
 	}
 	if in.FtpProxyPort != nil {
 		in, out := &in.FtpProxyPort, &out.FtpProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HTTPProxyHost != nil {
@@ -4222,7 +4096,7 @@ func (in *ProxiesObservation) DeepCopyInto(out *ProxiesObservation) {
 	}
 	if in.HTTPProxyPort != nil {
 		in, out := &in.HTTPProxyPort, &out.HTTPProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HTTPSProxyHost != nil {
@@ -4232,7 +4106,7 @@ func (in *ProxiesObservation) DeepCopyInto(out *ProxiesObservation) {
 	}
 	if in.HTTPSProxyPort != nil {
 		in, out := &in.HTTPSProxyPort, &out.HTTPSProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SocksProxyHost != nil {
@@ -4242,7 +4116,7 @@ func (in *ProxiesObservation) DeepCopyInto(out *ProxiesObservation) {
 	}
 	if in.SocksProxyPort != nil {
 		in, out := &in.SocksProxyPort, &out.SocksProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UseSystemProxies != nil {
@@ -4272,7 +4146,7 @@ func (in *ProxiesParameters) DeepCopyInto(out *ProxiesParameters) {
 	}
 	if in.FtpProxyPort != nil {
 		in, out := &in.FtpProxyPort, &out.FtpProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HTTPProxyHost != nil {
@@ -4282,7 +4156,7 @@ func (in *ProxiesParameters) DeepCopyInto(out *ProxiesParameters) {
 	}
 	if in.HTTPProxyPort != nil {
 		in, out := &in.HTTPProxyPort, &out.HTTPProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HTTPSProxyHost != nil {
@@ -4292,7 +4166,7 @@ func (in *ProxiesParameters) DeepCopyInto(out *ProxiesParameters) {
 	}
 	if in.HTTPSProxyPort != nil {
 		in, out := &in.HTTPSProxyPort, &out.HTTPSProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SocksProxyHost != nil {
@@ -4302,7 +4176,7 @@ func (in *ProxiesParameters) DeepCopyInto(out *ProxiesParameters) {
 	}
 	if in.SocksProxyPort != nil {
 		in, out := &in.SocksProxyPort, &out.SocksProxyPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UseSystemProxies != nil {
@@ -4546,7 +4420,7 @@ func (in *ScanLibraryTaskRequestInitParameters) DeepCopyInto(out *ScanLibraryTas
 	*out = *in
 	if in.DynamicScanDurationInMinutes != nil {
 		in, out := &in.DynamicScanDurationInMinutes, &out.DynamicScanDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDynamicScan != nil {
@@ -4582,7 +4456,7 @@ func (in *ScanLibraryTaskRequestObservation) DeepCopyInto(out *ScanLibraryTaskRe
 	*out = *in
 	if in.DynamicScanDurationInMinutes != nil {
 		in, out := &in.DynamicScanDurationInMinutes, &out.DynamicScanDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDynamicScan != nil {
@@ -4618,7 +4492,7 @@ func (in *ScanLibraryTaskRequestParameters) DeepCopyInto(out *ScanLibraryTaskReq
 	*out = *in
 	if in.DynamicScanDurationInMinutes != nil {
 		in, out := &in.DynamicScanDurationInMinutes, &out.DynamicScanDurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDynamicScan != nil {
@@ -4769,7 +4643,7 @@ func (in *TLSInitParameters) DeepCopyInto(out *TLSInitParameters) {
 	*out = *in
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -4794,7 +4668,7 @@ func (in *TLSObservation) DeepCopyInto(out *TLSObservation) {
 	*out = *in
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -4819,7 +4693,7 @@ func (in *TLSParameters) DeepCopyInto(out *TLSParameters) {
 	*out = *in
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {

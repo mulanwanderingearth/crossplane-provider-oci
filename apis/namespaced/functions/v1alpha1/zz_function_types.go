@@ -169,15 +169,13 @@ type FunctionInitParameters struct {
 	ApplicationIDSelector *v1.NamespacedSelector `json:"applicationIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Function configuration. These values are passed on to the function as environment variables, this overrides application configuration values. Keys must be ASCII strings consisting solely of letters, digits, and the '_' (underscore) character, and must not begin with a digit. Values should be limited to printable unicode characters.  Example: {"MY_FUNCTION_CONFIG": "ConfVal"}
-	// +mapType=granular
-	Config map[string]*string `json:"config,omitempty" tf:"config,omitempty"`
+	Config map[string]string `json:"config,omitempty" tf:"config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Timeout for detached function invocations. Value in seconds.
-	DetachedModeTimeoutInSeconds *float64 `json:"detachedModeTimeoutInSeconds,omitempty" tf:"detached_mode_timeout_in_seconds,omitempty"`
+	DetachedModeTimeoutInSeconds *int64 `json:"detachedModeTimeoutInSeconds,omitempty" tf:"detached_mode_timeout_in_seconds,omitempty"`
 
 	// The display name of the function. The display name must be unique within the application containing the function. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -186,8 +184,7 @@ type FunctionInitParameters struct {
 	FailureDestination []FailureDestinationInitParameters `json:"failureDestination,omitempty" tf:"failure_destination,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The qualified name of the Docker image to use in the function, including the image tag. The image should be in the Oracle Cloud Infrastructure Registry that is in the same region as the function itself. This field must be updated if image_digest is updated. Example: phx.ocir.io/ten/functions/function:0.0.1
 	Image *string `json:"image,omitempty" tf:"image,omitempty"`
@@ -208,7 +205,7 @@ type FunctionInitParameters struct {
 	SuccessDestination []SuccessDestinationInitParameters `json:"successDestination,omitempty" tf:"success_destination,omitempty"`
 
 	// (Updatable) Timeout for executions of the function. Value in seconds.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) Define the tracing configuration for a function.
 	TraceConfig []FunctionTraceConfigInitParameters `json:"traceConfig,omitempty" tf:"trace_config,omitempty"`
@@ -223,15 +220,13 @@ type FunctionObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Function configuration. These values are passed on to the function as environment variables, this overrides application configuration values. Keys must be ASCII strings consisting solely of letters, digits, and the '_' (underscore) character, and must not begin with a digit. Values should be limited to printable unicode characters.  Example: {"MY_FUNCTION_CONFIG": "ConfVal"}
-	// +mapType=granular
-	Config map[string]*string `json:"config,omitempty" tf:"config,omitempty"`
+	Config map[string]string `json:"config,omitempty" tf:"config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Timeout for detached function invocations. Value in seconds.
-	DetachedModeTimeoutInSeconds *float64 `json:"detachedModeTimeoutInSeconds,omitempty" tf:"detached_mode_timeout_in_seconds,omitempty"`
+	DetachedModeTimeoutInSeconds *int64 `json:"detachedModeTimeoutInSeconds,omitempty" tf:"detached_mode_timeout_in_seconds,omitempty"`
 
 	// The display name of the function. The display name must be unique within the application containing the function. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -240,8 +235,7 @@ type FunctionObservation struct {
 	FailureDestination []FailureDestinationObservation `json:"failureDestination,omitempty" tf:"failure_destination,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the function.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -280,7 +274,7 @@ type FunctionObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) Timeout for executions of the function. Value in seconds.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) Define the tracing configuration for a function.
 	TraceConfig []FunctionTraceConfigObservation `json:"traceConfig,omitempty" tf:"trace_config,omitempty"`
@@ -304,17 +298,15 @@ type FunctionParameters struct {
 
 	// (Updatable) Function configuration. These values are passed on to the function as environment variables, this overrides application configuration values. Keys must be ASCII strings consisting solely of letters, digits, and the '_' (underscore) character, and must not begin with a digit. Values should be limited to printable unicode characters.  Example: {"MY_FUNCTION_CONFIG": "ConfVal"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Config map[string]*string `json:"config,omitempty" tf:"config,omitempty"`
+	Config map[string]string `json:"config,omitempty" tf:"config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Timeout for detached function invocations. Value in seconds.
 	// +kubebuilder:validation:Optional
-	DetachedModeTimeoutInSeconds *float64 `json:"detachedModeTimeoutInSeconds,omitempty" tf:"detached_mode_timeout_in_seconds,omitempty"`
+	DetachedModeTimeoutInSeconds *int64 `json:"detachedModeTimeoutInSeconds,omitempty" tf:"detached_mode_timeout_in_seconds,omitempty"`
 
 	// The display name of the function. The display name must be unique within the application containing the function. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -326,8 +318,7 @@ type FunctionParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The qualified name of the Docker image to use in the function, including the image tag. The image should be in the Oracle Cloud Infrastructure Registry that is in the same region as the function itself. This field must be updated if image_digest is updated. Example: phx.ocir.io/ten/functions/function:0.0.1
 	// +kubebuilder:validation:Optional
@@ -355,7 +346,7 @@ type FunctionParameters struct {
 
 	// (Updatable) Timeout for executions of the function. Value in seconds.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) Define the tracing configuration for a function.
 	// +kubebuilder:validation:Optional
@@ -384,7 +375,7 @@ type FunctionTraceConfigParameters struct {
 type ProvisionedConcurrencyConfigInitParameters struct {
 
 	// (Updatable) Configuration specifying a constant amount of provisioned concurrency.
-	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+	Count *int64 `json:"count,omitempty" tf:"count,omitempty"`
 
 	// (Updatable) The strategy for provisioned concurrency to be used.
 	Strategy *string `json:"strategy,omitempty" tf:"strategy,omitempty"`
@@ -393,7 +384,7 @@ type ProvisionedConcurrencyConfigInitParameters struct {
 type ProvisionedConcurrencyConfigObservation struct {
 
 	// (Updatable) Configuration specifying a constant amount of provisioned concurrency.
-	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+	Count *int64 `json:"count,omitempty" tf:"count,omitempty"`
 
 	// (Updatable) The strategy for provisioned concurrency to be used.
 	Strategy *string `json:"strategy,omitempty" tf:"strategy,omitempty"`
@@ -403,7 +394,7 @@ type ProvisionedConcurrencyConfigParameters struct {
 
 	// (Updatable) Configuration specifying a constant amount of provisioned concurrency.
 	// +kubebuilder:validation:Optional
-	Count *float64 `json:"count,omitempty" tf:"count,omitempty"`
+	Count *int64 `json:"count,omitempty" tf:"count,omitempty"`
 
 	// (Updatable) The strategy for provisioned concurrency to be used.
 	// +kubebuilder:validation:Optional

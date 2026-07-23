@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deleteRelatedJobRuns:
                     description: (Updatable) Delete all related JobRuns upon deletion
                       of the Job.
@@ -179,7 +178,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   jobArtifact:
                     description: The job artifact to upload. This can be done in a
                       separate step or from cli/sdk. The Job will remain in "Creating"
@@ -199,7 +197,6 @@ spec:
                           description: (Applicable when job_type=DEFAULT) Environment
                             variables to set for the job.
                           type: object
-                          x-kubernetes-map-type: granular
                         jobType:
                           description: The type of job.
                           type: string
@@ -223,11 +220,13 @@ spec:
                               failureThreshold:
                                 description: How many times the job will try before
                                   giving up when a probe fails.
-                                type: number
+                                format: int64
+                                type: integer
                               initialDelayInSeconds:
                                 description: Number of seconds after the job run has
                                   started before a startup probe is initiated.
-                                type: number
+                                format: int64
+                                type: integer
                               jobProbeCheckType:
                                 description: The probe check type to perform the startup
                                   probe and specifies the type of health check for
@@ -236,7 +235,8 @@ spec:
                               periodInSeconds:
                                 description: Number of seconds how often the job run
                                   should perform a startup probe
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -290,7 +290,8 @@ spec:
                         blockStorageSizeInGbs:
                           description: (Updatable) The size of the block storage volume
                             to attach to the instance running the job
-                          type: number
+                          format: int64
+                          type: integer
                         computeTargetId:
                           description: (Updatable) The OCID of the compute target.
                           type: string
@@ -447,7 +448,8 @@ spec:
                                       description: (Applicable when job_infrastructure_type=MANAGED_COMPUTE_CLUSTER)
                                         (Updatable) The total number of gpus required
                                         to be allocated to the workload.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     memoryInGbs:
                                       description: (Applicable when job_infrastructure_type=ME_STANDALONE
                                         | MULTI_NODE | STANDALONE) (Updatable) The
@@ -855,7 +857,6 @@ spec:
                                       description: (Applicable when job_type=DEFAULT)
                                         Environment variables to set for the job.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     jobType:
                                       description: The type of job.
                                       type: string
@@ -880,12 +881,14 @@ spec:
                                           failureThreshold:
                                             description: How many times the job will
                                               try before giving up when a probe fails.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           initialDelayInSeconds:
                                             description: Number of seconds after the
                                               job run has started before a startup
                                               probe is initiated.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           jobProbeCheckType:
                                             description: The probe check type to perform
                                               the startup probe and specifies the
@@ -895,7 +898,8 @@ spec:
                                             description: Number of seconds how often
                                               the job run should perform a startup
                                               probe
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -953,7 +957,8 @@ spec:
                                       description: (Updatable) The size of the block
                                         storage volume to attach to the instance running
                                         the job
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     computeTargetId:
                                       description: (Updatable) The OCID of the compute
                                         target.
@@ -1117,7 +1122,8 @@ spec:
                                                     (Updatable) The total number of
                                                     gpus required to be allocated
                                                     to the workload.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 memoryInGbs:
                                                   description: (Applicable when job_infrastructure_type=ME_STANDALONE
                                                     | MULTI_NODE | STANDALONE) (Updatable)
@@ -1233,13 +1239,15 @@ spec:
                                 description: The minimum threshold of successful replicas
                                   for node group to be successful. All replicas need
                                   to succeed if this is not specified.
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: node group name.
                                 type: string
                               replicas:
                                 description: The number of nodes.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         jobNodeType:
@@ -1652,7 +1660,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deleteRelatedJobRuns:
                     description: (Updatable) Delete all related JobRuns upon deletion
                       of the Job.
@@ -1671,7 +1678,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   jobArtifact:
                     description: The job artifact to upload. This can be done in a
                       separate step or from cli/sdk. The Job will remain in "Creating"
@@ -1691,7 +1697,6 @@ spec:
                           description: (Applicable when job_type=DEFAULT) Environment
                             variables to set for the job.
                           type: object
-                          x-kubernetes-map-type: granular
                         jobType:
                           description: The type of job.
                           type: string
@@ -1715,11 +1720,13 @@ spec:
                               failureThreshold:
                                 description: How many times the job will try before
                                   giving up when a probe fails.
-                                type: number
+                                format: int64
+                                type: integer
                               initialDelayInSeconds:
                                 description: Number of seconds after the job run has
                                   started before a startup probe is initiated.
-                                type: number
+                                format: int64
+                                type: integer
                               jobProbeCheckType:
                                 description: The probe check type to perform the startup
                                   probe and specifies the type of health check for
@@ -1728,7 +1735,8 @@ spec:
                               periodInSeconds:
                                 description: Number of seconds how often the job run
                                   should perform a startup probe
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -1782,7 +1790,8 @@ spec:
                         blockStorageSizeInGbs:
                           description: (Updatable) The size of the block storage volume
                             to attach to the instance running the job
-                          type: number
+                          format: int64
+                          type: integer
                         computeTargetId:
                           description: (Updatable) The OCID of the compute target.
                           type: string
@@ -1939,7 +1948,8 @@ spec:
                                       description: (Applicable when job_infrastructure_type=MANAGED_COMPUTE_CLUSTER)
                                         (Updatable) The total number of gpus required
                                         to be allocated to the workload.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     memoryInGbs:
                                       description: (Applicable when job_infrastructure_type=ME_STANDALONE
                                         | MULTI_NODE | STANDALONE) (Updatable) The
@@ -2347,7 +2357,6 @@ spec:
                                       description: (Applicable when job_type=DEFAULT)
                                         Environment variables to set for the job.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     jobType:
                                       description: The type of job.
                                       type: string
@@ -2372,12 +2381,14 @@ spec:
                                           failureThreshold:
                                             description: How many times the job will
                                               try before giving up when a probe fails.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           initialDelayInSeconds:
                                             description: Number of seconds after the
                                               job run has started before a startup
                                               probe is initiated.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           jobProbeCheckType:
                                             description: The probe check type to perform
                                               the startup probe and specifies the
@@ -2387,7 +2398,8 @@ spec:
                                             description: Number of seconds how often
                                               the job run should perform a startup
                                               probe
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -2445,7 +2457,8 @@ spec:
                                       description: (Updatable) The size of the block
                                         storage volume to attach to the instance running
                                         the job
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     computeTargetId:
                                       description: (Updatable) The OCID of the compute
                                         target.
@@ -2609,7 +2622,8 @@ spec:
                                                     (Updatable) The total number of
                                                     gpus required to be allocated
                                                     to the workload.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 memoryInGbs:
                                                   description: (Applicable when job_infrastructure_type=ME_STANDALONE
                                                     | MULTI_NODE | STANDALONE) (Updatable)
@@ -2725,13 +2739,15 @@ spec:
                                 description: The minimum threshold of successful replicas
                                   for node group to be successful. All replicas need
                                   to succeed if this is not specified.
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: node group name.
                                 type: string
                               replicas:
                                 description: The number of nodes.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         jobNodeType:
@@ -3121,7 +3137,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deleteRelatedJobRuns:
                     description: (Updatable) Delete all related JobRuns upon deletion
                       of the Job.
@@ -3142,7 +3157,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the job.
                     type: string
@@ -3165,7 +3179,6 @@ spec:
                           description: (Applicable when job_type=DEFAULT) Environment
                             variables to set for the job.
                           type: object
-                          x-kubernetes-map-type: granular
                         jobType:
                           description: The type of job.
                           type: string
@@ -3189,11 +3202,13 @@ spec:
                               failureThreshold:
                                 description: How many times the job will try before
                                   giving up when a probe fails.
-                                type: number
+                                format: int64
+                                type: integer
                               initialDelayInSeconds:
                                 description: Number of seconds after the job run has
                                   started before a startup probe is initiated.
-                                type: number
+                                format: int64
+                                type: integer
                               jobProbeCheckType:
                                 description: The probe check type to perform the startup
                                   probe and specifies the type of health check for
@@ -3202,7 +3217,8 @@ spec:
                               periodInSeconds:
                                 description: Number of seconds how often the job run
                                   should perform a startup probe
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -3256,7 +3272,8 @@ spec:
                         blockStorageSizeInGbs:
                           description: (Updatable) The size of the block storage volume
                             to attach to the instance running the job
-                          type: number
+                          format: int64
+                          type: integer
                         computeTargetId:
                           description: (Updatable) The OCID of the compute target.
                           type: string
@@ -3331,7 +3348,8 @@ spec:
                                       description: (Applicable when job_infrastructure_type=MANAGED_COMPUTE_CLUSTER)
                                         (Updatable) The total number of gpus required
                                         to be allocated to the workload.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     memoryInGbs:
                                       description: (Applicable when job_infrastructure_type=ME_STANDALONE
                                         | MULTI_NODE | STANDALONE) (Updatable) The
@@ -3413,7 +3431,6 @@ spec:
                                       description: (Applicable when job_type=DEFAULT)
                                         Environment variables to set for the job.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                     jobType:
                                       description: The type of job.
                                       type: string
@@ -3438,12 +3455,14 @@ spec:
                                           failureThreshold:
                                             description: How many times the job will
                                               try before giving up when a probe fails.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           initialDelayInSeconds:
                                             description: Number of seconds after the
                                               job run has started before a startup
                                               probe is initiated.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           jobProbeCheckType:
                                             description: The probe check type to perform
                                               the startup probe and specifies the
@@ -3453,7 +3472,8 @@ spec:
                                             description: Number of seconds how often
                                               the job run should perform a startup
                                               probe
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -3511,7 +3531,8 @@ spec:
                                       description: (Updatable) The size of the block
                                         storage volume to attach to the instance running
                                         the job
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     computeTargetId:
                                       description: (Updatable) The OCID of the compute
                                         target.
@@ -3592,7 +3613,8 @@ spec:
                                                     (Updatable) The total number of
                                                     gpus required to be allocated
                                                     to the workload.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 memoryInGbs:
                                                   description: (Applicable when job_infrastructure_type=ME_STANDALONE
                                                     | MULTI_NODE | STANDALONE) (Updatable)
@@ -3625,13 +3647,15 @@ spec:
                                 description: The minimum threshold of successful replicas
                                   for node group to be successful. All replicas need
                                   to succeed if this is not specified.
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: node group name.
                                 type: string
                               replicas:
                                 description: The number of nodes.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         jobNodeType:

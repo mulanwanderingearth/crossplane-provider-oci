@@ -101,8 +101,7 @@ type AgentToolInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description about the Tool.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -111,12 +110,10 @@ type AgentToolInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Key-value pairs to allow additional configurations.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Updatable) The configuration and type of Tool.
 	ToolConfig []ToolConfigInitParameters `json:"toolConfig,omitempty" tf:"tool_config,omitempty"`
@@ -131,8 +128,7 @@ type AgentToolObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description about the Tool.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -141,22 +137,19 @@ type AgentToolObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Tool.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) Key-value pairs to allow additional configurations.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The current state of the Tool.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Tool was created, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -199,8 +192,7 @@ type AgentToolParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description about the Tool.
 	// +kubebuilder:validation:Optional
@@ -212,13 +204,11 @@ type AgentToolParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Key-value pairs to allow additional configurations.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Updatable) The configuration and type of Tool.
 	// +kubebuilder:validation:Optional
@@ -290,8 +280,7 @@ type EmbeddingLlmCustomizationInitParameters struct {
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	LlmSelection []EmbeddingLlmCustomizationLlmSelectionInitParameters `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
@@ -382,8 +371,7 @@ type EmbeddingLlmCustomizationObservation struct {
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	LlmSelection []EmbeddingLlmCustomizationLlmSelectionObservation `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
@@ -397,8 +385,7 @@ type EmbeddingLlmCustomizationParameters struct {
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	// +kubebuilder:validation:Optional
@@ -414,8 +401,7 @@ type FunctionInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when tool_config_type=FUNCTION_CALLING_TOOL_CONFIG) (Updatable) The parameters the function accepts, defined using a JSON Schema object.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type FunctionObservation struct {
@@ -427,8 +413,7 @@ type FunctionObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when tool_config_type=FUNCTION_CALLING_TOOL_CONFIG) (Updatable) The parameters the function accepts, defined using a JSON Schema object.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type FunctionParameters struct {
@@ -443,8 +428,7 @@ type FunctionParameters struct {
 
 	// (Applicable when tool_config_type=FUNCTION_CALLING_TOOL_CONFIG) (Updatable) The parameters the function accepts, defined using a JSON Schema object.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 }
 
 type GenerationLlmCustomizationInitParameters struct {
@@ -453,8 +437,7 @@ type GenerationLlmCustomizationInitParameters struct {
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	LlmSelection []GenerationLlmCustomizationLlmSelectionInitParameters `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
@@ -545,8 +528,7 @@ type GenerationLlmCustomizationObservation struct {
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	LlmSelection []GenerationLlmCustomizationLlmSelectionObservation `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
@@ -560,8 +542,7 @@ type GenerationLlmCustomizationParameters struct {
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	// +kubebuilder:validation:Optional
@@ -837,8 +818,7 @@ type ReasoningLlmCustomizationInitParameters struct {
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	LlmSelection []ReasoningLlmCustomizationLlmSelectionInitParameters `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
@@ -929,8 +909,7 @@ type ReasoningLlmCustomizationObservation struct {
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	LlmSelection []ReasoningLlmCustomizationLlmSelectionObservation `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
@@ -944,8 +923,7 @@ type ReasoningLlmCustomizationParameters struct {
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	// +kubebuilder:validation:Optional
@@ -958,8 +936,7 @@ type RerankingLlmCustomizationInitParameters struct {
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	LlmSelection []RerankingLlmCustomizationLlmSelectionInitParameters `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
@@ -1050,8 +1027,7 @@ type RerankingLlmCustomizationObservation struct {
 	Instruction *string `json:"instruction,omitempty" tf:"instruction,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	LlmSelection []RerankingLlmCustomizationLlmSelectionObservation `json:"llmSelection,omitempty" tf:"llm_selection,omitempty"`
@@ -1065,8 +1041,7 @@ type RerankingLlmCustomizationParameters struct {
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) Hyper parameters for LLM configuration. Accepts Key-value pairs to configure various hyper parameters.  Refer to the guide for examples and the JSON Schema documentation for details on the format.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	LlmHyperParameters map[string]*string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
+	LlmHyperParameters map[string]string `json:"llmHyperParameters,omitempty" tf:"llm_hyper_parameters,omitempty"`
 
 	// (Applicable when tool_config_type=RAG_TOOL_CONFIG) (Updatable) LLM selection configuration - either DEFAULT or CUSTOM.
 	// +kubebuilder:validation:Optional

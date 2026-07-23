@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}. (See Understanding Free-form Tags).'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) User provided description of the JavaDownloadToken.
                     type: string
@@ -175,7 +174,6 @@ spec:
                       only. Example: {"bar-key": "value"}. (See Managing Tags and
                       Tag Namespaces.)'
                     type: object
-                    x-kubernetes-map-type: granular
                   isDefault:
                     description: (Updatable) The token default attribute.
                     type: boolean
@@ -291,7 +289,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}. (See Understanding Free-form Tags).'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) User provided description of the JavaDownloadToken.
                     type: string
@@ -306,7 +303,6 @@ spec:
                       only. Example: {"bar-key": "value"}. (See Managing Tags and
                       Tag Namespaces.)'
                     type: object
-                    x-kubernetes-map-type: granular
                   isDefault:
                     description: (Updatable) The token default attribute.
                     type: boolean
@@ -463,7 +459,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}. (See Understanding Free-form Tags).'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) User provided description of the JavaDownloadToken.
                     type: string
@@ -478,7 +473,6 @@ spec:
                       only. Example: {"bar-key": "value"}. (See Managing Tags and
                       Tag Namespaces.)'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the principal.
                     type: string
@@ -524,7 +518,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the JavaDownloadToken was created, displayed
                       as an RFC3339 formatted datetime string.

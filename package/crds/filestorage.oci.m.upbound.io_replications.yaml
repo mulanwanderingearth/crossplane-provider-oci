@@ -152,7 +152,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -167,7 +166,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   locks:
@@ -473,7 +471,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -488,7 +485,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   locks:
@@ -769,7 +765,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deltaProgress:
                     description: Percentage progress of the current replication cycle.
                     type: string
@@ -791,7 +786,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the replication.
                     type: string
@@ -853,7 +847,6 @@ spec:
                     description: System tags for this resource. System tags are applied
                       to resources by internal Oracle Cloud Infrastructure services.
                     type: object
-                    x-kubernetes-map-type: granular
                   targetId:
                     description: The OCID of the target file system.
                     type: string

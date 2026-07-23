@@ -245,7 +245,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -255,7 +254,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   kafkaSettings:
                     description: (Updatable) Settings for the Kafka compatibility
                       layer.
@@ -268,11 +266,13 @@ spec:
                         logRetentionHours:
                           description: (Updatable) The number of hours to keep a log
                             file before deleting it (in hours).
-                          type: number
+                          format: int64
+                          type: integer
                         numPartitions:
                           description: (Updatable) The default number of log partitions
                             per topic.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   name:
@@ -550,7 +550,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -737,7 +736,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -747,7 +745,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   kafkaSettings:
                     description: (Updatable) Settings for the Kafka compatibility
                       layer.
@@ -760,11 +757,13 @@ spec:
                         logRetentionHours:
                           description: (Updatable) The number of hours to keep a log
                             file before deleting it (in hours).
-                          type: number
+                          format: int64
+                          type: integer
                         numPartitions:
                           description: (Updatable) The default number of log partitions
                             per topic.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   name:
@@ -1042,7 +1041,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -1167,7 +1165,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   endpointFqdn:
                     description: The FQDN used to access the streams inside the stream
                       pool (same FQDN as the messagesEndpoint attribute of a Stream
@@ -1186,7 +1183,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the stream pool.
                     type: string
@@ -1210,11 +1206,13 @@ spec:
                         logRetentionHours:
                           description: (Updatable) The number of hours to keep a log
                             file before deleting it (in hours).
-                          type: number
+                          format: int64
+                          type: integer
                         numPartitions:
                           description: (Updatable) The default number of log partitions
                             per topic.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   lifecycleStateDetails:
@@ -1265,7 +1263,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: The current state of the stream pool.
                     type: string

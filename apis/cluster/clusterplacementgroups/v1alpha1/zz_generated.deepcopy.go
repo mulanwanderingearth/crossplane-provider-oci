@@ -18,7 +18,7 @@ func (in *AdditionalDetailsInitParameters) DeepCopyInto(out *AdditionalDetailsIn
 	*out = *in
 	if in.ClusterPlacementGroupCount != nil {
 		in, out := &in.ClusterPlacementGroupCount, &out.ClusterPlacementGroupCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MemoryInGbs != nil {
@@ -28,7 +28,7 @@ func (in *AdditionalDetailsInitParameters) DeepCopyInto(out *AdditionalDetailsIn
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
@@ -58,7 +58,7 @@ func (in *AdditionalDetailsObservation) DeepCopyInto(out *AdditionalDetailsObser
 	*out = *in
 	if in.ClusterPlacementGroupCount != nil {
 		in, out := &in.ClusterPlacementGroupCount, &out.ClusterPlacementGroupCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MemoryInGbs != nil {
@@ -68,7 +68,7 @@ func (in *AdditionalDetailsObservation) DeepCopyInto(out *AdditionalDetailsObser
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
@@ -98,7 +98,7 @@ func (in *AdditionalDetailsParameters) DeepCopyInto(out *AdditionalDetailsParame
 	*out = *in
 	if in.ClusterPlacementGroupCount != nil {
 		in, out := &in.ClusterPlacementGroupCount, &out.ClusterPlacementGroupCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MemoryInGbs != nil {
@@ -108,7 +108,7 @@ func (in *AdditionalDetailsParameters) DeepCopyInto(out *AdditionalDetailsParame
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
@@ -263,18 +263,9 @@ func (in *ClusterPlacementGroupInitParameters) DeepCopyInto(out *ClusterPlacemen
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -284,18 +275,9 @@ func (in *ClusterPlacementGroupInitParameters) DeepCopyInto(out *ClusterPlacemen
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Name != nil {
@@ -391,18 +373,9 @@ func (in *ClusterPlacementGroupObservation) DeepCopyInto(out *ClusterPlacementGr
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -412,18 +385,9 @@ func (in *ClusterPlacementGroupObservation) DeepCopyInto(out *ClusterPlacementGr
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -460,18 +424,9 @@ func (in *ClusterPlacementGroupObservation) DeepCopyInto(out *ClusterPlacementGr
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -533,18 +488,9 @@ func (in *ClusterPlacementGroupParameters) DeepCopyInto(out *ClusterPlacementGro
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -554,18 +500,9 @@ func (in *ClusterPlacementGroupParameters) DeepCopyInto(out *ClusterPlacementGro
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Name != nil {

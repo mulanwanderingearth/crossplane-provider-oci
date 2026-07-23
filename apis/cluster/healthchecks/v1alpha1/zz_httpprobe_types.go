@@ -28,8 +28,7 @@ type HttpProbeInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// A dictionary of HTTP request headers.
-	// +mapType=granular
-	Headers map[string]*string `json:"headers,omitempty" tf:"headers,omitempty"`
+	Headers map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
 
 	// The supported HTTP methods available for probes.
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
@@ -38,7 +37,7 @@ type HttpProbeInitParameters struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// The port on which to probe endpoints. If unspecified, probes will use the default port of their protocol.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The supported protocols available for HTTP probes.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -47,7 +46,7 @@ type HttpProbeInitParameters struct {
 	Targets []*string `json:"targets,omitempty" tf:"targets,omitempty"`
 
 	// The probe timeout in seconds. Valid values: 10, 20, 30, and 60. The probe timeout must be less than or equal to intervalInSeconds for monitors.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// A list of names of vantage points from which to execute the probe.
 	VantagePointNames []*string `json:"vantagePointNames,omitempty" tf:"vantage_point_names,omitempty"`
@@ -59,8 +58,7 @@ type HttpProbeObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// A dictionary of HTTP request headers.
-	// +mapType=granular
-	Headers map[string]*string `json:"headers,omitempty" tf:"headers,omitempty"`
+	Headers map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
 
 	// The region where updates must be made and where results must be fetched from.
 	HomeRegion *string `json:"homeRegion,omitempty" tf:"home_region,omitempty"`
@@ -75,7 +73,7 @@ type HttpProbeObservation struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// The port on which to probe endpoints. If unspecified, probes will use the default port of their protocol.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The supported protocols available for HTTP probes.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -90,7 +88,7 @@ type HttpProbeObservation struct {
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
 	// The probe timeout in seconds. Valid values: 10, 20, 30, and 60. The probe timeout must be less than or equal to intervalInSeconds for monitors.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// A list of names of vantage points from which to execute the probe.
 	VantagePointNames []*string `json:"vantagePointNames,omitempty" tf:"vantage_point_names,omitempty"`
@@ -113,8 +111,7 @@ type HttpProbeParameters struct {
 
 	// A dictionary of HTTP request headers.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Headers map[string]*string `json:"headers,omitempty" tf:"headers,omitempty"`
+	Headers map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
 
 	// The supported HTTP methods available for probes.
 	// +kubebuilder:validation:Optional
@@ -126,7 +123,7 @@ type HttpProbeParameters struct {
 
 	// The port on which to probe endpoints. If unspecified, probes will use the default port of their protocol.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The supported protocols available for HTTP probes.
 	// +kubebuilder:validation:Optional
@@ -138,7 +135,7 @@ type HttpProbeParameters struct {
 
 	// The probe timeout in seconds. Valid values: 10, 20, 30, and 60. The probe timeout must be less than or equal to intervalInSeconds for monitors.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// A list of names of vantage points from which to execute the probe.
 	// +kubebuilder:validation:Optional

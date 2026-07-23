@@ -37,7 +37,7 @@ type ConnectionDetailsHostsInitParameters struct {
 	HostIP *string `json:"hostIp,omitempty" tf:"host_ip,omitempty"`
 
 	// Listener port number used for connection requests.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ConnectionDetailsHostsObservation struct {
@@ -46,7 +46,7 @@ type ConnectionDetailsHostsObservation struct {
 	HostIP *string `json:"hostIp,omitempty" tf:"host_ip,omitempty"`
 
 	// Listener port number used for connection requests.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ConnectionDetailsHostsParameters struct {
@@ -57,7 +57,7 @@ type ConnectionDetailsHostsParameters struct {
 
 	// Listener port number used for connection requests.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ExadataInsightInitParameters struct {
@@ -75,8 +75,7 @@ type ExadataInsightInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// OPSI Enterprise Manager Bridge OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/opsi/v1alpha1.EnterpriseManagerBridge
@@ -104,8 +103,7 @@ type ExadataInsightInitParameters struct {
 	ExadataInfraID *string `json:"exadataInfraId,omitempty" tf:"exadata_infra_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when entity_source=EM_MANAGED_EXTERNAL_EXADATA) (Updatable) Set to true to enable automatic enablement and disablement of related targets from Enterprise Manager. New resources (e.g. Database Insights) will be placed in the same compartment as the related Exadata Insight.
 	IsAutoSyncEnabled *bool `json:"isAutoSyncEnabled,omitempty" tf:"is_auto_sync_enabled,omitempty"`
@@ -126,8 +124,7 @@ type ExadataInsightObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// OPSI Enterprise Manager Bridge OCID
 	EnterpriseManagerBridgeID *string `json:"enterpriseManagerBridgeId,omitempty" tf:"enterprise_manager_bridge_id,omitempty"`
@@ -170,8 +167,7 @@ type ExadataInsightObservation struct {
 	ExadataType *string `json:"exadataType,omitempty" tf:"exadata_type,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Exadata insight identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -198,8 +194,7 @@ type ExadataInsightObservation struct {
 	StatusDetails *string `json:"statusDetails,omitempty" tf:"status_details,omitempty"`
 
 	// (Applicable when entity_source=MACS_MANAGED_CLOUD_EXADATA | PE_COMANAGED_EXADATA) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the the Exadata insight was first enabled. An RFC3339 formatted datetime string
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -225,8 +220,7 @@ type ExadataInsightParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// OPSI Enterprise Manager Bridge OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/opsi/v1alpha1.EnterpriseManagerBridge
@@ -260,8 +254,7 @@ type ExadataInsightParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when entity_source=EM_MANAGED_EXTERNAL_EXADATA) (Updatable) Set to true to enable automatic enablement and disablement of related targets from Enterprise Manager. New resources (e.g. Database Insights) will be placed in the same compartment as the related Exadata Insight.
 	// +kubebuilder:validation:Optional
@@ -418,7 +411,7 @@ type MemberAutonomousDetailsConnectionDetailsInitParameters struct {
 	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
 
 	// Listener port number used for connection requests.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Protocol used for connection requests.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -433,7 +426,7 @@ type MemberAutonomousDetailsConnectionDetailsObservation struct {
 	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
 
 	// Listener port number used for connection requests.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Protocol used for connection requests.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -450,7 +443,7 @@ type MemberAutonomousDetailsConnectionDetailsParameters struct {
 
 	// Listener port number used for connection requests.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Protocol used for connection requests.
 	// +kubebuilder:validation:Optional
@@ -628,8 +621,7 @@ type MemberAutonomousDetailsInitParameters struct {
 	DatabaseResourceType *string `json:"databaseResourceType,omitempty" tf:"database_resource_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Database Deployment Type
 	DeploymentType *string `json:"deploymentType,omitempty" tf:"deployment_type,omitempty"`
@@ -638,8 +630,7 @@ type MemberAutonomousDetailsInitParameters struct {
 	EntitySource *string `json:"entitySource,omitempty" tf:"entity_source,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Flag is to identify if advanced features for autonomous database is enabled or not
 	IsAdvancedFeaturesEnabled *bool `json:"isAdvancedFeaturesEnabled,omitempty" tf:"is_advanced_features_enabled,omitempty"`
@@ -671,8 +662,7 @@ type MemberAutonomousDetailsInitParameters struct {
 	OpsiPrivateEndpointIDSelector *v1.Selector `json:"opsiPrivateEndpointIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when entity_source=MACS_MANAGED_CLOUD_EXADATA | PE_COMANAGED_EXADATA) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type MemberAutonomousDetailsObservation struct {
@@ -696,8 +686,7 @@ type MemberAutonomousDetailsObservation struct {
 	DatabaseResourceType *string `json:"databaseResourceType,omitempty" tf:"database_resource_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Database Deployment Type
 	DeploymentType *string `json:"deploymentType,omitempty" tf:"deployment_type,omitempty"`
@@ -706,8 +695,7 @@ type MemberAutonomousDetailsObservation struct {
 	EntitySource *string `json:"entitySource,omitempty" tf:"entity_source,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Flag is to identify if advanced features for autonomous database is enabled or not
 	IsAdvancedFeaturesEnabled *bool `json:"isAdvancedFeaturesEnabled,omitempty" tf:"is_advanced_features_enabled,omitempty"`
@@ -719,8 +707,7 @@ type MemberAutonomousDetailsObservation struct {
 	OpsiPrivateEndpointID *string `json:"opsiPrivateEndpointId,omitempty" tf:"opsi_private_endpoint_id,omitempty"`
 
 	// (Applicable when entity_source=MACS_MANAGED_CLOUD_EXADATA | PE_COMANAGED_EXADATA) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type MemberAutonomousDetailsParameters struct {
@@ -761,8 +748,7 @@ type MemberAutonomousDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Database Deployment Type
 	// +kubebuilder:validation:Optional
@@ -774,8 +760,7 @@ type MemberAutonomousDetailsParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Flag is to identify if advanced features for autonomous database is enabled or not
 	// +kubebuilder:validation:Optional
@@ -811,8 +796,7 @@ type MemberAutonomousDetailsParameters struct {
 
 	// (Applicable when entity_source=MACS_MANAGED_CLOUD_EXADATA | PE_COMANAGED_EXADATA) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type MemberDatabaseDetailsConnectionCredentialDetailsInitParameters struct {
@@ -960,7 +944,7 @@ type MemberDatabaseDetailsConnectionDetailsInitParameters struct {
 	Hosts []ConnectionDetailsHostsInitParameters `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// Listener port number used for connection requests.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Protocol used for connection requests.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -978,7 +962,7 @@ type MemberDatabaseDetailsConnectionDetailsObservation struct {
 	Hosts []ConnectionDetailsHostsObservation `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// Listener port number used for connection requests.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Protocol used for connection requests.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -999,7 +983,7 @@ type MemberDatabaseDetailsConnectionDetailsParameters struct {
 
 	// Listener port number used for connection requests.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Protocol used for connection requests.
 	// +kubebuilder:validation:Optional
@@ -1190,8 +1174,7 @@ type MemberDatabaseDetailsInitParameters struct {
 	DbmPrivateEndpointIDSelector *v1.Selector `json:"dbmPrivateEndpointIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Database Deployment Type
 	DeploymentType *string `json:"deploymentType,omitempty" tf:"deployment_type,omitempty"`
@@ -1200,8 +1183,7 @@ type MemberDatabaseDetailsInitParameters struct {
 	EntitySource *string `json:"entitySource,omitempty" tf:"entity_source,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Management Agent
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/managementagent/v1alpha1.ManagementAgent
@@ -1233,8 +1215,7 @@ type MemberDatabaseDetailsInitParameters struct {
 	ServiceName *string `json:"serviceName,omitempty" tf:"service_name,omitempty"`
 
 	// (Applicable when entity_source=MACS_MANAGED_CLOUD_EXADATA | PE_COMANAGED_EXADATA) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type MemberDatabaseDetailsObservation struct {
@@ -1261,8 +1242,7 @@ type MemberDatabaseDetailsObservation struct {
 	DbmPrivateEndpointID *string `json:"dbmPrivateEndpointId,omitempty" tf:"dbm_private_endpoint_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Database Deployment Type
 	DeploymentType *string `json:"deploymentType,omitempty" tf:"deployment_type,omitempty"`
@@ -1271,8 +1251,7 @@ type MemberDatabaseDetailsObservation struct {
 	EntitySource *string `json:"entitySource,omitempty" tf:"entity_source,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Management Agent
 	ManagementAgentID *string `json:"managementAgentId,omitempty" tf:"management_agent_id,omitempty"`
@@ -1284,8 +1263,7 @@ type MemberDatabaseDetailsObservation struct {
 	ServiceName *string `json:"serviceName,omitempty" tf:"service_name,omitempty"`
 
 	// (Applicable when entity_source=MACS_MANAGED_CLOUD_EXADATA | PE_COMANAGED_EXADATA) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type MemberDatabaseDetailsParameters struct {
@@ -1340,8 +1318,7 @@ type MemberDatabaseDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Database Deployment Type
 	// +kubebuilder:validation:Optional
@@ -1353,8 +1330,7 @@ type MemberDatabaseDetailsParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Management Agent
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/managementagent/v1alpha1.ManagementAgent
@@ -1390,8 +1366,7 @@ type MemberDatabaseDetailsParameters struct {
 
 	// (Applicable when entity_source=MACS_MANAGED_CLOUD_EXADATA | PE_COMANAGED_EXADATA) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type MemberVMClusterDetailsInitParameters struct {

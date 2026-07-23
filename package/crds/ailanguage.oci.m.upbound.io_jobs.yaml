@@ -882,7 +882,8 @@ spec:
                     description: Number of documents processed for prediction. For
                       CSV this signifies number of rows and for TXT this signifies
                       number of files.
-                    type: number
+                    format: int64
+                    type: integer
                   createdBy:
                     description: The OCID of the user who created the job.
                     type: string
@@ -897,7 +898,8 @@ spec:
                     description: Number of documents failed for prediction. For CSV
                       this signifies number of rows and for TXT this signifies number
                       of files.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     description: The OCID of the job.
                     type: string
@@ -1014,11 +1016,13 @@ spec:
                     description: Number of documents still to process. For CSV this
                       signifies number of rows and for TXT this signifies number of
                       files.
-                    type: number
+                    format: int64
+                    type: integer
                   percentComplete:
                     description: How much progress the operation has made, vs the
                       total amount of work that must be performed.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of the Job.
                     type: string
@@ -1035,14 +1039,17 @@ spec:
                     description: Total number of documents given as input for prediction.
                       For CSV this signifies number of rows and for TXT this signifies
                       number of files.
-                    type: number
+                    format: int64
+                    type: integer
                   ttlInDays:
                     description: Time to live duration in days for Job. Job will be
                       available till max 90 days.
-                    type: number
+                    format: int64
+                    type: integer
                   warningsCount:
                     description: warnings count
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

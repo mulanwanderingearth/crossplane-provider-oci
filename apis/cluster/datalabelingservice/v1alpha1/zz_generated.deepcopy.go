@@ -160,18 +160,9 @@ func (in *DatasetInitParameters) DeepCopyInto(out *DatasetInitParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -186,18 +177,9 @@ func (in *DatasetInitParameters) DeepCopyInto(out *DatasetInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.InitialImportDatasetConfiguration != nil {
@@ -273,18 +255,9 @@ func (in *DatasetObservation) DeepCopyInto(out *DatasetObservation) {
 	*out = *in
 	if in.AdditionalProperties != nil {
 		in, out := &in.AdditionalProperties, &out.AdditionalProperties
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.AnnotationFormat != nil {
@@ -313,18 +286,9 @@ func (in *DatasetObservation) DeepCopyInto(out *DatasetObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -339,18 +303,9 @@ func (in *DatasetObservation) DeepCopyInto(out *DatasetObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -458,18 +413,9 @@ func (in *DatasetParameters) DeepCopyInto(out *DatasetParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -484,18 +430,9 @@ func (in *DatasetParameters) DeepCopyInto(out *DatasetParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.InitialImportDatasetConfiguration != nil {
@@ -1122,7 +1059,7 @@ func (in *TextFileTypeMetadataInitParameters) DeepCopyInto(out *TextFileTypeMeta
 	}
 	if in.ColumnIndex != nil {
 		in, out := &in.ColumnIndex, &out.ColumnIndex
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ColumnName != nil {
@@ -1167,7 +1104,7 @@ func (in *TextFileTypeMetadataObservation) DeepCopyInto(out *TextFileTypeMetadat
 	}
 	if in.ColumnIndex != nil {
 		in, out := &in.ColumnIndex, &out.ColumnIndex
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ColumnName != nil {
@@ -1212,7 +1149,7 @@ func (in *TextFileTypeMetadataParameters) DeepCopyInto(out *TextFileTypeMetadata
 	}
 	if in.ColumnIndex != nil {
 		in, out := &in.ColumnIndex, &out.ColumnIndex
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ColumnName != nil {

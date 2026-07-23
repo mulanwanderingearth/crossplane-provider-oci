@@ -77,7 +77,8 @@ spec:
                 properties:
                   agentPollingIntervalInMinutes:
                     description: (Updatable) Agent polling interval in minutes
-                    type: number
+                    format: int64
+                    type: integer
                   fleetId:
                     description: The OCID of the Fleet.
                     type: string
@@ -175,11 +176,13 @@ spec:
                     description: (Updatable) The frequency (in minutes) of Java Usage
                       Tracker processing. (That is, how often should JMS process data
                       from the Java Usage Tracker.)
-                    type: number
+                    format: int64
+                    type: integer
                   jreScanFrequencyInMinutes:
                     description: (Updatable) The frequency (in minutes) of JRE scanning.
                       (That is, how often should JMS scan for JRE installations.)
-                    type: number
+                    format: int64
+                    type: integer
                   linuxConfiguration:
                     description: (Updatable) Management Agent Configuration for list
                       of include/exclude file system paths (specific to operating
@@ -243,7 +246,8 @@ spec:
                   workRequestValidityPeriodInDays:
                     description: (Updatable) The validity period in days for work
                       requests.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -260,7 +264,8 @@ spec:
                 properties:
                   agentPollingIntervalInMinutes:
                     description: (Updatable) Agent polling interval in minutes
-                    type: number
+                    format: int64
+                    type: integer
                   fleetId:
                     description: The OCID of the Fleet.
                     type: string
@@ -358,11 +363,13 @@ spec:
                     description: (Updatable) The frequency (in minutes) of Java Usage
                       Tracker processing. (That is, how often should JMS process data
                       from the Java Usage Tracker.)
-                    type: number
+                    format: int64
+                    type: integer
                   jreScanFrequencyInMinutes:
                     description: (Updatable) The frequency (in minutes) of JRE scanning.
                       (That is, how often should JMS scan for JRE installations.)
-                    type: number
+                    format: int64
+                    type: integer
                   linuxConfiguration:
                     description: (Updatable) Management Agent Configuration for list
                       of include/exclude file system paths (specific to operating
@@ -426,7 +433,8 @@ spec:
                   workRequestValidityPeriodInDays:
                     description: (Updatable) The validity period in days for work
                       requests.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -524,7 +532,8 @@ spec:
                 properties:
                   agentPollingIntervalInMinutes:
                     description: (Updatable) Agent polling interval in minutes
-                    type: number
+                    format: int64
+                    type: integer
                   fleetId:
                     description: The OCID of the Fleet.
                     type: string
@@ -550,11 +559,13 @@ spec:
                     description: (Updatable) The frequency (in minutes) of Java Usage
                       Tracker processing. (That is, how often should JMS process data
                       from the Java Usage Tracker.)
-                    type: number
+                    format: int64
+                    type: integer
                   jreScanFrequencyInMinutes:
                     description: (Updatable) The frequency (in minutes) of JRE scanning.
                       (That is, how often should JMS scan for JRE installations.)
-                    type: number
+                    format: int64
+                    type: integer
                   linuxConfiguration:
                     description: (Updatable) Management Agent Configuration for list
                       of include/exclude file system paths (specific to operating
@@ -622,7 +633,8 @@ spec:
                   workRequestValidityPeriodInDays:
                     description: (Updatable) The validity period in days for work
                       requests.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

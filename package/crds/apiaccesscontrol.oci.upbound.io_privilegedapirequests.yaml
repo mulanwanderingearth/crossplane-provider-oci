@@ -160,11 +160,11 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   durationInHrs:
                     description: Duration in hours for which access is sought on the
                       target resource.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -173,7 +173,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   notificationTopicId:
                     description: The OCID of the Oracle Cloud Infrastructure Notification
                       topic to publish messages related to this Privileged Api Request.
@@ -479,11 +478,11 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   durationInHrs:
                     description: Duration in hours for which access is sought on the
                       target resource.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -492,7 +491,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   notificationTopicId:
                     description: The OCID of the Oracle Cloud Infrastructure Notification
                       topic to publish messages related to this Privileged Api Request.
@@ -846,7 +844,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: Name of the privilegedApi control. The name must
                       be unique.
@@ -854,7 +851,8 @@ spec:
                   durationInHrs:
                     description: Duration in hours for which access is sought on the
                       target resource.
-                    type: number
+                    format: int64
+                    type: integer
                   entityType:
                     description: entityType of resource for which the AccessRequest
                       is applicable
@@ -867,7 +865,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the privilegedApi request.
                     type: string
@@ -881,7 +878,8 @@ spec:
                   numberOfApproversRequired:
                     description: Number of approvers required to approve an privilegedApi
                       request.
-                    type: number
+                    format: int64
+                    type: integer
                   privilegedApiControlId:
                     description: The OCID of the privilegedApi control governing the
                       target resource.
@@ -959,7 +957,6 @@ spec:
                       and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ticketNumbers:
                     description: A list of ticket numbers related to this Privileged
                       Api Access Request, e.g. Service Request (SR) number and JIRA

@@ -20,7 +20,7 @@ type ActionsInitParameters struct {
 	Body []BodyInitParameters `json:"body,omitempty" tf:"body,omitempty"`
 
 	// (Updatable) Response code.
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Applicable when type=RETURN_HTTP_RESPONSE) (Updatable) Adds headers defined in this array for HTTP response.
 	Headers []HeadersInitParameters `json:"headers,omitempty" tf:"headers,omitempty"`
@@ -38,7 +38,7 @@ type ActionsObservation struct {
 	Body []BodyObservation `json:"body,omitempty" tf:"body,omitempty"`
 
 	// (Updatable) Response code.
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Applicable when type=RETURN_HTTP_RESPONSE) (Updatable) Adds headers defined in this array for HTTP response.
 	Headers []HeadersObservation `json:"headers,omitempty" tf:"headers,omitempty"`
@@ -58,7 +58,7 @@ type ActionsParameters struct {
 
 	// (Updatable) Response code.
 	// +kubebuilder:validation:Optional
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Applicable when type=RETURN_HTTP_RESPONSE) (Updatable) Adds headers defined in this array for HTTP response.
 	// +kubebuilder:validation:Optional
@@ -113,7 +113,7 @@ type CollaborativeWeightsInitParameters struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) The value of weight to set.
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type CollaborativeWeightsObservation struct {
@@ -122,7 +122,7 @@ type CollaborativeWeightsObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) The value of weight to set.
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type CollaborativeWeightsParameters struct {
@@ -133,46 +133,46 @@ type CollaborativeWeightsParameters struct {
 
 	// (Updatable) The value of weight to set.
 	// +kubebuilder:validation:Optional
-	Weight *float64 `json:"weight" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight" tf:"weight,omitempty"`
 }
 
 type ConfigurationsInitParameters struct {
 
 	// (Updatable) Duration of block action application in seconds when requestsLimit is reached. Optional and can be 0 (no block duration).
-	ActionDurationInSeconds *float64 `json:"actionDurationInSeconds,omitempty" tf:"action_duration_in_seconds,omitempty"`
+	ActionDurationInSeconds *int64 `json:"actionDurationInSeconds,omitempty" tf:"action_duration_in_seconds,omitempty"`
 
 	// (Updatable) Evaluation period in seconds.
-	PeriodInSeconds *float64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
+	PeriodInSeconds *int64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
 
 	// (Updatable) Requests allowed per evaluation period.
-	RequestsLimit *float64 `json:"requestsLimit,omitempty" tf:"requests_limit,omitempty"`
+	RequestsLimit *int64 `json:"requestsLimit,omitempty" tf:"requests_limit,omitempty"`
 }
 
 type ConfigurationsObservation struct {
 
 	// (Updatable) Duration of block action application in seconds when requestsLimit is reached. Optional and can be 0 (no block duration).
-	ActionDurationInSeconds *float64 `json:"actionDurationInSeconds,omitempty" tf:"action_duration_in_seconds,omitempty"`
+	ActionDurationInSeconds *int64 `json:"actionDurationInSeconds,omitempty" tf:"action_duration_in_seconds,omitempty"`
 
 	// (Updatable) Evaluation period in seconds.
-	PeriodInSeconds *float64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
+	PeriodInSeconds *int64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
 
 	// (Updatable) Requests allowed per evaluation period.
-	RequestsLimit *float64 `json:"requestsLimit,omitempty" tf:"requests_limit,omitempty"`
+	RequestsLimit *int64 `json:"requestsLimit,omitempty" tf:"requests_limit,omitempty"`
 }
 
 type ConfigurationsParameters struct {
 
 	// (Updatable) Duration of block action application in seconds when requestsLimit is reached. Optional and can be 0 (no block duration).
 	// +kubebuilder:validation:Optional
-	ActionDurationInSeconds *float64 `json:"actionDurationInSeconds,omitempty" tf:"action_duration_in_seconds,omitempty"`
+	ActionDurationInSeconds *int64 `json:"actionDurationInSeconds,omitempty" tf:"action_duration_in_seconds,omitempty"`
 
 	// (Updatable) Evaluation period in seconds.
 	// +kubebuilder:validation:Optional
-	PeriodInSeconds *float64 `json:"periodInSeconds" tf:"period_in_seconds,omitempty"`
+	PeriodInSeconds *int64 `json:"periodInSeconds" tf:"period_in_seconds,omitempty"`
 
 	// (Updatable) Requests allowed per evaluation period.
 	// +kubebuilder:validation:Optional
-	RequestsLimit *float64 `json:"requestsLimit" tf:"requests_limit,omitempty"`
+	RequestsLimit *int64 `json:"requestsLimit" tf:"requests_limit,omitempty"`
 }
 
 type ExclusionsInitParameters struct {
@@ -239,7 +239,7 @@ type ProtectionCapabilitiesCollaborativeWeightsInitParameters struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) The value of weight to set.
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type ProtectionCapabilitiesCollaborativeWeightsObservation struct {
@@ -248,7 +248,7 @@ type ProtectionCapabilitiesCollaborativeWeightsObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) The value of weight to set.
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type ProtectionCapabilitiesCollaborativeWeightsParameters struct {
@@ -259,7 +259,7 @@ type ProtectionCapabilitiesCollaborativeWeightsParameters struct {
 
 	// (Updatable) The value of weight to set.
 	// +kubebuilder:validation:Optional
-	Weight *float64 `json:"weight" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight" tf:"weight,omitempty"`
 }
 
 type ProtectionCapabilitiesExclusionsInitParameters struct {
@@ -297,7 +297,7 @@ type ProtectionCapabilitiesInitParameters struct {
 	ActionName *string `json:"actionName,omitempty" tf:"action_name,omitempty"`
 
 	// (Updatable) The minimum sum of weights of associated collaborative protection capabilities that have triggered which must be reached in order for this capability to trigger. This field is ignored for non-collaborative capabilities.
-	CollaborativeActionThreshold *float64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
+	CollaborativeActionThreshold *int64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
 
 	// (Updatable) Explicit weight values to use for associated collaborative protection capabilities.
 	CollaborativeWeights []CollaborativeWeightsInitParameters `json:"collaborativeWeights,omitempty" tf:"collaborative_weights,omitempty"`
@@ -309,7 +309,7 @@ type ProtectionCapabilitiesInitParameters struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) Version of referenced protection capability.
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ProtectionCapabilitiesObservation struct {
@@ -318,7 +318,7 @@ type ProtectionCapabilitiesObservation struct {
 	ActionName *string `json:"actionName,omitempty" tf:"action_name,omitempty"`
 
 	// (Updatable) The minimum sum of weights of associated collaborative protection capabilities that have triggered which must be reached in order for this capability to trigger. This field is ignored for non-collaborative capabilities.
-	CollaborativeActionThreshold *float64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
+	CollaborativeActionThreshold *int64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
 
 	// (Updatable) Explicit weight values to use for associated collaborative protection capabilities.
 	CollaborativeWeights []CollaborativeWeightsObservation `json:"collaborativeWeights,omitempty" tf:"collaborative_weights,omitempty"`
@@ -330,7 +330,7 @@ type ProtectionCapabilitiesObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) Version of referenced protection capability.
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ProtectionCapabilitiesParameters struct {
@@ -341,7 +341,7 @@ type ProtectionCapabilitiesParameters struct {
 
 	// (Updatable) The minimum sum of weights of associated collaborative protection capabilities that have triggered which must be reached in order for this capability to trigger. This field is ignored for non-collaborative capabilities.
 	// +kubebuilder:validation:Optional
-	CollaborativeActionThreshold *float64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
+	CollaborativeActionThreshold *int64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
 
 	// (Updatable) Explicit weight values to use for associated collaborative protection capabilities.
 	// +kubebuilder:validation:Optional
@@ -357,7 +357,7 @@ type ProtectionCapabilitiesParameters struct {
 
 	// (Updatable) Version of referenced protection capability.
 	// +kubebuilder:validation:Optional
-	Version *float64 `json:"version" tf:"version,omitempty"`
+	Version *int64 `json:"version" tf:"version,omitempty"`
 }
 
 type ProtectionCapabilitySettingsInitParameters struct {
@@ -366,19 +366,19 @@ type ProtectionCapabilitySettingsInitParameters struct {
 	AllowedHTTPMethods []*string `json:"allowedHttpMethods,omitempty" tf:"allowed_http_methods,omitempty"`
 
 	// (Updatable) Maximum allowed length of headers in an HTTP request. Used in protection capability: 9200024: Limit length of request header size.
-	MaxHTTPRequestHeaderLength *float64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
+	MaxHTTPRequestHeaderLength *int64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
 
 	// (Updatable) Maximum number of headers allowed in an HTTP request. Used in protection capability 9200014: Limit Number of Request Headers.
-	MaxHTTPRequestHeaders *float64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
+	MaxHTTPRequestHeaders *int64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
 
 	// (Updatable) Maximum number of arguments allowed. Used in protection capability 920380: Number of Arguments Limits.
-	MaxNumberOfArguments *float64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
+	MaxNumberOfArguments *int64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
 
 	// (Updatable) Maximum allowed length of a single argument. Used in protection capability 920370: Limit argument value length.
-	MaxSingleArgumentLength *float64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
+	MaxSingleArgumentLength *int64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
 
 	// (Updatable) Maximum allowed total length of all arguments. Used in protection capability 920390: Limit arguments total length.
-	MaxTotalArgumentLength *float64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
+	MaxTotalArgumentLength *int64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
 }
 
 type ProtectionCapabilitySettingsObservation struct {
@@ -387,19 +387,19 @@ type ProtectionCapabilitySettingsObservation struct {
 	AllowedHTTPMethods []*string `json:"allowedHttpMethods,omitempty" tf:"allowed_http_methods,omitempty"`
 
 	// (Updatable) Maximum allowed length of headers in an HTTP request. Used in protection capability: 9200024: Limit length of request header size.
-	MaxHTTPRequestHeaderLength *float64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
+	MaxHTTPRequestHeaderLength *int64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
 
 	// (Updatable) Maximum number of headers allowed in an HTTP request. Used in protection capability 9200014: Limit Number of Request Headers.
-	MaxHTTPRequestHeaders *float64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
+	MaxHTTPRequestHeaders *int64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
 
 	// (Updatable) Maximum number of arguments allowed. Used in protection capability 920380: Number of Arguments Limits.
-	MaxNumberOfArguments *float64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
+	MaxNumberOfArguments *int64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
 
 	// (Updatable) Maximum allowed length of a single argument. Used in protection capability 920370: Limit argument value length.
-	MaxSingleArgumentLength *float64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
+	MaxSingleArgumentLength *int64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
 
 	// (Updatable) Maximum allowed total length of all arguments. Used in protection capability 920390: Limit arguments total length.
-	MaxTotalArgumentLength *float64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
+	MaxTotalArgumentLength *int64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
 }
 
 type ProtectionCapabilitySettingsParameters struct {
@@ -410,23 +410,23 @@ type ProtectionCapabilitySettingsParameters struct {
 
 	// (Updatable) Maximum allowed length of headers in an HTTP request. Used in protection capability: 9200024: Limit length of request header size.
 	// +kubebuilder:validation:Optional
-	MaxHTTPRequestHeaderLength *float64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
+	MaxHTTPRequestHeaderLength *int64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
 
 	// (Updatable) Maximum number of headers allowed in an HTTP request. Used in protection capability 9200014: Limit Number of Request Headers.
 	// +kubebuilder:validation:Optional
-	MaxHTTPRequestHeaders *float64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
+	MaxHTTPRequestHeaders *int64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
 
 	// (Updatable) Maximum number of arguments allowed. Used in protection capability 920380: Number of Arguments Limits.
 	// +kubebuilder:validation:Optional
-	MaxNumberOfArguments *float64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
+	MaxNumberOfArguments *int64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
 
 	// (Updatable) Maximum allowed length of a single argument. Used in protection capability 920370: Limit argument value length.
 	// +kubebuilder:validation:Optional
-	MaxSingleArgumentLength *float64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
+	MaxSingleArgumentLength *int64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
 
 	// (Updatable) Maximum allowed total length of all arguments. Used in protection capability 920390: Limit arguments total length.
 	// +kubebuilder:validation:Optional
-	MaxTotalArgumentLength *float64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
+	MaxTotalArgumentLength *int64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
 }
 
 type RequestAccessControlInitParameters struct {
@@ -464,7 +464,7 @@ type RequestProtectionInitParameters struct {
 	BodyInspectionSizeLimitExceededActionName *string `json:"bodyInspectionSizeLimitExceededActionName,omitempty" tf:"body_inspection_size_limit_exceeded_action_name,omitempty"`
 
 	// (Updatable) Maximum size of inspected HTTP message body in bytes. Actions to take if this limit is exceeded are defined in bodyInspectionSizeLimitExceededActionName.
-	BodyInspectionSizeLimitInBytes *float64 `json:"bodyInspectionSizeLimitInBytes,omitempty" tf:"body_inspection_size_limit_in_bytes,omitempty"`
+	BodyInspectionSizeLimitInBytes *int64 `json:"bodyInspectionSizeLimitInBytes,omitempty" tf:"body_inspection_size_limit_in_bytes,omitempty"`
 
 	// (Updatable) Ordered list of AccessControlRules. Rules are executed in order of appearance in this array.
 	Rules []RequestProtectionRulesInitParameters `json:"rules,omitempty" tf:"rules,omitempty"`
@@ -476,7 +476,7 @@ type RequestProtectionObservation struct {
 	BodyInspectionSizeLimitExceededActionName *string `json:"bodyInspectionSizeLimitExceededActionName,omitempty" tf:"body_inspection_size_limit_exceeded_action_name,omitempty"`
 
 	// (Updatable) Maximum size of inspected HTTP message body in bytes. Actions to take if this limit is exceeded are defined in bodyInspectionSizeLimitExceededActionName.
-	BodyInspectionSizeLimitInBytes *float64 `json:"bodyInspectionSizeLimitInBytes,omitempty" tf:"body_inspection_size_limit_in_bytes,omitempty"`
+	BodyInspectionSizeLimitInBytes *int64 `json:"bodyInspectionSizeLimitInBytes,omitempty" tf:"body_inspection_size_limit_in_bytes,omitempty"`
 
 	// (Updatable) Ordered list of AccessControlRules. Rules are executed in order of appearance in this array.
 	Rules []RequestProtectionRulesObservation `json:"rules,omitempty" tf:"rules,omitempty"`
@@ -490,7 +490,7 @@ type RequestProtectionParameters struct {
 
 	// (Updatable) Maximum size of inspected HTTP message body in bytes. Actions to take if this limit is exceeded are defined in bodyInspectionSizeLimitExceededActionName.
 	// +kubebuilder:validation:Optional
-	BodyInspectionSizeLimitInBytes *float64 `json:"bodyInspectionSizeLimitInBytes,omitempty" tf:"body_inspection_size_limit_in_bytes,omitempty"`
+	BodyInspectionSizeLimitInBytes *int64 `json:"bodyInspectionSizeLimitInBytes,omitempty" tf:"body_inspection_size_limit_in_bytes,omitempty"`
 
 	// (Updatable) Ordered list of AccessControlRules. Rules are executed in order of appearance in this array.
 	// +kubebuilder:validation:Optional
@@ -925,7 +925,7 @@ type RulesProtectionCapabilitiesInitParameters struct {
 	ActionName *string `json:"actionName,omitempty" tf:"action_name,omitempty"`
 
 	// (Updatable) The minimum sum of weights of associated collaborative protection capabilities that have triggered which must be reached in order for this capability to trigger. This field is ignored for non-collaborative capabilities.
-	CollaborativeActionThreshold *float64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
+	CollaborativeActionThreshold *int64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
 
 	// (Updatable) Explicit weight values to use for associated collaborative protection capabilities.
 	CollaborativeWeights []ProtectionCapabilitiesCollaborativeWeightsInitParameters `json:"collaborativeWeights,omitempty" tf:"collaborative_weights,omitempty"`
@@ -937,7 +937,7 @@ type RulesProtectionCapabilitiesInitParameters struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) Version of referenced protection capability.
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type RulesProtectionCapabilitiesObservation struct {
@@ -946,7 +946,7 @@ type RulesProtectionCapabilitiesObservation struct {
 	ActionName *string `json:"actionName,omitempty" tf:"action_name,omitempty"`
 
 	// (Updatable) The minimum sum of weights of associated collaborative protection capabilities that have triggered which must be reached in order for this capability to trigger. This field is ignored for non-collaborative capabilities.
-	CollaborativeActionThreshold *float64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
+	CollaborativeActionThreshold *int64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
 
 	// (Updatable) Explicit weight values to use for associated collaborative protection capabilities.
 	CollaborativeWeights []ProtectionCapabilitiesCollaborativeWeightsObservation `json:"collaborativeWeights,omitempty" tf:"collaborative_weights,omitempty"`
@@ -958,7 +958,7 @@ type RulesProtectionCapabilitiesObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) Version of referenced protection capability.
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type RulesProtectionCapabilitiesParameters struct {
@@ -969,7 +969,7 @@ type RulesProtectionCapabilitiesParameters struct {
 
 	// (Updatable) The minimum sum of weights of associated collaborative protection capabilities that have triggered which must be reached in order for this capability to trigger. This field is ignored for non-collaborative capabilities.
 	// +kubebuilder:validation:Optional
-	CollaborativeActionThreshold *float64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
+	CollaborativeActionThreshold *int64 `json:"collaborativeActionThreshold,omitempty" tf:"collaborative_action_threshold,omitempty"`
 
 	// (Updatable) Explicit weight values to use for associated collaborative protection capabilities.
 	// +kubebuilder:validation:Optional
@@ -985,7 +985,7 @@ type RulesProtectionCapabilitiesParameters struct {
 
 	// (Updatable) Version of referenced protection capability.
 	// +kubebuilder:validation:Optional
-	Version *float64 `json:"version" tf:"version,omitempty"`
+	Version *int64 `json:"version" tf:"version,omitempty"`
 }
 
 type RulesProtectionCapabilitySettingsInitParameters struct {
@@ -994,19 +994,19 @@ type RulesProtectionCapabilitySettingsInitParameters struct {
 	AllowedHTTPMethods []*string `json:"allowedHttpMethods,omitempty" tf:"allowed_http_methods,omitempty"`
 
 	// (Updatable) Maximum allowed length of headers in an HTTP request. Used in protection capability: 9200024: Limit length of request header size.
-	MaxHTTPRequestHeaderLength *float64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
+	MaxHTTPRequestHeaderLength *int64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
 
 	// (Updatable) Maximum number of headers allowed in an HTTP request. Used in protection capability 9200014: Limit Number of Request Headers.
-	MaxHTTPRequestHeaders *float64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
+	MaxHTTPRequestHeaders *int64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
 
 	// (Updatable) Maximum number of arguments allowed. Used in protection capability 920380: Number of Arguments Limits.
-	MaxNumberOfArguments *float64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
+	MaxNumberOfArguments *int64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
 
 	// (Updatable) Maximum allowed length of a single argument. Used in protection capability 920370: Limit argument value length.
-	MaxSingleArgumentLength *float64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
+	MaxSingleArgumentLength *int64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
 
 	// (Updatable) Maximum allowed total length of all arguments. Used in protection capability 920390: Limit arguments total length.
-	MaxTotalArgumentLength *float64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
+	MaxTotalArgumentLength *int64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
 }
 
 type RulesProtectionCapabilitySettingsObservation struct {
@@ -1015,19 +1015,19 @@ type RulesProtectionCapabilitySettingsObservation struct {
 	AllowedHTTPMethods []*string `json:"allowedHttpMethods,omitempty" tf:"allowed_http_methods,omitempty"`
 
 	// (Updatable) Maximum allowed length of headers in an HTTP request. Used in protection capability: 9200024: Limit length of request header size.
-	MaxHTTPRequestHeaderLength *float64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
+	MaxHTTPRequestHeaderLength *int64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
 
 	// (Updatable) Maximum number of headers allowed in an HTTP request. Used in protection capability 9200014: Limit Number of Request Headers.
-	MaxHTTPRequestHeaders *float64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
+	MaxHTTPRequestHeaders *int64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
 
 	// (Updatable) Maximum number of arguments allowed. Used in protection capability 920380: Number of Arguments Limits.
-	MaxNumberOfArguments *float64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
+	MaxNumberOfArguments *int64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
 
 	// (Updatable) Maximum allowed length of a single argument. Used in protection capability 920370: Limit argument value length.
-	MaxSingleArgumentLength *float64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
+	MaxSingleArgumentLength *int64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
 
 	// (Updatable) Maximum allowed total length of all arguments. Used in protection capability 920390: Limit arguments total length.
-	MaxTotalArgumentLength *float64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
+	MaxTotalArgumentLength *int64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
 }
 
 type RulesProtectionCapabilitySettingsParameters struct {
@@ -1038,23 +1038,23 @@ type RulesProtectionCapabilitySettingsParameters struct {
 
 	// (Updatable) Maximum allowed length of headers in an HTTP request. Used in protection capability: 9200024: Limit length of request header size.
 	// +kubebuilder:validation:Optional
-	MaxHTTPRequestHeaderLength *float64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
+	MaxHTTPRequestHeaderLength *int64 `json:"maxHttpRequestHeaderLength,omitempty" tf:"max_http_request_header_length,omitempty"`
 
 	// (Updatable) Maximum number of headers allowed in an HTTP request. Used in protection capability 9200014: Limit Number of Request Headers.
 	// +kubebuilder:validation:Optional
-	MaxHTTPRequestHeaders *float64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
+	MaxHTTPRequestHeaders *int64 `json:"maxHttpRequestHeaders,omitempty" tf:"max_http_request_headers,omitempty"`
 
 	// (Updatable) Maximum number of arguments allowed. Used in protection capability 920380: Number of Arguments Limits.
 	// +kubebuilder:validation:Optional
-	MaxNumberOfArguments *float64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
+	MaxNumberOfArguments *int64 `json:"maxNumberOfArguments,omitempty" tf:"max_number_of_arguments,omitempty"`
 
 	// (Updatable) Maximum allowed length of a single argument. Used in protection capability 920370: Limit argument value length.
 	// +kubebuilder:validation:Optional
-	MaxSingleArgumentLength *float64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
+	MaxSingleArgumentLength *int64 `json:"maxSingleArgumentLength,omitempty" tf:"max_single_argument_length,omitempty"`
 
 	// (Updatable) Maximum allowed total length of all arguments. Used in protection capability 920390: Limit arguments total length.
 	// +kubebuilder:validation:Optional
-	MaxTotalArgumentLength *float64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
+	MaxTotalArgumentLength *int64 `json:"maxTotalArgumentLength,omitempty" tf:"max_total_argument_length,omitempty"`
 }
 
 type WebAppFirewallPolicyInitParameters struct {
@@ -1075,15 +1075,13 @@ type WebAppFirewallPolicyInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) WebAppFirewallPolicy display name, can be renamed.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Module that allows inspection of HTTP request properties and to return a defined HTTP response. In this module, rules with the name 'Default Action' are not allowed, since this name is reserved for default action logs.
 	RequestAccessControl []RequestAccessControlInitParameters `json:"requestAccessControl,omitempty" tf:"request_access_control,omitempty"`
@@ -1101,8 +1099,7 @@ type WebAppFirewallPolicyInitParameters struct {
 	ResponseProtection []ResponseProtectionInitParameters `json:"responseProtection,omitempty" tf:"response_protection,omitempty"`
 
 	// (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type WebAppFirewallPolicyObservation struct {
@@ -1114,15 +1111,13 @@ type WebAppFirewallPolicyObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) WebAppFirewallPolicy display name, can be renamed.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the WebAppFirewallPolicy.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -1149,8 +1144,7 @@ type WebAppFirewallPolicyObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the WebAppFirewallPolicy was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -1180,8 +1174,7 @@ type WebAppFirewallPolicyParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) WebAppFirewallPolicy display name, can be renamed.
 	// +kubebuilder:validation:Optional
@@ -1189,8 +1182,7 @@ type WebAppFirewallPolicyParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Module that allows inspection of HTTP request properties and to return a defined HTTP response. In this module, rules with the name 'Default Action' are not allowed, since this name is reserved for default action logs.
 	// +kubebuilder:validation:Optional
@@ -1214,8 +1206,7 @@ type WebAppFirewallPolicyParameters struct {
 
 	// (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 // WebAppFirewallPolicySpec defines the desired state of WebAppFirewallPolicy

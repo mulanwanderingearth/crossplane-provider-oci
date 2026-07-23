@@ -15,6 +15,18 @@ import (
 )
 
 type AccountsInitParameters struct {
+
+	// (Updatable) Status of the account
+	Active *bool `json:"active,omitempty" tf:"active,omitempty"`
+
+	// (Updatable) Name of the account
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) Owner identifier
+	OwnerID *string `json:"ownerId,omitempty" tf:"owner_id,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AccountsObservation struct {
@@ -36,9 +48,34 @@ type AccountsObservation struct {
 }
 
 type AccountsParameters struct {
+
+	// (Updatable) Status of the account
+	// +kubebuilder:validation:Optional
+	Active *bool `json:"active,omitempty" tf:"active,omitempty"`
+
+	// (Updatable) Name of the account
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) Owner identifier
+	// +kubebuilder:validation:Optional
+	OwnerID *string `json:"ownerId,omitempty" tf:"owner_id,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AdminRolesInitParameters struct {
+
+	// (Updatable) The description of the AppRole.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Updatable) Display-name of the AppRole.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AdminRolesObservation struct {
@@ -57,6 +94,18 @@ type AdminRolesObservation struct {
 }
 
 type AdminRolesParameters struct {
+
+	// (Updatable) The description of the AppRole.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Updatable) Display-name of the AppRole.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type AliasAppsInitParameters struct {
@@ -167,6 +216,18 @@ type AllowedTagsParameters struct {
 }
 
 type AppIdcsCreatedByInitParameters struct {
+
+	// (Updatable) Display-name of the AppRole.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AppIdcsCreatedByObservation struct {
@@ -188,9 +249,37 @@ type AppIdcsCreatedByObservation struct {
 }
 
 type AppIdcsCreatedByParameters struct {
+
+	// (Updatable) Display-name of the AppRole.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type AppIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) Display-name of the AppRole.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AppIdcsLastModifiedByObservation struct {
@@ -212,12 +301,28 @@ type AppIdcsLastModifiedByObservation struct {
 }
 
 type AppIdcsLastModifiedByParameters struct {
+
+	// (Updatable) Display-name of the AppRole.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type AppInitParameters struct {
 
 	// (Updatable) Expiry-time in seconds for an Access Token. Any token that allows access to this App will expire after the specified duration.
-	AccessTokenExpiry *float64 `json:"accessTokenExpiry,omitempty" tf:"access_token_expiry,omitempty"`
+	AccessTokenExpiry *int64 `json:"accessTokenExpiry,omitempty" tf:"access_token_expiry,omitempty"`
 
 	// (Updatable) Status of the account
 	Active *bool `json:"active,omitempty" tf:"active,omitempty"`
@@ -423,7 +528,7 @@ type AppInitParameters struct {
 	RedirectUris []*string `json:"redirectUris,omitempty" tf:"redirect_uris,omitempty"`
 
 	// (Updatable) Expiry-time in seconds for a Refresh Token.  Any token that allows access to this App, once refreshed, will expire after the specified duration.
-	RefreshTokenExpiry *float64 `json:"refreshTokenExpiry,omitempty" tf:"refresh_token_expiry,omitempty"`
+	RefreshTokenExpiry *int64 `json:"refreshTokenExpiry,omitempty" tf:"refresh_token_expiry,omitempty"`
 
 	// (Updatable) An endpoint-specific schema version number to use in the Request. Allowed version values are Earliest Version or Latest Version as specified in each REST API endpoint description, or any sequential number inbetween. All schema attributes/body parameters are a part of version 1. After version 1, any attributes added or deprecated will be tagged with the version that they were added to or deprecated in. If no version is provided, the latest schema version is returned.
 	ResourceTypeSchemaVersion *string `json:"resourceTypeSchemaVersion,omitempty" tf:"resource_type_schema_version,omitempty"`
@@ -512,6 +617,21 @@ type AppInitParameters struct {
 }
 
 type AppMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the appTemplate on which the application based upon is updated. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type AppMetaObservation struct {
@@ -533,12 +653,32 @@ type AppMetaObservation struct {
 }
 
 type AppMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the appTemplate on which the application based upon is updated. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type AppObservation struct {
 
 	// (Updatable) Expiry-time in seconds for an Access Token. Any token that allows access to this App will expire after the specified duration.
-	AccessTokenExpiry *float64 `json:"accessTokenExpiry,omitempty" tf:"access_token_expiry,omitempty"`
+	AccessTokenExpiry *int64 `json:"accessTokenExpiry,omitempty" tf:"access_token_expiry,omitempty"`
 
 	// (Updatable) Accounts of App
 	Accounts []AccountsObservation `json:"accounts,omitempty" tf:"accounts,omitempty"`
@@ -819,7 +959,7 @@ type AppObservation struct {
 	RedirectUris []*string `json:"redirectUris,omitempty" tf:"redirect_uris,omitempty"`
 
 	// (Updatable) Expiry-time in seconds for a Refresh Token.  Any token that allows access to this App, once refreshed, will expire after the specified duration.
-	RefreshTokenExpiry *float64 `json:"refreshTokenExpiry,omitempty" tf:"refresh_token_expiry,omitempty"`
+	RefreshTokenExpiry *int64 `json:"refreshTokenExpiry,omitempty" tf:"refresh_token_expiry,omitempty"`
 
 	// (Updatable) An endpoint-specific schema version number to use in the Request. Allowed version values are Earliest Version or Latest Version as specified in each REST API endpoint description, or any sequential number inbetween. All schema attributes/body parameters are a part of version 1. After version 1, any attributes added or deprecated will be tagged with the version that they were added to or deprecated in. If no version is provided, the latest schema version is returned.
 	ResourceTypeSchemaVersion *string `json:"resourceTypeSchemaVersion,omitempty" tf:"resource_type_schema_version,omitempty"`
@@ -917,7 +1057,7 @@ type AppParameters struct {
 
 	// (Updatable) Expiry-time in seconds for an Access Token. Any token that allows access to this App will expire after the specified duration.
 	// +kubebuilder:validation:Optional
-	AccessTokenExpiry *float64 `json:"accessTokenExpiry,omitempty" tf:"access_token_expiry,omitempty"`
+	AccessTokenExpiry *int64 `json:"accessTokenExpiry,omitempty" tf:"access_token_expiry,omitempty"`
 
 	// (Updatable) Status of the account
 	// +kubebuilder:validation:Optional
@@ -1190,7 +1330,7 @@ type AppParameters struct {
 
 	// (Updatable) Expiry-time in seconds for a Refresh Token.  Any token that allows access to this App, once refreshed, will expire after the specified duration.
 	// +kubebuilder:validation:Optional
-	RefreshTokenExpiry *float64 `json:"refreshTokenExpiry,omitempty" tf:"refresh_token_expiry,omitempty"`
+	RefreshTokenExpiry *int64 `json:"refreshTokenExpiry,omitempty" tf:"refresh_token_expiry,omitempty"`
 
 	// (Updatable) An endpoint-specific schema version number to use in the Request. Allowed version values are Earliest Version or Latest Version as specified in each REST API endpoint description, or any sequential number inbetween. All schema attributes/body parameters are a part of version 1. After version 1, any attributes added or deprecated will be tagged with the version that they were added to or deprecated in. If no version is provided, the latest schema version is returned.
 	// +kubebuilder:validation:Optional
@@ -1435,22 +1575,22 @@ type AttrRenderingMetadataInitParameters struct {
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
 	// (Updatable) Maximum length of the attribute.
-	MaxLength *float64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
+	MaxLength *int64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
 
 	// (Updatable) Maximum size of the attribute.
-	MaxSize *float64 `json:"maxSize,omitempty" tf:"max_size,omitempty"`
+	MaxSize *int64 `json:"maxSize,omitempty" tf:"max_size,omitempty"`
 
 	// (Updatable) Minimum length of the attribute.
-	MinLength *float64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
+	MinLength *int64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
 
 	// (Updatable) Minimum size of the attribute..
-	MinSize *float64 `json:"minSize,omitempty" tf:"min_size,omitempty"`
+	MinSize *int64 `json:"minSize,omitempty" tf:"min_size,omitempty"`
 
 	// (Updatable) Name of the account
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) Data type of the attribute.
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// (Updatable) If true, indicates that this value must be protected.
 	ReadOnly *bool `json:"readOnly,omitempty" tf:"read_only,omitempty"`
@@ -1483,22 +1623,22 @@ type AttrRenderingMetadataObservation struct {
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
 	// (Updatable) Maximum length of the attribute.
-	MaxLength *float64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
+	MaxLength *int64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
 
 	// (Updatable) Maximum size of the attribute.
-	MaxSize *float64 `json:"maxSize,omitempty" tf:"max_size,omitempty"`
+	MaxSize *int64 `json:"maxSize,omitempty" tf:"max_size,omitempty"`
 
 	// (Updatable) Minimum length of the attribute.
-	MinLength *float64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
+	MinLength *int64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
 
 	// (Updatable) Minimum size of the attribute..
-	MinSize *float64 `json:"minSize,omitempty" tf:"min_size,omitempty"`
+	MinSize *int64 `json:"minSize,omitempty" tf:"min_size,omitempty"`
 
 	// (Updatable) Name of the account
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) Data type of the attribute.
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// (Updatable) If true, indicates that this value must be protected.
 	ReadOnly *bool `json:"readOnly,omitempty" tf:"read_only,omitempty"`
@@ -1535,19 +1675,19 @@ type AttrRenderingMetadataParameters struct {
 
 	// (Updatable) Maximum length of the attribute.
 	// +kubebuilder:validation:Optional
-	MaxLength *float64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
+	MaxLength *int64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
 
 	// (Updatable) Maximum size of the attribute.
 	// +kubebuilder:validation:Optional
-	MaxSize *float64 `json:"maxSize,omitempty" tf:"max_size,omitempty"`
+	MaxSize *int64 `json:"maxSize,omitempty" tf:"max_size,omitempty"`
 
 	// (Updatable) Minimum length of the attribute.
 	// +kubebuilder:validation:Optional
-	MinLength *float64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
+	MinLength *int64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
 
 	// (Updatable) Minimum size of the attribute..
 	// +kubebuilder:validation:Optional
-	MinSize *float64 `json:"minSize,omitempty" tf:"min_size,omitempty"`
+	MinSize *int64 `json:"minSize,omitempty" tf:"min_size,omitempty"`
 
 	// (Updatable) Name of the account
 	// +kubebuilder:validation:Optional
@@ -1555,7 +1695,7 @@ type AttrRenderingMetadataParameters struct {
 
 	// (Updatable) Data type of the attribute.
 	// +kubebuilder:validation:Optional
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// (Updatable) If true, indicates that this value must be protected.
 	// +kubebuilder:validation:Optional
@@ -1635,7 +1775,7 @@ type BundleConfigurationPropertiesInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) Data type of the attribute.
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// (Updatable) Attribute is required or optional.
 	Required *bool `json:"required,omitempty" tf:"required,omitempty"`
@@ -1663,7 +1803,7 @@ type BundleConfigurationPropertiesObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) Data type of the attribute.
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// (Updatable) Attribute is required or optional.
 	Required *bool `json:"required,omitempty" tf:"required,omitempty"`
@@ -1697,7 +1837,7 @@ type BundleConfigurationPropertiesParameters struct {
 
 	// (Updatable) Data type of the attribute.
 	// +kubebuilder:validation:Optional
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// (Updatable) Attribute is required or optional.
 	// +kubebuilder:validation:Optional
@@ -1712,60 +1852,60 @@ type BundleConfigurationPropertiesParameters struct {
 type BundlePoolConfigurationInitParameters struct {
 
 	// (Updatable) Maximum number of connector instances in the pool that are idle and active.
-	MaxIdle *float64 `json:"maxIdle,omitempty" tf:"max_idle,omitempty"`
+	MaxIdle *int64 `json:"maxIdle,omitempty" tf:"max_idle,omitempty"`
 
 	// (Updatable) Maximum number of connector instances in the pool that are idle and active.
-	MaxObjects *float64 `json:"maxObjects,omitempty" tf:"max_objects,omitempty"`
+	MaxObjects *int64 `json:"maxObjects,omitempty" tf:"max_objects,omitempty"`
 
 	// (Updatable) Maximum time (in milliseconds) to wait for a free connector instance to become available before failing.
-	MaxWait *float64 `json:"maxWait,omitempty" tf:"max_wait,omitempty"`
+	MaxWait *int64 `json:"maxWait,omitempty" tf:"max_wait,omitempty"`
 
 	// (Updatable) Minimum time (in milliseconds) to wait before evicting an idle conenctor instance from the pool.
-	MinEvictableIdleTimeMillis *float64 `json:"minEvictableIdleTimeMillis,omitempty" tf:"min_evictable_idle_time_millis,omitempty"`
+	MinEvictableIdleTimeMillis *int64 `json:"minEvictableIdleTimeMillis,omitempty" tf:"min_evictable_idle_time_millis,omitempty"`
 
 	// (Updatable) Minimum number of idle connector instances in the pool.
-	MinIdle *float64 `json:"minIdle,omitempty" tf:"min_idle,omitempty"`
+	MinIdle *int64 `json:"minIdle,omitempty" tf:"min_idle,omitempty"`
 }
 
 type BundlePoolConfigurationObservation struct {
 
 	// (Updatable) Maximum number of connector instances in the pool that are idle and active.
-	MaxIdle *float64 `json:"maxIdle,omitempty" tf:"max_idle,omitempty"`
+	MaxIdle *int64 `json:"maxIdle,omitempty" tf:"max_idle,omitempty"`
 
 	// (Updatable) Maximum number of connector instances in the pool that are idle and active.
-	MaxObjects *float64 `json:"maxObjects,omitempty" tf:"max_objects,omitempty"`
+	MaxObjects *int64 `json:"maxObjects,omitempty" tf:"max_objects,omitempty"`
 
 	// (Updatable) Maximum time (in milliseconds) to wait for a free connector instance to become available before failing.
-	MaxWait *float64 `json:"maxWait,omitempty" tf:"max_wait,omitempty"`
+	MaxWait *int64 `json:"maxWait,omitempty" tf:"max_wait,omitempty"`
 
 	// (Updatable) Minimum time (in milliseconds) to wait before evicting an idle conenctor instance from the pool.
-	MinEvictableIdleTimeMillis *float64 `json:"minEvictableIdleTimeMillis,omitempty" tf:"min_evictable_idle_time_millis,omitempty"`
+	MinEvictableIdleTimeMillis *int64 `json:"minEvictableIdleTimeMillis,omitempty" tf:"min_evictable_idle_time_millis,omitempty"`
 
 	// (Updatable) Minimum number of idle connector instances in the pool.
-	MinIdle *float64 `json:"minIdle,omitempty" tf:"min_idle,omitempty"`
+	MinIdle *int64 `json:"minIdle,omitempty" tf:"min_idle,omitempty"`
 }
 
 type BundlePoolConfigurationParameters struct {
 
 	// (Updatable) Maximum number of connector instances in the pool that are idle and active.
 	// +kubebuilder:validation:Optional
-	MaxIdle *float64 `json:"maxIdle,omitempty" tf:"max_idle,omitempty"`
+	MaxIdle *int64 `json:"maxIdle,omitempty" tf:"max_idle,omitempty"`
 
 	// (Updatable) Maximum number of connector instances in the pool that are idle and active.
 	// +kubebuilder:validation:Optional
-	MaxObjects *float64 `json:"maxObjects,omitempty" tf:"max_objects,omitempty"`
+	MaxObjects *int64 `json:"maxObjects,omitempty" tf:"max_objects,omitempty"`
 
 	// (Updatable) Maximum time (in milliseconds) to wait for a free connector instance to become available before failing.
 	// +kubebuilder:validation:Optional
-	MaxWait *float64 `json:"maxWait,omitempty" tf:"max_wait,omitempty"`
+	MaxWait *int64 `json:"maxWait,omitempty" tf:"max_wait,omitempty"`
 
 	// (Updatable) Minimum time (in milliseconds) to wait before evicting an idle conenctor instance from the pool.
 	// +kubebuilder:validation:Optional
-	MinEvictableIdleTimeMillis *float64 `json:"minEvictableIdleTimeMillis,omitempty" tf:"min_evictable_idle_time_millis,omitempty"`
+	MinEvictableIdleTimeMillis *int64 `json:"minEvictableIdleTimeMillis,omitempty" tf:"min_evictable_idle_time_millis,omitempty"`
 
 	// (Updatable) Minimum number of idle connector instances in the pool.
 	// +kubebuilder:validation:Optional
-	MinIdle *float64 `json:"minIdle,omitempty" tf:"min_idle,omitempty"`
+	MinIdle *int64 `json:"minIdle,omitempty" tf:"min_idle,omitempty"`
 }
 
 type CertificatesInitParameters struct {
@@ -1800,6 +1940,12 @@ type CertificatesParameters struct {
 }
 
 type CloudControlPropertiesInitParameters struct {
+
+	// (Updatable) Name of the account
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) The value(s) of the property.
+	Values []*string `json:"values,omitempty" tf:"values,omitempty"`
 }
 
 type CloudControlPropertiesObservation struct {
@@ -1812,9 +1958,29 @@ type CloudControlPropertiesObservation struct {
 }
 
 type CloudControlPropertiesParameters struct {
+
+	// (Updatable) Name of the account
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name" tf:"name,omitempty"`
+
+	// (Updatable) The value(s) of the property.
+	// +kubebuilder:validation:Optional
+	Values []*string `json:"values" tf:"values,omitempty"`
 }
 
 type ConnectorBundleInitParameters struct {
+
+	// (Updatable) Display-name of the AppRole.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
+
+	// (Updatable) Unique Well-known identifier used to reference app template.
+	WellKnownID *string `json:"wellKnownId,omitempty" tf:"well_known_id,omitempty"`
 }
 
 type ConnectorBundleObservation struct {
@@ -1836,6 +2002,22 @@ type ConnectorBundleObservation struct {
 }
 
 type ConnectorBundleParameters struct {
+
+	// (Updatable) Display-name of the AppRole.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
+
+	// (Updatable) Unique Well-known identifier used to reference app template.
+	// +kubebuilder:validation:Optional
+	WellKnownID *string `json:"wellKnownId,omitempty" tf:"well_known_id,omitempty"`
 }
 
 type DefinedTagsInitParameters struct {
@@ -1925,6 +2107,9 @@ type DomainAppParameters struct {
 }
 
 type EditableAttributesInitParameters struct {
+
+	// (Updatable) Name of the account
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 }
 
 type EditableAttributesObservation struct {
@@ -1934,6 +2119,10 @@ type EditableAttributesObservation struct {
 }
 
 type EditableAttributesParameters struct {
+
+	// (Updatable) Name of the account
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name" tf:"name,omitempty"`
 }
 
 type FlatFileBundleConfigurationPropertiesInitParameters struct {
@@ -1954,7 +2143,7 @@ type FlatFileBundleConfigurationPropertiesInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) Data type of the attribute.
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// (Updatable) Attribute is required or optional.
 	Required *bool `json:"required,omitempty" tf:"required,omitempty"`
@@ -1982,7 +2171,7 @@ type FlatFileBundleConfigurationPropertiesObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) Data type of the attribute.
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// (Updatable) Attribute is required or optional.
 	Required *bool `json:"required,omitempty" tf:"required,omitempty"`
@@ -2016,7 +2205,7 @@ type FlatFileBundleConfigurationPropertiesParameters struct {
 
 	// (Updatable) Data type of the attribute.
 	// +kubebuilder:validation:Optional
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// (Updatable) Attribute is required or optional.
 	// +kubebuilder:validation:Optional
@@ -2129,6 +2318,30 @@ type FreeformTagsParameters struct {
 }
 
 type GrantedAppRolesInitParameters struct {
+
+	// (Updatable) If true, then this granted AppRole confers administrative privileges within the App that defines it. Otherwise, the granted AppRole confers only functional privileges.
+	AdminRole *bool `json:"adminRole,omitempty" tf:"admin_role,omitempty"`
+
+	// (Updatable) The id of the App that defines this AppRole, which is granted to this App. The App that defines the AppRole acts as the producer; the App to which the AppRole is granted acts as a consumer.
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) The name of the App that defines this AppRole, which is granted to this App. The App that defines the AppRole acts as the producer; the App to which the AppRole is granted acts as a consumer.
+	AppName *string `json:"appName,omitempty" tf:"app_name,omitempty"`
+
+	// (Updatable) Display-name of the AppRole.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The name of the legacy group associated with this AppRole.
+	LegacyGroupName *string `json:"legacyGroupName,omitempty" tf:"legacy_group_name,omitempty"`
+
+	// (Updatable) If true, indicates that this value must be protected.
+	ReadOnly *bool `json:"readOnly,omitempty" tf:"read_only,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type GrantedAppRolesObservation struct {
@@ -2162,9 +2375,53 @@ type GrantedAppRolesObservation struct {
 }
 
 type GrantedAppRolesParameters struct {
+
+	// (Updatable) If true, then this granted AppRole confers administrative privileges within the App that defines it. Otherwise, the granted AppRole confers only functional privileges.
+	// +kubebuilder:validation:Optional
+	AdminRole *bool `json:"adminRole,omitempty" tf:"admin_role,omitempty"`
+
+	// (Updatable) The id of the App that defines this AppRole, which is granted to this App. The App that defines the AppRole acts as the producer; the App to which the AppRole is granted acts as a consumer.
+	// +kubebuilder:validation:Optional
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) The name of the App that defines this AppRole, which is granted to this App. The App that defines the AppRole acts as the producer; the App to which the AppRole is granted acts as a consumer.
+	// +kubebuilder:validation:Optional
+	AppName *string `json:"appName,omitempty" tf:"app_name,omitempty"`
+
+	// (Updatable) Display-name of the AppRole.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The name of the legacy group associated with this AppRole.
+	// +kubebuilder:validation:Optional
+	LegacyGroupName *string `json:"legacyGroupName,omitempty" tf:"legacy_group_name,omitempty"`
+
+	// (Updatable) If true, indicates that this value must be protected.
+	// +kubebuilder:validation:Optional
+	ReadOnly *bool `json:"readOnly,omitempty" tf:"read_only,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type GrantsInitParameters struct {
+
+	// (Updatable) Each value of grantMechanism indicates how (or by what component) some App (or App-Entitlement) was granted. A customer or the UI should use only grantMechanism values that start with 'ADMINISTRATOR':
+	GrantMechanism *string `json:"grantMechanism,omitempty" tf:"grant_mechanism,omitempty"`
+
+	// (Updatable) Grantee identifier
+	GranteeID *string `json:"granteeId,omitempty" tf:"grantee_id,omitempty"`
+
+	// (Updatable) Grantee resource type. Allowed values are User and Group.
+	GranteeType *string `json:"granteeType,omitempty" tf:"grantee_type,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type GrantsObservation struct {
@@ -2186,6 +2443,22 @@ type GrantsObservation struct {
 }
 
 type GrantsParameters struct {
+
+	// (Updatable) Each value of grantMechanism indicates how (or by what component) some App (or App-Entitlement) was granted. A customer or the UI should use only grantMechanism values that start with 'ADMINISTRATOR':
+	// +kubebuilder:validation:Optional
+	GrantMechanism *string `json:"grantMechanism,omitempty" tf:"grant_mechanism,omitempty"`
+
+	// (Updatable) Grantee identifier
+	// +kubebuilder:validation:Optional
+	GranteeID *string `json:"granteeId,omitempty" tf:"grantee_id,omitempty"`
+
+	// (Updatable) Grantee resource type. Allowed values are User and Group.
+	// +kubebuilder:validation:Optional
+	GranteeType *string `json:"granteeType,omitempty" tf:"grantee_type,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type GroupAssertionAttributesInitParameters struct {
@@ -2263,6 +2536,12 @@ type GroupMembershipToReturnParameters struct {
 }
 
 type IdentityBridgesInitParameters struct {
+
+	// (Updatable) Name of the account
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type IdentityBridgesObservation struct {
@@ -2278,6 +2557,14 @@ type IdentityBridgesObservation struct {
 }
 
 type IdentityBridgesParameters struct {
+
+	// (Updatable) Name of the account
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type IdentityProvidersInitParameters struct {
@@ -2328,6 +2615,21 @@ type IdpPolicyParameters struct {
 }
 
 type ObjectClassesInitParameters struct {
+
+	// (Updatable) Display-name of the AppRole.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) If true, the object class represents an account. The isAccountObjectClass attribute value 'true' MUST appear no more than once.
+	IsAccountObjectClass *bool `json:"isAccountObjectClass,omitempty" tf:"is_account_object_class,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ObjectClassesObservation struct {
@@ -2352,9 +2654,35 @@ type ObjectClassesObservation struct {
 }
 
 type ObjectClassesParameters struct {
+
+	// (Updatable) Display-name of the AppRole.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) If true, the object class represents an account. The isAccountObjectClass attribute value 'true' MUST appear no more than once.
+	// +kubebuilder:validation:Optional
+	IsAccountObjectClass *bool `json:"isAccountObjectClass,omitempty" tf:"is_account_object_class,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) A label that indicates whether this AppRole was granted directly to the App (or indirectly through a Group). For an App, the value of this attribute will always be 'direct' (because an App cannot be a member of a Group).
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type" tf:"type,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type OutboundAssertionAttributesInitParameters struct {
+
+	// (Updatable) Mapped Attribute Direction
+	Direction *string `json:"direction,omitempty" tf:"direction,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type OutboundAssertionAttributesObservation struct {
@@ -2370,6 +2698,14 @@ type OutboundAssertionAttributesObservation struct {
 }
 
 type OutboundAssertionAttributesParameters struct {
+
+	// (Updatable) Mapped Attribute Direction
+	// +kubebuilder:validation:Optional
+	Direction *string `json:"direction,omitempty" tf:"direction,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type ProtectableSecondaryAudiencesInitParameters struct {
@@ -2694,7 +3030,7 @@ type UrnietfparamsscimschemasoracleidcsextensiondbcsAppParameters struct {
 type UrnietfparamsscimschemasoracleidcsextensionenterpriseAppAppInitParameters struct {
 
 	// (Updatable) Allow Authz policy decision expiry time in seconds.
-	AllowAuthzDecisionTTL *float64 `json:"allowAuthzDecisionTtl,omitempty" tf:"allow_authz_decision_ttl,omitempty"`
+	AllowAuthzDecisionTTL *int64 `json:"allowAuthzDecisionTtl,omitempty" tf:"allow_authz_decision_ttl,omitempty"`
 
 	// (Updatable) Allow Authz Policy.
 	AllowAuthzPolicy []AllowAuthzPolicyInitParameters `json:"allowAuthzPolicy,omitempty" tf:"allow_authz_policy,omitempty"`
@@ -2703,7 +3039,7 @@ type UrnietfparamsscimschemasoracleidcsextensionenterpriseAppAppInitParameters s
 	AppResources []AppResourcesInitParameters `json:"appResources,omitempty" tf:"app_resources,omitempty"`
 
 	// (Updatable) Deny Authz policy decision expiry time in seconds.
-	DenyAuthzDecisionTTL *float64 `json:"denyAuthzDecisionTtl,omitempty" tf:"deny_authz_decision_ttl,omitempty"`
+	DenyAuthzDecisionTTL *int64 `json:"denyAuthzDecisionTtl,omitempty" tf:"deny_authz_decision_ttl,omitempty"`
 
 	// (Updatable) Deny Authz Policy.
 	DenyAuthzPolicy []DenyAuthzPolicyInitParameters `json:"denyAuthzPolicy,omitempty" tf:"deny_authz_policy,omitempty"`
@@ -2712,7 +3048,7 @@ type UrnietfparamsscimschemasoracleidcsextensionenterpriseAppAppInitParameters s
 type UrnietfparamsscimschemasoracleidcsextensionenterpriseAppAppObservation struct {
 
 	// (Updatable) Allow Authz policy decision expiry time in seconds.
-	AllowAuthzDecisionTTL *float64 `json:"allowAuthzDecisionTtl,omitempty" tf:"allow_authz_decision_ttl,omitempty"`
+	AllowAuthzDecisionTTL *int64 `json:"allowAuthzDecisionTtl,omitempty" tf:"allow_authz_decision_ttl,omitempty"`
 
 	// (Updatable) Allow Authz Policy.
 	AllowAuthzPolicy []AllowAuthzPolicyObservation `json:"allowAuthzPolicy,omitempty" tf:"allow_authz_policy,omitempty"`
@@ -2721,7 +3057,7 @@ type UrnietfparamsscimschemasoracleidcsextensionenterpriseAppAppObservation stru
 	AppResources []AppResourcesObservation `json:"appResources,omitempty" tf:"app_resources,omitempty"`
 
 	// (Updatable) Deny Authz policy decision expiry time in seconds.
-	DenyAuthzDecisionTTL *float64 `json:"denyAuthzDecisionTtl,omitempty" tf:"deny_authz_decision_ttl,omitempty"`
+	DenyAuthzDecisionTTL *int64 `json:"denyAuthzDecisionTtl,omitempty" tf:"deny_authz_decision_ttl,omitempty"`
 
 	// (Updatable) Deny Authz Policy.
 	DenyAuthzPolicy []DenyAuthzPolicyObservation `json:"denyAuthzPolicy,omitempty" tf:"deny_authz_policy,omitempty"`
@@ -2731,7 +3067,7 @@ type UrnietfparamsscimschemasoracleidcsextensionenterpriseAppAppParameters struc
 
 	// (Updatable) Allow Authz policy decision expiry time in seconds.
 	// +kubebuilder:validation:Optional
-	AllowAuthzDecisionTTL *float64 `json:"allowAuthzDecisionTtl,omitempty" tf:"allow_authz_decision_ttl,omitempty"`
+	AllowAuthzDecisionTTL *int64 `json:"allowAuthzDecisionTtl,omitempty" tf:"allow_authz_decision_ttl,omitempty"`
 
 	// (Updatable) Allow Authz Policy.
 	// +kubebuilder:validation:Optional
@@ -2743,7 +3079,7 @@ type UrnietfparamsscimschemasoracleidcsextensionenterpriseAppAppParameters struc
 
 	// (Updatable) Deny Authz policy decision expiry time in seconds.
 	// +kubebuilder:validation:Optional
-	DenyAuthzDecisionTTL *float64 `json:"denyAuthzDecisionTtl,omitempty" tf:"deny_authz_decision_ttl,omitempty"`
+	DenyAuthzDecisionTTL *int64 `json:"denyAuthzDecisionTtl,omitempty" tf:"deny_authz_decision_ttl,omitempty"`
 
 	// (Updatable) Deny Authz Policy.
 	// +kubebuilder:validation:Optional
@@ -2979,10 +3315,10 @@ type UrnietfparamsscimschemasoracleidcsextensionkerberosRealmAppInitParameters s
 	MasterKey *string `json:"masterKey,omitempty" tf:"master_key,omitempty"`
 
 	// (Updatable) Max Renewable Age in seconds
-	MaxRenewableAge *float64 `json:"maxRenewableAge,omitempty" tf:"max_renewable_age,omitempty"`
+	MaxRenewableAge *int64 `json:"maxRenewableAge,omitempty" tf:"max_renewable_age,omitempty"`
 
 	// (Updatable) Max Ticket Life in seconds
-	MaxTicketLife *float64 `json:"maxTicketLife,omitempty" tf:"max_ticket_life,omitempty"`
+	MaxTicketLife *int64 `json:"maxTicketLife,omitempty" tf:"max_ticket_life,omitempty"`
 
 	// (Updatable) The name of the Kerberos Realm that this App uses for authentication.
 	RealmName *string `json:"realmName,omitempty" tf:"realm_name,omitempty"`
@@ -2992,7 +3328,7 @@ type UrnietfparamsscimschemasoracleidcsextensionkerberosRealmAppInitParameters s
 	SupportedEncryptionSaltTypes []*string `json:"supportedEncryptionSaltTypes,omitempty" tf:"supported_encryption_salt_types,omitempty"`
 
 	// (Updatable) Ticket Flags
-	TicketFlags *float64 `json:"ticketFlags,omitempty" tf:"ticket_flags,omitempty"`
+	TicketFlags *int64 `json:"ticketFlags,omitempty" tf:"ticket_flags,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionkerberosRealmAppObservation struct {
@@ -3004,10 +3340,10 @@ type UrnietfparamsscimschemasoracleidcsextensionkerberosRealmAppObservation stru
 	MasterKey *string `json:"masterKey,omitempty" tf:"master_key,omitempty"`
 
 	// (Updatable) Max Renewable Age in seconds
-	MaxRenewableAge *float64 `json:"maxRenewableAge,omitempty" tf:"max_renewable_age,omitempty"`
+	MaxRenewableAge *int64 `json:"maxRenewableAge,omitempty" tf:"max_renewable_age,omitempty"`
 
 	// (Updatable) Max Ticket Life in seconds
-	MaxTicketLife *float64 `json:"maxTicketLife,omitempty" tf:"max_ticket_life,omitempty"`
+	MaxTicketLife *int64 `json:"maxTicketLife,omitempty" tf:"max_ticket_life,omitempty"`
 
 	// (Updatable) The name of the Kerberos Realm that this App uses for authentication.
 	RealmName *string `json:"realmName,omitempty" tf:"realm_name,omitempty"`
@@ -3017,7 +3353,7 @@ type UrnietfparamsscimschemasoracleidcsextensionkerberosRealmAppObservation stru
 	SupportedEncryptionSaltTypes []*string `json:"supportedEncryptionSaltTypes,omitempty" tf:"supported_encryption_salt_types,omitempty"`
 
 	// (Updatable) Ticket Flags
-	TicketFlags *float64 `json:"ticketFlags,omitempty" tf:"ticket_flags,omitempty"`
+	TicketFlags *int64 `json:"ticketFlags,omitempty" tf:"ticket_flags,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionkerberosRealmAppParameters struct {
@@ -3032,11 +3368,11 @@ type UrnietfparamsscimschemasoracleidcsextensionkerberosRealmAppParameters struc
 
 	// (Updatable) Max Renewable Age in seconds
 	// +kubebuilder:validation:Optional
-	MaxRenewableAge *float64 `json:"maxRenewableAge,omitempty" tf:"max_renewable_age,omitempty"`
+	MaxRenewableAge *int64 `json:"maxRenewableAge,omitempty" tf:"max_renewable_age,omitempty"`
 
 	// (Updatable) Max Ticket Life in seconds
 	// +kubebuilder:validation:Optional
-	MaxTicketLife *float64 `json:"maxTicketLife,omitempty" tf:"max_ticket_life,omitempty"`
+	MaxTicketLife *int64 `json:"maxTicketLife,omitempty" tf:"max_ticket_life,omitempty"`
 
 	// (Updatable) The name of the Kerberos Realm that this App uses for authentication.
 	// +kubebuilder:validation:Optional
@@ -3049,7 +3385,7 @@ type UrnietfparamsscimschemasoracleidcsextensionkerberosRealmAppParameters struc
 
 	// (Updatable) Ticket Flags
 	// +kubebuilder:validation:Optional
-	TicketFlags *float64 `json:"ticketFlags,omitempty" tf:"ticket_flags,omitempty"`
+	TicketFlags *int64 `json:"ticketFlags,omitempty" tf:"ticket_flags,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionmanagedappAppInitParameters struct {
@@ -3791,6 +4127,15 @@ type UserAssertionAttributesParameters struct {
 }
 
 type UserRolesInitParameters struct {
+
+	// (Updatable) The description of the AppRole.
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Updatable) Display-name of the AppRole.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) Account identifier
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UserRolesObservation struct {
@@ -3809,6 +4154,18 @@ type UserRolesObservation struct {
 }
 
 type UserRolesParameters struct {
+
+	// (Updatable) The description of the AppRole.
+	// +kubebuilder:validation:Optional
+	Description *string `json:"description,omitempty" tf:"description,omitempty"`
+
+	// (Updatable) Display-name of the AppRole.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) Account identifier
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 // AppSpec defines the desired state of App

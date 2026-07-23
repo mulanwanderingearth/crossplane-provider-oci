@@ -41,12 +41,12 @@ func (in *AdbInitParameters) DeepCopyInto(out *AdbInitParameters) {
 	}
 	if in.DataStorageSizeInTbs != nil {
 		in, out := &in.DataStorageSizeInTbs, &out.DataStorageSizeInTbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ecpu != nil {
 		in, out := &in.Ecpu, &out.Ecpu
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceID != nil {
@@ -123,12 +123,12 @@ func (in *AdbObservation) DeepCopyInto(out *AdbObservation) {
 	}
 	if in.DataStorageSizeInTbs != nil {
 		in, out := &in.DataStorageSizeInTbs, &out.DataStorageSizeInTbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ecpu != nil {
 		in, out := &in.Ecpu, &out.Ecpu
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceID != nil {
@@ -196,12 +196,12 @@ func (in *AdbParameters) DeepCopyInto(out *AdbParameters) {
 	}
 	if in.DataStorageSizeInTbs != nil {
 		in, out := &in.DataStorageSizeInTbs, &out.DataStorageSizeInTbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ecpu != nil {
 		in, out := &in.Ecpu, &out.Ecpu
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceID != nil {
@@ -1031,7 +1031,7 @@ func (in *DataflowInitParameters) DeepCopyInto(out *DataflowInitParameters) {
 	}
 	if in.NumExecutors != nil {
 		in, out := &in.NumExecutors, &out.NumExecutors
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrivateEndpointID != nil {
@@ -1127,7 +1127,7 @@ func (in *DataflowObservation) DeepCopyInto(out *DataflowObservation) {
 	}
 	if in.NumExecutors != nil {
 		in, out := &in.NumExecutors, &out.NumExecutors
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrivateEndpointID != nil {
@@ -1213,7 +1213,7 @@ func (in *DataflowParameters) DeepCopyInto(out *DataflowParameters) {
 	}
 	if in.NumExecutors != nil {
 		in, out := &in.NumExecutors, &out.NumExecutors
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrivateEndpointID != nil {
@@ -1333,12 +1333,12 @@ func (in *DriverShapeConfigInitParameters) DeepCopyInto(out *DriverShapeConfigIn
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1358,12 +1358,12 @@ func (in *DriverShapeConfigObservation) DeepCopyInto(out *DriverShapeConfigObser
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1383,12 +1383,12 @@ func (in *DriverShapeConfigParameters) DeepCopyInto(out *DriverShapeConfigParame
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1538,12 +1538,12 @@ func (in *ExecutorShapeConfigInitParameters) DeepCopyInto(out *ExecutorShapeConf
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1563,12 +1563,12 @@ func (in *ExecutorShapeConfigObservation) DeepCopyInto(out *ExecutorShapeConfigO
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1588,12 +1588,12 @@ func (in *ExecutorShapeConfigParameters) DeepCopyInto(out *ExecutorShapeConfigPa
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1640,7 +1640,7 @@ func (in *GenaiInitParameters) DeepCopyInto(out *GenaiInitParameters) {
 	}
 	if in.UnitCount != nil {
 		in, out := &in.UnitCount, &out.UnitCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1687,7 +1687,7 @@ func (in *GenaiObservation) DeepCopyInto(out *GenaiObservation) {
 	}
 	if in.UnitCount != nil {
 		in, out := &in.UnitCount, &out.UnitCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1734,7 +1734,7 @@ func (in *GenaiParameters) DeepCopyInto(out *GenaiParameters) {
 	}
 	if in.UnitCount != nil {
 		in, out := &in.UnitCount, &out.UnitCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1917,7 +1917,7 @@ func (in *GgcsInitParameters) DeepCopyInto(out *GgcsInitParameters) {
 	}
 	if in.Ocpu != nil {
 		in, out := &in.Ocpu, &out.Ocpu
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OggVersion != nil {
@@ -2011,7 +2011,7 @@ func (in *GgcsObservation) DeepCopyInto(out *GgcsObservation) {
 	}
 	if in.Ocpu != nil {
 		in, out := &in.Ocpu, &out.Ocpu
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OggVersion != nil {
@@ -2084,7 +2084,7 @@ func (in *GgcsParameters) DeepCopyInto(out *GgcsParameters) {
 	}
 	if in.Ocpu != nil {
 		in, out := &in.Ocpu, &out.Ocpu
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OggVersion != nil {
@@ -3366,7 +3366,7 @@ func (in *StackInitParameters) DeepCopyInto(out *StackInitParameters) {
 	}
 	if in.AddServiceTrigger != nil {
 		in, out := &in.AddServiceTrigger, &out.AddServiceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Aidataplatform != nil {
@@ -3400,23 +3400,14 @@ func (in *StackInitParameters) DeepCopyInto(out *StackInitParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DeployArtifactsTrigger != nil {
 		in, out := &in.DeployArtifactsTrigger, &out.DeployArtifactsTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DisplayName != nil {
@@ -3426,18 +3417,9 @@ func (in *StackInitParameters) DeepCopyInto(out *StackInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Genai != nil {
@@ -3563,7 +3545,7 @@ func (in *StackObservation) DeepCopyInto(out *StackObservation) {
 	}
 	if in.AddServiceTrigger != nil {
 		in, out := &in.AddServiceTrigger, &out.AddServiceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Aidataplatform != nil {
@@ -3587,23 +3569,14 @@ func (in *StackObservation) DeepCopyInto(out *StackObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DeployArtifactsTrigger != nil {
 		in, out := &in.DeployArtifactsTrigger, &out.DeployArtifactsTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DisplayName != nil {
@@ -3613,18 +3586,9 @@ func (in *StackObservation) DeepCopyInto(out *StackObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Genai != nil {
@@ -3718,18 +3682,9 @@ func (in *StackObservation) DeepCopyInto(out *StackObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -3766,7 +3721,7 @@ func (in *StackParameters) DeepCopyInto(out *StackParameters) {
 	}
 	if in.AddServiceTrigger != nil {
 		in, out := &in.AddServiceTrigger, &out.AddServiceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Aidataplatform != nil {
@@ -3800,23 +3755,14 @@ func (in *StackParameters) DeepCopyInto(out *StackParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DeployArtifactsTrigger != nil {
 		in, out := &in.DeployArtifactsTrigger, &out.DeployArtifactsTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DisplayName != nil {
@@ -3826,18 +3772,9 @@ func (in *StackParameters) DeepCopyInto(out *StackParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Genai != nil {

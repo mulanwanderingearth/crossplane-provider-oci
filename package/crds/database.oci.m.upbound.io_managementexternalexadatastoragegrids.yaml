@@ -68,7 +68,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   externalExadataStorageGridId:
                     description: The OCID of the Exadata storage grid.
                     type: string
@@ -162,7 +161,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -184,7 +182,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   externalExadataStorageGridId:
                     description: The OCID of the Exadata storage grid.
                     type: string
@@ -278,7 +275,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -352,7 +348,6 @@ spec:
                     description: 'The additional details of the resource defined in
                       {"key": "value"} format. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   definedTags:
                     additionalProperties:
                       type: string
@@ -360,7 +355,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The name of the Exadata resource. English letters,
                       numbers, "-", "_" and "." only.
@@ -379,7 +373,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Exadata resource.
                     type: string
@@ -413,7 +406,6 @@ spec:
                           description: 'The additional details of the resource defined
                             in {"key": "value"} format. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         connectorId:
                           description: The OCID of the connector.
                           type: string
@@ -428,7 +420,6 @@ spec:
                             more information, see Resource Tags. Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: The name of the Exadata resource. English letters,
                             numbers, "-", "_" and "." only.
@@ -441,7 +432,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags. Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         id:
                           description: The OCID of the Exadata resource.
                           type: string
@@ -461,19 +451,23 @@ spec:
                         maxFlashDiskIops:
                           description: The maximum flash disk IO operations per second
                             of the Exadata storage server.
-                          type: number
+                          format: int64
+                          type: integer
                         maxFlashDiskThroughput:
                           description: The maximum flash disk IO throughput in MB/s
                             of the Exadata storage server.
-                          type: number
+                          format: int64
+                          type: integer
                         maxHardDiskIops:
                           description: The maximum hard disk IO operations per second
                             of the Exadata storage server.
-                          type: number
+                          format: int64
+                          type: integer
                         maxHardDiskThroughput:
                           description: The maximum hard disk IO throughput in MB/s
                             of the Exadata storage server.
-                          type: number
+                          format: int64
+                          type: integer
                         memoryGb:
                           description: The Exadata storage server memory size in GB.
                           type: number
@@ -496,7 +490,6 @@ spec:
                             but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained":
                             "true"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         timeCreated:
                           description: The timestamp of the creation of the Exadata
                             resource.
@@ -518,7 +511,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The timestamp of the creation of the Exadata resource.
                     type: string

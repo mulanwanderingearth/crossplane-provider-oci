@@ -190,7 +190,7 @@ type DatabaseDetailsInitParameters struct {
 	InstanceIDSelector *v1.NamespacedSelector `json:"instanceIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The port number of the database listener.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.PluggableDatabase
@@ -243,7 +243,7 @@ type DatabaseDetailsObservation struct {
 	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
 
 	// (Updatable) The port number of the database listener.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	PluggableDatabaseID *string `json:"pluggableDatabaseId,omitempty" tf:"pluggable_database_id,omitempty"`
@@ -313,7 +313,7 @@ type DatabaseDetailsParameters struct {
 
 	// (Updatable) The port number of the database listener.
 	// +kubebuilder:validation:Optional
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.PluggableDatabase
@@ -399,7 +399,7 @@ type PeerTargetDatabaseDetailsDatabaseDetailsInitParameters struct {
 	InstanceIDSelector *v1.NamespacedSelector `json:"instanceIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The port number of the database listener.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.PluggableDatabase
@@ -452,7 +452,7 @@ type PeerTargetDatabaseDetailsDatabaseDetailsObservation struct {
 	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
 
 	// (Updatable) The port number of the database listener.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	PluggableDatabaseID *string `json:"pluggableDatabaseId,omitempty" tf:"pluggable_database_id,omitempty"`
@@ -522,7 +522,7 @@ type PeerTargetDatabaseDetailsDatabaseDetailsParameters struct {
 
 	// (Updatable) The port number of the database listener.
 	// +kubebuilder:validation:Optional
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.PluggableDatabase
@@ -640,7 +640,7 @@ type PeerTargetDatabasesDatabaseDetailsObservation struct {
 	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
 
 	// (Updatable) The port number of the database listener.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// (Applicable when database_type=DATABASE_CLOUD_SERVICE) (Updatable) The OCID of the pluggable database registered as a target database in Data Safe.
 	PluggableDatabaseID *string `json:"pluggableDatabaseId,omitempty" tf:"pluggable_database_id,omitempty"`
@@ -676,7 +676,7 @@ type PeerTargetDatabasesObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The secondary key assigned for the peer target database in Data Safe.
-	Key *float64 `json:"key,omitempty" tf:"key,omitempty"`
+	Key *int64 `json:"key,omitempty" tf:"key,omitempty"`
 
 	// Details about the current state of the target database in Data Safe.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
@@ -801,8 +801,7 @@ type TargetDatabaseInitParameters struct {
 	DatabaseDetails []DatabaseDetailsInitParameters `json:"databaseDetails,omitempty" tf:"database_details,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the target database in Data Safe.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -811,8 +810,7 @@ type TargetDatabaseInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The details of the database to be registered as a peer target database.
 	PeerTargetDatabaseDetails []PeerTargetDatabaseDetailsInitParameters `json:"peerTargetDatabaseDetails,omitempty" tf:"peer_target_database_details,omitempty"`
@@ -839,8 +837,7 @@ type TargetDatabaseObservation struct {
 	DatabaseDetails []DatabaseDetailsObservation `json:"databaseDetails,omitempty" tf:"database_details,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the target database in Data Safe.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -849,8 +846,7 @@ type TargetDatabaseObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Data Safe target database.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -868,8 +864,7 @@ type TargetDatabaseObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The details required to establish a TLS enabled connection.
 	TLSConfig []TargetDatabaseTLSConfigObservation `json:"tlsConfig,omitempty" tf:"tls_config,omitempty"`
@@ -910,8 +905,7 @@ type TargetDatabaseParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the target database in Data Safe.
 	// +kubebuilder:validation:Optional
@@ -923,8 +917,7 @@ type TargetDatabaseParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The details of the database to be registered as a peer target database.
 	// +kubebuilder:validation:Optional

@@ -31,8 +31,7 @@ type OccmDemandSignalItemInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The quantity of the resource that you want to demand from OCI.
 	DemandQuantity *string `json:"demandQuantity,omitempty" tf:"demand_quantity,omitempty"`
@@ -44,8 +43,7 @@ type OccmDemandSignalItemInitParameters struct {
 	DemandSignalID *string `json:"demandSignalId,omitempty" tf:"demand_signal_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) This field will serve as notes section for you. You can use this section to convey a message to Oracle Cloud Infrastructure regarding your resource request.
 	Notes *string `json:"notes,omitempty" tf:"notes,omitempty"`
@@ -57,8 +55,7 @@ type OccmDemandSignalItemInitParameters struct {
 	RequestType *string `json:"requestType,omitempty" tf:"request_type,omitempty"`
 
 	// (Updatable) A map of various properties associated with the Oracle Cloud Infrastructure resource.
-	// +mapType=granular
-	ResourceProperties map[string]*string `json:"resourceProperties,omitempty" tf:"resource_properties,omitempty"`
+	ResourceProperties map[string]string `json:"resourceProperties,omitempty" tf:"resource_properties,omitempty"`
 
 	// (Updatable) The OCID of the tenancy for which you want to request the Oracle Cloud Infrastructure resource for. This is an optional parameter.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -86,8 +83,7 @@ type OccmDemandSignalItemObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The quantity of the resource that you want to demand from OCI.
 	DemandQuantity *string `json:"demandQuantity,omitempty" tf:"demand_quantity,omitempty"`
@@ -102,8 +98,7 @@ type OccmDemandSignalItemObservation struct {
 	DemandSignalNamespace *string `json:"demandSignalNamespace,omitempty" tf:"demand_signal_namespace,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the demand signal item.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -121,15 +116,13 @@ type OccmDemandSignalItemObservation struct {
 	ResourceName *string `json:"resourceName,omitempty" tf:"resource_name,omitempty"`
 
 	// (Updatable) A map of various properties associated with the Oracle Cloud Infrastructure resource.
-	// +mapType=granular
-	ResourceProperties map[string]*string `json:"resourceProperties,omitempty" tf:"resource_properties,omitempty"`
+	ResourceProperties map[string]string `json:"resourceProperties,omitempty" tf:"resource_properties,omitempty"`
 
 	// The current lifecycle state of the resource.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) The OCID of the tenancy for which you want to request the Oracle Cloud Infrastructure resource for. This is an optional parameter.
 	TargetCompartmentID *string `json:"targetCompartmentId,omitempty" tf:"target_compartment_id,omitempty"`
@@ -159,8 +152,7 @@ type OccmDemandSignalItemParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The quantity of the resource that you want to demand from OCI.
 	// +kubebuilder:validation:Optional
@@ -176,8 +168,7 @@ type OccmDemandSignalItemParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) This field will serve as notes section for you. You can use this section to convey a message to Oracle Cloud Infrastructure regarding your resource request.
 	// +kubebuilder:validation:Optional
@@ -193,8 +184,7 @@ type OccmDemandSignalItemParameters struct {
 
 	// (Updatable) A map of various properties associated with the Oracle Cloud Infrastructure resource.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	ResourceProperties map[string]*string `json:"resourceProperties,omitempty" tf:"resource_properties,omitempty"`
+	ResourceProperties map[string]string `json:"resourceProperties,omitempty" tf:"resource_properties,omitempty"`
 
 	// (Updatable) The OCID of the tenancy for which you want to request the Oracle Cloud Infrastructure resource for. This is an optional parameter.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment

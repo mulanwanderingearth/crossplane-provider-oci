@@ -47,8 +47,7 @@ type MysqlConfigurationInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-provided data about the Configuration.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -57,8 +56,7 @@ type MysqlConfigurationInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// DEPRECATED -- please use the options field instead. User-defined service variables set only at DB system initialization. These variables cannot be changed later at runtime.
 	InitVariables []InitVariablesInitParameters `json:"initVariables,omitempty" tf:"init_variables,omitempty"`
@@ -92,8 +90,7 @@ type MysqlConfigurationObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-provided data about the Configuration.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -102,8 +99,7 @@ type MysqlConfigurationObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Configuration.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -124,8 +120,7 @@ type MysqlConfigurationObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Configuration was created, as described by RFC 3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -157,8 +152,7 @@ type MysqlConfigurationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-provided data about the Configuration.
 	// +kubebuilder:validation:Optional
@@ -170,8 +164,7 @@ type MysqlConfigurationParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// DEPRECATED -- please use the options field instead. User-defined service variables set only at DB system initialization. These variables cannot be changed later at runtime.
 	// +kubebuilder:validation:Optional
@@ -236,10 +229,10 @@ type OptionsParameters struct {
 type VariablesInitParameters struct {
 
 	// auto_increment_increment and auto_increment_offset are intended for use with circular (source-to-source) replication, and can be used to control the operation of AUTO_INCREMENT columns. Both variables have global and session values, and each can assume an integer value between 1 and 65,535 inclusive.
-	AutoIncrementIncrement *float64 `json:"autoIncrementIncrement,omitempty" tf:"auto_increment_increment,omitempty"`
+	AutoIncrementIncrement *int64 `json:"autoIncrementIncrement,omitempty" tf:"auto_increment_increment,omitempty"`
 
 	// This variable has a default value of 1. If it is left with its default value, and Group Replication is started on the server in multi-primary mode, it is changed to the server ID.
-	AutoIncrementOffset *float64 `json:"autoIncrementOffset,omitempty" tf:"auto_increment_offset,omitempty"`
+	AutoIncrementOffset *int64 `json:"autoIncrementOffset,omitempty" tf:"auto_increment_offset,omitempty"`
 
 	// ("autocommit")
 	Autocommit *bool `json:"autocommit,omitempty" tf:"autocommit,omitempty"`
@@ -248,13 +241,13 @@ type VariablesInitParameters struct {
 	BigTables *bool `json:"bigTables,omitempty" tf:"big_tables,omitempty"`
 
 	// Sets the binary log expiration period in seconds. binlogExpireLogsSeconds corresponds to the MySQL binary logging system variable binlog_expire_logs_seconds.
-	BinlogExpireLogsSeconds *float64 `json:"binlogExpireLogsSeconds,omitempty" tf:"binlog_expire_logs_seconds,omitempty"`
+	BinlogExpireLogsSeconds *int64 `json:"binlogExpireLogsSeconds,omitempty" tf:"binlog_expire_logs_seconds,omitempty"`
 
 	// Controls how many microseconds the binary log commit waits before synchronizing the binary log file to disk. There is no delay by default. Setting this variable to a microsecond delay enables more transactions to be synchronized together to disk at once, reducing the overall time to commit a group of transactions because the larger groups required fewer time units per group.
-	BinlogGroupCommitSyncDelay *float64 `json:"binlogGroupCommitSyncDelay,omitempty" tf:"binlog_group_commit_sync_delay,omitempty"`
+	BinlogGroupCommitSyncDelay *int64 `json:"binlogGroupCommitSyncDelay,omitempty" tf:"binlog_group_commit_sync_delay,omitempty"`
 
 	// The maximum number of transactions to wait for before aborting the current delay as specified by binlog_group_commit_sync_delay. If binlog_group_commit_sync_delay is set to 0, then this option has no effect.
-	BinlogGroupCommitSyncNoDelayCount *float64 `json:"binlogGroupCommitSyncNoDelayCount,omitempty" tf:"binlog_group_commit_sync_no_delay_count,omitempty"`
+	BinlogGroupCommitSyncNoDelayCount *int64 `json:"binlogGroupCommitSyncNoDelayCount,omitempty" tf:"binlog_group_commit_sync_no_delay_count,omitempty"`
 
 	// Configures the amount of table metadata added to the binary log when using row-based logging. binlogRowMetadata corresponds to the MySQL binary logging system variable binlog_row_metadata.
 	BinlogRowMetadata *string `json:"binlogRowMetadata,omitempty" tf:"binlog_row_metadata,omitempty"`
@@ -278,10 +271,10 @@ type VariablesInitParameters struct {
 	CompletionType *string `json:"completionType,omitempty" tf:"completion_type,omitempty"`
 
 	// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
-	ConnectTimeout *float64 `json:"connectTimeout,omitempty" tf:"connect_timeout,omitempty"`
+	ConnectTimeout *int64 `json:"connectTimeout,omitempty" tf:"connect_timeout,omitempty"`
 
 	// Set the chunking size for updates to the global memory usage counter Global_connection_memory.
-	ConnectionMemoryChunkSize *float64 `json:"connectionMemoryChunkSize,omitempty" tf:"connection_memory_chunk_size,omitempty"`
+	ConnectionMemoryChunkSize *int64 `json:"connectionMemoryChunkSize,omitempty" tf:"connection_memory_chunk_size,omitempty"`
 
 	// Set the maximum amount of memory that can be used by a single user connection.
 	ConnectionMemoryLimit *string `json:"connectionMemoryLimit,omitempty" tf:"connection_memory_limit,omitempty"`
@@ -302,7 +295,7 @@ type VariablesInitParameters struct {
 	ForeignKeyChecks *bool `json:"foreignKeyChecks,omitempty" tf:"foreign_key_checks,omitempty"`
 
 	// ("generated_random_password_length") DEPRECATED -- variable should not be settable and will be ignored
-	GeneratedRandomPasswordLength *float64 `json:"generatedRandomPasswordLength,omitempty" tf:"generated_random_password_length,omitempty"`
+	GeneratedRandomPasswordLength *int64 `json:"generatedRandomPasswordLength,omitempty" tf:"generated_random_password_length,omitempty"`
 
 	// Set the total amount of memory that can be used by all user connections.
 	GlobalConnectionMemoryLimit *string `json:"globalConnectionMemoryLimit,omitempty" tf:"global_connection_memory_limit,omitempty"`
@@ -316,19 +309,19 @@ type VariablesInitParameters struct {
 	GroupReplicationConsistency *string `json:"groupReplicationConsistency,omitempty" tf:"group_replication_consistency,omitempty"`
 
 	// ("information_schema_stats_expiry")
-	InformationSchemaStatsExpiry *float64 `json:"informationSchemaStatsExpiry,omitempty" tf:"information_schema_stats_expiry,omitempty"`
+	InformationSchemaStatsExpiry *int64 `json:"informationSchemaStatsExpiry,omitempty" tf:"information_schema_stats_expiry,omitempty"`
 
 	// Whether the InnoDB adaptive hash index is enabled or disabled. It may be desirable, depending on your workload, to dynamically enable or disable adaptive hash indexing to improve query performance. Because the adaptive hash index may not be useful for all workloads, conduct benchmarks with it both enabled and disabled, using realistic workloads.
 	InnodbAdaptiveHashIndex *bool `json:"innodbAdaptiveHashIndex,omitempty" tf:"innodb_adaptive_hash_index,omitempty"`
 
 	// The lock mode to use for generating auto-increment values. Permissible values are 0, 1, or 2, for traditional, consecutive, or interleaved, respectively.
-	InnodbAutoincLockMode *float64 `json:"innodbAutoincLockMode,omitempty" tf:"innodb_autoinc_lock_mode,omitempty"`
+	InnodbAutoincLockMode *int64 `json:"innodbAutoincLockMode,omitempty" tf:"innodb_autoinc_lock_mode,omitempty"`
 
 	// Specifies the percentage of the most recently used pages for each buffer pool to read out and dump.
-	InnodbBufferPoolDumpPct *float64 `json:"innodbBufferPoolDumpPct,omitempty" tf:"innodb_buffer_pool_dump_pct,omitempty"`
+	InnodbBufferPoolDumpPct *int64 `json:"innodbBufferPoolDumpPct,omitempty" tf:"innodb_buffer_pool_dump_pct,omitempty"`
 
 	// ("innodb_buffer_pool_instances")
-	InnodbBufferPoolInstances *float64 `json:"innodbBufferPoolInstances,omitempty" tf:"innodb_buffer_pool_instances,omitempty"`
+	InnodbBufferPoolInstances *int64 `json:"innodbBufferPoolInstances,omitempty" tf:"innodb_buffer_pool_instances,omitempty"`
 
 	// The size (in bytes) of the buffer pool, that is, the memory area where InnoDB caches table and index data.
 	InnodbBufferPoolSize *string `json:"innodbBufferPoolSize,omitempty" tf:"innodb_buffer_pool_size,omitempty"`
@@ -340,19 +333,19 @@ type VariablesInitParameters struct {
 	InnodbDdlBufferSize *string `json:"innodbDdlBufferSize,omitempty" tf:"innodb_ddl_buffer_size,omitempty"`
 
 	// innodbDdlThreads corresponds to the MySQL system variable [innodb_ddl_threads] (https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_ddl_threads)
-	InnodbDdlThreads *float64 `json:"innodbDdlThreads,omitempty" tf:"innodb_ddl_threads,omitempty"`
+	InnodbDdlThreads *int64 `json:"innodbDdlThreads,omitempty" tf:"innodb_ddl_threads,omitempty"`
 
 	// ("innodb_ft_enable_stopword")
 	InnodbFtEnableStopword *bool `json:"innodbFtEnableStopword,omitempty" tf:"innodb_ft_enable_stopword,omitempty"`
 
 	// ("innodb_ft_max_token_size")
-	InnodbFtMaxTokenSize *float64 `json:"innodbFtMaxTokenSize,omitempty" tf:"innodb_ft_max_token_size,omitempty"`
+	InnodbFtMaxTokenSize *int64 `json:"innodbFtMaxTokenSize,omitempty" tf:"innodb_ft_max_token_size,omitempty"`
 
 	// ("innodb_ft_min_token_size")
-	InnodbFtMinTokenSize *float64 `json:"innodbFtMinTokenSize,omitempty" tf:"innodb_ft_min_token_size,omitempty"`
+	InnodbFtMinTokenSize *int64 `json:"innodbFtMinTokenSize,omitempty" tf:"innodb_ft_min_token_size,omitempty"`
 
 	// ("innodb_ft_num_word_optimize")
-	InnodbFtNumWordOptimize *float64 `json:"innodbFtNumWordOptimize,omitempty" tf:"innodb_ft_num_word_optimize,omitempty"`
+	InnodbFtNumWordOptimize *int64 `json:"innodbFtNumWordOptimize,omitempty" tf:"innodb_ft_num_word_optimize,omitempty"`
 
 	// ("innodb_ft_result_cache_limit")
 	InnodbFtResultCacheLimit *string `json:"innodbFtResultCacheLimit,omitempty" tf:"innodb_ft_result_cache_limit,omitempty"`
@@ -361,7 +354,7 @@ type VariablesInitParameters struct {
 	InnodbFtServerStopwordTable *string `json:"innodbFtServerStopwordTable,omitempty" tf:"innodb_ft_server_stopword_table,omitempty"`
 
 	// ("innodb_lock_wait_timeout")
-	InnodbLockWaitTimeout *float64 `json:"innodbLockWaitTimeout,omitempty" tf:"innodb_lock_wait_timeout,omitempty"`
+	InnodbLockWaitTimeout *int64 `json:"innodbLockWaitTimeout,omitempty" tf:"innodb_lock_wait_timeout,omitempty"`
 
 	// Enables dedicated log writer threads for writing redo log records from the log buffer to the system buffers and flushing the system buffers to the redo log files.
 	InnodbLogWriterThreads *bool `json:"innodbLogWriterThreads,omitempty" tf:"innodb_log_writer_threads,omitempty"`
@@ -370,7 +363,7 @@ type VariablesInitParameters struct {
 	InnodbMaxPurgeLag *string `json:"innodbMaxPurgeLag,omitempty" tf:"innodb_max_purge_lag,omitempty"`
 
 	// The maximum delay in microseconds for the delay imposed when the innodb_max_purge_lag threshold is exceeded.
-	InnodbMaxPurgeLagDelay *float64 `json:"innodbMaxPurgeLagDelay,omitempty" tf:"innodb_max_purge_lag_delay,omitempty"`
+	InnodbMaxPurgeLagDelay *int64 `json:"innodbMaxPurgeLagDelay,omitempty" tf:"innodb_max_purge_lag_delay,omitempty"`
 
 	// Enables the NUMA interleave memory policy for allocation of the InnoDB buffer pool. When innodb_numa_interleave is enabled, the NUMA memory policy is set to MPOL_INTERLEAVE for the mysqld process. After the InnoDB buffer pool is allocated, the NUMA memory policy is set back to MPOL_DEFAULT. For the innodb_numa_interleave option to be available, MySQL must be compiled on a NUMA-enabled Linux system.
 	InnodbNumaInterleave *bool `json:"innodbNumaInterleave,omitempty" tf:"innodb_numa_interleave,omitempty"`
@@ -385,7 +378,7 @@ type VariablesInitParameters struct {
 	InnodbRollbackOnTimeout *bool `json:"innodbRollbackOnTimeout,omitempty" tf:"innodb_rollback_on_timeout,omitempty"`
 
 	// This variable defines:
-	InnodbSortBufferSize *float64 `json:"innodbSortBufferSize,omitempty" tf:"innodb_sort_buffer_size,omitempty"`
+	InnodbSortBufferSize *int64 `json:"innodbSortBufferSize,omitempty" tf:"innodb_sort_buffer_size,omitempty"`
 
 	// The number of index pages to sample when estimating cardinality and other statistics for an indexed column, such as those calculated by ANALYZE TABLE.
 	InnodbStatsPersistentSamplePages *string `json:"innodbStatsPersistentSamplePages,omitempty" tf:"innodb_stats_persistent_sample_pages,omitempty"`
@@ -400,7 +393,7 @@ type VariablesInitParameters struct {
 	InnodbUndoLogTruncate *bool `json:"innodbUndoLogTruncate,omitempty" tf:"innodb_undo_log_truncate,omitempty"`
 
 	// The number of seconds the server waits for activity on an interactive connection before closing it.
-	InteractiveTimeout *float64 `json:"interactiveTimeout,omitempty" tf:"interactive_timeout,omitempty"`
+	InteractiveTimeout *int64 `json:"interactiveTimeout,omitempty" tf:"interactive_timeout,omitempty"`
 
 	// The minimum size of the buffer that is used for plain index scans, range index scans, and joins that do not use indexes and thus perform full table scans. In MySQL 8.0.18 and later, this variable also controls the amount of memory used for hash joins. Normally, the best way to get fast joins is to add indexes. Increase the value of join_buffer_size to get a faster full join when adding indexes is not possible. One join buffer is allocated for each full join between two tables. For a complex join between several tables for which indexes are not used, multiple join buffers might be necessary.
 	JoinBufferSize *string `json:"joinBufferSize,omitempty" tf:"join_buffer_size,omitempty"`
@@ -409,13 +402,13 @@ type VariablesInitParameters struct {
 	LocalInfile *bool `json:"localInfile,omitempty" tf:"local_infile,omitempty"`
 
 	// If a query takes longer than this many seconds, the server increments the Slow_queries status variable. If the slow query log is enabled, the query is logged to the slow query log file. This value is measured in real time, not CPU time, so a query that is under the threshold on a lightly loaded system might be above the threshold on a heavily loaded one.
-	LongQueryTime *float64 `json:"longQueryTime,omitempty" tf:"long_query_time,omitempty"`
+	LongQueryTime *int64 `json:"longQueryTime,omitempty" tf:"long_query_time,omitempty"`
 
 	// ("mandatory_roles")
 	MandatoryRoles *string `json:"mandatoryRoles,omitempty" tf:"mandatory_roles,omitempty"`
 
 	// The maximum size of one packet or any generated/intermediate string.
-	MaxAllowedPacket *float64 `json:"maxAllowedPacket,omitempty" tf:"max_allowed_packet,omitempty"`
+	MaxAllowedPacket *int64 `json:"maxAllowedPacket,omitempty" tf:"max_allowed_packet,omitempty"`
 
 	// Sets the size of the transaction cache.
 	MaxBinlogCacheSize *string `json:"maxBinlogCacheSize,omitempty" tf:"max_binlog_cache_size,omitempty"`
@@ -424,7 +417,7 @@ type VariablesInitParameters struct {
 	MaxConnectErrors *string `json:"maxConnectErrors,omitempty" tf:"max_connect_errors,omitempty"`
 
 	// ("max_connections")
-	MaxConnections *float64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+	MaxConnections *int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
 
 	// ("max_execution_time")
 	MaxExecutionTime *string `json:"maxExecutionTime,omitempty" tf:"max_execution_time,omitempty"`
@@ -433,7 +426,7 @@ type VariablesInitParameters struct {
 	MaxHeapTableSize *string `json:"maxHeapTableSize,omitempty" tf:"max_heap_table_size,omitempty"`
 
 	// ("max_prepared_stmt_count")
-	MaxPreparedStmtCount *float64 `json:"maxPreparedStmtCount,omitempty" tf:"max_prepared_stmt_count,omitempty"`
+	MaxPreparedStmtCount *int64 `json:"maxPreparedStmtCount,omitempty" tf:"max_prepared_stmt_count,omitempty"`
 
 	// Limit the assumed maximum number of seeks when looking up rows based on a key. The MySQL optimizer assumes that no more than this number of key seeks are required when searching for matching rows in a table by scanning an index, regardless of the actual cardinality of the index (see Section 15.7.7.22, “SHOW INDEX Statement”). By setting this to a low value (say, 100), you can force MySQL to prefer indexes instead of table scans.
 	MaxSeeksForKey *string `json:"maxSeeksForKey,omitempty" tf:"max_seeks_for_key,omitempty"`
@@ -445,61 +438,61 @@ type VariablesInitParameters struct {
 	MySQLFirewallMode *bool `json:"mysqlFirewallMode,omitempty" tf:"mysql_firewall_mode,omitempty"`
 
 	// DEPRECATED -- typo of mysqlx_zstd_default_compression_level. variable will be ignored.
-	MySQLZstdDefaultCompressionLevel *float64 `json:"mysqlZstdDefaultCompressionLevel,omitempty" tf:"mysql_zstd_default_compression_level,omitempty"`
+	MySQLZstdDefaultCompressionLevel *int64 `json:"mysqlZstdDefaultCompressionLevel,omitempty" tf:"mysql_zstd_default_compression_level,omitempty"`
 
 	// The number of seconds X Plugin waits for the first packet to be received from newly connected clients.
-	MysqlxConnectTimeout *float64 `json:"mysqlxConnectTimeout,omitempty" tf:"mysqlx_connect_timeout,omitempty"`
+	MysqlxConnectTimeout *int64 `json:"mysqlxConnectTimeout,omitempty" tf:"mysqlx_connect_timeout,omitempty"`
 
 	// Set the default compression level for the deflate algorithm. ("mysqlx_deflate_default_compression_level")
-	MysqlxDeflateDefaultCompressionLevel *float64 `json:"mysqlxDeflateDefaultCompressionLevel,omitempty" tf:"mysqlx_deflate_default_compression_level,omitempty"`
+	MysqlxDeflateDefaultCompressionLevel *int64 `json:"mysqlxDeflateDefaultCompressionLevel,omitempty" tf:"mysqlx_deflate_default_compression_level,omitempty"`
 
 	// Limit the upper bound of accepted compression levels for the deflate algorithm. ("mysqlx_deflate_max_client_compression_level")
-	MysqlxDeflateMaxClientCompressionLevel *float64 `json:"mysqlxDeflateMaxClientCompressionLevel,omitempty" tf:"mysqlx_deflate_max_client_compression_level,omitempty"`
+	MysqlxDeflateMaxClientCompressionLevel *int64 `json:"mysqlxDeflateMaxClientCompressionLevel,omitempty" tf:"mysqlx_deflate_max_client_compression_level,omitempty"`
 
 	// ("mysqlx_document_id_unique_prefix") DEPRECATED -- variable should not be settable and will be ignored
-	MysqlxDocumentIDUniquePrefix *float64 `json:"mysqlxDocumentIdUniquePrefix,omitempty" tf:"mysqlx_document_id_unique_prefix,omitempty"`
+	MysqlxDocumentIDUniquePrefix *int64 `json:"mysqlxDocumentIdUniquePrefix,omitempty" tf:"mysqlx_document_id_unique_prefix,omitempty"`
 
 	// ("mysqlx_enable_hello_notice") DEPRECATED -- variable should not be settable and will be ignored
 	MysqlxEnableHelloNotice *bool `json:"mysqlxEnableHelloNotice,omitempty" tf:"mysqlx_enable_hello_notice,omitempty"`
 
 	// ("mysqlx_idle_worker_thread_timeout") DEPRECATED -- variable should not be settable and will be ignored
-	MysqlxIdleWorkerThreadTimeout *float64 `json:"mysqlxIdleWorkerThreadTimeout,omitempty" tf:"mysqlx_idle_worker_thread_timeout,omitempty"`
+	MysqlxIdleWorkerThreadTimeout *int64 `json:"mysqlxIdleWorkerThreadTimeout,omitempty" tf:"mysqlx_idle_worker_thread_timeout,omitempty"`
 
 	// The number of seconds to wait for interactive clients to timeout.
-	MysqlxInteractiveTimeout *float64 `json:"mysqlxInteractiveTimeout,omitempty" tf:"mysqlx_interactive_timeout,omitempty"`
+	MysqlxInteractiveTimeout *int64 `json:"mysqlxInteractiveTimeout,omitempty" tf:"mysqlx_interactive_timeout,omitempty"`
 
 	// Set the default compression level for the lz4 algorithm. ("mysqlx_lz4_default_compression_level")
-	MysqlxLz4DefaultCompressionLevel *float64 `json:"mysqlxLz4DefaultCompressionLevel,omitempty" tf:"mysqlx_lz4default_compression_level,omitempty"`
+	MysqlxLz4DefaultCompressionLevel *int64 `json:"mysqlxLz4DefaultCompressionLevel,omitempty" tf:"mysqlx_lz4default_compression_level,omitempty"`
 
 	// Limit the upper bound of accepted compression levels for the lz4 algorithm. ("mysqlx_lz4_max_client_compression_level")
-	MysqlxLz4MaxClientCompressionLevel *float64 `json:"mysqlxLz4MaxClientCompressionLevel,omitempty" tf:"mysqlx_lz4max_client_compression_level,omitempty"`
+	MysqlxLz4MaxClientCompressionLevel *int64 `json:"mysqlxLz4MaxClientCompressionLevel,omitempty" tf:"mysqlx_lz4max_client_compression_level,omitempty"`
 
 	// The maximum size of network packets that can be received by X Plugin.
-	MysqlxMaxAllowedPacket *float64 `json:"mysqlxMaxAllowedPacket,omitempty" tf:"mysqlx_max_allowed_packet,omitempty"`
+	MysqlxMaxAllowedPacket *int64 `json:"mysqlxMaxAllowedPacket,omitempty" tf:"mysqlx_max_allowed_packet,omitempty"`
 
 	// ("mysqlx_min_worker_threads") DEPRECATED -- variable should not be settable and will be ignored
-	MysqlxMinWorkerThreads *float64 `json:"mysqlxMinWorkerThreads,omitempty" tf:"mysqlx_min_worker_threads,omitempty"`
+	MysqlxMinWorkerThreads *int64 `json:"mysqlxMinWorkerThreads,omitempty" tf:"mysqlx_min_worker_threads,omitempty"`
 
 	// The number of seconds that X Plugin waits for blocking read operations to complete. After this time, if the read operation is not successful, X Plugin closes the connection and returns a warning notice with the error code ER_IO_READ_ERROR to the client application.
-	MysqlxReadTimeout *float64 `json:"mysqlxReadTimeout,omitempty" tf:"mysqlx_read_timeout,omitempty"`
+	MysqlxReadTimeout *int64 `json:"mysqlxReadTimeout,omitempty" tf:"mysqlx_read_timeout,omitempty"`
 
 	// The number of seconds that X Plugin waits for activity on a connection.
-	MysqlxWaitTimeout *float64 `json:"mysqlxWaitTimeout,omitempty" tf:"mysqlx_wait_timeout,omitempty"`
+	MysqlxWaitTimeout *int64 `json:"mysqlxWaitTimeout,omitempty" tf:"mysqlx_wait_timeout,omitempty"`
 
 	// The number of seconds that X Plugin waits for blocking write operations to complete. After this time, if the write operation is not successful, X Plugin closes the connection.
-	MysqlxWriteTimeout *float64 `json:"mysqlxWriteTimeout,omitempty" tf:"mysqlx_write_timeout,omitempty"`
+	MysqlxWriteTimeout *int64 `json:"mysqlxWriteTimeout,omitempty" tf:"mysqlx_write_timeout,omitempty"`
 
 	// Set the default compression level for the zstd algorithm. ("mysqlx_zstd_default_compression_level")
-	MysqlxZstdDefaultCompressionLevel *float64 `json:"mysqlxZstdDefaultCompressionLevel,omitempty" tf:"mysqlx_zstd_default_compression_level,omitempty"`
+	MysqlxZstdDefaultCompressionLevel *int64 `json:"mysqlxZstdDefaultCompressionLevel,omitempty" tf:"mysqlx_zstd_default_compression_level,omitempty"`
 
 	// Limit the upper bound of accepted compression levels for the zstd algorithm. ("mysqlx_zstd_max_client_compression_level")
-	MysqlxZstdMaxClientCompressionLevel *float64 `json:"mysqlxZstdMaxClientCompressionLevel,omitempty" tf:"mysqlx_zstd_max_client_compression_level,omitempty"`
+	MysqlxZstdMaxClientCompressionLevel *int64 `json:"mysqlxZstdMaxClientCompressionLevel,omitempty" tf:"mysqlx_zstd_max_client_compression_level,omitempty"`
 
 	// The number of seconds to wait for more data from a connection before aborting the read.
-	NetReadTimeout *float64 `json:"netReadTimeout,omitempty" tf:"net_read_timeout,omitempty"`
+	NetReadTimeout *int64 `json:"netReadTimeout,omitempty" tf:"net_read_timeout,omitempty"`
 
 	// The number of seconds to wait for a block to be written to a connection before aborting the write.
-	NetWriteTimeout *float64 `json:"netWriteTimeout,omitempty" tf:"net_write_timeout,omitempty"`
+	NetWriteTimeout *int64 `json:"netWriteTimeout,omitempty" tf:"net_write_timeout,omitempty"`
 
 	// The optimizer_switch system variable enables control over optimizer behavior. The value of this variable is a set of flags, each of which has a value of on or off to indicate whether the corresponding optimizer behavior is enabled or disabled. This variable has global and session values and can be changed at runtime. The global default can be set at server startup.
 	OptimizerSwitch *string `json:"optimizerSwitch,omitempty" tf:"optimizer_switch,omitempty"`
@@ -517,16 +510,16 @@ type VariablesInitParameters struct {
 	RangeOptimizerMaxMemSize *string `json:"rangeOptimizerMaxMemSize,omitempty" tf:"range_optimizer_max_mem_size,omitempty"`
 
 	// regexpTimeLimit corresponds to the MySQL system variable [regexp_time_limit] (https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_regexp_time_limit)
-	RegexpTimeLimit *float64 `json:"regexpTimeLimit,omitempty" tf:"regexp_time_limit,omitempty"`
+	RegexpTimeLimit *int64 `json:"regexpTimeLimit,omitempty" tf:"regexp_time_limit,omitempty"`
 
 	// The maximum amount of space to use for all relay logs.
 	RelayLogSpaceLimit *string `json:"relayLogSpaceLimit,omitempty" tf:"relay_log_space_limit,omitempty"`
 
 	// Specifies the number of seconds to wait for more data or a heartbeat signal from the source before the replica considers the connection broken, aborts the read, and tries to reconnect. Setting this variable has no immediate effect. The state of the variable applies on all subsequent START REPLICA commands.
-	ReplicaNetTimeout *float64 `json:"replicaNetTimeout,omitempty" tf:"replica_net_timeout,omitempty"`
+	ReplicaNetTimeout *int64 `json:"replicaNetTimeout,omitempty" tf:"replica_net_timeout,omitempty"`
 
 	// Beginning with MySQL 8.0.26, slave_parallel_workers is deprecated, and you should use replica_parallel_workers instead. (Prior to MySQL 8.0.26, you must use slave_parallel_workers to set the number of applier threads.)
-	ReplicaParallelWorkers *float64 `json:"replicaParallelWorkers,omitempty" tf:"replica_parallel_workers,omitempty"`
+	ReplicaParallelWorkers *int64 `json:"replicaParallelWorkers,omitempty" tf:"replica_parallel_workers,omitempty"`
 
 	// From MySQL 8.0.26, use replica_type_conversions in place of slave_type_conversions, which is deprecated from that release. In releases before MySQL 8.0.26, use slave_type_conversions.
 	ReplicaTypeConversions *string `json:"replicaTypeConversions,omitempty" tf:"replica_type_conversions,omitempty"`
@@ -553,10 +546,10 @@ type VariablesInitParameters struct {
 	SortBufferSize *string `json:"sortBufferSize,omitempty" tf:"sort_buffer_size,omitempty"`
 
 	// The number of table definitions that can be stored in the table definition cache. If you use a large number of tables, you can create a large table definition cache to speed up opening of tables. The table definition cache takes less space and does not use file descriptors, unlike the normal table cache.
-	TableDefinitionCache *float64 `json:"tableDefinitionCache,omitempty" tf:"table_definition_cache,omitempty"`
+	TableDefinitionCache *int64 `json:"tableDefinitionCache,omitempty" tf:"table_definition_cache,omitempty"`
 
 	// The number of open tables for all threads. Increasing this value increases the number of file descriptors that mysqld requires.
-	TableOpenCache *float64 `json:"tableOpenCache,omitempty" tf:"table_open_cache,omitempty"`
+	TableOpenCache *int64 `json:"tableOpenCache,omitempty" tf:"table_open_cache,omitempty"`
 
 	// Defines the maximum amount of memory that can be occupied by the TempTable storage engine before it starts storing data on disk. The default value is 1073741824 bytes (1GiB). For more information, see Section 10.4.4, “Internal Temporary Table Use in MySQL”.
 	TemptableMaxRAM *string `json:"temptableMaxRam,omitempty" tf:"temptable_max_ram,omitempty"`
@@ -565,16 +558,16 @@ type VariablesInitParameters struct {
 	ThreadPoolDedicatedListeners *bool `json:"threadPoolDedicatedListeners,omitempty" tf:"thread_pool_dedicated_listeners,omitempty"`
 
 	// Limits the maximum number of open transactions to the defined value. The default value is 0, which enforces no limit. threadPoolMaxTransactionsLimit corresponds to the MySQL Database Service-specific system variable thread_pool_max_transactions_limit.
-	ThreadPoolMaxTransactionsLimit *float64 `json:"threadPoolMaxTransactionsLimit,omitempty" tf:"thread_pool_max_transactions_limit,omitempty"`
+	ThreadPoolMaxTransactionsLimit *int64 `json:"threadPoolMaxTransactionsLimit,omitempty" tf:"thread_pool_max_transactions_limit,omitempty"`
 
 	// The maximum number of query threads permitted in a thread group. The maximum value is 4096, but if thread_pool_max_transactions_limit is set, thread_pool_query_threads_per_group must not exceed that value. The default value of 1 means there is one active query thread in each thread group, which works well for many loads. When you are using the high concurrency thread pool algorithm (thread_pool_algorithm = 1), consider increasing the value if you experience slower response times due to long-running transactions.
-	ThreadPoolQueryThreadsPerGroup *float64 `json:"threadPoolQueryThreadsPerGroup,omitempty" tf:"thread_pool_query_threads_per_group,omitempty"`
+	ThreadPoolQueryThreadsPerGroup *int64 `json:"threadPoolQueryThreadsPerGroup,omitempty" tf:"thread_pool_query_threads_per_group,omitempty"`
 
 	// The number of thread groups in the thread pool. This is the most important parameter controlling thread pool performance. It affects how many statements can execute simultaneously. If a value outside the range of permissible values is specified, the thread pool plugin does not load and the server writes a message to the error log.
-	ThreadPoolSize *float64 `json:"threadPoolSize,omitempty" tf:"thread_pool_size,omitempty"`
+	ThreadPoolSize *int64 `json:"threadPoolSize,omitempty" tf:"thread_pool_size,omitempty"`
 
 	// The delay period before executing a new transaction, in milliseconds. The maximum value is 300000 (5 minutes). A transaction delay can be used in cases where parallel transactions affect the performance of other operations due to resource contention. For example, if parallel transactions affect index creation or an online buffer pool resizing operation, you can configure a transaction delay to reduce resource contention while those operations are running.
-	ThreadPoolTransactionDelay *float64 `json:"threadPoolTransactionDelay,omitempty" tf:"thread_pool_transaction_delay,omitempty"`
+	ThreadPoolTransactionDelay *int64 `json:"threadPoolTransactionDelay,omitempty" tf:"thread_pool_transaction_delay,omitempty"`
 
 	// Initializes the time zone for each client that connects.
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`
@@ -586,16 +579,16 @@ type VariablesInitParameters struct {
 	TransactionIsolation *string `json:"transactionIsolation,omitempty" tf:"transaction_isolation,omitempty"`
 
 	// The number of seconds the server waits for activity on a noninteractive connection before closing it.
-	WaitTimeout *float64 `json:"waitTimeout,omitempty" tf:"wait_timeout,omitempty"`
+	WaitTimeout *int64 `json:"waitTimeout,omitempty" tf:"wait_timeout,omitempty"`
 }
 
 type VariablesObservation struct {
 
 	// auto_increment_increment and auto_increment_offset are intended for use with circular (source-to-source) replication, and can be used to control the operation of AUTO_INCREMENT columns. Both variables have global and session values, and each can assume an integer value between 1 and 65,535 inclusive.
-	AutoIncrementIncrement *float64 `json:"autoIncrementIncrement,omitempty" tf:"auto_increment_increment,omitempty"`
+	AutoIncrementIncrement *int64 `json:"autoIncrementIncrement,omitempty" tf:"auto_increment_increment,omitempty"`
 
 	// This variable has a default value of 1. If it is left with its default value, and Group Replication is started on the server in multi-primary mode, it is changed to the server ID.
-	AutoIncrementOffset *float64 `json:"autoIncrementOffset,omitempty" tf:"auto_increment_offset,omitempty"`
+	AutoIncrementOffset *int64 `json:"autoIncrementOffset,omitempty" tf:"auto_increment_offset,omitempty"`
 
 	// ("autocommit")
 	Autocommit *bool `json:"autocommit,omitempty" tf:"autocommit,omitempty"`
@@ -604,13 +597,13 @@ type VariablesObservation struct {
 	BigTables *bool `json:"bigTables,omitempty" tf:"big_tables,omitempty"`
 
 	// Sets the binary log expiration period in seconds. binlogExpireLogsSeconds corresponds to the MySQL binary logging system variable binlog_expire_logs_seconds.
-	BinlogExpireLogsSeconds *float64 `json:"binlogExpireLogsSeconds,omitempty" tf:"binlog_expire_logs_seconds,omitempty"`
+	BinlogExpireLogsSeconds *int64 `json:"binlogExpireLogsSeconds,omitempty" tf:"binlog_expire_logs_seconds,omitempty"`
 
 	// Controls how many microseconds the binary log commit waits before synchronizing the binary log file to disk. There is no delay by default. Setting this variable to a microsecond delay enables more transactions to be synchronized together to disk at once, reducing the overall time to commit a group of transactions because the larger groups required fewer time units per group.
-	BinlogGroupCommitSyncDelay *float64 `json:"binlogGroupCommitSyncDelay,omitempty" tf:"binlog_group_commit_sync_delay,omitempty"`
+	BinlogGroupCommitSyncDelay *int64 `json:"binlogGroupCommitSyncDelay,omitempty" tf:"binlog_group_commit_sync_delay,omitempty"`
 
 	// The maximum number of transactions to wait for before aborting the current delay as specified by binlog_group_commit_sync_delay. If binlog_group_commit_sync_delay is set to 0, then this option has no effect.
-	BinlogGroupCommitSyncNoDelayCount *float64 `json:"binlogGroupCommitSyncNoDelayCount,omitempty" tf:"binlog_group_commit_sync_no_delay_count,omitempty"`
+	BinlogGroupCommitSyncNoDelayCount *int64 `json:"binlogGroupCommitSyncNoDelayCount,omitempty" tf:"binlog_group_commit_sync_no_delay_count,omitempty"`
 
 	// Configures the amount of table metadata added to the binary log when using row-based logging. binlogRowMetadata corresponds to the MySQL binary logging system variable binlog_row_metadata.
 	BinlogRowMetadata *string `json:"binlogRowMetadata,omitempty" tf:"binlog_row_metadata,omitempty"`
@@ -634,10 +627,10 @@ type VariablesObservation struct {
 	CompletionType *string `json:"completionType,omitempty" tf:"completion_type,omitempty"`
 
 	// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
-	ConnectTimeout *float64 `json:"connectTimeout,omitempty" tf:"connect_timeout,omitempty"`
+	ConnectTimeout *int64 `json:"connectTimeout,omitempty" tf:"connect_timeout,omitempty"`
 
 	// Set the chunking size for updates to the global memory usage counter Global_connection_memory.
-	ConnectionMemoryChunkSize *float64 `json:"connectionMemoryChunkSize,omitempty" tf:"connection_memory_chunk_size,omitempty"`
+	ConnectionMemoryChunkSize *int64 `json:"connectionMemoryChunkSize,omitempty" tf:"connection_memory_chunk_size,omitempty"`
 
 	// Set the maximum amount of memory that can be used by a single user connection.
 	ConnectionMemoryLimit *string `json:"connectionMemoryLimit,omitempty" tf:"connection_memory_limit,omitempty"`
@@ -658,7 +651,7 @@ type VariablesObservation struct {
 	ForeignKeyChecks *bool `json:"foreignKeyChecks,omitempty" tf:"foreign_key_checks,omitempty"`
 
 	// ("generated_random_password_length") DEPRECATED -- variable should not be settable and will be ignored
-	GeneratedRandomPasswordLength *float64 `json:"generatedRandomPasswordLength,omitempty" tf:"generated_random_password_length,omitempty"`
+	GeneratedRandomPasswordLength *int64 `json:"generatedRandomPasswordLength,omitempty" tf:"generated_random_password_length,omitempty"`
 
 	// Set the total amount of memory that can be used by all user connections.
 	GlobalConnectionMemoryLimit *string `json:"globalConnectionMemoryLimit,omitempty" tf:"global_connection_memory_limit,omitempty"`
@@ -672,19 +665,19 @@ type VariablesObservation struct {
 	GroupReplicationConsistency *string `json:"groupReplicationConsistency,omitempty" tf:"group_replication_consistency,omitempty"`
 
 	// ("information_schema_stats_expiry")
-	InformationSchemaStatsExpiry *float64 `json:"informationSchemaStatsExpiry,omitempty" tf:"information_schema_stats_expiry,omitempty"`
+	InformationSchemaStatsExpiry *int64 `json:"informationSchemaStatsExpiry,omitempty" tf:"information_schema_stats_expiry,omitempty"`
 
 	// Whether the InnoDB adaptive hash index is enabled or disabled. It may be desirable, depending on your workload, to dynamically enable or disable adaptive hash indexing to improve query performance. Because the adaptive hash index may not be useful for all workloads, conduct benchmarks with it both enabled and disabled, using realistic workloads.
 	InnodbAdaptiveHashIndex *bool `json:"innodbAdaptiveHashIndex,omitempty" tf:"innodb_adaptive_hash_index,omitempty"`
 
 	// The lock mode to use for generating auto-increment values. Permissible values are 0, 1, or 2, for traditional, consecutive, or interleaved, respectively.
-	InnodbAutoincLockMode *float64 `json:"innodbAutoincLockMode,omitempty" tf:"innodb_autoinc_lock_mode,omitempty"`
+	InnodbAutoincLockMode *int64 `json:"innodbAutoincLockMode,omitempty" tf:"innodb_autoinc_lock_mode,omitempty"`
 
 	// Specifies the percentage of the most recently used pages for each buffer pool to read out and dump.
-	InnodbBufferPoolDumpPct *float64 `json:"innodbBufferPoolDumpPct,omitempty" tf:"innodb_buffer_pool_dump_pct,omitempty"`
+	InnodbBufferPoolDumpPct *int64 `json:"innodbBufferPoolDumpPct,omitempty" tf:"innodb_buffer_pool_dump_pct,omitempty"`
 
 	// ("innodb_buffer_pool_instances")
-	InnodbBufferPoolInstances *float64 `json:"innodbBufferPoolInstances,omitempty" tf:"innodb_buffer_pool_instances,omitempty"`
+	InnodbBufferPoolInstances *int64 `json:"innodbBufferPoolInstances,omitempty" tf:"innodb_buffer_pool_instances,omitempty"`
 
 	// The size (in bytes) of the buffer pool, that is, the memory area where InnoDB caches table and index data.
 	InnodbBufferPoolSize *string `json:"innodbBufferPoolSize,omitempty" tf:"innodb_buffer_pool_size,omitempty"`
@@ -696,19 +689,19 @@ type VariablesObservation struct {
 	InnodbDdlBufferSize *string `json:"innodbDdlBufferSize,omitempty" tf:"innodb_ddl_buffer_size,omitempty"`
 
 	// innodbDdlThreads corresponds to the MySQL system variable [innodb_ddl_threads] (https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_ddl_threads)
-	InnodbDdlThreads *float64 `json:"innodbDdlThreads,omitempty" tf:"innodb_ddl_threads,omitempty"`
+	InnodbDdlThreads *int64 `json:"innodbDdlThreads,omitempty" tf:"innodb_ddl_threads,omitempty"`
 
 	// ("innodb_ft_enable_stopword")
 	InnodbFtEnableStopword *bool `json:"innodbFtEnableStopword,omitempty" tf:"innodb_ft_enable_stopword,omitempty"`
 
 	// ("innodb_ft_max_token_size")
-	InnodbFtMaxTokenSize *float64 `json:"innodbFtMaxTokenSize,omitempty" tf:"innodb_ft_max_token_size,omitempty"`
+	InnodbFtMaxTokenSize *int64 `json:"innodbFtMaxTokenSize,omitempty" tf:"innodb_ft_max_token_size,omitempty"`
 
 	// ("innodb_ft_min_token_size")
-	InnodbFtMinTokenSize *float64 `json:"innodbFtMinTokenSize,omitempty" tf:"innodb_ft_min_token_size,omitempty"`
+	InnodbFtMinTokenSize *int64 `json:"innodbFtMinTokenSize,omitempty" tf:"innodb_ft_min_token_size,omitempty"`
 
 	// ("innodb_ft_num_word_optimize")
-	InnodbFtNumWordOptimize *float64 `json:"innodbFtNumWordOptimize,omitempty" tf:"innodb_ft_num_word_optimize,omitempty"`
+	InnodbFtNumWordOptimize *int64 `json:"innodbFtNumWordOptimize,omitempty" tf:"innodb_ft_num_word_optimize,omitempty"`
 
 	// ("innodb_ft_result_cache_limit")
 	InnodbFtResultCacheLimit *string `json:"innodbFtResultCacheLimit,omitempty" tf:"innodb_ft_result_cache_limit,omitempty"`
@@ -717,7 +710,7 @@ type VariablesObservation struct {
 	InnodbFtServerStopwordTable *string `json:"innodbFtServerStopwordTable,omitempty" tf:"innodb_ft_server_stopword_table,omitempty"`
 
 	// ("innodb_lock_wait_timeout")
-	InnodbLockWaitTimeout *float64 `json:"innodbLockWaitTimeout,omitempty" tf:"innodb_lock_wait_timeout,omitempty"`
+	InnodbLockWaitTimeout *int64 `json:"innodbLockWaitTimeout,omitempty" tf:"innodb_lock_wait_timeout,omitempty"`
 
 	// Enables dedicated log writer threads for writing redo log records from the log buffer to the system buffers and flushing the system buffers to the redo log files.
 	InnodbLogWriterThreads *bool `json:"innodbLogWriterThreads,omitempty" tf:"innodb_log_writer_threads,omitempty"`
@@ -726,7 +719,7 @@ type VariablesObservation struct {
 	InnodbMaxPurgeLag *string `json:"innodbMaxPurgeLag,omitempty" tf:"innodb_max_purge_lag,omitempty"`
 
 	// The maximum delay in microseconds for the delay imposed when the innodb_max_purge_lag threshold is exceeded.
-	InnodbMaxPurgeLagDelay *float64 `json:"innodbMaxPurgeLagDelay,omitempty" tf:"innodb_max_purge_lag_delay,omitempty"`
+	InnodbMaxPurgeLagDelay *int64 `json:"innodbMaxPurgeLagDelay,omitempty" tf:"innodb_max_purge_lag_delay,omitempty"`
 
 	// Enables the NUMA interleave memory policy for allocation of the InnoDB buffer pool. When innodb_numa_interleave is enabled, the NUMA memory policy is set to MPOL_INTERLEAVE for the mysqld process. After the InnoDB buffer pool is allocated, the NUMA memory policy is set back to MPOL_DEFAULT. For the innodb_numa_interleave option to be available, MySQL must be compiled on a NUMA-enabled Linux system.
 	InnodbNumaInterleave *bool `json:"innodbNumaInterleave,omitempty" tf:"innodb_numa_interleave,omitempty"`
@@ -741,7 +734,7 @@ type VariablesObservation struct {
 	InnodbRollbackOnTimeout *bool `json:"innodbRollbackOnTimeout,omitempty" tf:"innodb_rollback_on_timeout,omitempty"`
 
 	// This variable defines:
-	InnodbSortBufferSize *float64 `json:"innodbSortBufferSize,omitempty" tf:"innodb_sort_buffer_size,omitempty"`
+	InnodbSortBufferSize *int64 `json:"innodbSortBufferSize,omitempty" tf:"innodb_sort_buffer_size,omitempty"`
 
 	// The number of index pages to sample when estimating cardinality and other statistics for an indexed column, such as those calculated by ANALYZE TABLE.
 	InnodbStatsPersistentSamplePages *string `json:"innodbStatsPersistentSamplePages,omitempty" tf:"innodb_stats_persistent_sample_pages,omitempty"`
@@ -756,7 +749,7 @@ type VariablesObservation struct {
 	InnodbUndoLogTruncate *bool `json:"innodbUndoLogTruncate,omitempty" tf:"innodb_undo_log_truncate,omitempty"`
 
 	// The number of seconds the server waits for activity on an interactive connection before closing it.
-	InteractiveTimeout *float64 `json:"interactiveTimeout,omitempty" tf:"interactive_timeout,omitempty"`
+	InteractiveTimeout *int64 `json:"interactiveTimeout,omitempty" tf:"interactive_timeout,omitempty"`
 
 	// The minimum size of the buffer that is used for plain index scans, range index scans, and joins that do not use indexes and thus perform full table scans. In MySQL 8.0.18 and later, this variable also controls the amount of memory used for hash joins. Normally, the best way to get fast joins is to add indexes. Increase the value of join_buffer_size to get a faster full join when adding indexes is not possible. One join buffer is allocated for each full join between two tables. For a complex join between several tables for which indexes are not used, multiple join buffers might be necessary.
 	JoinBufferSize *string `json:"joinBufferSize,omitempty" tf:"join_buffer_size,omitempty"`
@@ -765,13 +758,13 @@ type VariablesObservation struct {
 	LocalInfile *bool `json:"localInfile,omitempty" tf:"local_infile,omitempty"`
 
 	// If a query takes longer than this many seconds, the server increments the Slow_queries status variable. If the slow query log is enabled, the query is logged to the slow query log file. This value is measured in real time, not CPU time, so a query that is under the threshold on a lightly loaded system might be above the threshold on a heavily loaded one.
-	LongQueryTime *float64 `json:"longQueryTime,omitempty" tf:"long_query_time,omitempty"`
+	LongQueryTime *int64 `json:"longQueryTime,omitempty" tf:"long_query_time,omitempty"`
 
 	// ("mandatory_roles")
 	MandatoryRoles *string `json:"mandatoryRoles,omitempty" tf:"mandatory_roles,omitempty"`
 
 	// The maximum size of one packet or any generated/intermediate string.
-	MaxAllowedPacket *float64 `json:"maxAllowedPacket,omitempty" tf:"max_allowed_packet,omitempty"`
+	MaxAllowedPacket *int64 `json:"maxAllowedPacket,omitempty" tf:"max_allowed_packet,omitempty"`
 
 	// Sets the size of the transaction cache.
 	MaxBinlogCacheSize *string `json:"maxBinlogCacheSize,omitempty" tf:"max_binlog_cache_size,omitempty"`
@@ -780,7 +773,7 @@ type VariablesObservation struct {
 	MaxConnectErrors *string `json:"maxConnectErrors,omitempty" tf:"max_connect_errors,omitempty"`
 
 	// ("max_connections")
-	MaxConnections *float64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+	MaxConnections *int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
 
 	// ("max_execution_time")
 	MaxExecutionTime *string `json:"maxExecutionTime,omitempty" tf:"max_execution_time,omitempty"`
@@ -789,7 +782,7 @@ type VariablesObservation struct {
 	MaxHeapTableSize *string `json:"maxHeapTableSize,omitempty" tf:"max_heap_table_size,omitempty"`
 
 	// ("max_prepared_stmt_count")
-	MaxPreparedStmtCount *float64 `json:"maxPreparedStmtCount,omitempty" tf:"max_prepared_stmt_count,omitempty"`
+	MaxPreparedStmtCount *int64 `json:"maxPreparedStmtCount,omitempty" tf:"max_prepared_stmt_count,omitempty"`
 
 	// Limit the assumed maximum number of seeks when looking up rows based on a key. The MySQL optimizer assumes that no more than this number of key seeks are required when searching for matching rows in a table by scanning an index, regardless of the actual cardinality of the index (see Section 15.7.7.22, “SHOW INDEX Statement”). By setting this to a low value (say, 100), you can force MySQL to prefer indexes instead of table scans.
 	MaxSeeksForKey *string `json:"maxSeeksForKey,omitempty" tf:"max_seeks_for_key,omitempty"`
@@ -801,61 +794,61 @@ type VariablesObservation struct {
 	MySQLFirewallMode *bool `json:"mysqlFirewallMode,omitempty" tf:"mysql_firewall_mode,omitempty"`
 
 	// DEPRECATED -- typo of mysqlx_zstd_default_compression_level. variable will be ignored.
-	MySQLZstdDefaultCompressionLevel *float64 `json:"mysqlZstdDefaultCompressionLevel,omitempty" tf:"mysql_zstd_default_compression_level,omitempty"`
+	MySQLZstdDefaultCompressionLevel *int64 `json:"mysqlZstdDefaultCompressionLevel,omitempty" tf:"mysql_zstd_default_compression_level,omitempty"`
 
 	// The number of seconds X Plugin waits for the first packet to be received from newly connected clients.
-	MysqlxConnectTimeout *float64 `json:"mysqlxConnectTimeout,omitempty" tf:"mysqlx_connect_timeout,omitempty"`
+	MysqlxConnectTimeout *int64 `json:"mysqlxConnectTimeout,omitempty" tf:"mysqlx_connect_timeout,omitempty"`
 
 	// Set the default compression level for the deflate algorithm. ("mysqlx_deflate_default_compression_level")
-	MysqlxDeflateDefaultCompressionLevel *float64 `json:"mysqlxDeflateDefaultCompressionLevel,omitempty" tf:"mysqlx_deflate_default_compression_level,omitempty"`
+	MysqlxDeflateDefaultCompressionLevel *int64 `json:"mysqlxDeflateDefaultCompressionLevel,omitempty" tf:"mysqlx_deflate_default_compression_level,omitempty"`
 
 	// Limit the upper bound of accepted compression levels for the deflate algorithm. ("mysqlx_deflate_max_client_compression_level")
-	MysqlxDeflateMaxClientCompressionLevel *float64 `json:"mysqlxDeflateMaxClientCompressionLevel,omitempty" tf:"mysqlx_deflate_max_client_compression_level,omitempty"`
+	MysqlxDeflateMaxClientCompressionLevel *int64 `json:"mysqlxDeflateMaxClientCompressionLevel,omitempty" tf:"mysqlx_deflate_max_client_compression_level,omitempty"`
 
 	// ("mysqlx_document_id_unique_prefix") DEPRECATED -- variable should not be settable and will be ignored
-	MysqlxDocumentIDUniquePrefix *float64 `json:"mysqlxDocumentIdUniquePrefix,omitempty" tf:"mysqlx_document_id_unique_prefix,omitempty"`
+	MysqlxDocumentIDUniquePrefix *int64 `json:"mysqlxDocumentIdUniquePrefix,omitempty" tf:"mysqlx_document_id_unique_prefix,omitempty"`
 
 	// ("mysqlx_enable_hello_notice") DEPRECATED -- variable should not be settable and will be ignored
 	MysqlxEnableHelloNotice *bool `json:"mysqlxEnableHelloNotice,omitempty" tf:"mysqlx_enable_hello_notice,omitempty"`
 
 	// ("mysqlx_idle_worker_thread_timeout") DEPRECATED -- variable should not be settable and will be ignored
-	MysqlxIdleWorkerThreadTimeout *float64 `json:"mysqlxIdleWorkerThreadTimeout,omitempty" tf:"mysqlx_idle_worker_thread_timeout,omitempty"`
+	MysqlxIdleWorkerThreadTimeout *int64 `json:"mysqlxIdleWorkerThreadTimeout,omitempty" tf:"mysqlx_idle_worker_thread_timeout,omitempty"`
 
 	// The number of seconds to wait for interactive clients to timeout.
-	MysqlxInteractiveTimeout *float64 `json:"mysqlxInteractiveTimeout,omitempty" tf:"mysqlx_interactive_timeout,omitempty"`
+	MysqlxInteractiveTimeout *int64 `json:"mysqlxInteractiveTimeout,omitempty" tf:"mysqlx_interactive_timeout,omitempty"`
 
 	// Set the default compression level for the lz4 algorithm. ("mysqlx_lz4_default_compression_level")
-	MysqlxLz4DefaultCompressionLevel *float64 `json:"mysqlxLz4DefaultCompressionLevel,omitempty" tf:"mysqlx_lz4default_compression_level,omitempty"`
+	MysqlxLz4DefaultCompressionLevel *int64 `json:"mysqlxLz4DefaultCompressionLevel,omitempty" tf:"mysqlx_lz4default_compression_level,omitempty"`
 
 	// Limit the upper bound of accepted compression levels for the lz4 algorithm. ("mysqlx_lz4_max_client_compression_level")
-	MysqlxLz4MaxClientCompressionLevel *float64 `json:"mysqlxLz4MaxClientCompressionLevel,omitempty" tf:"mysqlx_lz4max_client_compression_level,omitempty"`
+	MysqlxLz4MaxClientCompressionLevel *int64 `json:"mysqlxLz4MaxClientCompressionLevel,omitempty" tf:"mysqlx_lz4max_client_compression_level,omitempty"`
 
 	// The maximum size of network packets that can be received by X Plugin.
-	MysqlxMaxAllowedPacket *float64 `json:"mysqlxMaxAllowedPacket,omitempty" tf:"mysqlx_max_allowed_packet,omitempty"`
+	MysqlxMaxAllowedPacket *int64 `json:"mysqlxMaxAllowedPacket,omitempty" tf:"mysqlx_max_allowed_packet,omitempty"`
 
 	// ("mysqlx_min_worker_threads") DEPRECATED -- variable should not be settable and will be ignored
-	MysqlxMinWorkerThreads *float64 `json:"mysqlxMinWorkerThreads,omitempty" tf:"mysqlx_min_worker_threads,omitempty"`
+	MysqlxMinWorkerThreads *int64 `json:"mysqlxMinWorkerThreads,omitempty" tf:"mysqlx_min_worker_threads,omitempty"`
 
 	// The number of seconds that X Plugin waits for blocking read operations to complete. After this time, if the read operation is not successful, X Plugin closes the connection and returns a warning notice with the error code ER_IO_READ_ERROR to the client application.
-	MysqlxReadTimeout *float64 `json:"mysqlxReadTimeout,omitempty" tf:"mysqlx_read_timeout,omitempty"`
+	MysqlxReadTimeout *int64 `json:"mysqlxReadTimeout,omitempty" tf:"mysqlx_read_timeout,omitempty"`
 
 	// The number of seconds that X Plugin waits for activity on a connection.
-	MysqlxWaitTimeout *float64 `json:"mysqlxWaitTimeout,omitempty" tf:"mysqlx_wait_timeout,omitempty"`
+	MysqlxWaitTimeout *int64 `json:"mysqlxWaitTimeout,omitempty" tf:"mysqlx_wait_timeout,omitempty"`
 
 	// The number of seconds that X Plugin waits for blocking write operations to complete. After this time, if the write operation is not successful, X Plugin closes the connection.
-	MysqlxWriteTimeout *float64 `json:"mysqlxWriteTimeout,omitempty" tf:"mysqlx_write_timeout,omitempty"`
+	MysqlxWriteTimeout *int64 `json:"mysqlxWriteTimeout,omitempty" tf:"mysqlx_write_timeout,omitempty"`
 
 	// Set the default compression level for the zstd algorithm. ("mysqlx_zstd_default_compression_level")
-	MysqlxZstdDefaultCompressionLevel *float64 `json:"mysqlxZstdDefaultCompressionLevel,omitempty" tf:"mysqlx_zstd_default_compression_level,omitempty"`
+	MysqlxZstdDefaultCompressionLevel *int64 `json:"mysqlxZstdDefaultCompressionLevel,omitempty" tf:"mysqlx_zstd_default_compression_level,omitempty"`
 
 	// Limit the upper bound of accepted compression levels for the zstd algorithm. ("mysqlx_zstd_max_client_compression_level")
-	MysqlxZstdMaxClientCompressionLevel *float64 `json:"mysqlxZstdMaxClientCompressionLevel,omitempty" tf:"mysqlx_zstd_max_client_compression_level,omitempty"`
+	MysqlxZstdMaxClientCompressionLevel *int64 `json:"mysqlxZstdMaxClientCompressionLevel,omitempty" tf:"mysqlx_zstd_max_client_compression_level,omitempty"`
 
 	// The number of seconds to wait for more data from a connection before aborting the read.
-	NetReadTimeout *float64 `json:"netReadTimeout,omitempty" tf:"net_read_timeout,omitempty"`
+	NetReadTimeout *int64 `json:"netReadTimeout,omitempty" tf:"net_read_timeout,omitempty"`
 
 	// The number of seconds to wait for a block to be written to a connection before aborting the write.
-	NetWriteTimeout *float64 `json:"netWriteTimeout,omitempty" tf:"net_write_timeout,omitempty"`
+	NetWriteTimeout *int64 `json:"netWriteTimeout,omitempty" tf:"net_write_timeout,omitempty"`
 
 	// The optimizer_switch system variable enables control over optimizer behavior. The value of this variable is a set of flags, each of which has a value of on or off to indicate whether the corresponding optimizer behavior is enabled or disabled. This variable has global and session values and can be changed at runtime. The global default can be set at server startup.
 	OptimizerSwitch *string `json:"optimizerSwitch,omitempty" tf:"optimizer_switch,omitempty"`
@@ -873,16 +866,16 @@ type VariablesObservation struct {
 	RangeOptimizerMaxMemSize *string `json:"rangeOptimizerMaxMemSize,omitempty" tf:"range_optimizer_max_mem_size,omitempty"`
 
 	// regexpTimeLimit corresponds to the MySQL system variable [regexp_time_limit] (https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_regexp_time_limit)
-	RegexpTimeLimit *float64 `json:"regexpTimeLimit,omitempty" tf:"regexp_time_limit,omitempty"`
+	RegexpTimeLimit *int64 `json:"regexpTimeLimit,omitempty" tf:"regexp_time_limit,omitempty"`
 
 	// The maximum amount of space to use for all relay logs.
 	RelayLogSpaceLimit *string `json:"relayLogSpaceLimit,omitempty" tf:"relay_log_space_limit,omitempty"`
 
 	// Specifies the number of seconds to wait for more data or a heartbeat signal from the source before the replica considers the connection broken, aborts the read, and tries to reconnect. Setting this variable has no immediate effect. The state of the variable applies on all subsequent START REPLICA commands.
-	ReplicaNetTimeout *float64 `json:"replicaNetTimeout,omitempty" tf:"replica_net_timeout,omitempty"`
+	ReplicaNetTimeout *int64 `json:"replicaNetTimeout,omitempty" tf:"replica_net_timeout,omitempty"`
 
 	// Beginning with MySQL 8.0.26, slave_parallel_workers is deprecated, and you should use replica_parallel_workers instead. (Prior to MySQL 8.0.26, you must use slave_parallel_workers to set the number of applier threads.)
-	ReplicaParallelWorkers *float64 `json:"replicaParallelWorkers,omitempty" tf:"replica_parallel_workers,omitempty"`
+	ReplicaParallelWorkers *int64 `json:"replicaParallelWorkers,omitempty" tf:"replica_parallel_workers,omitempty"`
 
 	// From MySQL 8.0.26, use replica_type_conversions in place of slave_type_conversions, which is deprecated from that release. In releases before MySQL 8.0.26, use slave_type_conversions.
 	ReplicaTypeConversions *string `json:"replicaTypeConversions,omitempty" tf:"replica_type_conversions,omitempty"`
@@ -909,10 +902,10 @@ type VariablesObservation struct {
 	SortBufferSize *string `json:"sortBufferSize,omitempty" tf:"sort_buffer_size,omitempty"`
 
 	// The number of table definitions that can be stored in the table definition cache. If you use a large number of tables, you can create a large table definition cache to speed up opening of tables. The table definition cache takes less space and does not use file descriptors, unlike the normal table cache.
-	TableDefinitionCache *float64 `json:"tableDefinitionCache,omitempty" tf:"table_definition_cache,omitempty"`
+	TableDefinitionCache *int64 `json:"tableDefinitionCache,omitempty" tf:"table_definition_cache,omitempty"`
 
 	// The number of open tables for all threads. Increasing this value increases the number of file descriptors that mysqld requires.
-	TableOpenCache *float64 `json:"tableOpenCache,omitempty" tf:"table_open_cache,omitempty"`
+	TableOpenCache *int64 `json:"tableOpenCache,omitempty" tf:"table_open_cache,omitempty"`
 
 	// Defines the maximum amount of memory that can be occupied by the TempTable storage engine before it starts storing data on disk. The default value is 1073741824 bytes (1GiB). For more information, see Section 10.4.4, “Internal Temporary Table Use in MySQL”.
 	TemptableMaxRAM *string `json:"temptableMaxRam,omitempty" tf:"temptable_max_ram,omitempty"`
@@ -921,16 +914,16 @@ type VariablesObservation struct {
 	ThreadPoolDedicatedListeners *bool `json:"threadPoolDedicatedListeners,omitempty" tf:"thread_pool_dedicated_listeners,omitempty"`
 
 	// Limits the maximum number of open transactions to the defined value. The default value is 0, which enforces no limit. threadPoolMaxTransactionsLimit corresponds to the MySQL Database Service-specific system variable thread_pool_max_transactions_limit.
-	ThreadPoolMaxTransactionsLimit *float64 `json:"threadPoolMaxTransactionsLimit,omitempty" tf:"thread_pool_max_transactions_limit,omitempty"`
+	ThreadPoolMaxTransactionsLimit *int64 `json:"threadPoolMaxTransactionsLimit,omitempty" tf:"thread_pool_max_transactions_limit,omitempty"`
 
 	// The maximum number of query threads permitted in a thread group. The maximum value is 4096, but if thread_pool_max_transactions_limit is set, thread_pool_query_threads_per_group must not exceed that value. The default value of 1 means there is one active query thread in each thread group, which works well for many loads. When you are using the high concurrency thread pool algorithm (thread_pool_algorithm = 1), consider increasing the value if you experience slower response times due to long-running transactions.
-	ThreadPoolQueryThreadsPerGroup *float64 `json:"threadPoolQueryThreadsPerGroup,omitempty" tf:"thread_pool_query_threads_per_group,omitempty"`
+	ThreadPoolQueryThreadsPerGroup *int64 `json:"threadPoolQueryThreadsPerGroup,omitempty" tf:"thread_pool_query_threads_per_group,omitempty"`
 
 	// The number of thread groups in the thread pool. This is the most important parameter controlling thread pool performance. It affects how many statements can execute simultaneously. If a value outside the range of permissible values is specified, the thread pool plugin does not load and the server writes a message to the error log.
-	ThreadPoolSize *float64 `json:"threadPoolSize,omitempty" tf:"thread_pool_size,omitempty"`
+	ThreadPoolSize *int64 `json:"threadPoolSize,omitempty" tf:"thread_pool_size,omitempty"`
 
 	// The delay period before executing a new transaction, in milliseconds. The maximum value is 300000 (5 minutes). A transaction delay can be used in cases where parallel transactions affect the performance of other operations due to resource contention. For example, if parallel transactions affect index creation or an online buffer pool resizing operation, you can configure a transaction delay to reduce resource contention while those operations are running.
-	ThreadPoolTransactionDelay *float64 `json:"threadPoolTransactionDelay,omitempty" tf:"thread_pool_transaction_delay,omitempty"`
+	ThreadPoolTransactionDelay *int64 `json:"threadPoolTransactionDelay,omitempty" tf:"thread_pool_transaction_delay,omitempty"`
 
 	// Initializes the time zone for each client that connects.
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`
@@ -942,18 +935,18 @@ type VariablesObservation struct {
 	TransactionIsolation *string `json:"transactionIsolation,omitempty" tf:"transaction_isolation,omitempty"`
 
 	// The number of seconds the server waits for activity on a noninteractive connection before closing it.
-	WaitTimeout *float64 `json:"waitTimeout,omitempty" tf:"wait_timeout,omitempty"`
+	WaitTimeout *int64 `json:"waitTimeout,omitempty" tf:"wait_timeout,omitempty"`
 }
 
 type VariablesParameters struct {
 
 	// auto_increment_increment and auto_increment_offset are intended for use with circular (source-to-source) replication, and can be used to control the operation of AUTO_INCREMENT columns. Both variables have global and session values, and each can assume an integer value between 1 and 65,535 inclusive.
 	// +kubebuilder:validation:Optional
-	AutoIncrementIncrement *float64 `json:"autoIncrementIncrement,omitempty" tf:"auto_increment_increment,omitempty"`
+	AutoIncrementIncrement *int64 `json:"autoIncrementIncrement,omitempty" tf:"auto_increment_increment,omitempty"`
 
 	// This variable has a default value of 1. If it is left with its default value, and Group Replication is started on the server in multi-primary mode, it is changed to the server ID.
 	// +kubebuilder:validation:Optional
-	AutoIncrementOffset *float64 `json:"autoIncrementOffset,omitempty" tf:"auto_increment_offset,omitempty"`
+	AutoIncrementOffset *int64 `json:"autoIncrementOffset,omitempty" tf:"auto_increment_offset,omitempty"`
 
 	// ("autocommit")
 	// +kubebuilder:validation:Optional
@@ -965,15 +958,15 @@ type VariablesParameters struct {
 
 	// Sets the binary log expiration period in seconds. binlogExpireLogsSeconds corresponds to the MySQL binary logging system variable binlog_expire_logs_seconds.
 	// +kubebuilder:validation:Optional
-	BinlogExpireLogsSeconds *float64 `json:"binlogExpireLogsSeconds,omitempty" tf:"binlog_expire_logs_seconds,omitempty"`
+	BinlogExpireLogsSeconds *int64 `json:"binlogExpireLogsSeconds,omitempty" tf:"binlog_expire_logs_seconds,omitempty"`
 
 	// Controls how many microseconds the binary log commit waits before synchronizing the binary log file to disk. There is no delay by default. Setting this variable to a microsecond delay enables more transactions to be synchronized together to disk at once, reducing the overall time to commit a group of transactions because the larger groups required fewer time units per group.
 	// +kubebuilder:validation:Optional
-	BinlogGroupCommitSyncDelay *float64 `json:"binlogGroupCommitSyncDelay,omitempty" tf:"binlog_group_commit_sync_delay,omitempty"`
+	BinlogGroupCommitSyncDelay *int64 `json:"binlogGroupCommitSyncDelay,omitempty" tf:"binlog_group_commit_sync_delay,omitempty"`
 
 	// The maximum number of transactions to wait for before aborting the current delay as specified by binlog_group_commit_sync_delay. If binlog_group_commit_sync_delay is set to 0, then this option has no effect.
 	// +kubebuilder:validation:Optional
-	BinlogGroupCommitSyncNoDelayCount *float64 `json:"binlogGroupCommitSyncNoDelayCount,omitempty" tf:"binlog_group_commit_sync_no_delay_count,omitempty"`
+	BinlogGroupCommitSyncNoDelayCount *int64 `json:"binlogGroupCommitSyncNoDelayCount,omitempty" tf:"binlog_group_commit_sync_no_delay_count,omitempty"`
 
 	// Configures the amount of table metadata added to the binary log when using row-based logging. binlogRowMetadata corresponds to the MySQL binary logging system variable binlog_row_metadata.
 	// +kubebuilder:validation:Optional
@@ -1005,11 +998,11 @@ type VariablesParameters struct {
 
 	// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
 	// +kubebuilder:validation:Optional
-	ConnectTimeout *float64 `json:"connectTimeout,omitempty" tf:"connect_timeout,omitempty"`
+	ConnectTimeout *int64 `json:"connectTimeout,omitempty" tf:"connect_timeout,omitempty"`
 
 	// Set the chunking size for updates to the global memory usage counter Global_connection_memory.
 	// +kubebuilder:validation:Optional
-	ConnectionMemoryChunkSize *float64 `json:"connectionMemoryChunkSize,omitempty" tf:"connection_memory_chunk_size,omitempty"`
+	ConnectionMemoryChunkSize *int64 `json:"connectionMemoryChunkSize,omitempty" tf:"connection_memory_chunk_size,omitempty"`
 
 	// Set the maximum amount of memory that can be used by a single user connection.
 	// +kubebuilder:validation:Optional
@@ -1037,7 +1030,7 @@ type VariablesParameters struct {
 
 	// ("generated_random_password_length") DEPRECATED -- variable should not be settable and will be ignored
 	// +kubebuilder:validation:Optional
-	GeneratedRandomPasswordLength *float64 `json:"generatedRandomPasswordLength,omitempty" tf:"generated_random_password_length,omitempty"`
+	GeneratedRandomPasswordLength *int64 `json:"generatedRandomPasswordLength,omitempty" tf:"generated_random_password_length,omitempty"`
 
 	// Set the total amount of memory that can be used by all user connections.
 	// +kubebuilder:validation:Optional
@@ -1056,7 +1049,7 @@ type VariablesParameters struct {
 
 	// ("information_schema_stats_expiry")
 	// +kubebuilder:validation:Optional
-	InformationSchemaStatsExpiry *float64 `json:"informationSchemaStatsExpiry,omitempty" tf:"information_schema_stats_expiry,omitempty"`
+	InformationSchemaStatsExpiry *int64 `json:"informationSchemaStatsExpiry,omitempty" tf:"information_schema_stats_expiry,omitempty"`
 
 	// Whether the InnoDB adaptive hash index is enabled or disabled. It may be desirable, depending on your workload, to dynamically enable or disable adaptive hash indexing to improve query performance. Because the adaptive hash index may not be useful for all workloads, conduct benchmarks with it both enabled and disabled, using realistic workloads.
 	// +kubebuilder:validation:Optional
@@ -1064,15 +1057,15 @@ type VariablesParameters struct {
 
 	// The lock mode to use for generating auto-increment values. Permissible values are 0, 1, or 2, for traditional, consecutive, or interleaved, respectively.
 	// +kubebuilder:validation:Optional
-	InnodbAutoincLockMode *float64 `json:"innodbAutoincLockMode,omitempty" tf:"innodb_autoinc_lock_mode,omitempty"`
+	InnodbAutoincLockMode *int64 `json:"innodbAutoincLockMode,omitempty" tf:"innodb_autoinc_lock_mode,omitempty"`
 
 	// Specifies the percentage of the most recently used pages for each buffer pool to read out and dump.
 	// +kubebuilder:validation:Optional
-	InnodbBufferPoolDumpPct *float64 `json:"innodbBufferPoolDumpPct,omitempty" tf:"innodb_buffer_pool_dump_pct,omitempty"`
+	InnodbBufferPoolDumpPct *int64 `json:"innodbBufferPoolDumpPct,omitempty" tf:"innodb_buffer_pool_dump_pct,omitempty"`
 
 	// ("innodb_buffer_pool_instances")
 	// +kubebuilder:validation:Optional
-	InnodbBufferPoolInstances *float64 `json:"innodbBufferPoolInstances,omitempty" tf:"innodb_buffer_pool_instances,omitempty"`
+	InnodbBufferPoolInstances *int64 `json:"innodbBufferPoolInstances,omitempty" tf:"innodb_buffer_pool_instances,omitempty"`
 
 	// The size (in bytes) of the buffer pool, that is, the memory area where InnoDB caches table and index data.
 	// +kubebuilder:validation:Optional
@@ -1088,7 +1081,7 @@ type VariablesParameters struct {
 
 	// innodbDdlThreads corresponds to the MySQL system variable [innodb_ddl_threads] (https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_ddl_threads)
 	// +kubebuilder:validation:Optional
-	InnodbDdlThreads *float64 `json:"innodbDdlThreads,omitempty" tf:"innodb_ddl_threads,omitempty"`
+	InnodbDdlThreads *int64 `json:"innodbDdlThreads,omitempty" tf:"innodb_ddl_threads,omitempty"`
 
 	// ("innodb_ft_enable_stopword")
 	// +kubebuilder:validation:Optional
@@ -1096,15 +1089,15 @@ type VariablesParameters struct {
 
 	// ("innodb_ft_max_token_size")
 	// +kubebuilder:validation:Optional
-	InnodbFtMaxTokenSize *float64 `json:"innodbFtMaxTokenSize,omitempty" tf:"innodb_ft_max_token_size,omitempty"`
+	InnodbFtMaxTokenSize *int64 `json:"innodbFtMaxTokenSize,omitempty" tf:"innodb_ft_max_token_size,omitempty"`
 
 	// ("innodb_ft_min_token_size")
 	// +kubebuilder:validation:Optional
-	InnodbFtMinTokenSize *float64 `json:"innodbFtMinTokenSize,omitempty" tf:"innodb_ft_min_token_size,omitempty"`
+	InnodbFtMinTokenSize *int64 `json:"innodbFtMinTokenSize,omitempty" tf:"innodb_ft_min_token_size,omitempty"`
 
 	// ("innodb_ft_num_word_optimize")
 	// +kubebuilder:validation:Optional
-	InnodbFtNumWordOptimize *float64 `json:"innodbFtNumWordOptimize,omitempty" tf:"innodb_ft_num_word_optimize,omitempty"`
+	InnodbFtNumWordOptimize *int64 `json:"innodbFtNumWordOptimize,omitempty" tf:"innodb_ft_num_word_optimize,omitempty"`
 
 	// ("innodb_ft_result_cache_limit")
 	// +kubebuilder:validation:Optional
@@ -1116,7 +1109,7 @@ type VariablesParameters struct {
 
 	// ("innodb_lock_wait_timeout")
 	// +kubebuilder:validation:Optional
-	InnodbLockWaitTimeout *float64 `json:"innodbLockWaitTimeout,omitempty" tf:"innodb_lock_wait_timeout,omitempty"`
+	InnodbLockWaitTimeout *int64 `json:"innodbLockWaitTimeout,omitempty" tf:"innodb_lock_wait_timeout,omitempty"`
 
 	// Enables dedicated log writer threads for writing redo log records from the log buffer to the system buffers and flushing the system buffers to the redo log files.
 	// +kubebuilder:validation:Optional
@@ -1128,7 +1121,7 @@ type VariablesParameters struct {
 
 	// The maximum delay in microseconds for the delay imposed when the innodb_max_purge_lag threshold is exceeded.
 	// +kubebuilder:validation:Optional
-	InnodbMaxPurgeLagDelay *float64 `json:"innodbMaxPurgeLagDelay,omitempty" tf:"innodb_max_purge_lag_delay,omitempty"`
+	InnodbMaxPurgeLagDelay *int64 `json:"innodbMaxPurgeLagDelay,omitempty" tf:"innodb_max_purge_lag_delay,omitempty"`
 
 	// Enables the NUMA interleave memory policy for allocation of the InnoDB buffer pool. When innodb_numa_interleave is enabled, the NUMA memory policy is set to MPOL_INTERLEAVE for the mysqld process. After the InnoDB buffer pool is allocated, the NUMA memory policy is set back to MPOL_DEFAULT. For the innodb_numa_interleave option to be available, MySQL must be compiled on a NUMA-enabled Linux system.
 	// +kubebuilder:validation:Optional
@@ -1148,7 +1141,7 @@ type VariablesParameters struct {
 
 	// This variable defines:
 	// +kubebuilder:validation:Optional
-	InnodbSortBufferSize *float64 `json:"innodbSortBufferSize,omitempty" tf:"innodb_sort_buffer_size,omitempty"`
+	InnodbSortBufferSize *int64 `json:"innodbSortBufferSize,omitempty" tf:"innodb_sort_buffer_size,omitempty"`
 
 	// The number of index pages to sample when estimating cardinality and other statistics for an indexed column, such as those calculated by ANALYZE TABLE.
 	// +kubebuilder:validation:Optional
@@ -1168,7 +1161,7 @@ type VariablesParameters struct {
 
 	// The number of seconds the server waits for activity on an interactive connection before closing it.
 	// +kubebuilder:validation:Optional
-	InteractiveTimeout *float64 `json:"interactiveTimeout,omitempty" tf:"interactive_timeout,omitempty"`
+	InteractiveTimeout *int64 `json:"interactiveTimeout,omitempty" tf:"interactive_timeout,omitempty"`
 
 	// The minimum size of the buffer that is used for plain index scans, range index scans, and joins that do not use indexes and thus perform full table scans. In MySQL 8.0.18 and later, this variable also controls the amount of memory used for hash joins. Normally, the best way to get fast joins is to add indexes. Increase the value of join_buffer_size to get a faster full join when adding indexes is not possible. One join buffer is allocated for each full join between two tables. For a complex join between several tables for which indexes are not used, multiple join buffers might be necessary.
 	// +kubebuilder:validation:Optional
@@ -1180,7 +1173,7 @@ type VariablesParameters struct {
 
 	// If a query takes longer than this many seconds, the server increments the Slow_queries status variable. If the slow query log is enabled, the query is logged to the slow query log file. This value is measured in real time, not CPU time, so a query that is under the threshold on a lightly loaded system might be above the threshold on a heavily loaded one.
 	// +kubebuilder:validation:Optional
-	LongQueryTime *float64 `json:"longQueryTime,omitempty" tf:"long_query_time,omitempty"`
+	LongQueryTime *int64 `json:"longQueryTime,omitempty" tf:"long_query_time,omitempty"`
 
 	// ("mandatory_roles")
 	// +kubebuilder:validation:Optional
@@ -1188,7 +1181,7 @@ type VariablesParameters struct {
 
 	// The maximum size of one packet or any generated/intermediate string.
 	// +kubebuilder:validation:Optional
-	MaxAllowedPacket *float64 `json:"maxAllowedPacket,omitempty" tf:"max_allowed_packet,omitempty"`
+	MaxAllowedPacket *int64 `json:"maxAllowedPacket,omitempty" tf:"max_allowed_packet,omitempty"`
 
 	// Sets the size of the transaction cache.
 	// +kubebuilder:validation:Optional
@@ -1200,7 +1193,7 @@ type VariablesParameters struct {
 
 	// ("max_connections")
 	// +kubebuilder:validation:Optional
-	MaxConnections *float64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+	MaxConnections *int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
 
 	// ("max_execution_time")
 	// +kubebuilder:validation:Optional
@@ -1212,7 +1205,7 @@ type VariablesParameters struct {
 
 	// ("max_prepared_stmt_count")
 	// +kubebuilder:validation:Optional
-	MaxPreparedStmtCount *float64 `json:"maxPreparedStmtCount,omitempty" tf:"max_prepared_stmt_count,omitempty"`
+	MaxPreparedStmtCount *int64 `json:"maxPreparedStmtCount,omitempty" tf:"max_prepared_stmt_count,omitempty"`
 
 	// Limit the assumed maximum number of seeks when looking up rows based on a key. The MySQL optimizer assumes that no more than this number of key seeks are required when searching for matching rows in a table by scanning an index, regardless of the actual cardinality of the index (see Section 15.7.7.22, “SHOW INDEX Statement”). By setting this to a low value (say, 100), you can force MySQL to prefer indexes instead of table scans.
 	// +kubebuilder:validation:Optional
@@ -1228,23 +1221,23 @@ type VariablesParameters struct {
 
 	// DEPRECATED -- typo of mysqlx_zstd_default_compression_level. variable will be ignored.
 	// +kubebuilder:validation:Optional
-	MySQLZstdDefaultCompressionLevel *float64 `json:"mysqlZstdDefaultCompressionLevel,omitempty" tf:"mysql_zstd_default_compression_level,omitempty"`
+	MySQLZstdDefaultCompressionLevel *int64 `json:"mysqlZstdDefaultCompressionLevel,omitempty" tf:"mysql_zstd_default_compression_level,omitempty"`
 
 	// The number of seconds X Plugin waits for the first packet to be received from newly connected clients.
 	// +kubebuilder:validation:Optional
-	MysqlxConnectTimeout *float64 `json:"mysqlxConnectTimeout,omitempty" tf:"mysqlx_connect_timeout,omitempty"`
+	MysqlxConnectTimeout *int64 `json:"mysqlxConnectTimeout,omitempty" tf:"mysqlx_connect_timeout,omitempty"`
 
 	// Set the default compression level for the deflate algorithm. ("mysqlx_deflate_default_compression_level")
 	// +kubebuilder:validation:Optional
-	MysqlxDeflateDefaultCompressionLevel *float64 `json:"mysqlxDeflateDefaultCompressionLevel,omitempty" tf:"mysqlx_deflate_default_compression_level,omitempty"`
+	MysqlxDeflateDefaultCompressionLevel *int64 `json:"mysqlxDeflateDefaultCompressionLevel,omitempty" tf:"mysqlx_deflate_default_compression_level,omitempty"`
 
 	// Limit the upper bound of accepted compression levels for the deflate algorithm. ("mysqlx_deflate_max_client_compression_level")
 	// +kubebuilder:validation:Optional
-	MysqlxDeflateMaxClientCompressionLevel *float64 `json:"mysqlxDeflateMaxClientCompressionLevel,omitempty" tf:"mysqlx_deflate_max_client_compression_level,omitempty"`
+	MysqlxDeflateMaxClientCompressionLevel *int64 `json:"mysqlxDeflateMaxClientCompressionLevel,omitempty" tf:"mysqlx_deflate_max_client_compression_level,omitempty"`
 
 	// ("mysqlx_document_id_unique_prefix") DEPRECATED -- variable should not be settable and will be ignored
 	// +kubebuilder:validation:Optional
-	MysqlxDocumentIDUniquePrefix *float64 `json:"mysqlxDocumentIdUniquePrefix,omitempty" tf:"mysqlx_document_id_unique_prefix,omitempty"`
+	MysqlxDocumentIDUniquePrefix *int64 `json:"mysqlxDocumentIdUniquePrefix,omitempty" tf:"mysqlx_document_id_unique_prefix,omitempty"`
 
 	// ("mysqlx_enable_hello_notice") DEPRECATED -- variable should not be settable and will be ignored
 	// +kubebuilder:validation:Optional
@@ -1252,55 +1245,55 @@ type VariablesParameters struct {
 
 	// ("mysqlx_idle_worker_thread_timeout") DEPRECATED -- variable should not be settable and will be ignored
 	// +kubebuilder:validation:Optional
-	MysqlxIdleWorkerThreadTimeout *float64 `json:"mysqlxIdleWorkerThreadTimeout,omitempty" tf:"mysqlx_idle_worker_thread_timeout,omitempty"`
+	MysqlxIdleWorkerThreadTimeout *int64 `json:"mysqlxIdleWorkerThreadTimeout,omitempty" tf:"mysqlx_idle_worker_thread_timeout,omitempty"`
 
 	// The number of seconds to wait for interactive clients to timeout.
 	// +kubebuilder:validation:Optional
-	MysqlxInteractiveTimeout *float64 `json:"mysqlxInteractiveTimeout,omitempty" tf:"mysqlx_interactive_timeout,omitempty"`
+	MysqlxInteractiveTimeout *int64 `json:"mysqlxInteractiveTimeout,omitempty" tf:"mysqlx_interactive_timeout,omitempty"`
 
 	// Set the default compression level for the lz4 algorithm. ("mysqlx_lz4_default_compression_level")
 	// +kubebuilder:validation:Optional
-	MysqlxLz4DefaultCompressionLevel *float64 `json:"mysqlxLz4DefaultCompressionLevel,omitempty" tf:"mysqlx_lz4default_compression_level,omitempty"`
+	MysqlxLz4DefaultCompressionLevel *int64 `json:"mysqlxLz4DefaultCompressionLevel,omitempty" tf:"mysqlx_lz4default_compression_level,omitempty"`
 
 	// Limit the upper bound of accepted compression levels for the lz4 algorithm. ("mysqlx_lz4_max_client_compression_level")
 	// +kubebuilder:validation:Optional
-	MysqlxLz4MaxClientCompressionLevel *float64 `json:"mysqlxLz4MaxClientCompressionLevel,omitempty" tf:"mysqlx_lz4max_client_compression_level,omitempty"`
+	MysqlxLz4MaxClientCompressionLevel *int64 `json:"mysqlxLz4MaxClientCompressionLevel,omitempty" tf:"mysqlx_lz4max_client_compression_level,omitempty"`
 
 	// The maximum size of network packets that can be received by X Plugin.
 	// +kubebuilder:validation:Optional
-	MysqlxMaxAllowedPacket *float64 `json:"mysqlxMaxAllowedPacket,omitempty" tf:"mysqlx_max_allowed_packet,omitempty"`
+	MysqlxMaxAllowedPacket *int64 `json:"mysqlxMaxAllowedPacket,omitempty" tf:"mysqlx_max_allowed_packet,omitempty"`
 
 	// ("mysqlx_min_worker_threads") DEPRECATED -- variable should not be settable and will be ignored
 	// +kubebuilder:validation:Optional
-	MysqlxMinWorkerThreads *float64 `json:"mysqlxMinWorkerThreads,omitempty" tf:"mysqlx_min_worker_threads,omitempty"`
+	MysqlxMinWorkerThreads *int64 `json:"mysqlxMinWorkerThreads,omitempty" tf:"mysqlx_min_worker_threads,omitempty"`
 
 	// The number of seconds that X Plugin waits for blocking read operations to complete. After this time, if the read operation is not successful, X Plugin closes the connection and returns a warning notice with the error code ER_IO_READ_ERROR to the client application.
 	// +kubebuilder:validation:Optional
-	MysqlxReadTimeout *float64 `json:"mysqlxReadTimeout,omitempty" tf:"mysqlx_read_timeout,omitempty"`
+	MysqlxReadTimeout *int64 `json:"mysqlxReadTimeout,omitempty" tf:"mysqlx_read_timeout,omitempty"`
 
 	// The number of seconds that X Plugin waits for activity on a connection.
 	// +kubebuilder:validation:Optional
-	MysqlxWaitTimeout *float64 `json:"mysqlxWaitTimeout,omitempty" tf:"mysqlx_wait_timeout,omitempty"`
+	MysqlxWaitTimeout *int64 `json:"mysqlxWaitTimeout,omitempty" tf:"mysqlx_wait_timeout,omitempty"`
 
 	// The number of seconds that X Plugin waits for blocking write operations to complete. After this time, if the write operation is not successful, X Plugin closes the connection.
 	// +kubebuilder:validation:Optional
-	MysqlxWriteTimeout *float64 `json:"mysqlxWriteTimeout,omitempty" tf:"mysqlx_write_timeout,omitempty"`
+	MysqlxWriteTimeout *int64 `json:"mysqlxWriteTimeout,omitempty" tf:"mysqlx_write_timeout,omitempty"`
 
 	// Set the default compression level for the zstd algorithm. ("mysqlx_zstd_default_compression_level")
 	// +kubebuilder:validation:Optional
-	MysqlxZstdDefaultCompressionLevel *float64 `json:"mysqlxZstdDefaultCompressionLevel,omitempty" tf:"mysqlx_zstd_default_compression_level,omitempty"`
+	MysqlxZstdDefaultCompressionLevel *int64 `json:"mysqlxZstdDefaultCompressionLevel,omitempty" tf:"mysqlx_zstd_default_compression_level,omitempty"`
 
 	// Limit the upper bound of accepted compression levels for the zstd algorithm. ("mysqlx_zstd_max_client_compression_level")
 	// +kubebuilder:validation:Optional
-	MysqlxZstdMaxClientCompressionLevel *float64 `json:"mysqlxZstdMaxClientCompressionLevel,omitempty" tf:"mysqlx_zstd_max_client_compression_level,omitempty"`
+	MysqlxZstdMaxClientCompressionLevel *int64 `json:"mysqlxZstdMaxClientCompressionLevel,omitempty" tf:"mysqlx_zstd_max_client_compression_level,omitempty"`
 
 	// The number of seconds to wait for more data from a connection before aborting the read.
 	// +kubebuilder:validation:Optional
-	NetReadTimeout *float64 `json:"netReadTimeout,omitempty" tf:"net_read_timeout,omitempty"`
+	NetReadTimeout *int64 `json:"netReadTimeout,omitempty" tf:"net_read_timeout,omitempty"`
 
 	// The number of seconds to wait for a block to be written to a connection before aborting the write.
 	// +kubebuilder:validation:Optional
-	NetWriteTimeout *float64 `json:"netWriteTimeout,omitempty" tf:"net_write_timeout,omitempty"`
+	NetWriteTimeout *int64 `json:"netWriteTimeout,omitempty" tf:"net_write_timeout,omitempty"`
 
 	// The optimizer_switch system variable enables control over optimizer behavior. The value of this variable is a set of flags, each of which has a value of on or off to indicate whether the corresponding optimizer behavior is enabled or disabled. This variable has global and session values and can be changed at runtime. The global default can be set at server startup.
 	// +kubebuilder:validation:Optional
@@ -1324,7 +1317,7 @@ type VariablesParameters struct {
 
 	// regexpTimeLimit corresponds to the MySQL system variable [regexp_time_limit] (https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_regexp_time_limit)
 	// +kubebuilder:validation:Optional
-	RegexpTimeLimit *float64 `json:"regexpTimeLimit,omitempty" tf:"regexp_time_limit,omitempty"`
+	RegexpTimeLimit *int64 `json:"regexpTimeLimit,omitempty" tf:"regexp_time_limit,omitempty"`
 
 	// The maximum amount of space to use for all relay logs.
 	// +kubebuilder:validation:Optional
@@ -1332,11 +1325,11 @@ type VariablesParameters struct {
 
 	// Specifies the number of seconds to wait for more data or a heartbeat signal from the source before the replica considers the connection broken, aborts the read, and tries to reconnect. Setting this variable has no immediate effect. The state of the variable applies on all subsequent START REPLICA commands.
 	// +kubebuilder:validation:Optional
-	ReplicaNetTimeout *float64 `json:"replicaNetTimeout,omitempty" tf:"replica_net_timeout,omitempty"`
+	ReplicaNetTimeout *int64 `json:"replicaNetTimeout,omitempty" tf:"replica_net_timeout,omitempty"`
 
 	// Beginning with MySQL 8.0.26, slave_parallel_workers is deprecated, and you should use replica_parallel_workers instead. (Prior to MySQL 8.0.26, you must use slave_parallel_workers to set the number of applier threads.)
 	// +kubebuilder:validation:Optional
-	ReplicaParallelWorkers *float64 `json:"replicaParallelWorkers,omitempty" tf:"replica_parallel_workers,omitempty"`
+	ReplicaParallelWorkers *int64 `json:"replicaParallelWorkers,omitempty" tf:"replica_parallel_workers,omitempty"`
 
 	// From MySQL 8.0.26, use replica_type_conversions in place of slave_type_conversions, which is deprecated from that release. In releases before MySQL 8.0.26, use slave_type_conversions.
 	// +kubebuilder:validation:Optional
@@ -1372,11 +1365,11 @@ type VariablesParameters struct {
 
 	// The number of table definitions that can be stored in the table definition cache. If you use a large number of tables, you can create a large table definition cache to speed up opening of tables. The table definition cache takes less space and does not use file descriptors, unlike the normal table cache.
 	// +kubebuilder:validation:Optional
-	TableDefinitionCache *float64 `json:"tableDefinitionCache,omitempty" tf:"table_definition_cache,omitempty"`
+	TableDefinitionCache *int64 `json:"tableDefinitionCache,omitempty" tf:"table_definition_cache,omitempty"`
 
 	// The number of open tables for all threads. Increasing this value increases the number of file descriptors that mysqld requires.
 	// +kubebuilder:validation:Optional
-	TableOpenCache *float64 `json:"tableOpenCache,omitempty" tf:"table_open_cache,omitempty"`
+	TableOpenCache *int64 `json:"tableOpenCache,omitempty" tf:"table_open_cache,omitempty"`
 
 	// Defines the maximum amount of memory that can be occupied by the TempTable storage engine before it starts storing data on disk. The default value is 1073741824 bytes (1GiB). For more information, see Section 10.4.4, “Internal Temporary Table Use in MySQL”.
 	// +kubebuilder:validation:Optional
@@ -1388,19 +1381,19 @@ type VariablesParameters struct {
 
 	// Limits the maximum number of open transactions to the defined value. The default value is 0, which enforces no limit. threadPoolMaxTransactionsLimit corresponds to the MySQL Database Service-specific system variable thread_pool_max_transactions_limit.
 	// +kubebuilder:validation:Optional
-	ThreadPoolMaxTransactionsLimit *float64 `json:"threadPoolMaxTransactionsLimit,omitempty" tf:"thread_pool_max_transactions_limit,omitempty"`
+	ThreadPoolMaxTransactionsLimit *int64 `json:"threadPoolMaxTransactionsLimit,omitempty" tf:"thread_pool_max_transactions_limit,omitempty"`
 
 	// The maximum number of query threads permitted in a thread group. The maximum value is 4096, but if thread_pool_max_transactions_limit is set, thread_pool_query_threads_per_group must not exceed that value. The default value of 1 means there is one active query thread in each thread group, which works well for many loads. When you are using the high concurrency thread pool algorithm (thread_pool_algorithm = 1), consider increasing the value if you experience slower response times due to long-running transactions.
 	// +kubebuilder:validation:Optional
-	ThreadPoolQueryThreadsPerGroup *float64 `json:"threadPoolQueryThreadsPerGroup,omitempty" tf:"thread_pool_query_threads_per_group,omitempty"`
+	ThreadPoolQueryThreadsPerGroup *int64 `json:"threadPoolQueryThreadsPerGroup,omitempty" tf:"thread_pool_query_threads_per_group,omitempty"`
 
 	// The number of thread groups in the thread pool. This is the most important parameter controlling thread pool performance. It affects how many statements can execute simultaneously. If a value outside the range of permissible values is specified, the thread pool plugin does not load and the server writes a message to the error log.
 	// +kubebuilder:validation:Optional
-	ThreadPoolSize *float64 `json:"threadPoolSize,omitempty" tf:"thread_pool_size,omitempty"`
+	ThreadPoolSize *int64 `json:"threadPoolSize,omitempty" tf:"thread_pool_size,omitempty"`
 
 	// The delay period before executing a new transaction, in milliseconds. The maximum value is 300000 (5 minutes). A transaction delay can be used in cases where parallel transactions affect the performance of other operations due to resource contention. For example, if parallel transactions affect index creation or an online buffer pool resizing operation, you can configure a transaction delay to reduce resource contention while those operations are running.
 	// +kubebuilder:validation:Optional
-	ThreadPoolTransactionDelay *float64 `json:"threadPoolTransactionDelay,omitempty" tf:"thread_pool_transaction_delay,omitempty"`
+	ThreadPoolTransactionDelay *int64 `json:"threadPoolTransactionDelay,omitempty" tf:"thread_pool_transaction_delay,omitempty"`
 
 	// Initializes the time zone for each client that connects.
 	// +kubebuilder:validation:Optional
@@ -1416,7 +1409,7 @@ type VariablesParameters struct {
 
 	// The number of seconds the server waits for activity on a noninteractive connection before closing it.
 	// +kubebuilder:validation:Optional
-	WaitTimeout *float64 `json:"waitTimeout,omitempty" tf:"wait_timeout,omitempty"`
+	WaitTimeout *int64 `json:"waitTimeout,omitempty" tf:"wait_timeout,omitempty"`
 }
 
 // MysqlConfigurationSpec defines the desired state of MysqlConfiguration

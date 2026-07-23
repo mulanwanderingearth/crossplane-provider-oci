@@ -558,7 +558,8 @@ spec:
                     type: string
                   productCount:
                     description: Count of products within the resource.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceId:
                     description: The OCID of the resource.
                     type: string
@@ -578,10 +579,10 @@ spec:
                       and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   targetCount:
                     description: Count of targets within the resource.
-                    type: number
+                    format: int64
+                    type: integer
                   tenancyId:
                     description: (Updatable) OCID of the tenancy to which the resource
                       belongs to.

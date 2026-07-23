@@ -154,7 +154,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -162,7 +161,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isCostTrackingTagEnabled:
                     description: A value determining if the cost tracking tag is enabled
                       or not. Allow Fleet Application Management to tag resources
@@ -283,7 +281,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -291,7 +288,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isCostTrackingTagEnabled:
                     description: A value determining if the cost tracking tag is enabled
                       or not. Allow Fleet Application Management to tag resources
@@ -390,7 +386,6 @@ spec:
                             System tags for this resource. Each key is predefined and scoped to a namespace. Example:
                             {"orcl-cloud.free-tier-retained": "true"}
                           type: object
-                          x-kubernetes-map-type: granular
                         timeCreated:
                           description: The time this resource was created. An RFC3339
                             formatted datetime string.
@@ -413,7 +408,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   discoveryFrequency:
                     description: Provide discovery frequency.
                     type: string
@@ -424,7 +418,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The unique id of the resource.
                     type: string
@@ -453,7 +446,6 @@ spec:
                       System tags for this resource. Each key is predefined and scoped to a namespace. Example:
                       {"orcl-cloud.free-tier-retained": "true"}
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time this resource was created. An RFC3339 formatted
                       datetime string.

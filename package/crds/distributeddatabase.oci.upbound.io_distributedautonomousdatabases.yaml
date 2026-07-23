@@ -530,7 +530,8 @@ spec:
                               fastStartFailOverLagLimitInSeconds:
                                 description: The lag time preference based on data
                                   loss tolerance in seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               isAutomaticFailoverEnabled:
                                 description: This field is deprecated. Support for
                                   this field will be removed after one year of deprecation
@@ -544,7 +545,8 @@ spec:
                                   maintenance window of the standby Autonomous Container
                                   Database. This value represents the number of days
                                   before schedlued maintenance of the primary database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         source:
@@ -641,7 +643,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Change Db Backup Config. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   characterSet:
                     description: The character set for the database.
                     type: string
@@ -652,7 +655,8 @@ spec:
                       autonomous databases being created with SYSTEM shardingMethod.
                       For USER shardingMethod, chunks should not be set in create
                       payload.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the Globally distributed
                       autonomous database compartment.
@@ -736,7 +740,8 @@ spec:
                   configureGsmWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Configure Gsm Wallet. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   configureShardingIsRebalanceRequired:
                     description: (Updatable) Indicates whether shard chunks should
                       be re-balanced as part of Configure Sharding.
@@ -744,7 +749,8 @@ spec:
                   configureShardingTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Configure Sharding. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseVersion:
                     description: Oracle Database version for the shards and catalog
                       used in Globally distributed autonomous database.
@@ -889,7 +895,8 @@ spec:
                             the value is updated, it is applied to all existing automatic
                             backups. If the number of specified days is 0 then there
                             will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dbDeploymentType:
@@ -906,7 +913,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name of the Globally distributed
                       autonomous database.
@@ -915,7 +921,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Download Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -923,12 +930,12 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generateGsmCertificateSigningRequestTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   generateGsmCertificateSigningRequestTriggerCaBundleId:
                     description: The OCID of the CA bundle to pass to Configure Sharding.
                       Required when configure_sharding_trigger is incremented.
@@ -954,14 +961,16 @@ spec:
                   generateWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Wallet. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   listenerPort:
                     description: The listener port number for the Globally distributed
                       autonomous database. The listener port number has to be unique
                       for a customer tenancy across all distributed autonomous databases.
                       Same port number should not be re-used for any other distributed
                       autonomous database.
-                    type: number
+                    format: int64
+                    type: integer
                   listenerPortTls:
                     description: The TLS listener port number for Globally distributed
                       autonomous database. The TLS listener port number has to be
@@ -969,12 +978,14 @@ spec:
                       databases. Same port number should not be re-used for any other
                       distributed autonomous database. The listenerPortTls is mandatory
                       for dedicated infrastructure based distributed autonomous databases.
-                    type: number
+                    format: int64
+                    type: integer
                   moveReplicationUnitTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Move Replication Unit. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   ncharacterSet:
                     description: The national character set for the database.
                     type: string
@@ -983,14 +994,16 @@ spec:
                       database. The onsPortLocal has to be unique for a customer tenancy
                       across all distributed autonomous databases. Same port number
                       should not be re-used for any other distributed autonomous database.
-                    type: number
+                    format: int64
+                    type: integer
                   onsPortRemote:
                     description: Ons remote port number for Globally distributed autonomous
                       database. The onsPortRemote has to be unique for a customer
                       tenancy across all distributed autonomous databases. Same port
                       number should not be re-used for any other distributed autonomous
                       database.
-                    type: number
+                    format: int64
+                    type: integer
                   patchOperations:
                     description: (Updatable)
                     items:
@@ -1023,12 +1036,14 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Recreate Failed Resource. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationFactor:
                     description: The Replication factor for RAFT replication based
                       Globally distributed autonomous database. Currently supported
                       values are 3, 5 and 7.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationMethod:
                     description: The Replication method for Globally distributed autonomous
                       database. Use RAFT for Raft based replication. With RAFT replication,
@@ -1043,7 +1058,8 @@ spec:
                       autonomous database. For RAFT replication based Globally distributed
                       autonomous database, the value should be at least twice the
                       number of shards.
-                    type: number
+                    format: int64
+                    type: integer
                   shardDetails:
                     description: Collection of shards for the Globally distributed
                       autonomous database.
@@ -1495,7 +1511,8 @@ spec:
                               fastStartFailOverLagLimitInSeconds:
                                 description: The lag time preference based on data
                                   loss tolerance in seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               isAutomaticFailoverEnabled:
                                 description: This field is deprecated. Support for
                                   this field will be removed after one year of deprecation
@@ -1509,7 +1526,8 @@ spec:
                                   maintenance window of the standby Autonomous Container
                                   Database. This value represents the number of days
                                   before schedlued maintenance of the primary database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         shardSpace:
@@ -1613,7 +1631,8 @@ spec:
                   startDatabaseTrigger:
                     description: Increment this value to trigger StartDistributedAutonomousDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: (Updatable) The target state for the Distributed
                       Autonomous Database. Could be set to ACTIVE or INACTIVE.
@@ -1621,7 +1640,8 @@ spec:
                   stopDatabaseTrigger:
                     description: Increment this value to trigger StopDistributedAutonomousDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   uploadCaSignedCertificateSecretRef:
                     description: A SecretKeySelector is a reference to a secret key
                       in an arbitrary namespace.
@@ -1644,11 +1664,13 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Upload Signed Certificate And Generate Wallet. Could
                       be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   validateCaBundleTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Ca Bundle. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   validateNetworkDetails:
                     items:
                       properties:
@@ -1665,7 +1687,8 @@ spec:
                   validateNetworkTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Network. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -2135,7 +2158,8 @@ spec:
                               fastStartFailOverLagLimitInSeconds:
                                 description: The lag time preference based on data
                                   loss tolerance in seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               isAutomaticFailoverEnabled:
                                 description: This field is deprecated. Support for
                                   this field will be removed after one year of deprecation
@@ -2149,7 +2173,8 @@ spec:
                                   maintenance window of the standby Autonomous Container
                                   Database. This value represents the number of days
                                   before schedlued maintenance of the primary database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         source:
@@ -2248,7 +2273,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Change Db Backup Config. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   characterSet:
                     description: The character set for the database.
                     type: string
@@ -2259,7 +2285,8 @@ spec:
                       autonomous databases being created with SYSTEM shardingMethod.
                       For USER shardingMethod, chunks should not be set in create
                       payload.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the Globally distributed
                       autonomous database compartment.
@@ -2343,7 +2370,8 @@ spec:
                   configureGsmWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Configure Gsm Wallet. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   configureShardingIsRebalanceRequired:
                     description: (Updatable) Indicates whether shard chunks should
                       be re-balanced as part of Configure Sharding.
@@ -2351,7 +2379,8 @@ spec:
                   configureShardingTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Configure Sharding. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseVersion:
                     description: Oracle Database version for the shards and catalog
                       used in Globally distributed autonomous database.
@@ -2496,7 +2525,8 @@ spec:
                             the value is updated, it is applied to all existing automatic
                             backups. If the number of specified days is 0 then there
                             will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dbDeploymentType:
@@ -2513,7 +2543,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name of the Globally distributed
                       autonomous database.
@@ -2522,7 +2551,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Download Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -2530,12 +2560,12 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generateGsmCertificateSigningRequestTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   generateGsmCertificateSigningRequestTriggerCaBundleId:
                     description: The OCID of the CA bundle to pass to Configure Sharding.
                       Required when configure_sharding_trigger is incremented.
@@ -2561,14 +2591,16 @@ spec:
                   generateWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Wallet. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   listenerPort:
                     description: The listener port number for the Globally distributed
                       autonomous database. The listener port number has to be unique
                       for a customer tenancy across all distributed autonomous databases.
                       Same port number should not be re-used for any other distributed
                       autonomous database.
-                    type: number
+                    format: int64
+                    type: integer
                   listenerPortTls:
                     description: The TLS listener port number for Globally distributed
                       autonomous database. The TLS listener port number has to be
@@ -2576,12 +2608,14 @@ spec:
                       databases. Same port number should not be re-used for any other
                       distributed autonomous database. The listenerPortTls is mandatory
                       for dedicated infrastructure based distributed autonomous databases.
-                    type: number
+                    format: int64
+                    type: integer
                   moveReplicationUnitTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Move Replication Unit. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   ncharacterSet:
                     description: The national character set for the database.
                     type: string
@@ -2590,14 +2624,16 @@ spec:
                       database. The onsPortLocal has to be unique for a customer tenancy
                       across all distributed autonomous databases. Same port number
                       should not be re-used for any other distributed autonomous database.
-                    type: number
+                    format: int64
+                    type: integer
                   onsPortRemote:
                     description: Ons remote port number for Globally distributed autonomous
                       database. The onsPortRemote has to be unique for a customer
                       tenancy across all distributed autonomous databases. Same port
                       number should not be re-used for any other distributed autonomous
                       database.
-                    type: number
+                    format: int64
+                    type: integer
                   patchOperations:
                     description: (Updatable)
                     items:
@@ -2630,12 +2666,14 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Recreate Failed Resource. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationFactor:
                     description: The Replication factor for RAFT replication based
                       Globally distributed autonomous database. Currently supported
                       values are 3, 5 and 7.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationMethod:
                     description: The Replication method for Globally distributed autonomous
                       database. Use RAFT for Raft based replication. With RAFT replication,
@@ -2650,7 +2688,8 @@ spec:
                       autonomous database. For RAFT replication based Globally distributed
                       autonomous database, the value should be at least twice the
                       number of shards.
-                    type: number
+                    format: int64
+                    type: integer
                   shardDetails:
                     description: Collection of shards for the Globally distributed
                       autonomous database.
@@ -3102,7 +3141,8 @@ spec:
                               fastStartFailOverLagLimitInSeconds:
                                 description: The lag time preference based on data
                                   loss tolerance in seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               isAutomaticFailoverEnabled:
                                 description: This field is deprecated. Support for
                                   this field will be removed after one year of deprecation
@@ -3116,7 +3156,8 @@ spec:
                                   maintenance window of the standby Autonomous Container
                                   Database. This value represents the number of days
                                   before schedlued maintenance of the primary database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         shardSpace:
@@ -3220,7 +3261,8 @@ spec:
                   startDatabaseTrigger:
                     description: Increment this value to trigger StartDistributedAutonomousDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: (Updatable) The target state for the Distributed
                       Autonomous Database. Could be set to ACTIVE or INACTIVE.
@@ -3228,7 +3270,8 @@ spec:
                   stopDatabaseTrigger:
                     description: Increment this value to trigger StopDistributedAutonomousDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   uploadCaSignedCertificateSecretRef:
                     description: A SecretKeySelector is a reference to a secret key
                       in an arbitrary namespace.
@@ -3251,11 +3294,13 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Upload Signed Certificate And Generate Wallet. Could
                       be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   validateCaBundleTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Ca Bundle. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   validateNetworkDetails:
                     items:
                       properties:
@@ -3272,7 +3317,8 @@ spec:
                   validateNetworkTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Network. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -3510,7 +3556,8 @@ spec:
                               fastStartFailOverLagLimitInSeconds:
                                 description: The lag time preference based on data
                                   loss tolerance in seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               isAutomaticFailoverEnabled:
                                 description: This field is deprecated. Support for
                                   this field will be removed after one year of deprecation
@@ -3541,7 +3588,8 @@ spec:
                                   maintenance window of the standby Autonomous Container
                                   Database. This value represents the number of days
                                   before schedlued maintenance of the primary database.
-                                type: number
+                                format: int64
+                                type: integer
                               status:
                                 description: Status of catalog with dedicated infrastructure
                                   for the Globally distributed autonomous database.
@@ -3599,7 +3647,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Change Db Backup Config. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   characterSet:
                     description: The character set for the database.
                     type: string
@@ -3610,7 +3659,8 @@ spec:
                       autonomous databases being created with SYSTEM shardingMethod.
                       For USER shardingMethod, chunks should not be set in create
                       payload.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the Globally distributed
                       autonomous database compartment.
@@ -3618,7 +3668,8 @@ spec:
                   configureGsmWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Configure Gsm Wallet. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   configureShardingIsRebalanceRequired:
                     description: (Updatable) Indicates whether shard chunks should
                       be re-balanced as part of Configure Sharding.
@@ -3626,7 +3677,8 @@ spec:
                   configureShardingTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Configure Sharding. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   connectionStrings:
                     description: Details of Globally distributed autonomous database
                       connection String.
@@ -3637,7 +3689,6 @@ spec:
                             type: string
                           description: Collection of connection strings.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   databaseVersion:
@@ -3689,7 +3740,8 @@ spec:
                             the value is updated, it is applied to all existing automatic
                             backups. If the number of specified days is 0 then there
                             will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dbDeploymentType:
@@ -3706,7 +3758,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name of the Globally distributed
                       autonomous database.
@@ -3715,13 +3766,15 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Download Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   effectiveReplicationUnit:
                     description: The replication unit count for RAFT based distributed
                       autonomous database. For RAFT replication based Globally distributed
                       autonomous database, the value should be at least twice the
                       number of shards.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -3729,18 +3782,19 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generateGsmCertificateSigningRequestTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   generateGsmCertificateSigningRequestTriggerCaBundleId:
                     description: The OCID of the CA bundle to pass to Configure Sharding.
                       Required when configure_sharding_trigger is incremented.
                     type: string
                   generateWalletDownloadedWalletContentLength:
-                    type: number
+                    format: int64
+                    type: integer
                   generateWalletDownloadedWalletEtag:
                     type: string
                   generateWalletDownloadedWalletLastModified:
@@ -3748,7 +3802,8 @@ spec:
                   generateWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Wallet. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   gsmDetails:
                     description: Collection of catalogs associated with the Globally
                       distributed autonomous database.
@@ -3772,7 +3827,8 @@ spec:
                               versionNumber:
                                 description: The version number associated with the
                                   image identified by id.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         metadata:
@@ -3828,7 +3884,8 @@ spec:
                         versionNumber:
                           description: The version number associated with the image
                             identified by id.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   lifecycleDetails:
@@ -3841,7 +3898,8 @@ spec:
                       for a customer tenancy across all distributed autonomous databases.
                       Same port number should not be re-used for any other distributed
                       autonomous database.
-                    type: number
+                    format: int64
+                    type: integer
                   listenerPortTls:
                     description: The TLS listener port number for Globally distributed
                       autonomous database. The TLS listener port number has to be
@@ -3849,7 +3907,8 @@ spec:
                       databases. Same port number should not be re-used for any other
                       distributed autonomous database. The listenerPortTls is mandatory
                       for dedicated infrastructure based distributed autonomous databases.
-                    type: number
+                    format: int64
+                    type: integer
                   metadata:
                     description: Additional metadata related to Globally distributed
                       autonomous database resources.
@@ -3868,7 +3927,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Move Replication Unit. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   ncharacterSet:
                     description: The national character set for the database.
                     type: string
@@ -3877,14 +3937,16 @@ spec:
                       database. The onsPortLocal has to be unique for a customer tenancy
                       across all distributed autonomous databases. Same port number
                       should not be re-used for any other distributed autonomous database.
-                    type: number
+                    format: int64
+                    type: integer
                   onsPortRemote:
                     description: Ons remote port number for Globally distributed autonomous
                       database. The onsPortRemote has to be unique for a customer
                       tenancy across all distributed autonomous databases. Same port
                       number should not be re-used for any other distributed autonomous
                       database.
-                    type: number
+                    format: int64
+                    type: integer
                   patchOperations:
                     description: (Updatable)
                     items:
@@ -3917,12 +3979,14 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Recreate Failed Resource. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationFactor:
                     description: The Replication factor for RAFT replication based
                       Globally distributed autonomous database. Currently supported
                       values are 3, 5 and 7.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationMethod:
                     description: The Replication method for Globally distributed autonomous
                       database. Use RAFT for Raft based replication. With RAFT replication,
@@ -3937,7 +4001,8 @@ spec:
                       autonomous database. For RAFT replication based Globally distributed
                       autonomous database, the value should be at least twice the
                       number of shards.
-                    type: number
+                    format: int64
+                    type: integer
                   shardDetails:
                     description: Collection of shards for the Globally distributed
                       autonomous database.
@@ -4019,7 +4084,8 @@ spec:
                               fastStartFailOverLagLimitInSeconds:
                                 description: The lag time preference based on data
                                   loss tolerance in seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               isAutomaticFailoverEnabled:
                                 description: This field is deprecated. Support for
                                   this field will be removed after one year of deprecation
@@ -4050,7 +4116,8 @@ spec:
                                   maintenance window of the standby Autonomous Container
                                   Database. This value represents the number of days
                                   before schedlued maintenance of the primary database.
-                                type: number
+                                format: int64
+                                type: integer
                               status:
                                 description: Status of catalog with dedicated infrastructure
                                   for the Globally distributed autonomous database.
@@ -4115,7 +4182,8 @@ spec:
                   startDatabaseTrigger:
                     description: Increment this value to trigger StartDistributedAutonomousDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: (Updatable) The target state for the Distributed
                       Autonomous Database. Could be set to ACTIVE or INACTIVE.
@@ -4123,7 +4191,8 @@ spec:
                   stopDatabaseTrigger:
                     description: Increment this value to trigger StopDistributedAutonomousDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   systemTags:
                     additionalProperties:
                       type: string
@@ -4131,7 +4200,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the catalog peer was created. An RFC3339
                       formatted datetime string
@@ -4144,11 +4212,13 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Upload Signed Certificate And Generate Wallet. Could
                       be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   validateCaBundleTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Ca Bundle. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   validateNetworkDetails:
                     items:
                       properties:
@@ -4165,7 +4235,8 @@ spec:
                   validateNetworkTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Network. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

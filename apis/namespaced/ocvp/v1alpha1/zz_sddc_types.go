@@ -151,7 +151,7 @@ type InitialClusterConfigurationsInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Deprecated)  The number of ESXi hosts to create in the SDDC. You can add more hosts later (see CreateEsxiHost). Creating a SDDC with a ESXi host count of 1 will be considered a single ESXi host SDDC. Deprecated. Please use esxi_hosts_count of initial_cluster_configurations instead.
-	EsxiHostsCount *float64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
+	EsxiHostsCount *int64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
 
 	// The billing option selected during Cluster creation. ListSupportedCommitments.
 	InitialCommitment *string `json:"initialCommitment,omitempty" tf:"initial_commitment,omitempty"`
@@ -493,7 +493,7 @@ type InitialClusterConfigurationsNetworkConfigurationParameters struct {
 type InitialClusterConfigurationsObservation struct {
 
 	// (Deprecated) The number of actual ESXi hosts in the SDDC on the cloud. This attribute will be different when esxi Host is added to an existing SDDC. Deprecated. Please use actual_esxi_hosts_count of initial_cluster_configurations instead.
-	ActualEsxiHostsCount *float64 `json:"actualEsxiHostsCount,omitempty" tf:"actual_esxi_hosts_count,omitempty"`
+	ActualEsxiHostsCount *int64 `json:"actualEsxiHostsCount,omitempty" tf:"actual_esxi_hosts_count,omitempty"`
 
 	// (Deprecated)  The OCID of the Capacity Reservation. Deprecated. Please use capacity_reservation_id of initial_cluster_configurations instead.
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
@@ -514,7 +514,7 @@ type InitialClusterConfigurationsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Deprecated)  The number of ESXi hosts to create in the SDDC. You can add more hosts later (see CreateEsxiHost). Creating a SDDC with a ESXi host count of 1 will be considered a single ESXi host SDDC. Deprecated. Please use esxi_hosts_count of initial_cluster_configurations instead.
-	EsxiHostsCount *float64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
+	EsxiHostsCount *int64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
 
 	// The billing option selected during Cluster creation. ListSupportedCommitments.
 	InitialCommitment *string `json:"initialCommitment,omitempty" tf:"initial_commitment,omitempty"`
@@ -572,7 +572,7 @@ type InitialClusterConfigurationsParameters struct {
 
 	// (Deprecated)  The number of ESXi hosts to create in the SDDC. You can add more hosts later (see CreateEsxiHost). Creating a SDDC with a ESXi host count of 1 will be considered a single ESXi host SDDC. Deprecated. Please use esxi_hosts_count of initial_cluster_configurations instead.
 	// +kubebuilder:validation:Optional
-	EsxiHostsCount *float64 `json:"esxiHostsCount" tf:"esxi_hosts_count,omitempty"`
+	EsxiHostsCount *int64 `json:"esxiHostsCount" tf:"esxi_hosts_count,omitempty"`
 
 	// The billing option selected during Cluster creation. ListSupportedCommitments.
 	// +kubebuilder:validation:Optional
@@ -656,7 +656,7 @@ type SddcByolAllocationDetailsInitParameters struct {
 	LoadBalancerByolAllocationIDSelector *v1.NamespacedSelector `json:"loadBalancerByolAllocationIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The number of VMware Avi Load Balancer instances to be deployed on VMware SDDC.
-	LoadBalancerInstanceCount *float64 `json:"loadBalancerInstanceCount,omitempty" tf:"load_balancer_instance_count,omitempty"`
+	LoadBalancerInstanceCount *int64 `json:"loadBalancerInstanceCount,omitempty" tf:"load_balancer_instance_count,omitempty"`
 }
 
 type SddcByolAllocationDetailsObservation struct {
@@ -665,7 +665,7 @@ type SddcByolAllocationDetailsObservation struct {
 	LoadBalancerByolAllocationID *string `json:"loadBalancerByolAllocationId,omitempty" tf:"load_balancer_byol_allocation_id,omitempty"`
 
 	// (Updatable) The number of VMware Avi Load Balancer instances to be deployed on VMware SDDC.
-	LoadBalancerInstanceCount *float64 `json:"loadBalancerInstanceCount,omitempty" tf:"load_balancer_instance_count,omitempty"`
+	LoadBalancerInstanceCount *int64 `json:"loadBalancerInstanceCount,omitempty" tf:"load_balancer_instance_count,omitempty"`
 }
 
 type SddcByolAllocationDetailsParameters struct {
@@ -686,7 +686,7 @@ type SddcByolAllocationDetailsParameters struct {
 
 	// (Updatable) The number of VMware Avi Load Balancer instances to be deployed on VMware SDDC.
 	// +kubebuilder:validation:Optional
-	LoadBalancerInstanceCount *float64 `json:"loadBalancerInstanceCount,omitempty" tf:"load_balancer_instance_count,omitempty"`
+	LoadBalancerInstanceCount *int64 `json:"loadBalancerInstanceCount,omitempty" tf:"load_balancer_instance_count,omitempty"`
 }
 
 type SddcDatastoresInitParameters struct {
@@ -745,21 +745,19 @@ type SddcInitParameters struct {
 	Datastores []SddcDatastoresInitParameters `json:"datastores,omitempty" tf:"datastores,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A descriptive name for the SDDC. SDDC name requirements are 1-16 character length limit, Must start with a letter, Must be English letters, numbers, - only, No repeating hyphens, Must be unique within the region. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Deprecated)  The number of ESXi hosts to create in the SDDC. You can add more hosts later (see CreateEsxiHost). Creating a SDDC with a ESXi host count of 1 will be considered a single ESXi host SDDC. Deprecated. Please use esxi_hosts_count of initial_cluster_configurations instead.
-	EsxiHostsCount *float64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
+	EsxiHostsCount *int64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
 
 	// (Updatable) The ESXi software bundle to install on the ESXi hosts in the SDDC.  Only versions under the same vmwareSoftwareVersion and have been validate by Oracle Cloud VMware Solution will be accepted. To get a list of the available versions, use ListSupportedVmwareSoftwareVersions.
 	EsxiSoftwareVersion *string `json:"esxiSoftwareVersion,omitempty" tf:"esxi_software_version,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The action to be performed upon HCX licenses. "UPGRADE" will upgrade the SDDC from HCX Advanced to HCX Enterprise. "DOWNGRADE" will downgrade the SDDC from HCX Enterprise to HCX Advanced after current HCX Enterprise billing cycle end date. "CANCEL_DOWNGRADE" will cancel the pending downgrade of HCX licenses. The action will only be performed when its value is changed. This field can also be used to enable HCX Enterprise during SDDC creation. If "UPGRADE" is set during SDDC creation, the SDDC will be created with HCX Enterprise enable. Supported actions during update: UPGRADE, DOWNGRADE, CANCEL_DOWNGRADE. Supported actions during creation: UPGRADE.
 	HcxAction *string `json:"hcxAction,omitempty" tf:"hcx_action,omitempty"`
@@ -843,13 +841,13 @@ type SddcInitParameters struct {
 type SddcObservation struct {
 
 	// (Deprecated) The number of actual ESXi hosts in the SDDC on the cloud. This attribute will be different when esxi Host is added to an existing SDDC. Deprecated. Please use actual_esxi_hosts_count of initial_cluster_configurations instead.
-	ActualEsxiHostsCount *float64 `json:"actualEsxiHostsCount,omitempty" tf:"actual_esxi_hosts_count,omitempty"`
+	ActualEsxiHostsCount *int64 `json:"actualEsxiHostsCount,omitempty" tf:"actual_esxi_hosts_count,omitempty"`
 
 	// (Deprecated)  The OCID of the Capacity Reservation. Deprecated. Please use capacity_reservation_id of initial_cluster_configurations instead.
 	CapacityReservationID *string `json:"capacityReservationId,omitempty" tf:"capacity_reservation_id,omitempty"`
 
 	// The number of Clusters in the SDDC.
-	ClustersCount *float64 `json:"clustersCount,omitempty" tf:"clusters_count,omitempty"`
+	ClustersCount *int64 `json:"clustersCount,omitempty" tf:"clusters_count,omitempty"`
 
 	// (Updatable) The OCID of the compartment to contain the SDDC.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -861,21 +859,19 @@ type SddcObservation struct {
 	Datastores []SddcDatastoresObservation `json:"datastores,omitempty" tf:"datastores,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A descriptive name for the SDDC. SDDC name requirements are 1-16 character length limit, Must start with a letter, Must be English letters, numbers, - only, No repeating hyphens, Must be unique within the region. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Deprecated)  The number of ESXi hosts to create in the SDDC. You can add more hosts later (see CreateEsxiHost). Creating a SDDC with a ESXi host count of 1 will be considered a single ESXi host SDDC. Deprecated. Please use esxi_hosts_count of initial_cluster_configurations instead.
-	EsxiHostsCount *float64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
+	EsxiHostsCount *int64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
 
 	// (Updatable) The ESXi software bundle to install on the ESXi hosts in the SDDC.  Only versions under the same vmwareSoftwareVersion and have been validate by Oracle Cloud VMware Solution will be accepted. To get a list of the available versions, use ListSupportedVmwareSoftwareVersions.
 	EsxiSoftwareVersion *string `json:"esxiSoftwareVersion,omitempty" tf:"esxi_software_version,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The action to be performed upon HCX licenses. "UPGRADE" will upgrade the SDDC from HCX Advanced to HCX Enterprise. "DOWNGRADE" will downgrade the SDDC from HCX Enterprise to HCX Advanced after current HCX Enterprise billing cycle end date. "CANCEL_DOWNGRADE" will cancel the pending downgrade of HCX licenses. The action will only be performed when its value is changed. This field can also be used to enable HCX Enterprise during SDDC creation. If "UPGRADE" is set during SDDC creation, the SDDC will be created with HCX Enterprise enable. Supported actions during update: UPGRADE, DOWNGRADE, CANCEL_DOWNGRADE. Supported actions during creation: UPGRADE.
 	HcxAction *string `json:"hcxAction,omitempty" tf:"hcx_action,omitempty"`
@@ -989,8 +985,7 @@ type SddcObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the SDDC was created, in the format defined by RFC3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -1070,8 +1065,7 @@ type SddcParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A descriptive name for the SDDC. SDDC name requirements are 1-16 character length limit, Must start with a letter, Must be English letters, numbers, - only, No repeating hyphens, Must be unique within the region. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -1079,7 +1073,7 @@ type SddcParameters struct {
 
 	// (Deprecated)  The number of ESXi hosts to create in the SDDC. You can add more hosts later (see CreateEsxiHost). Creating a SDDC with a ESXi host count of 1 will be considered a single ESXi host SDDC. Deprecated. Please use esxi_hosts_count of initial_cluster_configurations instead.
 	// +kubebuilder:validation:Optional
-	EsxiHostsCount *float64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
+	EsxiHostsCount *int64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
 
 	// (Updatable) The ESXi software bundle to install on the ESXi hosts in the SDDC.  Only versions under the same vmwareSoftwareVersion and have been validate by Oracle Cloud VMware Solution will be accepted. To get a list of the available versions, use ListSupportedVmwareSoftwareVersions.
 	// +kubebuilder:validation:Optional
@@ -1087,8 +1081,7 @@ type SddcParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The action to be performed upon HCX licenses. "UPGRADE" will upgrade the SDDC from HCX Advanced to HCX Enterprise. "DOWNGRADE" will downgrade the SDDC from HCX Enterprise to HCX Advanced after current HCX Enterprise billing cycle end date. "CANCEL_DOWNGRADE" will cancel the pending downgrade of HCX licenses. The action will only be performed when its value is changed. This field can also be used to enable HCX Enterprise during SDDC creation. If "UPGRADE" is set during SDDC creation, the SDDC will be created with HCX Enterprise enable. Supported actions during update: UPGRADE, DOWNGRADE, CANCEL_DOWNGRADE. Supported actions during creation: UPGRADE.
 	// +kubebuilder:validation:Optional

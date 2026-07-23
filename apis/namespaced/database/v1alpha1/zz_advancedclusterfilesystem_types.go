@@ -29,18 +29,16 @@ type AdvancedClusterFileSystemInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The user-friendly name for the Advanced cluster file system. The name has to be unique.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The total storage needed for advanced cluster file system in GBs.
-	StorageInGbs *float64 `json:"storageInGbs,omitempty" tf:"storage_in_gbs,omitempty"`
+	StorageInGbs *int64 `json:"storageInGbs,omitempty" tf:"storage_in_gbs,omitempty"`
 
 	// (Updatable) The OCID of the VM cluster.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.VmCluster
@@ -62,15 +60,13 @@ type AdvancedClusterFileSystemObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Description of the advanced cluster file system.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the advanced cluster file system.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -91,11 +87,10 @@ type AdvancedClusterFileSystemObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) The total storage needed for advanced cluster file system in GBs.
-	StorageInGbs *float64 `json:"storageInGbs,omitempty" tf:"storage_in_gbs,omitempty"`
+	StorageInGbs *int64 `json:"storageInGbs,omitempty" tf:"storage_in_gbs,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the advanced cluster file system was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -127,13 +122,11 @@ type AdvancedClusterFileSystemParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The user-friendly name for the Advanced cluster file system. The name has to be unique.
 	// +kubebuilder:validation:Optional
@@ -141,7 +134,7 @@ type AdvancedClusterFileSystemParameters struct {
 
 	// (Updatable) The total storage needed for advanced cluster file system in GBs.
 	// +kubebuilder:validation:Optional
-	StorageInGbs *float64 `json:"storageInGbs,omitempty" tf:"storage_in_gbs,omitempty"`
+	StorageInGbs *int64 `json:"storageInGbs,omitempty" tf:"storage_in_gbs,omitempty"`
 
 	// (Updatable) The OCID of the VM cluster.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.VmCluster

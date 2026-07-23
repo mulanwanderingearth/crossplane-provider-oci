@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description for this resource.
                     type: string
@@ -177,7 +176,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   namespace:
                     description: The Log Analytics namespace used for the request.
                       The namespace can be obtained by running 'oci os ns get'
@@ -282,7 +280,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description for this resource.
                     type: string
@@ -299,7 +296,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   namespace:
                     description: The Log Analytics namespace used for the request.
                       The namespace can be obtained by running 'oci os ns get'
@@ -418,7 +414,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description for this resource.
                     type: string
@@ -435,7 +430,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The log analytics entity OCID. This ID is a reference
                       used by log analytics features and it represents a resource

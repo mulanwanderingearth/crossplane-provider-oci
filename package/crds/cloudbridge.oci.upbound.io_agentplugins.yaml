@@ -365,7 +365,6 @@ spec:
                       more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   desiredState:
                     description: (Updatable) State to which the customer wants the
                       plugin to move to.
@@ -378,7 +377,6 @@ spec:
                       name, type, or namespace/scope. For more information, see Resource
                       Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   lifecycleDetails:
@@ -407,7 +405,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time when the Agent was created. An RFC3339 formatted
                       datetime string.

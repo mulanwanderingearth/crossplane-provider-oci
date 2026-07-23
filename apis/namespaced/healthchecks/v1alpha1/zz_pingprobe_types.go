@@ -29,7 +29,7 @@ type PingProbeInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// The port on which to probe endpoints. If unspecified, probes will use the default port of their protocol.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocols for ping probes.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -38,7 +38,7 @@ type PingProbeInitParameters struct {
 	Targets []*string `json:"targets,omitempty" tf:"targets,omitempty"`
 
 	// The probe timeout in seconds. Valid values: 10, 20, 30, and 60. The probe timeout must be less than or equal to intervalInSeconds for monitors.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// A list of names of vantage points from which to execute the probe.
 	VantagePointNames []*string `json:"vantagePointNames,omitempty" tf:"vantage_point_names,omitempty"`
@@ -56,7 +56,7 @@ type PingProbeObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The port on which to probe endpoints. If unspecified, probes will use the default port of their protocol.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocols for ping probes.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -71,7 +71,7 @@ type PingProbeObservation struct {
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
 	// The probe timeout in seconds. Valid values: 10, 20, 30, and 60. The probe timeout must be less than or equal to intervalInSeconds for monitors.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// A list of names of vantage points from which to execute the probe.
 	VantagePointNames []*string `json:"vantagePointNames,omitempty" tf:"vantage_point_names,omitempty"`
@@ -94,7 +94,7 @@ type PingProbeParameters struct {
 
 	// The port on which to probe endpoints. If unspecified, probes will use the default port of their protocol.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocols for ping probes.
 	// +kubebuilder:validation:Optional
@@ -106,7 +106,7 @@ type PingProbeParameters struct {
 
 	// The probe timeout in seconds. Valid values: 10, 20, 30, and 60. The probe timeout must be less than or equal to intervalInSeconds for monitors.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// A list of names of vantage points from which to execute the probe.
 	// +kubebuilder:validation:Optional

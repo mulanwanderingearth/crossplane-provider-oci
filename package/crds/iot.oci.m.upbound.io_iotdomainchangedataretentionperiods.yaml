@@ -64,7 +64,8 @@ spec:
                   dataRetentionPeriodInDays:
                     description: The duration (in days) for which data will be retained
                       in the IoT domain.
-                    type: number
+                    format: int64
+                    type: integer
                   iotDomainId:
                     description: The OCID of the IoT domain.
                     type: string
@@ -169,7 +170,8 @@ spec:
                   dataRetentionPeriodInDays:
                     description: The duration (in days) for which data will be retained
                       in the IoT domain.
-                    type: number
+                    format: int64
+                    type: integer
                   iotDomainId:
                     description: The OCID of the IoT domain.
                     type: string
@@ -336,7 +338,8 @@ spec:
                   dataRetentionPeriodInDays:
                     description: The duration (in days) for which data will be retained
                       in the IoT domain.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     type: string
                   iotDomainId:

@@ -714,7 +714,8 @@ spec:
                         listenerPort:
                           description: (Updatable) The port number of the database
                             listener.
-                          type: number
+                          format: int64
+                          type: integer
                         pluggableDatabaseId:
                           description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                             (Updatable) The OCID of the pluggable database registered
@@ -902,7 +903,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the target database
                       in Data Safe.
@@ -920,7 +920,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   peerTargetDatabaseDetails:
                     description: The details of the database to be registered as a
                       peer target database.
@@ -1210,7 +1209,8 @@ spec:
                               listenerPort:
                                 description: (Updatable) The port number of the database
                                   listener.
-                                type: number
+                                format: int64
+                                type: integer
                               pluggableDatabaseId:
                                 description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                                   (Updatable) The OCID of the pluggable database registered
@@ -2145,7 +2145,8 @@ spec:
                         listenerPort:
                           description: (Updatable) The port number of the database
                             listener.
-                          type: number
+                          format: int64
+                          type: integer
                         pluggableDatabaseId:
                           description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                             (Updatable) The OCID of the pluggable database registered
@@ -2333,7 +2334,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the target database
                       in Data Safe.
@@ -2351,7 +2351,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   peerTargetDatabaseDetails:
                     description: The details of the database to be registered as a
                       peer target database.
@@ -2641,7 +2640,8 @@ spec:
                               listenerPort:
                                 description: (Updatable) The port number of the database
                                   listener.
-                                type: number
+                                format: int64
+                                type: integer
                               pluggableDatabaseId:
                                 description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                                   (Updatable) The OCID of the pluggable database registered
@@ -3051,7 +3051,8 @@ spec:
                         listenerPort:
                           description: (Updatable) The port number of the database
                             listener.
-                          type: number
+                          format: int64
+                          type: integer
                         pluggableDatabaseId:
                           description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                             (Updatable) The OCID of the pluggable database registered
@@ -3075,7 +3076,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the target database
                       in Data Safe.
@@ -3093,7 +3093,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Data Safe target database.
                     type: string
@@ -3144,7 +3143,8 @@ spec:
                               listenerPort:
                                 description: (Updatable) The port number of the database
                                   listener.
-                                type: number
+                                format: int64
+                                type: integer
                               pluggableDatabaseId:
                                 description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                                   (Updatable) The OCID of the pluggable database registered
@@ -3242,7 +3242,8 @@ spec:
                               listenerPort:
                                 description: (Updatable) The port number of the database
                                   listener.
-                                type: number
+                                format: int64
+                                type: integer
                               pluggableDatabaseId:
                                 description: (Applicable when database_type=DATABASE_CLOUD_SERVICE)
                                   (Updatable) The OCID of the pluggable database registered
@@ -3280,7 +3281,8 @@ spec:
                         key:
                           description: The secondary key assigned for the peer target
                             database in Data Safe.
-                          type: number
+                          format: int64
+                          type: integer
                         lifecycleDetails:
                           description: Details about the current state of the target
                             database in Data Safe.
@@ -3336,7 +3338,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags. Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time of the peer target database registration
                       in Data Safe.

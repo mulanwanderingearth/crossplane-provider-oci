@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the Autonomous
                       Exadata Infrastructure. It does not have to be unique.
@@ -180,7 +179,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   licenseModel:
                     description: The Oracle license model that applies to all the
                       databases in the Autonomous Exadata Infrastructure. The default
@@ -197,7 +195,8 @@ spec:
                             system will wait before the start of each database server
                             patching operation. Custom action timeout is in minutes
                             and valid value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -213,7 +212,8 @@ spec:
                             day when maintenance should be performed. The window is
                             a 4 hour slot. Valid values are
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Updatable) If true, enables the configuration
@@ -228,7 +228,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -266,7 +267,8 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -482,7 +484,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the Autonomous
                       Exadata Infrastructure. It does not have to be unique.
@@ -502,7 +503,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   licenseModel:
                     description: The Oracle license model that applies to all the
                       databases in the Autonomous Exadata Infrastructure. The default
@@ -519,7 +519,8 @@ spec:
                             system will wait before the start of each database server
                             patching operation. Custom action timeout is in minutes
                             and valid value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -535,7 +536,8 @@ spec:
                             day when maintenance should be performed. The window is
                             a 4 hour slot. Valid values are
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Updatable) If true, enables the configuration
@@ -550,7 +552,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -588,7 +591,8 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -784,7 +788,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the Autonomous
                       Exadata Infrastructure. It does not have to be unique.
@@ -804,7 +807,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostname:
                     description: The host name for the Autonomous Exadata Infrastructure
                       node.
@@ -835,7 +837,8 @@ spec:
                             system will wait before the start of each database server
                             patching operation. Custom action timeout is in minutes
                             and valid value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -851,7 +854,8 @@ spec:
                             day when maintenance should be performed. The window is
                             a 4 hour slot. Valid values are
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Updatable) If true, enables the configuration
@@ -866,7 +870,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -904,7 +909,8 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -919,7 +925,8 @@ spec:
                             system will wait before the start of each database server
                             patching operation. Custom action timeout is in minutes
                             and valid value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -935,7 +942,8 @@ spec:
                             day when maintenance should be performed. The window is
                             a 4 hour slot. Valid values are
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Updatable) If true, enables the configuration
@@ -950,7 +958,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -988,7 +997,8 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array

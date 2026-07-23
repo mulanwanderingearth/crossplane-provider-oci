@@ -175,8 +175,7 @@ type NamespaceLookupInitParameters struct {
 	DefaultMatchValue *string `json:"defaultMatchValue,omitempty" tf:"default_match_value,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The category description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -185,8 +184,7 @@ type NamespaceLookupInitParameters struct {
 	Fields []FieldsInitParameters `json:"fields,omitempty" tf:"fields,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A flag indicating whether or not the new lookup should be hidden.
 	IsHidden *bool `json:"isHidden,omitempty" tf:"is_hidden,omitempty"`
@@ -228,8 +226,7 @@ type NamespaceLookupObservation struct {
 	DefaultMatchValue *string `json:"defaultMatchValue,omitempty" tf:"default_match_value,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The category description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -241,8 +238,7 @@ type NamespaceLookupObservation struct {
 	Fields []FieldsObservation `json:"fields,omitempty" tf:"fields,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -318,8 +314,7 @@ type NamespaceLookupParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The category description.
 	// +kubebuilder:validation:Optional
@@ -331,8 +326,7 @@ type NamespaceLookupParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A flag indicating whether or not the new lookup should be hidden.
 	// +kubebuilder:validation:Optional

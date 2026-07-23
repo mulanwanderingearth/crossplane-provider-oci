@@ -300,8 +300,7 @@ type RelatedResourceParameters struct {
 type ToolsDatabaseToolsConnectionInitParameters struct {
 
 	// (Updatable) The advanced connection properties key-value pair (e.g., oracle.net.ssl_server_dn_match).
-	// +mapType=granular
-	AdvancedProperties map[string]*string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
+	AdvancedProperties map[string]string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
 
 	// (Applicable when type=ORACLE_DATABASE) Specifies the authentication type used by the Database Tools service to authenticate with the database.
 	AuthenticationType *string `json:"authenticationType,omitempty" tf:"authentication_type,omitempty"`
@@ -322,15 +321,13 @@ type ToolsDatabaseToolsConnectionInitParameters struct {
 	ConnectionString *string `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Oracle wallet or Java Keystores containing trusted certificates for authenticating the server's public certificate and the client private key and associated certificates required for client authentication.
 	KeyStores []KeyStoresInitParameters `json:"keyStores,omitempty" tf:"key_stores,omitempty"`
@@ -389,8 +386,7 @@ type ToolsDatabaseToolsConnectionInitParameters struct {
 type ToolsDatabaseToolsConnectionObservation struct {
 
 	// (Updatable) The advanced connection properties key-value pair (e.g., oracle.net.ssl_server_dn_match).
-	// +mapType=granular
-	AdvancedProperties map[string]*string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
+	AdvancedProperties map[string]string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
 
 	// (Applicable when type=ORACLE_DATABASE) Specifies the authentication type used by the Database Tools service to authenticate with the database.
 	AuthenticationType *string `json:"authenticationType,omitempty" tf:"authentication_type,omitempty"`
@@ -402,15 +398,13 @@ type ToolsDatabaseToolsConnectionObservation struct {
 	ConnectionString *string `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Database Tools connection.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -446,8 +440,7 @@ type ToolsDatabaseToolsConnectionObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// When the lock was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -472,8 +465,7 @@ type ToolsDatabaseToolsConnectionParameters struct {
 
 	// (Updatable) The advanced connection properties key-value pair (e.g., oracle.net.ssl_server_dn_match).
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	AdvancedProperties map[string]*string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
+	AdvancedProperties map[string]string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
 
 	// (Applicable when type=ORACLE_DATABASE) Specifies the authentication type used by the Database Tools service to authenticate with the database.
 	// +kubebuilder:validation:Optional
@@ -498,8 +490,7 @@ type ToolsDatabaseToolsConnectionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -507,8 +498,7 @@ type ToolsDatabaseToolsConnectionParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Oracle wallet or Java Keystores containing trusted certificates for authenticating the server's public certificate and the client private key and associated certificates required for client authentication.
 	// +kubebuilder:validation:Optional

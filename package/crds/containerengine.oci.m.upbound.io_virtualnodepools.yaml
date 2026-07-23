@@ -238,7 +238,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the virtual node pool.
                       This is a non-unique value.
@@ -251,7 +250,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   initialVirtualNodeLabels:
                     description: (Updatable) Initial labels that will be added to
                       the Kubernetes Virtual Node object when it registers.
@@ -655,7 +653,8 @@ spec:
                     description: (Updatable) The number of Virtual Nodes that should
                       be in the Virtual Node Pool. The placement configurations determine
                       where these virtual nodes are placed.
-                    type: number
+                    format: int64
+                    type: integer
                   taints:
                     description: (Updatable) A taint is a collection of <key, value,
                       effect>. These taints will be applied to the Virtual Nodes of
@@ -711,7 +710,6 @@ spec:
                             more information, see Resource Tags. Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -720,7 +718,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags. Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                 type: object
@@ -915,7 +912,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the virtual node pool.
                       This is a non-unique value.
@@ -928,7 +924,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   initialVirtualNodeLabels:
                     description: (Updatable) Initial labels that will be added to
                       the Kubernetes Virtual Node object when it registers.
@@ -1332,7 +1327,8 @@ spec:
                     description: (Updatable) The number of Virtual Nodes that should
                       be in the Virtual Node Pool. The placement configurations determine
                       where these virtual nodes are placed.
-                    type: number
+                    format: int64
+                    type: integer
                   taints:
                     description: (Updatable) A taint is a collection of <key, value,
                       effect>. These taints will be applied to the Virtual Nodes of
@@ -1388,7 +1384,6 @@ spec:
                             more information, see Resource Tags. Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -1397,7 +1392,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags. Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                 type: object
@@ -1497,7 +1491,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the virtual node pool.
                       This is a non-unique value.
@@ -1510,7 +1503,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the virtual node pool.
                     type: string
@@ -1590,7 +1582,8 @@ spec:
                     description: (Updatable) The number of Virtual Nodes that should
                       be in the Virtual Node Pool. The placement configurations determine
                       where these virtual nodes are placed.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The state of the Virtual Node Pool.
                     type: string
@@ -1601,7 +1594,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   taints:
                     description: (Updatable) A taint is a collection of <key, value,
                       effect>. These taints will be applied to the Virtual Nodes of
@@ -1663,7 +1655,6 @@ spec:
                             more information, see Resource Tags. Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -1672,7 +1663,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags. Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                 type: object

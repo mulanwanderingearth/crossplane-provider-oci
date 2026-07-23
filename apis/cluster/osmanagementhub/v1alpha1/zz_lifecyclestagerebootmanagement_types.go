@@ -19,7 +19,7 @@ type LifecycleStageRebootManagementInitParameters struct {
 	LifecycleStageID *string `json:"lifecycleStageId,omitempty" tf:"lifecycle_stage_id,omitempty"`
 
 	// The number of minutes the service waits for the reboot to complete. If the instances in the stage don't reboot  within this time, the reboot job status is set to failed.
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// Provides the name and description of the job.
 	WorkRequestDetails []LifecycleStageRebootManagementWorkRequestDetailsInitParameters `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
@@ -32,7 +32,7 @@ type LifecycleStageRebootManagementObservation struct {
 	LifecycleStageID *string `json:"lifecycleStageId,omitempty" tf:"lifecycle_stage_id,omitempty"`
 
 	// The number of minutes the service waits for the reboot to complete. If the instances in the stage don't reboot  within this time, the reboot job status is set to failed.
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// Provides the name and description of the job.
 	WorkRequestDetails []LifecycleStageRebootManagementWorkRequestDetailsObservation `json:"workRequestDetails,omitempty" tf:"work_request_details,omitempty"`
@@ -46,7 +46,7 @@ type LifecycleStageRebootManagementParameters struct {
 
 	// The number of minutes the service waits for the reboot to complete. If the instances in the stage don't reboot  within this time, the reboot job status is set to failed.
 	// +kubebuilder:validation:Optional
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// Provides the name and description of the job.
 	// +kubebuilder:validation:Optional

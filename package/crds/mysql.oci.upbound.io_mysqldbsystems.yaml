@@ -118,7 +118,8 @@ spec:
                               backupCopyRetentionInDays:
                                 description: (Updatable) Number of days to retain
                                   the copied DB system backup.
-                                type: number
+                                format: int64
+                                type: integer
                               copyToRegion:
                                 description: (Updatable) The destination region name
                                   to which the DB system backup will be copied.
@@ -131,7 +132,6 @@ spec:
                           description: (Updatable) Usage of predefined tag keys. These
                             predefined keys are scoped to namespaces.
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -139,7 +139,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only.
                           type: object
-                          x-kubernetes-map-type: granular
                         isEnabled:
                           description: (Updatable) Specifies if automatic backups
                             are enabled.
@@ -157,7 +156,8 @@ spec:
                         retentionInDays:
                           description: (Updatable) Number of days to retain an automatic
                             backup.
-                          type: number
+                          format: int64
+                          type: integer
                         softDelete:
                           description: (Updatable) Retains the backup to be deleted
                             due to the retention policy in DELETE SCHEDULED state
@@ -364,7 +364,8 @@ spec:
                             can expand to. When isAutoExpandStorageEnabled is set
                             to true, the DB System will add storage incrementally
                             up to this value.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dataStorageSizeInGb:
@@ -374,7 +375,8 @@ spec:
                       for the database will be scaled appropriately with its shape.
                       It is required if you are creating a new database. It cannot
                       be set if you are creating a database from a backup.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseConsole:
                     description: (Updatable) Details required to configure the database
                       console while creating a DB System.
@@ -384,7 +386,8 @@ spec:
                           description: (Updatable) The port on which the database
                             console can be accessed. Supported port numbers are 443
                             and from 1024 to 65535.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: (Updatable) Enable/disable the database console
                             on the DB System.
@@ -408,7 +411,6 @@ spec:
                     description: (Updatable) Usage of predefined tag keys. These predefined
                       keys are scoped to namespaces.
                     type: object
-                    x-kubernetes-map-type: granular
                   deletionPolicy:
                     description: (Updatable) Policy for how the DB System and related
                       resources should be handled at the time of its deletion.
@@ -537,7 +539,6 @@ spec:
                       any predefined name, type or scope. Exists for cross-compatibility
                       only.
                     type: object
-                    x-kubernetes-map-type: granular
                   hostnameLabel:
                     description: (Updatable) The hostname for the primary endpoint
                       of the DB System. Used for DNS.
@@ -644,11 +645,13 @@ spec:
                     description: (Updatable) The port on which the database console
                       can be accessed. Supported port numbers are 443 and from 1024
                       to 65535.
-                    type: number
+                    format: int64
+                    type: integer
                   portX:
                     description: The TCP network port on which X Plugin listens for
                       connections. This is the X Plugin equivalent of port.
-                    type: number
+                    format: int64
+                    type: integer
                   readEndpoint:
                     description: (Updatable) Details required to create a Read Endpoint.
                     items:
@@ -707,7 +710,8 @@ spec:
                           description: (Updatable) The port on which the database
                             console can be accessed. Supported port numbers are 443
                             and from 1024 to 65535.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   secureConnections:
@@ -809,7 +813,6 @@ spec:
                       see ZPR Artifacts. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shapeName:
                     description: (Updatable) The name of the shape. The shape determines
                       the resources allocated
@@ -1196,7 +1199,8 @@ spec:
                               backupCopyRetentionInDays:
                                 description: (Updatable) Number of days to retain
                                   the copied DB system backup.
-                                type: number
+                                format: int64
+                                type: integer
                               copyToRegion:
                                 description: (Updatable) The destination region name
                                   to which the DB system backup will be copied.
@@ -1209,7 +1213,6 @@ spec:
                           description: (Updatable) Usage of predefined tag keys. These
                             predefined keys are scoped to namespaces.
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -1217,7 +1220,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only.
                           type: object
-                          x-kubernetes-map-type: granular
                         isEnabled:
                           description: (Updatable) Specifies if automatic backups
                             are enabled.
@@ -1235,7 +1237,8 @@ spec:
                         retentionInDays:
                           description: (Updatable) Number of days to retain an automatic
                             backup.
-                          type: number
+                          format: int64
+                          type: integer
                         softDelete:
                           description: (Updatable) Retains the backup to be deleted
                             due to the retention policy in DELETE SCHEDULED state
@@ -1442,7 +1445,8 @@ spec:
                             can expand to. When isAutoExpandStorageEnabled is set
                             to true, the DB System will add storage incrementally
                             up to this value.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dataStorageSizeInGb:
@@ -1452,7 +1456,8 @@ spec:
                       for the database will be scaled appropriately with its shape.
                       It is required if you are creating a new database. It cannot
                       be set if you are creating a database from a backup.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseConsole:
                     description: (Updatable) Details required to configure the database
                       console while creating a DB System.
@@ -1462,7 +1467,8 @@ spec:
                           description: (Updatable) The port on which the database
                             console can be accessed. Supported port numbers are 443
                             and from 1024 to 65535.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: (Updatable) Enable/disable the database console
                             on the DB System.
@@ -1486,7 +1492,6 @@ spec:
                     description: (Updatable) Usage of predefined tag keys. These predefined
                       keys are scoped to namespaces.
                     type: object
-                    x-kubernetes-map-type: granular
                   deletionPolicy:
                     description: (Updatable) Policy for how the DB System and related
                       resources should be handled at the time of its deletion.
@@ -1615,7 +1620,6 @@ spec:
                       any predefined name, type or scope. Exists for cross-compatibility
                       only.
                     type: object
-                    x-kubernetes-map-type: granular
                   hostnameLabel:
                     description: (Updatable) The hostname for the primary endpoint
                       of the DB System. Used for DNS.
@@ -1722,11 +1726,13 @@ spec:
                     description: (Updatable) The port on which the database console
                       can be accessed. Supported port numbers are 443 and from 1024
                       to 65535.
-                    type: number
+                    format: int64
+                    type: integer
                   portX:
                     description: The TCP network port on which X Plugin listens for
                       connections. This is the X Plugin equivalent of port.
-                    type: number
+                    format: int64
+                    type: integer
                   readEndpoint:
                     description: (Updatable) Details required to create a Read Endpoint.
                     items:
@@ -1785,7 +1791,8 @@ spec:
                           description: (Updatable) The port on which the database
                             console can be accessed. Supported port numbers are 443
                             and from 1024 to 65535.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   secureConnections:
@@ -1887,7 +1894,6 @@ spec:
                       see ZPR Artifacts. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shapeName:
                     description: (Updatable) The name of the shape. The shape determines
                       the resources allocated
@@ -2343,7 +2349,8 @@ spec:
                               backupCopyRetentionInDays:
                                 description: (Updatable) Number of days to retain
                                   the copied DB system backup.
-                                type: number
+                                format: int64
+                                type: integer
                               copyToRegion:
                                 description: (Updatable) The destination region name
                                   to which the DB system backup will be copied.
@@ -2356,7 +2363,6 @@ spec:
                           description: (Updatable) Usage of predefined tag keys. These
                             predefined keys are scoped to namespaces.
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -2364,7 +2370,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only.
                           type: object
-                          x-kubernetes-map-type: granular
                         isEnabled:
                           description: (Updatable) Specifies if automatic backups
                             are enabled.
@@ -2382,7 +2387,8 @@ spec:
                         retentionInDays:
                           description: (Updatable) Number of days to retain an automatic
                             backup.
-                          type: number
+                          format: int64
+                          type: integer
                         softDelete:
                           description: (Updatable) Retains the backup to be deleted
                             due to the retention policy in DELETE SCHEDULED state
@@ -2408,7 +2414,6 @@ spec:
                           description: (Updatable) Usage of predefined tag keys. These
                             predefined keys are scoped to namespaces.
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Updatable) The user-friendly name for the
                             DB System. It does not have to be unique.
@@ -2420,7 +2425,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only.
                           type: object
-                          x-kubernetes-map-type: granular
                         id:
                           description: The OCID of the Channel.
                           type: string
@@ -2486,7 +2490,8 @@ spec:
                                 description: (Updatable) The port on which the database
                                   console can be accessed. Supported port numbers
                                   are 443 and from 1024 to 65535.
-                                type: number
+                                format: int64
+                                type: integer
                               sourceType:
                                 description: The specific source identifier. Use BACKUP
                                   for creating a new database by restoring from a
@@ -2530,7 +2535,6 @@ spec:
                             keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                             "true"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         target:
                           description: Details about the Channel target.
                           items:
@@ -2557,7 +2561,8 @@ spec:
                                 description: Specifies the amount of time, in seconds,
                                   that the channel waits before  applying a transaction
                                   received from the source.
-                                type: number
+                                format: int64
+                                type: integer
                               filters:
                                 description: Replication filter rules to be applied
                                   at the DB System Channel target.
@@ -2644,7 +2649,8 @@ spec:
                           description: The actual allocated storage size for the DB
                             System. This may be higher than dataStorageSizeInGBs if
                             an automatic storage expansion has occurred.
-                          type: number
+                          format: int64
+                          type: integer
                         dataStorageSizeInGb:
                           description: (Updatable) Initial size of the data volume
                             in GBs that will be created and attached. Keep in mind
@@ -2653,14 +2659,16 @@ spec:
                             appropriately with its shape. It is required if you are
                             creating a new database. It cannot be set if you are creating
                             a database from a backup.
-                          type: number
+                          format: int64
+                          type: integer
                         dataStorageSizeLimitInGbs:
                           description: The absolute limit the DB System's storage
                             size may ever expand to, either manually or automatically.
                             This limit is based based on the initial dataStorageSizeInGBs
                             when the DB System was first created. Both dataStorageSizeInGBs
                             and maxDataStorageSizeInGBs can not exceed this value.
-                          type: number
+                          format: int64
+                          type: integer
                         isAutoExpandStorageEnabled:
                           description: (Updatable) Enable/disable automatic storage
                             expansion. When set to true, the DB System will automatically
@@ -2672,7 +2680,8 @@ spec:
                             can expand to. When isAutoExpandStorageEnabled is set
                             to true, the DB System will add storage incrementally
                             up to this value.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dataStorageSizeInGb:
@@ -2682,7 +2691,8 @@ spec:
                       for the database will be scaled appropriately with its shape.
                       It is required if you are creating a new database. It cannot
                       be set if you are creating a database from a backup.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseConsole:
                     description: (Updatable) Details required to configure the database
                       console while creating a DB System.
@@ -2692,7 +2702,8 @@ spec:
                           description: (Updatable) The port on which the database
                             console can be accessed. Supported port numbers are 443
                             and from 1024 to 65535.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: (Updatable) Enable/disable the database console
                             on the DB System.
@@ -2716,7 +2727,6 @@ spec:
                     description: (Updatable) Usage of predefined tag keys. These predefined
                       keys are scoped to namespaces.
                     type: object
-                    x-kubernetes-map-type: granular
                   deletionPolicy:
                     description: (Updatable) Policy for how the DB System and related
                       resources should be handled at the time of its deletion.
@@ -2790,11 +2800,13 @@ spec:
                           description: (Updatable) The port on which the database
                             console can be accessed. Supported port numbers are 443
                             and from 1024 to 65535.
-                          type: number
+                          format: int64
+                          type: integer
                         portX:
                           description: The TCP network port on which X Plugin listens
                             for connections. This is the X Plugin equivalent of port.
-                          type: number
+                          format: int64
+                          type: integer
                         resourceId:
                           description: The OCID of the resource that this endpoint
                             is attached to.
@@ -2824,7 +2836,6 @@ spec:
                       any predefined name, type or scope. Exists for cross-compatibility
                       only.
                     type: object
-                    x-kubernetes-map-type: granular
                   heatWaveCluster:
                     description: A summary of a HeatWave cluster.
                     items:
@@ -2832,7 +2843,8 @@ spec:
                         clusterSize:
                           description: The number of analytics-processing compute
                             instances, of the specified shape, in the HeatWave cluster.
-                          type: number
+                          format: int64
+                          type: integer
                         isLakehouseEnabled:
                           description: Lakehouse enabled status for the HeatWave cluster.
                           type: boolean
@@ -2992,11 +3004,13 @@ spec:
                     description: (Updatable) The port on which the database console
                       can be accessed. Supported port numbers are 443 and from 1024
                       to 65535.
-                    type: number
+                    format: int64
+                    type: integer
                   portX:
                     description: The TCP network port on which X Plugin listens for
                       connections. This is the X Plugin equivalent of port.
-                    type: number
+                    format: int64
+                    type: integer
                   readEndpoint:
                     description: (Updatable) Details required to create a Read Endpoint.
                     items:
@@ -3055,7 +3069,8 @@ spec:
                           description: (Updatable) The port on which the database
                             console can be accessed. Supported port numbers are 443
                             and from 1024 to 65535.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   secureConnections:
@@ -3081,7 +3096,6 @@ spec:
                       see ZPR Artifacts. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shapeName:
                     description: (Updatable) The name of the shape. The shape determines
                       the resources allocated
@@ -3181,7 +3195,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   telemetryConfiguration:
                     description: (Updatable) Details required to configure how MySQL
                       telemetry should be exposed.

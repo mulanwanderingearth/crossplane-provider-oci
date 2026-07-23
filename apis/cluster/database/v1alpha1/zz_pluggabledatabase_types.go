@@ -157,8 +157,7 @@ type PluggableDatabaseConnectionStringsInitParameters struct {
 type PluggableDatabaseConnectionStringsObservation struct {
 
 	// All connection strings to use to connect to the pluggable database.
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 
 	// A host name-based PDB connection string.
 	PdbDefault *string `json:"pdbDefault,omitempty" tf:"pdb_default,omitempty"`
@@ -189,15 +188,13 @@ type PluggableDatabaseInitParameters struct {
 	ContainerDatabaseIDSelector *v1.Selector `json:"containerDatabaseIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Convert To Regular. Could be set to any integer value.
-	ConvertToRegularTrigger *float64 `json:"convertToRegularTrigger,omitempty" tf:"convert_to_regular_trigger,omitempty"`
+	ConvertToRegularTrigger *int64 `json:"convertToRegularTrigger,omitempty" tf:"convert_to_regular_trigger,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous AI Database Serverless does not use key versions, hence is not applicable for Autonomous AI Database Serverless instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.KeyVersion
@@ -223,10 +220,10 @@ type PluggableDatabaseInitParameters struct {
 	PdbName *string `json:"pdbName,omitempty" tf:"pdb_name,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Refresh. Could be set to any integer value.
-	RefreshTrigger *float64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
+	RefreshTrigger *int64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Rotate Key. Could be set to any integer value.
-	RotateKeyTrigger *float64 `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
+	RotateKeyTrigger *int64 `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
 
 	// Indicates whether to take Pluggable Database Backup after the operation.
 	ShouldCreatePdbBackup *bool `json:"shouldCreatePdbBackup,omitempty" tf:"should_create_pdb_backup,omitempty"`
@@ -262,15 +259,13 @@ type PluggableDatabaseObservation struct {
 	ContainerDatabaseID *string `json:"containerDatabaseId,omitempty" tf:"container_database_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Convert To Regular. Could be set to any integer value.
-	ConvertToRegularTrigger *float64 `json:"convertToRegularTrigger,omitempty" tf:"convert_to_regular_trigger,omitempty"`
+	ConvertToRegularTrigger *int64 `json:"convertToRegularTrigger,omitempty" tf:"convert_to_regular_trigger,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the pluggable database.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -304,13 +299,13 @@ type PluggableDatabaseObservation struct {
 	PluggableDatabaseManagementConfig []PluggableDatabaseManagementConfigObservation `json:"pluggableDatabaseManagementConfig,omitempty" tf:"pluggable_database_management_config,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Refresh. Could be set to any integer value.
-	RefreshTrigger *float64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
+	RefreshTrigger *int64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
 
 	// Pluggable Database Refreshable Clone Configuration.
 	RefreshableCloneConfig []RefreshableCloneConfigObservation `json:"refreshableCloneConfig,omitempty" tf:"refreshable_clone_config,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Rotate Key. Could be set to any integer value.
-	RotateKeyTrigger *float64 `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
+	RotateKeyTrigger *int64 `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
 
 	// Indicates whether to take Pluggable Database Backup after the operation.
 	ShouldCreatePdbBackup *bool `json:"shouldCreatePdbBackup,omitempty" tf:"should_create_pdb_backup,omitempty"`
@@ -322,8 +317,7 @@ type PluggableDatabaseObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the pluggable database was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -351,17 +345,15 @@ type PluggableDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Convert To Regular. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ConvertToRegularTrigger *float64 `json:"convertToRegularTrigger,omitempty" tf:"convert_to_regular_trigger,omitempty"`
+	ConvertToRegularTrigger *int64 `json:"convertToRegularTrigger,omitempty" tf:"convert_to_regular_trigger,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous AI Database Serverless does not use key versions, hence is not applicable for Autonomous AI Database Serverless instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.KeyVersion
@@ -392,11 +384,11 @@ type PluggableDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Refresh. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	RefreshTrigger *float64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
+	RefreshTrigger *int64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Rotate Key. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	RotateKeyTrigger *float64 `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
+	RotateKeyTrigger *int64 `json:"rotateKeyTrigger,omitempty" tf:"rotate_key_trigger,omitempty"`
 
 	// Indicates whether to take Pluggable Database Backup after the operation.
 	// +kubebuilder:validation:Optional

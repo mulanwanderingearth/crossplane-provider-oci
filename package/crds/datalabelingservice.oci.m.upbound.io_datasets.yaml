@@ -170,7 +170,8 @@ spec:
                               columnIndex:
                                 description: The index of a selected column. This
                                   is a zero-based index.
-                                type: number
+                                format: int64
+                                type: integer
                               columnName:
                                 description: The name of a selected column.
                                 type: string
@@ -222,7 +223,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For example:
                       {"foo-namespace": {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user provided description of the dataset
                     type: string
@@ -237,7 +237,6 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   initialImportDatasetConfiguration:
                     description: Initial import dataset configuration. Allows user
                       to create dataset from existing dataset files.
@@ -431,7 +430,8 @@ spec:
                               columnIndex:
                                 description: The index of a selected column. This
                                   is a zero-based index.
-                                type: number
+                                format: int64
+                                type: integer
                               columnName:
                                 description: The name of a selected column.
                                 type: string
@@ -483,7 +483,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For example:
                       {"foo-namespace": {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user provided description of the dataset
                     type: string
@@ -498,7 +497,6 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   initialImportDatasetConfiguration:
                     description: Initial import dataset configuration. Allows user
                       to create dataset from existing dataset files.
@@ -657,7 +655,6 @@ spec:
                       any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   annotationFormat:
                     description: The annotation format name required for labeling
                       records.
@@ -687,7 +684,8 @@ spec:
                               columnIndex:
                                 description: The index of a selected column. This
                                   is a zero-based index.
-                                type: number
+                                format: int64
+                                type: integer
                               columnName:
                                 description: The name of a selected column.
                                 type: string
@@ -739,7 +737,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For example:
                       {"foo-namespace": {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user provided description of the dataset
                     type: string
@@ -754,7 +751,6 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Dataset.
                     type: string

@@ -31,7 +31,7 @@ type ManagementAgentDataSourceInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Number in milliseconds. The timeout for connecting to the Prometheus Exporter's endpoint.
-	ConnectionTimeout *float64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
+	ConnectionTimeout *int64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
 
 	// Unique Management Agent identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/managementagent/v1alpha1.ManagementAgent
@@ -59,16 +59,16 @@ type ManagementAgentDataSourceInitParameters struct {
 	ProxyURL *string `json:"proxyUrl,omitempty" tf:"proxy_url,omitempty"`
 
 	// (Updatable) Number in kilobytes. The limit on the data being sent, not to exceed the agent's fixed limit of 400 (KB).
-	ReadDataLimitInKilobytes *float64 `json:"readDataLimitInKilobytes,omitempty" tf:"read_data_limit_in_kilobytes,omitempty"`
+	ReadDataLimitInKilobytes *int64 `json:"readDataLimitInKilobytes,omitempty" tf:"read_data_limit_in_kilobytes,omitempty"`
 
 	// (Updatable) Number in milliseconds. The timeout for reading the response from the Prometheus Exporter's endpoint.
-	ReadTimeout *float64 `json:"readTimeout,omitempty" tf:"read_timeout,omitempty"`
+	ReadTimeout *int64 `json:"readTimeout,omitempty" tf:"read_timeout,omitempty"`
 
 	// (Updatable) Oracle Cloud Infrastructure monitoring resource group to assign the metric to.
 	ResourceGroup *string `json:"resourceGroup,omitempty" tf:"resource_group,omitempty"`
 
 	// (Updatable) Number in minutes. The scraping occurs at the specified interval.
-	ScheduleMins *float64 `json:"scheduleMins,omitempty" tf:"schedule_mins,omitempty"`
+	ScheduleMins *int64 `json:"scheduleMins,omitempty" tf:"schedule_mins,omitempty"`
 
 	// (Updatable) The type of the DataSource. Support types: PROMETHEUS_EMITTER
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -115,7 +115,7 @@ type ManagementAgentDataSourceObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Number in milliseconds. The timeout for connecting to the Prometheus Exporter's endpoint.
-	ConnectionTimeout *float64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
+	ConnectionTimeout *int64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
 
 	// Identifier for DataSource. This represents the type and name for the data source associated with the Management Agent.
 	DataSourceKey *string `json:"dataSourceKey,omitempty" tf:"data_source_key,omitempty"`
@@ -141,19 +141,19 @@ type ManagementAgentDataSourceObservation struct {
 	ProxyURL *string `json:"proxyUrl,omitempty" tf:"proxy_url,omitempty"`
 
 	// Number in kilobytes. The limit on the data being sent, not to exceed the agent's fixed limit of 400 (KB).
-	ReadDataLimit *float64 `json:"readDataLimit,omitempty" tf:"read_data_limit,omitempty"`
+	ReadDataLimit *int64 `json:"readDataLimit,omitempty" tf:"read_data_limit,omitempty"`
 
 	// (Updatable) Number in kilobytes. The limit on the data being sent, not to exceed the agent's fixed limit of 400 (KB).
-	ReadDataLimitInKilobytes *float64 `json:"readDataLimitInKilobytes,omitempty" tf:"read_data_limit_in_kilobytes,omitempty"`
+	ReadDataLimitInKilobytes *int64 `json:"readDataLimitInKilobytes,omitempty" tf:"read_data_limit_in_kilobytes,omitempty"`
 
 	// (Updatable) Number in milliseconds. The timeout for reading the response from the Prometheus Exporter's endpoint.
-	ReadTimeout *float64 `json:"readTimeout,omitempty" tf:"read_timeout,omitempty"`
+	ReadTimeout *int64 `json:"readTimeout,omitempty" tf:"read_timeout,omitempty"`
 
 	// (Updatable) Oracle Cloud Infrastructure monitoring resource group to assign the metric to.
 	ResourceGroup *string `json:"resourceGroup,omitempty" tf:"resource_group,omitempty"`
 
 	// (Updatable) Number in minutes. The scraping occurs at the specified interval.
-	ScheduleMins *float64 `json:"scheduleMins,omitempty" tf:"schedule_mins,omitempty"`
+	ScheduleMins *int64 `json:"scheduleMins,omitempty" tf:"schedule_mins,omitempty"`
 
 	// State of the DataSource.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -192,7 +192,7 @@ type ManagementAgentDataSourceParameters struct {
 
 	// (Updatable) Number in milliseconds. The timeout for connecting to the Prometheus Exporter's endpoint.
 	// +kubebuilder:validation:Optional
-	ConnectionTimeout *float64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
+	ConnectionTimeout *int64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
 
 	// Unique Management Agent identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/managementagent/v1alpha1.ManagementAgent
@@ -226,11 +226,11 @@ type ManagementAgentDataSourceParameters struct {
 
 	// (Updatable) Number in kilobytes. The limit on the data being sent, not to exceed the agent's fixed limit of 400 (KB).
 	// +kubebuilder:validation:Optional
-	ReadDataLimitInKilobytes *float64 `json:"readDataLimitInKilobytes,omitempty" tf:"read_data_limit_in_kilobytes,omitempty"`
+	ReadDataLimitInKilobytes *int64 `json:"readDataLimitInKilobytes,omitempty" tf:"read_data_limit_in_kilobytes,omitempty"`
 
 	// (Updatable) Number in milliseconds. The timeout for reading the response from the Prometheus Exporter's endpoint.
 	// +kubebuilder:validation:Optional
-	ReadTimeout *float64 `json:"readTimeout,omitempty" tf:"read_timeout,omitempty"`
+	ReadTimeout *int64 `json:"readTimeout,omitempty" tf:"read_timeout,omitempty"`
 
 	// (Updatable) Oracle Cloud Infrastructure monitoring resource group to assign the metric to.
 	// +kubebuilder:validation:Optional
@@ -238,7 +238,7 @@ type ManagementAgentDataSourceParameters struct {
 
 	// (Updatable) Number in minutes. The scraping occurs at the specified interval.
 	// +kubebuilder:validation:Optional
-	ScheduleMins *float64 `json:"scheduleMins,omitempty" tf:"schedule_mins,omitempty"`
+	ScheduleMins *int64 `json:"scheduleMins,omitempty" tf:"schedule_mins,omitempty"`
 
 	// (Updatable) The type of the DataSource. Support types: PROMETHEUS_EMITTER
 	// +kubebuilder:validation:Optional

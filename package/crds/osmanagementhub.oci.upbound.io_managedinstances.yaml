@@ -888,7 +888,8 @@ spec:
                     type: array
                   bugUpdatesAvailable:
                     description: Number of bug fix type updates available for installation.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: The OCID of the compartment that contains the managed
                       instance.
@@ -903,16 +904,19 @@ spec:
                   enhancementUpdatesAvailable:
                     description: Number of enhancement type updates available for
                       installation.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     description: The OCID of the managed instance.
                     type: string
                   installedPackages:
                     description: Number of packages installed on the instance.
-                    type: number
+                    format: int64
+                    type: integer
                   installedWindowsUpdates:
                     description: Number of Windows updates installed on the instance.
-                    type: number
+                    format: int64
+                    type: integer
                   isManagedByAutonomousLinux:
                     description: Indicates whether the Autonomous Linux service manages
                       the instance.
@@ -993,7 +997,8 @@ spec:
                   otherUpdatesAvailable:
                     description: Number of non-classified (other) updates available
                       for installation.
-                    type: number
+                    format: int64
+                    type: integer
                   primaryManagementStationId:
                     description: (Updatable) The OCID of the management station for
                       the instance to use as primary management station.
@@ -1008,14 +1013,16 @@ spec:
                     type: string
                   scheduledJobCount:
                     description: Number of scheduled jobs associated with this instance.
-                    type: number
+                    format: int64
+                    type: integer
                   secondaryManagementStationId:
                     description: (Updatable) The OCID of the management station for
                       the instance to use as secondary management station.
                     type: string
                   securityUpdatesAvailable:
                     description: Number of security type updates available for installation.
-                    type: number
+                    format: int64
+                    type: integer
                   softwareSources:
                     description: The list of software sources currently attached to
                       the managed instance.
@@ -1069,10 +1076,12 @@ spec:
                     type: string
                   updatesAvailable:
                     description: Number of updates available for installation.
-                    type: number
+                    format: int64
+                    type: integer
                   workRequestCount:
                     description: Number of work requests associated with this instance.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

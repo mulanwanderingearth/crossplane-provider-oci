@@ -244,11 +244,13 @@ spec:
                           type: string
                         thresholdAbsoluteValue:
                           description: (Updatable) The absolute threshold value.
-                          type: number
+                          format: int64
+                          type: integer
                         thresholdRelativePercent:
                           description: (Updatable) The relative percentage threshold
                             value.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   definedTags:
@@ -258,7 +260,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the cost anomaly monitor.
                     type: string
@@ -270,7 +271,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: The name of the cost anomaly monitor. Avoid entering
                       confidential information.
@@ -464,11 +464,13 @@ spec:
                           type: string
                         thresholdAbsoluteValue:
                           description: (Updatable) The absolute threshold value.
-                          type: number
+                          format: int64
+                          type: integer
                         thresholdRelativePercent:
                           description: (Updatable) The relative percentage threshold
                             value.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   definedTags:
@@ -478,7 +480,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the cost anomaly monitor.
                     type: string
@@ -490,7 +491,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: The name of the cost anomaly monitor. Avoid entering
                       confidential information.
@@ -621,11 +621,13 @@ spec:
                           type: string
                         thresholdAbsoluteValue:
                           description: (Updatable) The absolute threshold value.
-                          type: number
+                          format: int64
+                          type: integer
                         thresholdRelativePercent:
                           description: (Updatable) The relative percentage threshold
                             value.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   definedTags:
@@ -635,7 +637,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the cost anomaly monitor.
                     type: string
@@ -647,7 +648,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Cost Anomaly Monitor.
                     type: string
@@ -669,7 +669,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   targetResourceFilter:
                     description: The filter object to target resources for cost monitor.  Cost
                       generated by one or more resources identified by this  filter

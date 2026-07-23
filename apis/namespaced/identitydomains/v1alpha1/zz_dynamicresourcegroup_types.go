@@ -15,6 +15,24 @@ import (
 )
 
 type DynamicGroupAppRolesInitParameters struct {
+
+	// (Updatable) If true, then the role provides administrative access privileges. READ-ONLY.
+	AdminRole *bool `json:"adminRole,omitempty" tf:"admin_role,omitempty"`
+
+	// (Updatable) ID of parent App. READ-ONLY.
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) Name of parent App. READ-ONLY.
+	AppName *string `json:"appName,omitempty" tf:"app_name,omitempty"`
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The name of the legacy group associated with this AppRole.
+	LegacyGroupName *string `json:"legacyGroupName,omitempty" tf:"legacy_group_name,omitempty"`
+
+	// (Updatable) The identifier of the appRole
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DynamicGroupAppRolesObservation struct {
@@ -42,9 +60,42 @@ type DynamicGroupAppRolesObservation struct {
 }
 
 type DynamicGroupAppRolesParameters struct {
+
+	// (Updatable) If true, then the role provides administrative access privileges. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	AdminRole *bool `json:"adminRole,omitempty" tf:"admin_role,omitempty"`
+
+	// (Updatable) ID of parent App. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) Name of parent App. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	AppName *string `json:"appName,omitempty" tf:"app_name,omitempty"`
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The name of the legacy group associated with this AppRole.
+	// +kubebuilder:validation:Optional
+	LegacyGroupName *string `json:"legacyGroupName,omitempty" tf:"legacy_group_name,omitempty"`
+
+	// (Updatable) The identifier of the appRole
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type DynamicResourceGroupGrantsInitParameters struct {
+
+	// (Updatable) ID of parent App. READ-ONLY.
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) Each value of grantMechanism indicates how (or by what component) some App (or App-Entitlement) was granted. A customer or the UI should use only grantMechanism values that start with 'ADMINISTRATOR':
+	GrantMechanism *string `json:"grantMechanism,omitempty" tf:"grant_mechanism,omitempty"`
+
+	// (Updatable) The identifier of the appRole
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DynamicResourceGroupGrantsObservation struct {
@@ -63,9 +114,33 @@ type DynamicResourceGroupGrantsObservation struct {
 }
 
 type DynamicResourceGroupGrantsParameters struct {
+
+	// (Updatable) ID of parent App. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) Each value of grantMechanism indicates how (or by what component) some App (or App-Entitlement) was granted. A customer or the UI should use only grantMechanism values that start with 'ADMINISTRATOR':
+	// +kubebuilder:validation:Optional
+	GrantMechanism *string `json:"grantMechanism,omitempty" tf:"grant_mechanism,omitempty"`
+
+	// (Updatable) The identifier of the appRole
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DynamicResourceGroupIdcsCreatedByInitParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The identifier of the appRole
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DynamicResourceGroupIdcsCreatedByObservation struct {
@@ -87,9 +162,37 @@ type DynamicResourceGroupIdcsCreatedByObservation struct {
 }
 
 type DynamicResourceGroupIdcsCreatedByParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The identifier of the appRole
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type DynamicResourceGroupIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The identifier of the appRole
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DynamicResourceGroupIdcsLastModifiedByObservation struct {
@@ -111,6 +214,22 @@ type DynamicResourceGroupIdcsLastModifiedByObservation struct {
 }
 
 type DynamicResourceGroupIdcsLastModifiedByParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The identifier of the appRole
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type DynamicResourceGroupInitParameters struct {
@@ -153,6 +272,21 @@ type DynamicResourceGroupInitParameters struct {
 }
 
 type DynamicResourceGroupMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type DynamicResourceGroupMetaObservation struct {
@@ -174,6 +308,26 @@ type DynamicResourceGroupMetaObservation struct {
 }
 
 type DynamicResourceGroupMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type DynamicResourceGroupObservation struct {

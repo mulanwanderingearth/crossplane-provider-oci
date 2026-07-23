@@ -29,8 +29,7 @@ type OccMetricAlarmInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Optional description for the alarm.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -39,8 +38,7 @@ type OccMetricAlarmInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Frequency at which notifications should be sent.
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
@@ -58,7 +56,7 @@ type OccMetricAlarmInitParameters struct {
 	Subscribers []*string `json:"subscribers,omitempty" tf:"subscribers,omitempty"`
 
 	// (Updatable) Threshold at which alarm must be triggered.
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 
 	// (Updatable) Units in which threshold is being stored.
 	ThresholdType *string `json:"thresholdType,omitempty" tf:"threshold_type,omitempty"`
@@ -70,8 +68,7 @@ type OccMetricAlarmObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Optional description for the alarm.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -80,8 +77,7 @@ type OccMetricAlarmObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Frequency at which notifications should be sent.
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
@@ -102,11 +98,10 @@ type OccMetricAlarmObservation struct {
 	Subscribers []*string `json:"subscribers,omitempty" tf:"subscribers,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) Threshold at which alarm must be triggered.
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 
 	// (Updatable) Units in which threshold is being stored.
 	ThresholdType *string `json:"thresholdType,omitempty" tf:"threshold_type,omitempty"`
@@ -135,8 +130,7 @@ type OccMetricAlarmParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Optional description for the alarm.
 	// +kubebuilder:validation:Optional
@@ -148,8 +142,7 @@ type OccMetricAlarmParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Frequency at which notifications should be sent.
 	// +kubebuilder:validation:Optional
@@ -173,7 +166,7 @@ type OccMetricAlarmParameters struct {
 
 	// (Updatable) Threshold at which alarm must be triggered.
 	// +kubebuilder:validation:Optional
-	Threshold *float64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
+	Threshold *int64 `json:"threshold,omitempty" tf:"threshold,omitempty"`
 
 	// (Updatable) Units in which threshold is being stored.
 	// +kubebuilder:validation:Optional

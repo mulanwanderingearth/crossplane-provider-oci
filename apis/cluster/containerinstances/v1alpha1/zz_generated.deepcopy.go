@@ -285,18 +285,9 @@ func (in *ContainerInstanceInitParameters) DeepCopyInto(out *ContainerInstanceIn
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -311,18 +302,9 @@ func (in *ContainerInstanceInitParameters) DeepCopyInto(out *ContainerInstanceIn
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GracefulShutdownTimeoutInSeconds != nil {
@@ -427,7 +409,7 @@ func (in *ContainerInstanceObservation) DeepCopyInto(out *ContainerInstanceObser
 	}
 	if in.ContainerCount != nil {
 		in, out := &in.ContainerCount, &out.ContainerCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ContainerRestartPolicy != nil {
@@ -451,18 +433,9 @@ func (in *ContainerInstanceObservation) DeepCopyInto(out *ContainerInstanceObser
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -477,18 +450,9 @@ func (in *ContainerInstanceObservation) DeepCopyInto(out *ContainerInstanceObser
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GracefulShutdownTimeoutInSeconds != nil {
@@ -532,18 +496,9 @@ func (in *ContainerInstanceObservation) DeepCopyInto(out *ContainerInstanceObser
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -565,7 +520,7 @@ func (in *ContainerInstanceObservation) DeepCopyInto(out *ContainerInstanceObser
 	}
 	if in.VolumeCount != nil {
 		in, out := &in.VolumeCount, &out.VolumeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Volumes != nil {
@@ -631,18 +586,9 @@ func (in *ContainerInstanceParameters) DeepCopyInto(out *ContainerInstanceParame
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -657,18 +603,9 @@ func (in *ContainerInstanceParameters) DeepCopyInto(out *ContainerInstanceParame
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GracefulShutdownTimeoutInSeconds != nil {
@@ -788,18 +725,9 @@ func (in *ContainersInitParameters) DeepCopyInto(out *ContainersInitParameters) 
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -809,34 +737,16 @@ func (in *ContainersInitParameters) DeepCopyInto(out *ContainersInitParameters) 
 	}
 	if in.EnvironmentVariables != nil {
 		in, out := &in.EnvironmentVariables, &out.EnvironmentVariables
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HealthChecks != nil {
@@ -941,18 +851,9 @@ func (in *ContainersObservation) DeepCopyInto(out *ContainersObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -962,23 +863,14 @@ func (in *ContainersObservation) DeepCopyInto(out *ContainersObservation) {
 	}
 	if in.EnvironmentVariables != nil {
 		in, out := &in.EnvironmentVariables, &out.EnvironmentVariables
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ExitCode != nil {
 		in, out := &in.ExitCode, &out.ExitCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FaultDomain != nil {
@@ -988,18 +880,9 @@ func (in *ContainersObservation) DeepCopyInto(out *ContainersObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HealthChecks != nil {
@@ -1045,18 +928,9 @@ func (in *ContainersObservation) DeepCopyInto(out *ContainersObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1125,18 +999,9 @@ func (in *ContainersParameters) DeepCopyInto(out *ContainersParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1146,34 +1011,16 @@ func (in *ContainersParameters) DeepCopyInto(out *ContainersParameters) {
 	}
 	if in.EnvironmentVariables != nil {
 		in, out := &in.EnvironmentVariables, &out.EnvironmentVariables
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HealthChecks != nil {
@@ -1460,7 +1307,7 @@ func (in *HealthChecksInitParameters) DeepCopyInto(out *HealthChecksInitParamete
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Headers != nil {
@@ -1477,12 +1324,12 @@ func (in *HealthChecksInitParameters) DeepCopyInto(out *HealthChecksInitParamete
 	}
 	if in.InitialDelayInSeconds != nil {
 		in, out := &in.InitialDelayInSeconds, &out.InitialDelayInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -1497,7 +1344,7 @@ func (in *HealthChecksInitParameters) DeepCopyInto(out *HealthChecksInitParamete
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Status != nil {
@@ -1512,12 +1359,12 @@ func (in *HealthChecksInitParameters) DeepCopyInto(out *HealthChecksInitParamete
 	}
 	if in.SuccessThreshold != nil {
 		in, out := &in.SuccessThreshold, &out.SuccessThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1542,7 +1389,7 @@ func (in *HealthChecksObservation) DeepCopyInto(out *HealthChecksObservation) {
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Headers != nil {
@@ -1559,12 +1406,12 @@ func (in *HealthChecksObservation) DeepCopyInto(out *HealthChecksObservation) {
 	}
 	if in.InitialDelayInSeconds != nil {
 		in, out := &in.InitialDelayInSeconds, &out.InitialDelayInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -1579,7 +1426,7 @@ func (in *HealthChecksObservation) DeepCopyInto(out *HealthChecksObservation) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Status != nil {
@@ -1594,12 +1441,12 @@ func (in *HealthChecksObservation) DeepCopyInto(out *HealthChecksObservation) {
 	}
 	if in.SuccessThreshold != nil {
 		in, out := &in.SuccessThreshold, &out.SuccessThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1624,7 +1471,7 @@ func (in *HealthChecksParameters) DeepCopyInto(out *HealthChecksParameters) {
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Headers != nil {
@@ -1641,12 +1488,12 @@ func (in *HealthChecksParameters) DeepCopyInto(out *HealthChecksParameters) {
 	}
 	if in.InitialDelayInSeconds != nil {
 		in, out := &in.InitialDelayInSeconds, &out.InitialDelayInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -1661,7 +1508,7 @@ func (in *HealthChecksParameters) DeepCopyInto(out *HealthChecksParameters) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Status != nil {
@@ -1676,12 +1523,12 @@ func (in *HealthChecksParameters) DeepCopyInto(out *HealthChecksParameters) {
 	}
 	if in.SuccessThreshold != nil {
 		in, out := &in.SuccessThreshold, &out.SuccessThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1928,12 +1775,12 @@ func (in *SecurityContextInitParameters) DeepCopyInto(out *SecurityContextInitPa
 	}
 	if in.RunAsGroup != nil {
 		in, out := &in.RunAsGroup, &out.RunAsGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RunAsUser != nil {
 		in, out := &in.RunAsUser, &out.RunAsUser
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SecurityContextType != nil {
@@ -1975,12 +1822,12 @@ func (in *SecurityContextObservation) DeepCopyInto(out *SecurityContextObservati
 	}
 	if in.RunAsGroup != nil {
 		in, out := &in.RunAsGroup, &out.RunAsGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RunAsUser != nil {
 		in, out := &in.RunAsUser, &out.RunAsUser
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SecurityContextType != nil {
@@ -2022,12 +1869,12 @@ func (in *SecurityContextParameters) DeepCopyInto(out *SecurityContextParameters
 	}
 	if in.RunAsGroup != nil {
 		in, out := &in.RunAsGroup, &out.RunAsGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RunAsUser != nil {
 		in, out := &in.RunAsUser, &out.RunAsUser
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SecurityContextType != nil {
@@ -2137,18 +1984,9 @@ func (in *VnicsInitParameters) DeepCopyInto(out *VnicsInitParameters) {
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2158,18 +1996,9 @@ func (in *VnicsInitParameters) DeepCopyInto(out *VnicsInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HostnameLabel != nil {
@@ -2235,18 +2064,9 @@ func (in *VnicsObservation) DeepCopyInto(out *VnicsObservation) {
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2256,18 +2076,9 @@ func (in *VnicsObservation) DeepCopyInto(out *VnicsObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HostnameLabel != nil {
@@ -2328,18 +2139,9 @@ func (in *VnicsParameters) DeepCopyInto(out *VnicsParameters) {
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2349,18 +2151,9 @@ func (in *VnicsParameters) DeepCopyInto(out *VnicsParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HostnameLabel != nil {
@@ -2436,7 +2229,7 @@ func (in *VolumeMountsInitParameters) DeepCopyInto(out *VolumeMountsInitParamete
 	}
 	if in.Partition != nil {
 		in, out := &in.Partition, &out.Partition
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SubPath != nil {
@@ -2476,7 +2269,7 @@ func (in *VolumeMountsObservation) DeepCopyInto(out *VolumeMountsObservation) {
 	}
 	if in.Partition != nil {
 		in, out := &in.Partition, &out.Partition
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SubPath != nil {
@@ -2516,7 +2309,7 @@ func (in *VolumeMountsParameters) DeepCopyInto(out *VolumeMountsParameters) {
 	}
 	if in.Partition != nil {
 		in, out := &in.Partition, &out.Partition
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SubPath != nil {

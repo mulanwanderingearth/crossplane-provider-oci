@@ -44,7 +44,7 @@ type ManagementExternalMySqlDatabaseConnectorConnectorDetailsInitParameters stru
 	NetworkProtocol *string `json:"networkProtocol,omitempty" tf:"network_protocol,omitempty"`
 
 	// (Updatable) Port number to connect to External MySQL Database.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) If using existing SSL secret to connect, OCID for the secret resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
@@ -81,7 +81,7 @@ type ManagementExternalMySqlDatabaseConnectorConnectorDetailsObservation struct 
 	NetworkProtocol *string `json:"networkProtocol,omitempty" tf:"network_protocol,omitempty"`
 
 	// (Updatable) Port number to connect to External MySQL Database.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) If using existing SSL secret to connect, OCID for the secret resource.
 	SSLSecretID *string `json:"sslSecretId,omitempty" tf:"ssl_secret_id,omitempty"`
@@ -125,7 +125,7 @@ type ManagementExternalMySqlDatabaseConnectorConnectorDetailsParameters struct {
 
 	// (Updatable) Port number to connect to External MySQL Database.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port" tf:"port,omitempty"`
+	Port *int64 `json:"port" tf:"port,omitempty"`
 
 	// (Updatable) If using existing SSL secret to connect, OCID for the secret resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/vault/v1alpha1.Secret
@@ -145,7 +145,7 @@ type ManagementExternalMySqlDatabaseConnectorConnectorDetailsParameters struct {
 type ManagementExternalMySqlDatabaseConnectorInitParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Check Connection Status. Could be set to any integer value.
-	CheckConnectionStatusTrigger *float64 `json:"checkConnectionStatusTrigger,omitempty" tf:"check_connection_status_trigger,omitempty"`
+	CheckConnectionStatusTrigger *int64 `json:"checkConnectionStatusTrigger,omitempty" tf:"check_connection_status_trigger,omitempty"`
 
 	// (Updatable) OCID of compartment for the External MySQL Database.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -172,7 +172,7 @@ type ManagementExternalMySqlDatabaseConnectorObservation struct {
 	AssociatedServices *string `json:"associatedServices,omitempty" tf:"associated_services,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Check Connection Status. Could be set to any integer value.
-	CheckConnectionStatusTrigger *float64 `json:"checkConnectionStatusTrigger,omitempty" tf:"check_connection_status_trigger,omitempty"`
+	CheckConnectionStatusTrigger *int64 `json:"checkConnectionStatusTrigger,omitempty" tf:"check_connection_status_trigger,omitempty"`
 
 	// (Updatable) OCID of compartment for the External MySQL Database.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -211,7 +211,7 @@ type ManagementExternalMySqlDatabaseConnectorObservation struct {
 	NetworkProtocol *string `json:"networkProtocol,omitempty" tf:"network_protocol,omitempty"`
 
 	// (Updatable) Port number to connect to External MySQL Database.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) If using existing SSL secret to connect, OCID for the secret resource.
 	SSLSecretID *string `json:"sslSecretId,omitempty" tf:"ssl_secret_id,omitempty"`
@@ -242,7 +242,7 @@ type ManagementExternalMySqlDatabaseConnectorParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Check Connection Status. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	CheckConnectionStatusTrigger *float64 `json:"checkConnectionStatusTrigger,omitempty" tf:"check_connection_status_trigger,omitempty"`
+	CheckConnectionStatusTrigger *int64 `json:"checkConnectionStatusTrigger,omitempty" tf:"check_connection_status_trigger,omitempty"`
 
 	// (Updatable) OCID of compartment for the External MySQL Database.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment

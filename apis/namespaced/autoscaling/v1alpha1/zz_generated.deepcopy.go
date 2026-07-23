@@ -23,7 +23,7 @@ func (in *ActionInitParameters) DeepCopyInto(out *ActionInitParameters) {
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -48,7 +48,7 @@ func (in *ActionObservation) DeepCopyInto(out *ActionObservation) {
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -73,7 +73,7 @@ func (in *ActionParameters) DeepCopyInto(out *ActionParameters) {
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -142,23 +142,14 @@ func (in *AutoScalingConfigurationInitParameters) DeepCopyInto(out *AutoScalingC
 	}
 	if in.CoolDownInSeconds != nil {
 		in, out := &in.CoolDownInSeconds, &out.CoolDownInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -168,18 +159,9 @@ func (in *AutoScalingConfigurationInitParameters) DeepCopyInto(out *AutoScalingC
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsEnabled != nil {
@@ -255,23 +237,14 @@ func (in *AutoScalingConfigurationObservation) DeepCopyInto(out *AutoScalingConf
 	}
 	if in.CoolDownInSeconds != nil {
 		in, out := &in.CoolDownInSeconds, &out.CoolDownInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -281,18 +254,9 @@ func (in *AutoScalingConfigurationObservation) DeepCopyInto(out *AutoScalingConf
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -307,12 +271,12 @@ func (in *AutoScalingConfigurationObservation) DeepCopyInto(out *AutoScalingConf
 	}
 	if in.MaxResourceCount != nil {
 		in, out := &in.MaxResourceCount, &out.MaxResourceCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinResourceCount != nil {
 		in, out := &in.MinResourceCount, &out.MinResourceCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Policies != nil {
@@ -366,23 +330,14 @@ func (in *AutoScalingConfigurationParameters) DeepCopyInto(out *AutoScalingConfi
 	}
 	if in.CoolDownInSeconds != nil {
 		in, out := &in.CoolDownInSeconds, &out.CoolDownInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -392,18 +347,9 @@ func (in *AutoScalingConfigurationParameters) DeepCopyInto(out *AutoScalingConfi
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsEnabled != nil {
@@ -545,17 +491,17 @@ func (in *CapacityInitParameters) DeepCopyInto(out *CapacityInitParameters) {
 	*out = *in
 	if in.Initial != nil {
 		in, out := &in.Initial, &out.Initial
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Max != nil {
 		in, out := &in.Max, &out.Max
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Min != nil {
 		in, out := &in.Min, &out.Min
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -575,17 +521,17 @@ func (in *CapacityObservation) DeepCopyInto(out *CapacityObservation) {
 	*out = *in
 	if in.Initial != nil {
 		in, out := &in.Initial, &out.Initial
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Max != nil {
 		in, out := &in.Max, &out.Max
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Min != nil {
 		in, out := &in.Min, &out.Min
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -605,17 +551,17 @@ func (in *CapacityParameters) DeepCopyInto(out *CapacityParameters) {
 	*out = *in
 	if in.Initial != nil {
 		in, out := &in.Initial, &out.Initial
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Max != nil {
 		in, out := &in.Max, &out.Max
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Min != nil {
 		in, out := &in.Min, &out.Min
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1287,7 +1233,7 @@ func (in *ThresholdInitParameters) DeepCopyInto(out *ThresholdInitParameters) {
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1312,7 +1258,7 @@ func (in *ThresholdObservation) DeepCopyInto(out *ThresholdObservation) {
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1337,7 +1283,7 @@ func (in *ThresholdParameters) DeepCopyInto(out *ThresholdParameters) {
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

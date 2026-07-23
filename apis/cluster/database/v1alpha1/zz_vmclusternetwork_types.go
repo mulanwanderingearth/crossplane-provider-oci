@@ -22,10 +22,10 @@ type DrScansInitParameters struct {
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
 	// (Updatable) The Disaster recovery SCAN TCPIP port. Default is 1521.
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// (Updatable) The DR SCAN TCPIP SSL port. Default is 2484.
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 }
 
 type DrScansObservation struct {
@@ -37,10 +37,10 @@ type DrScansObservation struct {
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
 	// (Updatable) The Disaster recovery SCAN TCPIP port. Default is 1521.
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// (Updatable) The DR SCAN TCPIP SSL port. Default is 2484.
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 }
 
 type DrScansParameters struct {
@@ -55,11 +55,11 @@ type DrScansParameters struct {
 
 	// (Updatable) The Disaster recovery SCAN TCPIP port. Default is 1521.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp" tf:"scan_listener_port_tcp,omitempty"`
 
 	// (Updatable) The DR SCAN TCPIP SSL port. Default is 2484.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 }
 
 type NodesInitParameters struct {
@@ -140,13 +140,13 @@ type ScansInitParameters struct {
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
 	// (Updatable) Deprecated. This field is deprecated. You may use 'scanListenerPortTcp' to specify the port. The SCAN TCPIP port. Default is 1521.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The Disaster recovery SCAN TCPIP port. Default is 1521.
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// (Updatable) The DR SCAN TCPIP SSL port. Default is 2484.
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 }
 
 type ScansObservation struct {
@@ -158,13 +158,13 @@ type ScansObservation struct {
 	Ips []*string `json:"ips,omitempty" tf:"ips,omitempty"`
 
 	// (Updatable) Deprecated. This field is deprecated. You may use 'scanListenerPortTcp' to specify the port. The SCAN TCPIP port. Default is 1521.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The Disaster recovery SCAN TCPIP port. Default is 1521.
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// (Updatable) The DR SCAN TCPIP SSL port. Default is 2484.
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 }
 
 type ScansParameters struct {
@@ -179,15 +179,15 @@ type ScansParameters struct {
 
 	// (Updatable) Deprecated. This field is deprecated. You may use 'scanListenerPortTcp' to specify the port. The SCAN TCPIP port. Default is 1521.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The Disaster recovery SCAN TCPIP port. Default is 1521.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortTCP *float64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
+	ScanListenerPortTCP *int64 `json:"scanListenerPortTcp,omitempty" tf:"scan_listener_port_tcp,omitempty"`
 
 	// (Updatable) The DR SCAN TCPIP SSL port. Default is 2484.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortTCPSSL *float64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
+	ScanListenerPortTCPSSL *int64 `json:"scanListenerPortTcpSsl,omitempty" tf:"scan_listener_port_tcp_ssl,omitempty"`
 }
 
 type VMNetworksInitParameters struct {
@@ -296,8 +296,7 @@ type VmClusterNetworkInitParameters struct {
 	DNS []*string `json:"dns,omitempty" tf:"dns,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the Exadata Cloud@Customer VM cluster network. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -319,8 +318,7 @@ type VmClusterNetworkInitParameters struct {
 	ExadataInfrastructureIDSelector *v1.Selector `json:"exadataInfrastructureIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The list of NTP server IP addresses. Maximum of 3 allowed.
 	Ntp []*string `json:"ntp,omitempty" tf:"ntp,omitempty"`
@@ -345,8 +343,7 @@ type VmClusterNetworkObservation struct {
 	DNS []*string `json:"dns,omitempty" tf:"dns,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the Exadata Cloud@Customer VM cluster network. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -358,8 +355,7 @@ type VmClusterNetworkObservation struct {
 	ExadataInfrastructureID *string `json:"exadataInfrastructureId,omitempty" tf:"exadata_infrastructure_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the VM cluster network.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -377,8 +373,7 @@ type VmClusterNetworkObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time when the VM cluster network was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -417,8 +412,7 @@ type VmClusterNetworkParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the Exadata Cloud@Customer VM cluster network. The name does not need to be unique.
 	// +kubebuilder:validation:Optional
@@ -444,8 +438,7 @@ type VmClusterNetworkParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The list of NTP server IP addresses. Maximum of 3 allowed.
 	// +kubebuilder:validation:Optional

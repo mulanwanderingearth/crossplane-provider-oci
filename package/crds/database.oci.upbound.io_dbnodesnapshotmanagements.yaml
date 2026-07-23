@@ -82,7 +82,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   exadbVmClusterId:
                     description: The Exadata VM cluster OCID on Exascale Infrastructure.
                     type: string
@@ -170,7 +169,6 @@ spec:
                       type, or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: The suffix of the Exadata Database Node Snapshot
                       names (Snpashot name = Node hostname + "-" + suffix). The Exadata
@@ -204,7 +202,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   exadbVmClusterId:
                     description: The Exadata VM cluster OCID on Exascale Infrastructure.
                     type: string
@@ -292,7 +289,6 @@ spec:
                       type, or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: The suffix of the Exadata Database Node Snapshot
                       names (Snpashot name = Node hostname + "-" + suffix). The Exadata
@@ -416,7 +412,6 @@ spec:
                       Each key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   exadbVmClusterId:
                     description: The Exadata VM cluster OCID on Exascale Infrastructure.
                     type: string
@@ -428,7 +423,6 @@ spec:
                       type, or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Exadata Database Node Snapshot.
                     type: string
@@ -454,7 +448,6 @@ spec:
                             Snapshots. Each key is predefined and scoped to a namespace.
                             For more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -463,7 +456,6 @@ spec:
                             predefined name, type, or namespace. For more information,
                             see Resource Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         id:
                           description: The OCID of the Exadata Database Node Snapshot.
                           type: string
@@ -506,7 +498,6 @@ spec:
                             predefined and scoped to a namespace. For more information,
                             see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         timeCreated:
                           description: The date and time that the Exadata Database
                             Node Snapshot was created.
@@ -523,7 +514,8 @@ spec:
                                 type: string
                               size:
                                 description: Volume Size
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object

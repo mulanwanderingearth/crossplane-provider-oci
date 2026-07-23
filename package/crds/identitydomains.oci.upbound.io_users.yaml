@@ -514,7 +514,8 @@ spec:
                                 type: string
                               score:
                                 description: (Updatable) Risk Score value
-                                type: number
+                                format: int64
+                                type: integer
                               source:
                                 description: (Updatable) Risk Provider Profile Source
                                 type: string
@@ -658,7 +659,8 @@ spec:
                             authentication sign in attempts made by this user. The
                             user is  locked if this reaches the threshold specified
                             in the maxIncorrectAttempts attribute in AuthenticationFactorSettings.
-                          type: number
+                          format: int64
+                          type: integer
                         mfaEnabledOn:
                           description: (Updatable) The date when the user enrolled
                             in multi factor authentication. This will be set to null,
@@ -760,7 +762,8 @@ spec:
                         gidNumber:
                           description: (Updatable) Primary Group identifier of the
                             POSIX user
-                          type: number
+                          format: int64
+                          type: integer
                         homeDirectory:
                           description: (Updatable) The absolute path to the home directory
                             of the POSIX account
@@ -772,7 +775,8 @@ spec:
                         uidNumber:
                           description: (Updatable) Integer uniquely identifying a
                             user in a POSIX administrative domain
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   urnietfparamsscimschemasoracleidcsextensionsecurityQuestionsUser:
@@ -917,13 +921,15 @@ spec:
                                   reset password attempts, 3 - failed MFA login attempts,
                                   4 - failed MFA login attempts for federated user,
                                   5 - failed Database login attempts'
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         maxConcurrentSessions:
                           description: (Updatable) The maximum number of concurrent
                             sessions for a user.
-                          type: number
+                          format: int64
+                          type: integer
                         recoveryLocked:
                           description: (Updatable) A complex attribute that indicates
                             a password recovery is locked (blocking any new sessions).
@@ -1532,7 +1538,8 @@ spec:
                                 type: string
                               score:
                                 description: (Updatable) Risk Score value
-                                type: number
+                                format: int64
+                                type: integer
                               source:
                                 description: (Updatable) Risk Provider Profile Source
                                 type: string
@@ -1676,7 +1683,8 @@ spec:
                             authentication sign in attempts made by this user. The
                             user is  locked if this reaches the threshold specified
                             in the maxIncorrectAttempts attribute in AuthenticationFactorSettings.
-                          type: number
+                          format: int64
+                          type: integer
                         mfaEnabledOn:
                           description: (Updatable) The date when the user enrolled
                             in multi factor authentication. This will be set to null,
@@ -1778,7 +1786,8 @@ spec:
                         gidNumber:
                           description: (Updatable) Primary Group identifier of the
                             POSIX user
-                          type: number
+                          format: int64
+                          type: integer
                         homeDirectory:
                           description: (Updatable) The absolute path to the home directory
                             of the POSIX account
@@ -1790,7 +1799,8 @@ spec:
                         uidNumber:
                           description: (Updatable) Integer uniquely identifying a
                             user in a POSIX administrative domain
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   urnietfparamsscimschemasoracleidcsextensionsecurityQuestionsUser:
@@ -1935,13 +1945,15 @@ spec:
                                   reset password attempts, 3 - failed MFA login attempts,
                                   4 - failed MFA login attempts for federated user,
                                   5 - failed Database login attempts'
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         maxConcurrentSessions:
                           description: (Updatable) The maximum number of concurrent
                             sessions for a user.
-                          type: number
+                          format: int64
+                          type: integer
                         recoveryLocked:
                           description: (Updatable) A complex attribute that indicates
                             a password recovery is locked (blocking any new sessions).
@@ -2823,7 +2835,8 @@ spec:
                                 type: string
                               score:
                                 description: (Updatable) Risk Score value
-                                type: number
+                                format: int64
+                                type: integer
                               source:
                                 description: (Updatable) Risk Provider Profile Source
                                 type: string
@@ -2882,7 +2895,8 @@ spec:
                         dbLoginAttempts:
                           description: (Updatable) The number of failed login attempts.
                             The value is reset to 0 after a successful login.
-                          type: number
+                          format: int64
+                          type: integer
                         dbUserName:
                           description: (Updatable) The database username.
                           type: string
@@ -3020,7 +3034,8 @@ spec:
                             authentication sign in attempts made by this user. The
                             user is  locked if this reaches the threshold specified
                             in the maxIncorrectAttempts attribute in AuthenticationFactorSettings.
-                          type: number
+                          format: int64
+                          type: integer
                         mfaEnabledOn:
                           description: (Updatable) The date when the user enrolled
                             in multi factor authentication. This will be set to null,
@@ -3107,7 +3122,8 @@ spec:
                                 type: string
                               priority:
                                 description: (Updatable) PasswordPolicy priority
-                                type: number
+                                format: int64
+                                type: integer
                               ref:
                                 description: (Updatable) The URI of the corresponding
                                   Group resource to which the user belongs
@@ -3197,7 +3213,8 @@ spec:
                         gidNumber:
                           description: (Updatable) Primary Group identifier of the
                             POSIX user
-                          type: number
+                          format: int64
+                          type: integer
                         homeDirectory:
                           description: (Updatable) The absolute path to the home directory
                             of the POSIX account
@@ -3209,7 +3226,8 @@ spec:
                         uidNumber:
                           description: (Updatable) Integer uniquely identifying a
                             user in a POSIX administrative domain
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   urnietfparamsscimschemasoracleidcsextensionsecurityQuestionsUser:
@@ -3487,7 +3505,8 @@ spec:
                                   reset password attempts, 3 - failed MFA login attempts,
                                   4 - failed MFA login attempts for federated user,
                                   5 - failed Database login attempts'
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         loginAttempts:
@@ -3495,22 +3514,26 @@ spec:
                             authentication sign in attempts made by this user. The
                             user is  locked if this reaches the threshold specified
                             in the maxIncorrectAttempts attribute in AuthenticationFactorSettings.
-                          type: number
+                          format: int64
+                          type: integer
                         maxConcurrentSessions:
                           description: (Updatable) The maximum number of concurrent
                             sessions for a user.
-                          type: number
+                          format: int64
+                          type: integer
                         previousSuccessfulLoginDate:
                           description: (Updatable) The previous successful login date.
                           type: string
                         recoveryAttempts:
                           description: (Updatable) The number of failed recovery attempts.
                             The value is reset to 0 after a successful login.
-                          type: number
+                          format: int64
+                          type: integer
                         recoveryEnrollAttempts:
                           description: (Updatable) The number of failed account recovery
                             enrollment attempts.
-                          type: number
+                          format: int64
+                          type: integer
                         recoveryLocked:
                           description: (Updatable) A complex attribute that indicates
                             a password recovery is locked (blocking any new sessions).
@@ -3630,7 +3653,8 @@ spec:
                               targetRequestTimeout:
                                 description: (Updatable) Timeout interval for Synchronization
                                   TargetAction in milliseconds
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) A label indicating the attribute's
                                   function; e.g., 'work' or 'home'.

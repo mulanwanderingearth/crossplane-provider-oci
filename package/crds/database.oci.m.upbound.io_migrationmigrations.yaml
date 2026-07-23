@@ -550,7 +550,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. Does not
                       have to be unique, and it's changeable.  Avoid entering confidential
@@ -597,7 +596,6 @@ spec:
                       or namespace.  For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ggsDetails:
                     description: (Updatable) Optional settings for Oracle GoldenGate
                       processes
@@ -607,7 +605,8 @@ spec:
                           description: (Updatable) ODMS will monitor GoldenGate end-to-end
                             latency until the lag time is lower than the specified
                             value in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         extract:
                           description: (Applicable when database_combination=ORACLE)
                             (Updatable) Parameters for GoldenGate Extract processes.
@@ -620,7 +619,8 @@ spec:
                                   that the transaction is long-running. If not specified,
                                   Extract will not generate a warning on long-running
                                   transactions.
-                                type: number
+                                format: int64
+                                type: integer
                               performanceProfile:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Extract performance.
@@ -648,7 +648,8 @@ spec:
                           description: (Updatable) ODMS will monitor GoldenGate end-to-end
                             latency until the lag time is lower than the specified
                             value in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         computeId:
                           description: (Updatable) The OCID of the resource being
                             referenced.
@@ -665,7 +666,8 @@ spec:
                                   that the transaction is long-running. If not specified,
                                   Extract will not generate a warning on long-running
                                   transactions.
-                                type: number
+                                format: int64
+                                type: integer
                               performanceProfile:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Extract performance.
@@ -940,14 +942,16 @@ spec:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Maximum number of worker processes that
                                   can be used for a Data Pump Export job.
-                                type: number
+                                format: int64
+                                type: integer
                               importParallelismDegree:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Maximum number of worker processes that
                                   can be used for a Data Pump Import job. For an Autonomous
                                   Database, ODMS will automatically query its CPU
                                   core count and set this property.
-                                type: number
+                                format: int64
+                                type: integer
                               isCluster:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Set to false to force Data Pump worker
@@ -1063,7 +1067,8 @@ spec:
                                   | NON_ADB_AUTOCREATE) (Updatable) Size to extend
                                   the tablespace in MB.  Note: Only applicable if
                                   ''isBigFile'' property is set to true.'
-                                type: number
+                                format: int64
+                                type: integer
                               isAutoCreate:
                                 description: '(Applicable when target_type=ADB_D_AUTOCREATE
                                   | NON_ADB_AUTOCREATE) (Updatable) Set this property
@@ -1939,7 +1944,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. Does not
                       have to be unique, and it's changeable.  Avoid entering confidential
@@ -1986,7 +1990,6 @@ spec:
                       or namespace.  For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ggsDetails:
                     description: (Updatable) Optional settings for Oracle GoldenGate
                       processes
@@ -1996,7 +1999,8 @@ spec:
                           description: (Updatable) ODMS will monitor GoldenGate end-to-end
                             latency until the lag time is lower than the specified
                             value in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         extract:
                           description: (Applicable when database_combination=ORACLE)
                             (Updatable) Parameters for GoldenGate Extract processes.
@@ -2009,7 +2013,8 @@ spec:
                                   that the transaction is long-running. If not specified,
                                   Extract will not generate a warning on long-running
                                   transactions.
-                                type: number
+                                format: int64
+                                type: integer
                               performanceProfile:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Extract performance.
@@ -2037,7 +2042,8 @@ spec:
                           description: (Updatable) ODMS will monitor GoldenGate end-to-end
                             latency until the lag time is lower than the specified
                             value in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         computeId:
                           description: (Updatable) The OCID of the resource being
                             referenced.
@@ -2054,7 +2060,8 @@ spec:
                                   that the transaction is long-running. If not specified,
                                   Extract will not generate a warning on long-running
                                   transactions.
-                                type: number
+                                format: int64
+                                type: integer
                               performanceProfile:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Extract performance.
@@ -2331,14 +2338,16 @@ spec:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Maximum number of worker processes that
                                   can be used for a Data Pump Export job.
-                                type: number
+                                format: int64
+                                type: integer
                               importParallelismDegree:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Maximum number of worker processes that
                                   can be used for a Data Pump Import job. For an Autonomous
                                   Database, ODMS will automatically query its CPU
                                   core count and set this property.
-                                type: number
+                                format: int64
+                                type: integer
                               isCluster:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Set to false to force Data Pump worker
@@ -2454,7 +2463,8 @@ spec:
                                   | NON_ADB_AUTOCREATE) (Updatable) Size to extend
                                   the tablespace in MB.  Note: Only applicable if
                                   ''isBigFile'' property is set to true.'
-                                type: number
+                                format: int64
+                                type: integer
                               isAutoCreate:
                                 description: '(Applicable when target_type=ADB_D_AUTOCREATE
                                   | NON_ADB_AUTOCREATE) (Updatable) Set this property
@@ -3052,7 +3062,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. Does not
                       have to be unique, and it's changeable.  Avoid entering confidential
@@ -3102,7 +3111,6 @@ spec:
                       or namespace.  For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ggsDetails:
                     description: (Updatable) Optional settings for Oracle GoldenGate
                       processes
@@ -3112,7 +3120,8 @@ spec:
                           description: (Updatable) ODMS will monitor GoldenGate end-to-end
                             latency until the lag time is lower than the specified
                             value in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         extract:
                           description: (Applicable when database_combination=ORACLE)
                             (Updatable) Parameters for GoldenGate Extract processes.
@@ -3125,7 +3134,8 @@ spec:
                                   that the transaction is long-running. If not specified,
                                   Extract will not generate a warning on long-running
                                   transactions.
-                                type: number
+                                format: int64
+                                type: integer
                               performanceProfile:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Extract performance.
@@ -3165,7 +3175,8 @@ spec:
                           description: (Updatable) ODMS will monitor GoldenGate end-to-end
                             latency until the lag time is lower than the specified
                             value in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         computeId:
                           description: (Updatable) The OCID of the resource being
                             referenced.
@@ -3182,7 +3193,8 @@ spec:
                                   that the transaction is long-running. If not specified,
                                   Extract will not generate a warning on long-running
                                   transactions.
-                                type: number
+                                format: int64
+                                type: integer
                               performanceProfile:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Extract performance.
@@ -3288,14 +3300,16 @@ spec:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Maximum number of worker processes that
                                   can be used for a Data Pump Export job.
-                                type: number
+                                format: int64
+                                type: integer
                               importParallelismDegree:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Maximum number of worker processes that
                                   can be used for a Data Pump Import job. For an Autonomous
                                   Database, ODMS will automatically query its CPU
                                   core count and set this property.
-                                type: number
+                                format: int64
+                                type: integer
                               isCluster:
                                 description: (Applicable when database_combination=ORACLE)
                                   (Updatable) Set to false to force Data Pump worker
@@ -3411,7 +3425,8 @@ spec:
                                   | NON_ADB_AUTOCREATE) (Updatable) Size to extend
                                   the tablespace in MB.  Note: Only applicable if
                                   ''isBigFile'' property is set to true.'
-                                type: number
+                                format: int64
+                                type: integer
                               isAutoCreate:
                                 description: '(Applicable when target_type=ADB_D_AUTOCREATE
                                   | NON_ADB_AUTOCREATE) (Updatable) Set this property
@@ -3463,7 +3478,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   targetDatabaseConnectionId:
                     description: (Updatable) The OCID of the resource being referenced.
                     type: string

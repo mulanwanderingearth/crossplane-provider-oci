@@ -15,6 +15,18 @@ import (
 )
 
 type ApprovalWorkflowStepIdcsCreatedByInitParameters struct {
+
+	// (Updatable) The display of the approver.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// The unique Oracle Cloud Infrastructure identifier of the approver.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// The type of the approver.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// The unique identifier of the approver.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ApprovalWorkflowStepIdcsCreatedByObservation struct {
@@ -36,9 +48,37 @@ type ApprovalWorkflowStepIdcsCreatedByObservation struct {
 }
 
 type ApprovalWorkflowStepIdcsCreatedByParameters struct {
+
+	// (Updatable) The display of the approver.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// The unique Oracle Cloud Infrastructure identifier of the approver.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// The type of the approver.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// The unique identifier of the approver.
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type ApprovalWorkflowStepIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) The display of the approver.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// The unique Oracle Cloud Infrastructure identifier of the approver.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// The type of the approver.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// The unique identifier of the approver.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ApprovalWorkflowStepIdcsLastModifiedByObservation struct {
@@ -60,6 +100,22 @@ type ApprovalWorkflowStepIdcsLastModifiedByObservation struct {
 }
 
 type ApprovalWorkflowStepIdcsLastModifiedByParameters struct {
+
+	// (Updatable) The display of the approver.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// The unique Oracle Cloud Infrastructure identifier of the approver.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// The type of the approver.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// The unique identifier of the approver.
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type ApprovalWorkflowStepInitParameters struct {
@@ -83,13 +139,13 @@ type ApprovalWorkflowStepInitParameters struct {
 	IdcsEndpoint *string `json:"idcsEndpoint,omitempty" tf:"idcs_endpoint,omitempty"`
 
 	// Minimum number of Approvals required for this step.
-	MinimumApprovals *float64 `json:"minimumApprovals,omitempty" tf:"minimum_approvals,omitempty"`
+	MinimumApprovals *int64 `json:"minimumApprovals,omitempty" tf:"minimum_approvals,omitempty"`
 
 	// The unique Oracle Cloud Infrastructure identifier of the approver.
 	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
 
 	// Order of the ApprovalWorkflowStep.
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// An endpoint-specific schema version number to use in the Request. Allowed version values are Earliest Version or Latest Version as specified in each REST API endpoint description, or any sequential number inbetween. All schema attributes/body parameters are a part of version 1. After version 1, any attributes added or deprecated will be tagged with the version that they were added to or deprecated in. If no version is provided, the latest schema version is returned.
 	ResourceTypeSchemaVersion *string `json:"resourceTypeSchemaVersion,omitempty" tf:"resource_type_schema_version,omitempty"`
@@ -105,6 +161,21 @@ type ApprovalWorkflowStepInitParameters struct {
 }
 
 type ApprovalWorkflowStepMetaInitParameters struct {
+
+	// The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ApprovalWorkflowStepMetaObservation struct {
@@ -126,6 +197,26 @@ type ApprovalWorkflowStepMetaObservation struct {
 }
 
 type ApprovalWorkflowStepMetaParameters struct {
+
+	// The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ApprovalWorkflowStepObservation struct {
@@ -176,13 +267,13 @@ type ApprovalWorkflowStepObservation struct {
 	Meta []ApprovalWorkflowStepMetaObservation `json:"meta,omitempty" tf:"meta,omitempty"`
 
 	// Minimum number of Approvals required for this step.
-	MinimumApprovals *float64 `json:"minimumApprovals,omitempty" tf:"minimum_approvals,omitempty"`
+	MinimumApprovals *int64 `json:"minimumApprovals,omitempty" tf:"minimum_approvals,omitempty"`
 
 	// The unique Oracle Cloud Infrastructure identifier of the approver.
 	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
 
 	// Order of the ApprovalWorkflowStep.
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// An endpoint-specific schema version number to use in the Request. Allowed version values are Earliest Version or Latest Version as specified in each REST API endpoint description, or any sequential number inbetween. All schema attributes/body parameters are a part of version 1. After version 1, any attributes added or deprecated will be tagged with the version that they were added to or deprecated in. If no version is provided, the latest schema version is returned.
 	ResourceTypeSchemaVersion *string `json:"resourceTypeSchemaVersion,omitempty" tf:"resource_type_schema_version,omitempty"`
@@ -228,7 +319,7 @@ type ApprovalWorkflowStepParameters struct {
 
 	// Minimum number of Approvals required for this step.
 	// +kubebuilder:validation:Optional
-	MinimumApprovals *float64 `json:"minimumApprovals,omitempty" tf:"minimum_approvals,omitempty"`
+	MinimumApprovals *int64 `json:"minimumApprovals,omitempty" tf:"minimum_approvals,omitempty"`
 
 	// The unique Oracle Cloud Infrastructure identifier of the approver.
 	// +kubebuilder:validation:Optional
@@ -236,7 +327,7 @@ type ApprovalWorkflowStepParameters struct {
 
 	// Order of the ApprovalWorkflowStep.
 	// +kubebuilder:validation:Optional
-	Order *float64 `json:"order,omitempty" tf:"order,omitempty"`
+	Order *int64 `json:"order,omitempty" tf:"order,omitempty"`
 
 	// An endpoint-specific schema version number to use in the Request. Allowed version values are Earliest Version or Latest Version as specified in each REST API endpoint description, or any sequential number inbetween. All schema attributes/body parameters are a part of version 1. After version 1, any attributes added or deprecated will be tagged with the version that they were added to or deprecated in. If no version is provided, the latest schema version is returned.
 	// +kubebuilder:validation:Optional

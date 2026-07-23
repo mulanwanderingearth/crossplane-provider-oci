@@ -280,15 +280,13 @@ type BlockVolumesCreateDetailsInitParameters struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Specifies whether the auto-tune performance is enabled for this boot volume. This field is deprecated. Use the InstanceConfigurationDetachedVolumeAutotunePolicy instead to enable the volume for detached autotune.
 	IsAutoTuneEnabled *bool `json:"isAutoTuneEnabled,omitempty" tf:"is_auto_tune_enabled,omitempty"`
@@ -350,15 +348,13 @@ type BlockVolumesCreateDetailsObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Specifies whether the auto-tune performance is enabled for this boot volume. This field is deprecated. Use the InstanceConfigurationDetachedVolumeAutotunePolicy instead to enable the volume for detached autotune.
 	IsAutoTuneEnabled *bool `json:"isAutoTuneEnabled,omitempty" tf:"is_auto_tune_enabled,omitempty"`
@@ -407,8 +403,7 @@ type BlockVolumesCreateDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -416,8 +411,7 @@ type BlockVolumesCreateDetailsParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Specifies whether the auto-tune performance is enabled for this boot volume. This field is deprecated. Use the InstanceConfigurationDetachedVolumeAutotunePolicy instead to enable the volume for detached autotune.
 	// +kubebuilder:validation:Optional
@@ -631,15 +625,13 @@ type CreateDetailsInitParameters struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Specifies whether the auto-tune performance is enabled for this boot volume. This field is deprecated. Use the InstanceConfigurationDetachedVolumeAutotunePolicy instead to enable the volume for detached autotune.
 	IsAutoTuneEnabled *bool `json:"isAutoTuneEnabled,omitempty" tf:"is_auto_tune_enabled,omitempty"`
@@ -701,15 +693,13 @@ type CreateDetailsObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Specifies whether the auto-tune performance is enabled for this boot volume. This field is deprecated. Use the InstanceConfigurationDetachedVolumeAutotunePolicy instead to enable the volume for detached autotune.
 	IsAutoTuneEnabled *bool `json:"isAutoTuneEnabled,omitempty" tf:"is_auto_tune_enabled,omitempty"`
@@ -758,8 +748,7 @@ type CreateDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -767,8 +756,7 @@ type CreateDetailsParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Specifies whether the auto-tune performance is enabled for this boot volume. This field is deprecated. Use the InstanceConfigurationDetachedVolumeAutotunePolicy instead to enable the volume for detached autotune.
 	// +kubebuilder:validation:Optional
@@ -859,15 +847,13 @@ type InstanceConfigurationInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	InstanceDetails []InstanceDetailsInitParameters `json:"instanceDetails,omitempty" tf:"instance_details,omitempty"`
 
@@ -897,15 +883,13 @@ type InstanceConfigurationObservation struct {
 	DeferredFields []*string `json:"deferredFields,omitempty" tf:"deferred_fields,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the volume backup.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -939,8 +923,7 @@ type InstanceConfigurationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -948,8 +931,7 @@ type InstanceConfigurationParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	InstanceDetails []InstanceDetailsParameters `json:"instanceDetails,omitempty" tf:"instance_details,omitempty"`
@@ -1047,15 +1029,13 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsInitParameters struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -1084,8 +1064,7 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsInitParameters struct {
 	PrivateIPIDSelector *v1.NamespacedSelector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -1178,15 +1157,13 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsObservation struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -1205,8 +1182,7 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsObservation struct {
 	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -1234,8 +1210,7 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -1243,8 +1218,7 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
@@ -1279,8 +1253,7 @@ type InstanceDetailsSecondaryVnicsCreateVnicDetailsParameters struct {
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
@@ -1314,7 +1287,7 @@ type InstanceDetailsSecondaryVnicsInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when instance_type=instance_options) Which physical network interface card (NIC) the VNIC will use. Defaults to 0. Certain bare metal instance shapes have two active physical NICs (0 and 1). If you add a secondary VNIC to one of these instances, you can specify which NIC the VNIC will use. For more information, see Virtual Network Interface Cards (VNICs).
-	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+	NicIndex *int64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 type InstanceDetailsSecondaryVnicsObservation struct {
@@ -1326,7 +1299,7 @@ type InstanceDetailsSecondaryVnicsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when instance_type=instance_options) Which physical network interface card (NIC) the VNIC will use. Defaults to 0. Certain bare metal instance shapes have two active physical NICs (0 and 1). If you add a secondary VNIC to one of these instances, you can specify which NIC the VNIC will use. For more information, see Virtual Network Interface Cards (VNICs).
-	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+	NicIndex *int64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 type InstanceDetailsSecondaryVnicsParameters struct {
@@ -1341,7 +1314,7 @@ type InstanceDetailsSecondaryVnicsParameters struct {
 
 	// (Applicable when instance_type=instance_options) Which physical network interface card (NIC) the VNIC will use. Defaults to 0. Certain bare metal instance shapes have two active physical NICs (0 and 1). If you add a secondary VNIC to one of these instances, you can specify which NIC the VNIC will use. For more information, see Virtual Network Interface Cards (VNICs).
 	// +kubebuilder:validation:Optional
-	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+	NicIndex *int64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 type LaunchDetailsAgentConfigInitParameters struct {
@@ -1463,15 +1436,13 @@ type LaunchDetailsCreateVnicDetailsInitParameters struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -1500,8 +1471,7 @@ type LaunchDetailsCreateVnicDetailsInitParameters struct {
 	PrivateIPIDSelector *v1.NamespacedSelector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -1594,15 +1564,13 @@ type LaunchDetailsCreateVnicDetailsObservation struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -1621,8 +1589,7 @@ type LaunchDetailsCreateVnicDetailsObservation struct {
 	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -1650,8 +1617,7 @@ type LaunchDetailsCreateVnicDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -1659,8 +1625,7 @@ type LaunchDetailsCreateVnicDetailsParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
@@ -1695,8 +1660,7 @@ type LaunchDetailsCreateVnicDetailsParameters struct {
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
@@ -1781,22 +1745,19 @@ type LaunchDetailsInitParameters struct {
 	DedicatedVMHostIDSelector *v1.NamespacedSelector `json:"dedicatedVmHostIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when instance_type=compute) Additional metadata key/value pairs that you provide. They serve the same purpose and functionality as fields in the metadata object.
-	// +mapType=granular
-	ExtendedMetadata map[string]*string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
+	ExtendedMetadata map[string]string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains let you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Optional mutable instance options. As a part of Instance Metadata Service Security Header, This allows user to disable the legacy imds endpoints.
 	InstanceOptions []LaunchDetailsInstanceOptionsInitParameters `json:"instanceOptions,omitempty" tf:"instance_options,omitempty"`
@@ -1820,8 +1781,7 @@ type LaunchDetailsInitParameters struct {
 	LicensingConfigs []LaunchDetailsLicensingConfigsInitParameters `json:"licensingConfigs,omitempty" tf:"licensing_configs,omitempty"`
 
 	// fields in that these can be nested JSON objects (whereas metadata fields are string/string maps only).
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) The details for providing placement constraints.
 	PlacementConstraintDetails []LaunchDetailsPlacementConstraintDetailsInitParameters `json:"placementConstraintDetails,omitempty" tf:"placement_constraint_details,omitempty"`
@@ -1836,8 +1796,7 @@ type LaunchDetailsInitParameters struct {
 	PreferredMaintenanceAction *string `json:"preferredMaintenanceAction,omitempty" tf:"preferred_maintenance_action,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// that you specify. If you don't provide the parameter, the default values for the shape are used.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -1996,22 +1955,19 @@ type LaunchDetailsObservation struct {
 	DedicatedVMHostID *string `json:"dedicatedVmHostId,omitempty" tf:"dedicated_vm_host_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when instance_type=compute) Additional metadata key/value pairs that you provide. They serve the same purpose and functionality as fields in the metadata object.
-	// +mapType=granular
-	ExtendedMetadata map[string]*string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
+	ExtendedMetadata map[string]string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains let you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Optional mutable instance options. As a part of Instance Metadata Service Security Header, This allows user to disable the legacy imds endpoints.
 	InstanceOptions []LaunchDetailsInstanceOptionsObservation `json:"instanceOptions,omitempty" tf:"instance_options,omitempty"`
@@ -2035,8 +1991,7 @@ type LaunchDetailsObservation struct {
 	LicensingConfigs []LaunchDetailsLicensingConfigsObservation `json:"licensingConfigs,omitempty" tf:"licensing_configs,omitempty"`
 
 	// fields in that these can be nested JSON objects (whereas metadata fields are string/string maps only).
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) The details for providing placement constraints.
 	PlacementConstraintDetails []LaunchDetailsPlacementConstraintDetailsObservation `json:"placementConstraintDetails,omitempty" tf:"placement_constraint_details,omitempty"`
@@ -2051,8 +2006,7 @@ type LaunchDetailsObservation struct {
 	PreferredMaintenanceAction *string `json:"preferredMaintenanceAction,omitempty" tf:"preferred_maintenance_action,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// that you specify. If you don't provide the parameter, the default values for the shape are used.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -2134,8 +2088,7 @@ type LaunchDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -2143,8 +2096,7 @@ type LaunchDetailsParameters struct {
 
 	// (Applicable when instance_type=compute) Additional metadata key/value pairs that you provide. They serve the same purpose and functionality as fields in the metadata object.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	ExtendedMetadata map[string]*string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
+	ExtendedMetadata map[string]string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains let you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	// +kubebuilder:validation:Optional
@@ -2152,8 +2104,7 @@ type LaunchDetailsParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Optional mutable instance options. As a part of Instance Metadata Service Security Header, This allows user to disable the legacy imds endpoints.
 	// +kubebuilder:validation:Optional
@@ -2185,8 +2136,7 @@ type LaunchDetailsParameters struct {
 
 	// fields in that these can be nested JSON objects (whereas metadata fields are string/string maps only).
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) The details for providing placement constraints.
 	// +kubebuilder:validation:Optional
@@ -2206,8 +2156,7 @@ type LaunchDetailsParameters struct {
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// that you specify. If you don't provide the parameter, the default values for the shape are used.
 	// +kubebuilder:validation:Optional
@@ -2277,8 +2226,7 @@ type LaunchDetailsPlatformConfigInitParameters struct {
 	AreVirtualInstructionsEnabled *bool `json:"areVirtualInstructionsEnabled,omitempty" tf:"are_virtual_instructions_enabled,omitempty"`
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_MILAN_BM_GPU | AMD_ROME_BM | AMD_ROME_BM_GPU | GENERIC_BM | INTEL_ICELAKE_BM | INTEL_SKYLAKE_BM) Instance Platform Configuration Configuration Map for flexible setting input.
-	// +mapType=granular
-	ConfigMap map[string]*string `json:"configMap,omitempty" tf:"config_map,omitempty"`
+	ConfigMap map[string]string `json:"configMap,omitempty" tf:"config_map,omitempty"`
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_MILAN_BM_GPU | AMD_ROME_BM | AMD_ROME_BM_GPU | GENERIC_BM) Whether the Access Control Service is enabled on the instance. When enabled, the platform can enforce PCIe device isolation, required for VFIO device pass-through.
 	IsAccessControlServiceEnabled *bool `json:"isAccessControlServiceEnabled,omitempty" tf:"is_access_control_service_enabled,omitempty"`
@@ -2305,7 +2253,7 @@ type LaunchDetailsPlatformConfigInitParameters struct {
 	NumaNodesPerSocket *string `json:"numaNodesPerSocket,omitempty" tf:"numa_nodes_per_socket,omitempty"`
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_ROME_BM | GENERIC_BM | INTEL_ICELAKE_BM | INTEL_SKYLAKE_BM) The percentage of cores enabled. Value must be a multiple of 25%. If the requested percentage results in a fractional number of cores, the system rounds up the number of cores across processors and provisions an instance with a whole number of cores.
-	PercentageOfCoresEnabled *float64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
+	PercentageOfCoresEnabled *int64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
 
 	// The type of volume. The only supported values are "iscsi" and "paravirtualized"
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -2317,8 +2265,7 @@ type LaunchDetailsPlatformConfigObservation struct {
 	AreVirtualInstructionsEnabled *bool `json:"areVirtualInstructionsEnabled,omitempty" tf:"are_virtual_instructions_enabled,omitempty"`
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_MILAN_BM_GPU | AMD_ROME_BM | AMD_ROME_BM_GPU | GENERIC_BM | INTEL_ICELAKE_BM | INTEL_SKYLAKE_BM) Instance Platform Configuration Configuration Map for flexible setting input.
-	// +mapType=granular
-	ConfigMap map[string]*string `json:"configMap,omitempty" tf:"config_map,omitempty"`
+	ConfigMap map[string]string `json:"configMap,omitempty" tf:"config_map,omitempty"`
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_MILAN_BM_GPU | AMD_ROME_BM | AMD_ROME_BM_GPU | GENERIC_BM) Whether the Access Control Service is enabled on the instance. When enabled, the platform can enforce PCIe device isolation, required for VFIO device pass-through.
 	IsAccessControlServiceEnabled *bool `json:"isAccessControlServiceEnabled,omitempty" tf:"is_access_control_service_enabled,omitempty"`
@@ -2345,7 +2292,7 @@ type LaunchDetailsPlatformConfigObservation struct {
 	NumaNodesPerSocket *string `json:"numaNodesPerSocket,omitempty" tf:"numa_nodes_per_socket,omitempty"`
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_ROME_BM | GENERIC_BM | INTEL_ICELAKE_BM | INTEL_SKYLAKE_BM) The percentage of cores enabled. Value must be a multiple of 25%. If the requested percentage results in a fractional number of cores, the system rounds up the number of cores across processors and provisions an instance with a whole number of cores.
-	PercentageOfCoresEnabled *float64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
+	PercentageOfCoresEnabled *int64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
 
 	// The type of volume. The only supported values are "iscsi" and "paravirtualized"
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -2359,8 +2306,7 @@ type LaunchDetailsPlatformConfigParameters struct {
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_MILAN_BM_GPU | AMD_ROME_BM | AMD_ROME_BM_GPU | GENERIC_BM | INTEL_ICELAKE_BM | INTEL_SKYLAKE_BM) Instance Platform Configuration Configuration Map for flexible setting input.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	ConfigMap map[string]*string `json:"configMap,omitempty" tf:"config_map,omitempty"`
+	ConfigMap map[string]string `json:"configMap,omitempty" tf:"config_map,omitempty"`
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_MILAN_BM_GPU | AMD_ROME_BM | AMD_ROME_BM_GPU | GENERIC_BM) Whether the Access Control Service is enabled on the instance. When enabled, the platform can enforce PCIe device isolation, required for VFIO device pass-through.
 	// +kubebuilder:validation:Optional
@@ -2396,7 +2342,7 @@ type LaunchDetailsPlatformConfigParameters struct {
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_ROME_BM | GENERIC_BM | INTEL_ICELAKE_BM | INTEL_SKYLAKE_BM) The percentage of cores enabled. Value must be a multiple of 25%. If the requested percentage results in a fractional number of cores, the system rounds up the number of cores across processors and provisions an instance with a whole number of cores.
 	// +kubebuilder:validation:Optional
-	PercentageOfCoresEnabled *float64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
+	PercentageOfCoresEnabled *int64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
 
 	// The type of volume. The only supported values are "iscsi" and "paravirtualized"
 	// +kubebuilder:validation:Optional
@@ -2457,13 +2403,13 @@ type LaunchDetailsShapeConfigInitParameters struct {
 	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
 	// (Applicable when instance_type=compute) The NVMe-backed local storage capacity, in GB, for flexible dense (DenseLV) VM shapes. If the selected shape  is DenseLV, the value must be greater than 0. For all other shapes, the value must be null (if specified);  any non-null value for a non-DenseLV shape results in an error.
-	LocalVolumeSizeInGbs *float64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
+	LocalVolumeSizeInGbs *int64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The total amount of memory available to the instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
@@ -2472,7 +2418,7 @@ type LaunchDetailsShapeConfigInitParameters struct {
 	ResourceManagement *string `json:"resourceManagement,omitempty" tf:"resource_management,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of VCPUs available to the instance. This can be used instead of OCPUs, in which case the actual number of OCPUs will be calculated based on this value and the actual hardware. This must be a multiple of 2.
-	Vcpus *float64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
+	Vcpus *int64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 }
 
 type LaunchDetailsShapeConfigObservation struct {
@@ -2481,13 +2427,13 @@ type LaunchDetailsShapeConfigObservation struct {
 	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
 	// (Applicable when instance_type=compute) The NVMe-backed local storage capacity, in GB, for flexible dense (DenseLV) VM shapes. If the selected shape  is DenseLV, the value must be greater than 0. For all other shapes, the value must be null (if specified);  any non-null value for a non-DenseLV shape results in an error.
-	LocalVolumeSizeInGbs *float64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
+	LocalVolumeSizeInGbs *int64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The total amount of memory available to the instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
@@ -2496,7 +2442,7 @@ type LaunchDetailsShapeConfigObservation struct {
 	ResourceManagement *string `json:"resourceManagement,omitempty" tf:"resource_management,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of VCPUs available to the instance. This can be used instead of OCPUs, in which case the actual number of OCPUs will be calculated based on this value and the actual hardware. This must be a multiple of 2.
-	Vcpus *float64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
+	Vcpus *int64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 }
 
 type LaunchDetailsShapeConfigParameters struct {
@@ -2507,7 +2453,7 @@ type LaunchDetailsShapeConfigParameters struct {
 
 	// (Applicable when instance_type=compute) The NVMe-backed local storage capacity, in GB, for flexible dense (DenseLV) VM shapes. If the selected shape  is DenseLV, the value must be greater than 0. For all other shapes, the value must be null (if specified);  any non-null value for a non-DenseLV shape results in an error.
 	// +kubebuilder:validation:Optional
-	LocalVolumeSizeInGbs *float64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
+	LocalVolumeSizeInGbs *int64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The total amount of memory available to the instance, in gigabytes.
 	// +kubebuilder:validation:Optional
@@ -2515,7 +2461,7 @@ type LaunchDetailsShapeConfigParameters struct {
 
 	// (Applicable when instance_type=compute) The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of OCPUs available to the instance.
 	// +kubebuilder:validation:Optional
@@ -2527,7 +2473,7 @@ type LaunchDetailsShapeConfigParameters struct {
 
 	// (Applicable when instance_type=compute) The total number of VCPUs available to the instance. This can be used instead of OCPUs, in which case the actual number of OCPUs will be calculated based on this value and the actual hardware. This must be a multiple of 2.
 	// +kubebuilder:validation:Optional
-	Vcpus *float64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
+	Vcpus *int64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 }
 
 type LaunchDetailsSourceDetailsInitParameters struct {
@@ -2590,8 +2536,7 @@ type LaunchDetailsSourceDetailsInstanceSourceImageFilterDetailsInitParameters st
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Applicable when source_type=image) Filter based on these defined tags. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTagsFilter map[string]*string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
+	DefinedTagsFilter map[string]string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
 
 	// (Applicable when source_type=image) The image's operating system.  Example: Oracle Linux
 	OperatingSystem *string `json:"operatingSystem,omitempty" tf:"operating_system,omitempty"`
@@ -2606,8 +2551,7 @@ type LaunchDetailsSourceDetailsInstanceSourceImageFilterDetailsObservation struc
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Applicable when source_type=image) Filter based on these defined tags. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTagsFilter map[string]*string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
+	DefinedTagsFilter map[string]string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
 
 	// (Applicable when source_type=image) The image's operating system.  Example: Oracle Linux
 	OperatingSystem *string `json:"operatingSystem,omitempty" tf:"operating_system,omitempty"`
@@ -2624,8 +2568,7 @@ type LaunchDetailsSourceDetailsInstanceSourceImageFilterDetailsParameters struct
 
 	// (Applicable when source_type=image) Filter based on these defined tags. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTagsFilter map[string]*string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
+	DefinedTagsFilter map[string]string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
 
 	// (Applicable when source_type=image) The image's operating system.  Example: Oracle Linux
 	// +kubebuilder:validation:Optional
@@ -2883,15 +2826,13 @@ type OptionsLaunchDetailsCreateVnicDetailsInitParameters struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -2920,8 +2861,7 @@ type OptionsLaunchDetailsCreateVnicDetailsInitParameters struct {
 	PrivateIPIDSelector *v1.NamespacedSelector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -3014,15 +2954,13 @@ type OptionsLaunchDetailsCreateVnicDetailsObservation struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -3041,8 +2979,7 @@ type OptionsLaunchDetailsCreateVnicDetailsObservation struct {
 	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -3070,8 +3007,7 @@ type OptionsLaunchDetailsCreateVnicDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -3079,8 +3015,7 @@ type OptionsLaunchDetailsCreateVnicDetailsParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
@@ -3115,8 +3050,7 @@ type OptionsLaunchDetailsCreateVnicDetailsParameters struct {
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
@@ -3201,22 +3135,19 @@ type OptionsLaunchDetailsInitParameters struct {
 	DedicatedVMHostIDSelector *v1.NamespacedSelector `json:"dedicatedVmHostIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when instance_type=compute) Additional metadata key/value pairs that you provide. They serve the same purpose and functionality as fields in the metadata object.
-	// +mapType=granular
-	ExtendedMetadata map[string]*string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
+	ExtendedMetadata map[string]string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains let you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Optional mutable instance options. As a part of Instance Metadata Service Security Header, This allows user to disable the legacy imds endpoints.
 	InstanceOptions []OptionsLaunchDetailsInstanceOptionsInitParameters `json:"instanceOptions,omitempty" tf:"instance_options,omitempty"`
@@ -3240,8 +3171,7 @@ type OptionsLaunchDetailsInitParameters struct {
 	LicensingConfigs []OptionsLaunchDetailsLicensingConfigsInitParameters `json:"licensingConfigs,omitempty" tf:"licensing_configs,omitempty"`
 
 	// fields in that these can be nested JSON objects (whereas metadata fields are string/string maps only).
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) The details for providing placement constraints.
 	PlacementConstraintDetails []OptionsLaunchDetailsPlacementConstraintDetailsInitParameters `json:"placementConstraintDetails,omitempty" tf:"placement_constraint_details,omitempty"`
@@ -3256,8 +3186,7 @@ type OptionsLaunchDetailsInitParameters struct {
 	PreferredMaintenanceAction *string `json:"preferredMaintenanceAction,omitempty" tf:"preferred_maintenance_action,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// that you specify. If you don't provide the parameter, the default values for the shape are used.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -3416,22 +3345,19 @@ type OptionsLaunchDetailsObservation struct {
 	DedicatedVMHostID *string `json:"dedicatedVmHostId,omitempty" tf:"dedicated_vm_host_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when instance_type=compute) Additional metadata key/value pairs that you provide. They serve the same purpose and functionality as fields in the metadata object.
-	// +mapType=granular
-	ExtendedMetadata map[string]*string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
+	ExtendedMetadata map[string]string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains let you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Optional mutable instance options. As a part of Instance Metadata Service Security Header, This allows user to disable the legacy imds endpoints.
 	InstanceOptions []OptionsLaunchDetailsInstanceOptionsObservation `json:"instanceOptions,omitempty" tf:"instance_options,omitempty"`
@@ -3455,8 +3381,7 @@ type OptionsLaunchDetailsObservation struct {
 	LicensingConfigs []OptionsLaunchDetailsLicensingConfigsObservation `json:"licensingConfigs,omitempty" tf:"licensing_configs,omitempty"`
 
 	// fields in that these can be nested JSON objects (whereas metadata fields are string/string maps only).
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) The details for providing placement constraints.
 	PlacementConstraintDetails []OptionsLaunchDetailsPlacementConstraintDetailsObservation `json:"placementConstraintDetails,omitempty" tf:"placement_constraint_details,omitempty"`
@@ -3471,8 +3396,7 @@ type OptionsLaunchDetailsObservation struct {
 	PreferredMaintenanceAction *string `json:"preferredMaintenanceAction,omitempty" tf:"preferred_maintenance_action,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// that you specify. If you don't provide the parameter, the default values for the shape are used.
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -3554,8 +3478,7 @@ type OptionsLaunchDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -3563,8 +3486,7 @@ type OptionsLaunchDetailsParameters struct {
 
 	// (Applicable when instance_type=compute) Additional metadata key/value pairs that you provide. They serve the same purpose and functionality as fields in the metadata object.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	ExtendedMetadata map[string]*string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
+	ExtendedMetadata map[string]string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) A fault domain is a grouping of hardware and infrastructure within an availability domain. Each availability domain contains three fault domains. Fault domains let you distribute your instances so that they are not on the same physical hardware within a single availability domain. A hardware failure or Compute hardware maintenance that affects one fault domain does not affect instances in other fault domains.
 	// +kubebuilder:validation:Optional
@@ -3572,8 +3494,7 @@ type OptionsLaunchDetailsParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) Optional mutable instance options. As a part of Instance Metadata Service Security Header, This allows user to disable the legacy imds endpoints.
 	// +kubebuilder:validation:Optional
@@ -3605,8 +3526,7 @@ type OptionsLaunchDetailsParameters struct {
 
 	// fields in that these can be nested JSON objects (whereas metadata fields are string/string maps only).
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Applicable when instance_type=compute) The details for providing placement constraints.
 	// +kubebuilder:validation:Optional
@@ -3626,8 +3546,7 @@ type OptionsLaunchDetailsParameters struct {
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// that you specify. If you don't provide the parameter, the default values for the shape are used.
 	// +kubebuilder:validation:Optional
@@ -3721,7 +3640,7 @@ type OptionsLaunchDetailsPlatformConfigInitParameters struct {
 	NumaNodesPerSocket *string `json:"numaNodesPerSocket,omitempty" tf:"numa_nodes_per_socket,omitempty"`
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_ROME_BM | GENERIC_BM | INTEL_ICELAKE_BM | INTEL_SKYLAKE_BM) The percentage of cores enabled. Value must be a multiple of 25%. If the requested percentage results in a fractional number of cores, the system rounds up the number of cores across processors and provisions an instance with a whole number of cores.
-	PercentageOfCoresEnabled *float64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
+	PercentageOfCoresEnabled *int64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
 
 	// The type of volume. The only supported values are "iscsi" and "paravirtualized"
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -3757,7 +3676,7 @@ type OptionsLaunchDetailsPlatformConfigObservation struct {
 	NumaNodesPerSocket *string `json:"numaNodesPerSocket,omitempty" tf:"numa_nodes_per_socket,omitempty"`
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_ROME_BM | GENERIC_BM | INTEL_ICELAKE_BM | INTEL_SKYLAKE_BM) The percentage of cores enabled. Value must be a multiple of 25%. If the requested percentage results in a fractional number of cores, the system rounds up the number of cores across processors and provisions an instance with a whole number of cores.
-	PercentageOfCoresEnabled *float64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
+	PercentageOfCoresEnabled *int64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
 
 	// The type of volume. The only supported values are "iscsi" and "paravirtualized"
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -3803,7 +3722,7 @@ type OptionsLaunchDetailsPlatformConfigParameters struct {
 
 	// (Applicable when type=AMD_MILAN_BM | AMD_ROME_BM | GENERIC_BM | INTEL_ICELAKE_BM | INTEL_SKYLAKE_BM) The percentage of cores enabled. Value must be a multiple of 25%. If the requested percentage results in a fractional number of cores, the system rounds up the number of cores across processors and provisions an instance with a whole number of cores.
 	// +kubebuilder:validation:Optional
-	PercentageOfCoresEnabled *float64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
+	PercentageOfCoresEnabled *int64 `json:"percentageOfCoresEnabled,omitempty" tf:"percentage_of_cores_enabled,omitempty"`
 
 	// The type of volume. The only supported values are "iscsi" and "paravirtualized"
 	// +kubebuilder:validation:Optional
@@ -3835,13 +3754,13 @@ type OptionsLaunchDetailsShapeConfigInitParameters struct {
 	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
 	// (Applicable when instance_type=compute) The NVMe-backed local storage capacity, in GB, for flexible dense (DenseLV) VM shapes. If the selected shape  is DenseLV, the value must be greater than 0. For all other shapes, the value must be null (if specified);  any non-null value for a non-DenseLV shape results in an error.
-	LocalVolumeSizeInGbs *float64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
+	LocalVolumeSizeInGbs *int64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The total amount of memory available to the instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
@@ -3850,7 +3769,7 @@ type OptionsLaunchDetailsShapeConfigInitParameters struct {
 	ResourceManagement *string `json:"resourceManagement,omitempty" tf:"resource_management,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of VCPUs available to the instance. This can be used instead of OCPUs, in which case the actual number of OCPUs will be calculated based on this value and the actual hardware. This must be a multiple of 2.
-	Vcpus *float64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
+	Vcpus *int64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 }
 
 type OptionsLaunchDetailsShapeConfigObservation struct {
@@ -3859,13 +3778,13 @@ type OptionsLaunchDetailsShapeConfigObservation struct {
 	BaselineOcpuUtilization *string `json:"baselineOcpuUtilization,omitempty" tf:"baseline_ocpu_utilization,omitempty"`
 
 	// (Applicable when instance_type=compute) The NVMe-backed local storage capacity, in GB, for flexible dense (DenseLV) VM shapes. If the selected shape  is DenseLV, the value must be greater than 0. For all other shapes, the value must be null (if specified);  any non-null value for a non-DenseLV shape results in an error.
-	LocalVolumeSizeInGbs *float64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
+	LocalVolumeSizeInGbs *int64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The total amount of memory available to the instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of OCPUs available to the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
@@ -3874,7 +3793,7 @@ type OptionsLaunchDetailsShapeConfigObservation struct {
 	ResourceManagement *string `json:"resourceManagement,omitempty" tf:"resource_management,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of VCPUs available to the instance. This can be used instead of OCPUs, in which case the actual number of OCPUs will be calculated based on this value and the actual hardware. This must be a multiple of 2.
-	Vcpus *float64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
+	Vcpus *int64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 }
 
 type OptionsLaunchDetailsShapeConfigParameters struct {
@@ -3885,7 +3804,7 @@ type OptionsLaunchDetailsShapeConfigParameters struct {
 
 	// (Applicable when instance_type=compute) The NVMe-backed local storage capacity, in GB, for flexible dense (DenseLV) VM shapes. If the selected shape  is DenseLV, the value must be greater than 0. For all other shapes, the value must be null (if specified);  any non-null value for a non-DenseLV shape results in an error.
 	// +kubebuilder:validation:Optional
-	LocalVolumeSizeInGbs *float64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
+	LocalVolumeSizeInGbs *int64 `json:"localVolumeSizeInGbs,omitempty" tf:"local_volume_size_in_gbs,omitempty"`
 
 	// (Applicable when instance_type=compute) The total amount of memory available to the instance, in gigabytes.
 	// +kubebuilder:validation:Optional
@@ -3893,7 +3812,7 @@ type OptionsLaunchDetailsShapeConfigParameters struct {
 
 	// (Applicable when instance_type=compute) The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// (Applicable when instance_type=compute) The total number of OCPUs available to the instance.
 	// +kubebuilder:validation:Optional
@@ -3905,7 +3824,7 @@ type OptionsLaunchDetailsShapeConfigParameters struct {
 
 	// (Applicable when instance_type=compute) The total number of VCPUs available to the instance. This can be used instead of OCPUs, in which case the actual number of OCPUs will be calculated based on this value and the actual hardware. This must be a multiple of 2.
 	// +kubebuilder:validation:Optional
-	Vcpus *float64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
+	Vcpus *int64 `json:"vcpus,omitempty" tf:"vcpus,omitempty"`
 }
 
 type OptionsLaunchDetailsSourceDetailsInitParameters struct {
@@ -4097,15 +4016,13 @@ type SecondaryVnicsCreateVnicDetailsInitParameters struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -4134,8 +4051,7 @@ type SecondaryVnicsCreateVnicDetailsInitParameters struct {
 	PrivateIPIDSelector *v1.NamespacedSelector `json:"privateIpIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -4228,15 +4144,13 @@ type SecondaryVnicsCreateVnicDetailsObservation struct {
 	AssignPublicIP *bool `json:"assignPublicIp,omitempty" tf:"assign_public_ip,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -4255,8 +4169,7 @@ type SecondaryVnicsCreateVnicDetailsObservation struct {
 	PrivateIPID *string `json:"privateIpId,omitempty" tf:"private_ip_id,omitempty"`
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	SkipSourceDestCheck *bool `json:"skipSourceDestCheck,omitempty" tf:"skip_source_dest_check,omitempty"`
@@ -4284,8 +4197,7 @@ type SecondaryVnicsCreateVnicDetailsParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -4293,8 +4205,7 @@ type SecondaryVnicsCreateVnicDetailsParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when instance_type=compute) The hostname for the VNIC's primary private IP. See the hostnameLabel attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
@@ -4329,8 +4240,7 @@ type SecondaryVnicsCreateVnicDetailsParameters struct {
 
 	// (Applicable when instance_type=compute) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Applicable when instance_type=compute) Whether the source/destination check is disabled on the VNIC. See the skipSourceDestCheck attribute of CreateVnicDetails for more information.
 	// +kubebuilder:validation:Optional
@@ -4364,7 +4274,7 @@ type SecondaryVnicsInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when instance_type=instance_options) Which physical network interface card (NIC) the VNIC will use. Defaults to 0. Certain bare metal instance shapes have two active physical NICs (0 and 1). If you add a secondary VNIC to one of these instances, you can specify which NIC the VNIC will use. For more information, see Virtual Network Interface Cards (VNICs).
-	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+	NicIndex *int64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 type SecondaryVnicsObservation struct {
@@ -4376,7 +4286,7 @@ type SecondaryVnicsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Applicable when instance_type=instance_options) Which physical network interface card (NIC) the VNIC will use. Defaults to 0. Certain bare metal instance shapes have two active physical NICs (0 and 1). If you add a secondary VNIC to one of these instances, you can specify which NIC the VNIC will use. For more information, see Virtual Network Interface Cards (VNICs).
-	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+	NicIndex *int64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 type SecondaryVnicsParameters struct {
@@ -4391,7 +4301,7 @@ type SecondaryVnicsParameters struct {
 
 	// (Applicable when instance_type=instance_options) Which physical network interface card (NIC) the VNIC will use. Defaults to 0. Certain bare metal instance shapes have two active physical NICs (0 and 1). If you add a secondary VNIC to one of these instances, you can specify which NIC the VNIC will use. For more information, see Virtual Network Interface Cards (VNICs).
 	// +kubebuilder:validation:Optional
-	NicIndex *float64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
+	NicIndex *int64 `json:"nicIndex,omitempty" tf:"nic_index,omitempty"`
 }
 
 type SourceDetailsInstanceSourceImageFilterDetailsInitParameters struct {
@@ -4400,8 +4310,7 @@ type SourceDetailsInstanceSourceImageFilterDetailsInitParameters struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Applicable when source_type=image) Filter based on these defined tags. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTagsFilter map[string]*string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
+	DefinedTagsFilter map[string]string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
 
 	// (Applicable when source_type=image) The image's operating system.  Example: Oracle Linux
 	OperatingSystem *string `json:"operatingSystem,omitempty" tf:"operating_system,omitempty"`
@@ -4416,8 +4325,7 @@ type SourceDetailsInstanceSourceImageFilterDetailsObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Applicable when source_type=image) Filter based on these defined tags. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTagsFilter map[string]*string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
+	DefinedTagsFilter map[string]string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
 
 	// (Applicable when source_type=image) The image's operating system.  Example: Oracle Linux
 	OperatingSystem *string `json:"operatingSystem,omitempty" tf:"operating_system,omitempty"`
@@ -4434,8 +4342,7 @@ type SourceDetailsInstanceSourceImageFilterDetailsParameters struct {
 
 	// (Applicable when source_type=image) Filter based on these defined tags. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTagsFilter map[string]*string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
+	DefinedTagsFilter map[string]string `json:"definedTagsFilter,omitempty" tf:"defined_tags_filter,omitempty"`
 
 	// (Applicable when source_type=image) The image's operating system.  Example: Oracle Linux
 	// +kubebuilder:validation:Optional

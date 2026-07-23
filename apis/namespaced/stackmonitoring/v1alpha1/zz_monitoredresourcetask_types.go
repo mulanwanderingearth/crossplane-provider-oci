@@ -17,7 +17,7 @@ import (
 type AvailabilityMetricsConfigInitParameters struct {
 
 	// Availability metric collection internal in seconds.
-	CollectionIntervalInSeconds *float64 `json:"collectionIntervalInSeconds,omitempty" tf:"collection_interval_in_seconds,omitempty"`
+	CollectionIntervalInSeconds *int64 `json:"collectionIntervalInSeconds,omitempty" tf:"collection_interval_in_seconds,omitempty"`
 
 	// List of metrics used for availability calculation for the resource.
 	Metrics []*string `json:"metrics,omitempty" tf:"metrics,omitempty"`
@@ -26,7 +26,7 @@ type AvailabilityMetricsConfigInitParameters struct {
 type AvailabilityMetricsConfigObservation struct {
 
 	// Availability metric collection internal in seconds.
-	CollectionIntervalInSeconds *float64 `json:"collectionIntervalInSeconds,omitempty" tf:"collection_interval_in_seconds,omitempty"`
+	CollectionIntervalInSeconds *int64 `json:"collectionIntervalInSeconds,omitempty" tf:"collection_interval_in_seconds,omitempty"`
 
 	// List of metrics used for availability calculation for the resource.
 	Metrics []*string `json:"metrics,omitempty" tf:"metrics,omitempty"`
@@ -36,7 +36,7 @@ type AvailabilityMetricsConfigParameters struct {
 
 	// Availability metric collection internal in seconds.
 	// +kubebuilder:validation:Optional
-	CollectionIntervalInSeconds *float64 `json:"collectionIntervalInSeconds,omitempty" tf:"collection_interval_in_seconds,omitempty"`
+	CollectionIntervalInSeconds *int64 `json:"collectionIntervalInSeconds,omitempty" tf:"collection_interval_in_seconds,omitempty"`
 
 	// List of metrics used for availability calculation for the resource.
 	// +kubebuilder:validation:Optional
@@ -100,7 +100,7 @@ type HandlerConfigInitParameters struct {
 	MetricNameConfig []MetricNameConfigInitParameters `json:"metricNameConfig,omitempty" tf:"metric_name_config,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Metric upload interval in seconds. Any metric sent by telegraf/collectd before the  configured interval expires will be dropped.
-	MetricUploadIntervalInSeconds *float64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
+	MetricUploadIntervalInSeconds *int64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Resource name generation overriding configurations for telegraf resource types.
 	TelegrafResourceNameConfig []TelegrafResourceNameConfigInitParameters `json:"telegrafResourceNameConfig,omitempty" tf:"telegraf_resource_name_config,omitempty"`
@@ -127,7 +127,7 @@ type HandlerConfigObservation struct {
 	MetricNameConfig []MetricNameConfigObservation `json:"metricNameConfig,omitempty" tf:"metric_name_config,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Metric upload interval in seconds. Any metric sent by telegraf/collectd before the  configured interval expires will be dropped.
-	MetricUploadIntervalInSeconds *float64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
+	MetricUploadIntervalInSeconds *int64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Resource name generation overriding configurations for telegraf resource types.
 	TelegrafResourceNameConfig []TelegrafResourceNameConfigObservation `json:"telegrafResourceNameConfig,omitempty" tf:"telegraf_resource_name_config,omitempty"`
@@ -160,7 +160,7 @@ type HandlerConfigParameters struct {
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Metric upload interval in seconds. Any metric sent by telegraf/collectd before the  configured interval expires will be dropped.
 	// +kubebuilder:validation:Optional
-	MetricUploadIntervalInSeconds *float64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
+	MetricUploadIntervalInSeconds *int64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Resource name generation overriding configurations for telegraf resource types.
 	// +kubebuilder:validation:Optional
@@ -209,7 +209,7 @@ type MetricMappingsInitParameters struct {
 	IsSkipUpload *bool `json:"isSkipUpload,omitempty" tf:"is_skip_upload,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Metric upload interval in seconds. Any metric sent by telegraf/collectd before the  configured interval expires will be dropped.
-	MetricUploadIntervalInSeconds *float64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
+	MetricUploadIntervalInSeconds *int64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Metric name to be upload to telemetry.
 	TelemetryMetricName *string `json:"telemetryMetricName,omitempty" tf:"telemetry_metric_name,omitempty"`
@@ -224,7 +224,7 @@ type MetricMappingsObservation struct {
 	IsSkipUpload *bool `json:"isSkipUpload,omitempty" tf:"is_skip_upload,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Metric upload interval in seconds. Any metric sent by telegraf/collectd before the  configured interval expires will be dropped.
-	MetricUploadIntervalInSeconds *float64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
+	MetricUploadIntervalInSeconds *int64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Metric name to be upload to telemetry.
 	TelemetryMetricName *string `json:"telemetryMetricName,omitempty" tf:"telemetry_metric_name,omitempty"`
@@ -242,7 +242,7 @@ type MetricMappingsParameters struct {
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Metric upload interval in seconds. Any metric sent by telegraf/collectd before the  configured interval expires will be dropped.
 	// +kubebuilder:validation:Optional
-	MetricUploadIntervalInSeconds *float64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
+	MetricUploadIntervalInSeconds *int64 `json:"metricUploadIntervalInSeconds,omitempty" tf:"metric_upload_interval_in_seconds,omitempty"`
 
 	// (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS) Metric name to be upload to telemetry.
 	// +kubebuilder:validation:Optional
@@ -293,12 +293,10 @@ type MonitoredResourceTaskInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Name of the task. If not provided by default the following names will be taken Oracle Cloud Infrastructure tasks - namespace plus timestamp.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -313,12 +311,10 @@ type MonitoredResourceTaskObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Task identifier OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -330,8 +326,7 @@ type MonitoredResourceTaskObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The request details for the performing the task.
 	TaskDetails []TaskDetailsObservation `json:"taskDetails,omitempty" tf:"task_details,omitempty"`
@@ -369,13 +364,11 @@ type MonitoredResourceTaskParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Name of the task. If not provided by default the following names will be taken Oracle Cloud Infrastructure tasks - namespace plus timestamp.
 	// +kubebuilder:validation:Optional
@@ -389,20 +382,20 @@ type MonitoredResourceTaskParameters struct {
 type ReceiverPropertiesInitParameters struct {
 
 	// Receiver listener port.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 }
 
 type ReceiverPropertiesObservation struct {
 
 	// Receiver listener port.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 }
 
 type ReceiverPropertiesParameters struct {
 
 	// Receiver listener port.
 	// +kubebuilder:validation:Optional
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 }
 
 type ResourceTypesConfigurationInitParameters struct {
@@ -460,7 +453,7 @@ type TaskDetailsInitParameters struct {
 	AgentIDSelector *v1.NamespacedSelector `json:"agentIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when type=IMPORT_OCI_TELEMETRY_RESOURCES) Metrics collection interval in seconds used when calculating the availability of the  resource based on metrics specified using the property 'availabilityProxyMetrics'.
-	AvailabilityProxyMetricCollectionInterval *float64 `json:"availabilityProxyMetricCollectionInterval,omitempty" tf:"availability_proxy_metric_collection_interval,omitempty"`
+	AvailabilityProxyMetricCollectionInterval *int64 `json:"availabilityProxyMetricCollectionInterval,omitempty" tf:"availability_proxy_metric_collection_interval,omitempty"`
 
 	// (Applicable when type=IMPORT_OCI_TELEMETRY_RESOURCES) List of metrics to be used to calculate the availability of the resource. Resource is considered to be up if at least one of the specified metrics is available for  the resource during the specified interval using the property  'availabilityProxyMetricCollectionInterval'. If no metrics are specified, availability will not be calculated for the resource.
 	AvailabilityProxyMetrics []*string `json:"availabilityProxyMetrics,omitempty" tf:"availability_proxy_metrics,omitempty"`
@@ -523,7 +516,7 @@ type TaskDetailsObservation struct {
 	AgentID *string `json:"agentId,omitempty" tf:"agent_id,omitempty"`
 
 	// (Applicable when type=IMPORT_OCI_TELEMETRY_RESOURCES) Metrics collection interval in seconds used when calculating the availability of the  resource based on metrics specified using the property 'availabilityProxyMetrics'.
-	AvailabilityProxyMetricCollectionInterval *float64 `json:"availabilityProxyMetricCollectionInterval,omitempty" tf:"availability_proxy_metric_collection_interval,omitempty"`
+	AvailabilityProxyMetricCollectionInterval *int64 `json:"availabilityProxyMetricCollectionInterval,omitempty" tf:"availability_proxy_metric_collection_interval,omitempty"`
 
 	// (Applicable when type=IMPORT_OCI_TELEMETRY_RESOURCES) List of metrics to be used to calculate the availability of the resource. Resource is considered to be up if at least one of the specified metrics is available for  the resource during the specified interval using the property  'availabilityProxyMetricCollectionInterval'. If no metrics are specified, availability will not be calculated for the resource.
 	AvailabilityProxyMetrics []*string `json:"availabilityProxyMetrics,omitempty" tf:"availability_proxy_metrics,omitempty"`
@@ -598,7 +591,7 @@ type TaskDetailsParameters struct {
 
 	// (Applicable when type=IMPORT_OCI_TELEMETRY_RESOURCES) Metrics collection interval in seconds used when calculating the availability of the  resource based on metrics specified using the property 'availabilityProxyMetrics'.
 	// +kubebuilder:validation:Optional
-	AvailabilityProxyMetricCollectionInterval *float64 `json:"availabilityProxyMetricCollectionInterval,omitempty" tf:"availability_proxy_metric_collection_interval,omitempty"`
+	AvailabilityProxyMetricCollectionInterval *int64 `json:"availabilityProxyMetricCollectionInterval,omitempty" tf:"availability_proxy_metric_collection_interval,omitempty"`
 
 	// (Applicable when type=IMPORT_OCI_TELEMETRY_RESOURCES) List of metrics to be used to calculate the availability of the resource. Resource is considered to be up if at least one of the specified metrics is available for  the resource during the specified interval using the property  'availabilityProxyMetricCollectionInterval'. If no metrics are specified, availability will not be calculated for the resource.
 	// +kubebuilder:validation:Optional

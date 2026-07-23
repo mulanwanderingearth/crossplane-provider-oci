@@ -156,7 +156,7 @@ type DBBackupConfigInitParameters struct {
 	BackupDestinationDetails []DBBackupConfigBackupDestinationDetailsInitParameters `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
@@ -183,7 +183,7 @@ type DBBackupConfigObservation struct {
 	BackupDestinationDetails []DBBackupConfigBackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
@@ -217,7 +217,7 @@ type DBBackupConfigParameters struct {
 
 	// (Applicable when source=NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
 	// +kubebuilder:validation:Optional
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	// +kubebuilder:validation:Optional
@@ -245,8 +245,7 @@ type DatabaseConnectionStringsInitParameters struct {
 type DatabaseConnectionStringsObservation struct {
 
 	// All connection strings to use to connect to the Database.
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 
 	// Host name based CDB Connection String.
 	CdbDefault *string `json:"cdbDefault,omitempty" tf:"cdb_default,omitempty"`
@@ -319,7 +318,7 @@ type DatabaseDBBackupConfigObservation struct {
 	BackupDestinationDetails []DatabaseDBBackupConfigBackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Applicable when source=NONE) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=NONE) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
@@ -384,15 +383,13 @@ type DatabaseDatabaseInitParameters struct {
 	DatabaseSoftwareImageIDSelector *v1.NamespacedSelector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=NONE) Types of providers supported for managing database encryption keys
 	EncryptionKeyLocationDetails []DatabaseEncryptionKeyLocationDetailsInitParameters `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD) True if active Data Guard is enabled.
 	IsActiveDataGuardEnabled *bool `json:"isActiveDataGuardEnabled,omitempty" tf:"is_active_data_guard_enabled,omitempty"`
@@ -528,15 +525,13 @@ type DatabaseDatabaseObservation struct {
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=NONE) Types of providers supported for managing database encryption keys
 	EncryptionKeyLocationDetails []DatabaseEncryptionKeyLocationDetailsObservation `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD) True if active Data Guard is enabled.
 	IsActiveDataGuardEnabled *bool `json:"isActiveDataGuardEnabled,omitempty" tf:"is_active_data_guard_enabled,omitempty"`
@@ -657,8 +652,7 @@ type DatabaseDatabaseParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=NONE) Types of providers supported for managing database encryption keys
 	// +kubebuilder:validation:Optional
@@ -666,8 +660,7 @@ type DatabaseDatabaseParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=DATAGUARD) True if active Data Guard is enabled.
 	// +kubebuilder:validation:Optional
@@ -912,7 +905,7 @@ type DatabaseEncryptionKeyLocationDetailsParameters struct {
 }
 
 type DatabaseInitParameters struct {
-	ActionTrigger *float64 `json:"actionTrigger,omitempty" tf:"action_trigger,omitempty"`
+	ActionTrigger *int64 `json:"actionTrigger,omitempty" tf:"action_trigger,omitempty"`
 
 	// The OCID of the Database Home.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.DbHome
@@ -950,7 +943,7 @@ type DatabaseInitParameters struct {
 
 	KMSKeyMigration *bool `json:"kmsKeyMigration,omitempty" tf:"kms_key_migration,omitempty"`
 
-	KMSKeyRotation *float64 `json:"kmsKeyRotation,omitempty" tf:"kms_key_rotation,omitempty"`
+	KMSKeyRotation *int64 `json:"kmsKeyRotation,omitempty" tf:"kms_key_rotation,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous Database Serverless does not use key versions, hence is not applicable for Autonomous Database Serverless instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/kms/v1alpha1.KeyVersion
@@ -1036,7 +1029,7 @@ type DatabaseManagementConfigParameters struct {
 }
 
 type DatabaseObservation struct {
-	ActionTrigger *float64 `json:"actionTrigger,omitempty" tf:"action_trigger,omitempty"`
+	ActionTrigger *int64 `json:"actionTrigger,omitempty" tf:"action_trigger,omitempty"`
 
 	// (Applicable when source=NONE) The character set for the database.  The default is AL32UTF8. Allowed values are:
 	CharacterSet *string `json:"characterSet,omitempty" tf:"character_set,omitempty"`
@@ -1083,12 +1076,10 @@ type DatabaseObservation struct {
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -1101,7 +1092,7 @@ type DatabaseObservation struct {
 
 	KMSKeyMigration *bool `json:"kmsKeyMigration,omitempty" tf:"kms_key_migration,omitempty"`
 
-	KMSKeyRotation *float64 `json:"kmsKeyRotation,omitempty" tf:"kms_key_rotation,omitempty"`
+	KMSKeyRotation *int64 `json:"kmsKeyRotation,omitempty" tf:"kms_key_rotation,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous Database Serverless does not use key versions, hence is not applicable for Autonomous Database Serverless instances.
 	KMSKeyVersionID *string `json:"kmsKeyVersionId,omitempty" tf:"kms_key_version_id,omitempty"`
@@ -1113,7 +1104,7 @@ type DatabaseObservation struct {
 	KeyStoreWalletName *string `json:"keyStoreWalletName,omitempty" tf:"key_store_wallet_name,omitempty"`
 
 	// The duration when the latest database backup created.
-	LastBackupDurationInSeconds *float64 `json:"lastBackupDurationInSeconds,omitempty" tf:"last_backup_duration_in_seconds,omitempty"`
+	LastBackupDurationInSeconds *int64 `json:"lastBackupDurationInSeconds,omitempty" tf:"last_backup_duration_in_seconds,omitempty"`
 
 	// The date and time when the latest database backup was created.
 	LastBackupTimestamp *string `json:"lastBackupTimestamp,omitempty" tf:"last_backup_timestamp,omitempty"`
@@ -1152,8 +1143,7 @@ type DatabaseObservation struct {
 	StorageSizeDetails []DatabaseStorageSizeDetailsObservation `json:"storageSizeDetails,omitempty" tf:"storage_size_details,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the database was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -1168,7 +1158,7 @@ type DatabaseObservation struct {
 type DatabaseParameters struct {
 
 	// +kubebuilder:validation:Optional
-	ActionTrigger *float64 `json:"actionTrigger,omitempty" tf:"action_trigger,omitempty"`
+	ActionTrigger *int64 `json:"actionTrigger,omitempty" tf:"action_trigger,omitempty"`
 
 	// The OCID of the Database Home.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.DbHome
@@ -1213,7 +1203,7 @@ type DatabaseParameters struct {
 	KMSKeyMigration *bool `json:"kmsKeyMigration,omitempty" tf:"kms_key_migration,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	KMSKeyRotation *float64 `json:"kmsKeyRotation,omitempty" tf:"kms_key_rotation,omitempty"`
+	KMSKeyRotation *int64 `json:"kmsKeyRotation,omitempty" tf:"kms_key_rotation,omitempty"`
 
 	// (Applicable when source=NONE) The OCID of the key container version that is used in database transparent data encryption (TDE) operations KMS Key can have multiple key versions. If none is specified, the current key version (latest) of the Key Id is used for the operation. Autonomous Database Serverless does not use key versions, hence is not applicable for Autonomous Database Serverless instances.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/kms/v1alpha1.KeyVersion
@@ -1256,13 +1246,13 @@ type DatabaseStorageSizeDetailsInitParameters struct {
 type DatabaseStorageSizeDetailsObservation struct {
 
 	// The DATA storage size, in gigabytes, that is applicable for the database.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The RECO storage size, in gigabytes, that is applicable for the database.
-	RecoStorageSizeInGbs *float64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
+	RecoStorageSizeInGbs *int64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
 
 	// The REDO Log storage size, in gigabytes, that is applicable for the database.
-	RedoLogStorageSizeInGbs *float64 `json:"redoLogStorageSizeInGbs,omitempty" tf:"redo_log_storage_size_in_gbs,omitempty"`
+	RedoLogStorageSizeInGbs *int64 `json:"redoLogStorageSizeInGbs,omitempty" tf:"redo_log_storage_size_in_gbs,omitempty"`
 }
 
 type DatabaseStorageSizeDetailsParameters struct {
@@ -1471,7 +1461,7 @@ type ManagedSoftwareUpdateDetailsPreferenceDetailsInitParameters struct {
 	DaysOfWeek []*string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// The update should be applied on the database for the selected hour of the day.
-	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+	HourOfDay *int64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE) Oracle Managed Database Software update method, either "ROLLING" or "NONROLLING". Default value is ROLLING. IMPORTANT: Non-rolling Database Software update update involves system down time.
 	UpdateMode *string `json:"updateMode,omitempty" tf:"update_mode,omitempty"`
@@ -1486,7 +1476,7 @@ type ManagedSoftwareUpdateDetailsPreferenceDetailsObservation struct {
 	DaysOfWeek []*string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// The update should be applied on the database for the selected hour of the day.
-	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+	HourOfDay *int64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE) Oracle Managed Database Software update method, either "ROLLING" or "NONROLLING". Default value is ROLLING. IMPORTANT: Non-rolling Database Software update update involves system down time.
 	UpdateMode *string `json:"updateMode,omitempty" tf:"update_mode,omitempty"`
@@ -1503,7 +1493,7 @@ type ManagedSoftwareUpdateDetailsPreferenceDetailsParameters struct {
 
 	// The update should be applied on the database for the selected hour of the day.
 	// +kubebuilder:validation:Optional
-	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+	HourOfDay *int64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE) Oracle Managed Database Software update method, either "ROLLING" or "NONROLLING". Default value is ROLLING. IMPORTANT: Non-rolling Database Software update update involves system down time.
 	// +kubebuilder:validation:Optional
@@ -1603,7 +1593,7 @@ type PreferenceDetailsInitParameters struct {
 	DaysOfWeek []*string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// The update should be applied on the database for the selected hour of the day.
-	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+	HourOfDay *int64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE) Oracle Managed Database Software update method, either "ROLLING" or "NONROLLING". Default value is ROLLING. IMPORTANT: Non-rolling Database Software update update involves system down time.
 	UpdateMode *string `json:"updateMode,omitempty" tf:"update_mode,omitempty"`
@@ -1618,7 +1608,7 @@ type PreferenceDetailsObservation struct {
 	DaysOfWeek []*string `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// The update should be applied on the database for the selected hour of the day.
-	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+	HourOfDay *int64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE) Oracle Managed Database Software update method, either "ROLLING" or "NONROLLING". Default value is ROLLING. IMPORTANT: Non-rolling Database Software update update involves system down time.
 	UpdateMode *string `json:"updateMode,omitempty" tf:"update_mode,omitempty"`
@@ -1635,7 +1625,7 @@ type PreferenceDetailsParameters struct {
 
 	// The update should be applied on the database for the selected hour of the day.
 	// +kubebuilder:validation:Optional
-	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+	HourOfDay *int64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE) Oracle Managed Database Software update method, either "ROLLING" or "NONROLLING". Default value is ROLLING. IMPORTANT: Non-rolling Database Software update update involves system down time.
 	// +kubebuilder:validation:Optional
@@ -1714,33 +1704,33 @@ type SourceEncryptionKeyLocationDetailsParameters struct {
 type StorageSizeDetailsInitParameters struct {
 
 	// The DATA storage size, in gigabytes, that is applicable for the database.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The RECO storage size, in gigabytes, that is applicable for the database.
-	RecoStorageSizeInGbs *float64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
+	RecoStorageSizeInGbs *int64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
 }
 
 type StorageSizeDetailsObservation struct {
 
 	// The DATA storage size, in gigabytes, that is applicable for the database.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The RECO storage size, in gigabytes, that is applicable for the database.
-	RecoStorageSizeInGbs *float64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
+	RecoStorageSizeInGbs *int64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
 
 	// The REDO Log storage size, in gigabytes, that is applicable for the database.
-	RedoLogStorageSizeInGbs *float64 `json:"redoLogStorageSizeInGbs,omitempty" tf:"redo_log_storage_size_in_gbs,omitempty"`
+	RedoLogStorageSizeInGbs *int64 `json:"redoLogStorageSizeInGbs,omitempty" tf:"redo_log_storage_size_in_gbs,omitempty"`
 }
 
 type StorageSizeDetailsParameters struct {
 
 	// The DATA storage size, in gigabytes, that is applicable for the database.
 	// +kubebuilder:validation:Optional
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The RECO storage size, in gigabytes, that is applicable for the database.
 	// +kubebuilder:validation:Optional
-	RecoStorageSizeInGbs *float64 `json:"recoStorageSizeInGbs" tf:"reco_storage_size_in_gbs,omitempty"`
+	RecoStorageSizeInGbs *int64 `json:"recoStorageSizeInGbs" tf:"reco_storage_size_in_gbs,omitempty"`
 }
 
 type VersionSchemeDetailsInitParameters struct {

@@ -369,7 +369,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   protectionLevels:

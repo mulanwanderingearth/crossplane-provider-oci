@@ -53,7 +53,7 @@ type CloudExadataInfrastructureInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The number of compute servers for the cloud Exadata infrastructure.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Updatable) Customer contacts.
 	CustomerContacts []CloudExadataInfrastructureCustomerContactsInitParameters `json:"customerContacts,omitempty" tf:"customer_contacts,omitempty"`
@@ -62,15 +62,13 @@ type CloudExadataInfrastructureInitParameters struct {
 	DatabaseServerType *string `json:"databaseServerType,omitempty" tf:"database_server_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the cloud Exadata infrastructure resource. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The preferences for target versions of future maintenance runs.
 	MaintenanceVersionPreferences []MaintenanceVersionPreferencesInitParameters `json:"maintenanceVersionPreferences,omitempty" tf:"maintenance_version_preferences,omitempty"`
@@ -82,7 +80,7 @@ type CloudExadataInfrastructureInitParameters struct {
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// (Updatable) The number of storage servers for the cloud Exadata infrastructure.
-	StorageCount *float64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
+	StorageCount *int64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
 
 	// The storage server type of the Exadata infrastructure.
 	StorageServerType *string `json:"storageServerType,omitempty" tf:"storage_server_type,omitempty"`
@@ -113,13 +111,13 @@ type CloudExadataInfrastructureMaintenanceWindowDaysOfWeekParameters struct {
 type CloudExadataInfrastructureMaintenanceWindowInitParameters struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []CloudExadataInfrastructureMaintenanceWindowDaysOfWeekInitParameters `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -128,7 +126,7 @@ type CloudExadataInfrastructureMaintenanceWindowInitParameters struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []CloudExadataInfrastructureMaintenanceWindowMonthsInitParameters `json:"months,omitempty" tf:"months,omitempty"`
@@ -142,7 +140,7 @@ type CloudExadataInfrastructureMaintenanceWindowInitParameters struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type CloudExadataInfrastructureMaintenanceWindowMonthsInitParameters struct {
@@ -167,13 +165,13 @@ type CloudExadataInfrastructureMaintenanceWindowMonthsParameters struct {
 type CloudExadataInfrastructureMaintenanceWindowObservation struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []CloudExadataInfrastructureMaintenanceWindowDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -182,7 +180,7 @@ type CloudExadataInfrastructureMaintenanceWindowObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []CloudExadataInfrastructureMaintenanceWindowMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -196,14 +194,14 @@ type CloudExadataInfrastructureMaintenanceWindowObservation struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type CloudExadataInfrastructureMaintenanceWindowParameters struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
 	// +kubebuilder:validation:Optional
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	// +kubebuilder:validation:Optional
@@ -211,7 +209,7 @@ type CloudExadataInfrastructureMaintenanceWindowParameters struct {
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
 	// +kubebuilder:validation:Optional
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	// +kubebuilder:validation:Optional
@@ -223,7 +221,7 @@ type CloudExadataInfrastructureMaintenanceWindowParameters struct {
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
 	// +kubebuilder:validation:Optional
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	// +kubebuilder:validation:Optional
@@ -242,25 +240,25 @@ type CloudExadataInfrastructureMaintenanceWindowParameters struct {
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
 	// +kubebuilder:validation:Optional
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type CloudExadataInfrastructureObservation struct {
 
 	// The requested number of additional storage servers activated for the Exadata infrastructure.
-	ActivatedStorageCount *float64 `json:"activatedStorageCount,omitempty" tf:"activated_storage_count,omitempty"`
+	ActivatedStorageCount *int64 `json:"activatedStorageCount,omitempty" tf:"activated_storage_count,omitempty"`
 
 	// The requested number of additional storage servers for the Exadata infrastructure.
-	AdditionalStorageCount *float64 `json:"additionalStorageCount,omitempty" tf:"additional_storage_count,omitempty"`
+	AdditionalStorageCount *int64 `json:"additionalStorageCount,omitempty" tf:"additional_storage_count,omitempty"`
 
 	// The availability domain where the cloud Exadata infrastructure is located.
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
 
 	// The available storage can be allocated to the cloud Exadata infrastructure resource, in gigabytes (GB).
-	AvailableStorageSizeInGbs *float64 `json:"availableStorageSizeInGbs,omitempty" tf:"available_storage_size_in_gbs,omitempty"`
+	AvailableStorageSizeInGbs *int64 `json:"availableStorageSizeInGbs,omitempty" tf:"available_storage_size_in_gbs,omitempty"`
 
 	// The total number of CPU cores allocated.
-	CPUCount *float64 `json:"cpuCount,omitempty" tf:"cpu_count,omitempty"`
+	CPUCount *int64 `json:"cpuCount,omitempty" tf:"cpu_count,omitempty"`
 
 	// The OCID of the cluster placement group of the Exadata Infrastructure or Db System.
 	ClusterPlacementGroupID *string `json:"clusterPlacementGroupId,omitempty" tf:"cluster_placement_group_id,omitempty"`
@@ -269,7 +267,7 @@ type CloudExadataInfrastructureObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) The number of compute servers for the cloud Exadata infrastructure.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// The compute model of the Autonomous AI Database. This is required if using the computeCount parameter. If using cpuCoreCount then it is an error to specify computeModel to a non-null value. ECPU compute model is the recommended model and OCPU compute model is legacy.
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
@@ -278,7 +276,7 @@ type CloudExadataInfrastructureObservation struct {
 	CustomerContacts []CloudExadataInfrastructureCustomerContactsObservation `json:"customerContacts,omitempty" tf:"customer_contacts,omitempty"`
 
 	// The local node storage allocated in GBs.
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	// The software version of the database servers (dom0) in the cloud Exadata infrastructure. Example: 20.1.15
 	DBServerVersion *string `json:"dbServerVersion,omitempty" tf:"db_server_version,omitempty"`
@@ -293,8 +291,7 @@ type CloudExadataInfrastructureObservation struct {
 	DefinedFileSystemConfigurations []DefinedFileSystemConfigurationsObservation `json:"definedFileSystemConfigurations,omitempty" tf:"defined_file_system_configurations,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the cloud Exadata infrastructure resource. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -303,8 +300,7 @@ type CloudExadataInfrastructureObservation struct {
 	ExascaleConfig []ExascaleConfigObservation `json:"exascaleConfig,omitempty" tf:"exascale_config,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the cloud Exadata infrastructure resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -325,19 +321,19 @@ type CloudExadataInfrastructureObservation struct {
 	MaintenanceWindow []CloudExadataInfrastructureMaintenanceWindowObservation `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
 
 	// The total number of CPU cores available.
-	MaxCPUCount *float64 `json:"maxCpuCount,omitempty" tf:"max_cpu_count,omitempty"`
+	MaxCPUCount *int64 `json:"maxCpuCount,omitempty" tf:"max_cpu_count,omitempty"`
 
 	// The total local node storage available in GBs.
-	MaxDBNodeStorageInGbs *float64 `json:"maxDbNodeStorageInGbs,omitempty" tf:"max_db_node_storage_in_gbs,omitempty"`
+	MaxDBNodeStorageInGbs *int64 `json:"maxDbNodeStorageInGbs,omitempty" tf:"max_db_node_storage_in_gbs,omitempty"`
 
 	// The total available DATA disk group size.
 	MaxDataStorageInTbs *float64 `json:"maxDataStorageInTbs,omitempty" tf:"max_data_storage_in_tbs,omitempty"`
 
 	// The total memory available in GBs.
-	MaxMemoryInGbs *float64 `json:"maxMemoryInGbs,omitempty" tf:"max_memory_in_gbs,omitempty"`
+	MaxMemoryInGbs *int64 `json:"maxMemoryInGbs,omitempty" tf:"max_memory_in_gbs,omitempty"`
 
 	// The memory allocated in GBs.
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// The monthly software version of the database servers (dom0) in the cloud Exadata infrastructure. Example: 20.1.15
 	MonthlyDBServerVersion *string `json:"monthlyDbServerVersion,omitempty" tf:"monthly_db_server_version,omitempty"`
@@ -355,7 +351,7 @@ type CloudExadataInfrastructureObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) The number of storage servers for the cloud Exadata infrastructure.
-	StorageCount *float64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
+	StorageCount *int64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
 
 	// The storage server type of the Exadata infrastructure.
 	StorageServerType *string `json:"storageServerType,omitempty" tf:"storage_server_type,omitempty"`
@@ -367,14 +363,13 @@ type CloudExadataInfrastructureObservation struct {
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the cloud Exadata infrastructure resource was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
 	// The total storage allocated to the cloud Exadata infrastructure resource, in gigabytes (GB).
-	TotalStorageSizeInGbs *float64 `json:"totalStorageSizeInGbs,omitempty" tf:"total_storage_size_in_gbs,omitempty"`
+	TotalStorageSizeInGbs *int64 `json:"totalStorageSizeInGbs,omitempty" tf:"total_storage_size_in_gbs,omitempty"`
 }
 
 type CloudExadataInfrastructureParameters struct {
@@ -402,7 +397,7 @@ type CloudExadataInfrastructureParameters struct {
 
 	// (Updatable) The number of compute servers for the cloud Exadata infrastructure.
 	// +kubebuilder:validation:Optional
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// (Updatable) Customer contacts.
 	// +kubebuilder:validation:Optional
@@ -414,8 +409,7 @@ type CloudExadataInfrastructureParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the cloud Exadata infrastructure resource. The name does not need to be unique.
 	// +kubebuilder:validation:Optional
@@ -423,8 +417,7 @@ type CloudExadataInfrastructureParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The preferences for target versions of future maintenance runs.
 	// +kubebuilder:validation:Optional
@@ -440,7 +433,7 @@ type CloudExadataInfrastructureParameters struct {
 
 	// (Updatable) The number of storage servers for the cloud Exadata infrastructure.
 	// +kubebuilder:validation:Optional
-	StorageCount *float64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
+	StorageCount *int64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
 
 	// The storage server type of the Exadata infrastructure.
 	// +kubebuilder:validation:Optional
@@ -463,10 +456,10 @@ type DefinedFileSystemConfigurationsObservation struct {
 	IsResizable *bool `json:"isResizable,omitempty" tf:"is_resizable,omitempty"`
 
 	// The maximum size of file system.
-	MaxSizeGb *float64 `json:"maxSizeGb,omitempty" tf:"max_size_gb,omitempty"`
+	MaxSizeGb *int64 `json:"maxSizeGb,omitempty" tf:"max_size_gb,omitempty"`
 
 	// The minimum size of file system.
-	MinSizeGb *float64 `json:"minSizeGb,omitempty" tf:"min_size_gb,omitempty"`
+	MinSizeGb *int64 `json:"minSizeGb,omitempty" tf:"min_size_gb,omitempty"`
 
 	// The mount point of file system.
 	MountPoint *string `json:"mountPoint,omitempty" tf:"mount_point,omitempty"`
@@ -481,16 +474,16 @@ type ExascaleConfigInitParameters struct {
 type ExascaleConfigObservation struct {
 
 	// Available storage size for Exascale in GBs.
-	AvailableStorageInGbs *float64 `json:"availableStorageInGbs,omitempty" tf:"available_storage_in_gbs,omitempty"`
+	AvailableStorageInGbs *int64 `json:"availableStorageInGbs,omitempty" tf:"available_storage_in_gbs,omitempty"`
 
 	// Available storage size for VM storage on Exascale in GBs.
-	AvailableVMStorageInGbs *float64 `json:"availableVmStorageInGbs,omitempty" tf:"available_vm_storage_in_gbs,omitempty"`
+	AvailableVMStorageInGbs *int64 `json:"availableVmStorageInGbs,omitempty" tf:"available_vm_storage_in_gbs,omitempty"`
 
 	// Storage size needed for Exascale in GBs.
-	TotalStorageInGbs *float64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
+	TotalStorageInGbs *int64 `json:"totalStorageInGbs,omitempty" tf:"total_storage_in_gbs,omitempty"`
 
 	// Storage size needed for VM storage on Exascale in GBs.
-	TotalVMStorageInGbs *float64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
+	TotalVMStorageInGbs *int64 `json:"totalVmStorageInGbs,omitempty" tf:"total_vm_storage_in_gbs,omitempty"`
 }
 
 type ExascaleConfigParameters struct {

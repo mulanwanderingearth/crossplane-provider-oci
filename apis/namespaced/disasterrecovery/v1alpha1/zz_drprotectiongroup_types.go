@@ -262,7 +262,7 @@ type BackupConfigInitParameters struct {
 	ImageReplicationVaultSecretIDSelector *v1.NamespacedSelector `json:"imageReplicationVaultSecretIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The maximum number of backups that should be retained. This property applies to the OKE cluster member in primary region.
-	MaxNumberOfBackupsRetained *float64 `json:"maxNumberOfBackupsRetained,omitempty" tf:"max_number_of_backups_retained,omitempty"`
+	MaxNumberOfBackupsRetained *int64 `json:"maxNumberOfBackupsRetained,omitempty" tf:"max_number_of_backups_retained,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) A list of namespaces to be included in the backup.  The default value is null. If a list of namespaces to include is not provided, all namespaces will be backed up. Specify either the namespaces or the excludeNamespaces parameter, but not both. This property applies to the OKE cluster member in primary region.  Example: ["default", "pv-nginx"]
 	Namespaces []*string `json:"namespaces,omitempty" tf:"namespaces,omitempty"`
@@ -283,7 +283,7 @@ type BackupConfigObservation struct {
 	ImageReplicationVaultSecretID *string `json:"imageReplicationVaultSecretId,omitempty" tf:"image_replication_vault_secret_id,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The maximum number of backups that should be retained. This property applies to the OKE cluster member in primary region.
-	MaxNumberOfBackupsRetained *float64 `json:"maxNumberOfBackupsRetained,omitempty" tf:"max_number_of_backups_retained,omitempty"`
+	MaxNumberOfBackupsRetained *int64 `json:"maxNumberOfBackupsRetained,omitempty" tf:"max_number_of_backups_retained,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) A list of namespaces to be included in the backup.  The default value is null. If a list of namespaces to include is not provided, all namespaces will be backed up. Specify either the namespaces or the excludeNamespaces parameter, but not both. This property applies to the OKE cluster member in primary region.  Example: ["default", "pv-nginx"]
 	Namespaces []*string `json:"namespaces,omitempty" tf:"namespaces,omitempty"`
@@ -318,7 +318,7 @@ type BackupConfigParameters struct {
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The maximum number of backups that should be retained. This property applies to the OKE cluster member in primary region.
 	// +kubebuilder:validation:Optional
-	MaxNumberOfBackupsRetained *float64 `json:"maxNumberOfBackupsRetained,omitempty" tf:"max_number_of_backups_retained,omitempty"`
+	MaxNumberOfBackupsRetained *int64 `json:"maxNumberOfBackupsRetained,omitempty" tf:"max_number_of_backups_retained,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) A list of namespaces to be included in the backup.  The default value is null. If a list of namespaces to include is not provided, all namespaces will be backed up. Specify either the namespaces or the excludeNamespaces parameter, but not both. This property applies to the OKE cluster member in primary region.  Example: ["default", "pv-nginx"]
 	// +kubebuilder:validation:Optional
@@ -657,18 +657,16 @@ type DrProtectionGroupInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Disassociate. Could be set to any integer value.
-	DisassociateTrigger *float64 `json:"disassociateTrigger,omitempty" tf:"disassociate_trigger,omitempty"`
+	DisassociateTrigger *int64 `json:"disassociateTrigger,omitempty" tf:"disassociate_trigger,omitempty"`
 
 	// (Updatable) The display name of the DR protection group.  Example: EBS PHX Group
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The details for creating an object storage log location for a DR protection group.
 	LogLocation []DrProtectionGroupLogLocationInitParameters `json:"logLocation,omitempty" tf:"log_location,omitempty"`
@@ -838,7 +836,7 @@ type DrProtectionGroupMembersInitParameters struct {
 	FileSystemOperations []FileSystemOperationsInitParameters `json:"fileSystemOperations,omitempty" tf:"file_system_operations,omitempty"`
 
 	// (Applicable when member_type=MYSQL_DB_SYSTEM) (Updatable) The maximum time (in seconds) to wait for the Global Transaction Identifier (GTID) synchronization process to complete before timing out.  Example: 600
-	GtidReconciliationTimeout *float64 `json:"gtidReconciliationTimeout,omitempty" tf:"gtid_reconciliation_timeout,omitempty"`
+	GtidReconciliationTimeout *int64 `json:"gtidReconciliationTimeout,omitempty" tf:"gtid_reconciliation_timeout,omitempty"`
 
 	// (Applicable when member_type=MYSQL_DB_SYSTEM) (Updatable) A flag indicating whether to continue with DR operation if the Global Transaction Identifier (GTID) reconciliation operation times out.  Example: false
 	IsContinueOnGtidReconciliationTimeout *bool `json:"isContinueOnGtidReconciliationTimeout,omitempty" tf:"is_continue_on_gtid_reconciliation_timeout,omitempty"`
@@ -990,7 +988,7 @@ type DrProtectionGroupMembersObservation struct {
 	FileSystemOperations []FileSystemOperationsObservation `json:"fileSystemOperations,omitempty" tf:"file_system_operations,omitempty"`
 
 	// (Applicable when member_type=MYSQL_DB_SYSTEM) (Updatable) The maximum time (in seconds) to wait for the Global Transaction Identifier (GTID) synchronization process to complete before timing out.  Example: 600
-	GtidReconciliationTimeout *float64 `json:"gtidReconciliationTimeout,omitempty" tf:"gtid_reconciliation_timeout,omitempty"`
+	GtidReconciliationTimeout *int64 `json:"gtidReconciliationTimeout,omitempty" tf:"gtid_reconciliation_timeout,omitempty"`
 
 	// (Applicable when member_type=MYSQL_DB_SYSTEM) (Updatable) A flag indicating whether to continue with DR operation if the Global Transaction Identifier (GTID) reconciliation operation times out.  Example: false
 	IsContinueOnGtidReconciliationTimeout *bool `json:"isContinueOnGtidReconciliationTimeout,omitempty" tf:"is_continue_on_gtid_reconciliation_timeout,omitempty"`
@@ -1202,7 +1200,7 @@ type DrProtectionGroupMembersParameters struct {
 
 	// (Applicable when member_type=MYSQL_DB_SYSTEM) (Updatable) The maximum time (in seconds) to wait for the Global Transaction Identifier (GTID) synchronization process to complete before timing out.  Example: 600
 	// +kubebuilder:validation:Optional
-	GtidReconciliationTimeout *float64 `json:"gtidReconciliationTimeout,omitempty" tf:"gtid_reconciliation_timeout,omitempty"`
+	GtidReconciliationTimeout *int64 `json:"gtidReconciliationTimeout,omitempty" tf:"gtid_reconciliation_timeout,omitempty"`
 
 	// (Applicable when member_type=MYSQL_DB_SYSTEM) (Updatable) A flag indicating whether to continue with DR operation if the Global Transaction Identifier (GTID) reconciliation operation times out.  Example: false
 	// +kubebuilder:validation:Optional
@@ -1314,18 +1312,16 @@ type DrProtectionGroupObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Disassociate. Could be set to any integer value.
-	DisassociateTrigger *float64 `json:"disassociateTrigger,omitempty" tf:"disassociate_trigger,omitempty"`
+	DisassociateTrigger *int64 `json:"disassociateTrigger,omitempty" tf:"disassociate_trigger,omitempty"`
 
 	// (Updatable) The display name of the DR protection group.  Example: EBS PHX Group
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the managed node pool in OKE cluster.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -1355,8 +1351,7 @@ type DrProtectionGroupObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the DR protection group was created. An RFC3339 formatted datetime string.  Example: 2019-03-29T09:36:42Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -1386,12 +1381,11 @@ type DrProtectionGroupParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Disassociate. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	DisassociateTrigger *float64 `json:"disassociateTrigger,omitempty" tf:"disassociate_trigger,omitempty"`
+	DisassociateTrigger *int64 `json:"disassociateTrigger,omitempty" tf:"disassociate_trigger,omitempty"`
 
 	// (Updatable) The display name of the DR protection group.  Example: EBS PHX Group
 	// +kubebuilder:validation:Optional
@@ -1399,8 +1393,7 @@ type DrProtectionGroupParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The details for creating an object storage log location for a DR protection group.
 	// +kubebuilder:validation:Optional
@@ -1673,10 +1666,10 @@ type ManagedNodePoolConfigsInitParameters struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The maximum number to which nodes in the managed node pool could be scaled up.
-	Maximum *float64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
+	Maximum *int64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The minimum number to which nodes in the managed node pool could be scaled down.
-	Minimum *float64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
+	Minimum *int64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
 }
 
 type ManagedNodePoolConfigsObservation struct {
@@ -1685,10 +1678,10 @@ type ManagedNodePoolConfigsObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The maximum number to which nodes in the managed node pool could be scaled up.
-	Maximum *float64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
+	Maximum *int64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The minimum number to which nodes in the managed node pool could be scaled down.
-	Minimum *float64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
+	Minimum *int64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
 }
 
 type ManagedNodePoolConfigsParameters struct {
@@ -1699,11 +1692,11 @@ type ManagedNodePoolConfigsParameters struct {
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The maximum number to which nodes in the managed node pool could be scaled up.
 	// +kubebuilder:validation:Optional
-	Maximum *float64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
+	Maximum *int64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The minimum number to which nodes in the managed node pool could be scaled down.
 	// +kubebuilder:validation:Optional
-	Minimum *float64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
+	Minimum *int64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
 }
 
 type MountDetailsInitParameters struct {
@@ -2074,10 +2067,10 @@ type VirtualNodePoolConfigsInitParameters struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The maximum number to which nodes in the managed node pool could be scaled up.
-	Maximum *float64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
+	Maximum *int64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The minimum number to which nodes in the managed node pool could be scaled down.
-	Minimum *float64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
+	Minimum *int64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
 }
 
 type VirtualNodePoolConfigsObservation struct {
@@ -2086,10 +2079,10 @@ type VirtualNodePoolConfigsObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The maximum number to which nodes in the managed node pool could be scaled up.
-	Maximum *float64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
+	Maximum *int64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The minimum number to which nodes in the managed node pool could be scaled down.
-	Minimum *float64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
+	Minimum *int64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
 }
 
 type VirtualNodePoolConfigsParameters struct {
@@ -2100,11 +2093,11 @@ type VirtualNodePoolConfigsParameters struct {
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The maximum number to which nodes in the managed node pool could be scaled up.
 	// +kubebuilder:validation:Optional
-	Maximum *float64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
+	Maximum *int64 `json:"maximum,omitempty" tf:"maximum,omitempty"`
 
 	// (Applicable when member_type=OKE_CLUSTER) (Updatable) The minimum number to which nodes in the managed node pool could be scaled down.
 	// +kubebuilder:validation:Optional
-	Minimum *float64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
+	Minimum *int64 `json:"minimum,omitempty" tf:"minimum,omitempty"`
 }
 
 type VnicMappingInitParameters struct {

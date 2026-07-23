@@ -151,7 +151,7 @@ func (in *AlternateCustomEndpointsObservation) DeepCopyInto(out *AlternateCustom
 	}
 	if in.CertificateSecretVersion != nil {
 		in, out := &in.CertificateSecretVersion, &out.CertificateSecretVersion
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Hostname != nil {
@@ -251,7 +251,7 @@ func (in *CustomEndpointObservation) DeepCopyInto(out *CustomEndpointObservation
 	}
 	if in.CertificateSecretVersion != nil {
 		in, out := &in.CertificateSecretVersion, &out.CertificateSecretVersion
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Hostname != nil {
@@ -569,18 +569,9 @@ func (in *VbInstanceInitParameters) DeepCopyInto(out *VbInstanceInitParameters) 
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -590,18 +581,9 @@ func (in *VbInstanceInitParameters) DeepCopyInto(out *VbInstanceInitParameters) 
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdcsOpenIDSecretRef != nil {
@@ -623,7 +605,7 @@ func (in *VbInstanceInitParameters) DeepCopyInto(out *VbInstanceInitParameters) 
 	}
 	if in.NodeCount != nil {
 		in, out := &in.NodeCount, &out.NodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -699,18 +681,9 @@ func (in *VbInstanceObservation) DeepCopyInto(out *VbInstanceObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -720,18 +693,9 @@ func (in *VbInstanceObservation) DeepCopyInto(out *VbInstanceObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -768,7 +732,7 @@ func (in *VbInstanceObservation) DeepCopyInto(out *VbInstanceObservation) {
 	}
 	if in.NodeCount != nil {
 		in, out := &in.NodeCount, &out.NodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ServiceNATGatewayIP != nil {
@@ -793,18 +757,9 @@ func (in *VbInstanceObservation) DeepCopyInto(out *VbInstanceObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -868,18 +823,9 @@ func (in *VbInstanceParameters) DeepCopyInto(out *VbInstanceParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -889,18 +835,9 @@ func (in *VbInstanceParameters) DeepCopyInto(out *VbInstanceParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdcsOpenIDSecretRef != nil {
@@ -922,7 +859,7 @@ func (in *VbInstanceParameters) DeepCopyInto(out *VbInstanceParameters) {
 	}
 	if in.NodeCount != nil {
 		in, out := &in.NodeCount, &out.NodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

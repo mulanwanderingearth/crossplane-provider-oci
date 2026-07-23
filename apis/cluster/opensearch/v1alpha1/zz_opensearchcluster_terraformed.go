@@ -21,7 +21,7 @@ func (mg *OpensearchCluster) GetTerraformResourceType() string {
 
 // GetConnectionDetailsMapping for this OpensearchCluster
 func (tr *OpensearchCluster) GetConnectionDetailsMapping() map[string]string {
-	return map[string]string{"security_master_user_password_hash": "securityMasterUserPasswordHashSecretRef"}
+	return map[string]string{"security_master_user_password_hash": "securityMasterUserPasswordHashSecretRef", "security_saml_config[*].idp_metadata_content": "securitySamlConfig[*].idpMetadataContentSecretRef"}
 }
 
 // GetObservation of this OpensearchCluster

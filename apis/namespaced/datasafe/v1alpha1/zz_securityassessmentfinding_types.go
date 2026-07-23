@@ -131,8 +131,7 @@ type SecurityAssessmentFindingPatchOperationsInitParameters struct {
 	Selection *string `json:"selection,omitempty" tf:"selection,omitempty"`
 
 	// (Updatable)
-	// +mapType=granular
-	Value map[string]*string `json:"value,omitempty" tf:"value,omitempty"`
+	Value map[string]string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SecurityAssessmentFindingPatchOperationsObservation struct {
@@ -144,8 +143,7 @@ type SecurityAssessmentFindingPatchOperationsObservation struct {
 	Selection *string `json:"selection,omitempty" tf:"selection,omitempty"`
 
 	// (Updatable)
-	// +mapType=granular
-	Value map[string]*string `json:"value,omitempty" tf:"value,omitempty"`
+	Value map[string]string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SecurityAssessmentFindingPatchOperationsParameters struct {
@@ -160,8 +158,7 @@ type SecurityAssessmentFindingPatchOperationsParameters struct {
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Value map[string]*string `json:"value" tf:"value,omitempty"`
+	Value map[string]string `json:"value" tf:"value,omitempty"`
 }
 
 type SecurityAssessmentFindingReferencesInitParameters struct {

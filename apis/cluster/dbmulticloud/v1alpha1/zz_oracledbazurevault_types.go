@@ -42,15 +42,13 @@ type OracleDbAzureVaultInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Oracle DB Azure Vault resource name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Oracle DB Azure Vault resource location.
 	Location *string `json:"location,omitempty" tf:"location,omitempty"`
@@ -62,8 +60,7 @@ type OracleDbAzureVaultInitParameters struct {
 	OracleDBConnectorID *string `json:"oracleDbConnectorId,omitempty" tf:"oracle_db_connector_id,omitempty"`
 
 	// (Updatable) resource's properties.
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// The target region, where resource is replicated.
 	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
@@ -82,15 +79,13 @@ type OracleDbAzureVaultObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Oracle DB Azure Vault resource name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the oracle DB Azure Vault resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -111,8 +106,7 @@ type OracleDbAzureVaultObservation struct {
 	OracleDBConnectorID *string `json:"oracleDbConnectorId,omitempty" tf:"oracle_db_connector_id,omitempty"`
 
 	// (Updatable) resource's properties.
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// Replication metadata, it has information about replication and target region.
 	ReplicationMetadata []OracleDbAzureVaultReplicationMetadataObservation `json:"replicationMetadata,omitempty" tf:"replication_metadata,omitempty"`
@@ -121,8 +115,7 @@ type OracleDbAzureVaultObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The target region, where resource is replicated.
 	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
@@ -171,8 +164,7 @@ type OracleDbAzureVaultParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Oracle DB Azure Vault resource name.
 	// +kubebuilder:validation:Optional
@@ -180,8 +172,7 @@ type OracleDbAzureVaultParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Oracle DB Azure Vault resource location.
 	// +kubebuilder:validation:Optional
@@ -197,8 +188,7 @@ type OracleDbAzureVaultParameters struct {
 
 	// (Updatable) resource's properties.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// The target region, where resource is replicated.
 	// +kubebuilder:validation:Optional

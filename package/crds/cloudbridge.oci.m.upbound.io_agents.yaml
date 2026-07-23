@@ -158,7 +158,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Agent identifier.
                     type: string
@@ -255,7 +254,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   osVersion:
                     description: OS version.
                     type: string
@@ -372,7 +370,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Agent identifier.
                     type: string
@@ -469,7 +466,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   osVersion:
                     description: OS version.
                     type: string
@@ -576,7 +572,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Agent identifier.
                     type: string
@@ -591,7 +586,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   heartBeatStatus:
                     description: The current heartbeat status of the Agent based on
                       its timeLastSyncReceived value.
@@ -622,7 +616,6 @@ spec:
                             to namespaces. For more information, see Resource Tags.
                             Example: {"Operations.CostCenter": "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -632,7 +625,6 @@ spec:
                             For more information, see Resource Tags. Example: {"Department":
                             "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         lifecycleDetails:
                           description: A message describing the current state of the
                             Agent in more detail. For example, it can be used to provide
@@ -669,7 +661,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time when the plugin was created. An RFC3339
                       formatted datetime string.

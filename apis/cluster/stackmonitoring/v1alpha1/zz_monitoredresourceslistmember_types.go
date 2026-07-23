@@ -19,7 +19,7 @@ type MonitoredResourcesListMemberInitParameters struct {
 	DestinationResourceID *string `json:"destinationResourceId,omitempty" tf:"destination_resource_id,omitempty"`
 
 	// The field which determines the depth of hierarchy while searching for members.
-	LimitLevel *float64 `json:"limitLevel,omitempty" tf:"limit_level,omitempty"`
+	LimitLevel *int64 `json:"limitLevel,omitempty" tf:"limit_level,omitempty"`
 
 	// The OCID of monitored resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/stackmonitoring/v1alpha1.MonitoredResource
@@ -44,15 +44,13 @@ type MonitoredResourcesListMemberItemsObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// External resource is any Oracle Cloud Infrastructure resource identifier OCID which is not a Stack Monitoring service resource. Currently supports only following resource types - Container database, non-container database,  pluggable database and Oracle Cloud Infrastructure compute instance.
 	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Monitored Resource Host Name.
 	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
@@ -85,8 +83,7 @@ type MonitoredResourcesListMemberItemsObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type MonitoredResourcesListMemberItemsParameters struct {
@@ -103,7 +100,7 @@ type MonitoredResourcesListMemberObservation struct {
 	Items []MonitoredResourcesListMemberItemsObservation `json:"items,omitempty" tf:"items,omitempty"`
 
 	// The field which determines the depth of hierarchy while searching for members.
-	LimitLevel *float64 `json:"limitLevel,omitempty" tf:"limit_level,omitempty"`
+	LimitLevel *int64 `json:"limitLevel,omitempty" tf:"limit_level,omitempty"`
 
 	// The OCID of monitored resource.
 	MonitoredResourceID *string `json:"monitoredResourceId,omitempty" tf:"monitored_resource_id,omitempty"`
@@ -117,7 +114,7 @@ type MonitoredResourcesListMemberParameters struct {
 
 	// The field which determines the depth of hierarchy while searching for members.
 	// +kubebuilder:validation:Optional
-	LimitLevel *float64 `json:"limitLevel,omitempty" tf:"limit_level,omitempty"`
+	LimitLevel *int64 `json:"limitLevel,omitempty" tf:"limit_level,omitempty"`
 
 	// The OCID of monitored resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/stackmonitoring/v1alpha1.MonitoredResource

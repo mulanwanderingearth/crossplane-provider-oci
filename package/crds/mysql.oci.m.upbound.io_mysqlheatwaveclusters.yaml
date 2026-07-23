@@ -66,7 +66,8 @@ spec:
                       down and re-created with the new cluster of nodes. This may
                       result in a significant downtime for the analytics capability
                       while the HeatWave cluster is re-provisioned.
-                    type: number
+                    format: int64
+                    type: integer
                   dbSystemId:
                     description: The DB System OCID.
                     type: string
@@ -187,7 +188,8 @@ spec:
                       down and re-created with the new cluster of nodes. This may
                       result in a significant downtime for the analytics capability
                       while the HeatWave cluster is re-provisioned.
-                    type: number
+                    format: int64
+                    type: integer
                   dbSystemId:
                     description: The DB System OCID.
                     type: string
@@ -392,7 +394,8 @@ spec:
                       down and re-created with the new cluster of nodes. This may
                       result in a significant downtime for the analytics capability
                       while the HeatWave cluster is re-provisioned.
-                    type: number
+                    format: int64
+                    type: integer
                   dbSystemId:
                     description: The DB System OCID.
                     type: string

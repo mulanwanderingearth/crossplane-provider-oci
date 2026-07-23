@@ -85,7 +85,7 @@ type PatchObjectMetadataObservation struct {
 	NamePath *string `json:"namePath,omitempty" tf:"name_path,omitempty"`
 
 	// The object version.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// The type of the object in patch.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -115,7 +115,7 @@ type WorkspaceApplicationPatchDependentObjectMetadataObservation struct {
 	NamePath *string `json:"namePath,omitempty" tf:"name_path,omitempty"`
 
 	// The object version.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// The type of the object in patch.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -148,7 +148,7 @@ type WorkspaceApplicationPatchInitParameters struct {
 	ObjectKeys []*string `json:"objectKeys,omitempty" tf:"object_keys,omitempty"`
 
 	// The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// The type of the patch applied or being applied on the application.
 	PatchType *string `json:"patchType,omitempty" tf:"patch_type,omitempty"`
@@ -194,8 +194,7 @@ type WorkspaceApplicationPatchMetadataObservation struct {
 	IdentifierPath *string `json:"identifierPath,omitempty" tf:"identifier_path,omitempty"`
 
 	// Information property fields.
-	// +mapType=granular
-	InfoFields map[string]*string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
+	InfoFields map[string]string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
 
 	// Specifies whether this object is a favorite or not.
 	IsFavorite *bool `json:"isFavorite,omitempty" tf:"is_favorite,omitempty"`
@@ -204,7 +203,7 @@ type WorkspaceApplicationPatchMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 
 	// The date and time that the object was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -228,7 +227,7 @@ type WorkspaceApplicationPatchObservation struct {
 	ApplicationKey *string `json:"applicationKey,omitempty" tf:"application_key,omitempty"`
 
 	// The application version of the patch.
-	ApplicationVersion *float64 `json:"applicationVersion,omitempty" tf:"application_version,omitempty"`
+	ApplicationVersion *int64 `json:"applicationVersion,omitempty" tf:"application_version,omitempty"`
 
 	// List of dependent objects in this patch.
 	DependentObjectMetadata []WorkspaceApplicationPatchDependentObjectMetadataObservation `json:"dependentObjectMetadata,omitempty" tf:"dependent_object_metadata,omitempty"`
@@ -237,8 +236,7 @@ type WorkspaceApplicationPatchObservation struct {
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// The errors encountered while applying the patch, if any.
-	// +mapType=granular
-	ErrorMessages map[string]*string `json:"errorMessages,omitempty" tf:"error_messages,omitempty"`
+	ErrorMessages map[string]string `json:"errorMessages,omitempty" tf:"error_messages,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -249,8 +247,7 @@ type WorkspaceApplicationPatchObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// A key map. If provided, key is replaced with generated key. This structure provides mapping between user provided key and generated key.
-	// +mapType=granular
-	KeyMap map[string]*string `json:"keyMap,omitempty" tf:"key_map,omitempty"`
+	KeyMap map[string]string `json:"keyMap,omitempty" tf:"key_map,omitempty"`
 
 	// A summary type containing information about the object including its key, name and when/who created/updated it.
 	Metadata []WorkspaceApplicationPatchMetadataObservation `json:"metadata,omitempty" tf:"metadata,omitempty"`
@@ -268,10 +265,10 @@ type WorkspaceApplicationPatchObservation struct {
 	ObjectKeys []*string `json:"objectKeys,omitempty" tf:"object_keys,omitempty"`
 
 	// The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// The object version.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// A reference to the object's parent.
 	ParentRef []WorkspaceApplicationPatchParentRefObservation `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -327,7 +324,7 @@ type WorkspaceApplicationPatchParameters struct {
 
 	// The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// The type of the patch applied or being applied on the application.
 	// +kubebuilder:validation:Optional
@@ -382,7 +379,7 @@ type WorkspaceApplicationPatchRegistryMetadataInitParameters struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type WorkspaceApplicationPatchRegistryMetadataObservation struct {
@@ -400,7 +397,7 @@ type WorkspaceApplicationPatchRegistryMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type WorkspaceApplicationPatchRegistryMetadataParameters struct {
@@ -423,7 +420,7 @@ type WorkspaceApplicationPatchRegistryMetadataParameters struct {
 
 	// The registry version.
 	// +kubebuilder:validation:Optional
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 // WorkspaceApplicationPatchSpec defines the desired state of WorkspaceApplicationPatch

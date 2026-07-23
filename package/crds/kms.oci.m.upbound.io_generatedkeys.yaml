@@ -66,7 +66,6 @@ spec:
                       context for the encrypted data. The length of the string representation
                       of the associated data must be fewer than 4096 characters.
                     type: object
-                    x-kubernetes-map-type: granular
                   cryptoEndpoint:
                     description: The service endpoint to perform cryptographic operations
                       against. Cryptographic operations include 'Encrypt,' 'Decrypt,'
@@ -175,7 +174,8 @@ spec:
                         length:
                           description: 'The length of the key in bytes, expressed
                             as an integer. Supported values include the following:'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   loggingContext:
@@ -185,7 +185,6 @@ spec:
                       You can provide this additional data by formatting it as key-value
                       pairs to include in audit logs when audit logging is enabled.
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -207,7 +206,6 @@ spec:
                       context for the encrypted data. The length of the string representation
                       of the associated data must be fewer than 4096 characters.
                     type: object
-                    x-kubernetes-map-type: granular
                   cryptoEndpoint:
                     description: The service endpoint to perform cryptographic operations
                       against. Cryptographic operations include 'Encrypt,' 'Decrypt,'
@@ -316,7 +314,8 @@ spec:
                         length:
                           description: 'The length of the key in bytes, expressed
                             as an integer. Supported values include the following:'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   loggingContext:
@@ -326,7 +325,6 @@ spec:
                       You can provide this additional data by formatting it as key-value
                       pairs to include in audit logs when audit logging is enabled.
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -413,7 +411,6 @@ spec:
                       context for the encrypted data. The length of the string representation
                       of the associated data must be fewer than 4096 characters.
                     type: object
-                    x-kubernetes-map-type: granular
                   ciphertext:
                     description: The encrypted data encryption key generated from
                       a master encryption key.
@@ -448,7 +445,8 @@ spec:
                         length:
                           description: 'The length of the key in bytes, expressed
                             as an integer. Supported values include the following:'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   loggingContext:
@@ -458,7 +456,6 @@ spec:
                       You can provide this additional data by formatting it as key-value
                       pairs to include in audit logs when audit logging is enabled.
                     type: object
-                    x-kubernetes-map-type: granular
                   plaintext:
                     description: The plaintext data encryption key, a base64-encoded
                       sequence of random bytes, which is included if the GenerateDataEncryptionKey

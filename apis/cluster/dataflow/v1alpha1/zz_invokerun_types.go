@@ -180,12 +180,10 @@ type InvokeRunInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// The Spark configuration passed to the running process. See https://spark.apache.org/docs/latest/configuration.html#available-properties Example: { "spark.app.name" : "My App Name", "spark.shuffle.io.maxRetries" : "4" } Note: Not all Spark properties are permitted to be set.  Attempting to set a property that is not allowed to be overwritten will cause a 400 status to be returned.
-	// +mapType=granular
-	Configuration map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name that does not have to be unique. Avoid entering confidential information. If this value is not specified, it will be derived from the associated application's displayName or set by API using fileUri's application file name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -206,8 +204,7 @@ type InvokeRunInitParameters struct {
 	ExecutorShapeConfig []InvokeRunExecutorShapeConfigInitParameters `json:"executorShapeConfig,omitempty" tf:"executor_shape_config,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The timeout value in minutes used to manage Runs. A Run would be stopped after inactivity for this amount of time period. Note: This parameter is currently only applicable for Runs of type SESSION. Default value is 2880 minutes (2 days)
 	IdleTimeoutInMinutes *string `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
@@ -222,7 +219,7 @@ type InvokeRunInitParameters struct {
 	MetastoreID *string `json:"metastoreId,omitempty" tf:"metastore_id,omitempty"`
 
 	// The number of executor VMs requested.
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// Parent resource control plane endpoint used to exchange for upper level resource principal token.
 	OpcParentRptURL *string `json:"opcParentRptUrl,omitempty" tf:"opc_parent_rpt_url,omitempty"`
@@ -277,8 +274,7 @@ type InvokeRunObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// The Spark configuration passed to the running process. See https://spark.apache.org/docs/latest/configuration.html#available-properties Example: { "spark.app.name" : "My App Name", "spark.shuffle.io.maxRetries" : "4" } Note: Not all Spark properties are permitted to be set.  Attempting to set a property that is not allowed to be overwritten will cause a 400 status to be returned.
-	// +mapType=granular
-	Configuration map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// The data read by the run in bytes.
 	DataReadInBytes *string `json:"dataReadInBytes,omitempty" tf:"data_read_in_bytes,omitempty"`
@@ -287,8 +283,7 @@ type InvokeRunObservation struct {
 	DataWrittenInBytes *string `json:"dataWrittenInBytes,omitempty" tf:"data_written_in_bytes,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name that does not have to be unique. Avoid entering confidential information. If this value is not specified, it will be derived from the associated application's displayName or set by API using fileUri's application file name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -312,8 +307,7 @@ type InvokeRunObservation struct {
 	FileURI *string `json:"fileUri,omitempty" tf:"file_uri,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The ID of a run.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -337,7 +331,7 @@ type InvokeRunObservation struct {
 	MetastoreID *string `json:"metastoreId,omitempty" tf:"metastore_id,omitempty"`
 
 	// The number of executor VMs requested.
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// Parent resource control plane endpoint used to exchange for upper level resource principal token.
 	OpcParentRptURL *string `json:"opcParentRptUrl,omitempty" tf:"opc_parent_rpt_url,omitempty"`
@@ -364,7 +358,7 @@ type InvokeRunObservation struct {
 	PrivateEndpointID *string `json:"privateEndpointId,omitempty" tf:"private_endpoint_id,omitempty"`
 
 	// The maximum number of hosts to be accessed through the private endpoint. This value is used to calculate the relevant CIDR block and should be a multiple of 256.  If the value is not a multiple of 256, it is rounded up to the next multiple of 256. For example, 300 is rounded up to 512.
-	PrivateEndpointMaxHostCount *float64 `json:"privateEndpointMaxHostCount,omitempty" tf:"private_endpoint_max_host_count,omitempty"`
+	PrivateEndpointMaxHostCount *int64 `json:"privateEndpointMaxHostCount,omitempty" tf:"private_endpoint_max_host_count,omitempty"`
 
 	// An array of network security group OCIDs.
 	PrivateEndpointNsgIds []*string `json:"privateEndpointNsgIds,omitempty" tf:"private_endpoint_nsg_ids,omitempty"`
@@ -388,7 +382,7 @@ type InvokeRunObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// The total number of oCPU requested by the run.
-	TotalOcpu *float64 `json:"totalOcpu,omitempty" tf:"total_ocpu,omitempty"`
+	TotalOcpu *int64 `json:"totalOcpu,omitempty" tf:"total_ocpu,omitempty"`
 
 	// The Spark application processing type.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -444,13 +438,11 @@ type InvokeRunParameters struct {
 
 	// The Spark configuration passed to the running process. See https://spark.apache.org/docs/latest/configuration.html#available-properties Example: { "spark.app.name" : "My App Name", "spark.shuffle.io.maxRetries" : "4" } Note: Not all Spark properties are permitted to be set.  Attempting to set a property that is not allowed to be overwritten will cause a 400 status to be returned.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Configuration map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name that does not have to be unique. Avoid entering confidential information. If this value is not specified, it will be derived from the associated application's displayName or set by API using fileUri's application file name.
 	// +kubebuilder:validation:Optional
@@ -478,8 +470,7 @@ type InvokeRunParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The timeout value in minutes used to manage Runs. A Run would be stopped after inactivity for this amount of time period. Note: This parameter is currently only applicable for Runs of type SESSION. Default value is 2880 minutes (2 days)
 	// +kubebuilder:validation:Optional
@@ -499,7 +490,7 @@ type InvokeRunParameters struct {
 
 	// The number of executor VMs requested.
 	// +kubebuilder:validation:Optional
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// Parent resource control plane endpoint used to exchange for upper level resource principal token.
 	// +kubebuilder:validation:Optional

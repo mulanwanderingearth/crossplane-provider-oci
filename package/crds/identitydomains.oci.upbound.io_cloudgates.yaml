@@ -657,7 +657,8 @@ spec:
                           type: string
                         port:
                           description: (Updatable) Port for the Server Block
-                          type: number
+                          format: int64
+                          type: integer
                         serverId:
                           description: (Updatable) Server Name for the Server Block
                           type: string
@@ -734,7 +735,8 @@ spec:
                           type: string
                         port:
                           description: (Updatable) Port for the Server Block
-                          type: number
+                          format: int64
+                          type: integer
                         ref:
                           description: (Updatable) The URI of the SCIM resource that
                             represents the User or App who created this Resource

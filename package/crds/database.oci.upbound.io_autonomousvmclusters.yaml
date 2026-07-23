@@ -165,7 +165,8 @@ spec:
                   cpuCoreCountPerNode:
                     description: (Updatable) The number of CPU cores to enable per
                       VM cluster node.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of OCIDs of the Db servers.
                     items:
@@ -178,7 +179,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the Autonomous VM cluster.
                       The name does not need to be unique.
@@ -274,7 +274,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLocalBackupEnabled:
                     description: If true, database backup on local Exadata storage
                       is configured for the Autonomous VM cluster. If false, database
@@ -296,7 +295,8 @@ spec:
                     items:
                       properties:
                         customActionTimeoutInMins:
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -312,7 +312,8 @@ spec:
                             day when maintenance should be performed. The window is
                             a 4 hour slot. Valid values are
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           type: boolean
@@ -322,7 +323,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -360,22 +362,26 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
                   memoryPerOracleComputeUnitInGbs:
                     description: The amount of memory (in GBs) to be enabled per OCPU
                       or ECPU.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortNonTls:
                     description: (Updatable) The SCAN Listener Non TLS port number.
                       Default value is 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTls:
                     description: (Updatable) The SCAN Listener TLS port number. Default
                       value is 2484.
-                    type: number
+                    format: int64
+                    type: integer
                   sgaPercentage:
                     description: Percentage of ECPU memory allocated for SGA(System
                       Global Area).
@@ -387,7 +393,8 @@ spec:
                   totalContainerDatabases:
                     description: (Updatable) The total number of Autonomous Container
                       Databases that can be created.
-                    type: number
+                    format: int64
+                    type: integer
                   vmClusterNetworkId:
                     description: The OCID of the VM cluster network.
                     type: string
@@ -572,7 +579,8 @@ spec:
                   cpuCoreCountPerNode:
                     description: (Updatable) The number of CPU cores to enable per
                       VM cluster node.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of OCIDs of the Db servers.
                     items:
@@ -585,7 +593,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the Autonomous VM cluster.
                       The name does not need to be unique.
@@ -681,7 +688,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLocalBackupEnabled:
                     description: If true, database backup on local Exadata storage
                       is configured for the Autonomous VM cluster. If false, database
@@ -703,7 +709,8 @@ spec:
                     items:
                       properties:
                         customActionTimeoutInMins:
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -719,7 +726,8 @@ spec:
                             day when maintenance should be performed. The window is
                             a 4 hour slot. Valid values are
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           type: boolean
@@ -729,7 +737,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -767,22 +776,26 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
                   memoryPerOracleComputeUnitInGbs:
                     description: The amount of memory (in GBs) to be enabled per OCPU
                       or ECPU.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortNonTls:
                     description: (Updatable) The SCAN Listener Non TLS port number.
                       Default value is 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTls:
                     description: (Updatable) The SCAN Listener TLS port number. Default
                       value is 2484.
-                    type: number
+                    format: int64
+                    type: integer
                   sgaPercentage:
                     description: Percentage of ECPU memory allocated for SGA(System
                       Global Area).
@@ -794,7 +807,8 @@ spec:
                   totalContainerDatabases:
                     description: (Updatable) The total number of Autonomous Container
                       Databases that can be created.
-                    type: number
+                    format: int64
+                    type: integer
                   vmClusterNetworkId:
                     description: The OCID of the VM cluster network.
                     type: string
@@ -986,10 +1000,12 @@ spec:
                   availableContainerDatabases:
                     description: The number of Autonomous Container Databases that
                       can be created with the currently available local storage.
-                    type: number
+                    format: int64
+                    type: integer
                   availableCpus:
                     description: The numnber of CPU cores available.
-                    type: number
+                    format: int64
+                    type: integer
                   availableDataStorageSizeInTbs:
                     description: Deprecated. Use availableAutonomousDataStorageSizeInTBs
                       for Autonomous Databases' data storage availability in TBs.
@@ -1005,14 +1021,17 @@ spec:
                   cpuCoreCountPerNode:
                     description: (Updatable) The number of CPU cores to enable per
                       VM cluster node.
-                    type: number
+                    format: int64
+                    type: integer
                   cpuPercentage:
                     type: number
                   cpusEnabled:
                     description: The number of enabled CPU cores.
-                    type: number
+                    format: int64
+                    type: integer
                   cpusLowestScaledValue:
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInGb:
                     type: number
                   dataStorageSizeInTbs:
@@ -1020,7 +1039,8 @@ spec:
                     type: number
                   dbNodeStorageSizeInGbs:
                     description: The local node storage allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of OCIDs of the Db servers.
                     items:
@@ -1033,7 +1053,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the Autonomous VM cluster.
                       The name does not need to be unique.
@@ -1057,7 +1076,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Autonomous VM cluster.
                     type: string
@@ -1089,7 +1107,8 @@ spec:
                     items:
                       properties:
                         customActionTimeoutInMins:
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -1105,7 +1124,8 @@ spec:
                             day when maintenance should be performed. The window is
                             a 4 hour slot. Valid values are
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           type: boolean
@@ -1115,7 +1135,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -1153,7 +1174,8 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -1164,7 +1186,8 @@ spec:
                     items:
                       properties:
                         customActionTimeoutInMins:
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -1180,7 +1203,8 @@ spec:
                             day when maintenance should be performed. The window is
                             a 4 hour slot. Valid values are
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           type: boolean
@@ -1190,7 +1214,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -1228,14 +1253,16 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
                   maxAcdsLowestScaledValue:
                     description: The lowest value to which maximum number of ACDs
                       can be scaled down.
-                    type: number
+                    format: int64
+                    type: integer
                   memoryPerComputeUnitInGbs:
                     description: The amount of memory (in GBs) to be enabled per OCPU
                       or ECPU.
@@ -1243,47 +1270,56 @@ spec:
                   memoryPerOracleComputeUnitInGbs:
                     description: The amount of memory (in GBs) to be enabled per OCPU
                       or ECPU.
-                    type: number
+                    format: int64
+                    type: integer
                   memorySizeInGbs:
                     description: The memory allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   nextMaintenanceRunId:
                     description: The OCID of the next maintenance run.
                     type: string
                   nodeCount:
                     description: The number of nodes in the Autonomous VM Cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   nonProvisionableAutonomousContainerDatabases:
                     description: Deprecated. Use field totalContainerDatabases.
-                    type: number
+                    format: int64
+                    type: integer
                   ocpusEnabled:
                     description: The number of enabled OCPU cores.
                     type: number
                   provisionableAutonomousContainerDatabases:
                     description: Deprecated. Use field totalContainerDatabases.
-                    type: number
+                    format: int64
+                    type: integer
                   provisionedAutonomousContainerDatabases:
                     description: The number of provisioned Autonomous Container Databases
                       in an Autonomous VM Cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   provisionedCpus:
                     description: The number of CPUs provisioned in an Autonomous VM
                       Cluster.
                     type: number
                   reclaimableCpus:
                     description: 'For Autonomous Databases on Dedicated Exadata Infrastructure:'
-                    type: number
+                    format: int64
+                    type: integer
                   reservedCpus:
                     description: The number of CPUs reserved in an Autonomous VM Cluster.
                     type: number
                   scanListenerPortNonTls:
                     description: (Updatable) The SCAN Listener Non TLS port number.
                       Default value is 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTls:
                     description: (Updatable) The SCAN Listener TLS port number. Default
                       value is 2484.
-                    type: number
+                    format: int64
+                    type: integer
                   sgaPercentage:
                     description: Percentage of ECPU memory allocated for SGA(System
                       Global Area).
@@ -1298,7 +1334,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time that the Autonomous VM cluster
                       was created.
@@ -1318,7 +1353,8 @@ spec:
                   totalContainerDatabases:
                     description: (Updatable) The total number of Autonomous Container
                       Databases that can be created.
-                    type: number
+                    format: int64
+                    type: integer
                   vmClusterNetworkId:
                     description: The OCID of the VM cluster network.
                     type: string

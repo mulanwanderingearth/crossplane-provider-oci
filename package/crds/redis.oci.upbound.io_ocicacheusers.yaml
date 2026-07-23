@@ -198,7 +198,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of Oracle Cloud Infrastructure
                       cache user.
@@ -210,7 +209,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: Oracle Cloud Infrastructure cache user name is required
                       to connect to an Oracle Cloud Infrastructure cache cluster.
@@ -341,7 +339,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of Oracle Cloud Infrastructure
                       cache user.
@@ -353,7 +350,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: Oracle Cloud Infrastructure cache user name is required
                       to connect to an Oracle Cloud Infrastructure cache cluster.
@@ -501,7 +497,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of Oracle Cloud Infrastructure
                       cache user.
@@ -513,7 +508,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Oracle Cloud Infrastructure Cache user unique ID.
                     type: string
@@ -538,7 +532,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time, when the Oracle Cloud Infrastructure
                       cache user was created.

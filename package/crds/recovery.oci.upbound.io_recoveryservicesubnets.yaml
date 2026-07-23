@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}. For more information, see Resource Tags'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-provided name for the recovery
                       service subnet. The 'displayName' does not have to be unique,
@@ -173,7 +172,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   nsgIds:
                     description: (Updatable) A list of network security group (NSG)
                       OCIDs that are associated with the Recovery Service subnet.
@@ -450,7 +448,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}. For more information, see Resource Tags'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-provided name for the recovery
                       service subnet. The 'displayName' does not have to be unique,
@@ -463,7 +460,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   nsgIds:
                     description: (Updatable) A list of network security group (NSG)
                       OCIDs that are associated with the Recovery Service subnet.
@@ -750,7 +746,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}. For more information, see Resource Tags'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-provided name for the recovery
                       service subnet. The 'displayName' does not have to be unique,
@@ -763,7 +758,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The recovery service subnet OCID.
                     type: string
@@ -806,7 +800,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}. For more information, see Resource Tags'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: 'An RFC3339 formatted datetime string that indicates
                       the last created time for a recovery service subnet. For example:

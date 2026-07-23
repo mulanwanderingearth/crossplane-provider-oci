@@ -32,8 +32,7 @@ type HostInsightInitParameters struct {
 	ComputeID *string `json:"computeId,omitempty" tf:"compute_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// OPSI Enterprise Manager Bridge OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/opsi/v1alpha1.EnterpriseManagerBridge
@@ -71,8 +70,7 @@ type HostInsightInitParameters struct {
 	ExadataInsightIDSelector *v1.NamespacedSelector `json:"exadataInsightIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Management Agent
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/managementagent/v1alpha1.ManagementAgent
@@ -100,8 +98,7 @@ type HostInsightObservation struct {
 	ComputeID *string `json:"computeId,omitempty" tf:"compute_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// OPSI Enterprise Manager Bridge OCID
 	EnterpriseManagerBridgeID *string `json:"enterpriseManagerBridgeId,omitempty" tf:"enterprise_manager_bridge_id,omitempty"`
@@ -128,8 +125,7 @@ type HostInsightObservation struct {
 	ExadataInsightID *string `json:"exadataInsightId,omitempty" tf:"exadata_insight_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The user-friendly name for the host. The name does not have to be unique.
 	HostDisplayName *string `json:"hostDisplayName,omitempty" tf:"host_display_name,omitempty"`
@@ -158,7 +154,7 @@ type HostInsightObservation struct {
 	// Platform version.
 	PlatformVersion *string `json:"platformVersion,omitempty" tf:"platform_version,omitempty"`
 
-	ProcessorCount *float64 `json:"processorCount,omitempty" tf:"processor_count,omitempty"`
+	ProcessorCount *int64 `json:"processorCount,omitempty" tf:"processor_count,omitempty"`
 
 	// The current state of the host.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -167,8 +163,7 @@ type HostInsightObservation struct {
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the the host insight was first enabled. An RFC3339 formatted datetime string
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -198,8 +193,7 @@ type HostInsightParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// OPSI Enterprise Manager Bridge OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/opsi/v1alpha1.EnterpriseManagerBridge
@@ -243,8 +237,7 @@ type HostInsightParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Management Agent
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/managementagent/v1alpha1.ManagementAgent

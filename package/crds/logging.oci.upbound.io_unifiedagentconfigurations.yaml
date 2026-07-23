@@ -162,7 +162,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description for this resource.
                     type: string
@@ -179,7 +178,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   groupAssociation:
                     description: (Updatable) Groups using the configuration.
                     items:
@@ -480,7 +478,6 @@ spec:
                                                     (Updatable) Dimensions to be added
                                                     for metrics.
                                                   type: object
-                                                  x-kubernetes-map-type: granular
                                                 namespace:
                                                   description: (Applicable when parser_type=OPENMETRICS)
                                                     (Updatable) Namespace to emit
@@ -520,7 +517,8 @@ spec:
                                               (Updatable) Specify the timeout for
                                               parse processing. This is mainly for
                                               detecting an incorrect regexp pattern.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           types:
                                             additionalProperties:
                                               type: string
@@ -531,7 +529,6 @@ spec:
                                               keys time,host,req_id,user time_key
                                               time'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                         type: object
                                       type: array
                                     paths:
@@ -933,7 +930,6 @@ spec:
                                               (Updatable) Dimensions to be added for
                                               metrics.
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           namespace:
                                             description: (Applicable when parser_type=OPENMETRICS)
                                               (Updatable) Namespace to emit metrics.
@@ -972,7 +968,8 @@ spec:
                                         (Updatable) Specify the timeout for parse
                                         processing. This is mainly for detecting an
                                         incorrect regexp pattern.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     types:
                                       additionalProperties:
                                         type: string
@@ -982,7 +979,6 @@ spec:
                                         this configuration:  @type csv keys time,host,req_id,user
                                         time_key time'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               paths:
@@ -1034,7 +1030,6 @@ spec:
                                       description: (Applicable when filter_type=CUSTOM_FILTER)
                                         (Updatable) Parameters in the custom section
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               denyList:
@@ -1185,7 +1180,6 @@ spec:
                                 description: (Applicable when filter_type=CUSTOM_FILTER)
                                   (Updatable) Parameters in the custom section
                                 type: object
-                                x-kubernetes-map-type: granular
                               parser:
                                 description: (Applicable when source_type=TAIL) (Updatable)
                                   Source parser object.
@@ -1371,7 +1365,6 @@ spec:
                                               (Updatable) Dimensions to be added for
                                               metrics.
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           namespace:
                                             description: (Applicable when parser_type=OPENMETRICS)
                                               (Updatable) Namespace to emit metrics.
@@ -1410,7 +1403,8 @@ spec:
                                         (Updatable) Specify the timeout for parse
                                         processing. This is mainly for detecting an
                                         incorrect regexp pattern.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     types:
                                       additionalProperties:
                                         type: string
@@ -1420,7 +1414,6 @@ spec:
                                         this configuration:  @type csv keys time,host,req_id,user
                                         time_key time'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               recordList:
@@ -1575,7 +1568,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description for this resource.
                     type: string
@@ -1592,7 +1584,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   groupAssociation:
                     description: (Updatable) Groups using the configuration.
                     items:
@@ -1893,7 +1884,6 @@ spec:
                                                     (Updatable) Dimensions to be added
                                                     for metrics.
                                                   type: object
-                                                  x-kubernetes-map-type: granular
                                                 namespace:
                                                   description: (Applicable when parser_type=OPENMETRICS)
                                                     (Updatable) Namespace to emit
@@ -1933,7 +1923,8 @@ spec:
                                               (Updatable) Specify the timeout for
                                               parse processing. This is mainly for
                                               detecting an incorrect regexp pattern.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           types:
                                             additionalProperties:
                                               type: string
@@ -1944,7 +1935,6 @@ spec:
                                               keys time,host,req_id,user time_key
                                               time'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                         type: object
                                       type: array
                                     paths:
@@ -2346,7 +2336,6 @@ spec:
                                               (Updatable) Dimensions to be added for
                                               metrics.
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           namespace:
                                             description: (Applicable when parser_type=OPENMETRICS)
                                               (Updatable) Namespace to emit metrics.
@@ -2385,7 +2374,8 @@ spec:
                                         (Updatable) Specify the timeout for parse
                                         processing. This is mainly for detecting an
                                         incorrect regexp pattern.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     types:
                                       additionalProperties:
                                         type: string
@@ -2395,7 +2385,6 @@ spec:
                                         this configuration:  @type csv keys time,host,req_id,user
                                         time_key time'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               paths:
@@ -2447,7 +2436,6 @@ spec:
                                       description: (Applicable when filter_type=CUSTOM_FILTER)
                                         (Updatable) Parameters in the custom section
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               denyList:
@@ -2598,7 +2586,6 @@ spec:
                                 description: (Applicable when filter_type=CUSTOM_FILTER)
                                   (Updatable) Parameters in the custom section
                                 type: object
-                                x-kubernetes-map-type: granular
                               parser:
                                 description: (Applicable when source_type=TAIL) (Updatable)
                                   Source parser object.
@@ -2784,7 +2771,6 @@ spec:
                                               (Updatable) Dimensions to be added for
                                               metrics.
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           namespace:
                                             description: (Applicable when parser_type=OPENMETRICS)
                                               (Updatable) Namespace to emit metrics.
@@ -2823,7 +2809,8 @@ spec:
                                         (Updatable) Specify the timeout for parse
                                         processing. This is mainly for detecting an
                                         incorrect regexp pattern.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     types:
                                       additionalProperties:
                                         type: string
@@ -2833,7 +2820,6 @@ spec:
                                         this configuration:  @type csv keys time,host,req_id,user
                                         time_key time'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               recordList:
@@ -3013,7 +2999,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description for this resource.
                     type: string
@@ -3030,7 +3015,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   groupAssociation:
                     description: (Updatable) Groups using the configuration.
                     items:
@@ -3334,7 +3318,6 @@ spec:
                                                     (Updatable) Dimensions to be added
                                                     for metrics.
                                                   type: object
-                                                  x-kubernetes-map-type: granular
                                                 namespace:
                                                   description: (Applicable when parser_type=OPENMETRICS)
                                                     (Updatable) Namespace to emit
@@ -3374,7 +3357,8 @@ spec:
                                               (Updatable) Specify the timeout for
                                               parse processing. This is mainly for
                                               detecting an incorrect regexp pattern.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           types:
                                             additionalProperties:
                                               type: string
@@ -3385,7 +3369,6 @@ spec:
                                               keys time,host,req_id,user time_key
                                               time'
                                             type: object
-                                            x-kubernetes-map-type: granular
                                         type: object
                                       type: array
                                     paths:
@@ -3711,7 +3694,6 @@ spec:
                                               (Updatable) Dimensions to be added for
                                               metrics.
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           namespace:
                                             description: (Applicable when parser_type=OPENMETRICS)
                                               (Updatable) Namespace to emit metrics.
@@ -3750,7 +3732,8 @@ spec:
                                         (Updatable) Specify the timeout for parse
                                         processing. This is mainly for detecting an
                                         incorrect regexp pattern.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     types:
                                       additionalProperties:
                                         type: string
@@ -3760,7 +3743,6 @@ spec:
                                         this configuration:  @type csv keys time,host,req_id,user
                                         time_key time'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               paths:
@@ -3812,7 +3794,6 @@ spec:
                                       description: (Applicable when filter_type=CUSTOM_FILTER)
                                         (Updatable) Parameters in the custom section
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               denyList:
@@ -3887,7 +3868,6 @@ spec:
                                 description: (Applicable when filter_type=CUSTOM_FILTER)
                                   (Updatable) Parameters in the custom section
                                 type: object
-                                x-kubernetes-map-type: granular
                               parser:
                                 description: (Applicable when source_type=TAIL) (Updatable)
                                   Source parser object.
@@ -4073,7 +4053,6 @@ spec:
                                               (Updatable) Dimensions to be added for
                                               metrics.
                                             type: object
-                                            x-kubernetes-map-type: granular
                                           namespace:
                                             description: (Applicable when parser_type=OPENMETRICS)
                                               (Updatable) Namespace to emit metrics.
@@ -4112,7 +4091,8 @@ spec:
                                         (Updatable) Specify the timeout for parse
                                         processing. This is mainly for detecting an
                                         incorrect regexp pattern.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     types:
                                       additionalProperties:
                                         type: string
@@ -4122,7 +4102,6 @@ spec:
                                         this configuration:  @type csv keys time,host,req_id,user
                                         time_key time'
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               recordList:

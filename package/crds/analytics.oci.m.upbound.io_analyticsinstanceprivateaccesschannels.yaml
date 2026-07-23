@@ -192,7 +192,8 @@ spec:
                           description: (Updatable) Private Source Scan host port.
                             This is the source port where SCAN protocol will get connected
                             (e.g. 1521).
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   subnetId:
@@ -508,7 +509,8 @@ spec:
                           description: (Updatable) Private Source Scan host port.
                             This is the source port where SCAN protocol will get connected
                             (e.g. 1521).
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   subnetId:
@@ -820,7 +822,8 @@ spec:
                           description: (Updatable) Private Source Scan host port.
                             This is the source port where SCAN protocol will get connected
                             (e.g. 1521).
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   subnetId:

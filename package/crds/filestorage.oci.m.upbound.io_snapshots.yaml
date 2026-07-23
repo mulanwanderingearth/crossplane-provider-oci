@@ -66,7 +66,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   expirationTime:
                     description: (Updatable) The time when this snapshot will be deleted.
                     type: string
@@ -163,7 +162,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   lockDurationDetails:
@@ -180,7 +178,8 @@ spec:
                             any deletion or modification. The cool off duration can
                             be set for a minimum of 0 days and a maximum of 365. It
                             defaults to 14 days if not set.
-                          type: number
+                          format: int64
+                          type: integer
                         lockDuration:
                           description: (Updatable) The retention period (measured
                             in days) defines how long a snapshot remains locked, preventing
@@ -190,7 +189,8 @@ spec:
                             for a minimum of 0 days and a maximum of 36,500 days.
                             A value of 0 days stands for an indefinite retention period
                             and it is used for a legal hold.
-                          type: number
+                          format: int64
+                          type: integer
                         lockMode:
                           description: '(Updatable) Can be GOVERNANCE or COMPLIANCE.
                             GOVERNANCE MODE: locks snapshots based on either a retention
@@ -251,7 +251,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   expirationTime:
                     description: (Updatable) The time when this snapshot will be deleted.
                     type: string
@@ -348,7 +347,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   lockDurationDetails:
@@ -365,7 +363,8 @@ spec:
                             any deletion or modification. The cool off duration can
                             be set for a minimum of 0 days and a maximum of 365. It
                             defaults to 14 days if not set.
-                          type: number
+                          format: int64
+                          type: integer
                         lockDuration:
                           description: (Updatable) The retention period (measured
                             in days) defines how long a snapshot remains locked, preventing
@@ -375,7 +374,8 @@ spec:
                             for a minimum of 0 days and a maximum of 36,500 days.
                             A value of 0 days stands for an indefinite retention period
                             and it is used for a legal hold.
-                          type: number
+                          format: int64
+                          type: integer
                         lockMode:
                           description: '(Updatable) Can be GOVERNANCE or COMPLIANCE.
                             GOVERNANCE MODE: locks snapshots based on either a retention
@@ -493,7 +493,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   expirationTime:
                     description: (Updatable) The time when this snapshot will be deleted.
                     type: string
@@ -512,7 +511,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the snapshot.
                     type: string
@@ -539,7 +537,8 @@ spec:
                             any deletion or modification. The cool off duration can
                             be set for a minimum of 0 days and a maximum of 365. It
                             defaults to 14 days if not set.
-                          type: number
+                          format: int64
+                          type: integer
                         lockDuration:
                           description: (Updatable) The retention period (measured
                             in days) defines how long a snapshot remains locked, preventing
@@ -549,7 +548,8 @@ spec:
                             for a minimum of 0 days and a maximum of 36,500 days.
                             A value of 0 days stands for an indefinite retention period
                             and it is used for a legal hold.
-                          type: number
+                          format: int64
+                          type: integer
                         lockMode:
                           description: '(Updatable) Can be GOVERNANCE or COMPLIANCE.
                             GOVERNANCE MODE: locks snapshots based on either a retention
@@ -613,7 +613,6 @@ spec:
                     description: System tags for this resource. System tags are applied
                       to resources by internal Oracle Cloud Infrastructure services.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the lock was created.
                     type: string

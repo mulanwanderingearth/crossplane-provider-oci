@@ -32,10 +32,10 @@ type CostAlertSubscriptionMapInitParameters struct {
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) The absolute threshold value.
-	ThresholdAbsoluteValue *float64 `json:"thresholdAbsoluteValue,omitempty" tf:"threshold_absolute_value,omitempty"`
+	ThresholdAbsoluteValue *int64 `json:"thresholdAbsoluteValue,omitempty" tf:"threshold_absolute_value,omitempty"`
 
 	// (Updatable) The relative percentage threshold value.
-	ThresholdRelativePercent *float64 `json:"thresholdRelativePercent,omitempty" tf:"threshold_relative_percent,omitempty"`
+	ThresholdRelativePercent *int64 `json:"thresholdRelativePercent,omitempty" tf:"threshold_relative_percent,omitempty"`
 }
 
 type CostAlertSubscriptionMapObservation struct {
@@ -47,10 +47,10 @@ type CostAlertSubscriptionMapObservation struct {
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) The absolute threshold value.
-	ThresholdAbsoluteValue *float64 `json:"thresholdAbsoluteValue,omitempty" tf:"threshold_absolute_value,omitempty"`
+	ThresholdAbsoluteValue *int64 `json:"thresholdAbsoluteValue,omitempty" tf:"threshold_absolute_value,omitempty"`
 
 	// (Updatable) The relative percentage threshold value.
-	ThresholdRelativePercent *float64 `json:"thresholdRelativePercent,omitempty" tf:"threshold_relative_percent,omitempty"`
+	ThresholdRelativePercent *int64 `json:"thresholdRelativePercent,omitempty" tf:"threshold_relative_percent,omitempty"`
 }
 
 type CostAlertSubscriptionMapParameters struct {
@@ -75,11 +75,11 @@ type CostAlertSubscriptionMapParameters struct {
 
 	// (Updatable) The absolute threshold value.
 	// +kubebuilder:validation:Optional
-	ThresholdAbsoluteValue *float64 `json:"thresholdAbsoluteValue,omitempty" tf:"threshold_absolute_value,omitempty"`
+	ThresholdAbsoluteValue *int64 `json:"thresholdAbsoluteValue,omitempty" tf:"threshold_absolute_value,omitempty"`
 
 	// (Updatable) The relative percentage threshold value.
 	// +kubebuilder:validation:Optional
-	ThresholdRelativePercent *float64 `json:"thresholdRelativePercent,omitempty" tf:"threshold_relative_percent,omitempty"`
+	ThresholdRelativePercent *int64 `json:"thresholdRelativePercent,omitempty" tf:"threshold_relative_percent,omitempty"`
 }
 
 type CostAnomalyMonitorInitParameters struct {
@@ -100,15 +100,13 @@ type CostAnomalyMonitorInitParameters struct {
 	CostAlertSubscriptionMap []CostAlertSubscriptionMapInitParameters `json:"costAlertSubscriptionMap,omitempty" tf:"cost_alert_subscription_map,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the cost anomaly monitor.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The name of the cost anomaly monitor. Avoid entering confidential information.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -126,15 +124,13 @@ type CostAnomalyMonitorObservation struct {
 	CostAlertSubscriptionMap []CostAlertSubscriptionMapObservation `json:"costAlertSubscriptionMap,omitempty" tf:"cost_alert_subscription_map,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the cost anomaly monitor.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Cost Anomaly Monitor.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -149,8 +145,7 @@ type CostAnomalyMonitorObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The filter object to target resources for cost monitor.  Cost generated by one or more resources identified by this  filter is monitored for anomalous deviations.
 	TargetResourceFilter *string `json:"targetResourceFilter,omitempty" tf:"target_resource_filter,omitempty"`
@@ -186,8 +181,7 @@ type CostAnomalyMonitorParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the cost anomaly monitor.
 	// +kubebuilder:validation:Optional
@@ -195,8 +189,7 @@ type CostAnomalyMonitorParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The name of the cost anomaly monitor. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional

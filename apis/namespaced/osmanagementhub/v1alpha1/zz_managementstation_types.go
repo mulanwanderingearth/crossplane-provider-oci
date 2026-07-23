@@ -47,8 +47,7 @@ type ManagementStationInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-specified description of the management station. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -57,8 +56,7 @@ type ManagementStationInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Hostname of the management station.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -76,7 +74,7 @@ type ManagementStationInitParameters struct {
 	Proxy []ProxyInitParameters `json:"proxy,omitempty" tf:"proxy,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Refresh. Could be set to any integer value.
-	RefreshTrigger *float64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
+	RefreshTrigger *int64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
 }
 
 type ManagementStationObservation struct {
@@ -88,8 +86,7 @@ type ManagementStationObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-specified description of the management station. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -98,8 +95,7 @@ type ManagementStationObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Overall health information of the management station.
 	Health []HealthObservation `json:"health,omitempty" tf:"health,omitempty"`
@@ -123,10 +119,10 @@ type ManagementStationObservation struct {
 	Mirror []MirrorObservation `json:"mirror,omitempty" tf:"mirror,omitempty"`
 
 	// A decimal number representing the amount of mirror capacity used by the sync.
-	MirrorCapacity *float64 `json:"mirrorCapacity,omitempty" tf:"mirror_capacity,omitempty"`
+	MirrorCapacity *int64 `json:"mirrorCapacity,omitempty" tf:"mirror_capacity,omitempty"`
 
 	// The total number of all packages within the mirrored software sources.
-	MirrorPackageCount *float64 `json:"mirrorPackageCount,omitempty" tf:"mirror_package_count,omitempty"`
+	MirrorPackageCount *int64 `json:"mirrorPackageCount,omitempty" tf:"mirror_package_count,omitempty"`
 
 	// The total size of all software source mirrors in bytes.
 	MirrorSize *string `json:"mirrorSize,omitempty" tf:"mirror_size,omitempty"`
@@ -141,13 +137,13 @@ type ManagementStationObservation struct {
 	MirrorSyncStatus []MirrorSyncStatusObservation `json:"mirrorSyncStatus,omitempty" tf:"mirror_sync_status,omitempty"`
 
 	// The total number of unique packages within the mirrored software sources on the station. Each package is counted only once, regardless of how many versions it has.
-	MirrorUniquePackageCount *float64 `json:"mirrorUniquePackageCount,omitempty" tf:"mirror_unique_package_count,omitempty"`
+	MirrorUniquePackageCount *int64 `json:"mirrorUniquePackageCount,omitempty" tf:"mirror_unique_package_count,omitempty"`
 
 	// (Updatable) The operating system family.
 	OsFamily *string `json:"osFamily,omitempty" tf:"os_family,omitempty"`
 
 	// A decimal number representing the progress of the current mirror sync.
-	OverallPercentage *float64 `json:"overallPercentage,omitempty" tf:"overall_percentage,omitempty"`
+	OverallPercentage *int64 `json:"overallPercentage,omitempty" tf:"overall_percentage,omitempty"`
 
 	// Current state of the mirror sync for the management station.
 	OverallState *string `json:"overallState,omitempty" tf:"overall_state,omitempty"`
@@ -162,7 +158,7 @@ type ManagementStationObservation struct {
 	Proxy []ProxyObservation `json:"proxy,omitempty" tf:"proxy,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Refresh. Could be set to any integer value.
-	RefreshTrigger *float64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
+	RefreshTrigger *int64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
 
 	// The OCID of the scheduled job for the mirror sync.
 	ScheduledJobID *string `json:"scheduledJobId,omitempty" tf:"scheduled_job_id,omitempty"`
@@ -171,11 +167,10 @@ type ManagementStationObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The number of software sources that the station is mirroring.
-	TotalMirrors *float64 `json:"totalMirrors,omitempty" tf:"total_mirrors,omitempty"`
+	TotalMirrors *int64 `json:"totalMirrors,omitempty" tf:"total_mirrors,omitempty"`
 }
 
 type ManagementStationParameters struct {
@@ -199,8 +194,7 @@ type ManagementStationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-specified description of the management station. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -212,8 +206,7 @@ type ManagementStationParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Hostname of the management station.
 	// +kubebuilder:validation:Optional
@@ -237,7 +230,7 @@ type ManagementStationParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Refresh. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	RefreshTrigger *float64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
+	RefreshTrigger *int64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
 }
 
 type MirrorInitParameters struct {
@@ -305,19 +298,19 @@ type MirrorSyncStatusInitParameters struct {
 type MirrorSyncStatusObservation struct {
 
 	// Total number of software sources that failed to sync.
-	Failed *float64 `json:"failed,omitempty" tf:"failed,omitempty"`
+	Failed *int64 `json:"failed,omitempty" tf:"failed,omitempty"`
 
 	// Total number of software sources that are queued for sync.
-	Queued *float64 `json:"queued,omitempty" tf:"queued,omitempty"`
+	Queued *int64 `json:"queued,omitempty" tf:"queued,omitempty"`
 
 	// Total number of software sources that successfully synced.
-	Synced *float64 `json:"synced,omitempty" tf:"synced,omitempty"`
+	Synced *int64 `json:"synced,omitempty" tf:"synced,omitempty"`
 
 	// Total number of software sources currently syncing.
-	Syncing *float64 `json:"syncing,omitempty" tf:"syncing,omitempty"`
+	Syncing *int64 `json:"syncing,omitempty" tf:"syncing,omitempty"`
 
 	// Total number of software sources that have not yet been synced.
-	Unsynced *float64 `json:"unsynced,omitempty" tf:"unsynced,omitempty"`
+	Unsynced *int64 `json:"unsynced,omitempty" tf:"unsynced,omitempty"`
 }
 
 type MirrorSyncStatusParameters struct {

@@ -250,7 +250,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A mutable client-meaningful text description
                       of the Compute Cloud@Customer infrastructure. Avoid entering
@@ -269,7 +268,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: (Updatable) Identifier for network subnet that will
                       be used to communicate with Compute Cloud@Customer infrastructure.
@@ -558,7 +556,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A mutable client-meaningful text description
                       of the Compute Cloud@Customer infrastructure. Avoid entering
@@ -577,7 +574,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: (Updatable) Identifier for network subnet that will
                       be used to communicate with Compute Cloud@Customer infrastructure.
@@ -759,7 +755,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A mutable client-meaningful text description
                       of the Compute Cloud@Customer infrastructure. Avoid entering
@@ -778,7 +773,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The Compute Cloud@Customer infrastructure OCID. This
                       cannot be changed once created.
@@ -794,23 +788,27 @@ spec:
                           description: The number of storage trays in the Compute
                             Cloud@Customer infrastructure rack that are designated
                             for capacity storage.
-                          type: number
+                          format: int64
+                          type: integer
                         computeNodeCount:
                           description: The number of compute nodes that are available
                             and usable on the Compute Cloud@Customer infrastructure
                             rack. There is no distinction of compute node type in
                             this information.
-                          type: number
+                          format: int64
+                          type: integer
                         managementNodeCount:
                           description: The number of management nodes that are available
                             and in active use on the Compute Cloud@Customer infrastructure
                             rack.
-                          type: number
+                          format: int64
+                          type: integer
                         performanceStorageTrayCount:
                           description: The number of storage trays in the Compute
                             Cloud@Customer infrastructure rack that are designated
                             for performance storage.
-                          type: number
+                          format: int64
+                          type: integer
                         serialNumber:
                           description: The serial number of the Compute Cloud@Customer
                             infrastructure rack.
@@ -845,7 +843,8 @@ spec:
                                 description: The Oracle Autonomous System Number (ASN)
                                   to control routing and exchange information within
                                   the dynamic routing configuration.
-                                type: number
+                                format: int64
+                                type: integer
                               peerInformation:
                                 description: The list of peer devices in the dynamic
                                   routing configuration.
@@ -854,7 +853,8 @@ spec:
                                     asn:
                                       description: The Autonomous System Number (ASN)
                                         of the peer network.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     ip:
                                       description: Neighbor Border Gateway Protocal
                                         (BGP) IP address. The IP address usually refers
@@ -872,12 +872,14 @@ spec:
                                 description: The uplink Hot Standby Router Protocol
                                   (HSRP) group value for the switch in the Compute
                                   Cloud@Customer infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               uplinkVlan:
                                 description: The virtual local area network (VLAN)
                                   identifier used to connect to the uplink (only access
                                   mode is supported).
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         managementNodes:
@@ -932,7 +934,8 @@ spec:
                             is identical on both spine switches. For example, if input
                             is two 100 gigabyte ports; then port-1 and port-2 on both
                             spines will be configured.
-                          type: number
+                          format: int64
+                          type: integer
                         uplinkPortForwardErrorCorrection:
                           description: The port forward error correction (FEC) setting
                             for the uplink port on the Compute Cloud@Customer infrastructure.
@@ -940,11 +943,13 @@ spec:
                         uplinkPortSpeedInGbps:
                           description: Uplink port speed defined in gigabytes per
                             second. All uplink ports must have identical speed.
-                          type: number
+                          format: int64
+                          type: integer
                         uplinkVlanMtu:
                           description: The virtual local area network (VLAN) maximum
                             transmission unit (MTU) size for the uplink ports.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   lifecycleDetails:
@@ -984,7 +989,6 @@ spec:
                       and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: Compute Cloud@Customer infrastructure creation date
                       and time, using an RFC3339 formatted datetime string.

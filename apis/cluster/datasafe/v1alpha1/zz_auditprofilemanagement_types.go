@@ -31,8 +31,7 @@ type AuditProfileManagementAuditTrailsObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the audit profile.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -41,8 +40,7 @@ type AuditProfileManagementAuditTrailsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the audit trail.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -54,7 +52,7 @@ type AuditProfileManagementAuditTrailsObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The secondary id assigned for the peer database registered with Data Safe.
-	PeerTargetDatabaseKey *float64 `json:"peerTargetDatabaseKey,omitempty" tf:"peer_target_database_key,omitempty"`
+	PeerTargetDatabaseKey *int64 `json:"peerTargetDatabaseKey,omitempty" tf:"peer_target_database_key,omitempty"`
 
 	// The details of the audit trail purge job that ran on the "purgeJobTime".
 	PurgeJobDetails *string `json:"purgeJobDetails,omitempty" tf:"purge_job_details,omitempty"`
@@ -72,8 +70,7 @@ type AuditProfileManagementAuditTrailsObservation struct {
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The OCID of the target database or target database group for which the audit profile is created.
 	TargetID *string `json:"targetId,omitempty" tf:"target_id,omitempty"`
@@ -103,7 +100,7 @@ type AuditProfileManagementAuditTrailsParameters struct {
 type AuditProfileManagementInitParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Change Retention. Could be set to any integer value.
-	ChangeRetentionTrigger *float64 `json:"changeRetentionTrigger,omitempty" tf:"change_retention_trigger,omitempty"`
+	ChangeRetentionTrigger *int64 `json:"changeRetentionTrigger,omitempty" tf:"change_retention_trigger,omitempty"`
 
 	// (Updatable) The OCID of the compartment where you want to create the audit profile.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -118,8 +115,7 @@ type AuditProfileManagementInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the audit profile.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -128,8 +124,7 @@ type AuditProfileManagementInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Indicates whether audit paid usage settings specified at the target database level override both the global and the target database group level paid usage settings. Enabling paid usage continues the collection of audit records beyond the free limit of one million audit records per month per target database, potentially incurring additional charges. For more information, see Data Safe Price List.
 	IsOverrideGlobalPaidUsage *bool `json:"isOverrideGlobalPaidUsage,omitempty" tf:"is_override_global_paid_usage,omitempty"`
@@ -141,10 +136,10 @@ type AuditProfileManagementInitParameters struct {
 	IsPaidUsageEnabled *bool `json:"isPaidUsageEnabled,omitempty" tf:"is_paid_usage_enabled,omitempty"`
 
 	// Number of months the audit records will be stored offline in the offline archive. Minimum: 0; Maximum: 72 months. If you have a requirement to store the audit data even longer in the offline archive, please contact the Oracle Support.
-	OfflineMonths *float64 `json:"offlineMonths,omitempty" tf:"offline_months,omitempty"`
+	OfflineMonths *int64 `json:"offlineMonths,omitempty" tf:"offline_months,omitempty"`
 
 	// Number of months the audit records will be stored online in the audit repository for immediate reporting and analysis. Minimum: 1; Maximum: 12 months
-	OnlineMonths *float64 `json:"onlineMonths,omitempty" tf:"online_months,omitempty"`
+	OnlineMonths *int64 `json:"onlineMonths,omitempty" tf:"online_months,omitempty"`
 
 	// The OCID of the target database or target database group for which the audit profile is created.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudguard/v1alpha1.Target
@@ -172,14 +167,13 @@ type AuditProfileManagementObservation struct {
 	AuditTrails []AuditProfileManagementAuditTrailsObservation `json:"auditTrails,omitempty" tf:"audit_trails,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Change Retention. Could be set to any integer value.
-	ChangeRetentionTrigger *float64 `json:"changeRetentionTrigger,omitempty" tf:"change_retention_trigger,omitempty"`
+	ChangeRetentionTrigger *int64 `json:"changeRetentionTrigger,omitempty" tf:"change_retention_trigger,omitempty"`
 
 	// (Updatable) The OCID of the compartment where you want to create the audit profile.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the audit profile.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -188,8 +182,7 @@ type AuditProfileManagementObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the audit trail.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -207,13 +200,13 @@ type AuditProfileManagementObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// Number of months the audit records will be stored offline in the offline archive. Minimum: 0; Maximum: 72 months. If you have a requirement to store the audit data even longer in the offline archive, please contact the Oracle Support.
-	OfflineMonths *float64 `json:"offlineMonths,omitempty" tf:"offline_months,omitempty"`
+	OfflineMonths *int64 `json:"offlineMonths,omitempty" tf:"offline_months,omitempty"`
 
 	// The name or the OCID of the resource from which the offline month retention setting is sourced. For example, a global setting or a target database group OCID.
 	OfflineMonthsSource *string `json:"offlineMonthsSource,omitempty" tf:"offline_months_source,omitempty"`
 
 	// Number of months the audit records will be stored online in the audit repository for immediate reporting and analysis. Minimum: 1; Maximum: 12 months
-	OnlineMonths *float64 `json:"onlineMonths,omitempty" tf:"online_months,omitempty"`
+	OnlineMonths *int64 `json:"onlineMonths,omitempty" tf:"online_months,omitempty"`
 
 	// The name or the OCID of the resource from which the online month retention setting is sourced. For example, a global setting or a target database group OCID.
 	OnlineMonthsSource *string `json:"onlineMonthsSource,omitempty" tf:"online_months_source,omitempty"`
@@ -225,8 +218,7 @@ type AuditProfileManagementObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The OCID of the target database or target database group for which the audit profile is created.
 	TargetID *string `json:"targetId,omitempty" tf:"target_id,omitempty"`
@@ -245,7 +237,7 @@ type AuditProfileManagementParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Change Retention. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ChangeRetentionTrigger *float64 `json:"changeRetentionTrigger,omitempty" tf:"change_retention_trigger,omitempty"`
+	ChangeRetentionTrigger *int64 `json:"changeRetentionTrigger,omitempty" tf:"change_retention_trigger,omitempty"`
 
 	// (Updatable) The OCID of the compartment where you want to create the audit profile.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -262,8 +254,7 @@ type AuditProfileManagementParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the audit profile.
 	// +kubebuilder:validation:Optional
@@ -275,8 +266,7 @@ type AuditProfileManagementParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Indicates whether audit paid usage settings specified at the target database level override both the global and the target database group level paid usage settings. Enabling paid usage continues the collection of audit records beyond the free limit of one million audit records per month per target database, potentially incurring additional charges. For more information, see Data Safe Price List.
 	// +kubebuilder:validation:Optional
@@ -292,11 +282,11 @@ type AuditProfileManagementParameters struct {
 
 	// Number of months the audit records will be stored offline in the offline archive. Minimum: 0; Maximum: 72 months. If you have a requirement to store the audit data even longer in the offline archive, please contact the Oracle Support.
 	// +kubebuilder:validation:Optional
-	OfflineMonths *float64 `json:"offlineMonths,omitempty" tf:"offline_months,omitempty"`
+	OfflineMonths *int64 `json:"offlineMonths,omitempty" tf:"offline_months,omitempty"`
 
 	// Number of months the audit records will be stored online in the audit repository for immediate reporting and analysis. Minimum: 1; Maximum: 12 months
 	// +kubebuilder:validation:Optional
-	OnlineMonths *float64 `json:"onlineMonths,omitempty" tf:"online_months,omitempty"`
+	OnlineMonths *int64 `json:"onlineMonths,omitempty" tf:"online_months,omitempty"`
 
 	// The OCID of the target database or target database group for which the audit profile is created.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudguard/v1alpha1.Target

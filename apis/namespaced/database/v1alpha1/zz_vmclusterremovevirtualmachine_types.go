@@ -108,7 +108,7 @@ type VmClusterRemoveVirtualMachineFileSystemConfigurationDetailsInitParameters s
 type VmClusterRemoveVirtualMachineFileSystemConfigurationDetailsObservation struct {
 
 	// The file system size to be allocated in GBs.
-	FileSystemSizeGb *float64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
+	FileSystemSizeGb *int64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
 
 	// The mount point of file system.
 	MountPoint *string `json:"mountPoint,omitempty" tf:"mount_point,omitempty"`
@@ -151,10 +151,10 @@ type VmClusterRemoveVirtualMachineObservation struct {
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
 
 	// The number of enabled CPU cores.
-	CpusEnabled *float64 `json:"cpusEnabled,omitempty" tf:"cpus_enabled,omitempty"`
+	CpusEnabled *int64 `json:"cpusEnabled,omitempty" tf:"cpus_enabled,omitempty"`
 
 	// The local node storage allocated in GBs.
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	// The list of Exacc DB servers for the cluster to be removed.
 	DBServers []VmClusterRemoveVirtualMachineDBServersObservation `json:"dbServers,omitempty" tf:"db_servers,omitempty"`
@@ -163,14 +163,13 @@ type VmClusterRemoveVirtualMachineObservation struct {
 	DataCollectionOptions []VmClusterRemoveVirtualMachineDataCollectionOptionsObservation `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
 	// The percentage assigned to DATA storage (user data and database files). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+	DataStoragePercentage *int64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// Size, in terabytes, of the DATA disk group.
 	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the Exadata Cloud@Customer VM cluster. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -185,8 +184,7 @@ type VmClusterRemoveVirtualMachineObservation struct {
 	FileSystemConfigurationDetails []VmClusterRemoveVirtualMachineFileSystemConfigurationDetailsObservation `json:"fileSystemConfigurationDetails,omitempty" tf:"file_system_configuration_details,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The Oracle Grid Infrastructure software version for the VM cluster.
 	GiVersion *string `json:"giVersion,omitempty" tf:"gi_version,omitempty"`
@@ -210,10 +208,10 @@ type VmClusterRemoveVirtualMachineObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The memory allocated in GBs.
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	RecoStoragePercentage *float64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
+	RecoStoragePercentage *int64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
 
 	// The public key portion of one or more key pairs used for SSH access to the VM cluster.
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
@@ -222,7 +220,7 @@ type VmClusterRemoveVirtualMachineObservation struct {
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// The percentage assigned to SPARSE storage (Exadata snapshots). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	SparseStoragePercentage *float64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
+	SparseStoragePercentage *int64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
 
 	// The current state of the VM cluster.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`

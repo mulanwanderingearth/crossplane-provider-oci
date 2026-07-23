@@ -19,8 +19,7 @@ type ManagementExternalExadataStorageServerConnectorInitParameters struct {
 type ManagementExternalExadataStorageServerConnectorObservation struct {
 
 	// The additional details of the resource defined in {"key": "value"} format. Example: {"bar-key": "value"}
-	// +mapType=granular
-	AdditionalDetails map[string]*string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
+	AdditionalDetails map[string]string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
 
 	// The OCID of the agent for the Exadata storage server.
 	AgentID *string `json:"agentId,omitempty" tf:"agent_id,omitempty"`
@@ -29,15 +28,13 @@ type ManagementExternalExadataStorageServerConnectorObservation struct {
 	ConnectionURI *string `json:"connectionUri,omitempty" tf:"connection_uri,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The name of the Exadata resource. English letters, numbers, "-", "_" and "." only.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Exadata resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -61,8 +58,7 @@ type ManagementExternalExadataStorageServerConnectorObservation struct {
 	StorageServerID *string `json:"storageServerId,omitempty" tf:"storage_server_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The timestamp of the creation of the Exadata resource.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -80,8 +76,7 @@ type ManagementExternalExadataStorageServerConnectorParameters struct {
 type ManagementExternalExadataStorageServerInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The OCID of the Exadata storage server.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.ManagementExternalExadataStorageServer
@@ -97,15 +92,13 @@ type ManagementExternalExadataStorageServerInitParameters struct {
 	ExternalExadataStorageServerIDSelector *v1.Selector `json:"externalExadataStorageServerIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type ManagementExternalExadataStorageServerObservation struct {
 
 	// The additional details of the resource defined in {"key": "value"} format. Example: {"bar-key": "value"}
-	// +mapType=granular
-	AdditionalDetails map[string]*string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
+	AdditionalDetails map[string]string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
 
 	// The CPU count of the Exadata storage server.
 	CPUCount *float64 `json:"cpuCount,omitempty" tf:"cpu_count,omitempty"`
@@ -114,8 +107,7 @@ type ManagementExternalExadataStorageServerObservation struct {
 	Connector []ManagementExternalExadataStorageServerConnectorObservation `json:"connector,omitempty" tf:"connector,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The name of the Exadata resource. English letters, numbers, "-", "_" and "." only.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -127,8 +119,7 @@ type ManagementExternalExadataStorageServerObservation struct {
 	ExternalExadataStorageServerID *string `json:"externalExadataStorageServerId,omitempty" tf:"external_exadata_storage_server_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Exadata resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -146,16 +137,16 @@ type ManagementExternalExadataStorageServerObservation struct {
 	MakeModel *string `json:"makeModel,omitempty" tf:"make_model,omitempty"`
 
 	// The maximum flash disk IO operations per second of the Exadata storage server.
-	MaxFlashDiskIops *float64 `json:"maxFlashDiskIops,omitempty" tf:"max_flash_disk_iops,omitempty"`
+	MaxFlashDiskIops *int64 `json:"maxFlashDiskIops,omitempty" tf:"max_flash_disk_iops,omitempty"`
 
 	// The maximum flash disk IO throughput in MB/s of the Exadata storage server.
-	MaxFlashDiskThroughput *float64 `json:"maxFlashDiskThroughput,omitempty" tf:"max_flash_disk_throughput,omitempty"`
+	MaxFlashDiskThroughput *int64 `json:"maxFlashDiskThroughput,omitempty" tf:"max_flash_disk_throughput,omitempty"`
 
 	// The maximum hard disk IO operations per second of the Exadata storage server.
-	MaxHardDiskIops *float64 `json:"maxHardDiskIops,omitempty" tf:"max_hard_disk_iops,omitempty"`
+	MaxHardDiskIops *int64 `json:"maxHardDiskIops,omitempty" tf:"max_hard_disk_iops,omitempty"`
 
 	// The maximum hard disk IO throughput in MB/s of the Exadata storage server.
-	MaxHardDiskThroughput *float64 `json:"maxHardDiskThroughput,omitempty" tf:"max_hard_disk_throughput,omitempty"`
+	MaxHardDiskThroughput *int64 `json:"maxHardDiskThroughput,omitempty" tf:"max_hard_disk_throughput,omitempty"`
 
 	// The Exadata storage server memory size in GB.
 	MemoryGb *float64 `json:"memoryGb,omitempty" tf:"memory_gb,omitempty"`
@@ -173,8 +164,7 @@ type ManagementExternalExadataStorageServerObservation struct {
 	StorageGridID *string `json:"storageGridId,omitempty" tf:"storage_grid_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The timestamp of the creation of the Exadata resource.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -190,8 +180,7 @@ type ManagementExternalExadataStorageServerParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The OCID of the Exadata storage server.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.ManagementExternalExadataStorageServer
@@ -209,8 +198,7 @@ type ManagementExternalExadataStorageServerParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 // ManagementExternalExadataStorageServerSpec defines the desired state of ManagementExternalExadataStorageServer

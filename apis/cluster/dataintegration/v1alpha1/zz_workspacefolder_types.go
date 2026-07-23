@@ -37,7 +37,7 @@ type WorkspaceFolderInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) Information about the object and its parent.
 	RegistryMetadata []WorkspaceFolderRegistryMetadataInitParameters `json:"registryMetadata,omitempty" tf:"registry_metadata,omitempty"`
@@ -131,8 +131,7 @@ type WorkspaceFolderMetadataObservation struct {
 	IdentifierPath *string `json:"identifierPath,omitempty" tf:"identifier_path,omitempty"`
 
 	// Information property fields.
-	// +mapType=granular
-	InfoFields map[string]*string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
+	InfoFields map[string]string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
 
 	// (Updatable) Specifies whether this object is a favorite or not.
 	IsFavorite *bool `json:"isFavorite,omitempty" tf:"is_favorite,omitempty"`
@@ -141,7 +140,7 @@ type WorkspaceFolderMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Updatable) The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 
 	// The date and time that the object was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -179,8 +178,7 @@ type WorkspaceFolderObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// A key map. If provided, the key is replaced with generated key. This structure provides mapping between user provided key and generated key.
-	// +mapType=granular
-	KeyMap map[string]*string `json:"keyMap,omitempty" tf:"key_map,omitempty"`
+	KeyMap map[string]string `json:"keyMap,omitempty" tf:"key_map,omitempty"`
 
 	// A summary type containing information about the object including its key, name and when/who created/updated it.
 	Metadata []WorkspaceFolderMetadataObservation `json:"metadata,omitempty" tf:"metadata,omitempty"`
@@ -195,10 +193,10 @@ type WorkspaceFolderObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// The version of the object that is used to track changes in the object instance.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// A reference to the object's parent.
 	ParentRef []WorkspaceFolderParentRefObservation `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -242,7 +240,7 @@ type WorkspaceFolderParameters struct {
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) Information about the object and its parent.
 	// +kubebuilder:validation:Optional
@@ -293,7 +291,7 @@ type WorkspaceFolderRegistryMetadataInitParameters struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Updatable) The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type WorkspaceFolderRegistryMetadataObservation struct {
@@ -311,7 +309,7 @@ type WorkspaceFolderRegistryMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Updatable) The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type WorkspaceFolderRegistryMetadataParameters struct {
@@ -334,7 +332,7 @@ type WorkspaceFolderRegistryMetadataParameters struct {
 
 	// (Updatable) The registry version.
 	// +kubebuilder:validation:Optional
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 // WorkspaceFolderSpec defines the desired state of WorkspaceFolder

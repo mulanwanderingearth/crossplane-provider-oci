@@ -67,7 +67,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the resource.
                     type: string
@@ -172,7 +171,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inboundEnvelope:
                     description: (Updatable) Payload containing device-specific metadata
                       and optional value mappings used to interpret or transform that
@@ -223,7 +221,6 @@ spec:
                                   type: string
                                 description: (Updatable) JSON raw data.
                                 type: object
-                                x-kubernetes-map-type: granular
                               dataFormat:
                                 description: (Updatable) Data format of the payload.
                                 type: string
@@ -252,7 +249,6 @@ spec:
                             used to transform the incoming payload into a shape compatible
                             with the digital twin model's context or schema.
                           type: object
-                          x-kubernetes-map-type: granular
                         referencePayload:
                           description: (Updatable) Reference payload structure template
                             received from IoT device. This payload must specify its
@@ -264,7 +260,6 @@ spec:
                                   type: string
                                 description: (Updatable) JSON raw data.
                                 type: object
-                                x-kubernetes-map-type: granular
                               dataFormat:
                                 description: (Updatable) Data format of the payload.
                                 type: string
@@ -376,7 +371,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the resource.
                     type: string
@@ -481,7 +475,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inboundEnvelope:
                     description: (Updatable) Payload containing device-specific metadata
                       and optional value mappings used to interpret or transform that
@@ -532,7 +525,6 @@ spec:
                                   type: string
                                 description: (Updatable) JSON raw data.
                                 type: object
-                                x-kubernetes-map-type: granular
                               dataFormat:
                                 description: (Updatable) Data format of the payload.
                                 type: string
@@ -561,7 +553,6 @@ spec:
                             used to transform the incoming payload into a shape compatible
                             with the digital twin model's context or schema.
                           type: object
-                          x-kubernetes-map-type: granular
                         referencePayload:
                           description: (Updatable) Reference payload structure template
                             received from IoT device. This payload must specify its
@@ -573,7 +564,6 @@ spec:
                                   type: string
                                 description: (Updatable) JSON raw data.
                                 type: object
-                                x-kubernetes-map-type: granular
                               dataFormat:
                                 description: (Updatable) Data format of the payload.
                                 type: string
@@ -737,7 +727,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the resource.
                     type: string
@@ -760,7 +749,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the resource.
                     type: string
@@ -814,7 +802,6 @@ spec:
                                   type: string
                                 description: (Updatable) JSON raw data.
                                 type: object
-                                x-kubernetes-map-type: granular
                               dataFormat:
                                 description: (Updatable) Data format of the payload.
                                 type: string
@@ -843,7 +830,6 @@ spec:
                             used to transform the incoming payload into a shape compatible
                             with the digital twin model's context or schema.
                           type: object
-                          x-kubernetes-map-type: granular
                         referencePayload:
                           description: (Updatable) Reference payload structure template
                             received from IoT device. This payload must specify its
@@ -855,7 +841,6 @@ spec:
                                   type: string
                                 description: (Updatable) JSON raw data.
                                 type: object
-                                x-kubernetes-map-type: granular
                               dataFormat:
                                 description: (Updatable) Data format of the payload.
                                 type: string
@@ -876,7 +861,6 @@ spec:
                       and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: 'The date and time when the resource was created,
                       in the format defined by RFC 3339. Example: 2016-08-25T21:10:29.600Z'

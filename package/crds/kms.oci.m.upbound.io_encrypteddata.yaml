@@ -66,7 +66,6 @@ spec:
                       context for the encrypted data. The length of the string representation
                       of the associated data must be fewer than 4096 characters.
                     type: object
-                    x-kubernetes-map-type: granular
                   cryptoEndpoint:
                     description: The service endpoint to perform cryptographic operations
                       against. Cryptographic operations include 'Encrypt,' 'Decrypt,'
@@ -257,7 +256,6 @@ spec:
                       You can provide this additional data as key-value pairs to include
                       in the audit logs when audit logging is enabled.
                     type: object
-                    x-kubernetes-map-type: granular
                   plaintext:
                     description: The plaintext data to encrypt.
                     type: string
@@ -282,7 +280,6 @@ spec:
                       context for the encrypted data. The length of the string representation
                       of the associated data must be fewer than 4096 characters.
                     type: object
-                    x-kubernetes-map-type: granular
                   cryptoEndpoint:
                     description: The service endpoint to perform cryptographic operations
                       against. Cryptographic operations include 'Encrypt,' 'Decrypt,'
@@ -473,7 +470,6 @@ spec:
                       You can provide this additional data as key-value pairs to include
                       in the audit logs when audit logging is enabled.
                     type: object
-                    x-kubernetes-map-type: granular
                   plaintext:
                     description: The plaintext data to encrypt.
                     type: string
@@ -559,7 +555,6 @@ spec:
                       context for the encrypted data. The length of the string representation
                       of the associated data must be fewer than 4096 characters.
                     type: object
-                    x-kubernetes-map-type: granular
                   ciphertext:
                     description: The encrypted data.
                     type: string
@@ -595,7 +590,6 @@ spec:
                       You can provide this additional data as key-value pairs to include
                       in the audit logs when audit logging is enabled.
                     type: object
-                    x-kubernetes-map-type: granular
                   plaintext:
                     description: The plaintext data to encrypt.
                     type: string

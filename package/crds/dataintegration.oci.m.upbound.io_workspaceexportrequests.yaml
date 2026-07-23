@@ -398,7 +398,6 @@ spec:
                       type: string
                     description: Contains key of the error
                     type: object
-                    x-kubernetes-map-type: granular
                   exportedItems:
                     description: The array of exported object details.
                     items:
@@ -476,7 +475,8 @@ spec:
                     type: string
                   totalExportedObjectCount:
                     description: Number of objects that are exported.
-                    type: number
+                    format: int64
+                    type: integer
                   workspaceId:
                     description: The workspace ID.
                     type: string

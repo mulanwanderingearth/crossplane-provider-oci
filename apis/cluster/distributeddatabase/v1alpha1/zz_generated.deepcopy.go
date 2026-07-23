@@ -726,18 +726,9 @@ func (in *CatalogDetailsPeerDetailsMetadataObservation) DeepCopyInto(out *Catalo
 	*out = *in
 	if in.Map != nil {
 		in, out := &in.Map, &out.Map
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -948,7 +939,7 @@ func (in *CatalogDetailsVMClusterDetailsInitParameters) DeepCopyInto(out *Catalo
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -1025,12 +1016,12 @@ func (in *CatalogDetailsVMClusterDetailsInitParameters) DeepCopyInto(out *Catalo
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1076,7 +1067,7 @@ func (in *CatalogDetailsVMClusterDetailsObservation) DeepCopyInto(out *CatalogDe
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -1133,7 +1124,7 @@ func (in *CatalogDetailsVMClusterDetailsObservation) DeepCopyInto(out *CatalogDe
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMClusterID != nil {
@@ -1143,7 +1134,7 @@ func (in *CatalogDetailsVMClusterDetailsObservation) DeepCopyInto(out *CatalogDe
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1194,7 +1185,7 @@ func (in *CatalogDetailsVMClusterDetailsParameters) DeepCopyInto(out *CatalogDet
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -1271,12 +1262,12 @@ func (in *CatalogDetailsVMClusterDetailsParameters) DeepCopyInto(out *CatalogDet
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1311,18 +1302,9 @@ func (in *ConnectionStringsObservation) DeepCopyInto(out *ConnectionStringsObser
 	*out = *in
 	if in.AllConnectionStrings != nil {
 		in, out := &in.AllConnectionStrings, &out.AllConnectionStrings
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -1559,7 +1541,7 @@ func (in *DBBackupConfigInitParameters) DeepCopyInto(out *DBBackupConfigInitPara
 	}
 	if in.RecoveryWindowInDays != nil {
 		in, out := &in.RecoveryWindowInDays, &out.RecoveryWindowInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1586,7 +1568,7 @@ func (in *DBBackupConfigObservation) DeepCopyInto(out *DBBackupConfigObservation
 	}
 	if in.RecoveryWindowInDays != nil {
 		in, out := &in.RecoveryWindowInDays, &out.RecoveryWindowInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1613,7 +1595,7 @@ func (in *DBBackupConfigParameters) DeepCopyInto(out *DBBackupConfigParameters) 
 	}
 	if in.RecoveryWindowInDays != nil {
 		in, out := &in.RecoveryWindowInDays, &out.RecoveryWindowInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1633,12 +1615,12 @@ func (in *DBStorageVaultDetailsInitParameters) DeepCopyInto(out *DBStorageVaultD
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1658,7 +1640,7 @@ func (in *DBStorageVaultDetailsObservation) DeepCopyInto(out *DBStorageVaultDeta
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DBStorageVaultID != nil {
@@ -1673,7 +1655,7 @@ func (in *DBStorageVaultDetailsObservation) DeepCopyInto(out *DBStorageVaultDeta
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1693,12 +1675,12 @@ func (in *DBStorageVaultDetailsParameters) DeepCopyInto(out *DBStorageVaultDetai
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1762,7 +1744,7 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.ChangeDBBackupConfigTrigger != nil {
 		in, out := &in.ChangeDBBackupConfigTrigger, &out.ChangeDBBackupConfigTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CharacterSet != nil {
@@ -1772,7 +1754,7 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.Chunks != nil {
 		in, out := &in.Chunks, &out.Chunks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -1792,7 +1774,7 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.ConfigureGsmWalletTrigger != nil {
 		in, out := &in.ConfigureGsmWalletTrigger, &out.ConfigureGsmWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ConfigureShardingIsRebalanceRequired != nil {
@@ -1802,7 +1784,7 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.ConfigureShardingTrigger != nil {
 		in, out := &in.ConfigureShardingTrigger, &out.ConfigureShardingTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DBBackupConfig != nil {
@@ -1829,18 +1811,9 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1850,28 +1823,19 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.DownloadGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.DownloadGsmCertificateSigningRequestTrigger, &out.DownloadGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GenerateGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.GenerateGsmCertificateSigningRequestTrigger, &out.GenerateGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GenerateGsmCertificateSigningRequestTriggerCABundleID != nil {
@@ -1886,22 +1850,22 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.GenerateWalletTrigger != nil {
 		in, out := &in.GenerateWalletTrigger, &out.GenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ListenerPort != nil {
 		in, out := &in.ListenerPort, &out.ListenerPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ListenerPortTLS != nil {
 		in, out := &in.ListenerPortTLS, &out.ListenerPortTLS
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MoveReplicationUnitTrigger != nil {
 		in, out := &in.MoveReplicationUnitTrigger, &out.MoveReplicationUnitTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NcharacterSet != nil {
@@ -1911,12 +1875,12 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.OnsPortLocal != nil {
 		in, out := &in.OnsPortLocal, &out.OnsPortLocal
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OnsPortRemote != nil {
 		in, out := &in.OnsPortRemote, &out.OnsPortRemote
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchOperations != nil {
@@ -1944,12 +1908,12 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.RecreateFailedResourceTrigger != nil {
 		in, out := &in.RecreateFailedResourceTrigger, &out.RecreateFailedResourceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationFactor != nil {
 		in, out := &in.ReplicationFactor, &out.ReplicationFactor
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationMethod != nil {
@@ -1959,7 +1923,7 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.ReplicationUnit != nil {
 		in, out := &in.ReplicationUnit, &out.ReplicationUnit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ShardDetails != nil {
@@ -1976,7 +1940,7 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.StartDatabaseTrigger != nil {
 		in, out := &in.StartDatabaseTrigger, &out.StartDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -1986,7 +1950,7 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.StopDatabaseTrigger != nil {
 		in, out := &in.StopDatabaseTrigger, &out.StopDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UploadCASignedCertificateSecretRef != nil {
@@ -1996,12 +1960,12 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.UploadSignedCertificateAndGenerateWalletTrigger != nil {
 		in, out := &in.UploadSignedCertificateAndGenerateWalletTrigger, &out.UploadSignedCertificateAndGenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ValidateCABundleTrigger != nil {
 		in, out := &in.ValidateCABundleTrigger, &out.ValidateCABundleTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ValidateNetworkDetails != nil {
@@ -2013,7 +1977,7 @@ func (in *DistributedAutonomousDatabaseInitParameters) DeepCopyInto(out *Distrib
 	}
 	if in.ValidateNetworkTrigger != nil {
 		in, out := &in.ValidateNetworkTrigger, &out.ValidateNetworkTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2143,7 +2107,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.ChangeDBBackupConfigTrigger != nil {
 		in, out := &in.ChangeDBBackupConfigTrigger, &out.ChangeDBBackupConfigTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CharacterSet != nil {
@@ -2153,7 +2117,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.Chunks != nil {
 		in, out := &in.Chunks, &out.Chunks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -2163,7 +2127,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.ConfigureGsmWalletTrigger != nil {
 		in, out := &in.ConfigureGsmWalletTrigger, &out.ConfigureGsmWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ConfigureShardingIsRebalanceRequired != nil {
@@ -2173,7 +2137,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.ConfigureShardingTrigger != nil {
 		in, out := &in.ConfigureShardingTrigger, &out.ConfigureShardingTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ConnectionStrings != nil {
@@ -2207,18 +2171,9 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2228,33 +2183,24 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.DownloadGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.DownloadGsmCertificateSigningRequestTrigger, &out.DownloadGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.EffectiveReplicationUnit != nil {
 		in, out := &in.EffectiveReplicationUnit, &out.EffectiveReplicationUnit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GenerateGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.GenerateGsmCertificateSigningRequestTrigger, &out.GenerateGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GenerateGsmCertificateSigningRequestTriggerCABundleID != nil {
@@ -2264,7 +2210,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.GenerateWalletDownloadedWalletContentLength != nil {
 		in, out := &in.GenerateWalletDownloadedWalletContentLength, &out.GenerateWalletDownloadedWalletContentLength
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GenerateWalletDownloadedWalletEtag != nil {
@@ -2279,7 +2225,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.GenerateWalletTrigger != nil {
 		in, out := &in.GenerateWalletTrigger, &out.GenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GsmDetails != nil {
@@ -2308,12 +2254,12 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.ListenerPort != nil {
 		in, out := &in.ListenerPort, &out.ListenerPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ListenerPortTLS != nil {
 		in, out := &in.ListenerPortTLS, &out.ListenerPortTLS
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metadata != nil {
@@ -2325,7 +2271,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.MoveReplicationUnitTrigger != nil {
 		in, out := &in.MoveReplicationUnitTrigger, &out.MoveReplicationUnitTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NcharacterSet != nil {
@@ -2335,12 +2281,12 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.OnsPortLocal != nil {
 		in, out := &in.OnsPortLocal, &out.OnsPortLocal
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OnsPortRemote != nil {
 		in, out := &in.OnsPortRemote, &out.OnsPortRemote
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchOperations != nil {
@@ -2368,12 +2314,12 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.RecreateFailedResourceTrigger != nil {
 		in, out := &in.RecreateFailedResourceTrigger, &out.RecreateFailedResourceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationFactor != nil {
 		in, out := &in.ReplicationFactor, &out.ReplicationFactor
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationMethod != nil {
@@ -2383,7 +2329,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.ReplicationUnit != nil {
 		in, out := &in.ReplicationUnit, &out.ReplicationUnit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ShardDetails != nil {
@@ -2400,7 +2346,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.StartDatabaseTrigger != nil {
 		in, out := &in.StartDatabaseTrigger, &out.StartDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -2410,23 +2356,14 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.StopDatabaseTrigger != nil {
 		in, out := &in.StopDatabaseTrigger, &out.StopDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -2441,12 +2378,12 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.UploadSignedCertificateAndGenerateWalletTrigger != nil {
 		in, out := &in.UploadSignedCertificateAndGenerateWalletTrigger, &out.UploadSignedCertificateAndGenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ValidateCABundleTrigger != nil {
 		in, out := &in.ValidateCABundleTrigger, &out.ValidateCABundleTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ValidateNetworkDetails != nil {
@@ -2458,7 +2395,7 @@ func (in *DistributedAutonomousDatabaseObservation) DeepCopyInto(out *Distribute
 	}
 	if in.ValidateNetworkTrigger != nil {
 		in, out := &in.ValidateNetworkTrigger, &out.ValidateNetworkTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2495,7 +2432,7 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.ChangeDBBackupConfigTrigger != nil {
 		in, out := &in.ChangeDBBackupConfigTrigger, &out.ChangeDBBackupConfigTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CharacterSet != nil {
@@ -2505,7 +2442,7 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.Chunks != nil {
 		in, out := &in.Chunks, &out.Chunks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -2525,7 +2462,7 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.ConfigureGsmWalletTrigger != nil {
 		in, out := &in.ConfigureGsmWalletTrigger, &out.ConfigureGsmWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ConfigureShardingIsRebalanceRequired != nil {
@@ -2535,7 +2472,7 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.ConfigureShardingTrigger != nil {
 		in, out := &in.ConfigureShardingTrigger, &out.ConfigureShardingTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DBBackupConfig != nil {
@@ -2562,18 +2499,9 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2583,28 +2511,19 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.DownloadGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.DownloadGsmCertificateSigningRequestTrigger, &out.DownloadGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GenerateGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.GenerateGsmCertificateSigningRequestTrigger, &out.GenerateGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GenerateGsmCertificateSigningRequestTriggerCABundleID != nil {
@@ -2619,22 +2538,22 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.GenerateWalletTrigger != nil {
 		in, out := &in.GenerateWalletTrigger, &out.GenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ListenerPort != nil {
 		in, out := &in.ListenerPort, &out.ListenerPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ListenerPortTLS != nil {
 		in, out := &in.ListenerPortTLS, &out.ListenerPortTLS
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MoveReplicationUnitTrigger != nil {
 		in, out := &in.MoveReplicationUnitTrigger, &out.MoveReplicationUnitTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NcharacterSet != nil {
@@ -2644,12 +2563,12 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.OnsPortLocal != nil {
 		in, out := &in.OnsPortLocal, &out.OnsPortLocal
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OnsPortRemote != nil {
 		in, out := &in.OnsPortRemote, &out.OnsPortRemote
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchOperations != nil {
@@ -2677,12 +2596,12 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.RecreateFailedResourceTrigger != nil {
 		in, out := &in.RecreateFailedResourceTrigger, &out.RecreateFailedResourceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationFactor != nil {
 		in, out := &in.ReplicationFactor, &out.ReplicationFactor
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationMethod != nil {
@@ -2692,7 +2611,7 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.ReplicationUnit != nil {
 		in, out := &in.ReplicationUnit, &out.ReplicationUnit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ShardDetails != nil {
@@ -2709,7 +2628,7 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.StartDatabaseTrigger != nil {
 		in, out := &in.StartDatabaseTrigger, &out.StartDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -2719,7 +2638,7 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.StopDatabaseTrigger != nil {
 		in, out := &in.StopDatabaseTrigger, &out.StopDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UploadCASignedCertificateSecretRef != nil {
@@ -2729,12 +2648,12 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.UploadSignedCertificateAndGenerateWalletTrigger != nil {
 		in, out := &in.UploadSignedCertificateAndGenerateWalletTrigger, &out.UploadSignedCertificateAndGenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ValidateCABundleTrigger != nil {
 		in, out := &in.ValidateCABundleTrigger, &out.ValidateCABundleTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ValidateNetworkDetails != nil {
@@ -2746,7 +2665,7 @@ func (in *DistributedAutonomousDatabaseParameters) DeepCopyInto(out *Distributed
 	}
 	if in.ValidateNetworkTrigger != nil {
 		in, out := &in.ValidateNetworkTrigger, &out.ValidateNetworkTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -3218,18 +3137,9 @@ func (in *DistributedDatabaseConnectionStringsObservation) DeepCopyInto(out *Dis
 	*out = *in
 	if in.AllConnectionStrings != nil {
 		in, out := &in.AllConnectionStrings, &out.AllConnectionStrings
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -3306,7 +3216,7 @@ func (in *DistributedDatabaseDBBackupConfigInitParameters) DeepCopyInto(out *Dis
 	}
 	if in.RecoveryWindowInDays != nil {
 		in, out := &in.RecoveryWindowInDays, &out.RecoveryWindowInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RemoteRegion != nil {
@@ -3373,7 +3283,7 @@ func (in *DistributedDatabaseDBBackupConfigObservation) DeepCopyInto(out *Distri
 	}
 	if in.RecoveryWindowInDays != nil {
 		in, out := &in.RecoveryWindowInDays, &out.RecoveryWindowInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RemoteRegion != nil {
@@ -3440,7 +3350,7 @@ func (in *DistributedDatabaseDBBackupConfigParameters) DeepCopyInto(out *Distrib
 	}
 	if in.RecoveryWindowInDays != nil {
 		in, out := &in.RecoveryWindowInDays, &out.RecoveryWindowInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RemoteRegion != nil {
@@ -3632,7 +3542,7 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.ChangeDBBackupConfigTrigger != nil {
 		in, out := &in.ChangeDBBackupConfigTrigger, &out.ChangeDBBackupConfigTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CharacterSet != nil {
@@ -3642,7 +3552,7 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.Chunks != nil {
 		in, out := &in.Chunks, &out.Chunks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -3667,7 +3577,7 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.ConfigureShardingTrigger != nil {
 		in, out := &in.ConfigureShardingTrigger, &out.ConfigureShardingTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DBBackupConfig != nil {
@@ -3689,18 +3599,9 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -3710,28 +3611,19 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.DownloadGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.DownloadGsmCertificateSigningRequestTrigger, &out.DownloadGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GenerateGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.GenerateGsmCertificateSigningRequestTrigger, &out.GenerateGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GenerateWalletPasswordSecretRef != nil {
@@ -3741,7 +3633,7 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.GenerateWalletTrigger != nil {
 		in, out := &in.GenerateWalletTrigger, &out.GenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GsmSSHPublicKey != nil {
@@ -3751,17 +3643,17 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.ListenerPort != nil {
 		in, out := &in.ListenerPort, &out.ListenerPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ListenerPortTLS != nil {
 		in, out := &in.ListenerPortTLS, &out.ListenerPortTLS
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MoveReplicationUnitTrigger != nil {
 		in, out := &in.MoveReplicationUnitTrigger, &out.MoveReplicationUnitTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NcharacterSet != nil {
@@ -3771,12 +3663,12 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.OnsPortLocal != nil {
 		in, out := &in.OnsPortLocal, &out.OnsPortLocal
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OnsPortRemote != nil {
 		in, out := &in.OnsPortRemote, &out.OnsPortRemote
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchOperations != nil {
@@ -3804,12 +3696,12 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.RecreateFailedResourceTrigger != nil {
 		in, out := &in.RecreateFailedResourceTrigger, &out.RecreateFailedResourceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationFactor != nil {
 		in, out := &in.ReplicationFactor, &out.ReplicationFactor
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationMethod != nil {
@@ -3819,12 +3711,12 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.ReplicationUnit != nil {
 		in, out := &in.ReplicationUnit, &out.ReplicationUnit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ScanListenerPort != nil {
 		in, out := &in.ScanListenerPort, &out.ScanListenerPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ShardDetails != nil {
@@ -3841,7 +3733,7 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.StartDatabaseTrigger != nil {
 		in, out := &in.StartDatabaseTrigger, &out.StartDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -3851,12 +3743,12 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.StopDatabaseTrigger != nil {
 		in, out := &in.StopDatabaseTrigger, &out.StopDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UploadSignedCertificateAndGenerateWalletTrigger != nil {
 		in, out := &in.UploadSignedCertificateAndGenerateWalletTrigger, &out.UploadSignedCertificateAndGenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ValidateNetworkDetails != nil {
@@ -3868,7 +3760,7 @@ func (in *DistributedDatabaseInitParameters) DeepCopyInto(out *DistributedDataba
 	}
 	if in.ValidateNetworkTrigger != nil {
 		in, out := &in.ValidateNetworkTrigger, &out.ValidateNetworkTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -3988,7 +3880,7 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.ChangeDBBackupConfigTrigger != nil {
 		in, out := &in.ChangeDBBackupConfigTrigger, &out.ChangeDBBackupConfigTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CharacterSet != nil {
@@ -3998,7 +3890,7 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.Chunks != nil {
 		in, out := &in.Chunks, &out.Chunks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -4013,7 +3905,7 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.ConfigureShardingTrigger != nil {
 		in, out := &in.ConfigureShardingTrigger, &out.ConfigureShardingTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ConnectionStrings != nil {
@@ -4042,18 +3934,9 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -4063,38 +3946,29 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.DownloadGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.DownloadGsmCertificateSigningRequestTrigger, &out.DownloadGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.EffectiveReplicationUnit != nil {
 		in, out := &in.EffectiveReplicationUnit, &out.EffectiveReplicationUnit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GenerateGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.GenerateGsmCertificateSigningRequestTrigger, &out.GenerateGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GenerateWalletDownloadedWalletContentLength != nil {
 		in, out := &in.GenerateWalletDownloadedWalletContentLength, &out.GenerateWalletDownloadedWalletContentLength
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GenerateWalletDownloadedWalletEtag != nil {
@@ -4109,7 +3983,7 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.GenerateWalletTrigger != nil {
 		in, out := &in.GenerateWalletTrigger, &out.GenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GsmDetails != nil {
@@ -4143,12 +4017,12 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.ListenerPort != nil {
 		in, out := &in.ListenerPort, &out.ListenerPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ListenerPortTLS != nil {
 		in, out := &in.ListenerPortTLS, &out.ListenerPortTLS
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metadata != nil {
@@ -4160,7 +4034,7 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.MoveReplicationUnitTrigger != nil {
 		in, out := &in.MoveReplicationUnitTrigger, &out.MoveReplicationUnitTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NcharacterSet != nil {
@@ -4170,12 +4044,12 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.OnsPortLocal != nil {
 		in, out := &in.OnsPortLocal, &out.OnsPortLocal
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OnsPortRemote != nil {
 		in, out := &in.OnsPortRemote, &out.OnsPortRemote
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchOperations != nil {
@@ -4203,12 +4077,12 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.RecreateFailedResourceTrigger != nil {
 		in, out := &in.RecreateFailedResourceTrigger, &out.RecreateFailedResourceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationFactor != nil {
 		in, out := &in.ReplicationFactor, &out.ReplicationFactor
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationMethod != nil {
@@ -4218,12 +4092,12 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.ReplicationUnit != nil {
 		in, out := &in.ReplicationUnit, &out.ReplicationUnit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ScanListenerPort != nil {
 		in, out := &in.ScanListenerPort, &out.ScanListenerPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ShardDetails != nil {
@@ -4240,7 +4114,7 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.StartDatabaseTrigger != nil {
 		in, out := &in.StartDatabaseTrigger, &out.StartDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -4250,23 +4124,14 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.StopDatabaseTrigger != nil {
 		in, out := &in.StopDatabaseTrigger, &out.StopDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -4281,7 +4146,7 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.UploadSignedCertificateAndGenerateWalletTrigger != nil {
 		in, out := &in.UploadSignedCertificateAndGenerateWalletTrigger, &out.UploadSignedCertificateAndGenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ValidateNetworkDetails != nil {
@@ -4293,7 +4158,7 @@ func (in *DistributedDatabaseObservation) DeepCopyInto(out *DistributedDatabaseO
 	}
 	if in.ValidateNetworkTrigger != nil {
 		in, out := &in.ValidateNetworkTrigger, &out.ValidateNetworkTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4320,7 +4185,7 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.ChangeDBBackupConfigTrigger != nil {
 		in, out := &in.ChangeDBBackupConfigTrigger, &out.ChangeDBBackupConfigTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CharacterSet != nil {
@@ -4330,7 +4195,7 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.Chunks != nil {
 		in, out := &in.Chunks, &out.Chunks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -4355,7 +4220,7 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.ConfigureShardingTrigger != nil {
 		in, out := &in.ConfigureShardingTrigger, &out.ConfigureShardingTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DBBackupConfig != nil {
@@ -4377,18 +4242,9 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -4398,28 +4254,19 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.DownloadGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.DownloadGsmCertificateSigningRequestTrigger, &out.DownloadGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GenerateGsmCertificateSigningRequestTrigger != nil {
 		in, out := &in.GenerateGsmCertificateSigningRequestTrigger, &out.GenerateGsmCertificateSigningRequestTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GenerateWalletPasswordSecretRef != nil {
@@ -4429,7 +4276,7 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.GenerateWalletTrigger != nil {
 		in, out := &in.GenerateWalletTrigger, &out.GenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.GsmSSHPublicKey != nil {
@@ -4439,17 +4286,17 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.ListenerPort != nil {
 		in, out := &in.ListenerPort, &out.ListenerPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ListenerPortTLS != nil {
 		in, out := &in.ListenerPortTLS, &out.ListenerPortTLS
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MoveReplicationUnitTrigger != nil {
 		in, out := &in.MoveReplicationUnitTrigger, &out.MoveReplicationUnitTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NcharacterSet != nil {
@@ -4459,12 +4306,12 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.OnsPortLocal != nil {
 		in, out := &in.OnsPortLocal, &out.OnsPortLocal
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OnsPortRemote != nil {
 		in, out := &in.OnsPortRemote, &out.OnsPortRemote
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchOperations != nil {
@@ -4492,12 +4339,12 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.RecreateFailedResourceTrigger != nil {
 		in, out := &in.RecreateFailedResourceTrigger, &out.RecreateFailedResourceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationFactor != nil {
 		in, out := &in.ReplicationFactor, &out.ReplicationFactor
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ReplicationMethod != nil {
@@ -4507,12 +4354,12 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.ReplicationUnit != nil {
 		in, out := &in.ReplicationUnit, &out.ReplicationUnit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ScanListenerPort != nil {
 		in, out := &in.ScanListenerPort, &out.ScanListenerPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ShardDetails != nil {
@@ -4529,7 +4376,7 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.StartDatabaseTrigger != nil {
 		in, out := &in.StartDatabaseTrigger, &out.StartDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -4539,12 +4386,12 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.StopDatabaseTrigger != nil {
 		in, out := &in.StopDatabaseTrigger, &out.StopDatabaseTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UploadSignedCertificateAndGenerateWalletTrigger != nil {
 		in, out := &in.UploadSignedCertificateAndGenerateWalletTrigger, &out.UploadSignedCertificateAndGenerateWalletTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ValidateNetworkDetails != nil {
@@ -4556,7 +4403,7 @@ func (in *DistributedDatabaseParameters) DeepCopyInto(out *DistributedDatabasePa
 	}
 	if in.ValidateNetworkTrigger != nil {
 		in, out := &in.ValidateNetworkTrigger, &out.ValidateNetworkTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4708,18 +4555,9 @@ func (in *DistributedDatabasePrivateEndpointInitParameters) DeepCopyInto(out *Di
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -4734,18 +4572,9 @@ func (in *DistributedDatabasePrivateEndpointInitParameters) DeepCopyInto(out *Di
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.NsgIds != nil {
@@ -4761,7 +4590,7 @@ func (in *DistributedDatabasePrivateEndpointInitParameters) DeepCopyInto(out *Di
 	}
 	if in.ReinstateProxyInstanceTrigger != nil {
 		in, out := &in.ReinstateProxyInstanceTrigger, &out.ReinstateProxyInstanceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SubnetID != nil {
@@ -4833,18 +4662,9 @@ func (in *DistributedDatabasePrivateEndpointObservation) DeepCopyInto(out *Distr
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -4859,18 +4679,9 @@ func (in *DistributedDatabasePrivateEndpointObservation) DeepCopyInto(out *Distr
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.GloballyDistributedAutonomousDatabases != nil {
@@ -4920,7 +4731,7 @@ func (in *DistributedDatabasePrivateEndpointObservation) DeepCopyInto(out *Distr
 	}
 	if in.ReinstateProxyInstanceTrigger != nil {
 		in, out := &in.ReinstateProxyInstanceTrigger, &out.ReinstateProxyInstanceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -4935,18 +4746,9 @@ func (in *DistributedDatabasePrivateEndpointObservation) DeepCopyInto(out *Distr
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -4996,18 +4798,9 @@ func (in *DistributedDatabasePrivateEndpointParameters) DeepCopyInto(out *Distri
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -5022,18 +4815,9 @@ func (in *DistributedDatabasePrivateEndpointParameters) DeepCopyInto(out *Distri
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.NsgIds != nil {
@@ -5049,7 +4833,7 @@ func (in *DistributedDatabasePrivateEndpointParameters) DeepCopyInto(out *Distri
 	}
 	if in.ReinstateProxyInstanceTrigger != nil {
 		in, out := &in.ReinstateProxyInstanceTrigger, &out.ReinstateProxyInstanceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SubnetID != nil {
@@ -6075,7 +5859,7 @@ func (in *GsmDetailsGsmImageDetailsObservation) DeepCopyInto(out *GsmDetailsGsmI
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6290,7 +6074,7 @@ func (in *GsmImageDetailsObservation) DeepCopyInto(out *GsmImageDetailsObservati
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6345,7 +6129,7 @@ func (in *LatestGsmImageDetailsObservation) DeepCopyInto(out *LatestGsmImageDeta
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6400,7 +6184,7 @@ func (in *LatestGsmImageObservation) DeepCopyInto(out *LatestGsmImageObservation
 	}
 	if in.VersionNumber != nil {
 		in, out := &in.VersionNumber, &out.VersionNumber
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6586,12 +6370,12 @@ func (in *PeerDetailsDBStorageVaultDetailsInitParameters) DeepCopyInto(out *Peer
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6611,7 +6395,7 @@ func (in *PeerDetailsDBStorageVaultDetailsObservation) DeepCopyInto(out *PeerDet
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DBStorageVaultID != nil {
@@ -6626,7 +6410,7 @@ func (in *PeerDetailsDBStorageVaultDetailsObservation) DeepCopyInto(out *PeerDet
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6646,12 +6430,12 @@ func (in *PeerDetailsDBStorageVaultDetailsParameters) DeepCopyInto(out *PeerDeta
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6686,7 +6470,7 @@ func (in *PeerDetailsInitParameters) DeepCopyInto(out *PeerDetailsInitParameters
 	}
 	if in.FastStartFailOverLagLimitInSeconds != nil {
 		in, out := &in.FastStartFailOverLagLimitInSeconds, &out.FastStartFailOverLagLimitInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsAutomaticFailoverEnabled != nil {
@@ -6701,7 +6485,7 @@ func (in *PeerDetailsInitParameters) DeepCopyInto(out *PeerDetailsInitParameters
 	}
 	if in.StandbyMaintenanceBufferInDays != nil {
 		in, out := &in.StandbyMaintenanceBufferInDays, &out.StandbyMaintenanceBufferInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6792,7 +6576,7 @@ func (in *PeerDetailsObservation) DeepCopyInto(out *PeerDetailsObservation) {
 	}
 	if in.FastStartFailOverLagLimitInSeconds != nil {
 		in, out := &in.FastStartFailOverLagLimitInSeconds, &out.FastStartFailOverLagLimitInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsAutomaticFailoverEnabled != nil {
@@ -6819,7 +6603,7 @@ func (in *PeerDetailsObservation) DeepCopyInto(out *PeerDetailsObservation) {
 	}
 	if in.StandbyMaintenanceBufferInDays != nil {
 		in, out := &in.StandbyMaintenanceBufferInDays, &out.StandbyMaintenanceBufferInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Status != nil {
@@ -6874,7 +6658,7 @@ func (in *PeerDetailsParameters) DeepCopyInto(out *PeerDetailsParameters) {
 	}
 	if in.FastStartFailOverLagLimitInSeconds != nil {
 		in, out := &in.FastStartFailOverLagLimitInSeconds, &out.FastStartFailOverLagLimitInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsAutomaticFailoverEnabled != nil {
@@ -6889,7 +6673,7 @@ func (in *PeerDetailsParameters) DeepCopyInto(out *PeerDetailsParameters) {
 	}
 	if in.StandbyMaintenanceBufferInDays != nil {
 		in, out := &in.StandbyMaintenanceBufferInDays, &out.StandbyMaintenanceBufferInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6940,7 +6724,7 @@ func (in *PeerDetailsVMClusterDetailsInitParameters) DeepCopyInto(out *PeerDetai
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -7017,12 +6801,12 @@ func (in *PeerDetailsVMClusterDetailsInitParameters) DeepCopyInto(out *PeerDetai
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7068,7 +6852,7 @@ func (in *PeerDetailsVMClusterDetailsObservation) DeepCopyInto(out *PeerDetailsV
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -7125,7 +6909,7 @@ func (in *PeerDetailsVMClusterDetailsObservation) DeepCopyInto(out *PeerDetailsV
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMClusterID != nil {
@@ -7135,7 +6919,7 @@ func (in *PeerDetailsVMClusterDetailsObservation) DeepCopyInto(out *PeerDetailsV
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7186,7 +6970,7 @@ func (in *PeerDetailsVMClusterDetailsParameters) DeepCopyInto(out *PeerDetailsVM
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -7263,12 +7047,12 @@ func (in *PeerDetailsVMClusterDetailsParameters) DeepCopyInto(out *PeerDetailsVM
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7288,12 +7072,12 @@ func (in *ShardDetailsDBStorageVaultDetailsInitParameters) DeepCopyInto(out *Sha
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7313,7 +7097,7 @@ func (in *ShardDetailsDBStorageVaultDetailsObservation) DeepCopyInto(out *ShardD
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DBStorageVaultID != nil {
@@ -7328,7 +7112,7 @@ func (in *ShardDetailsDBStorageVaultDetailsObservation) DeepCopyInto(out *ShardD
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7348,12 +7132,12 @@ func (in *ShardDetailsDBStorageVaultDetailsParameters) DeepCopyInto(out *ShardDe
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7850,12 +7634,12 @@ func (in *ShardDetailsPeerDetailsDBStorageVaultDetailsInitParameters) DeepCopyIn
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7875,7 +7659,7 @@ func (in *ShardDetailsPeerDetailsDBStorageVaultDetailsObservation) DeepCopyInto(
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DBStorageVaultID != nil {
@@ -7890,7 +7674,7 @@ func (in *ShardDetailsPeerDetailsDBStorageVaultDetailsObservation) DeepCopyInto(
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7910,12 +7694,12 @@ func (in *ShardDetailsPeerDetailsDBStorageVaultDetailsParameters) DeepCopyInto(o
 	*out = *in
 	if in.AdditionalFlashCacheInPercent != nil {
 		in, out := &in.AdditionalFlashCacheInPercent, &out.AdditionalFlashCacheInPercent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HighCapacityDatabaseStorage != nil {
 		in, out := &in.HighCapacityDatabaseStorage, &out.HighCapacityDatabaseStorage
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7950,7 +7734,7 @@ func (in *ShardDetailsPeerDetailsInitParameters) DeepCopyInto(out *ShardDetailsP
 	}
 	if in.FastStartFailOverLagLimitInSeconds != nil {
 		in, out := &in.FastStartFailOverLagLimitInSeconds, &out.FastStartFailOverLagLimitInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsAutomaticFailoverEnabled != nil {
@@ -7965,7 +7749,7 @@ func (in *ShardDetailsPeerDetailsInitParameters) DeepCopyInto(out *ShardDetailsP
 	}
 	if in.StandbyMaintenanceBufferInDays != nil {
 		in, out := &in.StandbyMaintenanceBufferInDays, &out.StandbyMaintenanceBufferInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8056,7 +7840,7 @@ func (in *ShardDetailsPeerDetailsObservation) DeepCopyInto(out *ShardDetailsPeer
 	}
 	if in.FastStartFailOverLagLimitInSeconds != nil {
 		in, out := &in.FastStartFailOverLagLimitInSeconds, &out.FastStartFailOverLagLimitInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsAutomaticFailoverEnabled != nil {
@@ -8083,7 +7867,7 @@ func (in *ShardDetailsPeerDetailsObservation) DeepCopyInto(out *ShardDetailsPeer
 	}
 	if in.StandbyMaintenanceBufferInDays != nil {
 		in, out := &in.StandbyMaintenanceBufferInDays, &out.StandbyMaintenanceBufferInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Status != nil {
@@ -8138,7 +7922,7 @@ func (in *ShardDetailsPeerDetailsParameters) DeepCopyInto(out *ShardDetailsPeerD
 	}
 	if in.FastStartFailOverLagLimitInSeconds != nil {
 		in, out := &in.FastStartFailOverLagLimitInSeconds, &out.FastStartFailOverLagLimitInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsAutomaticFailoverEnabled != nil {
@@ -8153,7 +7937,7 @@ func (in *ShardDetailsPeerDetailsParameters) DeepCopyInto(out *ShardDetailsPeerD
 	}
 	if in.StandbyMaintenanceBufferInDays != nil {
 		in, out := &in.StandbyMaintenanceBufferInDays, &out.StandbyMaintenanceBufferInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8204,7 +7988,7 @@ func (in *ShardDetailsVMClusterDetailsInitParameters) DeepCopyInto(out *ShardDet
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -8281,12 +8065,12 @@ func (in *ShardDetailsVMClusterDetailsInitParameters) DeepCopyInto(out *ShardDet
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8332,7 +8116,7 @@ func (in *ShardDetailsVMClusterDetailsObservation) DeepCopyInto(out *ShardDetail
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -8389,7 +8173,7 @@ func (in *ShardDetailsVMClusterDetailsObservation) DeepCopyInto(out *ShardDetail
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMClusterID != nil {
@@ -8399,7 +8183,7 @@ func (in *ShardDetailsVMClusterDetailsObservation) DeepCopyInto(out *ShardDetail
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8450,7 +8234,7 @@ func (in *ShardDetailsVMClusterDetailsParameters) DeepCopyInto(out *ShardDetails
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -8527,12 +8311,12 @@ func (in *ShardDetailsVMClusterDetailsParameters) DeepCopyInto(out *ShardDetails
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8583,7 +8367,7 @@ func (in *VMClusterDetailsInitParameters) DeepCopyInto(out *VMClusterDetailsInit
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -8660,12 +8444,12 @@ func (in *VMClusterDetailsInitParameters) DeepCopyInto(out *VMClusterDetailsInit
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8711,7 +8495,7 @@ func (in *VMClusterDetailsObservation) DeepCopyInto(out *VMClusterDetailsObserva
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -8768,7 +8552,7 @@ func (in *VMClusterDetailsObservation) DeepCopyInto(out *VMClusterDetailsObserva
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMClusterID != nil {
@@ -8778,7 +8562,7 @@ func (in *VMClusterDetailsObservation) DeepCopyInto(out *VMClusterDetailsObserva
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8829,7 +8613,7 @@ func (in *VMClusterDetailsParameters) DeepCopyInto(out *VMClusterDetailsParamete
 	}
 	if in.EnabledEcpuCount != nil {
 		in, out := &in.EnabledEcpuCount, &out.EnabledEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsDiagnosticsEventsEnabled != nil {
@@ -8906,12 +8690,12 @@ func (in *VMClusterDetailsParameters) DeepCopyInto(out *VMClusterDetailsParamete
 	}
 	if in.TotalEcpuCount != nil {
 		in, out := &in.TotalEcpuCount, &out.TotalEcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VMFileSystemStorageSize != nil {
 		in, out := &in.VMFileSystemStorageSize, &out.VMFileSystemStorageSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

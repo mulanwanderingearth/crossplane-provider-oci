@@ -31,8 +31,7 @@ type AutomaticExecutionDetailsParameters struct {
 type DrPlanExecutionInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the DR plan execution.  Example: Execution - EBS Switchover PHX to IAD
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -41,8 +40,7 @@ type DrPlanExecutionInitParameters struct {
 	ExecutionOptions []ExecutionOptionsInitParameters `json:"executionOptions,omitempty" tf:"execution_options,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the DR plan.  Example: ocid1.drplan.oc1..uniqueID
 	PlanID *string `json:"planId,omitempty" tf:"plan_id,omitempty"`
@@ -75,8 +73,7 @@ type DrPlanExecutionObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the DR plan execution.  Example: Execution - EBS Switchover PHX to IAD
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -85,14 +82,13 @@ type DrPlanExecutionObservation struct {
 	DrProtectionGroupID *string `json:"drProtectionGroupId,omitempty" tf:"dr_protection_group_id,omitempty"`
 
 	// The total duration in seconds taken to complete the DR plan execution.  Example: 750
-	ExecutionDurationInSec *float64 `json:"executionDurationInSec,omitempty" tf:"execution_duration_in_sec,omitempty"`
+	ExecutionDurationInSec *int64 `json:"executionDurationInSec,omitempty" tf:"execution_duration_in_sec,omitempty"`
 
 	// The options for a plan execution.
 	ExecutionOptions []ExecutionOptionsObservation `json:"executionOptions,omitempty" tf:"execution_options,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A list of groups executed in this DR plan execution.
 	GroupExecutions []GroupExecutionsObservation `json:"groupExecutions,omitempty" tf:"group_executions,omitempty"`
@@ -128,8 +124,7 @@ type DrPlanExecutionObservation struct {
 	StepStatusCounts []StepStatusCountsObservation `json:"stepStatusCounts,omitempty" tf:"step_status_counts,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time at which DR plan execution was created. An RFC3339 formatted datetime string.  Example: 2019-03-29T09:36:42Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -148,8 +143,7 @@ type DrPlanExecutionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the DR plan execution.  Example: Execution - EBS Switchover PHX to IAD
 	// +kubebuilder:validation:Optional
@@ -161,8 +155,7 @@ type DrPlanExecutionParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the DR plan.  Example: ocid1.drplan.oc1..uniqueID
 	// +kubebuilder:validation:Optional
@@ -214,13 +207,13 @@ type FailedStepsInitParameters struct {
 type FailedStepsObservation struct {
 
 	// The total number of failed steps in a DR plan execution.
-	Failed *float64 `json:"failed,omitempty" tf:"failed,omitempty"`
+	Failed *int64 `json:"failed,omitempty" tf:"failed,omitempty"`
 
 	// The total number of steps that timed out during a DR plan execution.
-	TimedOut *float64 `json:"timedOut,omitempty" tf:"timed_out,omitempty"`
+	TimedOut *int64 `json:"timedOut,omitempty" tf:"timed_out,omitempty"`
 
 	// The total number of steps that failed during a DR plan execution.
-	TotalFailed *float64 `json:"totalFailed,omitempty" tf:"total_failed,omitempty"`
+	TotalFailed *int64 `json:"totalFailed,omitempty" tf:"total_failed,omitempty"`
 }
 
 type FailedStepsParameters struct {
@@ -235,7 +228,7 @@ type GroupExecutionsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The total duration in seconds taken to complete the DR plan execution.  Example: 750
-	ExecutionDurationInSec *float64 `json:"executionDurationInSec,omitempty" tf:"execution_duration_in_sec,omitempty"`
+	ExecutionDurationInSec *int64 `json:"executionDurationInSec,omitempty" tf:"execution_duration_in_sec,omitempty"`
 
 	// The unique id of the group. Must not be modified by user.  Example: sgid1.group..uniqueID
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
@@ -286,16 +279,16 @@ type RemainingStepsInitParameters struct {
 type RemainingStepsObservation struct {
 
 	// The total number of steps in progress during a DR plan execution.
-	InProgress *float64 `json:"inProgress,omitempty" tf:"in_progress,omitempty"`
+	InProgress *int64 `json:"inProgress,omitempty" tf:"in_progress,omitempty"`
 
 	// The total number of paused steps in a DR plan execution.
-	Paused *float64 `json:"paused,omitempty" tf:"paused,omitempty"`
+	Paused *int64 `json:"paused,omitempty" tf:"paused,omitempty"`
 
 	// The total number of queued steps in a DR plan execution.
-	Queued *float64 `json:"queued,omitempty" tf:"queued,omitempty"`
+	Queued *int64 `json:"queued,omitempty" tf:"queued,omitempty"`
 
 	// The total number of remaining steps in a DR plan execution.
-	TotalRemaining *float64 `json:"totalRemaining,omitempty" tf:"total_remaining,omitempty"`
+	TotalRemaining *int64 `json:"totalRemaining,omitempty" tf:"total_remaining,omitempty"`
 }
 
 type RemainingStepsParameters struct {
@@ -307,19 +300,19 @@ type SkippedStepsInitParameters struct {
 type SkippedStepsObservation struct {
 
 	// The total number of canceled steps in a DR plan execution.
-	Canceled *float64 `json:"canceled,omitempty" tf:"canceled,omitempty"`
+	Canceled *int64 `json:"canceled,omitempty" tf:"canceled,omitempty"`
 
 	// The total number of disabled steps in a DR plan execution.
-	Disabled *float64 `json:"disabled,omitempty" tf:"disabled,omitempty"`
+	Disabled *int64 `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
 	// The total number of steps that failed but were ignored during a DR plan execution.
-	FailedIgnored *float64 `json:"failedIgnored,omitempty" tf:"failed_ignored,omitempty"`
+	FailedIgnored *int64 `json:"failedIgnored,omitempty" tf:"failed_ignored,omitempty"`
 
 	// The total number of steps that timed out but were ignored during a DR plan execution.
-	TimedOutIgnored *float64 `json:"timedOutIgnored,omitempty" tf:"timed_out_ignored,omitempty"`
+	TimedOutIgnored *int64 `json:"timedOutIgnored,omitempty" tf:"timed_out_ignored,omitempty"`
 
 	// The total number of steps that were skipped during a DR plan execution.
-	TotalSkipped *float64 `json:"totalSkipped,omitempty" tf:"total_skipped,omitempty"`
+	TotalSkipped *int64 `json:"totalSkipped,omitempty" tf:"total_skipped,omitempty"`
 }
 
 type SkippedStepsParameters struct {
@@ -334,7 +327,7 @@ type StepExecutionsObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The total duration in seconds taken to complete the DR plan execution.  Example: 750
-	ExecutionDurationInSec *float64 `json:"executionDurationInSec,omitempty" tf:"execution_duration_in_sec,omitempty"`
+	ExecutionDurationInSec *int64 `json:"executionDurationInSec,omitempty" tf:"execution_duration_in_sec,omitempty"`
 
 	// The unique id of the group. Must not be modified by user.  Example: sgid1.group..uniqueID
 	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
@@ -385,7 +378,7 @@ type StepStatusCountsObservation struct {
 	SuccessfulSteps []SuccessfulStepsObservation `json:"successfulSteps,omitempty" tf:"successful_steps,omitempty"`
 
 	// The total number of steps in a DR plan execution.
-	TotalSteps *float64 `json:"totalSteps,omitempty" tf:"total_steps,omitempty"`
+	TotalSteps *int64 `json:"totalSteps,omitempty" tf:"total_steps,omitempty"`
 
 	// A summary of steps that encountered warnings during a DR plan execution.
 	WarningSteps []WarningStepsObservation `json:"warningSteps,omitempty" tf:"warning_steps,omitempty"`
@@ -400,10 +393,10 @@ type SuccessfulStepsInitParameters struct {
 type SuccessfulStepsObservation struct {
 
 	// The total number of steps that succeeded during a DR plan execution.
-	Succeeded *float64 `json:"succeeded,omitempty" tf:"succeeded,omitempty"`
+	Succeeded *int64 `json:"succeeded,omitempty" tf:"succeeded,omitempty"`
 
 	// The total number of successful steps in a DR plan execution.
-	TotalSuccessful *float64 `json:"totalSuccessful,omitempty" tf:"total_successful,omitempty"`
+	TotalSuccessful *int64 `json:"totalSuccessful,omitempty" tf:"total_successful,omitempty"`
 }
 
 type SuccessfulStepsParameters struct {
@@ -415,10 +408,10 @@ type WarningStepsInitParameters struct {
 type WarningStepsObservation struct {
 
 	// The total number of steps that encountered warnings in a DR plan execution.
-	TotalWarnings *float64 `json:"totalWarnings,omitempty" tf:"total_warnings,omitempty"`
+	TotalWarnings *int64 `json:"totalWarnings,omitempty" tf:"total_warnings,omitempty"`
 
 	// The total number of steps with warnings that were ignored during a DR plan execution.
-	WarningsIgnored *float64 `json:"warningsIgnored,omitempty" tf:"warnings_ignored,omitempty"`
+	WarningsIgnored *int64 `json:"warningsIgnored,omitempty" tf:"warnings_ignored,omitempty"`
 }
 
 type WarningStepsParameters struct {

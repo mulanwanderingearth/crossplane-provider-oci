@@ -188,7 +188,8 @@ spec:
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the instance.
@@ -325,7 +326,8 @@ spec:
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the instance.
@@ -485,7 +487,8 @@ spec:
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the instance.

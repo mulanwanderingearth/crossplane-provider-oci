@@ -87,7 +87,7 @@ type FleetResourceObservation struct {
 	Product *string `json:"product,omitempty" tf:"product,omitempty"`
 
 	// Count of products within the resource.
-	ProductCount *float64 `json:"productCount,omitempty" tf:"product_count,omitempty"`
+	ProductCount *int64 `json:"productCount,omitempty" tf:"product_count,omitempty"`
 
 	// The OCID of the resource.
 	ResourceID *string `json:"resourceId,omitempty" tf:"resource_id,omitempty"`
@@ -102,11 +102,10 @@ type FleetResourceObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Count of targets within the resource.
-	TargetCount *float64 `json:"targetCount,omitempty" tf:"target_count,omitempty"`
+	TargetCount *int64 `json:"targetCount,omitempty" tf:"target_count,omitempty"`
 
 	// (Updatable) OCID of the tenancy to which the resource belongs to.
 	TenancyID *string `json:"tenancyId,omitempty" tf:"tenancy_id,omitempty"`

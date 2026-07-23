@@ -75,7 +75,8 @@ spec:
                             of 0 indicates that the DLQ is not used. If the value
                             isn't set, it will be using the value defined at the queue
                             level.
-                          type: number
+                          format: int64
+                          type: integer
                         primaryConsumerGroupDisplayName:
                           description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
                             Name of the primary consumer group. If omitted, it will
@@ -101,7 +102,8 @@ spec:
                       limit is 0.1 (10%), that means data size of a single channel  can't
                       exceed 200Mb. Consumption limit of 100% (default) means that
                       a single channel can consume up-to all allocated queue's resources.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the compartment containing
                       the queue.
@@ -276,7 +278,8 @@ spec:
                     description: (Updatable) The number of times a message can be
                       delivered to a consumer before being moved to the dead letter
                       queue. A value of 0 indicates that the DLQ is not used.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -284,7 +287,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name of the queue.
                     type: string
@@ -295,11 +297,11 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   purgeTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Purge. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   purgeType:
                     description: (Updatable) An optional value that specifies the
                       purge behavior for the Queue. Could be set to NORMAL, DLQ or
@@ -308,15 +310,18 @@ spec:
                   retentionInSeconds:
                     description: The retention period of messages in the queue, in
                       seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   timeoutInSeconds:
                     description: (Updatable) The default polling timeout of the messages
                       in the queue, in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   visibilityInSeconds:
                     description: (Updatable) The default visibility timeout of the
                       messages consumed from the queue, in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -347,7 +352,8 @@ spec:
                             of 0 indicates that the DLQ is not used. If the value
                             isn't set, it will be using the value defined at the queue
                             level.
-                          type: number
+                          format: int64
+                          type: integer
                         primaryConsumerGroupDisplayName:
                           description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
                             Name of the primary consumer group. If omitted, it will
@@ -373,7 +379,8 @@ spec:
                       limit is 0.1 (10%), that means data size of a single channel  can't
                       exceed 200Mb. Consumption limit of 100% (default) means that
                       a single channel can consume up-to all allocated queue's resources.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the compartment containing
                       the queue.
@@ -548,7 +555,8 @@ spec:
                     description: (Updatable) The number of times a message can be
                       delivered to a consumer before being moved to the dead letter
                       queue. A value of 0 indicates that the DLQ is not used.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -556,7 +564,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name of the queue.
                     type: string
@@ -567,11 +574,11 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   purgeTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Purge. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   purgeType:
                     description: (Updatable) An optional value that specifies the
                       purge behavior for the Queue. Could be set to NORMAL, DLQ or
@@ -580,15 +587,18 @@ spec:
                   retentionInSeconds:
                     description: The retention period of messages in the queue, in
                       seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   timeoutInSeconds:
                     description: (Updatable) The default polling timeout of the messages
                       in the queue, in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   visibilityInSeconds:
                     description: (Updatable) The default visibility timeout of the
                       messages consumed from the queue, in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -676,7 +686,8 @@ spec:
                             of 0 indicates that the DLQ is not used. If the value
                             isn't set, it will be using the value defined at the queue
                             level.
-                          type: number
+                          format: int64
+                          type: integer
                         primaryConsumerGroupDisplayName:
                           description: (Applicable when type=CONSUMER_GROUPS) (Updatable)
                             Name of the primary consumer group. If omitted, it will
@@ -702,7 +713,8 @@ spec:
                       limit is 0.1 (10%), that means data size of a single channel  can't
                       exceed 200Mb. Consumption limit of 100% (default) means that
                       a single channel can consume up-to all allocated queue's resources.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the compartment containing
                       the queue.
@@ -715,7 +727,8 @@ spec:
                     description: (Updatable) The number of times a message can be
                       delivered to a consumer before being moved to the dead letter
                       queue. A value of 0 indicates that the DLQ is not used.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -723,7 +736,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name of the queue.
                     type: string
@@ -734,7 +746,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: A unique identifier for the queue that is immutable
                       on creation.
@@ -750,7 +761,8 @@ spec:
                   purgeTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Purge. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   purgeType:
                     description: (Updatable) An optional value that specifies the
                       purge behavior for the Queue. Could be set to NORMAL, DLQ or
@@ -759,7 +771,8 @@ spec:
                   retentionInSeconds:
                     description: The retention period of messages in the queue, in
                       seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of the queue.
                     type: string
@@ -770,7 +783,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: 'The time that the queue was created, expressed in
                       RFC 3339 timestamp format.  Example: 2018-04-20T00:00:07.405Z'
@@ -782,11 +794,13 @@ spec:
                   timeoutInSeconds:
                     description: (Updatable) The default polling timeout of the messages
                       in the queue, in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   visibilityInSeconds:
                     description: (Updatable) The default visibility timeout of the
                       messages consumed from the queue, in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

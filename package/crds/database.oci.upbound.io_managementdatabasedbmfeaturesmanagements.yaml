@@ -588,7 +588,8 @@ spec:
                                     port:
                                       description: The port number used to connect
                                         to the database.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     protocol:
                                       description: The protocol used to connect to
                                         the database.
@@ -1145,7 +1146,8 @@ spec:
                                     port:
                                       description: The port number used to connect
                                         to the database.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     protocol:
                                       description: The protocol used to connect to
                                         the database.
@@ -1391,7 +1393,8 @@ spec:
                                     port:
                                       description: The port number used to connect
                                         to the database.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     protocol:
                                       description: The protocol used to connect to
                                         the database.

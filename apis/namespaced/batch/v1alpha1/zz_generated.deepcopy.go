@@ -60,18 +60,9 @@ func (in *BatchContextInitParameters) DeepCopyInto(out *BatchContextInitParamete
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -86,18 +77,9 @@ func (in *BatchContextInitParameters) DeepCopyInto(out *BatchContextInitParamete
 	}
 	if in.Entitlements != nil {
 		in, out := &in.Entitlements, &out.Entitlements
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Fleets != nil {
@@ -109,18 +91,9 @@ func (in *BatchContextInitParameters) DeepCopyInto(out *BatchContextInitParamete
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.JobPriorityConfigurations != nil {
@@ -203,18 +176,9 @@ func (in *BatchContextObservation) DeepCopyInto(out *BatchContextObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -229,18 +193,9 @@ func (in *BatchContextObservation) DeepCopyInto(out *BatchContextObservation) {
 	}
 	if in.Entitlements != nil {
 		in, out := &in.Entitlements, &out.Entitlements
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Fleets != nil {
@@ -252,18 +207,9 @@ func (in *BatchContextObservation) DeepCopyInto(out *BatchContextObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -304,18 +250,9 @@ func (in *BatchContextObservation) DeepCopyInto(out *BatchContextObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -360,18 +297,9 @@ func (in *BatchContextParameters) DeepCopyInto(out *BatchContextParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -386,18 +314,9 @@ func (in *BatchContextParameters) DeepCopyInto(out *BatchContextParameters) {
 	}
 	if in.Entitlements != nil {
 		in, out := &in.Entitlements, &out.Entitlements
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Fleets != nil {
@@ -409,18 +328,9 @@ func (in *BatchContextParameters) DeepCopyInto(out *BatchContextParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.JobPriorityConfigurations != nil {
@@ -558,18 +468,9 @@ func (in *BatchJobPoolInitParameters) DeepCopyInto(out *BatchJobPoolInitParamete
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -584,18 +485,9 @@ func (in *BatchJobPoolInitParameters) DeepCopyInto(out *BatchJobPoolInitParamete
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.State != nil {
@@ -662,18 +554,9 @@ func (in *BatchJobPoolObservation) DeepCopyInto(out *BatchJobPoolObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -688,18 +571,9 @@ func (in *BatchJobPoolObservation) DeepCopyInto(out *BatchJobPoolObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -714,18 +588,9 @@ func (in *BatchJobPoolObservation) DeepCopyInto(out *BatchJobPoolObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -785,18 +650,9 @@ func (in *BatchJobPoolParameters) DeepCopyInto(out *BatchJobPoolParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -811,18 +667,9 @@ func (in *BatchJobPoolParameters) DeepCopyInto(out *BatchJobPoolParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.State != nil {
@@ -924,18 +771,9 @@ func (in *BatchTaskEnvironmentInitParameters) DeepCopyInto(out *BatchTaskEnviron
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -950,18 +788,9 @@ func (in *BatchTaskEnvironmentInitParameters) DeepCopyInto(out *BatchTaskEnviron
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ImageURL != nil {
@@ -1042,18 +871,9 @@ func (in *BatchTaskEnvironmentObservation) DeepCopyInto(out *BatchTaskEnvironmen
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1068,18 +888,9 @@ func (in *BatchTaskEnvironmentObservation) DeepCopyInto(out *BatchTaskEnvironmen
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1106,18 +917,9 @@ func (in *BatchTaskEnvironmentObservation) DeepCopyInto(out *BatchTaskEnvironmen
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1174,18 +976,9 @@ func (in *BatchTaskEnvironmentParameters) DeepCopyInto(out *BatchTaskEnvironment
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1200,18 +993,9 @@ func (in *BatchTaskEnvironmentParameters) DeepCopyInto(out *BatchTaskEnvironment
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ImageURL != nil {
@@ -1332,18 +1116,9 @@ func (in *BatchTaskProfileInitParameters) DeepCopyInto(out *BatchTaskProfileInit
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1365,33 +1140,24 @@ func (in *BatchTaskProfileInitParameters) DeepCopyInto(out *BatchTaskProfileInit
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.MinDiskSizeInGbs != nil {
 		in, out := &in.MinDiskSizeInGbs, &out.MinDiskSizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinMemoryInGbs != nil {
 		in, out := &in.MinMemoryInGbs, &out.MinMemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinOcpus != nil {
 		in, out := &in.MinOcpus, &out.MinOcpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1448,18 +1214,9 @@ func (in *BatchTaskProfileObservation) DeepCopyInto(out *BatchTaskProfileObserva
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1481,18 +1238,9 @@ func (in *BatchTaskProfileObservation) DeepCopyInto(out *BatchTaskProfileObserva
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1502,17 +1250,17 @@ func (in *BatchTaskProfileObservation) DeepCopyInto(out *BatchTaskProfileObserva
 	}
 	if in.MinDiskSizeInGbs != nil {
 		in, out := &in.MinDiskSizeInGbs, &out.MinDiskSizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinMemoryInGbs != nil {
 		in, out := &in.MinMemoryInGbs, &out.MinMemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinOcpus != nil {
 		in, out := &in.MinOcpus, &out.MinOcpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -1522,18 +1270,9 @@ func (in *BatchTaskProfileObservation) DeepCopyInto(out *BatchTaskProfileObserva
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1578,18 +1317,9 @@ func (in *BatchTaskProfileParameters) DeepCopyInto(out *BatchTaskProfileParamete
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1611,33 +1341,24 @@ func (in *BatchTaskProfileParameters) DeepCopyInto(out *BatchTaskProfileParamete
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.MinDiskSizeInGbs != nil {
 		in, out := &in.MinDiskSizeInGbs, &out.MinDiskSizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinMemoryInGbs != nil {
 		in, out := &in.MinMemoryInGbs, &out.MinMemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinOcpus != nil {
 		in, out := &in.MinOcpus, &out.MinOcpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1782,7 +1503,7 @@ func (in *FleetsInitParameters) DeepCopyInto(out *FleetsInitParameters) {
 	*out = *in
 	if in.MaxConcurrentTasks != nil {
 		in, out := &in.MaxConcurrentTasks, &out.MaxConcurrentTasks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -1824,7 +1545,7 @@ func (in *FleetsObservation) DeepCopyInto(out *FleetsObservation) {
 	}
 	if in.MaxConcurrentTasks != nil {
 		in, out := &in.MaxConcurrentTasks, &out.MaxConcurrentTasks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -1866,7 +1587,7 @@ func (in *FleetsParameters) DeepCopyInto(out *FleetsParameters) {
 	*out = *in
 	if in.MaxConcurrentTasks != nil {
 		in, out := &in.MaxConcurrentTasks, &out.MaxConcurrentTasks
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Name != nil {
@@ -1913,23 +1634,14 @@ func (in *JobPriorityConfigurationsInitParameters) DeepCopyInto(out *JobPriority
 	}
 	if in.Values != nil {
 		in, out := &in.Values, &out.Values
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Weight != nil {
 		in, out := &in.Weight, &out.Weight
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1959,23 +1671,14 @@ func (in *JobPriorityConfigurationsObservation) DeepCopyInto(out *JobPriorityCon
 	}
 	if in.Values != nil {
 		in, out := &in.Values, &out.Values
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Weight != nil {
 		in, out := &in.Weight, &out.Weight
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2005,23 +1708,14 @@ func (in *JobPriorityConfigurationsParameters) DeepCopyInto(out *JobPriorityConf
 	}
 	if in.Values != nil {
 		in, out := &in.Values, &out.Values
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Weight != nil {
 		in, out := &in.Weight, &out.Weight
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2306,17 +2000,17 @@ func (in *SecurityContextInitParameters) DeepCopyInto(out *SecurityContextInitPa
 	*out = *in
 	if in.FsGroup != nil {
 		in, out := &in.FsGroup, &out.FsGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RunAsGroup != nil {
 		in, out := &in.RunAsGroup, &out.RunAsGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RunAsUser != nil {
 		in, out := &in.RunAsUser, &out.RunAsUser
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2336,17 +2030,17 @@ func (in *SecurityContextObservation) DeepCopyInto(out *SecurityContextObservati
 	*out = *in
 	if in.FsGroup != nil {
 		in, out := &in.FsGroup, &out.FsGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RunAsGroup != nil {
 		in, out := &in.RunAsGroup, &out.RunAsGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RunAsUser != nil {
 		in, out := &in.RunAsUser, &out.RunAsUser
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2366,17 +2060,17 @@ func (in *SecurityContextParameters) DeepCopyInto(out *SecurityContextParameters
 	*out = *in
 	if in.FsGroup != nil {
 		in, out := &in.FsGroup, &out.FsGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RunAsGroup != nil {
 		in, out := &in.RunAsGroup, &out.RunAsGroup
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.RunAsUser != nil {
 		in, out := &in.RunAsUser, &out.RunAsUser
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2396,17 +2090,17 @@ func (in *ShapeInitParameters) DeepCopyInto(out *ShapeInitParameters) {
 	*out = *in
 	if in.DiskSizeInGbs != nil {
 		in, out := &in.DiskSizeInGbs, &out.DiskSizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ShapeName != nil {
@@ -2436,17 +2130,17 @@ func (in *ShapeObservation) DeepCopyInto(out *ShapeObservation) {
 	*out = *in
 	if in.DiskSizeInGbs != nil {
 		in, out := &in.DiskSizeInGbs, &out.DiskSizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ShapeName != nil {
@@ -2476,17 +2170,17 @@ func (in *ShapeParameters) DeepCopyInto(out *ShapeParameters) {
 	*out = *in
 	if in.DiskSizeInGbs != nil {
 		in, out := &in.DiskSizeInGbs, &out.DiskSizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ShapeName != nil {

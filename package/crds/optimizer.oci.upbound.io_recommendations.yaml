@@ -376,7 +376,6 @@ spec:
                       type: string
                     description: Additional metadata key/value pairs for the recommendation.
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The unique OCID associated with the recommendation.
                     type: string
@@ -396,7 +395,8 @@ spec:
                       properties:
                         count:
                           description: The count of resources.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: (Updatable) The status of the recommendation.
                           type: string

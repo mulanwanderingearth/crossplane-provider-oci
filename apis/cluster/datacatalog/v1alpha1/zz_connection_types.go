@@ -37,14 +37,13 @@ type ConnectionInitParameters struct {
 	// (Updatable) A user-friendly display name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	EncProperties map[string]*string `json:"encPropertiesSecretRef,omitempty" tf:"-"`
+	EncProperties map[string]string `json:"encPropertiesSecretRef,omitempty" tf:"-"`
 
 	// (Updatable) Indicates whether this connection is the default connection. The first connection of a data asset defaults to being the default, subsequent connections default to not being the default. If a default connection already exists, then trying to create a connection as the default will fail. In this case the default connection would need to be updated not to be the default and then the new connection can then be created as the default.
 	IsDefault *bool `json:"isDefault,omitempty" tf:"is_default,omitempty"`
 
 	// (Updatable) A map of maps that contains the properties which are specific to the connection type. Each connection type definition defines it's set of required and optional properties. The map keys are category names and the values are maps of property name to property value. Every property is contained inside of a category. Most connections have required properties within the "default" category. To determine the set of optional and required properties for a connection type, a query can be done on '/types?type=connection' that returns a collection of all connection types. The appropriate connection type, which will include definitions of all of it's properties, can be identified from this collection. Example: {"properties": { "default": { "username": "user1"}}} . denoting each level. For more information check out this example
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// The key of the object type. Type key's can be found via the '/types' endpoint.
 	TypeKey *string `json:"typeKey,omitempty" tf:"type_key,omitempty"`
@@ -79,8 +78,7 @@ type ConnectionObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Updatable) A map of maps that contains the properties which are specific to the connection type. Each connection type definition defines it's set of required and optional properties. The map keys are category names and the values are maps of property name to property value. Every property is contained inside of a category. Most connections have required properties within the "default" category. To determine the set of optional and required properties for a connection type, a query can be done on '/types?type=connection' that returns a collection of all connection types. The appropriate connection type, which will include definitions of all of it's properties, can be identified from this collection. Example: {"properties": { "default": { "username": "user1"}}} . denoting each level. For more information check out this example
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// The current state of the connection.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -142,8 +140,7 @@ type ConnectionParameters struct {
 
 	// (Updatable) A map of maps that contains the properties which are specific to the connection type. Each connection type definition defines it's set of required and optional properties. The map keys are category names and the values are maps of property name to property value. Every property is contained inside of a category. Most connections have required properties within the "default" category. To determine the set of optional and required properties for a connection type, a query can be done on '/types?type=connection' that returns a collection of all connection types. The appropriate connection type, which will include definitions of all of it's properties, can be identified from this collection. Example: {"properties": { "default": { "username": "user1"}}} . denoting each level. For more information check out this example
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// The key of the object type. Type key's can be found via the '/types' endpoint.
 	// +kubebuilder:validation:Optional

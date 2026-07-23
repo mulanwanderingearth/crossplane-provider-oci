@@ -19,22 +19,19 @@ type AlarmSuppressionInitParameters struct {
 	AlarmSuppressionTarget []AlarmSuppressionTargetInitParameters `json:"alarmSuppressionTarget,omitempty" tf:"alarm_suppression_target,omitempty"`
 
 	// Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Human-readable reason for this alarm suppression. It does not have to be unique, and it's changeable. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// A filter to suppress only alarm state entries that include the set of specified dimension key-value pairs. If you specify {"availabilityDomain": "phx-ad-1"} and the alarm state entry corresponds to the set {"availabilityDomain": "phx-ad-1" and "resourceId": "instance.region1.phx.exampleuniqueID"}, then this alarm will be included for suppression.
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// A user-friendly name for the alarm suppression. It does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The level of this alarm suppression. ALARM indicates a suppression of the entire alarm, regardless of dimension. DIMENSION indicates a suppression configured for specified dimensions.
 	Level *string `json:"level,omitempty" tf:"level,omitempty"`
@@ -58,22 +55,19 @@ type AlarmSuppressionObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Human-readable reason for this alarm suppression. It does not have to be unique, and it's changeable. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// A filter to suppress only alarm state entries that include the set of specified dimension key-value pairs. If you specify {"availabilityDomain": "phx-ad-1"} and the alarm state entry corresponds to the set {"availabilityDomain": "phx-ad-1" and "resourceId": "instance.region1.phx.exampleuniqueID"}, then this alarm will be included for suppression.
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// A user-friendly name for the alarm suppression. It does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the alarm suppression.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -108,8 +102,7 @@ type AlarmSuppressionParameters struct {
 
 	// Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Human-readable reason for this alarm suppression. It does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -117,8 +110,7 @@ type AlarmSuppressionParameters struct {
 
 	// A filter to suppress only alarm state entries that include the set of specified dimension key-value pairs. If you specify {"availabilityDomain": "phx-ad-1"} and the alarm state entry corresponds to the set {"availabilityDomain": "phx-ad-1" and "resourceId": "instance.region1.phx.exampleuniqueID"}, then this alarm will be included for suppression.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Dimensions map[string]*string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
+	Dimensions map[string]string `json:"dimensions,omitempty" tf:"dimensions,omitempty"`
 
 	// A user-friendly name for the alarm suppression. It does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -126,8 +118,7 @@ type AlarmSuppressionParameters struct {
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The level of this alarm suppression. ALARM indicates a suppression of the entire alarm, regardless of dimension. DIMENSION indicates a suppression configured for specified dimensions.
 	// +kubebuilder:validation:Optional

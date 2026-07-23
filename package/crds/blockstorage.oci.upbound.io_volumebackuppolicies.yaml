@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   destinationRegion:
                     description: '(Updatable) The paired destination region for copying
                       scheduled backups to. Example: us-ashburn-1. See Region Pairs
@@ -179,7 +178,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   schedules:
                     description: (Updatable) The collection of schedules for the volume
                       backup policy. See see Schedules in Policy-Based Backups for
@@ -192,7 +190,8 @@ spec:
                         dayOfMonth:
                           description: (Updatable) The day of the month to schedule
                             the volume backup.
-                          type: number
+                          format: int64
+                          type: integer
                         dayOfWeek:
                           description: (Updatable) The day of the week to schedule
                             the volume backup.
@@ -200,7 +199,8 @@ spec:
                         hourOfDay:
                           description: (Updatable) The hour of the day to schedule
                             the volume backup.
-                          type: number
+                          format: int64
+                          type: integer
                         month:
                           description: (Updatable) The month of the year to schedule
                             the volume backup.
@@ -211,7 +211,8 @@ spec:
                             interval boundaries specified by the period. The volume
                             backup start time is the frequency start time plus the
                             offset.
-                          type: number
+                          format: int64
+                          type: integer
                         offsetType:
                           description: (Updatable) Indicates how the offset is defined.
                             If value is STRUCTURED, then hourOfDay, dayOfWeek, dayOfMonth,
@@ -225,7 +226,8 @@ spec:
                         retentionSeconds:
                           description: (Updatable) How long, in seconds, to keep the
                             volume backups created by this schedule.
-                          type: number
+                          format: int64
+                          type: integer
                         timeZone:
                           description: |-
                             (Updatable) Specifies what time zone is the schedule in
@@ -333,7 +335,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   destinationRegion:
                     description: '(Updatable) The paired destination region for copying
                       scheduled backups to. Example: us-ashburn-1. See Region Pairs
@@ -352,7 +353,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   schedules:
                     description: (Updatable) The collection of schedules for the volume
                       backup policy. See see Schedules in Policy-Based Backups for
@@ -365,7 +365,8 @@ spec:
                         dayOfMonth:
                           description: (Updatable) The day of the month to schedule
                             the volume backup.
-                          type: number
+                          format: int64
+                          type: integer
                         dayOfWeek:
                           description: (Updatable) The day of the week to schedule
                             the volume backup.
@@ -373,7 +374,8 @@ spec:
                         hourOfDay:
                           description: (Updatable) The hour of the day to schedule
                             the volume backup.
-                          type: number
+                          format: int64
+                          type: integer
                         month:
                           description: (Updatable) The month of the year to schedule
                             the volume backup.
@@ -384,7 +386,8 @@ spec:
                             interval boundaries specified by the period. The volume
                             backup start time is the frequency start time plus the
                             offset.
-                          type: number
+                          format: int64
+                          type: integer
                         offsetType:
                           description: (Updatable) Indicates how the offset is defined.
                             If value is STRUCTURED, then hourOfDay, dayOfWeek, dayOfMonth,
@@ -398,7 +401,8 @@ spec:
                         retentionSeconds:
                           description: (Updatable) How long, in seconds, to keep the
                             volume backups created by this schedule.
-                          type: number
+                          format: int64
+                          type: integer
                         timeZone:
                           description: |-
                             (Updatable) Specifies what time zone is the schedule in
@@ -510,7 +514,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   destinationRegion:
                     description: '(Updatable) The paired destination region for copying
                       scheduled backups to. Example: us-ashburn-1. See Region Pairs
@@ -529,7 +532,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the volume backup policy.
                     type: string
@@ -545,7 +547,8 @@ spec:
                         dayOfMonth:
                           description: (Updatable) The day of the month to schedule
                             the volume backup.
-                          type: number
+                          format: int64
+                          type: integer
                         dayOfWeek:
                           description: (Updatable) The day of the week to schedule
                             the volume backup.
@@ -553,7 +556,8 @@ spec:
                         hourOfDay:
                           description: (Updatable) The hour of the day to schedule
                             the volume backup.
-                          type: number
+                          format: int64
+                          type: integer
                         month:
                           description: (Updatable) The month of the year to schedule
                             the volume backup.
@@ -564,7 +568,8 @@ spec:
                             interval boundaries specified by the period. The volume
                             backup start time is the frequency start time plus the
                             offset.
-                          type: number
+                          format: int64
+                          type: integer
                         offsetType:
                           description: (Updatable) Indicates how the offset is defined.
                             If value is STRUCTURED, then hourOfDay, dayOfWeek, dayOfMonth,
@@ -578,7 +583,8 @@ spec:
                         retentionSeconds:
                           description: (Updatable) How long, in seconds, to keep the
                             volume backups created by this schedule.
-                          type: number
+                          format: int64
+                          type: integer
                         timeZone:
                           description: |-
                             (Updatable) Specifies what time zone is the schedule in

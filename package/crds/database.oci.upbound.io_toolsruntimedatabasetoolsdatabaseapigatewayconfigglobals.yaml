@@ -81,7 +81,6 @@ spec:
                       type: string
                     description: (Updatable) Advanced global properties.
                     type: object
-                    x-kubernetes-map-type: granular
                   certificateBundle:
                     description: (Updatable) The certificate bundle that describes
                       the SSL certicicate. Ignored if the httpsPort is 0.
@@ -218,14 +217,16 @@ spec:
                       HTTP. Use of ports below 1024 requires elevated (root) privileges
                       and is generally discouraged; deployment on non-privileged ports
                       (1024–65535) is recommended.
-                    type: number
+                    format: int64
+                    type: integer
                   httpsPort:
                     description: (Updatable) Specifies the HTTPS listen port. 0 disables
                       HTTPS. Use of ports below 1024 requires elevated (root) privileges
                       and is generally discouraged; deployment on non-privileged ports
                       (1024–65535) is recommended. ORDS will use a self-signed certificate
                       if a certificate bundle is not provided.
-                    type: number
+                    format: int64
+                    type: integer
                   poolRoute:
                     description: (Updatable) How the target pool route value is determined
                       for a HTTP request.
@@ -256,7 +257,6 @@ spec:
                       type: string
                     description: (Updatable) Advanced global properties.
                     type: object
-                    x-kubernetes-map-type: granular
                   certificateBundle:
                     description: (Updatable) The certificate bundle that describes
                       the SSL certicicate. Ignored if the httpsPort is 0.
@@ -393,14 +393,16 @@ spec:
                       HTTP. Use of ports below 1024 requires elevated (root) privileges
                       and is generally discouraged; deployment on non-privileged ports
                       (1024–65535) is recommended.
-                    type: number
+                    format: int64
+                    type: integer
                   httpsPort:
                     description: (Updatable) Specifies the HTTPS listen port. 0 disables
                       HTTPS. Use of ports below 1024 requires elevated (root) privileges
                       and is generally discouraged; deployment on non-privileged ports
                       (1024–65535) is recommended. ORDS will use a self-signed certificate
                       if a certificate bundle is not provided.
-                    type: number
+                    format: int64
+                    type: integer
                   poolRoute:
                     description: (Updatable) How the target pool route value is determined
                       for a HTTP request.
@@ -521,7 +523,6 @@ spec:
                       type: string
                     description: (Updatable) Advanced global properties.
                     type: object
-                    x-kubernetes-map-type: granular
                   certificateBundle:
                     description: (Updatable) The certificate bundle that describes
                       the SSL certicicate. Ignored if the httpsPort is 0.
@@ -584,14 +585,16 @@ spec:
                       HTTP. Use of ports below 1024 requires elevated (root) privileges
                       and is generally discouraged; deployment on non-privileged ports
                       (1024–65535) is recommended.
-                    type: number
+                    format: int64
+                    type: integer
                   httpsPort:
                     description: (Updatable) Specifies the HTTPS listen port. 0 disables
                       HTTPS. Use of ports below 1024 requires elevated (root) privileges
                       and is generally discouraged; deployment on non-privileged ports
                       (1024–65535) is recommended. ORDS will use a self-signed certificate
                       if a certificate bundle is not provided.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     type: string
                   key:

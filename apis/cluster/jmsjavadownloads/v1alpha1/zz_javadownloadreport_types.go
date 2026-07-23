@@ -46,15 +46,13 @@ type JavaDownloadReportInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}. (See Understanding Free-form Tags).
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The format of the report that is generated.
 	Format *string `json:"format,omitempty" tf:"format,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}. (See Managing Tags and Tag Namespaces.)
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The end time until when the download records have to be included (formatted according to RFC3339).
 	TimeEnd *string `json:"timeEnd,omitempty" tf:"time_end,omitempty"`
@@ -78,8 +76,7 @@ type JavaDownloadReportObservation struct {
 	CreatedBy []CreatedByObservation `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}. (See Understanding Free-form Tags).
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The name of the principal.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -91,8 +88,7 @@ type JavaDownloadReportObservation struct {
 	Format *string `json:"format,omitempty" tf:"format,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}. (See Managing Tags and Tag Namespaces.)
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the principal.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -105,8 +101,7 @@ type JavaDownloadReportObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the Java download report was created, displayed as an RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -135,8 +130,7 @@ type JavaDownloadReportParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}. (See Understanding Free-form Tags).
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The format of the report that is generated.
 	// +kubebuilder:validation:Optional
@@ -144,8 +138,7 @@ type JavaDownloadReportParameters struct {
 
 	// Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}. (See Managing Tags and Tag Namespaces.)
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The end time until when the download records have to be included (formatted according to RFC3339).
 	// +kubebuilder:validation:Optional

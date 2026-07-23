@@ -85,7 +85,8 @@ spec:
                           type: array
                         code:
                           description: (Updatable) Response code.
-                          type: number
+                          format: int64
+                          type: integer
                         headers:
                           description: (Applicable when type=RETURN_HTTP_RESPONSE)
                             (Updatable) Adds headers defined in this array for HTTP
@@ -200,7 +201,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) WebAppFirewallPolicy display name, can
                       be renamed.
@@ -212,7 +212,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   requestAccessControl:
                     description: (Updatable) Module that allows inspection of HTTP
                       request properties and to return a defined HTTP response. In
@@ -266,7 +265,8 @@ spec:
                           description: (Updatable) Maximum size of inspected HTTP
                             message body in bytes. Actions to take if this limit is
                             exceeded are defined in bodyInspectionSizeLimitExceededActionName.
-                          type: number
+                          format: int64
+                          type: integer
                         rules:
                           description: (Updatable) Ordered list of AccessControlRules.
                             Rules are executed in order of appearance in this array.
@@ -315,7 +315,8 @@ spec:
                                         be reached in order for this capability to
                                         trigger. This field is ignored for non-collaborative
                                         capabilities.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     collaborativeWeights:
                                       description: (Updatable) Explicit weight values
                                         to use for associated collaborative protection
@@ -330,7 +331,8 @@ spec:
                                           weight:
                                             description: (Updatable) The value of
                                               weight to set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     exclusions:
@@ -370,7 +372,8 @@ spec:
                                     version:
                                       description: (Updatable) Version of referenced
                                         protection capability.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionCapabilitySettings:
@@ -390,28 +393,33 @@ spec:
                                         of headers in an HTTP request. Used in protection
                                         capability: 9200024: Limit length of request
                                         header size.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxHttpRequestHeaders:
                                       description: '(Updatable) Maximum number of
                                         headers allowed in an HTTP request. Used in
                                         protection capability 9200014: Limit Number
                                         of Request Headers.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxNumberOfArguments:
                                       description: '(Updatable) Maximum number of
                                         arguments allowed. Used in protection capability
                                         920380: Number of Arguments Limits.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxSingleArgumentLength:
                                       description: '(Updatable) Maximum allowed length
                                         of a single argument. Used in protection capability
                                         920370: Limit argument value length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxTotalArgumentLength:
                                       description: '(Updatable) Maximum allowed total
                                         length of all arguments. Used in protection
                                         capability 920390: Limit arguments total length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               type:
@@ -455,15 +463,18 @@ spec:
                                         application in seconds when requestsLimit
                                         is reached. Optional and can be 0 (no block
                                         duration).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     periodInSeconds:
                                       description: (Updatable) Evaluation period in
                                         seconds.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     requestsLimit:
                                       description: (Updatable) Requests allowed per
                                         evaluation period.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               name:
@@ -561,7 +572,8 @@ spec:
                                         be reached in order for this capability to
                                         trigger. This field is ignored for non-collaborative
                                         capabilities.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     collaborativeWeights:
                                       description: (Updatable) Explicit weight values
                                         to use for associated collaborative protection
@@ -576,7 +588,8 @@ spec:
                                           weight:
                                             description: (Updatable) The value of
                                               weight to set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     exclusions:
@@ -616,7 +629,8 @@ spec:
                                     version:
                                       description: (Updatable) Version of referenced
                                         protection capability.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionCapabilitySettings:
@@ -636,28 +650,33 @@ spec:
                                         of headers in an HTTP request. Used in protection
                                         capability: 9200024: Limit length of request
                                         header size.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxHttpRequestHeaders:
                                       description: '(Updatable) Maximum number of
                                         headers allowed in an HTTP request. Used in
                                         protection capability 9200014: Limit Number
                                         of Request Headers.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxNumberOfArguments:
                                       description: '(Updatable) Maximum number of
                                         arguments allowed. Used in protection capability
                                         920380: Number of Arguments Limits.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxSingleArgumentLength:
                                       description: '(Updatable) Maximum allowed length
                                         of a single argument. Used in protection capability
                                         920370: Limit argument value length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxTotalArgumentLength:
                                       description: '(Updatable) Maximum allowed total
                                         length of all arguments. Used in protection
                                         capability 920390: Limit arguments total length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               type:
@@ -674,7 +693,6 @@ spec:
                       keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -714,7 +732,8 @@ spec:
                           type: array
                         code:
                           description: (Updatable) Response code.
-                          type: number
+                          format: int64
+                          type: integer
                         headers:
                           description: (Applicable when type=RETURN_HTTP_RESPONSE)
                             (Updatable) Adds headers defined in this array for HTTP
@@ -829,7 +848,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) WebAppFirewallPolicy display name, can
                       be renamed.
@@ -841,7 +859,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   requestAccessControl:
                     description: (Updatable) Module that allows inspection of HTTP
                       request properties and to return a defined HTTP response. In
@@ -895,7 +912,8 @@ spec:
                           description: (Updatable) Maximum size of inspected HTTP
                             message body in bytes. Actions to take if this limit is
                             exceeded are defined in bodyInspectionSizeLimitExceededActionName.
-                          type: number
+                          format: int64
+                          type: integer
                         rules:
                           description: (Updatable) Ordered list of AccessControlRules.
                             Rules are executed in order of appearance in this array.
@@ -944,7 +962,8 @@ spec:
                                         be reached in order for this capability to
                                         trigger. This field is ignored for non-collaborative
                                         capabilities.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     collaborativeWeights:
                                       description: (Updatable) Explicit weight values
                                         to use for associated collaborative protection
@@ -959,7 +978,8 @@ spec:
                                           weight:
                                             description: (Updatable) The value of
                                               weight to set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     exclusions:
@@ -999,7 +1019,8 @@ spec:
                                     version:
                                       description: (Updatable) Version of referenced
                                         protection capability.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionCapabilitySettings:
@@ -1019,28 +1040,33 @@ spec:
                                         of headers in an HTTP request. Used in protection
                                         capability: 9200024: Limit length of request
                                         header size.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxHttpRequestHeaders:
                                       description: '(Updatable) Maximum number of
                                         headers allowed in an HTTP request. Used in
                                         protection capability 9200014: Limit Number
                                         of Request Headers.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxNumberOfArguments:
                                       description: '(Updatable) Maximum number of
                                         arguments allowed. Used in protection capability
                                         920380: Number of Arguments Limits.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxSingleArgumentLength:
                                       description: '(Updatable) Maximum allowed length
                                         of a single argument. Used in protection capability
                                         920370: Limit argument value length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxTotalArgumentLength:
                                       description: '(Updatable) Maximum allowed total
                                         length of all arguments. Used in protection
                                         capability 920390: Limit arguments total length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               type:
@@ -1084,15 +1110,18 @@ spec:
                                         application in seconds when requestsLimit
                                         is reached. Optional and can be 0 (no block
                                         duration).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     periodInSeconds:
                                       description: (Updatable) Evaluation period in
                                         seconds.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     requestsLimit:
                                       description: (Updatable) Requests allowed per
                                         evaluation period.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               name:
@@ -1190,7 +1219,8 @@ spec:
                                         be reached in order for this capability to
                                         trigger. This field is ignored for non-collaborative
                                         capabilities.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     collaborativeWeights:
                                       description: (Updatable) Explicit weight values
                                         to use for associated collaborative protection
@@ -1205,7 +1235,8 @@ spec:
                                           weight:
                                             description: (Updatable) The value of
                                               weight to set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     exclusions:
@@ -1245,7 +1276,8 @@ spec:
                                     version:
                                       description: (Updatable) Version of referenced
                                         protection capability.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionCapabilitySettings:
@@ -1265,28 +1297,33 @@ spec:
                                         of headers in an HTTP request. Used in protection
                                         capability: 9200024: Limit length of request
                                         header size.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxHttpRequestHeaders:
                                       description: '(Updatable) Maximum number of
                                         headers allowed in an HTTP request. Used in
                                         protection capability 9200014: Limit Number
                                         of Request Headers.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxNumberOfArguments:
                                       description: '(Updatable) Maximum number of
                                         arguments allowed. Used in protection capability
                                         920380: Number of Arguments Limits.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxSingleArgumentLength:
                                       description: '(Updatable) Maximum allowed length
                                         of a single argument. Used in protection capability
                                         920370: Limit argument value length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxTotalArgumentLength:
                                       description: '(Updatable) Maximum allowed total
                                         length of all arguments. Used in protection
                                         capability 920390: Limit arguments total length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               type:
@@ -1303,7 +1340,6 @@ spec:
                       keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -1396,7 +1432,8 @@ spec:
                           type: array
                         code:
                           description: (Updatable) Response code.
-                          type: number
+                          format: int64
+                          type: integer
                         headers:
                           description: (Applicable when type=RETURN_HTTP_RESPONSE)
                             (Updatable) Adds headers defined in this array for HTTP
@@ -1429,7 +1466,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) WebAppFirewallPolicy display name, can
                       be renamed.
@@ -1441,7 +1477,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the WebAppFirewallPolicy.
                     type: string
@@ -1503,7 +1538,8 @@ spec:
                           description: (Updatable) Maximum size of inspected HTTP
                             message body in bytes. Actions to take if this limit is
                             exceeded are defined in bodyInspectionSizeLimitExceededActionName.
-                          type: number
+                          format: int64
+                          type: integer
                         rules:
                           description: (Updatable) Ordered list of AccessControlRules.
                             Rules are executed in order of appearance in this array.
@@ -1552,7 +1588,8 @@ spec:
                                         be reached in order for this capability to
                                         trigger. This field is ignored for non-collaborative
                                         capabilities.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     collaborativeWeights:
                                       description: (Updatable) Explicit weight values
                                         to use for associated collaborative protection
@@ -1567,7 +1604,8 @@ spec:
                                           weight:
                                             description: (Updatable) The value of
                                               weight to set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     exclusions:
@@ -1607,7 +1645,8 @@ spec:
                                     version:
                                       description: (Updatable) Version of referenced
                                         protection capability.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionCapabilitySettings:
@@ -1627,28 +1666,33 @@ spec:
                                         of headers in an HTTP request. Used in protection
                                         capability: 9200024: Limit length of request
                                         header size.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxHttpRequestHeaders:
                                       description: '(Updatable) Maximum number of
                                         headers allowed in an HTTP request. Used in
                                         protection capability 9200014: Limit Number
                                         of Request Headers.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxNumberOfArguments:
                                       description: '(Updatable) Maximum number of
                                         arguments allowed. Used in protection capability
                                         920380: Number of Arguments Limits.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxSingleArgumentLength:
                                       description: '(Updatable) Maximum allowed length
                                         of a single argument. Used in protection capability
                                         920370: Limit argument value length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxTotalArgumentLength:
                                       description: '(Updatable) Maximum allowed total
                                         length of all arguments. Used in protection
                                         capability 920390: Limit arguments total length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               type:
@@ -1692,15 +1736,18 @@ spec:
                                         application in seconds when requestsLimit
                                         is reached. Optional and can be 0 (no block
                                         duration).
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     periodInSeconds:
                                       description: (Updatable) Evaluation period in
                                         seconds.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     requestsLimit:
                                       description: (Updatable) Requests allowed per
                                         evaluation period.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               name:
@@ -1798,7 +1845,8 @@ spec:
                                         be reached in order for this capability to
                                         trigger. This field is ignored for non-collaborative
                                         capabilities.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     collaborativeWeights:
                                       description: (Updatable) Explicit weight values
                                         to use for associated collaborative protection
@@ -1813,7 +1861,8 @@ spec:
                                           weight:
                                             description: (Updatable) The value of
                                               weight to set.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     exclusions:
@@ -1853,7 +1902,8 @@ spec:
                                     version:
                                       description: (Updatable) Version of referenced
                                         protection capability.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionCapabilitySettings:
@@ -1873,28 +1923,33 @@ spec:
                                         of headers in an HTTP request. Used in protection
                                         capability: 9200024: Limit length of request
                                         header size.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxHttpRequestHeaders:
                                       description: '(Updatable) Maximum number of
                                         headers allowed in an HTTP request. Used in
                                         protection capability 9200014: Limit Number
                                         of Request Headers.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxNumberOfArguments:
                                       description: '(Updatable) Maximum number of
                                         arguments allowed. Used in protection capability
                                         920380: Number of Arguments Limits.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxSingleArgumentLength:
                                       description: '(Updatable) Maximum allowed length
                                         of a single argument. Used in protection capability
                                         920370: Limit argument value length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     maxTotalArgumentLength:
                                       description: '(Updatable) Maximum allowed total
                                         length of all arguments. Used in protection
                                         capability 920390: Limit arguments total length.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               type:
@@ -1914,7 +1969,6 @@ spec:
                       keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the WebAppFirewallPolicy was created. An
                       RFC3339 formatted datetime string.

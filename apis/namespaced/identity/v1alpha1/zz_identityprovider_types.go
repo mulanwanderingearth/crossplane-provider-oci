@@ -29,19 +29,16 @@ type IdentityProviderInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description you assign to the IdentityProvider during creation. Does not have to be unique, and it's changeable.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Extra name value pairs associated with this identity provider. Example: {"clientId": "app_sf3kdjf3"}
-	// +mapType=granular
-	FreeformAttributes map[string]*string `json:"freeformAttributes,omitempty" tf:"freeform_attributes,omitempty"`
+	FreeformAttributes map[string]string `json:"freeformAttributes,omitempty" tf:"freeform_attributes,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The XML that contains the information required for federating.
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
@@ -65,19 +62,16 @@ type IdentityProviderObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description you assign to the IdentityProvider during creation. Does not have to be unique, and it's changeable.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Extra name value pairs associated with this identity provider. Example: {"clientId": "app_sf3kdjf3"}
-	// +mapType=granular
-	FreeformAttributes map[string]*string `json:"freeformAttributes,omitempty" tf:"freeform_attributes,omitempty"`
+	FreeformAttributes map[string]string `json:"freeformAttributes,omitempty" tf:"freeform_attributes,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the IdentityProvider.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -130,8 +124,7 @@ type IdentityProviderParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description you assign to the IdentityProvider during creation. Does not have to be unique, and it's changeable.
 	// +kubebuilder:validation:Optional
@@ -139,13 +132,11 @@ type IdentityProviderParameters struct {
 
 	// (Updatable) Extra name value pairs associated with this identity provider. Example: {"clientId": "app_sf3kdjf3"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformAttributes map[string]*string `json:"freeformAttributes,omitempty" tf:"freeform_attributes,omitempty"`
+	FreeformAttributes map[string]string `json:"freeformAttributes,omitempty" tf:"freeform_attributes,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The XML that contains the information required for federating.
 	// +kubebuilder:validation:Optional

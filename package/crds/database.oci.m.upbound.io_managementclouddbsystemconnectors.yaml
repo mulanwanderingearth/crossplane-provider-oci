@@ -218,7 +218,8 @@ spec:
                                 type: array
                               port:
                                 description: The port used to connect to the ASM instance.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: The protocol used to connect to the ASM
                                   instance.
@@ -240,7 +241,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the cloud connector. The
                       name does not have to be unique.
@@ -253,7 +253,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -425,7 +424,8 @@ spec:
                                 type: array
                               port:
                                 description: The port used to connect to the ASM instance.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: The protocol used to connect to the ASM
                                   instance.
@@ -447,7 +447,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the cloud connector. The
                       name does not have to be unique.
@@ -460,7 +459,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -619,7 +617,8 @@ spec:
                                 type: array
                               port:
                                 description: The port used to connect to the ASM instance.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: The protocol used to connect to the ASM
                                   instance.
@@ -645,7 +644,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the cloud connector. The
                       name does not have to be unique.
@@ -658,7 +656,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the cloud DB system connector.
                     type: string
@@ -678,7 +675,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeConnectionStatusLastUpdated:
                     description: The date and time the connectionStatus of the cloud
                       DB system connector was last updated.

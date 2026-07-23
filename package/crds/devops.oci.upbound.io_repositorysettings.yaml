@@ -94,7 +94,8 @@ spec:
                                 description: (Updatable) Minimum number of approvals
                                   which must be provided by the reviewers specified
                                   in the list before the rule can be satisfied
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: (Updatable) Name which is used to uniquely
                                   identify an approval rule.
@@ -256,7 +257,8 @@ spec:
                                 description: (Updatable) Minimum number of approvals
                                   which must be provided by the reviewers specified
                                   in the list before the rule can be satisfied
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: (Updatable) Name which is used to uniquely
                                   identify an approval rule.
@@ -498,7 +500,8 @@ spec:
                                 description: (Updatable) Minimum number of approvals
                                   which must be provided by the reviewers specified
                                   in the list before the rule can be satisfied
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: (Updatable) Name which is used to uniquely
                                   identify an approval rule.

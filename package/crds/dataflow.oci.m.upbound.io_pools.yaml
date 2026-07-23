@@ -151,11 +151,13 @@ spec:
                         max:
                           description: (Updatable) Maximum number of compute instances
                             in the pool for a given compute shape.
-                          type: number
+                          format: int64
+                          type: integer
                         min:
                           description: (Updatable) Minimum number of compute instances
                             in the pool for a given compute shape.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: (Updatable) The compute shape of the resources
                             you would like to provision.
@@ -184,7 +186,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. Avoid entering
                       confidential information.
@@ -201,13 +202,13 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idleTimeoutInMinutes:
                     description: (Updatable) Optional timeout value in minutes used
                       to auto stop Pools. A Pool will be auto stopped after inactivity
                       for this amount of time period. If value not set, pool will
                       not be auto stopped auto.
-                    type: number
+                    format: int64
+                    type: integer
                   schedules:
                     description: (Updatable) A list of schedules for pool to auto
                       start and stop.
@@ -219,10 +220,12 @@ spec:
                         startTime:
                           description: (Updatable) Hour of the day to start or stop
                             pool.
-                          type: number
+                          format: int64
+                          type: integer
                         stopTime:
                           description: (Updatable) Hour of the day to stop the pool.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   state:
@@ -335,11 +338,13 @@ spec:
                         max:
                           description: (Updatable) Maximum number of compute instances
                             in the pool for a given compute shape.
-                          type: number
+                          format: int64
+                          type: integer
                         min:
                           description: (Updatable) Minimum number of compute instances
                             in the pool for a given compute shape.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: (Updatable) The compute shape of the resources
                             you would like to provision.
@@ -368,7 +373,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. Avoid entering
                       confidential information.
@@ -385,13 +389,13 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idleTimeoutInMinutes:
                     description: (Updatable) Optional timeout value in minutes used
                       to auto stop Pools. A Pool will be auto stopped after inactivity
                       for this amount of time period. If value not set, pool will
                       not be auto stopped auto.
-                    type: number
+                    format: int64
+                    type: integer
                   schedules:
                     description: (Updatable) A list of schedules for pool to auto
                       start and stop.
@@ -403,10 +407,12 @@ spec:
                         startTime:
                           description: (Updatable) Hour of the day to start or stop
                             pool.
-                          type: number
+                          format: int64
+                          type: integer
                         stopTime:
                           description: (Updatable) Hour of the day to stop the pool.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   state:
@@ -498,11 +504,13 @@ spec:
                         max:
                           description: (Updatable) Maximum number of compute instances
                             in the pool for a given compute shape.
-                          type: number
+                          format: int64
+                          type: integer
                         min:
                           description: (Updatable) Minimum number of compute instances
                             in the pool for a given compute shape.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: (Updatable) The compute shape of the resources
                             you would like to provision.
@@ -531,7 +539,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. Avoid entering
                       confidential information.
@@ -548,7 +555,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of a pool. Unique Id to indentify a dataflow
                       pool resource.
@@ -558,7 +564,8 @@ spec:
                       to auto stop Pools. A Pool will be auto stopped after inactivity
                       for this amount of time period. If value not set, pool will
                       not be auto stopped auto.
-                    type: number
+                    format: int64
+                    type: integer
                   lifecycleDetails:
                     description: The detailed messages about the lifecycle state.
                     type: string
@@ -589,7 +596,8 @@ spec:
                                 type: string
                               poolCount:
                                 description: The node count of this compute shape.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         timeLastMetricsUpdated:
@@ -618,10 +626,12 @@ spec:
                         startTime:
                           description: (Updatable) Hour of the day to start or stop
                             pool.
-                          type: number
+                          format: int64
+                          type: integer
                         stopTime:
                           description: (Updatable) Hour of the day to stop the pool.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   state:

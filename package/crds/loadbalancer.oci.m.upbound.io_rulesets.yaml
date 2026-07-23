@@ -112,7 +112,8 @@ spec:
                             any IP can make to a listener unless the IP is mentioned
                             in maxConnections. If no defaultMaxConnections is specified
                             the default is unlimited.
-                          type: number
+                          format: int64
+                          type: integer
                         description:
                           description: (Applicable when action=ALLOW) (Updatable)
                             A brief description of the access control rule. Avoid
@@ -128,7 +129,8 @@ spec:
                             client request header. This value indicates the maximum
                             size allowed for each buffer. The allowed values for buffer
                             size are 8, 16, 32 and 64.
-                          type: number
+                          format: int64
+                          type: integer
                         ipMaxConnections:
                           description: (Applicable when action=IP_BASED_MAX_CONNECTIONS)
                             (Updatable) An array of IPs that have a maxConnection
@@ -152,7 +154,8 @@ spec:
                                   to a listener or, if no defaultMaxConnections is
                                   specified, an unlimited number of simultaneous connections
                                   to a listener.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         prefix:
@@ -180,7 +183,8 @@ spec:
                               port:
                                 description: (Applicable when action=REDIRECT) (Updatable)
                                   The communication port to use in the redirect URI.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: (Applicable when action=REDIRECT) (Updatable)
                                   The HTTP protocol to use in the redirect URI.
@@ -195,7 +199,8 @@ spec:
                           description: (Applicable when action=REDIRECT) (Updatable)
                             The HTTP status code to return when the incoming request
                             is redirected.
-                          type: number
+                          format: int64
+                          type: integer
                         statusCode:
                           description: '(Applicable when action=CONTROL_ACCESS_USING_HTTP_METHODS)
                             (Updatable) The HTTP status code to return when the requested
@@ -203,7 +208,8 @@ spec:
                             associated status line returned with the code is mapped
                             from the standard HTTP specification. The default value
                             is 405 (Method Not Allowed).  Example: 403'
-                          type: number
+                          format: int64
+                          type: integer
                         suffix:
                           description: '(Applicable when action=EXTEND_HTTP_REQUEST_HEADER_VALUE
                             | EXTEND_HTTP_RESPONSE_HEADER_VALUE) (Updatable) A string
@@ -373,7 +379,8 @@ spec:
                             any IP can make to a listener unless the IP is mentioned
                             in maxConnections. If no defaultMaxConnections is specified
                             the default is unlimited.
-                          type: number
+                          format: int64
+                          type: integer
                         description:
                           description: (Applicable when action=ALLOW) (Updatable)
                             A brief description of the access control rule. Avoid
@@ -389,7 +396,8 @@ spec:
                             client request header. This value indicates the maximum
                             size allowed for each buffer. The allowed values for buffer
                             size are 8, 16, 32 and 64.
-                          type: number
+                          format: int64
+                          type: integer
                         ipMaxConnections:
                           description: (Applicable when action=IP_BASED_MAX_CONNECTIONS)
                             (Updatable) An array of IPs that have a maxConnection
@@ -413,7 +421,8 @@ spec:
                                   to a listener or, if no defaultMaxConnections is
                                   specified, an unlimited number of simultaneous connections
                                   to a listener.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         prefix:
@@ -441,7 +450,8 @@ spec:
                               port:
                                 description: (Applicable when action=REDIRECT) (Updatable)
                                   The communication port to use in the redirect URI.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: (Applicable when action=REDIRECT) (Updatable)
                                   The HTTP protocol to use in the redirect URI.
@@ -456,7 +466,8 @@ spec:
                           description: (Applicable when action=REDIRECT) (Updatable)
                             The HTTP status code to return when the incoming request
                             is redirected.
-                          type: number
+                          format: int64
+                          type: integer
                         statusCode:
                           description: '(Applicable when action=CONTROL_ACCESS_USING_HTTP_METHODS)
                             (Updatable) The HTTP status code to return when the requested
@@ -464,7 +475,8 @@ spec:
                             associated status line returned with the code is mapped
                             from the standard HTTP specification. The default value
                             is 405 (Method Not Allowed).  Example: 403'
-                          type: number
+                          format: int64
+                          type: integer
                         suffix:
                           description: '(Applicable when action=EXTEND_HTTP_REQUEST_HEADER_VALUE
                             | EXTEND_HTTP_RESPONSE_HEADER_VALUE) (Updatable) A string
@@ -697,7 +709,8 @@ spec:
                             any IP can make to a listener unless the IP is mentioned
                             in maxConnections. If no defaultMaxConnections is specified
                             the default is unlimited.
-                          type: number
+                          format: int64
+                          type: integer
                         description:
                           description: (Applicable when action=ALLOW) (Updatable)
                             A brief description of the access control rule. Avoid
@@ -713,7 +726,8 @@ spec:
                             client request header. This value indicates the maximum
                             size allowed for each buffer. The allowed values for buffer
                             size are 8, 16, 32 and 64.
-                          type: number
+                          format: int64
+                          type: integer
                         ipMaxConnections:
                           description: (Applicable when action=IP_BASED_MAX_CONNECTIONS)
                             (Updatable) An array of IPs that have a maxConnection
@@ -737,7 +751,8 @@ spec:
                                   to a listener or, if no defaultMaxConnections is
                                   specified, an unlimited number of simultaneous connections
                                   to a listener.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         prefix:
@@ -765,7 +780,8 @@ spec:
                               port:
                                 description: (Applicable when action=REDIRECT) (Updatable)
                                   The communication port to use in the redirect URI.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: (Applicable when action=REDIRECT) (Updatable)
                                   The HTTP protocol to use in the redirect URI.
@@ -780,7 +796,8 @@ spec:
                           description: (Applicable when action=REDIRECT) (Updatable)
                             The HTTP status code to return when the incoming request
                             is redirected.
-                          type: number
+                          format: int64
+                          type: integer
                         statusCode:
                           description: '(Applicable when action=CONTROL_ACCESS_USING_HTTP_METHODS)
                             (Updatable) The HTTP status code to return when the requested
@@ -788,7 +805,8 @@ spec:
                             associated status line returned with the code is mapped
                             from the standard HTTP specification. The default value
                             is 405 (Method Not Allowed).  Example: 403'
-                          type: number
+                          format: int64
+                          type: integer
                         suffix:
                           description: '(Applicable when action=EXTEND_HTTP_REQUEST_HEADER_VALUE
                             | EXTEND_HTTP_RESPONSE_HEADER_VALUE) (Updatable) A string

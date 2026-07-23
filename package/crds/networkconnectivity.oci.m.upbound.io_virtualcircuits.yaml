@@ -220,7 +220,8 @@ spec:
                             if the customer is colocated with Oracle, or the provider
                             if the customer is connecting via provider).  Example:
                             200'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   customerAsn:
@@ -233,7 +234,8 @@ spec:
                   customerBgpAsn:
                     description: (Updatable) Deprecated. Instead use customerAsn.
                       If you specify values for both, the request will be rejected.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -241,7 +243,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -255,7 +256,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gatewayId:
                     description: (Updatable) For private virtual circuits only. The
                       OCID of the dynamic routing gateway (DRG) that this virtual
@@ -493,7 +493,8 @@ spec:
                             if the customer is colocated with Oracle, or the provider
                             if the customer is connecting via provider).  Example:
                             200'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   customerAsn:
@@ -506,7 +507,8 @@ spec:
                   customerBgpAsn:
                     description: (Updatable) Deprecated. Instead use customerAsn.
                       If you specify values for both, the request will be rejected.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -514,7 +516,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -528,7 +529,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gatewayId:
                     description: (Updatable) For private virtual circuits only. The
                       OCID of the dynamic routing gateway (DRG) that this virtual
@@ -752,7 +752,8 @@ spec:
                             if the customer is colocated with Oracle, or the provider
                             if the customer is connecting via provider).  Example:
                             200'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   customerAsn:
@@ -765,7 +766,8 @@ spec:
                   customerBgpAsn:
                     description: (Updatable) Deprecated. Instead use customerAsn.
                       If you specify values for both, the request will be rejected.
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -773,7 +775,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -787,7 +788,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gatewayId:
                     description: (Updatable) For private virtual circuits only. The
                       OCID of the dynamic routing gateway (DRG) that this virtual
@@ -813,7 +813,8 @@ spec:
                     type: boolean
                   oracleBgpAsn:
                     description: The Oracle BGP ASN.
-                    type: number
+                    format: int64
+                    type: integer
                   providerServiceId:
                     description: The OCID of the service offered by the provider (if
                       you're connecting via a provider). To get a list of the available

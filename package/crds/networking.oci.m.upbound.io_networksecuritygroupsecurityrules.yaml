@@ -85,10 +85,12 @@ spec:
                       properties:
                         code:
                           description: The ICMP code .
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The ICMP type.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   networkSecurityGroupId:
@@ -213,11 +215,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         sourcePortRange:
@@ -228,11 +232,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -251,11 +257,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         sourcePortRange:
@@ -266,11 +274,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -313,10 +323,12 @@ spec:
                       properties:
                         code:
                           description: The ICMP code .
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The ICMP type.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   networkSecurityGroupId:
@@ -441,11 +453,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         sourcePortRange:
@@ -456,11 +470,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -479,11 +495,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         sourcePortRange:
@@ -494,11 +512,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -603,10 +623,12 @@ spec:
                       properties:
                         code:
                           description: The ICMP code .
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The ICMP type.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   id:
@@ -660,11 +682,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         sourcePortRange:
@@ -675,11 +699,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -702,11 +728,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         sourcePortRange:
@@ -717,11 +745,13 @@ spec:
                                   be less than the minimum port number. To specify
                                   a single port number, set both the min and max to
                                   the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: The minimum port number, which must not
                                   be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object

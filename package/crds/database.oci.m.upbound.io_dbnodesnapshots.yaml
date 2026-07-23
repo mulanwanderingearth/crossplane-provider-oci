@@ -180,7 +180,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -189,7 +188,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Exadata Database Node Snapshot.
                     type: string
@@ -231,7 +229,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time that the Exadata Database Node
                       Snapshot was created.
@@ -245,7 +242,8 @@ spec:
                           type: string
                         size:
                           description: Volume Size
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object

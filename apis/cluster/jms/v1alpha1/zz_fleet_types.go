@@ -28,8 +28,7 @@ type FleetInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}. (See Understanding Free-form Tags).
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The Fleet's description. If nothing is provided, the Fleet description will be null.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -38,8 +37,7 @@ type FleetInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}. (See Managing Tags and Tag Namespaces.)
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Custom Log for inventory or operation log.
 	InventoryLog []InventoryLogInitParameters `json:"inventoryLog,omitempty" tf:"inventory_log,omitempty"`
@@ -54,32 +52,31 @@ type FleetInitParameters struct {
 type FleetObservation struct {
 
 	// The approximate count of all unique applications in the Fleet in the past seven days. This metric is provided on a best-effort manner, and isn't taken into account when computing the resource ETag.
-	ApproximateApplicationCount *float64 `json:"approximateApplicationCount,omitempty" tf:"approximate_application_count,omitempty"`
+	ApproximateApplicationCount *int64 `json:"approximateApplicationCount,omitempty" tf:"approximate_application_count,omitempty"`
 
 	// The approximate count of all unique Java installations in the Fleet in the past seven days. This metric is provided on a best-effort manner, and isn't taken into account when computing the resource ETag.
-	ApproximateInstallationCount *float64 `json:"approximateInstallationCount,omitempty" tf:"approximate_installation_count,omitempty"`
+	ApproximateInstallationCount *int64 `json:"approximateInstallationCount,omitempty" tf:"approximate_installation_count,omitempty"`
 
 	// The approximate count of all unique Java servers in the Fleet in the past seven days. This metric is provided on a best-effort manner, and isn't taken into account when computing the resource ETag.
-	ApproximateJavaServerCount *float64 `json:"approximateJavaServerCount,omitempty" tf:"approximate_java_server_count,omitempty"`
+	ApproximateJavaServerCount *int64 `json:"approximateJavaServerCount,omitempty" tf:"approximate_java_server_count,omitempty"`
 
 	// The approximate count of all unique Java Runtimes in the Fleet in the past seven days. This metric is provided on a best-effort manner, and isn't taken into account when computing the resource ETag.
-	ApproximateJreCount *float64 `json:"approximateJreCount,omitempty" tf:"approximate_jre_count,omitempty"`
+	ApproximateJreCount *int64 `json:"approximateJreCount,omitempty" tf:"approximate_jre_count,omitempty"`
 
 	// The approximate count of all unique libraries in the Fleet in the past seven days. This metric is provided on a best-effort manner, and isn't taken into account when computing the resource ETag.
-	ApproximateLibraryCount *float64 `json:"approximateLibraryCount,omitempty" tf:"approximate_library_count,omitempty"`
+	ApproximateLibraryCount *int64 `json:"approximateLibraryCount,omitempty" tf:"approximate_library_count,omitempty"`
 
 	// The approximate count of all unique library vulnerabilities in the Fleet in the past seven days. This metric is provided on a best-effort manner, and isn't taken into account when computing the resource ETag.
-	ApproximateLibraryVulnerabilityCount *float64 `json:"approximateLibraryVulnerabilityCount,omitempty" tf:"approximate_library_vulnerability_count,omitempty"`
+	ApproximateLibraryVulnerabilityCount *int64 `json:"approximateLibraryVulnerabilityCount,omitempty" tf:"approximate_library_vulnerability_count,omitempty"`
 
 	// The approximate count of all unique managed instances in the Fleet in the past seven days. This metric is provided on a best-effort manner, and isn't taken into account when computing the resource ETag.
-	ApproximateManagedInstanceCount *float64 `json:"approximateManagedInstanceCount,omitempty" tf:"approximate_managed_instance_count,omitempty"`
+	ApproximateManagedInstanceCount *int64 `json:"approximateManagedInstanceCount,omitempty" tf:"approximate_managed_instance_count,omitempty"`
 
 	// (Updatable) The OCID of the compartment of the Fleet.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}. (See Understanding Free-form Tags).
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The Fleet's description. If nothing is provided, the Fleet description will be null.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -88,8 +85,7 @@ type FleetObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}. (See Managing Tags and Tag Namespaces.)
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Fleet.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -110,8 +106,7 @@ type FleetObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The creation date and time of the Fleet (formatted according to RFC3339).
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -134,8 +129,7 @@ type FleetParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}. (See Understanding Free-form Tags).
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The Fleet's description. If nothing is provided, the Fleet description will be null.
 	// +kubebuilder:validation:Optional
@@ -147,8 +141,7 @@ type FleetParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}. (See Managing Tags and Tag Namespaces.)
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Custom Log for inventory or operation log.
 	// +kubebuilder:validation:Optional

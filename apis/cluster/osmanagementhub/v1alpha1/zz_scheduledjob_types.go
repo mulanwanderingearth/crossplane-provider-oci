@@ -508,7 +508,7 @@ type OperationsInitParameters struct {
 	PackageNames []*string `json:"packageNames,omitempty" tf:"package_names,omitempty"`
 
 	// (Updatable) The number of minutes the service waits for the reboot to complete. If the instance doesn't reboot within the  timeout, the service marks the reboot job as failed.
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// (Updatable) Provides the information used to remove a snap.
 	RemoveSnapDetails []RemoveSnapDetailsInitParameters `json:"removeSnapDetails,omitempty" tf:"remove_snap_details,omitempty"`
@@ -541,7 +541,7 @@ type OperationsObservation struct {
 	PackageNames []*string `json:"packageNames,omitempty" tf:"package_names,omitempty"`
 
 	// (Updatable) The number of minutes the service waits for the reboot to complete. If the instance doesn't reboot within the  timeout, the service marks the reboot job as failed.
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// (Updatable) Provides the information used to remove a snap.
 	RemoveSnapDetails []RemoveSnapDetailsObservation `json:"removeSnapDetails,omitempty" tf:"remove_snap_details,omitempty"`
@@ -579,7 +579,7 @@ type OperationsParameters struct {
 
 	// (Updatable) The number of minutes the service waits for the reboot to complete. If the instance doesn't reboot within the  timeout, the service marks the reboot job as failed.
 	// +kubebuilder:validation:Optional
-	RebootTimeoutInMins *float64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
+	RebootTimeoutInMins *int64 `json:"rebootTimeoutInMins,omitempty" tf:"reboot_timeout_in_mins,omitempty"`
 
 	// (Updatable) Provides the information used to remove a snap.
 	// +kubebuilder:validation:Optional
@@ -646,8 +646,7 @@ type ScheduledJobInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-specified description of the scheduled job. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -659,8 +658,7 @@ type ScheduledJobInitParameters struct {
 	DynamicSetIds []*string `json:"dynamicSetIds,omitempty" tf:"dynamic_set_ids,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Indicates whether this scheduled job is managed by the Autonomous Linux service.
 	IsManagedByAutonomousLinux *bool `json:"isManagedByAutonomousLinux,omitempty" tf:"is_managed_by_autonomous_linux,omitempty"`
@@ -690,7 +688,7 @@ type ScheduledJobInitParameters struct {
 	RecurringRule *string `json:"recurringRule,omitempty" tf:"recurring_rule,omitempty"`
 
 	// (Updatable) The amount of time in minutes to wait until retrying the scheduled job. If set, the service will automatically  retry a failed scheduled job after the interval. For example, you could set the interval to [2,5,10]. If the initial execution of the job fails, the service waits 2 minutes and then retries. If that fails, the service  waits 5 minutes and then retries. If that fails, the service waits 10 minutes and then retries.
-	RetryIntervals []*float64 `json:"retryIntervals,omitempty" tf:"retry_intervals,omitempty"`
+	RetryIntervals []*int64 `json:"retryIntervals,omitempty" tf:"retry_intervals,omitempty"`
 
 	// (Updatable) The type of scheduling frequency for the scheduled job.
 	ScheduleType *string `json:"scheduleType,omitempty" tf:"schedule_type,omitempty"`
@@ -708,8 +706,7 @@ type ScheduledJobObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-specified description of the scheduled job. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -721,8 +718,7 @@ type ScheduledJobObservation struct {
 	DynamicSetIds []*string `json:"dynamicSetIds,omitempty" tf:"dynamic_set_ids,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the scheduled job.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -758,7 +754,7 @@ type ScheduledJobObservation struct {
 	RecurringRule *string `json:"recurringRule,omitempty" tf:"recurring_rule,omitempty"`
 
 	// (Updatable) The amount of time in minutes to wait until retrying the scheduled job. If set, the service will automatically  retry a failed scheduled job after the interval. For example, you could set the interval to [2,5,10]. If the initial execution of the job fails, the service waits 2 minutes and then retries. If that fails, the service  waits 5 minutes and then retries. If that fails, the service waits 10 minutes and then retries.
-	RetryIntervals []*float64 `json:"retryIntervals,omitempty" tf:"retry_intervals,omitempty"`
+	RetryIntervals []*int64 `json:"retryIntervals,omitempty" tf:"retry_intervals,omitempty"`
 
 	// (Updatable) The type of scheduling frequency for the scheduled job.
 	ScheduleType *string `json:"scheduleType,omitempty" tf:"schedule_type,omitempty"`
@@ -767,8 +763,7 @@ type ScheduledJobObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time this scheduled job was created (in RFC 3339 format).
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -806,8 +801,7 @@ type ScheduledJobParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User-specified description of the scheduled job. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -823,8 +817,7 @@ type ScheduledJobParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Indicates whether this scheduled job is managed by the Autonomous Linux service.
 	// +kubebuilder:validation:Optional
@@ -864,7 +857,7 @@ type ScheduledJobParameters struct {
 
 	// (Updatable) The amount of time in minutes to wait until retrying the scheduled job. If set, the service will automatically  retry a failed scheduled job after the interval. For example, you could set the interval to [2,5,10]. If the initial execution of the job fails, the service waits 2 minutes and then retries. If that fails, the service  waits 5 minutes and then retries. If that fails, the service waits 10 minutes and then retries.
 	// +kubebuilder:validation:Optional
-	RetryIntervals []*float64 `json:"retryIntervals,omitempty" tf:"retry_intervals,omitempty"`
+	RetryIntervals []*int64 `json:"retryIntervals,omitempty" tf:"retry_intervals,omitempty"`
 
 	// (Updatable) The type of scheduling frequency for the scheduled job.
 	// +kubebuilder:validation:Optional

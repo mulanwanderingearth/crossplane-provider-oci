@@ -63,7 +63,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Add Masking Columns From Sdm. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   columnSource:
                     description: (Updatable) Details to associate a column source
                       with a masking policy.
@@ -342,7 +343,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the masking policy.
                     type: string
@@ -358,12 +358,12 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generateHealthReportTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Health Report. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   isDropTempTablesEnabled:
                     description: (Updatable) Indicates if the temporary tables created
                       during a masking operation should be dropped after masking.
@@ -441,7 +441,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Add Masking Columns From Sdm. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   columnSource:
                     description: (Updatable) Details to associate a column source
                       with a masking policy.
@@ -720,7 +721,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the masking policy.
                     type: string
@@ -736,12 +736,12 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generateHealthReportTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Health Report. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   isDropTempTablesEnabled:
                     description: (Updatable) Indicates if the temporary tables created
                       during a masking operation should be dropped after masking.
@@ -876,7 +876,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Add Masking Columns From Sdm. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   areTargetCredentialsRequired:
                     description: Specifies whether target database credentials are
                       required to perform masking with this policy
@@ -913,7 +914,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the masking policy.
                     type: string
@@ -929,12 +929,12 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generateHealthReportTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Health Report. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     description: The OCID of the masking policy.
                     type: string

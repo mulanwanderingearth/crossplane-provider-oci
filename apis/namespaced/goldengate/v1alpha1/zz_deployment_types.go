@@ -131,10 +131,10 @@ type DeploymentInitParameters struct {
 	BackupSchedule []BackupScheduleInitParameters `json:"backupSchedule,omitempty" tf:"backup_schedule,omitempty"`
 
 	// (Updatable) The maximum number of CPUs allowed with a 'Bring Your Own License' (BYOL) license type. Any CPU usage above this limit is considered as License Included and billed.
-	ByolCPUCoreCountLimit *float64 `json:"byolCpuCoreCountLimit,omitempty" tf:"byol_cpu_core_count_limit,omitempty"`
+	ByolCPUCoreCountLimit *int64 `json:"byolCpuCoreCountLimit,omitempty" tf:"byol_cpu_core_count_limit,omitempty"`
 
 	// (Updatable) The Minimum number of OCPUs to be made available for this Deployment.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The OCID(https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the cluster placement group for the resource. Only applicable for multicloud subscriptions. The cluster placement group id must be provided when a multicloud subscription id is provided. Otherwise the cluster placement group must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/clusterplacementgroups/v1alpha1.ClusterPlacementGroup
@@ -162,8 +162,7 @@ type DeploymentInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Tags defined for this resource. Each key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The OCID of the backup being referenced.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/goldengate/v1alpha1.DeploymentBackup
@@ -200,8 +199,7 @@ type DeploymentInitParameters struct {
 	Fqdn *string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only.  Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates if auto scaling is enabled for the Deployment's CPU core count.
 	IsAutoScalingEnabled *bool `json:"isAutoScalingEnabled,omitempty" tf:"is_auto_scaling_enabled,omitempty"`
@@ -250,8 +248,7 @@ type DeploymentInitParameters struct {
 	Placements []PlacementsInitParameters `json:"placements,omitempty" tf:"placements,omitempty"`
 
 	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The OCID of the deployment being referenced.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/goldengate/v1alpha1.Deployment
@@ -330,10 +327,10 @@ type DeploymentObservation struct {
 	BackupSchedule []BackupScheduleObservation `json:"backupSchedule,omitempty" tf:"backup_schedule,omitempty"`
 
 	// (Updatable) The maximum number of CPUs allowed with a 'Bring Your Own License' (BYOL) license type. Any CPU usage above this limit is considered as License Included and billed.
-	ByolCPUCoreCountLimit *float64 `json:"byolCpuCoreCountLimit,omitempty" tf:"byol_cpu_core_count_limit,omitempty"`
+	ByolCPUCoreCountLimit *int64 `json:"byolCpuCoreCountLimit,omitempty" tf:"byol_cpu_core_count_limit,omitempty"`
 
 	// (Updatable) The Minimum number of OCPUs to be made available for this Deployment.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The deployment category defines the broad separation of the deployment type into three categories. Currently the separation is 'DATA_REPLICATION', 'STREAM_ANALYTICS' and 'DATA_TRANSFORMS'.
 	Category *string `json:"category,omitempty" tf:"category,omitempty"`
@@ -345,8 +342,7 @@ type DeploymentObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Tags defined for this resource. Each key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The OCID of the backup being referenced.
 	DeploymentBackupID *string `json:"deploymentBackupId,omitempty" tf:"deployment_backup_id,omitempty"`
@@ -382,8 +378,7 @@ type DeploymentObservation struct {
 	Fqdn *string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only.  Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the deployment being referenced.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -458,8 +453,7 @@ type DeploymentObservation struct {
 	PublicIPAddress *string `json:"publicIpAddress,omitempty" tf:"public_ip_address,omitempty"`
 
 	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The OCID of the deployment being referenced.
 	SourceDeploymentID *string `json:"sourceDeploymentId,omitempty" tf:"source_deployment_id,omitempty"`
@@ -477,8 +471,7 @@ type DeploymentObservation struct {
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
 	// The system tags associated with this resource, if any. The system tags are set by Oracle Cloud Infrastructure services. Each key is predefined and scoped to namespaces.  For more information, see Resource Tags.  Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// When the lock was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -514,11 +507,11 @@ type DeploymentParameters struct {
 
 	// (Updatable) The maximum number of CPUs allowed with a 'Bring Your Own License' (BYOL) license type. Any CPU usage above this limit is considered as License Included and billed.
 	// +kubebuilder:validation:Optional
-	ByolCPUCoreCountLimit *float64 `json:"byolCpuCoreCountLimit,omitempty" tf:"byol_cpu_core_count_limit,omitempty"`
+	ByolCPUCoreCountLimit *int64 `json:"byolCpuCoreCountLimit,omitempty" tf:"byol_cpu_core_count_limit,omitempty"`
 
 	// (Updatable) The Minimum number of OCPUs to be made available for this Deployment.
 	// +kubebuilder:validation:Optional
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The OCID(https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the cluster placement group for the resource. Only applicable for multicloud subscriptions. The cluster placement group id must be provided when a multicloud subscription id is provided. Otherwise the cluster placement group must not be provided.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/clusterplacementgroups/v1alpha1.ClusterPlacementGroup
@@ -549,8 +542,7 @@ type DeploymentParameters struct {
 
 	// (Updatable) Tags defined for this resource. Each key is predefined and scoped to a namespace.  Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The OCID of the backup being referenced.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/goldengate/v1alpha1.DeploymentBackup
@@ -596,8 +588,7 @@ type DeploymentParameters struct {
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only.  Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates if auto scaling is enabled for the Deployment's CPU core count.
 	// +kubebuilder:validation:Optional
@@ -659,8 +650,7 @@ type DeploymentParameters struct {
 
 	// (Updatable) Security attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The OCID of the deployment being referenced.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/goldengate/v1alpha1.Deployment
@@ -831,48 +821,48 @@ type GroupToRolesMappingParameters struct {
 type MaintenanceConfigurationInitParameters struct {
 
 	// (Updatable) Defines auto upgrade period for bundle releases. Manually configured period cannot be longer than service defined period for bundle releases. This period must be shorter or equal to major release upgrade period. Not passing this field during create will equate to using the service default.
-	BundleReleaseUpgradePeriodInDays *float64 `json:"bundleReleaseUpgradePeriodInDays,omitempty" tf:"bundle_release_upgrade_period_in_days,omitempty"`
+	BundleReleaseUpgradePeriodInDays *int64 `json:"bundleReleaseUpgradePeriodInDays,omitempty" tf:"bundle_release_upgrade_period_in_days,omitempty"`
 
 	// (Updatable) Defines auto upgrade period for interim releases. This period must be shorter or equal to bundle release upgrade period.
-	InterimReleaseUpgradePeriodInDays *float64 `json:"interimReleaseUpgradePeriodInDays,omitempty" tf:"interim_release_upgrade_period_in_days,omitempty"`
+	InterimReleaseUpgradePeriodInDays *int64 `json:"interimReleaseUpgradePeriodInDays,omitempty" tf:"interim_release_upgrade_period_in_days,omitempty"`
 
 	// (Updatable) By default auto upgrade for interim releases are not enabled. If auto-upgrade is enabled for interim release,  you have to specify interimReleaseUpgradePeriodInDays too.
 	IsInterimReleaseAutoUpgradeEnabled *bool `json:"isInterimReleaseAutoUpgradeEnabled,omitempty" tf:"is_interim_release_auto_upgrade_enabled,omitempty"`
 
 	// (Updatable) Defines auto upgrade period for major releases. Manually configured period cannot be longer than service defined period for major releases. Not passing this field during create will equate to using the service default.
-	MajorReleaseUpgradePeriodInDays *float64 `json:"majorReleaseUpgradePeriodInDays,omitempty" tf:"major_release_upgrade_period_in_days,omitempty"`
+	MajorReleaseUpgradePeriodInDays *int64 `json:"majorReleaseUpgradePeriodInDays,omitempty" tf:"major_release_upgrade_period_in_days,omitempty"`
 
 	// (Updatable) Defines auto upgrade period for releases with security fix. Manually configured period cannot be longer than service defined period for security releases. Not passing this field during create will equate to using the service default.
-	SecurityPatchUpgradePeriodInDays *float64 `json:"securityPatchUpgradePeriodInDays,omitempty" tf:"security_patch_upgrade_period_in_days,omitempty"`
+	SecurityPatchUpgradePeriodInDays *int64 `json:"securityPatchUpgradePeriodInDays,omitempty" tf:"security_patch_upgrade_period_in_days,omitempty"`
 }
 
 type MaintenanceConfigurationObservation struct {
 
 	// (Updatable) Defines auto upgrade period for bundle releases. Manually configured period cannot be longer than service defined period for bundle releases. This period must be shorter or equal to major release upgrade period. Not passing this field during create will equate to using the service default.
-	BundleReleaseUpgradePeriodInDays *float64 `json:"bundleReleaseUpgradePeriodInDays,omitempty" tf:"bundle_release_upgrade_period_in_days,omitempty"`
+	BundleReleaseUpgradePeriodInDays *int64 `json:"bundleReleaseUpgradePeriodInDays,omitempty" tf:"bundle_release_upgrade_period_in_days,omitempty"`
 
 	// (Updatable) Defines auto upgrade period for interim releases. This period must be shorter or equal to bundle release upgrade period.
-	InterimReleaseUpgradePeriodInDays *float64 `json:"interimReleaseUpgradePeriodInDays,omitempty" tf:"interim_release_upgrade_period_in_days,omitempty"`
+	InterimReleaseUpgradePeriodInDays *int64 `json:"interimReleaseUpgradePeriodInDays,omitempty" tf:"interim_release_upgrade_period_in_days,omitempty"`
 
 	// (Updatable) By default auto upgrade for interim releases are not enabled. If auto-upgrade is enabled for interim release,  you have to specify interimReleaseUpgradePeriodInDays too.
 	IsInterimReleaseAutoUpgradeEnabled *bool `json:"isInterimReleaseAutoUpgradeEnabled,omitempty" tf:"is_interim_release_auto_upgrade_enabled,omitempty"`
 
 	// (Updatable) Defines auto upgrade period for major releases. Manually configured period cannot be longer than service defined period for major releases. Not passing this field during create will equate to using the service default.
-	MajorReleaseUpgradePeriodInDays *float64 `json:"majorReleaseUpgradePeriodInDays,omitempty" tf:"major_release_upgrade_period_in_days,omitempty"`
+	MajorReleaseUpgradePeriodInDays *int64 `json:"majorReleaseUpgradePeriodInDays,omitempty" tf:"major_release_upgrade_period_in_days,omitempty"`
 
 	// (Updatable) Defines auto upgrade period for releases with security fix. Manually configured period cannot be longer than service defined period for security releases. Not passing this field during create will equate to using the service default.
-	SecurityPatchUpgradePeriodInDays *float64 `json:"securityPatchUpgradePeriodInDays,omitempty" tf:"security_patch_upgrade_period_in_days,omitempty"`
+	SecurityPatchUpgradePeriodInDays *int64 `json:"securityPatchUpgradePeriodInDays,omitempty" tf:"security_patch_upgrade_period_in_days,omitempty"`
 }
 
 type MaintenanceConfigurationParameters struct {
 
 	// (Updatable) Defines auto upgrade period for bundle releases. Manually configured period cannot be longer than service defined period for bundle releases. This period must be shorter or equal to major release upgrade period. Not passing this field during create will equate to using the service default.
 	// +kubebuilder:validation:Optional
-	BundleReleaseUpgradePeriodInDays *float64 `json:"bundleReleaseUpgradePeriodInDays,omitempty" tf:"bundle_release_upgrade_period_in_days,omitempty"`
+	BundleReleaseUpgradePeriodInDays *int64 `json:"bundleReleaseUpgradePeriodInDays,omitempty" tf:"bundle_release_upgrade_period_in_days,omitempty"`
 
 	// (Updatable) Defines auto upgrade period for interim releases. This period must be shorter or equal to bundle release upgrade period.
 	// +kubebuilder:validation:Optional
-	InterimReleaseUpgradePeriodInDays *float64 `json:"interimReleaseUpgradePeriodInDays,omitempty" tf:"interim_release_upgrade_period_in_days,omitempty"`
+	InterimReleaseUpgradePeriodInDays *int64 `json:"interimReleaseUpgradePeriodInDays,omitempty" tf:"interim_release_upgrade_period_in_days,omitempty"`
 
 	// (Updatable) By default auto upgrade for interim releases are not enabled. If auto-upgrade is enabled for interim release,  you have to specify interimReleaseUpgradePeriodInDays too.
 	// +kubebuilder:validation:Optional
@@ -880,11 +870,11 @@ type MaintenanceConfigurationParameters struct {
 
 	// (Updatable) Defines auto upgrade period for major releases. Manually configured period cannot be longer than service defined period for major releases. Not passing this field during create will equate to using the service default.
 	// +kubebuilder:validation:Optional
-	MajorReleaseUpgradePeriodInDays *float64 `json:"majorReleaseUpgradePeriodInDays,omitempty" tf:"major_release_upgrade_period_in_days,omitempty"`
+	MajorReleaseUpgradePeriodInDays *int64 `json:"majorReleaseUpgradePeriodInDays,omitempty" tf:"major_release_upgrade_period_in_days,omitempty"`
 
 	// (Updatable) Defines auto upgrade period for releases with security fix. Manually configured period cannot be longer than service defined period for security releases. Not passing this field during create will equate to using the service default.
 	// +kubebuilder:validation:Optional
-	SecurityPatchUpgradePeriodInDays *float64 `json:"securityPatchUpgradePeriodInDays,omitempty" tf:"security_patch_upgrade_period_in_days,omitempty"`
+	SecurityPatchUpgradePeriodInDays *int64 `json:"securityPatchUpgradePeriodInDays,omitempty" tf:"security_patch_upgrade_period_in_days,omitempty"`
 }
 
 type MaintenanceWindowInitParameters struct {
@@ -893,7 +883,7 @@ type MaintenanceWindowInitParameters struct {
 	Day *string `json:"day,omitempty" tf:"day,omitempty"`
 
 	// (Updatable) Start hour for maintenance period. Hour is in UTC.
-	StartHour *float64 `json:"startHour,omitempty" tf:"start_hour,omitempty"`
+	StartHour *int64 `json:"startHour,omitempty" tf:"start_hour,omitempty"`
 }
 
 type MaintenanceWindowObservation struct {
@@ -902,7 +892,7 @@ type MaintenanceWindowObservation struct {
 	Day *string `json:"day,omitempty" tf:"day,omitempty"`
 
 	// (Updatable) Start hour for maintenance period. Hour is in UTC.
-	StartHour *float64 `json:"startHour,omitempty" tf:"start_hour,omitempty"`
+	StartHour *int64 `json:"startHour,omitempty" tf:"start_hour,omitempty"`
 }
 
 type MaintenanceWindowParameters struct {
@@ -913,7 +903,7 @@ type MaintenanceWindowParameters struct {
 
 	// (Updatable) Start hour for maintenance period. Hour is in UTC.
 	// +kubebuilder:validation:Optional
-	StartHour *float64 `json:"startHour" tf:"start_hour,omitempty"`
+	StartHour *int64 `json:"startHour" tf:"start_hour,omitempty"`
 }
 
 type OggDataInitParameters struct {

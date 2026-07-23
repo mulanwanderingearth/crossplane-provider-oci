@@ -181,7 +181,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Force Refresh Resource Principal. Could be set to any
                       integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   secretId:
                     description: The secretId for the clusterAdminPassword.
                     type: string
@@ -262,7 +263,8 @@ spec:
                   sessionTokenLifeSpanDurationInHours:
                     description: (Updatable) Life span in hours for the resource principal
                       session token.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -382,7 +384,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Force Refresh Resource Principal. Could be set to any
                       integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   secretId:
                     description: The secretId for the clusterAdminPassword.
                     type: string
@@ -463,7 +466,8 @@ spec:
                   sessionTokenLifeSpanDurationInHours:
                     description: (Updatable) Life span in hours for the resource principal
                       session token.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -577,7 +581,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Force Refresh Resource Principal. Could be set to any
                       integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     description: The id of the ResourcePrincipalConfiguration defined
                       under BDS resources, not OCID.
@@ -588,7 +593,8 @@ spec:
                   sessionTokenLifeSpanDurationInHours:
                     description: (Updatable) Life span in hours for the resource principal
                       session token.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The state of the ResourcePrincipalConfiguration.
                     type: string

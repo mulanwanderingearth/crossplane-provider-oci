@@ -33,8 +33,7 @@ type AutonomousExadataInfrastructureInitParameters struct {
 	CreateAsync *bool `json:"createAsync,omitempty" tf:"create_async,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the Autonomous Exadata Infrastructure. It does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -43,8 +42,7 @@ type AutonomousExadataInfrastructureInitParameters struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The Oracle license model that applies to all the databases in the Autonomous Exadata Infrastructure. The default is BRING_YOUR_OWN_LICENSE.
 	LicenseModel *string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
@@ -106,13 +104,13 @@ type AutonomousExadataInfrastructureMaintenanceWindowDetailsDaysOfWeekParameters
 type AutonomousExadataInfrastructureMaintenanceWindowDetailsInitParameters struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []AutonomousExadataInfrastructureMaintenanceWindowDetailsDaysOfWeekInitParameters `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -121,7 +119,7 @@ type AutonomousExadataInfrastructureMaintenanceWindowDetailsInitParameters struc
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []AutonomousExadataInfrastructureMaintenanceWindowDetailsMonthsInitParameters `json:"months,omitempty" tf:"months,omitempty"`
@@ -135,7 +133,7 @@ type AutonomousExadataInfrastructureMaintenanceWindowDetailsInitParameters struc
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type AutonomousExadataInfrastructureMaintenanceWindowDetailsMonthsInitParameters struct {
@@ -160,13 +158,13 @@ type AutonomousExadataInfrastructureMaintenanceWindowDetailsMonthsParameters str
 type AutonomousExadataInfrastructureMaintenanceWindowDetailsObservation struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []AutonomousExadataInfrastructureMaintenanceWindowDetailsDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -175,7 +173,7 @@ type AutonomousExadataInfrastructureMaintenanceWindowDetailsObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []AutonomousExadataInfrastructureMaintenanceWindowDetailsMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -189,14 +187,14 @@ type AutonomousExadataInfrastructureMaintenanceWindowDetailsObservation struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type AutonomousExadataInfrastructureMaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
 	// +kubebuilder:validation:Optional
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	// +kubebuilder:validation:Optional
@@ -204,7 +202,7 @@ type AutonomousExadataInfrastructureMaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
 	// +kubebuilder:validation:Optional
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	// +kubebuilder:validation:Optional
@@ -216,7 +214,7 @@ type AutonomousExadataInfrastructureMaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
 	// +kubebuilder:validation:Optional
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	// +kubebuilder:validation:Optional
@@ -235,7 +233,7 @@ type AutonomousExadataInfrastructureMaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
 	// +kubebuilder:validation:Optional
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type AutonomousExadataInfrastructureMaintenanceWindowInitParameters struct {
@@ -256,13 +254,13 @@ type AutonomousExadataInfrastructureMaintenanceWindowMonthsParameters struct {
 type AutonomousExadataInfrastructureMaintenanceWindowObservation struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []AutonomousExadataInfrastructureMaintenanceWindowDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -271,7 +269,7 @@ type AutonomousExadataInfrastructureMaintenanceWindowObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []AutonomousExadataInfrastructureMaintenanceWindowMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -285,7 +283,7 @@ type AutonomousExadataInfrastructureMaintenanceWindowObservation struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type AutonomousExadataInfrastructureMaintenanceWindowParameters struct {
@@ -302,8 +300,7 @@ type AutonomousExadataInfrastructureObservation struct {
 	CreateAsync *bool `json:"createAsync,omitempty" tf:"create_async,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the Autonomous Exadata Infrastructure. It does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -312,8 +309,7 @@ type AutonomousExadataInfrastructureObservation struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The host name for the Autonomous Exadata Infrastructure node.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -386,8 +382,7 @@ type AutonomousExadataInfrastructureParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the Autonomous Exadata Infrastructure. It does not have to be unique.
 	// +kubebuilder:validation:Optional
@@ -399,8 +394,7 @@ type AutonomousExadataInfrastructureParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The Oracle license model that applies to all the databases in the Autonomous Exadata Infrastructure. The default is BRING_YOUR_OWN_LICENSE.
 	// +kubebuilder:validation:Optional

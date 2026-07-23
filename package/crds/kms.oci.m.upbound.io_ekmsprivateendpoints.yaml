@@ -156,7 +156,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the EKMS private endpoint
                       resource being created.
@@ -172,10 +171,10 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   port:
                     description: The port of the external key manager system
-                    type: number
+                    format: int64
+                    type: integer
                   subnetId:
                     description: The OCID of subnet in which the EKMS private endpoint
                       is to be created
@@ -370,7 +369,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the EKMS private endpoint
                       resource being created.
@@ -386,10 +384,10 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   port:
                     description: The port of the external key manager system
-                    type: number
+                    format: int64
+                    type: integer
                   subnetId:
                     description: The OCID of subnet in which the EKMS private endpoint
                       is to be created
@@ -567,7 +565,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Display name of the EKMS private endpoint
                       resource being created.
@@ -583,7 +580,6 @@ spec:
                       without any predefined name, type, or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Unique identifier that is immutable
                     type: string
@@ -594,7 +590,8 @@ spec:
                     type: string
                   port:
                     description: The port of the external key manager system
-                    type: number
+                    format: int64
+                    type: integer
                   privateEndpointIp:
                     description: The IP address in the customer's VCN for the EKMS
                       private endpoint. This is taken from subnet

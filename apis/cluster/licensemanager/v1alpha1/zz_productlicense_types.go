@@ -66,15 +66,13 @@ type ProductLicenseInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Name of the product license.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The image details associated with the product license.
 	Images []ImagesInitParameters `json:"images,omitempty" tf:"images,omitempty"`
@@ -92,21 +90,19 @@ type ProductLicenseInitParameters struct {
 type ProductLicenseObservation struct {
 
 	// The number of active license records associated with the product license.
-	ActiveLicenseRecordCount *float64 `json:"activeLicenseRecordCount,omitempty" tf:"active_license_record_count,omitempty"`
+	ActiveLicenseRecordCount *int64 `json:"activeLicenseRecordCount,omitempty" tf:"active_license_record_count,omitempty"`
 
 	// The compartment OCID where product licenses are created.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Name of the product license.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The product license OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -136,8 +132,7 @@ type ProductLicenseObservation struct {
 	StatusDescription *string `json:"statusDescription,omitempty" tf:"status_description,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the product license was created. An RFC 3339-formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -146,10 +141,10 @@ type ProductLicenseObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// The total number of licenses available for the product license, calculated by adding up all the license counts for active license records associated with the product license.
-	TotalActiveLicenseUnitCount *float64 `json:"totalActiveLicenseUnitCount,omitempty" tf:"total_active_license_unit_count,omitempty"`
+	TotalActiveLicenseUnitCount *int64 `json:"totalActiveLicenseUnitCount,omitempty" tf:"total_active_license_unit_count,omitempty"`
 
 	// The number of license records associated with the product license.
-	TotalLicenseRecordCount *float64 `json:"totalLicenseRecordCount,omitempty" tf:"total_license_record_count,omitempty"`
+	TotalLicenseRecordCount *int64 `json:"totalLicenseRecordCount,omitempty" tf:"total_license_record_count,omitempty"`
 
 	// The number of license units consumed. Updated after each allocation run.
 	TotalLicenseUnitsConsumed *float64 `json:"totalLicenseUnitsConsumed,omitempty" tf:"total_license_units_consumed,omitempty"`
@@ -175,8 +170,7 @@ type ProductLicenseParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Name of the product license.
 	// +kubebuilder:validation:Optional
@@ -184,8 +178,7 @@ type ProductLicenseParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The image details associated with the product license.
 	// +kubebuilder:validation:Optional

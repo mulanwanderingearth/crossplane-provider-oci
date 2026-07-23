@@ -155,7 +155,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   egressSecurityRules:
@@ -171,9 +170,11 @@ spec:
                           items:
                             properties:
                               code:
-                                type: number
+                                format: int64
+                                type: integer
                               type:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -184,16 +185,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -202,16 +207,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -222,7 +231,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   ingressSecurityRules:
                     items:
                       properties:
@@ -232,9 +240,11 @@ spec:
                           items:
                             properties:
                               code:
-                                type: number
+                                format: int64
+                                type: integer
                               type:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -249,16 +259,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -267,16 +281,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -381,7 +399,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   egressSecurityRules:
@@ -397,9 +414,11 @@ spec:
                           items:
                             properties:
                               code:
-                                type: number
+                                format: int64
+                                type: integer
                               type:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -410,16 +429,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -428,16 +451,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -448,7 +475,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   ingressSecurityRules:
                     items:
                       properties:
@@ -458,9 +484,11 @@ spec:
                           items:
                             properties:
                               code:
-                                type: number
+                                format: int64
+                                type: integer
                               type:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -475,16 +503,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -493,16 +525,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -616,7 +652,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   egressSecurityRules:
@@ -632,9 +667,11 @@ spec:
                           items:
                             properties:
                               code:
-                                type: number
+                                format: int64
+                                type: integer
                               type:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -645,16 +682,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -663,16 +704,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -683,7 +728,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   ingressSecurityRules:
@@ -695,9 +739,11 @@ spec:
                           items:
                             properties:
                               code:
-                                type: number
+                                format: int64
+                                type: integer
                               type:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -712,16 +758,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -730,16 +780,20 @@ spec:
                           items:
                             properties:
                               max:
-                                type: number
+                                format: int64
+                                type: integer
                               min:
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 items:
                                   properties:
                                     max:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object

@@ -38,7 +38,7 @@ type CloudDatabaseManagementInitParameters struct {
 	ManagementType *string `json:"managementType,omitempty" tf:"management_type,omitempty"`
 
 	// The port used to connect to the database.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The OCID of the private endpoint.
 	PrivateEndPointID *string `json:"privateEndPointId,omitempty" tf:"private_end_point_id,omitempty"`
@@ -83,7 +83,7 @@ type CloudDatabaseManagementObservation struct {
 	ManagementType *string `json:"managementType,omitempty" tf:"management_type,omitempty"`
 
 	// The port used to connect to the database.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The OCID of the private endpoint.
 	PrivateEndPointID *string `json:"privateEndPointId,omitempty" tf:"private_end_point_id,omitempty"`
@@ -131,7 +131,7 @@ type CloudDatabaseManagementParameters struct {
 
 	// The port used to connect to the database.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The OCID of the private endpoint.
 	// +kubebuilder:validation:Optional

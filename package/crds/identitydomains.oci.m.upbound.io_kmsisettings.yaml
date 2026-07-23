@@ -205,11 +205,13 @@ spec:
                   lastUsedValidityInDays:
                     description: (Updatable) Identifier represents duration in days
                       within which kmsi token must be used.
-                    type: number
+                    format: int64
+                    type: integer
                   maxAllowedSessions:
                     description: (Updatable) Identifier represents maximum KMSI sessions
                       allowed in the system.
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -254,7 +256,8 @@ spec:
                   tokenValidityInDays:
                     description: (Updatable) Identifier represents validity duration
                       in days.
-                    type: number
+                    format: int64
+                    type: integer
                   touPromptDisabled:
                     description: (Updatable) Identifier represents whether user is
                       prompted for ToU or not.
@@ -418,11 +421,13 @@ spec:
                   lastUsedValidityInDays:
                     description: (Updatable) Identifier represents duration in days
                       within which kmsi token must be used.
-                    type: number
+                    format: int64
+                    type: integer
                   maxAllowedSessions:
                     description: (Updatable) Identifier represents maximum KMSI sessions
                       allowed in the system.
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -467,7 +472,8 @@ spec:
                   tokenValidityInDays:
                     description: (Updatable) Identifier represents validity duration
                       in days.
-                    type: number
+                    format: int64
+                    type: integer
                   touPromptDisabled:
                     description: (Updatable) Identifier represents whether user is
                       prompted for ToU or not.
@@ -698,11 +704,13 @@ spec:
                   lastUsedValidityInDays:
                     description: (Updatable) Identifier represents duration in days
                       within which kmsi token must be used.
-                    type: number
+                    format: int64
+                    type: integer
                   maxAllowedSessions:
                     description: (Updatable) Identifier represents maximum KMSI sessions
                       allowed in the system.
-                    type: number
+                    format: int64
+                    type: integer
                   meta:
                     description: (Updatable) A complex attribute that contains resource
                       metadata. All sub-attributes are OPTIONAL.
@@ -783,7 +791,8 @@ spec:
                   tokenValidityInDays:
                     description: (Updatable) Identifier represents validity duration
                       in days.
-                    type: number
+                    format: int64
+                    type: integer
                   touPromptDisabled:
                     description: (Updatable) Identifier represents whether user is
                       prompted for ToU or not.

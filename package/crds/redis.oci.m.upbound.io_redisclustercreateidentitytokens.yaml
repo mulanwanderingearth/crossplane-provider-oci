@@ -65,12 +65,10 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   publicKey:
                     description: User public key pair
                     type: string
@@ -180,12 +178,10 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   publicKey:
                     description: User public key pair
                     type: string
@@ -357,12 +353,10 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   identityToken:

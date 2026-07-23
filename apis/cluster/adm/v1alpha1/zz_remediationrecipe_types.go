@@ -139,8 +139,7 @@ type RemediationRecipeInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A configuration to define the constraints when detecting vulnerable dependencies and recommending remediations.
 	DetectConfiguration []DetectConfigurationInitParameters `json:"detectConfiguration,omitempty" tf:"detect_configuration,omitempty"`
@@ -149,8 +148,7 @@ type RemediationRecipeInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Boolean indicating if a run should be automatically triggered once the knowledge base is updated.
 	IsRunTriggeredOnKbChange *bool `json:"isRunTriggeredOnKbChange,omitempty" tf:"is_run_triggered_on_kb_change,omitempty"`
@@ -187,8 +185,7 @@ type RemediationRecipeObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A configuration to define the constraints when detecting vulnerable dependencies and recommending remediations.
 	DetectConfiguration []DetectConfigurationObservation `json:"detectConfiguration,omitempty" tf:"detect_configuration,omitempty"`
@@ -197,8 +194,7 @@ type RemediationRecipeObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The Oracle Cloud Identifier (OCID) of the remediation recipe.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -219,8 +215,7 @@ type RemediationRecipeObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The creation date and time of the Remediation Recipe (formatted according to RFC3339).
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -249,8 +244,7 @@ type RemediationRecipeParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A configuration to define the constraints when detecting vulnerable dependencies and recommending remediations.
 	// +kubebuilder:validation:Optional
@@ -262,8 +256,7 @@ type RemediationRecipeParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Boolean indicating if a run should be automatically triggered once the knowledge base is updated.
 	// +kubebuilder:validation:Optional
@@ -442,8 +435,7 @@ type ScmConfigurationParameters struct {
 type VerifyConfigurationInitParameters struct {
 
 	// (Applicable when build_service_type=GITHUB_ACTIONS | GITLAB_PIPELINE | JENKINS_PIPELINE | OCI_DEVOPS_BUILD) (Updatable) Additional key-value pairs passed as parameters to the build service when running an experiment.
-	// +mapType=granular
-	AdditionalParameters map[string]*string `json:"additionalParameters,omitempty" tf:"additional_parameters,omitempty"`
+	AdditionalParameters map[string]string `json:"additionalParameters,omitempty" tf:"additional_parameters,omitempty"`
 
 	// (Updatable) The type of Build Service.
 	BuildServiceType *string `json:"buildServiceType,omitempty" tf:"build_service_type,omitempty"`
@@ -515,8 +507,7 @@ type VerifyConfigurationInitParameters struct {
 type VerifyConfigurationObservation struct {
 
 	// (Applicable when build_service_type=GITHUB_ACTIONS | GITLAB_PIPELINE | JENKINS_PIPELINE | OCI_DEVOPS_BUILD) (Updatable) Additional key-value pairs passed as parameters to the build service when running an experiment.
-	// +mapType=granular
-	AdditionalParameters map[string]*string `json:"additionalParameters,omitempty" tf:"additional_parameters,omitempty"`
+	AdditionalParameters map[string]string `json:"additionalParameters,omitempty" tf:"additional_parameters,omitempty"`
 
 	// (Updatable) The type of Build Service.
 	BuildServiceType *string `json:"buildServiceType,omitempty" tf:"build_service_type,omitempty"`
@@ -550,8 +541,7 @@ type VerifyConfigurationParameters struct {
 
 	// (Applicable when build_service_type=GITHUB_ACTIONS | GITLAB_PIPELINE | JENKINS_PIPELINE | OCI_DEVOPS_BUILD) (Updatable) Additional key-value pairs passed as parameters to the build service when running an experiment.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	AdditionalParameters map[string]*string `json:"additionalParameters,omitempty" tf:"additional_parameters,omitempty"`
+	AdditionalParameters map[string]string `json:"additionalParameters,omitempty" tf:"additional_parameters,omitempty"`
 
 	// (Updatable) The type of Build Service.
 	// +kubebuilder:validation:Optional

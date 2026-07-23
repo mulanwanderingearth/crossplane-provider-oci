@@ -17,8 +17,7 @@ import (
 type DigitalTwinAdapterInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the resource.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -43,8 +42,7 @@ type DigitalTwinAdapterInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Payload containing device-specific metadata and optional value mappings used to interpret or transform that metadata. This structure includes the device endpoint, the actual payload, and an optional envelope mapping that applies JQ expressions to extract or reshape the data as needed.
 	InboundEnvelope []InboundEnvelopeInitParameters `json:"inboundEnvelope,omitempty" tf:"inbound_envelope,omitempty"`
@@ -69,8 +67,7 @@ type DigitalTwinAdapterInitParameters struct {
 type DigitalTwinAdapterObservation struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the resource.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -85,8 +82,7 @@ type DigitalTwinAdapterObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -104,8 +100,7 @@ type DigitalTwinAdapterObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time when the resource was created, in the format defined by RFC 3339. Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -118,8 +113,7 @@ type DigitalTwinAdapterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the resource.
 	// +kubebuilder:validation:Optional
@@ -149,8 +143,7 @@ type DigitalTwinAdapterParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Payload containing device-specific metadata and optional value mappings used to interpret or transform that metadata. This structure includes the device endpoint, the actual payload, and an optional envelope mapping that applies JQ expressions to extract or reshape the data as needed.
 	// +kubebuilder:validation:Optional
@@ -262,8 +255,7 @@ type InboundRoutesInitParameters struct {
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) A set of key-value JQ expressions used to transform the incoming payload into a shape compatible with the digital twin model's context or schema.
-	// +mapType=granular
-	PayloadMapping map[string]*string `json:"payloadMapping,omitempty" tf:"payload_mapping,omitempty"`
+	PayloadMapping map[string]string `json:"payloadMapping,omitempty" tf:"payload_mapping,omitempty"`
 
 	// (Updatable) Reference payload structure template received from IoT device. This payload must specify its content type using the dataFormat property.
 	ReferencePayload []InboundRoutesReferencePayloadInitParameters `json:"referencePayload,omitempty" tf:"reference_payload,omitempty"`
@@ -278,8 +270,7 @@ type InboundRoutesObservation struct {
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) A set of key-value JQ expressions used to transform the incoming payload into a shape compatible with the digital twin model's context or schema.
-	// +mapType=granular
-	PayloadMapping map[string]*string `json:"payloadMapping,omitempty" tf:"payload_mapping,omitempty"`
+	PayloadMapping map[string]string `json:"payloadMapping,omitempty" tf:"payload_mapping,omitempty"`
 
 	// (Updatable) Reference payload structure template received from IoT device. This payload must specify its content type using the dataFormat property.
 	ReferencePayload []InboundRoutesReferencePayloadObservation `json:"referencePayload,omitempty" tf:"reference_payload,omitempty"`
@@ -297,8 +288,7 @@ type InboundRoutesParameters struct {
 
 	// (Updatable) A set of key-value JQ expressions used to transform the incoming payload into a shape compatible with the digital twin model's context or schema.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	PayloadMapping map[string]*string `json:"payloadMapping,omitempty" tf:"payload_mapping,omitempty"`
+	PayloadMapping map[string]string `json:"payloadMapping,omitempty" tf:"payload_mapping,omitempty"`
 
 	// (Updatable) Reference payload structure template received from IoT device. This payload must specify its content type using the dataFormat property.
 	// +kubebuilder:validation:Optional
@@ -308,8 +298,7 @@ type InboundRoutesParameters struct {
 type InboundRoutesReferencePayloadInitParameters struct {
 
 	// (Updatable) JSON raw data.
-	// +mapType=granular
-	Data map[string]*string `json:"data,omitempty" tf:"data,omitempty"`
+	Data map[string]string `json:"data,omitempty" tf:"data,omitempty"`
 
 	// (Updatable) Data format of the payload.
 	DataFormat *string `json:"dataFormat,omitempty" tf:"data_format,omitempty"`
@@ -318,8 +307,7 @@ type InboundRoutesReferencePayloadInitParameters struct {
 type InboundRoutesReferencePayloadObservation struct {
 
 	// (Updatable) JSON raw data.
-	// +mapType=granular
-	Data map[string]*string `json:"data,omitempty" tf:"data,omitempty"`
+	Data map[string]string `json:"data,omitempty" tf:"data,omitempty"`
 
 	// (Updatable) Data format of the payload.
 	DataFormat *string `json:"dataFormat,omitempty" tf:"data_format,omitempty"`
@@ -329,8 +317,7 @@ type InboundRoutesReferencePayloadParameters struct {
 
 	// (Updatable) JSON raw data.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Data map[string]*string `json:"data" tf:"data,omitempty"`
+	Data map[string]string `json:"data" tf:"data,omitempty"`
 
 	// (Updatable) Data format of the payload.
 	// +kubebuilder:validation:Optional
@@ -340,8 +327,7 @@ type InboundRoutesReferencePayloadParameters struct {
 type ReferencePayloadInitParameters struct {
 
 	// (Updatable) JSON raw data.
-	// +mapType=granular
-	Data map[string]*string `json:"data,omitempty" tf:"data,omitempty"`
+	Data map[string]string `json:"data,omitempty" tf:"data,omitempty"`
 
 	// (Updatable) Data format of the payload.
 	DataFormat *string `json:"dataFormat,omitempty" tf:"data_format,omitempty"`
@@ -350,8 +336,7 @@ type ReferencePayloadInitParameters struct {
 type ReferencePayloadObservation struct {
 
 	// (Updatable) JSON raw data.
-	// +mapType=granular
-	Data map[string]*string `json:"data,omitempty" tf:"data,omitempty"`
+	Data map[string]string `json:"data,omitempty" tf:"data,omitempty"`
 
 	// (Updatable) Data format of the payload.
 	DataFormat *string `json:"dataFormat,omitempty" tf:"data_format,omitempty"`
@@ -361,8 +346,7 @@ type ReferencePayloadParameters struct {
 
 	// (Updatable) JSON raw data.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Data map[string]*string `json:"data" tf:"data,omitempty"`
+	Data map[string]string `json:"data" tf:"data,omitempty"`
 
 	// (Updatable) Data format of the payload.
 	// +kubebuilder:validation:Optional

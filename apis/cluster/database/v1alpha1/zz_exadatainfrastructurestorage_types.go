@@ -75,7 +75,7 @@ type ExadataInfrastructureStorageInitParameters struct {
 	// +kubebuilder:validation:Optional
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	Contacts []ExadataInfrastructureStorageContactsInitParameters `json:"contacts,omitempty" tf:"contacts,omitempty"`
 
@@ -83,15 +83,13 @@ type ExadataInfrastructureStorageInitParameters struct {
 
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	ExadataInfrastructureID *string `json:"exadataInfrastructureId,omitempty" tf:"exadata_infrastructure_id,omitempty"`
 
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	Gateway *string `json:"gateway,omitempty" tf:"gateway,omitempty"`
 
@@ -105,7 +103,7 @@ type ExadataInfrastructureStorageInitParameters struct {
 
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
-	StorageCount *float64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
+	StorageCount *int64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
 
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`
 }
@@ -127,15 +125,15 @@ type ExadataInfrastructureStorageMaintenanceWindowDaysOfWeekParameters struct {
 type ExadataInfrastructureStorageMaintenanceWindowInitParameters struct {
 	DaysOfWeek []ExadataInfrastructureStorageMaintenanceWindowDaysOfWeekInitParameters `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	Months []ExadataInfrastructureStorageMaintenanceWindowMonthsInitParameters `json:"months,omitempty" tf:"months,omitempty"`
 
 	Preference *string `json:"preference,omitempty" tf:"preference,omitempty"`
 
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type ExadataInfrastructureStorageMaintenanceWindowMonthsInitParameters struct {
@@ -155,15 +153,15 @@ type ExadataInfrastructureStorageMaintenanceWindowMonthsParameters struct {
 type ExadataInfrastructureStorageMaintenanceWindowObservation struct {
 	DaysOfWeek []ExadataInfrastructureStorageMaintenanceWindowDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	Months []ExadataInfrastructureStorageMaintenanceWindowMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
 
 	Preference *string `json:"preference,omitempty" tf:"preference,omitempty"`
 
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type ExadataInfrastructureStorageMaintenanceWindowParameters struct {
@@ -172,10 +170,10 @@ type ExadataInfrastructureStorageMaintenanceWindowParameters struct {
 	DaysOfWeek []ExadataInfrastructureStorageMaintenanceWindowDaysOfWeekParameters `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Months []ExadataInfrastructureStorageMaintenanceWindowMonthsParameters `json:"months,omitempty" tf:"months,omitempty"`
@@ -184,15 +182,15 @@ type ExadataInfrastructureStorageMaintenanceWindowParameters struct {
 	Preference *string `json:"preference" tf:"preference,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type ExadataInfrastructureStorageObservation struct {
-	ActivatedStorageCount *float64 `json:"activatedStorageCount,omitempty" tf:"activated_storage_count,omitempty"`
+	ActivatedStorageCount *int64 `json:"activatedStorageCount,omitempty" tf:"activated_storage_count,omitempty"`
 
 	ActivationFile *string `json:"activationFile,omitempty" tf:"activation_file,omitempty"`
 
-	AdditionalStorageCount *float64 `json:"additionalStorageCount,omitempty" tf:"additional_storage_count,omitempty"`
+	AdditionalStorageCount *int64 `json:"additionalStorageCount,omitempty" tf:"additional_storage_count,omitempty"`
 
 	AdminNetworkCidr *string `json:"adminNetworkCidr,omitempty" tf:"admin_network_cidr,omitempty"`
 
@@ -202,31 +200,29 @@ type ExadataInfrastructureStorageObservation struct {
 
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	Contacts []ExadataInfrastructureStorageContactsObservation `json:"contacts,omitempty" tf:"contacts,omitempty"`
 
 	CorporateProxy *string `json:"corporateProxy,omitempty" tf:"corporate_proxy,omitempty"`
 
-	CpusEnabled *float64 `json:"cpusEnabled,omitempty" tf:"cpus_enabled,omitempty"`
+	CpusEnabled *int64 `json:"cpusEnabled,omitempty" tf:"cpus_enabled,omitempty"`
 
 	CsiNumber *string `json:"csiNumber,omitempty" tf:"csi_number,omitempty"`
 
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
 	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	ExadataInfrastructureID *string `json:"exadataInfrastructureId,omitempty" tf:"exadata_infrastructure_id,omitempty"`
 
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	Gateway *string `json:"gateway,omitempty" tf:"gateway,omitempty"`
 
@@ -240,15 +236,15 @@ type ExadataInfrastructureStorageObservation struct {
 
 	MaintenanceWindow []ExadataInfrastructureStorageMaintenanceWindowObservation `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
 
-	MaxCPUCount *float64 `json:"maxCpuCount,omitempty" tf:"max_cpu_count,omitempty"`
+	MaxCPUCount *int64 `json:"maxCpuCount,omitempty" tf:"max_cpu_count,omitempty"`
 
-	MaxDBNodeStorageInGbs *float64 `json:"maxDbNodeStorageInGbs,omitempty" tf:"max_db_node_storage_in_gbs,omitempty"`
+	MaxDBNodeStorageInGbs *int64 `json:"maxDbNodeStorageInGbs,omitempty" tf:"max_db_node_storage_in_gbs,omitempty"`
 
 	MaxDataStorageInTbs *float64 `json:"maxDataStorageInTbs,omitempty" tf:"max_data_storage_in_tbs,omitempty"`
 
-	MaxMemoryInGbs *float64 `json:"maxMemoryInGbs,omitempty" tf:"max_memory_in_gbs,omitempty"`
+	MaxMemoryInGbs *int64 `json:"maxMemoryInGbs,omitempty" tf:"max_memory_in_gbs,omitempty"`
 
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	Netmask *string `json:"netmask,omitempty" tf:"netmask,omitempty"`
 
@@ -258,7 +254,7 @@ type ExadataInfrastructureStorageObservation struct {
 
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
-	StorageCount *float64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
+	StorageCount *int64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
 
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
@@ -292,7 +288,7 @@ type ExadataInfrastructureStorageParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// +kubebuilder:validation:Optional
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Contacts []ExadataInfrastructureStorageContactsParameters `json:"contacts,omitempty" tf:"contacts,omitempty"`
@@ -304,8 +300,7 @@ type ExadataInfrastructureStorageParameters struct {
 	DNSServer []*string `json:"dnsServer,omitempty" tf:"dns_server,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -314,8 +309,7 @@ type ExadataInfrastructureStorageParameters struct {
 	ExadataInfrastructureID *string `json:"exadataInfrastructureId,omitempty" tf:"exadata_infrastructure_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Gateway *string `json:"gateway,omitempty" tf:"gateway,omitempty"`
@@ -336,7 +330,7 @@ type ExadataInfrastructureStorageParameters struct {
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	StorageCount *float64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
+	StorageCount *int64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`

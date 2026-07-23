@@ -218,7 +218,7 @@ type SecretGenerationContextInitParameters struct {
 	GenerationType *string `json:"generationType,omitempty" tf:"generation_type,omitempty"`
 
 	// (Applicable when generation_type=PASSPHRASE) (Updatable) Length of the passphrase to be generated
-	PassphraseLength *float64 `json:"passphraseLength,omitempty" tf:"passphrase_length,omitempty"`
+	PassphraseLength *int64 `json:"passphraseLength,omitempty" tf:"passphrase_length,omitempty"`
 
 	// (Updatable) SecretTemplate captures structure in which customer wants to store secrets. This is optional and a default structure is available for each secret type.  The template can have any structure with static values that are not generated. Within the template, you can insert predefined placeholders to store secrets.  These placeholders are later replaced with the generated content and saved as a Base64 encoded content.
 	SecretTemplate *string `json:"secretTemplate,omitempty" tf:"secret_template,omitempty"`
@@ -233,7 +233,7 @@ type SecretGenerationContextObservation struct {
 	GenerationType *string `json:"generationType,omitempty" tf:"generation_type,omitempty"`
 
 	// (Applicable when generation_type=PASSPHRASE) (Updatable) Length of the passphrase to be generated
-	PassphraseLength *float64 `json:"passphraseLength,omitempty" tf:"passphrase_length,omitempty"`
+	PassphraseLength *int64 `json:"passphraseLength,omitempty" tf:"passphrase_length,omitempty"`
 
 	// (Updatable) SecretTemplate captures structure in which customer wants to store secrets. This is optional and a default structure is available for each secret type.  The template can have any structure with static values that are not generated. Within the template, you can insert predefined placeholders to store secrets.  These placeholders are later replaced with the generated content and saved as a Base64 encoded content.
 	SecretTemplate *string `json:"secretTemplate,omitempty" tf:"secret_template,omitempty"`
@@ -251,7 +251,7 @@ type SecretGenerationContextParameters struct {
 
 	// (Applicable when generation_type=PASSPHRASE) (Updatable) Length of the passphrase to be generated
 	// +kubebuilder:validation:Optional
-	PassphraseLength *float64 `json:"passphraseLength,omitempty" tf:"passphrase_length,omitempty"`
+	PassphraseLength *int64 `json:"passphraseLength,omitempty" tf:"passphrase_length,omitempty"`
 
 	// (Updatable) SecretTemplate captures structure in which customer wants to store secrets. This is optional and a default structure is available for each secret type.  The template can have any structure with static values that are not generated. Within the template, you can insert predefined placeholders to store secrets.  These placeholders are later replaced with the generated content and saved as a Base64 encoded content.
 	// +kubebuilder:validation:Optional
@@ -273,8 +273,7 @@ type SecretInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A brief description of the secret. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -283,8 +282,7 @@ type SecretInitParameters struct {
 	EnableAutoGeneration *bool `json:"enableAutoGeneration,omitempty" tf:"enable_auto_generation,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the master encryption key that is used to encrypt the secret. You must specify a symmetric key to encrypt the secret during import to the vault. You cannot encrypt secrets with asymmetric keys. Furthermore, the key must exist in the vault that you specify.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -300,8 +298,7 @@ type SecretInitParameters struct {
 	KeyIDSelector *v1.Selector `json:"keyIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Additional metadata that you can use to provide context about how to use the secret during rotation or other administrative tasks. For example, for a secret that you use to connect to a database, the additional metadata might specify the connection endpoint and the connection string. Provide additional metadata as key-value pairs.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Updatable) Defines the configuration that enables cross-region secret replication.
 	ReplicationConfig []ReplicationConfigInitParameters `json:"replicationConfig,omitempty" tf:"replication_config,omitempty"`
@@ -353,8 +350,7 @@ type SecretObservation struct {
 	CurrentVersionNumber *string `json:"currentVersionNumber,omitempty" tf:"current_version_number,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A brief description of the secret. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -363,8 +359,7 @@ type SecretObservation struct {
 	EnableAutoGeneration *bool `json:"enableAutoGeneration,omitempty" tf:"enable_auto_generation,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the secret.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -385,8 +380,7 @@ type SecretObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// (Updatable) Additional metadata that you can use to provide context about how to use the secret during rotation or other administrative tasks. For example, for a secret that you use to connect to a database, the additional metadata might specify the connection endpoint and the connection string. Provide additional metadata as key-value pairs.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// A property indicating when the secret is scheduled to be rotated, expressed in RFC 3339 timestamp format. Example: 2019-04-03T21:10:29.600Z
 	NextRotationTime *string `json:"nextRotationTime,omitempty" tf:"next_rotation_time,omitempty"`
@@ -448,8 +442,7 @@ type SecretParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A brief description of the secret. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -461,8 +454,7 @@ type SecretParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the master encryption key that is used to encrypt the secret. You must specify a symmetric key to encrypt the secret during import to the vault. You cannot encrypt secrets with asymmetric keys. Furthermore, the key must exist in the vault that you specify.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -480,8 +472,7 @@ type SecretParameters struct {
 
 	// (Updatable) Additional metadata that you can use to provide context about how to use the secret during rotation or other administrative tasks. For example, for a secret that you use to connect to a database, the additional metadata might specify the connection endpoint and the connection string. Provide additional metadata as key-value pairs.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Updatable) Defines the configuration that enables cross-region secret replication.
 	// +kubebuilder:validation:Optional

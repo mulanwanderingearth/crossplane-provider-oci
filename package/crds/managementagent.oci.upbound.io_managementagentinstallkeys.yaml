@@ -77,7 +77,8 @@ spec:
                 properties:
                   allowedKeyInstallCount:
                     description: Total number of install for this keys
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: Compartment Identifier
                     type: string
@@ -183,7 +184,8 @@ spec:
                 properties:
                   allowedKeyInstallCount:
                     description: Total number of install for this keys
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: Compartment Identifier
                     type: string
@@ -375,7 +377,8 @@ spec:
                 properties:
                   allowedKeyInstallCount:
                     description: Total number of install for this keys
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: Compartment Identifier
                     type: string
@@ -385,7 +388,8 @@ spec:
                     type: string
                   currentKeyInstallCount:
                     description: Total number of install for this keys
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
@@ -393,7 +397,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Management Agent install Key Name
                     type: string
@@ -404,7 +407,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Agent install Key identifier
                     type: string
@@ -430,7 +432,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time when Management Agent install Key was created.
                       An RFC3339 formatted date time string

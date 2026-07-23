@@ -416,7 +416,6 @@ spec:
                       type: string
                     description: Contains key of the error
                     type: object
-                    x-kubernetes-map-type: granular
                   fileName:
                     description: Name of the zip file to be imported.
                     type: string
@@ -504,7 +503,8 @@ spec:
                     type: string
                   totalImportedObjectCount:
                     description: Number of objects that are imported.
-                    type: number
+                    format: int64
+                    type: integer
                   workspaceId:
                     description: The workspace ID.
                     type: string

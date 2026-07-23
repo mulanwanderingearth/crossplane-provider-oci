@@ -249,7 +249,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A human readable description of the Database
                       Tools MCP toolset.
@@ -265,7 +264,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generativeAiSemanticStoreId:
                     description: (Updatable) The OCID of the related Generative AI
                       Semantic Store.
@@ -541,7 +539,8 @@ spec:
                     type: array
                   version:
                     description: (Updatable) The MCP toolset version
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -744,7 +743,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A human readable description of the Database
                       Tools MCP toolset.
@@ -760,7 +758,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generativeAiSemanticStoreId:
                     description: (Updatable) The OCID of the related Generative AI
                       Semantic Store.
@@ -1036,7 +1033,8 @@ spec:
                     type: array
                   version:
                     description: (Updatable) The MCP toolset version
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -1141,7 +1139,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A human readable description of the Database
                       Tools MCP toolset.
@@ -1157,7 +1154,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generativeAiSemanticStoreId:
                     description: (Updatable) The OCID of the related Generative AI
                       Semantic Store.
@@ -1233,7 +1229,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the lock was created.
                     type: string
@@ -1300,7 +1295,8 @@ spec:
                     type: array
                   version:
                     description: (Updatable) The MCP toolset version
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

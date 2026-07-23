@@ -60,7 +60,7 @@ func (in *ConfigurationInitParameters) DeepCopyInto(out *ConfigurationInitParame
 	}
 	if in.RetentionPeriodDays != nil {
 		in, out := &in.RetentionPeriodDays, &out.RetentionPeriodDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -122,7 +122,7 @@ func (in *ConfigurationObservation) DeepCopyInto(out *ConfigurationObservation) 
 	}
 	if in.RetentionPeriodDays != nil {
 		in, out := &in.RetentionPeriodDays, &out.RetentionPeriodDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -157,7 +157,7 @@ func (in *ConfigurationParameters) DeepCopyInto(out *ConfigurationParameters) {
 	}
 	if in.RetentionPeriodDays != nil {
 		in, out := &in.RetentionPeriodDays, &out.RetentionPeriodDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

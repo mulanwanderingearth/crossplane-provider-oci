@@ -81,7 +81,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   externalAsmId:
                     description: The OCID of the external ASM.
                     type: string
@@ -172,7 +171,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -194,7 +192,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   externalAsmId:
                     description: The OCID of the external ASM.
                     type: string
@@ -285,7 +282,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -387,7 +383,6 @@ spec:
                     description: 'The additional details of the external ASM defined
                       in {"key": "value"} format. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   compartmentId:
                     description: The OCID of the compartment.
                     type: string
@@ -401,7 +396,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the external ASM. The
                       name does not have to be unique.
@@ -424,7 +418,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gridHome:
                     description: The directory in which ASM is installed. This is
                       the same directory in which Oracle Grid Infrastructure is installed.
@@ -490,7 +483,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the external ASM was created.
                     type: string

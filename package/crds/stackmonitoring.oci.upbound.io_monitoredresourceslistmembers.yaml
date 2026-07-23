@@ -81,7 +81,8 @@ spec:
                   limitLevel:
                     description: The field which determines the depth of hierarchy
                       while searching for members.
-                    type: number
+                    format: int64
+                    type: integer
                   monitoredResourceId:
                     description: The OCID of monitored resource.
                     type: string
@@ -181,7 +182,8 @@ spec:
                   limitLevel:
                     description: The field which determines the depth of hierarchy
                       while searching for members.
-                    type: number
+                    format: int64
+                    type: integer
                   monitoredResourceId:
                     description: The OCID of monitored resource.
                     type: string
@@ -375,7 +377,6 @@ spec:
                             predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         externalId:
                           description: External resource is any Oracle Cloud Infrastructure
                             resource identifier OCID which is not a Stack Monitoring
@@ -390,7 +391,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostName:
                           description: Monitored Resource Host Name.
                           type: string
@@ -431,13 +431,13 @@ spec:
                             keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                             "true"}'
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   limitLevel:
                     description: The field which determines the depth of hierarchy
                       while searching for members.
-                    type: number
+                    format: int64
+                    type: integer
                   monitoredResourceId:
                     description: The OCID of monitored resource.
                     type: string

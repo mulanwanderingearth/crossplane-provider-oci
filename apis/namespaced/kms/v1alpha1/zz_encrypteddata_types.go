@@ -17,8 +17,7 @@ import (
 type EncryptedDataInitParameters struct {
 
 	// Information that can be used to provide an encryption context for the encrypted data. The length of the string representation of the associated data must be fewer than 4096 characters.
-	// +mapType=granular
-	AssociatedData map[string]*string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
+	AssociatedData map[string]string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
 
 	// The service endpoint to perform cryptographic operations against. Cryptographic operations include 'Encrypt,' 'Decrypt,' and 'GenerateDataEncryptionKey' operations. see Vault Crypto endpoint.
 	CryptoEndpoint *string `json:"cryptoEndpoint,omitempty" tf:"crypto_endpoint,omitempty"`
@@ -52,8 +51,7 @@ type EncryptedDataInitParameters struct {
 	KeyVersionIDSelector *v1.NamespacedSelector `json:"keyVersionIdSelector,omitempty" tf:"-"`
 
 	// Information that provides context for audit logging. You can provide this additional data as key-value pairs to include in the audit logs when audit logging is enabled.
-	// +mapType=granular
-	LoggingContext map[string]*string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
+	LoggingContext map[string]string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
 
 	// The plaintext data to encrypt.
 	Plaintext *string `json:"plaintext,omitempty" tf:"plaintext,omitempty"`
@@ -62,8 +60,7 @@ type EncryptedDataInitParameters struct {
 type EncryptedDataObservation struct {
 
 	// Information that can be used to provide an encryption context for the encrypted data. The length of the string representation of the associated data must be fewer than 4096 characters.
-	// +mapType=granular
-	AssociatedData map[string]*string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
+	AssociatedData map[string]string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
 
 	// The encrypted data.
 	Ciphertext *string `json:"ciphertext,omitempty" tf:"ciphertext,omitempty"`
@@ -83,8 +80,7 @@ type EncryptedDataObservation struct {
 	KeyVersionID *string `json:"keyVersionId,omitempty" tf:"key_version_id,omitempty"`
 
 	// Information that provides context for audit logging. You can provide this additional data as key-value pairs to include in the audit logs when audit logging is enabled.
-	// +mapType=granular
-	LoggingContext map[string]*string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
+	LoggingContext map[string]string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
 
 	// The plaintext data to encrypt.
 	Plaintext *string `json:"plaintext,omitempty" tf:"plaintext,omitempty"`
@@ -94,8 +90,7 @@ type EncryptedDataParameters struct {
 
 	// Information that can be used to provide an encryption context for the encrypted data. The length of the string representation of the associated data must be fewer than 4096 characters.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	AssociatedData map[string]*string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
+	AssociatedData map[string]string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
 
 	// The service endpoint to perform cryptographic operations against. Cryptographic operations include 'Encrypt,' 'Decrypt,' and 'GenerateDataEncryptionKey' operations. see Vault Crypto endpoint.
 	// +kubebuilder:validation:Optional
@@ -134,8 +129,7 @@ type EncryptedDataParameters struct {
 
 	// Information that provides context for audit logging. You can provide this additional data as key-value pairs to include in the audit logs when audit logging is enabled.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	LoggingContext map[string]*string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
+	LoggingContext map[string]string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
 
 	// The plaintext data to encrypt.
 	// +kubebuilder:validation:Optional

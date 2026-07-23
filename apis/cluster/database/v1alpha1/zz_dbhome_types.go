@@ -17,9 +17,7 @@ type DbHomeDatabaseConnectionStringsInitParameters struct {
 }
 
 type DbHomeDatabaseConnectionStringsObservation struct {
-
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 
 	CdbDefault *string `json:"cdbDefault,omitempty" tf:"cdb_default,omitempty"`
 
@@ -161,7 +159,7 @@ type DbHomeDatabaseDBBackupConfigInitParameters struct {
 	BackupDestinationDetails []DbHomeDatabaseDBBackupConfigBackupDestinationDetailsInitParameters `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
@@ -188,7 +186,7 @@ type DbHomeDatabaseDBBackupConfigObservation struct {
 	BackupDestinationDetails []DbHomeDatabaseDBBackupConfigBackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
@@ -222,7 +220,7 @@ type DbHomeDatabaseDBBackupConfigParameters struct {
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) (Updatable) Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
 	// +kubebuilder:validation:Optional
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	// +kubebuilder:validation:Optional
@@ -365,15 +363,13 @@ type DbHomeDatabaseInitParameters struct {
 	DatabaseSoftwareImageIDSelector *v1.Selector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) Types of providers supported for managing database encryption keys
 	EncryptionKeyLocationDetails []DbHomeDatabaseEncryptionKeyLocationDetailsInitParameters `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -487,15 +483,13 @@ type DbHomeDatabaseObservation struct {
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) Types of providers supported for managing database encryption keys
 	EncryptionKeyLocationDetails []DbHomeDatabaseEncryptionKeyLocationDetailsObservation `json:"encryptionKeyLocationDetails,omitempty" tf:"encryption_key_location_details,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -616,8 +610,7 @@ type DbHomeDatabaseParameters struct {
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) Types of providers supported for managing database encryption keys
 	// +kubebuilder:validation:Optional
@@ -625,8 +618,7 @@ type DbHomeDatabaseParameters struct {
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when source=NONE | VM_CLUSTER_NEW) The OCID of the key container that is used as the master encryption key in database transparent data encryption (TDE) operations.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/kms/v1alpha1.Key
@@ -726,32 +718,32 @@ type DbHomeDatabaseParameters struct {
 type DbHomeDatabaseStorageSizeDetailsInitParameters struct {
 
 	// The DATA storage size, in gigabytes, that is applicable for the database.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The RECO storage size, in gigabytes, that is applicable for the database.
-	RecoStorageSizeInGbs *float64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
+	RecoStorageSizeInGbs *int64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
 }
 
 type DbHomeDatabaseStorageSizeDetailsObservation struct {
 
 	// The DATA storage size, in gigabytes, that is applicable for the database.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The RECO storage size, in gigabytes, that is applicable for the database.
-	RecoStorageSizeInGbs *float64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
+	RecoStorageSizeInGbs *int64 `json:"recoStorageSizeInGbs,omitempty" tf:"reco_storage_size_in_gbs,omitempty"`
 
-	RedoLogStorageSizeInGbs *float64 `json:"redoLogStorageSizeInGbs,omitempty" tf:"redo_log_storage_size_in_gbs,omitempty"`
+	RedoLogStorageSizeInGbs *int64 `json:"redoLogStorageSizeInGbs,omitempty" tf:"redo_log_storage_size_in_gbs,omitempty"`
 }
 
 type DbHomeDatabaseStorageSizeDetailsParameters struct {
 
 	// The DATA storage size, in gigabytes, that is applicable for the database.
 	// +kubebuilder:validation:Optional
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The RECO storage size, in gigabytes, that is applicable for the database.
 	// +kubebuilder:validation:Optional
-	RecoStorageSizeInGbs *float64 `json:"recoStorageSizeInGbs" tf:"reco_storage_size_in_gbs,omitempty"`
+	RecoStorageSizeInGbs *int64 `json:"recoStorageSizeInGbs" tf:"reco_storage_size_in_gbs,omitempty"`
 }
 
 type DbHomeInitParameters struct {
@@ -789,8 +781,7 @@ type DbHomeInitParameters struct {
 	DatabaseSoftwareImageIDSelector *v1.Selector `json:"databaseSoftwareImageIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the Database Home.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -798,8 +789,7 @@ type DbHomeInitParameters struct {
 	EnableDatabaseDelete *bool `json:"enableDatabaseDelete,omitempty" tf:"enable_database_delete,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Represents database home will be managed by oracle or customer
 	HomeType *string `json:"homeType,omitempty" tf:"home_type,omitempty"`
@@ -874,8 +864,7 @@ type DbHomeObservation struct {
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the Database Home.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -883,8 +872,7 @@ type DbHomeObservation struct {
 	EnableDatabaseDelete *bool `json:"enableDatabaseDelete,omitempty" tf:"enable_database_delete,omitempty"`
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Represents database home will be managed by oracle or customer
 	HomeType *string `json:"homeType,omitempty" tf:"home_type,omitempty"`
@@ -917,8 +905,7 @@ type DbHomeObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Database Home was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -967,8 +954,7 @@ type DbHomeParameters struct {
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the Database Home.
 	// +kubebuilder:validation:Optional
@@ -979,8 +965,7 @@ type DbHomeParameters struct {
 
 	// (Applicable when source=DB_BACKUP | NONE | VM_CLUSTER_BACKUP | VM_CLUSTER_NEW) (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Represents database home will be managed by oracle or customer
 	// +kubebuilder:validation:Optional

@@ -210,11 +210,13 @@ spec:
                     description: (Updatable) Indicates how many minutes to disable
                       account recovery for the user. The default value is 30 metric
                       minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   maxIncorrectAttempts:
                     description: (Updatable) Indicates the maximum number of failed
                       account recovery attempts allowed for the user.
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -406,11 +408,13 @@ spec:
                     description: (Updatable) Indicates how many minutes to disable
                       account recovery for the user. The default value is 30 metric
                       minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   maxIncorrectAttempts:
                     description: (Updatable) Indicates the maximum number of failed
                       account recovery attempts allowed for the user.
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -716,11 +720,13 @@ spec:
                     description: (Updatable) Indicates how many minutes to disable
                       account recovery for the user. The default value is 30 metric
                       minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   maxIncorrectAttempts:
                     description: (Updatable) Indicates the maximum number of failed
                       account recovery attempts allowed for the user.
-                    type: number
+                    format: int64
+                    type: integer
                   meta:
                     description: (Updatable) A complex attribute that contains resource
                       metadata. All sub-attributes are OPTIONAL.

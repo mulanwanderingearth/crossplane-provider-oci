@@ -42,15 +42,13 @@ type ComputeGpuMemoryFabricInitParameters struct {
 	ComputeGpuMemoryFabricIDSelector *v1.NamespacedSelector `json:"computeGpuMemoryFabricIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The preference object specified by customer. Contains customerDesiredFirmwareBundleId, fabricRecycleLevel.
 	MemoryFabricPreferences []MemoryFabricPreferencesInitParameters `json:"memoryFabricPreferences,omitempty" tf:"memory_fabric_preferences,omitempty"`
@@ -59,8 +57,7 @@ type ComputeGpuMemoryFabricInitParameters struct {
 type ComputeGpuMemoryFabricObservation struct {
 
 	// Additional data that can be exposed to the customer. Right now it will include the switch tray ids.
-	// +mapType=granular
-	AdditionalData map[string]*string `json:"additionalData,omitempty" tf:"additional_data,omitempty"`
+	AdditionalData map[string]string `json:"additionalData,omitempty" tf:"additional_data,omitempty"`
 
 	// The total number of available bare metal hosts located in this compute GPU memory fabric.
 	AvailableHostCount *string `json:"availableHostCount,omitempty" tf:"available_host_count,omitempty"`
@@ -87,8 +84,7 @@ type ComputeGpuMemoryFabricObservation struct {
 	CurrentFirmwareBundleID *string `json:"currentFirmwareBundleId,omitempty" tf:"current_firmware_bundle_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -103,8 +99,7 @@ type ComputeGpuMemoryFabricObservation struct {
 	FirmwareUpdateState *string `json:"firmwareUpdateState,omitempty" tf:"firmware_update_state,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The total number of healthy bare metal hosts located in this compute GPU memory fabric.
 	HealthyHostCount *string `json:"healthyHostCount,omitempty" tf:"healthy_host_count,omitempty"`
@@ -125,8 +120,7 @@ type ComputeGpuMemoryFabricObservation struct {
 	SwitchPlatformName *string `json:"switchPlatformName,omitempty" tf:"switch_platform_name,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The OCID for targeted firmware bundle
 	TargetFirmwareBundleID *string `json:"targetFirmwareBundleId,omitempty" tf:"target_firmware_bundle_id,omitempty"`
@@ -169,8 +163,7 @@ type ComputeGpuMemoryFabricParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -178,8 +171,7 @@ type ComputeGpuMemoryFabricParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The preference object specified by customer. Contains customerDesiredFirmwareBundleId, fabricRecycleLevel.
 	// +kubebuilder:validation:Optional

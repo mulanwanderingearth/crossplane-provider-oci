@@ -61,13 +61,15 @@ type CredentialDetailsParameters struct {
 }
 
 type PluggableDatabasePluggabledatabasemanagementsManagementConnectionStringsInitParameters struct {
+
+	// (Updatable) A required field when set to true calls enable action and when set to false calls disable action.
+	EnablePluggabledatabasemanagement *bool `json:"enablePluggabledatabasemanagement,omitempty" tf:"enable_pluggabledatabasemanagement,omitempty"`
 }
 
 type PluggableDatabasePluggabledatabasemanagementsManagementConnectionStringsObservation struct {
 
 	// All connection strings to use to connect to the pluggable database.
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 
 	// (Updatable) A required field when set to true calls enable action and when set to false calls disable action.
 	EnablePluggabledatabasemanagement *bool `json:"enablePluggabledatabasemanagement,omitempty" tf:"enable_pluggabledatabasemanagement,omitempty"`
@@ -80,6 +82,10 @@ type PluggableDatabasePluggabledatabasemanagementsManagementConnectionStringsObs
 }
 
 type PluggableDatabasePluggabledatabasemanagementsManagementConnectionStringsParameters struct {
+
+	// (Updatable) A required field when set to true calls enable action and when set to false calls disable action.
+	// +kubebuilder:validation:Optional
+	EnablePluggabledatabasemanagement *bool `json:"enablePluggabledatabasemanagement" tf:"enable_pluggabledatabasemanagement,omitempty"`
 }
 
 type PluggableDatabasePluggabledatabasemanagementsManagementInitParameters struct {
@@ -104,7 +110,7 @@ type PluggableDatabasePluggabledatabasemanagementsManagementInitParameters struc
 	PluggableDatabaseIDSelector *v1.NamespacedSelector `json:"pluggableDatabaseIdSelector,omitempty" tf:"-"`
 
 	// The port used to connect to the pluggable database.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The OCID of the private endpoint.
 	PrivateEndPointID *string `json:"privateEndPointId,omitempty" tf:"private_end_point_id,omitempty"`
@@ -147,15 +153,13 @@ type PluggableDatabasePluggabledatabasemanagementsManagementObservation struct {
 	CredentialDetails []CredentialDetailsObservation `json:"credentialDetails,omitempty" tf:"credential_details,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A required field when set to true calls enable action and when set to false calls disable action.
 	EnablePluggabledatabasemanagement *bool `json:"enablePluggabledatabasemanagement,omitempty" tf:"enable_pluggabledatabasemanagement,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the pluggable database.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -179,7 +183,7 @@ type PluggableDatabasePluggabledatabasemanagementsManagementObservation struct {
 	PluggableDatabaseManagementConfig []PluggableDatabasePluggabledatabasemanagementsManagementPluggableDatabaseManagementConfigObservation `json:"pluggableDatabaseManagementConfig,omitempty" tf:"pluggable_database_management_config,omitempty"`
 
 	// The port used to connect to the pluggable database.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The OCID of the private endpoint.
 	PrivateEndPointID *string `json:"privateEndPointId,omitempty" tf:"private_end_point_id,omitempty"`
@@ -229,7 +233,7 @@ type PluggableDatabasePluggabledatabasemanagementsManagementParameters struct {
 
 	// The port used to connect to the pluggable database.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The OCID of the private endpoint.
 	// +kubebuilder:validation:Optional
@@ -263,6 +267,9 @@ type PluggableDatabasePluggabledatabasemanagementsManagementParameters struct {
 }
 
 type PluggableDatabasePluggabledatabasemanagementsManagementPluggableDatabaseManagementConfigInitParameters struct {
+
+	// (Updatable) A required field when set to true calls enable action and when set to false calls disable action.
+	EnablePluggabledatabasemanagement *bool `json:"enablePluggabledatabasemanagement,omitempty" tf:"enable_pluggabledatabasemanagement,omitempty"`
 }
 
 type PluggableDatabasePluggabledatabasemanagementsManagementPluggableDatabaseManagementConfigObservation struct {
@@ -275,6 +282,10 @@ type PluggableDatabasePluggabledatabasemanagementsManagementPluggableDatabaseMan
 }
 
 type PluggableDatabasePluggabledatabasemanagementsManagementPluggableDatabaseManagementConfigParameters struct {
+
+	// (Updatable) A required field when set to true calls enable action and when set to false calls disable action.
+	// +kubebuilder:validation:Optional
+	EnablePluggabledatabasemanagement *bool `json:"enablePluggabledatabasemanagement" tf:"enable_pluggabledatabasemanagement,omitempty"`
 }
 
 // PluggableDatabasePluggabledatabasemanagementsManagementSpec defines the desired state of PluggableDatabasePluggabledatabasemanagementsManagement

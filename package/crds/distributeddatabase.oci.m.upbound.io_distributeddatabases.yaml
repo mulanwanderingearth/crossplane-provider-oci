@@ -92,11 +92,13 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The size of additional Flash Cache in percentage
                                   of High Capacity database storage.
-                                type: number
+                                format: int64
+                                type: integer
                               highCapacityDatabaseStorage:
                                 description: Total storage capacity in GB for vault
                                   storage.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         kmsKeyId:
@@ -290,11 +292,13 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The size of additional Flash Cache in percentage
                                         of High Capacity database storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     highCapacityDatabaseStorage:
                                       description: Total storage capacity in GB for
                                         vault storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionMode:
@@ -428,7 +432,8 @@ spec:
                                     enabledEcpuCount:
                                       description: The number of ECPUs to enable for
                                         an Exadata VM cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isDiagnosticsEventsEnabled:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         Indicates whether diagnostic collection is
@@ -672,12 +677,14 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The number of Total ECPUs for an Exadata VM
                                         cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     vmFileSystemStorageSize:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         File System Storage Size in GBs for Exadata
                                         VM cluster.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               vmClusterId:
@@ -994,7 +1001,8 @@ spec:
                               enabledEcpuCount:
                                 description: The number of ECPUs to enable for an
                                   Exadata VM cluster on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               isDiagnosticsEventsEnabled:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   Indicates whether diagnostic collection is enabled
@@ -1233,11 +1241,13 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The number of Total ECPUs for an Exadata VM cluster
                                   on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               vmFileSystemStorageSize:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   File System Storage Size in GBs for Exadata VM cluster.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         vmClusterId:
@@ -1332,7 +1342,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Change Db Backup Config. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   characterSet:
                     description: The character set for the database.
                     type: string
@@ -1342,7 +1353,8 @@ spec:
                       in any shardspace. Chunks is required to be provided for distributed
                       databases being created with SYSTEM shardingMethod. For USER
                       shardingMethod, chunks should not be set in create payload.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the Globally distributed
                       database compartment.
@@ -1434,7 +1446,8 @@ spec:
                   configureShardingTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Configure Sharding. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseVersion:
                     description: Oracle Database version for the shards and catalog
                       used in Globally distributed database.
@@ -1651,7 +1664,8 @@ spec:
                             removes old automatic backups that are created before
                             the window. When the value is updated, it is applied to
                             all existing automatic backups.
-                          type: number
+                          format: int64
+                          type: integer
                         remoteRegion:
                           description: The name of the remote region where the remote
                             automatic incremental backups will be stored. For information
@@ -1670,7 +1684,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name of the Globally distributed
                       database.
@@ -1679,7 +1692,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Download Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1687,12 +1701,12 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generateGsmCertificateSigningRequestTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   generateWalletPasswordSecretRef:
                     description: |-
                       A LocalSecretKeySelector is a reference to a secret key
@@ -1710,7 +1724,8 @@ spec:
                   generateWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Wallet. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   gsmSshPublicKey:
                     description: The SSH public key for Global service manager instances.
                     type: string
@@ -1719,7 +1734,8 @@ spec:
                       database. The listener port number has to be unique for a customer
                       tenancy across all distributed databases. Same port number should
                       not be re-used for any other distributed database.
-                    type: number
+                    format: int64
+                    type: integer
                   listenerPortTls:
                     description: The TLS listener port number for the Globally distributed
                       database. The TLS listener port number has to be unique for
@@ -1728,12 +1744,14 @@ spec:
                       For BASE_DB and EXADB_XS based distributed databases, tls is
                       not supported hence the listenerPortTls is not needed to be
                       provided in create payload.
-                    type: number
+                    format: int64
+                    type: integer
                   moveReplicationUnitTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Move Replication Unit. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   ncharacterSet:
                     description: The national character set for the database.
                     type: string
@@ -1742,13 +1760,15 @@ spec:
                       database. The onsPortLocal has to be unique for a customer tenancy
                       across all distributed databases. Same port number should not
                       be re-used for any other distributed database.
-                    type: number
+                    format: int64
+                    type: integer
                   onsPortRemote:
                     description: The ons remote port number for the Globally distributed
                       database. The onsPortRemote has to be unique for a customer
                       tenancy across all distributed databases. Same port number should
                       not be re-used for any other distributed database.
-                    type: number
+                    format: int64
+                    type: integer
                   patchOperations:
                     description: (Updatable)
                     items:
@@ -1780,12 +1800,14 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Recreate Failed Resource. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationFactor:
                     description: The Replication factor for RAFT replication based
                       Globally distributed database. Currently supported values are
                       3, 5 and 7.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationMethod:
                     description: The Replication method for Globally distributed database.
                       Use RAFT for Raft based replication. With RAFT replication,
@@ -1799,7 +1821,8 @@ spec:
                     description: The replication unit count for RAFT based distributed
                       database. For RAFT replication based Globally distributed database,
                       the value should be at least twice the number of shards.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPort:
                     description: The TCP Single Client Access Name (SCAN) port for
                       clusters created for Globally distributed database. The scanListenerPort
@@ -1807,7 +1830,8 @@ spec:
                       type NEW_VAULT_AND_CLUSTER. If shard and catalog have source
                       type NEW_VAULT_AND_CLUSTER and scanListenerPort is not provided
                       then the scanListenerPort will default to value 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   shardDetails:
                     description: Collection of shards for the Globally distributed
                       database.
@@ -1840,11 +1864,13 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The size of additional Flash Cache in percentage
                                   of High Capacity database storage.
-                                type: number
+                                format: int64
+                                type: integer
                               highCapacityDatabaseStorage:
                                 description: Total storage capacity in GB for vault
                                   storage.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         kmsKeyId:
@@ -2038,11 +2064,13 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The size of additional Flash Cache in percentage
                                         of High Capacity database storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     highCapacityDatabaseStorage:
                                       description: Total storage capacity in GB for
                                         vault storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionMode:
@@ -2176,7 +2204,8 @@ spec:
                                     enabledEcpuCount:
                                       description: The number of ECPUs to enable for
                                         an Exadata VM cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isDiagnosticsEventsEnabled:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         Indicates whether diagnostic collection is
@@ -2420,12 +2449,14 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The number of Total ECPUs for an Exadata VM
                                         cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     vmFileSystemStorageSize:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         File System Storage Size in GBs for Exadata
                                         VM cluster.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               vmClusterId:
@@ -2742,7 +2773,8 @@ spec:
                               enabledEcpuCount:
                                 description: The number of ECPUs to enable for an
                                   Exadata VM cluster on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               isDiagnosticsEventsEnabled:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   Indicates whether diagnostic collection is enabled
@@ -2981,11 +3013,13 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The number of Total ECPUs for an Exadata VM cluster
                                   on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               vmFileSystemStorageSize:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   File System Storage Size in GBs for Exadata VM cluster.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         vmClusterId:
@@ -3082,7 +3116,8 @@ spec:
                   startDatabaseTrigger:
                     description: Increment this value to trigger StartDistributedDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: (Updatable) The target state for the Distributed
                       Database. Could be set to ACTIVE or INACTIVE.
@@ -3090,12 +3125,14 @@ spec:
                   stopDatabaseTrigger:
                     description: Increment this value to trigger StopDistributedDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   uploadSignedCertificateAndGenerateWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Upload Signed Certificate And Generate Wallet. Could
                       be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   validateNetworkDetails:
                     items:
                       properties:
@@ -3112,7 +3149,8 @@ spec:
                   validateNetworkTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Network. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -3159,11 +3197,13 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The size of additional Flash Cache in percentage
                                   of High Capacity database storage.
-                                type: number
+                                format: int64
+                                type: integer
                               highCapacityDatabaseStorage:
                                 description: Total storage capacity in GB for vault
                                   storage.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         kmsKeyId:
@@ -3357,11 +3397,13 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The size of additional Flash Cache in percentage
                                         of High Capacity database storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     highCapacityDatabaseStorage:
                                       description: Total storage capacity in GB for
                                         vault storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionMode:
@@ -3495,7 +3537,8 @@ spec:
                                     enabledEcpuCount:
                                       description: The number of ECPUs to enable for
                                         an Exadata VM cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isDiagnosticsEventsEnabled:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         Indicates whether diagnostic collection is
@@ -3739,12 +3782,14 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The number of Total ECPUs for an Exadata VM
                                         cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     vmFileSystemStorageSize:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         File System Storage Size in GBs for Exadata
                                         VM cluster.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               vmClusterId:
@@ -4061,7 +4106,8 @@ spec:
                               enabledEcpuCount:
                                 description: The number of ECPUs to enable for an
                                   Exadata VM cluster on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               isDiagnosticsEventsEnabled:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   Indicates whether diagnostic collection is enabled
@@ -4300,11 +4346,13 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The number of Total ECPUs for an Exadata VM cluster
                                   on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               vmFileSystemStorageSize:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   File System Storage Size in GBs for Exadata VM cluster.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         vmClusterId:
@@ -4401,7 +4449,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Change Db Backup Config. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   characterSet:
                     description: The character set for the database.
                     type: string
@@ -4411,7 +4460,8 @@ spec:
                       in any shardspace. Chunks is required to be provided for distributed
                       databases being created with SYSTEM shardingMethod. For USER
                       shardingMethod, chunks should not be set in create payload.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the Globally distributed
                       database compartment.
@@ -4503,7 +4553,8 @@ spec:
                   configureShardingTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Configure Sharding. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseVersion:
                     description: Oracle Database version for the shards and catalog
                       used in Globally distributed database.
@@ -4720,7 +4771,8 @@ spec:
                             removes old automatic backups that are created before
                             the window. When the value is updated, it is applied to
                             all existing automatic backups.
-                          type: number
+                          format: int64
+                          type: integer
                         remoteRegion:
                           description: The name of the remote region where the remote
                             automatic incremental backups will be stored. For information
@@ -4739,7 +4791,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name of the Globally distributed
                       database.
@@ -4748,7 +4799,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Download Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -4756,12 +4808,12 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generateGsmCertificateSigningRequestTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   generateWalletPasswordSecretRef:
                     description: |-
                       A LocalSecretKeySelector is a reference to a secret key
@@ -4779,7 +4831,8 @@ spec:
                   generateWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Wallet. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   gsmSshPublicKey:
                     description: The SSH public key for Global service manager instances.
                     type: string
@@ -4788,7 +4841,8 @@ spec:
                       database. The listener port number has to be unique for a customer
                       tenancy across all distributed databases. Same port number should
                       not be re-used for any other distributed database.
-                    type: number
+                    format: int64
+                    type: integer
                   listenerPortTls:
                     description: The TLS listener port number for the Globally distributed
                       database. The TLS listener port number has to be unique for
@@ -4797,12 +4851,14 @@ spec:
                       For BASE_DB and EXADB_XS based distributed databases, tls is
                       not supported hence the listenerPortTls is not needed to be
                       provided in create payload.
-                    type: number
+                    format: int64
+                    type: integer
                   moveReplicationUnitTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Move Replication Unit. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   ncharacterSet:
                     description: The national character set for the database.
                     type: string
@@ -4811,13 +4867,15 @@ spec:
                       database. The onsPortLocal has to be unique for a customer tenancy
                       across all distributed databases. Same port number should not
                       be re-used for any other distributed database.
-                    type: number
+                    format: int64
+                    type: integer
                   onsPortRemote:
                     description: The ons remote port number for the Globally distributed
                       database. The onsPortRemote has to be unique for a customer
                       tenancy across all distributed databases. Same port number should
                       not be re-used for any other distributed database.
-                    type: number
+                    format: int64
+                    type: integer
                   patchOperations:
                     description: (Updatable)
                     items:
@@ -4849,12 +4907,14 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Recreate Failed Resource. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationFactor:
                     description: The Replication factor for RAFT replication based
                       Globally distributed database. Currently supported values are
                       3, 5 and 7.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationMethod:
                     description: The Replication method for Globally distributed database.
                       Use RAFT for Raft based replication. With RAFT replication,
@@ -4868,7 +4928,8 @@ spec:
                     description: The replication unit count for RAFT based distributed
                       database. For RAFT replication based Globally distributed database,
                       the value should be at least twice the number of shards.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPort:
                     description: The TCP Single Client Access Name (SCAN) port for
                       clusters created for Globally distributed database. The scanListenerPort
@@ -4876,7 +4937,8 @@ spec:
                       type NEW_VAULT_AND_CLUSTER. If shard and catalog have source
                       type NEW_VAULT_AND_CLUSTER and scanListenerPort is not provided
                       then the scanListenerPort will default to value 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   shardDetails:
                     description: Collection of shards for the Globally distributed
                       database.
@@ -4909,11 +4971,13 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The size of additional Flash Cache in percentage
                                   of High Capacity database storage.
-                                type: number
+                                format: int64
+                                type: integer
                               highCapacityDatabaseStorage:
                                 description: Total storage capacity in GB for vault
                                   storage.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         kmsKeyId:
@@ -5107,11 +5171,13 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The size of additional Flash Cache in percentage
                                         of High Capacity database storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     highCapacityDatabaseStorage:
                                       description: Total storage capacity in GB for
                                         vault storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               protectionMode:
@@ -5245,7 +5311,8 @@ spec:
                                     enabledEcpuCount:
                                       description: The number of ECPUs to enable for
                                         an Exadata VM cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isDiagnosticsEventsEnabled:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         Indicates whether diagnostic collection is
@@ -5489,12 +5556,14 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The number of Total ECPUs for an Exadata VM
                                         cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     vmFileSystemStorageSize:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         File System Storage Size in GBs for Exadata
                                         VM cluster.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               vmClusterId:
@@ -5811,7 +5880,8 @@ spec:
                               enabledEcpuCount:
                                 description: The number of ECPUs to enable for an
                                   Exadata VM cluster on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               isDiagnosticsEventsEnabled:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   Indicates whether diagnostic collection is enabled
@@ -6050,11 +6120,13 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The number of Total ECPUs for an Exadata VM cluster
                                   on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               vmFileSystemStorageSize:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   File System Storage Size in GBs for Exadata VM cluster.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         vmClusterId:
@@ -6153,7 +6225,8 @@ spec:
                   startDatabaseTrigger:
                     description: Increment this value to trigger StartDistributedDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: (Updatable) The target state for the Distributed
                       Database. Could be set to ACTIVE or INACTIVE.
@@ -6161,12 +6234,14 @@ spec:
                   stopDatabaseTrigger:
                     description: Increment this value to trigger StopDistributedDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   uploadSignedCertificateAndGenerateWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Upload Signed Certificate And Generate Wallet. Could
                       be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   validateNetworkDetails:
                     items:
                       properties:
@@ -6183,7 +6258,8 @@ spec:
                   validateNetworkTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Network. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -6325,7 +6401,8 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The size of additional Flash Cache in percentage
                                   of High Capacity database storage.
-                                type: number
+                                format: int64
+                                type: integer
                               dbStorageVaultId:
                                 description: The OCID of the Database Vault Storage.
                                 type: string
@@ -6336,7 +6413,8 @@ spec:
                               highCapacityDatabaseStorage:
                                 description: Total storage capacity in GB for vault
                                   storage.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         kmsKeyId:
@@ -6389,7 +6467,8 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The size of additional Flash Cache in percentage
                                         of High Capacity database storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     dbStorageVaultId:
                                       description: The OCID of the Database Vault
                                         Storage.
@@ -6401,7 +6480,8 @@ spec:
                                     highCapacityDatabaseStorage:
                                       description: Total storage capacity in GB for
                                         vault storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               metadata:
@@ -6415,7 +6495,6 @@ spec:
                                       description: The map containing key-value pair
                                         of additional metadata.
                                       type: object
-                                      x-kubernetes-map-type: granular
                                   type: object
                                 type: array
                               protectionMode:
@@ -6488,7 +6567,8 @@ spec:
                                     enabledEcpuCount:
                                       description: The number of ECPUs to enable for
                                         an Exadata VM cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isDiagnosticsEventsEnabled:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         Indicates whether diagnostic collection is
@@ -6566,7 +6646,8 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The number of Total ECPUs for an Exadata VM
                                         cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     vmClusterId:
                                       description: The OCID of the VM Cluster for
                                         the catalog peer.
@@ -6575,7 +6656,8 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         File System Storage Size in GBs for Exadata
                                         VM cluster.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               vmClusterId:
@@ -6670,7 +6752,8 @@ spec:
                               enabledEcpuCount:
                                 description: The number of ECPUs to enable for an
                                   Exadata VM cluster on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               isDiagnosticsEventsEnabled:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   Indicates whether diagnostic collection is enabled
@@ -6745,7 +6828,8 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The number of Total ECPUs for an Exadata VM cluster
                                   on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               vmClusterId:
                                 description: The OCID of the VM Cluster for the catalog
                                   peer.
@@ -6753,7 +6837,8 @@ spec:
                               vmFileSystemStorageSize:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   File System Storage Size in GBs for Exadata VM cluster.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         vmClusterId:
@@ -6766,7 +6851,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Change Db Backup Config. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   characterSet:
                     description: The character set for the database.
                     type: string
@@ -6776,7 +6862,8 @@ spec:
                       in any shardspace. Chunks is required to be provided for distributed
                       databases being created with SYSTEM shardingMethod. For USER
                       shardingMethod, chunks should not be set in create payload.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the Globally distributed
                       database compartment.
@@ -6786,7 +6873,8 @@ spec:
                   configureShardingTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Configure Sharding. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   connectionStrings:
                     description: Details of Globally distributed database connection
                       String.
@@ -6797,7 +6885,6 @@ spec:
                             type: string
                           description: Collection of connection strings.
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   databaseVersion:
@@ -6920,7 +7007,8 @@ spec:
                             removes old automatic backups that are created before
                             the window. When the value is updated, it is applied to
                             all existing automatic backups.
-                          type: number
+                          format: int64
+                          type: integer
                         remoteRegion:
                           description: The name of the remote region where the remote
                             automatic incremental backups will be stored. For information
@@ -6939,7 +7027,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name of the Globally distributed
                       database.
@@ -6948,12 +7035,14 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Download Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   effectiveReplicationUnit:
                     description: The replication unit count for RAFT based distributed
                       database. For RAFT replication based Globally distributed database,
                       the value should be at least twice the number of shards.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -6961,14 +7050,15 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   generateGsmCertificateSigningRequestTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Gsm Certificate Signing Request. Could be
                       set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   generateWalletDownloadedWalletContentLength:
-                    type: number
+                    format: int64
+                    type: integer
                   generateWalletDownloadedWalletEtag:
                     type: string
                   generateWalletDownloadedWalletLastModified:
@@ -6976,7 +7066,8 @@ spec:
                   generateWalletTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Generate Wallet. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   gsmDetails:
                     description: Collection of catalogs associated with the Globally
                       distributed database.
@@ -7000,7 +7091,8 @@ spec:
                               versionNumber:
                                 description: The version number associated with the
                                   image identified by id.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         metadata:
@@ -7058,7 +7150,8 @@ spec:
                         versionNumber:
                           description: The version number associated with the image
                             identified by id.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   lifecycleDetails:
@@ -7070,7 +7163,8 @@ spec:
                       database. The listener port number has to be unique for a customer
                       tenancy across all distributed databases. Same port number should
                       not be re-used for any other distributed database.
-                    type: number
+                    format: int64
+                    type: integer
                   listenerPortTls:
                     description: The TLS listener port number for the Globally distributed
                       database. The TLS listener port number has to be unique for
@@ -7079,7 +7173,8 @@ spec:
                       For BASE_DB and EXADB_XS based distributed databases, tls is
                       not supported hence the listenerPortTls is not needed to be
                       provided in create payload.
-                    type: number
+                    format: int64
+                    type: integer
                   metadata:
                     description: Additional metadata related to Globally distributed
                       database resources.
@@ -7098,7 +7193,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Move Replication Unit. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   ncharacterSet:
                     description: The national character set for the database.
                     type: string
@@ -7107,13 +7203,15 @@ spec:
                       database. The onsPortLocal has to be unique for a customer tenancy
                       across all distributed databases. Same port number should not
                       be re-used for any other distributed database.
-                    type: number
+                    format: int64
+                    type: integer
                   onsPortRemote:
                     description: The ons remote port number for the Globally distributed
                       database. The onsPortRemote has to be unique for a customer
                       tenancy across all distributed databases. Same port number should
                       not be re-used for any other distributed database.
-                    type: number
+                    format: int64
+                    type: integer
                   patchOperations:
                     description: (Updatable)
                     items:
@@ -7145,12 +7243,14 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Recreate Failed Resource. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationFactor:
                     description: The Replication factor for RAFT replication based
                       Globally distributed database. Currently supported values are
                       3, 5 and 7.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationMethod:
                     description: The Replication method for Globally distributed database.
                       Use RAFT for Raft based replication. With RAFT replication,
@@ -7164,7 +7264,8 @@ spec:
                     description: The replication unit count for RAFT based distributed
                       database. For RAFT replication based Globally distributed database,
                       the value should be at least twice the number of shards.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPort:
                     description: The TCP Single Client Access Name (SCAN) port for
                       clusters created for Globally distributed database. The scanListenerPort
@@ -7172,7 +7273,8 @@ spec:
                       type NEW_VAULT_AND_CLUSTER. If shard and catalog have source
                       type NEW_VAULT_AND_CLUSTER and scanListenerPort is not provided
                       then the scanListenerPort will default to value 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   shardDetails:
                     description: Collection of shards for the Globally distributed
                       database.
@@ -7199,7 +7301,8 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The size of additional Flash Cache in percentage
                                   of High Capacity database storage.
-                                type: number
+                                format: int64
+                                type: integer
                               dbStorageVaultId:
                                 description: The OCID of the Database Vault Storage.
                                 type: string
@@ -7210,7 +7313,8 @@ spec:
                               highCapacityDatabaseStorage:
                                 description: Total storage capacity in GB for vault
                                   storage.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         kmsKeyId:
@@ -7263,7 +7367,8 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The size of additional Flash Cache in percentage
                                         of High Capacity database storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     dbStorageVaultId:
                                       description: The OCID of the Database Vault
                                         Storage.
@@ -7275,7 +7380,8 @@ spec:
                                     highCapacityDatabaseStorage:
                                       description: Total storage capacity in GB for
                                         vault storage.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               metadata:
@@ -7362,7 +7468,8 @@ spec:
                                     enabledEcpuCount:
                                       description: The number of ECPUs to enable for
                                         an Exadata VM cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isDiagnosticsEventsEnabled:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         Indicates whether diagnostic collection is
@@ -7440,7 +7547,8 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         The number of Total ECPUs for an Exadata VM
                                         cluster on Exascale Infrastructure.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     vmClusterId:
                                       description: The OCID of the VM Cluster for
                                         the catalog peer.
@@ -7449,7 +7557,8 @@ spec:
                                       description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                         File System Storage Size in GBs for Exadata
                                         VM cluster.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               vmClusterId:
@@ -7544,7 +7653,8 @@ spec:
                               enabledEcpuCount:
                                 description: The number of ECPUs to enable for an
                                   Exadata VM cluster on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               isDiagnosticsEventsEnabled:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   Indicates whether diagnostic collection is enabled
@@ -7619,7 +7729,8 @@ spec:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   The number of Total ECPUs for an Exadata VM cluster
                                   on Exascale Infrastructure.
-                                type: number
+                                format: int64
+                                type: integer
                               vmClusterId:
                                 description: The OCID of the VM Cluster for the catalog
                                   peer.
@@ -7627,7 +7738,8 @@ spec:
                               vmFileSystemStorageSize:
                                 description: (Applicable when source=NEW_VAULT_AND_CLUSTER)
                                   File System Storage Size in GBs for Exadata VM cluster.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         vmClusterId:
@@ -7642,7 +7754,8 @@ spec:
                   startDatabaseTrigger:
                     description: Increment this value to trigger StartDistributedDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: (Updatable) The target state for the Distributed
                       Database. Could be set to ACTIVE or INACTIVE.
@@ -7650,7 +7763,8 @@ spec:
                   stopDatabaseTrigger:
                     description: Increment this value to trigger StopDistributedDatabase
                       action.
-                    type: number
+                    format: int64
+                    type: integer
                   systemTags:
                     additionalProperties:
                       type: string
@@ -7658,7 +7772,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the catalog peer was created. An RFC3339
                       formatted datetime string
@@ -7671,7 +7784,8 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Upload Signed Certificate And Generate Wallet. Could
                       be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   validateNetworkDetails:
                     items:
                       properties:
@@ -7688,7 +7802,8 @@ spec:
                   validateNetworkTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Validate Network. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

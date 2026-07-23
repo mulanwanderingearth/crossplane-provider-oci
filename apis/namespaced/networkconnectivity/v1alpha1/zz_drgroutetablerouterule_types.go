@@ -50,8 +50,7 @@ type DrgRouteTableRouteRuleInitParameters struct {
 type DrgRouteTableRouteRuleObservation struct {
 
 	// Additional properties for the route, computed by the service.
-	// +mapType=granular
-	Attributes map[string]*string `json:"attributes,omitempty" tf:"attributes,omitempty"`
+	Attributes map[string]string `json:"attributes,omitempty" tf:"attributes,omitempty"`
 
 	// (Updatable) This is the range of IP addresses used for matching when routing traffic. Only CIDR_BLOCK values are allowed.
 	Destination *string `json:"destination,omitempty" tf:"destination,omitempty"`

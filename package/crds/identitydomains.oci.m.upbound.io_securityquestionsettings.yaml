@@ -109,19 +109,23 @@ spec:
                   maxFieldLength:
                     description: (Updatable) Indicates the maximum length of following
                       fields Security Questions, Answer and Hint
-                    type: number
+                    format: int64
+                    type: integer
                   minAnswerLength:
                     description: (Updatable) Indicates the minimum length of answer
                       for security questions
-                    type: number
+                    format: int64
+                    type: integer
                   numQuestionsToAns:
                     description: (Updatable) Indicates the number of security questions
                       that a user must answer
-                    type: number
+                    format: int64
+                    type: integer
                   numQuestionsToSetup:
                     description: (Updatable) Indicates the number of security questions
                       a user must setup
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -310,19 +314,23 @@ spec:
                   maxFieldLength:
                     description: (Updatable) Indicates the maximum length of following
                       fields Security Questions, Answer and Hint
-                    type: number
+                    format: int64
+                    type: integer
                   minAnswerLength:
                     description: (Updatable) Indicates the minimum length of answer
                       for security questions
-                    type: number
+                    format: int64
+                    type: integer
                   numQuestionsToAns:
                     description: (Updatable) Indicates the number of security questions
                       that a user must answer
-                    type: number
+                    format: int64
+                    type: integer
                   numQuestionsToSetup:
                     description: (Updatable) Indicates the number of security questions
                       a user must setup
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -677,7 +685,8 @@ spec:
                   maxFieldLength:
                     description: (Updatable) Indicates the maximum length of following
                       fields Security Questions, Answer and Hint
-                    type: number
+                    format: int64
+                    type: integer
                   meta:
                     description: (Updatable) A complex attribute that contains resource
                       metadata. All sub-attributes are OPTIONAL.
@@ -713,15 +722,18 @@ spec:
                   minAnswerLength:
                     description: (Updatable) Indicates the minimum length of answer
                       for security questions
-                    type: number
+                    format: int64
+                    type: integer
                   numQuestionsToAns:
                     description: (Updatable) Indicates the number of security questions
                       that a user must answer
-                    type: number
+                    format: int64
+                    type: integer
                   numQuestionsToSetup:
                     description: (Updatable) Indicates the number of security questions
                       a user must setup
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource

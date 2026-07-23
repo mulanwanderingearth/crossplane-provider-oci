@@ -158,7 +158,8 @@ spec:
                     description: The number of minutes the service waits for the reboot
                       to complete. If the instance doesn't reboot within this  time,
                       the reboot job status is set to failed.
-                    type: number
+                    format: int64
+                    type: integer
                   workRequestDetails:
                     description: Provides the name and description of the job.
                     items:
@@ -271,7 +272,8 @@ spec:
                     description: The number of minutes the service waits for the reboot
                       to complete. If the instance doesn't reboot within this  time,
                       the reboot job status is set to failed.
-                    type: number
+                    format: int64
+                    type: integer
                   workRequestDetails:
                     description: Provides the name and description of the job.
                     items:
@@ -391,7 +393,8 @@ spec:
                     description: The number of minutes the service waits for the reboot
                       to complete. If the instance doesn't reboot within this  time,
                       the reboot job status is set to failed.
-                    type: number
+                    format: int64
+                    type: integer
                   workRequestDetails:
                     description: Provides the name and description of the job.
                     items:

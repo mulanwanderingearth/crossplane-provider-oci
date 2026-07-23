@@ -164,7 +164,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -178,7 +177,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostnameLabel:
                     description: The hostname for the mount target's IP address, used
                       for DNS resolution. The value is the hostname portion of the
@@ -207,11 +205,13 @@ spec:
                         backupKeyTabSecretVersion:
                           description: (Updatable) Version of the keytab Secret in
                             the Vault to use as a backup.
-                          type: number
+                          format: int64
+                          type: integer
                         currentKeyTabSecretVersion:
                           description: (Updatable) Version of the keytab Secret in
                             the Vault to use.
-                          type: number
+                          format: int64
+                          type: integer
                         isKerberosEnabled:
                           description: (Updatable) Specifies whether to enable or
                             disable Kerberos.
@@ -310,12 +310,14 @@ spec:
                         cacheLifetimeSeconds:
                           description: (Updatable) The maximum amount of time the
                             mount target is allowed to use a cached entry.
-                          type: number
+                          format: int64
+                          type: integer
                         cacheRefreshIntervalSeconds:
                           description: (Updatable) The amount of time that the mount
                             target should allow an entry to persist in its cache before
                             attempting to refresh the entry.
-                          type: number
+                          format: int64
+                          type: integer
                         groupSearchBase:
                           description: '(Updatable) All LDAP searches are recursive
                             starting at this group.  Example: CN=Group,DC=domain,DC=com'
@@ -324,7 +326,8 @@ spec:
                           description: (Updatable) The amount of time that a mount
                             target will maintain information that a user is not found
                             in the ID mapping configuration.
-                          type: number
+                          format: int64
+                          type: integer
                         outboundConnector1Id:
                           description: (Updatable) The OCID of the first connector
                             to use to communicate with the LDAP server.
@@ -388,7 +391,6 @@ spec:
                       (ZPR) policy to control access to ZPR-supported resources.  Example:
                       {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: The OCID of the subnet in which to create the mount
                       target.
@@ -572,7 +574,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -586,7 +587,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostnameLabel:
                     description: The hostname for the mount target's IP address, used
                       for DNS resolution. The value is the hostname portion of the
@@ -615,11 +615,13 @@ spec:
                         backupKeyTabSecretVersion:
                           description: (Updatable) Version of the keytab Secret in
                             the Vault to use as a backup.
-                          type: number
+                          format: int64
+                          type: integer
                         currentKeyTabSecretVersion:
                           description: (Updatable) Version of the keytab Secret in
                             the Vault to use.
-                          type: number
+                          format: int64
+                          type: integer
                         isKerberosEnabled:
                           description: (Updatable) Specifies whether to enable or
                             disable Kerberos.
@@ -718,12 +720,14 @@ spec:
                         cacheLifetimeSeconds:
                           description: (Updatable) The maximum amount of time the
                             mount target is allowed to use a cached entry.
-                          type: number
+                          format: int64
+                          type: integer
                         cacheRefreshIntervalSeconds:
                           description: (Updatable) The amount of time that the mount
                             target should allow an entry to persist in its cache before
                             attempting to refresh the entry.
-                          type: number
+                          format: int64
+                          type: integer
                         groupSearchBase:
                           description: '(Updatable) All LDAP searches are recursive
                             starting at this group.  Example: CN=Group,DC=domain,DC=com'
@@ -732,7 +736,8 @@ spec:
                           description: (Updatable) The amount of time that a mount
                             target will maintain information that a user is not found
                             in the ID mapping configuration.
-                          type: number
+                          format: int64
+                          type: integer
                         outboundConnector1Id:
                           description: (Updatable) The OCID of the first connector
                             to use to communicate with the LDAP server.
@@ -796,7 +801,6 @@ spec:
                       (ZPR) policy to control access to ZPR-supported resources.  Example:
                       {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: The OCID of the subnet in which to create the mount
                       target.
@@ -989,7 +993,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -1008,7 +1011,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostnameLabel:
                     description: The hostname for the mount target's IP address, used
                       for DNS resolution. The value is the hostname portion of the
@@ -1040,11 +1042,13 @@ spec:
                         backupKeyTabSecretVersion:
                           description: (Updatable) Version of the keytab Secret in
                             the Vault to use as a backup.
-                          type: number
+                          format: int64
+                          type: integer
                         currentKeyTabSecretVersion:
                           description: (Updatable) Version of the keytab Secret in
                             the Vault to use.
-                          type: number
+                          format: int64
+                          type: integer
                         isKerberosEnabled:
                           description: (Updatable) Specifies whether to enable or
                             disable Kerberos.
@@ -1067,12 +1071,14 @@ spec:
                         cacheLifetimeSeconds:
                           description: (Updatable) The maximum amount of time the
                             mount target is allowed to use a cached entry.
-                          type: number
+                          format: int64
+                          type: integer
                         cacheRefreshIntervalSeconds:
                           description: (Updatable) The amount of time that the mount
                             target should allow an entry to persist in its cache before
                             attempting to refresh the entry.
-                          type: number
+                          format: int64
+                          type: integer
                         groupSearchBase:
                           description: '(Updatable) All LDAP searches are recursive
                             starting at this group.  Example: CN=Group,DC=domain,DC=com'
@@ -1081,7 +1087,8 @@ spec:
                           description: (Updatable) The amount of time that a mount
                             target will maintain information that a user is not found
                             in the ID mapping configuration.
-                          type: number
+                          format: int64
+                          type: integer
                         outboundConnector1Id:
                           description: (Updatable) The OCID of the first connector
                             to use to communicate with the LDAP server.
@@ -1167,7 +1174,6 @@ spec:
                       (ZPR) policy to control access to ZPR-supported resources.  Example:
                       {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: The current state of the mount target.
                     type: string
@@ -1181,7 +1187,6 @@ spec:
                     description: System tags for this resource. System tags are applied
                       to resources by internal Oracle Cloud Infrastructure services.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeBillingCycleEnd:
                     description: 'The date and time the mount target current billing
                       cycle will end, expressed in RFC 3339 timestamp format. Once

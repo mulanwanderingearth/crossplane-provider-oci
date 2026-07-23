@@ -117,7 +117,8 @@ spec:
                         displayOrder:
                           description: (Updatable) Specifies the display order of
                             the column.
-                          type: number
+                          format: int64
+                          type: integer
                         fieldName:
                           description: (Updatable) Name of the column on which the
                             filter must be applied.
@@ -152,7 +153,8 @@ spec:
                         sortingOrder:
                           description: (Updatable) Indicates the order at which column
                             must be sorted.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   compartmentId:
@@ -248,7 +250,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the report definition.
                     type: string
@@ -263,7 +264,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   parentId:
                     description: The OCID of the parent report definition.
                     type: string
@@ -282,7 +282,8 @@ spec:
                         displayOrder:
                           description: (Updatable) Specifies the display order of
                             the column.
-                          type: number
+                          format: int64
+                          type: integer
                         groupByFieldName:
                           description: (Updatable) A comma-delimited string that specifies
                             the names of the fields by which the records must be aggregated
@@ -372,7 +373,8 @@ spec:
                         displayOrder:
                           description: (Updatable) Specifies the display order of
                             the column.
-                          type: number
+                          format: int64
+                          type: integer
                         fieldName:
                           description: (Updatable) Name of the column on which the
                             filter must be applied.
@@ -407,7 +409,8 @@ spec:
                         sortingOrder:
                           description: (Updatable) Indicates the order at which column
                             must be sorted.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   compartmentId:
@@ -503,7 +506,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the report definition.
                     type: string
@@ -518,7 +520,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   parentId:
                     description: The OCID of the parent report definition.
                     type: string
@@ -537,7 +538,8 @@ spec:
                         displayOrder:
                           description: (Updatable) Specifies the display order of
                             the column.
-                          type: number
+                          format: int64
+                          type: integer
                         groupByFieldName:
                           description: (Updatable) A comma-delimited string that specifies
                             the names of the fields by which the records must be aggregated
@@ -708,7 +710,8 @@ spec:
                         displayOrder:
                           description: (Updatable) Specifies the display order of
                             the column.
-                          type: number
+                          format: int64
+                          type: integer
                         fieldName:
                           description: (Updatable) Name of the column on which the
                             filter must be applied.
@@ -743,7 +746,8 @@ spec:
                         sortingOrder:
                           description: (Updatable) Indicates the order at which column
                             must be sorted.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   compartmentId:
@@ -767,7 +771,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the report definition.
                     type: string
@@ -776,7 +779,8 @@ spec:
                     type: string
                   displayOrder:
                     description: (Updatable) Specifies the display order of the column.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -785,7 +789,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the report definition.
                     type: string
@@ -829,7 +832,8 @@ spec:
                   scheduledReportRowLimit:
                     description: Specifies the limit on the number of rows in the
                       report.
-                    type: number
+                    format: int64
+                    type: integer
                   scimFilter:
                     description: (Updatable) Additional scim filters used to get the
                       specific summary.
@@ -852,7 +856,8 @@ spec:
                         displayOrder:
                           description: (Updatable) Specifies the display order of
                             the column.
-                          type: number
+                          format: int64
+                          type: integer
                         groupByFieldName:
                           description: (Updatable) A comma-delimited string that specifies
                             the names of the fields by which the records must be aggregated
@@ -878,7 +883,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags. Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: Specifies the date and time the report definition
                       was created.

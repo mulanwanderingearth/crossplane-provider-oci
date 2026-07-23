@@ -257,7 +257,6 @@ spec:
                           description: Properties for each of the replication location
                             types
                           type: object
-                          x-kubernetes-map-type: granular
                         replicationLocationType:
                           description: The type of replication location
                           type: string
@@ -644,7 +643,6 @@ spec:
                           description: Properties for each of the replication location
                             types
                           type: object
-                          x-kubernetes-map-type: granular
                         replicationLocationType:
                           description: The type of replication location
                           type: string
@@ -911,7 +909,6 @@ spec:
                       type: string
                     description: Mapping of source disk id to destination disk details
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. If empty, then
                       source asset name will be used. Does not have to be unique,
@@ -960,7 +957,6 @@ spec:
                           description: Properties for each of the replication location
                             types
                           type: object
-                          x-kubernetes-map-type: granular
                         replicationLocationType:
                           description: The type of replication location
                           type: string
@@ -979,7 +975,6 @@ spec:
                       OCIDs of replicated or hydration server volume snapshots. Example:
                       {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   sourceAssetId:
                     description: OCID that is referenced to an asset for an inventory.
                     type: string

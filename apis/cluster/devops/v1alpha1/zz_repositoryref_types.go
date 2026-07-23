@@ -57,12 +57,10 @@ type RepositoryRefObservation struct {
 	CommitID *string `json:"commitId,omitempty" tf:"commit_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique full reference name inside a repository.
 	FullRefName *string `json:"fullRefName,omitempty" tf:"full_ref_name,omitempty"`

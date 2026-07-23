@@ -167,7 +167,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -181,7 +180,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   instancePools:
                     description: (Updatable) The data to create the instance pools
                       in the cluster network.
@@ -195,7 +193,6 @@ spec:
                             more information, see Resource Tags.  Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Updatable) A user-friendly name. Does not
                             have to be unique, and it's changeable. Avoid entering
@@ -209,7 +206,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         instanceConfigurationId:
                           description: (Updatable) The OCID of the instance configuration
                             associated with the instance pool.
@@ -299,7 +295,8 @@ spec:
                         size:
                           description: (Updatable) The number of instances that should
                             be in the instance pool.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   placementConfiguration:
@@ -684,7 +681,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -698,7 +694,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   instancePools:
                     description: (Updatable) The data to create the instance pools
                       in the cluster network.
@@ -712,7 +707,6 @@ spec:
                             more information, see Resource Tags.  Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Updatable) A user-friendly name. Does not
                             have to be unique, and it's changeable. Avoid entering
@@ -726,7 +720,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         instanceConfigurationId:
                           description: (Updatable) The OCID of the instance configuration
                             associated with the instance pool.
@@ -816,7 +809,8 @@ spec:
                         size:
                           description: (Updatable) The number of instances that should
                             be in the instance pool.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   placementConfiguration:
@@ -1180,7 +1174,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -1194,7 +1187,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hpcIslandId:
                     description: The OCID of the HPC island.
                     type: string
@@ -1213,7 +1205,8 @@ spec:
                         currentSize:
                           description: Count of instance in running state associated
                             to the Instance Pool.
-                          type: number
+                          format: int64
+                          type: integer
                         definedTags:
                           additionalProperties:
                             type: string
@@ -1222,7 +1215,6 @@ spec:
                             more information, see Resource Tags.  Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Updatable) A user-friendly name. Does not
                             have to be unique, and it's changeable. Avoid entering
@@ -1236,7 +1228,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         id:
                           description: The OCID of the cluster network.
                           type: string
@@ -1270,7 +1261,8 @@ spec:
                                 type: string
                               port:
                                 description: The port value used for the backends.
-                                type: number
+                                format: int64
+                                type: integer
                               state:
                                 description: The status of the interaction between
                                   the instance pool and the load balancer.
@@ -1397,7 +1389,8 @@ spec:
                         size:
                           description: (Updatable) The number of instances that should
                             be in the instance pool.
-                          type: number
+                          format: int64
+                          type: integer
                         state:
                           description: The status of the interaction between the instance
                             pool and the load balancer.

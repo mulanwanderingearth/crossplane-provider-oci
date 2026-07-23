@@ -35,7 +35,7 @@ type ListenerInitParameters struct {
 	IsPpv2Enabled *bool `json:"isPpv2Enabled,omitempty" tf:"is_ppv2enabled,omitempty"`
 
 	// (Updatable) The duration for L3IP idle timeout in seconds. Example: 200
-	L3IpIdleTimeout *float64 `json:"l3ipIdleTimeout,omitempty" tf:"l3ip_idle_timeout,omitempty"`
+	L3IpIdleTimeout *int64 `json:"l3ipIdleTimeout,omitempty" tf:"l3ip_idle_timeout,omitempty"`
 
 	// A friendly name for the listener. It must be unique and it cannot be changed.  Example: example_listener
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -53,16 +53,16 @@ type ListenerInitParameters struct {
 	NetworkLoadBalancerIDSelector *v1.Selector `json:"networkLoadBalancerIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The communication port for the listener.  Example: 80
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol on which the listener accepts connection requests. For public network load balancers, ANY protocol refers to TCP/UDP with the wildcard port. For private network load balancers, ANY protocol refers to TCP/UDP/ICMP (note that ICMP requires isPreserveSourceDestination to be set to true). "ListNetworkLoadBalancersProtocols" API is deprecated and it will not return the updated values. Use the allowed values for the protocol instead.  Example: TCP
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
 	// (Updatable) The duration for TCP idle timeout in seconds. Example: 300
-	TCPIdleTimeout *float64 `json:"tcpIdleTimeout,omitempty" tf:"tcp_idle_timeout,omitempty"`
+	TCPIdleTimeout *int64 `json:"tcpIdleTimeout,omitempty" tf:"tcp_idle_timeout,omitempty"`
 
 	// (Updatable) The duration for UDP idle timeout in seconds. Example: 120
-	UDPIdleTimeout *float64 `json:"udpIdleTimeout,omitempty" tf:"udp_idle_timeout,omitempty"`
+	UDPIdleTimeout *int64 `json:"udpIdleTimeout,omitempty" tf:"udp_idle_timeout,omitempty"`
 }
 
 type ListenerObservation struct {
@@ -79,7 +79,7 @@ type ListenerObservation struct {
 	IsPpv2Enabled *bool `json:"isPpv2Enabled,omitempty" tf:"is_ppv2enabled,omitempty"`
 
 	// (Updatable) The duration for L3IP idle timeout in seconds. Example: 200
-	L3IpIdleTimeout *float64 `json:"l3ipIdleTimeout,omitempty" tf:"l3ip_idle_timeout,omitempty"`
+	L3IpIdleTimeout *int64 `json:"l3ipIdleTimeout,omitempty" tf:"l3ip_idle_timeout,omitempty"`
 
 	// A friendly name for the listener. It must be unique and it cannot be changed.  Example: example_listener
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -88,16 +88,16 @@ type ListenerObservation struct {
 	NetworkLoadBalancerID *string `json:"networkLoadBalancerId,omitempty" tf:"network_load_balancer_id,omitempty"`
 
 	// (Updatable) The communication port for the listener.  Example: 80
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol on which the listener accepts connection requests. For public network load balancers, ANY protocol refers to TCP/UDP with the wildcard port. For private network load balancers, ANY protocol refers to TCP/UDP/ICMP (note that ICMP requires isPreserveSourceDestination to be set to true). "ListNetworkLoadBalancersProtocols" API is deprecated and it will not return the updated values. Use the allowed values for the protocol instead.  Example: TCP
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
 	// (Updatable) The duration for TCP idle timeout in seconds. Example: 300
-	TCPIdleTimeout *float64 `json:"tcpIdleTimeout,omitempty" tf:"tcp_idle_timeout,omitempty"`
+	TCPIdleTimeout *int64 `json:"tcpIdleTimeout,omitempty" tf:"tcp_idle_timeout,omitempty"`
 
 	// (Updatable) The duration for UDP idle timeout in seconds. Example: 120
-	UDPIdleTimeout *float64 `json:"udpIdleTimeout,omitempty" tf:"udp_idle_timeout,omitempty"`
+	UDPIdleTimeout *int64 `json:"udpIdleTimeout,omitempty" tf:"udp_idle_timeout,omitempty"`
 }
 
 type ListenerParameters struct {
@@ -126,7 +126,7 @@ type ListenerParameters struct {
 
 	// (Updatable) The duration for L3IP idle timeout in seconds. Example: 200
 	// +kubebuilder:validation:Optional
-	L3IpIdleTimeout *float64 `json:"l3ipIdleTimeout,omitempty" tf:"l3ip_idle_timeout,omitempty"`
+	L3IpIdleTimeout *int64 `json:"l3ipIdleTimeout,omitempty" tf:"l3ip_idle_timeout,omitempty"`
 
 	// A friendly name for the listener. It must be unique and it cannot be changed.  Example: example_listener
 	// +kubebuilder:validation:Optional
@@ -147,7 +147,7 @@ type ListenerParameters struct {
 
 	// (Updatable) The communication port for the listener.  Example: 80
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol on which the listener accepts connection requests. For public network load balancers, ANY protocol refers to TCP/UDP with the wildcard port. For private network load balancers, ANY protocol refers to TCP/UDP/ICMP (note that ICMP requires isPreserveSourceDestination to be set to true). "ListNetworkLoadBalancersProtocols" API is deprecated and it will not return the updated values. Use the allowed values for the protocol instead.  Example: TCP
 	// +kubebuilder:validation:Optional
@@ -155,11 +155,11 @@ type ListenerParameters struct {
 
 	// (Updatable) The duration for TCP idle timeout in seconds. Example: 300
 	// +kubebuilder:validation:Optional
-	TCPIdleTimeout *float64 `json:"tcpIdleTimeout,omitempty" tf:"tcp_idle_timeout,omitempty"`
+	TCPIdleTimeout *int64 `json:"tcpIdleTimeout,omitempty" tf:"tcp_idle_timeout,omitempty"`
 
 	// (Updatable) The duration for UDP idle timeout in seconds. Example: 120
 	// +kubebuilder:validation:Optional
-	UDPIdleTimeout *float64 `json:"udpIdleTimeout,omitempty" tf:"udp_idle_timeout,omitempty"`
+	UDPIdleTimeout *int64 `json:"udpIdleTimeout,omitempty" tf:"udp_idle_timeout,omitempty"`
 }
 
 // ListenerSpec defines the desired state of Listener

@@ -244,8 +244,7 @@ type SqlEndpointInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of CreateSQLEndpointDetails.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -266,8 +265,7 @@ type SqlEndpointInitParameters struct {
 	ExecutorShapeConfig []SqlEndpointExecutorShapeConfigInitParameters `json:"executorShapeConfig,omitempty" tf:"executor_shape_config,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The identifier of the log group compartment used with the SQL Endpoint.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -299,10 +297,10 @@ type SqlEndpointInitParameters struct {
 	LogGroupIDSelector *v1.NamespacedSelector `json:"logGroupIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Log retention duration in days
-	LogRetentionDuration *float64 `json:"logRetentionDuration,omitempty" tf:"log_retention_duration,omitempty"`
+	LogRetentionDuration *int64 `json:"logRetentionDuration,omitempty" tf:"log_retention_duration,omitempty"`
 
 	// (Updatable) The maximum number of executors.
-	MaxExecutorCount *float64 `json:"maxExecutorCount,omitempty" tf:"max_executor_count,omitempty"`
+	MaxExecutorCount *int64 `json:"maxExecutorCount,omitempty" tf:"max_executor_count,omitempty"`
 
 	// Metastore OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datacatalog/v1alpha1.Metastore
@@ -318,7 +316,7 @@ type SqlEndpointInitParameters struct {
 	MetastoreIDSelector *v1.NamespacedSelector `json:"metastoreIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The minimum number of executors.
-	MinExecutorCount *float64 `json:"minExecutorCount,omitempty" tf:"min_executor_count,omitempty"`
+	MinExecutorCount *int64 `json:"minExecutorCount,omitempty" tf:"min_executor_count,omitempty"`
 
 	// The network configuration of a SQL Endpoint.
 	NetworkConfiguration []NetworkConfigurationInitParameters `json:"networkConfiguration,omitempty" tf:"network_configuration,omitempty"`
@@ -327,8 +325,7 @@ type SqlEndpointInitParameters struct {
 	SQLEndpointVersion *string `json:"sqlEndpointVersion,omitempty" tf:"sql_endpoint_version,omitempty"`
 
 	// (Updatable) The Spark configuration passed to the running process. See https://spark.apache.org/docs/latest/configuration.html#available-properties. Example: { "spark.app.name" : "My App Name", "spark.shuffle.io.maxRetries" : "4" } Note: Not all Spark properties are permitted to be set.  Attempting to set a property that is not allowed to be overwritten will cause a 400 status to be returned.
-	// +mapType=granular
-	SparkAdvancedConfigurations map[string]*string `json:"sparkAdvancedConfigurations,omitempty" tf:"spark_advanced_configurations,omitempty"`
+	SparkAdvancedConfigurations map[string]string `json:"sparkAdvancedConfigurations,omitempty" tf:"spark_advanced_configurations,omitempty"`
 
 	// (Updatable) The target state for the Sql Endpoint. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -340,8 +337,7 @@ type SqlEndpointObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of CreateSQLEndpointDetails.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -362,8 +358,7 @@ type SqlEndpointObservation struct {
 	ExecutorShapeConfig []SqlEndpointExecutorShapeConfigObservation `json:"executorShapeConfig,omitempty" tf:"executor_shape_config,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The provision identifier that is immutable on creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -384,16 +379,16 @@ type SqlEndpointObservation struct {
 	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
 
 	// (Updatable) Log retention duration in days
-	LogRetentionDuration *float64 `json:"logRetentionDuration,omitempty" tf:"log_retention_duration,omitempty"`
+	LogRetentionDuration *int64 `json:"logRetentionDuration,omitempty" tf:"log_retention_duration,omitempty"`
 
 	// (Updatable) The maximum number of executors.
-	MaxExecutorCount *float64 `json:"maxExecutorCount,omitempty" tf:"max_executor_count,omitempty"`
+	MaxExecutorCount *int64 `json:"maxExecutorCount,omitempty" tf:"max_executor_count,omitempty"`
 
 	// Metastore OCID
 	MetastoreID *string `json:"metastoreId,omitempty" tf:"metastore_id,omitempty"`
 
 	// (Updatable) The minimum number of executors.
-	MinExecutorCount *float64 `json:"minExecutorCount,omitempty" tf:"min_executor_count,omitempty"`
+	MinExecutorCount *int64 `json:"minExecutorCount,omitempty" tf:"min_executor_count,omitempty"`
 
 	// The network configuration of a SQL Endpoint.
 	NetworkConfiguration []NetworkConfigurationObservation `json:"networkConfiguration,omitempty" tf:"network_configuration,omitempty"`
@@ -402,8 +397,7 @@ type SqlEndpointObservation struct {
 	SQLEndpointVersion *string `json:"sqlEndpointVersion,omitempty" tf:"sql_endpoint_version,omitempty"`
 
 	// (Updatable) The Spark configuration passed to the running process. See https://spark.apache.org/docs/latest/configuration.html#available-properties. Example: { "spark.app.name" : "My App Name", "spark.shuffle.io.maxRetries" : "4" } Note: Not all Spark properties are permitted to be set.  Attempting to set a property that is not allowed to be overwritten will cause a 400 status to be returned.
-	// +mapType=granular
-	SparkAdvancedConfigurations map[string]*string `json:"sparkAdvancedConfigurations,omitempty" tf:"spark_advanced_configurations,omitempty"`
+	SparkAdvancedConfigurations map[string]string `json:"sparkAdvancedConfigurations,omitempty" tf:"spark_advanced_configurations,omitempty"`
 
 	// (Updatable) The target state for the Sql Endpoint. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -412,8 +406,7 @@ type SqlEndpointObservation struct {
 	StateMessage *string `json:"stateMessage,omitempty" tf:"state_message,omitempty"`
 
 	// The system tags associated with this resource, if any. The system tags are set by Oracle cloud infrastructure services. Each key is predefined and scoped to namespaces. For more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the Sql Endpoint was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -442,8 +435,7 @@ type SqlEndpointParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of CreateSQLEndpointDetails.
 	// +kubebuilder:validation:Optional
@@ -471,8 +463,7 @@ type SqlEndpointParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The identifier of the log group compartment used with the SQL Endpoint.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -508,11 +499,11 @@ type SqlEndpointParameters struct {
 
 	// (Updatable) Log retention duration in days
 	// +kubebuilder:validation:Optional
-	LogRetentionDuration *float64 `json:"logRetentionDuration,omitempty" tf:"log_retention_duration,omitempty"`
+	LogRetentionDuration *int64 `json:"logRetentionDuration,omitempty" tf:"log_retention_duration,omitempty"`
 
 	// (Updatable) The maximum number of executors.
 	// +kubebuilder:validation:Optional
-	MaxExecutorCount *float64 `json:"maxExecutorCount,omitempty" tf:"max_executor_count,omitempty"`
+	MaxExecutorCount *int64 `json:"maxExecutorCount,omitempty" tf:"max_executor_count,omitempty"`
 
 	// Metastore OCID
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datacatalog/v1alpha1.Metastore
@@ -530,7 +521,7 @@ type SqlEndpointParameters struct {
 
 	// (Updatable) The minimum number of executors.
 	// +kubebuilder:validation:Optional
-	MinExecutorCount *float64 `json:"minExecutorCount,omitempty" tf:"min_executor_count,omitempty"`
+	MinExecutorCount *int64 `json:"minExecutorCount,omitempty" tf:"min_executor_count,omitempty"`
 
 	// The network configuration of a SQL Endpoint.
 	// +kubebuilder:validation:Optional
@@ -542,8 +533,7 @@ type SqlEndpointParameters struct {
 
 	// (Updatable) The Spark configuration passed to the running process. See https://spark.apache.org/docs/latest/configuration.html#available-properties. Example: { "spark.app.name" : "My App Name", "spark.shuffle.io.maxRetries" : "4" } Note: Not all Spark properties are permitted to be set.  Attempting to set a property that is not allowed to be overwritten will cause a 400 status to be returned.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SparkAdvancedConfigurations map[string]*string `json:"sparkAdvancedConfigurations,omitempty" tf:"spark_advanced_configurations,omitempty"`
+	SparkAdvancedConfigurations map[string]string `json:"sparkAdvancedConfigurations,omitempty" tf:"spark_advanced_configurations,omitempty"`
 
 	// (Updatable) The target state for the Sql Endpoint. Could be set to ACTIVE or INACTIVE.
 	// +kubebuilder:validation:Optional

@@ -167,7 +167,8 @@ spec:
                         scanListenerPort:
                           description: The port that customer's Real Application Cluster
                             (RAC)'s SCAN listeners are listening on.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   scanListenerType:
@@ -294,7 +295,8 @@ spec:
                         scanListenerPort:
                           description: The port that customer's Real Application Cluster
                             (RAC)'s SCAN listeners are listening on.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   scanListenerType:
@@ -408,7 +410,8 @@ spec:
                         scanListenerPort:
                           description: The port that customer's Real Application Cluster
                             (RAC)'s SCAN listeners are listening on.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   scanListenerType:

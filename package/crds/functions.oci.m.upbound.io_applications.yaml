@@ -156,7 +156,6 @@ spec:
                       limited to printable unicode characters.  Example: {"MY_FUNCTION_CONFIG":
                       "ConfVal"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   definedTags:
                     additionalProperties:
                       type: string
@@ -164,7 +163,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The display name of the application. The display
                       name must be unique within the compartment containing the application.
@@ -178,7 +176,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   imagePolicyConfig:
                     description: (Updatable) Define the image signature verification
                       policy for an application.
@@ -394,7 +391,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: 'Valid values are GENERIC_X86, GENERIC_ARM and GENERIC_X86_ARM.
                       Default is GENERIC_X86. Setting this to GENERIC_X86, will run
@@ -630,7 +626,6 @@ spec:
                       limited to printable unicode characters.  Example: {"MY_FUNCTION_CONFIG":
                       "ConfVal"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   definedTags:
                     additionalProperties:
                       type: string
@@ -638,7 +633,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The display name of the application. The display
                       name must be unique within the compartment containing the application.
@@ -652,7 +646,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   imagePolicyConfig:
                     description: (Updatable) Define the image signature verification
                       policy for an application.
@@ -868,7 +861,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: 'Valid values are GENERIC_X86, GENERIC_ARM and GENERIC_X86_ARM.
                       Default is GENERIC_X86. Setting this to GENERIC_X86, will run
@@ -1079,7 +1071,6 @@ spec:
                       limited to printable unicode characters.  Example: {"MY_FUNCTION_CONFIG":
                       "ConfVal"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   definedTags:
                     additionalProperties:
                       type: string
@@ -1087,7 +1078,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The display name of the application. The display
                       name must be unique within the compartment containing the application.
@@ -1101,7 +1091,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the application.
                     type: string
@@ -1153,7 +1142,6 @@ spec:
                       see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "enforce"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: 'Valid values are GENERIC_X86, GENERIC_ARM and GENERIC_X86_ARM.
                       Default is GENERIC_X86. Setting this to GENERIC_X86, will run

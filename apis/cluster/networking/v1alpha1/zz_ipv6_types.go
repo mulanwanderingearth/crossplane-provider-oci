@@ -16,18 +16,16 @@ import (
 type Ipv6InitParameters struct {
 
 	// Length of cidr range. Optional field to specify flexible cidr.
-	CidrPrefixLength *float64 `json:"cidrPrefixLength,omitempty" tf:"cidr_prefix_length,omitempty"`
+	CidrPrefixLength *int64 `json:"cidrPrefixLength,omitempty" tf:"cidr_prefix_length,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hostname associated with the IPv6 address. Only the hostname label, not the FQDN.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -84,21 +82,19 @@ type Ipv6InitParameters struct {
 type Ipv6Observation struct {
 
 	// Length of cidr range. Optional field to specify flexible cidr.
-	CidrPrefixLength *float64 `json:"cidrPrefixLength,omitempty" tf:"cidr_prefix_length,omitempty"`
+	CidrPrefixLength *int64 `json:"cidrPrefixLength,omitempty" tf:"cidr_prefix_length,omitempty"`
 
 	// The OCID of the compartment containing the IPv6. This is the same as the VNIC's compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hostname associated with the IPv6 address. Only the hostname label, not the FQDN.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -138,12 +134,11 @@ type Ipv6Parameters struct {
 
 	// Length of cidr range. Optional field to specify flexible cidr.
 	// +kubebuilder:validation:Optional
-	CidrPrefixLength *float64 `json:"cidrPrefixLength,omitempty" tf:"cidr_prefix_length,omitempty"`
+	CidrPrefixLength *int64 `json:"cidrPrefixLength,omitempty" tf:"cidr_prefix_length,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -151,8 +146,7 @@ type Ipv6Parameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hostname associated with the IPv6 address. Only the hostname label, not the FQDN.
 	// +kubebuilder:validation:Optional

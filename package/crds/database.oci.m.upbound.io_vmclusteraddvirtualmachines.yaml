@@ -414,7 +414,8 @@ spec:
                     type: string
                   cpusEnabled:
                     description: The number of enabled CPU cores.
-                    type: number
+                    format: int64
+                    type: integer
                   dataCollectionOptions:
                     description: Indicates user preferences for the various diagnostic
                       collection options for the VM cluster/Cloud VM cluster/VMBM
@@ -464,7 +465,8 @@ spec:
                       and database files). See Storage Configuration in the Exadata
                       documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInGb:
                     description: Size of the DATA disk group in GBs.
                     type: number
@@ -473,7 +475,8 @@ spec:
                     type: number
                   dbNodeStorageSizeInGbs:
                     description: The local node storage allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of Exacc DB servers for the cluster to be
                       added.
@@ -491,7 +494,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the Exadata Cloud@Customer
                       VM cluster. The name does not need to be unique.
@@ -509,7 +511,8 @@ spec:
                       properties:
                         fileSystemSizeGb:
                           description: The file system size to be allocated in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         mountPoint:
                           description: The mount point of file system.
                           type: string
@@ -523,7 +526,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   giVersion:
                     description: The Oracle Grid Infrastructure software version for
                       the VM cluster.
@@ -554,7 +556,8 @@ spec:
                     type: string
                   memorySizeInGbs:
                     description: The memory allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   ocpusEnabled:
                     description: The number of enabled CPU cores.
                     type: number
@@ -563,7 +566,8 @@ spec:
                       redo logs, archive logs, and recovery manager backups). See
                       Storage Configuration in the Exadata documentation for details
                       on the impact of the configuration settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   shape:
                     description: The shape of the Exadata infrastructure. The shape
                       determines the amount of CPU, storage, and memory resources
@@ -573,7 +577,8 @@ spec:
                     description: The percentage assigned to SPARSE storage (Exadata
                       snapshots). See Storage Configuration in the Exadata documentation
                       for details on the impact of the configuration settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   sshPublicKeys:
                     description: The public key portion of one or more key pairs used
                       for SSH access to the VM cluster.

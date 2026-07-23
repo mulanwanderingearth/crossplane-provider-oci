@@ -61,18 +61,16 @@ type KeyStoreInitParameters struct {
 	// +kubebuilder:validation:Optional
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
-	ConfirmDetailsTrigger *float64 `json:"confirmDetailsTrigger,omitempty" tf:"confirm_details_trigger,omitempty"`
+	ConfirmDetailsTrigger *int64 `json:"confirmDetailsTrigger,omitempty" tf:"confirm_details_trigger,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the key store. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Key store type details.
 	TypeDetails []TypeDetailsInitParameters `json:"typeDetails,omitempty" tf:"type_details,omitempty"`
@@ -84,7 +82,7 @@ type KeyStoreObservation struct {
 	AssociatedDatabases []KeyStoreAssociatedDatabasesObservation `json:"associatedDatabases,omitempty" tf:"associated_databases,omitempty"`
 
 	// Indicates the number of long term backups of Autonomous Databases associated with this backup destination.
-	AssociatedLongTermBackupCount *float64 `json:"associatedLongTermBackupCount,omitempty" tf:"associated_long_term_backup_count,omitempty"`
+	AssociatedLongTermBackupCount *int64 `json:"associatedLongTermBackupCount,omitempty" tf:"associated_long_term_backup_count,omitempty"`
 
 	// List of long term backups of Autonomous Databases associated with this backup destination.The maximum associated number of long term backup listed here would be 1024.
 	AssociatedLongTermBackups []KeyStoreAssociatedLongTermBackupsObservation `json:"associatedLongTermBackups,omitempty" tf:"associated_long_term_backups,omitempty"`
@@ -92,18 +90,16 @@ type KeyStoreObservation struct {
 	// (Updatable) The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	ConfirmDetailsTrigger *float64 `json:"confirmDetailsTrigger,omitempty" tf:"confirm_details_trigger,omitempty"`
+	ConfirmDetailsTrigger *int64 `json:"confirmDetailsTrigger,omitempty" tf:"confirm_details_trigger,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the key store. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The database OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -115,8 +111,7 @@ type KeyStoreObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time that the key store was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -141,12 +136,11 @@ type KeyStoreParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// +kubebuilder:validation:Optional
-	ConfirmDetailsTrigger *float64 `json:"confirmDetailsTrigger,omitempty" tf:"confirm_details_trigger,omitempty"`
+	ConfirmDetailsTrigger *int64 `json:"confirmDetailsTrigger,omitempty" tf:"confirm_details_trigger,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the key store. The name does not need to be unique.
 	// +kubebuilder:validation:Optional
@@ -154,8 +148,7 @@ type KeyStoreParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Key store type details.
 	// +kubebuilder:validation:Optional

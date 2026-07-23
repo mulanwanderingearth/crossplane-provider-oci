@@ -71,7 +71,8 @@ spec:
                           type: string
                         share:
                           description: (Updatable) The relative priority of this database.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dbSystemId:
@@ -186,7 +187,8 @@ spec:
                           type: string
                         share:
                           description: (Updatable) The relative priority of this database.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dbSystemId:
@@ -363,7 +365,8 @@ spec:
                           type: string
                         share:
                           description: (Updatable) The relative priority of this database.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   dbSystemId:

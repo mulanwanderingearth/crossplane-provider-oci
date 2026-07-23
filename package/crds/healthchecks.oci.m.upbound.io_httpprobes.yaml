@@ -149,7 +149,6 @@ spec:
                       type: string
                     description: A dictionary of HTTP request headers.
                     type: object
-                    x-kubernetes-map-type: granular
                   method:
                     description: The supported HTTP methods available for probes.
                     type: string
@@ -159,7 +158,8 @@ spec:
                   port:
                     description: The port on which to probe endpoints. If unspecified,
                       probes will use the default port of their protocol.
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: The supported protocols available for HTTP probes.
                     type: string
@@ -173,7 +173,8 @@ spec:
                     description: 'The probe timeout in seconds. Valid values: 10,
                       20, 30, and 60. The probe timeout must be less than or equal
                       to intervalInSeconds for monitors.'
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePointNames:
                     description: A list of names of vantage points from which to execute
                       the probe.
@@ -284,7 +285,6 @@ spec:
                       type: string
                     description: A dictionary of HTTP request headers.
                     type: object
-                    x-kubernetes-map-type: granular
                   method:
                     description: The supported HTTP methods available for probes.
                     type: string
@@ -294,7 +294,8 @@ spec:
                   port:
                     description: The port on which to probe endpoints. If unspecified,
                       probes will use the default port of their protocol.
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: The supported protocols available for HTTP probes.
                     type: string
@@ -308,7 +309,8 @@ spec:
                     description: 'The probe timeout in seconds. Valid values: 10,
                       20, 30, and 60. The probe timeout must be less than or equal
                       to intervalInSeconds for monitors.'
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePointNames:
                     description: A list of names of vantage points from which to execute
                       the probe.
@@ -398,7 +400,6 @@ spec:
                       type: string
                     description: A dictionary of HTTP request headers.
                     type: object
-                    x-kubernetes-map-type: granular
                   homeRegion:
                     description: The region where updates must be made and where results
                       must be fetched from.
@@ -415,7 +416,8 @@ spec:
                   port:
                     description: The port on which to probe endpoints. If unspecified,
                       probes will use the default port of their protocol.
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: The supported protocols available for HTTP probes.
                     type: string
@@ -436,7 +438,8 @@ spec:
                     description: 'The probe timeout in seconds. Valid values: 10,
                       20, 30, and 60. The probe timeout must be less than or equal
                       to intervalInSeconds for monitors.'
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePointNames:
                     description: A list of names of vantage points from which to execute
                       the probe.

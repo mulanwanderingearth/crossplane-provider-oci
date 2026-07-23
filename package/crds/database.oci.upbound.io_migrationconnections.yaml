@@ -415,7 +415,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. Does not
                       have to be unique, and it's changeable.  Avoid entering confidential
@@ -434,7 +433,6 @@ spec:
                       or namespace.  For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   host:
                     description: (Applicable when connection_type=MYSQL) (Updatable)
                       The IP Address of the host.
@@ -545,7 +543,8 @@ spec:
                   port:
                     description: (Applicable when connection_type=MYSQL) (Updatable)
                       The port to be used for the connection.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationPasswordSecretRef:
                     description: (Updatable) The password (credential) used when creating
                       or updating this resource.
@@ -1139,7 +1138,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. Does not
                       have to be unique, and it's changeable.  Avoid entering confidential
@@ -1158,7 +1156,6 @@ spec:
                       or namespace.  For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   host:
                     description: (Applicable when connection_type=MYSQL) (Updatable)
                       The IP Address of the host.
@@ -1269,7 +1266,8 @@ spec:
                   port:
                     description: (Applicable when connection_type=MYSQL) (Updatable)
                       The port to be used for the connection.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationPasswordSecretRef:
                     description: (Updatable) The password (credential) used when creating
                       or updating this resource.
@@ -1667,7 +1665,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. Does not
                       have to be unique, and it's changeable.  Avoid entering confidential
@@ -1686,7 +1683,6 @@ spec:
                       or namespace.  For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   host:
                     description: (Applicable when connection_type=MYSQL) (Updatable)
                       The IP Address of the host.
@@ -1724,7 +1720,8 @@ spec:
                   port:
                     description: (Applicable when connection_type=MYSQL) (Updatable)
                       The port to be used for the connection.
-                    type: number
+                    format: int64
+                    type: integer
                   privateEndpointId:
                     description: The OCID of the resource being referenced.
                     type: string
@@ -1795,7 +1792,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   technologyType:
                     description: 'The type of MySQL source or target connection. Example:
                       OCI_MYSQL represents Oracle Cloud Infrastructure MySQL HeatWave

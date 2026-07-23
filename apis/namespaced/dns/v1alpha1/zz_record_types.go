@@ -38,7 +38,7 @@ type RecordInitParameters struct {
 	Rtype *string `json:"rtype,omitempty" tf:"rtype,omitempty"`
 
 	// (Updatable) The Time To Live for the record, in seconds.
-	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
 	// The name or OCID of the target zone.
 	ZoneNameOrID *string `json:"zoneNameOrId,omitempty" tf:"zone_name_or_id,omitempty"`
@@ -70,7 +70,7 @@ type RecordObservation struct {
 	Rtype *string `json:"rtype,omitempty" tf:"rtype,omitempty"`
 
 	// (Updatable) The Time To Live for the record, in seconds.
-	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
 	// The name or OCID of the target zone.
 	ZoneNameOrID *string `json:"zoneNameOrId,omitempty" tf:"zone_name_or_id,omitempty"`
@@ -105,7 +105,7 @@ type RecordParameters struct {
 
 	// (Updatable) The Time To Live for the record, in seconds.
 	// +kubebuilder:validation:Optional
-	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 
 	// The name or OCID of the target zone.
 	// +kubebuilder:validation:Optional

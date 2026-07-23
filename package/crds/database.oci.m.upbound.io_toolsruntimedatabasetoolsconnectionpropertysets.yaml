@@ -68,7 +68,6 @@ spec:
                     description: (Applicable when key=APEX_FA_INTEGRATION) (Updatable)
                       APEX FA Integration key-value pairs.
                     type: object
-                    x-kubernetes-map-type: granular
                   autonomousDatabaseResourcePrincipalStatus:
                     description: (Applicable when key=APEX_DOCUMENT_GENERATOR) (Updatable)
                       The status of the Autonomous Database Serverless Resource Principal
@@ -262,7 +261,6 @@ spec:
                             parameters. Simple key-value pair Example: { "tenant_id":
                             "...", "application_id_uri": "...", ... }'
                           type: object
-                          x-kubernetes-map-type: granular
                         type:
                           description: (Updatable) External identity type provider.  Supported
                             values - OCI_IAM, AZURE_AD, NONE.
@@ -406,7 +404,6 @@ spec:
                     description: (Applicable when key=APEX_FA_INTEGRATION) (Updatable)
                       APEX FA Integration key-value pairs.
                     type: object
-                    x-kubernetes-map-type: granular
                   autonomousDatabaseResourcePrincipalStatus:
                     description: (Applicable when key=APEX_DOCUMENT_GENERATOR) (Updatable)
                       The status of the Autonomous Database Serverless Resource Principal
@@ -600,7 +597,6 @@ spec:
                             parameters. Simple key-value pair Example: { "tenant_id":
                             "...", "application_id_uri": "...", ... }'
                           type: object
-                          x-kubernetes-map-type: granular
                         type:
                           description: (Updatable) External identity type provider.  Supported
                             values - OCI_IAM, AZURE_AD, NONE.
@@ -806,7 +802,6 @@ spec:
                     description: (Applicable when key=APEX_FA_INTEGRATION) (Updatable)
                       APEX FA Integration key-value pairs.
                     type: object
-                    x-kubernetes-map-type: granular
                   autonomousDatabaseResourcePrincipalStatus:
                     description: (Applicable when key=APEX_DOCUMENT_GENERATOR) (Updatable)
                       The status of the Autonomous Database Serverless Resource Principal
@@ -838,7 +833,6 @@ spec:
                             parameters. Simple key-value pair Example: { "tenant_id":
                             "...", "application_id_uri": "...", ... }'
                           type: object
-                          x-kubernetes-map-type: granular
                         type:
                           description: (Updatable) External identity type provider.  Supported
                             values - OCI_IAM, AZURE_AD, NONE.

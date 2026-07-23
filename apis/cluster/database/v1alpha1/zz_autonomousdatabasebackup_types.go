@@ -145,7 +145,7 @@ type AutonomousDatabaseBackupInitParameters struct {
 	IsLongTermBackup *bool `json:"isLongTermBackup,omitempty" tf:"is_long_term_backup,omitempty"`
 
 	// (Updatable) Retention period, in days, for long-term backups
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 }
 
 type AutonomousDatabaseBackupObservation struct {
@@ -202,7 +202,7 @@ type AutonomousDatabaseBackupObservation struct {
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
 
 	// (Updatable) Retention period, in days, for long-term backups
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
 	// The backup size in terrabytes (TB).
 	SizeInTbs *float64 `json:"sizeInTbs,omitempty" tf:"size_in_tbs,omitempty"`
@@ -258,7 +258,7 @@ type AutonomousDatabaseBackupParameters struct {
 
 	// (Updatable) Retention period, in days, for long-term backups
 	// +kubebuilder:validation:Optional
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 }
 
 type SourceDatabaseDetailsAutonomousDatabaseCustomerContactsInitParameters struct {

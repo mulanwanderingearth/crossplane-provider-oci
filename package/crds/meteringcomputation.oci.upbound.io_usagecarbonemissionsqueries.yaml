@@ -182,7 +182,8 @@ spec:
                             properties:
                               compartmentDepth:
                                 description: (Updatable) The compartment depth level.
-                                type: number
+                                format: int64
+                                type: integer
                               dateRangeName:
                                 description: (Updatable) The user interface date range,
                                   for example, LAST_THREE_MONTHS. Overrides the timeUsageStarted
@@ -252,7 +253,8 @@ spec:
                           type: array
                         version:
                           description: (Updatable) The saved query version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object
@@ -376,7 +378,8 @@ spec:
                             properties:
                               compartmentDepth:
                                 description: (Updatable) The compartment depth level.
-                                type: number
+                                format: int64
+                                type: integer
                               dateRangeName:
                                 description: (Updatable) The user interface date range,
                                   for example, LAST_THREE_MONTHS. Overrides the timeUsageStarted
@@ -446,7 +449,8 @@ spec:
                           type: array
                         version:
                           description: (Updatable) The saved query version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object
@@ -583,7 +587,8 @@ spec:
                             properties:
                               compartmentDepth:
                                 description: (Updatable) The compartment depth level.
-                                type: number
+                                format: int64
+                                type: integer
                               dateRangeName:
                                 description: (Updatable) The user interface date range,
                                   for example, LAST_THREE_MONTHS. Overrides the timeUsageStarted
@@ -653,7 +658,8 @@ spec:
                           type: array
                         version:
                           description: (Updatable) The saved query version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object

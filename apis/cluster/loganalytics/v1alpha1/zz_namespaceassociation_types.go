@@ -158,7 +158,7 @@ type NamespaceAssociationObservation struct {
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
 
 	// The number of times the association will be attempted before failing.
-	RetryCount *float64 `json:"retryCount,omitempty" tf:"retry_count,omitempty"`
+	RetryCount *int64 `json:"retryCount,omitempty" tf:"retry_count,omitempty"`
 
 	// The source display name.
 	SourceDisplayName *string `json:"sourceDisplayName,omitempty" tf:"source_display_name,omitempty"`

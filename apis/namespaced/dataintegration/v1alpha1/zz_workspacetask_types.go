@@ -143,8 +143,7 @@ type CancelRestCallConfigInitParameters struct {
 	ModelType *string `json:"modelType,omitempty" tf:"model_type,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The headers for the REST call.
-	// +mapType=granular
-	RequestHeaders map[string]*string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
 }
 
 type CancelRestCallConfigObservation struct {
@@ -162,8 +161,7 @@ type CancelRestCallConfigObservation struct {
 	ModelType *string `json:"modelType,omitempty" tf:"model_type,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The headers for the REST call.
-	// +mapType=granular
-	RequestHeaders map[string]*string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
 }
 
 type CancelRestCallConfigParameters struct {
@@ -186,14 +184,13 @@ type CancelRestCallConfigParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The headers for the REST call.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	RequestHeaders map[string]*string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
 }
 
 type ConfigParamValueInitParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	ObjectValue *string `json:"objectValue,omitempty" tf:"object_value,omitempty"`
@@ -214,7 +211,7 @@ type ConfigParamValueInitParameters struct {
 type ConfigParamValueObservation struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	ObjectValue *string `json:"objectValue,omitempty" tf:"object_value,omitempty"`
@@ -236,7 +233,7 @@ type ConfigParamValueParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
 	// +kubebuilder:validation:Optional
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	// +kubebuilder:validation:Optional
@@ -274,7 +271,7 @@ type ConfigParamValueRefValueInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValueRefValueObservation struct {
@@ -292,7 +289,7 @@ type ConfigParamValueRefValueObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValueRefValueParameters struct {
@@ -315,7 +312,7 @@ type ConfigParamValueRefValueParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValueRootObjectValueInitParameters struct {
@@ -330,7 +327,7 @@ type ConfigParamValueRootObjectValueInitParameters struct {
 	ModelVersion *string `json:"modelVersion,omitempty" tf:"model_version,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValueRootObjectValueObservation struct {
@@ -345,7 +342,7 @@ type ConfigParamValueRootObjectValueObservation struct {
 	ModelVersion *string `json:"modelVersion,omitempty" tf:"model_version,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValueRootObjectValueParameters struct {
@@ -364,13 +361,13 @@ type ConfigParamValueRootObjectValueParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValuesConfigParamValueInitParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	ObjectValue *string `json:"objectValue,omitempty" tf:"object_value,omitempty"`
@@ -391,7 +388,7 @@ type ConfigParamValuesConfigParamValueInitParameters struct {
 type ConfigParamValuesConfigParamValueObservation struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	ObjectValue *string `json:"objectValue,omitempty" tf:"object_value,omitempty"`
@@ -413,7 +410,7 @@ type ConfigParamValuesConfigParamValueParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
 	// +kubebuilder:validation:Optional
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	// +kubebuilder:validation:Optional
@@ -451,7 +448,7 @@ type ConfigParamValuesConfigParamValueRefValueInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValuesConfigParamValueRefValueObservation struct {
@@ -469,7 +466,7 @@ type ConfigParamValuesConfigParamValueRefValueObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValuesConfigParamValueRefValueParameters struct {
@@ -492,7 +489,7 @@ type ConfigParamValuesConfigParamValueRefValueParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValuesConfigParamValueRootObjectValueInitParameters struct {
@@ -507,7 +504,7 @@ type ConfigParamValuesConfigParamValueRootObjectValueInitParameters struct {
 	ModelVersion *string `json:"modelVersion,omitempty" tf:"model_version,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValuesConfigParamValueRootObjectValueObservation struct {
@@ -522,7 +519,7 @@ type ConfigParamValuesConfigParamValueRootObjectValueObservation struct {
 	ModelVersion *string `json:"modelVersion,omitempty" tf:"model_version,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValuesConfigParamValueRootObjectValueParameters struct {
@@ -541,7 +538,7 @@ type ConfigParamValuesConfigParamValueRootObjectValueParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ConfigParamValuesDataParamInitParameters struct {
@@ -971,8 +968,7 @@ type ExecuteRestCallConfigInitParameters struct {
 	ModelType *string `json:"modelType,omitempty" tf:"model_type,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The headers for the REST call.
-	// +mapType=granular
-	RequestHeaders map[string]*string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
 }
 
 type ExecuteRestCallConfigObservation struct {
@@ -990,8 +986,7 @@ type ExecuteRestCallConfigObservation struct {
 	ModelType *string `json:"modelType,omitempty" tf:"model_type,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The headers for the REST call.
-	// +mapType=granular
-	RequestHeaders map[string]*string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
 }
 
 type ExecuteRestCallConfigParameters struct {
@@ -1014,14 +1009,13 @@ type ExecuteRestCallConfigParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The headers for the REST call.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	RequestHeaders map[string]*string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
 }
 
 type InputPortsConfigValuesConfigParamValuesInitParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	ObjectValue *string `json:"objectValue,omitempty" tf:"object_value,omitempty"`
@@ -1042,7 +1036,7 @@ type InputPortsConfigValuesConfigParamValuesInitParameters struct {
 type InputPortsConfigValuesConfigParamValuesObservation struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	ObjectValue *string `json:"objectValue,omitempty" tf:"object_value,omitempty"`
@@ -1064,7 +1058,7 @@ type InputPortsConfigValuesConfigParamValuesParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
 	// +kubebuilder:validation:Optional
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	// +kubebuilder:validation:Optional
@@ -1169,7 +1163,7 @@ type InputPortsInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []InputPortsParentRefInitParameters `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -1202,7 +1196,7 @@ type InputPortsObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []InputPortsParentRefObservation `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -1243,7 +1237,7 @@ type InputPortsParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	// +kubebuilder:validation:Optional
@@ -1286,20 +1280,20 @@ type InputPortsParentRefParameters struct {
 type LengthInitParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 }
 
 type LengthObservation struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 }
 
 type LengthParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
 	// +kubebuilder:validation:Optional
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 }
 
 type OpConfigValuesConfigParamValuesInitParameters struct {
@@ -1387,7 +1381,7 @@ type OpConfigValuesParentRefParameters struct {
 type OutputPortsConfigValuesConfigParamValuesInitParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	ObjectValue *string `json:"objectValue,omitempty" tf:"object_value,omitempty"`
@@ -1408,7 +1402,7 @@ type OutputPortsConfigValuesConfigParamValuesInitParameters struct {
 type OutputPortsConfigValuesConfigParamValuesObservation struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	ObjectValue *string `json:"objectValue,omitempty" tf:"object_value,omitempty"`
@@ -1430,7 +1424,7 @@ type OutputPortsConfigValuesConfigParamValuesParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
 	// +kubebuilder:validation:Optional
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An object value of the parameter.
 	// +kubebuilder:validation:Optional
@@ -1535,7 +1529,7 @@ type OutputPortsInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []OutputPortsParentRefInitParameters `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -1568,7 +1562,7 @@ type OutputPortsObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []OutputPortsParentRefObservation `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -1609,7 +1603,7 @@ type OutputPortsParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	// +kubebuilder:validation:Optional
@@ -1790,7 +1784,7 @@ type ParametersInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) The output aggregation type.
 	OutputAggregationType *string `json:"outputAggregationType,omitempty" tf:"output_aggregation_type,omitempty"`
@@ -1841,7 +1835,7 @@ type ParametersObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) The output aggregation type.
 	OutputAggregationType *string `json:"outputAggregationType,omitempty" tf:"output_aggregation_type,omitempty"`
@@ -1902,7 +1896,7 @@ type ParametersParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) The output aggregation type.
 	// +kubebuilder:validation:Optional
@@ -2241,8 +2235,7 @@ type PollRestCallConfigInitParameters struct {
 	ModelType *string `json:"modelType,omitempty" tf:"model_type,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The headers for the REST call.
-	// +mapType=granular
-	RequestHeaders map[string]*string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
 }
 
 type PollRestCallConfigObservation struct {
@@ -2260,8 +2253,7 @@ type PollRestCallConfigObservation struct {
 	ModelType *string `json:"modelType,omitempty" tf:"model_type,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The headers for the REST call.
-	// +mapType=granular
-	RequestHeaders map[string]*string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
 }
 
 type PollRestCallConfigParameters struct {
@@ -2284,8 +2276,7 @@ type PollRestCallConfigParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The headers for the REST call.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	RequestHeaders map[string]*string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
+	RequestHeaders map[string]string `json:"requestHeaders,omitempty" tf:"request_headers,omitempty"`
 }
 
 type RefValueConfigValuesConfigParamValuesInitParameters struct {
@@ -2492,7 +2483,7 @@ type RootObjectValueInitParameters struct {
 	ModelVersion *string `json:"modelVersion,omitempty" tf:"model_version,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type RootObjectValueObservation struct {
@@ -2507,7 +2498,7 @@ type RootObjectValueObservation struct {
 	ModelVersion *string `json:"modelVersion,omitempty" tf:"model_version,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type RootObjectValueParameters struct {
@@ -2526,26 +2517,26 @@ type RootObjectValueParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 }
 
 type ScaleInitParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 }
 
 type ScaleObservation struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 }
 
 type ScaleParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) An integer value of the parameter.
 	// +kubebuilder:validation:Optional
-	IntValue *float64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
+	IntValue *int64 `json:"intValue,omitempty" tf:"int_value,omitempty"`
 }
 
 type TypedExpressionsConfigValuesConfigParamValuesInitParameters struct {
@@ -2651,7 +2642,7 @@ type TypedExpressionsInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []TypedExpressionsParentRefInitParameters `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -2684,7 +2675,7 @@ type TypedExpressionsObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []TypedExpressionsParentRefObservation `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -2725,7 +2716,7 @@ type TypedExpressionsParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	// +kubebuilder:validation:Optional
@@ -2807,7 +2798,7 @@ type WorkspaceTaskInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) Configuration values can be string, objects, or parameters.
 	OpConfigValues []OpConfigValuesInitParameters `json:"opConfigValues,omitempty" tf:"op_config_values,omitempty"`
@@ -2819,7 +2810,7 @@ type WorkspaceTaskInitParameters struct {
 	OutputPorts []OutputPortsInitParameters `json:"outputPorts,omitempty" tf:"output_ports,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK) (Updatable) Defines the number of entities being loaded in parallel at a time for a Data Loader task
-	ParallelLoadLimit *float64 `json:"parallelLoadLimit,omitempty" tf:"parallel_load_limit,omitempty"`
+	ParallelLoadLimit *int64 `json:"parallelLoadLimit,omitempty" tf:"parallel_load_limit,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) An array of parameters.
 	Parameters []ParametersInitParameters `json:"parameters,omitempty" tf:"parameters,omitempty"`
@@ -2925,8 +2916,7 @@ type WorkspaceTaskMetadataObservation struct {
 	IdentifierPath *string `json:"identifierPath,omitempty" tf:"identifier_path,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) Information property fields.
-	// +mapType=granular
-	InfoFields map[string]*string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
+	InfoFields map[string]string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) Specifies whether this object is a favorite or not.
 	IsFavorite *bool `json:"isFavorite,omitempty" tf:"is_favorite,omitempty"`
@@ -2935,7 +2925,7 @@ type WorkspaceTaskMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) The registry version of the object.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) The date and time that the object was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -2988,8 +2978,7 @@ type WorkspaceTaskObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) A key map. If provided, key is replaced with generated key. This structure provides mapping between user provided key and generated key.
-	// +mapType=granular
-	KeyMap map[string]*string `json:"keyMap,omitempty" tf:"key_map,omitempty"`
+	KeyMap map[string]string `json:"keyMap,omitempty" tf:"key_map,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) A summary type containing information about the object including its key, name and when/who created/updated it.
 	Metadata []WorkspaceTaskMetadataObservation `json:"metadata,omitempty" tf:"metadata,omitempty"`
@@ -3004,10 +2993,10 @@ type WorkspaceTaskObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) The version of the object that is used to track changes in the object instance.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// (Updatable) Configuration values can be string, objects, or parameters.
 	OpConfigValues []OpConfigValuesObservation `json:"opConfigValues,omitempty" tf:"op_config_values,omitempty"`
@@ -3019,7 +3008,7 @@ type WorkspaceTaskObservation struct {
 	OutputPorts []OutputPortsObservation `json:"outputPorts,omitempty" tf:"output_ports,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK) (Updatable) Defines the number of entities being loaded in parallel at a time for a Data Loader task
-	ParallelLoadLimit *float64 `json:"parallelLoadLimit,omitempty" tf:"parallel_load_limit,omitempty"`
+	ParallelLoadLimit *int64 `json:"parallelLoadLimit,omitempty" tf:"parallel_load_limit,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) An array of parameters.
 	Parameters []ParametersObservation `json:"parameters,omitempty" tf:"parameters,omitempty"`
@@ -3096,7 +3085,7 @@ type WorkspaceTaskParameters struct {
 
 	// (Applicable when model_type=REST_TASK) (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) Configuration values can be string, objects, or parameters.
 	// +kubebuilder:validation:Optional
@@ -3112,7 +3101,7 @@ type WorkspaceTaskParameters struct {
 
 	// (Applicable when model_type=DATA_LOADER_TASK) (Updatable) Defines the number of entities being loaded in parallel at a time for a Data Loader task
 	// +kubebuilder:validation:Optional
-	ParallelLoadLimit *float64 `json:"parallelLoadLimit,omitempty" tf:"parallel_load_limit,omitempty"`
+	ParallelLoadLimit *int64 `json:"parallelLoadLimit,omitempty" tf:"parallel_load_limit,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) An array of parameters.
 	// +kubebuilder:validation:Optional
@@ -3193,7 +3182,7 @@ type WorkspaceTaskRegistryMetadataInitParameters struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) The registry version of the object.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type WorkspaceTaskRegistryMetadataObservation struct {
@@ -3211,7 +3200,7 @@ type WorkspaceTaskRegistryMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) The registry version of the object.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type WorkspaceTaskRegistryMetadataParameters struct {
@@ -3234,7 +3223,7 @@ type WorkspaceTaskRegistryMetadataParameters struct {
 
 	// (Applicable when model_type=DATA_LOADER_TASK | INTEGRATION_TASK) (Updatable) The registry version of the object.
 	// +kubebuilder:validation:Optional
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 // WorkspaceTaskSpec defines the desired state of WorkspaceTask

@@ -199,11 +199,13 @@ spec:
                           description: '(Updatable) The interval between health checks,
                             in milliseconds. The default value is 10000 (10 seconds).  Example:
                             10000'
-                          type: number
+                          format: int64
+                          type: integer
                         port:
                           description: '(Updatable) The communication port for the
                             backend server.  Example: 8080'
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: '(Updatable) The protocol the health check
                             must use; either HTTP, HTTPS, UDP, TCP or DNS.  Example:
@@ -226,20 +228,23 @@ spec:
                             before a backend server is considered "unhealthy". This
                             number also applies when recovering a server to the "healthy"
                             state. The default value is 3.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         returnCode:
                           description: '(Updatable) The status code a healthy backend
                             server should return. If you configure the health check
                             policy to use the HTTP protocol, then you can use common
                             HTTP status codes such as "200".  Example: 200'
-                          type: number
+                          format: int64
+                          type: integer
                         timeoutInMillis:
                           description: '(Updatable) The maximum time, in milliseconds,
                             to wait for a reply to a health check. A health check
                             is successful only if a reply returns within this timeout
                             period. The default value is 3000 (3 seconds).  Example:
                             3000'
-                          type: number
+                          format: int64
+                          type: integer
                         urlPath:
                           description: '(Updatable) The path against which to run
                             the health check.  Example: /healthcheck'
@@ -505,11 +510,13 @@ spec:
                           description: '(Updatable) The interval between health checks,
                             in milliseconds. The default value is 10000 (10 seconds).  Example:
                             10000'
-                          type: number
+                          format: int64
+                          type: integer
                         port:
                           description: '(Updatable) The communication port for the
                             backend server.  Example: 8080'
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: '(Updatable) The protocol the health check
                             must use; either HTTP, HTTPS, UDP, TCP or DNS.  Example:
@@ -532,20 +539,23 @@ spec:
                             before a backend server is considered "unhealthy". This
                             number also applies when recovering a server to the "healthy"
                             state. The default value is 3.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         returnCode:
                           description: '(Updatable) The status code a healthy backend
                             server should return. If you configure the health check
                             policy to use the HTTP protocol, then you can use common
                             HTTP status codes such as "200".  Example: 200'
-                          type: number
+                          format: int64
+                          type: integer
                         timeoutInMillis:
                           description: '(Updatable) The maximum time, in milliseconds,
                             to wait for a reply to a health check. A health check
                             is successful only if a reply returns within this timeout
                             period. The default value is 3000 (3 seconds).  Example:
                             3000'
-                          type: number
+                          format: int64
+                          type: integer
                         urlPath:
                           description: '(Updatable) The path against which to run
                             the health check.  Example: /healthcheck'
@@ -826,7 +836,8 @@ spec:
                         port:
                           description: '(Updatable) The communication port for the
                             backend server.  Example: 8080'
-                          type: number
+                          format: int64
+                          type: integer
                         targetId:
                           description: '(Updatable) The IP OCID/Instance OCID associated
                             with the backend server. Example: ocid1.privateip..oc1.<var>&lt;unique_ID&gt;</var>'
@@ -840,7 +851,8 @@ spec:
                             weighted ''1''. For more information about load balancing
                             policies, see Network Load Balancer Policies.  Example:
                             3'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   healthChecker:
@@ -884,11 +896,13 @@ spec:
                           description: '(Updatable) The interval between health checks,
                             in milliseconds. The default value is 10000 (10 seconds).  Example:
                             10000'
-                          type: number
+                          format: int64
+                          type: integer
                         port:
                           description: '(Updatable) The communication port for the
                             backend server.  Example: 8080'
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: '(Updatable) The protocol the health check
                             must use; either HTTP, HTTPS, UDP, TCP or DNS.  Example:
@@ -911,20 +925,23 @@ spec:
                             before a backend server is considered "unhealthy". This
                             number also applies when recovering a server to the "healthy"
                             state. The default value is 3.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         returnCode:
                           description: '(Updatable) The status code a healthy backend
                             server should return. If you configure the health check
                             policy to use the HTTP protocol, then you can use common
                             HTTP status codes such as "200".  Example: 200'
-                          type: number
+                          format: int64
+                          type: integer
                         timeoutInMillis:
                           description: '(Updatable) The maximum time, in milliseconds,
                             to wait for a reply to a health check. A health check
                             is successful only if a reply returns within this timeout
                             period. The default value is 3000 (3 seconds).  Example:
                             3000'
-                          type: number
+                          format: int64
+                          type: integer
                         urlPath:
                           description: '(Updatable) The path against which to run
                             the health check.  Example: /healthcheck'

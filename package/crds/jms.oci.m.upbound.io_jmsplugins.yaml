@@ -159,7 +159,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}. (See Understanding Free-form Tags).'
                     type: object
-                    x-kubernetes-map-type: granular
                   fleetId:
                     description: (Updatable) The OCID of the fleet.
                     type: string
@@ -251,7 +250,6 @@ spec:
                       only. Example: {"bar-key": "value"}. (See Managing Tags and
                       Tag Namespaces.)'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -366,7 +364,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}. (See Understanding Free-form Tags).'
                     type: object
-                    x-kubernetes-map-type: granular
                   fleetId:
                     description: (Updatable) The OCID of the fleet.
                     type: string
@@ -458,7 +455,6 @@ spec:
                       only. Example: {"bar-key": "value"}. (See Managing Tags and
                       Tag Namespaces.)'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -551,7 +547,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}. (See Understanding Free-form Tags).'
                     type: object
-                    x-kubernetes-map-type: granular
                   fleetId:
                     description: (Updatable) The OCID of the fleet.
                     type: string
@@ -563,7 +558,6 @@ spec:
                       only. Example: {"bar-key": "value"}. (See Managing Tags and
                       Tag Namespaces.)'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostname:
                     description: The hostname of the agent.
                     type: string
@@ -593,7 +587,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeLastSeen:
                     description: The date and time the resource was last reported
                       to JMS. This is potentially after the specified time period

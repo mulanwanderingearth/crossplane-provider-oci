@@ -73,15 +73,13 @@ type ScriptInitParameters struct {
 	ContentType *string `json:"contentType,omitempty" tf:"content_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Unique name that can be edited. The name should not contain any confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) List of script parameters. Example: [{"paramName": "userid", "paramValue":"testuser", "isSecret": false}]
 	Parameters []ParametersInitParameters `json:"parameters,omitempty" tf:"parameters,omitempty"`
@@ -93,16 +91,16 @@ type ScriptMonitorStatusCountMapInitParameters struct {
 type ScriptMonitorStatusCountMapObservation struct {
 
 	// Number of disabled monitors using the script.
-	Disabled *float64 `json:"disabled,omitempty" tf:"disabled,omitempty"`
+	Disabled *int64 `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
 	// Number of enabled monitors using the script.
-	Enabled *float64 `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	Enabled *int64 `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
 	// Number of invalid monitors using the script.
-	Invalid *float64 `json:"invalid,omitempty" tf:"invalid,omitempty"`
+	Invalid *int64 `json:"invalid,omitempty" tf:"invalid,omitempty"`
 
 	// Total number of monitors using the script.
-	Total *float64 `json:"total,omitempty" tf:"total,omitempty"`
+	Total *int64 `json:"total,omitempty" tf:"total,omitempty"`
 }
 
 type ScriptMonitorStatusCountMapParameters struct {
@@ -120,21 +118,19 @@ type ScriptObservation struct {
 	ContentFileName *string `json:"contentFileName,omitempty" tf:"content_file_name,omitempty"`
 
 	// Size of the script content.
-	ContentSizeInBytes *float64 `json:"contentSizeInBytes,omitempty" tf:"content_size_in_bytes,omitempty"`
+	ContentSizeInBytes *int64 `json:"contentSizeInBytes,omitempty" tf:"content_size_in_bytes,omitempty"`
 
 	// (Updatable) Content type of script.
 	ContentType *string `json:"contentType,omitempty" tf:"content_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Unique name that can be edited. The name should not contain any confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the script. scriptId is mandatory for creation of SCRIPTED_BROWSER and SCRIPTED_REST monitor types. For other monitor types, it should be set to null.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -193,8 +189,7 @@ type ScriptParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Unique name that can be edited. The name should not contain any confidential information.
 	// +kubebuilder:validation:Optional
@@ -202,8 +197,7 @@ type ScriptParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) List of script parameters. Example: [{"paramName": "userid", "paramValue":"testuser", "isSecret": false}]
 	// +kubebuilder:validation:Optional

@@ -235,7 +235,8 @@ spec:
                                 description: (Applicable when feature_type=DOCUMENT_CLASSIFICATION
                                   | LANGUAGE_CLASSIFICATION) The maximum number of
                                   results to return.
-                                type: number
+                                format: int64
+                                type: integer
                               modelId:
                                 description: (Applicable when feature_type=DOCUMENT_CLASSIFICATION
                                   | DOCUMENT_ELEMENTS_EXTRACTION | KEY_VALUE_EXTRACTION
@@ -621,7 +622,8 @@ spec:
                                 description: (Applicable when feature_type=DOCUMENT_CLASSIFICATION
                                   | LANGUAGE_CLASSIFICATION) The maximum number of
                                   results to return.
-                                type: number
+                                format: int64
+                                type: integer
                               modelId:
                                 description: (Applicable when feature_type=DOCUMENT_CLASSIFICATION
                                   | DOCUMENT_ELEMENTS_EXTRACTION | KEY_VALUE_EXTRACTION
@@ -1034,7 +1036,8 @@ spec:
                                 description: (Applicable when feature_type=DOCUMENT_CLASSIFICATION
                                   | LANGUAGE_CLASSIFICATION) The maximum number of
                                   results to return.
-                                type: number
+                                format: int64
+                                type: integer
                               modelId:
                                 description: (Applicable when feature_type=DOCUMENT_CLASSIFICATION
                                   | DOCUMENT_ELEMENTS_EXTRACTION | KEY_VALUE_EXTRACTION

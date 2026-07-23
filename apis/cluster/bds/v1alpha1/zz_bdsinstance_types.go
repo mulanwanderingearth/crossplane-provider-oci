@@ -95,8 +95,7 @@ type BdsInstanceInitParameters struct {
 	ComputeOnlyWorkerNode []ComputeOnlyWorkerNodeInitParameters `json:"computeOnlyWorkerNode,omitempty" tf:"compute_only_worker_node,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Name of the BDS instance
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -104,8 +103,7 @@ type BdsInstanceInitParameters struct {
 	EdgeNode []EdgeNodeInitParameters `json:"edgeNode,omitempty" tf:"edge_node,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Tag to ignore changing the shape of existing worker, master, utility, compute_only_worker, edge, kafka_broker nodes, in a list format, when new nodes are added with a different shape.
 	IgnoreExistingNodesShape []*string `json:"ignoreExistingNodesShape,omitempty" tf:"ignore_existing_nodes_shape,omitempty"`
@@ -210,8 +208,7 @@ type BdsInstanceObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Name of the BDS instance
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -219,8 +216,7 @@ type BdsInstanceObservation struct {
 	EdgeNode []EdgeNodeObservation `json:"edgeNode,omitempty" tf:"edge_node,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Big Data Service resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -267,10 +263,10 @@ type BdsInstanceObservation struct {
 	Nodes []NodesObservation `json:"nodes,omitempty" tf:"nodes,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Number of nodes that require a maintenance reboot
-	NumberOfNodesRequiringMaintenanceReboot *float64 `json:"numberOfNodesRequiringMaintenanceReboot,omitempty" tf:"number_of_nodes_requiring_maintenance_reboot,omitempty"`
+	NumberOfNodesRequiringMaintenanceReboot *int64 `json:"numberOfNodesRequiringMaintenanceReboot,omitempty" tf:"number_of_nodes_requiring_maintenance_reboot,omitempty"`
 
 	// (Updatable) The version of the patch to be upated.
 	OsPatchVersion *string `json:"osPatchVersion,omitempty" tf:"os_patch_version,omitempty"`
@@ -352,8 +348,7 @@ type BdsInstanceParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Name of the BDS instance
 	// +kubebuilder:validation:Optional
@@ -364,8 +359,7 @@ type BdsInstanceParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Tag to ignore changing the shape of existing worker, master, utility, compute_only_worker, edge, kafka_broker nodes, in a list format, when new nodes are added with a different shape.
 	// +kubebuilder:validation:Optional
@@ -480,13 +474,13 @@ type CloudSQLDetailsObservation struct {
 	KerberosDetails []KerberosDetailsObservation `json:"kerberosDetails,omitempty" tf:"kerberos_details,omitempty"`
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -559,7 +553,7 @@ type ComputeOnlyWorkerNodeInitParameters struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -587,7 +581,7 @@ type ComputeOnlyWorkerNodeObservation struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -607,7 +601,7 @@ type ComputeOnlyWorkerNodeParameters struct {
 
 	// The amount of master nodes should be created.
 	// +kubebuilder:validation:Optional
-	NumberOfNodes *float64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	// +kubebuilder:validation:Optional
@@ -635,40 +629,40 @@ type ComputeOnlyWorkerNodeParameters struct {
 type ComputeOnlyWorkerNodeShapeConfigInitParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type ComputeOnlyWorkerNodeShapeConfigObservation struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type ComputeOnlyWorkerNodeShapeConfigParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type EdgeNodeInitParameters struct {
@@ -677,7 +671,7 @@ type EdgeNodeInitParameters struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -705,7 +699,7 @@ type EdgeNodeObservation struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -725,7 +719,7 @@ type EdgeNodeParameters struct {
 
 	// The amount of master nodes should be created.
 	// +kubebuilder:validation:Optional
-	NumberOfNodes *float64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	// +kubebuilder:validation:Optional
@@ -753,40 +747,40 @@ type EdgeNodeParameters struct {
 type EdgeNodeShapeConfigInitParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type EdgeNodeShapeConfigObservation struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type EdgeNodeShapeConfigParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type KafkaBrokerNodeInitParameters struct {
@@ -795,7 +789,7 @@ type KafkaBrokerNodeInitParameters struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The list of nodes in the Big Data Service cluster.
-	NumberOfKafkaNodes *float64 `json:"numberOfKafkaNodes,omitempty" tf:"number_of_kafka_nodes,omitempty"`
+	NumberOfKafkaNodes *int64 `json:"numberOfKafkaNodes,omitempty" tf:"number_of_kafka_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -823,7 +817,7 @@ type KafkaBrokerNodeObservation struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The list of nodes in the Big Data Service cluster.
-	NumberOfKafkaNodes *float64 `json:"numberOfKafkaNodes,omitempty" tf:"number_of_kafka_nodes,omitempty"`
+	NumberOfKafkaNodes *int64 `json:"numberOfKafkaNodes,omitempty" tf:"number_of_kafka_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -843,7 +837,7 @@ type KafkaBrokerNodeParameters struct {
 
 	// The list of nodes in the Big Data Service cluster.
 	// +kubebuilder:validation:Optional
-	NumberOfKafkaNodes *float64 `json:"numberOfKafkaNodes" tf:"number_of_kafka_nodes,omitempty"`
+	NumberOfKafkaNodes *int64 `json:"numberOfKafkaNodes" tf:"number_of_kafka_nodes,omitempty"`
 
 	// Shape of the node
 	// +kubebuilder:validation:Optional
@@ -871,40 +865,40 @@ type KafkaBrokerNodeParameters struct {
 type KafkaBrokerNodeShapeConfigInitParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type KafkaBrokerNodeShapeConfigObservation struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type KafkaBrokerNodeShapeConfigParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type KerberosDetailsInitParameters struct {
@@ -928,7 +922,7 @@ type MasterNodeInitParameters struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -956,7 +950,7 @@ type MasterNodeObservation struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -976,7 +970,7 @@ type MasterNodeParameters struct {
 
 	// The amount of master nodes should be created.
 	// +kubebuilder:validation:Optional
-	NumberOfNodes *float64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	// +kubebuilder:validation:Optional
@@ -1004,40 +998,40 @@ type MasterNodeParameters struct {
 type MasterNodeShapeConfigInitParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type MasterNodeShapeConfigObservation struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type MasterNodeShapeConfigParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type NetworkConfigInitParameters struct {
@@ -1134,16 +1128,16 @@ type NodesObservation struct {
 	LocalDisksTotalSizeInGbs *float64 `json:"localDisksTotalSizeInGbs,omitempty" tf:"local_disks_total_size_in_gbs,omitempty"`
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The Big Data Service cluster node type.
 	NodeType *string `json:"nodeType,omitempty" tf:"node_type,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 
 	// ODH version to be used for cluster creation
 	OdhVersion *string `json:"odhVersion,omitempty" tf:"odh_version,omitempty"`
@@ -1193,7 +1187,7 @@ type UtilNodeInitParameters struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -1221,7 +1215,7 @@ type UtilNodeObservation struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -1241,7 +1235,7 @@ type UtilNodeParameters struct {
 
 	// The amount of master nodes should be created.
 	// +kubebuilder:validation:Optional
-	NumberOfNodes *float64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	// +kubebuilder:validation:Optional
@@ -1269,40 +1263,40 @@ type UtilNodeParameters struct {
 type UtilNodeShapeConfigInitParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type UtilNodeShapeConfigObservation struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type UtilNodeShapeConfigParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type WorkerNodeInitParameters struct {
@@ -1311,7 +1305,7 @@ type WorkerNodeInitParameters struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -1339,7 +1333,7 @@ type WorkerNodeObservation struct {
 	BlockVolumeSizeInGbs *string `json:"blockVolumeSizeInGbs,omitempty" tf:"block_volume_size_in_gbs,omitempty"`
 
 	// The amount of master nodes should be created.
-	NumberOfNodes *float64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes,omitempty" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
@@ -1359,7 +1353,7 @@ type WorkerNodeParameters struct {
 
 	// The amount of master nodes should be created.
 	// +kubebuilder:validation:Optional
-	NumberOfNodes *float64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
+	NumberOfNodes *int64 `json:"numberOfNodes" tf:"number_of_nodes,omitempty"`
 
 	// Shape of the node
 	// +kubebuilder:validation:Optional
@@ -1387,40 +1381,40 @@ type WorkerNodeParameters struct {
 type WorkerNodeShapeConfigInitParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type WorkerNodeShapeConfigObservation struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type WorkerNodeShapeConfigParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 // BdsInstanceSpec defines the desired state of BdsInstance

@@ -16,8 +16,7 @@ import (
 type IdentityProviderInitParameters struct {
 
 	// (Updatable) External identity provider configuration parameters. Simple key-value pair Example: { "tenant_id": "...", "application_id_uri": "...", ... }
-	// +mapType=granular
-	Configs map[string]*string `json:"configs,omitempty" tf:"configs,omitempty"`
+	Configs map[string]string `json:"configs,omitempty" tf:"configs,omitempty"`
 
 	// (Updatable) External identity type provider.  Supported values - OCI_IAM, AZURE_AD, NONE.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -26,8 +25,7 @@ type IdentityProviderInitParameters struct {
 type IdentityProviderObservation struct {
 
 	// (Updatable) External identity provider configuration parameters. Simple key-value pair Example: { "tenant_id": "...", "application_id_uri": "...", ... }
-	// +mapType=granular
-	Configs map[string]*string `json:"configs,omitempty" tf:"configs,omitempty"`
+	Configs map[string]string `json:"configs,omitempty" tf:"configs,omitempty"`
 
 	// (Updatable) External identity type provider.  Supported values - OCI_IAM, AZURE_AD, NONE.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -37,8 +35,7 @@ type IdentityProviderParameters struct {
 
 	// (Updatable) External identity provider configuration parameters. Simple key-value pair Example: { "tenant_id": "...", "application_id_uri": "...", ... }
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Configs map[string]*string `json:"configs,omitempty" tf:"configs,omitempty"`
+	Configs map[string]string `json:"configs,omitempty" tf:"configs,omitempty"`
 
 	// (Updatable) External identity type provider.  Supported values - OCI_IAM, AZURE_AD, NONE.
 	// +kubebuilder:validation:Optional
@@ -63,8 +60,7 @@ type PrerequisitesCheckParameters struct {
 type ToolsRuntimeDatabaseToolsConnectionPropertySetInitParameters struct {
 
 	// (Applicable when key=APEX_FA_INTEGRATION) (Updatable) APEX FA Integration key-value pairs.
-	// +mapType=granular
-	AuthenticationSubstitutions map[string]*string `json:"authenticationSubstitutions,omitempty" tf:"authentication_substitutions,omitempty"`
+	AuthenticationSubstitutions map[string]string `json:"authenticationSubstitutions,omitempty" tf:"authentication_substitutions,omitempty"`
 
 	// (Applicable when key=APEX_DOCUMENT_GENERATOR) (Updatable) The status of the Autonomous Database Serverless Resource Principal (OCI$RESOURCE_PRINCIPAL)
 	AutonomousDatabaseResourcePrincipalStatus *string `json:"autonomousDatabaseResourcePrincipalStatus,omitempty" tf:"autonomous_database_resource_principal_status,omitempty"`
@@ -139,8 +135,7 @@ type ToolsRuntimeDatabaseToolsConnectionPropertySetInitParameters struct {
 type ToolsRuntimeDatabaseToolsConnectionPropertySetObservation struct {
 
 	// (Applicable when key=APEX_FA_INTEGRATION) (Updatable) APEX FA Integration key-value pairs.
-	// +mapType=granular
-	AuthenticationSubstitutions map[string]*string `json:"authenticationSubstitutions,omitempty" tf:"authentication_substitutions,omitempty"`
+	AuthenticationSubstitutions map[string]string `json:"authenticationSubstitutions,omitempty" tf:"authentication_substitutions,omitempty"`
 
 	// (Applicable when key=APEX_DOCUMENT_GENERATOR) (Updatable) The status of the Autonomous Database Serverless Resource Principal (OCI$RESOURCE_PRINCIPAL)
 	AutonomousDatabaseResourcePrincipalStatus *string `json:"autonomousDatabaseResourcePrincipalStatus,omitempty" tf:"autonomous_database_resource_principal_status,omitempty"`
@@ -200,8 +195,7 @@ type ToolsRuntimeDatabaseToolsConnectionPropertySetParameters struct {
 
 	// (Applicable when key=APEX_FA_INTEGRATION) (Updatable) APEX FA Integration key-value pairs.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	AuthenticationSubstitutions map[string]*string `json:"authenticationSubstitutions,omitempty" tf:"authentication_substitutions,omitempty"`
+	AuthenticationSubstitutions map[string]string `json:"authenticationSubstitutions,omitempty" tf:"authentication_substitutions,omitempty"`
 
 	// (Applicable when key=APEX_DOCUMENT_GENERATOR) (Updatable) The status of the Autonomous Database Serverless Resource Principal (OCI$RESOURCE_PRINCIPAL)
 	// +kubebuilder:validation:Optional

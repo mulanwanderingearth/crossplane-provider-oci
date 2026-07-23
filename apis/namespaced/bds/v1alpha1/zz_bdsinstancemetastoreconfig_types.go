@@ -17,7 +17,7 @@ import (
 type BdsInstanceMetastoreConfigInitParameters struct {
 
 	// (Updatable) An optional integer, when flipped triggers activation of metastore config.
-	ActivateTrigger *float64 `json:"activateTrigger,omitempty" tf:"activate_trigger,omitempty"`
+	ActivateTrigger *int64 `json:"activateTrigger,omitempty" tf:"activate_trigger,omitempty"`
 
 	// (Updatable) The ID of BDS Api Key used for Data Catalog metastore integration.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.ApiKey
@@ -71,7 +71,7 @@ type BdsInstanceMetastoreConfigInitParameters struct {
 type BdsInstanceMetastoreConfigObservation struct {
 
 	// (Updatable) An optional integer, when flipped triggers activation of metastore config.
-	ActivateTrigger *float64 `json:"activateTrigger,omitempty" tf:"activate_trigger,omitempty"`
+	ActivateTrigger *int64 `json:"activateTrigger,omitempty" tf:"activate_trigger,omitempty"`
 
 	// (Updatable) The ID of BDS Api Key used for Data Catalog metastore integration.
 	BdsAPIKeyID *string `json:"bdsApiKeyId,omitempty" tf:"bds_api_key_id,omitempty"`
@@ -105,7 +105,7 @@ type BdsInstanceMetastoreConfigParameters struct {
 
 	// (Updatable) An optional integer, when flipped triggers activation of metastore config.
 	// +kubebuilder:validation:Optional
-	ActivateTrigger *float64 `json:"activateTrigger,omitempty" tf:"activate_trigger,omitempty"`
+	ActivateTrigger *int64 `json:"activateTrigger,omitempty" tf:"activate_trigger,omitempty"`
 
 	// (Updatable) The ID of BDS Api Key used for Data Catalog metastore integration.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.ApiKey

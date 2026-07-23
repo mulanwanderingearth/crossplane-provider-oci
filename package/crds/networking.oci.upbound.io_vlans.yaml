@@ -171,7 +171,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -185,7 +184,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   nsgIds:
                     description: (Updatable) A list of the OCIDs of the network security
                       groups (NSGs) to add all VNICs in the VLAN to. For more information
@@ -357,7 +355,8 @@ spec:
                       must be unique across all VLANs in the VCN. If you don't provide
                       a value, Oracle assigns one. You cannot change the value later.
                       VLAN tag 0 is reserved for use by Oracle.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -470,7 +469,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -484,7 +482,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   nsgIds:
                     description: (Updatable) A list of the OCIDs of the network security
                       groups (NSGs) to add all VNICs in the VLAN to. For more information
@@ -656,7 +653,8 @@ spec:
                       must be unique across all VLANs in the VCN. If you don't provide
                       a value, Oracle assigns one. You cannot change the value later.
                       VLAN tag 0 is reserved for use by Oracle.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -778,7 +776,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -792,7 +789,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The VLAN's Oracle ID (OCID).
                     type: string
@@ -824,7 +820,8 @@ spec:
                       must be unique across all VLANs in the VCN. If you don't provide
                       a value, Oracle assigns one. You cannot change the value later.
                       VLAN tag 0 is reserved for use by Oracle.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

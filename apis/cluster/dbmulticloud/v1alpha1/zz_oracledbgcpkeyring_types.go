@@ -29,15 +29,13 @@ type OracleDbGcpKeyRingInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Display name of DB GCP Key Ring resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// GCP Key Ring ID.
 	GCPKeyRingID *string `json:"gcpKeyRingId,omitempty" tf:"gcp_key_ring_id,omitempty"`
@@ -49,8 +47,7 @@ type OracleDbGcpKeyRingInitParameters struct {
 	OracleDBConnectorID *string `json:"oracleDbConnectorId,omitempty" tf:"oracle_db_connector_id,omitempty"`
 
 	// Oracle DB GCP Key Ring resource's properties.
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// The target region, where resource is replicated.
 	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
@@ -66,15 +63,13 @@ type OracleDbGcpKeyRingObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Display name of DB GCP Key Ring resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// GCP Key Ring ID.
 	GCPKeyRingID *string `json:"gcpKeyRingId,omitempty" tf:"gcp_key_ring_id,omitempty"`
@@ -92,8 +87,7 @@ type OracleDbGcpKeyRingObservation struct {
 	OracleDBConnectorID *string `json:"oracleDbConnectorId,omitempty" tf:"oracle_db_connector_id,omitempty"`
 
 	// Oracle DB GCP Key Ring resource's properties.
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// Replication metadata, it has information about replication and target region.
 	ReplicationMetadata []OracleDbGcpKeyRingReplicationMetadataObservation `json:"replicationMetadata,omitempty" tf:"replication_metadata,omitempty"`
@@ -102,8 +96,7 @@ type OracleDbGcpKeyRingObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The target region, where resource is replicated.
 	TargetRegion *string `json:"targetRegion,omitempty" tf:"target_region,omitempty"`
@@ -138,8 +131,7 @@ type OracleDbGcpKeyRingParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Display name of DB GCP Key Ring resource.
 	// +kubebuilder:validation:Optional
@@ -147,8 +139,7 @@ type OracleDbGcpKeyRingParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// GCP Key Ring ID.
 	// +kubebuilder:validation:Optional
@@ -164,8 +155,7 @@ type OracleDbGcpKeyRingParameters struct {
 
 	// Oracle DB GCP Key Ring resource's properties.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// The target region, where resource is replicated.
 	// +kubebuilder:validation:Optional

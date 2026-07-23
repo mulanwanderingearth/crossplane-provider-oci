@@ -72,15 +72,13 @@ type ResourceActionObservation struct {
 	EstimatedCostSaving *float64 `json:"estimatedCostSaving,omitempty" tf:"estimated_cost_saving,omitempty"`
 
 	// Additional metadata key/value pairs that you provide. They serve the same purpose and functionality as fields in the metadata object.
-	// +mapType=granular
-	ExtendedMetadata map[string]*string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
+	ExtendedMetadata map[string]string `json:"extendedMetadata,omitempty" tf:"extended_metadata,omitempty"`
 
 	// The unique OCID associated with the resource action.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// fields in that these can be nested JSON objects (whereas metadata fields are string/string maps only).
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The name assigned to the resource.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`

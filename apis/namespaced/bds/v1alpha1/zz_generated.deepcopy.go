@@ -2252,18 +2252,9 @@ func (in *BdsInstanceInitParameters) DeepCopyInto(out *BdsInstanceInitParameters
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2280,18 +2271,9 @@ func (in *BdsInstanceInitParameters) DeepCopyInto(out *BdsInstanceInitParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IgnoreExistingNodesShape != nil {
@@ -2509,7 +2491,7 @@ func (in *BdsInstanceMetastoreConfigInitParameters) DeepCopyInto(out *BdsInstanc
 	*out = *in
 	if in.ActivateTrigger != nil {
 		in, out := &in.ActivateTrigger, &out.ActivateTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BdsAPIKeyID != nil {
@@ -2613,7 +2595,7 @@ func (in *BdsInstanceMetastoreConfigObservation) DeepCopyInto(out *BdsInstanceMe
 	*out = *in
 	if in.ActivateTrigger != nil {
 		in, out := &in.ActivateTrigger, &out.ActivateTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BdsAPIKeyID != nil {
@@ -2678,7 +2660,7 @@ func (in *BdsInstanceMetastoreConfigParameters) DeepCopyInto(out *BdsInstanceMet
 	*out = *in
 	if in.ActivateTrigger != nil {
 		in, out := &in.ActivateTrigger, &out.ActivateTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BdsAPIKeyID != nil {
@@ -2871,7 +2853,7 @@ func (in *BdsInstanceNodeBackupConfigurationInitParameters) DeepCopyInto(out *Bd
 	}
 	if in.NumberOfBackupsToRetain != nil {
 		in, out := &in.NumberOfBackupsToRetain, &out.NumberOfBackupsToRetain
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Schedule != nil {
@@ -3050,7 +3032,7 @@ func (in *BdsInstanceNodeBackupConfigurationObservation) DeepCopyInto(out *BdsIn
 	}
 	if in.NumberOfBackupsToRetain != nil {
 		in, out := &in.NumberOfBackupsToRetain, &out.NumberOfBackupsToRetain
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Schedule != nil {
@@ -3127,7 +3109,7 @@ func (in *BdsInstanceNodeBackupConfigurationParameters) DeepCopyInto(out *BdsIns
 	}
 	if in.NumberOfBackupsToRetain != nil {
 		in, out := &in.NumberOfBackupsToRetain, &out.NumberOfBackupsToRetain
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Schedule != nil {
@@ -3492,7 +3474,7 @@ func (in *BdsInstanceNodeReplaceConfigurationInitParameters) DeepCopyInto(out *B
 	}
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.LevelTypeDetails != nil {
@@ -3671,7 +3653,7 @@ func (in *BdsInstanceNodeReplaceConfigurationObservation) DeepCopyInto(out *BdsI
 	}
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ID != nil {
@@ -3753,7 +3735,7 @@ func (in *BdsInstanceNodeReplaceConfigurationParameters) DeepCopyInto(out *BdsIn
 	}
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.LevelTypeDetails != nil {
@@ -3893,18 +3875,9 @@ func (in *BdsInstanceObservation) DeepCopyInto(out *BdsInstanceObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -3921,18 +3894,9 @@ func (in *BdsInstanceObservation) DeepCopyInto(out *BdsInstanceObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -4026,12 +3990,12 @@ func (in *BdsInstanceObservation) DeepCopyInto(out *BdsInstanceObservation) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NumberOfNodesRequiringMaintenanceReboot != nil {
 		in, out := &in.NumberOfNodesRequiringMaintenanceReboot, &out.NumberOfNodesRequiringMaintenanceReboot
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OsPatchVersion != nil {
@@ -4701,18 +4665,9 @@ func (in *BdsInstanceParameters) DeepCopyInto(out *BdsInstanceParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -4729,18 +4684,9 @@ func (in *BdsInstanceParameters) DeepCopyInto(out *BdsInstanceParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IgnoreExistingNodesShape != nil {
@@ -5397,7 +5343,7 @@ func (in *BdsInstanceResourcePrincipalConfigurationInitParameters) DeepCopyInto(
 	}
 	if in.ForceRefreshResourcePrincipalTrigger != nil {
 		in, out := &in.ForceRefreshResourcePrincipalTrigger, &out.ForceRefreshResourcePrincipalTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SecretID != nil {
@@ -5417,7 +5363,7 @@ func (in *BdsInstanceResourcePrincipalConfigurationInitParameters) DeepCopyInto(
 	}
 	if in.SessionTokenLifeSpanDurationInHours != nil {
 		in, out := &in.SessionTokenLifeSpanDurationInHours, &out.SessionTokenLifeSpanDurationInHours
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -5479,7 +5425,7 @@ func (in *BdsInstanceResourcePrincipalConfigurationObservation) DeepCopyInto(out
 	}
 	if in.ForceRefreshResourcePrincipalTrigger != nil {
 		in, out := &in.ForceRefreshResourcePrincipalTrigger, &out.ForceRefreshResourcePrincipalTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ID != nil {
@@ -5494,7 +5440,7 @@ func (in *BdsInstanceResourcePrincipalConfigurationObservation) DeepCopyInto(out
 	}
 	if in.SessionTokenLifeSpanDurationInHours != nil {
 		in, out := &in.SessionTokenLifeSpanDurationInHours, &out.SessionTokenLifeSpanDurationInHours
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -5564,7 +5510,7 @@ func (in *BdsInstanceResourcePrincipalConfigurationParameters) DeepCopyInto(out 
 	}
 	if in.ForceRefreshResourcePrincipalTrigger != nil {
 		in, out := &in.ForceRefreshResourcePrincipalTrigger, &out.ForceRefreshResourcePrincipalTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SecretID != nil {
@@ -5584,7 +5530,7 @@ func (in *BdsInstanceResourcePrincipalConfigurationParameters) DeepCopyInto(out 
 	}
 	if in.SessionTokenLifeSpanDurationInHours != nil {
 		in, out := &in.SessionTokenLifeSpanDurationInHours, &out.SessionTokenLifeSpanDurationInHours
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -5983,17 +5929,17 @@ func (in *CloudSQLDetailsObservation) DeepCopyInto(out *CloudSQLDetailsObservati
 	}
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -6163,7 +6109,7 @@ func (in *ComputeOnlyWorkerNodeInitParameters) DeepCopyInto(out *ComputeOnlyWork
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -6215,7 +6161,7 @@ func (in *ComputeOnlyWorkerNodeObservation) DeepCopyInto(out *ComputeOnlyWorkerN
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -6257,7 +6203,7 @@ func (in *ComputeOnlyWorkerNodeParameters) DeepCopyInto(out *ComputeOnlyWorkerNo
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -6304,17 +6250,17 @@ func (in *ComputeOnlyWorkerNodeShapeConfigInitParameters) DeepCopyInto(out *Comp
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6334,17 +6280,17 @@ func (in *ComputeOnlyWorkerNodeShapeConfigObservation) DeepCopyInto(out *Compute
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6364,17 +6310,17 @@ func (in *ComputeOnlyWorkerNodeShapeConfigParameters) DeepCopyInto(out *ComputeO
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6466,7 +6412,7 @@ func (in *EdgeNodeInitParameters) DeepCopyInto(out *EdgeNodeInitParameters) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -6518,7 +6464,7 @@ func (in *EdgeNodeObservation) DeepCopyInto(out *EdgeNodeObservation) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -6560,7 +6506,7 @@ func (in *EdgeNodeParameters) DeepCopyInto(out *EdgeNodeParameters) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -6607,17 +6553,17 @@ func (in *EdgeNodeShapeConfigInitParameters) DeepCopyInto(out *EdgeNodeShapeConf
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6637,17 +6583,17 @@ func (in *EdgeNodeShapeConfigObservation) DeepCopyInto(out *EdgeNodeShapeConfigO
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6667,17 +6613,17 @@ func (in *EdgeNodeShapeConfigParameters) DeepCopyInto(out *EdgeNodeShapeConfigPa
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6912,7 +6858,7 @@ func (in *KafkaBrokerNodeInitParameters) DeepCopyInto(out *KafkaBrokerNodeInitPa
 	}
 	if in.NumberOfKafkaNodes != nil {
 		in, out := &in.NumberOfKafkaNodes, &out.NumberOfKafkaNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -6964,7 +6910,7 @@ func (in *KafkaBrokerNodeObservation) DeepCopyInto(out *KafkaBrokerNodeObservati
 	}
 	if in.NumberOfKafkaNodes != nil {
 		in, out := &in.NumberOfKafkaNodes, &out.NumberOfKafkaNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -7006,7 +6952,7 @@ func (in *KafkaBrokerNodeParameters) DeepCopyInto(out *KafkaBrokerNodeParameters
 	}
 	if in.NumberOfKafkaNodes != nil {
 		in, out := &in.NumberOfKafkaNodes, &out.NumberOfKafkaNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -7053,17 +6999,17 @@ func (in *KafkaBrokerNodeShapeConfigInitParameters) DeepCopyInto(out *KafkaBroke
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7083,17 +7029,17 @@ func (in *KafkaBrokerNodeShapeConfigObservation) DeepCopyInto(out *KafkaBrokerNo
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7113,17 +7059,17 @@ func (in *KafkaBrokerNodeShapeConfigParameters) DeepCopyInto(out *KafkaBrokerNod
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7293,7 +7239,7 @@ func (in *MasterNodeInitParameters) DeepCopyInto(out *MasterNodeInitParameters) 
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -7345,7 +7291,7 @@ func (in *MasterNodeObservation) DeepCopyInto(out *MasterNodeObservation) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -7387,7 +7333,7 @@ func (in *MasterNodeParameters) DeepCopyInto(out *MasterNodeParameters) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -7434,17 +7380,17 @@ func (in *MasterNodeShapeConfigInitParameters) DeepCopyInto(out *MasterNodeShape
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7464,17 +7410,17 @@ func (in *MasterNodeShapeConfigObservation) DeepCopyInto(out *MasterNodeShapeCon
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7494,17 +7440,17 @@ func (in *MasterNodeShapeConfigParameters) DeepCopyInto(out *MasterNodeShapeConf
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7605,7 +7551,7 @@ func (in *MetricThresholdInitParameters) DeepCopyInto(out *MetricThresholdInitPa
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -7615,7 +7561,7 @@ func (in *MetricThresholdInitParameters) DeepCopyInto(out *MetricThresholdInitPa
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7635,7 +7581,7 @@ func (in *MetricThresholdObservation) DeepCopyInto(out *MetricThresholdObservati
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -7645,7 +7591,7 @@ func (in *MetricThresholdObservation) DeepCopyInto(out *MetricThresholdObservati
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7665,7 +7611,7 @@ func (in *MetricThresholdParameters) DeepCopyInto(out *MetricThresholdParameters
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -7675,7 +7621,7 @@ func (in *MetricThresholdParameters) DeepCopyInto(out *MetricThresholdParameters
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -7912,7 +7858,7 @@ func (in *NodesObservation) DeepCopyInto(out *NodesObservation) {
 	}
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.NodeType != nil {
@@ -7922,12 +7868,12 @@ func (in *NodesObservation) DeepCopyInto(out *NodesObservation) {
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OdhVersion != nil {
@@ -8002,7 +7948,7 @@ func (in *PatchingConfigInitParameters) DeepCopyInto(out *PatchingConfigInitPara
 	*out = *in
 	if in.BatchSize != nil {
 		in, out := &in.BatchSize, &out.BatchSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchingConfigStrategy != nil {
@@ -8012,22 +7958,22 @@ func (in *PatchingConfigInitParameters) DeepCopyInto(out *PatchingConfigInitPara
 	}
 	if in.ToleranceThresholdPerBatch != nil {
 		in, out := &in.ToleranceThresholdPerBatch, &out.ToleranceThresholdPerBatch
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ToleranceThresholdPerDomain != nil {
 		in, out := &in.ToleranceThresholdPerDomain, &out.ToleranceThresholdPerDomain
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenBatchInSeconds != nil {
 		in, out := &in.WaitTimeBetweenBatchInSeconds, &out.WaitTimeBetweenBatchInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenDomainInSeconds != nil {
 		in, out := &in.WaitTimeBetweenDomainInSeconds, &out.WaitTimeBetweenDomainInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8047,7 +7993,7 @@ func (in *PatchingConfigObservation) DeepCopyInto(out *PatchingConfigObservation
 	*out = *in
 	if in.BatchSize != nil {
 		in, out := &in.BatchSize, &out.BatchSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchingConfigStrategy != nil {
@@ -8057,22 +8003,22 @@ func (in *PatchingConfigObservation) DeepCopyInto(out *PatchingConfigObservation
 	}
 	if in.ToleranceThresholdPerBatch != nil {
 		in, out := &in.ToleranceThresholdPerBatch, &out.ToleranceThresholdPerBatch
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ToleranceThresholdPerDomain != nil {
 		in, out := &in.ToleranceThresholdPerDomain, &out.ToleranceThresholdPerDomain
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenBatchInSeconds != nil {
 		in, out := &in.WaitTimeBetweenBatchInSeconds, &out.WaitTimeBetweenBatchInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenDomainInSeconds != nil {
 		in, out := &in.WaitTimeBetweenDomainInSeconds, &out.WaitTimeBetweenDomainInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8092,7 +8038,7 @@ func (in *PatchingConfigParameters) DeepCopyInto(out *PatchingConfigParameters) 
 	*out = *in
 	if in.BatchSize != nil {
 		in, out := &in.BatchSize, &out.BatchSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchingConfigStrategy != nil {
@@ -8102,22 +8048,22 @@ func (in *PatchingConfigParameters) DeepCopyInto(out *PatchingConfigParameters) 
 	}
 	if in.ToleranceThresholdPerBatch != nil {
 		in, out := &in.ToleranceThresholdPerBatch, &out.ToleranceThresholdPerBatch
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ToleranceThresholdPerDomain != nil {
 		in, out := &in.ToleranceThresholdPerDomain, &out.ToleranceThresholdPerDomain
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenBatchInSeconds != nil {
 		in, out := &in.WaitTimeBetweenBatchInSeconds, &out.WaitTimeBetweenBatchInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenDomainInSeconds != nil {
 		in, out := &in.WaitTimeBetweenDomainInSeconds, &out.WaitTimeBetweenDomainInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8137,7 +8083,7 @@ func (in *PatchingConfigsInitParameters) DeepCopyInto(out *PatchingConfigsInitPa
 	*out = *in
 	if in.BatchSize != nil {
 		in, out := &in.BatchSize, &out.BatchSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchingConfigStrategy != nil {
@@ -8147,22 +8093,22 @@ func (in *PatchingConfigsInitParameters) DeepCopyInto(out *PatchingConfigsInitPa
 	}
 	if in.ToleranceThresholdPerBatch != nil {
 		in, out := &in.ToleranceThresholdPerBatch, &out.ToleranceThresholdPerBatch
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ToleranceThresholdPerDomain != nil {
 		in, out := &in.ToleranceThresholdPerDomain, &out.ToleranceThresholdPerDomain
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenBatchInSeconds != nil {
 		in, out := &in.WaitTimeBetweenBatchInSeconds, &out.WaitTimeBetweenBatchInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenDomainInSeconds != nil {
 		in, out := &in.WaitTimeBetweenDomainInSeconds, &out.WaitTimeBetweenDomainInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8182,7 +8128,7 @@ func (in *PatchingConfigsObservation) DeepCopyInto(out *PatchingConfigsObservati
 	*out = *in
 	if in.BatchSize != nil {
 		in, out := &in.BatchSize, &out.BatchSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchingConfigStrategy != nil {
@@ -8192,22 +8138,22 @@ func (in *PatchingConfigsObservation) DeepCopyInto(out *PatchingConfigsObservati
 	}
 	if in.ToleranceThresholdPerBatch != nil {
 		in, out := &in.ToleranceThresholdPerBatch, &out.ToleranceThresholdPerBatch
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ToleranceThresholdPerDomain != nil {
 		in, out := &in.ToleranceThresholdPerDomain, &out.ToleranceThresholdPerDomain
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenBatchInSeconds != nil {
 		in, out := &in.WaitTimeBetweenBatchInSeconds, &out.WaitTimeBetweenBatchInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenDomainInSeconds != nil {
 		in, out := &in.WaitTimeBetweenDomainInSeconds, &out.WaitTimeBetweenDomainInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8227,7 +8173,7 @@ func (in *PatchingConfigsParameters) DeepCopyInto(out *PatchingConfigsParameters
 	*out = *in
 	if in.BatchSize != nil {
 		in, out := &in.BatchSize, &out.BatchSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PatchingConfigStrategy != nil {
@@ -8237,22 +8183,22 @@ func (in *PatchingConfigsParameters) DeepCopyInto(out *PatchingConfigsParameters
 	}
 	if in.ToleranceThresholdPerBatch != nil {
 		in, out := &in.ToleranceThresholdPerBatch, &out.ToleranceThresholdPerBatch
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ToleranceThresholdPerDomain != nil {
 		in, out := &in.ToleranceThresholdPerDomain, &out.ToleranceThresholdPerDomain
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenBatchInSeconds != nil {
 		in, out := &in.WaitTimeBetweenBatchInSeconds, &out.WaitTimeBetweenBatchInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.WaitTimeBetweenDomainInSeconds != nil {
 		in, out := &in.WaitTimeBetweenDomainInSeconds, &out.WaitTimeBetweenDomainInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8624,7 +8570,7 @@ func (in *ScaleDownConfigInitParameters) DeepCopyInto(out *ScaleDownConfigInitPa
 	*out = *in
 	if in.MemoryStepSize != nil {
 		in, out := &in.MemoryStepSize, &out.MemoryStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metric != nil {
@@ -8636,17 +8582,17 @@ func (in *ScaleDownConfigInitParameters) DeepCopyInto(out *ScaleDownConfigInitPa
 	}
 	if in.MinMemoryPerNode != nil {
 		in, out := &in.MinMemoryPerNode, &out.MinMemoryPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinOcpusPerNode != nil {
 		in, out := &in.MinOcpusPerNode, &out.MinOcpusPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OcpuStepSize != nil {
 		in, out := &in.OcpuStepSize, &out.OcpuStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8747,7 +8693,7 @@ func (in *ScaleDownConfigObservation) DeepCopyInto(out *ScaleDownConfigObservati
 	*out = *in
 	if in.MemoryStepSize != nil {
 		in, out := &in.MemoryStepSize, &out.MemoryStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metric != nil {
@@ -8759,17 +8705,17 @@ func (in *ScaleDownConfigObservation) DeepCopyInto(out *ScaleDownConfigObservati
 	}
 	if in.MinMemoryPerNode != nil {
 		in, out := &in.MinMemoryPerNode, &out.MinMemoryPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinOcpusPerNode != nil {
 		in, out := &in.MinOcpusPerNode, &out.MinOcpusPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OcpuStepSize != nil {
 		in, out := &in.OcpuStepSize, &out.OcpuStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8789,7 +8735,7 @@ func (in *ScaleDownConfigParameters) DeepCopyInto(out *ScaleDownConfigParameters
 	*out = *in
 	if in.MemoryStepSize != nil {
 		in, out := &in.MemoryStepSize, &out.MemoryStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metric != nil {
@@ -8801,17 +8747,17 @@ func (in *ScaleDownConfigParameters) DeepCopyInto(out *ScaleDownConfigParameters
 	}
 	if in.MinMemoryPerNode != nil {
 		in, out := &in.MinMemoryPerNode, &out.MinMemoryPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinOcpusPerNode != nil {
 		in, out := &in.MinOcpusPerNode, &out.MinOcpusPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.OcpuStepSize != nil {
 		in, out := &in.OcpuStepSize, &out.OcpuStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8838,12 +8784,12 @@ func (in *ScaleInConfigInitParameters) DeepCopyInto(out *ScaleInConfigInitParame
 	}
 	if in.MinNodeCount != nil {
 		in, out := &in.MinNodeCount, &out.MinNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StepSize != nil {
 		in, out := &in.StepSize, &out.StepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8944,7 +8890,7 @@ func (in *ScaleInConfigMetricThresholdInitParameters) DeepCopyInto(out *ScaleInC
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -8954,7 +8900,7 @@ func (in *ScaleInConfigMetricThresholdInitParameters) DeepCopyInto(out *ScaleInC
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -8974,7 +8920,7 @@ func (in *ScaleInConfigMetricThresholdObservation) DeepCopyInto(out *ScaleInConf
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -8984,7 +8930,7 @@ func (in *ScaleInConfigMetricThresholdObservation) DeepCopyInto(out *ScaleInConf
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9004,7 +8950,7 @@ func (in *ScaleInConfigMetricThresholdParameters) DeepCopyInto(out *ScaleInConfi
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -9014,7 +8960,7 @@ func (in *ScaleInConfigMetricThresholdParameters) DeepCopyInto(out *ScaleInConfi
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9041,12 +8987,12 @@ func (in *ScaleInConfigObservation) DeepCopyInto(out *ScaleInConfigObservation) 
 	}
 	if in.MinNodeCount != nil {
 		in, out := &in.MinNodeCount, &out.MinNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StepSize != nil {
 		in, out := &in.StepSize, &out.StepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9073,12 +9019,12 @@ func (in *ScaleInConfigParameters) DeepCopyInto(out *ScaleInConfigParameters) {
 	}
 	if in.MinNodeCount != nil {
 		in, out := &in.MinNodeCount, &out.MinNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StepSize != nil {
 		in, out := &in.StepSize, &out.StepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9098,7 +9044,7 @@ func (in *ScaleOutConfigInitParameters) DeepCopyInto(out *ScaleOutConfigInitPara
 	*out = *in
 	if in.MaxNodeCount != nil {
 		in, out := &in.MaxNodeCount, &out.MaxNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metric != nil {
@@ -9110,7 +9056,7 @@ func (in *ScaleOutConfigInitParameters) DeepCopyInto(out *ScaleOutConfigInitPara
 	}
 	if in.StepSize != nil {
 		in, out := &in.StepSize, &out.StepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9211,7 +9157,7 @@ func (in *ScaleOutConfigMetricThresholdInitParameters) DeepCopyInto(out *ScaleOu
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -9221,7 +9167,7 @@ func (in *ScaleOutConfigMetricThresholdInitParameters) DeepCopyInto(out *ScaleOu
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9241,7 +9187,7 @@ func (in *ScaleOutConfigMetricThresholdObservation) DeepCopyInto(out *ScaleOutCo
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -9251,7 +9197,7 @@ func (in *ScaleOutConfigMetricThresholdObservation) DeepCopyInto(out *ScaleOutCo
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9271,7 +9217,7 @@ func (in *ScaleOutConfigMetricThresholdParameters) DeepCopyInto(out *ScaleOutCon
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -9281,7 +9227,7 @@ func (in *ScaleOutConfigMetricThresholdParameters) DeepCopyInto(out *ScaleOutCon
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9301,7 +9247,7 @@ func (in *ScaleOutConfigObservation) DeepCopyInto(out *ScaleOutConfigObservation
 	*out = *in
 	if in.MaxNodeCount != nil {
 		in, out := &in.MaxNodeCount, &out.MaxNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metric != nil {
@@ -9313,7 +9259,7 @@ func (in *ScaleOutConfigObservation) DeepCopyInto(out *ScaleOutConfigObservation
 	}
 	if in.StepSize != nil {
 		in, out := &in.StepSize, &out.StepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9333,7 +9279,7 @@ func (in *ScaleOutConfigParameters) DeepCopyInto(out *ScaleOutConfigParameters) 
 	*out = *in
 	if in.MaxNodeCount != nil {
 		in, out := &in.MaxNodeCount, &out.MaxNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metric != nil {
@@ -9345,7 +9291,7 @@ func (in *ScaleOutConfigParameters) DeepCopyInto(out *ScaleOutConfigParameters) 
 	}
 	if in.StepSize != nil {
 		in, out := &in.StepSize, &out.StepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9365,17 +9311,17 @@ func (in *ScaleUpConfigInitParameters) DeepCopyInto(out *ScaleUpConfigInitParame
 	*out = *in
 	if in.MaxMemoryPerNode != nil {
 		in, out := &in.MaxMemoryPerNode, &out.MaxMemoryPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxOcpusPerNode != nil {
 		in, out := &in.MaxOcpusPerNode, &out.MaxOcpusPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MemoryStepSize != nil {
 		in, out := &in.MemoryStepSize, &out.MemoryStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metric != nil {
@@ -9387,7 +9333,7 @@ func (in *ScaleUpConfigInitParameters) DeepCopyInto(out *ScaleUpConfigInitParame
 	}
 	if in.OcpuStepSize != nil {
 		in, out := &in.OcpuStepSize, &out.OcpuStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9488,7 +9434,7 @@ func (in *ScaleUpConfigMetricThresholdInitParameters) DeepCopyInto(out *ScaleUpC
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -9498,7 +9444,7 @@ func (in *ScaleUpConfigMetricThresholdInitParameters) DeepCopyInto(out *ScaleUpC
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9518,7 +9464,7 @@ func (in *ScaleUpConfigMetricThresholdObservation) DeepCopyInto(out *ScaleUpConf
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -9528,7 +9474,7 @@ func (in *ScaleUpConfigMetricThresholdObservation) DeepCopyInto(out *ScaleUpConf
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9548,7 +9494,7 @@ func (in *ScaleUpConfigMetricThresholdParameters) DeepCopyInto(out *ScaleUpConfi
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -9558,7 +9504,7 @@ func (in *ScaleUpConfigMetricThresholdParameters) DeepCopyInto(out *ScaleUpConfi
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9578,17 +9524,17 @@ func (in *ScaleUpConfigObservation) DeepCopyInto(out *ScaleUpConfigObservation) 
 	*out = *in
 	if in.MaxMemoryPerNode != nil {
 		in, out := &in.MaxMemoryPerNode, &out.MaxMemoryPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxOcpusPerNode != nil {
 		in, out := &in.MaxOcpusPerNode, &out.MaxOcpusPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MemoryStepSize != nil {
 		in, out := &in.MemoryStepSize, &out.MemoryStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metric != nil {
@@ -9600,7 +9546,7 @@ func (in *ScaleUpConfigObservation) DeepCopyInto(out *ScaleUpConfigObservation) 
 	}
 	if in.OcpuStepSize != nil {
 		in, out := &in.OcpuStepSize, &out.OcpuStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9620,17 +9566,17 @@ func (in *ScaleUpConfigParameters) DeepCopyInto(out *ScaleUpConfigParameters) {
 	*out = *in
 	if in.MaxMemoryPerNode != nil {
 		in, out := &in.MaxMemoryPerNode, &out.MaxMemoryPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxOcpusPerNode != nil {
 		in, out := &in.MaxOcpusPerNode, &out.MaxOcpusPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MemoryStepSize != nil {
 		in, out := &in.MemoryStepSize, &out.MemoryStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Metric != nil {
@@ -9642,7 +9588,7 @@ func (in *ScaleUpConfigParameters) DeepCopyInto(out *ScaleUpConfigParameters) {
 	}
 	if in.OcpuStepSize != nil {
 		in, out := &in.OcpuStepSize, &out.OcpuStepSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9852,17 +9798,17 @@ func (in *ShapeConfigInitParameters) DeepCopyInto(out *ShapeConfigInitParameters
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9882,17 +9828,17 @@ func (in *ShapeConfigObservation) DeepCopyInto(out *ShapeConfigObservation) {
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -9912,17 +9858,17 @@ func (in *ShapeConfigParameters) DeepCopyInto(out *ShapeConfigParameters) {
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -10008,7 +9954,7 @@ func (in *ThresholdInitParameters) DeepCopyInto(out *ThresholdInitParameters) {
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -10018,7 +9964,7 @@ func (in *ThresholdInitParameters) DeepCopyInto(out *ThresholdInitParameters) {
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -10038,7 +9984,7 @@ func (in *ThresholdObservation) DeepCopyInto(out *ThresholdObservation) {
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -10048,7 +9994,7 @@ func (in *ThresholdObservation) DeepCopyInto(out *ThresholdObservation) {
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -10068,7 +10014,7 @@ func (in *ThresholdParameters) DeepCopyInto(out *ThresholdParameters) {
 	*out = *in
 	if in.DurationInMinutes != nil {
 		in, out := &in.DurationInMinutes, &out.DurationInMinutes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Operator != nil {
@@ -10078,7 +10024,7 @@ func (in *ThresholdParameters) DeepCopyInto(out *ThresholdParameters) {
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -10098,7 +10044,7 @@ func (in *TimeAndHorizontalScalingConfigInitParameters) DeepCopyInto(out *TimeAn
 	*out = *in
 	if in.TargetNodeCount != nil {
 		in, out := &in.TargetNodeCount, &out.TargetNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimeRecurrence != nil {
@@ -10123,7 +10069,7 @@ func (in *TimeAndHorizontalScalingConfigObservation) DeepCopyInto(out *TimeAndHo
 	*out = *in
 	if in.TargetNodeCount != nil {
 		in, out := &in.TargetNodeCount, &out.TargetNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimeRecurrence != nil {
@@ -10148,7 +10094,7 @@ func (in *TimeAndHorizontalScalingConfigParameters) DeepCopyInto(out *TimeAndHor
 	*out = *in
 	if in.TargetNodeCount != nil {
 		in, out := &in.TargetNodeCount, &out.TargetNodeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimeRecurrence != nil {
@@ -10173,12 +10119,12 @@ func (in *TimeAndVerticalScalingConfigInitParameters) DeepCopyInto(out *TimeAndV
 	*out = *in
 	if in.TargetMemoryPerNode != nil {
 		in, out := &in.TargetMemoryPerNode, &out.TargetMemoryPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetOcpusPerNode != nil {
 		in, out := &in.TargetOcpusPerNode, &out.TargetOcpusPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetShape != nil {
@@ -10208,12 +10154,12 @@ func (in *TimeAndVerticalScalingConfigObservation) DeepCopyInto(out *TimeAndVert
 	*out = *in
 	if in.TargetMemoryPerNode != nil {
 		in, out := &in.TargetMemoryPerNode, &out.TargetMemoryPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetOcpusPerNode != nil {
 		in, out := &in.TargetOcpusPerNode, &out.TargetOcpusPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetShape != nil {
@@ -10243,12 +10189,12 @@ func (in *TimeAndVerticalScalingConfigParameters) DeepCopyInto(out *TimeAndVerti
 	*out = *in
 	if in.TargetMemoryPerNode != nil {
 		in, out := &in.TargetMemoryPerNode, &out.TargetMemoryPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetOcpusPerNode != nil {
 		in, out := &in.TargetOcpusPerNode, &out.TargetOcpusPerNode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TargetShape != nil {
@@ -10488,7 +10434,7 @@ func (in *UtilNodeInitParameters) DeepCopyInto(out *UtilNodeInitParameters) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -10540,7 +10486,7 @@ func (in *UtilNodeObservation) DeepCopyInto(out *UtilNodeObservation) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -10582,7 +10528,7 @@ func (in *UtilNodeParameters) DeepCopyInto(out *UtilNodeParameters) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -10629,17 +10575,17 @@ func (in *UtilNodeShapeConfigInitParameters) DeepCopyInto(out *UtilNodeShapeConf
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -10659,17 +10605,17 @@ func (in *UtilNodeShapeConfigObservation) DeepCopyInto(out *UtilNodeShapeConfigO
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -10689,17 +10635,17 @@ func (in *UtilNodeShapeConfigParameters) DeepCopyInto(out *UtilNodeShapeConfigPa
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -10724,7 +10670,7 @@ func (in *WorkerNodeInitParameters) DeepCopyInto(out *WorkerNodeInitParameters) 
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -10776,7 +10722,7 @@ func (in *WorkerNodeObservation) DeepCopyInto(out *WorkerNodeObservation) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -10818,7 +10764,7 @@ func (in *WorkerNodeParameters) DeepCopyInto(out *WorkerNodeParameters) {
 	}
 	if in.NumberOfNodes != nil {
 		in, out := &in.NumberOfNodes, &out.NumberOfNodes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Shape != nil {
@@ -10865,17 +10811,17 @@ func (in *WorkerNodeShapeConfigInitParameters) DeepCopyInto(out *WorkerNodeShape
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -10895,17 +10841,17 @@ func (in *WorkerNodeShapeConfigObservation) DeepCopyInto(out *WorkerNodeShapeCon
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -10925,17 +10871,17 @@ func (in *WorkerNodeShapeConfigParameters) DeepCopyInto(out *WorkerNodeShapeConf
 	*out = *in
 	if in.MemoryInGbs != nil {
 		in, out := &in.MemoryInGbs, &out.MemoryInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Nvmes != nil {
 		in, out := &in.Nvmes, &out.Nvmes
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Ocpus != nil {
 		in, out := &in.Ocpus, &out.Ocpus
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

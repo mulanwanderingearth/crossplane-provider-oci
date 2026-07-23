@@ -369,7 +369,8 @@ spec:
                   totalApps:
                     description: Count of total applications in the given application
                       group.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

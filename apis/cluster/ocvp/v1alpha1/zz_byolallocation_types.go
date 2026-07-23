@@ -16,7 +16,7 @@ import (
 type ByolAllocationInitParameters struct {
 
 	// (Updatable) The quantity of licensed units that allocated to this region.
-	AllocatedUnits *float64 `json:"allocatedUnits,omitempty" tf:"allocated_units,omitempty"`
+	AllocatedUnits *int64 `json:"allocatedUnits,omitempty" tf:"allocated_units,omitempty"`
 
 	// The OCID of the BYOL resource from which this BYOL Allocation is derived.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ocvp/v1alpha1.Byol
@@ -44,24 +44,22 @@ type ByolAllocationInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A descriptive name for the BYOL Allocation.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type ByolAllocationObservation struct {
 
 	// (Updatable) The quantity of licensed units that allocated to this region.
-	AllocatedUnits *float64 `json:"allocatedUnits,omitempty" tf:"allocated_units,omitempty"`
+	AllocatedUnits *int64 `json:"allocatedUnits,omitempty" tf:"allocated_units,omitempty"`
 
 	// The quantity of licensed units that not yet consumed by resources.
-	AvailableUnits *float64 `json:"availableUnits,omitempty" tf:"available_units,omitempty"`
+	AvailableUnits *int64 `json:"availableUnits,omitempty" tf:"available_units,omitempty"`
 
 	// The OCID of the BYOL resource from which this BYOL Allocation is derived.
 	ByolID *string `json:"byolId,omitempty" tf:"byol_id,omitempty"`
@@ -70,8 +68,7 @@ type ByolAllocationObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A descriptive name for the BYOL Allocation.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -80,8 +77,7 @@ type ByolAllocationObservation struct {
 	EntitlementKey *string `json:"entitlementKey,omitempty" tf:"entitlement_key,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the BYOL Allocation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -96,8 +92,7 @@ type ByolAllocationObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the BYOL Allocation was created, in the format defined by RFC3339. Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -116,7 +111,7 @@ type ByolAllocationParameters struct {
 
 	// (Updatable) The quantity of licensed units that allocated to this region.
 	// +kubebuilder:validation:Optional
-	AllocatedUnits *float64 `json:"allocatedUnits,omitempty" tf:"allocated_units,omitempty"`
+	AllocatedUnits *int64 `json:"allocatedUnits,omitempty" tf:"allocated_units,omitempty"`
 
 	// The OCID of the BYOL resource from which this BYOL Allocation is derived.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ocvp/v1alpha1.Byol
@@ -147,8 +142,7 @@ type ByolAllocationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A descriptive name for the BYOL Allocation.
 	// +kubebuilder:validation:Optional
@@ -156,8 +150,7 @@ type ByolAllocationParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 // ByolAllocationSpec defines the desired state of ByolAllocation

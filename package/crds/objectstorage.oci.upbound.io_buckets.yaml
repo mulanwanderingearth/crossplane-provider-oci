@@ -186,7 +186,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -195,7 +194,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isBucketKeyEnabled:
                     description: (Updatable) Specifies whether Object Storage should
                       use intermediate cached Bucket Encryption Keys with server-side
@@ -288,7 +286,6 @@ spec:
                     description: (Updatable) Arbitrary string, up to 4KB, of keys
                       and values for user-defined metadata.
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: 'The name of the bucket. Valid characters are uppercase
                       or lowercase letters, numbers, hyphens, underscores, and periods.
@@ -487,7 +484,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -496,7 +492,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isBucketKeyEnabled:
                     description: (Updatable) Specifies whether Object Storage should
                       use intermediate cached Bucket Encryption Keys with server-side
@@ -589,7 +584,6 @@ spec:
                     description: (Updatable) Arbitrary string, up to 4KB, of keys
                       and values for user-defined metadata.
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: 'The name of the bucket. Valid characters are uppercase
                       or lowercase letters, numbers, hyphens, underscores, and periods.
@@ -820,7 +814,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   etag:
                     description: The entity tag (ETag) for the bucket.
                     type: string
@@ -832,7 +825,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   isBucketKeyEnabled:
@@ -859,7 +851,6 @@ spec:
                     description: (Updatable) Arbitrary string, up to 4KB, of keys
                       and values for user-defined metadata.
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: 'The name of the bucket. Valid characters are uppercase
                       or lowercase letters, numbers, hyphens, underscores, and periods.

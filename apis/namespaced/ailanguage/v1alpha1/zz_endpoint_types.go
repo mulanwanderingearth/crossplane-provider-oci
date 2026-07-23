@@ -32,8 +32,7 @@ type EndpointInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the an endpoint.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -42,11 +41,10 @@ type EndpointInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Number of replicas required for this endpoint. This will be optional parameter. Default will be 1.
-	InferenceUnits *float64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
+	InferenceUnits *int64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
 
 	// (Updatable) The OCID of the model to associate with the endpoint.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ailanguage/v1alpha1.Model
@@ -71,8 +69,7 @@ type EndpointObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the an endpoint.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -81,14 +78,13 @@ type EndpointObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique identifier endpoint OCID of an endpoint that is immutable on creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) Number of replicas required for this endpoint. This will be optional parameter. Default will be 1.
-	InferenceUnits *float64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
+	InferenceUnits *int64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
 
 	// A message describing the current state in more detail. For example, can be used to provide actionable information for a resource in failed state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
@@ -103,8 +99,7 @@ type EndpointObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the the endpoint was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -134,8 +129,7 @@ type EndpointParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description of the an endpoint.
 	// +kubebuilder:validation:Optional
@@ -147,12 +141,11 @@ type EndpointParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Number of replicas required for this endpoint. This will be optional parameter. Default will be 1.
 	// +kubebuilder:validation:Optional
-	InferenceUnits *float64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
+	InferenceUnits *int64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
 
 	// (Updatable) The OCID of the model to associate with the endpoint.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ailanguage/v1alpha1.Model

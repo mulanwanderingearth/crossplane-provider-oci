@@ -152,7 +152,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -183,10 +182,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         isEnabled:
@@ -196,7 +197,8 @@ spec:
                         priority:
                           description: (Updatable) A lower number indicates a higher
                             priority, range 0-9. Each rule must have a distinct priority.
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: (Updatable) The transport protocol the filter
                             uses.
@@ -208,7 +210,8 @@ spec:
                         samplingRate:
                           description: (Updatable) Sampling interval as 1 of X, where
                             X is an integer not greater than 100000.
-                          type: number
+                          format: int64
+                          type: integer
                         sourceCidr:
                           description: (Updatable) Traffic from this CIDR will be
                             captured in the flow log.
@@ -229,12 +232,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -246,12 +251,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -272,12 +279,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -289,12 +298,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -309,7 +320,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   vtapCaptureFilterRules:
                     description: (Updatable) The set of rules governing what traffic
                       a VTAP mirrors.
@@ -327,10 +337,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -361,12 +373,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -378,12 +392,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -408,12 +424,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -425,12 +443,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -544,7 +564,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -575,10 +594,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         isEnabled:
@@ -588,7 +609,8 @@ spec:
                         priority:
                           description: (Updatable) A lower number indicates a higher
                             priority, range 0-9. Each rule must have a distinct priority.
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: (Updatable) The transport protocol the filter
                             uses.
@@ -600,7 +622,8 @@ spec:
                         samplingRate:
                           description: (Updatable) Sampling interval as 1 of X, where
                             X is an integer not greater than 100000.
-                          type: number
+                          format: int64
+                          type: integer
                         sourceCidr:
                           description: (Updatable) Traffic from this CIDR will be
                             captured in the flow log.
@@ -621,12 +644,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -638,12 +663,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -664,12 +691,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -681,12 +710,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -701,7 +732,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   vtapCaptureFilterRules:
                     description: (Updatable) The set of rules governing what traffic
                       a VTAP mirrors.
@@ -719,10 +749,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -753,12 +785,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -770,12 +804,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -800,12 +836,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -817,12 +855,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -911,7 +951,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -942,10 +981,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         isEnabled:
@@ -955,7 +996,8 @@ spec:
                         priority:
                           description: (Updatable) A lower number indicates a higher
                             priority, range 0-9. Each rule must have a distinct priority.
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: (Updatable) The transport protocol the filter
                             uses.
@@ -967,7 +1009,8 @@ spec:
                         samplingRate:
                           description: (Updatable) Sampling interval as 1 of X, where
                             X is an integer not greater than 100000.
-                          type: number
+                          format: int64
+                          type: integer
                         sourceCidr:
                           description: (Updatable) Traffic from this CIDR will be
                             captured in the flow log.
@@ -988,12 +1031,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -1005,12 +1050,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -1031,12 +1078,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -1048,12 +1097,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -1068,7 +1119,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The capture filter's Oracle ID (OCID).
                     type: string
@@ -1096,10 +1146,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -1130,12 +1182,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -1147,12 +1201,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -1177,12 +1233,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               sourcePortRange:
@@ -1194,12 +1252,14 @@ spec:
                                         which must not be less than the minimum port
                                         number. To specify a single port number, set
                                         both the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number,
                                         which must not be greater than the maximum
                                         port number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object

@@ -28,8 +28,7 @@ type DelegationControlInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) List of Delegation Subscription OCID that are allowed for this Delegation Control. The allowed subscriptions will determine the available Service Provider Actions. Only support operators for the allowed subscriptions are allowed to create Delegated Resource Access Request.
 	DelegationSubscriptionIds []*string `json:"delegationSubscriptionIds,omitempty" tf:"delegation_subscription_ids,omitempty"`
@@ -41,8 +40,7 @@ type DelegationControlInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Set to true to allow all Delegated Resource Access Request to be approved automatically during maintenance.
 	IsAutoApproveDuringMaintenance *bool `json:"isAutoApproveDuringMaintenance,omitempty" tf:"is_auto_approve_during_maintenance,omitempty"`
@@ -64,7 +62,7 @@ type DelegationControlInitParameters struct {
 	NotificationTopicIDSelector *v1.Selector `json:"notificationTopicIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) number of approvals required.
-	NumApprovalsRequired *float64 `json:"numApprovalsRequired,omitempty" tf:"num_approvals_required,omitempty"`
+	NumApprovalsRequired *int64 `json:"numApprovalsRequired,omitempty" tf:"num_approvals_required,omitempty"`
 
 	// (Updatable) List of pre-approved Service Provider Action names. The list of pre-defined Service Provider Actions can be obtained from the ListServiceProviderActions API. Delegated Resource Access Requests associated with a resource governed by this Delegation Control will be automatically approved if the Delegated Resource Access Request only contain Service Provider Actions in the pre-approved list.
 	PreApprovedServiceProviderActionNames []*string `json:"preApprovedServiceProviderActionNames,omitempty" tf:"pre_approved_service_provider_action_names,omitempty"`
@@ -108,8 +106,7 @@ type DelegationControlObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) List of Delegation Subscription OCID that are allowed for this Delegation Control. The allowed subscriptions will determine the available Service Provider Actions. Only support operators for the allowed subscriptions are allowed to create Delegated Resource Access Request.
 	DelegationSubscriptionIds []*string `json:"delegationSubscriptionIds,omitempty" tf:"delegation_subscription_ids,omitempty"`
@@ -121,8 +118,7 @@ type DelegationControlObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Delegation Control.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -140,7 +136,7 @@ type DelegationControlObservation struct {
 	NotificationTopicID *string `json:"notificationTopicId,omitempty" tf:"notification_topic_id,omitempty"`
 
 	// (Updatable) number of approvals required.
-	NumApprovalsRequired *float64 `json:"numApprovalsRequired,omitempty" tf:"num_approvals_required,omitempty"`
+	NumApprovalsRequired *int64 `json:"numApprovalsRequired,omitempty" tf:"num_approvals_required,omitempty"`
 
 	// (Updatable) List of pre-approved Service Provider Action names. The list of pre-defined Service Provider Actions can be obtained from the ListServiceProviderActions API. Delegated Resource Access Requests associated with a resource governed by this Delegation Control will be automatically approved if the Delegated Resource Access Request only contain Service Provider Actions in the pre-approved list.
 	PreApprovedServiceProviderActionNames []*string `json:"preApprovedServiceProviderActionNames,omitempty" tf:"pre_approved_service_provider_action_names,omitempty"`
@@ -155,8 +151,7 @@ type DelegationControlObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Time when the Delegation Control was created expressed in RFC 3339 timestamp format, e.g. '2020-05-22T21:10:29.600Z'
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -191,8 +186,7 @@ type DelegationControlParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) List of Delegation Subscription OCID that are allowed for this Delegation Control. The allowed subscriptions will determine the available Service Provider Actions. Only support operators for the allowed subscriptions are allowed to create Delegated Resource Access Request.
 	// +kubebuilder:validation:Optional
@@ -208,8 +202,7 @@ type DelegationControlParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Set to true to allow all Delegated Resource Access Request to be approved automatically during maintenance.
 	// +kubebuilder:validation:Optional
@@ -235,7 +228,7 @@ type DelegationControlParameters struct {
 
 	// (Updatable) number of approvals required.
 	// +kubebuilder:validation:Optional
-	NumApprovalsRequired *float64 `json:"numApprovalsRequired,omitempty" tf:"num_approvals_required,omitempty"`
+	NumApprovalsRequired *int64 `json:"numApprovalsRequired,omitempty" tf:"num_approvals_required,omitempty"`
 
 	// (Updatable) List of pre-approved Service Provider Action names. The list of pre-defined Service Provider Actions can be obtained from the ListServiceProviderActions API. Delegated Resource Access Requests associated with a resource governed by this Delegation Control will be automatically approved if the Delegated Resource Access Request only contain Service Provider Actions in the pre-approved list.
 	// +kubebuilder:validation:Optional

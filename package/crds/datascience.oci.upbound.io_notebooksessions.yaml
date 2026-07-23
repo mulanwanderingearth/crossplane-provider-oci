@@ -161,7 +161,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly display name for the
                       resource. It does not have to be unique and can be modified.
@@ -174,7 +173,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   notebookSessionConfigDetails:
                     description: Details for the notebook session configuration.
                     items:
@@ -183,7 +181,8 @@ spec:
                           description: A notebook session instance is provided with
                             a block storage volume. This specifies the size of the
                             volume in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         notebookSessionShapeConfigDetails:
                           description: Details for the notebook session shape configuration.
                           items:
@@ -385,7 +384,8 @@ spec:
                           description: A notebook session instance is provided with
                             a block storage volume. This specifies the size of the
                             volume in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         notebookSessionShapeConfigDetails:
                           description: Details for the notebook session shape configuration.
                           items:
@@ -591,7 +591,6 @@ spec:
                             Notebook Session. These key-value pairs will be available
                             for customers in Notebook Sessions.
                           type: object
-                          x-kubernetes-map-type: granular
                         notebookSessionGitConfigDetails:
                           description: (Updatable) Git configuration Details.
                           items:
@@ -979,7 +978,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly display name for the
                       resource. It does not have to be unique and can be modified.
@@ -992,7 +990,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   notebookSessionConfigDetails:
                     description: Details for the notebook session configuration.
                     items:
@@ -1001,7 +998,8 @@ spec:
                           description: A notebook session instance is provided with
                             a block storage volume. This specifies the size of the
                             volume in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         notebookSessionShapeConfigDetails:
                           description: Details for the notebook session shape configuration.
                           items:
@@ -1203,7 +1201,8 @@ spec:
                           description: A notebook session instance is provided with
                             a block storage volume. This specifies the size of the
                             volume in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         notebookSessionShapeConfigDetails:
                           description: Details for the notebook session shape configuration.
                           items:
@@ -1409,7 +1408,6 @@ spec:
                             Notebook Session. These key-value pairs will be available
                             for customers in Notebook Sessions.
                           type: object
-                          x-kubernetes-map-type: granular
                         notebookSessionGitConfigDetails:
                           description: (Updatable) Git configuration Details.
                           items:
@@ -1804,7 +1802,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly display name for the
                       resource. It does not have to be unique and can be modified.
@@ -1817,7 +1814,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the notebook session.
                     type: string
@@ -1832,7 +1828,8 @@ spec:
                           description: A notebook session instance is provided with
                             a block storage volume. This specifies the size of the
                             volume in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         notebookSessionShapeConfigDetails:
                           description: Details for the notebook session shape configuration.
                           items:
@@ -1882,7 +1879,8 @@ spec:
                           description: A notebook session instance is provided with
                             a block storage volume. This specifies the size of the
                             volume in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         notebookSessionShapeConfigDetails:
                           description: Details for the notebook session shape configuration.
                           items:
@@ -1936,7 +1934,6 @@ spec:
                             Notebook Session. These key-value pairs will be available
                             for customers in Notebook Sessions.
                           type: object
-                          x-kubernetes-map-type: granular
                         notebookSessionGitConfigDetails:
                           description: (Updatable) Git configuration Details.
                           items:

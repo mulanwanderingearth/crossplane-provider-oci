@@ -19,7 +19,7 @@ type ActionInitParameters struct {
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
 	// To scale out (increase the number of instances), provide a positive value. To scale in (decrease the number of instances), provide a negative value.
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ActionObservation struct {
@@ -28,7 +28,7 @@ type ActionObservation struct {
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
 	// To scale out (increase the number of instances), provide a positive value. To scale in (decrease the number of instances), provide a negative value.
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ActionParameters struct {
@@ -39,7 +39,7 @@ type ActionParameters struct {
 
 	// To scale out (increase the number of instances), provide a positive value. To scale in (decrease the number of instances), provide a negative value.
 	// +kubebuilder:validation:Optional
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AutoScalingConfigurationInitParameters struct {
@@ -60,18 +60,16 @@ type AutoScalingConfigurationInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) For threshold-based autoscaling policies, this value is the minimum period of time to wait between scaling actions. The cooldown period gives the system time to stabilize before rescaling. The minimum value is 300 seconds, which is also the default. The cooldown period starts when the instance pool reaches the running state.
-	CoolDownInSeconds *float64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
+	CoolDownInSeconds *int64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether the autoscaling configuration is enabled.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -89,18 +87,16 @@ type AutoScalingConfigurationObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) For threshold-based autoscaling policies, this value is the minimum period of time to wait between scaling actions. The cooldown period gives the system time to stabilize before rescaling. The minimum value is 300 seconds, which is also the default. The cooldown period starts when the instance pool reaches the running state.
-	CoolDownInSeconds *float64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
+	CoolDownInSeconds *int64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the resource that is managed by the autoscaling configuration.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -109,10 +105,10 @@ type AutoScalingConfigurationObservation struct {
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// The maximum number of resources to scale out to.
-	MaxResourceCount *float64 `json:"maxResourceCount,omitempty" tf:"max_resource_count,omitempty"`
+	MaxResourceCount *int64 `json:"maxResourceCount,omitempty" tf:"max_resource_count,omitempty"`
 
 	// The minimum number of resources to scale in to.
-	MinResourceCount *float64 `json:"minResourceCount,omitempty" tf:"min_resource_count,omitempty"`
+	MinResourceCount *int64 `json:"minResourceCount,omitempty" tf:"min_resource_count,omitempty"`
 
 	// Autoscaling policy definitions for the autoscaling configuration. An autoscaling policy defines the criteria that trigger autoscaling actions and the actions to take.
 	Policies []PoliciesObservation `json:"policies,omitempty" tf:"policies,omitempty"`
@@ -142,12 +138,11 @@ type AutoScalingConfigurationParameters struct {
 
 	// (Updatable) For threshold-based autoscaling policies, this value is the minimum period of time to wait between scaling actions. The cooldown period gives the system time to stabilize before rescaling. The minimum value is 300 seconds, which is also the default. The cooldown period starts when the instance pool reaches the running state.
 	// +kubebuilder:validation:Optional
-	CoolDownInSeconds *float64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
+	CoolDownInSeconds *int64 `json:"coolDownInSeconds,omitempty" tf:"cool_down_in_seconds,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -155,8 +150,7 @@ type AutoScalingConfigurationParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether the autoscaling configuration is enabled.
 	// +kubebuilder:validation:Optional
@@ -199,40 +193,40 @@ type AutoScalingResourcesParameters struct {
 type CapacityInitParameters struct {
 
 	// For a threshold-based autoscaling policy, this value is the initial number of instances to launch in the instance pool immediately after autoscaling is enabled. After autoscaling retrieves performance metrics, the number of instances is automatically adjusted from this initial number to a number that is based on the limits that you set.
-	Initial *float64 `json:"initial,omitempty" tf:"initial,omitempty"`
+	Initial *int64 `json:"initial,omitempty" tf:"initial,omitempty"`
 
 	// For a threshold-based autoscaling policy, this value is the maximum number of instances the instance pool is allowed to increase to (scale out).
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// For a threshold-based autoscaling policy, this value is the minimum number of instances the instance pool is allowed to decrease to (scale in).
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type CapacityObservation struct {
 
 	// For a threshold-based autoscaling policy, this value is the initial number of instances to launch in the instance pool immediately after autoscaling is enabled. After autoscaling retrieves performance metrics, the number of instances is automatically adjusted from this initial number to a number that is based on the limits that you set.
-	Initial *float64 `json:"initial,omitempty" tf:"initial,omitempty"`
+	Initial *int64 `json:"initial,omitempty" tf:"initial,omitempty"`
 
 	// For a threshold-based autoscaling policy, this value is the maximum number of instances the instance pool is allowed to increase to (scale out).
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// For a threshold-based autoscaling policy, this value is the minimum number of instances the instance pool is allowed to decrease to (scale in).
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type CapacityParameters struct {
 
 	// For a threshold-based autoscaling policy, this value is the initial number of instances to launch in the instance pool immediately after autoscaling is enabled. After autoscaling retrieves performance metrics, the number of instances is automatically adjusted from this initial number to a number that is based on the limits that you set.
 	// +kubebuilder:validation:Optional
-	Initial *float64 `json:"initial,omitempty" tf:"initial,omitempty"`
+	Initial *int64 `json:"initial,omitempty" tf:"initial,omitempty"`
 
 	// For a threshold-based autoscaling policy, this value is the maximum number of instances the instance pool is allowed to increase to (scale out).
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// For a threshold-based autoscaling policy, this value is the minimum number of instances the instance pool is allowed to decrease to (scale in).
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type ExecutionScheduleInitParameters struct {
@@ -523,7 +517,7 @@ type ThresholdInitParameters struct {
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// To scale out (increase the number of instances), provide a positive value. To scale in (decrease the number of instances), provide a negative value.
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ThresholdObservation struct {
@@ -532,7 +526,7 @@ type ThresholdObservation struct {
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// To scale out (increase the number of instances), provide a positive value. To scale in (decrease the number of instances), provide a negative value.
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ThresholdParameters struct {
@@ -543,7 +537,7 @@ type ThresholdParameters struct {
 
 	// To scale out (increase the number of instances), provide a positive value. To scale in (decrease the number of instances), provide a negative value.
 	// +kubebuilder:validation:Optional
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 // AutoScalingConfigurationSpec defines the desired state of AutoScalingConfiguration

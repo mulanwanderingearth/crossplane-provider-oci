@@ -80,7 +80,8 @@ spec:
                       is not set or set to 0 then the number of simultaneous connections
                       the load balancer can make to any backend in the backend set
                       unless the backend has its own maxConnections setting is unlimited.
-                    type: number
+                    format: int64
+                    type: integer
                   healthChecker:
                     description: (Updatable) The health check policy's configuration
                       details.
@@ -89,7 +90,8 @@ spec:
                         intervalMs:
                           description: '(Updatable) The interval between health checks,
                             in milliseconds.  Example: 10000'
-                          type: number
+                          format: int64
+                          type: integer
                         isForcePlainText:
                           description: (Updatable) Specifies if health checks should
                             always be done using plain text instead of depending on
@@ -98,7 +100,8 @@ spec:
                         port:
                           description: '(Updatable) The communication port for the
                             backend server.  Example: 8080'
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: '(Updatable) The protocol the health check
                             must use; either HTTP or TCP.  Example: HTTP'
@@ -112,17 +115,20 @@ spec:
                             before a backend server is considered "unhealthy". This
                             number also applies when recovering a server to the "healthy"
                             state.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         returnCode:
                           description: '(Updatable) The status code a healthy backend
                             server should return.  Example: 200'
-                          type: number
+                          format: int64
+                          type: integer
                         timeoutInMillis:
                           description: '(Updatable) The maximum time, in milliseconds,
                             to wait for a reply to a health check. A health check
                             is successful only if a reply returns within this timeout
                             period.  Example: 3000'
-                          type: number
+                          format: int64
+                          type: integer
                         urlPath:
                           description: '(Updatable) The path against which to run
                             the health check.  Example: /healthcheck'
@@ -172,7 +178,8 @@ spec:
                           description: (Updatable) The amount of time the cookie remains
                             valid. The Set-cookie header inserted by the load balancer
                             contains a Max-Age attribute with the specified value.
-                          type: number
+                          format: int64
+                          type: integer
                         path:
                           description: (Updatable) The path in which the cookie is
                             valid. The Set-cookie header inserted by the load balancer
@@ -410,7 +417,8 @@ spec:
                         verifyDepth:
                           description: '(Updatable) The maximum depth for peer certificate
                             chain verification.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         verifyPeerCertificate:
                           description: '(Updatable) Whether the load balancer listener
                             should verify peer certificates.  Example: true'
@@ -438,7 +446,8 @@ spec:
                       is not set or set to 0 then the number of simultaneous connections
                       the load balancer can make to any backend in the backend set
                       unless the backend has its own maxConnections setting is unlimited.
-                    type: number
+                    format: int64
+                    type: integer
                   healthChecker:
                     description: (Updatable) The health check policy's configuration
                       details.
@@ -447,7 +456,8 @@ spec:
                         intervalMs:
                           description: '(Updatable) The interval between health checks,
                             in milliseconds.  Example: 10000'
-                          type: number
+                          format: int64
+                          type: integer
                         isForcePlainText:
                           description: (Updatable) Specifies if health checks should
                             always be done using plain text instead of depending on
@@ -456,7 +466,8 @@ spec:
                         port:
                           description: '(Updatable) The communication port for the
                             backend server.  Example: 8080'
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: '(Updatable) The protocol the health check
                             must use; either HTTP or TCP.  Example: HTTP'
@@ -470,17 +481,20 @@ spec:
                             before a backend server is considered "unhealthy". This
                             number also applies when recovering a server to the "healthy"
                             state.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         returnCode:
                           description: '(Updatable) The status code a healthy backend
                             server should return.  Example: 200'
-                          type: number
+                          format: int64
+                          type: integer
                         timeoutInMillis:
                           description: '(Updatable) The maximum time, in milliseconds,
                             to wait for a reply to a health check. A health check
                             is successful only if a reply returns within this timeout
                             period.  Example: 3000'
-                          type: number
+                          format: int64
+                          type: integer
                         urlPath:
                           description: '(Updatable) The path against which to run
                             the health check.  Example: /healthcheck'
@@ -530,7 +544,8 @@ spec:
                           description: (Updatable) The amount of time the cookie remains
                             valid. The Set-cookie header inserted by the load balancer
                             contains a Max-Age attribute with the specified value.
-                          type: number
+                          format: int64
+                          type: integer
                         path:
                           description: (Updatable) The path in which the cookie is
                             valid. The Set-cookie header inserted by the load balancer
@@ -768,7 +783,8 @@ spec:
                         verifyDepth:
                           description: '(Updatable) The maximum depth for peer certificate
                             chain verification.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         verifyPeerCertificate:
                           description: '(Updatable) Whether the load balancer listener
                             should verify peer certificates.  Example: true'
@@ -908,7 +924,8 @@ spec:
                             If this is not set or set to 0 then the maximum number
                             of simultaneous connections the load balancer can make
                             to the backend is unlimited.
-                          type: number
+                          format: int64
+                          type: integer
                         name:
                           description: A friendly name for the backend set. It must
                             be unique and it cannot be changed.
@@ -921,7 +938,8 @@ spec:
                         port:
                           description: '(Updatable) The communication port for the
                             backend server.  Example: 8080'
-                          type: number
+                          format: int64
+                          type: integer
                         weight:
                           description: '(Updatable) The load balancing policy weight
                             assigned to the server. Backend servers with a higher
@@ -930,7 +948,8 @@ spec:
                             the number of new connections as a server weighted ''1''.
                             For more information on load balancing policies, see How
                             Load Balancing Policies Work.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   backendMaxConnections:
@@ -940,7 +959,8 @@ spec:
                       is not set or set to 0 then the number of simultaneous connections
                       the load balancer can make to any backend in the backend set
                       unless the backend has its own maxConnections setting is unlimited.
-                    type: number
+                    format: int64
+                    type: integer
                   healthChecker:
                     description: (Updatable) The health check policy's configuration
                       details.
@@ -949,7 +969,8 @@ spec:
                         intervalMs:
                           description: '(Updatable) The interval between health checks,
                             in milliseconds.  Example: 10000'
-                          type: number
+                          format: int64
+                          type: integer
                         isForcePlainText:
                           description: (Updatable) Specifies if health checks should
                             always be done using plain text instead of depending on
@@ -958,7 +979,8 @@ spec:
                         port:
                           description: '(Updatable) The communication port for the
                             backend server.  Example: 8080'
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: '(Updatable) The protocol the health check
                             must use; either HTTP or TCP.  Example: HTTP'
@@ -972,17 +994,20 @@ spec:
                             before a backend server is considered "unhealthy". This
                             number also applies when recovering a server to the "healthy"
                             state.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         returnCode:
                           description: '(Updatable) The status code a healthy backend
                             server should return.  Example: 200'
-                          type: number
+                          format: int64
+                          type: integer
                         timeoutInMillis:
                           description: '(Updatable) The maximum time, in milliseconds,
                             to wait for a reply to a health check. A health check
                             is successful only if a reply returns within this timeout
                             period.  Example: 3000'
-                          type: number
+                          format: int64
+                          type: integer
                         urlPath:
                           description: '(Updatable) The path against which to run
                             the health check.  Example: /healthcheck'
@@ -1034,7 +1059,8 @@ spec:
                           description: (Updatable) The amount of time the cookie remains
                             valid. The Set-cookie header inserted by the load balancer
                             contains a Max-Age attribute with the specified value.
-                          type: number
+                          format: int64
+                          type: integer
                         path:
                           description: (Updatable) The path in which the cookie is
                             valid. The Set-cookie header inserted by the load balancer
@@ -1120,7 +1146,8 @@ spec:
                         verifyDepth:
                           description: '(Updatable) The maximum depth for peer certificate
                             chain verification.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         verifyPeerCertificate:
                           description: '(Updatable) Whether the load balancer listener
                             should verify peer certificates.  Example: true'

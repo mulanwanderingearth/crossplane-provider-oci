@@ -592,7 +592,8 @@ spec:
                           type: string
                         order:
                           description: (Updatable) Approval Order
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: (Updatable) Approval Status
                           type: string

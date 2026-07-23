@@ -40,12 +40,10 @@ type ApplicationInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The Spark configuration passed to the running process. See https://spark.apache.org/docs/latest/configuration.html#available-properties. Example: { "spark.app.name" : "My App Name", "spark.shuffle.io.maxRetries" : "4" } Note: Not all Spark properties are permitted to be set.  Attempting to set a property that is not allowed to be overwritten will cause a 400 status to be returned.
-	// +mapType=granular
-	Configuration map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -72,8 +70,7 @@ type ApplicationInitParameters struct {
 	FileURI *string `json:"fileUri,omitempty" tf:"file_uri,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The timeout value in minutes used to manage Runs. A Run would be stopped after inactivity for this amount of time period. Note: This parameter is currently only applicable for Runs of type SESSION. Default value is 2880 minutes (2 days)
 	IdleTimeoutInMinutes *string `json:"idleTimeoutInMinutes,omitempty" tf:"idle_timeout_in_minutes,omitempty"`
@@ -91,7 +88,7 @@ type ApplicationInitParameters struct {
 	MetastoreID *string `json:"metastoreId,omitempty" tf:"metastore_id,omitempty"`
 
 	// (Updatable) The number of executor VMs requested.
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// (Updatable) An array of name/value pairs used to fill placeholders found in properties like Application.arguments.  The name must be a string of one or more word characters (a-z, A-Z, 0-9, _).  The value can be a string of 0 or more characters of any kind. Example:  [ { name: "iterations", value: "10"}, { name: "input_file", value: "mydata.xml" }, { name: "variable_x", value: "${x}"} ]
 	Parameters []ParametersInitParameters `json:"parameters,omitempty" tf:"parameters,omitempty"`
@@ -222,12 +219,10 @@ type ApplicationObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) The Spark configuration passed to the running process. See https://spark.apache.org/docs/latest/configuration.html#available-properties. Example: { "spark.app.name" : "My App Name", "spark.shuffle.io.maxRetries" : "4" } Note: Not all Spark properties are permitted to be set.  Attempting to set a property that is not allowed to be overwritten will cause a 400 status to be returned.
-	// +mapType=granular
-	Configuration map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -254,8 +249,7 @@ type ApplicationObservation struct {
 	FileURI *string `json:"fileUri,omitempty" tf:"file_uri,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The application ID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -276,7 +270,7 @@ type ApplicationObservation struct {
 	MetastoreID *string `json:"metastoreId,omitempty" tf:"metastore_id,omitempty"`
 
 	// (Updatable) The number of executor VMs requested.
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// The OCID of the user who created the resource.
 	OwnerPrincipalID *string `json:"ownerPrincipalId,omitempty" tf:"owner_principal_id,omitempty"`
@@ -348,13 +342,11 @@ type ApplicationParameters struct {
 
 	// (Updatable) The Spark configuration passed to the running process. See https://spark.apache.org/docs/latest/configuration.html#available-properties. Example: { "spark.app.name" : "My App Name", "spark.shuffle.io.maxRetries" : "4" } Note: Not all Spark properties are permitted to be set.  Attempting to set a property that is not allowed to be overwritten will cause a 400 status to be returned.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Configuration map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -390,8 +382,7 @@ type ApplicationParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The timeout value in minutes used to manage Runs. A Run would be stopped after inactivity for this amount of time period. Note: This parameter is currently only applicable for Runs of type SESSION. Default value is 2880 minutes (2 days)
 	// +kubebuilder:validation:Optional
@@ -415,7 +406,7 @@ type ApplicationParameters struct {
 
 	// (Updatable) The number of executor VMs requested.
 	// +kubebuilder:validation:Optional
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// (Updatable) An array of name/value pairs used to fill placeholders found in properties like Application.arguments.  The name must be a string of one or more word characters (a-z, A-Z, 0-9, _).  The value can be a string of 0 or more characters of any kind. Example:  [ { name: "iterations", value: "10"}, { name: "input_file", value: "mydata.xml" }, { name: "variable_x", value: "${x}"} ]
 	// +kubebuilder:validation:Optional

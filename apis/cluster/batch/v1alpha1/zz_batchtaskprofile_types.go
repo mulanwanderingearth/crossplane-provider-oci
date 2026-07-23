@@ -28,8 +28,7 @@ type BatchTaskProfileInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The batch task profile description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -41,17 +40,16 @@ type BatchTaskProfileInitParameters struct {
 	ExtendedInformation []ExtendedInformationInitParameters `json:"extendedInformation,omitempty" tf:"extended_information,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The minimum required size of disk space in GBs.
-	MinDiskSizeInGbs *float64 `json:"minDiskSizeInGbs,omitempty" tf:"min_disk_size_in_gbs,omitempty"`
+	MinDiskSizeInGbs *int64 `json:"minDiskSizeInGbs,omitempty" tf:"min_disk_size_in_gbs,omitempty"`
 
 	// The minimum required memory.
-	MinMemoryInGbs *float64 `json:"minMemoryInGbs,omitempty" tf:"min_memory_in_gbs,omitempty"`
+	MinMemoryInGbs *int64 `json:"minMemoryInGbs,omitempty" tf:"min_memory_in_gbs,omitempty"`
 
 	// The minimum required OCPUs.
-	MinOcpus *float64 `json:"minOcpus,omitempty" tf:"min_ocpus,omitempty"`
+	MinOcpus *int64 `json:"minOcpus,omitempty" tf:"min_ocpus,omitempty"`
 }
 
 type BatchTaskProfileObservation struct {
@@ -60,8 +58,7 @@ type BatchTaskProfileObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The batch task profile description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -73,27 +70,25 @@ type BatchTaskProfileObservation struct {
 	ExtendedInformation []ExtendedInformationObservation `json:"extendedInformation,omitempty" tf:"extended_information,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the batch task profile.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The minimum required size of disk space in GBs.
-	MinDiskSizeInGbs *float64 `json:"minDiskSizeInGbs,omitempty" tf:"min_disk_size_in_gbs,omitempty"`
+	MinDiskSizeInGbs *int64 `json:"minDiskSizeInGbs,omitempty" tf:"min_disk_size_in_gbs,omitempty"`
 
 	// The minimum required memory.
-	MinMemoryInGbs *float64 `json:"minMemoryInGbs,omitempty" tf:"min_memory_in_gbs,omitempty"`
+	MinMemoryInGbs *int64 `json:"minMemoryInGbs,omitempty" tf:"min_memory_in_gbs,omitempty"`
 
 	// The minimum required OCPUs.
-	MinOcpus *float64 `json:"minOcpus,omitempty" tf:"min_ocpus,omitempty"`
+	MinOcpus *int64 `json:"minOcpus,omitempty" tf:"min_ocpus,omitempty"`
 
 	// The current state of the batch task profile.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the batch task profile was created, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -119,8 +114,7 @@ type BatchTaskProfileParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The batch task profile description.
 	// +kubebuilder:validation:Optional
@@ -136,20 +130,19 @@ type BatchTaskProfileParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The minimum required size of disk space in GBs.
 	// +kubebuilder:validation:Optional
-	MinDiskSizeInGbs *float64 `json:"minDiskSizeInGbs,omitempty" tf:"min_disk_size_in_gbs,omitempty"`
+	MinDiskSizeInGbs *int64 `json:"minDiskSizeInGbs,omitempty" tf:"min_disk_size_in_gbs,omitempty"`
 
 	// The minimum required memory.
 	// +kubebuilder:validation:Optional
-	MinMemoryInGbs *float64 `json:"minMemoryInGbs,omitempty" tf:"min_memory_in_gbs,omitempty"`
+	MinMemoryInGbs *int64 `json:"minMemoryInGbs,omitempty" tf:"min_memory_in_gbs,omitempty"`
 
 	// The minimum required OCPUs.
 	// +kubebuilder:validation:Optional
-	MinOcpus *float64 `json:"minOcpus,omitempty" tf:"min_ocpus,omitempty"`
+	MinOcpus *int64 `json:"minOcpus,omitempty" tf:"min_ocpus,omitempty"`
 }
 
 type ExtendedInformationInitParameters struct {

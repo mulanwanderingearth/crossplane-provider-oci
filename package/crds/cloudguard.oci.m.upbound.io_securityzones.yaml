@@ -152,7 +152,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The security zone's description
                     type: string
@@ -166,7 +165,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isInheritanceAfterDeleteEnabled:
                     description: (Updatable) Indicates if upon deletion of the security
                       zone the comparment should inherit parent security zone
@@ -282,7 +280,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The security zone's description
                     type: string
@@ -296,7 +293,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isInheritanceAfterDeleteEnabled:
                     description: (Updatable) Indicates if upon deletion of the security
                       zone the comparment should inherit parent security zone
@@ -391,7 +387,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The security zone's description
                     type: string
@@ -405,7 +400,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Unique identifier that can’t be changed after creation
                     type: string

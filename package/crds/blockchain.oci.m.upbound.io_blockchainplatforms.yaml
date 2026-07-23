@@ -166,7 +166,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Platform Instance Description
                     type: string
@@ -263,7 +262,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idcsAccessTokenSecretRef:
                     description: IDCS access token with Identity Domain Administrator
                       role
@@ -297,13 +295,16 @@ spec:
                       properties:
                         caCount:
                           description: Number of CA replicas
-                          type: number
+                          format: int64
+                          type: integer
                         consoleCount:
                           description: Number of console replicas
-                          type: number
+                          format: int64
+                          type: integer
                         proxyCount:
                           description: Number of REST proxy replicas
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   storageSizeInTbs:
@@ -311,7 +312,8 @@ spec:
                     type: number
                   totalOcpuCapacity:
                     description: Number of total OCPUs allocated to the platform cluster
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -432,7 +434,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Platform Instance Description
                     type: string
@@ -529,7 +530,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idcsAccessTokenSecretRef:
                     description: IDCS access token with Identity Domain Administrator
                       role
@@ -563,13 +563,16 @@ spec:
                       properties:
                         caCount:
                           description: Number of CA replicas
-                          type: number
+                          format: int64
+                          type: integer
                         consoleCount:
                           description: Number of console replicas
-                          type: number
+                          format: int64
+                          type: integer
                         proxyCount:
                           description: Number of REST proxy replicas
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   storageSizeInTbs:
@@ -577,7 +580,8 @@ spec:
                     type: number
                   totalOcpuCapacity:
                     description: Number of total OCPUs allocated to the platform cluster
-                    type: number
+                    format: int64
+                    type: integer
                 required:
                 - idcsAccessTokenSecretRef
                 type: object
@@ -749,7 +753,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Platform Instance Description
                     type: string
@@ -766,7 +769,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostOcpuUtilizationInfo:
                     description: List of OcpuUtilization for all hosts
                     items:
@@ -817,13 +819,16 @@ spec:
                       properties:
                         caCount:
                           description: Number of CA replicas
-                          type: number
+                          format: int64
+                          type: integer
                         consoleCount:
                           description: Number of console replicas
-                          type: number
+                          format: int64
+                          type: integer
                         proxyCount:
                           description: Number of REST proxy replicas
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   serviceEndpoint:
@@ -851,7 +856,8 @@ spec:
                     type: string
                   totalOcpuCapacity:
                     description: Number of total OCPUs allocated to the platform cluster
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

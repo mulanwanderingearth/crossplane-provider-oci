@@ -76,7 +76,8 @@ spec:
                 properties:
                   compartmentDepth:
                     description: The compartment depth level.
-                    type: number
+                    format: int64
+                    type: integer
                   emissionCalculationMethod:
                     description: Specifies the method used for emission calculation,
                       such as POWER_BASED or SPEND_BASED
@@ -148,7 +149,8 @@ spec:
                 properties:
                   compartmentDepth:
                     description: The compartment depth level.
-                    type: number
+                    format: int64
+                    type: integer
                   emissionCalculationMethod:
                     description: Specifies the method used for emission calculation,
                       such as POWER_BASED or SPEND_BASED
@@ -313,7 +315,8 @@ spec:
                 properties:
                   compartmentDepth:
                     description: The compartment depth level.
-                    type: number
+                    format: int64
+                    type: integer
                   emissionCalculationMethod:
                     description: Specifies the method used for emission calculation,
                       such as POWER_BASED or SPEND_BASED

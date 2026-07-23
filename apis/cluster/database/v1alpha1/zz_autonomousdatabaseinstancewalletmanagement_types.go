@@ -28,7 +28,7 @@ type AutonomousDatabaseInstanceWalletManagementInitParameters struct {
 	AutonomousDatabaseIDSelector *v1.Selector `json:"autonomousDatabaseIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The number of hours that the old wallet can be used after it has been rotated. The old wallet will no longer be valid after the number of hours in the wallet rotation grace period has passed. During the grace period, both the old wallet and the current wallet can be used.
-	GracePeriod *float64 `json:"gracePeriod,omitempty" tf:"grace_period,omitempty"`
+	GracePeriod *int64 `json:"gracePeriod,omitempty" tf:"grace_period,omitempty"`
 
 	// (Updatable) Indicates whether to rotate the wallet or not. If false, the wallet will not be rotated. The default is false.
 	ShouldRotate *bool `json:"shouldRotate,omitempty" tf:"should_rotate,omitempty"`
@@ -40,7 +40,7 @@ type AutonomousDatabaseInstanceWalletManagementObservation struct {
 	AutonomousDatabaseID *string `json:"autonomousDatabaseId,omitempty" tf:"autonomous_database_id,omitempty"`
 
 	// (Updatable) The number of hours that the old wallet can be used after it has been rotated. The old wallet will no longer be valid after the number of hours in the wallet rotation grace period has passed. During the grace period, both the old wallet and the current wallet can be used.
-	GracePeriod *float64 `json:"gracePeriod,omitempty" tf:"grace_period,omitempty"`
+	GracePeriod *int64 `json:"gracePeriod,omitempty" tf:"grace_period,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -71,7 +71,7 @@ type AutonomousDatabaseInstanceWalletManagementParameters struct {
 
 	// (Updatable) The number of hours that the old wallet can be used after it has been rotated. The old wallet will no longer be valid after the number of hours in the wallet rotation grace period has passed. During the grace period, both the old wallet and the current wallet can be used.
 	// +kubebuilder:validation:Optional
-	GracePeriod *float64 `json:"gracePeriod,omitempty" tf:"grace_period,omitempty"`
+	GracePeriod *int64 `json:"gracePeriod,omitempty" tf:"grace_period,omitempty"`
 
 	// (Updatable) Indicates whether to rotate the wallet or not. If false, the wallet will not be rotated. The default is false.
 	// +kubebuilder:validation:Optional

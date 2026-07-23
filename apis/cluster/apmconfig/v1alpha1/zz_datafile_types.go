@@ -62,8 +62,7 @@ type DataFileInitParameters struct {
 	DataFileNameSelector *v1.Selector `json:"dataFileNameSelector,omitempty" tf:"-"`
 
 	// (Updatable) Optional user-defined metadata key and value.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// An absolute path to a file on the local system. Cannot be defined if content is defined. Either one should be defined.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
@@ -89,7 +88,7 @@ type DataFileObservation struct {
 	// (Updatable) Optional parameter that indicates the natural language of the content. This value can be used by clients or intermediaries to select or display content based on language preferences.
 	ContentLanguage *string `json:"contentLanguage,omitempty" tf:"content_language,omitempty"`
 
-	ContentLength *float64 `json:"contentLength,omitempty" tf:"content_length,omitempty"`
+	ContentLength *int64 `json:"contentLength,omitempty" tf:"content_length,omitempty"`
 
 	// (Updatable) Optional base64-encoded MD5 hash of the request body. If provided, the server will perform a data integrity check by computing the MD5 of the received content and comparing it to the supplied value.
 	ContentMd5 *string `json:"contentMd5,omitempty" tf:"content_md5,omitempty"`
@@ -103,8 +102,7 @@ type DataFileObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) Optional user-defined metadata key and value.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// An absolute path to a file on the local system. Cannot be defined if content is defined. Either one should be defined.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
@@ -171,8 +169,7 @@ type DataFileParameters struct {
 
 	// (Updatable) Optional user-defined metadata key and value.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// An absolute path to a file on the local system. Cannot be defined if content is defined. Either one should be defined.
 	// +kubebuilder:validation:Optional

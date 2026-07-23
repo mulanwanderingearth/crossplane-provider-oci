@@ -385,8 +385,7 @@ type ConnectionStringsInitParameters struct {
 type ConnectionStringsObservation struct {
 
 	// Collection of connection strings.
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 }
 
 type ConnectionStringsParameters struct {
@@ -398,7 +397,7 @@ type DBBackupConfigInitParameters struct {
 	BackupDestinationDetails []BackupDestinationDetailsInitParameters `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type DBBackupConfigObservation struct {
@@ -407,7 +406,7 @@ type DBBackupConfigObservation struct {
 	BackupDestinationDetails []BackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type DBBackupConfigParameters struct {
@@ -418,7 +417,7 @@ type DBBackupConfigParameters struct {
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups. When the value is updated, it is applied to all existing automatic backups. If the number of specified days is 0 then there will be no backups.
 	// +kubebuilder:validation:Optional
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 }
 
 type DistributedAutonomousDatabaseInitParameters struct {
@@ -433,13 +432,13 @@ type DistributedAutonomousDatabaseInitParameters struct {
 	CertificateID *string `json:"certificateId,omitempty" tf:"certificate_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Change Db Backup Config. Could be set to any integer value.
-	ChangeDBBackupConfigTrigger *float64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
+	ChangeDBBackupConfigTrigger *int64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
 
 	// The character set for the database.
 	CharacterSet *string `json:"characterSet,omitempty" tf:"character_set,omitempty"`
 
 	// Number of chunks in a shardspace. The value of chunks must be greater than 2 times the size of the largest shardgroup in any shardspace. Chunks is required to be provided for distributed autonomous databases being created with SYSTEM shardingMethod. For USER shardingMethod, chunks should not be set in create payload.
-	Chunks *float64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
+	Chunks *int64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
 
 	// (Updatable) The OCID of the Globally distributed autonomous database compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -454,13 +453,13 @@ type DistributedAutonomousDatabaseInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Configure Gsm Wallet. Could be set to any integer value.
-	ConfigureGsmWalletTrigger *float64 `json:"configureGsmWalletTrigger,omitempty" tf:"configure_gsm_wallet_trigger,omitempty"`
+	ConfigureGsmWalletTrigger *int64 `json:"configureGsmWalletTrigger,omitempty" tf:"configure_gsm_wallet_trigger,omitempty"`
 
 	// (Updatable) Indicates whether shard chunks should be re-balanced as part of Configure Sharding.
 	ConfigureShardingIsRebalanceRequired *bool `json:"configureShardingIsRebalanceRequired,omitempty" tf:"configure_sharding_is_rebalance_required,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Configure Sharding. Could be set to any integer value.
-	ConfigureShardingTrigger *float64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
+	ConfigureShardingTrigger *int64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
 
 	// Backup options for the Distributed Autonomous Database.
 	DBBackupConfig []DBBackupConfigInitParameters `json:"dbBackupConfig,omitempty" tf:"db_backup_config,omitempty"`
@@ -475,21 +474,19 @@ type DistributedAutonomousDatabaseInitParameters struct {
 	DatabaseVersion *string `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the Globally distributed autonomous database.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Download Gsm Certificate Signing Request. Could be set to any integer value.
-	DownloadGsmCertificateSigningRequestTrigger *float64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
+	DownloadGsmCertificateSigningRequestTrigger *int64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Gsm Certificate Signing Request. Could be set to any integer value.
-	GenerateGsmCertificateSigningRequestTrigger *float64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
+	GenerateGsmCertificateSigningRequestTrigger *int64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// The OCID of the CA bundle to pass to Configure Sharding. Required when configure_sharding_trigger is incremented.
 	GenerateGsmCertificateSigningRequestTriggerCABundleID *string `json:"generateGsmCertificateSigningRequestTriggerCaBundleId,omitempty" tf:"generate_gsm_certificate_signing_request_trigger_ca_bundle_id,omitempty"`
@@ -497,25 +494,25 @@ type DistributedAutonomousDatabaseInitParameters struct {
 	GenerateWalletPasswordSecretRef *v1.SecretKeySelector `json:"generateWalletPasswordSecretRef,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Generate Wallet. Could be set to any integer value.
-	GenerateWalletTrigger *float64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
+	GenerateWalletTrigger *int64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
 
 	// The listener port number for the Globally distributed autonomous database. The listener port number has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// The TLS listener port number for Globally distributed autonomous database. The TLS listener port number has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database. The listenerPortTls is mandatory for dedicated infrastructure based distributed autonomous databases.
-	ListenerPortTLS *float64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
+	ListenerPortTLS *int64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Move Replication Unit. Could be set to any integer value.
-	MoveReplicationUnitTrigger *float64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
+	MoveReplicationUnitTrigger *int64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
 
 	// The national character set for the database.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
 
 	// Ons local port number for Globally distributed autonomous database. The onsPortLocal has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database.
-	OnsPortLocal *float64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
+	OnsPortLocal *int64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
 
 	// Ons remote port number for Globally distributed autonomous database. The onsPortRemote has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database.
-	OnsPortRemote *float64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
+	OnsPortRemote *int64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
 
 	// (Updatable)
 	PatchOperations []PatchOperationsInitParameters `json:"patchOperations,omitempty" tf:"patch_operations,omitempty"`
@@ -527,16 +524,16 @@ type DistributedAutonomousDatabaseInitParameters struct {
 	PrivateEndpointIds []*string `json:"privateEndpointIds,omitempty" tf:"private_endpoint_ids,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Recreate Failed Resource. Could be set to any integer value.
-	RecreateFailedResourceTrigger *float64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
+	RecreateFailedResourceTrigger *int64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
 
 	// The Replication factor for RAFT replication based Globally distributed autonomous database. Currently supported values are 3, 5 and 7.
-	ReplicationFactor *float64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
+	ReplicationFactor *int64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
 
 	// The Replication method for Globally distributed autonomous database. Use RAFT for Raft based replication. With RAFT replication, shards cannot have peers details set on them. In case shards need to have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
 	ReplicationMethod *string `json:"replicationMethod,omitempty" tf:"replication_method,omitempty"`
 
 	// The replication unit count for RAFT based distributed autonomous database. For RAFT replication based Globally distributed autonomous database, the value should be at least twice the number of shards.
-	ReplicationUnit *float64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
+	ReplicationUnit *int64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
 
 	// Collection of shards for the Globally distributed autonomous database.
 	ShardDetails []ShardDetailsInitParameters `json:"shardDetails,omitempty" tf:"shard_details,omitempty"`
@@ -545,26 +542,26 @@ type DistributedAutonomousDatabaseInitParameters struct {
 	ShardingMethod *string `json:"shardingMethod,omitempty" tf:"sharding_method,omitempty"`
 
 	// Increment this value to trigger StartDistributedAutonomousDatabase action.
-	StartDatabaseTrigger *float64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
+	StartDatabaseTrigger *int64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
 
 	// (Updatable) The target state for the Distributed Autonomous Database. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Increment this value to trigger StopDistributedAutonomousDatabase action.
-	StopDatabaseTrigger *float64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
+	StopDatabaseTrigger *int64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
 
 	UploadCASignedCertificateSecretRef *v1.SecretKeySelector `json:"uploadCaSignedCertificateSecretRef,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Upload Signed Certificate And Generate Wallet. Could be set to any integer value.
-	UploadSignedCertificateAndGenerateWalletTrigger *float64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
+	UploadSignedCertificateAndGenerateWalletTrigger *int64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Ca Bundle. Could be set to any integer value.
-	ValidateCABundleTrigger *float64 `json:"validateCaBundleTrigger,omitempty" tf:"validate_ca_bundle_trigger,omitempty"`
+	ValidateCABundleTrigger *int64 `json:"validateCaBundleTrigger,omitempty" tf:"validate_ca_bundle_trigger,omitempty"`
 
 	ValidateNetworkDetails []ValidateNetworkDetailsInitParameters `json:"validateNetworkDetails,omitempty" tf:"validate_network_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Network. Could be set to any integer value.
-	ValidateNetworkTrigger *float64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
+	ValidateNetworkTrigger *int64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
 }
 
 type DistributedAutonomousDatabaseMetadataInitParameters struct {
@@ -592,25 +589,25 @@ type DistributedAutonomousDatabaseObservation struct {
 	CertificateID *string `json:"certificateId,omitempty" tf:"certificate_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Change Db Backup Config. Could be set to any integer value.
-	ChangeDBBackupConfigTrigger *float64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
+	ChangeDBBackupConfigTrigger *int64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
 
 	// The character set for the database.
 	CharacterSet *string `json:"characterSet,omitempty" tf:"character_set,omitempty"`
 
 	// Number of chunks in a shardspace. The value of chunks must be greater than 2 times the size of the largest shardgroup in any shardspace. Chunks is required to be provided for distributed autonomous databases being created with SYSTEM shardingMethod. For USER shardingMethod, chunks should not be set in create payload.
-	Chunks *float64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
+	Chunks *int64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
 
 	// (Updatable) The OCID of the Globally distributed autonomous database compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Configure Gsm Wallet. Could be set to any integer value.
-	ConfigureGsmWalletTrigger *float64 `json:"configureGsmWalletTrigger,omitempty" tf:"configure_gsm_wallet_trigger,omitempty"`
+	ConfigureGsmWalletTrigger *int64 `json:"configureGsmWalletTrigger,omitempty" tf:"configure_gsm_wallet_trigger,omitempty"`
 
 	// (Updatable) Indicates whether shard chunks should be re-balanced as part of Configure Sharding.
 	ConfigureShardingIsRebalanceRequired *bool `json:"configureShardingIsRebalanceRequired,omitempty" tf:"configure_sharding_is_rebalance_required,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Configure Sharding. Could be set to any integer value.
-	ConfigureShardingTrigger *float64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
+	ConfigureShardingTrigger *int64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
 
 	// Details of Globally distributed autonomous database connection String.
 	ConnectionStrings []ConnectionStringsObservation `json:"connectionStrings,omitempty" tf:"connection_strings,omitempty"`
@@ -628,36 +625,34 @@ type DistributedAutonomousDatabaseObservation struct {
 	DatabaseVersion *string `json:"databaseVersion,omitempty" tf:"database_version,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the Globally distributed autonomous database.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Download Gsm Certificate Signing Request. Could be set to any integer value.
-	DownloadGsmCertificateSigningRequestTrigger *float64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
+	DownloadGsmCertificateSigningRequestTrigger *int64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// The replication unit count for RAFT based distributed autonomous database. For RAFT replication based Globally distributed autonomous database, the value should be at least twice the number of shards.
-	EffectiveReplicationUnit *float64 `json:"effectiveReplicationUnit,omitempty" tf:"effective_replication_unit,omitempty"`
+	EffectiveReplicationUnit *int64 `json:"effectiveReplicationUnit,omitempty" tf:"effective_replication_unit,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Gsm Certificate Signing Request. Could be set to any integer value.
-	GenerateGsmCertificateSigningRequestTrigger *float64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
+	GenerateGsmCertificateSigningRequestTrigger *int64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// The OCID of the CA bundle to pass to Configure Sharding. Required when configure_sharding_trigger is incremented.
 	GenerateGsmCertificateSigningRequestTriggerCABundleID *string `json:"generateGsmCertificateSigningRequestTriggerCaBundleId,omitempty" tf:"generate_gsm_certificate_signing_request_trigger_ca_bundle_id,omitempty"`
 
-	GenerateWalletDownloadedWalletContentLength *float64 `json:"generateWalletDownloadedWalletContentLength,omitempty" tf:"generate_wallet_downloaded_wallet_content_length,omitempty"`
+	GenerateWalletDownloadedWalletContentLength *int64 `json:"generateWalletDownloadedWalletContentLength,omitempty" tf:"generate_wallet_downloaded_wallet_content_length,omitempty"`
 
 	GenerateWalletDownloadedWalletEtag *string `json:"generateWalletDownloadedWalletEtag,omitempty" tf:"generate_wallet_downloaded_wallet_etag,omitempty"`
 
 	GenerateWalletDownloadedWalletLastModified *string `json:"generateWalletDownloadedWalletLastModified,omitempty" tf:"generate_wallet_downloaded_wallet_last_modified,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Wallet. Could be set to any integer value.
-	GenerateWalletTrigger *float64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
+	GenerateWalletTrigger *int64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
 
 	// Collection of catalogs associated with the Globally distributed autonomous database.
 	GsmDetails []GsmDetailsObservation `json:"gsmDetails,omitempty" tf:"gsm_details,omitempty"`
@@ -672,25 +667,25 @@ type DistributedAutonomousDatabaseObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The listener port number for the Globally distributed autonomous database. The listener port number has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// The TLS listener port number for Globally distributed autonomous database. The TLS listener port number has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database. The listenerPortTls is mandatory for dedicated infrastructure based distributed autonomous databases.
-	ListenerPortTLS *float64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
+	ListenerPortTLS *int64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
 
 	// Additional metadata related to Globally distributed autonomous database resources.
 	Metadata []DistributedAutonomousDatabaseMetadataObservation `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Move Replication Unit. Could be set to any integer value.
-	MoveReplicationUnitTrigger *float64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
+	MoveReplicationUnitTrigger *int64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
 
 	// The national character set for the database.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
 
 	// Ons local port number for Globally distributed autonomous database. The onsPortLocal has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database.
-	OnsPortLocal *float64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
+	OnsPortLocal *int64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
 
 	// Ons remote port number for Globally distributed autonomous database. The onsPortRemote has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database.
-	OnsPortRemote *float64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
+	OnsPortRemote *int64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
 
 	// (Updatable)
 	PatchOperations []PatchOperationsObservation `json:"patchOperations,omitempty" tf:"patch_operations,omitempty"`
@@ -702,16 +697,16 @@ type DistributedAutonomousDatabaseObservation struct {
 	PrivateEndpointIds []*string `json:"privateEndpointIds,omitempty" tf:"private_endpoint_ids,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Recreate Failed Resource. Could be set to any integer value.
-	RecreateFailedResourceTrigger *float64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
+	RecreateFailedResourceTrigger *int64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
 
 	// The Replication factor for RAFT replication based Globally distributed autonomous database. Currently supported values are 3, 5 and 7.
-	ReplicationFactor *float64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
+	ReplicationFactor *int64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
 
 	// The Replication method for Globally distributed autonomous database. Use RAFT for Raft based replication. With RAFT replication, shards cannot have peers details set on them. In case shards need to have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
 	ReplicationMethod *string `json:"replicationMethod,omitempty" tf:"replication_method,omitempty"`
 
 	// The replication unit count for RAFT based distributed autonomous database. For RAFT replication based Globally distributed autonomous database, the value should be at least twice the number of shards.
-	ReplicationUnit *float64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
+	ReplicationUnit *int64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
 
 	// Collection of shards for the Globally distributed autonomous database.
 	ShardDetails []ShardDetailsObservation `json:"shardDetails,omitempty" tf:"shard_details,omitempty"`
@@ -720,17 +715,16 @@ type DistributedAutonomousDatabaseObservation struct {
 	ShardingMethod *string `json:"shardingMethod,omitempty" tf:"sharding_method,omitempty"`
 
 	// Increment this value to trigger StartDistributedAutonomousDatabase action.
-	StartDatabaseTrigger *float64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
+	StartDatabaseTrigger *int64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
 
 	// (Updatable) The target state for the Distributed Autonomous Database. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Increment this value to trigger StopDistributedAutonomousDatabase action.
-	StopDatabaseTrigger *float64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
+	StopDatabaseTrigger *int64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the catalog peer was created. An RFC3339 formatted datetime string
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -739,15 +733,15 @@ type DistributedAutonomousDatabaseObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Upload Signed Certificate And Generate Wallet. Could be set to any integer value.
-	UploadSignedCertificateAndGenerateWalletTrigger *float64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
+	UploadSignedCertificateAndGenerateWalletTrigger *int64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Ca Bundle. Could be set to any integer value.
-	ValidateCABundleTrigger *float64 `json:"validateCaBundleTrigger,omitempty" tf:"validate_ca_bundle_trigger,omitempty"`
+	ValidateCABundleTrigger *int64 `json:"validateCaBundleTrigger,omitempty" tf:"validate_ca_bundle_trigger,omitempty"`
 
 	ValidateNetworkDetails []ValidateNetworkDetailsObservation `json:"validateNetworkDetails,omitempty" tf:"validate_network_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Network. Could be set to any integer value.
-	ValidateNetworkTrigger *float64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
+	ValidateNetworkTrigger *int64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
 }
 
 type DistributedAutonomousDatabaseParameters struct {
@@ -766,7 +760,7 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Change Db Backup Config. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ChangeDBBackupConfigTrigger *float64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
+	ChangeDBBackupConfigTrigger *int64 `json:"changeDbBackupConfigTrigger,omitempty" tf:"change_db_backup_config_trigger,omitempty"`
 
 	// The character set for the database.
 	// +kubebuilder:validation:Optional
@@ -774,7 +768,7 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// Number of chunks in a shardspace. The value of chunks must be greater than 2 times the size of the largest shardgroup in any shardspace. Chunks is required to be provided for distributed autonomous databases being created with SYSTEM shardingMethod. For USER shardingMethod, chunks should not be set in create payload.
 	// +kubebuilder:validation:Optional
-	Chunks *float64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
+	Chunks *int64 `json:"chunks,omitempty" tf:"chunks,omitempty"`
 
 	// (Updatable) The OCID of the Globally distributed autonomous database compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -791,7 +785,7 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Configure Gsm Wallet. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ConfigureGsmWalletTrigger *float64 `json:"configureGsmWalletTrigger,omitempty" tf:"configure_gsm_wallet_trigger,omitempty"`
+	ConfigureGsmWalletTrigger *int64 `json:"configureGsmWalletTrigger,omitempty" tf:"configure_gsm_wallet_trigger,omitempty"`
 
 	// (Updatable) Indicates whether shard chunks should be re-balanced as part of Configure Sharding.
 	// +kubebuilder:validation:Optional
@@ -799,7 +793,7 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Configure Sharding. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ConfigureShardingTrigger *float64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
+	ConfigureShardingTrigger *int64 `json:"configureShardingTrigger,omitempty" tf:"configure_sharding_trigger,omitempty"`
 
 	// Backup options for the Distributed Autonomous Database.
 	// +kubebuilder:validation:Optional
@@ -819,8 +813,7 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the Globally distributed autonomous database.
 	// +kubebuilder:validation:Optional
@@ -828,16 +821,15 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Download Gsm Certificate Signing Request. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	DownloadGsmCertificateSigningRequestTrigger *float64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
+	DownloadGsmCertificateSigningRequestTrigger *int64 `json:"downloadGsmCertificateSigningRequestTrigger,omitempty" tf:"download_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Gsm Certificate Signing Request. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	GenerateGsmCertificateSigningRequestTrigger *float64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
+	GenerateGsmCertificateSigningRequestTrigger *int64 `json:"generateGsmCertificateSigningRequestTrigger,omitempty" tf:"generate_gsm_certificate_signing_request_trigger,omitempty"`
 
 	// The OCID of the CA bundle to pass to Configure Sharding. Required when configure_sharding_trigger is incremented.
 	// +kubebuilder:validation:Optional
@@ -848,19 +840,19 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Generate Wallet. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	GenerateWalletTrigger *float64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
+	GenerateWalletTrigger *int64 `json:"generateWalletTrigger,omitempty" tf:"generate_wallet_trigger,omitempty"`
 
 	// The listener port number for the Globally distributed autonomous database. The listener port number has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database.
 	// +kubebuilder:validation:Optional
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// The TLS listener port number for Globally distributed autonomous database. The TLS listener port number has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database. The listenerPortTls is mandatory for dedicated infrastructure based distributed autonomous databases.
 	// +kubebuilder:validation:Optional
-	ListenerPortTLS *float64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
+	ListenerPortTLS *int64 `json:"listenerPortTls,omitempty" tf:"listener_port_tls,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Move Replication Unit. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	MoveReplicationUnitTrigger *float64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
+	MoveReplicationUnitTrigger *int64 `json:"moveReplicationUnitTrigger,omitempty" tf:"move_replication_unit_trigger,omitempty"`
 
 	// The national character set for the database.
 	// +kubebuilder:validation:Optional
@@ -868,11 +860,11 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// Ons local port number for Globally distributed autonomous database. The onsPortLocal has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database.
 	// +kubebuilder:validation:Optional
-	OnsPortLocal *float64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
+	OnsPortLocal *int64 `json:"onsPortLocal,omitempty" tf:"ons_port_local,omitempty"`
 
 	// Ons remote port number for Globally distributed autonomous database. The onsPortRemote has to be unique for a customer tenancy across all distributed autonomous databases. Same port number should not be re-used for any other distributed autonomous database.
 	// +kubebuilder:validation:Optional
-	OnsPortRemote *float64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
+	OnsPortRemote *int64 `json:"onsPortRemote,omitempty" tf:"ons_port_remote,omitempty"`
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
@@ -888,11 +880,11 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Recreate Failed Resource. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	RecreateFailedResourceTrigger *float64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
+	RecreateFailedResourceTrigger *int64 `json:"recreateFailedResourceTrigger,omitempty" tf:"recreate_failed_resource_trigger,omitempty"`
 
 	// The Replication factor for RAFT replication based Globally distributed autonomous database. Currently supported values are 3, 5 and 7.
 	// +kubebuilder:validation:Optional
-	ReplicationFactor *float64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
+	ReplicationFactor *int64 `json:"replicationFactor,omitempty" tf:"replication_factor,omitempty"`
 
 	// The Replication method for Globally distributed autonomous database. Use RAFT for Raft based replication. With RAFT replication, shards cannot have peers details set on them. In case shards need to have peers, please do not set RAFT replicationMethod. For all non RAFT replication cases (with or without peers), please set replicationMethod as DG or do not set any value for replicationMethod.
 	// +kubebuilder:validation:Optional
@@ -900,7 +892,7 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// The replication unit count for RAFT based distributed autonomous database. For RAFT replication based Globally distributed autonomous database, the value should be at least twice the number of shards.
 	// +kubebuilder:validation:Optional
-	ReplicationUnit *float64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
+	ReplicationUnit *int64 `json:"replicationUnit,omitempty" tf:"replication_unit,omitempty"`
 
 	// Collection of shards for the Globally distributed autonomous database.
 	// +kubebuilder:validation:Optional
@@ -912,7 +904,7 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// Increment this value to trigger StartDistributedAutonomousDatabase action.
 	// +kubebuilder:validation:Optional
-	StartDatabaseTrigger *float64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
+	StartDatabaseTrigger *int64 `json:"startDatabaseTrigger,omitempty" tf:"start_database_trigger,omitempty"`
 
 	// (Updatable) The target state for the Distributed Autonomous Database. Could be set to ACTIVE or INACTIVE.
 	// +kubebuilder:validation:Optional
@@ -920,25 +912,25 @@ type DistributedAutonomousDatabaseParameters struct {
 
 	// Increment this value to trigger StopDistributedAutonomousDatabase action.
 	// +kubebuilder:validation:Optional
-	StopDatabaseTrigger *float64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
+	StopDatabaseTrigger *int64 `json:"stopDatabaseTrigger,omitempty" tf:"stop_database_trigger,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	UploadCASignedCertificateSecretRef *v1.SecretKeySelector `json:"uploadCaSignedCertificateSecretRef,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Upload Signed Certificate And Generate Wallet. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	UploadSignedCertificateAndGenerateWalletTrigger *float64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
+	UploadSignedCertificateAndGenerateWalletTrigger *int64 `json:"uploadSignedCertificateAndGenerateWalletTrigger,omitempty" tf:"upload_signed_certificate_and_generate_wallet_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Ca Bundle. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ValidateCABundleTrigger *float64 `json:"validateCaBundleTrigger,omitempty" tf:"validate_ca_bundle_trigger,omitempty"`
+	ValidateCABundleTrigger *int64 `json:"validateCaBundleTrigger,omitempty" tf:"validate_ca_bundle_trigger,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	ValidateNetworkDetails []ValidateNetworkDetailsParameters `json:"validateNetworkDetails,omitempty" tf:"validate_network_details,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Validate Network. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ValidateNetworkTrigger *float64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
+	ValidateNetworkTrigger *int64 `json:"validateNetworkTrigger,omitempty" tf:"validate_network_trigger,omitempty"`
 }
 
 type GsmDetailsInitParameters struct {
@@ -1002,7 +994,7 @@ type GsmImageDetailsObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The version number associated with the image identified by id.
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 type GsmImageDetailsParameters struct {
@@ -1017,7 +1009,7 @@ type LatestGsmImageObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The version number associated with the image identified by id.
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 type LatestGsmImageParameters struct {
@@ -1091,7 +1083,7 @@ type PeerDetailsInitParameters struct {
 	CloudAutonomousVMClusterIDSelector *v1.Selector `json:"cloudAutonomousVmClusterIdSelector,omitempty" tf:"-"`
 
 	// The lag time preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// This field is deprecated. Support for this field will be removed after one year of deprecation cycle.
 	IsAutomaticFailoverEnabled *bool `json:"isAutomaticFailoverEnabled,omitempty" tf:"is_automatic_failover_enabled,omitempty"`
@@ -1100,7 +1092,7 @@ type PeerDetailsInitParameters struct {
 	ProtectionMode *string `json:"protectionMode,omitempty" tf:"protection_mode,omitempty"`
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before schedlued maintenance of the primary database.
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 }
 
 type PeerDetailsMetadataInitParameters struct {
@@ -1125,7 +1117,7 @@ type PeerDetailsObservation struct {
 	ContainerDatabaseID *string `json:"containerDatabaseId,omitempty" tf:"container_database_id,omitempty"`
 
 	// The lag time preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// This field is deprecated. Support for this field will be removed after one year of deprecation cycle.
 	IsAutomaticFailoverEnabled *bool `json:"isAutomaticFailoverEnabled,omitempty" tf:"is_automatic_failover_enabled,omitempty"`
@@ -1140,7 +1132,7 @@ type PeerDetailsObservation struct {
 	ShardGroup *string `json:"shardGroup,omitempty" tf:"shard_group,omitempty"`
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before schedlued maintenance of the primary database.
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 
 	// Status of catalog with dedicated infrastructure for the Globally distributed autonomous database.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -1173,7 +1165,7 @@ type PeerDetailsParameters struct {
 
 	// The lag time preference based on data loss tolerance in seconds.
 	// +kubebuilder:validation:Optional
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// This field is deprecated. Support for this field will be removed after one year of deprecation cycle.
 	// +kubebuilder:validation:Optional
@@ -1185,7 +1177,7 @@ type PeerDetailsParameters struct {
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before schedlued maintenance of the primary database.
 	// +kubebuilder:validation:Optional
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 }
 
 type ShardDetailsInitParameters struct {
@@ -1487,7 +1479,7 @@ type ShardDetailsPeerDetailsInitParameters struct {
 	CloudAutonomousVMClusterIDSelector *v1.Selector `json:"cloudAutonomousVmClusterIdSelector,omitempty" tf:"-"`
 
 	// The lag time preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// This field is deprecated. Support for this field will be removed after one year of deprecation cycle.
 	IsAutomaticFailoverEnabled *bool `json:"isAutomaticFailoverEnabled,omitempty" tf:"is_automatic_failover_enabled,omitempty"`
@@ -1496,7 +1488,7 @@ type ShardDetailsPeerDetailsInitParameters struct {
 	ProtectionMode *string `json:"protectionMode,omitempty" tf:"protection_mode,omitempty"`
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before schedlued maintenance of the primary database.
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 }
 
 type ShardDetailsPeerDetailsMetadataInitParameters struct {
@@ -1521,7 +1513,7 @@ type ShardDetailsPeerDetailsObservation struct {
 	ContainerDatabaseID *string `json:"containerDatabaseId,omitempty" tf:"container_database_id,omitempty"`
 
 	// The lag time preference based on data loss tolerance in seconds.
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// This field is deprecated. Support for this field will be removed after one year of deprecation cycle.
 	IsAutomaticFailoverEnabled *bool `json:"isAutomaticFailoverEnabled,omitempty" tf:"is_automatic_failover_enabled,omitempty"`
@@ -1536,7 +1528,7 @@ type ShardDetailsPeerDetailsObservation struct {
 	ShardGroup *string `json:"shardGroup,omitempty" tf:"shard_group,omitempty"`
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before schedlued maintenance of the primary database.
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 
 	// Status of catalog with dedicated infrastructure for the Globally distributed autonomous database.
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -1569,7 +1561,7 @@ type ShardDetailsPeerDetailsParameters struct {
 
 	// The lag time preference based on data loss tolerance in seconds.
 	// +kubebuilder:validation:Optional
-	FastStartFailOverLagLimitInSeconds *float64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
+	FastStartFailOverLagLimitInSeconds *int64 `json:"fastStartFailOverLagLimitInSeconds,omitempty" tf:"fast_start_fail_over_lag_limit_in_seconds,omitempty"`
 
 	// This field is deprecated. Support for this field will be removed after one year of deprecation cycle.
 	// +kubebuilder:validation:Optional
@@ -1581,7 +1573,7 @@ type ShardDetailsPeerDetailsParameters struct {
 
 	// The scheduling detail for the quarterly maintenance window of the standby Autonomous Container Database. This value represents the number of days before schedlued maintenance of the primary database.
 	// +kubebuilder:validation:Optional
-	StandbyMaintenanceBufferInDays *float64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
+	StandbyMaintenanceBufferInDays *int64 `json:"standbyMaintenanceBufferInDays,omitempty" tf:"standby_maintenance_buffer_in_days,omitempty"`
 }
 
 type ValidateNetworkDetailsInitParameters struct {

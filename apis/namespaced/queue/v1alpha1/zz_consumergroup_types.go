@@ -20,18 +20,16 @@ type ConsumerGroupInitParameters struct {
 	ConsumerGroupFilter *string `json:"consumerGroupFilter,omitempty" tf:"consumer_group_filter,omitempty"`
 
 	// (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue.  A value of 0 indicates that the DLQ is not used. If the value isn't specified, it will be using the value defined at the queue level.
-	DeadLetterQueueDeliveryCount *float64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
+	DeadLetterQueueDeliveryCount *int64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name of the consumer group.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Used to enable or disable the consumer group.  An enabled consumer group will have a lifecycle state of ACTIVE, while a disabled will have its state as INACTIVE.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -56,18 +54,16 @@ type ConsumerGroupObservation struct {
 	ConsumerGroupFilter *string `json:"consumerGroupFilter,omitempty" tf:"consumer_group_filter,omitempty"`
 
 	// (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue.  A value of 0 indicates that the DLQ is not used. If the value isn't specified, it will be using the value defined at the queue level.
-	DeadLetterQueueDeliveryCount *float64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
+	DeadLetterQueueDeliveryCount *int64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name of the consumer group.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A unique identifier for the consumer group that is immutable on creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -85,8 +81,7 @@ type ConsumerGroupObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time that the consumer group was created, expressed in RFC 3339 timestamp format.  Example: 2018-04-20T00:00:07.405Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -103,12 +98,11 @@ type ConsumerGroupParameters struct {
 
 	// (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue.  A value of 0 indicates that the DLQ is not used. If the value isn't specified, it will be using the value defined at the queue level.
 	// +kubebuilder:validation:Optional
-	DeadLetterQueueDeliveryCount *float64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
+	DeadLetterQueueDeliveryCount *int64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name of the consumer group.
 	// +kubebuilder:validation:Optional
@@ -116,8 +110,7 @@ type ConsumerGroupParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Used to enable or disable the consumer group.  An enabled consumer group will have a lifecycle state of ACTIVE, while a disabled will have its state as INACTIVE.
 	// +kubebuilder:validation:Optional

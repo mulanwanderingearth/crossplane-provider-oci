@@ -31,7 +31,7 @@ type AccessRulesInitParameters struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The list of challenges to bypass when action is set to BYPASS. If unspecified or empty, all challenges are bypassed.
 	BypassChallenges []*string `json:"bypassChallenges,omitempty" tf:"bypass_challenges,omitempty"`
@@ -82,7 +82,7 @@ type AccessRulesObservation struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The list of challenges to bypass when action is set to BYPASS. If unspecified or empty, all challenges are bypassed.
 	BypassChallenges []*string `json:"bypassChallenges,omitempty" tf:"bypass_challenges,omitempty"`
@@ -139,7 +139,7 @@ type AccessRulesParameters struct {
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
 	// +kubebuilder:validation:Optional
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The list of challenges to bypass when action is set to BYPASS. If unspecified or empty, all challenges are bypassed.
 	// +kubebuilder:validation:Optional
@@ -185,42 +185,42 @@ type AccessRulesParameters struct {
 type AddressRateLimitingInitParameters struct {
 
 	// (Updatable) The number of allowed requests per second from one IP address. If unspecified, defaults to 1.
-	AllowedRatePerAddress *float64 `json:"allowedRatePerAddress,omitempty" tf:"allowed_rate_per_address,omitempty"`
+	AllowedRatePerAddress *int64 `json:"allowedRatePerAddress,omitempty" tf:"allowed_rate_per_address,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) The maximum number of requests allowed to be queued before subsequent requests are dropped. If unspecified, defaults to 10.
-	MaxDelayedCountPerAddress *float64 `json:"maxDelayedCountPerAddress,omitempty" tf:"max_delayed_count_per_address,omitempty"`
+	MaxDelayedCountPerAddress *int64 `json:"maxDelayedCountPerAddress,omitempty" tf:"max_delayed_count_per_address,omitempty"`
 }
 
 type AddressRateLimitingObservation struct {
 
 	// (Updatable) The number of allowed requests per second from one IP address. If unspecified, defaults to 1.
-	AllowedRatePerAddress *float64 `json:"allowedRatePerAddress,omitempty" tf:"allowed_rate_per_address,omitempty"`
+	AllowedRatePerAddress *int64 `json:"allowedRatePerAddress,omitempty" tf:"allowed_rate_per_address,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) The maximum number of requests allowed to be queued before subsequent requests are dropped. If unspecified, defaults to 10.
-	MaxDelayedCountPerAddress *float64 `json:"maxDelayedCountPerAddress,omitempty" tf:"max_delayed_count_per_address,omitempty"`
+	MaxDelayedCountPerAddress *int64 `json:"maxDelayedCountPerAddress,omitempty" tf:"max_delayed_count_per_address,omitempty"`
 }
 
 type AddressRateLimitingParameters struct {
 
 	// (Updatable) The number of allowed requests per second from one IP address. If unspecified, defaults to 1.
 	// +kubebuilder:validation:Optional
-	AllowedRatePerAddress *float64 `json:"allowedRatePerAddress,omitempty" tf:"allowed_rate_per_address,omitempty"`
+	AllowedRatePerAddress *int64 `json:"allowedRatePerAddress,omitempty" tf:"allowed_rate_per_address,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
 	// +kubebuilder:validation:Optional
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	// +kubebuilder:validation:Optional
@@ -228,7 +228,7 @@ type AddressRateLimitingParameters struct {
 
 	// (Updatable) The maximum number of requests allowed to be queued before subsequent requests are dropped. If unspecified, defaults to 10.
 	// +kubebuilder:validation:Optional
-	MaxDelayedCountPerAddress *float64 `json:"maxDelayedCountPerAddress,omitempty" tf:"max_delayed_count_per_address,omitempty"`
+	MaxDelayedCountPerAddress *int64 `json:"maxDelayedCountPerAddress,omitempty" tf:"max_delayed_count_per_address,omitempty"`
 }
 
 type CachingRulesCriteriaInitParameters struct {
@@ -351,7 +351,7 @@ type CaptchasInitParameters struct {
 	HeaderText *string `json:"headerText,omitempty" tf:"header_text,omitempty"`
 
 	// (Updatable) The amount of time before the CAPTCHA expires, in seconds. If unspecified, defaults to 300.
-	SessionExpirationInSeconds *float64 `json:"sessionExpirationInSeconds,omitempty" tf:"session_expiration_in_seconds,omitempty"`
+	SessionExpirationInSeconds *int64 `json:"sessionExpirationInSeconds,omitempty" tf:"session_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The text to show on the label of the CAPTCHA challenge submit button. If unspecified, defaults to Yes, I am human.
 	SubmitLabel *string `json:"submitLabel,omitempty" tf:"submit_label,omitempty"`
@@ -375,7 +375,7 @@ type CaptchasObservation struct {
 	HeaderText *string `json:"headerText,omitempty" tf:"header_text,omitempty"`
 
 	// (Updatable) The amount of time before the CAPTCHA expires, in seconds. If unspecified, defaults to 300.
-	SessionExpirationInSeconds *float64 `json:"sessionExpirationInSeconds,omitempty" tf:"session_expiration_in_seconds,omitempty"`
+	SessionExpirationInSeconds *int64 `json:"sessionExpirationInSeconds,omitempty" tf:"session_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The text to show on the label of the CAPTCHA challenge submit button. If unspecified, defaults to Yes, I am human.
 	SubmitLabel *string `json:"submitLabel,omitempty" tf:"submit_label,omitempty"`
@@ -403,7 +403,7 @@ type CaptchasParameters struct {
 
 	// (Updatable) The amount of time before the CAPTCHA expires, in seconds. If unspecified, defaults to 300.
 	// +kubebuilder:validation:Optional
-	SessionExpirationInSeconds *float64 `json:"sessionExpirationInSeconds" tf:"session_expiration_in_seconds,omitempty"`
+	SessionExpirationInSeconds *int64 `json:"sessionExpirationInSeconds" tf:"session_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The text to show on the label of the CAPTCHA challenge submit button. If unspecified, defaults to Yes, I am human.
 	// +kubebuilder:validation:Optional
@@ -433,7 +433,7 @@ type ChallengeSettingsInitParameters struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The text to show in the footer when showing a CAPTCHA challenge when action is set to SHOW_CAPTCHA and the request is challenged.
 	CaptchaFooter *string `json:"captchaFooter,omitempty" tf:"captcha_footer,omitempty"`
@@ -463,7 +463,7 @@ type ChallengeSettingsObservation struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The text to show in the footer when showing a CAPTCHA challenge when action is set to SHOW_CAPTCHA and the request is challenged.
 	CaptchaFooter *string `json:"captchaFooter,omitempty" tf:"captcha_footer,omitempty"`
@@ -498,7 +498,7 @@ type ChallengeSettingsParameters struct {
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
 	// +kubebuilder:validation:Optional
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The text to show in the footer when showing a CAPTCHA challenge when action is set to SHOW_CAPTCHA and the request is challenged.
 	// +kubebuilder:validation:Optional
@@ -659,25 +659,25 @@ type DeviceFingerprintChallengeInitParameters struct {
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) The number of seconds between challenges for the same IP address. If unspecified, defaults to 60.
-	ActionExpirationInSeconds *float64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
+	ActionExpirationInSeconds *int64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The challenge settings if action is set to BLOCK.
 	ChallengeSettings []ChallengeSettingsInitParameters `json:"challengeSettings,omitempty" tf:"challenge_settings,omitempty"`
 
 	// (Updatable) The number of failed requests allowed before taking action. If unspecified, defaults to 10.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Updatable) The number of seconds before the failure threshold resets. If unspecified, defaults to 60.
-	FailureThresholdExpirationInSeconds *float64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
+	FailureThresholdExpirationInSeconds *int64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) The maximum number of IP addresses permitted with the same device fingerprint. If unspecified, defaults to 20.
-	MaxAddressCount *float64 `json:"maxAddressCount,omitempty" tf:"max_address_count,omitempty"`
+	MaxAddressCount *int64 `json:"maxAddressCount,omitempty" tf:"max_address_count,omitempty"`
 
 	// (Updatable) The number of seconds before the maximum addresses count resets. If unspecified, defaults to 60.
-	MaxAddressCountExpirationInSeconds *float64 `json:"maxAddressCountExpirationInSeconds,omitempty" tf:"max_address_count_expiration_in_seconds,omitempty"`
+	MaxAddressCountExpirationInSeconds *int64 `json:"maxAddressCountExpirationInSeconds,omitempty" tf:"max_address_count_expiration_in_seconds,omitempty"`
 }
 
 type DeviceFingerprintChallengeObservation struct {
@@ -686,25 +686,25 @@ type DeviceFingerprintChallengeObservation struct {
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) The number of seconds between challenges for the same IP address. If unspecified, defaults to 60.
-	ActionExpirationInSeconds *float64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
+	ActionExpirationInSeconds *int64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The challenge settings if action is set to BLOCK.
 	ChallengeSettings []ChallengeSettingsObservation `json:"challengeSettings,omitempty" tf:"challenge_settings,omitempty"`
 
 	// (Updatable) The number of failed requests allowed before taking action. If unspecified, defaults to 10.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Updatable) The number of seconds before the failure threshold resets. If unspecified, defaults to 60.
-	FailureThresholdExpirationInSeconds *float64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
+	FailureThresholdExpirationInSeconds *int64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) The maximum number of IP addresses permitted with the same device fingerprint. If unspecified, defaults to 20.
-	MaxAddressCount *float64 `json:"maxAddressCount,omitempty" tf:"max_address_count,omitempty"`
+	MaxAddressCount *int64 `json:"maxAddressCount,omitempty" tf:"max_address_count,omitempty"`
 
 	// (Updatable) The number of seconds before the maximum addresses count resets. If unspecified, defaults to 60.
-	MaxAddressCountExpirationInSeconds *float64 `json:"maxAddressCountExpirationInSeconds,omitempty" tf:"max_address_count_expiration_in_seconds,omitempty"`
+	MaxAddressCountExpirationInSeconds *int64 `json:"maxAddressCountExpirationInSeconds,omitempty" tf:"max_address_count_expiration_in_seconds,omitempty"`
 }
 
 type DeviceFingerprintChallengeParameters struct {
@@ -715,7 +715,7 @@ type DeviceFingerprintChallengeParameters struct {
 
 	// (Updatable) The number of seconds between challenges for the same IP address. If unspecified, defaults to 60.
 	// +kubebuilder:validation:Optional
-	ActionExpirationInSeconds *float64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
+	ActionExpirationInSeconds *int64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The challenge settings if action is set to BLOCK.
 	// +kubebuilder:validation:Optional
@@ -723,11 +723,11 @@ type DeviceFingerprintChallengeParameters struct {
 
 	// (Updatable) The number of failed requests allowed before taking action. If unspecified, defaults to 10.
 	// +kubebuilder:validation:Optional
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Updatable) The number of seconds before the failure threshold resets. If unspecified, defaults to 60.
 	// +kubebuilder:validation:Optional
-	FailureThresholdExpirationInSeconds *float64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
+	FailureThresholdExpirationInSeconds *int64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	// +kubebuilder:validation:Optional
@@ -735,11 +735,11 @@ type DeviceFingerprintChallengeParameters struct {
 
 	// (Updatable) The maximum number of IP addresses permitted with the same device fingerprint. If unspecified, defaults to 20.
 	// +kubebuilder:validation:Optional
-	MaxAddressCount *float64 `json:"maxAddressCount,omitempty" tf:"max_address_count,omitempty"`
+	MaxAddressCount *int64 `json:"maxAddressCount,omitempty" tf:"max_address_count,omitempty"`
 
 	// (Updatable) The number of seconds before the maximum addresses count resets. If unspecified, defaults to 60.
 	// +kubebuilder:validation:Optional
-	MaxAddressCountExpirationInSeconds *float64 `json:"maxAddressCountExpirationInSeconds,omitempty" tf:"max_address_count_expiration_in_seconds,omitempty"`
+	MaxAddressCountExpirationInSeconds *int64 `json:"maxAddressCountExpirationInSeconds,omitempty" tf:"max_address_count_expiration_in_seconds,omitempty"`
 }
 
 type HealthChecksInitParameters struct {
@@ -751,14 +751,13 @@ type HealthChecksInitParameters struct {
 	ExpectedResponseText *string `json:"expectedResponseText,omitempty" tf:"expected_response_text,omitempty"`
 
 	// (Updatable) HTTP header fields to include in health check requests, expressed as "name": "value" properties. Because HTTP header field names are case-insensitive, any use of names that are case-insensitive equal to other names will be rejected. If Host is not specified, requests will include a Host header field with value matching the policy's protected domain. If User-Agent is not specified, requests will include a User-Agent header field with value "waf health checks".
-	// +mapType=granular
-	Headers map[string]*string `json:"headers,omitempty" tf:"headers,omitempty"`
+	Headers map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
 
 	// (Updatable) Number of successful health checks after which the server is marked up.
-	HealthyThreshold *float64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
+	HealthyThreshold *int64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
 
 	// (Updatable) Time between health checks of an individual origin server, in seconds.
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -773,10 +772,10 @@ type HealthChecksInitParameters struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// (Updatable) Response timeout represents wait time until request is considered failed, in seconds.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) Number of failed health checks after which the server is marked down.
-	UnhealthyThreshold *float64 `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
+	UnhealthyThreshold *int64 `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
 }
 
 type HealthChecksObservation struct {
@@ -788,14 +787,13 @@ type HealthChecksObservation struct {
 	ExpectedResponseText *string `json:"expectedResponseText,omitempty" tf:"expected_response_text,omitempty"`
 
 	// (Updatable) HTTP header fields to include in health check requests, expressed as "name": "value" properties. Because HTTP header field names are case-insensitive, any use of names that are case-insensitive equal to other names will be rejected. If Host is not specified, requests will include a Host header field with value matching the policy's protected domain. If User-Agent is not specified, requests will include a User-Agent header field with value "waf health checks".
-	// +mapType=granular
-	Headers map[string]*string `json:"headers,omitempty" tf:"headers,omitempty"`
+	Headers map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
 
 	// (Updatable) Number of successful health checks after which the server is marked up.
-	HealthyThreshold *float64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
+	HealthyThreshold *int64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
 
 	// (Updatable) Time between health checks of an individual origin server, in seconds.
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -810,10 +808,10 @@ type HealthChecksObservation struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// (Updatable) Response timeout represents wait time until request is considered failed, in seconds.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) Number of failed health checks after which the server is marked down.
-	UnhealthyThreshold *float64 `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
+	UnhealthyThreshold *int64 `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
 }
 
 type HealthChecksParameters struct {
@@ -828,16 +826,15 @@ type HealthChecksParameters struct {
 
 	// (Updatable) HTTP header fields to include in health check requests, expressed as "name": "value" properties. Because HTTP header field names are case-insensitive, any use of names that are case-insensitive equal to other names will be rejected. If Host is not specified, requests will include a Host header field with value matching the policy's protected domain. If User-Agent is not specified, requests will include a User-Agent header field with value "waf health checks".
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Headers map[string]*string `json:"headers,omitempty" tf:"headers,omitempty"`
+	Headers map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
 
 	// (Updatable) Number of successful health checks after which the server is marked up.
 	// +kubebuilder:validation:Optional
-	HealthyThreshold *float64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
+	HealthyThreshold *int64 `json:"healthyThreshold,omitempty" tf:"healthy_threshold,omitempty"`
 
 	// (Updatable) Time between health checks of an individual origin server, in seconds.
 	// +kubebuilder:validation:Optional
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	// +kubebuilder:validation:Optional
@@ -857,11 +854,11 @@ type HealthChecksParameters struct {
 
 	// (Updatable) Response timeout represents wait time until request is considered failed, in seconds.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) Number of failed health checks after which the server is marked down.
 	// +kubebuilder:validation:Optional
-	UnhealthyThreshold *float64 `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
+	UnhealthyThreshold *int64 `json:"unhealthyThreshold,omitempty" tf:"unhealthy_threshold,omitempty"`
 }
 
 type HumanInteractionChallengeChallengeSettingsInitParameters struct {
@@ -879,7 +876,7 @@ type HumanInteractionChallengeChallengeSettingsInitParameters struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The text to show in the footer when showing a CAPTCHA challenge when action is set to SHOW_CAPTCHA and the request is challenged.
 	CaptchaFooter *string `json:"captchaFooter,omitempty" tf:"captcha_footer,omitempty"`
@@ -909,7 +906,7 @@ type HumanInteractionChallengeChallengeSettingsObservation struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The text to show in the footer when showing a CAPTCHA challenge when action is set to SHOW_CAPTCHA and the request is challenged.
 	CaptchaFooter *string `json:"captchaFooter,omitempty" tf:"captcha_footer,omitempty"`
@@ -944,7 +941,7 @@ type HumanInteractionChallengeChallengeSettingsParameters struct {
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
 	// +kubebuilder:validation:Optional
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The text to show in the footer when showing a CAPTCHA challenge when action is set to SHOW_CAPTCHA and the request is challenged.
 	// +kubebuilder:validation:Optional
@@ -969,19 +966,19 @@ type HumanInteractionChallengeInitParameters struct {
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) The number of seconds between challenges for the same IP address. If unspecified, defaults to 60.
-	ActionExpirationInSeconds *float64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
+	ActionExpirationInSeconds *int64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The challenge settings if action is set to BLOCK.
 	ChallengeSettings []HumanInteractionChallengeChallengeSettingsInitParameters `json:"challengeSettings,omitempty" tf:"challenge_settings,omitempty"`
 
 	// (Updatable) The number of failed requests allowed before taking action. If unspecified, defaults to 10.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Updatable) The number of seconds before the failure threshold resets. If unspecified, defaults to 60.
-	FailureThresholdExpirationInSeconds *float64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
+	FailureThresholdExpirationInSeconds *int64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The number of interactions required to pass the challenge. If unspecified, defaults to 3.
-	InteractionThreshold *float64 `json:"interactionThreshold,omitempty" tf:"interaction_threshold,omitempty"`
+	InteractionThreshold *int64 `json:"interactionThreshold,omitempty" tf:"interaction_threshold,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -990,7 +987,7 @@ type HumanInteractionChallengeInitParameters struct {
 	IsNATEnabled *bool `json:"isNatEnabled,omitempty" tf:"is_nat_enabled,omitempty"`
 
 	// (Updatable) The number of seconds to record the interactions from the user. If unspecified, defaults to 15.
-	RecordingPeriodInSeconds *float64 `json:"recordingPeriodInSeconds,omitempty" tf:"recording_period_in_seconds,omitempty"`
+	RecordingPeriodInSeconds *int64 `json:"recordingPeriodInSeconds,omitempty" tf:"recording_period_in_seconds,omitempty"`
 
 	// (Updatable) Adds an additional HTTP header to requests that fail the challenge before being passed to the origin. Only applicable when the action is set to DETECT.
 	SetHTTPHeader []SetHTTPHeaderInitParameters `json:"setHttpHeader,omitempty" tf:"set_http_header,omitempty"`
@@ -1002,19 +999,19 @@ type HumanInteractionChallengeObservation struct {
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) The number of seconds between challenges for the same IP address. If unspecified, defaults to 60.
-	ActionExpirationInSeconds *float64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
+	ActionExpirationInSeconds *int64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The challenge settings if action is set to BLOCK.
 	ChallengeSettings []HumanInteractionChallengeChallengeSettingsObservation `json:"challengeSettings,omitempty" tf:"challenge_settings,omitempty"`
 
 	// (Updatable) The number of failed requests allowed before taking action. If unspecified, defaults to 10.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Updatable) The number of seconds before the failure threshold resets. If unspecified, defaults to 60.
-	FailureThresholdExpirationInSeconds *float64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
+	FailureThresholdExpirationInSeconds *int64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The number of interactions required to pass the challenge. If unspecified, defaults to 3.
-	InteractionThreshold *float64 `json:"interactionThreshold,omitempty" tf:"interaction_threshold,omitempty"`
+	InteractionThreshold *int64 `json:"interactionThreshold,omitempty" tf:"interaction_threshold,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -1023,7 +1020,7 @@ type HumanInteractionChallengeObservation struct {
 	IsNATEnabled *bool `json:"isNatEnabled,omitempty" tf:"is_nat_enabled,omitempty"`
 
 	// (Updatable) The number of seconds to record the interactions from the user. If unspecified, defaults to 15.
-	RecordingPeriodInSeconds *float64 `json:"recordingPeriodInSeconds,omitempty" tf:"recording_period_in_seconds,omitempty"`
+	RecordingPeriodInSeconds *int64 `json:"recordingPeriodInSeconds,omitempty" tf:"recording_period_in_seconds,omitempty"`
 
 	// (Updatable) Adds an additional HTTP header to requests that fail the challenge before being passed to the origin. Only applicable when the action is set to DETECT.
 	SetHTTPHeader []SetHTTPHeaderObservation `json:"setHttpHeader,omitempty" tf:"set_http_header,omitempty"`
@@ -1037,7 +1034,7 @@ type HumanInteractionChallengeParameters struct {
 
 	// (Updatable) The number of seconds between challenges for the same IP address. If unspecified, defaults to 60.
 	// +kubebuilder:validation:Optional
-	ActionExpirationInSeconds *float64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
+	ActionExpirationInSeconds *int64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The challenge settings if action is set to BLOCK.
 	// +kubebuilder:validation:Optional
@@ -1045,15 +1042,15 @@ type HumanInteractionChallengeParameters struct {
 
 	// (Updatable) The number of failed requests allowed before taking action. If unspecified, defaults to 10.
 	// +kubebuilder:validation:Optional
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Updatable) The number of seconds before the failure threshold resets. If unspecified, defaults to 60.
 	// +kubebuilder:validation:Optional
-	FailureThresholdExpirationInSeconds *float64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
+	FailureThresholdExpirationInSeconds *int64 `json:"failureThresholdExpirationInSeconds,omitempty" tf:"failure_threshold_expiration_in_seconds,omitempty"`
 
 	// (Updatable) The number of interactions required to pass the challenge. If unspecified, defaults to 3.
 	// +kubebuilder:validation:Optional
-	InteractionThreshold *float64 `json:"interactionThreshold,omitempty" tf:"interaction_threshold,omitempty"`
+	InteractionThreshold *int64 `json:"interactionThreshold,omitempty" tf:"interaction_threshold,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	// +kubebuilder:validation:Optional
@@ -1065,7 +1062,7 @@ type HumanInteractionChallengeParameters struct {
 
 	// (Updatable) The number of seconds to record the interactions from the user. If unspecified, defaults to 15.
 	// +kubebuilder:validation:Optional
-	RecordingPeriodInSeconds *float64 `json:"recordingPeriodInSeconds,omitempty" tf:"recording_period_in_seconds,omitempty"`
+	RecordingPeriodInSeconds *int64 `json:"recordingPeriodInSeconds,omitempty" tf:"recording_period_in_seconds,omitempty"`
 
 	// (Updatable) Adds an additional HTTP header to requests that fail the challenge before being passed to the origin. Only applicable when the action is set to DETECT.
 	// +kubebuilder:validation:Optional
@@ -1087,7 +1084,7 @@ type JsChallengeChallengeSettingsInitParameters struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The text to show in the footer when showing a CAPTCHA challenge when action is set to SHOW_CAPTCHA and the request is challenged.
 	CaptchaFooter *string `json:"captchaFooter,omitempty" tf:"captcha_footer,omitempty"`
@@ -1117,7 +1114,7 @@ type JsChallengeChallengeSettingsObservation struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The text to show in the footer when showing a CAPTCHA challenge when action is set to SHOW_CAPTCHA and the request is challenged.
 	CaptchaFooter *string `json:"captchaFooter,omitempty" tf:"captcha_footer,omitempty"`
@@ -1152,7 +1149,7 @@ type JsChallengeChallengeSettingsParameters struct {
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
 	// +kubebuilder:validation:Optional
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) The text to show in the footer when showing a CAPTCHA challenge when action is set to SHOW_CAPTCHA and the request is challenged.
 	// +kubebuilder:validation:Optional
@@ -1216,7 +1213,7 @@ type JsChallengeInitParameters struct {
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) The number of seconds between challenges for the same IP address. If unspecified, defaults to 60.
-	ActionExpirationInSeconds *float64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
+	ActionExpirationInSeconds *int64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
 
 	// (Updatable) When enabled, redirect responses from the origin will also be challenged. This will change HTTP 301/302 responses from origin to HTTP 200 with an HTML body containing JavaScript page redirection.
 	AreRedirectsChallenged *bool `json:"areRedirectsChallenged,omitempty" tf:"are_redirects_challenged,omitempty"`
@@ -1228,7 +1225,7 @@ type JsChallengeInitParameters struct {
 	Criteria []JsChallengeCriteriaInitParameters `json:"criteria,omitempty" tf:"criteria,omitempty"`
 
 	// (Updatable) The number of failed requests allowed before taking action. If unspecified, defaults to 10.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -1246,7 +1243,7 @@ type JsChallengeObservation struct {
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// (Updatable) The number of seconds between challenges for the same IP address. If unspecified, defaults to 60.
-	ActionExpirationInSeconds *float64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
+	ActionExpirationInSeconds *int64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
 
 	// (Updatable) When enabled, redirect responses from the origin will also be challenged. This will change HTTP 301/302 responses from origin to HTTP 200 with an HTML body containing JavaScript page redirection.
 	AreRedirectsChallenged *bool `json:"areRedirectsChallenged,omitempty" tf:"are_redirects_challenged,omitempty"`
@@ -1258,7 +1255,7 @@ type JsChallengeObservation struct {
 	Criteria []JsChallengeCriteriaObservation `json:"criteria,omitempty" tf:"criteria,omitempty"`
 
 	// (Updatable) The number of failed requests allowed before taking action. If unspecified, defaults to 10.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -1278,7 +1275,7 @@ type JsChallengeParameters struct {
 
 	// (Updatable) The number of seconds between challenges for the same IP address. If unspecified, defaults to 60.
 	// +kubebuilder:validation:Optional
-	ActionExpirationInSeconds *float64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
+	ActionExpirationInSeconds *int64 `json:"actionExpirationInSeconds,omitempty" tf:"action_expiration_in_seconds,omitempty"`
 
 	// (Updatable) When enabled, redirect responses from the origin will also be challenged. This will change HTTP 301/302 responses from origin to HTTP 200 with an HTML body containing JavaScript page redirection.
 	// +kubebuilder:validation:Optional
@@ -1294,7 +1291,7 @@ type JsChallengeParameters struct {
 
 	// (Updatable) The number of failed requests allowed before taking action. If unspecified, defaults to 10.
 	// +kubebuilder:validation:Optional
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Updatable) Enables or disables the health checks.
 	// +kubebuilder:validation:Optional
@@ -1344,7 +1341,7 @@ type LoadBalancingMethodInitParameters struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// (Applicable when method=STICKY_COOKIE) (Updatable) The time for which a browser should keep the cookie in seconds. Empty value will cause the cookie to expire at the end of a browser session.
-	ExpirationTimeInSeconds *float64 `json:"expirationTimeInSeconds,omitempty" tf:"expiration_time_in_seconds,omitempty"`
+	ExpirationTimeInSeconds *int64 `json:"expirationTimeInSeconds,omitempty" tf:"expiration_time_in_seconds,omitempty"`
 
 	// (Updatable) An HTTP verb (i.e. HEAD, GET, or POST) to use when performing the health check.
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
@@ -1359,7 +1356,7 @@ type LoadBalancingMethodObservation struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// (Applicable when method=STICKY_COOKIE) (Updatable) The time for which a browser should keep the cookie in seconds. Empty value will cause the cookie to expire at the end of a browser session.
-	ExpirationTimeInSeconds *float64 `json:"expirationTimeInSeconds,omitempty" tf:"expiration_time_in_seconds,omitempty"`
+	ExpirationTimeInSeconds *int64 `json:"expirationTimeInSeconds,omitempty" tf:"expiration_time_in_seconds,omitempty"`
 
 	// (Updatable) An HTTP verb (i.e. HEAD, GET, or POST) to use when performing the health check.
 	Method *string `json:"method,omitempty" tf:"method,omitempty"`
@@ -1376,7 +1373,7 @@ type LoadBalancingMethodParameters struct {
 
 	// (Applicable when method=STICKY_COOKIE) (Updatable) The time for which a browser should keep the cookie in seconds. Empty value will cause the cookie to expire at the end of a browser session.
 	// +kubebuilder:validation:Optional
-	ExpirationTimeInSeconds *float64 `json:"expirationTimeInSeconds,omitempty" tf:"expiration_time_in_seconds,omitempty"`
+	ExpirationTimeInSeconds *int64 `json:"expirationTimeInSeconds,omitempty" tf:"expiration_time_in_seconds,omitempty"`
 
 	// (Updatable) An HTTP verb (i.e. HEAD, GET, or POST) to use when performing the health check.
 	// +kubebuilder:validation:Optional
@@ -1392,7 +1389,7 @@ type OriginGroupInitParameters struct {
 	// (Updatable) The key in the map of origins referencing the origin used for the Web Application Firewall. The origin must already be included in Origins. Required when creating the WafConfig resource, but is not required upon updating the configuration.
 	Origin *string `json:"origin,omitempty" tf:"origin,omitempty"`
 
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type OriginGroupObservation struct {
@@ -1400,7 +1397,7 @@ type OriginGroupObservation struct {
 	// (Updatable) The key in the map of origins referencing the origin used for the Web Application Firewall. The origin must already be included in Origins. Required when creating the WafConfig resource, but is not required upon updating the configuration.
 	Origin *string `json:"origin,omitempty" tf:"origin,omitempty"`
 
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type OriginGroupParameters struct {
@@ -1410,7 +1407,7 @@ type OriginGroupParameters struct {
 	Origin *string `json:"origin" tf:"origin,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type OriginGroupsInitParameters struct {
@@ -1440,10 +1437,10 @@ type OriginsInitParameters struct {
 	CustomHeaders []CustomHeadersInitParameters `json:"customHeaders,omitempty" tf:"custom_headers,omitempty"`
 
 	// (Updatable) The HTTP port on the origin that the web application listens on. If unspecified, defaults to 80. If 0 is specified - the origin is not used for HTTP traffic.
-	HTTPPort *float64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
+	HTTPPort *int64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 
 	// (Updatable) The HTTPS port on the origin that the web application listens on. If unspecified, defaults to 443. If 0 is specified - the origin is not used for HTTPS traffic.
-	HTTPSPort *float64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
+	HTTPSPort *int64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
@@ -1457,10 +1454,10 @@ type OriginsObservation struct {
 	CustomHeaders []CustomHeadersObservation `json:"customHeaders,omitempty" tf:"custom_headers,omitempty"`
 
 	// (Updatable) The HTTP port on the origin that the web application listens on. If unspecified, defaults to 80. If 0 is specified - the origin is not used for HTTP traffic.
-	HTTPPort *float64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
+	HTTPPort *int64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 
 	// (Updatable) The HTTPS port on the origin that the web application listens on. If unspecified, defaults to 443. If 0 is specified - the origin is not used for HTTPS traffic.
-	HTTPSPort *float64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
+	HTTPSPort *int64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
 
@@ -1476,11 +1473,11 @@ type OriginsParameters struct {
 
 	// (Updatable) The HTTP port on the origin that the web application listens on. If unspecified, defaults to 80. If 0 is specified - the origin is not used for HTTP traffic.
 	// +kubebuilder:validation:Optional
-	HTTPPort *float64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
+	HTTPPort *int64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 
 	// (Updatable) The HTTPS port on the origin that the web application listens on. If unspecified, defaults to 443. If 0 is specified - the origin is not used for HTTPS traffic.
 	// +kubebuilder:validation:Optional
-	HTTPSPort *float64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
+	HTTPSPort *int64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Label *string `json:"label" tf:"label,omitempty"`
@@ -1677,28 +1674,28 @@ type ProtectionSettingsInitParameters struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) Inspects the response body of origin responses. Can be used to detect leakage of sensitive data. If unspecified, defaults to false.
 	IsResponseInspected *bool `json:"isResponseInspected,omitempty" tf:"is_response_inspected,omitempty"`
 
 	// (Updatable) The maximum number of arguments allowed to be passed to your application before an action is taken. Arguements are query parameters or body parameters in a PUT or POST request. If unspecified, defaults to 255. This setting only applies if a corresponding protection rule is enabled, such as the "Number of Arguments Limits" rule (key: 960335).  Example: If maxArgumentCount to 2 for the Max Number of Arguments protection rule (key: 960335), the following requests would be blocked: GET /myapp/path?query=one&query=two&query=three POST /myapp/path with Body {"argument1":"one","argument2":"two","argument3":"three"}
-	MaxArgumentCount *float64 `json:"maxArgumentCount,omitempty" tf:"max_argument_count,omitempty"`
+	MaxArgumentCount *int64 `json:"maxArgumentCount,omitempty" tf:"max_argument_count,omitempty"`
 
 	// (Updatable) The maximum length allowed for each argument name, in characters. Arguements are query parameters or body parameters in a PUT or POST request. If unspecified, defaults to 400. This setting only applies if a corresponding protection rule is enabled, such as the "Values Limits" rule (key: 960208).
-	MaxNameLengthPerArgument *float64 `json:"maxNameLengthPerArgument,omitempty" tf:"max_name_length_per_argument,omitempty"`
+	MaxNameLengthPerArgument *int64 `json:"maxNameLengthPerArgument,omitempty" tf:"max_name_length_per_argument,omitempty"`
 
 	// (Updatable) The maximum response size to be fully inspected, in binary kilobytes (KiB). Anything over this limit will be partially inspected. If unspecified, defaults to 1024.
-	MaxResponseSizeInKiB *float64 `json:"maxResponseSizeInKiB,omitempty" tf:"max_response_size_in_ki_b,omitempty"`
+	MaxResponseSizeInKiB *int64 `json:"maxResponseSizeInKiB,omitempty" tf:"max_response_size_in_ki_b,omitempty"`
 
 	// (Updatable) The maximum length allowed for the sum of the argument name and value, in characters. Arguements are query parameters or body parameters in a PUT or POST request. If unspecified, defaults to 64000. This setting only applies if a corresponding protection rule is enabled, such as the "Total Arguments Limits" rule (key: 960341).
-	MaxTotalNameLengthOfArguments *float64 `json:"maxTotalNameLengthOfArguments,omitempty" tf:"max_total_name_length_of_arguments,omitempty"`
+	MaxTotalNameLengthOfArguments *int64 `json:"maxTotalNameLengthOfArguments,omitempty" tf:"max_total_name_length_of_arguments,omitempty"`
 
 	// (Updatable) The list of media types to allow for inspection, if isResponseInspected is enabled. Only responses with MIME types in this list will be inspected. If unspecified, defaults to ["text/html", "text/plain", "text/xml"].
 	MediaTypes []*string `json:"mediaTypes,omitempty" tf:"media_types,omitempty"`
 
 	// (Updatable) The length of time to analyze traffic traffic, in days. After the analysis period, WafRecommendations will be populated. If unspecified, defaults to 10.
-	RecommendationsPeriodInDays *float64 `json:"recommendationsPeriodInDays,omitempty" tf:"recommendations_period_in_days,omitempty"`
+	RecommendationsPeriodInDays *int64 `json:"recommendationsPeriodInDays,omitempty" tf:"recommendations_period_in_days,omitempty"`
 }
 
 type ProtectionSettingsObservation struct {
@@ -1719,28 +1716,28 @@ type ProtectionSettingsObservation struct {
 	BlockErrorPageMessage *string `json:"blockErrorPageMessage,omitempty" tf:"block_error_page_message,omitempty"`
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) Inspects the response body of origin responses. Can be used to detect leakage of sensitive data. If unspecified, defaults to false.
 	IsResponseInspected *bool `json:"isResponseInspected,omitempty" tf:"is_response_inspected,omitempty"`
 
 	// (Updatable) The maximum number of arguments allowed to be passed to your application before an action is taken. Arguements are query parameters or body parameters in a PUT or POST request. If unspecified, defaults to 255. This setting only applies if a corresponding protection rule is enabled, such as the "Number of Arguments Limits" rule (key: 960335).  Example: If maxArgumentCount to 2 for the Max Number of Arguments protection rule (key: 960335), the following requests would be blocked: GET /myapp/path?query=one&query=two&query=three POST /myapp/path with Body {"argument1":"one","argument2":"two","argument3":"three"}
-	MaxArgumentCount *float64 `json:"maxArgumentCount,omitempty" tf:"max_argument_count,omitempty"`
+	MaxArgumentCount *int64 `json:"maxArgumentCount,omitempty" tf:"max_argument_count,omitempty"`
 
 	// (Updatable) The maximum length allowed for each argument name, in characters. Arguements are query parameters or body parameters in a PUT or POST request. If unspecified, defaults to 400. This setting only applies if a corresponding protection rule is enabled, such as the "Values Limits" rule (key: 960208).
-	MaxNameLengthPerArgument *float64 `json:"maxNameLengthPerArgument,omitempty" tf:"max_name_length_per_argument,omitempty"`
+	MaxNameLengthPerArgument *int64 `json:"maxNameLengthPerArgument,omitempty" tf:"max_name_length_per_argument,omitempty"`
 
 	// (Updatable) The maximum response size to be fully inspected, in binary kilobytes (KiB). Anything over this limit will be partially inspected. If unspecified, defaults to 1024.
-	MaxResponseSizeInKiB *float64 `json:"maxResponseSizeInKiB,omitempty" tf:"max_response_size_in_ki_b,omitempty"`
+	MaxResponseSizeInKiB *int64 `json:"maxResponseSizeInKiB,omitempty" tf:"max_response_size_in_ki_b,omitempty"`
 
 	// (Updatable) The maximum length allowed for the sum of the argument name and value, in characters. Arguements are query parameters or body parameters in a PUT or POST request. If unspecified, defaults to 64000. This setting only applies if a corresponding protection rule is enabled, such as the "Total Arguments Limits" rule (key: 960341).
-	MaxTotalNameLengthOfArguments *float64 `json:"maxTotalNameLengthOfArguments,omitempty" tf:"max_total_name_length_of_arguments,omitempty"`
+	MaxTotalNameLengthOfArguments *int64 `json:"maxTotalNameLengthOfArguments,omitempty" tf:"max_total_name_length_of_arguments,omitempty"`
 
 	// (Updatable) The list of media types to allow for inspection, if isResponseInspected is enabled. Only responses with MIME types in this list will be inspected. If unspecified, defaults to ["text/html", "text/plain", "text/xml"].
 	MediaTypes []*string `json:"mediaTypes,omitempty" tf:"media_types,omitempty"`
 
 	// (Updatable) The length of time to analyze traffic traffic, in days. After the analysis period, WafRecommendations will be populated. If unspecified, defaults to 10.
-	RecommendationsPeriodInDays *float64 `json:"recommendationsPeriodInDays,omitempty" tf:"recommendations_period_in_days,omitempty"`
+	RecommendationsPeriodInDays *int64 `json:"recommendationsPeriodInDays,omitempty" tf:"recommendations_period_in_days,omitempty"`
 }
 
 type ProtectionSettingsParameters struct {
@@ -1767,7 +1764,7 @@ type ProtectionSettingsParameters struct {
 
 	// (Updatable) The response status code to return when action is set to BLOCK, blockAction is set to SET_RESPONSE_CODE, and the access criteria are met. If unspecified, defaults to 403. The list of available response codes: 200, 201, 202, 204, 206, 300, 301, 302, 303, 304, 307, 400, 401, 403, 404, 405, 408, 409, 411, 412, 413, 414, 415, 416, 422, 444, 494, 495, 496, 497, 499, 500, 501, 502, 503, 504, 507.
 	// +kubebuilder:validation:Optional
-	BlockResponseCode *float64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
+	BlockResponseCode *int64 `json:"blockResponseCode,omitempty" tf:"block_response_code,omitempty"`
 
 	// (Updatable) Inspects the response body of origin responses. Can be used to detect leakage of sensitive data. If unspecified, defaults to false.
 	// +kubebuilder:validation:Optional
@@ -1775,19 +1772,19 @@ type ProtectionSettingsParameters struct {
 
 	// (Updatable) The maximum number of arguments allowed to be passed to your application before an action is taken. Arguements are query parameters or body parameters in a PUT or POST request. If unspecified, defaults to 255. This setting only applies if a corresponding protection rule is enabled, such as the "Number of Arguments Limits" rule (key: 960335).  Example: If maxArgumentCount to 2 for the Max Number of Arguments protection rule (key: 960335), the following requests would be blocked: GET /myapp/path?query=one&query=two&query=three POST /myapp/path with Body {"argument1":"one","argument2":"two","argument3":"three"}
 	// +kubebuilder:validation:Optional
-	MaxArgumentCount *float64 `json:"maxArgumentCount,omitempty" tf:"max_argument_count,omitempty"`
+	MaxArgumentCount *int64 `json:"maxArgumentCount,omitempty" tf:"max_argument_count,omitempty"`
 
 	// (Updatable) The maximum length allowed for each argument name, in characters. Arguements are query parameters or body parameters in a PUT or POST request. If unspecified, defaults to 400. This setting only applies if a corresponding protection rule is enabled, such as the "Values Limits" rule (key: 960208).
 	// +kubebuilder:validation:Optional
-	MaxNameLengthPerArgument *float64 `json:"maxNameLengthPerArgument,omitempty" tf:"max_name_length_per_argument,omitempty"`
+	MaxNameLengthPerArgument *int64 `json:"maxNameLengthPerArgument,omitempty" tf:"max_name_length_per_argument,omitempty"`
 
 	// (Updatable) The maximum response size to be fully inspected, in binary kilobytes (KiB). Anything over this limit will be partially inspected. If unspecified, defaults to 1024.
 	// +kubebuilder:validation:Optional
-	MaxResponseSizeInKiB *float64 `json:"maxResponseSizeInKiB,omitempty" tf:"max_response_size_in_ki_b,omitempty"`
+	MaxResponseSizeInKiB *int64 `json:"maxResponseSizeInKiB,omitempty" tf:"max_response_size_in_ki_b,omitempty"`
 
 	// (Updatable) The maximum length allowed for the sum of the argument name and value, in characters. Arguements are query parameters or body parameters in a PUT or POST request. If unspecified, defaults to 64000. This setting only applies if a corresponding protection rule is enabled, such as the "Total Arguments Limits" rule (key: 960341).
 	// +kubebuilder:validation:Optional
-	MaxTotalNameLengthOfArguments *float64 `json:"maxTotalNameLengthOfArguments,omitempty" tf:"max_total_name_length_of_arguments,omitempty"`
+	MaxTotalNameLengthOfArguments *int64 `json:"maxTotalNameLengthOfArguments,omitempty" tf:"max_total_name_length_of_arguments,omitempty"`
 
 	// (Updatable) The list of media types to allow for inspection, if isResponseInspected is enabled. Only responses with MIME types in this list will be inspected. If unspecified, defaults to ["text/html", "text/plain", "text/xml"].
 	// +kubebuilder:validation:Optional
@@ -1795,7 +1792,7 @@ type ProtectionSettingsParameters struct {
 
 	// (Updatable) The length of time to analyze traffic traffic, in days. After the analysis period, WafRecommendations will be populated. If unspecified, defaults to 10.
 	// +kubebuilder:validation:Optional
-	RecommendationsPeriodInDays *float64 `json:"recommendationsPeriodInDays,omitempty" tf:"recommendations_period_in_days,omitempty"`
+	RecommendationsPeriodInDays *int64 `json:"recommendationsPeriodInDays,omitempty" tf:"recommendations_period_in_days,omitempty"`
 }
 
 type ResponseHeaderManipulationInitParameters struct {
@@ -1884,8 +1881,7 @@ type WaasPolicyInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name for the WAAS policy. The name can be changed and does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -1894,8 +1890,7 @@ type WaasPolicyInitParameters struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The map of origin groups and their keys used to associate origins to the wafConfig. Origin groups allow you to apply weights to groups of origins for load balancing purposes. Origins with higher weights will receive larger proportions of client requests. To add additional origins to your WAAS policy, update the origins field of a UpdateWaasPolicy request.
 	OriginGroups []OriginGroupsInitParameters `json:"originGroups,omitempty" tf:"origin_groups,omitempty"`
@@ -1922,8 +1917,7 @@ type WaasPolicyObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name for the WAAS policy. The name can be changed and does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -1932,8 +1926,7 @@ type WaasPolicyObservation struct {
 	Domain *string `json:"domain,omitempty" tf:"domain,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the custom protection rule.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -1978,8 +1971,7 @@ type WaasPolicyParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name for the WAAS policy. The name can be changed and does not need to be unique.
 	// +kubebuilder:validation:Optional
@@ -1991,8 +1983,7 @@ type WaasPolicyParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The map of origin groups and their keys used to associate origins to the wafConfig. Origin groups allow you to apply weights to groups of origins for load balancing purposes. Origins with higher weights will receive larger proportions of client requests. To add additional origins to your WAAS policy, update the origins field of a UpdateWaasPolicy request.
 	// +kubebuilder:validation:Optional

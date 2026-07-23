@@ -136,40 +136,40 @@ type ShapeAvailabilitiesParameters struct {
 type ShapeConfigInitParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available. This parameter is used only for dense shapes.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type ShapeConfigObservation struct {
 
 	// The total amount of memory available to the node, in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available. This parameter is used only for dense shapes.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type ShapeConfigParameters struct {
 
 	// The total amount of memory available to the node, in gigabytes.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to be used for storage. A single drive has 6.8 TB available. This parameter is used only for dense shapes.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The total number of OCPUs available to the node.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 // BdsCapacityReportSpec defines the desired state of BdsCapacityReport

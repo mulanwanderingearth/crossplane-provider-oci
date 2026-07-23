@@ -35,8 +35,7 @@ type OperatorControlInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the operator control.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -45,8 +44,7 @@ type OperatorControlInitParameters struct {
 	EmailIDList []*string `json:"emailIdList,omitempty" tf:"email_id_list,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether all the operator actions have been pre-approved. If yes, all access requests associated with a resource governed by this operator control  will be auto-approved.
 	IsFullyPreApproved *bool `json:"isFullyPreApproved,omitempty" tf:"is_fully_pre_approved,omitempty"`
@@ -65,7 +63,7 @@ type OperatorControlInitParameters struct {
 	NotificationTopicIDSelector *v1.NamespacedSelector `json:"notificationTopicIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Number of approvers required to approve an access request.
-	NumberOfApprovers *float64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
+	NumberOfApprovers *int64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
 
 	// (Updatable) Name of the operator control.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/operatoraccesscontrol/v1alpha1.OperatorControl
@@ -104,8 +102,7 @@ type OperatorControlObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the operator control.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -114,8 +111,7 @@ type OperatorControlObservation struct {
 	EmailIDList []*string `json:"emailIdList,omitempty" tf:"email_id_list,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the operator control.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -133,7 +129,7 @@ type OperatorControlObservation struct {
 	NotificationTopicID *string `json:"notificationTopicId,omitempty" tf:"notification_topic_id,omitempty"`
 
 	// (Updatable) Number of approvers required to approve an access request.
-	NumberOfApprovers *float64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
+	NumberOfApprovers *int64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
 
 	// (Updatable) Name of the operator control.
 	OperatorControlName *string `json:"operatorControlName,omitempty" tf:"operator_control_name,omitempty"`
@@ -185,8 +181,7 @@ type OperatorControlParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the operator control.
 	// +kubebuilder:validation:Optional
@@ -198,8 +193,7 @@ type OperatorControlParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether all the operator actions have been pre-approved. If yes, all access requests associated with a resource governed by this operator control  will be auto-approved.
 	// +kubebuilder:validation:Optional
@@ -221,7 +215,7 @@ type OperatorControlParameters struct {
 
 	// (Updatable) Number of approvers required to approve an access request.
 	// +kubebuilder:validation:Optional
-	NumberOfApprovers *float64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
+	NumberOfApprovers *int64 `json:"numberOfApprovers,omitempty" tf:"number_of_approvers,omitempty"`
 
 	// (Updatable) Name of the operator control.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/operatoraccesscontrol/v1alpha1.OperatorControl

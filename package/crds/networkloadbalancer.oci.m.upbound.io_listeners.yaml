@@ -155,7 +155,8 @@ spec:
                   l3ipIdleTimeout:
                     description: '(Updatable) The duration for L3IP idle timeout in
                       seconds. Example: 200'
-                    type: number
+                    format: int64
+                    type: integer
                   name:
                     description: 'A friendly name for the listener. It must be unique
                       and it cannot be changed.  Example: example_listener'
@@ -248,7 +249,8 @@ spec:
                   port:
                     description: '(Updatable) The communication port for the listener.  Example:
                       80'
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: '(Updatable) The protocol on which the listener accepts
                       connection requests. For public network load balancers, ANY
@@ -262,11 +264,13 @@ spec:
                   tcpIdleTimeout:
                     description: '(Updatable) The duration for TCP idle timeout in
                       seconds. Example: 300'
-                    type: number
+                    format: int64
+                    type: integer
                   udpIdleTimeout:
                     description: '(Updatable) The duration for UDP idle timeout in
                       seconds. Example: 120'
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -377,7 +381,8 @@ spec:
                   l3ipIdleTimeout:
                     description: '(Updatable) The duration for L3IP idle timeout in
                       seconds. Example: 200'
-                    type: number
+                    format: int64
+                    type: integer
                   name:
                     description: 'A friendly name for the listener. It must be unique
                       and it cannot be changed.  Example: example_listener'
@@ -470,7 +475,8 @@ spec:
                   port:
                     description: '(Updatable) The communication port for the listener.  Example:
                       80'
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: '(Updatable) The protocol on which the listener accepts
                       connection requests. For public network load balancers, ANY
@@ -484,11 +490,13 @@ spec:
                   tcpIdleTimeout:
                     description: '(Updatable) The duration for TCP idle timeout in
                       seconds. Example: 300'
-                    type: number
+                    format: int64
+                    type: integer
                   udpIdleTimeout:
                     description: '(Updatable) The duration for UDP idle timeout in
                       seconds. Example: 120'
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -584,7 +592,8 @@ spec:
                   l3ipIdleTimeout:
                     description: '(Updatable) The duration for L3IP idle timeout in
                       seconds. Example: 200'
-                    type: number
+                    format: int64
+                    type: integer
                   name:
                     description: 'A friendly name for the listener. It must be unique
                       and it cannot be changed.  Example: example_listener'
@@ -595,7 +604,8 @@ spec:
                   port:
                     description: '(Updatable) The communication port for the listener.  Example:
                       80'
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: '(Updatable) The protocol on which the listener accepts
                       connection requests. For public network load balancers, ANY
@@ -609,11 +619,13 @@ spec:
                   tcpIdleTimeout:
                     description: '(Updatable) The duration for TCP idle timeout in
                       seconds. Example: 300'
-                    type: number
+                    format: int64
+                    type: integer
                   udpIdleTimeout:
                     description: '(Updatable) The duration for UDP idle timeout in
                       seconds. Example: 120'
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

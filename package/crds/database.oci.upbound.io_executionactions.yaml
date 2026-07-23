@@ -81,7 +81,8 @@ spec:
                         estimatedTimeInMins:
                           description: (Updatable) The estimated time of the execution
                             action member in minutes.
-                          type: number
+                          format: int64
+                          type: integer
                         memberId:
                           description: (Updatable) The OCID of the parent resource
                             the execution action belongs to.
@@ -89,7 +90,8 @@ spec:
                         memberOrder:
                           description: (Updatable) The priority order of the execution
                             action member.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: '(Updatable) The current status of the execution
                             action member. Valid states are SCHEDULED, IN_PROGRESS,
@@ -99,7 +101,8 @@ spec:
                         totalTimeTakenInMins:
                           description: (Updatable) The total time taken by corresponding
                             resource activity in minutes.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   actionParams:
@@ -109,7 +112,6 @@ spec:
                       value pair describes the specific action parameter. Example:
                       {"count": "3"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   actionType:
                     description: The action type of the execution action being performed
                     type: string
@@ -199,7 +201,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   executionWindowId:
                     description: (Updatable) The OCID of the execution window resource
                       the execution action belongs to.
@@ -288,7 +289,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -311,7 +311,8 @@ spec:
                         estimatedTimeInMins:
                           description: (Updatable) The estimated time of the execution
                             action member in minutes.
-                          type: number
+                          format: int64
+                          type: integer
                         memberId:
                           description: (Updatable) The OCID of the parent resource
                             the execution action belongs to.
@@ -319,7 +320,8 @@ spec:
                         memberOrder:
                           description: (Updatable) The priority order of the execution
                             action member.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: '(Updatable) The current status of the execution
                             action member. Valid states are SCHEDULED, IN_PROGRESS,
@@ -329,7 +331,8 @@ spec:
                         totalTimeTakenInMins:
                           description: (Updatable) The total time taken by corresponding
                             resource activity in minutes.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   actionParams:
@@ -339,7 +342,6 @@ spec:
                       value pair describes the specific action parameter. Example:
                       {"count": "3"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   actionType:
                     description: The action type of the execution action being performed
                     type: string
@@ -429,7 +431,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   executionWindowId:
                     description: (Updatable) The OCID of the execution window resource
                       the execution action belongs to.
@@ -518,7 +519,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -626,7 +626,8 @@ spec:
                         estimatedTimeInMins:
                           description: (Updatable) The estimated time of the execution
                             action member in minutes.
-                          type: number
+                          format: int64
+                          type: integer
                         memberId:
                           description: (Updatable) The OCID of the parent resource
                             the execution action belongs to.
@@ -634,7 +635,8 @@ spec:
                         memberOrder:
                           description: (Updatable) The priority order of the execution
                             action member.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: '(Updatable) The current status of the execution
                             action member. Valid states are SCHEDULED, IN_PROGRESS,
@@ -644,7 +646,8 @@ spec:
                         totalTimeTakenInMins:
                           description: (Updatable) The total time taken by corresponding
                             resource activity in minutes.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   actionParams:
@@ -654,7 +657,6 @@ spec:
                       value pair describes the specific action parameter. Example:
                       {"count": "3"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   actionType:
                     description: The action type of the execution action being performed
                     type: string
@@ -668,7 +670,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: Description of the execution action.
                     type: string
@@ -679,10 +680,12 @@ spec:
                   estimatedTimeInMins:
                     description: (Updatable) The estimated time of the execution action
                       member in minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   executionActionOrder:
                     description: The priority order of the execution action.
-                    type: number
+                    format: int64
+                    type: integer
                   executionWindowId:
                     description: (Updatable) The OCID of the execution window resource
                       the execution action belongs to.
@@ -695,7 +698,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the execution action.
                     type: string
@@ -722,7 +724,8 @@ spec:
                   totalTimeTakenInMins:
                     description: (Updatable) The total time taken by corresponding
                       resource activity in minutes.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

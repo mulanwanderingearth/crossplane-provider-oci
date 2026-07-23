@@ -133,7 +133,8 @@ spec:
                                   the generated strings should have. It can  be any
                                   integer greater than zero, but it must be greater
                                   than or equal to  the start length.
-                                type: number
+                                format: int64
+                                type: integer
                               endValue:
                                 description: (Updatable) The upper bound of the range
                                   within which random decimal numbers should be generated.
@@ -161,7 +162,8 @@ spec:
                                 description: (Updatable) The number of characters
                                   that should be there in the substring. It should
                                   be an integer and greater than zero.
-                                type: number
+                                format: int64
+                                type: integer
                               libraryMaskingFormatId:
                                 description: (Updatable) The OCID of the library masking
                                   format.
@@ -305,14 +307,16 @@ spec:
                                   the generated strings should have. It can  be any
                                   integer greater than zero, but it must be less than
                                   or equal to the  end length.
-                                type: number
+                                format: int64
+                                type: integer
                               startPosition:
                                 description: (Updatable) The starting position in
                                   the original string from where the substring should
                                   be extracted. It can be either a positive or a negative
                                   integer. If It's negative, the counting starts from
                                   the end of the string.
-                                type: number
+                                format: int64
+                                type: integer
                               startValue:
                                 description: (Updatable) The lower bound of the range
                                   within which random decimal numbers should  be generated.
@@ -691,7 +695,8 @@ spec:
                                   the generated strings should have. It can  be any
                                   integer greater than zero, but it must be greater
                                   than or equal to  the start length.
-                                type: number
+                                format: int64
+                                type: integer
                               endValue:
                                 description: (Updatable) The upper bound of the range
                                   within which random decimal numbers should be generated.
@@ -719,7 +724,8 @@ spec:
                                 description: (Updatable) The number of characters
                                   that should be there in the substring. It should
                                   be an integer and greater than zero.
-                                type: number
+                                format: int64
+                                type: integer
                               libraryMaskingFormatId:
                                 description: (Updatable) The OCID of the library masking
                                   format.
@@ -863,14 +869,16 @@ spec:
                                   the generated strings should have. It can  be any
                                   integer greater than zero, but it must be less than
                                   or equal to the  end length.
-                                type: number
+                                format: int64
+                                type: integer
                               startPosition:
                                 description: (Updatable) The starting position in
                                   the original string from where the substring should
                                   be extracted. It can be either a positive or a negative
                                   integer. If It's negative, the counting starts from
                                   the end of the string.
-                                type: number
+                                format: int64
+                                type: integer
                               startValue:
                                 description: (Updatable) The lower bound of the range
                                   within which random decimal numbers should  be generated.
@@ -1333,7 +1341,8 @@ spec:
                                   the generated strings should have. It can  be any
                                   integer greater than zero, but it must be greater
                                   than or equal to  the start length.
-                                type: number
+                                format: int64
+                                type: integer
                               endValue:
                                 description: (Updatable) The upper bound of the range
                                   within which random decimal numbers should be generated.
@@ -1361,7 +1370,8 @@ spec:
                                 description: (Updatable) The number of characters
                                   that should be there in the substring. It should
                                   be an integer and greater than zero.
-                                type: number
+                                format: int64
+                                type: integer
                               libraryMaskingFormatId:
                                 description: (Updatable) The OCID of the library masking
                                   format.
@@ -1423,14 +1433,16 @@ spec:
                                   the generated strings should have. It can  be any
                                   integer greater than zero, but it must be less than
                                   or equal to the  end length.
-                                type: number
+                                format: int64
+                                type: integer
                               startPosition:
                                 description: (Updatable) The starting position in
                                   the original string from where the substring should
                                   be extracted. It can be either a positive or a negative
                                   integer. If It's negative, the counting starts from
                                   the end of the string.
-                                type: number
+                                format: int64
+                                type: integer
                               startValue:
                                 description: (Updatable) The lower bound of the range
                                   within which random decimal numbers should  be generated.

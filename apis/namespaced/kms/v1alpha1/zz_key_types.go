@@ -23,7 +23,7 @@ type AutoKeyRotationDetailsInitParameters struct {
 	LastRotationStatus *string `json:"lastRotationStatus,omitempty" tf:"last_rotation_status,omitempty"`
 
 	// (Updatable) The interval of auto key rotation. For auto key rotation the interval should between 60 day and 365 days (1 year). Note: User must specify this parameter when creating a new schedule.
-	RotationIntervalInDays *float64 `json:"rotationIntervalInDays,omitempty" tf:"rotation_interval_in_days,omitempty"`
+	RotationIntervalInDays *int64 `json:"rotationIntervalInDays,omitempty" tf:"rotation_interval_in_days,omitempty"`
 
 	// (Updatable) A property indicating Last rotation Date. Example: 2023-04-04T00:00:00Z.
 	TimeOfLastRotation *string `json:"timeOfLastRotation,omitempty" tf:"time_of_last_rotation,omitempty"`
@@ -44,7 +44,7 @@ type AutoKeyRotationDetailsObservation struct {
 	LastRotationStatus *string `json:"lastRotationStatus,omitempty" tf:"last_rotation_status,omitempty"`
 
 	// (Updatable) The interval of auto key rotation. For auto key rotation the interval should between 60 day and 365 days (1 year). Note: User must specify this parameter when creating a new schedule.
-	RotationIntervalInDays *float64 `json:"rotationIntervalInDays,omitempty" tf:"rotation_interval_in_days,omitempty"`
+	RotationIntervalInDays *int64 `json:"rotationIntervalInDays,omitempty" tf:"rotation_interval_in_days,omitempty"`
 
 	// (Updatable) A property indicating Last rotation Date. Example: 2023-04-04T00:00:00Z.
 	TimeOfLastRotation *string `json:"timeOfLastRotation,omitempty" tf:"time_of_last_rotation,omitempty"`
@@ -68,7 +68,7 @@ type AutoKeyRotationDetailsParameters struct {
 
 	// (Updatable) The interval of auto key rotation. For auto key rotation the interval should between 60 day and 365 days (1 year). Note: User must specify this parameter when creating a new schedule.
 	// +kubebuilder:validation:Optional
-	RotationIntervalInDays *float64 `json:"rotationIntervalInDays,omitempty" tf:"rotation_interval_in_days,omitempty"`
+	RotationIntervalInDays *int64 `json:"rotationIntervalInDays,omitempty" tf:"rotation_interval_in_days,omitempty"`
 
 	// (Updatable) A property indicating Last rotation Date. Example: 2023-04-04T00:00:00Z.
 	// +kubebuilder:validation:Optional
@@ -155,8 +155,7 @@ type KeyInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Desired state of the key. Possible values : ENABLED or DISABLED
 	DesiredState *string `json:"desiredState,omitempty" tf:"desired_state,omitempty"`
@@ -168,8 +167,7 @@ type KeyInitParameters struct {
 	ExternalKeyReference []ExternalKeyReferenceInitParameters `json:"externalKeyReference,omitempty" tf:"external_key_reference,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A parameter specifying whether the auto key rotation is enabled or not.
 	IsAutoRotationEnabled *bool `json:"isAutoRotationEnabled,omitempty" tf:"is_auto_rotation_enabled,omitempty"`
@@ -205,7 +203,7 @@ type KeyKeyShapeInitParameters struct {
 	CurveID *string `json:"curveId,omitempty" tf:"curve_id,omitempty"`
 
 	// The length of the key in bytes, expressed as an integer. Supported values include the following:
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 }
 
 type KeyKeyShapeObservation struct {
@@ -217,7 +215,7 @@ type KeyKeyShapeObservation struct {
 	CurveID *string `json:"curveId,omitempty" tf:"curve_id,omitempty"`
 
 	// The length of the key in bytes, expressed as an integer. Supported values include the following:
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 }
 
 type KeyKeyShapeParameters struct {
@@ -232,7 +230,7 @@ type KeyKeyShapeParameters struct {
 
 	// The length of the key in bytes, expressed as an integer. Supported values include the following:
 	// +kubebuilder:validation:Optional
-	Length *float64 `json:"length" tf:"length,omitempty"`
+	Length *int64 `json:"length" tf:"length,omitempty"`
 }
 
 type KeyObservation struct {
@@ -247,8 +245,7 @@ type KeyObservation struct {
 	CurrentKeyVersion *string `json:"currentKeyVersion,omitempty" tf:"current_key_version,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Desired state of the key. Possible values : ENABLED or DISABLED
 	DesiredState *string `json:"desiredState,omitempty" tf:"desired_state,omitempty"`
@@ -263,8 +260,7 @@ type KeyObservation struct {
 	ExternalKeyReferenceDetails []ExternalKeyReferenceDetailsObservation `json:"externalKeyReferenceDetails,omitempty" tf:"external_key_reference_details,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the key.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -333,8 +329,7 @@ type KeyParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Desired state of the key. Possible values : ENABLED or DISABLED
 	// +kubebuilder:validation:Optional
@@ -350,8 +345,7 @@ type KeyParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A parameter specifying whether the auto key rotation is enabled or not.
 	// +kubebuilder:validation:Optional

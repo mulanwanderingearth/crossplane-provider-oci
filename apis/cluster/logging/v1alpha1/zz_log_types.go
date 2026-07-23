@@ -48,15 +48,13 @@ type LogInitParameters struct {
 	Configuration []ConfigurationInitParameters `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly display name. This must be unique within the enclosing resource, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether or not this resource is currently enabled.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -78,7 +76,7 @@ type LogInitParameters struct {
 	LogType *string `json:"logType,omitempty" tf:"log_type,omitempty"`
 
 	// (Updatable) Log retention duration in 30-day increments (30, 60, 90 and so on until 180).
-	RetentionDuration *float64 `json:"retentionDuration,omitempty" tf:"retention_duration,omitempty"`
+	RetentionDuration *int64 `json:"retentionDuration,omitempty" tf:"retention_duration,omitempty"`
 }
 
 type LogObservation struct {
@@ -90,15 +88,13 @@ type LogObservation struct {
 	Configuration []ConfigurationObservation `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly display name. This must be unique within the enclosing resource, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -113,7 +109,7 @@ type LogObservation struct {
 	LogType *string `json:"logType,omitempty" tf:"log_type,omitempty"`
 
 	// (Updatable) Log retention duration in 30-day increments (30, 60, 90 and so on until 180).
-	RetentionDuration *float64 `json:"retentionDuration,omitempty" tf:"retention_duration,omitempty"`
+	RetentionDuration *int64 `json:"retentionDuration,omitempty" tf:"retention_duration,omitempty"`
 
 	// The pipeline state.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -136,8 +132,7 @@ type LogParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly display name. This must be unique within the enclosing resource, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -145,8 +140,7 @@ type LogParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether or not this resource is currently enabled.
 	// +kubebuilder:validation:Optional
@@ -172,7 +166,7 @@ type LogParameters struct {
 
 	// (Updatable) Log retention duration in 30-day increments (30, 60, 90 and so on until 180).
 	// +kubebuilder:validation:Optional
-	RetentionDuration *float64 `json:"retentionDuration,omitempty" tf:"retention_duration,omitempty"`
+	RetentionDuration *int64 `json:"retentionDuration,omitempty" tf:"retention_duration,omitempty"`
 }
 
 type SourceInitParameters struct {
@@ -181,8 +175,7 @@ type SourceInitParameters struct {
 	Category *string `json:"category,omitempty" tf:"category,omitempty"`
 
 	// (Applicable when source_type=OCISERVICE) (Updatable) Log category parameters are stored here. The resource for a service log can't be updated.
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// The unique identifier of the resource emitting the log. The resource can be updated, and the resource value can vary depending on the Oracle Cloud Infrastructure service to which the resource belongs to.
 	Resource *string `json:"resource,omitempty" tf:"resource,omitempty"`
@@ -200,8 +193,7 @@ type SourceObservation struct {
 	Category *string `json:"category,omitempty" tf:"category,omitempty"`
 
 	// (Applicable when source_type=OCISERVICE) (Updatable) Log category parameters are stored here. The resource for a service log can't be updated.
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// The unique identifier of the resource emitting the log. The resource can be updated, and the resource value can vary depending on the Oracle Cloud Infrastructure service to which the resource belongs to.
 	Resource *string `json:"resource,omitempty" tf:"resource,omitempty"`
@@ -221,8 +213,7 @@ type SourceParameters struct {
 
 	// (Applicable when source_type=OCISERVICE) (Updatable) Log category parameters are stored here. The resource for a service log can't be updated.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// The unique identifier of the resource emitting the log. The resource can be updated, and the resource value can vary depending on the Oracle Cloud Infrastructure service to which the resource belongs to.
 	// +kubebuilder:validation:Optional

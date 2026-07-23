@@ -132,21 +132,19 @@ type RedisClusterInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Details for importing Oracle Cloud Infrastructure Cache data from Object Storage RDB file(s) during cluster creation.
 	ImportFromObjectStorageDetails []ImportFromObjectStorageDetailsInitParameters `json:"importFromObjectStorageDetails,omitempty" tf:"import_from_object_storage_details,omitempty"`
 
 	// (Updatable) The number of nodes per shard in the cluster when clusterMode is SHARDED. This is the total number of nodes when clusterMode is NONSHARDED.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The amount of memory allocated to the cluster's nodes, in gigabytes.
 	NodeMemoryInGbs *float64 `json:"nodeMemoryInGbs,omitempty" tf:"node_memory_in_gbs,omitempty"`
@@ -169,11 +167,10 @@ type RedisClusterInitParameters struct {
 	OciCacheConfigSetIDSelector *v1.Selector `json:"ociCacheConfigSetIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Security attributes for redis cluster resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The number of shards in sharded cluster. Only applicable when clusterMode is SHARDED.
-	ShardCount *float64 `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
+	ShardCount *int64 `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
 
 	// (Updatable) The Oracle Cloud Infrastructure Cache engine version that the cluster is running.
 	SoftwareVersion *string `json:"softwareVersion,omitempty" tf:"software_version,omitempty"`
@@ -203,8 +200,7 @@ type RedisClusterObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The private IP address of the API endpoint for sharded cluster discovery.
 	DiscoveryEndpointIPAddress *string `json:"discoveryEndpointIpAddress,omitempty" tf:"discovery_endpoint_ip_address,omitempty"`
@@ -216,8 +212,7 @@ type RedisClusterObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the cluster.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -232,7 +227,7 @@ type RedisClusterObservation struct {
 	NodeCollection []NodeCollectionObservation `json:"nodeCollection,omitempty" tf:"node_collection,omitempty"`
 
 	// (Updatable) The number of nodes per shard in the cluster when clusterMode is SHARDED. This is the total number of nodes when clusterMode is NONSHARDED.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The amount of memory allocated to the cluster's nodes, in gigabytes.
 	NodeMemoryInGbs *float64 `json:"nodeMemoryInGbs,omitempty" tf:"node_memory_in_gbs,omitempty"`
@@ -257,11 +252,10 @@ type RedisClusterObservation struct {
 	ReplicasFqdn *string `json:"replicasFqdn,omitempty" tf:"replicas_fqdn,omitempty"`
 
 	// (Updatable) Security attributes for redis cluster resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The number of shards in sharded cluster. Only applicable when clusterMode is SHARDED.
-	ShardCount *float64 `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
+	ShardCount *int64 `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
 
 	// (Updatable) The Oracle Cloud Infrastructure Cache engine version that the cluster is running.
 	SoftwareVersion *string `json:"softwareVersion,omitempty" tf:"software_version,omitempty"`
@@ -273,8 +267,7 @@ type RedisClusterObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the cluster was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -318,8 +311,7 @@ type RedisClusterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -327,8 +319,7 @@ type RedisClusterParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Details for importing Oracle Cloud Infrastructure Cache data from Object Storage RDB file(s) during cluster creation.
 	// +kubebuilder:validation:Optional
@@ -336,7 +327,7 @@ type RedisClusterParameters struct {
 
 	// (Updatable) The number of nodes per shard in the cluster when clusterMode is SHARDED. This is the total number of nodes when clusterMode is NONSHARDED.
 	// +kubebuilder:validation:Optional
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) The amount of memory allocated to the cluster's nodes, in gigabytes.
 	// +kubebuilder:validation:Optional
@@ -363,12 +354,11 @@ type RedisClusterParameters struct {
 
 	// (Updatable) Security attributes for redis cluster resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) The number of shards in sharded cluster. Only applicable when clusterMode is SHARDED.
 	// +kubebuilder:validation:Optional
-	ShardCount *float64 `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
+	ShardCount *int64 `json:"shardCount,omitempty" tf:"shard_count,omitempty"`
 
 	// (Updatable) The Oracle Cloud Infrastructure Cache engine version that the cluster is running.
 	// +kubebuilder:validation:Optional

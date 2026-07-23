@@ -73,6 +73,18 @@ type ClaimValidationsParameters struct {
 }
 
 type IdentityPropagationTrustIdcsCreatedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Claim Value
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type IdentityPropagationTrustIdcsCreatedByObservation struct {
@@ -93,9 +105,37 @@ type IdentityPropagationTrustIdcsCreatedByObservation struct {
 }
 
 type IdentityPropagationTrustIdcsCreatedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Claim Value
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type IdentityPropagationTrustIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Claim Value
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type IdentityPropagationTrustIdcsLastModifiedByObservation struct {
@@ -116,6 +156,22 @@ type IdentityPropagationTrustIdcsLastModifiedByObservation struct {
 }
 
 type IdentityPropagationTrustIdcsLastModifiedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Claim Value
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type IdentityPropagationTrustInitParameters struct {
@@ -155,7 +211,7 @@ type IdentityPropagationTrustInitParameters struct {
 	ClientClaimValues []*string `json:"clientClaimValues,omitempty" tf:"client_claim_values,omitempty"`
 
 	// (Updatable) The clock skew (in secs) that's allowed for the token issue and expiry time.
-	ClockSkewSeconds *float64 `json:"clockSkewSeconds,omitempty" tf:"clock_skew_seconds,omitempty"`
+	ClockSkewSeconds *int64 `json:"clockSkewSeconds,omitempty" tf:"clock_skew_seconds,omitempty"`
 
 	// (Updatable) The description of the Identity Propagation Trust.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -214,6 +270,21 @@ type IdentityPropagationTrustInitParameters struct {
 }
 
 type IdentityPropagationTrustMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type IdentityPropagationTrustMetaObservation struct {
@@ -235,6 +306,26 @@ type IdentityPropagationTrustMetaObservation struct {
 }
 
 type IdentityPropagationTrustMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type IdentityPropagationTrustObservation struct {
@@ -274,7 +365,7 @@ type IdentityPropagationTrustObservation struct {
 	ClientClaimValues []*string `json:"clientClaimValues,omitempty" tf:"client_claim_values,omitempty"`
 
 	// (Updatable) The clock skew (in secs) that's allowed for the token issue and expiry time.
-	ClockSkewSeconds *float64 `json:"clockSkewSeconds,omitempty" tf:"clock_skew_seconds,omitempty"`
+	ClockSkewSeconds *int64 `json:"clockSkewSeconds,omitempty" tf:"clock_skew_seconds,omitempty"`
 
 	// (Updatable) Oracle Cloud Infrastructure Compartment Id (ocid) in which the resource lives.
 	CompartmentOcid *string `json:"compartmentOcid,omitempty" tf:"compartment_ocid,omitempty"`
@@ -411,7 +502,7 @@ type IdentityPropagationTrustParameters struct {
 
 	// (Updatable) The clock skew (in secs) that's allowed for the token issue and expiry time.
 	// +kubebuilder:validation:Optional
-	ClockSkewSeconds *float64 `json:"clockSkewSeconds,omitempty" tf:"clock_skew_seconds,omitempty"`
+	ClockSkewSeconds *int64 `json:"clockSkewSeconds,omitempty" tf:"clock_skew_seconds,omitempty"`
 
 	// (Updatable) The description of the Identity Propagation Trust.
 	// +kubebuilder:validation:Optional
@@ -583,7 +674,7 @@ type KeytabInitParameters struct {
 	SecretOcid *string `json:"secretOcid,omitempty" tf:"secret_ocid,omitempty"`
 
 	// (Updatable) The version of the secret. When the version is not specified, then the latest secret version is used during runtime.
-	SecretVersion *float64 `json:"secretVersion,omitempty" tf:"secret_version,omitempty"`
+	SecretVersion *int64 `json:"secretVersion,omitempty" tf:"secret_version,omitempty"`
 }
 
 type KeytabObservation struct {
@@ -592,7 +683,7 @@ type KeytabObservation struct {
 	SecretOcid *string `json:"secretOcid,omitempty" tf:"secret_ocid,omitempty"`
 
 	// (Updatable) The version of the secret. When the version is not specified, then the latest secret version is used during runtime.
-	SecretVersion *float64 `json:"secretVersion,omitempty" tf:"secret_version,omitempty"`
+	SecretVersion *int64 `json:"secretVersion,omitempty" tf:"secret_version,omitempty"`
 }
 
 type KeytabParameters struct {
@@ -603,7 +694,7 @@ type KeytabParameters struct {
 
 	// (Updatable) The version of the secret. When the version is not specified, then the latest secret version is used during runtime.
 	// +kubebuilder:validation:Optional
-	SecretVersion *float64 `json:"secretVersion,omitempty" tf:"secret_version,omitempty"`
+	SecretVersion *int64 `json:"secretVersion,omitempty" tf:"secret_version,omitempty"`
 }
 
 // IdentityPropagationTrustSpec defines the desired state of IdentityPropagationTrust

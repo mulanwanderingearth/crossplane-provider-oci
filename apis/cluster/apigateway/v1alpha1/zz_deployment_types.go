@@ -141,8 +141,7 @@ type AuthenticationInitParameters struct {
 	MaxClockSkewInSeconds *float64 `json:"maxClockSkewInSeconds,omitempty" tf:"max_clock_skew_in_seconds,omitempty"`
 
 	// (Applicable when type=CUSTOM_AUTHENTICATION) (Updatable) A map where key is a user defined string and value is a context expressions whose values will be sent to the custom auth function. Values should contain an expression. Example: {"foo": "request.header[abc]"}
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// (Updatable) A set of Public Keys that will be used to verify the JWT signature.
 	PublicKeys []PublicKeysInitParameters `json:"publicKeys,omitempty" tf:"public_keys,omitempty"`
@@ -190,8 +189,7 @@ type AuthenticationObservation struct {
 	MaxClockSkewInSeconds *float64 `json:"maxClockSkewInSeconds,omitempty" tf:"max_clock_skew_in_seconds,omitempty"`
 
 	// (Applicable when type=CUSTOM_AUTHENTICATION) (Updatable) A map where key is a user defined string and value is a context expressions whose values will be sent to the custom auth function. Values should contain an expression. Example: {"foo": "request.header[abc]"}
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// (Updatable) A set of Public Keys that will be used to verify the JWT signature.
 	PublicKeys []PublicKeysObservation `json:"publicKeys,omitempty" tf:"public_keys,omitempty"`
@@ -256,8 +254,7 @@ type AuthenticationParameters struct {
 
 	// (Applicable when type=CUSTOM_AUTHENTICATION) (Updatable) A map where key is a user defined string and value is a context expressions whose values will be sent to the custom auth function. Values should contain an expression. Example: {"foo": "request.header[abc]"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// (Updatable) A set of Public Keys that will be used to verify the JWT signature.
 	// +kubebuilder:validation:Optional
@@ -323,8 +320,7 @@ type AuthenticationServerDetailInitParameters struct {
 	MaxClockSkewInSeconds *float64 `json:"maxClockSkewInSeconds,omitempty" tf:"max_clock_skew_in_seconds,omitempty"`
 
 	// (Applicable when type=CUSTOM_AUTHENTICATION) (Updatable) A map where key is a user defined string and value is a context expressions whose values will be sent to the custom auth function. Values should contain an expression. Example: {"foo": "request.header[abc]"}
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// (Updatable) A set of Public Keys that will be used to verify the JWT signature.
 	PublicKeys []AuthenticationServerDetailPublicKeysInitParameters `json:"publicKeys,omitempty" tf:"public_keys,omitempty"`
@@ -372,8 +368,7 @@ type AuthenticationServerDetailObservation struct {
 	MaxClockSkewInSeconds *float64 `json:"maxClockSkewInSeconds,omitempty" tf:"max_clock_skew_in_seconds,omitempty"`
 
 	// (Applicable when type=CUSTOM_AUTHENTICATION) (Updatable) A map where key is a user defined string and value is a context expressions whose values will be sent to the custom auth function. Values should contain an expression. Example: {"foo": "request.header[abc]"}
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// (Updatable) A set of Public Keys that will be used to verify the JWT signature.
 	PublicKeys []AuthenticationServerDetailPublicKeysObservation `json:"publicKeys,omitempty" tf:"public_keys,omitempty"`
@@ -438,8 +433,7 @@ type AuthenticationServerDetailParameters struct {
 
 	// (Applicable when type=CUSTOM_AUTHENTICATION) (Updatable) A map where key is a user defined string and value is a context expressions whose values will be sent to the custom auth function. Values should contain an expression. Example: {"foo": "request.header[abc]"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// (Updatable) A set of Public Keys that will be used to verify the JWT signature.
 	// +kubebuilder:validation:Optional
@@ -483,7 +477,7 @@ type AuthenticationServerDetailPublicKeysInitParameters struct {
 	Keys []PublicKeysKeysInitParameters `json:"keys,omitempty" tf:"keys,omitempty"`
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -501,7 +495,7 @@ type AuthenticationServerDetailPublicKeysObservation struct {
 	Keys []PublicKeysKeysObservation `json:"keys,omitempty" tf:"keys,omitempty"`
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -522,7 +516,7 @@ type AuthenticationServerDetailPublicKeysParameters struct {
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
 	// +kubebuilder:validation:Optional
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// Type of the lock.
 	// +kubebuilder:validation:Optional
@@ -548,7 +542,7 @@ type AuthenticationServerDetailValidationFailurePolicyInitParameters struct {
 	LogoutPath *string `json:"logoutPath,omitempty" tf:"logout_path,omitempty"`
 
 	// (Applicable when type=OAUTH2) (Updatable) The duration for which the OAuth2 success token should be cached before it is fetched again.
-	MaxExpiryDurationInHours *float64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
+	MaxExpiryDurationInHours *int64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
 
 	// (Applicable when type=MODIFY_RESPONSE) (Updatable) HTTP response code, can include context variables.
 	ResponseCode *string `json:"responseCode,omitempty" tf:"response_code,omitempty"`
@@ -596,7 +590,7 @@ type AuthenticationServerDetailValidationFailurePolicyObservation struct {
 	LogoutPath *string `json:"logoutPath,omitempty" tf:"logout_path,omitempty"`
 
 	// (Applicable when type=OAUTH2) (Updatable) The duration for which the OAuth2 success token should be cached before it is fetched again.
-	MaxExpiryDurationInHours *float64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
+	MaxExpiryDurationInHours *int64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
 
 	// (Applicable when type=MODIFY_RESPONSE) (Updatable) HTTP response code, can include context variables.
 	ResponseCode *string `json:"responseCode,omitempty" tf:"response_code,omitempty"`
@@ -649,7 +643,7 @@ type AuthenticationServerDetailValidationFailurePolicyParameters struct {
 
 	// (Applicable when type=OAUTH2) (Updatable) The duration for which the OAuth2 success token should be cached before it is fetched again.
 	// +kubebuilder:validation:Optional
-	MaxExpiryDurationInHours *float64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
+	MaxExpiryDurationInHours *int64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
 
 	// (Applicable when type=MODIFY_RESPONSE) (Updatable) HTTP response code, can include context variables.
 	// +kubebuilder:validation:Optional
@@ -776,7 +770,7 @@ type AuthenticationServerDetailValidationPolicyInitParameters struct {
 	Keys []AuthenticationServerDetailValidationPolicyKeysInitParameters `json:"keys,omitempty" tf:"keys,omitempty"`
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// (Updatable) Auth endpoint details.
 	SourceURIDetails []AuthenticationServerDetailValidationPolicySourceURIDetailsInitParameters `json:"sourceUriDetails,omitempty" tf:"source_uri_details,omitempty"`
@@ -902,7 +896,7 @@ type AuthenticationServerDetailValidationPolicyObservation struct {
 	Keys []AuthenticationServerDetailValidationPolicyKeysObservation `json:"keys,omitempty" tf:"keys,omitempty"`
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// (Updatable) Auth endpoint details.
 	SourceURIDetails []AuthenticationServerDetailValidationPolicySourceURIDetailsObservation `json:"sourceUriDetails,omitempty" tf:"source_uri_details,omitempty"`
@@ -934,7 +928,7 @@ type AuthenticationServerDetailValidationPolicyParameters struct {
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
 	// +kubebuilder:validation:Optional
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// (Updatable) Auth endpoint details.
 	// +kubebuilder:validation:Optional
@@ -1115,6 +1109,12 @@ type AuthorizationParameters struct {
 }
 
 type BackendHeadersInitParameters struct {
+
+	// (Updatable) The case-insensitive name of the header.  This name must be unique across transformation policies.
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Applicable when type=STOCK_RESPONSE_BACKEND) (Updatable) Value of the header.
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type BackendHeadersObservation struct {
@@ -1127,6 +1127,14 @@ type BackendHeadersObservation struct {
 }
 
 type BackendHeadersParameters struct {
+
+	// (Updatable) The case-insensitive name of the header.  This name must be unique across transformation policies.
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Applicable when type=STOCK_RESPONSE_BACKEND) (Updatable) Value of the header.
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type BackendInitParameters struct {
@@ -1175,7 +1183,7 @@ type BackendInitParameters struct {
 	SendTimeoutInSeconds *float64 `json:"sendTimeoutInSeconds,omitempty" tf:"send_timeout_in_seconds,omitempty"`
 
 	// (Updatable) The status code of the stock response from the mock backend.
-	Status *float64 `json:"status,omitempty" tf:"status,omitempty"`
+	Status *int64 `json:"status,omitempty" tf:"status,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -1220,7 +1228,7 @@ type BackendObservation struct {
 	SendTimeoutInSeconds *float64 `json:"sendTimeoutInSeconds,omitempty" tf:"send_timeout_in_seconds,omitempty"`
 
 	// (Updatable) The status code of the stock response from the mock backend.
-	Status *float64 `json:"status,omitempty" tf:"status,omitempty"`
+	Status *int64 `json:"status,omitempty" tf:"status,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -1287,7 +1295,7 @@ type BackendParameters struct {
 
 	// (Updatable) The status code of the stock response from the mock backend.
 	// +kubebuilder:validation:Optional
-	Status *float64 `json:"status,omitempty" tf:"status,omitempty"`
+	Status *int64 `json:"status,omitempty" tf:"status,omitempty"`
 
 	// Type of the lock.
 	// +kubebuilder:validation:Optional
@@ -1482,7 +1490,7 @@ type CorsInitParameters struct {
 	IsAllowCredentialsEnabled *bool `json:"isAllowCredentialsEnabled,omitempty" tf:"is_allow_credentials_enabled,omitempty"`
 
 	// (Updatable) The time in seconds for the client to cache preflight responses. This is sent as the Access-Control-Max-Age if greater than 0.
-	MaxAgeInSeconds *float64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
+	MaxAgeInSeconds *int64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
 }
 
 type CorsObservation struct {
@@ -1503,7 +1511,7 @@ type CorsObservation struct {
 	IsAllowCredentialsEnabled *bool `json:"isAllowCredentialsEnabled,omitempty" tf:"is_allow_credentials_enabled,omitempty"`
 
 	// (Updatable) The time in seconds for the client to cache preflight responses. This is sent as the Access-Control-Max-Age if greater than 0.
-	MaxAgeInSeconds *float64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
+	MaxAgeInSeconds *int64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
 }
 
 type CorsParameters struct {
@@ -1530,7 +1538,7 @@ type CorsParameters struct {
 
 	// (Updatable) The time in seconds for the client to cache preflight responses. This is sent as the Access-Control-Max-Age if greater than 0.
 	// +kubebuilder:validation:Optional
-	MaxAgeInSeconds *float64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
+	MaxAgeInSeconds *int64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
 }
 
 type DeploymentInitParameters struct {
@@ -1548,15 +1556,13 @@ type DeploymentInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/apigateway/v1alpha1.Gateway
@@ -1625,8 +1631,7 @@ type DeploymentObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -1635,8 +1640,7 @@ type DeploymentObservation struct {
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the resource.
 	GatewayID *string `json:"gatewayId,omitempty" tf:"gateway_id,omitempty"`
@@ -1663,8 +1667,7 @@ type DeploymentObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// When the lock was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -1690,8 +1693,7 @@ type DeploymentParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	// +kubebuilder:validation:Optional
@@ -1699,8 +1701,7 @@ type DeploymentParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the resource.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/apigateway/v1alpha1.Gateway
@@ -2488,7 +2489,7 @@ type PublicKeysInitParameters struct {
 	Keys []KeysInitParameters `json:"keys,omitempty" tf:"keys,omitempty"`
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -2605,7 +2606,7 @@ type PublicKeysObservation struct {
 	Keys []KeysObservation `json:"keys,omitempty" tf:"keys,omitempty"`
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -2626,7 +2627,7 @@ type PublicKeysParameters struct {
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
 	// +kubebuilder:validation:Optional
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// Type of the lock.
 	// +kubebuilder:validation:Optional
@@ -2708,7 +2709,7 @@ type QueryParameterValidationsParameters struct {
 type RateLimitingInitParameters struct {
 
 	// (Updatable) The maximum number of requests per second to allow.
-	RateInRequestsPerSecond *float64 `json:"rateInRequestsPerSecond,omitempty" tf:"rate_in_requests_per_second,omitempty"`
+	RateInRequestsPerSecond *int64 `json:"rateInRequestsPerSecond,omitempty" tf:"rate_in_requests_per_second,omitempty"`
 
 	// (Updatable) The key used to group requests together.
 	RateKey *string `json:"rateKey,omitempty" tf:"rate_key,omitempty"`
@@ -2717,7 +2718,7 @@ type RateLimitingInitParameters struct {
 type RateLimitingObservation struct {
 
 	// (Updatable) The maximum number of requests per second to allow.
-	RateInRequestsPerSecond *float64 `json:"rateInRequestsPerSecond,omitempty" tf:"rate_in_requests_per_second,omitempty"`
+	RateInRequestsPerSecond *int64 `json:"rateInRequestsPerSecond,omitempty" tf:"rate_in_requests_per_second,omitempty"`
 
 	// (Updatable) The key used to group requests together.
 	RateKey *string `json:"rateKey,omitempty" tf:"rate_key,omitempty"`
@@ -2727,7 +2728,7 @@ type RateLimitingParameters struct {
 
 	// (Updatable) The maximum number of requests per second to allow.
 	// +kubebuilder:validation:Optional
-	RateInRequestsPerSecond *float64 `json:"rateInRequestsPerSecond" tf:"rate_in_requests_per_second,omitempty"`
+	RateInRequestsPerSecond *int64 `json:"rateInRequestsPerSecond" tf:"rate_in_requests_per_second,omitempty"`
 
 	// (Updatable) The key used to group requests together.
 	// +kubebuilder:validation:Optional
@@ -2848,7 +2849,7 @@ type RequestPoliciesCorsInitParameters struct {
 	IsAllowCredentialsEnabled *bool `json:"isAllowCredentialsEnabled,omitempty" tf:"is_allow_credentials_enabled,omitempty"`
 
 	// (Updatable) The time in seconds for the client to cache preflight responses. This is sent as the Access-Control-Max-Age if greater than 0.
-	MaxAgeInSeconds *float64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
+	MaxAgeInSeconds *int64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
 }
 
 type RequestPoliciesCorsObservation struct {
@@ -2869,7 +2870,7 @@ type RequestPoliciesCorsObservation struct {
 	IsAllowCredentialsEnabled *bool `json:"isAllowCredentialsEnabled,omitempty" tf:"is_allow_credentials_enabled,omitempty"`
 
 	// (Updatable) The time in seconds for the client to cache preflight responses. This is sent as the Access-Control-Max-Age if greater than 0.
-	MaxAgeInSeconds *float64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
+	MaxAgeInSeconds *int64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
 }
 
 type RequestPoliciesCorsParameters struct {
@@ -2896,7 +2897,7 @@ type RequestPoliciesCorsParameters struct {
 
 	// (Updatable) The time in seconds for the client to cache preflight responses. This is sent as the Access-Control-Max-Age if greater than 0.
 	// +kubebuilder:validation:Optional
-	MaxAgeInSeconds *float64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
+	MaxAgeInSeconds *int64 `json:"maxAgeInSeconds,omitempty" tf:"max_age_in_seconds,omitempty"`
 }
 
 type RequestPoliciesInitParameters struct {
@@ -3020,7 +3021,7 @@ type ResponseCacheLookupParameters struct {
 type ResponseCacheStoreInitParameters struct {
 
 	// (Updatable) Sets the number of seconds for a response from a backend being stored in the Response Cache before it expires.
-	TimeToLiveInSeconds *float64 `json:"timeToLiveInSeconds,omitempty" tf:"time_to_live_in_seconds,omitempty"`
+	TimeToLiveInSeconds *int64 `json:"timeToLiveInSeconds,omitempty" tf:"time_to_live_in_seconds,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -3029,7 +3030,7 @@ type ResponseCacheStoreInitParameters struct {
 type ResponseCacheStoreObservation struct {
 
 	// (Updatable) Sets the number of seconds for a response from a backend being stored in the Response Cache before it expires.
-	TimeToLiveInSeconds *float64 `json:"timeToLiveInSeconds,omitempty" tf:"time_to_live_in_seconds,omitempty"`
+	TimeToLiveInSeconds *int64 `json:"timeToLiveInSeconds,omitempty" tf:"time_to_live_in_seconds,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -3039,7 +3040,7 @@ type ResponseCacheStoreParameters struct {
 
 	// (Updatable) Sets the number of seconds for a response from a backend being stored in the Response Cache before it expires.
 	// +kubebuilder:validation:Optional
-	TimeToLiveInSeconds *float64 `json:"timeToLiveInSeconds" tf:"time_to_live_in_seconds,omitempty"`
+	TimeToLiveInSeconds *int64 `json:"timeToLiveInSeconds" tf:"time_to_live_in_seconds,omitempty"`
 
 	// Type of the lock.
 	// +kubebuilder:validation:Optional
@@ -3657,7 +3658,7 @@ type RoutingBackendsBackendInitParameters struct {
 	ReadTimeoutInSeconds *float64 `json:"readTimeoutInSeconds,omitempty" tf:"read_timeout_in_seconds,omitempty"`
 
 	// (Updatable) The status code of the stock response from the mock backend.
-	Status *float64 `json:"status,omitempty" tf:"status,omitempty"`
+	Status *int64 `json:"status,omitempty" tf:"status,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -3690,7 +3691,7 @@ type RoutingBackendsBackendObservation struct {
 	SendTimeoutInSeconds *float64 `json:"sendTimeoutInSeconds,omitempty" tf:"send_timeout_in_seconds,omitempty"`
 
 	// (Updatable) The status code of the stock response from the mock backend.
-	Status *float64 `json:"status,omitempty" tf:"status,omitempty"`
+	Status *int64 `json:"status,omitempty" tf:"status,omitempty"`
 
 	// Type of the lock.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -3733,7 +3734,7 @@ type RoutingBackendsBackendParameters struct {
 
 	// (Updatable) The status code of the stock response from the mock backend.
 	// +kubebuilder:validation:Optional
-	Status *float64 `json:"status,omitempty" tf:"status,omitempty"`
+	Status *int64 `json:"status,omitempty" tf:"status,omitempty"`
 
 	// Type of the lock.
 	// +kubebuilder:validation:Optional
@@ -4148,7 +4149,7 @@ type ValidationFailurePolicyInitParameters struct {
 	LogoutPath *string `json:"logoutPath,omitempty" tf:"logout_path,omitempty"`
 
 	// (Applicable when type=OAUTH2) (Updatable) The duration for which the OAuth2 success token should be cached before it is fetched again.
-	MaxExpiryDurationInHours *float64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
+	MaxExpiryDurationInHours *int64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
 
 	// (Applicable when type=MODIFY_RESPONSE) (Updatable) HTTP response code, can include context variables.
 	ResponseCode *string `json:"responseCode,omitempty" tf:"response_code,omitempty"`
@@ -4196,7 +4197,7 @@ type ValidationFailurePolicyObservation struct {
 	LogoutPath *string `json:"logoutPath,omitempty" tf:"logout_path,omitempty"`
 
 	// (Applicable when type=OAUTH2) (Updatable) The duration for which the OAuth2 success token should be cached before it is fetched again.
-	MaxExpiryDurationInHours *float64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
+	MaxExpiryDurationInHours *int64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
 
 	// (Applicable when type=MODIFY_RESPONSE) (Updatable) HTTP response code, can include context variables.
 	ResponseCode *string `json:"responseCode,omitempty" tf:"response_code,omitempty"`
@@ -4249,7 +4250,7 @@ type ValidationFailurePolicyParameters struct {
 
 	// (Applicable when type=OAUTH2) (Updatable) The duration for which the OAuth2 success token should be cached before it is fetched again.
 	// +kubebuilder:validation:Optional
-	MaxExpiryDurationInHours *float64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
+	MaxExpiryDurationInHours *int64 `json:"maxExpiryDurationInHours,omitempty" tf:"max_expiry_duration_in_hours,omitempty"`
 
 	// (Applicable when type=MODIFY_RESPONSE) (Updatable) HTTP response code, can include context variables.
 	// +kubebuilder:validation:Optional
@@ -4483,7 +4484,7 @@ type ValidationPolicyInitParameters struct {
 	Keys []ValidationPolicyKeysInitParameters `json:"keys,omitempty" tf:"keys,omitempty"`
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// (Updatable) Auth endpoint details.
 	SourceURIDetails []ValidationPolicySourceURIDetailsInitParameters `json:"sourceUriDetails,omitempty" tf:"source_uri_details,omitempty"`
@@ -4609,7 +4610,7 @@ type ValidationPolicyObservation struct {
 	Keys []ValidationPolicyKeysObservation `json:"keys,omitempty" tf:"keys,omitempty"`
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// (Updatable) Auth endpoint details.
 	SourceURIDetails []ValidationPolicySourceURIDetailsObservation `json:"sourceUriDetails,omitempty" tf:"source_uri_details,omitempty"`
@@ -4641,7 +4642,7 @@ type ValidationPolicyParameters struct {
 
 	// (Applicable when type=REMOTE_JWKS) (Updatable) The duration for which the JWKS should be cached before it is fetched again.
 	// +kubebuilder:validation:Optional
-	MaxCacheDurationInHours *float64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
+	MaxCacheDurationInHours *int64 `json:"maxCacheDurationInHours,omitempty" tf:"max_cache_duration_in_hours,omitempty"`
 
 	// (Updatable) Auth endpoint details.
 	// +kubebuilder:validation:Optional

@@ -218,7 +218,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -229,15 +230,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -329,7 +333,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Name of the BDS instance
                     type: string
@@ -343,7 +346,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -354,15 +358,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -454,7 +461,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ignoreExistingNodesShape:
                     description: Tag to ignore changing the shape of existing worker,
                       master, utility, compute_only_worker, edge, kafka_broker nodes,
@@ -501,7 +507,8 @@ spec:
                           type: string
                         numberOfKafkaNodes:
                           description: The list of nodes in the Big Data Service cluster.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -512,15 +519,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -623,7 +633,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -634,15 +645,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -862,7 +876,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -873,15 +888,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -976,7 +994,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -987,15 +1006,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -1238,7 +1260,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -1249,15 +1272,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -1349,7 +1375,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Name of the BDS instance
                     type: string
@@ -1363,7 +1388,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -1374,15 +1400,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -1474,7 +1503,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ignoreExistingNodesShape:
                     description: Tag to ignore changing the shape of existing worker,
                       master, utility, compute_only_worker, edge, kafka_broker nodes,
@@ -1521,7 +1549,8 @@ spec:
                           type: string
                         numberOfKafkaNodes:
                           description: The list of nodes in the Big Data Service cluster.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -1532,15 +1561,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -1643,7 +1675,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -1654,15 +1687,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -1882,7 +1918,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -1893,15 +1930,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -1996,7 +2036,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -2007,15 +2048,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -2275,15 +2319,18 @@ spec:
                         memoryInGbs:
                           description: The total amount of memory available to the
                             node, in gigabytes.
-                          type: number
+                          format: int64
+                          type: integer
                         nvmes:
                           description: The number of NVMe drives to be used for storage.
                             A single drive has 6.8 TB available.
-                          type: number
+                          format: int64
+                          type: integer
                         ocpus:
                           description: The total number of OCPUs available to the
                             node.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -2365,7 +2412,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -2376,15 +2424,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -2403,7 +2454,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Name of the BDS instance
                     type: string
@@ -2417,7 +2467,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -2428,15 +2479,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -2452,7 +2506,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Big Data Service resource.
                     type: string
@@ -2502,7 +2555,8 @@ spec:
                           type: string
                         numberOfKafkaNodes:
                           description: The list of nodes in the Big Data Service cluster.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -2513,15 +2567,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -2548,7 +2605,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -2559,15 +2617,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -2647,18 +2708,21 @@ spec:
                         memoryInGbs:
                           description: The total amount of memory available to the
                             node, in gigabytes.
-                          type: number
+                          format: int64
+                          type: integer
                         nodeType:
                           description: The Big Data Service cluster node type.
                           type: string
                         nvmes:
                           description: The number of NVMe drives to be used for storage.
                             A single drive has 6.8 TB available.
-                          type: number
+                          format: int64
+                          type: integer
                         ocpus:
                           description: The total number of OCPUs available to the
                             node.
-                          type: number
+                          format: int64
+                          type: integer
                         odhVersion:
                           description: ODH version to be used for cluster creation
                           type: string
@@ -2692,10 +2756,12 @@ spec:
                     type: array
                   numberOfNodes:
                     description: The amount of master nodes should be created.
-                    type: number
+                    format: int64
+                    type: integer
                   numberOfNodesRequiringMaintenanceReboot:
                     description: Number of nodes that require a maintenance reboot
-                    type: number
+                    format: int64
+                    type: integer
                   osPatchVersion:
                     description: (Updatable) The version of the patch to be upated.
                     type: string
@@ -2754,7 +2820,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -2765,15 +2832,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:
@@ -2792,7 +2862,8 @@ spec:
                           type: string
                         numberOfNodes:
                           description: The amount of master nodes should be created.
-                          type: number
+                          format: int64
+                          type: integer
                         shape:
                           description: Shape of the node
                           type: string
@@ -2803,15 +2874,18 @@ spec:
                               memoryInGbs:
                                 description: The total amount of memory available
                                   to the node, in gigabytes.
-                                type: number
+                                format: int64
+                                type: integer
                               nvmes:
                                 description: The number of NVMe drives to be used
                                   for storage. A single drive has 6.8 TB available.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpus:
                                 description: The total number of OCPUs available to
                                   the node.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         subnetId:

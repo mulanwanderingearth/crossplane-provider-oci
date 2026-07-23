@@ -143,7 +143,8 @@ spec:
                         iops:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The number of I/O operations per second.
-                          type: number
+                          format: int64
+                          type: integer
                         isEncrypted:
                           description: (Updatable) Indicates whether the volume is
                             encrypted.
@@ -154,7 +155,8 @@ spec:
                           type: boolean
                         sizeInGiBs:
                           description: (Updatable) The size of the volume, in GiBs.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The attachment state of the volume.
@@ -177,7 +179,8 @@ spec:
                         throughput:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The throughput that the volume supports, in MiB/s.
-                          type: number
+                          format: int64
+                          type: integer
                         volumeKey:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The ID of the volume.
@@ -320,7 +323,8 @@ spec:
                                       description: (Applicable when asset_type=AWS_EC2)
                                         (Updatable) The index of the device on the
                                         instance for the network interface attachment.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isDeleteOnTermination:
                                       description: (Applicable when asset_type=AWS_EBS)
                                         (Updatable) Indicates whether the EBS volume
@@ -329,7 +333,8 @@ spec:
                                     networkCardIndex:
                                       description: (Applicable when asset_type=AWS_EC2)
                                         (Updatable) The index of the network card.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     status:
                                       description: (Applicable when asset_type=AWS_EBS)
                                         (Updatable) The attachment state of the volume.
@@ -653,7 +658,8 @@ spec:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The number of the partition that the
                                   instance is in.
-                                type: number
+                                format: int64
+                                type: integer
                               spreadDomain:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) Reserved for future use.
@@ -787,7 +793,8 @@ spec:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The state of the instance as a 16-bit
                                   unsigned integer.
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The current state of the instance.
@@ -932,10 +939,12 @@ spec:
                       properties:
                         connectedNetworks:
                           description: (Updatable) Number of connected networks.
-                          type: number
+                          format: int64
+                          type: integer
                         coresCount:
                           description: (Updatable) Number of CPUs.
-                          type: number
+                          format: int64
+                          type: integer
                         cpuModel:
                           description: (Updatable) CPU model name.
                           type: string
@@ -950,7 +959,8 @@ spec:
                             properties:
                               bootOrder:
                                 description: (Updatable) Order of boot volumes.
-                                type: number
+                                format: int64
+                                type: integer
                               isCbtEnabled:
                                 description: (Updatable) Indicates that CBT (change
                                   disk tracking) is enabled for this virtual disk.
@@ -982,7 +992,8 @@ spec:
                           type: array
                         disksCount:
                           description: (Updatable) Number of disks.
-                          type: number
+                          format: int64
+                          type: integer
                         dnsName:
                           description: (Updatable) Fully Qualified DNS Name.
                           type: string
@@ -997,7 +1008,8 @@ spec:
                             properties:
                               coresCount:
                                 description: (Updatable) Number of CPUs.
-                                type: number
+                                format: int64
+                                type: integer
                               description:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The description.
@@ -1016,7 +1028,8 @@ spec:
                           type: array
                         gpuDevicesCount:
                           description: (Updatable) Number of GPU devices.
-                          type: number
+                          format: int64
+                          type: integer
                         guestState:
                           description: (Updatable) Guest state.
                           type: string
@@ -1071,14 +1084,16 @@ spec:
                           type: array
                         nicsCount:
                           description: (Updatable) Number of network ethernet cards.
-                          type: number
+                          format: int64
+                          type: integer
                         nvdimmController:
                           description: (Updatable) The asset's NVDIMM configuration.
                           items:
                             properties:
                               busNumber:
                                 description: (Updatable) Bus number.
-                                type: number
+                                format: int64
+                                type: integer
                               label:
                                 description: (Updatable) Provides a label and summary
                                   information for the device.
@@ -1092,14 +1107,16 @@ spec:
                             properties:
                               controllerKey:
                                 description: (Updatable) Controller key.
-                                type: number
+                                format: int64
+                                type: integer
                               label:
                                 description: (Updatable) Provides a label and summary
                                   information for the device.
                                 type: string
                               unitNumber:
                                 description: (Updatable) The unit number of NVDIMM.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         operatingSystem:
@@ -1132,7 +1149,8 @@ spec:
                                 type: string
                               unitNumber:
                                 description: (Updatable) The unit number of NVDIMM.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         storageProvisionedInMbs:
@@ -1140,7 +1158,8 @@ spec:
                           type: string
                         threadsPerCoreCount:
                           description: (Updatable) Number of threads per core.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   definedTags:
@@ -1151,7 +1170,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Asset display name.
                     type: string
@@ -1166,7 +1184,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inventoryId:
                     description: Inventory ID to which an asset belongs.
                     type: string
@@ -1315,11 +1332,13 @@ spec:
                         faultToleranceBandwidth:
                           description: (Applicable when asset_type=VMWARE_VM) (Updatable)
                             Fault tolerance bandwidth.
-                          type: number
+                          format: int64
+                          type: integer
                         faultToleranceSecondaryLatency:
                           description: (Applicable when asset_type=VMWARE_VM) (Updatable)
                             Fault tolerance to secondary latency.
-                          type: number
+                          format: int64
+                          type: integer
                         faultToleranceState:
                           description: (Applicable when asset_type=VMWARE_VM) (Updatable)
                             Fault tolerance state.
@@ -1433,7 +1452,8 @@ spec:
                         iops:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The number of I/O operations per second.
-                          type: number
+                          format: int64
+                          type: integer
                         isEncrypted:
                           description: (Updatable) Indicates whether the volume is
                             encrypted.
@@ -1444,7 +1464,8 @@ spec:
                           type: boolean
                         sizeInGiBs:
                           description: (Updatable) The size of the volume, in GiBs.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The attachment state of the volume.
@@ -1467,7 +1488,8 @@ spec:
                         throughput:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The throughput that the volume supports, in MiB/s.
-                          type: number
+                          format: int64
+                          type: integer
                         volumeKey:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The ID of the volume.
@@ -1610,7 +1632,8 @@ spec:
                                       description: (Applicable when asset_type=AWS_EC2)
                                         (Updatable) The index of the device on the
                                         instance for the network interface attachment.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isDeleteOnTermination:
                                       description: (Applicable when asset_type=AWS_EBS)
                                         (Updatable) Indicates whether the EBS volume
@@ -1619,7 +1642,8 @@ spec:
                                     networkCardIndex:
                                       description: (Applicable when asset_type=AWS_EC2)
                                         (Updatable) The index of the network card.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     status:
                                       description: (Applicable when asset_type=AWS_EBS)
                                         (Updatable) The attachment state of the volume.
@@ -1943,7 +1967,8 @@ spec:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The number of the partition that the
                                   instance is in.
-                                type: number
+                                format: int64
+                                type: integer
                               spreadDomain:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) Reserved for future use.
@@ -2077,7 +2102,8 @@ spec:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The state of the instance as a 16-bit
                                   unsigned integer.
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The current state of the instance.
@@ -2222,10 +2248,12 @@ spec:
                       properties:
                         connectedNetworks:
                           description: (Updatable) Number of connected networks.
-                          type: number
+                          format: int64
+                          type: integer
                         coresCount:
                           description: (Updatable) Number of CPUs.
-                          type: number
+                          format: int64
+                          type: integer
                         cpuModel:
                           description: (Updatable) CPU model name.
                           type: string
@@ -2240,7 +2268,8 @@ spec:
                             properties:
                               bootOrder:
                                 description: (Updatable) Order of boot volumes.
-                                type: number
+                                format: int64
+                                type: integer
                               isCbtEnabled:
                                 description: (Updatable) Indicates that CBT (change
                                   disk tracking) is enabled for this virtual disk.
@@ -2272,7 +2301,8 @@ spec:
                           type: array
                         disksCount:
                           description: (Updatable) Number of disks.
-                          type: number
+                          format: int64
+                          type: integer
                         dnsName:
                           description: (Updatable) Fully Qualified DNS Name.
                           type: string
@@ -2287,7 +2317,8 @@ spec:
                             properties:
                               coresCount:
                                 description: (Updatable) Number of CPUs.
-                                type: number
+                                format: int64
+                                type: integer
                               description:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The description.
@@ -2306,7 +2337,8 @@ spec:
                           type: array
                         gpuDevicesCount:
                           description: (Updatable) Number of GPU devices.
-                          type: number
+                          format: int64
+                          type: integer
                         guestState:
                           description: (Updatable) Guest state.
                           type: string
@@ -2361,14 +2393,16 @@ spec:
                           type: array
                         nicsCount:
                           description: (Updatable) Number of network ethernet cards.
-                          type: number
+                          format: int64
+                          type: integer
                         nvdimmController:
                           description: (Updatable) The asset's NVDIMM configuration.
                           items:
                             properties:
                               busNumber:
                                 description: (Updatable) Bus number.
-                                type: number
+                                format: int64
+                                type: integer
                               label:
                                 description: (Updatable) Provides a label and summary
                                   information for the device.
@@ -2382,14 +2416,16 @@ spec:
                             properties:
                               controllerKey:
                                 description: (Updatable) Controller key.
-                                type: number
+                                format: int64
+                                type: integer
                               label:
                                 description: (Updatable) Provides a label and summary
                                   information for the device.
                                 type: string
                               unitNumber:
                                 description: (Updatable) The unit number of NVDIMM.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         operatingSystem:
@@ -2422,7 +2458,8 @@ spec:
                                 type: string
                               unitNumber:
                                 description: (Updatable) The unit number of NVDIMM.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         storageProvisionedInMbs:
@@ -2430,7 +2467,8 @@ spec:
                           type: string
                         threadsPerCoreCount:
                           description: (Updatable) Number of threads per core.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   definedTags:
@@ -2441,7 +2479,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Asset display name.
                     type: string
@@ -2456,7 +2493,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inventoryId:
                     description: Inventory ID to which an asset belongs.
                     type: string
@@ -2605,11 +2641,13 @@ spec:
                         faultToleranceBandwidth:
                           description: (Applicable when asset_type=VMWARE_VM) (Updatable)
                             Fault tolerance bandwidth.
-                          type: number
+                          format: int64
+                          type: integer
                         faultToleranceSecondaryLatency:
                           description: (Applicable when asset_type=VMWARE_VM) (Updatable)
                             Fault tolerance to secondary latency.
-                          type: number
+                          format: int64
+                          type: integer
                         faultToleranceState:
                           description: (Applicable when asset_type=VMWARE_VM) (Updatable)
                             Fault tolerance state.
@@ -2816,7 +2854,8 @@ spec:
                         iops:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The number of I/O operations per second.
-                          type: number
+                          format: int64
+                          type: integer
                         isEncrypted:
                           description: (Updatable) Indicates whether the volume is
                             encrypted.
@@ -2827,7 +2866,8 @@ spec:
                           type: boolean
                         sizeInGiBs:
                           description: (Updatable) The size of the volume, in GiBs.
-                          type: number
+                          format: int64
+                          type: integer
                         status:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The attachment state of the volume.
@@ -2850,7 +2890,8 @@ spec:
                         throughput:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The throughput that the volume supports, in MiB/s.
-                          type: number
+                          format: int64
+                          type: integer
                         volumeKey:
                           description: (Applicable when asset_type=AWS_EBS) (Updatable)
                             The ID of the volume.
@@ -2993,7 +3034,8 @@ spec:
                                       description: (Applicable when asset_type=AWS_EC2)
                                         (Updatable) The index of the device on the
                                         instance for the network interface attachment.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     isDeleteOnTermination:
                                       description: (Applicable when asset_type=AWS_EBS)
                                         (Updatable) Indicates whether the EBS volume
@@ -3002,7 +3044,8 @@ spec:
                                     networkCardIndex:
                                       description: (Applicable when asset_type=AWS_EC2)
                                         (Updatable) The index of the network card.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     status:
                                       description: (Applicable when asset_type=AWS_EBS)
                                         (Updatable) The attachment state of the volume.
@@ -3174,7 +3217,8 @@ spec:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The number of the partition that the
                                   instance is in.
-                                type: number
+                                format: int64
+                                type: integer
                               spreadDomain:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) Reserved for future use.
@@ -3232,7 +3276,8 @@ spec:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The state of the instance as a 16-bit
                                   unsigned integer.
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The current state of the instance.
@@ -3301,10 +3346,12 @@ spec:
                       properties:
                         connectedNetworks:
                           description: (Updatable) Number of connected networks.
-                          type: number
+                          format: int64
+                          type: integer
                         coresCount:
                           description: (Updatable) Number of CPUs.
-                          type: number
+                          format: int64
+                          type: integer
                         cpuModel:
                           description: (Updatable) CPU model name.
                           type: string
@@ -3319,7 +3366,8 @@ spec:
                             properties:
                               bootOrder:
                                 description: (Updatable) Order of boot volumes.
-                                type: number
+                                format: int64
+                                type: integer
                               isCbtEnabled:
                                 description: (Updatable) Indicates that CBT (change
                                   disk tracking) is enabled for this virtual disk.
@@ -3351,7 +3399,8 @@ spec:
                           type: array
                         disksCount:
                           description: (Updatable) Number of disks.
-                          type: number
+                          format: int64
+                          type: integer
                         dnsName:
                           description: (Updatable) Fully Qualified DNS Name.
                           type: string
@@ -3366,7 +3415,8 @@ spec:
                             properties:
                               coresCount:
                                 description: (Updatable) Number of CPUs.
-                                type: number
+                                format: int64
+                                type: integer
                               description:
                                 description: (Applicable when asset_type=AWS_EC2)
                                   (Updatable) The description.
@@ -3385,7 +3435,8 @@ spec:
                           type: array
                         gpuDevicesCount:
                           description: (Updatable) Number of GPU devices.
-                          type: number
+                          format: int64
+                          type: integer
                         guestState:
                           description: (Updatable) Guest state.
                           type: string
@@ -3440,14 +3491,16 @@ spec:
                           type: array
                         nicsCount:
                           description: (Updatable) Number of network ethernet cards.
-                          type: number
+                          format: int64
+                          type: integer
                         nvdimmController:
                           description: (Updatable) The asset's NVDIMM configuration.
                           items:
                             properties:
                               busNumber:
                                 description: (Updatable) Bus number.
-                                type: number
+                                format: int64
+                                type: integer
                               label:
                                 description: (Updatable) Provides a label and summary
                                   information for the device.
@@ -3461,14 +3514,16 @@ spec:
                             properties:
                               controllerKey:
                                 description: (Updatable) Controller key.
-                                type: number
+                                format: int64
+                                type: integer
                               label:
                                 description: (Updatable) Provides a label and summary
                                   information for the device.
                                 type: string
                               unitNumber:
                                 description: (Updatable) The unit number of NVDIMM.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         operatingSystem:
@@ -3501,7 +3556,8 @@ spec:
                                 type: string
                               unitNumber:
                                 description: (Updatable) The unit number of NVDIMM.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         storageProvisionedInMbs:
@@ -3509,7 +3565,8 @@ spec:
                           type: string
                         threadsPerCoreCount:
                           description: (Updatable) Number of threads per core.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   definedTags:
@@ -3520,7 +3577,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Asset display name.
                     type: string
@@ -3540,7 +3596,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Asset OCID that is immutable on creation.
                     type: string
@@ -3562,7 +3617,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time when the asset was created. An RFC3339 formatted
                       datetime string.
@@ -3637,11 +3691,13 @@ spec:
                         faultToleranceBandwidth:
                           description: (Applicable when asset_type=VMWARE_VM) (Updatable)
                             Fault tolerance bandwidth.
-                          type: number
+                          format: int64
+                          type: integer
                         faultToleranceSecondaryLatency:
                           description: (Applicable when asset_type=VMWARE_VM) (Updatable)
                             Fault tolerance to secondary latency.
-                          type: number
+                          format: int64
+                          type: integer
                         faultToleranceState:
                           description: (Applicable when asset_type=VMWARE_VM) (Updatable)
                             Fault tolerance state.

@@ -20,8 +20,7 @@ type JobConfigurationDetailsInitParameters struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Applicable when job_type=DEFAULT) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// The type of job.
 	JobType *string `json:"jobType,omitempty" tf:"job_type,omitempty"`
@@ -39,8 +38,7 @@ type JobConfigurationDetailsObservation struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Applicable when job_type=DEFAULT) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// The type of job.
 	JobType *string `json:"jobType,omitempty" tf:"job_type,omitempty"`
@@ -60,8 +58,7 @@ type JobConfigurationDetailsParameters struct {
 
 	// (Applicable when job_type=DEFAULT) Environment variables to set for the job.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// The type of job.
 	// +kubebuilder:validation:Optional
@@ -82,16 +79,16 @@ type JobConfigurationDetailsStartupProbeDetailsInitParameters struct {
 	Command []*string `json:"command,omitempty" tf:"command,omitempty"`
 
 	// How many times the job will try before giving up when a probe fails.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// Number of seconds after the job run has started before a startup probe is initiated.
-	InitialDelayInSeconds *float64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
+	InitialDelayInSeconds *int64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
 
 	// The probe check type to perform the startup probe and specifies the type of health check for a job.
 	JobProbeCheckType *string `json:"jobProbeCheckType,omitempty" tf:"job_probe_check_type,omitempty"`
 
 	// Number of seconds how often the job run should perform a startup probe
-	PeriodInSeconds *float64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
+	PeriodInSeconds *int64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
 }
 
 type JobConfigurationDetailsStartupProbeDetailsObservation struct {
@@ -100,16 +97,16 @@ type JobConfigurationDetailsStartupProbeDetailsObservation struct {
 	Command []*string `json:"command,omitempty" tf:"command,omitempty"`
 
 	// How many times the job will try before giving up when a probe fails.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// Number of seconds after the job run has started before a startup probe is initiated.
-	InitialDelayInSeconds *float64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
+	InitialDelayInSeconds *int64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
 
 	// The probe check type to perform the startup probe and specifies the type of health check for a job.
 	JobProbeCheckType *string `json:"jobProbeCheckType,omitempty" tf:"job_probe_check_type,omitempty"`
 
 	// Number of seconds how often the job run should perform a startup probe
-	PeriodInSeconds *float64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
+	PeriodInSeconds *int64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
 }
 
 type JobConfigurationDetailsStartupProbeDetailsParameters struct {
@@ -120,11 +117,11 @@ type JobConfigurationDetailsStartupProbeDetailsParameters struct {
 
 	// How many times the job will try before giving up when a probe fails.
 	// +kubebuilder:validation:Optional
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// Number of seconds after the job run has started before a startup probe is initiated.
 	// +kubebuilder:validation:Optional
-	InitialDelayInSeconds *float64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
+	InitialDelayInSeconds *int64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
 
 	// The probe check type to perform the startup probe and specifies the type of health check for a job.
 	// +kubebuilder:validation:Optional
@@ -132,7 +129,7 @@ type JobConfigurationDetailsStartupProbeDetailsParameters struct {
 
 	// Number of seconds how often the job run should perform a startup probe
 	// +kubebuilder:validation:Optional
-	PeriodInSeconds *float64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
+	PeriodInSeconds *int64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
 }
 
 type JobEnvironmentConfigurationDetailsInitParameters struct {
@@ -207,7 +204,7 @@ type JobEnvironmentConfigurationDetailsParameters struct {
 type JobInfrastructureConfigurationDetailsInitParameters struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance running the job
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The OCID of the compute target.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.ComputeTarget
@@ -290,7 +287,7 @@ type JobInfrastructureConfigurationDetailsJobShapeConfigDetailsParameters struct
 type JobInfrastructureConfigurationDetailsObservation struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance running the job
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The OCID of the compute target.
 	ComputeTargetID *string `json:"computeTargetId,omitempty" tf:"compute_target_id,omitempty"`
@@ -315,7 +312,7 @@ type JobInfrastructureConfigurationDetailsParameters struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance running the job
 	// +kubebuilder:validation:Optional
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The OCID of the compute target.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.ComputeTarget
@@ -412,8 +409,7 @@ type JobInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Delete all related JobRuns upon deletion of the Job.
 	DeleteRelatedJobRuns *bool `json:"deleteRelatedJobRuns,omitempty" tf:"delete_related_job_runs,omitempty"`
@@ -425,8 +421,7 @@ type JobInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The job artifact to upload. This can be done in a separate step or from cli/sdk. The Job will remain in "Creating" state until its artifact is uploaded.
 	JobArtifact *string `json:"jobArtifact,omitempty" tf:"job_artifact,omitempty"`
@@ -672,13 +667,13 @@ type JobNodeGroupConfigurationDetailsListInitParameters struct {
 	JobInfrastructureConfigurationDetails []JobNodeGroupConfigurationDetailsListJobInfrastructureConfigurationDetailsInitParameters `json:"jobInfrastructureConfigurationDetails,omitempty" tf:"job_infrastructure_configuration_details,omitempty"`
 
 	// The minimum threshold of successful replicas for node group to be successful. All replicas need to succeed if this is not specified.
-	MinimumSuccessReplicas *float64 `json:"minimumSuccessReplicas,omitempty" tf:"minimum_success_replicas,omitempty"`
+	MinimumSuccessReplicas *int64 `json:"minimumSuccessReplicas,omitempty" tf:"minimum_success_replicas,omitempty"`
 
 	// node group name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// The number of nodes.
-	Replicas *float64 `json:"replicas,omitempty" tf:"replicas,omitempty"`
+	Replicas *int64 `json:"replicas,omitempty" tf:"replicas,omitempty"`
 }
 
 type JobNodeGroupConfigurationDetailsListJobConfigurationDetailsInitParameters struct {
@@ -687,8 +682,7 @@ type JobNodeGroupConfigurationDetailsListJobConfigurationDetailsInitParameters s
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Applicable when job_type=DEFAULT) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// The type of job.
 	JobType *string `json:"jobType,omitempty" tf:"job_type,omitempty"`
@@ -706,8 +700,7 @@ type JobNodeGroupConfigurationDetailsListJobConfigurationDetailsObservation stru
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Applicable when job_type=DEFAULT) Environment variables to set for the job.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// The type of job.
 	JobType *string `json:"jobType,omitempty" tf:"job_type,omitempty"`
@@ -727,8 +720,7 @@ type JobNodeGroupConfigurationDetailsListJobConfigurationDetailsParameters struc
 
 	// (Applicable when job_type=DEFAULT) Environment variables to set for the job.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// The type of job.
 	// +kubebuilder:validation:Optional
@@ -815,7 +807,7 @@ type JobNodeGroupConfigurationDetailsListJobEnvironmentConfigurationDetailsParam
 type JobNodeGroupConfigurationDetailsListJobInfrastructureConfigurationDetailsInitParameters struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance running the job
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The OCID of the compute target.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.ComputeTarget
@@ -859,7 +851,7 @@ type JobNodeGroupConfigurationDetailsListJobInfrastructureConfigurationDetailsIn
 type JobNodeGroupConfigurationDetailsListJobInfrastructureConfigurationDetailsObservation struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance running the job
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The OCID of the compute target.
 	ComputeTargetID *string `json:"computeTargetId,omitempty" tf:"compute_target_id,omitempty"`
@@ -884,7 +876,7 @@ type JobNodeGroupConfigurationDetailsListJobInfrastructureConfigurationDetailsPa
 
 	// (Updatable) The size of the block storage volume to attach to the instance running the job
 	// +kubebuilder:validation:Optional
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The OCID of the compute target.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/datascience/v1alpha1.ComputeTarget
@@ -943,13 +935,13 @@ type JobNodeGroupConfigurationDetailsListObservation struct {
 	JobInfrastructureConfigurationDetails []JobNodeGroupConfigurationDetailsListJobInfrastructureConfigurationDetailsObservation `json:"jobInfrastructureConfigurationDetails,omitempty" tf:"job_infrastructure_configuration_details,omitempty"`
 
 	// The minimum threshold of successful replicas for node group to be successful. All replicas need to succeed if this is not specified.
-	MinimumSuccessReplicas *float64 `json:"minimumSuccessReplicas,omitempty" tf:"minimum_success_replicas,omitempty"`
+	MinimumSuccessReplicas *int64 `json:"minimumSuccessReplicas,omitempty" tf:"minimum_success_replicas,omitempty"`
 
 	// node group name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// The number of nodes.
-	Replicas *float64 `json:"replicas,omitempty" tf:"replicas,omitempty"`
+	Replicas *int64 `json:"replicas,omitempty" tf:"replicas,omitempty"`
 }
 
 type JobNodeGroupConfigurationDetailsListParameters struct {
@@ -968,7 +960,7 @@ type JobNodeGroupConfigurationDetailsListParameters struct {
 
 	// The minimum threshold of successful replicas for node group to be successful. All replicas need to succeed if this is not specified.
 	// +kubebuilder:validation:Optional
-	MinimumSuccessReplicas *float64 `json:"minimumSuccessReplicas,omitempty" tf:"minimum_success_replicas,omitempty"`
+	MinimumSuccessReplicas *int64 `json:"minimumSuccessReplicas,omitempty" tf:"minimum_success_replicas,omitempty"`
 
 	// node group name.
 	// +kubebuilder:validation:Optional
@@ -976,7 +968,7 @@ type JobNodeGroupConfigurationDetailsListParameters struct {
 
 	// The number of nodes.
 	// +kubebuilder:validation:Optional
-	Replicas *float64 `json:"replicas,omitempty" tf:"replicas,omitempty"`
+	Replicas *int64 `json:"replicas,omitempty" tf:"replicas,omitempty"`
 }
 
 type JobObservation struct {
@@ -998,8 +990,7 @@ type JobObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Delete all related JobRuns upon deletion of the Job.
 	DeleteRelatedJobRuns *bool `json:"deleteRelatedJobRuns,omitempty" tf:"delete_related_job_runs,omitempty"`
@@ -1013,8 +1004,7 @@ type JobObservation struct {
 	EmptyArtifact *bool `json:"emptyArtifact,omitempty" tf:"empty_artifact,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the job.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -1078,8 +1068,7 @@ type JobParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Delete all related JobRuns upon deletion of the Job.
 	// +kubebuilder:validation:Optional
@@ -1095,8 +1084,7 @@ type JobParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The job artifact to upload. This can be done in a separate step or from cli/sdk. The Job will remain in "Creating" state until its artifact is uploaded.
 	// +kubebuilder:validation:Optional
@@ -1370,7 +1358,7 @@ type ResourceConfigurationResourceLimitConfigurationParameters struct {
 type ResourceConfigurationResourceRequestConfigurationInitParameters struct {
 
 	// (Applicable when job_infrastructure_type=MANAGED_COMPUTE_CLUSTER) (Updatable) The total number of gpus required to be allocated to the workload.
-	Gpus *float64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
+	Gpus *int64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
 
 	// (Applicable when job_infrastructure_type=ME_STANDALONE | MULTI_NODE | STANDALONE) (Updatable) The total amount of memory available to the job run instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
@@ -1382,7 +1370,7 @@ type ResourceConfigurationResourceRequestConfigurationInitParameters struct {
 type ResourceConfigurationResourceRequestConfigurationObservation struct {
 
 	// (Applicable when job_infrastructure_type=MANAGED_COMPUTE_CLUSTER) (Updatable) The total number of gpus required to be allocated to the workload.
-	Gpus *float64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
+	Gpus *int64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
 
 	// (Applicable when job_infrastructure_type=ME_STANDALONE | MULTI_NODE | STANDALONE) (Updatable) The total amount of memory available to the job run instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
@@ -1395,7 +1383,7 @@ type ResourceConfigurationResourceRequestConfigurationParameters struct {
 
 	// (Applicable when job_infrastructure_type=MANAGED_COMPUTE_CLUSTER) (Updatable) The total number of gpus required to be allocated to the workload.
 	// +kubebuilder:validation:Optional
-	Gpus *float64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
+	Gpus *int64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
 
 	// (Applicable when job_infrastructure_type=ME_STANDALONE | MULTI_NODE | STANDALONE) (Updatable) The total amount of memory available to the job run instance, in gigabytes.
 	// +kubebuilder:validation:Optional
@@ -1438,7 +1426,7 @@ type ResourceLimitConfigurationParameters struct {
 type ResourceRequestConfigurationInitParameters struct {
 
 	// (Applicable when job_infrastructure_type=MANAGED_COMPUTE_CLUSTER) (Updatable) The total number of gpus required to be allocated to the workload.
-	Gpus *float64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
+	Gpus *int64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
 
 	// (Applicable when job_infrastructure_type=ME_STANDALONE | MULTI_NODE | STANDALONE) (Updatable) The total amount of memory available to the job run instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
@@ -1450,7 +1438,7 @@ type ResourceRequestConfigurationInitParameters struct {
 type ResourceRequestConfigurationObservation struct {
 
 	// (Applicable when job_infrastructure_type=MANAGED_COMPUTE_CLUSTER) (Updatable) The total number of gpus required to be allocated to the workload.
-	Gpus *float64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
+	Gpus *int64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
 
 	// (Applicable when job_infrastructure_type=ME_STANDALONE | MULTI_NODE | STANDALONE) (Updatable) The total amount of memory available to the job run instance, in gigabytes.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
@@ -1463,7 +1451,7 @@ type ResourceRequestConfigurationParameters struct {
 
 	// (Applicable when job_infrastructure_type=MANAGED_COMPUTE_CLUSTER) (Updatable) The total number of gpus required to be allocated to the workload.
 	// +kubebuilder:validation:Optional
-	Gpus *float64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
+	Gpus *int64 `json:"gpus,omitempty" tf:"gpus,omitempty"`
 
 	// (Applicable when job_infrastructure_type=ME_STANDALONE | MULTI_NODE | STANDALONE) (Updatable) The total amount of memory available to the job run instance, in gigabytes.
 	// +kubebuilder:validation:Optional
@@ -1480,16 +1468,16 @@ type StartupProbeDetailsInitParameters struct {
 	Command []*string `json:"command,omitempty" tf:"command,omitempty"`
 
 	// How many times the job will try before giving up when a probe fails.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// Number of seconds after the job run has started before a startup probe is initiated.
-	InitialDelayInSeconds *float64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
+	InitialDelayInSeconds *int64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
 
 	// The probe check type to perform the startup probe and specifies the type of health check for a job.
 	JobProbeCheckType *string `json:"jobProbeCheckType,omitempty" tf:"job_probe_check_type,omitempty"`
 
 	// Number of seconds how often the job run should perform a startup probe
-	PeriodInSeconds *float64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
+	PeriodInSeconds *int64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
 }
 
 type StartupProbeDetailsObservation struct {
@@ -1498,16 +1486,16 @@ type StartupProbeDetailsObservation struct {
 	Command []*string `json:"command,omitempty" tf:"command,omitempty"`
 
 	// How many times the job will try before giving up when a probe fails.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// Number of seconds after the job run has started before a startup probe is initiated.
-	InitialDelayInSeconds *float64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
+	InitialDelayInSeconds *int64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
 
 	// The probe check type to perform the startup probe and specifies the type of health check for a job.
 	JobProbeCheckType *string `json:"jobProbeCheckType,omitempty" tf:"job_probe_check_type,omitempty"`
 
 	// Number of seconds how often the job run should perform a startup probe
-	PeriodInSeconds *float64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
+	PeriodInSeconds *int64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
 }
 
 type StartupProbeDetailsParameters struct {
@@ -1518,11 +1506,11 @@ type StartupProbeDetailsParameters struct {
 
 	// How many times the job will try before giving up when a probe fails.
 	// +kubebuilder:validation:Optional
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// Number of seconds after the job run has started before a startup probe is initiated.
 	// +kubebuilder:validation:Optional
-	InitialDelayInSeconds *float64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
+	InitialDelayInSeconds *int64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
 
 	// The probe check type to perform the startup probe and specifies the type of health check for a job.
 	// +kubebuilder:validation:Optional
@@ -1530,7 +1518,7 @@ type StartupProbeDetailsParameters struct {
 
 	// Number of seconds how often the job run should perform a startup probe
 	// +kubebuilder:validation:Optional
-	PeriodInSeconds *float64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
+	PeriodInSeconds *int64 `json:"periodInSeconds,omitempty" tf:"period_in_seconds,omitempty"`
 }
 
 // JobSpec defines the desired state of Job

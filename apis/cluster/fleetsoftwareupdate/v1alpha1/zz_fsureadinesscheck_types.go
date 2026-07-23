@@ -28,15 +28,13 @@ type FsuReadinessCheckInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the Exadata Fleet Update Readiness Check resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// List of targets that will run the Exadata Fleet Update Readiness Check. The targets have to be of the same entity type.
 	Targets []TargetsInitParameters `json:"targets,omitempty" tf:"targets,omitempty"`
@@ -51,21 +49,19 @@ type FsuReadinessCheckObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the Exadata Fleet Update Readiness Check resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Exadata Fleet Update Readiness Check.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Number of issues found during the Exadata Fleet Update Readiness Check run.
-	IssueCount *float64 `json:"issueCount,omitempty" tf:"issue_count,omitempty"`
+	IssueCount *int64 `json:"issueCount,omitempty" tf:"issue_count,omitempty"`
 
 	// Issues found during the Exadata Fleet Update Readiness Check run.
 	Issues []IssuesObservation `json:"issues,omitempty" tf:"issues,omitempty"`
@@ -77,8 +73,7 @@ type FsuReadinessCheckObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// List of targets that will run the Exadata Fleet Update Readiness Check. The targets have to be of the same entity type.
 	Targets []TargetsObservation `json:"targets,omitempty" tf:"targets,omitempty"`
@@ -113,8 +108,7 @@ type FsuReadinessCheckParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the Exadata Fleet Update Readiness Check resource.
 	// +kubebuilder:validation:Optional
@@ -122,8 +116,7 @@ type FsuReadinessCheckParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// List of targets that will run the Exadata Fleet Update Readiness Check. The targets have to be of the same entity type.
 	// +kubebuilder:validation:Optional

@@ -74,7 +74,8 @@ spec:
               forProvider:
                 properties:
                   actionTrigger:
-                    type: number
+                    format: int64
+                    type: integer
                   dataGuardAction:
                     type: string
                   database:
@@ -536,7 +537,8 @@ spec:
                                   removes old automatic backups that are created before
                                   the window. When the value is updated, it is applied
                                   to all existing automatic backups.
-                                type: number
+                                format: int64
+                                type: integer
                               runImmediateFullBackup:
                                 description: (Applicable when source=NONE) If set
                                   to true, configures automatic full backups in the
@@ -572,7 +574,6 @@ spec:
                             Each key is predefined and scoped to a namespace. For
                             more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         encryptionKeyLocationDetails:
                           description: (Applicable when source=NONE) Types of providers
                             supported for managing database encryption keys
@@ -855,7 +856,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         isActiveDataGuardEnabled:
                           description: (Applicable when source=DATAGUARD) True if
                             active Data Guard is enabled.
@@ -1093,7 +1093,8 @@ spec:
                                       description: The update should be applied on
                                         the database for the selected hour of the
                                         day.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     updateMode:
                                       description: '(Applicable when source=DB_BACKUP
                                         | NONE) Oracle Managed Database Software update
@@ -1314,11 +1315,13 @@ spec:
                               dataStorageSizeInGb:
                                 description: The DATA storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                               recoStorageSizeInGbs:
                                 description: The RECO storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         tdeWalletPasswordSecretRef:
@@ -1677,7 +1680,8 @@ spec:
                   kmsKeyMigration:
                     type: boolean
                   kmsKeyRotation:
-                    type: number
+                    format: int64
+                    type: integer
                   kmsKeyVersionId:
                     description: (Applicable when source=NONE) The OCID of the key
                       container version that is used in database transparent data
@@ -1824,7 +1828,8 @@ spec:
                               hourOfDay:
                                 description: The update should be applied on the database
                                   for the selected hour of the day.
-                                type: number
+                                format: int64
+                                type: integer
                               updateMode:
                                 description: '(Applicable when source=DB_BACKUP |
                                   NONE) Oracle Managed Database Software update method,
@@ -1886,7 +1891,8 @@ spec:
                   autoscaler.
                 properties:
                   actionTrigger:
-                    type: number
+                    format: int64
+                    type: integer
                   dataGuardAction:
                     type: string
                   database:
@@ -2348,7 +2354,8 @@ spec:
                                   removes old automatic backups that are created before
                                   the window. When the value is updated, it is applied
                                   to all existing automatic backups.
-                                type: number
+                                format: int64
+                                type: integer
                               runImmediateFullBackup:
                                 description: (Applicable when source=NONE) If set
                                   to true, configures automatic full backups in the
@@ -2384,7 +2391,6 @@ spec:
                             Each key is predefined and scoped to a namespace. For
                             more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         encryptionKeyLocationDetails:
                           description: (Applicable when source=NONE) Types of providers
                             supported for managing database encryption keys
@@ -2667,7 +2673,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         isActiveDataGuardEnabled:
                           description: (Applicable when source=DATAGUARD) True if
                             active Data Guard is enabled.
@@ -2905,7 +2910,8 @@ spec:
                                       description: The update should be applied on
                                         the database for the selected hour of the
                                         day.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     updateMode:
                                       description: '(Applicable when source=DB_BACKUP
                                         | NONE) Oracle Managed Database Software update
@@ -3126,11 +3132,13 @@ spec:
                               dataStorageSizeInGb:
                                 description: The DATA storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                               recoStorageSizeInGbs:
                                 description: The RECO storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         tdeWalletPasswordSecretRef:
@@ -3489,7 +3497,8 @@ spec:
                   kmsKeyMigration:
                     type: boolean
                   kmsKeyRotation:
-                    type: number
+                    format: int64
+                    type: integer
                   kmsKeyVersionId:
                     description: (Applicable when source=NONE) The OCID of the key
                       container version that is used in database transparent data
@@ -3636,7 +3645,8 @@ spec:
                               hourOfDay:
                                 description: The update should be applied on the database
                                   for the selected hour of the day.
-                                type: number
+                                format: int64
+                                type: integer
                               updateMode:
                                 description: '(Applicable when source=DB_BACKUP |
                                   NONE) Oracle Managed Database Software update method,
@@ -3787,7 +3797,8 @@ spec:
               atProvider:
                 properties:
                   actionTrigger:
-                    type: number
+                    format: int64
+                    type: integer
                   characterSet:
                     description: '(Applicable when source=NONE) The character set
                       for the database.  The default is AL32UTF8. Allowed values are:'
@@ -3806,7 +3817,6 @@ spec:
                           description: All connection strings to use to connect to
                             the Database.
                           type: object
-                          x-kubernetes-map-type: granular
                         cdbDefault:
                           description: Host name based CDB Connection String.
                           type: string
@@ -4060,7 +4070,8 @@ spec:
                                   removes old automatic backups that are created before
                                   the window. When the value is updated, it is applied
                                   to all existing automatic backups.
-                                type: number
+                                format: int64
+                                type: integer
                               runImmediateFullBackup:
                                 description: (Applicable when source=NONE) If set
                                   to true, configures automatic full backups in the
@@ -4096,7 +4107,6 @@ spec:
                             Each key is predefined and scoped to a namespace. For
                             more information, see Resource Tags.
                           type: object
-                          x-kubernetes-map-type: granular
                         encryptionKeyLocationDetails:
                           description: (Applicable when source=NONE) Types of providers
                             supported for managing database encryption keys
@@ -4133,7 +4143,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         isActiveDataGuardEnabled:
                           description: (Applicable when source=DATAGUARD) True if
                             active Data Guard is enabled.
@@ -4221,7 +4230,8 @@ spec:
                                       description: The update should be applied on
                                         the database for the selected hour of the
                                         day.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     updateMode:
                                       description: '(Applicable when source=DB_BACKUP
                                         | NONE) Oracle Managed Database Software update
@@ -4330,15 +4340,18 @@ spec:
                               dataStorageSizeInGb:
                                 description: The DATA storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                               recoStorageSizeInGbs:
                                 description: The RECO storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                               redoLogStorageSizeInGbs:
                                 description: The REDO Log storage size, in gigabytes,
                                   that is applicable for the database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         timeStampForPointInTimeRecovery:
@@ -4506,7 +4519,8 @@ spec:
                             backup has been created, Oracle removes old automatic
                             backups that are created before the window. When the value
                             is updated, it is applied to all existing automatic backups.
-                          type: number
+                          format: int64
+                          type: integer
                         runImmediateFullBackup:
                           description: (Applicable when source=NONE) If set to true,
                             configures automatic full backups in the local region
@@ -4552,7 +4566,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -4561,7 +4574,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: (Applicable when source=NONE) The OCID of the backup
                       destination.
@@ -4584,7 +4596,8 @@ spec:
                   kmsKeyMigration:
                     type: boolean
                   kmsKeyRotation:
-                    type: number
+                    format: int64
+                    type: integer
                   kmsKeyVersionId:
                     description: (Applicable when source=NONE) The OCID of the key
                       container version that is used in database transparent data
@@ -4596,7 +4609,8 @@ spec:
                     type: string
                   lastBackupDurationInSeconds:
                     description: The duration when the latest database backup created.
-                    type: number
+                    format: int64
+                    type: integer
                   lastBackupTimestamp:
                     description: The date and time when the latest database backup
                       was created.
@@ -4672,7 +4686,8 @@ spec:
                               hourOfDay:
                                 description: The update should be applied on the database
                                   for the selected hour of the day.
-                                type: number
+                                format: int64
+                                type: integer
                               updateMode:
                                 description: '(Applicable when source=DB_BACKUP |
                                   NONE) Oracle Managed Database Software update method,
@@ -4745,15 +4760,18 @@ spec:
                         dataStorageSizeInGb:
                           description: The DATA storage size, in gigabytes, that is
                             applicable for the database.
-                          type: number
+                          format: int64
+                          type: integer
                         recoStorageSizeInGbs:
                           description: The RECO storage size, in gigabytes, that is
                             applicable for the database.
-                          type: number
+                          format: int64
+                          type: integer
                         redoLogStorageSizeInGbs:
                           description: The REDO Log storage size, in gigabytes, that
                             is applicable for the database.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   systemTags:
@@ -4763,7 +4781,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the database was created.
                     type: string

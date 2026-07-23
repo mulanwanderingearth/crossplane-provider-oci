@@ -35,8 +35,7 @@ type BlockchainPlatformInitParameters struct {
 	ComputeShape *string `json:"computeShape,omitempty" tf:"compute_shape,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Platform Instance Description
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -58,8 +57,7 @@ type BlockchainPlatformInitParameters struct {
 	FederatedUserIDSelector *v1.NamespacedSelector `json:"federatedUserIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// IDCS access token with Identity Domain Administrator role
 	IdcsAccessTokenSecretRef v1.LocalSecretKeySelector `json:"idcsAccessTokenSecretRef" tf:"-"`
@@ -83,7 +81,7 @@ type BlockchainPlatformInitParameters struct {
 	StorageSizeInTbs *float64 `json:"storageSizeInTbs,omitempty" tf:"storage_size_in_tbs,omitempty"`
 
 	// Number of total OCPUs allocated to the platform cluster
-	TotalOcpuCapacity *float64 `json:"totalOcpuCapacity,omitempty" tf:"total_ocpu_capacity,omitempty"`
+	TotalOcpuCapacity *int64 `json:"totalOcpuCapacity,omitempty" tf:"total_ocpu_capacity,omitempty"`
 }
 
 type BlockchainPlatformObservation struct {
@@ -101,8 +99,7 @@ type BlockchainPlatformObservation struct {
 	ComputeShape *string `json:"computeShape,omitempty" tf:"compute_shape,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Platform Instance Description
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -114,8 +111,7 @@ type BlockchainPlatformObservation struct {
 	FederatedUserID *string `json:"federatedUserId,omitempty" tf:"federated_user_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// List of OcpuUtilization for all hosts
 	HostOcpuUtilizationInfo []HostOcpuUtilizationInfoObservation `json:"hostOcpuUtilizationInfo,omitempty" tf:"host_ocpu_utilization_info,omitempty"`
@@ -169,7 +165,7 @@ type BlockchainPlatformObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// Number of total OCPUs allocated to the platform cluster
-	TotalOcpuCapacity *float64 `json:"totalOcpuCapacity,omitempty" tf:"total_ocpu_capacity,omitempty"`
+	TotalOcpuCapacity *int64 `json:"totalOcpuCapacity,omitempty" tf:"total_ocpu_capacity,omitempty"`
 }
 
 type BlockchainPlatformParameters struct {
@@ -197,8 +193,7 @@ type BlockchainPlatformParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Platform Instance Description
 	// +kubebuilder:validation:Optional
@@ -224,8 +219,7 @@ type BlockchainPlatformParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// IDCS access token with Identity Domain Administrator role
 	// +kubebuilder:validation:Optional
@@ -257,7 +251,7 @@ type BlockchainPlatformParameters struct {
 
 	// Number of total OCPUs allocated to the platform cluster
 	// +kubebuilder:validation:Optional
-	TotalOcpuCapacity *float64 `json:"totalOcpuCapacity,omitempty" tf:"total_ocpu_capacity,omitempty"`
+	TotalOcpuCapacity *int64 `json:"totalOcpuCapacity,omitempty" tf:"total_ocpu_capacity,omitempty"`
 }
 
 type ComponentDetailsInitParameters struct {
@@ -371,40 +365,40 @@ type PeersParameters struct {
 type ReplicasInitParameters struct {
 
 	// Number of CA replicas
-	CACount *float64 `json:"caCount,omitempty" tf:"ca_count,omitempty"`
+	CACount *int64 `json:"caCount,omitempty" tf:"ca_count,omitempty"`
 
 	// Number of console replicas
-	ConsoleCount *float64 `json:"consoleCount,omitempty" tf:"console_count,omitempty"`
+	ConsoleCount *int64 `json:"consoleCount,omitempty" tf:"console_count,omitempty"`
 
 	// Number of REST proxy replicas
-	ProxyCount *float64 `json:"proxyCount,omitempty" tf:"proxy_count,omitempty"`
+	ProxyCount *int64 `json:"proxyCount,omitempty" tf:"proxy_count,omitempty"`
 }
 
 type ReplicasObservation struct {
 
 	// Number of CA replicas
-	CACount *float64 `json:"caCount,omitempty" tf:"ca_count,omitempty"`
+	CACount *int64 `json:"caCount,omitempty" tf:"ca_count,omitempty"`
 
 	// Number of console replicas
-	ConsoleCount *float64 `json:"consoleCount,omitempty" tf:"console_count,omitempty"`
+	ConsoleCount *int64 `json:"consoleCount,omitempty" tf:"console_count,omitempty"`
 
 	// Number of REST proxy replicas
-	ProxyCount *float64 `json:"proxyCount,omitempty" tf:"proxy_count,omitempty"`
+	ProxyCount *int64 `json:"proxyCount,omitempty" tf:"proxy_count,omitempty"`
 }
 
 type ReplicasParameters struct {
 
 	// Number of CA replicas
 	// +kubebuilder:validation:Optional
-	CACount *float64 `json:"caCount,omitempty" tf:"ca_count,omitempty"`
+	CACount *int64 `json:"caCount,omitempty" tf:"ca_count,omitempty"`
 
 	// Number of console replicas
 	// +kubebuilder:validation:Optional
-	ConsoleCount *float64 `json:"consoleCount,omitempty" tf:"console_count,omitempty"`
+	ConsoleCount *int64 `json:"consoleCount,omitempty" tf:"console_count,omitempty"`
 
 	// Number of REST proxy replicas
 	// +kubebuilder:validation:Optional
-	ProxyCount *float64 `json:"proxyCount,omitempty" tf:"proxy_count,omitempty"`
+	ProxyCount *int64 `json:"proxyCount,omitempty" tf:"proxy_count,omitempty"`
 }
 
 // BlockchainPlatformSpec defines the desired state of BlockchainPlatform

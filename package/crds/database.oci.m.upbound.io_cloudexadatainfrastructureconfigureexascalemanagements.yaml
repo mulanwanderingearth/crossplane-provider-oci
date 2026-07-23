@@ -149,9 +149,11 @@ spec:
                     type: object
                   totalStorageInGbs:
                     description: Storage size needed for Exascale in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   totalVmStorageInGbs:
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -253,9 +255,11 @@ spec:
                     type: object
                   totalStorageInGbs:
                     description: Storage size needed for Exascale in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   totalVmStorageInGbs:
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -331,11 +335,13 @@ spec:
                   activatedStorageCount:
                     description: The requested number of additional storage servers
                       activated for the Exadata infrastructure.
-                    type: number
+                    format: int64
+                    type: integer
                   additionalStorageCount:
                     description: The requested number of additional storage servers
                       for the Exadata infrastructure.
-                    type: number
+                    format: int64
+                    type: integer
                   availabilityDomain:
                     description: The name of the availability domain that the cloud
                       Exadata infrastructure resource is located in.
@@ -343,7 +349,8 @@ spec:
                   availableStorageSizeInGbs:
                     description: The available storage can be allocated to the cloud
                       Exadata infrastructure resource, in gigabytes (GB).
-                    type: number
+                    format: int64
+                    type: integer
                   cloudExadataInfrastructureId:
                     description: The cloud Exadata infrastructure OCID.
                     type: string
@@ -357,10 +364,12 @@ spec:
                   computeCount:
                     description: The number of compute servers for the cloud Exadata
                       infrastructure.
-                    type: number
+                    format: int64
+                    type: integer
                   cpuCount:
                     description: The total number of CPU cores allocated.
-                    type: number
+                    format: int64
+                    type: integer
                   customerContacts:
                     description: The list of customer email addresses that receive
                       information from Oracle about the specified Oracle Cloud Infrastructure
@@ -383,7 +392,8 @@ spec:
                     type: number
                   dbNodeStorageSizeInGbs:
                     description: The local node storage allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServerVersion:
                     description: 'The software version of the database servers (dom0)
                       in the cloud Exadata infrastructure. Example: 20.1.15'
@@ -404,7 +414,8 @@ spec:
                           type: boolean
                         minSizeGb:
                           description: The minimum size of file system.
-                          type: number
+                          format: int64
+                          type: integer
                         mountPoint:
                           description: The mount point of file system.
                           type: string
@@ -417,7 +428,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the cloud Exadata infrastructure
                       resource. The name does not need to be unique.
@@ -431,14 +441,18 @@ spec:
                       properties:
                         availableStorageInGbs:
                           description: Available storage size for Exascale in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         availableVmStorageInGbs:
-                          type: number
+                          format: int64
+                          type: integer
                         totalStorageInGbs:
                           description: Storage size needed for Exascale in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         totalVmStorageInGbs:
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   freeformTags:
@@ -449,7 +463,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the cloud Exadata infrastructure resource.
                     type: string
@@ -475,7 +488,8 @@ spec:
                             wait before the start of each database server patching
                             operation. Custom action timeout is in minutes and valid
                             value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: Days during the week when maintenance should
                             be performed.
@@ -495,7 +509,8 @@ spec:
                             12:00 - 15:59 UTC - 16 - represents time slot 16:00 -
                             19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: If true, enables the configuration of a custom
@@ -509,7 +524,8 @@ spec:
                           description: Lead time window allows user to set a lead
                             time to prepare for a down time. The lead time is in weeks
                             and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: Months during the year when maintenance should
                             be performed.
@@ -551,25 +567,30 @@ spec:
                             to specify specific days of the week and hours that maintenance
                             will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
                   maxCpuCount:
                     description: The total number of CPU cores available.
-                    type: number
+                    format: int64
+                    type: integer
                   maxDataStorageInTbs:
                     description: The total available DATA disk group size.
                     type: number
                   maxDbNodeStorageInGbs:
                     description: The total local node storage available in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   maxMemoryInGbs:
                     description: The total memory available in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   memorySizeInGbs:
                     description: The memory allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   monthlyDbServerVersion:
                     description: 'The monthly software version of the database servers
                       (dom0) in the cloud Exadata infrastructure. Example: 20.1.15'
@@ -592,7 +613,8 @@ spec:
                   storageCount:
                     description: The number of storage servers for the cloud Exadata
                       infrastructure.
-                    type: number
+                    format: int64
+                    type: integer
                   storageServerVersion:
                     description: 'The software version of the storage servers (cells)
                       in the cloud Exadata infrastructure. Example: 20.1.15'
@@ -608,20 +630,22 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the cloud Exadata infrastructure
                       resource was created.
                     type: string
                   totalStorageInGbs:
                     description: Storage size needed for Exascale in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   totalStorageSizeInGbs:
                     description: The total storage allocated to the cloud Exadata
                       infrastructure resource, in gigabytes (GB).
-                    type: number
+                    format: int64
+                    type: integer
                   totalVmStorageInGbs:
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

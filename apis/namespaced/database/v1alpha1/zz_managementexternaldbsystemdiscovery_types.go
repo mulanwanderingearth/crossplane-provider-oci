@@ -56,7 +56,7 @@ type ClusterInstancesConnectorConnectionInfoConnectionStringObservation struct {
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// The port used to connect to the ASM instance.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -272,7 +272,7 @@ type DiscoveredComponentsEndpointsObservation struct {
 	Key *string `json:"key,omitempty" tf:"key,omitempty"`
 
 	// The port used to connect to the ASM instance.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -326,7 +326,7 @@ type DiscoveredComponentsPluggableDatabasesConnectorConnectionInfoConnectionStri
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// The port used to connect to the ASM instance.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -452,7 +452,7 @@ type ManagementExternalDbSystemDiscoveryDiscoveredComponentsConnectorConnectionI
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// The port used to connect to the ASM instance.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -524,7 +524,7 @@ type ManagementExternalDbSystemDiscoveryDiscoveredComponentsNetworkConfiguration
 type ManagementExternalDbSystemDiscoveryDiscoveredComponentsNetworkConfigurationsObservation struct {
 
 	// The network number.
-	NetworkNumber *float64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
+	NetworkNumber *int64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
 
 	// The network type.
 	NetworkType *string `json:"networkType,omitempty" tf:"network_type,omitempty"`
@@ -699,13 +699,13 @@ type ManagementExternalDbSystemDiscoveryDiscoveredComponentsScanConfigurationsIn
 type ManagementExternalDbSystemDiscoveryDiscoveredComponentsScanConfigurationsObservation struct {
 
 	// The network number.
-	NetworkNumber *float64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
+	NetworkNumber *int64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
 
 	// The name of the SCAN listener.
 	ScanName *string `json:"scanName,omitempty" tf:"scan_name,omitempty"`
 
 	// The port number of the SCAN listener.
-	ScanPort *float64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
+	ScanPort *int64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
 
 	// The protocol of the SCAN listener.
 	ScanProtocol *string `json:"scanProtocol,omitempty" tf:"scan_protocol,omitempty"`
@@ -723,7 +723,7 @@ type ManagementExternalDbSystemDiscoveryDiscoveredComponentsVipConfigurationsObs
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
 	// The network number.
-	NetworkNumber *float64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
+	NetworkNumber *int64 `json:"networkNumber,omitempty" tf:"network_number,omitempty"`
 
 	// The name of the DB instance node.
 	NodeName *string `json:"nodeName,omitempty" tf:"node_name,omitempty"`
@@ -760,15 +760,13 @@ type ManagementExternalDbSystemDiscoveryInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the DB system. The name does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable)
 	PatchOperations []ManagementExternalDbSystemDiscoveryPatchOperationsInitParameters `json:"patchOperations,omitempty" tf:"patch_operations,omitempty"`
@@ -783,8 +781,7 @@ type ManagementExternalDbSystemDiscoveryObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The list of DB system components that were found in the DB system discovery.
 	DiscoveredComponents []ManagementExternalDbSystemDiscoveryDiscoveredComponentsObservation `json:"discoveredComponents,omitempty" tf:"discovered_components,omitempty"`
@@ -795,8 +792,7 @@ type ManagementExternalDbSystemDiscoveryObservation struct {
 	ExternalDBSystemDiscoveryID *string `json:"externalDbSystemDiscoveryId,omitempty" tf:"external_db_system_discovery_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The directory in which ASM is installed. This is the same directory in which Oracle Grid Infrastructure is installed.
 	GridHome *string `json:"gridHome,omitempty" tf:"grid_home,omitempty"`
@@ -817,8 +813,7 @@ type ManagementExternalDbSystemDiscoveryObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the external DB system discovery was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -858,8 +853,7 @@ type ManagementExternalDbSystemDiscoveryParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name for the DB system. The name does not have to be unique.
 	// +kubebuilder:validation:Optional
@@ -867,8 +861,7 @@ type ManagementExternalDbSystemDiscoveryParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
@@ -992,7 +985,7 @@ type PatchOperationsValueConnectorConnectionInfoConnectionStringInitParameters s
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// The port used to connect to the ASM instance.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -1010,7 +1003,7 @@ type PatchOperationsValueConnectorConnectionInfoConnectionStringObservation stru
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// The port used to connect to the ASM instance.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -1031,7 +1024,7 @@ type PatchOperationsValueConnectorConnectionInfoConnectionStringParameters struc
 
 	// The port used to connect to the ASM instance.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	// +kubebuilder:validation:Optional

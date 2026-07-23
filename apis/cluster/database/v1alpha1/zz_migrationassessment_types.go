@@ -164,8 +164,7 @@ type MigrationAssessmentInitParameters struct {
 	DdlExpectation *string `json:"ddlExpectation,omitempty" tf:"ddl_expectation,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Does not have to be unique, and it's changeable.  Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -177,8 +176,7 @@ type MigrationAssessmentInitParameters struct {
 	ExcludeObjects []ExcludeObjectsInitParameters `json:"excludeObjects,omitempty" tf:"exclude_objects,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Database objects to include from migration, cannot be specified alongside 'excludeObjects'
 	IncludeObjects []IncludeObjectsInitParameters `json:"includeObjects,omitempty" tf:"include_objects,omitempty"`
@@ -220,8 +218,7 @@ type MigrationAssessmentObservation struct {
 	DdlExpectation *string `json:"ddlExpectation,omitempty" tf:"ddl_expectation,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Does not have to be unique, and it's changeable.  Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -233,8 +230,7 @@ type MigrationAssessmentObservation struct {
 	ExcludeObjects []ExcludeObjectsObservation `json:"excludeObjects,omitempty" tf:"exclude_objects,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the resource being referenced.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -258,8 +254,7 @@ type MigrationAssessmentObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) Target Assessment Connection object
 	TargetDatabaseConnection []TargetDatabaseConnectionObservation `json:"targetDatabaseConnection,omitempty" tf:"target_database_connection,omitempty"`
@@ -312,8 +307,7 @@ type MigrationAssessmentParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Does not have to be unique, and it's changeable.  Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -329,8 +323,7 @@ type MigrationAssessmentParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Database objects to include from migration, cannot be specified alongside 'excludeObjects'
 	// +kubebuilder:validation:Optional

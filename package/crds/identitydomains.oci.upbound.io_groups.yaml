@@ -281,7 +281,8 @@ spec:
                         gidNumber:
                           description: (Updatable) Integer uniquely identifying a
                             group in a POSIX administrative domain
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   urnietfparamsscimschemasoracleidcsextensionrequestableGroup:
@@ -517,7 +518,8 @@ spec:
                         gidNumber:
                           description: (Updatable) Integer uniquely identifying a
                             group in a POSIX administrative domain
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   urnietfparamsscimschemasoracleidcsextensionrequestableGroup:
@@ -1114,7 +1116,8 @@ spec:
                                 type: string
                               priority:
                                 description: (Updatable) PasswordPolicy priority
-                                type: number
+                                format: int64
+                                type: integer
                               ref:
                                 description: (Updatable) The URI of the SCIM resource
                                   that represents the User or App who created this
@@ -1160,7 +1163,8 @@ spec:
                         gidNumber:
                           description: (Updatable) Integer uniquely identifying a
                             group in a POSIX administrative domain
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   urnietfparamsscimschemasoracleidcsextensionrequestableGroup:

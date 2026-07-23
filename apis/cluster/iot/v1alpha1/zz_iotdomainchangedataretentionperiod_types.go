@@ -16,7 +16,7 @@ import (
 type IotDomainChangeDataRetentionPeriodInitParameters struct {
 
 	// The duration (in days) for which data will be retained in the IoT domain.
-	DataRetentionPeriodInDays *float64 `json:"dataRetentionPeriodInDays,omitempty" tf:"data_retention_period_in_days,omitempty"`
+	DataRetentionPeriodInDays *int64 `json:"dataRetentionPeriodInDays,omitempty" tf:"data_retention_period_in_days,omitempty"`
 
 	// The OCID of the IoT domain.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/iot/v1alpha1.IotDomain
@@ -38,7 +38,7 @@ type IotDomainChangeDataRetentionPeriodInitParameters struct {
 type IotDomainChangeDataRetentionPeriodObservation struct {
 
 	// The duration (in days) for which data will be retained in the IoT domain.
-	DataRetentionPeriodInDays *float64 `json:"dataRetentionPeriodInDays,omitempty" tf:"data_retention_period_in_days,omitempty"`
+	DataRetentionPeriodInDays *int64 `json:"dataRetentionPeriodInDays,omitempty" tf:"data_retention_period_in_days,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -53,7 +53,7 @@ type IotDomainChangeDataRetentionPeriodParameters struct {
 
 	// The duration (in days) for which data will be retained in the IoT domain.
 	// +kubebuilder:validation:Optional
-	DataRetentionPeriodInDays *float64 `json:"dataRetentionPeriodInDays,omitempty" tf:"data_retention_period_in_days,omitempty"`
+	DataRetentionPeriodInDays *int64 `json:"dataRetentionPeriodInDays,omitempty" tf:"data_retention_period_in_days,omitempty"`
 
 	// The OCID of the IoT domain.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/iot/v1alpha1.IotDomain

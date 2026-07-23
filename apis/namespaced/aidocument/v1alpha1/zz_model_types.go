@@ -83,13 +83,13 @@ type DatasetSummaryInitParameters struct {
 type DatasetSummaryObservation struct {
 
 	// Number of samples used for testing the model.
-	TestSampleCount *float64 `json:"testSampleCount,omitempty" tf:"test_sample_count,omitempty"`
+	TestSampleCount *int64 `json:"testSampleCount,omitempty" tf:"test_sample_count,omitempty"`
 
 	// Number of samples used for training the model.
-	TrainingSampleCount *float64 `json:"trainingSampleCount,omitempty" tf:"training_sample_count,omitempty"`
+	TrainingSampleCount *int64 `json:"trainingSampleCount,omitempty" tf:"training_sample_count,omitempty"`
 
 	// Number of samples used for validating the model.
-	ValidationSampleCount *float64 `json:"validationSampleCount,omitempty" tf:"validation_sample_count,omitempty"`
+	ValidationSampleCount *int64 `json:"validationSampleCount,omitempty" tf:"validation_sample_count,omitempty"`
 }
 
 type DatasetSummaryParameters struct {
@@ -104,7 +104,7 @@ type LabelMetricsReportObservation struct {
 	ConfidenceEntries []ConfidenceEntriesObservation `json:"confidenceEntries,omitempty" tf:"confidence_entries,omitempty"`
 
 	// Total test documents in the label.
-	DocumentCount *float64 `json:"documentCount,omitempty" tf:"document_count,omitempty"`
+	DocumentCount *int64 `json:"documentCount,omitempty" tf:"document_count,omitempty"`
 
 	// Label name
 	Label *string `json:"label,omitempty" tf:"label,omitempty"`
@@ -214,8 +214,7 @@ type ModelInitParameters struct {
 	ComponentModels []ComponentModelsInitParameters `json:"componentModels,omitempty" tf:"component_models,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the model.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -224,11 +223,10 @@ type ModelInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Number of replicas required for this model.
-	InferenceUnits *float64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
+	InferenceUnits *int64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
 
 	// Set to true when experimenting with a new model type or dataset, so the model training is quick, with a predefined low number of passes through the training data.
 	IsQuickMode *bool `json:"isQuickMode,omitempty" tf:"is_quick_mode,omitempty"`
@@ -286,8 +284,7 @@ type ModelObservation struct {
 	ComponentModels []ComponentModelsObservation `json:"componentModels,omitempty" tf:"component_models,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the model.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -296,14 +293,13 @@ type ModelObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A unique identifier that is immutable after creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) Number of replicas required for this model.
-	InferenceUnits *float64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
+	InferenceUnits *int64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
 
 	// Set to true when the model is created by using multiple key value extraction models.
 	IsComposedModel *bool `json:"isComposedModel,omitempty" tf:"is_composed_model,omitempty"`
@@ -348,8 +344,7 @@ type ModelObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. For example: {"orcl-cloud": {"free-tier-retained": "true"}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The tenancy id of the model.
 	TenancyID *string `json:"tenancyId,omitempty" tf:"tenancy_id,omitempty"`
@@ -394,8 +389,7 @@ type ModelParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the model.
 	// +kubebuilder:validation:Optional
@@ -407,12 +401,11 @@ type ModelParameters struct {
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Number of replicas required for this model.
 	// +kubebuilder:validation:Optional
-	InferenceUnits *float64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
+	InferenceUnits *int64 `json:"inferenceUnits,omitempty" tf:"inference_units,omitempty"`
 
 	// Set to true when experimenting with a new model type or dataset, so the model training is quick, with a predefined low number of passes through the training data.
 	// +kubebuilder:validation:Optional
@@ -535,7 +528,7 @@ type OverallMetricsReportObservation struct {
 	ConfidenceEntries []OverallMetricsReportConfidenceEntriesObservation `json:"confidenceEntries,omitempty" tf:"confidence_entries,omitempty"`
 
 	// Total test documents in the label.
-	DocumentCount *float64 `json:"documentCount,omitempty" tf:"document_count,omitempty"`
+	DocumentCount *int64 `json:"documentCount,omitempty" tf:"document_count,omitempty"`
 
 	// Mean average precision under different thresholds
 	MeanAveragePrecision *float64 `json:"meanAveragePrecision,omitempty" tf:"mean_average_precision,omitempty"`

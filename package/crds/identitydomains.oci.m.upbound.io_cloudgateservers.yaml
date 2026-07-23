@@ -121,7 +121,8 @@ spec:
                     type: string
                   port:
                     description: (Updatable) Port for the Server Block
-                    type: number
+                    format: int64
+                    type: integer
                   resourceTypeSchemaVersion:
                     description: (Updatable) An endpoint-specific schema version number
                       to use in the Request. Allowed version values are Earliest Version
@@ -236,7 +237,8 @@ spec:
                     type: string
                   port:
                     description: (Updatable) Port for the Server Block
-                    type: number
+                    format: int64
+                    type: integer
                   resourceTypeSchemaVersion:
                     description: (Updatable) An endpoint-specific schema version number
                       to use in the Request. Allowed version values are Earliest Version
@@ -558,7 +560,8 @@ spec:
                     type: string
                   port:
                     description: (Updatable) Port for the Server Block
-                    type: number
+                    format: int64
+                    type: integer
                   resourceTypeSchemaVersion:
                     description: (Updatable) An endpoint-specific schema version number
                       to use in the Request. Allowed version values are Earliest Version

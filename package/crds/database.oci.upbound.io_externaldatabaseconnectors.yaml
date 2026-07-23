@@ -219,7 +219,8 @@ spec:
                         port:
                           description: (Updatable) The port used to connect to the
                             database.
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: (Updatable) The protocol used to connect to
                             the database.
@@ -245,7 +246,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the external
                       database connector. The name does not have to be unique.
@@ -335,7 +335,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -494,7 +493,8 @@ spec:
                         port:
                           description: (Updatable) The port used to connect to the
                             database.
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: (Updatable) The protocol used to connect to
                             the database.
@@ -520,7 +520,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the external
                       database connector. The name does not have to be unique.
@@ -610,7 +609,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -779,7 +777,8 @@ spec:
                         port:
                           description: (Updatable) The port used to connect to the
                             database.
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: (Updatable) The protocol used to connect to
                             the database.
@@ -805,7 +804,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the external
                       database connector. The name does not have to be unique.
@@ -821,7 +819,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the external database connector.
                     type: string
@@ -840,7 +837,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeConnectionStatusLastUpdated:
                     description: The date and time the connectionStatus of this external
                       connector was last updated.

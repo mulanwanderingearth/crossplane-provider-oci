@@ -82,7 +82,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   fusionEnvironmentId:
                     description: unique FusionEnvironment identifier
                     type: string
@@ -263,7 +262,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   fusionEnvironmentId:
                     description: unique FusionEnvironment identifier
                     type: string
@@ -533,7 +531,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: Service Attachment Display name, can be renamed
                     type: string
@@ -544,7 +541,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   fusionEnvironmentId:
                     description: unique FusionEnvironment identifier
                     type: string

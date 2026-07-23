@@ -204,7 +204,7 @@ type PrivateSourceScanHostsInitParameters struct {
 	ScanHostname *string `json:"scanHostname,omitempty" tf:"scan_hostname,omitempty"`
 
 	// (Updatable) Private Source Scan host port. This is the source port where SCAN protocol will get connected (e.g. 1521).
-	ScanPort *float64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
+	ScanPort *int64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
 }
 
 type PrivateSourceScanHostsObservation struct {
@@ -216,7 +216,7 @@ type PrivateSourceScanHostsObservation struct {
 	ScanHostname *string `json:"scanHostname,omitempty" tf:"scan_hostname,omitempty"`
 
 	// (Updatable) Private Source Scan host port. This is the source port where SCAN protocol will get connected (e.g. 1521).
-	ScanPort *float64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
+	ScanPort *int64 `json:"scanPort,omitempty" tf:"scan_port,omitempty"`
 }
 
 type PrivateSourceScanHostsParameters struct {
@@ -231,7 +231,7 @@ type PrivateSourceScanHostsParameters struct {
 
 	// (Updatable) Private Source Scan host port. This is the source port where SCAN protocol will get connected (e.g. 1521).
 	// +kubebuilder:validation:Optional
-	ScanPort *float64 `json:"scanPort" tf:"scan_port,omitempty"`
+	ScanPort *int64 `json:"scanPort" tf:"scan_port,omitempty"`
 }
 
 // AnalyticsInstancePrivateAccessChannelSpec defines the desired state of AnalyticsInstancePrivateAccessChannel

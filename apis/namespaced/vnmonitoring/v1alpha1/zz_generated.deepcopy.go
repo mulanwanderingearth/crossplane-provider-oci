@@ -417,7 +417,7 @@ func (in *PathAnalysiInitParameters) DeepCopyInto(out *PathAnalysiInitParameters
 	}
 	if in.Protocol != nil {
 		in, out := &in.Protocol, &out.Protocol
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ProtocolParameters != nil {
@@ -522,7 +522,7 @@ func (in *PathAnalysiObservation) DeepCopyInto(out *PathAnalysiObservation) {
 	}
 	if in.Protocol != nil {
 		in, out := &in.Protocol, &out.Protocol
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ProtocolParameters != nil {
@@ -600,7 +600,7 @@ func (in *PathAnalysiParameters) DeepCopyInto(out *PathAnalysiParameters) {
 	}
 	if in.Protocol != nil {
 		in, out := &in.Protocol, &out.Protocol
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ProtocolParameters != nil {
@@ -681,22 +681,22 @@ func (in *ProtocolParametersInitParameters) DeepCopyInto(out *ProtocolParameters
 	*out = *in
 	if in.DestinationPort != nil {
 		in, out := &in.DestinationPort, &out.DestinationPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IcmpCode != nil {
 		in, out := &in.IcmpCode, &out.IcmpCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IcmpType != nil {
 		in, out := &in.IcmpType, &out.IcmpType
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SourcePort != nil {
 		in, out := &in.SourcePort, &out.SourcePort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Type != nil {
@@ -721,22 +721,22 @@ func (in *ProtocolParametersObservation) DeepCopyInto(out *ProtocolParametersObs
 	*out = *in
 	if in.DestinationPort != nil {
 		in, out := &in.DestinationPort, &out.DestinationPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IcmpCode != nil {
 		in, out := &in.IcmpCode, &out.IcmpCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IcmpType != nil {
 		in, out := &in.IcmpType, &out.IcmpType
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SourcePort != nil {
 		in, out := &in.SourcePort, &out.SourcePort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Type != nil {
@@ -761,22 +761,22 @@ func (in *ProtocolParametersParameters) DeepCopyInto(out *ProtocolParametersPara
 	*out = *in
 	if in.DestinationPort != nil {
 		in, out := &in.DestinationPort, &out.DestinationPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IcmpCode != nil {
 		in, out := &in.IcmpCode, &out.IcmpCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IcmpType != nil {
 		in, out := &in.IcmpType, &out.IcmpType
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SourcePort != nil {
 		in, out := &in.SourcePort, &out.SourcePort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Type != nil {

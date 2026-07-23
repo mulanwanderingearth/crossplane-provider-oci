@@ -36,7 +36,7 @@ type BdsInstanceResourcePrincipalConfigurationInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Force Refresh Resource Principal. Could be set to any integer value.
-	ForceRefreshResourcePrincipalTrigger *float64 `json:"forceRefreshResourcePrincipalTrigger,omitempty" tf:"force_refresh_resource_principal_trigger,omitempty"`
+	ForceRefreshResourcePrincipalTrigger *int64 `json:"forceRefreshResourcePrincipalTrigger,omitempty" tf:"force_refresh_resource_principal_trigger,omitempty"`
 
 	// The secretId for the clusterAdminPassword.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/vault/v1alpha1.Secret
@@ -52,7 +52,7 @@ type BdsInstanceResourcePrincipalConfigurationInitParameters struct {
 	SecretIDSelector *v1.NamespacedSelector `json:"secretIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Life span in hours for the resource principal session token.
-	SessionTokenLifeSpanDurationInHours *float64 `json:"sessionTokenLifeSpanDurationInHours,omitempty" tf:"session_token_life_span_duration_in_hours,omitempty"`
+	SessionTokenLifeSpanDurationInHours *int64 `json:"sessionTokenLifeSpanDurationInHours,omitempty" tf:"session_token_life_span_duration_in_hours,omitempty"`
 }
 
 type BdsInstanceResourcePrincipalConfigurationObservation struct {
@@ -64,7 +64,7 @@ type BdsInstanceResourcePrincipalConfigurationObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Force Refresh Resource Principal. Could be set to any integer value.
-	ForceRefreshResourcePrincipalTrigger *float64 `json:"forceRefreshResourcePrincipalTrigger,omitempty" tf:"force_refresh_resource_principal_trigger,omitempty"`
+	ForceRefreshResourcePrincipalTrigger *int64 `json:"forceRefreshResourcePrincipalTrigger,omitempty" tf:"force_refresh_resource_principal_trigger,omitempty"`
 
 	// The id of the ResourcePrincipalConfiguration defined under BDS resources, not OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -73,7 +73,7 @@ type BdsInstanceResourcePrincipalConfigurationObservation struct {
 	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
 
 	// (Updatable) Life span in hours for the resource principal session token.
-	SessionTokenLifeSpanDurationInHours *float64 `json:"sessionTokenLifeSpanDurationInHours,omitempty" tf:"session_token_life_span_duration_in_hours,omitempty"`
+	SessionTokenLifeSpanDurationInHours *int64 `json:"sessionTokenLifeSpanDurationInHours,omitempty" tf:"session_token_life_span_duration_in_hours,omitempty"`
 
 	// The state of the ResourcePrincipalConfiguration.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -117,7 +117,7 @@ type BdsInstanceResourcePrincipalConfigurationParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Force Refresh Resource Principal. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ForceRefreshResourcePrincipalTrigger *float64 `json:"forceRefreshResourcePrincipalTrigger,omitempty" tf:"force_refresh_resource_principal_trigger,omitempty"`
+	ForceRefreshResourcePrincipalTrigger *int64 `json:"forceRefreshResourcePrincipalTrigger,omitempty" tf:"force_refresh_resource_principal_trigger,omitempty"`
 
 	// The secretId for the clusterAdminPassword.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/vault/v1alpha1.Secret
@@ -135,7 +135,7 @@ type BdsInstanceResourcePrincipalConfigurationParameters struct {
 
 	// (Updatable) Life span in hours for the resource principal session token.
 	// +kubebuilder:validation:Optional
-	SessionTokenLifeSpanDurationInHours *float64 `json:"sessionTokenLifeSpanDurationInHours,omitempty" tf:"session_token_life_span_duration_in_hours,omitempty"`
+	SessionTokenLifeSpanDurationInHours *int64 `json:"sessionTokenLifeSpanDurationInHours,omitempty" tf:"session_token_life_span_duration_in_hours,omitempty"`
 }
 
 // BdsInstanceResourcePrincipalConfigurationSpec defines the desired state of BdsInstanceResourcePrincipalConfiguration

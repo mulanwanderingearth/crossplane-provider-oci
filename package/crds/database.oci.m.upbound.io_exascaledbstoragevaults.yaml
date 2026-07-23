@@ -63,12 +63,14 @@ spec:
                   additionalFlashCacheInPercent:
                     description: (Updatable) The size of additional Flash Cache in
                       percentage of High Capacity database storage.
-                    type: number
+                    format: int64
+                    type: integer
                   autoscaleLimitInGbs:
                     description: (Updatable) The maximum limit, in gigabytes, to which
                       the Vault storage size can automatically scale when auto scaling
                       is enabled for the Database Storage Vault
-                    type: number
+                    format: int64
+                    type: integer
                   availabilityDomain:
                     description: The name of the availability domain in which the
                       Exadata Database Storage Vault is located.
@@ -251,7 +253,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Exadata Database Storage Vault description.
                     type: string
@@ -352,14 +353,14 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   highCapacityDatabaseStorage:
                     description: (Updatable) Create exadata Database Storage Details
                     items:
                       properties:
                         totalSizeInGbs:
                           description: (Updatable) Total Capacity
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   isAutoscaleEnabled:
@@ -391,12 +392,14 @@ spec:
                   additionalFlashCacheInPercent:
                     description: (Updatable) The size of additional Flash Cache in
                       percentage of High Capacity database storage.
-                    type: number
+                    format: int64
+                    type: integer
                   autoscaleLimitInGbs:
                     description: (Updatable) The maximum limit, in gigabytes, to which
                       the Vault storage size can automatically scale when auto scaling
                       is enabled for the Database Storage Vault
-                    type: number
+                    format: int64
+                    type: integer
                   availabilityDomain:
                     description: The name of the availability domain in which the
                       Exadata Database Storage Vault is located.
@@ -579,7 +582,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Exadata Database Storage Vault description.
                     type: string
@@ -680,14 +682,14 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   highCapacityDatabaseStorage:
                     description: (Updatable) Create exadata Database Storage Details
                     items:
                       properties:
                         totalSizeInGbs:
                           description: (Updatable) Total Capacity
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   isAutoscaleEnabled:
@@ -786,7 +788,8 @@ spec:
                   additionalFlashCacheInPercent:
                     description: (Updatable) The size of additional Flash Cache in
                       percentage of High Capacity database storage.
-                    type: number
+                    format: int64
+                    type: integer
                   attachedShapeAttributes:
                     description: The shapeAttribute of the Exadata VM cluster(s) associated
                       with the Exadata Database Storage Vault.
@@ -797,7 +800,8 @@ spec:
                     description: (Updatable) The maximum limit, in gigabytes, to which
                       the Vault storage size can automatically scale when auto scaling
                       is enabled for the Database Storage Vault
-                    type: number
+                    format: int64
+                    type: integer
                   availabilityDomain:
                     description: The name of the availability domain in which the
                       Exadata Database Storage Vault is located.
@@ -816,7 +820,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Exadata Database Storage Vault description.
                     type: string
@@ -835,17 +838,18 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   highCapacityDatabaseStorage:
                     description: (Updatable) Create exadata Database Storage Details
                     items:
                       properties:
                         availableSizeInGbs:
                           description: Available Capacity
-                          type: number
+                          format: int64
+                          type: integer
                         totalSizeInGbs:
                           description: (Updatable) Total Capacity
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   id:
@@ -874,7 +878,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time that the Exadata Database Storage
                       Vault was created.
@@ -886,7 +889,8 @@ spec:
                   vmClusterCount:
                     description: The number of Exadata VM clusters used the Exadata
                       Database Storage Vault.
-                    type: number
+                    format: int64
+                    type: integer
                   vmClusterIds:
                     description: 'The List of Exadata VM cluster on Exascale Infrastructure
                       OCIDs Note: If Exadata Database Storage Vault is not used for

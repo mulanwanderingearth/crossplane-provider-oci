@@ -19,15 +19,13 @@ type CompliancePolicyRuleInitParameters struct {
 	CompliancePolicyID *string `json:"compliancePolicyId,omitempty" tf:"compliance_policy_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Grace period in days,weeks,months or years the exemption is applicable for the rule. This enables a grace period when Fleet Application Management doesn't report the product as noncompliant when patch is not applied.
 	GracePeriod *string `json:"gracePeriod,omitempty" tf:"grace_period,omitempty"`
@@ -54,15 +52,13 @@ type CompliancePolicyRuleObservation struct {
 	CompliancePolicyID *string `json:"compliancePolicyId,omitempty" tf:"compliance_policy_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Grace period in days,weeks,months or years the exemption is applicable for the rule. This enables a grace period when Fleet Application Management doesn't report the product as noncompliant when patch is not applied.
 	GracePeriod *string `json:"gracePeriod,omitempty" tf:"grace_period,omitempty"`
@@ -89,8 +85,7 @@ type CompliancePolicyRuleObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the CompliancePolicyRule was created, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -107,8 +102,7 @@ type CompliancePolicyRuleParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.  Example: My new resource
 	// +kubebuilder:validation:Optional
@@ -116,8 +110,7 @@ type CompliancePolicyRuleParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Grace period in days,weeks,months or years the exemption is applicable for the rule. This enables a grace period when Fleet Application Management doesn't report the product as noncompliant when patch is not applied.
 	// +kubebuilder:validation:Optional
@@ -143,7 +136,7 @@ type CompliancePolicyRuleParameters struct {
 type PatchSelectionInitParameters struct {
 
 	// (Updatable) Days passed since patch release.
-	DaysSinceRelease *float64 `json:"daysSinceRelease,omitempty" tf:"days_since_release,omitempty"`
+	DaysSinceRelease *int64 `json:"daysSinceRelease,omitempty" tf:"days_since_release,omitempty"`
 
 	// (Updatable) Patch Name.
 	PatchLevel *string `json:"patchLevel,omitempty" tf:"patch_level,omitempty"`
@@ -168,7 +161,7 @@ type PatchSelectionInitParameters struct {
 type PatchSelectionObservation struct {
 
 	// (Updatable) Days passed since patch release.
-	DaysSinceRelease *float64 `json:"daysSinceRelease,omitempty" tf:"days_since_release,omitempty"`
+	DaysSinceRelease *int64 `json:"daysSinceRelease,omitempty" tf:"days_since_release,omitempty"`
 
 	// (Updatable) Patch Name.
 	PatchLevel *string `json:"patchLevel,omitempty" tf:"patch_level,omitempty"`
@@ -184,7 +177,7 @@ type PatchSelectionParameters struct {
 
 	// (Updatable) Days passed since patch release.
 	// +kubebuilder:validation:Optional
-	DaysSinceRelease *float64 `json:"daysSinceRelease,omitempty" tf:"days_since_release,omitempty"`
+	DaysSinceRelease *int64 `json:"daysSinceRelease,omitempty" tf:"days_since_release,omitempty"`
 
 	// (Updatable) Patch Name.
 	// +kubebuilder:validation:Optional

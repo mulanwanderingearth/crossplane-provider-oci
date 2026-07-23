@@ -51,7 +51,7 @@ type BatchingStrategyInitParameters struct {
 	IsWaitForBatchResume *bool `json:"isWaitForBatchResume,omitempty" tf:"is_wait_for_batch_resume,omitempty"`
 
 	// (Applicable when type=SERVICE_AVAILABILITY_FACTOR) (Updatable) Percentage of availability in the service during the Patch operation.
-	Percentage *float64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
+	Percentage *int64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
 
 	// Type of scheduling strategy to use for Fleet Patching Update Action execution.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -66,7 +66,7 @@ type BatchingStrategyObservation struct {
 	IsWaitForBatchResume *bool `json:"isWaitForBatchResume,omitempty" tf:"is_wait_for_batch_resume,omitempty"`
 
 	// (Applicable when type=SERVICE_AVAILABILITY_FACTOR) (Updatable) Percentage of availability in the service during the Patch operation.
-	Percentage *float64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
+	Percentage *int64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
 
 	// Type of scheduling strategy to use for Fleet Patching Update Action execution.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -84,7 +84,7 @@ type BatchingStrategyParameters struct {
 
 	// (Applicable when type=SERVICE_AVAILABILITY_FACTOR) (Updatable) Percentage of availability in the service during the Patch operation.
 	// +kubebuilder:validation:Optional
-	Percentage *float64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
+	Percentage *int64 `json:"percentage,omitempty" tf:"percentage,omitempty"`
 
 	// Type of scheduling strategy to use for Fleet Patching Update Action execution.
 	// +kubebuilder:validation:Optional
@@ -190,8 +190,7 @@ type FsuCycleInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Details to configure diagnostics collection for targets affected by this Exadata Fleet Update Maintenance Cycle.
 	DiagnosticsCollection []DiagnosticsCollectionInitParameters `json:"diagnosticsCollection,omitempty" tf:"diagnostics_collection,omitempty"`
@@ -200,8 +199,7 @@ type FsuCycleInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Exadata Fleet Update Collection which will be updated by the Exadata Fleet Update Cycle being created.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/fleetsoftwareupdate/v1alpha1.FsuCollection
@@ -229,7 +227,7 @@ type FsuCycleInitParameters struct {
 	IsKeepPlacement *bool `json:"isKeepPlacement,omitempty" tf:"is_keep_placement,omitempty"`
 
 	// (Applicable when type=PATCH) (Updatable) Timeout for session draining for database services specified in seconds.
-	MaxDrainTimeoutInSeconds *float64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
+	MaxDrainTimeoutInSeconds *int64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
 
 	// Scheduling related details for the Exadata Fleet Update Action during create operations. The specified time should not conflict with existing Exadata Infrastructure maintenance windows. Null scheduleDetails for Stage and Apply Actions in Exadata Fleet Update Cycle creation would not create Actions. Null scheduleDetails for CreateAction would execute the Exadata Fleet Update Action as soon as possible.
 	StageActionSchedule []StageActionScheduleInitParameters `json:"stageActionSchedule,omitempty" tf:"stage_action_schedule,omitempty"`
@@ -256,8 +254,7 @@ type FsuCycleObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Details to configure diagnostics collection for targets affected by this Exadata Fleet Update Maintenance Cycle.
 	DiagnosticsCollection []DiagnosticsCollectionObservation `json:"diagnosticsCollection,omitempty" tf:"diagnostics_collection,omitempty"`
@@ -269,8 +266,7 @@ type FsuCycleObservation struct {
 	ExecutingFsuActionID *string `json:"executingFsuActionId,omitempty" tf:"executing_fsu_action_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Exadata Fleet Update Collection which will be updated by the Exadata Fleet Update Cycle being created.
 	FsuCollectionID *string `json:"fsuCollectionId,omitempty" tf:"fsu_collection_id,omitempty"`
@@ -300,7 +296,7 @@ type FsuCycleObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// (Applicable when type=PATCH) (Updatable) Timeout for session draining for database services specified in seconds.
-	MaxDrainTimeoutInSeconds *float64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
+	MaxDrainTimeoutInSeconds *int64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
 
 	// All possible Exadata Fleet Update Actions will be listed. The first element is the suggested Exadata Fleet Update Action.
 	NextActionToExecute []NextActionToExecuteObservation `json:"nextActionToExecute,omitempty" tf:"next_action_to_execute,omitempty"`
@@ -315,8 +311,7 @@ type FsuCycleObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Exadata Fleet Update Cycle was created, as described in RFC 3339, section 14.29.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -359,8 +354,7 @@ type FsuCycleParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Details to configure diagnostics collection for targets affected by this Exadata Fleet Update Maintenance Cycle.
 	// +kubebuilder:validation:Optional
@@ -372,8 +366,7 @@ type FsuCycleParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Exadata Fleet Update Collection which will be updated by the Exadata Fleet Update Cycle being created.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/fleetsoftwareupdate/v1alpha1.FsuCollection
@@ -407,7 +400,7 @@ type FsuCycleParameters struct {
 
 	// (Applicable when type=PATCH) (Updatable) Timeout for session draining for database services specified in seconds.
 	// +kubebuilder:validation:Optional
-	MaxDrainTimeoutInSeconds *float64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
+	MaxDrainTimeoutInSeconds *int64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
 
 	// Scheduling related details for the Exadata Fleet Update Action during create operations. The specified time should not conflict with existing Exadata Infrastructure maintenance windows. Null scheduleDetails for Stage and Apply Actions in Exadata Fleet Update Cycle creation would not create Actions. Null scheduleDetails for CreateAction would execute the Exadata Fleet Update Action as soon as possible.
 	// +kubebuilder:validation:Optional
@@ -622,7 +615,7 @@ type UpgradeDetailsInitParameters struct {
 	IsTimeZoneUpgrade *bool `json:"isTimeZoneUpgrade,omitempty" tf:"is_time_zone_upgrade,omitempty"`
 
 	// (Applicable when type=PATCH) (Updatable) Timeout for session draining for database services specified in seconds.
-	MaxDrainTimeoutInSeconds *float64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
+	MaxDrainTimeoutInSeconds *int64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
 }
 
 type UpgradeDetailsObservation struct {
@@ -643,7 +636,7 @@ type UpgradeDetailsObservation struct {
 	IsTimeZoneUpgrade *bool `json:"isTimeZoneUpgrade,omitempty" tf:"is_time_zone_upgrade,omitempty"`
 
 	// (Applicable when type=PATCH) (Updatable) Timeout for session draining for database services specified in seconds.
-	MaxDrainTimeoutInSeconds *float64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
+	MaxDrainTimeoutInSeconds *int64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
 }
 
 type UpgradeDetailsParameters struct {
@@ -670,7 +663,7 @@ type UpgradeDetailsParameters struct {
 
 	// (Applicable when type=PATCH) (Updatable) Timeout for session draining for database services specified in seconds.
 	// +kubebuilder:validation:Optional
-	MaxDrainTimeoutInSeconds *float64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
+	MaxDrainTimeoutInSeconds *int64 `json:"maxDrainTimeoutInSeconds,omitempty" tf:"max_drain_timeout_in_seconds,omitempty"`
 }
 
 // FsuCycleSpec defines the desired state of FsuCycle

@@ -30,8 +30,7 @@ type DedicatedVantagePointInitParameters struct {
 	ApmDomainIDSelector *v1.NamespacedSelector `json:"apmDomainIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Unique dedicated vantage point name that cannot be edited. The name should not contain any confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -40,8 +39,7 @@ type DedicatedVantagePointInitParameters struct {
 	DvpStackDetails []DvpStackDetailsInitParameters `json:"dvpStackDetails,omitempty" tf:"dvp_stack_details,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Name of the region.
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
@@ -56,8 +54,7 @@ type DedicatedVantagePointObservation struct {
 	ApmDomainID *string `json:"apmDomainId,omitempty" tf:"apm_domain_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Unique dedicated vantage point name that cannot be edited. The name should not contain any confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -66,8 +63,7 @@ type DedicatedVantagePointObservation struct {
 	DvpStackDetails []DvpStackDetailsObservation `json:"dvpStackDetails,omitempty" tf:"dvp_stack_details,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the dedicated vantage point.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -109,8 +105,7 @@ type DedicatedVantagePointParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Unique dedicated vantage point name that cannot be edited. The name should not contain any confidential information.
 	// +kubebuilder:validation:Optional
@@ -122,8 +117,7 @@ type DedicatedVantagePointParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Name of the region.
 	// +kubebuilder:validation:Optional
@@ -209,16 +203,16 @@ type MonitorStatusCountMapInitParameters struct {
 type MonitorStatusCountMapObservation struct {
 
 	// Number of disabled monitors using the script.
-	Disabled *float64 `json:"disabled,omitempty" tf:"disabled,omitempty"`
+	Disabled *int64 `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
 	// Number of enabled monitors using the script.
-	Enabled *float64 `json:"enabled,omitempty" tf:"enabled,omitempty"`
+	Enabled *int64 `json:"enabled,omitempty" tf:"enabled,omitempty"`
 
 	// Number of invalid monitors using the script.
-	Invalid *float64 `json:"invalid,omitempty" tf:"invalid,omitempty"`
+	Invalid *int64 `json:"invalid,omitempty" tf:"invalid,omitempty"`
 
 	// Total number of monitors using the script.
-	Total *float64 `json:"total,omitempty" tf:"total,omitempty"`
+	Total *int64 `json:"total,omitempty" tf:"total,omitempty"`
 }
 
 type MonitorStatusCountMapParameters struct {

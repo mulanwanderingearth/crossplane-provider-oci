@@ -154,7 +154,8 @@ spec:
                   cancelBackupTrigger:
                     description: When changed to a different integer, re-triggers
                       cancel backup on the backup specified by the backup_id
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -249,7 +250,8 @@ spec:
                   cancelBackupTrigger:
                     description: When changed to a different integer, re-triggers
                       cancel backup on the backup specified by the backup_id
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -351,7 +353,8 @@ spec:
                   cancelBackupTrigger:
                     description: When changed to a different integer, re-triggers
                       cancel backup on the backup specified by the backup_id
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     type: string
                 type: object

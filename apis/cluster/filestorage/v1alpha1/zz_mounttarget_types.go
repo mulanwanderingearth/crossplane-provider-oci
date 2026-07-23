@@ -16,10 +16,10 @@ import (
 type KerberosInitParameters struct {
 
 	// (Updatable) Version of the keytab Secret in the Vault to use as a backup.
-	BackupKeyTabSecretVersion *float64 `json:"backupKeyTabSecretVersion,omitempty" tf:"backup_key_tab_secret_version,omitempty"`
+	BackupKeyTabSecretVersion *int64 `json:"backupKeyTabSecretVersion,omitempty" tf:"backup_key_tab_secret_version,omitempty"`
 
 	// (Updatable) Version of the keytab Secret in the Vault to use.
-	CurrentKeyTabSecretVersion *float64 `json:"currentKeyTabSecretVersion,omitempty" tf:"current_key_tab_secret_version,omitempty"`
+	CurrentKeyTabSecretVersion *int64 `json:"currentKeyTabSecretVersion,omitempty" tf:"current_key_tab_secret_version,omitempty"`
 
 	// (Updatable) Specifies whether to enable or disable Kerberos.
 	IsKerberosEnabled *bool `json:"isKerberosEnabled,omitempty" tf:"is_kerberos_enabled,omitempty"`
@@ -44,10 +44,10 @@ type KerberosInitParameters struct {
 type KerberosObservation struct {
 
 	// (Updatable) Version of the keytab Secret in the Vault to use as a backup.
-	BackupKeyTabSecretVersion *float64 `json:"backupKeyTabSecretVersion,omitempty" tf:"backup_key_tab_secret_version,omitempty"`
+	BackupKeyTabSecretVersion *int64 `json:"backupKeyTabSecretVersion,omitempty" tf:"backup_key_tab_secret_version,omitempty"`
 
 	// (Updatable) Version of the keytab Secret in the Vault to use.
-	CurrentKeyTabSecretVersion *float64 `json:"currentKeyTabSecretVersion,omitempty" tf:"current_key_tab_secret_version,omitempty"`
+	CurrentKeyTabSecretVersion *int64 `json:"currentKeyTabSecretVersion,omitempty" tf:"current_key_tab_secret_version,omitempty"`
 
 	// (Updatable) Specifies whether to enable or disable Kerberos.
 	IsKerberosEnabled *bool `json:"isKerberosEnabled,omitempty" tf:"is_kerberos_enabled,omitempty"`
@@ -63,11 +63,11 @@ type KerberosParameters struct {
 
 	// (Updatable) Version of the keytab Secret in the Vault to use as a backup.
 	// +kubebuilder:validation:Optional
-	BackupKeyTabSecretVersion *float64 `json:"backupKeyTabSecretVersion,omitempty" tf:"backup_key_tab_secret_version,omitempty"`
+	BackupKeyTabSecretVersion *int64 `json:"backupKeyTabSecretVersion,omitempty" tf:"backup_key_tab_secret_version,omitempty"`
 
 	// (Updatable) Version of the keytab Secret in the Vault to use.
 	// +kubebuilder:validation:Optional
-	CurrentKeyTabSecretVersion *float64 `json:"currentKeyTabSecretVersion,omitempty" tf:"current_key_tab_secret_version,omitempty"`
+	CurrentKeyTabSecretVersion *int64 `json:"currentKeyTabSecretVersion,omitempty" tf:"current_key_tab_secret_version,omitempty"`
 
 	// (Updatable) Specifies whether to enable or disable Kerberos.
 	// +kubebuilder:validation:Optional
@@ -95,16 +95,16 @@ type KerberosParameters struct {
 type LdapIdmapInitParameters struct {
 
 	// (Updatable) The maximum amount of time the mount target is allowed to use a cached entry.
-	CacheLifetimeSeconds *float64 `json:"cacheLifetimeSeconds,omitempty" tf:"cache_lifetime_seconds,omitempty"`
+	CacheLifetimeSeconds *int64 `json:"cacheLifetimeSeconds,omitempty" tf:"cache_lifetime_seconds,omitempty"`
 
 	// (Updatable) The amount of time that the mount target should allow an entry to persist in its cache before attempting to refresh the entry.
-	CacheRefreshIntervalSeconds *float64 `json:"cacheRefreshIntervalSeconds,omitempty" tf:"cache_refresh_interval_seconds,omitempty"`
+	CacheRefreshIntervalSeconds *int64 `json:"cacheRefreshIntervalSeconds,omitempty" tf:"cache_refresh_interval_seconds,omitempty"`
 
 	// (Updatable) All LDAP searches are recursive starting at this group.  Example: CN=Group,DC=domain,DC=com
 	GroupSearchBase *string `json:"groupSearchBase,omitempty" tf:"group_search_base,omitempty"`
 
 	// (Updatable) The amount of time that a mount target will maintain information that a user is not found in the ID mapping configuration.
-	NegativeCacheLifetimeSeconds *float64 `json:"negativeCacheLifetimeSeconds,omitempty" tf:"negative_cache_lifetime_seconds,omitempty"`
+	NegativeCacheLifetimeSeconds *int64 `json:"negativeCacheLifetimeSeconds,omitempty" tf:"negative_cache_lifetime_seconds,omitempty"`
 
 	// (Updatable) The OCID of the first connector to use to communicate with the LDAP server.
 	OutboundConnector1Id *string `json:"outboundConnector1Id,omitempty" tf:"outbound_connector1id,omitempty"`
@@ -122,16 +122,16 @@ type LdapIdmapInitParameters struct {
 type LdapIdmapObservation struct {
 
 	// (Updatable) The maximum amount of time the mount target is allowed to use a cached entry.
-	CacheLifetimeSeconds *float64 `json:"cacheLifetimeSeconds,omitempty" tf:"cache_lifetime_seconds,omitempty"`
+	CacheLifetimeSeconds *int64 `json:"cacheLifetimeSeconds,omitempty" tf:"cache_lifetime_seconds,omitempty"`
 
 	// (Updatable) The amount of time that the mount target should allow an entry to persist in its cache before attempting to refresh the entry.
-	CacheRefreshIntervalSeconds *float64 `json:"cacheRefreshIntervalSeconds,omitempty" tf:"cache_refresh_interval_seconds,omitempty"`
+	CacheRefreshIntervalSeconds *int64 `json:"cacheRefreshIntervalSeconds,omitempty" tf:"cache_refresh_interval_seconds,omitempty"`
 
 	// (Updatable) All LDAP searches are recursive starting at this group.  Example: CN=Group,DC=domain,DC=com
 	GroupSearchBase *string `json:"groupSearchBase,omitempty" tf:"group_search_base,omitempty"`
 
 	// (Updatable) The amount of time that a mount target will maintain information that a user is not found in the ID mapping configuration.
-	NegativeCacheLifetimeSeconds *float64 `json:"negativeCacheLifetimeSeconds,omitempty" tf:"negative_cache_lifetime_seconds,omitempty"`
+	NegativeCacheLifetimeSeconds *int64 `json:"negativeCacheLifetimeSeconds,omitempty" tf:"negative_cache_lifetime_seconds,omitempty"`
 
 	// (Updatable) The OCID of the first connector to use to communicate with the LDAP server.
 	OutboundConnector1Id *string `json:"outboundConnector1Id,omitempty" tf:"outbound_connector1id,omitempty"`
@@ -150,11 +150,11 @@ type LdapIdmapParameters struct {
 
 	// (Updatable) The maximum amount of time the mount target is allowed to use a cached entry.
 	// +kubebuilder:validation:Optional
-	CacheLifetimeSeconds *float64 `json:"cacheLifetimeSeconds,omitempty" tf:"cache_lifetime_seconds,omitempty"`
+	CacheLifetimeSeconds *int64 `json:"cacheLifetimeSeconds,omitempty" tf:"cache_lifetime_seconds,omitempty"`
 
 	// (Updatable) The amount of time that the mount target should allow an entry to persist in its cache before attempting to refresh the entry.
 	// +kubebuilder:validation:Optional
-	CacheRefreshIntervalSeconds *float64 `json:"cacheRefreshIntervalSeconds,omitempty" tf:"cache_refresh_interval_seconds,omitempty"`
+	CacheRefreshIntervalSeconds *int64 `json:"cacheRefreshIntervalSeconds,omitempty" tf:"cache_refresh_interval_seconds,omitempty"`
 
 	// (Updatable) All LDAP searches are recursive starting at this group.  Example: CN=Group,DC=domain,DC=com
 	// +kubebuilder:validation:Optional
@@ -162,7 +162,7 @@ type LdapIdmapParameters struct {
 
 	// (Updatable) The amount of time that a mount target will maintain information that a user is not found in the ID mapping configuration.
 	// +kubebuilder:validation:Optional
-	NegativeCacheLifetimeSeconds *float64 `json:"negativeCacheLifetimeSeconds,omitempty" tf:"negative_cache_lifetime_seconds,omitempty"`
+	NegativeCacheLifetimeSeconds *int64 `json:"negativeCacheLifetimeSeconds,omitempty" tf:"negative_cache_lifetime_seconds,omitempty"`
 
 	// (Updatable) The OCID of the first connector to use to communicate with the LDAP server.
 	// +kubebuilder:validation:Optional
@@ -199,15 +199,13 @@ type MountTargetInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My mount target
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the mount target's IP address, used for DNS resolution. The value is the hostname portion of the private IP address's fully qualified domain name (FQDN). For example, files-1 in the FQDN files-1.subnet123.vcn1.oraclevcn.com. Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -238,8 +236,7 @@ type MountTargetInitParameters struct {
 	RequestedThroughput *string `json:"requestedThroughput,omitempty" tf:"requested_throughput,omitempty"`
 
 	// (Updatable) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The OCID of the subnet in which to create the mount target.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet
@@ -313,8 +310,7 @@ type MountTargetObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My mount target
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -323,8 +319,7 @@ type MountTargetObservation struct {
 	ExportSetID *string `json:"exportSetId,omitempty" tf:"export_set_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the mount target's IP address, used for DNS resolution. The value is the hostname portion of the private IP address's fully qualified domain name (FQDN). For example, files-1 in the FQDN files-1.subnet123.vcn1.oraclevcn.com. Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -372,8 +367,7 @@ type MountTargetObservation struct {
 	ReservedStorageCapacity *string `json:"reservedStorageCapacity,omitempty" tf:"reserved_storage_capacity,omitempty"`
 
 	// (Updatable) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The current state of the mount target.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -382,8 +376,7 @@ type MountTargetObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// System tags for this resource. System tags are applied to resources by internal Oracle Cloud Infrastructure services.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the mount target current billing cycle will end, expressed in RFC 3339 timestamp format. Once a cycle ends, it is updated automatically to next timestamp which is after 30 days.  Example: 2016-08-25T21:10:29.600Z
 	TimeBillingCycleEnd *string `json:"timeBillingCycleEnd,omitempty" tf:"time_billing_cycle_end,omitempty"`
@@ -413,8 +406,7 @@ type MountTargetParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. It does not have to be unique, and it is changeable. Avoid entering confidential information.  Example: My mount target
 	// +kubebuilder:validation:Optional
@@ -422,8 +414,7 @@ type MountTargetParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the mount target's IP address, used for DNS resolution. The value is the hostname portion of the private IP address's fully qualified domain name (FQDN). For example, files-1 in the FQDN files-1.subnet123.vcn1.oraclevcn.com. Must be unique across all VNICs in the subnet and comply with RFC 952 and RFC 1123.
 	// +kubebuilder:validation:Optional
@@ -464,8 +455,7 @@ type MountTargetParameters struct {
 
 	// (Updatable) Security attributes are labels for a resource that can be referenced in a Zero Trust Packet Routing (ZPR) policy to control access to ZPR-supported resources.  Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "enforce"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The OCID of the subnet in which to create the mount target.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet

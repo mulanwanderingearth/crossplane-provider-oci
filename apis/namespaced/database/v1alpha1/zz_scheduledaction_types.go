@@ -17,32 +17,32 @@ import (
 type ScheduledActionActionMembersInitParameters struct {
 
 	// (Updatable) The estimated time for the intended action member.
-	EstimatedTimeInMins *float64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
+	EstimatedTimeInMins *int64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
 
 	// (Updatable) The ocid of the action member.
 	MemberID *string `json:"memberId,omitempty" tf:"member_id,omitempty"`
 
 	// (Updatable) The order of the action member in a scheduled action.
-	MemberOrder *float64 `json:"memberOrder,omitempty" tf:"member_order,omitempty"`
+	MemberOrder *int64 `json:"memberOrder,omitempty" tf:"member_order,omitempty"`
 }
 
 type ScheduledActionActionMembersObservation struct {
 
 	// (Updatable) The estimated time for the intended action member.
-	EstimatedTimeInMins *float64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
+	EstimatedTimeInMins *int64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
 
 	// (Updatable) The ocid of the action member.
 	MemberID *string `json:"memberId,omitempty" tf:"member_id,omitempty"`
 
 	// (Updatable) The order of the action member in a scheduled action.
-	MemberOrder *float64 `json:"memberOrder,omitempty" tf:"member_order,omitempty"`
+	MemberOrder *int64 `json:"memberOrder,omitempty" tf:"member_order,omitempty"`
 }
 
 type ScheduledActionActionMembersParameters struct {
 
 	// (Updatable) The estimated time for the intended action member.
 	// +kubebuilder:validation:Optional
-	EstimatedTimeInMins *float64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
+	EstimatedTimeInMins *int64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
 
 	// (Updatable) The ocid of the action member.
 	// +kubebuilder:validation:Optional
@@ -50,7 +50,7 @@ type ScheduledActionActionMembersParameters struct {
 
 	// (Updatable) The order of the action member in a scheduled action.
 	// +kubebuilder:validation:Optional
-	MemberOrder *float64 `json:"memberOrder" tf:"member_order,omitempty"`
+	MemberOrder *int64 `json:"memberOrder" tf:"member_order,omitempty"`
 }
 
 type ScheduledActionInitParameters struct {
@@ -59,8 +59,7 @@ type ScheduledActionInitParameters struct {
 	ActionMembers []ScheduledActionActionMembersInitParameters `json:"actionMembers,omitempty" tf:"action_members,omitempty"`
 
 	// (Updatable) Map<ParamName, ParamValue> where a key value pair describes the specific action parameter. Example: {"count": "3"}
-	// +mapType=granular
-	ActionParams map[string]*string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
+	ActionParams map[string]string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
 
 	// The type of the scheduled action being performed
 	ActionType *string `json:"actionType,omitempty" tf:"action_type,omitempty"`
@@ -78,12 +77,10 @@ type ScheduledActionInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Scheduling Plan.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.SchedulingPlan
@@ -108,11 +105,10 @@ type ScheduledActionObservation struct {
 	ActionMembers []ScheduledActionActionMembersObservation `json:"actionMembers,omitempty" tf:"action_members,omitempty"`
 
 	// The order of the scheduled action.
-	ActionOrder *float64 `json:"actionOrder,omitempty" tf:"action_order,omitempty"`
+	ActionOrder *int64 `json:"actionOrder,omitempty" tf:"action_order,omitempty"`
 
 	// (Updatable) Map<ParamName, ParamValue> where a key value pair describes the specific action parameter. Example: {"count": "3"}
-	// +mapType=granular
-	ActionParams map[string]*string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
+	ActionParams map[string]string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
 
 	// The type of the scheduled action being performed
 	ActionType *string `json:"actionType,omitempty" tf:"action_type,omitempty"`
@@ -121,18 +117,16 @@ type ScheduledActionObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The display name of the Scheduled Action.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) The estimated time for the intended action member.
-	EstimatedTimeInMins *float64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
+	EstimatedTimeInMins *int64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Scheduled Action.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -147,8 +141,7 @@ type ScheduledActionObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Scheduled Action Resource was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -165,8 +158,7 @@ type ScheduledActionParameters struct {
 
 	// (Updatable) Map<ParamName, ParamValue> where a key value pair describes the specific action parameter. Example: {"count": "3"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	ActionParams map[string]*string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
+	ActionParams map[string]string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
 
 	// The type of the scheduled action being performed
 	// +kubebuilder:validation:Optional
@@ -187,13 +179,11 @@ type ScheduledActionParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Scheduling Plan.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.SchedulingPlan

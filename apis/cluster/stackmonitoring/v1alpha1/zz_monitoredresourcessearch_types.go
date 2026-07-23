@@ -86,8 +86,7 @@ type MonitoredResourcesSearchInitParameters struct {
 	NameContains *string `json:"nameContains,omitempty" tf:"name_contains,omitempty"`
 
 	// Criteria based on resource property.
-	// +mapType=granular
-	PropertyEquals map[string]*string `json:"propertyEquals,omitempty" tf:"property_equals,omitempty"`
+	PropertyEquals map[string]string `json:"propertyEquals,omitempty" tf:"property_equals,omitempty"`
 
 	// Resource category filter.
 	ResourceCategory *string `json:"resourceCategory,omitempty" tf:"resource_category,omitempty"`
@@ -126,8 +125,7 @@ type MonitoredResourcesSearchItemsObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Monitored resource display name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -136,8 +134,7 @@ type MonitoredResourcesSearchItemsObservation struct {
 	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A filter to return resources with host name match.
 	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
@@ -167,8 +164,7 @@ type MonitoredResourcesSearchItemsObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Monitored resource creation time. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -228,8 +224,7 @@ type MonitoredResourcesSearchObservation struct {
 	NameContains *string `json:"nameContains,omitempty" tf:"name_contains,omitempty"`
 
 	// Criteria based on resource property.
-	// +mapType=granular
-	PropertyEquals map[string]*string `json:"propertyEquals,omitempty" tf:"property_equals,omitempty"`
+	PropertyEquals map[string]string `json:"propertyEquals,omitempty" tf:"property_equals,omitempty"`
 
 	// Resource category filter.
 	ResourceCategory *string `json:"resourceCategory,omitempty" tf:"resource_category,omitempty"`
@@ -330,8 +325,7 @@ type MonitoredResourcesSearchParameters struct {
 
 	// Criteria based on resource property.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	PropertyEquals map[string]*string `json:"propertyEquals,omitempty" tf:"property_equals,omitempty"`
+	PropertyEquals map[string]string `json:"propertyEquals,omitempty" tf:"property_equals,omitempty"`
 
 	// Resource category filter.
 	// +kubebuilder:validation:Optional

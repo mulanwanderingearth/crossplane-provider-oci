@@ -172,14 +172,16 @@ spec:
                     description: An identifier for the owner of this usage and quota
                       rule. Unix-like operating systems use this integer value to
                       identify a user or group to manage access control.
-                    type: number
+                    format: int64
+                    type: integer
                   principalType:
                     description: The type of the owner of this quota rule and usage.
                     type: string
                   quotaLimitInGigabytes:
                     description: (Updatable) The value of the quota rule. The unit
                       is Gigabyte.
-                    type: number
+                    format: int64
+                    type: integer
                   quotaRuleId:
                     description: The identifier of the quota rule. It is the base64
                       encoded string of the tuple <principalId, principalType, isHardQuota>.
@@ -296,14 +298,16 @@ spec:
                     description: An identifier for the owner of this usage and quota
                       rule. Unix-like operating systems use this integer value to
                       identify a user or group to manage access control.
-                    type: number
+                    format: int64
+                    type: integer
                   principalType:
                     description: The type of the owner of this quota rule and usage.
                     type: string
                   quotaLimitInGigabytes:
                     description: (Updatable) The value of the quota rule. The unit
                       is Gigabyte.
-                    type: number
+                    format: int64
+                    type: integer
                   quotaRuleId:
                     description: The identifier of the quota rule. It is the base64
                       encoded string of the tuple <principalId, principalType, isHardQuota>.
@@ -441,14 +445,16 @@ spec:
                     description: An identifier for the owner of this usage and quota
                       rule. Unix-like operating systems use this integer value to
                       identify a user or group to manage access control.
-                    type: number
+                    format: int64
+                    type: integer
                   principalType:
                     description: The type of the owner of this quota rule and usage.
                     type: string
                   quotaLimitInGigabytes:
                     description: (Updatable) The value of the quota rule. The unit
                       is Gigabyte.
-                    type: number
+                    format: int64
+                    type: integer
                   quotaRuleId:
                     description: The identifier of the quota rule. It is the base64
                       encoded string of the tuple <principalId, principalType, isHardQuota>.

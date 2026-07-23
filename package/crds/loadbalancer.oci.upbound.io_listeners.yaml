@@ -88,7 +88,8 @@ spec:
                         backendTcpProxyProtocolVersion:
                           description: '(Updatable) The backend TCP Proxy Protocol
                             version.  Example: 1'
-                          type: number
+                          format: int64
+                          type: integer
                         idleTimeoutInSeconds:
                           description: (Updatable) The maximum idle time, in seconds,
                             allowed between two successive receive or two successive
@@ -430,7 +431,8 @@ spec:
                   port:
                     description: '(Updatable) The communication port for the listener.  Example:
                       80'
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: '(Updatable) The protocol on which the listener accepts
                       connection requests. To get a list of valid protocols, use the
@@ -733,7 +735,8 @@ spec:
                         verifyDepth:
                           description: '(Updatable) The maximum depth for peer certificate
                             chain verification.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         verifyPeerCertificate:
                           description: '(Updatable) Whether the load balancer listener
                             should verify peer certificates.  Example: true'
@@ -769,7 +772,8 @@ spec:
                         backendTcpProxyProtocolVersion:
                           description: '(Updatable) The backend TCP Proxy Protocol
                             version.  Example: 1'
-                          type: number
+                          format: int64
+                          type: integer
                         idleTimeoutInSeconds:
                           description: (Updatable) The maximum idle time, in seconds,
                             allowed between two successive receive or two successive
@@ -1111,7 +1115,8 @@ spec:
                   port:
                     description: '(Updatable) The communication port for the listener.  Example:
                       80'
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: '(Updatable) The protocol on which the listener accepts
                       connection requests. To get a list of valid protocols, use the
@@ -1414,7 +1419,8 @@ spec:
                         verifyDepth:
                           description: '(Updatable) The maximum depth for peer certificate
                             chain verification.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         verifyPeerCertificate:
                           description: '(Updatable) Whether the load balancer listener
                             should verify peer certificates.  Example: true'
@@ -1543,7 +1549,8 @@ spec:
                         backendTcpProxyProtocolVersion:
                           description: '(Updatable) The backend TCP Proxy Protocol
                             version.  Example: 1'
-                          type: number
+                          format: int64
+                          type: integer
                         idleTimeoutInSeconds:
                           description: (Updatable) The maximum idle time, in seconds,
                             allowed between two successive receive or two successive
@@ -1580,7 +1587,8 @@ spec:
                   port:
                     description: '(Updatable) The communication port for the listener.  Example:
                       80'
-                    type: number
+                    format: int64
+                    type: integer
                   protocol:
                     description: '(Updatable) The protocol on which the listener accepts
                       connection requests. To get a list of valid protocols, use the
@@ -1652,7 +1660,8 @@ spec:
                         verifyDepth:
                           description: '(Updatable) The maximum depth for peer certificate
                             chain verification.  Example: 3'
-                          type: number
+                          format: int64
+                          type: integer
                         verifyPeerCertificate:
                           description: '(Updatable) Whether the load balancer listener
                             should verify peer certificates.  Example: true'

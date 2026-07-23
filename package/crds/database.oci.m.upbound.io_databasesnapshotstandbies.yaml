@@ -163,7 +163,8 @@ spec:
                       back to Physical Standby. The minimum value of snapshotDurationInDays
                       is 3 days and maximum value is 14 days. Default value will be
                       7 days if not provided in the Request.
-                    type: number
+                    format: int64
+                    type: integer
                   standbyConversionType:
                     description: Defines the conversion type of the standby database.
                       Specify this to convert a physical standby to a snapshot standby
@@ -285,7 +286,8 @@ spec:
                       back to Physical Standby. The minimum value of snapshotDurationInDays
                       is 3 days and maximum value is 14 days. Default value will be
                       7 days if not provided in the Request.
-                    type: number
+                    format: int64
+                    type: integer
                   standbyConversionType:
                     description: Defines the conversion type of the standby database.
                       Specify this to convert a physical standby to a snapshot standby
@@ -386,7 +388,6 @@ spec:
                           description: All connection strings to use to connect to
                             the Database.
                           type: object
-                          x-kubernetes-map-type: granular
                         cdbDefault:
                           description: Host name based CDB Connection String.
                           type: string
@@ -558,7 +559,8 @@ spec:
                             removes old automatic backups that are created before
                             the window. When the value is updated, it is applied to
                             all existing automatic backups.
-                          type: number
+                          format: int64
+                          type: integer
                         runImmediateFullBackup:
                           description: If set to true, configures automatic full backups
                             in the local region (the region of the DB system) for
@@ -597,7 +599,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -606,7 +607,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the backup destination.
                     type: string
@@ -634,7 +634,8 @@ spec:
                     type: string
                   lastBackupDurationInSeconds:
                     description: The duration when the latest database backup created.
-                    type: number
+                    format: int64
+                    type: integer
                   lastBackupTimestamp:
                     description: The date and time when the latest database backup
                       was created.
@@ -667,7 +668,8 @@ spec:
                       back to Physical Standby. The minimum value of snapshotDurationInDays
                       is 3 days and maximum value is 14 days. Default value will be
                       7 days if not provided in the Request.
-                    type: number
+                    format: int64
+                    type: integer
                   sourceDatabasePointInTimeRecoveryTimestamp:
                     description: Point in time recovery timeStamp of the source database
                       at which cloned database system is cloned from the source database

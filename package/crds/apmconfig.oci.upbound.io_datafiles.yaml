@@ -271,7 +271,6 @@ spec:
                     description: (Updatable) Optional user-defined metadata key and
                       value.
                     type: object
-                    x-kubernetes-map-type: granular
                   source:
                     description: An absolute path to a file on the local system. Cannot
                       be defined if content is defined. Either one should be defined.
@@ -488,7 +487,6 @@ spec:
                     description: (Updatable) Optional user-defined metadata key and
                       value.
                     type: object
-                    x-kubernetes-map-type: granular
                   source:
                     description: An absolute path to a file on the local system. Cannot
                       be defined if content is defined. Either one should be defined.
@@ -621,7 +619,8 @@ spec:
                       preferences.
                     type: string
                   contentLength:
-                    type: number
+                    format: int64
+                    type: integer
                   contentMd5:
                     description: (Updatable) Optional base64-encoded MD5 hash of the
                       request body. If provided, the server will perform a data integrity
@@ -644,7 +643,6 @@ spec:
                     description: (Updatable) Optional user-defined metadata key and
                       value.
                     type: object
-                    x-kubernetes-map-type: granular
                   source:
                     description: An absolute path to a file on the local system. Cannot
                       be defined if content is defined. Either one should be defined.

@@ -258,7 +258,8 @@ spec:
                   convertInstanceTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Convert Instance. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   customEndpoint:
                     description: (Updatable) Details for a custom endpoint for the
                       integration instance (update).
@@ -369,12 +370,12 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   disableProcessAutomationTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Disable Process Automation. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   displayName:
                     description: (Updatable) Integration Instance Identifier.
                     type: string
@@ -463,13 +464,16 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Enable Process Automation. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   extendDataRetentionTrigger:
-                    type: number
+                    format: int64
+                    type: integer
                   failoverTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Failover. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -477,7 +481,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idcsAtSecretRef:
                     description: (Updatable) IDCS Authentication token. This is required
                       for all realms with IDCS. Its optional as its not required for
@@ -520,7 +523,8 @@ spec:
                     type: string
                   messagePacks:
                     description: (Updatable) The number of configured message packs
-                    type: number
+                    format: int64
+                    type: integer
                   networkEndpointDetails:
                     description: Base representation of a network endpoint.
                     items:
@@ -652,7 +656,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -851,7 +854,8 @@ spec:
                   convertInstanceTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Convert Instance. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   customEndpoint:
                     description: (Updatable) Details for a custom endpoint for the
                       integration instance (update).
@@ -962,12 +966,12 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   disableProcessAutomationTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Disable Process Automation. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   displayName:
                     description: (Updatable) Integration Instance Identifier.
                     type: string
@@ -1056,13 +1060,16 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Enable Process Automation. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   extendDataRetentionTrigger:
-                    type: number
+                    format: int64
+                    type: integer
                   failoverTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Failover. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1070,7 +1077,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idcsAtSecretRef:
                     description: (Updatable) IDCS Authentication token. This is required
                       for all realms with IDCS. Its optional as its not required for
@@ -1113,7 +1119,8 @@ spec:
                     type: string
                   messagePacks:
                     description: (Updatable) The number of configured message packs
-                    type: number
+                    format: int64
+                    type: integer
                   networkEndpointDetails:
                     description: Base representation of a network endpoint.
                     items:
@@ -1245,7 +1252,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -1377,7 +1383,8 @@ spec:
                         certificateSecretVersion:
                           description: The secret version used for the certificate-secret-id
                             (if certificate-secret-id is specified).
-                          type: number
+                          format: int64
+                          type: integer
                         dnsType:
                           description: Type of DNS.
                           type: string
@@ -1430,7 +1437,8 @@ spec:
                   convertInstanceTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Convert Instance. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   customEndpoint:
                     description: (Updatable) Details for a custom endpoint for the
                       integration instance (update).
@@ -1450,7 +1458,8 @@ spec:
                         certificateSecretVersion:
                           description: The secret version used for the certificate-secret-id
                             (if certificate-secret-id is specified).
-                          type: number
+                          format: int64
+                          type: integer
                         dnsType:
                           description: Type of DNS.
                           type: string
@@ -1477,12 +1486,12 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   disableProcessAutomationTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Disable Process Automation. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   disasterRecoveryDetails:
                     description: Disaster recovery details for the integration instance
                       created in the region.
@@ -1533,13 +1542,16 @@ spec:
                     description: (Updatable) An optional property when incremented
                       triggers Enable Process Automation. Could be set to any integer
                       value.
-                    type: number
+                    format: int64
+                    type: integer
                   extendDataRetentionTrigger:
-                    type: number
+                    format: int64
+                    type: integer
                   failoverTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Failover. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1547,7 +1559,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The Virtual Cloud Network OCID.
                     type: string
@@ -1609,7 +1620,8 @@ spec:
                     type: string
                   messagePacks:
                     description: (Updatable) The number of configured message packs
-                    type: number
+                    format: int64
+                    type: integer
                   networkEndpointDetails:
                     description: Base representation of a network endpoint.
                     items:
@@ -1773,7 +1785,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the the Integration Instance was created.
                       An RFC3339 formatted datetime string.

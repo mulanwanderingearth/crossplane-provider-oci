@@ -17,7 +17,7 @@ import (
 type ManagementAgentInstallKeyInitParameters struct {
 
 	// Total number of install for this keys
-	AllowedKeyInstallCount *float64 `json:"allowedKeyInstallCount,omitempty" tf:"allowed_key_install_count,omitempty"`
+	AllowedKeyInstallCount *int64 `json:"allowedKeyInstallCount,omitempty" tf:"allowed_key_install_count,omitempty"`
 
 	// Compartment Identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -44,7 +44,7 @@ type ManagementAgentInstallKeyInitParameters struct {
 type ManagementAgentInstallKeyObservation struct {
 
 	// Total number of install for this keys
-	AllowedKeyInstallCount *float64 `json:"allowedKeyInstallCount,omitempty" tf:"allowed_key_install_count,omitempty"`
+	AllowedKeyInstallCount *int64 `json:"allowedKeyInstallCount,omitempty" tf:"allowed_key_install_count,omitempty"`
 
 	// Compartment Identifier
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -53,18 +53,16 @@ type ManagementAgentInstallKeyObservation struct {
 	CreatedByPrincipalID *string `json:"createdByPrincipalId,omitempty" tf:"created_by_principal_id,omitempty"`
 
 	// Total number of install for this keys
-	CurrentKeyInstallCount *float64 `json:"currentKeyInstallCount,omitempty" tf:"current_key_install_count,omitempty"`
+	CurrentKeyInstallCount *int64 `json:"currentKeyInstallCount,omitempty" tf:"current_key_install_count,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Management Agent install Key Name
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Agent install Key identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -82,8 +80,7 @@ type ManagementAgentInstallKeyObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time when Management Agent install Key was created. An RFC3339 formatted date time string
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -99,7 +96,7 @@ type ManagementAgentInstallKeyParameters struct {
 
 	// Total number of install for this keys
 	// +kubebuilder:validation:Optional
-	AllowedKeyInstallCount *float64 `json:"allowedKeyInstallCount,omitempty" tf:"allowed_key_install_count,omitempty"`
+	AllowedKeyInstallCount *int64 `json:"allowedKeyInstallCount,omitempty" tf:"allowed_key_install_count,omitempty"`
 
 	// Compartment Identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment

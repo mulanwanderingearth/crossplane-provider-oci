@@ -243,7 +243,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deploymentType:
                     description: The deployment type of cloud DB system.
                     type: string
@@ -259,7 +258,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   patchOperations:
                     description: (Updatable)
                     items:
@@ -369,7 +367,8 @@ spec:
                                                 port:
                                                   description: The port used to connect
                                                     to the ASM instance.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 protocol:
                                                   description: The protocol used to
                                                     connect to the ASM instance.
@@ -601,7 +600,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deploymentType:
                     description: The deployment type of cloud DB system.
                     type: string
@@ -617,7 +615,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   patchOperations:
                     description: (Updatable)
                     items:
@@ -727,7 +724,8 @@ spec:
                                                 port:
                                                   description: The port used to connect
                                                     to the ASM instance.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 protocol:
                                                   description: The protocol used to
                                                     connect to the ASM instance.
@@ -862,7 +860,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deploymentType:
                     description: The deployment type of cloud DB system.
                     type: string
@@ -1030,7 +1027,8 @@ spec:
                                                 port:
                                                   description: The port used to connect
                                                     to the ASM instance.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 protocol:
                                                   description: The protocol used to
                                                     connect to the ASM instance.
@@ -1184,7 +1182,8 @@ spec:
                                           port:
                                             description: The port used to connect
                                               to the ASM instance.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           protocol:
                                             description: The protocol used to connect
                                               to the ASM instance.
@@ -1300,7 +1299,8 @@ spec:
                                 type: string
                               port:
                                 description: The port used to connect to the ASM instance.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: The protocol used to connect to the ASM
                                   instance.
@@ -1374,7 +1374,8 @@ spec:
                             properties:
                               networkNumber:
                                 description: The network number.
-                                type: number
+                                format: int64
+                                type: integer
                               networkType:
                                 description: The network type.
                                 type: string
@@ -1504,7 +1505,8 @@ spec:
                                                 port:
                                                   description: The port used to connect
                                                     to the ASM instance.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 protocol:
                                                   description: The protocol used to
                                                     connect to the ASM instance.
@@ -1556,13 +1558,15 @@ spec:
                             properties:
                               networkNumber:
                                 description: The network number.
-                                type: number
+                                format: int64
+                                type: integer
                               scanName:
                                 description: The name of the SCAN listener.
                                 type: string
                               scanPort:
                                 description: The port number of the SCAN listener.
-                                type: number
+                                format: int64
+                                type: integer
                               scanProtocol:
                                 description: The protocol of the SCAN listener.
                                 type: string
@@ -1589,7 +1593,8 @@ spec:
                                 type: string
                               networkNumber:
                                 description: The network number.
-                                type: number
+                                format: int64
+                                type: integer
                               nodeName:
                                 description: The name of the DB instance node.
                                 type: string
@@ -1609,7 +1614,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gridHome:
                     description: The directory in which ASM is installed. This is
                       the same directory in which Oracle Grid Infrastructure is installed.
@@ -1730,7 +1734,8 @@ spec:
                                                 port:
                                                   description: The port used to connect
                                                     to the ASM instance.
-                                                  type: number
+                                                  format: int64
+                                                  type: integer
                                                 protocol:
                                                   description: The protocol used to
                                                     connect to the ASM instance.
@@ -1782,7 +1787,6 @@ spec:
                       Tags. System tags can be viewed by users, but can only be created
                       by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the cloud DB system discovery was
                       created.

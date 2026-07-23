@@ -61,8 +61,7 @@ type ConfigInitParameters struct {
 	ConfigType *string `json:"configType,omitempty" tf:"config_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when config_type=OPTIONS | SPAN_FILTER) (Updatable) An optional string that describes what the options are intended or used for.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -80,8 +79,7 @@ type ConfigInitParameters struct {
 	FilterText *string `json:"filterText,omitempty" tf:"filter_text,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when config_type=OPTIONS) (Updatable) A string that specifies the group that an OPTIONS item belongs to.
 	Group *string `json:"group,omitempty" tf:"group,omitempty"`
@@ -193,8 +191,7 @@ type ConfigObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when config_type=OPTIONS | SPAN_FILTER) (Updatable) An optional string that describes what the options are intended or used for.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -215,8 +212,7 @@ type ConfigObservation struct {
 	FilterText *string `json:"filterText,omitempty" tf:"filter_text,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when config_type=OPTIONS) (Updatable) A string that specifies the group that an OPTIONS item belongs to.
 	Group *string `json:"group,omitempty" tf:"group,omitempty"`
@@ -307,8 +303,7 @@ type ConfigParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when config_type=OPTIONS | SPAN_FILTER) (Updatable) An optional string that describes what the options are intended or used for.
 	// +kubebuilder:validation:Optional
@@ -332,8 +327,7 @@ type ConfigParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when config_type=OPTIONS) (Updatable) A string that specifies the group that an OPTIONS item belongs to.
 	// +kubebuilder:validation:Optional
@@ -503,8 +497,7 @@ type OverrideListInitParameters struct {
 	AgentFilter *string `json:"agentFilter,omitempty" tf:"agent_filter,omitempty"`
 
 	// (Applicable when config_type=AGENT) (Updatable) A map whose key is a substitution variable specified within the configuration's body. For example, if below was specified in the configuration's body {{ isJfrEnabled | default false }} Then a valid map key would be "isJfrEnabled". The value is typically different than the default specified in the configuration's body. Thus, in this example, the map entry could be "isJfrEnabled": true
-	// +mapType=granular
-	OverrideMap map[string]*string `json:"overrideMap,omitempty" tf:"override_map,omitempty"`
+	OverrideMap map[string]string `json:"overrideMap,omitempty" tf:"override_map,omitempty"`
 }
 
 type OverrideListObservation struct {
@@ -513,8 +506,7 @@ type OverrideListObservation struct {
 	AgentFilter *string `json:"agentFilter,omitempty" tf:"agent_filter,omitempty"`
 
 	// (Applicable when config_type=AGENT) (Updatable) A map whose key is a substitution variable specified within the configuration's body. For example, if below was specified in the configuration's body {{ isJfrEnabled | default false }} Then a valid map key would be "isJfrEnabled". The value is typically different than the default specified in the configuration's body. Thus, in this example, the map entry could be "isJfrEnabled": true
-	// +mapType=granular
-	OverrideMap map[string]*string `json:"overrideMap,omitempty" tf:"override_map,omitempty"`
+	OverrideMap map[string]string `json:"overrideMap,omitempty" tf:"override_map,omitempty"`
 }
 
 type OverrideListParameters struct {
@@ -525,8 +517,7 @@ type OverrideListParameters struct {
 
 	// (Applicable when config_type=AGENT) (Updatable) A map whose key is a substitution variable specified within the configuration's body. For example, if below was specified in the configuration's body {{ isJfrEnabled | default false }} Then a valid map key would be "isJfrEnabled". The value is typically different than the default specified in the configuration's body. Thus, in this example, the map entry could be "isJfrEnabled": true
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	OverrideMap map[string]*string `json:"overrideMap,omitempty" tf:"override_map,omitempty"`
+	OverrideMap map[string]string `json:"overrideMap,omitempty" tf:"override_map,omitempty"`
 }
 
 type OverridesInitParameters struct {
@@ -563,13 +554,13 @@ type RulesInitParameters struct {
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) The priority controls the order in which multiple rules in a rule set are applied. Lower values indicate higher priorities. Rules with higher priority are applied first, and once a match is found, the rest of the rules are ignored. Rules within the same rule set cannot have the same priority.
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Applicable when config_type=APDEX) (Updatable) The maximum response time in milliseconds that is considered "satisfactory" for the end user.
-	SatisfiedResponseTime *float64 `json:"satisfiedResponseTime,omitempty" tf:"satisfied_response_time,omitempty"`
+	SatisfiedResponseTime *int64 `json:"satisfiedResponseTime,omitempty" tf:"satisfied_response_time,omitempty"`
 
 	// (Applicable when config_type=APDEX) (Updatable) The maximum response time in milliseconds that is considered "tolerable" for the end user. A response time beyond this threshold is considered "frustrating". This value cannot be lower than "satisfiedResponseTime".
-	ToleratingResponseTime *float64 `json:"toleratingResponseTime,omitempty" tf:"tolerating_response_time,omitempty"`
+	ToleratingResponseTime *int64 `json:"toleratingResponseTime,omitempty" tf:"tolerating_response_time,omitempty"`
 }
 
 type RulesObservation struct {
@@ -587,13 +578,13 @@ type RulesObservation struct {
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) The priority controls the order in which multiple rules in a rule set are applied. Lower values indicate higher priorities. Rules with higher priority are applied first, and once a match is found, the rest of the rules are ignored. Rules within the same rule set cannot have the same priority.
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Applicable when config_type=APDEX) (Updatable) The maximum response time in milliseconds that is considered "satisfactory" for the end user.
-	SatisfiedResponseTime *float64 `json:"satisfiedResponseTime,omitempty" tf:"satisfied_response_time,omitempty"`
+	SatisfiedResponseTime *int64 `json:"satisfiedResponseTime,omitempty" tf:"satisfied_response_time,omitempty"`
 
 	// (Applicable when config_type=APDEX) (Updatable) The maximum response time in milliseconds that is considered "tolerable" for the end user. A response time beyond this threshold is considered "frustrating". This value cannot be lower than "satisfiedResponseTime".
-	ToleratingResponseTime *float64 `json:"toleratingResponseTime,omitempty" tf:"tolerating_response_time,omitempty"`
+	ToleratingResponseTime *int64 `json:"toleratingResponseTime,omitempty" tf:"tolerating_response_time,omitempty"`
 }
 
 type RulesParameters struct {
@@ -616,15 +607,15 @@ type RulesParameters struct {
 
 	// (Updatable) The priority controls the order in which multiple rules in a rule set are applied. Lower values indicate higher priorities. Rules with higher priority are applied first, and once a match is found, the rest of the rules are ignored. Rules within the same rule set cannot have the same priority.
 	// +kubebuilder:validation:Optional
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Applicable when config_type=APDEX) (Updatable) The maximum response time in milliseconds that is considered "satisfactory" for the end user.
 	// +kubebuilder:validation:Optional
-	SatisfiedResponseTime *float64 `json:"satisfiedResponseTime,omitempty" tf:"satisfied_response_time,omitempty"`
+	SatisfiedResponseTime *int64 `json:"satisfiedResponseTime,omitempty" tf:"satisfied_response_time,omitempty"`
 
 	// (Applicable when config_type=APDEX) (Updatable) The maximum response time in milliseconds that is considered "tolerable" for the end user. A response time beyond this threshold is considered "frustrating". This value cannot be lower than "satisfiedResponseTime".
 	// +kubebuilder:validation:Optional
-	ToleratingResponseTime *float64 `json:"toleratingResponseTime,omitempty" tf:"tolerating_response_time,omitempty"`
+	ToleratingResponseTime *int64 `json:"toleratingResponseTime,omitempty" tf:"tolerating_response_time,omitempty"`
 }
 
 // ConfigSpec defines the desired state of Config

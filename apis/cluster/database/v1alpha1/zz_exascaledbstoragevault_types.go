@@ -16,10 +16,10 @@ import (
 type ExascaleDbStorageVaultInitParameters struct {
 
 	// (Updatable) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// (Updatable) The maximum limit, in gigabytes, to which the Vault storage size can automatically scale when auto scaling is enabled for the Database Storage Vault
-	AutoscaleLimitInGbs *float64 `json:"autoscaleLimitInGbs,omitempty" tf:"autoscale_limit_in_gbs,omitempty"`
+	AutoscaleLimitInGbs *int64 `json:"autoscaleLimitInGbs,omitempty" tf:"autoscale_limit_in_gbs,omitempty"`
 
 	// The name of the availability domain in which the Exadata Database Storage Vault is located.
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
@@ -50,8 +50,7 @@ type ExascaleDbStorageVaultInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Exadata Database Storage Vault description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -73,8 +72,7 @@ type ExascaleDbStorageVaultInitParameters struct {
 	ExadataInfrastructureIDSelector *v1.Selector `json:"exadataInfrastructureIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Create exadata Database Storage Details
 	HighCapacityDatabaseStorage []HighCapacityDatabaseStorageInitParameters `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
@@ -92,13 +90,13 @@ type ExascaleDbStorageVaultInitParameters struct {
 type ExascaleDbStorageVaultObservation struct {
 
 	// (Updatable) The size of additional Flash Cache in percentage of High Capacity database storage.
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// The shapeAttribute of the Exadata VM cluster(s) associated with the Exadata Database Storage Vault.
 	AttachedShapeAttributes []*string `json:"attachedShapeAttributes,omitempty" tf:"attached_shape_attributes,omitempty"`
 
 	// (Updatable) The maximum limit, in gigabytes, to which the Vault storage size can automatically scale when auto scaling is enabled for the Database Storage Vault
-	AutoscaleLimitInGbs *float64 `json:"autoscaleLimitInGbs,omitempty" tf:"autoscale_limit_in_gbs,omitempty"`
+	AutoscaleLimitInGbs *int64 `json:"autoscaleLimitInGbs,omitempty" tf:"autoscale_limit_in_gbs,omitempty"`
 
 	// The name of the availability domain in which the Exadata Database Storage Vault is located.
 	AvailabilityDomain *string `json:"availabilityDomain,omitempty" tf:"availability_domain,omitempty"`
@@ -110,8 +108,7 @@ type ExascaleDbStorageVaultObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Exadata Database Storage Vault description.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -123,8 +120,7 @@ type ExascaleDbStorageVaultObservation struct {
 	ExadataInfrastructureID *string `json:"exadataInfrastructureId,omitempty" tf:"exadata_infrastructure_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Create exadata Database Storage Details
 	HighCapacityDatabaseStorage []HighCapacityDatabaseStorageObservation `json:"highCapacityDatabaseStorage,omitempty" tf:"high_capacity_database_storage,omitempty"`
@@ -145,8 +141,7 @@ type ExascaleDbStorageVaultObservation struct {
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time that the Exadata Database Storage Vault was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -155,7 +150,7 @@ type ExascaleDbStorageVaultObservation struct {
 	TimeZone *string `json:"timeZone,omitempty" tf:"time_zone,omitempty"`
 
 	// The number of Exadata VM clusters used the Exadata Database Storage Vault.
-	VMClusterCount *float64 `json:"vmClusterCount,omitempty" tf:"vm_cluster_count,omitempty"`
+	VMClusterCount *int64 `json:"vmClusterCount,omitempty" tf:"vm_cluster_count,omitempty"`
 
 	// The List of Exadata VM cluster on Exascale Infrastructure OCIDs Note: If Exadata Database Storage Vault is not used for any Exadata VM cluster on Exascale Infrastructure, this list is empty.
 	VMClusterIds []*string `json:"vmClusterIds,omitempty" tf:"vm_cluster_ids,omitempty"`
@@ -165,11 +160,11 @@ type ExascaleDbStorageVaultParameters struct {
 
 	// (Updatable) The size of additional Flash Cache in percentage of High Capacity database storage.
 	// +kubebuilder:validation:Optional
-	AdditionalFlashCacheInPercent *float64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
+	AdditionalFlashCacheInPercent *int64 `json:"additionalFlashCacheInPercent,omitempty" tf:"additional_flash_cache_in_percent,omitempty"`
 
 	// (Updatable) The maximum limit, in gigabytes, to which the Vault storage size can automatically scale when auto scaling is enabled for the Database Storage Vault
 	// +kubebuilder:validation:Optional
-	AutoscaleLimitInGbs *float64 `json:"autoscaleLimitInGbs,omitempty" tf:"autoscale_limit_in_gbs,omitempty"`
+	AutoscaleLimitInGbs *int64 `json:"autoscaleLimitInGbs,omitempty" tf:"autoscale_limit_in_gbs,omitempty"`
 
 	// The name of the availability domain in which the Exadata Database Storage Vault is located.
 	// +kubebuilder:validation:Optional
@@ -204,8 +199,7 @@ type ExascaleDbStorageVaultParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Exadata Database Storage Vault description.
 	// +kubebuilder:validation:Optional
@@ -231,8 +225,7 @@ type ExascaleDbStorageVaultParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Create exadata Database Storage Details
 	// +kubebuilder:validation:Optional
@@ -254,23 +247,23 @@ type ExascaleDbStorageVaultParameters struct {
 type HighCapacityDatabaseStorageInitParameters struct {
 
 	// (Updatable) Total Capacity
-	TotalSizeInGbs *float64 `json:"totalSizeInGbs,omitempty" tf:"total_size_in_gbs,omitempty"`
+	TotalSizeInGbs *int64 `json:"totalSizeInGbs,omitempty" tf:"total_size_in_gbs,omitempty"`
 }
 
 type HighCapacityDatabaseStorageObservation struct {
 
 	// Available Capacity
-	AvailableSizeInGbs *float64 `json:"availableSizeInGbs,omitempty" tf:"available_size_in_gbs,omitempty"`
+	AvailableSizeInGbs *int64 `json:"availableSizeInGbs,omitempty" tf:"available_size_in_gbs,omitempty"`
 
 	// (Updatable) Total Capacity
-	TotalSizeInGbs *float64 `json:"totalSizeInGbs,omitempty" tf:"total_size_in_gbs,omitempty"`
+	TotalSizeInGbs *int64 `json:"totalSizeInGbs,omitempty" tf:"total_size_in_gbs,omitempty"`
 }
 
 type HighCapacityDatabaseStorageParameters struct {
 
 	// (Updatable) Total Capacity
 	// +kubebuilder:validation:Optional
-	TotalSizeInGbs *float64 `json:"totalSizeInGbs" tf:"total_size_in_gbs,omitempty"`
+	TotalSizeInGbs *int64 `json:"totalSizeInGbs" tf:"total_size_in_gbs,omitempty"`
 }
 
 // ExascaleDbStorageVaultSpec defines the desired state of ExascaleDbStorageVault

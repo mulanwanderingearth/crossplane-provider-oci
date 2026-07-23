@@ -253,7 +253,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   discoveryCredentials:
                     description: (Updatable) Credentials for an asset source.
                     items:
@@ -545,7 +544,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inventoryId:
                     description: The OCID of the inventory that will contain created
                       assets.
@@ -751,7 +749,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   type:
                     description: (Updatable) Authentication type
                     type: string
@@ -967,7 +964,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   discoveryCredentials:
                     description: (Updatable) Credentials for an asset source.
                     items:
@@ -1259,7 +1255,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   inventoryId:
                     description: The OCID of the inventory that will contain created
                       assets.
@@ -1465,7 +1460,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   type:
                     description: (Updatable) Authentication type
                     type: string
@@ -1578,7 +1572,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   discoveryCredentials:
                     description: (Updatable) Credentials for an asset source.
                     items:
@@ -1624,7 +1617,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the resource.
                     type: string
@@ -1675,7 +1667,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time when the asset source was created in the
                       RFC3339 format.

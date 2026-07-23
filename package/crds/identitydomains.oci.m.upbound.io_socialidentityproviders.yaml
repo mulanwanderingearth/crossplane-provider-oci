@@ -176,7 +176,8 @@ spec:
                     type: boolean
                   clockSkewInSeconds:
                     description: (Updatable) Social IDP allowed clock skew time
-                    type: number
+                    format: int64
+                    type: integer
                   consumerKey:
                     description: (Updatable) Social IDP Client Application Client
                       ID
@@ -434,7 +435,8 @@ spec:
                     type: boolean
                   clockSkewInSeconds:
                     description: (Updatable) Social IDP allowed clock skew time
-                    type: number
+                    format: int64
+                    type: integer
                   consumerKey:
                     description: (Updatable) Social IDP Client Application Client
                       ID
@@ -706,7 +708,8 @@ spec:
                     type: boolean
                   clockSkewInSeconds:
                     description: (Updatable) Social IDP allowed clock skew time
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentOcid:
                     description: (Updatable) Oracle Cloud Infrastructure Compartment
                       Id (ocid) in which the resource lives.

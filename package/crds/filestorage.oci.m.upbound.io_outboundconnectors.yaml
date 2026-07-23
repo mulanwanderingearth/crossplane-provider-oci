@@ -163,7 +163,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -190,7 +189,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   locks:
@@ -301,7 +299,8 @@ spec:
                     type: object
                   passwordSecretVersion:
                     description: Version of the password secret in the Vault to use.
-                    type: number
+                    format: int64
+                    type: integer
                   trustedCertificateSecretId:
                     description: The OCID of the trusted certificate for the LDAP
                       server in the Vault.
@@ -389,7 +388,8 @@ spec:
                   trustedCertificateSecretVersion:
                     description: Version of the trusted certificate secret in the
                       Vault to use.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -507,7 +507,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -534,7 +533,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   locks:
@@ -645,7 +643,8 @@ spec:
                     type: object
                   passwordSecretVersion:
                     description: Version of the password secret in the Vault to use.
-                    type: number
+                    format: int64
+                    type: integer
                   trustedCertificateSecretId:
                     description: The OCID of the trusted certificate for the LDAP
                       server in the Vault.
@@ -733,7 +732,8 @@ spec:
                   trustedCertificateSecretVersion:
                     description: Version of the trusted certificate secret in the
                       Vault to use.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -838,7 +838,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -865,7 +864,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the outbound connector.
                     type: string
@@ -899,7 +897,8 @@ spec:
                     type: string
                   passwordSecretVersion:
                     description: Version of the password secret in the Vault to use.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of this outbound connector.
                     type: string
@@ -909,7 +908,6 @@ spec:
                     description: System tags for this resource. System tags are applied
                       to resources by internal Oracle Cloud Infrastructure services.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the lock was created.
                     type: string
@@ -920,7 +918,8 @@ spec:
                   trustedCertificateSecretVersion:
                     description: Version of the trusted certificate secret in the
                       Vault to use.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

@@ -301,7 +301,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the Exadata
                       VM cluster on Exascale Infrastructure. The name does not need
@@ -408,7 +407,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gridImageId:
                     description: (Updatable) Grid Setup will be done using this grid
                       image id.
@@ -512,15 +510,18 @@ spec:
                         enabledEcpuCountPerNode:
                           description: (Updatable) The number of ECPUs to enable for
                             each node.
-                          type: number
+                          format: int64
+                          type: integer
                         totalEcpuCountPerNode:
                           description: (Updatable) The number of Total ECPUs for each
                             node.
-                          type: number
+                          format: int64
+                          type: integer
                         vmFileSystemStorageSizeGbsPerNode:
                           description: (Updatable) The file system storage in GBs
                             for each node.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   nodeResource:
@@ -634,11 +635,13 @@ spec:
                   scanListenerPortTcp:
                     description: The TCP Single Client Access Name (SCAN) port. The
                       default port is 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTcpSsl:
                     description: The Secured Communication (TCPS) protocol Single
                       Client Access Name (SCAN) port. The default port is 2484.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -647,7 +650,6 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: The shape of the Exadata VM cluster on Exascale Infrastructure
                       resource
@@ -1015,7 +1017,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the Exadata
                       VM cluster on Exascale Infrastructure. The name does not need
@@ -1122,7 +1123,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gridImageId:
                     description: (Updatable) Grid Setup will be done using this grid
                       image id.
@@ -1226,15 +1226,18 @@ spec:
                         enabledEcpuCountPerNode:
                           description: (Updatable) The number of ECPUs to enable for
                             each node.
-                          type: number
+                          format: int64
+                          type: integer
                         totalEcpuCountPerNode:
                           description: (Updatable) The number of Total ECPUs for each
                             node.
-                          type: number
+                          format: int64
+                          type: integer
                         vmFileSystemStorageSizeGbsPerNode:
                           description: (Updatable) The file system storage in GBs
                             for each node.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   nodeResource:
@@ -1348,11 +1351,13 @@ spec:
                   scanListenerPortTcp:
                     description: The TCP Single Client Access Name (SCAN) port. The
                       default port is 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTcpSsl:
                     description: The Secured Communication (TCPS) protocol Single
                       Client Access Name (SCAN) port. The default port is 2484.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -1361,7 +1366,6 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: The shape of the Exadata VM cluster on Exascale Infrastructure
                       resource
@@ -1648,7 +1652,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name for the Exadata
                       VM cluster on Exascale Infrastructure. The name does not need
@@ -1673,7 +1676,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   giVersion:
                     description: A valid Oracle Grid Infrastructure (GI) software
                       version.
@@ -1714,7 +1716,8 @@ spec:
                                 type: string
                               share:
                                 description: The relative priority of this database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         lifecycleDetails:
@@ -1754,27 +1757,33 @@ spec:
                         enabledEcpuCountPerNode:
                           description: (Updatable) The number of ECPUs to enable for
                             each node.
-                          type: number
+                          format: int64
+                          type: integer
                         memorySizeInGbsPerNode:
                           description: The memory that you want to be allocated in
                             GBs to each node. Memory is calculated based on 11 GB
                             per VM core reserved.
-                          type: number
+                          format: int64
+                          type: integer
                         snapshotFileSystemStorageSizeGbsPerNode:
                           description: The file system storage in GBs for snapshot
                             for each node.
-                          type: number
+                          format: int64
+                          type: integer
                         totalEcpuCountPerNode:
                           description: (Updatable) The number of Total ECPUs for each
                             node.
-                          type: number
+                          format: int64
+                          type: integer
                         totalFileSystemStorageSizeGbsPerNode:
                           description: Total file system storage in GBs for each node.
-                          type: number
+                          format: int64
+                          type: integer
                         vmFileSystemStorageSizeGbsPerNode:
                           description: (Updatable) The file system storage in GBs
                             for each node.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   nodeResource:
@@ -1837,11 +1846,13 @@ spec:
                   scanListenerPortTcp:
                     description: The TCP Single Client Access Name (SCAN) port. The
                       default port is 1521.
-                    type: number
+                    format: int64
+                    type: integer
                   scanListenerPortTcpSsl:
                     description: The Secured Communication (TCPS) protocol Single
                       Client Access Name (SCAN) port. The default port is 2484.
-                    type: number
+                    format: int64
+                    type: integer
                   securityAttributes:
                     additionalProperties:
                       type: string
@@ -1850,7 +1861,6 @@ spec:
                       see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount":
                       {"value": "42", "mode": "audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   shape:
                     description: The shape of the Exadata VM cluster on Exascale Infrastructure
                       resource
@@ -1886,7 +1896,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   systemVersion:
                     description: (Updatable) Operating system version of the image.
                     type: string

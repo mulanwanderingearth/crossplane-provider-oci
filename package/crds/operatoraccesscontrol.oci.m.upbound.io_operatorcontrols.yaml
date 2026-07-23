@@ -166,7 +166,6 @@ spec:
                     description: (Updatable) Defined tags for this resource. Each
                       key is predefined and scoped to a namespace.
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the operator control.
                     type: string
@@ -182,7 +181,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.
                     type: object
-                    x-kubernetes-map-type: granular
                   isFullyPreApproved:
                     description: (Updatable) Whether all the operator actions have
                       been pre-approved. If yes, all access requests associated with
@@ -278,7 +276,8 @@ spec:
                   numberOfApprovers:
                     description: (Updatable) Number of approvers required to approve
                       an access request.
-                    type: number
+                    format: int64
+                    type: integer
                   operatorControlName:
                     description: (Updatable) Name of the operator control.
                     type: string
@@ -499,7 +498,6 @@ spec:
                     description: (Updatable) Defined tags for this resource. Each
                       key is predefined and scoped to a namespace.
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the operator control.
                     type: string
@@ -515,7 +513,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.
                     type: object
-                    x-kubernetes-map-type: granular
                   isFullyPreApproved:
                     description: (Updatable) Whether all the operator actions have
                       been pre-approved. If yes, all access requests associated with
@@ -611,7 +608,8 @@ spec:
                   numberOfApprovers:
                     description: (Updatable) Number of approvers required to approve
                       an access request.
-                    type: number
+                    format: int64
+                    type: integer
                   operatorControlName:
                     description: (Updatable) Name of the operator control.
                     type: string
@@ -824,7 +822,6 @@ spec:
                     description: (Updatable) Defined tags for this resource. Each
                       key is predefined and scoped to a namespace.
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the operator control.
                     type: string
@@ -840,7 +837,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the operator control.
                     type: string
@@ -865,7 +861,8 @@ spec:
                   numberOfApprovers:
                     description: (Updatable) Number of approvers required to approve
                       an access request.
-                    type: number
+                    format: int64
+                    type: integer
                   operatorControlName:
                     description: (Updatable) Name of the operator control.
                     type: string

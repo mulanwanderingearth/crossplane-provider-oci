@@ -438,7 +438,8 @@ spec:
                           type: boolean
                         clockSkewInSeconds:
                           description: (Updatable) Social IDP allowed clock skew time
-                          type: number
+                          format: int64
+                          type: integer
                         consumerKey:
                           description: (Updatable) Social IDP Client Application Client
                             ID
@@ -518,7 +519,8 @@ spec:
                         crlReloadDuration:
                           description: (Updatable) Fetch the CRL contents every X
                             minutes
-                          type: number
+                          format: int64
+                          type: integer
                         ekuValidationEnabled:
                           description: (Updatable) Set to true to enable EKU Validation
                           type: boolean
@@ -546,7 +548,8 @@ spec:
                         ocspRevalidateTime:
                           description: (Updatable) Revalidate OCSP status for user
                             after X hours
-                          type: number
+                          format: int64
+                          type: integer
                         ocspServerName:
                           description: (Updatable) This property specifies the OCSP
                             Server alias name
@@ -979,7 +982,8 @@ spec:
                           type: boolean
                         clockSkewInSeconds:
                           description: (Updatable) Social IDP allowed clock skew time
-                          type: number
+                          format: int64
+                          type: integer
                         consumerKey:
                           description: (Updatable) Social IDP Client Application Client
                             ID
@@ -1059,7 +1063,8 @@ spec:
                         crlReloadDuration:
                           description: (Updatable) Fetch the CRL contents every X
                             minutes
-                          type: number
+                          format: int64
+                          type: integer
                         ekuValidationEnabled:
                           description: (Updatable) Set to true to enable EKU Validation
                           type: boolean
@@ -1087,7 +1092,8 @@ spec:
                         ocspRevalidateTime:
                           description: (Updatable) Revalidate OCSP status for user
                             after X hours
-                          type: number
+                          format: int64
+                          type: integer
                         ocspServerName:
                           description: (Updatable) This property specifies the OCSP
                             Server alias name
@@ -1651,7 +1657,8 @@ spec:
                           type: boolean
                         clockSkewInSeconds:
                           description: (Updatable) Social IDP allowed clock skew time
-                          type: number
+                          format: int64
+                          type: integer
                         consumerKey:
                           description: (Updatable) Social IDP Client Application Client
                             ID
@@ -1734,7 +1741,8 @@ spec:
                         crlReloadDuration:
                           description: (Updatable) Fetch the CRL contents every X
                             minutes
-                          type: number
+                          format: int64
+                          type: integer
                         ekuValidationEnabled:
                           description: (Updatable) Set to true to enable EKU Validation
                           type: boolean
@@ -1762,7 +1770,8 @@ spec:
                         ocspRevalidateTime:
                           description: (Updatable) Revalidate OCSP status for user
                             after X hours
-                          type: number
+                          format: int64
+                          type: integer
                         ocspServerName:
                           description: (Updatable) This property specifies the OCSP
                             Server alias name

@@ -222,7 +222,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) The number of ECPUs (X11M and higher)
                       or number of OCPUs (X10M and earlier) to enable for the VM cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   dataCollectionOptions:
                     description: (Updatable) Indicates user preferences for the various
                       diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM
@@ -273,7 +274,8 @@ spec:
                       (user data and database files). See Storage Configuration in
                       the Exadata documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInGb:
                     description: (Updatable) The data disk group size to be allocated
                       in GBs.
@@ -285,7 +287,8 @@ spec:
                   dbNodeStorageSizeInGbs:
                     description: (Updatable) The local node storage to be allocated
                       in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of Db server.
                     items:
@@ -298,7 +301,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the VM cluster. The name
                       does not need to be unique.
@@ -469,7 +471,8 @@ spec:
                         fileSystemSizeGb:
                           description: (Updatable) The file system size to be allocated
                             in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         mountPoint:
                           description: (Updatable) The mount point of file system.
                           type: string
@@ -483,7 +486,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   giVersion:
                     description: The Oracle Grid Infrastructure software version for
                       the VM cluster.
@@ -503,7 +505,8 @@ spec:
                     type: string
                   memorySizeInGbs:
                     description: (Updatable) The memory to be allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   ocpuCount:
                     type: number
                   recoStoragePercentage:
@@ -511,13 +514,15 @@ spec:
                       (database redo logs, archive logs, and recovery manager backups).
                       See Storage Configuration in the Exadata documentation for details
                       on the impact of the configuration settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   sparseStoragePercentage:
                     description: (Updatable) The percentage assigned to SPARSE storage
                       (Exadata snapshots). See Storage Configuration in the Exadata
                       documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   sshPublicKeys:
                     description: (Updatable) The public key portion of one or more
                       key pairs used for SSH access to the VM cluster.
@@ -791,7 +796,8 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) The number of ECPUs (X11M and higher)
                       or number of OCPUs (X10M and earlier) to enable for the VM cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   dataCollectionOptions:
                     description: (Updatable) Indicates user preferences for the various
                       diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM
@@ -842,7 +848,8 @@ spec:
                       (user data and database files). See Storage Configuration in
                       the Exadata documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInGb:
                     description: (Updatable) The data disk group size to be allocated
                       in GBs.
@@ -854,7 +861,8 @@ spec:
                   dbNodeStorageSizeInGbs:
                     description: (Updatable) The local node storage to be allocated
                       in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of Db server.
                     items:
@@ -867,7 +875,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the VM cluster. The name
                       does not need to be unique.
@@ -1038,7 +1045,8 @@ spec:
                         fileSystemSizeGb:
                           description: (Updatable) The file system size to be allocated
                             in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         mountPoint:
                           description: (Updatable) The mount point of file system.
                           type: string
@@ -1052,7 +1060,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   giVersion:
                     description: The Oracle Grid Infrastructure software version for
                       the VM cluster.
@@ -1072,7 +1079,8 @@ spec:
                     type: string
                   memorySizeInGbs:
                     description: (Updatable) The memory to be allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   ocpuCount:
                     type: number
                   recoStoragePercentage:
@@ -1080,13 +1088,15 @@ spec:
                       (database redo logs, archive logs, and recovery manager backups).
                       See Storage Configuration in the Exadata documentation for details
                       on the impact of the configuration settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   sparseStoragePercentage:
                     description: (Updatable) The percentage assigned to SPARSE storage
                       (Exadata snapshots). See Storage Configuration in the Exadata
                       documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   sshPublicKeys:
                     description: (Updatable) The public key portion of one or more
                       key pairs used for SSH access to the VM cluster.
@@ -1392,10 +1402,12 @@ spec:
                   cpuCoreCount:
                     description: (Updatable) The number of ECPUs (X11M and higher)
                       or number of OCPUs (X10M and earlier) to enable for the VM cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   cpusEnabled:
                     description: The number of enabled CPU cores.
-                    type: number
+                    format: int64
+                    type: integer
                   dataCollectionOptions:
                     description: (Updatable) Indicates user preferences for the various
                       diagnostic collection options for the VM cluster/Cloud VM cluster/VMBM
@@ -1446,7 +1458,8 @@ spec:
                       (user data and database files). See Storage Configuration in
                       the Exadata documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInGb:
                     description: (Updatable) The data disk group size to be allocated
                       in GBs.
@@ -1458,7 +1471,8 @@ spec:
                   dbNodeStorageSizeInGbs:
                     description: (Updatable) The local node storage to be allocated
                       in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbServers:
                     description: The list of Db server.
                     items:
@@ -1471,7 +1485,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the VM cluster. The name
                       does not need to be unique.
@@ -1490,7 +1503,8 @@ spec:
                         fileSystemSizeGb:
                           description: (Updatable) The file system size to be allocated
                             in GBs.
-                          type: number
+                          format: int64
+                          type: integer
                         mountPoint:
                           description: (Updatable) The mount point of file system.
                           type: string
@@ -1504,7 +1518,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   giVersion:
                     description: The Oracle Grid Infrastructure software version for
                       the VM cluster.
@@ -1535,7 +1548,8 @@ spec:
                     type: string
                   memorySizeInGbs:
                     description: (Updatable) The memory to be allocated in GBs.
-                    type: number
+                    format: int64
+                    type: integer
                   ocpuCount:
                     type: number
                   ocpusEnabled:
@@ -1546,7 +1560,8 @@ spec:
                       (database redo logs, archive logs, and recovery manager backups).
                       See Storage Configuration in the Exadata documentation for details
                       on the impact of the configuration settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   shape:
                     description: The shape of the Exadata infrastructure. The shape
                       determines the amount of CPU, storage, and memory resources
@@ -1557,7 +1572,8 @@ spec:
                       (Exadata snapshots). See Storage Configuration in the Exadata
                       documentation for details on the impact of the configuration
                       settings on storage.
-                    type: number
+                    format: int64
+                    type: integer
                   sshPublicKeys:
                     description: (Updatable) The public key portion of one or more
                       key pairs used for SSH access to the VM cluster.
@@ -1579,7 +1595,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   systemVersion:
                     description: Operating system version of the image.
                     type: string

@@ -102,7 +102,8 @@ spec:
                             (Updatable) A list of days of the month to be scheduled.
                             i.e. excute every 2nd,3rd, 10th of the month.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         frequency:
                           description: (Updatable) the frequency of the schedule.
@@ -113,7 +114,8 @@ spec:
                             aspect of a schedule. i.e. in a monhtly frequency, a task
                             can be scheduled for every month, once in two months,
                             once in tree months etc.
-                          type: number
+                          format: int64
+                          type: integer
                         modelType:
                           description: (Updatable) The type of the model
                           type: string
@@ -127,17 +129,20 @@ spec:
                                 description: (Applicable when model_type=DAILY | HOURLY
                                   | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The
                                   hour value.
-                                type: number
+                                format: int64
+                                type: integer
                               minute:
                                 description: (Applicable when model_type=DAILY | HOURLY
                                   | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The
                                   minute value.
-                                type: number
+                                format: int64
+                                type: integer
                               second:
                                 description: (Applicable when model_type=DAILY | HOURLY
                                   | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The
                                   second value.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         weekOfMonth:
@@ -176,12 +181,14 @@ spec:
                     description: (Updatable) The status of an object that can be set
                       to value 1 for shallow references across objects, other values
                       reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   objectVersion:
                     description: (Updatable) This is used by the service for optimistic
                       locking of the object, to prevent multiple users from simultaneously
                       updating the object.
-                    type: number
+                    format: int64
+                    type: integer
                   registryMetadata:
                     description: (Updatable) Information about the object and its
                       parent.
@@ -210,7 +217,8 @@ spec:
                           type: array
                         registryVersion:
                           description: (Updatable) The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   timezone:
@@ -336,7 +344,8 @@ spec:
                             (Updatable) A list of days of the month to be scheduled.
                             i.e. excute every 2nd,3rd, 10th of the month.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         frequency:
                           description: (Updatable) the frequency of the schedule.
@@ -347,7 +356,8 @@ spec:
                             aspect of a schedule. i.e. in a monhtly frequency, a task
                             can be scheduled for every month, once in two months,
                             once in tree months etc.
-                          type: number
+                          format: int64
+                          type: integer
                         modelType:
                           description: (Updatable) The type of the model
                           type: string
@@ -361,17 +371,20 @@ spec:
                                 description: (Applicable when model_type=DAILY | HOURLY
                                   | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The
                                   hour value.
-                                type: number
+                                format: int64
+                                type: integer
                               minute:
                                 description: (Applicable when model_type=DAILY | HOURLY
                                   | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The
                                   minute value.
-                                type: number
+                                format: int64
+                                type: integer
                               second:
                                 description: (Applicable when model_type=DAILY | HOURLY
                                   | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The
                                   second value.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         weekOfMonth:
@@ -410,12 +423,14 @@ spec:
                     description: (Updatable) The status of an object that can be set
                       to value 1 for shallow references across objects, other values
                       reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   objectVersion:
                     description: (Updatable) This is used by the service for optimistic
                       locking of the object, to prevent multiple users from simultaneously
                       updating the object.
-                    type: number
+                    format: int64
+                    type: integer
                   registryMetadata:
                     description: (Updatable) Information about the object and its
                       parent.
@@ -444,7 +459,8 @@ spec:
                           type: array
                         registryVersion:
                           description: (Updatable) The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   timezone:
@@ -664,7 +680,8 @@ spec:
                             (Updatable) A list of days of the month to be scheduled.
                             i.e. excute every 2nd,3rd, 10th of the month.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         frequency:
                           description: (Updatable) the frequency of the schedule.
@@ -675,7 +692,8 @@ spec:
                             aspect of a schedule. i.e. in a monhtly frequency, a task
                             can be scheduled for every month, once in two months,
                             once in tree months etc.
-                          type: number
+                          format: int64
+                          type: integer
                         modelType:
                           description: (Updatable) The type of the model
                           type: string
@@ -689,17 +707,20 @@ spec:
                                 description: (Applicable when model_type=DAILY | HOURLY
                                   | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The
                                   hour value.
-                                type: number
+                                format: int64
+                                type: integer
                               minute:
                                 description: (Applicable when model_type=DAILY | HOURLY
                                   | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The
                                   minute value.
-                                type: number
+                                format: int64
+                                type: integer
                               second:
                                 description: (Applicable when model_type=DAILY | HOURLY
                                   | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The
                                   second value.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         weekOfMonth:
@@ -801,7 +822,6 @@ spec:
                             type: string
                           description: Information property fields.
                           type: object
-                          x-kubernetes-map-type: granular
                         isFavorite:
                           description: (Updatable) Specifies whether this object is
                             a favorite or not.
@@ -815,7 +835,8 @@ spec:
                           type: array
                         registryVersion:
                           description: (Updatable) The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                         timeCreated:
                           description: The date and time that the object was created.
                           type: string
@@ -848,12 +869,14 @@ spec:
                     description: (Updatable) The status of an object that can be set
                       to value 1 for shallow references across objects, other values
                       reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   objectVersion:
                     description: (Updatable) This is used by the service for optimistic
                       locking of the object, to prevent multiple users from simultaneously
                       updating the object.
-                    type: number
+                    format: int64
+                    type: integer
                   parentRef:
                     description: A reference to the object's parent.
                     items:
@@ -894,7 +917,8 @@ spec:
                           type: array
                         registryVersion:
                           description: (Updatable) The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   timezone:

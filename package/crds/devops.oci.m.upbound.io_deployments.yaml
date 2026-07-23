@@ -66,7 +66,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deployArtifactOverrideArguments:
                     description: (Applicable when deployment_type=PIPELINE_DEPLOYMENT
                       | SINGLE_STAGE_DEPLOYMENT) Specifies the list of artifact override
@@ -486,7 +485,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   previousDeploymentId:
                     description: Specifies the OCID of the previous deployment to
                       be redeployed.
@@ -602,7 +600,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deployArtifactOverrideArguments:
                     description: (Applicable when deployment_type=PIPELINE_DEPLOYMENT
                       | SINGLE_STAGE_DEPLOYMENT) Specifies the list of artifact override
@@ -1022,7 +1019,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   previousDeploymentId:
                     description: Specifies the OCID of the previous deployment to
                       be redeployed.
@@ -1198,7 +1194,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"foo-namespace.bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   deployArtifactOverrideArguments:
                     description: (Applicable when deployment_type=PIPELINE_DEPLOYMENT
                       | SINGLE_STAGE_DEPLOYMENT) Specifies the list of artifact override
@@ -1369,7 +1364,6 @@ spec:
                           description: Map of stage OCIDs to deploy stage execution
                             progress model.
                           type: object
-                          x-kubernetes-map-type: granular
                         timeFinished:
                           description: Time when the step finished.
                           type: string
@@ -1392,7 +1386,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the predecessor stage. If a stage is
                       the first stage in the pipeline, then the ID is the pipeline's
@@ -1420,7 +1413,6 @@ spec:
                       are scoped to namespaces. See Resource Tags. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: Time the deployment was created. Format defined by
                       RFC3339.

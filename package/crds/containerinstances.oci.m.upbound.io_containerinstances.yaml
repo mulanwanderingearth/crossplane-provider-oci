@@ -176,7 +176,6 @@ spec:
                             predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}.'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: A user-friendly name. Does not have to be unique,
                             and it's changeable. Avoid entering confidential information.
@@ -190,7 +189,6 @@ spec:
                             These variables are in addition to any variables already
                             defined in the container's image.
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -198,7 +196,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         healthChecks:
                           description: list of container health checks to check container
                             status and take appropriate action if container status
@@ -216,7 +213,8 @@ spec:
                               failureThreshold:
                                 description: Number of consecutive failures at which
                                   we consider the check failed.
-                                type: number
+                                format: int64
+                                type: integer
                               headers:
                                 description: (Applicable when health_check_type=HTTP)
                                   Container health check HTTP headers.
@@ -236,11 +234,13 @@ spec:
                               initialDelayInSeconds:
                                 description: The initial delay in seconds before start
                                   checking container health status.
-                                type: number
+                                format: int64
+                                type: integer
                               intervalInSeconds:
                                 description: Number of seconds between two consecutive
                                   runs for checking container health.
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: Container HTTP header Key.
                                 type: string
@@ -249,7 +249,8 @@ spec:
                                 type: string
                               port:
                                 description: Container health check HTTP port.
-                                type: number
+                                format: int64
+                                type: integer
                               status:
                                 type: string
                               statusDetails:
@@ -258,11 +259,13 @@ spec:
                                 description: Number of consecutive successes at which
                                   we consider the check succeeded again after it was
                                   in failure state.
-                                type: number
+                                format: int64
+                                type: integer
                               timeoutInSeconds:
                                 description: Length of waiting time in seconds before
                                   marking health check failed.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         imageUrl:
@@ -328,13 +331,15 @@ spec:
                                 description: The group ID (GID) to run the entrypoint
                                   process of the container. Uses runtime default if
                                   not provided.
-                                type: number
+                                format: int64
+                                type: integer
                               runAsUser:
                                 description: The user ID (UID) to run the entrypoint
                                   process of the container. Defaults to user specified
                                   UID in container image metadata if not provided.
                                   This must be provided if runAsGroup is provided.
-                                type: number
+                                format: int64
+                                type: integer
                               securityContextType:
                                 description: The type of security context
                                 type: string
@@ -358,7 +363,8 @@ spec:
                                   system  Name                  Flags 1      1049kB  106MB   105MB   fat16        EFI
                                   System Partition  boot, esp 2      106MB   1180MB  1074MB  xfs
                                   3      1180MB  50.0GB  48.8GB                                     lvm'
-                                type: number
+                                format: int64
+                                type: integer
                               subPath:
                                 description: A subpath inside the referenced volume.
                                 type: string
@@ -382,7 +388,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}.'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: A user-friendly name. Does not have to be unique,
                       and it's changeable. Avoid entering confidential information.
@@ -427,7 +432,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gracefulShutdownTimeoutInSeconds:
                     description: The amount of time that processes in a container
                       have to gracefully end when the container must be stopped. For
@@ -586,7 +590,6 @@ spec:
                             predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}.'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: A user-friendly name. Does not have to be unique,
                             and it's changeable. Avoid entering confidential information.
@@ -599,7 +602,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: The hostname for the VNIC's primary private
                             IP. Used for DNS.
@@ -880,7 +882,6 @@ spec:
                             predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}.'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: A user-friendly name. Does not have to be unique,
                             and it's changeable. Avoid entering confidential information.
@@ -894,7 +895,6 @@ spec:
                             These variables are in addition to any variables already
                             defined in the container's image.
                           type: object
-                          x-kubernetes-map-type: granular
                         freeformTags:
                           additionalProperties:
                             type: string
@@ -902,7 +902,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         healthChecks:
                           description: list of container health checks to check container
                             status and take appropriate action if container status
@@ -920,7 +919,8 @@ spec:
                               failureThreshold:
                                 description: Number of consecutive failures at which
                                   we consider the check failed.
-                                type: number
+                                format: int64
+                                type: integer
                               headers:
                                 description: (Applicable when health_check_type=HTTP)
                                   Container health check HTTP headers.
@@ -940,11 +940,13 @@ spec:
                               initialDelayInSeconds:
                                 description: The initial delay in seconds before start
                                   checking container health status.
-                                type: number
+                                format: int64
+                                type: integer
                               intervalInSeconds:
                                 description: Number of seconds between two consecutive
                                   runs for checking container health.
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: Container HTTP header Key.
                                 type: string
@@ -953,7 +955,8 @@ spec:
                                 type: string
                               port:
                                 description: Container health check HTTP port.
-                                type: number
+                                format: int64
+                                type: integer
                               status:
                                 type: string
                               statusDetails:
@@ -962,11 +965,13 @@ spec:
                                 description: Number of consecutive successes at which
                                   we consider the check succeeded again after it was
                                   in failure state.
-                                type: number
+                                format: int64
+                                type: integer
                               timeoutInSeconds:
                                 description: Length of waiting time in seconds before
                                   marking health check failed.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         imageUrl:
@@ -1032,13 +1037,15 @@ spec:
                                 description: The group ID (GID) to run the entrypoint
                                   process of the container. Uses runtime default if
                                   not provided.
-                                type: number
+                                format: int64
+                                type: integer
                               runAsUser:
                                 description: The user ID (UID) to run the entrypoint
                                   process of the container. Defaults to user specified
                                   UID in container image metadata if not provided.
                                   This must be provided if runAsGroup is provided.
-                                type: number
+                                format: int64
+                                type: integer
                               securityContextType:
                                 description: The type of security context
                                 type: string
@@ -1062,7 +1069,8 @@ spec:
                                   system  Name                  Flags 1      1049kB  106MB   105MB   fat16        EFI
                                   System Partition  boot, esp 2      106MB   1180MB  1074MB  xfs
                                   3      1180MB  50.0GB  48.8GB                                     lvm'
-                                type: number
+                                format: int64
+                                type: integer
                               subPath:
                                 description: A subpath inside the referenced volume.
                                 type: string
@@ -1086,7 +1094,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}.'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: A user-friendly name. Does not have to be unique,
                       and it's changeable. Avoid entering confidential information.
@@ -1131,7 +1138,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gracefulShutdownTimeoutInSeconds:
                     description: The amount of time that processes in a container
                       have to gracefully end when the container must be stopped. For
@@ -1290,7 +1296,6 @@ spec:
                             predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}.'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: A user-friendly name. Does not have to be unique,
                             and it's changeable. Avoid entering confidential information.
@@ -1303,7 +1308,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: The hostname for the VNIC's primary private
                             IP. Used for DNS.
@@ -1550,7 +1554,8 @@ spec:
                     type: string
                   containerCount:
                     description: The number of containers on the container instance.
-                    type: number
+                    format: int64
+                    type: integer
                   containerRestartPolicy:
                     description: Container restart policy
                     type: string
@@ -1591,7 +1596,6 @@ spec:
                             predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}.'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: A user-friendly name. Does not have to be unique,
                             and it's changeable. Avoid entering confidential information.
@@ -1605,9 +1609,9 @@ spec:
                             These variables are in addition to any variables already
                             defined in the container's image.
                           type: object
-                          x-kubernetes-map-type: granular
                         exitCode:
-                          type: number
+                          format: int64
+                          type: integer
                         faultDomain:
                           description: The fault domain where the container instance
                             runs.
@@ -1619,7 +1623,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         healthChecks:
                           description: list of container health checks to check container
                             status and take appropriate action if container status
@@ -1637,7 +1640,8 @@ spec:
                               failureThreshold:
                                 description: Number of consecutive failures at which
                                   we consider the check failed.
-                                type: number
+                                format: int64
+                                type: integer
                               headers:
                                 description: (Applicable when health_check_type=HTTP)
                                   Container health check HTTP headers.
@@ -1657,11 +1661,13 @@ spec:
                               initialDelayInSeconds:
                                 description: The initial delay in seconds before start
                                   checking container health status.
-                                type: number
+                                format: int64
+                                type: integer
                               intervalInSeconds:
                                 description: Number of seconds between two consecutive
                                   runs for checking container health.
-                                type: number
+                                format: int64
+                                type: integer
                               name:
                                 description: Container HTTP header Key.
                                 type: string
@@ -1670,7 +1676,8 @@ spec:
                                 type: string
                               port:
                                 description: Container health check HTTP port.
-                                type: number
+                                format: int64
+                                type: integer
                               status:
                                 type: string
                               statusDetails:
@@ -1679,11 +1686,13 @@ spec:
                                 description: Number of consecutive successes at which
                                   we consider the check succeeded again after it was
                                   in failure state.
-                                type: number
+                                format: int64
+                                type: integer
                               timeoutInSeconds:
                                 description: Length of waiting time in seconds before
                                   marking health check failed.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         imageUrl:
@@ -1754,13 +1763,15 @@ spec:
                                 description: The group ID (GID) to run the entrypoint
                                   process of the container. Uses runtime default if
                                   not provided.
-                                type: number
+                                format: int64
+                                type: integer
                               runAsUser:
                                 description: The user ID (UID) to run the entrypoint
                                   process of the container. Defaults to user specified
                                   UID in container image metadata if not provided.
                                   This must be provided if runAsGroup is provided.
-                                type: number
+                                format: int64
+                                type: integer
                               securityContextType:
                                 description: The type of security context
                                 type: string
@@ -1777,7 +1788,6 @@ spec:
                             keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                             "true"}.'
                           type: object
-                          x-kubernetes-map-type: granular
                         timeCreated:
                           description: The time the container instance was created,
                             in the format defined by RFC 3339.
@@ -1806,7 +1816,8 @@ spec:
                                   system  Name                  Flags 1      1049kB  106MB   105MB   fat16        EFI
                                   System Partition  boot, esp 2      106MB   1180MB  1074MB  xfs
                                   3      1180MB  50.0GB  48.8GB                                     lvm'
-                                type: number
+                                format: int64
+                                type: integer
                               subPath:
                                 description: A subpath inside the referenced volume.
                                 type: string
@@ -1830,7 +1841,6 @@ spec:
                       and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}.'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: A user-friendly name. Does not have to be unique,
                       and it's changeable. Avoid entering confidential information.
@@ -1875,7 +1885,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   gracefulShutdownTimeoutInSeconds:
                     description: The amount of time that processes in a container
                       have to gracefully end when the container must be stopped. For
@@ -1949,7 +1958,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}.'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the container instance was created, in the
                       format defined by RFC 3339.
@@ -1970,7 +1978,6 @@ spec:
                             predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                             "value"}.'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: A user-friendly name. Does not have to be unique,
                             and it's changeable. Avoid entering confidential information.
@@ -1983,7 +1990,6 @@ spec:
                             any predefined name, type or scope. Exists for cross-compatibility
                             only. Example: {"bar-key": "value"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: The hostname for the VNIC's primary private
                             IP. Used for DNS.
@@ -2021,7 +2027,8 @@ spec:
                   volumeCount:
                     description: The number of volumes that are attached to the container
                       instance.
-                    type: number
+                    format: int64
+                    type: integer
                   volumes:
                     description: A volume is a directory with data that is accessible
                       across multiple containers in a container instance.

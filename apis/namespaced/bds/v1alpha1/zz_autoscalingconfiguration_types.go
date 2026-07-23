@@ -184,32 +184,32 @@ type MetricParameters struct {
 type MetricThresholdInitParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type MetricThresholdObservation struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type MetricThresholdParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
 	// +kubebuilder:validation:Optional
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	// +kubebuilder:validation:Optional
@@ -217,7 +217,7 @@ type MetricThresholdParameters struct {
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
 	// +kubebuilder:validation:Optional
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type PolicyDetailsInitParameters struct {
@@ -366,19 +366,19 @@ type RulesParameters struct {
 type ScaleDownConfigInitParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the size of memory in GBs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
-	MemoryStepSize *float64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
+	MemoryStepSize *int64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
 
 	// (Updatable) Metric and threshold details for triggering an autoscale action.
 	Metric []ScaleDownConfigMetricInitParameters `json:"metric,omitempty" tf:"metric,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the minimum memory in GBs each node can be scaled-down to. This value is not used for nodes with fixed compute shapes.
-	MinMemoryPerNode *float64 `json:"minMemoryPerNode,omitempty" tf:"min_memory_per_node,omitempty"`
+	MinMemoryPerNode *int64 `json:"minMemoryPerNode,omitempty" tf:"min_memory_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the minimum number of OCPUs each node can be scaled-down to. This value is not used for nodes with fixed compute shapes.
-	MinOcpusPerNode *float64 `json:"minOcpusPerNode,omitempty" tf:"min_ocpus_per_node,omitempty"`
+	MinOcpusPerNode *int64 `json:"minOcpusPerNode,omitempty" tf:"min_ocpus_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the number of OCPUs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
-	OcpuStepSize *float64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
+	OcpuStepSize *int64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
 }
 
 type ScaleDownConfigMetricInitParameters struct {
@@ -413,26 +413,26 @@ type ScaleDownConfigMetricParameters struct {
 type ScaleDownConfigObservation struct {
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the size of memory in GBs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
-	MemoryStepSize *float64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
+	MemoryStepSize *int64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
 
 	// (Updatable) Metric and threshold details for triggering an autoscale action.
 	Metric []ScaleDownConfigMetricObservation `json:"metric,omitempty" tf:"metric,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the minimum memory in GBs each node can be scaled-down to. This value is not used for nodes with fixed compute shapes.
-	MinMemoryPerNode *float64 `json:"minMemoryPerNode,omitempty" tf:"min_memory_per_node,omitempty"`
+	MinMemoryPerNode *int64 `json:"minMemoryPerNode,omitempty" tf:"min_memory_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the minimum number of OCPUs each node can be scaled-down to. This value is not used for nodes with fixed compute shapes.
-	MinOcpusPerNode *float64 `json:"minOcpusPerNode,omitempty" tf:"min_ocpus_per_node,omitempty"`
+	MinOcpusPerNode *int64 `json:"minOcpusPerNode,omitempty" tf:"min_ocpus_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the number of OCPUs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
-	OcpuStepSize *float64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
+	OcpuStepSize *int64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
 }
 
 type ScaleDownConfigParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the size of memory in GBs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	MemoryStepSize *float64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
+	MemoryStepSize *int64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
 
 	// (Updatable) Metric and threshold details for triggering an autoscale action.
 	// +kubebuilder:validation:Optional
@@ -440,15 +440,15 @@ type ScaleDownConfigParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the minimum memory in GBs each node can be scaled-down to. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	MinMemoryPerNode *float64 `json:"minMemoryPerNode,omitempty" tf:"min_memory_per_node,omitempty"`
+	MinMemoryPerNode *int64 `json:"minMemoryPerNode,omitempty" tf:"min_memory_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the minimum number of OCPUs each node can be scaled-down to. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	MinOcpusPerNode *float64 `json:"minOcpusPerNode,omitempty" tf:"min_ocpus_per_node,omitempty"`
+	MinOcpusPerNode *int64 `json:"minOcpusPerNode,omitempty" tf:"min_ocpus_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the number of OCPUs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	OcpuStepSize *float64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
+	OcpuStepSize *int64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
 }
 
 type ScaleInConfigInitParameters struct {
@@ -457,10 +457,10 @@ type ScaleInConfigInitParameters struct {
 	Metric []ScaleInConfigMetricInitParameters `json:"metric,omitempty" tf:"metric,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the minimum number of nodes the cluster can be scaled-in to.
-	MinNodeCount *float64 `json:"minNodeCount,omitempty" tf:"min_node_count,omitempty"`
+	MinNodeCount *int64 `json:"minNodeCount,omitempty" tf:"min_node_count,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the number of nodes to remove during a scale-in event.
-	StepSize *float64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
+	StepSize *int64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
 }
 
 type ScaleInConfigMetricInitParameters struct {
@@ -495,32 +495,32 @@ type ScaleInConfigMetricParameters struct {
 type ScaleInConfigMetricThresholdInitParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ScaleInConfigMetricThresholdObservation struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ScaleInConfigMetricThresholdParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
 	// +kubebuilder:validation:Optional
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	// +kubebuilder:validation:Optional
@@ -528,7 +528,7 @@ type ScaleInConfigMetricThresholdParameters struct {
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
 	// +kubebuilder:validation:Optional
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ScaleInConfigObservation struct {
@@ -537,10 +537,10 @@ type ScaleInConfigObservation struct {
 	Metric []ScaleInConfigMetricObservation `json:"metric,omitempty" tf:"metric,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the minimum number of nodes the cluster can be scaled-in to.
-	MinNodeCount *float64 `json:"minNodeCount,omitempty" tf:"min_node_count,omitempty"`
+	MinNodeCount *int64 `json:"minNodeCount,omitempty" tf:"min_node_count,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the number of nodes to remove during a scale-in event.
-	StepSize *float64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
+	StepSize *int64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
 }
 
 type ScaleInConfigParameters struct {
@@ -551,23 +551,23 @@ type ScaleInConfigParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the minimum number of nodes the cluster can be scaled-in to.
 	// +kubebuilder:validation:Optional
-	MinNodeCount *float64 `json:"minNodeCount,omitempty" tf:"min_node_count,omitempty"`
+	MinNodeCount *int64 `json:"minNodeCount,omitempty" tf:"min_node_count,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the number of nodes to remove during a scale-in event.
 	// +kubebuilder:validation:Optional
-	StepSize *float64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
+	StepSize *int64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
 }
 
 type ScaleOutConfigInitParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the maximum number of nodes the cluster can be scaled-out to.
-	MaxNodeCount *float64 `json:"maxNodeCount,omitempty" tf:"max_node_count,omitempty"`
+	MaxNodeCount *int64 `json:"maxNodeCount,omitempty" tf:"max_node_count,omitempty"`
 
 	// (Updatable) Metric and threshold details for triggering an autoscale action.
 	Metric []ScaleOutConfigMetricInitParameters `json:"metric,omitempty" tf:"metric,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the number of nodes to remove during a scale-in event.
-	StepSize *float64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
+	StepSize *int64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
 }
 
 type ScaleOutConfigMetricInitParameters struct {
@@ -602,32 +602,32 @@ type ScaleOutConfigMetricParameters struct {
 type ScaleOutConfigMetricThresholdInitParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ScaleOutConfigMetricThresholdObservation struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ScaleOutConfigMetricThresholdParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
 	// +kubebuilder:validation:Optional
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	// +kubebuilder:validation:Optional
@@ -635,26 +635,26 @@ type ScaleOutConfigMetricThresholdParameters struct {
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
 	// +kubebuilder:validation:Optional
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ScaleOutConfigObservation struct {
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the maximum number of nodes the cluster can be scaled-out to.
-	MaxNodeCount *float64 `json:"maxNodeCount,omitempty" tf:"max_node_count,omitempty"`
+	MaxNodeCount *int64 `json:"maxNodeCount,omitempty" tf:"max_node_count,omitempty"`
 
 	// (Updatable) Metric and threshold details for triggering an autoscale action.
 	Metric []ScaleOutConfigMetricObservation `json:"metric,omitempty" tf:"metric,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the number of nodes to remove during a scale-in event.
-	StepSize *float64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
+	StepSize *int64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
 }
 
 type ScaleOutConfigParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the maximum number of nodes the cluster can be scaled-out to.
 	// +kubebuilder:validation:Optional
-	MaxNodeCount *float64 `json:"maxNodeCount,omitempty" tf:"max_node_count,omitempty"`
+	MaxNodeCount *int64 `json:"maxNodeCount,omitempty" tf:"max_node_count,omitempty"`
 
 	// (Updatable) Metric and threshold details for triggering an autoscale action.
 	// +kubebuilder:validation:Optional
@@ -662,25 +662,25 @@ type ScaleOutConfigParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY) (Updatable) This value is the number of nodes to remove during a scale-in event.
 	// +kubebuilder:validation:Optional
-	StepSize *float64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
+	StepSize *int64 `json:"stepSize,omitempty" tf:"step_size,omitempty"`
 }
 
 type ScaleUpConfigInitParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the maximum memory in GBs each node can be scaled-up to. This value is not used for nodes with fixed compute shapes.
-	MaxMemoryPerNode *float64 `json:"maxMemoryPerNode,omitempty" tf:"max_memory_per_node,omitempty"`
+	MaxMemoryPerNode *int64 `json:"maxMemoryPerNode,omitempty" tf:"max_memory_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the maximum number of OCPUs each node can be scaled-up to. This value is not used for nodes with fixed compute shapes.
-	MaxOcpusPerNode *float64 `json:"maxOcpusPerNode,omitempty" tf:"max_ocpus_per_node,omitempty"`
+	MaxOcpusPerNode *int64 `json:"maxOcpusPerNode,omitempty" tf:"max_ocpus_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the size of memory in GBs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
-	MemoryStepSize *float64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
+	MemoryStepSize *int64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
 
 	// (Updatable) Metric and threshold details for triggering an autoscale action.
 	Metric []ScaleUpConfigMetricInitParameters `json:"metric,omitempty" tf:"metric,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the number of OCPUs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
-	OcpuStepSize *float64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
+	OcpuStepSize *int64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
 }
 
 type ScaleUpConfigMetricInitParameters struct {
@@ -715,32 +715,32 @@ type ScaleUpConfigMetricParameters struct {
 type ScaleUpConfigMetricThresholdInitParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ScaleUpConfigMetricThresholdObservation struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ScaleUpConfigMetricThresholdParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
 	// +kubebuilder:validation:Optional
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	// +kubebuilder:validation:Optional
@@ -748,40 +748,40 @@ type ScaleUpConfigMetricThresholdParameters struct {
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
 	// +kubebuilder:validation:Optional
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ScaleUpConfigObservation struct {
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the maximum memory in GBs each node can be scaled-up to. This value is not used for nodes with fixed compute shapes.
-	MaxMemoryPerNode *float64 `json:"maxMemoryPerNode,omitempty" tf:"max_memory_per_node,omitempty"`
+	MaxMemoryPerNode *int64 `json:"maxMemoryPerNode,omitempty" tf:"max_memory_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the maximum number of OCPUs each node can be scaled-up to. This value is not used for nodes with fixed compute shapes.
-	MaxOcpusPerNode *float64 `json:"maxOcpusPerNode,omitempty" tf:"max_ocpus_per_node,omitempty"`
+	MaxOcpusPerNode *int64 `json:"maxOcpusPerNode,omitempty" tf:"max_ocpus_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the size of memory in GBs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
-	MemoryStepSize *float64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
+	MemoryStepSize *int64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
 
 	// (Updatable) Metric and threshold details for triggering an autoscale action.
 	Metric []ScaleUpConfigMetricObservation `json:"metric,omitempty" tf:"metric,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the number of OCPUs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
-	OcpuStepSize *float64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
+	OcpuStepSize *int64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
 }
 
 type ScaleUpConfigParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the maximum memory in GBs each node can be scaled-up to. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	MaxMemoryPerNode *float64 `json:"maxMemoryPerNode,omitempty" tf:"max_memory_per_node,omitempty"`
+	MaxMemoryPerNode *int64 `json:"maxMemoryPerNode,omitempty" tf:"max_memory_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the maximum number of OCPUs each node can be scaled-up to. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	MaxOcpusPerNode *float64 `json:"maxOcpusPerNode,omitempty" tf:"max_ocpus_per_node,omitempty"`
+	MaxOcpusPerNode *int64 `json:"maxOcpusPerNode,omitempty" tf:"max_ocpus_per_node,omitempty"`
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the size of memory in GBs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	MemoryStepSize *float64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
+	MemoryStepSize *int64 `json:"memoryStepSize,omitempty" tf:"memory_step_size,omitempty"`
 
 	// (Updatable) Metric and threshold details for triggering an autoscale action.
 	// +kubebuilder:validation:Optional
@@ -789,7 +789,7 @@ type ScaleUpConfigParameters struct {
 
 	// (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY) (Updatable) For nodes with flexible compute shapes, this value is the number of OCPUs to remove from each node during a scale-down event. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	OcpuStepSize *float64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
+	OcpuStepSize *int64 `json:"ocpuStepSize,omitempty" tf:"ocpu_step_size,omitempty"`
 }
 
 type ScheduleDetailsInitParameters struct {
@@ -834,32 +834,32 @@ type ScheduleDetailsParameters struct {
 type ThresholdInitParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ThresholdObservation struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	Operator *string `json:"operator,omitempty" tf:"operator,omitempty"`
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
-	Value *float64 `json:"value,omitempty" tf:"value,omitempty"`
+	Value *int64 `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ThresholdParameters struct {
 
 	// (Updatable) This value is the minimum period of time the metric value exceeds the threshold value before the action is triggered. The value is in minutes.
 	// +kubebuilder:validation:Optional
-	DurationInMinutes *float64 `json:"durationInMinutes" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) The comparison operator to use. Options are greater than (GT) or less than (LT).
 	// +kubebuilder:validation:Optional
@@ -867,13 +867,13 @@ type ThresholdParameters struct {
 
 	// (Updatable) Integer non-negative value. 0 < value < 100
 	// +kubebuilder:validation:Optional
-	Value *float64 `json:"value" tf:"value,omitempty"`
+	Value *int64 `json:"value" tf:"value,omitempty"`
 }
 
 type TimeAndHorizontalScalingConfigInitParameters struct {
 
 	// (Updatable) This value is the desired number of nodes in the cluster.
-	TargetNodeCount *float64 `json:"targetNodeCount,omitempty" tf:"target_node_count,omitempty"`
+	TargetNodeCount *int64 `json:"targetNodeCount,omitempty" tf:"target_node_count,omitempty"`
 
 	// (Updatable) Day/time recurrence (specified following RFC 5545) at which to trigger autoscaling action. Currently only WEEKLY frequency is supported. Days of the week are specified using BYDAY field. Time of the day is specified using BYHOUR and BYMINUTE fields. Other fields are not supported.
 	TimeRecurrence *string `json:"timeRecurrence,omitempty" tf:"time_recurrence,omitempty"`
@@ -882,7 +882,7 @@ type TimeAndHorizontalScalingConfigInitParameters struct {
 type TimeAndHorizontalScalingConfigObservation struct {
 
 	// (Updatable) This value is the desired number of nodes in the cluster.
-	TargetNodeCount *float64 `json:"targetNodeCount,omitempty" tf:"target_node_count,omitempty"`
+	TargetNodeCount *int64 `json:"targetNodeCount,omitempty" tf:"target_node_count,omitempty"`
 
 	// (Updatable) Day/time recurrence (specified following RFC 5545) at which to trigger autoscaling action. Currently only WEEKLY frequency is supported. Days of the week are specified using BYDAY field. Time of the day is specified using BYHOUR and BYMINUTE fields. Other fields are not supported.
 	TimeRecurrence *string `json:"timeRecurrence,omitempty" tf:"time_recurrence,omitempty"`
@@ -892,7 +892,7 @@ type TimeAndHorizontalScalingConfigParameters struct {
 
 	// (Updatable) This value is the desired number of nodes in the cluster.
 	// +kubebuilder:validation:Optional
-	TargetNodeCount *float64 `json:"targetNodeCount,omitempty" tf:"target_node_count,omitempty"`
+	TargetNodeCount *int64 `json:"targetNodeCount,omitempty" tf:"target_node_count,omitempty"`
 
 	// (Updatable) Day/time recurrence (specified following RFC 5545) at which to trigger autoscaling action. Currently only WEEKLY frequency is supported. Days of the week are specified using BYDAY field. Time of the day is specified using BYHOUR and BYMINUTE fields. Other fields are not supported.
 	// +kubebuilder:validation:Optional
@@ -902,10 +902,10 @@ type TimeAndHorizontalScalingConfigParameters struct {
 type TimeAndVerticalScalingConfigInitParameters struct {
 
 	// (Updatable) For nodes with flexible compute shapes, this value is the desired memory in GBs on each node. This value is not used for nodes with fixed compute shapes.
-	TargetMemoryPerNode *float64 `json:"targetMemoryPerNode,omitempty" tf:"target_memory_per_node,omitempty"`
+	TargetMemoryPerNode *int64 `json:"targetMemoryPerNode,omitempty" tf:"target_memory_per_node,omitempty"`
 
 	// (Updatable) For nodes with flexible compute shapes, this value is the desired OCPUs count on each node. This value is not used for nodes with fixed compute shapes.
-	TargetOcpusPerNode *float64 `json:"targetOcpusPerNode,omitempty" tf:"target_ocpus_per_node,omitempty"`
+	TargetOcpusPerNode *int64 `json:"targetOcpusPerNode,omitempty" tf:"target_ocpus_per_node,omitempty"`
 
 	// (Updatable) For nodes with fixed compute shapes, this value is the desired shape of each node. This value is not used for nodes with flexible compute shapes.
 	TargetShape *string `json:"targetShape,omitempty" tf:"target_shape,omitempty"`
@@ -917,10 +917,10 @@ type TimeAndVerticalScalingConfigInitParameters struct {
 type TimeAndVerticalScalingConfigObservation struct {
 
 	// (Updatable) For nodes with flexible compute shapes, this value is the desired memory in GBs on each node. This value is not used for nodes with fixed compute shapes.
-	TargetMemoryPerNode *float64 `json:"targetMemoryPerNode,omitempty" tf:"target_memory_per_node,omitempty"`
+	TargetMemoryPerNode *int64 `json:"targetMemoryPerNode,omitempty" tf:"target_memory_per_node,omitempty"`
 
 	// (Updatable) For nodes with flexible compute shapes, this value is the desired OCPUs count on each node. This value is not used for nodes with fixed compute shapes.
-	TargetOcpusPerNode *float64 `json:"targetOcpusPerNode,omitempty" tf:"target_ocpus_per_node,omitempty"`
+	TargetOcpusPerNode *int64 `json:"targetOcpusPerNode,omitempty" tf:"target_ocpus_per_node,omitempty"`
 
 	// (Updatable) For nodes with fixed compute shapes, this value is the desired shape of each node. This value is not used for nodes with flexible compute shapes.
 	TargetShape *string `json:"targetShape,omitempty" tf:"target_shape,omitempty"`
@@ -933,11 +933,11 @@ type TimeAndVerticalScalingConfigParameters struct {
 
 	// (Updatable) For nodes with flexible compute shapes, this value is the desired memory in GBs on each node. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	TargetMemoryPerNode *float64 `json:"targetMemoryPerNode,omitempty" tf:"target_memory_per_node,omitempty"`
+	TargetMemoryPerNode *int64 `json:"targetMemoryPerNode,omitempty" tf:"target_memory_per_node,omitempty"`
 
 	// (Updatable) For nodes with flexible compute shapes, this value is the desired OCPUs count on each node. This value is not used for nodes with fixed compute shapes.
 	// +kubebuilder:validation:Optional
-	TargetOcpusPerNode *float64 `json:"targetOcpusPerNode,omitempty" tf:"target_ocpus_per_node,omitempty"`
+	TargetOcpusPerNode *int64 `json:"targetOcpusPerNode,omitempty" tf:"target_ocpus_per_node,omitempty"`
 
 	// (Updatable) For nodes with fixed compute shapes, this value is the desired shape of each node. This value is not used for nodes with flexible compute shapes.
 	// +kubebuilder:validation:Optional

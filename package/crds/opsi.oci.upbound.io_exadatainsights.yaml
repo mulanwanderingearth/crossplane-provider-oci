@@ -159,7 +159,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   enterpriseManagerBridgeId:
                     description: OPSI Enterprise Manager Bridge OCID
                     type: string
@@ -258,7 +257,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoSyncEnabled:
                     description: (Applicable when entity_source=EM_MANAGED_EXTERNAL_EXADATA)
                       (Updatable) Set to true to enable automatic enablement and disablement
@@ -665,7 +663,8 @@ spec:
                                     port:
                                       description: Listener port number used for connection
                                         requests.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     protocol:
                                       description: Protocol used for connection requests.
                                       type: string
@@ -1051,7 +1050,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"foo-namespace.bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               deploymentType:
                                 description: Database Deployment Type
                                 type: string
@@ -1066,7 +1064,6 @@ spec:
                                   scope. Exists for cross-compatibility only. Example:
                                   {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               isAdvancedFeaturesEnabled:
                                 description: Flag is to identify if advanced features
                                   for autonomous database is enabled or not
@@ -1238,7 +1235,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"orcl-cloud.free-tier-retained": "true"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         memberDatabaseDetails:
@@ -1561,13 +1557,15 @@ spec:
                                           port:
                                             description: Listener port number used
                                               for connection requests.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     port:
                                       description: Listener port number used for connection
                                         requests.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     protocol:
                                       description: Protocol used for connection requests.
                                       type: string
@@ -2033,7 +2031,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"foo-namespace.bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               deploymentType:
                                 description: Database Deployment Type
                                 type: string
@@ -2048,7 +2045,6 @@ spec:
                                   scope. Exists for cross-compatibility only. Example:
                                   {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               managementAgentId:
                                 description: The OCID of the Management Agent
                                 type: string
@@ -2220,7 +2216,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"orcl-cloud.free-tier-retained": "true"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         opsiPrivateEndpointId:
@@ -2417,7 +2412,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   enterpriseManagerBridgeId:
                     description: OPSI Enterprise Manager Bridge OCID
                     type: string
@@ -2516,7 +2510,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoSyncEnabled:
                     description: (Applicable when entity_source=EM_MANAGED_EXTERNAL_EXADATA)
                       (Updatable) Set to true to enable automatic enablement and disablement
@@ -2923,7 +2916,8 @@ spec:
                                     port:
                                       description: Listener port number used for connection
                                         requests.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     protocol:
                                       description: Protocol used for connection requests.
                                       type: string
@@ -3309,7 +3303,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"foo-namespace.bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               deploymentType:
                                 description: Database Deployment Type
                                 type: string
@@ -3324,7 +3317,6 @@ spec:
                                   scope. Exists for cross-compatibility only. Example:
                                   {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               isAdvancedFeaturesEnabled:
                                 description: Flag is to identify if advanced features
                                   for autonomous database is enabled or not
@@ -3496,7 +3488,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"orcl-cloud.free-tier-retained": "true"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         memberDatabaseDetails:
@@ -3819,13 +3810,15 @@ spec:
                                           port:
                                             description: Listener port number used
                                               for connection requests.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     port:
                                       description: Listener port number used for connection
                                         requests.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     protocol:
                                       description: Protocol used for connection requests.
                                       type: string
@@ -4291,7 +4284,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"foo-namespace.bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               deploymentType:
                                 description: Database Deployment Type
                                 type: string
@@ -4306,7 +4298,6 @@ spec:
                                   scope. Exists for cross-compatibility only. Example:
                                   {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               managementAgentId:
                                 description: The OCID of the Management Agent
                                 type: string
@@ -4478,7 +4469,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"orcl-cloud.free-tier-retained": "true"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         opsiPrivateEndpointId:
@@ -4702,7 +4692,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   enterpriseManagerBridgeId:
                     description: OPSI Enterprise Manager Bridge OCID
                     type: string
@@ -4754,7 +4743,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Exadata insight identifier
                     type: string
@@ -4850,7 +4838,8 @@ spec:
                                     port:
                                       description: Listener port number used for connection
                                         requests.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     protocol:
                                       description: Protocol used for connection requests.
                                       type: string
@@ -4914,7 +4903,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"foo-namespace.bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               deploymentType:
                                 description: Database Deployment Type
                                 type: string
@@ -4929,7 +4917,6 @@ spec:
                                   scope. Exists for cross-compatibility only. Example:
                                   {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               isAdvancedFeaturesEnabled:
                                 description: Flag is to identify if advanced features
                                   for autonomous database is enabled or not
@@ -4949,7 +4936,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"orcl-cloud.free-tier-retained": "true"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         memberDatabaseDetails:
@@ -5026,13 +5012,15 @@ spec:
                                           port:
                                             description: Listener port number used
                                               for connection requests.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                     port:
                                       description: Listener port number used for connection
                                         requests.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     protocol:
                                       description: Protocol used for connection requests.
                                       type: string
@@ -5100,7 +5088,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"foo-namespace.bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               deploymentType:
                                 description: Database Deployment Type
                                 type: string
@@ -5115,7 +5102,6 @@ spec:
                                   scope. Exists for cross-compatibility only. Example:
                                   {"bar-key": "value"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               managementAgentId:
                                 description: The OCID of the Management Agent
                                 type: string
@@ -5135,7 +5121,6 @@ spec:
                                   Each key is predefined and scoped to a namespace.
                                   Example: {"orcl-cloud.free-tier-retained": "true"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         opsiPrivateEndpointId:
@@ -5172,7 +5157,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the the Exadata insight was first enabled.
                       An RFC3339 formatted datetime string

@@ -43,7 +43,7 @@ func (in *AccessRulesInitParameters) DeepCopyInto(out *AccessRulesInitParameters
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BypassChallenges != nil {
@@ -148,7 +148,7 @@ func (in *AccessRulesObservation) DeepCopyInto(out *AccessRulesObservation) {
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BypassChallenges != nil {
@@ -253,7 +253,7 @@ func (in *AccessRulesParameters) DeepCopyInto(out *AccessRulesParameters) {
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BypassChallenges != nil {
@@ -386,18 +386,9 @@ func (in *AddressListInitParameters) DeepCopyInto(out *AddressListInitParameters
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -407,18 +398,9 @@ func (in *AddressListInitParameters) DeepCopyInto(out *AddressListInitParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -491,18 +473,9 @@ func (in *AddressListObservation) DeepCopyInto(out *AddressListObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -512,18 +485,9 @@ func (in *AddressListObservation) DeepCopyInto(out *AddressListObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -584,18 +548,9 @@ func (in *AddressListParameters) DeepCopyInto(out *AddressListParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -605,18 +560,9 @@ func (in *AddressListParameters) DeepCopyInto(out *AddressListParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -671,12 +617,12 @@ func (in *AddressRateLimitingInitParameters) DeepCopyInto(out *AddressRateLimiti
 	*out = *in
 	if in.AllowedRatePerAddress != nil {
 		in, out := &in.AllowedRatePerAddress, &out.AllowedRatePerAddress
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -686,7 +632,7 @@ func (in *AddressRateLimitingInitParameters) DeepCopyInto(out *AddressRateLimiti
 	}
 	if in.MaxDelayedCountPerAddress != nil {
 		in, out := &in.MaxDelayedCountPerAddress, &out.MaxDelayedCountPerAddress
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -706,12 +652,12 @@ func (in *AddressRateLimitingObservation) DeepCopyInto(out *AddressRateLimitingO
 	*out = *in
 	if in.AllowedRatePerAddress != nil {
 		in, out := &in.AllowedRatePerAddress, &out.AllowedRatePerAddress
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -721,7 +667,7 @@ func (in *AddressRateLimitingObservation) DeepCopyInto(out *AddressRateLimitingO
 	}
 	if in.MaxDelayedCountPerAddress != nil {
 		in, out := &in.MaxDelayedCountPerAddress, &out.MaxDelayedCountPerAddress
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -741,12 +687,12 @@ func (in *AddressRateLimitingParameters) DeepCopyInto(out *AddressRateLimitingPa
 	*out = *in
 	if in.AllowedRatePerAddress != nil {
 		in, out := &in.AllowedRatePerAddress, &out.AllowedRatePerAddress
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -756,7 +702,7 @@ func (in *AddressRateLimitingParameters) DeepCopyInto(out *AddressRateLimitingPa
 	}
 	if in.MaxDelayedCountPerAddress != nil {
 		in, out := &in.MaxDelayedCountPerAddress, &out.MaxDelayedCountPerAddress
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1022,7 +968,7 @@ func (in *CaptchasInitParameters) DeepCopyInto(out *CaptchasInitParameters) {
 	}
 	if in.SessionExpirationInSeconds != nil {
 		in, out := &in.SessionExpirationInSeconds, &out.SessionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SubmitLabel != nil {
@@ -1072,7 +1018,7 @@ func (in *CaptchasObservation) DeepCopyInto(out *CaptchasObservation) {
 	}
 	if in.SessionExpirationInSeconds != nil {
 		in, out := &in.SessionExpirationInSeconds, &out.SessionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SubmitLabel != nil {
@@ -1122,7 +1068,7 @@ func (in *CaptchasParameters) DeepCopyInto(out *CaptchasParameters) {
 	}
 	if in.SessionExpirationInSeconds != nil {
 		in, out := &in.SessionExpirationInSeconds, &out.SessionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SubmitLabel != nil {
@@ -1204,18 +1150,9 @@ func (in *CertificateInitParameters) DeepCopyInto(out *CertificateInitParameters
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1225,18 +1162,9 @@ func (in *CertificateInitParameters) DeepCopyInto(out *CertificateInitParameters
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsTrustVerificationDisabled != nil {
@@ -1304,18 +1232,9 @@ func (in *CertificateObservation) DeepCopyInto(out *CertificateObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1332,18 +1251,9 @@ func (in *CertificateObservation) DeepCopyInto(out *CertificateObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1414,7 +1324,7 @@ func (in *CertificateObservation) DeepCopyInto(out *CertificateObservation) {
 	}
 	if in.Version != nil {
 		in, out := &in.Version, &out.Version
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1454,18 +1364,9 @@ func (in *CertificateParameters) DeepCopyInto(out *CertificateParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1475,18 +1376,9 @@ func (in *CertificateParameters) DeepCopyInto(out *CertificateParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsTrustVerificationDisabled != nil {
@@ -1567,7 +1459,7 @@ func (in *ChallengeSettingsInitParameters) DeepCopyInto(out *ChallengeSettingsIn
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CaptchaFooter != nil {
@@ -1627,7 +1519,7 @@ func (in *ChallengeSettingsObservation) DeepCopyInto(out *ChallengeSettingsObser
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CaptchaFooter != nil {
@@ -1687,7 +1579,7 @@ func (in *ChallengeSettingsParameters) DeepCopyInto(out *ChallengeSettingsParame
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CaptchaFooter != nil {
@@ -1934,18 +1826,9 @@ func (in *CustomProtectionRuleInitParameters) DeepCopyInto(out *CustomProtection
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1960,18 +1843,9 @@ func (in *CustomProtectionRuleInitParameters) DeepCopyInto(out *CustomProtection
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Template != nil {
@@ -2033,18 +1907,9 @@ func (in *CustomProtectionRuleObservation) DeepCopyInto(out *CustomProtectionRul
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2059,18 +1924,9 @@ func (in *CustomProtectionRuleObservation) DeepCopyInto(out *CustomProtectionRul
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -2136,18 +1992,9 @@ func (in *CustomProtectionRuleParameters) DeepCopyInto(out *CustomProtectionRule
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2162,18 +2009,9 @@ func (in *CustomProtectionRuleParameters) DeepCopyInto(out *CustomProtectionRule
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Template != nil {
@@ -2427,7 +2265,7 @@ func (in *DeviceFingerprintChallengeInitParameters) DeepCopyInto(out *DeviceFing
 	}
 	if in.ActionExpirationInSeconds != nil {
 		in, out := &in.ActionExpirationInSeconds, &out.ActionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ChallengeSettings != nil {
@@ -2439,12 +2277,12 @@ func (in *DeviceFingerprintChallengeInitParameters) DeepCopyInto(out *DeviceFing
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailureThresholdExpirationInSeconds != nil {
 		in, out := &in.FailureThresholdExpirationInSeconds, &out.FailureThresholdExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -2454,12 +2292,12 @@ func (in *DeviceFingerprintChallengeInitParameters) DeepCopyInto(out *DeviceFing
 	}
 	if in.MaxAddressCount != nil {
 		in, out := &in.MaxAddressCount, &out.MaxAddressCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxAddressCountExpirationInSeconds != nil {
 		in, out := &in.MaxAddressCountExpirationInSeconds, &out.MaxAddressCountExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2484,7 +2322,7 @@ func (in *DeviceFingerprintChallengeObservation) DeepCopyInto(out *DeviceFingerp
 	}
 	if in.ActionExpirationInSeconds != nil {
 		in, out := &in.ActionExpirationInSeconds, &out.ActionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ChallengeSettings != nil {
@@ -2496,12 +2334,12 @@ func (in *DeviceFingerprintChallengeObservation) DeepCopyInto(out *DeviceFingerp
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailureThresholdExpirationInSeconds != nil {
 		in, out := &in.FailureThresholdExpirationInSeconds, &out.FailureThresholdExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -2511,12 +2349,12 @@ func (in *DeviceFingerprintChallengeObservation) DeepCopyInto(out *DeviceFingerp
 	}
 	if in.MaxAddressCount != nil {
 		in, out := &in.MaxAddressCount, &out.MaxAddressCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxAddressCountExpirationInSeconds != nil {
 		in, out := &in.MaxAddressCountExpirationInSeconds, &out.MaxAddressCountExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2541,7 +2379,7 @@ func (in *DeviceFingerprintChallengeParameters) DeepCopyInto(out *DeviceFingerpr
 	}
 	if in.ActionExpirationInSeconds != nil {
 		in, out := &in.ActionExpirationInSeconds, &out.ActionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ChallengeSettings != nil {
@@ -2553,12 +2391,12 @@ func (in *DeviceFingerprintChallengeParameters) DeepCopyInto(out *DeviceFingerpr
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailureThresholdExpirationInSeconds != nil {
 		in, out := &in.FailureThresholdExpirationInSeconds, &out.FailureThresholdExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -2568,12 +2406,12 @@ func (in *DeviceFingerprintChallengeParameters) DeepCopyInto(out *DeviceFingerpr
 	}
 	if in.MaxAddressCount != nil {
 		in, out := &in.MaxAddressCount, &out.MaxAddressCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxAddressCountExpirationInSeconds != nil {
 		in, out := &in.MaxAddressCountExpirationInSeconds, &out.MaxAddressCountExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2762,28 +2600,19 @@ func (in *HealthChecksInitParameters) DeepCopyInto(out *HealthChecksInitParamete
 	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HealthyThreshold != nil {
 		in, out := &in.HealthyThreshold, &out.HealthyThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -2808,12 +2637,12 @@ func (in *HealthChecksInitParameters) DeepCopyInto(out *HealthChecksInitParamete
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UnhealthyThreshold != nil {
 		in, out := &in.UnhealthyThreshold, &out.UnhealthyThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2849,28 +2678,19 @@ func (in *HealthChecksObservation) DeepCopyInto(out *HealthChecksObservation) {
 	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HealthyThreshold != nil {
 		in, out := &in.HealthyThreshold, &out.HealthyThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -2895,12 +2715,12 @@ func (in *HealthChecksObservation) DeepCopyInto(out *HealthChecksObservation) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UnhealthyThreshold != nil {
 		in, out := &in.UnhealthyThreshold, &out.UnhealthyThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2936,28 +2756,19 @@ func (in *HealthChecksParameters) DeepCopyInto(out *HealthChecksParameters) {
 	}
 	if in.Headers != nil {
 		in, out := &in.Headers, &out.Headers
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HealthyThreshold != nil {
 		in, out := &in.HealthyThreshold, &out.HealthyThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IntervalInSeconds != nil {
 		in, out := &in.IntervalInSeconds, &out.IntervalInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -2982,12 +2793,12 @@ func (in *HealthChecksParameters) DeepCopyInto(out *HealthChecksParameters) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.UnhealthyThreshold != nil {
 		in, out := &in.UnhealthyThreshold, &out.UnhealthyThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -3049,18 +2860,9 @@ func (in *HttpRedirectInitParameters) DeepCopyInto(out *HttpRedirectInitParamete
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -3075,23 +2877,14 @@ func (in *HttpRedirectInitParameters) DeepCopyInto(out *HttpRedirectInitParamete
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ResponseCode != nil {
 		in, out := &in.ResponseCode, &out.ResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Target != nil {
@@ -3155,18 +2948,9 @@ func (in *HttpRedirectObservation) DeepCopyInto(out *HttpRedirectObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -3181,18 +2965,9 @@ func (in *HttpRedirectObservation) DeepCopyInto(out *HttpRedirectObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -3202,7 +2977,7 @@ func (in *HttpRedirectObservation) DeepCopyInto(out *HttpRedirectObservation) {
 	}
 	if in.ResponseCode != nil {
 		in, out := &in.ResponseCode, &out.ResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -3254,18 +3029,9 @@ func (in *HttpRedirectParameters) DeepCopyInto(out *HttpRedirectParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -3280,23 +3046,14 @@ func (in *HttpRedirectParameters) DeepCopyInto(out *HttpRedirectParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ResponseCode != nil {
 		in, out := &in.ResponseCode, &out.ResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Target != nil {
@@ -3378,7 +3135,7 @@ func (in *HumanInteractionChallengeChallengeSettingsInitParameters) DeepCopyInto
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CaptchaFooter != nil {
@@ -3438,7 +3195,7 @@ func (in *HumanInteractionChallengeChallengeSettingsObservation) DeepCopyInto(ou
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CaptchaFooter != nil {
@@ -3498,7 +3255,7 @@ func (in *HumanInteractionChallengeChallengeSettingsParameters) DeepCopyInto(out
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CaptchaFooter != nil {
@@ -3543,7 +3300,7 @@ func (in *HumanInteractionChallengeInitParameters) DeepCopyInto(out *HumanIntera
 	}
 	if in.ActionExpirationInSeconds != nil {
 		in, out := &in.ActionExpirationInSeconds, &out.ActionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ChallengeSettings != nil {
@@ -3555,17 +3312,17 @@ func (in *HumanInteractionChallengeInitParameters) DeepCopyInto(out *HumanIntera
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailureThresholdExpirationInSeconds != nil {
 		in, out := &in.FailureThresholdExpirationInSeconds, &out.FailureThresholdExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InteractionThreshold != nil {
 		in, out := &in.InteractionThreshold, &out.InteractionThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -3580,7 +3337,7 @@ func (in *HumanInteractionChallengeInitParameters) DeepCopyInto(out *HumanIntera
 	}
 	if in.RecordingPeriodInSeconds != nil {
 		in, out := &in.RecordingPeriodInSeconds, &out.RecordingPeriodInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SetHTTPHeader != nil {
@@ -3612,7 +3369,7 @@ func (in *HumanInteractionChallengeObservation) DeepCopyInto(out *HumanInteracti
 	}
 	if in.ActionExpirationInSeconds != nil {
 		in, out := &in.ActionExpirationInSeconds, &out.ActionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ChallengeSettings != nil {
@@ -3624,17 +3381,17 @@ func (in *HumanInteractionChallengeObservation) DeepCopyInto(out *HumanInteracti
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailureThresholdExpirationInSeconds != nil {
 		in, out := &in.FailureThresholdExpirationInSeconds, &out.FailureThresholdExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InteractionThreshold != nil {
 		in, out := &in.InteractionThreshold, &out.InteractionThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -3649,7 +3406,7 @@ func (in *HumanInteractionChallengeObservation) DeepCopyInto(out *HumanInteracti
 	}
 	if in.RecordingPeriodInSeconds != nil {
 		in, out := &in.RecordingPeriodInSeconds, &out.RecordingPeriodInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SetHTTPHeader != nil {
@@ -3681,7 +3438,7 @@ func (in *HumanInteractionChallengeParameters) DeepCopyInto(out *HumanInteractio
 	}
 	if in.ActionExpirationInSeconds != nil {
 		in, out := &in.ActionExpirationInSeconds, &out.ActionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ChallengeSettings != nil {
@@ -3693,17 +3450,17 @@ func (in *HumanInteractionChallengeParameters) DeepCopyInto(out *HumanInteractio
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.FailureThresholdExpirationInSeconds != nil {
 		in, out := &in.FailureThresholdExpirationInSeconds, &out.FailureThresholdExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InteractionThreshold != nil {
 		in, out := &in.InteractionThreshold, &out.InteractionThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -3718,7 +3475,7 @@ func (in *HumanInteractionChallengeParameters) DeepCopyInto(out *HumanInteractio
 	}
 	if in.RecordingPeriodInSeconds != nil {
 		in, out := &in.RecordingPeriodInSeconds, &out.RecordingPeriodInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SetHTTPHeader != nil {
@@ -3845,7 +3602,7 @@ func (in *JsChallengeChallengeSettingsInitParameters) DeepCopyInto(out *JsChalle
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CaptchaFooter != nil {
@@ -3905,7 +3662,7 @@ func (in *JsChallengeChallengeSettingsObservation) DeepCopyInto(out *JsChallenge
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CaptchaFooter != nil {
@@ -3965,7 +3722,7 @@ func (in *JsChallengeChallengeSettingsParameters) DeepCopyInto(out *JsChallengeC
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CaptchaFooter != nil {
@@ -4100,7 +3857,7 @@ func (in *JsChallengeInitParameters) DeepCopyInto(out *JsChallengeInitParameters
 	}
 	if in.ActionExpirationInSeconds != nil {
 		in, out := &in.ActionExpirationInSeconds, &out.ActionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.AreRedirectsChallenged != nil {
@@ -4124,7 +3881,7 @@ func (in *JsChallengeInitParameters) DeepCopyInto(out *JsChallengeInitParameters
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -4166,7 +3923,7 @@ func (in *JsChallengeObservation) DeepCopyInto(out *JsChallengeObservation) {
 	}
 	if in.ActionExpirationInSeconds != nil {
 		in, out := &in.ActionExpirationInSeconds, &out.ActionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.AreRedirectsChallenged != nil {
@@ -4190,7 +3947,7 @@ func (in *JsChallengeObservation) DeepCopyInto(out *JsChallengeObservation) {
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -4232,7 +3989,7 @@ func (in *JsChallengeParameters) DeepCopyInto(out *JsChallengeParameters) {
 	}
 	if in.ActionExpirationInSeconds != nil {
 		in, out := &in.ActionExpirationInSeconds, &out.ActionExpirationInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.AreRedirectsChallenged != nil {
@@ -4256,7 +4013,7 @@ func (in *JsChallengeParameters) DeepCopyInto(out *JsChallengeParameters) {
 	}
 	if in.FailureThreshold != nil {
 		in, out := &in.FailureThreshold, &out.FailureThreshold
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsEnabled != nil {
@@ -4373,7 +4130,7 @@ func (in *LoadBalancingMethodInitParameters) DeepCopyInto(out *LoadBalancingMeth
 	}
 	if in.ExpirationTimeInSeconds != nil {
 		in, out := &in.ExpirationTimeInSeconds, &out.ExpirationTimeInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Method != nil {
@@ -4408,7 +4165,7 @@ func (in *LoadBalancingMethodObservation) DeepCopyInto(out *LoadBalancingMethodO
 	}
 	if in.ExpirationTimeInSeconds != nil {
 		in, out := &in.ExpirationTimeInSeconds, &out.ExpirationTimeInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Method != nil {
@@ -4443,7 +4200,7 @@ func (in *LoadBalancingMethodParameters) DeepCopyInto(out *LoadBalancingMethodPa
 	}
 	if in.ExpirationTimeInSeconds != nil {
 		in, out := &in.ExpirationTimeInSeconds, &out.ExpirationTimeInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Method != nil {
@@ -4478,7 +4235,7 @@ func (in *OriginGroupInitParameters) DeepCopyInto(out *OriginGroupInitParameters
 	}
 	if in.Weight != nil {
 		in, out := &in.Weight, &out.Weight
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4503,7 +4260,7 @@ func (in *OriginGroupObservation) DeepCopyInto(out *OriginGroupObservation) {
 	}
 	if in.Weight != nil {
 		in, out := &in.Weight, &out.Weight
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4528,7 +4285,7 @@ func (in *OriginGroupParameters) DeepCopyInto(out *OriginGroupParameters) {
 	}
 	if in.Weight != nil {
 		in, out := &in.Weight, &out.Weight
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -4636,12 +4393,12 @@ func (in *OriginsInitParameters) DeepCopyInto(out *OriginsInitParameters) {
 	}
 	if in.HTTPPort != nil {
 		in, out := &in.HTTPPort, &out.HTTPPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HTTPSPort != nil {
 		in, out := &in.HTTPSPort, &out.HTTPSPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Label != nil {
@@ -4678,12 +4435,12 @@ func (in *OriginsObservation) DeepCopyInto(out *OriginsObservation) {
 	}
 	if in.HTTPPort != nil {
 		in, out := &in.HTTPPort, &out.HTTPPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HTTPSPort != nil {
 		in, out := &in.HTTPSPort, &out.HTTPSPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Label != nil {
@@ -4720,12 +4477,12 @@ func (in *OriginsParameters) DeepCopyInto(out *OriginsParameters) {
 	}
 	if in.HTTPPort != nil {
 		in, out := &in.HTTPPort, &out.HTTPPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.HTTPSPort != nil {
 		in, out := &in.HTTPSPort, &out.HTTPSPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Label != nil {
@@ -5371,7 +5128,7 @@ func (in *ProtectionSettingsInitParameters) DeepCopyInto(out *ProtectionSettings
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsResponseInspected != nil {
@@ -5381,22 +5138,22 @@ func (in *ProtectionSettingsInitParameters) DeepCopyInto(out *ProtectionSettings
 	}
 	if in.MaxArgumentCount != nil {
 		in, out := &in.MaxArgumentCount, &out.MaxArgumentCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxNameLengthPerArgument != nil {
 		in, out := &in.MaxNameLengthPerArgument, &out.MaxNameLengthPerArgument
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxResponseSizeInKiB != nil {
 		in, out := &in.MaxResponseSizeInKiB, &out.MaxResponseSizeInKiB
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxTotalNameLengthOfArguments != nil {
 		in, out := &in.MaxTotalNameLengthOfArguments, &out.MaxTotalNameLengthOfArguments
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MediaTypes != nil {
@@ -5412,7 +5169,7 @@ func (in *ProtectionSettingsInitParameters) DeepCopyInto(out *ProtectionSettings
 	}
 	if in.RecommendationsPeriodInDays != nil {
 		in, out := &in.RecommendationsPeriodInDays, &out.RecommendationsPeriodInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -5463,7 +5220,7 @@ func (in *ProtectionSettingsObservation) DeepCopyInto(out *ProtectionSettingsObs
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsResponseInspected != nil {
@@ -5473,22 +5230,22 @@ func (in *ProtectionSettingsObservation) DeepCopyInto(out *ProtectionSettingsObs
 	}
 	if in.MaxArgumentCount != nil {
 		in, out := &in.MaxArgumentCount, &out.MaxArgumentCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxNameLengthPerArgument != nil {
 		in, out := &in.MaxNameLengthPerArgument, &out.MaxNameLengthPerArgument
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxResponseSizeInKiB != nil {
 		in, out := &in.MaxResponseSizeInKiB, &out.MaxResponseSizeInKiB
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxTotalNameLengthOfArguments != nil {
 		in, out := &in.MaxTotalNameLengthOfArguments, &out.MaxTotalNameLengthOfArguments
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MediaTypes != nil {
@@ -5504,7 +5261,7 @@ func (in *ProtectionSettingsObservation) DeepCopyInto(out *ProtectionSettingsObs
 	}
 	if in.RecommendationsPeriodInDays != nil {
 		in, out := &in.RecommendationsPeriodInDays, &out.RecommendationsPeriodInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -5555,7 +5312,7 @@ func (in *ProtectionSettingsParameters) DeepCopyInto(out *ProtectionSettingsPara
 	}
 	if in.BlockResponseCode != nil {
 		in, out := &in.BlockResponseCode, &out.BlockResponseCode
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsResponseInspected != nil {
@@ -5565,22 +5322,22 @@ func (in *ProtectionSettingsParameters) DeepCopyInto(out *ProtectionSettingsPara
 	}
 	if in.MaxArgumentCount != nil {
 		in, out := &in.MaxArgumentCount, &out.MaxArgumentCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxNameLengthPerArgument != nil {
 		in, out := &in.MaxNameLengthPerArgument, &out.MaxNameLengthPerArgument
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxResponseSizeInKiB != nil {
 		in, out := &in.MaxResponseSizeInKiB, &out.MaxResponseSizeInKiB
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MaxTotalNameLengthOfArguments != nil {
 		in, out := &in.MaxTotalNameLengthOfArguments, &out.MaxTotalNameLengthOfArguments
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MediaTypes != nil {
@@ -5596,7 +5353,7 @@ func (in *ProtectionSettingsParameters) DeepCopyInto(out *ProtectionSettingsPara
 	}
 	if in.RecommendationsPeriodInDays != nil {
 		in, out := &in.RecommendationsPeriodInDays, &out.RecommendationsPeriodInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -5636,12 +5393,12 @@ func (in *PublicKeyInfoObservation) DeepCopyInto(out *PublicKeyInfoObservation) 
 	}
 	if in.Exponent != nil {
 		in, out := &in.Exponent, &out.Exponent
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.KeySize != nil {
 		in, out := &in.KeySize, &out.KeySize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -6143,7 +5900,7 @@ func (in *TargetInitParameters) DeepCopyInto(out *TargetInitParameters) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -6183,7 +5940,7 @@ func (in *TargetObservation) DeepCopyInto(out *TargetObservation) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -6223,7 +5980,7 @@ func (in *TargetParameters) DeepCopyInto(out *TargetParameters) {
 	}
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Protocol != nil {
@@ -6306,18 +6063,9 @@ func (in *WaasPolicyInitParameters) DeepCopyInto(out *WaasPolicyInitParameters) 
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -6332,18 +6080,9 @@ func (in *WaasPolicyInitParameters) DeepCopyInto(out *WaasPolicyInitParameters) 
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.OriginGroups != nil {
@@ -6444,18 +6183,9 @@ func (in *WaasPolicyObservation) DeepCopyInto(out *WaasPolicyObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -6470,18 +6200,9 @@ func (in *WaasPolicyObservation) DeepCopyInto(out *WaasPolicyObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -6570,18 +6291,9 @@ func (in *WaasPolicyParameters) DeepCopyInto(out *WaasPolicyParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -6596,18 +6308,9 @@ func (in *WaasPolicyParameters) DeepCopyInto(out *WaasPolicyParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.OriginGroups != nil {

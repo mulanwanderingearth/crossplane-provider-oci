@@ -110,7 +110,7 @@ type PasswordPolicyInitParameters struct {
 	IsUsernameContainmentAllowed *bool `json:"isUsernameContainmentAllowed,omitempty" tf:"is_username_containment_allowed,omitempty"`
 
 	// (Updatable) Minimum password length required.
-	MinimumPasswordLength *float64 `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
+	MinimumPasswordLength *int64 `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
 }
 
 type PasswordPolicyObservation struct {
@@ -131,7 +131,7 @@ type PasswordPolicyObservation struct {
 	IsUsernameContainmentAllowed *bool `json:"isUsernameContainmentAllowed,omitempty" tf:"is_username_containment_allowed,omitempty"`
 
 	// (Updatable) Minimum password length required.
-	MinimumPasswordLength *float64 `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
+	MinimumPasswordLength *int64 `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
 }
 
 type PasswordPolicyParameters struct {
@@ -158,7 +158,7 @@ type PasswordPolicyParameters struct {
 
 	// (Updatable) Minimum password length required.
 	// +kubebuilder:validation:Optional
-	MinimumPasswordLength *float64 `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
+	MinimumPasswordLength *int64 `json:"minimumPasswordLength,omitempty" tf:"minimum_password_length,omitempty"`
 }
 
 // AuthenticationPolicySpec defines the desired state of AuthenticationPolicy

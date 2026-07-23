@@ -46,30 +46,30 @@ type AuthHeadersParameters struct {
 type AvailabilityConfigurationInitParameters struct {
 
 	// (Updatable) Intervals with failed runs more than this value will be classified as UNAVAILABLE.
-	MaxAllowedFailuresPerInterval *float64 `json:"maxAllowedFailuresPerInterval,omitempty" tf:"max_allowed_failures_per_interval,omitempty"`
+	MaxAllowedFailuresPerInterval *int64 `json:"maxAllowedFailuresPerInterval,omitempty" tf:"max_allowed_failures_per_interval,omitempty"`
 
 	// (Updatable) Intervals with runs less than this value will be classified as UNKNOWN and excluded from the availability calculations.
-	MinAllowedRunsPerInterval *float64 `json:"minAllowedRunsPerInterval,omitempty" tf:"min_allowed_runs_per_interval,omitempty"`
+	MinAllowedRunsPerInterval *int64 `json:"minAllowedRunsPerInterval,omitempty" tf:"min_allowed_runs_per_interval,omitempty"`
 }
 
 type AvailabilityConfigurationObservation struct {
 
 	// (Updatable) Intervals with failed runs more than this value will be classified as UNAVAILABLE.
-	MaxAllowedFailuresPerInterval *float64 `json:"maxAllowedFailuresPerInterval,omitempty" tf:"max_allowed_failures_per_interval,omitempty"`
+	MaxAllowedFailuresPerInterval *int64 `json:"maxAllowedFailuresPerInterval,omitempty" tf:"max_allowed_failures_per_interval,omitempty"`
 
 	// (Updatable) Intervals with runs less than this value will be classified as UNKNOWN and excluded from the availability calculations.
-	MinAllowedRunsPerInterval *float64 `json:"minAllowedRunsPerInterval,omitempty" tf:"min_allowed_runs_per_interval,omitempty"`
+	MinAllowedRunsPerInterval *int64 `json:"minAllowedRunsPerInterval,omitempty" tf:"min_allowed_runs_per_interval,omitempty"`
 }
 
 type AvailabilityConfigurationParameters struct {
 
 	// (Updatable) Intervals with failed runs more than this value will be classified as UNAVAILABLE.
 	// +kubebuilder:validation:Optional
-	MaxAllowedFailuresPerInterval *float64 `json:"maxAllowedFailuresPerInterval,omitempty" tf:"max_allowed_failures_per_interval,omitempty"`
+	MaxAllowedFailuresPerInterval *int64 `json:"maxAllowedFailuresPerInterval,omitempty" tf:"max_allowed_failures_per_interval,omitempty"`
 
 	// (Updatable) Intervals with runs less than this value will be classified as UNKNOWN and excluded from the availability calculations.
 	// +kubebuilder:validation:Optional
-	MinAllowedRunsPerInterval *float64 `json:"minAllowedRunsPerInterval,omitempty" tf:"min_allowed_runs_per_interval,omitempty"`
+	MinAllowedRunsPerInterval *int64 `json:"minAllowedRunsPerInterval,omitempty" tf:"min_allowed_runs_per_interval,omitempty"`
 }
 
 type ClientCertificateDetailsInitParameters struct {
@@ -160,7 +160,7 @@ type ConfigurationInitParameters struct {
 	DatabaseWalletDetails []DatabaseWalletDetailsInitParameters `json:"databaseWalletDetails,omitempty" tf:"database_wallet_details,omitempty"`
 
 	// (Applicable when config_type=FTP_CONFIG) (Updatable) Download size limit in Bytes, at which to stop the transfer. Maximum download size limit is 5 MiB.
-	DownloadSizeLimitInBytes *float64 `json:"downloadSizeLimitInBytes,omitempty" tf:"download_size_limit_in_bytes,omitempty"`
+	DownloadSizeLimitInBytes *int64 `json:"downloadSizeLimitInBytes,omitempty" tf:"download_size_limit_in_bytes,omitempty"`
 
 	// (Applicable when config_type=FTP_CONFIG) (Updatable) Details for basic authentication.
 	FtpBasicAuthenticationDetails []FtpBasicAuthenticationDetailsInitParameters `json:"ftpBasicAuthenticationDetails,omitempty" tf:"ftp_basic_authentication_details,omitempty"`
@@ -223,7 +223,7 @@ type ConfigurationInitParameters struct {
 	RequestQueryParams []RequestQueryParamsInitParameters `json:"requestQueryParams,omitempty" tf:"request_query_params,omitempty"`
 
 	// (Applicable when config_type=FTP_CONFIG) (Updatable) File upload size in Bytes, at which to stop the transfer. Maximum upload size is 5 MiB.
-	UploadFileSizeInBytes *float64 `json:"uploadFileSizeInBytes,omitempty" tf:"upload_file_size_in_bytes,omitempty"`
+	UploadFileSizeInBytes *int64 `json:"uploadFileSizeInBytes,omitempty" tf:"upload_file_size_in_bytes,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | FTP_CONFIG | REST_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Expected HTTP response codes. For status code range, set values such as 2xx, 3xx.
 	VerifyResponseCodes []*string `json:"verifyResponseCodes,omitempty" tf:"verify_response_codes,omitempty"`
@@ -265,7 +265,7 @@ type ConfigurationObservation struct {
 	DatabaseWalletDetails []DatabaseWalletDetailsObservation `json:"databaseWalletDetails,omitempty" tf:"database_wallet_details,omitempty"`
 
 	// (Applicable when config_type=FTP_CONFIG) (Updatable) Download size limit in Bytes, at which to stop the transfer. Maximum download size limit is 5 MiB.
-	DownloadSizeLimitInBytes *float64 `json:"downloadSizeLimitInBytes,omitempty" tf:"download_size_limit_in_bytes,omitempty"`
+	DownloadSizeLimitInBytes *int64 `json:"downloadSizeLimitInBytes,omitempty" tf:"download_size_limit_in_bytes,omitempty"`
 
 	// (Applicable when config_type=FTP_CONFIG) (Updatable) Details for basic authentication.
 	FtpBasicAuthenticationDetails []FtpBasicAuthenticationDetailsObservation `json:"ftpBasicAuthenticationDetails,omitempty" tf:"ftp_basic_authentication_details,omitempty"`
@@ -328,7 +328,7 @@ type ConfigurationObservation struct {
 	RequestQueryParams []RequestQueryParamsObservation `json:"requestQueryParams,omitempty" tf:"request_query_params,omitempty"`
 
 	// (Applicable when config_type=FTP_CONFIG) (Updatable) File upload size in Bytes, at which to stop the transfer. Maximum upload size is 5 MiB.
-	UploadFileSizeInBytes *float64 `json:"uploadFileSizeInBytes,omitempty" tf:"upload_file_size_in_bytes,omitempty"`
+	UploadFileSizeInBytes *int64 `json:"uploadFileSizeInBytes,omitempty" tf:"upload_file_size_in_bytes,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | FTP_CONFIG | REST_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Expected HTTP response codes. For status code range, set values such as 2xx, 3xx.
 	VerifyResponseCodes []*string `json:"verifyResponseCodes,omitempty" tf:"verify_response_codes,omitempty"`
@@ -380,7 +380,7 @@ type ConfigurationParameters struct {
 
 	// (Applicable when config_type=FTP_CONFIG) (Updatable) Download size limit in Bytes, at which to stop the transfer. Maximum download size limit is 5 MiB.
 	// +kubebuilder:validation:Optional
-	DownloadSizeLimitInBytes *float64 `json:"downloadSizeLimitInBytes,omitempty" tf:"download_size_limit_in_bytes,omitempty"`
+	DownloadSizeLimitInBytes *int64 `json:"downloadSizeLimitInBytes,omitempty" tf:"download_size_limit_in_bytes,omitempty"`
 
 	// (Applicable when config_type=FTP_CONFIG) (Updatable) Details for basic authentication.
 	// +kubebuilder:validation:Optional
@@ -464,7 +464,7 @@ type ConfigurationParameters struct {
 
 	// (Applicable when config_type=FTP_CONFIG) (Updatable) File upload size in Bytes, at which to stop the transfer. Maximum upload size is 5 MiB.
 	// +kubebuilder:validation:Optional
-	UploadFileSizeInBytes *float64 `json:"uploadFileSizeInBytes,omitempty" tf:"upload_file_size_in_bytes,omitempty"`
+	UploadFileSizeInBytes *int64 `json:"uploadFileSizeInBytes,omitempty" tf:"upload_file_size_in_bytes,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | FTP_CONFIG | REST_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Expected HTTP response codes. For status code range, set values such as 2xx, 3xx.
 	// +kubebuilder:validation:Optional
@@ -686,21 +686,19 @@ type MonitorInitParameters struct {
 	AvailabilityConfiguration []AvailabilityConfigurationInitParameters `json:"availabilityConfiguration,omitempty" tf:"availability_configuration,omitempty"`
 
 	// (Updatable) Time interval between 2 runs in round robin batch mode (*SchedulingPolicy - BATCHED_ROUND_ROBIN).
-	BatchIntervalInSeconds *float64 `json:"batchIntervalInSeconds,omitempty" tf:"batch_interval_in_seconds,omitempty"`
+	BatchIntervalInSeconds *int64 `json:"batchIntervalInSeconds,omitempty" tf:"batch_interval_in_seconds,omitempty"`
 
 	// (Updatable) Details of monitor configuration.
 	Configuration []ConfigurationInitParameters `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Unique name that can be edited. The name should not contain any confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) If enabled, domain name will resolve to an IPv6 address.
 	IsIPv6 *bool `json:"isIpv6,omitempty" tf:"is_ipv6,omitempty"`
@@ -718,7 +716,7 @@ type MonitorInitParameters struct {
 	MonitorType *string `json:"monitorType,omitempty" tf:"monitor_type,omitempty"`
 
 	// (Updatable) Interval in seconds after the start time when the job should be repeated. Minimum repeatIntervalInSeconds should be 300 seconds.
-	RepeatIntervalInSeconds *float64 `json:"repeatIntervalInSeconds,omitempty" tf:"repeat_interval_in_seconds,omitempty"`
+	RepeatIntervalInSeconds *int64 `json:"repeatIntervalInSeconds,omitempty" tf:"repeat_interval_in_seconds,omitempty"`
 
 	// (Updatable) Scheduling policy to decide the distribution of monitor executions on vantage points.
 	SchedulingPolicy *string `json:"schedulingPolicy,omitempty" tf:"scheduling_policy,omitempty"`
@@ -749,7 +747,7 @@ type MonitorInitParameters struct {
 	Target *string `json:"target,omitempty" tf:"target,omitempty"`
 
 	// (Updatable) Timeout in seconds. If isFailureRetried is true, then timeout cannot be more than 30% of repeatIntervalInSeconds time for monitors. If isFailureRetried is false, then timeout cannot be more than 50% of repeatIntervalInSeconds time for monitors. Also, timeoutInSeconds should be a multiple of 60 for Scripted REST, Scripted Browser and Browser monitors. Monitor will be allowed to run only for timeoutInSeconds time. It would be terminated after that.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) A list of vantage points from which to execute the monitor. Use /publicVantagePoints to fetch public vantage points.
 	VantagePoints []VantagePointsInitParameters `json:"vantagePoints,omitempty" tf:"vantage_points,omitempty"`
@@ -764,7 +762,7 @@ type MonitorObservation struct {
 	AvailabilityConfiguration []AvailabilityConfigurationObservation `json:"availabilityConfiguration,omitempty" tf:"availability_configuration,omitempty"`
 
 	// (Updatable) Time interval between 2 runs in round robin batch mode (*SchedulingPolicy - BATCHED_ROUND_ROBIN).
-	BatchIntervalInSeconds *float64 `json:"batchIntervalInSeconds,omitempty" tf:"batch_interval_in_seconds,omitempty"`
+	BatchIntervalInSeconds *int64 `json:"batchIntervalInSeconds,omitempty" tf:"batch_interval_in_seconds,omitempty"`
 
 	// (Updatable) Details of monitor configuration.
 	Configuration []ConfigurationObservation `json:"configuration,omitempty" tf:"configuration,omitempty"`
@@ -776,15 +774,13 @@ type MonitorObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Unique name that can be edited. The name should not contain any confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the monitor.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -808,7 +804,7 @@ type MonitorObservation struct {
 	MonitorType *string `json:"monitorType,omitempty" tf:"monitor_type,omitempty"`
 
 	// (Updatable) Interval in seconds after the start time when the job should be repeated. Minimum repeatIntervalInSeconds should be 300 seconds.
-	RepeatIntervalInSeconds *float64 `json:"repeatIntervalInSeconds,omitempty" tf:"repeat_interval_in_seconds,omitempty"`
+	RepeatIntervalInSeconds *int64 `json:"repeatIntervalInSeconds,omitempty" tf:"repeat_interval_in_seconds,omitempty"`
 
 	// (Updatable) Scheduling policy to decide the distribution of monitor executions on vantage points.
 	SchedulingPolicy *string `json:"schedulingPolicy,omitempty" tf:"scheduling_policy,omitempty"`
@@ -835,10 +831,10 @@ type MonitorObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) Timeout in seconds. If isFailureRetried is true, then timeout cannot be more than 30% of repeatIntervalInSeconds time for monitors. If isFailureRetried is false, then timeout cannot be more than 50% of repeatIntervalInSeconds time for monitors. Also, timeoutInSeconds should be a multiple of 60 for Scripted REST, Scripted Browser and Browser monitors. Monitor will be allowed to run only for timeoutInSeconds time. It would be terminated after that.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// Number of vantage points where monitor is running.
-	VantagePointCount *float64 `json:"vantagePointCount,omitempty" tf:"vantage_point_count,omitempty"`
+	VantagePointCount *int64 `json:"vantagePointCount,omitempty" tf:"vantage_point_count,omitempty"`
 
 	// (Updatable) A list of vantage points from which to execute the monitor. Use /publicVantagePoints to fetch public vantage points.
 	VantagePoints []VantagePointsObservation `json:"vantagePoints,omitempty" tf:"vantage_points,omitempty"`
@@ -856,7 +852,7 @@ type MonitorParameters struct {
 
 	// (Updatable) Time interval between 2 runs in round robin batch mode (*SchedulingPolicy - BATCHED_ROUND_ROBIN).
 	// +kubebuilder:validation:Optional
-	BatchIntervalInSeconds *float64 `json:"batchIntervalInSeconds,omitempty" tf:"batch_interval_in_seconds,omitempty"`
+	BatchIntervalInSeconds *int64 `json:"batchIntervalInSeconds,omitempty" tf:"batch_interval_in_seconds,omitempty"`
 
 	// (Updatable) Details of monitor configuration.
 	// +kubebuilder:validation:Optional
@@ -864,8 +860,7 @@ type MonitorParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Unique name that can be edited. The name should not contain any confidential information.
 	// +kubebuilder:validation:Optional
@@ -873,8 +868,7 @@ type MonitorParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) If enabled, domain name will resolve to an IPv6 address.
 	// +kubebuilder:validation:Optional
@@ -898,7 +892,7 @@ type MonitorParameters struct {
 
 	// (Updatable) Interval in seconds after the start time when the job should be repeated. Minimum repeatIntervalInSeconds should be 300 seconds.
 	// +kubebuilder:validation:Optional
-	RepeatIntervalInSeconds *float64 `json:"repeatIntervalInSeconds,omitempty" tf:"repeat_interval_in_seconds,omitempty"`
+	RepeatIntervalInSeconds *int64 `json:"repeatIntervalInSeconds,omitempty" tf:"repeat_interval_in_seconds,omitempty"`
 
 	// (Updatable) Scheduling policy to decide the distribution of monitor executions on vantage points.
 	// +kubebuilder:validation:Optional
@@ -936,7 +930,7 @@ type MonitorParameters struct {
 
 	// (Updatable) Timeout in seconds. If isFailureRetried is true, then timeout cannot be more than 30% of repeatIntervalInSeconds time for monitors. If isFailureRetried is false, then timeout cannot be more than 50% of repeatIntervalInSeconds time for monitors. Also, timeoutInSeconds should be a multiple of 60 for Scripted REST, Scripted Browser and Browser monitors. Monitor will be allowed to run only for timeoutInSeconds time. It would be terminated after that.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) A list of vantage points from which to execute the monitor. Use /publicVantagePoints to fetch public vantage points.
 	// +kubebuilder:validation:Optional
@@ -961,44 +955,44 @@ type MonitorScriptParameterParameters struct {
 type NetworkConfigurationInitParameters struct {
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Number of hops.
-	NumberOfHops *float64 `json:"numberOfHops,omitempty" tf:"number_of_hops,omitempty"`
+	NumberOfHops *int64 `json:"numberOfHops,omitempty" tf:"number_of_hops,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Type of probe mode when TCP protocol is selected.
 	ProbeMode *string `json:"probeMode,omitempty" tf:"probe_mode,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Number of probes per hop.
-	ProbePerHop *float64 `json:"probePerHop,omitempty" tf:"probe_per_hop,omitempty"`
+	ProbePerHop *int64 `json:"probePerHop,omitempty" tf:"probe_per_hop,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Type of protocol.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Number of probe packets sent out simultaneously.
-	TransmissionRate *float64 `json:"transmissionRate,omitempty" tf:"transmission_rate,omitempty"`
+	TransmissionRate *int64 `json:"transmissionRate,omitempty" tf:"transmission_rate,omitempty"`
 }
 
 type NetworkConfigurationObservation struct {
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Number of hops.
-	NumberOfHops *float64 `json:"numberOfHops,omitempty" tf:"number_of_hops,omitempty"`
+	NumberOfHops *int64 `json:"numberOfHops,omitempty" tf:"number_of_hops,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Type of probe mode when TCP protocol is selected.
 	ProbeMode *string `json:"probeMode,omitempty" tf:"probe_mode,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Number of probes per hop.
-	ProbePerHop *float64 `json:"probePerHop,omitempty" tf:"probe_per_hop,omitempty"`
+	ProbePerHop *int64 `json:"probePerHop,omitempty" tf:"probe_per_hop,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Type of protocol.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Number of probe packets sent out simultaneously.
-	TransmissionRate *float64 `json:"transmissionRate,omitempty" tf:"transmission_rate,omitempty"`
+	TransmissionRate *int64 `json:"transmissionRate,omitempty" tf:"transmission_rate,omitempty"`
 }
 
 type NetworkConfigurationParameters struct {
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Number of hops.
 	// +kubebuilder:validation:Optional
-	NumberOfHops *float64 `json:"numberOfHops,omitempty" tf:"number_of_hops,omitempty"`
+	NumberOfHops *int64 `json:"numberOfHops,omitempty" tf:"number_of_hops,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Type of probe mode when TCP protocol is selected.
 	// +kubebuilder:validation:Optional
@@ -1006,7 +1000,7 @@ type NetworkConfigurationParameters struct {
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Number of probes per hop.
 	// +kubebuilder:validation:Optional
-	ProbePerHop *float64 `json:"probePerHop,omitempty" tf:"probe_per_hop,omitempty"`
+	ProbePerHop *int64 `json:"probePerHop,omitempty" tf:"probe_per_hop,omitempty"`
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Type of protocol.
 	// +kubebuilder:validation:Optional
@@ -1014,7 +1008,7 @@ type NetworkConfigurationParameters struct {
 
 	// (Applicable when config_type=BROWSER_CONFIG | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG) (Updatable) Number of probe packets sent out simultaneously.
 	// +kubebuilder:validation:Optional
-	TransmissionRate *float64 `json:"transmissionRate,omitempty" tf:"transmission_rate,omitempty"`
+	TransmissionRate *int64 `json:"transmissionRate,omitempty" tf:"transmission_rate,omitempty"`
 }
 
 type PasswordInitParameters struct {

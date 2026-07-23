@@ -28,15 +28,13 @@ type ContainerRepositoryInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The container repository name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether the repository is immutable. Images cannot be overwritten in an immutable repository.
 	IsImmutable *bool `json:"isImmutable,omitempty" tf:"is_immutable,omitempty"`
@@ -60,21 +58,19 @@ type ContainerRepositoryObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The container repository name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the container repository.  Example: ocid1.containerrepo.oc1..exampleuniqueID
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Total number of images.
-	ImageCount *float64 `json:"imageCount,omitempty" tf:"image_count,omitempty"`
+	ImageCount *int64 `json:"imageCount,omitempty" tf:"image_count,omitempty"`
 
 	// (Updatable) Whether the repository is immutable. Images cannot be overwritten in an immutable repository.
 	IsImmutable *bool `json:"isImmutable,omitempty" tf:"is_immutable,omitempty"`
@@ -83,7 +79,7 @@ type ContainerRepositoryObservation struct {
 	IsPublic *bool `json:"isPublic,omitempty" tf:"is_public,omitempty"`
 
 	// Total number of layers.
-	LayerCount *float64 `json:"layerCount,omitempty" tf:"layer_count,omitempty"`
+	LayerCount *int64 `json:"layerCount,omitempty" tf:"layer_count,omitempty"`
 
 	// Total storage in bytes consumed by layers.
 	LayersSizeInBytes *string `json:"layersSizeInBytes,omitempty" tf:"layers_size_in_bytes,omitempty"`
@@ -98,8 +94,7 @@ type ContainerRepositoryObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// The system tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// An RFC 3339 timestamp indicating when the repository was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -125,8 +120,7 @@ type ContainerRepositoryParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The container repository name.
 	// +kubebuilder:validation:Optional
@@ -134,8 +128,7 @@ type ContainerRepositoryParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether the repository is immutable. Images cannot be overwritten in an immutable repository.
 	// +kubebuilder:validation:Optional

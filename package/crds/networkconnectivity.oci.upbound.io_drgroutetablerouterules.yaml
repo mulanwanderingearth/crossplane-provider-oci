@@ -532,7 +532,6 @@ spec:
                     description: Additional properties for the route, computed by
                       the service.
                     type: object
-                    x-kubernetes-map-type: granular
                   destination:
                     description: (Updatable) This is the range of IP addresses used
                       for matching when routing traffic. Only CIDR_BLOCK values are

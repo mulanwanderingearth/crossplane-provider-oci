@@ -131,8 +131,7 @@ type PsqlConfigurationInitParameters struct {
 	DBVersion *string `json:"dbVersion,omitempty" tf:"db_version,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Details about the configuration set.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -141,14 +140,13 @@ type PsqlConfigurationInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Memory size in gigabytes with 1GB increment.
-	InstanceMemorySizeInGbs *float64 `json:"instanceMemorySizeInGbs,omitempty" tf:"instance_memory_size_in_gbs,omitempty"`
+	InstanceMemorySizeInGbs *int64 `json:"instanceMemorySizeInGbs,omitempty" tf:"instance_memory_size_in_gbs,omitempty"`
 
 	// CPU core count.
-	InstanceOcpuCount *float64 `json:"instanceOcpuCount,omitempty" tf:"instance_ocpu_count,omitempty"`
+	InstanceOcpuCount *int64 `json:"instanceOcpuCount,omitempty" tf:"instance_ocpu_count,omitempty"`
 
 	// Whether the configuration supports flexible shapes.
 	IsFlexible *bool `json:"isFlexible,omitempty" tf:"is_flexible,omitempty"`
@@ -157,8 +155,7 @@ type PsqlConfigurationInitParameters struct {
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type PsqlConfigurationObservation struct {
@@ -185,8 +182,7 @@ type PsqlConfigurationObservation struct {
 	DefaultConfigID *string `json:"defaultConfigId,omitempty" tf:"default_config_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Details about the configuration set.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -195,17 +191,16 @@ type PsqlConfigurationObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A unique identifier for the configuration. Immutable on creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Memory size in gigabytes with 1GB increment.
-	InstanceMemorySizeInGbs *float64 `json:"instanceMemorySizeInGbs,omitempty" tf:"instance_memory_size_in_gbs,omitempty"`
+	InstanceMemorySizeInGbs *int64 `json:"instanceMemorySizeInGbs,omitempty" tf:"instance_memory_size_in_gbs,omitempty"`
 
 	// CPU core count.
-	InstanceOcpuCount *float64 `json:"instanceOcpuCount,omitempty" tf:"instance_ocpu_count,omitempty"`
+	InstanceOcpuCount *int64 `json:"instanceOcpuCount,omitempty" tf:"instance_ocpu_count,omitempty"`
 
 	// Whether the configuration supports flexible shapes.
 	IsFlexible *bool `json:"isFlexible,omitempty" tf:"is_flexible,omitempty"`
@@ -220,8 +215,7 @@ type PsqlConfigurationObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time that the configuration was created, expressed in RFC 3339 timestamp format.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -256,8 +250,7 @@ type PsqlConfigurationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Details about the configuration set.
 	// +kubebuilder:validation:Optional
@@ -269,16 +262,15 @@ type PsqlConfigurationParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Memory size in gigabytes with 1GB increment.
 	// +kubebuilder:validation:Optional
-	InstanceMemorySizeInGbs *float64 `json:"instanceMemorySizeInGbs,omitempty" tf:"instance_memory_size_in_gbs,omitempty"`
+	InstanceMemorySizeInGbs *int64 `json:"instanceMemorySizeInGbs,omitempty" tf:"instance_memory_size_in_gbs,omitempty"`
 
 	// CPU core count.
 	// +kubebuilder:validation:Optional
-	InstanceOcpuCount *float64 `json:"instanceOcpuCount,omitempty" tf:"instance_ocpu_count,omitempty"`
+	InstanceOcpuCount *int64 `json:"instanceOcpuCount,omitempty" tf:"instance_ocpu_count,omitempty"`
 
 	// Whether the configuration supports flexible shapes.
 	// +kubebuilder:validation:Optional
@@ -290,8 +282,7 @@ type PsqlConfigurationParameters struct {
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 // PsqlConfigurationSpec defines the desired state of PsqlConfiguration

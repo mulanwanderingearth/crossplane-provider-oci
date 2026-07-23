@@ -15,6 +15,18 @@ import (
 )
 
 type CloudGateIdcsCreatedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type CloudGateIdcsCreatedByObservation struct {
@@ -36,9 +48,37 @@ type CloudGateIdcsCreatedByObservation struct {
 }
 
 type CloudGateIdcsCreatedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type CloudGateIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type CloudGateIdcsLastModifiedByObservation struct {
@@ -60,6 +100,22 @@ type CloudGateIdcsLastModifiedByObservation struct {
 }
 
 type CloudGateIdcsLastModifiedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type CloudGateInitParameters struct {
@@ -105,6 +161,21 @@ type CloudGateInitParameters struct {
 }
 
 type CloudGateMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type CloudGateMetaObservation struct {
@@ -126,6 +197,26 @@ type CloudGateMetaObservation struct {
 }
 
 type CloudGateMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type CloudGateObservation struct {
@@ -303,6 +394,36 @@ type CloudGateTagsParameters struct {
 }
 
 type MappingsInitParameters struct {
+
+	// (Updatable) The ID of the App being mapped to
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) The id of the Cloud Gate Mapping
+	MappingID *string `json:"mappingId,omitempty" tf:"mapping_id,omitempty"`
+
+	// (Updatable) The name (Client ID) of the App being mapped to
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) More nginx Settings. JSON encoded text block
+	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
+
+	// (Updatable) The Web Tier policy name used for the App that is mapped to this Cloud Gate
+	PolicyName *string `json:"policyName,omitempty" tf:"policy_name,omitempty"`
+
+	// (Updatable) NGINX ProxyPass entry for this Mapping
+	ProxyPass *string `json:"proxyPass,omitempty" tf:"proxy_pass,omitempty"`
+
+	// (Updatable) Resource prefix for this mapping.  This will be used to define the location block
+	ResourcePrefix *string `json:"resourcePrefix,omitempty" tf:"resource_prefix,omitempty"`
+
+	// (Updatable) Server Name for the Server Block
+	ServerID *string `json:"serverId,omitempty" tf:"server_id,omitempty"`
+
+	// (Updatable) Upstream server group instance for the Mapping. This is one of the upstream server group IDs(upstream blocks) from the associated Cloud Gate list
+	UpstreamServerGroupID *string `json:"upstreamServerGroupId,omitempty" tf:"upstream_server_group_id,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type MappingsObservation struct {
@@ -342,9 +463,55 @@ type MappingsObservation struct {
 }
 
 type MappingsParameters struct {
+
+	// (Updatable) The ID of the App being mapped to
+	// +kubebuilder:validation:Optional
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) The id of the Cloud Gate Mapping
+	// +kubebuilder:validation:Optional
+	MappingID *string `json:"mappingId,omitempty" tf:"mapping_id,omitempty"`
+
+	// (Updatable) The name (Client ID) of the App being mapped to
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) More nginx Settings. JSON encoded text block
+	// +kubebuilder:validation:Optional
+	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
+
+	// (Updatable) The Web Tier policy name used for the App that is mapped to this Cloud Gate
+	// +kubebuilder:validation:Optional
+	PolicyName *string `json:"policyName,omitempty" tf:"policy_name,omitempty"`
+
+	// (Updatable) NGINX ProxyPass entry for this Mapping
+	// +kubebuilder:validation:Optional
+	ProxyPass *string `json:"proxyPass,omitempty" tf:"proxy_pass,omitempty"`
+
+	// (Updatable) Resource prefix for this mapping.  This will be used to define the location block
+	// +kubebuilder:validation:Optional
+	ResourcePrefix *string `json:"resourcePrefix" tf:"resource_prefix,omitempty"`
+
+	// (Updatable) Server Name for the Server Block
+	// +kubebuilder:validation:Optional
+	ServerID *string `json:"serverId" tf:"server_id,omitempty"`
+
+	// (Updatable) Upstream server group instance for the Mapping. This is one of the upstream server group IDs(upstream blocks) from the associated Cloud Gate list
+	// +kubebuilder:validation:Optional
+	UpstreamServerGroupID *string `json:"upstreamServerGroupId,omitempty" tf:"upstream_server_group_id,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type OauthClientInitParameters struct {
+
+	// (Updatable) The Client ID of the OAuth app for this CloudGate.
+	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type OauthClientObservation struct {
@@ -360,9 +527,32 @@ type OauthClientObservation struct {
 }
 
 type OauthClientParameters struct {
+
+	// (Updatable) The Client ID of the OAuth app for this CloudGate.
+	// +kubebuilder:validation:Optional
+	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ServersInitParameters struct {
+
+	// (Updatable) Hostname for the Server block
+	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
+
+	// (Updatable) More nginx Settings. JSON encoded text block
+	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
+
+	// (Updatable) Port for the Server Block
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
+
+	// (Updatable) SSL flag for the Server Block
+	SSL *bool `json:"ssl,omitempty" tf:"ssl,omitempty"`
+
+	// (Updatable) Server Name for the Server Block
+	ServerID *string `json:"serverId,omitempty" tf:"server_id,omitempty"`
 }
 
 type ServersObservation struct {
@@ -374,7 +564,7 @@ type ServersObservation struct {
 	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
 
 	// (Updatable) Port for the Server Block
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) SSL flag for the Server Block
 	SSL *bool `json:"ssl,omitempty" tf:"ssl,omitempty"`
@@ -384,9 +574,41 @@ type ServersObservation struct {
 }
 
 type ServersParameters struct {
+
+	// (Updatable) Hostname for the Server block
+	// +kubebuilder:validation:Optional
+	HostName *string `json:"hostName" tf:"host_name,omitempty"`
+
+	// (Updatable) More nginx Settings. JSON encoded text block
+	// +kubebuilder:validation:Optional
+	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
+
+	// (Updatable) Port for the Server Block
+	// +kubebuilder:validation:Optional
+	Port *int64 `json:"port" tf:"port,omitempty"`
+
+	// (Updatable) SSL flag for the Server Block
+	// +kubebuilder:validation:Optional
+	SSL *bool `json:"ssl" tf:"ssl,omitempty"`
+
+	// (Updatable) Server Name for the Server Block
+	// +kubebuilder:validation:Optional
+	ServerID *string `json:"serverId,omitempty" tf:"server_id,omitempty"`
 }
 
 type UpstreamServerGroupsInitParameters struct {
+
+	// (Updatable) Display name/Host identifier for this Cloud Gate
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// (Updatable) More nginx Settings. JSON encoded text block
+	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
+
+	// (Updatable) SSL flag for the Upstream Block
+	SSL *bool `json:"ssl,omitempty" tf:"ssl,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UpstreamServerGroupsObservation struct {
@@ -408,9 +630,43 @@ type UpstreamServerGroupsObservation struct {
 }
 
 type UpstreamServerGroupsParameters struct {
+
+	// (Updatable) Display name/Host identifier for this Cloud Gate
+	// +kubebuilder:validation:Optional
+	DisplayName *string `json:"displayName" tf:"display_name,omitempty"`
+
+	// (Updatable) More nginx Settings. JSON encoded text block
+	// +kubebuilder:validation:Optional
+	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
+
+	// (Updatable) SSL flag for the Upstream Block
+	// +kubebuilder:validation:Optional
+	SSL *bool `json:"ssl,omitempty" tf:"ssl,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type UpstreamServersInitParameters struct {
+
+	// (Updatable) Display name/Host identifier for this Cloud Gate
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// (Updatable) Upstream Server Group instance for the upstream server. This is one of the upstreamServerGroup IDs(upstream blocks) from the associated Cloud Gate list
+	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
+
+	// (Updatable) Hostname for the Server block
+	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
+
+	// (Updatable) More nginx Settings. JSON encoded text block
+	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
+
+	// (Updatable) Port for the Server Block
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UpstreamServersObservation struct {
@@ -428,7 +684,7 @@ type UpstreamServersObservation struct {
 	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
 
 	// (Updatable) Port for the Server Block
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The URI of the SCIM resource that represents the User or App who created this Resource
 	Ref *string `json:"ref,omitempty" tf:"ref,omitempty"`
@@ -438,6 +694,30 @@ type UpstreamServersObservation struct {
 }
 
 type UpstreamServersParameters struct {
+
+	// (Updatable) Display name/Host identifier for this Cloud Gate
+	// +kubebuilder:validation:Optional
+	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// (Updatable) Upstream Server Group instance for the upstream server. This is one of the upstreamServerGroup IDs(upstream blocks) from the associated Cloud Gate list
+	// +kubebuilder:validation:Optional
+	GroupID *string `json:"groupId,omitempty" tf:"group_id,omitempty"`
+
+	// (Updatable) Hostname for the Server block
+	// +kubebuilder:validation:Optional
+	HostName *string `json:"hostName,omitempty" tf:"host_name,omitempty"`
+
+	// (Updatable) More nginx Settings. JSON encoded text block
+	// +kubebuilder:validation:Optional
+	NginxSettings *string `json:"nginxSettings,omitempty" tf:"nginx_settings,omitempty"`
+
+	// (Updatable) Port for the Server Block
+	// +kubebuilder:validation:Optional
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 // CloudGateSpec defines the desired state of CloudGate

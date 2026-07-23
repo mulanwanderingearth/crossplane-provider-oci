@@ -113,8 +113,7 @@ type CertificatePublicParameters struct {
 type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigGlobalInitParameters struct {
 
 	// (Updatable) Advanced global properties.
-	// +mapType=granular
-	AdvancedProperties map[string]*string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
+	AdvancedProperties map[string]string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
 
 	// (Updatable) The certificate bundle that describes the SSL certicicate. Ignored if the httpsPort is 0.
 	CertificateBundle []CertificateBundleInitParameters `json:"certificateBundle,omitempty" tf:"certificate_bundle,omitempty"`
@@ -142,10 +141,10 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigGlobalInitParameters struc
 	GlobalKey *string `json:"globalKey,omitempty" tf:"global_key,omitempty"`
 
 	// (Updatable) Specifies the HTTP listen port. 0 disables HTTP. Use of ports below 1024 requires elevated (root) privileges and is generally discouraged; deployment on non-privileged ports (1024–65535) is recommended.
-	HTTPPort *float64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
+	HTTPPort *int64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 
 	// (Updatable) Specifies the HTTPS listen port. 0 disables HTTPS. Use of ports below 1024 requires elevated (root) privileges and is generally discouraged; deployment on non-privileged ports (1024–65535) is recommended. ORDS will use a self-signed certificate if a certificate bundle is not provided.
-	HTTPSPort *float64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
+	HTTPSPort *int64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 
 	// (Updatable) How the target pool route value is determined for a HTTP request.
 	PoolRoute *string `json:"poolRoute,omitempty" tf:"pool_route,omitempty"`
@@ -160,8 +159,7 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigGlobalInitParameters struc
 type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigGlobalObservation struct {
 
 	// (Updatable) Advanced global properties.
-	// +mapType=granular
-	AdvancedProperties map[string]*string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
+	AdvancedProperties map[string]string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
 
 	// (Updatable) The certificate bundle that describes the SSL certicicate. Ignored if the httpsPort is 0.
 	CertificateBundle []CertificateBundleObservation `json:"certificateBundle,omitempty" tf:"certificate_bundle,omitempty"`
@@ -179,10 +177,10 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigGlobalObservation struct {
 	GlobalKey *string `json:"globalKey,omitempty" tf:"global_key,omitempty"`
 
 	// (Updatable) Specifies the HTTP listen port. 0 disables HTTP. Use of ports below 1024 requires elevated (root) privileges and is generally discouraged; deployment on non-privileged ports (1024–65535) is recommended.
-	HTTPPort *float64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
+	HTTPPort *int64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 
 	// (Updatable) Specifies the HTTPS listen port. 0 disables HTTPS. Use of ports below 1024 requires elevated (root) privileges and is generally discouraged; deployment on non-privileged ports (1024–65535) is recommended. ORDS will use a self-signed certificate if a certificate bundle is not provided.
-	HTTPSPort *float64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
+	HTTPSPort *int64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -212,8 +210,7 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigGlobalParameters struct {
 
 	// (Updatable) Advanced global properties.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	AdvancedProperties map[string]*string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
+	AdvancedProperties map[string]string `json:"advancedProperties,omitempty" tf:"advanced_properties,omitempty"`
 
 	// (Updatable) The certificate bundle that describes the SSL certicicate. Ignored if the httpsPort is 0.
 	// +kubebuilder:validation:Optional
@@ -247,11 +244,11 @@ type ToolsRuntimeDatabaseToolsDatabaseApiGatewayConfigGlobalParameters struct {
 
 	// (Updatable) Specifies the HTTP listen port. 0 disables HTTP. Use of ports below 1024 requires elevated (root) privileges and is generally discouraged; deployment on non-privileged ports (1024–65535) is recommended.
 	// +kubebuilder:validation:Optional
-	HTTPPort *float64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
+	HTTPPort *int64 `json:"httpPort,omitempty" tf:"http_port,omitempty"`
 
 	// (Updatable) Specifies the HTTPS listen port. 0 disables HTTPS. Use of ports below 1024 requires elevated (root) privileges and is generally discouraged; deployment on non-privileged ports (1024–65535) is recommended. ORDS will use a self-signed certificate if a certificate bundle is not provided.
 	// +kubebuilder:validation:Optional
-	HTTPSPort *float64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
+	HTTPSPort *int64 `json:"httpsPort,omitempty" tf:"https_port,omitempty"`
 
 	// (Updatable) How the target pool route value is determined for a HTTP request.
 	// +kubebuilder:validation:Optional

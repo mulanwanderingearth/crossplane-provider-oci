@@ -17,7 +17,7 @@ import (
 type FleetAgentConfigurationInitParameters struct {
 
 	// (Updatable) Agent polling interval in minutes
-	AgentPollingIntervalInMinutes *float64 `json:"agentPollingIntervalInMinutes,omitempty" tf:"agent_polling_interval_in_minutes,omitempty"`
+	AgentPollingIntervalInMinutes *int64 `json:"agentPollingIntervalInMinutes,omitempty" tf:"agent_polling_interval_in_minutes,omitempty"`
 
 	// The OCID of the Fleet.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/jms/v1alpha1.Fleet
@@ -45,10 +45,10 @@ type FleetAgentConfigurationInitParameters struct {
 	IsLibrariesScanEnabled *bool `json:"isLibrariesScanEnabled,omitempty" tf:"is_libraries_scan_enabled,omitempty"`
 
 	// (Updatable) The frequency (in minutes) of Java Usage Tracker processing. (That is, how often should JMS process data from the Java Usage Tracker.)
-	JavaUsageTrackerProcessingFrequencyInMinutes *float64 `json:"javaUsageTrackerProcessingFrequencyInMinutes,omitempty" tf:"java_usage_tracker_processing_frequency_in_minutes,omitempty"`
+	JavaUsageTrackerProcessingFrequencyInMinutes *int64 `json:"javaUsageTrackerProcessingFrequencyInMinutes,omitempty" tf:"java_usage_tracker_processing_frequency_in_minutes,omitempty"`
 
 	// (Updatable) The frequency (in minutes) of JRE scanning. (That is, how often should JMS scan for JRE installations.)
-	JreScanFrequencyInMinutes *float64 `json:"jreScanFrequencyInMinutes,omitempty" tf:"jre_scan_frequency_in_minutes,omitempty"`
+	JreScanFrequencyInMinutes *int64 `json:"jreScanFrequencyInMinutes,omitempty" tf:"jre_scan_frequency_in_minutes,omitempty"`
 
 	// (Updatable) Management Agent Configuration for list of include/exclude file system paths (specific to operating system).
 	LinuxConfiguration []LinuxConfigurationInitParameters `json:"linuxConfiguration,omitempty" tf:"linux_configuration,omitempty"`
@@ -60,13 +60,13 @@ type FleetAgentConfigurationInitParameters struct {
 	WindowsConfiguration []WindowsConfigurationInitParameters `json:"windowsConfiguration,omitempty" tf:"windows_configuration,omitempty"`
 
 	// (Updatable) The validity period in days for work requests.
-	WorkRequestValidityPeriodInDays *float64 `json:"workRequestValidityPeriodInDays,omitempty" tf:"work_request_validity_period_in_days,omitempty"`
+	WorkRequestValidityPeriodInDays *int64 `json:"workRequestValidityPeriodInDays,omitempty" tf:"work_request_validity_period_in_days,omitempty"`
 }
 
 type FleetAgentConfigurationObservation struct {
 
 	// (Updatable) Agent polling interval in minutes
-	AgentPollingIntervalInMinutes *float64 `json:"agentPollingIntervalInMinutes,omitempty" tf:"agent_polling_interval_in_minutes,omitempty"`
+	AgentPollingIntervalInMinutes *int64 `json:"agentPollingIntervalInMinutes,omitempty" tf:"agent_polling_interval_in_minutes,omitempty"`
 
 	// The OCID of the Fleet.
 	FleetID *string `json:"fleetId,omitempty" tf:"fleet_id,omitempty"`
@@ -86,10 +86,10 @@ type FleetAgentConfigurationObservation struct {
 	IsLibrariesScanEnabled *bool `json:"isLibrariesScanEnabled,omitempty" tf:"is_libraries_scan_enabled,omitempty"`
 
 	// (Updatable) The frequency (in minutes) of Java Usage Tracker processing. (That is, how often should JMS process data from the Java Usage Tracker.)
-	JavaUsageTrackerProcessingFrequencyInMinutes *float64 `json:"javaUsageTrackerProcessingFrequencyInMinutes,omitempty" tf:"java_usage_tracker_processing_frequency_in_minutes,omitempty"`
+	JavaUsageTrackerProcessingFrequencyInMinutes *int64 `json:"javaUsageTrackerProcessingFrequencyInMinutes,omitempty" tf:"java_usage_tracker_processing_frequency_in_minutes,omitempty"`
 
 	// (Updatable) The frequency (in minutes) of JRE scanning. (That is, how often should JMS scan for JRE installations.)
-	JreScanFrequencyInMinutes *float64 `json:"jreScanFrequencyInMinutes,omitempty" tf:"jre_scan_frequency_in_minutes,omitempty"`
+	JreScanFrequencyInMinutes *int64 `json:"jreScanFrequencyInMinutes,omitempty" tf:"jre_scan_frequency_in_minutes,omitempty"`
 
 	// (Updatable) Management Agent Configuration for list of include/exclude file system paths (specific to operating system).
 	LinuxConfiguration []LinuxConfigurationObservation `json:"linuxConfiguration,omitempty" tf:"linux_configuration,omitempty"`
@@ -104,14 +104,14 @@ type FleetAgentConfigurationObservation struct {
 	WindowsConfiguration []WindowsConfigurationObservation `json:"windowsConfiguration,omitempty" tf:"windows_configuration,omitempty"`
 
 	// (Updatable) The validity period in days for work requests.
-	WorkRequestValidityPeriodInDays *float64 `json:"workRequestValidityPeriodInDays,omitempty" tf:"work_request_validity_period_in_days,omitempty"`
+	WorkRequestValidityPeriodInDays *int64 `json:"workRequestValidityPeriodInDays,omitempty" tf:"work_request_validity_period_in_days,omitempty"`
 }
 
 type FleetAgentConfigurationParameters struct {
 
 	// (Updatable) Agent polling interval in minutes
 	// +kubebuilder:validation:Optional
-	AgentPollingIntervalInMinutes *float64 `json:"agentPollingIntervalInMinutes,omitempty" tf:"agent_polling_interval_in_minutes,omitempty"`
+	AgentPollingIntervalInMinutes *int64 `json:"agentPollingIntervalInMinutes,omitempty" tf:"agent_polling_interval_in_minutes,omitempty"`
 
 	// The OCID of the Fleet.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/jms/v1alpha1.Fleet
@@ -145,11 +145,11 @@ type FleetAgentConfigurationParameters struct {
 
 	// (Updatable) The frequency (in minutes) of Java Usage Tracker processing. (That is, how often should JMS process data from the Java Usage Tracker.)
 	// +kubebuilder:validation:Optional
-	JavaUsageTrackerProcessingFrequencyInMinutes *float64 `json:"javaUsageTrackerProcessingFrequencyInMinutes,omitempty" tf:"java_usage_tracker_processing_frequency_in_minutes,omitempty"`
+	JavaUsageTrackerProcessingFrequencyInMinutes *int64 `json:"javaUsageTrackerProcessingFrequencyInMinutes,omitempty" tf:"java_usage_tracker_processing_frequency_in_minutes,omitempty"`
 
 	// (Updatable) The frequency (in minutes) of JRE scanning. (That is, how often should JMS scan for JRE installations.)
 	// +kubebuilder:validation:Optional
-	JreScanFrequencyInMinutes *float64 `json:"jreScanFrequencyInMinutes,omitempty" tf:"jre_scan_frequency_in_minutes,omitempty"`
+	JreScanFrequencyInMinutes *int64 `json:"jreScanFrequencyInMinutes,omitempty" tf:"jre_scan_frequency_in_minutes,omitempty"`
 
 	// (Updatable) Management Agent Configuration for list of include/exclude file system paths (specific to operating system).
 	// +kubebuilder:validation:Optional
@@ -165,7 +165,7 @@ type FleetAgentConfigurationParameters struct {
 
 	// (Updatable) The validity period in days for work requests.
 	// +kubebuilder:validation:Optional
-	WorkRequestValidityPeriodInDays *float64 `json:"workRequestValidityPeriodInDays,omitempty" tf:"work_request_validity_period_in_days,omitempty"`
+	WorkRequestValidityPeriodInDays *int64 `json:"workRequestValidityPeriodInDays,omitempty" tf:"work_request_validity_period_in_days,omitempty"`
 }
 
 type LinuxConfigurationInitParameters struct {

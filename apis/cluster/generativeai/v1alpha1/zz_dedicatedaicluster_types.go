@@ -22,10 +22,10 @@ type CapacityObservation struct {
 	CapacityType *string `json:"capacityType,omitempty" tf:"capacity_type,omitempty"`
 
 	// The total number of endpoints that can be hosted on this dedicated AI cluster.
-	TotalEndpointCapacity *float64 `json:"totalEndpointCapacity,omitempty" tf:"total_endpoint_capacity,omitempty"`
+	TotalEndpointCapacity *int64 `json:"totalEndpointCapacity,omitempty" tf:"total_endpoint_capacity,omitempty"`
 
 	// The number of endpoints hosted on this dedicated AI cluster.
-	UsedEndpointCapacity *float64 `json:"usedEndpointCapacity,omitempty" tf:"used_endpoint_capacity,omitempty"`
+	UsedEndpointCapacity *int64 `json:"usedEndpointCapacity,omitempty" tf:"used_endpoint_capacity,omitempty"`
 }
 
 type CapacityParameters struct {
@@ -46,8 +46,7 @@ type DedicatedAiClusterInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the dedicated AI cluster.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -56,14 +55,13 @@ type DedicatedAiClusterInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The dedicated AI cluster type indicating whether this is a fine-tuning/training processor or hosting/inference processor.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
 	// (Updatable) The number of dedicated units in this AI cluster.
-	UnitCount *float64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
+	UnitCount *int64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
 
 	// The shape of dedicated unit in this AI cluster. The underlying hardware configuration is hidden from customers.
 	UnitShape *string `json:"unitShape,omitempty" tf:"unit_shape,omitempty"`
@@ -78,8 +76,7 @@ type DedicatedAiClusterObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the dedicated AI cluster.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -88,8 +85,7 @@ type DedicatedAiClusterObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the dedicated AI cluster.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -101,8 +97,7 @@ type DedicatedAiClusterObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the dedicated AI cluster was created, in the format defined by RFC 3339
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -114,7 +109,7 @@ type DedicatedAiClusterObservation struct {
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
 	// (Updatable) The number of dedicated units in this AI cluster.
-	UnitCount *float64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
+	UnitCount *int64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
 
 	// The shape of dedicated unit in this AI cluster. The underlying hardware configuration is hidden from customers.
 	UnitShape *string `json:"unitShape,omitempty" tf:"unit_shape,omitempty"`
@@ -137,8 +132,7 @@ type DedicatedAiClusterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the dedicated AI cluster.
 	// +kubebuilder:validation:Optional
@@ -150,8 +144,7 @@ type DedicatedAiClusterParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The dedicated AI cluster type indicating whether this is a fine-tuning/training processor or hosting/inference processor.
 	// +kubebuilder:validation:Optional
@@ -159,7 +152,7 @@ type DedicatedAiClusterParameters struct {
 
 	// (Updatable) The number of dedicated units in this AI cluster.
 	// +kubebuilder:validation:Optional
-	UnitCount *float64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
+	UnitCount *int64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
 
 	// The shape of dedicated unit in this AI cluster. The underlying hardware configuration is hidden from customers.
 	// +kubebuilder:validation:Optional

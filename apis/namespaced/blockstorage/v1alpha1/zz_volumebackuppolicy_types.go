@@ -20,19 +20,19 @@ type SchedulesInitParameters struct {
 	BackupType *string `json:"backupType,omitempty" tf:"backup_type,omitempty"`
 
 	// (Updatable) The day of the month to schedule the volume backup.
-	DayOfMonth *float64 `json:"dayOfMonth,omitempty" tf:"day_of_month,omitempty"`
+	DayOfMonth *int64 `json:"dayOfMonth,omitempty" tf:"day_of_month,omitempty"`
 
 	// (Updatable) The day of the week to schedule the volume backup.
 	DayOfWeek *string `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
 	// (Updatable) The hour of the day to schedule the volume backup.
-	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+	HourOfDay *int64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
 
 	// (Updatable) The month of the year to schedule the volume backup.
 	Month *string `json:"month,omitempty" tf:"month,omitempty"`
 
 	// (Updatable) The number of seconds that the volume backup start time should be shifted from the default interval boundaries specified by the period. The volume backup start time is the frequency start time plus the offset.
-	OffsetSeconds *float64 `json:"offsetSeconds,omitempty" tf:"offset_seconds,omitempty"`
+	OffsetSeconds *int64 `json:"offsetSeconds,omitempty" tf:"offset_seconds,omitempty"`
 
 	// (Updatable) Indicates how the offset is defined. If value is STRUCTURED, then hourOfDay, dayOfWeek, dayOfMonth, and month fields are used and offsetSeconds will be ignored in requests and users should ignore its value from the responses.
 	OffsetType *string `json:"offsetType,omitempty" tf:"offset_type,omitempty"`
@@ -41,7 +41,7 @@ type SchedulesInitParameters struct {
 	Period *string `json:"period,omitempty" tf:"period,omitempty"`
 
 	// (Updatable) How long, in seconds, to keep the volume backups created by this schedule.
-	RetentionSeconds *float64 `json:"retentionSeconds,omitempty" tf:"retention_seconds,omitempty"`
+	RetentionSeconds *int64 `json:"retentionSeconds,omitempty" tf:"retention_seconds,omitempty"`
 
 	// (Updatable) Specifies what time zone is the schedule in
 	// enum:
@@ -54,19 +54,19 @@ type SchedulesObservation struct {
 	BackupType *string `json:"backupType,omitempty" tf:"backup_type,omitempty"`
 
 	// (Updatable) The day of the month to schedule the volume backup.
-	DayOfMonth *float64 `json:"dayOfMonth,omitempty" tf:"day_of_month,omitempty"`
+	DayOfMonth *int64 `json:"dayOfMonth,omitempty" tf:"day_of_month,omitempty"`
 
 	// (Updatable) The day of the week to schedule the volume backup.
 	DayOfWeek *string `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
 	// (Updatable) The hour of the day to schedule the volume backup.
-	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+	HourOfDay *int64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
 
 	// (Updatable) The month of the year to schedule the volume backup.
 	Month *string `json:"month,omitempty" tf:"month,omitempty"`
 
 	// (Updatable) The number of seconds that the volume backup start time should be shifted from the default interval boundaries specified by the period. The volume backup start time is the frequency start time plus the offset.
-	OffsetSeconds *float64 `json:"offsetSeconds,omitempty" tf:"offset_seconds,omitempty"`
+	OffsetSeconds *int64 `json:"offsetSeconds,omitempty" tf:"offset_seconds,omitempty"`
 
 	// (Updatable) Indicates how the offset is defined. If value is STRUCTURED, then hourOfDay, dayOfWeek, dayOfMonth, and month fields are used and offsetSeconds will be ignored in requests and users should ignore its value from the responses.
 	OffsetType *string `json:"offsetType,omitempty" tf:"offset_type,omitempty"`
@@ -75,7 +75,7 @@ type SchedulesObservation struct {
 	Period *string `json:"period,omitempty" tf:"period,omitempty"`
 
 	// (Updatable) How long, in seconds, to keep the volume backups created by this schedule.
-	RetentionSeconds *float64 `json:"retentionSeconds,omitempty" tf:"retention_seconds,omitempty"`
+	RetentionSeconds *int64 `json:"retentionSeconds,omitempty" tf:"retention_seconds,omitempty"`
 
 	// (Updatable) Specifies what time zone is the schedule in
 	// enum:
@@ -90,7 +90,7 @@ type SchedulesParameters struct {
 
 	// (Updatable) The day of the month to schedule the volume backup.
 	// +kubebuilder:validation:Optional
-	DayOfMonth *float64 `json:"dayOfMonth,omitempty" tf:"day_of_month,omitempty"`
+	DayOfMonth *int64 `json:"dayOfMonth,omitempty" tf:"day_of_month,omitempty"`
 
 	// (Updatable) The day of the week to schedule the volume backup.
 	// +kubebuilder:validation:Optional
@@ -98,7 +98,7 @@ type SchedulesParameters struct {
 
 	// (Updatable) The hour of the day to schedule the volume backup.
 	// +kubebuilder:validation:Optional
-	HourOfDay *float64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
+	HourOfDay *int64 `json:"hourOfDay,omitempty" tf:"hour_of_day,omitempty"`
 
 	// (Updatable) The month of the year to schedule the volume backup.
 	// +kubebuilder:validation:Optional
@@ -106,7 +106,7 @@ type SchedulesParameters struct {
 
 	// (Updatable) The number of seconds that the volume backup start time should be shifted from the default interval boundaries specified by the period. The volume backup start time is the frequency start time plus the offset.
 	// +kubebuilder:validation:Optional
-	OffsetSeconds *float64 `json:"offsetSeconds,omitempty" tf:"offset_seconds,omitempty"`
+	OffsetSeconds *int64 `json:"offsetSeconds,omitempty" tf:"offset_seconds,omitempty"`
 
 	// (Updatable) Indicates how the offset is defined. If value is STRUCTURED, then hourOfDay, dayOfWeek, dayOfMonth, and month fields are used and offsetSeconds will be ignored in requests and users should ignore its value from the responses.
 	// +kubebuilder:validation:Optional
@@ -118,7 +118,7 @@ type SchedulesParameters struct {
 
 	// (Updatable) How long, in seconds, to keep the volume backups created by this schedule.
 	// +kubebuilder:validation:Optional
-	RetentionSeconds *float64 `json:"retentionSeconds" tf:"retention_seconds,omitempty"`
+	RetentionSeconds *int64 `json:"retentionSeconds" tf:"retention_seconds,omitempty"`
 
 	// (Updatable) Specifies what time zone is the schedule in
 	// enum:
@@ -141,8 +141,7 @@ type VolumeBackupPolicyInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The paired destination region for copying scheduled backups to. Example: us-ashburn-1. See Region Pairs for details about paired regions.
 	DestinationRegion *string `json:"destinationRegion,omitempty" tf:"destination_region,omitempty"`
@@ -151,8 +150,7 @@ type VolumeBackupPolicyInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The collection of schedules for the volume backup policy. See see Schedules in Policy-Based Backups for more information.
 	Schedules []SchedulesInitParameters `json:"schedules,omitempty" tf:"schedules,omitempty"`
@@ -164,8 +162,7 @@ type VolumeBackupPolicyObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The paired destination region for copying scheduled backups to. Example: us-ashburn-1. See Region Pairs for details about paired regions.
 	DestinationRegion *string `json:"destinationRegion,omitempty" tf:"destination_region,omitempty"`
@@ -174,8 +171,7 @@ type VolumeBackupPolicyObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the volume backup policy.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -204,8 +200,7 @@ type VolumeBackupPolicyParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The paired destination region for copying scheduled backups to. Example: us-ashburn-1. See Region Pairs for details about paired regions.
 	// +kubebuilder:validation:Optional
@@ -217,8 +212,7 @@ type VolumeBackupPolicyParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The collection of schedules for the volume backup policy. See see Schedules in Policy-Based Backups for more information.
 	// +kubebuilder:validation:Optional

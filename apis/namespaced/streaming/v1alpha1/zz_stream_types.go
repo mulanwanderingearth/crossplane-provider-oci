@@ -29,21 +29,19 @@ type StreamInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair that is applied with no predefined name, type, or namespace. Exists for cross-compatibility only. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The name of the stream. Avoid entering confidential information.  Example: TelemetryEvents
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// The number of partitions in the stream.
-	Partitions *float64 `json:"partitions,omitempty" tf:"partitions,omitempty"`
+	Partitions *int64 `json:"partitions,omitempty" tf:"partitions,omitempty"`
 
 	// The retention period of the stream, in hours. Accepted values are between 24 and 168 (7 days). If not specified, the stream will have a retention period of 24 hours.
-	RetentionInHours *float64 `json:"retentionInHours,omitempty" tf:"retention_in_hours,omitempty"`
+	RetentionInHours *int64 `json:"retentionInHours,omitempty" tf:"retention_in_hours,omitempty"`
 
 	// (Updatable) The OCID of the stream pool that contains the stream.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/streaming/v1alpha1.StreamPool
@@ -65,12 +63,10 @@ type StreamObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair that is applied with no predefined name, type, or namespace. Exists for cross-compatibility only. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the stream.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -85,10 +81,10 @@ type StreamObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// The number of partitions in the stream.
-	Partitions *float64 `json:"partitions,omitempty" tf:"partitions,omitempty"`
+	Partitions *int64 `json:"partitions,omitempty" tf:"partitions,omitempty"`
 
 	// The retention period of the stream, in hours. Accepted values are between 24 and 168 (7 days). If not specified, the stream will have a retention period of 24 hours.
-	RetentionInHours *float64 `json:"retentionInHours,omitempty" tf:"retention_in_hours,omitempty"`
+	RetentionInHours *int64 `json:"retentionInHours,omitempty" tf:"retention_in_hours,omitempty"`
 
 	// The current state of the stream.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -117,13 +113,11 @@ type StreamParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair that is applied with no predefined name, type, or namespace. Exists for cross-compatibility only. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The name of the stream. Avoid entering confidential information.  Example: TelemetryEvents
 	// +kubebuilder:validation:Optional
@@ -131,11 +125,11 @@ type StreamParameters struct {
 
 	// The number of partitions in the stream.
 	// +kubebuilder:validation:Optional
-	Partitions *float64 `json:"partitions,omitempty" tf:"partitions,omitempty"`
+	Partitions *int64 `json:"partitions,omitempty" tf:"partitions,omitempty"`
 
 	// The retention period of the stream, in hours. Accepted values are between 24 and 168 (7 days). If not specified, the stream will have a retention period of 24 hours.
 	// +kubebuilder:validation:Optional
-	RetentionInHours *float64 `json:"retentionInHours,omitempty" tf:"retention_in_hours,omitempty"`
+	RetentionInHours *int64 `json:"retentionInHours,omitempty" tf:"retention_in_hours,omitempty"`
 
 	// (Updatable) The OCID of the stream pool that contains the stream.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/streaming/v1alpha1.StreamPool

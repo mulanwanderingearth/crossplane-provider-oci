@@ -36,38 +36,38 @@ type AccessSubnetsParameters struct {
 type BrokerShapeInitParameters struct {
 
 	// (Updatable) Number of Kafka broker nodes
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) Node shape for broker is passed as part of cluster creation, similar to VM.Standard.A1.Flex
 	NodeShape *string `json:"nodeShape,omitempty" tf:"node_shape,omitempty"`
 
 	// (Updatable) Number of OCPUs per nodes
-	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
+	OcpuCount *int64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
 
 	// (Updatable) Size of the storage per nodes.
-	StorageSizeInGbs *float64 `json:"storageSizeInGbs,omitempty" tf:"storage_size_in_gbs,omitempty"`
+	StorageSizeInGbs *int64 `json:"storageSizeInGbs,omitempty" tf:"storage_size_in_gbs,omitempty"`
 }
 
 type BrokerShapeObservation struct {
 
 	// (Updatable) Number of Kafka broker nodes
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// (Updatable) Node shape for broker is passed as part of cluster creation, similar to VM.Standard.A1.Flex
 	NodeShape *string `json:"nodeShape,omitempty" tf:"node_shape,omitempty"`
 
 	// (Updatable) Number of OCPUs per nodes
-	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
+	OcpuCount *int64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
 
 	// (Updatable) Size of the storage per nodes.
-	StorageSizeInGbs *float64 `json:"storageSizeInGbs,omitempty" tf:"storage_size_in_gbs,omitempty"`
+	StorageSizeInGbs *int64 `json:"storageSizeInGbs,omitempty" tf:"storage_size_in_gbs,omitempty"`
 }
 
 type BrokerShapeParameters struct {
 
 	// (Updatable) Number of Kafka broker nodes
 	// +kubebuilder:validation:Optional
-	NodeCount *float64 `json:"nodeCount" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount" tf:"node_count,omitempty"`
 
 	// (Updatable) Node shape for broker is passed as part of cluster creation, similar to VM.Standard.A1.Flex
 	// +kubebuilder:validation:Optional
@@ -75,11 +75,11 @@ type BrokerShapeParameters struct {
 
 	// (Updatable) Number of OCPUs per nodes
 	// +kubebuilder:validation:Optional
-	OcpuCount *float64 `json:"ocpuCount" tf:"ocpu_count,omitempty"`
+	OcpuCount *int64 `json:"ocpuCount" tf:"ocpu_count,omitempty"`
 
 	// (Updatable) Size of the storage per nodes.
 	// +kubebuilder:validation:Optional
-	StorageSizeInGbs *float64 `json:"storageSizeInGbs,omitempty" tf:"storage_size_in_gbs,omitempty"`
+	StorageSizeInGbs *int64 `json:"storageSizeInGbs,omitempty" tf:"storage_size_in_gbs,omitempty"`
 }
 
 type KafkaBootstrapUrlsInitParameters struct {
@@ -122,7 +122,7 @@ type KafkaClusterInitParameters struct {
 	ClusterConfigIDSelector *v1.NamespacedSelector `json:"clusterConfigIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The version of configuration object
-	ClusterConfigVersion *float64 `json:"clusterConfigVersion,omitempty" tf:"cluster_config_version,omitempty"`
+	ClusterConfigVersion *int64 `json:"clusterConfigVersion,omitempty" tf:"cluster_config_version,omitempty"`
 
 	// Type of the cluster to spin up.  DEVELOPMENT - setting that allows to sacrifice HA and spin up cluster on single node PRODUCTION - Minimum allowed broker count is 3
 	ClusterType *string `json:"clusterType,omitempty" tf:"cluster_type,omitempty"`
@@ -143,15 +143,13 @@ type KafkaClusterInitParameters struct {
 	CoordinationType *string `json:"coordinationType,omitempty" tf:"coordination_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Version of Kafka to use to spin up the cluster
 	KafkaVersion *string `json:"kafkaVersion,omitempty" tf:"kafka_version,omitempty"`
@@ -172,7 +170,7 @@ type KafkaClusterObservation struct {
 	ClusterConfigID *string `json:"clusterConfigId,omitempty" tf:"cluster_config_id,omitempty"`
 
 	// (Updatable) The version of configuration object
-	ClusterConfigVersion *float64 `json:"clusterConfigVersion,omitempty" tf:"cluster_config_version,omitempty"`
+	ClusterConfigVersion *int64 `json:"clusterConfigVersion,omitempty" tf:"cluster_config_version,omitempty"`
 
 	// Type of the cluster to spin up.  DEVELOPMENT - setting that allows to sacrifice HA and spin up cluster on single node PRODUCTION - Minimum allowed broker count is 3
 	ClusterType *string `json:"clusterType,omitempty" tf:"cluster_type,omitempty"`
@@ -184,15 +182,13 @@ type KafkaClusterObservation struct {
 	CoordinationType *string `json:"coordinationType,omitempty" tf:"coordination_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the KafkaCluster.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -213,8 +209,7 @@ type KafkaClusterObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the KafkaCluster was created, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -253,7 +248,7 @@ type KafkaClusterParameters struct {
 
 	// (Updatable) The version of configuration object
 	// +kubebuilder:validation:Optional
-	ClusterConfigVersion *float64 `json:"clusterConfigVersion,omitempty" tf:"cluster_config_version,omitempty"`
+	ClusterConfigVersion *int64 `json:"clusterConfigVersion,omitempty" tf:"cluster_config_version,omitempty"`
 
 	// Type of the cluster to spin up.  DEVELOPMENT - setting that allows to sacrifice HA and spin up cluster on single node PRODUCTION - Minimum allowed broker count is 3
 	// +kubebuilder:validation:Optional
@@ -278,8 +273,7 @@ type KafkaClusterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -287,8 +281,7 @@ type KafkaClusterParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Version of Kafka to use to spin up the cluster
 	// +kubebuilder:validation:Optional

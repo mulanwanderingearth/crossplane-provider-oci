@@ -106,8 +106,7 @@ type MysqlChannelInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User provided information about the Channel.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -116,8 +115,7 @@ type MysqlChannelInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether the Channel should be enabled upon creation. If set to true, the Channel will be asynchronously started as a result of the create Channel operation.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -135,8 +133,7 @@ type MysqlChannelObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User provided information about the Channel.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -145,8 +142,7 @@ type MysqlChannelObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -163,8 +159,7 @@ type MysqlChannelObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) Parameters detailing how to provision the target for the given Channel.
 	Target []TargetObservation `json:"target,omitempty" tf:"target,omitempty"`
@@ -193,8 +188,7 @@ type MysqlChannelParameters struct {
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User provided information about the Channel.
 	// +kubebuilder:validation:Optional
@@ -206,8 +200,7 @@ type MysqlChannelParameters struct {
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Whether the Channel should be enabled upon creation. If set to true, the Channel will be asynchronously started as a result of the create Channel operation.
 	// +kubebuilder:validation:Optional
@@ -266,7 +259,7 @@ type SourceInitParameters struct {
 	PasswordSecretRef v1.SecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// (Updatable) The port the source MySQL instance listens on.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The CA certificate of the server used for VERIFY_IDENTITY and VERIFY_CA ssl modes.
 	SSLCACertificate []SSLCACertificateInitParameters `json:"sslCaCertificate,omitempty" tf:"ssl_ca_certificate,omitempty"`
@@ -293,7 +286,7 @@ type SourceObservation struct {
 	MustUseIpv6OnDualStack *bool `json:"mustUseIpv6OnDualStack,omitempty" tf:"must_use_ipv6on_dual_stack,omitempty"`
 
 	// (Updatable) The port the source MySQL instance listens on.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The CA certificate of the server used for VERIFY_IDENTITY and VERIFY_CA ssl modes.
 	SSLCACertificate []SSLCACertificateObservation `json:"sslCaCertificate,omitempty" tf:"ssl_ca_certificate,omitempty"`
@@ -328,7 +321,7 @@ type SourceParameters struct {
 
 	// (Updatable) The port the source MySQL instance listens on.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The CA certificate of the server used for VERIFY_IDENTITY and VERIFY_CA ssl modes.
 	// +kubebuilder:validation:Optional
@@ -377,7 +370,7 @@ type TargetInitParameters struct {
 	DBSystemIDSelector *v1.Selector `json:"dbSystemIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Specifies the amount of time, in seconds, that the channel waits before  applying a transaction received from the source.
-	DelayInSeconds *float64 `json:"delayInSeconds,omitempty" tf:"delay_in_seconds,omitempty"`
+	DelayInSeconds *int64 `json:"delayInSeconds,omitempty" tf:"delay_in_seconds,omitempty"`
 
 	// (Updatable) Replication filter rules to be applied at the DB System Channel target.
 	Filters []FiltersInitParameters `json:"filters,omitempty" tf:"filters,omitempty"`
@@ -401,7 +394,7 @@ type TargetObservation struct {
 	DBSystemID *string `json:"dbSystemId,omitempty" tf:"db_system_id,omitempty"`
 
 	// (Updatable) Specifies the amount of time, in seconds, that the channel waits before  applying a transaction received from the source.
-	DelayInSeconds *float64 `json:"delayInSeconds,omitempty" tf:"delay_in_seconds,omitempty"`
+	DelayInSeconds *int64 `json:"delayInSeconds,omitempty" tf:"delay_in_seconds,omitempty"`
 
 	// (Updatable) Replication filter rules to be applied at the DB System Channel target.
 	Filters []FiltersObservation `json:"filters,omitempty" tf:"filters,omitempty"`
@@ -447,7 +440,7 @@ type TargetParameters struct {
 
 	// (Updatable) Specifies the amount of time, in seconds, that the channel waits before  applying a transaction received from the source.
 	// +kubebuilder:validation:Optional
-	DelayInSeconds *float64 `json:"delayInSeconds,omitempty" tf:"delay_in_seconds,omitempty"`
+	DelayInSeconds *int64 `json:"delayInSeconds,omitempty" tf:"delay_in_seconds,omitempty"`
 
 	// (Updatable) Replication filter rules to be applied at the DB System Channel target.
 	// +kubebuilder:validation:Optional

@@ -128,7 +128,8 @@ spec:
                     description: (Updatable) Audit Event retention period. If set,
                       overrides default of 30 days after which Audit Events will be
                       purged
-                    type: number
+                    format: int64
+                    type: integer
                   authorization:
                     description: (Updatable) The Authorization field value consists
                       of credentials containing the authentication information of
@@ -149,7 +150,8 @@ spec:
                           type: string
                         crlRefreshInterval:
                           description: (Updatable) The CRL refresh interval in minutes
-                          type: number
+                          format: int64
+                          type: integer
                         ocspEnabled:
                           description: (Updatable) OCSP is enabled Configuration
                           type: boolean
@@ -166,7 +168,8 @@ spec:
                           type: string
                         ocspTimeoutDuration:
                           description: (Updatable) The OCSP Timeout duration in minutes
-                          type: number
+                          format: int64
+                          type: integer
                         ocspUnknownResponseStatusAllowed:
                           description: (Updatable) OCSP Accept unknown response status
                             from ocsp responder.
@@ -202,7 +205,8 @@ spec:
                         cloudGateCorsMaxAge:
                           description: (Updatable) Maximum number of seconds a CORS
                             Pre-flight Response may be cached by client.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   cloudMigrationCustomUrl:
@@ -260,7 +264,8 @@ spec:
                       is currently in effect. A level of 0 (zero) indicates that diagnostic
                       logging is disabled. A level of 1 (one) indicates that diagnostic
                       logging is enabled.
-                    type: number
+                    format: int64
+                    type: integer
                   diagnosticRecordForSearchIdentifiesReturnedResources:
                     description: (Updatable) Controls whether DiagnosticRecords for
                       external search-operations (against SCIM resource-types in the
@@ -291,7 +296,8 @@ spec:
                   iamUpstSessionExpiry:
                     description: (Updatable) Maximum duration for IAM User Principal
                       Session Token expiry
-                    type: number
+                    format: int64
+                    type: integer
                   idcsEndpoint:
                     description: The basic endpoint for the identity domain
                     type: string
@@ -335,11 +341,13 @@ spec:
                   maxNoOfAppCmvaToReturn:
                     description: (Updatable) Limit the maximum return of CMVA for
                       an App
-                    type: number
+                    format: int64
+                    type: integer
                   maxNoOfAppRoleMembersToReturn:
                     description: (Updatable) Limit the maximum return of members for
                       an AppRole
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -370,7 +378,8 @@ spec:
                           type: string
                         retentionPeriod:
                           description: (Updatable) Retention Period
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   reAuthFactor:
@@ -547,7 +556,8 @@ spec:
                     description: (Updatable) Audit Event retention period. If set,
                       overrides default of 30 days after which Audit Events will be
                       purged
-                    type: number
+                    format: int64
+                    type: integer
                   authorization:
                     description: (Updatable) The Authorization field value consists
                       of credentials containing the authentication information of
@@ -568,7 +578,8 @@ spec:
                           type: string
                         crlRefreshInterval:
                           description: (Updatable) The CRL refresh interval in minutes
-                          type: number
+                          format: int64
+                          type: integer
                         ocspEnabled:
                           description: (Updatable) OCSP is enabled Configuration
                           type: boolean
@@ -585,7 +596,8 @@ spec:
                           type: string
                         ocspTimeoutDuration:
                           description: (Updatable) The OCSP Timeout duration in minutes
-                          type: number
+                          format: int64
+                          type: integer
                         ocspUnknownResponseStatusAllowed:
                           description: (Updatable) OCSP Accept unknown response status
                             from ocsp responder.
@@ -621,7 +633,8 @@ spec:
                         cloudGateCorsMaxAge:
                           description: (Updatable) Maximum number of seconds a CORS
                             Pre-flight Response may be cached by client.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   cloudMigrationCustomUrl:
@@ -679,7 +692,8 @@ spec:
                       is currently in effect. A level of 0 (zero) indicates that diagnostic
                       logging is disabled. A level of 1 (one) indicates that diagnostic
                       logging is enabled.
-                    type: number
+                    format: int64
+                    type: integer
                   diagnosticRecordForSearchIdentifiesReturnedResources:
                     description: (Updatable) Controls whether DiagnosticRecords for
                       external search-operations (against SCIM resource-types in the
@@ -710,7 +724,8 @@ spec:
                   iamUpstSessionExpiry:
                     description: (Updatable) Maximum duration for IAM User Principal
                       Session Token expiry
-                    type: number
+                    format: int64
+                    type: integer
                   idcsEndpoint:
                     description: The basic endpoint for the identity domain
                     type: string
@@ -754,11 +769,13 @@ spec:
                   maxNoOfAppCmvaToReturn:
                     description: (Updatable) Limit the maximum return of CMVA for
                       an App
-                    type: number
+                    format: int64
+                    type: integer
                   maxNoOfAppRoleMembersToReturn:
                     description: (Updatable) Limit the maximum return of members for
                       an AppRole
-                    type: number
+                    format: int64
+                    type: integer
                   ocid:
                     description: (Updatable) The OCID of the SCIM resource that represents
                       the User or App who created this Resource
@@ -789,7 +806,8 @@ spec:
                           type: string
                         retentionPeriod:
                           description: (Updatable) Retention Period
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   reAuthFactor:
@@ -1031,7 +1049,8 @@ spec:
                     description: (Updatable) Audit Event retention period. If set,
                       overrides default of 30 days after which Audit Events will be
                       purged
-                    type: number
+                    format: int64
+                    type: integer
                   authorization:
                     description: (Updatable) The Authorization field value consists
                       of credentials containing the authentication information of
@@ -1052,7 +1071,8 @@ spec:
                           type: string
                         crlRefreshInterval:
                           description: (Updatable) The CRL refresh interval in minutes
-                          type: number
+                          format: int64
+                          type: integer
                         ocspEnabled:
                           description: (Updatable) OCSP is enabled Configuration
                           type: boolean
@@ -1069,7 +1089,8 @@ spec:
                           type: string
                         ocspTimeoutDuration:
                           description: (Updatable) The OCSP Timeout duration in minutes
-                          type: number
+                          format: int64
+                          type: integer
                         ocspUnknownResponseStatusAllowed:
                           description: (Updatable) OCSP Accept unknown response status
                             from ocsp responder.
@@ -1109,7 +1130,8 @@ spec:
                         cloudGateCorsMaxAge:
                           description: (Updatable) Maximum number of seconds a CORS
                             Pre-flight Response may be cached by client.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   cloudMigrationCustomUrl:
@@ -1217,7 +1239,8 @@ spec:
                       is currently in effect. A level of 0 (zero) indicates that diagnostic
                       logging is disabled. A level of 1 (one) indicates that diagnostic
                       logging is enabled.
-                    type: number
+                    format: int64
+                    type: integer
                   diagnosticRecordForSearchIdentifiesReturnedResources:
                     description: (Updatable) Controls whether DiagnosticRecords for
                       external search-operations (against SCIM resource-types in the
@@ -1256,7 +1279,8 @@ spec:
                   iamUpstSessionExpiry:
                     description: (Updatable) Maximum duration for IAM User Principal
                       Session Token expiry
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     description: '(Updatable) Unique identifier for the SCIM Resource
                       as defined by the Service Provider. Each representation of the
@@ -1371,11 +1395,13 @@ spec:
                   maxNoOfAppCmvaToReturn:
                     description: (Updatable) Limit the maximum return of CMVA for
                       an App
-                    type: number
+                    format: int64
+                    type: integer
                   maxNoOfAppRoleMembersToReturn:
                     description: (Updatable) Limit the maximum return of members for
                       an AppRole
-                    type: number
+                    format: int64
+                    type: integer
                   meta:
                     description: (Updatable) A complex attribute that contains resource
                       metadata. All sub-attributes are OPTIONAL.
@@ -1444,7 +1470,8 @@ spec:
                           type: string
                         retentionPeriod:
                           description: (Updatable) Retention Period
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   reAuthFactor:

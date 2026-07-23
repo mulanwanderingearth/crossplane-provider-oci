@@ -17,13 +17,13 @@ import (
 type AdditionalDetailsInitParameters struct {
 
 	// The number of instances or size of the resource.
-	ClusterPlacementGroupCount *float64 `json:"clusterPlacementGroupCount,omitempty" tf:"cluster_placement_group_count,omitempty"`
+	ClusterPlacementGroupCount *int64 `json:"clusterPlacementGroupCount,omitempty" tf:"cluster_placement_group_count,omitempty"`
 
 	// The amount of memory (in GBs) needed in the instance.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to use for storage.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The number of OCPUs needed in the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
@@ -35,13 +35,13 @@ type AdditionalDetailsInitParameters struct {
 type AdditionalDetailsObservation struct {
 
 	// The number of instances or size of the resource.
-	ClusterPlacementGroupCount *float64 `json:"clusterPlacementGroupCount,omitempty" tf:"cluster_placement_group_count,omitempty"`
+	ClusterPlacementGroupCount *int64 `json:"clusterPlacementGroupCount,omitempty" tf:"cluster_placement_group_count,omitempty"`
 
 	// The amount of memory (in GBs) needed in the instance.
 	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// The number of NVMe drives to use for storage.
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The number of OCPUs needed in the instance.
 	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
@@ -54,7 +54,7 @@ type AdditionalDetailsParameters struct {
 
 	// The number of instances or size of the resource.
 	// +kubebuilder:validation:Optional
-	ClusterPlacementGroupCount *float64 `json:"clusterPlacementGroupCount,omitempty" tf:"cluster_placement_group_count,omitempty"`
+	ClusterPlacementGroupCount *int64 `json:"clusterPlacementGroupCount,omitempty" tf:"cluster_placement_group_count,omitempty"`
 
 	// The amount of memory (in GBs) needed in the instance.
 	// +kubebuilder:validation:Optional
@@ -62,7 +62,7 @@ type AdditionalDetailsParameters struct {
 
 	// The number of NVMe drives to use for storage.
 	// +kubebuilder:validation:Optional
-	Nvmes *float64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
+	Nvmes *int64 `json:"nvmes,omitempty" tf:"nvmes,omitempty"`
 
 	// The number of OCPUs needed in the instance.
 	// +kubebuilder:validation:Optional
@@ -116,15 +116,13 @@ type ClusterPlacementGroupInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the cluster placement group.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The type of resource.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -154,15 +152,13 @@ type ClusterPlacementGroupObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the cluster placement group.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the cluster placement group.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -183,8 +179,7 @@ type ClusterPlacementGroupObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the cluster placement group was created, expressed in RFC 3339 timestamp format.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -222,8 +217,7 @@ type ClusterPlacementGroupParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the cluster placement group.
 	// +kubebuilder:validation:Optional
@@ -231,8 +225,7 @@ type ClusterPlacementGroupParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The type of resource.
 	// +kubebuilder:validation:Optional

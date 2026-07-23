@@ -154,7 +154,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the Exadata Cloud@Customer
                       VM cluster network. The name does not need to be unique.
@@ -181,11 +180,13 @@ spec:
                         scanListenerPortTcp:
                           description: (Updatable) The Disaster recovery SCAN TCPIP
                             port. Default is 1521.
-                          type: number
+                          format: int64
+                          type: integer
                         scanListenerPortTcpSsl:
                           description: (Updatable) The DR SCAN TCPIP SSL port. Default
                             is 2484.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   exadataInfrastructureId:
@@ -281,7 +282,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ntp:
                     description: (Updatable) The list of NTP server IP addresses.
                       Maximum of 3 allowed.
@@ -305,15 +305,18 @@ spec:
                           description: (Updatable) Deprecated. This field is deprecated.
                             You may use 'scanListenerPortTcp' to specify the port.
                             The SCAN TCPIP port. Default is 1521.
-                          type: number
+                          format: int64
+                          type: integer
                         scanListenerPortTcp:
                           description: (Updatable) The Disaster recovery SCAN TCPIP
                             port. Default is 1521.
-                          type: number
+                          format: int64
+                          type: integer
                         scanListenerPortTcpSsl:
                           description: (Updatable) The DR SCAN TCPIP SSL port. Default
                             is 2484.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   validateVmClusterNetwork:
@@ -577,7 +580,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the Exadata Cloud@Customer
                       VM cluster network. The name does not need to be unique.
@@ -604,11 +606,13 @@ spec:
                         scanListenerPortTcp:
                           description: (Updatable) The Disaster recovery SCAN TCPIP
                             port. Default is 1521.
-                          type: number
+                          format: int64
+                          type: integer
                         scanListenerPortTcpSsl:
                           description: (Updatable) The DR SCAN TCPIP SSL port. Default
                             is 2484.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   exadataInfrastructureId:
@@ -704,7 +708,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ntp:
                     description: (Updatable) The list of NTP server IP addresses.
                       Maximum of 3 allowed.
@@ -728,15 +731,18 @@ spec:
                           description: (Updatable) Deprecated. This field is deprecated.
                             You may use 'scanListenerPortTcp' to specify the port.
                             The SCAN TCPIP port. Default is 1521.
-                          type: number
+                          format: int64
+                          type: integer
                         scanListenerPortTcp:
                           description: (Updatable) The Disaster recovery SCAN TCPIP
                             port. Default is 1521.
-                          type: number
+                          format: int64
+                          type: integer
                         scanListenerPortTcpSsl:
                           description: (Updatable) The DR SCAN TCPIP SSL port. Default
                             is 2484.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   validateVmClusterNetwork:
@@ -983,7 +989,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-friendly name for the Exadata Cloud@Customer
                       VM cluster network. The name does not need to be unique.
@@ -1010,11 +1015,13 @@ spec:
                         scanListenerPortTcp:
                           description: (Updatable) The Disaster recovery SCAN TCPIP
                             port. Default is 1521.
-                          type: number
+                          format: int64
+                          type: integer
                         scanListenerPortTcpSsl:
                           description: (Updatable) The DR SCAN TCPIP SSL port. Default
                             is 2484.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   exadataInfrastructureId:
@@ -1028,7 +1035,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the VM cluster network.
                     type: string
@@ -1059,15 +1065,18 @@ spec:
                           description: (Updatable) Deprecated. This field is deprecated.
                             You may use 'scanListenerPortTcp' to specify the port.
                             The SCAN TCPIP port. Default is 1521.
-                          type: number
+                          format: int64
+                          type: integer
                         scanListenerPortTcp:
                           description: (Updatable) The Disaster recovery SCAN TCPIP
                             port. Default is 1521.
-                          type: number
+                          format: int64
+                          type: integer
                         scanListenerPortTcpSsl:
                           description: (Updatable) The DR SCAN TCPIP SSL port. Default
                             is 2484.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   state:
@@ -1092,7 +1101,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time when the VM cluster network was
                       created.

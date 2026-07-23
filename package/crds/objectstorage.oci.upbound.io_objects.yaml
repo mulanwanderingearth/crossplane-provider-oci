@@ -222,7 +222,6 @@ spec:
                       Optional user-defined metadata key and value.
                       Note: All specified keys must be in lower case.
                     type: object
-                    x-kubernetes-map-type: granular
                   namespace:
                     description: The Object Storage namespace used for the request.
                     type: string
@@ -441,7 +440,6 @@ spec:
                       Optional user-defined metadata key and value.
                       Note: All specified keys must be in lower case.
                     type: object
-                    x-kubernetes-map-type: granular
                   namespace:
                     description: The Object Storage namespace used for the request.
                     type: string
@@ -678,7 +676,6 @@ spec:
                       Optional user-defined metadata key and value.
                       Note: All specified keys must be in lower case.
                     type: object
-                    x-kubernetes-map-type: granular
                   namespace:
                     description: The Object Storage namespace used for the request.
                     type: string

@@ -25,7 +25,7 @@ type DataSourceListObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Number in milliseconds. The timeout for connecting to the Prometheus Exporter's endpoint.
-	ConnectionTimeout *float64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
+	ConnectionTimeout *int64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
 
 	// If the Kubernetes cluster type is Daemon set then this will be set to true.
 	IsDaemonSet *bool `json:"isDaemonSet,omitempty" tf:"is_daemon_set,omitempty"`
@@ -46,16 +46,16 @@ type DataSourceListObservation struct {
 	ProxyURL *string `json:"proxyUrl,omitempty" tf:"proxy_url,omitempty"`
 
 	// Number in kilobytes. The limit on the data being sent, not to exceed the agent's fixed limit of 400 (KB).
-	ReadDataLimit *float64 `json:"readDataLimit,omitempty" tf:"read_data_limit,omitempty"`
+	ReadDataLimit *int64 `json:"readDataLimit,omitempty" tf:"read_data_limit,omitempty"`
 
 	// Number in milliseconds. The timeout for reading the response from the Prometheus Exporter's endpoint.
-	ReadTimeout *float64 `json:"readTimeout,omitempty" tf:"read_timeout,omitempty"`
+	ReadTimeout *int64 `json:"readTimeout,omitempty" tf:"read_timeout,omitempty"`
 
 	// Oracle Cloud Infrastructure monitoring resource group to assign the metric to.
 	ResourceGroup *string `json:"resourceGroup,omitempty" tf:"resource_group,omitempty"`
 
 	// Number in minutes. The scraping occurs at the specified interval.
-	ScheduleMins *float64 `json:"scheduleMins,omitempty" tf:"schedule_mins,omitempty"`
+	ScheduleMins *int64 `json:"scheduleMins,omitempty" tf:"schedule_mins,omitempty"`
 
 	// State of the DataSource.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -100,8 +100,7 @@ type DataSourceSummaryListParameters struct {
 type ManagementAgentInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Plugin Id list to deploy to Management Agent. Once deployed, plugins cannot be undeployed.
 	DeployPluginsID []*string `json:"deployPluginsId,omitempty" tf:"deploy_plugins_id,omitempty"`
@@ -110,8 +109,7 @@ type ManagementAgentInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique Management Agent identifier
 	ManagedAgentID *string `json:"managedAgentId,omitempty" tf:"managed_agent_id,omitempty"`
@@ -131,8 +129,7 @@ type ManagementAgentObservation struct {
 	DataSourceSummaryList []DataSourceSummaryListObservation `json:"dataSourceSummaryList,omitempty" tf:"data_source_summary_list,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Plugin Id list to deploy to Management Agent. Once deployed, plugins cannot be undeployed.
 	DeployPluginsID []*string `json:"deployPluginsId,omitempty" tf:"deploy_plugins_id,omitempty"`
@@ -141,8 +138,7 @@ type ManagementAgentObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Management Agent host machine name
 	Host *string `json:"host,omitempty" tf:"host,omitempty"`
@@ -199,8 +195,7 @@ type ManagementAgentObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the DataSource was created. An RFC3339 formatted datetime string
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -219,8 +214,7 @@ type ManagementAgentParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Plugin Id list to deploy to Management Agent. Once deployed, plugins cannot be undeployed.
 	// +kubebuilder:validation:Optional
@@ -232,8 +226,7 @@ type ManagementAgentParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique Management Agent identifier
 	// +kubebuilder:validation:Optional

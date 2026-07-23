@@ -54,7 +54,7 @@ type DbSystemsUpgradeInitParameters struct {
 	NewOsVersion *string `json:"newOsVersion,omitempty" tf:"new_os_version,omitempty"`
 
 	// The retention period, in days, for the snapshot that allows you to perform a rollback of the upgrade operation. After this number of days passes, you cannot roll back the upgrade.
-	SnapshotRetentionPeriodInDays *float64 `json:"snapshotRetentionPeriodInDays,omitempty" tf:"snapshot_retention_period_in_days,omitempty"`
+	SnapshotRetentionPeriodInDays *int64 `json:"snapshotRetentionPeriodInDays,omitempty" tf:"snapshot_retention_period_in_days,omitempty"`
 }
 
 type DbSystemsUpgradeIormConfigCacheDBPlansInitParameters struct {
@@ -69,7 +69,7 @@ type DbSystemsUpgradeIormConfigCacheDBPlansObservation struct {
 	FlashCacheLimit *string `json:"flashCacheLimit,omitempty" tf:"flash_cache_limit,omitempty"`
 
 	// The relative priority of this database.
-	Share *float64 `json:"share,omitempty" tf:"share,omitempty"`
+	Share *int64 `json:"share,omitempty" tf:"share,omitempty"`
 }
 
 type DbSystemsUpgradeIormConfigCacheDBPlansParameters struct {
@@ -129,10 +129,10 @@ type DbSystemsUpgradeMaintenanceWindowObservation struct {
 	DaysOfWeek []DbSystemsUpgradeMaintenanceWindowDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// Months during the year when maintenance should be performed.
 	Months []DbSystemsUpgradeMaintenanceWindowMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -141,7 +141,7 @@ type DbSystemsUpgradeMaintenanceWindowObservation struct {
 	Preference *string `json:"preference,omitempty" tf:"preference,omitempty"`
 
 	// Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type DbSystemsUpgradeMaintenanceWindowParameters struct {
@@ -163,7 +163,7 @@ type DbSystemsUpgradeObservation struct {
 	BackupSubnetID *string `json:"backupSubnetId,omitempty" tf:"backup_subnet_id,omitempty"`
 
 	// The number of CPU cores enabled on the DB system.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The cluster name for Exadata and 2-node RAC virtual machine DB systems. The cluster name must begin with an alphabetic character, and may contain hyphens (-). Underscores (_) are not permitted. The cluster name can be no longer than 11 characters and is not case sensitive.
 	ClusterName *string `json:"clusterName,omitempty" tf:"cluster_name,omitempty"`
@@ -178,17 +178,16 @@ type DbSystemsUpgradeObservation struct {
 	DBSystemOptions []DbSystemsUpgradeDBSystemOptionsObservation `json:"dbSystemOptions,omitempty" tf:"db_system_options,omitempty"`
 
 	// The percentage assigned to DATA storage (user data and database files). The remaining percentage is assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). Accepted values are 40 and 80. The default is 80 percent assigned to DATA storage. Not applicable for virtual machine DB systems.
-	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+	DataStoragePercentage *int64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// The data storage size, in gigabytes, that is currently available to the DB system. Applies only for virtual machine DB systems.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// The Oracle Database edition that applies to all the databases on the DB system.
 	DatabaseEdition *string `json:"databaseEdition,omitempty" tf:"database_edition,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The type of redundancy configured for the DB system. NORMAL is 2-way redundancy. HIGH is 3-way redundancy.
 	DiskRedundancy *string `json:"diskRedundancy,omitempty" tf:"disk_redundancy,omitempty"`
@@ -203,8 +202,7 @@ type DbSystemsUpgradeObservation struct {
 	FaultDomains []*string `json:"faultDomains,omitempty" tf:"fault_domains,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the DB system.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -234,7 +232,7 @@ type DbSystemsUpgradeObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The port number configured for the listener on the DB system.
-	ListenerPort *float64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
+	ListenerPort *int64 `json:"listenerPort,omitempty" tf:"listener_port,omitempty"`
 
 	// The scheduling details for the quarterly maintenance window. Patching and system updates take place during the maintenance window.
 	MaintenanceWindow []DbSystemsUpgradeMaintenanceWindowObservation `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
@@ -249,7 +247,7 @@ type DbSystemsUpgradeObservation struct {
 	NextMaintenanceRunID *string `json:"nextMaintenanceRunId,omitempty" tf:"next_maintenance_run_id,omitempty"`
 
 	// The number of nodes in the DB system. For RAC DB systems, the value is greater than 1.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// A list of the OCIDs of the network security groups (NSGs) that this resource belongs to. Setting this to an empty array after the list is created removes the resource from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
@@ -259,7 +257,7 @@ type DbSystemsUpgradeObservation struct {
 	PointInTimeDataDiskCloneTimestamp *string `json:"pointInTimeDataDiskCloneTimestamp,omitempty" tf:"point_in_time_data_disk_clone_timestamp,omitempty"`
 
 	// The RECO/REDO storage size, in gigabytes, that is currently allocated to the DB system. Applies only for virtual machine DB systems.
-	RecoStorageSizeInGb *float64 `json:"recoStorageSizeInGb,omitempty" tf:"reco_storage_size_in_gb,omitempty"`
+	RecoStorageSizeInGb *int64 `json:"recoStorageSizeInGb,omitempty" tf:"reco_storage_size_in_gb,omitempty"`
 
 	// The public key portion of one or more key pairs used for SSH access to the DB system.
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
@@ -277,7 +275,7 @@ type DbSystemsUpgradeObservation struct {
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// The retention period, in days, for the snapshot that allows you to perform a rollback of the upgrade operation. After this number of days passes, you cannot roll back the upgrade.
-	SnapshotRetentionPeriodInDays *float64 `json:"snapshotRetentionPeriodInDays,omitempty" tf:"snapshot_retention_period_in_days,omitempty"`
+	SnapshotRetentionPeriodInDays *int64 `json:"snapshotRetentionPeriodInDays,omitempty" tf:"snapshot_retention_period_in_days,omitempty"`
 
 	// The OCID of the DB system.
 	SourceDBSystemID *string `json:"sourceDbSystemId,omitempty" tf:"source_db_system_id,omitempty"`
@@ -341,7 +339,7 @@ type DbSystemsUpgradeParameters struct {
 
 	// The retention period, in days, for the snapshot that allows you to perform a rollback of the upgrade operation. After this number of days passes, you cannot roll back the upgrade.
 	// +kubebuilder:validation:Optional
-	SnapshotRetentionPeriodInDays *float64 `json:"snapshotRetentionPeriodInDays,omitempty" tf:"snapshot_retention_period_in_days,omitempty"`
+	SnapshotRetentionPeriodInDays *int64 `json:"snapshotRetentionPeriodInDays,omitempty" tf:"snapshot_retention_period_in_days,omitempty"`
 }
 
 // DbSystemsUpgradeSpec defines the desired state of DbSystemsUpgrade

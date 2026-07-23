@@ -47,8 +47,7 @@ type CccInfrastructureInitParameters struct {
 	ConnectionState *string `json:"connectionState,omitempty" tf:"connection_state,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A mutable client-meaningful text description of the Compute Cloud@Customer infrastructure. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -57,8 +56,7 @@ type CccInfrastructureInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Identifier for network subnet that will be used to communicate with Compute Cloud@Customer infrastructure.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet
@@ -89,8 +87,7 @@ type CccInfrastructureObservation struct {
 	ConnectionState *string `json:"connectionState,omitempty" tf:"connection_state,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A mutable client-meaningful text description of the Compute Cloud@Customer infrastructure. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -99,8 +96,7 @@ type CccInfrastructureObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The Compute Cloud@Customer infrastructure OCID. This cannot be changed once created.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -130,8 +126,7 @@ type CccInfrastructureObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Compute Cloud@Customer infrastructure creation date and time, using an RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -182,8 +177,7 @@ type CccInfrastructureParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A mutable client-meaningful text description of the Compute Cloud@Customer infrastructure. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -195,8 +189,7 @@ type CccInfrastructureParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Identifier for network subnet that will be used to communicate with Compute Cloud@Customer infrastructure.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/networking/v1alpha1.Subnet
@@ -219,16 +212,16 @@ type InfrastructureInventoryInitParameters struct {
 type InfrastructureInventoryObservation struct {
 
 	// The number of storage trays in the Compute Cloud@Customer infrastructure rack that are designated for capacity storage.
-	CapacityStorageTrayCount *float64 `json:"capacityStorageTrayCount,omitempty" tf:"capacity_storage_tray_count,omitempty"`
+	CapacityStorageTrayCount *int64 `json:"capacityStorageTrayCount,omitempty" tf:"capacity_storage_tray_count,omitempty"`
 
 	// The number of compute nodes that are available and usable on the Compute Cloud@Customer infrastructure rack. There is no distinction of compute node type in this information.
-	ComputeNodeCount *float64 `json:"computeNodeCount,omitempty" tf:"compute_node_count,omitempty"`
+	ComputeNodeCount *int64 `json:"computeNodeCount,omitempty" tf:"compute_node_count,omitempty"`
 
 	// The number of management nodes that are available and in active use on the Compute Cloud@Customer infrastructure rack.
-	ManagementNodeCount *float64 `json:"managementNodeCount,omitempty" tf:"management_node_count,omitempty"`
+	ManagementNodeCount *int64 `json:"managementNodeCount,omitempty" tf:"management_node_count,omitempty"`
 
 	// The number of storage trays in the Compute Cloud@Customer infrastructure rack that are designated for performance storage.
-	PerformanceStorageTrayCount *float64 `json:"performanceStorageTrayCount,omitempty" tf:"performance_storage_tray_count,omitempty"`
+	PerformanceStorageTrayCount *int64 `json:"performanceStorageTrayCount,omitempty" tf:"performance_storage_tray_count,omitempty"`
 
 	// The serial number of the Compute Cloud@Customer infrastructure rack.
 	SerialNumber *string `json:"serialNumber,omitempty" tf:"serial_number,omitempty"`
@@ -276,16 +269,16 @@ type InfrastructureNetworkConfigurationObservation struct {
 	UplinkNetmask *string `json:"uplinkNetmask,omitempty" tf:"uplink_netmask,omitempty"`
 
 	// Number of uplink ports per spine switch. Connectivity is identical on both spine switches. For example, if input is two 100 gigabyte ports; then port-1 and port-2 on both spines will be configured.
-	UplinkPortCount *float64 `json:"uplinkPortCount,omitempty" tf:"uplink_port_count,omitempty"`
+	UplinkPortCount *int64 `json:"uplinkPortCount,omitempty" tf:"uplink_port_count,omitempty"`
 
 	// The port forward error correction (FEC) setting for the uplink port on the Compute Cloud@Customer infrastructure.
 	UplinkPortForwardErrorCorrection *string `json:"uplinkPortForwardErrorCorrection,omitempty" tf:"uplink_port_forward_error_correction,omitempty"`
 
 	// Uplink port speed defined in gigabytes per second. All uplink ports must have identical speed.
-	UplinkPortSpeedInGbps *float64 `json:"uplinkPortSpeedInGbps,omitempty" tf:"uplink_port_speed_in_gbps,omitempty"`
+	UplinkPortSpeedInGbps *int64 `json:"uplinkPortSpeedInGbps,omitempty" tf:"uplink_port_speed_in_gbps,omitempty"`
 
 	// The virtual local area network (VLAN) maximum transmission unit (MTU) size for the uplink ports.
-	UplinkVlanMtu *float64 `json:"uplinkVlanMtu,omitempty" tf:"uplink_vlan_mtu,omitempty"`
+	UplinkVlanMtu *int64 `json:"uplinkVlanMtu,omitempty" tf:"uplink_vlan_mtu,omitempty"`
 }
 
 type InfrastructureNetworkConfigurationParameters struct {
@@ -300,7 +293,7 @@ type InfrastructureRoutingDynamicObservation struct {
 	BGPTopology *string `json:"bgpTopology,omitempty" tf:"bgp_topology,omitempty"`
 
 	// The Oracle Autonomous System Number (ASN) to control routing and exchange information within the dynamic routing configuration.
-	OracleAsn *float64 `json:"oracleAsn,omitempty" tf:"oracle_asn,omitempty"`
+	OracleAsn *int64 `json:"oracleAsn,omitempty" tf:"oracle_asn,omitempty"`
 
 	// The list of peer devices in the dynamic routing configuration.
 	PeerInformation []PeerInformationObservation `json:"peerInformation,omitempty" tf:"peer_information,omitempty"`
@@ -315,10 +308,10 @@ type InfrastructureRoutingStaticInitParameters struct {
 type InfrastructureRoutingStaticObservation struct {
 
 	// The uplink Hot Standby Router Protocol (HSRP) group value for the switch in the Compute Cloud@Customer infrastructure.
-	UplinkHsrpGroup *float64 `json:"uplinkHsrpGroup,omitempty" tf:"uplink_hsrp_group,omitempty"`
+	UplinkHsrpGroup *int64 `json:"uplinkHsrpGroup,omitempty" tf:"uplink_hsrp_group,omitempty"`
 
 	// The virtual local area network (VLAN) identifier used to connect to the uplink (only access mode is supported).
-	UplinkVlan *float64 `json:"uplinkVlan,omitempty" tf:"uplink_vlan,omitempty"`
+	UplinkVlan *int64 `json:"uplinkVlan,omitempty" tf:"uplink_vlan,omitempty"`
 }
 
 type InfrastructureRoutingStaticParameters struct {
@@ -345,7 +338,7 @@ type PeerInformationInitParameters struct {
 type PeerInformationObservation struct {
 
 	// The Autonomous System Number (ASN) of the peer network.
-	Asn *float64 `json:"asn,omitempty" tf:"asn,omitempty"`
+	Asn *int64 `json:"asn,omitempty" tf:"asn,omitempty"`
 
 	// Neighbor Border Gateway Protocal (BGP) IP address. The IP address usually refers to the customer data center router.
 	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`

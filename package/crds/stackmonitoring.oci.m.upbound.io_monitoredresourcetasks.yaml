@@ -152,7 +152,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -160,7 +159,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: Name of the task. If not provided by default the
                       following names will be taken Oracle Cloud Infrastructure tasks
@@ -260,7 +258,8 @@ spec:
                             Metrics collection interval in seconds used when calculating
                             the availability of the  resource based on metrics specified
                             using the property 'availabilityProxyMetrics'.
-                          type: number
+                          format: int64
+                          type: integer
                         availabilityProxyMetrics:
                           description: (Applicable when type=IMPORT_OCI_TELEMETRY_RESOURCES)
                             List of metrics to be used to calculate the availability
@@ -312,7 +311,8 @@ spec:
                             properties:
                               listenerPort:
                                 description: Receiver listener port.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         resourceGroup:
@@ -361,7 +361,8 @@ spec:
                                     collectionIntervalInSeconds:
                                       description: Availability metric collection
                                         internal in seconds.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     metrics:
                                       description: List of metrics used for availability
                                         calculation for the resource.
@@ -442,7 +443,8 @@ spec:
                                               metric sent by telegraf/collectd before
                                               the  configured interval expires will
                                               be dropped.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           telemetryMetricName:
                                             description: (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS)
                                               Metric name to be upload to telemetry.
@@ -471,7 +473,8 @@ spec:
                                         Metric upload interval in seconds. Any metric
                                         sent by telegraf/collectd before the  configured
                                         interval expires will be dropped.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     telegrafResourceNameConfig:
                                       description: (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS)
                                         Resource name generation overriding configurations
@@ -637,7 +640,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -645,7 +647,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: Name of the task. If not provided by default the
                       following names will be taken Oracle Cloud Infrastructure tasks
@@ -745,7 +746,8 @@ spec:
                             Metrics collection interval in seconds used when calculating
                             the availability of the  resource based on metrics specified
                             using the property 'availabilityProxyMetrics'.
-                          type: number
+                          format: int64
+                          type: integer
                         availabilityProxyMetrics:
                           description: (Applicable when type=IMPORT_OCI_TELEMETRY_RESOURCES)
                             List of metrics to be used to calculate the availability
@@ -797,7 +799,8 @@ spec:
                             properties:
                               listenerPort:
                                 description: Receiver listener port.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         resourceGroup:
@@ -846,7 +849,8 @@ spec:
                                     collectionIntervalInSeconds:
                                       description: Availability metric collection
                                         internal in seconds.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     metrics:
                                       description: List of metrics used for availability
                                         calculation for the resource.
@@ -927,7 +931,8 @@ spec:
                                               metric sent by telegraf/collectd before
                                               the  configured interval expires will
                                               be dropped.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           telemetryMetricName:
                                             description: (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS)
                                               Metric name to be upload to telemetry.
@@ -956,7 +961,8 @@ spec:
                                         Metric upload interval in seconds. Any metric
                                         sent by telegraf/collectd before the  configured
                                         interval expires will be dropped.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     telegrafResourceNameConfig:
                                       description: (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS)
                                         Resource name generation overriding configurations
@@ -1098,7 +1104,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1106,7 +1111,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Task identifier OCID.
                     type: string
@@ -1126,7 +1130,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   taskDetails:
                     description: The request details for the performing the task.
                     items:
@@ -1139,7 +1142,8 @@ spec:
                             Metrics collection interval in seconds used when calculating
                             the availability of the  resource based on metrics specified
                             using the property 'availabilityProxyMetrics'.
-                          type: number
+                          format: int64
+                          type: integer
                         availabilityProxyMetrics:
                           description: (Applicable when type=IMPORT_OCI_TELEMETRY_RESOURCES)
                             List of metrics to be used to calculate the availability
@@ -1191,7 +1195,8 @@ spec:
                             properties:
                               listenerPort:
                                 description: Receiver listener port.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         resourceGroup:
@@ -1240,7 +1245,8 @@ spec:
                                     collectionIntervalInSeconds:
                                       description: Availability metric collection
                                         internal in seconds.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     metrics:
                                       description: List of metrics used for availability
                                         calculation for the resource.
@@ -1321,7 +1327,8 @@ spec:
                                               metric sent by telegraf/collectd before
                                               the  configured interval expires will
                                               be dropped.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           telemetryMetricName:
                                             description: (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS)
                                               Metric name to be upload to telemetry.
@@ -1350,7 +1357,8 @@ spec:
                                         Metric upload interval in seconds. Any metric
                                         sent by telegraf/collectd before the  configured
                                         interval expires will be dropped.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     telegrafResourceNameConfig:
                                       description: (Applicable when type=UPDATE_RESOURCE_TYPE_CONFIGS)
                                         Resource name generation overriding configurations

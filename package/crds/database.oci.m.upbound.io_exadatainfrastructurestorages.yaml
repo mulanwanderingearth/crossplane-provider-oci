@@ -153,7 +153,8 @@ spec:
                         type: object
                     type: object
                   computeCount:
-                    type: number
+                    format: int64
+                    type: integer
                   contacts:
                     items:
                       properties:
@@ -175,7 +176,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   dnsServer:
@@ -188,7 +188,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   gateway:
                     type: string
                   infiniBandNetworkCidr:
@@ -205,10 +204,12 @@ spec:
                           type: array
                         hoursOfDay:
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         leadTimeInWeeks:
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           items:
                             properties:
@@ -220,7 +221,8 @@ spec:
                           type: string
                         weeksOfMonth:
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -233,7 +235,8 @@ spec:
                   shape:
                     type: string
                   storageCount:
-                    type: number
+                    format: int64
+                    type: integer
                   timeZone:
                     type: string
                 type: object
@@ -343,7 +346,8 @@ spec:
                         type: object
                     type: object
                   computeCount:
-                    type: number
+                    format: int64
+                    type: integer
                   contacts:
                     items:
                       properties:
@@ -365,7 +369,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   dnsServer:
@@ -378,7 +381,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   gateway:
                     type: string
                   infiniBandNetworkCidr:
@@ -395,10 +397,12 @@ spec:
                           type: array
                         hoursOfDay:
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         leadTimeInWeeks:
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           items:
                             properties:
@@ -410,7 +414,8 @@ spec:
                           type: string
                         weeksOfMonth:
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -423,7 +428,8 @@ spec:
                   shape:
                     type: string
                   storageCount:
-                    type: number
+                    format: int64
+                    type: integer
                   timeZone:
                     type: string
                 type: object
@@ -539,11 +545,13 @@ spec:
               atProvider:
                 properties:
                   activatedStorageCount:
-                    type: number
+                    format: int64
+                    type: integer
                   activationFile:
                     type: string
                   additionalStorageCount:
-                    type: number
+                    format: int64
+                    type: integer
                   adminNetworkCidr:
                     type: string
                   cloudControlPlaneServer1:
@@ -553,7 +561,8 @@ spec:
                   compartmentId:
                     type: string
                   computeCount:
-                    type: number
+                    format: int64
+                    type: integer
                   contacts:
                     items:
                       properties:
@@ -572,18 +581,19 @@ spec:
                   corporateProxy:
                     type: string
                   cpusEnabled:
-                    type: number
+                    format: int64
+                    type: integer
                   csiNumber:
                     type: string
                   dataStorageSizeInTbs:
                     type: number
                   dbNodeStorageSizeInGbs:
-                    type: number
+                    format: int64
+                    type: integer
                   definedTags:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   dnsServer:
@@ -596,7 +606,6 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   gateway:
                     type: string
                   id:
@@ -619,10 +628,12 @@ spec:
                           type: array
                         hoursOfDay:
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         leadTimeInWeeks:
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           items:
                             properties:
@@ -634,20 +645,25 @@ spec:
                           type: string
                         weeksOfMonth:
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
                   maxCpuCount:
-                    type: number
+                    format: int64
+                    type: integer
                   maxDataStorageInTbs:
                     type: number
                   maxDbNodeStorageInGbs:
-                    type: number
+                    format: int64
+                    type: integer
                   maxMemoryInGbs:
-                    type: number
+                    format: int64
+                    type: integer
                   memorySizeInGbs:
-                    type: number
+                    format: int64
+                    type: integer
                   netmask:
                     type: string
                   ntpServer:
@@ -659,7 +675,8 @@ spec:
                   state:
                     type: string
                   storageCount:
-                    type: number
+                    format: int64
+                    type: integer
                   timeCreated:
                     type: string
                   timeZone:

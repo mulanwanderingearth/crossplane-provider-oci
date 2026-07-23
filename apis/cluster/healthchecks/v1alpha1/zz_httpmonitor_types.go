@@ -28,22 +28,19 @@ type HTTPMonitorInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly and mutable name suitable for display in a user interface.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A dictionary of HTTP request headers.
-	// +mapType=granular
-	Headers map[string]*string `json:"headers,omitempty" tf:"headers,omitempty"`
+	Headers map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
 
 	// (Updatable) The monitor interval in seconds. Valid values: 10, 30, and 60.
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Updatable) Enables or disables the monitor. Set to 'true' to launch monitoring.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -55,7 +52,7 @@ type HTTPMonitorInitParameters struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// (Updatable) The port on which to probe endpoints. If unspecified, probes will use the default port of their protocol.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The supported protocols available for HTTP probes.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -64,7 +61,7 @@ type HTTPMonitorInitParameters struct {
 	Targets []*string `json:"targets,omitempty" tf:"targets,omitempty"`
 
 	// (Updatable) The probe timeout in seconds. Valid values: 10, 20, 30, and 60. The probe timeout must be less than or equal to intervalInSeconds for monitors.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) A list of names of vantage points from which to execute the probe.
 	VantagePointNames []*string `json:"vantagePointNames,omitempty" tf:"vantage_point_names,omitempty"`
@@ -76,19 +73,16 @@ type HTTPMonitorObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly and mutable name suitable for display in a user interface.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A dictionary of HTTP request headers.
-	// +mapType=granular
-	Headers map[string]*string `json:"headers,omitempty" tf:"headers,omitempty"`
+	Headers map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
 
 	// The region where updates must be made and where results must be fetched from.
 	HomeRegion *string `json:"homeRegion,omitempty" tf:"home_region,omitempty"`
@@ -97,7 +91,7 @@ type HTTPMonitorObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) The monitor interval in seconds. Valid values: 10, 30, and 60.
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Updatable) Enables or disables the monitor. Set to 'true' to launch monitoring.
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
@@ -109,7 +103,7 @@ type HTTPMonitorObservation struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// (Updatable) The port on which to probe endpoints. If unspecified, probes will use the default port of their protocol.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The supported protocols available for HTTP probes.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -124,7 +118,7 @@ type HTTPMonitorObservation struct {
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
 	// (Updatable) The probe timeout in seconds. Valid values: 10, 20, 30, and 60. The probe timeout must be less than or equal to intervalInSeconds for monitors.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) A list of names of vantage points from which to execute the probe.
 	VantagePointNames []*string `json:"vantagePointNames,omitempty" tf:"vantage_point_names,omitempty"`
@@ -147,8 +141,7 @@ type HTTPMonitorParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly and mutable name suitable for display in a user interface.
 	// +kubebuilder:validation:Optional
@@ -156,17 +149,15 @@ type HTTPMonitorParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A dictionary of HTTP request headers.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Headers map[string]*string `json:"headers,omitempty" tf:"headers,omitempty"`
+	Headers map[string]string `json:"headers,omitempty" tf:"headers,omitempty"`
 
 	// (Updatable) The monitor interval in seconds. Valid values: 10, 30, and 60.
 	// +kubebuilder:validation:Optional
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// (Updatable) Enables or disables the monitor. Set to 'true' to launch monitoring.
 	// +kubebuilder:validation:Optional
@@ -182,7 +173,7 @@ type HTTPMonitorParameters struct {
 
 	// (Updatable) The port on which to probe endpoints. If unspecified, probes will use the default port of their protocol.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The supported protocols available for HTTP probes.
 	// +kubebuilder:validation:Optional
@@ -194,7 +185,7 @@ type HTTPMonitorParameters struct {
 
 	// (Updatable) The probe timeout in seconds. Valid values: 10, 20, 30, and 60. The probe timeout must be less than or equal to intervalInSeconds for monitors.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) A list of names of vantage points from which to execute the probe.
 	// +kubebuilder:validation:Optional

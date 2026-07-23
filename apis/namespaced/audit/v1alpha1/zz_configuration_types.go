@@ -29,7 +29,7 @@ type ConfigurationInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The retention period setting, specified in days. The minimum is 90, the maximum 365.  Example: 90
-	RetentionPeriodDays *float64 `json:"retentionPeriodDays,omitempty" tf:"retention_period_days,omitempty"`
+	RetentionPeriodDays *int64 `json:"retentionPeriodDays,omitempty" tf:"retention_period_days,omitempty"`
 }
 
 type ConfigurationObservation struct {
@@ -40,7 +40,7 @@ type ConfigurationObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) The retention period setting, specified in days. The minimum is 90, the maximum 365.  Example: 90
-	RetentionPeriodDays *float64 `json:"retentionPeriodDays,omitempty" tf:"retention_period_days,omitempty"`
+	RetentionPeriodDays *int64 `json:"retentionPeriodDays,omitempty" tf:"retention_period_days,omitempty"`
 }
 
 type ConfigurationParameters struct {
@@ -60,7 +60,7 @@ type ConfigurationParameters struct {
 
 	// (Updatable) The retention period setting, specified in days. The minimum is 90, the maximum 365.  Example: 90
 	// +kubebuilder:validation:Optional
-	RetentionPeriodDays *float64 `json:"retentionPeriodDays,omitempty" tf:"retention_period_days,omitempty"`
+	RetentionPeriodDays *int64 `json:"retentionPeriodDays,omitempty" tf:"retention_period_days,omitempty"`
 }
 
 // ConfigurationSpec defines the desired state of Configuration

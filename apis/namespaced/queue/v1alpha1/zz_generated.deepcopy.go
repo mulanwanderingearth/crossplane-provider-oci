@@ -23,7 +23,7 @@ func (in *CapabilitiesInitParameters) DeepCopyInto(out *CapabilitiesInitParamete
 	}
 	if in.PrimaryConsumerGroupDeadLetterQueueDeliveryCount != nil {
 		in, out := &in.PrimaryConsumerGroupDeadLetterQueueDeliveryCount, &out.PrimaryConsumerGroupDeadLetterQueueDeliveryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrimaryConsumerGroupDisplayName != nil {
@@ -63,7 +63,7 @@ func (in *CapabilitiesObservation) DeepCopyInto(out *CapabilitiesObservation) {
 	}
 	if in.PrimaryConsumerGroupDeadLetterQueueDeliveryCount != nil {
 		in, out := &in.PrimaryConsumerGroupDeadLetterQueueDeliveryCount, &out.PrimaryConsumerGroupDeadLetterQueueDeliveryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrimaryConsumerGroupDisplayName != nil {
@@ -103,7 +103,7 @@ func (in *CapabilitiesParameters) DeepCopyInto(out *CapabilitiesParameters) {
 	}
 	if in.PrimaryConsumerGroupDeadLetterQueueDeliveryCount != nil {
 		in, out := &in.PrimaryConsumerGroupDeadLetterQueueDeliveryCount, &out.PrimaryConsumerGroupDeadLetterQueueDeliveryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PrimaryConsumerGroupDisplayName != nil {
@@ -170,23 +170,14 @@ func (in *ConsumerGroupInitParameters) DeepCopyInto(out *ConsumerGroupInitParame
 	}
 	if in.DeadLetterQueueDeliveryCount != nil {
 		in, out := &in.DeadLetterQueueDeliveryCount, &out.DeadLetterQueueDeliveryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -196,18 +187,9 @@ func (in *ConsumerGroupInitParameters) DeepCopyInto(out *ConsumerGroupInitParame
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsEnabled != nil {
@@ -284,23 +266,14 @@ func (in *ConsumerGroupObservation) DeepCopyInto(out *ConsumerGroupObservation) 
 	}
 	if in.DeadLetterQueueDeliveryCount != nil {
 		in, out := &in.DeadLetterQueueDeliveryCount, &out.DeadLetterQueueDeliveryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -310,18 +283,9 @@ func (in *ConsumerGroupObservation) DeepCopyInto(out *ConsumerGroupObservation) 
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -351,18 +315,9 @@ func (in *ConsumerGroupObservation) DeepCopyInto(out *ConsumerGroupObservation) 
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -397,23 +352,14 @@ func (in *ConsumerGroupParameters) DeepCopyInto(out *ConsumerGroupParameters) {
 	}
 	if in.DeadLetterQueueDeliveryCount != nil {
 		in, out := &in.DeadLetterQueueDeliveryCount, &out.DeadLetterQueueDeliveryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -423,18 +369,9 @@ func (in *ConsumerGroupParameters) DeepCopyInto(out *ConsumerGroupParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsEnabled != nil {
@@ -543,7 +480,7 @@ func (in *QueueInitParameters) DeepCopyInto(out *QueueInitParameters) {
 	}
 	if in.ChannelConsumptionLimit != nil {
 		in, out := &in.ChannelConsumptionLimit, &out.ChannelConsumptionLimit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -578,23 +515,14 @@ func (in *QueueInitParameters) DeepCopyInto(out *QueueInitParameters) {
 	}
 	if in.DeadLetterQueueDeliveryCount != nil {
 		in, out := &in.DeadLetterQueueDeliveryCount, &out.DeadLetterQueueDeliveryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -604,23 +532,14 @@ func (in *QueueInitParameters) DeepCopyInto(out *QueueInitParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.PurgeTrigger != nil {
 		in, out := &in.PurgeTrigger, &out.PurgeTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PurgeType != nil {
@@ -630,17 +549,17 @@ func (in *QueueInitParameters) DeepCopyInto(out *QueueInitParameters) {
 	}
 	if in.RetentionInSeconds != nil {
 		in, out := &in.RetentionInSeconds, &out.RetentionInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VisibilityInSeconds != nil {
 		in, out := &in.VisibilityInSeconds, &out.VisibilityInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -699,7 +618,7 @@ func (in *QueueObservation) DeepCopyInto(out *QueueObservation) {
 	}
 	if in.ChannelConsumptionLimit != nil {
 		in, out := &in.ChannelConsumptionLimit, &out.ChannelConsumptionLimit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -714,23 +633,14 @@ func (in *QueueObservation) DeepCopyInto(out *QueueObservation) {
 	}
 	if in.DeadLetterQueueDeliveryCount != nil {
 		in, out := &in.DeadLetterQueueDeliveryCount, &out.DeadLetterQueueDeliveryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -740,18 +650,9 @@ func (in *QueueObservation) DeepCopyInto(out *QueueObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -771,7 +672,7 @@ func (in *QueueObservation) DeepCopyInto(out *QueueObservation) {
 	}
 	if in.PurgeTrigger != nil {
 		in, out := &in.PurgeTrigger, &out.PurgeTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PurgeType != nil {
@@ -781,7 +682,7 @@ func (in *QueueObservation) DeepCopyInto(out *QueueObservation) {
 	}
 	if in.RetentionInSeconds != nil {
 		in, out := &in.RetentionInSeconds, &out.RetentionInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -791,18 +692,9 @@ func (in *QueueObservation) DeepCopyInto(out *QueueObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -817,12 +709,12 @@ func (in *QueueObservation) DeepCopyInto(out *QueueObservation) {
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VisibilityInSeconds != nil {
 		in, out := &in.VisibilityInSeconds, &out.VisibilityInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -849,7 +741,7 @@ func (in *QueueParameters) DeepCopyInto(out *QueueParameters) {
 	}
 	if in.ChannelConsumptionLimit != nil {
 		in, out := &in.ChannelConsumptionLimit, &out.ChannelConsumptionLimit
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -884,23 +776,14 @@ func (in *QueueParameters) DeepCopyInto(out *QueueParameters) {
 	}
 	if in.DeadLetterQueueDeliveryCount != nil {
 		in, out := &in.DeadLetterQueueDeliveryCount, &out.DeadLetterQueueDeliveryCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -910,23 +793,14 @@ func (in *QueueParameters) DeepCopyInto(out *QueueParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.PurgeTrigger != nil {
 		in, out := &in.PurgeTrigger, &out.PurgeTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PurgeType != nil {
@@ -936,17 +810,17 @@ func (in *QueueParameters) DeepCopyInto(out *QueueParameters) {
 	}
 	if in.RetentionInSeconds != nil {
 		in, out := &in.RetentionInSeconds, &out.RetentionInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimeoutInSeconds != nil {
 		in, out := &in.TimeoutInSeconds, &out.TimeoutInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.VisibilityInSeconds != nil {
 		in, out := &in.VisibilityInSeconds, &out.VisibilityInSeconds
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

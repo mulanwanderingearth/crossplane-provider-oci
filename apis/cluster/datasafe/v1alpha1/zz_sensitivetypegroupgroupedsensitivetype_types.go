@@ -84,8 +84,7 @@ type SensitiveTypeGroupGroupedSensitiveTypePatchOperationsInitParameters struct 
 	Selection *string `json:"selection,omitempty" tf:"selection,omitempty"`
 
 	// (Updatable)
-	// +mapType=granular
-	Value map[string]*string `json:"value,omitempty" tf:"value,omitempty"`
+	Value map[string]string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SensitiveTypeGroupGroupedSensitiveTypePatchOperationsObservation struct {
@@ -97,8 +96,7 @@ type SensitiveTypeGroupGroupedSensitiveTypePatchOperationsObservation struct {
 	Selection *string `json:"selection,omitempty" tf:"selection,omitempty"`
 
 	// (Updatable)
-	// +mapType=granular
-	Value map[string]*string `json:"value,omitempty" tf:"value,omitempty"`
+	Value map[string]string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SensitiveTypeGroupGroupedSensitiveTypePatchOperationsParameters struct {
@@ -113,8 +111,7 @@ type SensitiveTypeGroupGroupedSensitiveTypePatchOperationsParameters struct {
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Value map[string]*string `json:"value" tf:"value,omitempty"`
+	Value map[string]string `json:"value" tf:"value,omitempty"`
 }
 
 // SensitiveTypeGroupGroupedSensitiveTypeSpec defines the desired state of SensitiveTypeGroupGroupedSensitiveType

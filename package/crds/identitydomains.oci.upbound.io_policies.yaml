@@ -163,7 +163,8 @@ spec:
                         sequence:
                           description: (Updatable) Position of the rule in evaluation
                             order. No duplicates allowed.
-                          type: number
+                          format: int64
+                          type: integer
                         value:
                           description: (Updatable) The ID of the SCIM resource that
                             represents the User or App who created this Resource
@@ -301,7 +302,8 @@ spec:
                         sequence:
                           description: (Updatable) Position of the rule in evaluation
                             order. No duplicates allowed.
-                          type: number
+                          format: int64
+                          type: integer
                         value:
                           description: (Updatable) The ID of the SCIM resource that
                             represents the User or App who created this Resource
@@ -667,7 +669,8 @@ spec:
                         sequence:
                           description: (Updatable) Position of the rule in evaluation
                             order. No duplicates allowed.
-                          type: number
+                          format: int64
+                          type: integer
                         value:
                           description: (Updatable) The ID of the SCIM resource that
                             represents the User or App who created this Resource

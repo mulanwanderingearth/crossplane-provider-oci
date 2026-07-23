@@ -226,7 +226,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -235,7 +236,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -265,7 +267,8 @@ spec:
                                   this value is the size of memory in GBs to remove
                                   from each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               metric:
                                 description: (Updatable) Metric and threshold details
                                   for triggering an autoscale action.
@@ -287,7 +290,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -296,7 +300,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -307,21 +312,24 @@ spec:
                                   this value is the minimum memory in GBs each node
                                   can be scaled-down to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               minOcpusPerNode:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the minimum number of OCPUs each node
                                   can be scaled-down to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpuStepSize:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the number of OCPUs to remove from
                                   each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scaleInConfig:
@@ -351,7 +359,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -360,7 +369,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -369,12 +379,14 @@ spec:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the minimum number of
                                   nodes the cluster can be scaled-in to.
-                                type: number
+                                format: int64
+                                type: integer
                               stepSize:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the number of nodes to
                                   remove during a scale-in event.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scaleOutConfig:
@@ -387,7 +399,8 @@ spec:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the maximum number of
                                   nodes the cluster can be scaled-out to.
-                                type: number
+                                format: int64
+                                type: integer
                               metric:
                                 description: (Updatable) Metric and threshold details
                                   for triggering an autoscale action.
@@ -409,7 +422,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -418,7 +432,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -427,7 +442,8 @@ spec:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the number of nodes to
                                   remove during a scale-in event.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scaleUpConfig:
@@ -442,21 +458,24 @@ spec:
                                   this value is the maximum memory in GBs each node
                                   can be scaled-up to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               maxOcpusPerNode:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the maximum number of OCPUs each node
                                   can be scaled-up to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               memoryStepSize:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the size of memory in GBs to remove
                                   from each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               metric:
                                 description: (Updatable) Metric and threshold details
                                   for triggering an autoscale action.
@@ -478,7 +497,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -487,7 +507,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -498,7 +519,8 @@ spec:
                                   this value is the number of OCPUs to remove from
                                   each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scheduleDetails:
@@ -518,7 +540,8 @@ spec:
                                     targetNodeCount:
                                       description: (Updatable) This value is the desired
                                         number of nodes in the cluster.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     timeRecurrence:
                                       description: (Updatable) Day/time recurrence
                                         (specified following RFC 5545) at which to
@@ -540,13 +563,15 @@ spec:
                                         compute shapes, this value is the desired
                                         memory in GBs on each node. This value is
                                         not used for nodes with fixed compute shapes.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     targetOcpusPerNode:
                                       description: (Updatable) For nodes with flexible
                                         compute shapes, this value is the desired
                                         OCPUs count on each node. This value is not
                                         used for nodes with fixed compute shapes.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     targetShape:
                                       description: (Updatable) For nodes with fixed
                                         compute shapes, this value is the desired
@@ -816,7 +841,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -825,7 +851,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -855,7 +882,8 @@ spec:
                                   this value is the size of memory in GBs to remove
                                   from each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               metric:
                                 description: (Updatable) Metric and threshold details
                                   for triggering an autoscale action.
@@ -877,7 +905,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -886,7 +915,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -897,21 +927,24 @@ spec:
                                   this value is the minimum memory in GBs each node
                                   can be scaled-down to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               minOcpusPerNode:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the minimum number of OCPUs each node
                                   can be scaled-down to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpuStepSize:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the number of OCPUs to remove from
                                   each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scaleInConfig:
@@ -941,7 +974,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -950,7 +984,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -959,12 +994,14 @@ spec:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the minimum number of
                                   nodes the cluster can be scaled-in to.
-                                type: number
+                                format: int64
+                                type: integer
                               stepSize:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the number of nodes to
                                   remove during a scale-in event.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scaleOutConfig:
@@ -977,7 +1014,8 @@ spec:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the maximum number of
                                   nodes the cluster can be scaled-out to.
-                                type: number
+                                format: int64
+                                type: integer
                               metric:
                                 description: (Updatable) Metric and threshold details
                                   for triggering an autoscale action.
@@ -999,7 +1037,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -1008,7 +1047,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -1017,7 +1057,8 @@ spec:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the number of nodes to
                                   remove during a scale-in event.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scaleUpConfig:
@@ -1032,21 +1073,24 @@ spec:
                                   this value is the maximum memory in GBs each node
                                   can be scaled-up to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               maxOcpusPerNode:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the maximum number of OCPUs each node
                                   can be scaled-up to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               memoryStepSize:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the size of memory in GBs to remove
                                   from each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               metric:
                                 description: (Updatable) Metric and threshold details
                                   for triggering an autoscale action.
@@ -1068,7 +1112,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -1077,7 +1122,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -1088,7 +1134,8 @@ spec:
                                   this value is the number of OCPUs to remove from
                                   each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scheduleDetails:
@@ -1108,7 +1155,8 @@ spec:
                                     targetNodeCount:
                                       description: (Updatable) This value is the desired
                                         number of nodes in the cluster.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     timeRecurrence:
                                       description: (Updatable) Day/time recurrence
                                         (specified following RFC 5545) at which to
@@ -1130,13 +1178,15 @@ spec:
                                         compute shapes, this value is the desired
                                         memory in GBs on each node. This value is
                                         not used for nodes with fixed compute shapes.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     targetOcpusPerNode:
                                       description: (Updatable) For nodes with flexible
                                         compute shapes, this value is the desired
                                         OCPUs count on each node. This value is not
                                         used for nodes with fixed compute shapes.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     targetShape:
                                       description: (Updatable) For nodes with fixed
                                         compute shapes, this value is the desired
@@ -1408,7 +1458,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -1417,7 +1468,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -1450,7 +1502,8 @@ spec:
                                   this value is the size of memory in GBs to remove
                                   from each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               metric:
                                 description: (Updatable) Metric and threshold details
                                   for triggering an autoscale action.
@@ -1472,7 +1525,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -1481,7 +1535,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -1492,21 +1547,24 @@ spec:
                                   this value is the minimum memory in GBs each node
                                   can be scaled-down to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               minOcpusPerNode:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the minimum number of OCPUs each node
                                   can be scaled-down to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               ocpuStepSize:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the number of OCPUs to remove from
                                   each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scaleInConfig:
@@ -1536,7 +1594,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -1545,7 +1604,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -1554,12 +1614,14 @@ spec:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the minimum number of
                                   nodes the cluster can be scaled-in to.
-                                type: number
+                                format: int64
+                                type: integer
                               stepSize:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the number of nodes to
                                   remove during a scale-in event.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scaleOutConfig:
@@ -1572,7 +1634,8 @@ spec:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the maximum number of
                                   nodes the cluster can be scaled-out to.
-                                type: number
+                                format: int64
+                                type: integer
                               metric:
                                 description: (Updatable) Metric and threshold details
                                   for triggering an autoscale action.
@@ -1594,7 +1657,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -1603,7 +1667,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -1612,7 +1677,8 @@ spec:
                                 description: (Applicable when policy_type=METRIC_BASED_HORIZONTAL_SCALING_POLICY)
                                   (Updatable) This value is the number of nodes to
                                   remove during a scale-in event.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scaleUpConfig:
@@ -1627,21 +1693,24 @@ spec:
                                   this value is the maximum memory in GBs each node
                                   can be scaled-up to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               maxOcpusPerNode:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the maximum number of OCPUs each node
                                   can be scaled-up to. This value is not used for
                                   nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               memoryStepSize:
                                 description: (Applicable when policy_type=METRIC_BASED_VERTICAL_SCALING_POLICY)
                                   (Updatable) For nodes with flexible compute shapes,
                                   this value is the size of memory in GBs to remove
                                   from each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                               metric:
                                 description: (Updatable) Metric and threshold details
                                   for triggering an autoscale action.
@@ -1663,7 +1732,8 @@ spec:
                                               value exceeds the threshold value before
                                               the action is triggered. The value is
                                               in minutes.
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           operator:
                                             description: (Updatable) The comparison
                                               operator to use. Options are greater
@@ -1672,7 +1742,8 @@ spec:
                                           value:
                                             description: (Updatable) Integer non-negative
                                               value. 0 < value < 100
-                                            type: number
+                                            format: int64
+                                            type: integer
                                         type: object
                                       type: array
                                   type: object
@@ -1683,7 +1754,8 @@ spec:
                                   this value is the number of OCPUs to remove from
                                   each node during a scale-down event. This value
                                   is not used for nodes with fixed compute shapes.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         scheduleDetails:
@@ -1703,7 +1775,8 @@ spec:
                                     targetNodeCount:
                                       description: (Updatable) This value is the desired
                                         number of nodes in the cluster.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     timeRecurrence:
                                       description: (Updatable) Day/time recurrence
                                         (specified following RFC 5545) at which to
@@ -1725,13 +1798,15 @@ spec:
                                         compute shapes, this value is the desired
                                         memory in GBs on each node. This value is
                                         not used for nodes with fixed compute shapes.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     targetOcpusPerNode:
                                       description: (Updatable) For nodes with flexible
                                         compute shapes, this value is the desired
                                         OCPUs count on each node. This value is not
                                         used for nodes with fixed compute shapes.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     targetShape:
                                       description: (Updatable) For nodes with fixed
                                         compute shapes, this value is the desired

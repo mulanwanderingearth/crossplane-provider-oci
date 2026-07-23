@@ -71,15 +71,13 @@ type LogLocationParameters struct {
 type MigrationJobInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Name of the job.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the job
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.MigrationJob
@@ -95,7 +93,7 @@ type MigrationJobInitParameters struct {
 	JobIDSelector *v1.NamespacedSelector `json:"jobIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Suspend. Could be set to any integer value.
-	SuspendTrigger *float64 `json:"suspendTrigger,omitempty" tf:"suspend_trigger,omitempty"`
+	SuspendTrigger *int64 `json:"suspendTrigger,omitempty" tf:"suspend_trigger,omitempty"`
 }
 
 type MigrationJobObservation struct {
@@ -104,15 +102,13 @@ type MigrationJobObservation struct {
 	CollectTracesData []CollectTracesDataObservation `json:"collectTracesData,omitempty" tf:"collect_traces_data,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Name of the job.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Migration Job.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -136,11 +132,10 @@ type MigrationJobObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Suspend. Could be set to any integer value.
-	SuspendTrigger *float64 `json:"suspendTrigger,omitempty" tf:"suspend_trigger,omitempty"`
+	SuspendTrigger *int64 `json:"suspendTrigger,omitempty" tf:"suspend_trigger,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time when this parameter file was applied on the process
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -159,8 +154,7 @@ type MigrationJobParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Name of the job.
 	// +kubebuilder:validation:Optional
@@ -168,8 +162,7 @@ type MigrationJobParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the job
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.MigrationJob
@@ -187,7 +180,7 @@ type MigrationJobParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Suspend. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	SuspendTrigger *float64 `json:"suspendTrigger,omitempty" tf:"suspend_trigger,omitempty"`
+	SuspendTrigger *int64 `json:"suspendTrigger,omitempty" tf:"suspend_trigger,omitempty"`
 }
 
 type ParameterFileVersionsInitParameters struct {
@@ -196,15 +189,13 @@ type ParameterFileVersionsInitParameters struct {
 type ParameterFileVersionsObservation struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A description to discribe the current parameter file version
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Return boolean true/false for the currently in-use parameter file (factory or a versioned file)
 	IsCurrent *bool `json:"isCurrent,omitempty" tf:"is_current,omitempty"`
@@ -219,8 +210,7 @@ type ParameterFileVersionsObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time when this parameter file was applied on the process
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -238,7 +228,7 @@ type PhasesObservation struct {
 	Action *string `json:"action,omitempty" tf:"action,omitempty"`
 
 	// Duration of the phase in milliseconds
-	DurationInMs *float64 `json:"durationInMs,omitempty" tf:"duration_in_ms,omitempty"`
+	DurationInMs *int64 `json:"durationInMs,omitempty" tf:"duration_in_ms,omitempty"`
 
 	// Attribute that returns an array of names and types of GoldenGate configuration files that are available for read or update.
 	EditableParameterFiles []*string `json:"editableParameterFiles,omitempty" tf:"editable_parameter_files,omitempty"`
@@ -265,7 +255,7 @@ type PhasesObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// Progress details of a Migration Job.
-	Progress *float64 `json:"progress,omitempty" tf:"progress,omitempty"`
+	Progress *int64 `json:"progress,omitempty" tf:"progress,omitempty"`
 
 	// Phase status
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`

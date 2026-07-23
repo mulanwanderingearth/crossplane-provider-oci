@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. For example: {"foo-namespace":
                       {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) An optional description of the visionPrivateEndpoint.
                     type: string
@@ -175,7 +174,6 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: OCID of subnet
                     type: string
@@ -353,7 +351,6 @@ spec:
                       key is predefined and scoped to a namespace. For example: {"foo-namespace":
                       {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) An optional description of the visionPrivateEndpoint.
                     type: string
@@ -368,7 +365,6 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: OCID of subnet
                     type: string
@@ -551,7 +547,6 @@ spec:
                       key is predefined and scoped to a namespace. For example: {"foo-namespace":
                       {"bar-key": "value"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) An optional description of the visionPrivateEndpoint.
                     type: string
@@ -566,7 +561,6 @@ spec:
                       without any predefined name, type, or scope. It exists for cross-compatibility
                       only. For example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: OCID of private endpoint
                     type: string
@@ -587,7 +581,6 @@ spec:
                       are scoped to namespaces. For example: {"orcl-cloud": {"free-tier-retained":
                       "true"}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the visionPrivateEndpoint was created, as an
                       RFC3339 datetime string.

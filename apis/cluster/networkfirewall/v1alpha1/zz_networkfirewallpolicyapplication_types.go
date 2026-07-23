@@ -19,10 +19,10 @@ type NetworkFirewallPolicyApplicationInitParameters struct {
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) The value of the ICMP/ICMP_V6 message code (subtype) field as defined by RFC 4443.
-	IcmpCode *float64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	IcmpCode *int64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
 
 	// (Updatable) The value of the ICMP/ICMP_V6 message type field as defined by RFC 4443.
-	IcmpType *float64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	IcmpType *int64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 
 	// Name of the application
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -52,10 +52,10 @@ type NetworkFirewallPolicyApplicationObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// (Updatable) The value of the ICMP/ICMP_V6 message code (subtype) field as defined by RFC 4443.
-	IcmpCode *float64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	IcmpCode *int64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
 
 	// (Updatable) The value of the ICMP/ICMP_V6 message type field as defined by RFC 4443.
-	IcmpType *float64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	IcmpType *int64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 
 	// Name of the application
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -78,11 +78,11 @@ type NetworkFirewallPolicyApplicationParameters struct {
 
 	// (Updatable) The value of the ICMP/ICMP_V6 message code (subtype) field as defined by RFC 4443.
 	// +kubebuilder:validation:Optional
-	IcmpCode *float64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
+	IcmpCode *int64 `json:"icmpCode,omitempty" tf:"icmp_code,omitempty"`
 
 	// (Updatable) The value of the ICMP/ICMP_V6 message type field as defined by RFC 4443.
 	// +kubebuilder:validation:Optional
-	IcmpType *float64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
+	IcmpType *int64 `json:"icmpType,omitempty" tf:"icmp_type,omitempty"`
 
 	// Name of the application
 	// +kubebuilder:validation:Optional

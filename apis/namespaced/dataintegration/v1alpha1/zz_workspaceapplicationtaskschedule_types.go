@@ -17,40 +17,40 @@ import (
 type FrequencyDetailsTimeInitParameters struct {
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The hour value.
-	Hour *float64 `json:"hour,omitempty" tf:"hour,omitempty"`
+	Hour *int64 `json:"hour,omitempty" tf:"hour,omitempty"`
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The minute value.
-	Minute *float64 `json:"minute,omitempty" tf:"minute,omitempty"`
+	Minute *int64 `json:"minute,omitempty" tf:"minute,omitempty"`
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The second value.
-	Second *float64 `json:"second,omitempty" tf:"second,omitempty"`
+	Second *int64 `json:"second,omitempty" tf:"second,omitempty"`
 }
 
 type FrequencyDetailsTimeObservation struct {
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The hour value.
-	Hour *float64 `json:"hour,omitempty" tf:"hour,omitempty"`
+	Hour *int64 `json:"hour,omitempty" tf:"hour,omitempty"`
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The minute value.
-	Minute *float64 `json:"minute,omitempty" tf:"minute,omitempty"`
+	Minute *int64 `json:"minute,omitempty" tf:"minute,omitempty"`
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The second value.
-	Second *float64 `json:"second,omitempty" tf:"second,omitempty"`
+	Second *int64 `json:"second,omitempty" tf:"second,omitempty"`
 }
 
 type FrequencyDetailsTimeParameters struct {
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The hour value.
 	// +kubebuilder:validation:Optional
-	Hour *float64 `json:"hour,omitempty" tf:"hour,omitempty"`
+	Hour *int64 `json:"hour,omitempty" tf:"hour,omitempty"`
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The minute value.
 	// +kubebuilder:validation:Optional
-	Minute *float64 `json:"minute,omitempty" tf:"minute,omitempty"`
+	Minute *int64 `json:"minute,omitempty" tf:"minute,omitempty"`
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE | WEEKLY) (Updatable) The second value.
 	// +kubebuilder:validation:Optional
-	Second *float64 `json:"second,omitempty" tf:"second,omitempty"`
+	Second *int64 `json:"second,omitempty" tf:"second,omitempty"`
 }
 
 type LastRunDetailsInitParameters struct {
@@ -80,10 +80,10 @@ type LastRunDetailsObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) This is used by the service for optimistic locking of the object, to prevent multiple users from simultaneously updating the object.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []LastRunDetailsParentRefObservation `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -116,13 +116,13 @@ type ScheduleRefFrequencyDetailsInitParameters struct {
 	DayOfWeek *string `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
 	// (Applicable when model_type=MONTHLY | WEEKLY) (Updatable) A list of days of the month to be scheduled. i.e. excute every 2nd,3rd, 10th of the month.
-	Days []*float64 `json:"days,omitempty" tf:"days,omitempty"`
+	Days []*int64 `json:"days,omitempty" tf:"days,omitempty"`
 
 	// (Updatable) the frequency of the schedule.
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE) (Updatable) This hold the repeatability aspect of a schedule. i.e. in a monhtly frequency, a task can be scheduled for every month, once in two months, once in tree months etc.
-	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval *int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
 	// (Updatable) The type of the model
 	ModelType *string `json:"modelType,omitempty" tf:"model_type,omitempty"`
@@ -143,13 +143,13 @@ type ScheduleRefFrequencyDetailsObservation struct {
 	DayOfWeek *string `json:"dayOfWeek,omitempty" tf:"day_of_week,omitempty"`
 
 	// (Applicable when model_type=MONTHLY | WEEKLY) (Updatable) A list of days of the month to be scheduled. i.e. excute every 2nd,3rd, 10th of the month.
-	Days []*float64 `json:"days,omitempty" tf:"days,omitempty"`
+	Days []*int64 `json:"days,omitempty" tf:"days,omitempty"`
 
 	// (Updatable) the frequency of the schedule.
 	Frequency *string `json:"frequency,omitempty" tf:"frequency,omitempty"`
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE) (Updatable) This hold the repeatability aspect of a schedule. i.e. in a monhtly frequency, a task can be scheduled for every month, once in two months, once in tree months etc.
-	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval *int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
 	// (Updatable) The type of the model
 	ModelType *string `json:"modelType,omitempty" tf:"model_type,omitempty"`
@@ -173,7 +173,7 @@ type ScheduleRefFrequencyDetailsParameters struct {
 
 	// (Applicable when model_type=MONTHLY | WEEKLY) (Updatable) A list of days of the month to be scheduled. i.e. excute every 2nd,3rd, 10th of the month.
 	// +kubebuilder:validation:Optional
-	Days []*float64 `json:"days,omitempty" tf:"days,omitempty"`
+	Days []*int64 `json:"days,omitempty" tf:"days,omitempty"`
 
 	// (Updatable) the frequency of the schedule.
 	// +kubebuilder:validation:Optional
@@ -181,7 +181,7 @@ type ScheduleRefFrequencyDetailsParameters struct {
 
 	// (Applicable when model_type=DAILY | HOURLY | MONTHLY | MONTHLY_RULE) (Updatable) This hold the repeatability aspect of a schedule. i.e. in a monhtly frequency, a task can be scheduled for every month, once in two months, once in tree months etc.
 	// +kubebuilder:validation:Optional
-	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
+	Interval *int64 `json:"interval,omitempty" tf:"interval,omitempty"`
 
 	// (Updatable) The type of the model
 	// +kubebuilder:validation:Optional
@@ -226,10 +226,10 @@ type ScheduleRefInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) This is used by the service for optimistic locking of the object, to prevent multiple users from simultaneously updating the object.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []ScheduleRefParentRefInitParameters `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -366,8 +366,7 @@ type ScheduleRefMetadataInitParameters struct {
 	IdentifierPath *string `json:"identifierPath,omitempty" tf:"identifier_path,omitempty"`
 
 	// (Updatable) Information property fields.
-	// +mapType=granular
-	InfoFields map[string]*string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
+	InfoFields map[string]string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
 
 	// (Updatable) Specifies whether this object is a favorite or not.
 	IsFavorite *bool `json:"isFavorite,omitempty" tf:"is_favorite,omitempty"`
@@ -376,7 +375,7 @@ type ScheduleRefMetadataInitParameters struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Updatable) The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 
 	// (Updatable) The date and time that the object was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -412,8 +411,7 @@ type ScheduleRefMetadataObservation struct {
 	IdentifierPath *string `json:"identifierPath,omitempty" tf:"identifier_path,omitempty"`
 
 	// (Updatable) Information property fields.
-	// +mapType=granular
-	InfoFields map[string]*string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
+	InfoFields map[string]string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
 
 	// (Updatable) Specifies whether this object is a favorite or not.
 	IsFavorite *bool `json:"isFavorite,omitempty" tf:"is_favorite,omitempty"`
@@ -422,7 +420,7 @@ type ScheduleRefMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Updatable) The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 
 	// (Updatable) The date and time that the object was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -465,8 +463,7 @@ type ScheduleRefMetadataParameters struct {
 
 	// (Updatable) Information property fields.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	InfoFields map[string]*string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
+	InfoFields map[string]string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
 
 	// (Updatable) Specifies whether this object is a favorite or not.
 	// +kubebuilder:validation:Optional
@@ -478,7 +475,7 @@ type ScheduleRefMetadataParameters struct {
 
 	// (Updatable) The registry version.
 	// +kubebuilder:validation:Optional
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 
 	// (Updatable) The date and time that the object was created.
 	// +kubebuilder:validation:Optional
@@ -527,10 +524,10 @@ type ScheduleRefObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) This is used by the service for optimistic locking of the object, to prevent multiple users from simultaneously updating the object.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []ScheduleRefParentRefObservation `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -579,11 +576,11 @@ type ScheduleRefParameters struct {
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) This is used by the service for optimistic locking of the object, to prevent multiple users from simultaneously updating the object.
 	// +kubebuilder:validation:Optional
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	// +kubebuilder:validation:Optional
@@ -670,13 +667,13 @@ type WorkspaceApplicationTaskScheduleInitParameters struct {
 	NextRunTimeMillis *string `json:"nextRunTimeMillis,omitempty" tf:"next_run_time_millis,omitempty"`
 
 	// (Updatable) The number of retries.
-	NumberOfRetries *float64 `json:"numberOfRetries,omitempty" tf:"number_of_retries,omitempty"`
+	NumberOfRetries *int64 `json:"numberOfRetries,omitempty" tf:"number_of_retries,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) This is used by the service for optimistic locking of the object, to prevent multiple users from simultaneously updating the object.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []WorkspaceApplicationTaskScheduleParentRefInitParameters `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -785,8 +782,7 @@ type WorkspaceApplicationTaskScheduleMetadataObservation struct {
 	IdentifierPath *string `json:"identifierPath,omitempty" tf:"identifier_path,omitempty"`
 
 	// (Updatable) Information property fields.
-	// +mapType=granular
-	InfoFields map[string]*string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
+	InfoFields map[string]string `json:"infoFields,omitempty" tf:"info_fields,omitempty"`
 
 	// (Updatable) Specifies whether this object is a favorite or not.
 	IsFavorite *bool `json:"isFavorite,omitempty" tf:"is_favorite,omitempty"`
@@ -795,7 +791,7 @@ type WorkspaceApplicationTaskScheduleMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Updatable) The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 
 	// (Updatable) The date and time that the object was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -871,13 +867,13 @@ type WorkspaceApplicationTaskScheduleObservation struct {
 	NextRunTimeMillis *string `json:"nextRunTimeMillis,omitempty" tf:"next_run_time_millis,omitempty"`
 
 	// (Updatable) The number of retries.
-	NumberOfRetries *float64 `json:"numberOfRetries,omitempty" tf:"number_of_retries,omitempty"`
+	NumberOfRetries *int64 `json:"numberOfRetries,omitempty" tf:"number_of_retries,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) This is used by the service for optimistic locking of the object, to prevent multiple users from simultaneously updating the object.
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	ParentRef []WorkspaceApplicationTaskScheduleParentRefObservation `json:"parentRef,omitempty" tf:"parent_ref,omitempty"`
@@ -886,7 +882,7 @@ type WorkspaceApplicationTaskScheduleObservation struct {
 	RegistryMetadata []WorkspaceApplicationTaskScheduleRegistryMetadataObservation `json:"registryMetadata,omitempty" tf:"registry_metadata,omitempty"`
 
 	// The number of retry attempts.
-	RetryAttempts *float64 `json:"retryAttempts,omitempty" tf:"retry_attempts,omitempty"`
+	RetryAttempts *int64 `json:"retryAttempts,omitempty" tf:"retry_attempts,omitempty"`
 
 	// (Updatable) The retry delay, the unit for measurement is in the property retry delay unit.
 	RetryDelay *float64 `json:"retryDelay,omitempty" tf:"retry_delay,omitempty"`
@@ -967,15 +963,15 @@ type WorkspaceApplicationTaskScheduleParameters struct {
 
 	// (Updatable) The number of retries.
 	// +kubebuilder:validation:Optional
-	NumberOfRetries *float64 `json:"numberOfRetries,omitempty" tf:"number_of_retries,omitempty"`
+	NumberOfRetries *int64 `json:"numberOfRetries,omitempty" tf:"number_of_retries,omitempty"`
 
 	// (Updatable) The status of an object that can be set to value 1 for shallow references across objects, other values reserved.
 	// +kubebuilder:validation:Optional
-	ObjectStatus *float64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
+	ObjectStatus *int64 `json:"objectStatus,omitempty" tf:"object_status,omitempty"`
 
 	// (Updatable) This is used by the service for optimistic locking of the object, to prevent multiple users from simultaneously updating the object.
 	// +kubebuilder:validation:Optional
-	ObjectVersion *float64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
+	ObjectVersion *int64 `json:"objectVersion,omitempty" tf:"object_version,omitempty"`
 
 	// (Updatable) A reference to the object's parent.
 	// +kubebuilder:validation:Optional
@@ -1060,7 +1056,7 @@ type WorkspaceApplicationTaskScheduleRegistryMetadataInitParameters struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Updatable) The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type WorkspaceApplicationTaskScheduleRegistryMetadataObservation struct {
@@ -1078,7 +1074,7 @@ type WorkspaceApplicationTaskScheduleRegistryMetadataObservation struct {
 	Labels []*string `json:"labels,omitempty" tf:"labels,omitempty"`
 
 	// (Updatable) The registry version.
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 type WorkspaceApplicationTaskScheduleRegistryMetadataParameters struct {
@@ -1101,7 +1097,7 @@ type WorkspaceApplicationTaskScheduleRegistryMetadataParameters struct {
 
 	// (Updatable) The registry version.
 	// +kubebuilder:validation:Optional
-	RegistryVersion *float64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
+	RegistryVersion *int64 `json:"registryVersion,omitempty" tf:"registry_version,omitempty"`
 }
 
 // WorkspaceApplicationTaskScheduleSpec defines the desired state of WorkspaceApplicationTaskSchedule

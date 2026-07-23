@@ -136,7 +136,8 @@ spec:
                           type: string
                         value:
                           description: (Updatable) The unique identifier of the ApprovalWorkflowStep.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   name:
@@ -258,7 +259,8 @@ spec:
                           type: string
                         value:
                           description: (Updatable) The unique identifier of the ApprovalWorkflowStep.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   name:
@@ -426,7 +428,8 @@ spec:
                           type: string
                         order:
                           description: (Updatable) The order of the ApprovalWorkflowSteps.
-                          type: number
+                          format: int64
+                          type: integer
                         ref:
                           description: (Updatable) ApprovalWorkflowSteps URI
                           type: string
@@ -565,7 +568,8 @@ spec:
                           type: string
                         value:
                           description: (Updatable) The unique identifier of the ApprovalWorkflowStep.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   meta:

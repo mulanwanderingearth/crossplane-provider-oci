@@ -22,10 +22,10 @@ type AdditionalEgressRulesInitParameters struct {
 	DestinationCidr *string `json:"destinationCidr,omitempty" tf:"destination_cidr,omitempty"`
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	MaxDestinationPort *float64 `json:"maxDestinationPort,omitempty" tf:"max_destination_port,omitempty"`
+	MaxDestinationPort *int64 `json:"maxDestinationPort,omitempty" tf:"max_destination_port,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	MinDestinationPort *float64 `json:"minDestinationPort,omitempty" tf:"min_destination_port,omitempty"`
+	MinDestinationPort *int64 `json:"minDestinationPort,omitempty" tf:"min_destination_port,omitempty"`
 }
 
 type AdditionalEgressRulesObservation struct {
@@ -37,10 +37,10 @@ type AdditionalEgressRulesObservation struct {
 	DestinationCidr *string `json:"destinationCidr,omitempty" tf:"destination_cidr,omitempty"`
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	MaxDestinationPort *float64 `json:"maxDestinationPort,omitempty" tf:"max_destination_port,omitempty"`
+	MaxDestinationPort *int64 `json:"maxDestinationPort,omitempty" tf:"max_destination_port,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	MinDestinationPort *float64 `json:"minDestinationPort,omitempty" tf:"min_destination_port,omitempty"`
+	MinDestinationPort *int64 `json:"minDestinationPort,omitempty" tf:"min_destination_port,omitempty"`
 }
 
 type AdditionalEgressRulesParameters struct {
@@ -55,11 +55,11 @@ type AdditionalEgressRulesParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	MaxDestinationPort *float64 `json:"maxDestinationPort" tf:"max_destination_port,omitempty"`
+	MaxDestinationPort *int64 `json:"maxDestinationPort" tf:"max_destination_port,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	MinDestinationPort *float64 `json:"minDestinationPort" tf:"min_destination_port,omitempty"`
+	MinDestinationPort *int64 `json:"minDestinationPort" tf:"min_destination_port,omitempty"`
 }
 
 type ConditionsInitParameters struct {
@@ -167,15 +167,13 @@ type FusionEnvironmentInitParameters struct {
 	DNSPrefix *string `json:"dnsPrefix,omitempty" tf:"dns_prefix,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) FusionEnvironment Identifier can be renamed.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The unique identifier (OCID) of the Fusion Environment Family that the Fusion Environment belongs to.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/fusionapps/v1alpha1.FusionEnvironmentFamily
@@ -237,8 +235,7 @@ type FusionEnvironmentObservation struct {
 	DNSPrefix *string `json:"dnsPrefix,omitempty" tf:"dns_prefix,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) FusionEnvironment Identifier can be renamed.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -247,8 +244,7 @@ type FusionEnvironmentObservation struct {
 	DomainID *string `json:"domainId,omitempty" tf:"domain_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The unique identifier (OCID) of the Fusion Environment Family that the Fusion Environment belongs to.
 	FusionEnvironmentFamilyID *string `json:"fusionEnvironmentFamilyId,omitempty" tf:"fusion_environment_family_id,omitempty"`
@@ -347,8 +343,7 @@ type FusionEnvironmentParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) FusionEnvironment Identifier can be renamed.
 	// +kubebuilder:validation:Optional
@@ -356,8 +351,7 @@ type FusionEnvironmentParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The unique identifier (OCID) of the Fusion Environment Family that the Fusion Environment belongs to.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/fusionapps/v1alpha1.FusionEnvironmentFamily

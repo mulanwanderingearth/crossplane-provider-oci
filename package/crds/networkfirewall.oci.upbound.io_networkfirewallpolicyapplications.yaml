@@ -82,11 +82,13 @@ spec:
                   icmpCode:
                     description: (Updatable) The value of the ICMP/ICMP_V6 message
                       code (subtype) field as defined by RFC 4443.
-                    type: number
+                    format: int64
+                    type: integer
                   icmpType:
                     description: (Updatable) The value of the ICMP/ICMP_V6 message
                       type field as defined by RFC 4443.
-                    type: number
+                    format: int64
+                    type: integer
                   name:
                     description: Name of the application
                     type: string
@@ -194,11 +196,13 @@ spec:
                   icmpCode:
                     description: (Updatable) The value of the ICMP/ICMP_V6 message
                       code (subtype) field as defined by RFC 4443.
-                    type: number
+                    format: int64
+                    type: integer
                   icmpType:
                     description: (Updatable) The value of the ICMP/ICMP_V6 message
                       type field as defined by RFC 4443.
-                    type: number
+                    format: int64
+                    type: integer
                   name:
                     description: Name of the application
                     type: string
@@ -400,11 +404,13 @@ spec:
                   icmpCode:
                     description: (Updatable) The value of the ICMP/ICMP_V6 message
                       code (subtype) field as defined by RFC 4443.
-                    type: number
+                    format: int64
+                    type: integer
                   icmpType:
                     description: (Updatable) The value of the ICMP/ICMP_V6 message
                       type field as defined by RFC 4443.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     type: string
                   name:

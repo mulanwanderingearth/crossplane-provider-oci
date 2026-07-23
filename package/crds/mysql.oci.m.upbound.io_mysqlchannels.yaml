@@ -151,7 +151,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) User provided information about the Channel.
                     type: string
@@ -166,7 +165,6 @@ spec:
                       any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isEnabled:
                     description: (Updatable) Whether the Channel should be enabled
                       upon creation. If set to true, the Channel will be asynchronously
@@ -244,7 +242,8 @@ spec:
                         port:
                           description: (Updatable) The port the source MySQL instance
                             listens on.
-                          type: number
+                          format: int64
+                          type: integer
                         sourceType:
                           description: (Updatable) The specific source identifier.
                           type: string
@@ -459,7 +458,8 @@ spec:
                           description: (Updatable) Specifies the amount of time, in
                             seconds, that the channel waits before  applying a transaction
                             received from the source.
-                          type: number
+                          format: int64
+                          type: integer
                         filters:
                           description: (Updatable) Replication filter rules to be
                             applied at the DB System Channel target.
@@ -592,7 +592,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) User provided information about the Channel.
                     type: string
@@ -607,7 +606,6 @@ spec:
                       any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isEnabled:
                     description: (Updatable) Whether the Channel should be enabled
                       upon creation. If set to true, the Channel will be asynchronously
@@ -685,7 +683,8 @@ spec:
                         port:
                           description: (Updatable) The port the source MySQL instance
                             listens on.
-                          type: number
+                          format: int64
+                          type: integer
                         sourceType:
                           description: (Updatable) The specific source identifier.
                           type: string
@@ -902,7 +901,8 @@ spec:
                           description: (Updatable) Specifies the amount of time, in
                             seconds, that the channel waits before  applying a transaction
                             received from the source.
-                          type: number
+                          format: int64
+                          type: integer
                         filters:
                           description: (Updatable) Replication filter rules to be
                             applied at the DB System Channel target.
@@ -1014,7 +1014,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) User provided information about the Channel.
                     type: string
@@ -1029,7 +1028,6 @@ spec:
                       any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   isEnabled:
@@ -1096,7 +1094,8 @@ spec:
                         port:
                           description: (Updatable) The port the source MySQL instance
                             listens on.
-                          type: number
+                          format: int64
+                          type: integer
                         sourceType:
                           description: (Updatable) The specific source identifier.
                           type: string
@@ -1135,7 +1134,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   target:
                     description: (Updatable) Parameters detailing how to provision
                       the target for the given Channel.
@@ -1158,7 +1156,8 @@ spec:
                           description: (Updatable) Specifies the amount of time, in
                             seconds, that the channel waits before  applying a transaction
                             received from the source.
-                          type: number
+                          format: int64
+                          type: integer
                         filters:
                           description: (Updatable) Replication filter rules to be
                             applied at the DB System Channel target.

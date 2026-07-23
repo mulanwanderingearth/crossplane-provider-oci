@@ -115,7 +115,7 @@ func (in *AttachmentDetailsInitParameters) DeepCopyInto(out *AttachmentDetailsIn
 	}
 	if in.CapacityValue != nil {
 		in, out := &in.CapacityValue, &out.CapacityValue
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IdcsDomainID != nil {
@@ -183,7 +183,7 @@ func (in *AttachmentDetailsObservation) DeepCopyInto(out *AttachmentDetailsObser
 	}
 	if in.CapacityValue != nil {
 		in, out := &in.CapacityValue, &out.CapacityValue
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IdcsDomainID != nil {
@@ -241,7 +241,7 @@ func (in *AttachmentDetailsParameters) DeepCopyInto(out *AttachmentDetailsParame
 	}
 	if in.CapacityValue != nil {
 		in, out := &in.CapacityValue, &out.CapacityValue
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IdcsDomainID != nil {
@@ -319,7 +319,7 @@ func (in *DataPopulationObservation) DeepCopyInto(out *DataPopulationObservation
 	*out = *in
 	if in.InProgressCount != nil {
 		in, out := &in.InProgressCount, &out.InProgressCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Status != nil {
@@ -329,7 +329,7 @@ func (in *DataPopulationObservation) DeepCopyInto(out *DataPopulationObservation
 	}
 	if in.SucceededCount != nil {
 		in, out := &in.SucceededCount, &out.SucceededCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TimeEnded != nil {
@@ -344,7 +344,7 @@ func (in *DataPopulationObservation) DeepCopyInto(out *DataPopulationObservation
 	}
 	if in.TotalCount != nil {
 		in, out := &in.TotalCount, &out.TotalCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -498,18 +498,9 @@ func (in *MonitoredRegionObservation) DeepCopyInto(out *MonitoredRegionObservati
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -828,23 +819,14 @@ func (in *ResourceAnalyticsInstanceInitParameters) DeepCopyInto(out *ResourceAna
 	}
 	if in.ComputeCount != nil {
 		in, out := &in.ComputeCount, &out.ComputeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -859,18 +841,9 @@ func (in *ResourceAnalyticsInstanceInitParameters) DeepCopyInto(out *ResourceAna
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsMutualTLSRequired != nil {
@@ -1210,23 +1183,14 @@ func (in *ResourceAnalyticsInstanceObservation) DeepCopyInto(out *ResourceAnalyt
 	}
 	if in.ComputeCount != nil {
 		in, out := &in.ComputeCount, &out.ComputeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1241,18 +1205,9 @@ func (in *ResourceAnalyticsInstanceObservation) DeepCopyInto(out *ResourceAnalyt
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1303,18 +1258,9 @@ func (in *ResourceAnalyticsInstanceObservation) DeepCopyInto(out *ResourceAnalyt
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1366,23 +1312,14 @@ func (in *ResourceAnalyticsInstanceParameters) DeepCopyInto(out *ResourceAnalyti
 	}
 	if in.ComputeCount != nil {
 		in, out := &in.ComputeCount, &out.ComputeCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -1397,18 +1334,9 @@ func (in *ResourceAnalyticsInstanceParameters) DeepCopyInto(out *ResourceAnalyti
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsMutualTLSRequired != nil {
@@ -1640,18 +1568,9 @@ func (in *TenancyAttachmentObservation) DeepCopyInto(out *TenancyAttachmentObser
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TenancyID != nil {

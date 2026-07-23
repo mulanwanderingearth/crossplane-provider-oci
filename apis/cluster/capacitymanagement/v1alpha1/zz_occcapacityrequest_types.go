@@ -182,8 +182,7 @@ type OccCapacityRequestInitParameters struct {
 	DateExpectedCapacityHandover *string `json:"dateExpectedCapacityHandover,omitempty" tf:"date_expected_capacity_handover,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Meaningful text about the capacity request.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -195,8 +194,7 @@ type OccCapacityRequestInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A message describing the current state in more detail. For example, can be used to provide actionable information for a resource in a Failed State.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
@@ -242,8 +240,7 @@ type OccCapacityRequestObservation struct {
 	DateExpectedCapacityHandover *string `json:"dateExpectedCapacityHandover,omitempty" tf:"date_expected_capacity_handover,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Meaningful text about the capacity request.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -255,8 +252,7 @@ type OccCapacityRequestObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the capacity request.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -289,8 +285,7 @@ type OccCapacityRequestObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time when the capacity request was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -324,8 +319,7 @@ type OccCapacityRequestParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Meaningful text about the capacity request.
 	// +kubebuilder:validation:Optional
@@ -341,8 +335,7 @@ type OccCapacityRequestParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A message describing the current state in more detail. For example, can be used to provide actionable information for a resource in a Failed State.
 	// +kubebuilder:validation:Optional
@@ -401,8 +394,7 @@ type PatchOperationsInitParameters struct {
 	Selection *string `json:"selection,omitempty" tf:"selection,omitempty"`
 
 	// (Updatable)
-	// +mapType=granular
-	Value map[string]*string `json:"value,omitempty" tf:"value,omitempty"`
+	Value map[string]string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type PatchOperationsObservation struct {
@@ -423,8 +415,7 @@ type PatchOperationsObservation struct {
 	Selection *string `json:"selection,omitempty" tf:"selection,omitempty"`
 
 	// (Updatable)
-	// +mapType=granular
-	Value map[string]*string `json:"value,omitempty" tf:"value,omitempty"`
+	Value map[string]string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type PatchOperationsParameters struct {
@@ -451,8 +442,7 @@ type PatchOperationsParameters struct {
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Value map[string]*string `json:"value" tf:"value,omitempty"`
+	Value map[string]string `json:"value" tf:"value,omitempty"`
 }
 
 // OccCapacityRequestSpec defines the desired state of OccCapacityRequest

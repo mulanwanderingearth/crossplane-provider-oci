@@ -108,7 +108,7 @@ type NetworkLoadBalancersBackendSetsUnifiedBackendsInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The IP OCID/Instance OCID associated with the backend server. Example: ocid1.privateip..oc1.<var>&lt;unique_ID&gt;</var>
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudguard/v1alpha1.Target
@@ -124,7 +124,7 @@ type NetworkLoadBalancersBackendSetsUnifiedBackendsInitParameters struct {
 	TargetIDSelector *v1.Selector `json:"targetIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The network load balancing policy weight assigned to the server. Backend servers with a higher weight receive a larger proportion of incoming traffic. For example, a server weighted '3' receives three times the number of new connections as a server weighted '1'. For more information about load balancing policies, see Network Load Balancer Policies.  Example: 3
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type NetworkLoadBalancersBackendSetsUnifiedBackendsObservation struct {
@@ -145,13 +145,13 @@ type NetworkLoadBalancersBackendSetsUnifiedBackendsObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The IP OCID/Instance OCID associated with the backend server. Example: ocid1.privateip..oc1.<var>&lt;unique_ID&gt;</var>
 	TargetID *string `json:"targetId,omitempty" tf:"target_id,omitempty"`
 
 	// (Updatable) The network load balancing policy weight assigned to the server. Backend servers with a higher weight receive a larger proportion of incoming traffic. For example, a server weighted '3' receives three times the number of new connections as a server weighted '1'. For more information about load balancing policies, see Network Load Balancer Policies.  Example: 3
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type NetworkLoadBalancersBackendSetsUnifiedBackendsParameters struct {
@@ -178,7 +178,7 @@ type NetworkLoadBalancersBackendSetsUnifiedBackendsParameters struct {
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port" tf:"port,omitempty"`
+	Port *int64 `json:"port" tf:"port,omitempty"`
 
 	// (Updatable) The IP OCID/Instance OCID associated with the backend server. Example: ocid1.privateip..oc1.<var>&lt;unique_ID&gt;</var>
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/cloudguard/v1alpha1.Target
@@ -196,7 +196,7 @@ type NetworkLoadBalancersBackendSetsUnifiedBackendsParameters struct {
 
 	// (Updatable) The network load balancing policy weight assigned to the server. Backend servers with a higher weight receive a larger proportion of incoming traffic. For example, a server weighted '3' receives three times the number of new connections as a server weighted '1'. For more information about load balancing policies, see Network Load Balancer Policies.  Example: 3
 	// +kubebuilder:validation:Optional
-	Weight *float64 `json:"weight,omitempty" tf:"weight,omitempty"`
+	Weight *int64 `json:"weight,omitempty" tf:"weight,omitempty"`
 }
 
 type NetworkLoadBalancersBackendSetsUnifiedHealthCheckerInitParameters struct {
@@ -205,10 +205,10 @@ type NetworkLoadBalancersBackendSetsUnifiedHealthCheckerInitParameters struct {
 	DNS []HealthCheckerDNSInitParameters `json:"dns,omitempty" tf:"dns,omitempty"`
 
 	// (Updatable) The interval between health checks, in milliseconds. The default value is 10000 (10 seconds).  Example: 10000
-	IntervalInMillis *float64 `json:"intervalInMillis,omitempty" tf:"interval_in_millis,omitempty"`
+	IntervalInMillis *int64 `json:"intervalInMillis,omitempty" tf:"interval_in_millis,omitempty"`
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol the health check must use; either HTTP or HTTPS, or UDP or TCP.  Example: HTTP
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -223,13 +223,13 @@ type NetworkLoadBalancersBackendSetsUnifiedHealthCheckerInitParameters struct {
 	ResponseData *string `json:"responseData,omitempty" tf:"response_data,omitempty"`
 
 	// (Updatable) The number of retries to attempt before a backend server is considered "unhealthy". This number also applies when recovering a server to the "healthy" state. The default value is 3.  Example: 3
-	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
+	Retries *int64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
 	// (Updatable) The status code a healthy backend server should return. If you configure the health check policy to use the HTTP protocol, then you can use common HTTP status codes such as "200".  Example: 200
-	ReturnCode *float64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
+	ReturnCode *int64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
 
 	// (Updatable) The maximum time, in milliseconds, to wait for a reply to a health check. A health check is successful only if a reply returns within this timeout period. The default value is 3000 (3 seconds).  Example: 3000
-	TimeoutInMillis *float64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
+	TimeoutInMillis *int64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
 
 	// (Updatable) The path against which to run the health check.  Example: /healthcheck
 	URLPath *string `json:"urlPath,omitempty" tf:"url_path,omitempty"`
@@ -241,10 +241,10 @@ type NetworkLoadBalancersBackendSetsUnifiedHealthCheckerObservation struct {
 	DNS []HealthCheckerDNSObservation `json:"dns,omitempty" tf:"dns,omitempty"`
 
 	// (Updatable) The interval between health checks, in milliseconds. The default value is 10000 (10 seconds).  Example: 10000
-	IntervalInMillis *float64 `json:"intervalInMillis,omitempty" tf:"interval_in_millis,omitempty"`
+	IntervalInMillis *int64 `json:"intervalInMillis,omitempty" tf:"interval_in_millis,omitempty"`
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol the health check must use; either HTTP or HTTPS, or UDP or TCP.  Example: HTTP
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -259,13 +259,13 @@ type NetworkLoadBalancersBackendSetsUnifiedHealthCheckerObservation struct {
 	ResponseData *string `json:"responseData,omitempty" tf:"response_data,omitempty"`
 
 	// (Updatable) The number of retries to attempt before a backend server is considered "unhealthy". This number also applies when recovering a server to the "healthy" state. The default value is 3.  Example: 3
-	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
+	Retries *int64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
 	// (Updatable) The status code a healthy backend server should return. If you configure the health check policy to use the HTTP protocol, then you can use common HTTP status codes such as "200".  Example: 200
-	ReturnCode *float64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
+	ReturnCode *int64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
 
 	// (Updatable) The maximum time, in milliseconds, to wait for a reply to a health check. A health check is successful only if a reply returns within this timeout period. The default value is 3000 (3 seconds).  Example: 3000
-	TimeoutInMillis *float64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
+	TimeoutInMillis *int64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
 
 	// (Updatable) The path against which to run the health check.  Example: /healthcheck
 	URLPath *string `json:"urlPath,omitempty" tf:"url_path,omitempty"`
@@ -279,11 +279,11 @@ type NetworkLoadBalancersBackendSetsUnifiedHealthCheckerParameters struct {
 
 	// (Updatable) The interval between health checks, in milliseconds. The default value is 10000 (10 seconds).  Example: 10000
 	// +kubebuilder:validation:Optional
-	IntervalInMillis *float64 `json:"intervalInMillis,omitempty" tf:"interval_in_millis,omitempty"`
+	IntervalInMillis *int64 `json:"intervalInMillis,omitempty" tf:"interval_in_millis,omitempty"`
 
 	// (Updatable) The communication port for the backend server.  Example: 8080
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol the health check must use; either HTTP or HTTPS, or UDP or TCP.  Example: HTTP
 	// +kubebuilder:validation:Optional
@@ -303,15 +303,15 @@ type NetworkLoadBalancersBackendSetsUnifiedHealthCheckerParameters struct {
 
 	// (Updatable) The number of retries to attempt before a backend server is considered "unhealthy". This number also applies when recovering a server to the "healthy" state. The default value is 3.  Example: 3
 	// +kubebuilder:validation:Optional
-	Retries *float64 `json:"retries,omitempty" tf:"retries,omitempty"`
+	Retries *int64 `json:"retries,omitempty" tf:"retries,omitempty"`
 
 	// (Updatable) The status code a healthy backend server should return. If you configure the health check policy to use the HTTP protocol, then you can use common HTTP status codes such as "200".  Example: 200
 	// +kubebuilder:validation:Optional
-	ReturnCode *float64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
+	ReturnCode *int64 `json:"returnCode,omitempty" tf:"return_code,omitempty"`
 
 	// (Updatable) The maximum time, in milliseconds, to wait for a reply to a health check. A health check is successful only if a reply returns within this timeout period. The default value is 3000 (3 seconds).  Example: 3000
 	// +kubebuilder:validation:Optional
-	TimeoutInMillis *float64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
+	TimeoutInMillis *int64 `json:"timeoutInMillis,omitempty" tf:"timeout_in_millis,omitempty"`
 
 	// (Updatable) The path against which to run the health check.  Example: /healthcheck
 	// +kubebuilder:validation:Optional

@@ -113,7 +113,6 @@ spec:
                             more information, see Resource Tags.  Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Updatable) A user-friendly name. Does not
                             have to be unique, and it's changeable. Avoid entering
@@ -127,7 +126,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: (Updatable) The hostname for the VNIC's primary
                             private IP. Used for DNS. The value is the hostname portion
@@ -346,7 +344,6 @@ spec:
                             {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42",
                             "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         skipSourceDestCheck:
                           description: (Updatable) Whether the source/destination
                             check is disabled on the VNIC. Defaults to false, which
@@ -618,7 +615,8 @@ spec:
                       VNIC to one of these instances, you can specify which NIC the
                       VNIC will use. For more information, see Virtual Network Interface
                       Cards (VNICs).
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -673,7 +671,6 @@ spec:
                             more information, see Resource Tags.  Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Updatable) A user-friendly name. Does not
                             have to be unique, and it's changeable. Avoid entering
@@ -687,7 +684,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: (Updatable) The hostname for the VNIC's primary
                             private IP. Used for DNS. The value is the hostname portion
@@ -906,7 +902,6 @@ spec:
                             {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42",
                             "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         skipSourceDestCheck:
                           description: (Updatable) Whether the source/destination
                             check is disabled on the VNIC. Defaults to false, which
@@ -1178,7 +1173,8 @@ spec:
                       VNIC to one of these instances, you can specify which NIC the
                       VNIC will use. For more information, see Virtual Network Interface
                       Cards (VNICs).
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -1326,7 +1322,6 @@ spec:
                             more information, see Resource Tags.  Example: {"Operations.CostCenter":
                             "42"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         displayName:
                           description: (Updatable) A user-friendly name. Does not
                             have to be unique, and it's changeable. Avoid entering
@@ -1340,7 +1335,6 @@ spec:
                             name, type, or namespace. For more information, see Resource
                             Tags.  Example: {"Department": "Finance"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         hostnameLabel:
                           description: (Updatable) The hostname for the VNIC's primary
                             private IP. Used for DNS. The value is the hostname portion
@@ -1407,7 +1401,6 @@ spec:
                             {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42",
                             "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}'
                           type: object
-                          x-kubernetes-map-type: granular
                         skipSourceDestCheck:
                           description: (Updatable) Whether the source/destination
                             check is disabled on the VNIC. Defaults to false, which
@@ -1456,7 +1449,8 @@ spec:
                       VNIC to one of these instances, you can specify which NIC the
                       VNIC will use. For more information, see Virtual Network Interface
                       Cards (VNICs).
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of the VNIC attachment.
                     type: string
@@ -1478,7 +1472,8 @@ spec:
                   vlanTag:
                     description: The Oracle-assigned VLAN tag of the attached VNIC.
                       Available after the attachment process is complete.
-                    type: number
+                    format: int64
+                    type: integer
                   vnicId:
                     description: The OCID of the VNIC. Available after the attachment
                       process is complete.

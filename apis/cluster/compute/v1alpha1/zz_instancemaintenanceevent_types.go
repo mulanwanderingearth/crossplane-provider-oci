@@ -22,15 +22,13 @@ type InstanceMaintenanceEventInitParameters struct {
 	CanDeleteLocalStorage *bool `json:"canDeleteLocalStorage,omitempty" tf:"can_delete_local_storage,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the instance maintenance event.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/compute/v1alpha1.InstanceMaintenanceEvent
@@ -52,8 +50,7 @@ type InstanceMaintenanceEventInitParameters struct {
 type InstanceMaintenanceEventObservation struct {
 
 	// Additional details of the maintenance in the form of json.
-	// +mapType=granular
-	AdditionalDetails map[string]*string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
+	AdditionalDetails map[string]string `json:"additionalDetails,omitempty" tf:"additional_details,omitempty"`
 
 	// (Updatable) One of the alternativeResolutionActions that was provided in the InstanceMaintenanceEvent.
 	AlternativeResolutionAction *string `json:"alternativeResolutionAction,omitempty" tf:"alternative_resolution_action,omitempty"`
@@ -77,8 +74,7 @@ type InstanceMaintenanceEventObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// It is the descriptive information about the maintenance taking place on the customer instance.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -90,8 +86,7 @@ type InstanceMaintenanceEventObservation struct {
 	EstimatedDuration *string `json:"estimatedDuration,omitempty" tf:"estimated_duration,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the maintenance event.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -145,8 +140,7 @@ type InstanceMaintenanceEventParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -154,8 +148,7 @@ type InstanceMaintenanceEventParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the instance maintenance event.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/compute/v1alpha1.InstanceMaintenanceEvent

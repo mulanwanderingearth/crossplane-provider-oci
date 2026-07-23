@@ -92,7 +92,6 @@ spec:
                             type: string
                           description: (Updatable)
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   sensitiveTypeGroupId:
@@ -203,7 +202,6 @@ spec:
                             type: string
                           description: (Updatable)
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   sensitiveTypeGroupId:
@@ -407,7 +405,6 @@ spec:
                             type: string
                           description: (Updatable)
                           type: object
-                          x-kubernetes-map-type: granular
                       type: object
                     type: array
                   sensitiveTypeGroupId:

@@ -238,8 +238,7 @@ type ModelInitParameters struct {
 	DefinedMetadataList []DefinedMetadataListInitParameters `json:"definedMetadataList,omitempty" tf:"defined_metadata_list,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of model metadata
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -248,8 +247,7 @@ type ModelInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Input schema file content in String format
 	InputSchema *string `json:"inputSchema,omitempty" tf:"input_schema,omitempty"`
@@ -323,8 +321,7 @@ type ModelObservation struct {
 	DefinedMetadataList []DefinedMetadataListObservation `json:"definedMetadataList,omitempty" tf:"defined_metadata_list,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of model metadata
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -335,8 +332,7 @@ type ModelObservation struct {
 	EmptyModel *bool `json:"emptyModel,omitempty" tf:"empty_model,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the model.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -418,8 +414,7 @@ type ModelParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of model metadata
 	// +kubebuilder:validation:Optional
@@ -431,8 +426,7 @@ type ModelParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Input schema file content in String format
 	// +kubebuilder:validation:Optional
@@ -511,32 +505,32 @@ type RetentionOperationDetailsParameters struct {
 type RetentionSettingInitParameters struct {
 
 	// (Updatable) Number of days after which the model will be archived.
-	ArchiveAfterDays *float64 `json:"archiveAfterDays,omitempty" tf:"archive_after_days,omitempty"`
+	ArchiveAfterDays *int64 `json:"archiveAfterDays,omitempty" tf:"archive_after_days,omitempty"`
 
 	// (Updatable) Customer notification on backup success/failure events.
 	CustomerNotificationType *string `json:"customerNotificationType,omitempty" tf:"customer_notification_type,omitempty"`
 
 	// (Updatable) Number of days after which the archived model will be deleted.
-	DeleteAfterDays *float64 `json:"deleteAfterDays,omitempty" tf:"delete_after_days,omitempty"`
+	DeleteAfterDays *int64 `json:"deleteAfterDays,omitempty" tf:"delete_after_days,omitempty"`
 }
 
 type RetentionSettingObservation struct {
 
 	// (Updatable) Number of days after which the model will be archived.
-	ArchiveAfterDays *float64 `json:"archiveAfterDays,omitempty" tf:"archive_after_days,omitempty"`
+	ArchiveAfterDays *int64 `json:"archiveAfterDays,omitempty" tf:"archive_after_days,omitempty"`
 
 	// (Updatable) Customer notification on backup success/failure events.
 	CustomerNotificationType *string `json:"customerNotificationType,omitempty" tf:"customer_notification_type,omitempty"`
 
 	// (Updatable) Number of days after which the archived model will be deleted.
-	DeleteAfterDays *float64 `json:"deleteAfterDays,omitempty" tf:"delete_after_days,omitempty"`
+	DeleteAfterDays *int64 `json:"deleteAfterDays,omitempty" tf:"delete_after_days,omitempty"`
 }
 
 type RetentionSettingParameters struct {
 
 	// (Updatable) Number of days after which the model will be archived.
 	// +kubebuilder:validation:Optional
-	ArchiveAfterDays *float64 `json:"archiveAfterDays" tf:"archive_after_days,omitempty"`
+	ArchiveAfterDays *int64 `json:"archiveAfterDays" tf:"archive_after_days,omitempty"`
 
 	// (Updatable) Customer notification on backup success/failure events.
 	// +kubebuilder:validation:Optional
@@ -544,7 +538,7 @@ type RetentionSettingParameters struct {
 
 	// (Updatable) Number of days after which the archived model will be deleted.
 	// +kubebuilder:validation:Optional
-	DeleteAfterDays *float64 `json:"deleteAfterDays,omitempty" tf:"delete_after_days,omitempty"`
+	DeleteAfterDays *int64 `json:"deleteAfterDays,omitempty" tf:"delete_after_days,omitempty"`
 }
 
 // ModelSpec defines the desired state of Model

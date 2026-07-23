@@ -81,7 +81,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   endpointType:
                     description: The type of resolver endpoint. VNIC is currently
                       the only supported type.
@@ -99,7 +98,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   isForwarding:
                     description: A Boolean flag indicating whether or not the resolver
                       endpoint is for forwarding.
@@ -293,7 +291,6 @@ spec:
                       (ZPR) policy to control access to ZPR-supported resources.  Example:
                       {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: The OCID of a subnet. Must be part of the VCN that
                       the resolver is attached to.
@@ -393,7 +390,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   endpointType:
                     description: The type of resolver endpoint. VNIC is currently
                       the only supported type.
@@ -411,7 +407,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   isForwarding:
                     description: A Boolean flag indicating whether or not the resolver
                       endpoint is for forwarding.
@@ -605,7 +600,6 @@ spec:
                       (ZPR) policy to control access to ZPR-supported resources.  Example:
                       {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   subnetId:
                     description: The OCID of a subnet. Must be part of the VCN that
                       the resolver is attached to.
@@ -803,7 +797,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   endpointType:
                     description: The type of resolver endpoint. VNIC is currently
                       the only supported type.
@@ -821,7 +814,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   isForwarding:
@@ -868,7 +860,6 @@ spec:
                       (ZPR) policy to control access to ZPR-supported resources.  Example:
                       {"Oracle-DataSecurity-ZPR": {"MaxEgressCount": {"value":"42","mode":"audit"}}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   self:
                     description: The canonical absolute URL of the resource.
                     type: string

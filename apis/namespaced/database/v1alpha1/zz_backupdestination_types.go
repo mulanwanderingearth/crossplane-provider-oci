@@ -62,15 +62,13 @@ type BackupDestinationInitParameters struct {
 	ConnectionString *string `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the backup destination.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=NFS) (Updatable) Deprecated. The local directory path on each VM cluster node where the NFS server location is mounted. The local directory path and the NFS server location must each be the same across all of the VM cluster nodes. Ensure that the NFS mount is maintained continuously on all of the VM cluster nodes. This field is deprecated. Use the mountTypeDetails field instead to specify the mount type for NFS.
 	LocalMountPointPath *string `json:"localMountPointPath,omitempty" tf:"local_mount_point_path,omitempty"`
@@ -91,7 +89,7 @@ type BackupDestinationObservation struct {
 	AssociatedDatabases []AssociatedDatabasesObservation `json:"associatedDatabases,omitempty" tf:"associated_databases,omitempty"`
 
 	// Indicates the number of long term backups of Autonomous Databases associated with this backup destination.
-	AssociatedLongTermBackupCount *float64 `json:"associatedLongTermBackupCount,omitempty" tf:"associated_long_term_backup_count,omitempty"`
+	AssociatedLongTermBackupCount *int64 `json:"associatedLongTermBackupCount,omitempty" tf:"associated_long_term_backup_count,omitempty"`
 
 	// List of long term backups of Autonomous Databases associated with this backup destination.The maximum associated number of long term backup listed here would be 1024.
 	AssociatedLongTermBackups []AssociatedLongTermBackupsObservation `json:"associatedLongTermBackups,omitempty" tf:"associated_long_term_backups,omitempty"`
@@ -103,15 +101,13 @@ type BackupDestinationObservation struct {
 	ConnectionString *string `json:"connectionString,omitempty" tf:"connection_string,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the backup destination.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The database OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -138,8 +134,7 @@ type BackupDestinationObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time when the total storage size and the utilized storage size of the backup destination are updated.
 	TimeAtWhichStorageDetailsAreUpdated *string `json:"timeAtWhichStorageDetailsAreUpdated,omitempty" tf:"time_at_which_storage_details_are_updated,omitempty"`
@@ -148,13 +143,13 @@ type BackupDestinationObservation struct {
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
 	// The total storage size of the backup destination in GBs, rounded to the nearest integer.
-	TotalStorageSizeInGbs *float64 `json:"totalStorageSizeInGbs,omitempty" tf:"total_storage_size_in_gbs,omitempty"`
+	TotalStorageSizeInGbs *int64 `json:"totalStorageSizeInGbs,omitempty" tf:"total_storage_size_in_gbs,omitempty"`
 
 	// Type of the backup destination.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
 	// The total amount of space utilized on the backup destination (in GBs), rounded to the nearest integer.
-	UtilizedStorageSizeInGbs *float64 `json:"utilizedStorageSizeInGbs,omitempty" tf:"utilized_storage_size_in_gbs,omitempty"`
+	UtilizedStorageSizeInGbs *int64 `json:"utilizedStorageSizeInGbs,omitempty" tf:"utilized_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The Virtual Private Catalog (VPC) users that are used to access the Recovery Appliance.
 	VPCUsers []*string `json:"vpcUsers,omitempty" tf:"vpc_users,omitempty"`
@@ -181,8 +176,7 @@ type BackupDestinationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-provided name of the backup destination.
 	// +kubebuilder:validation:Optional
@@ -190,8 +184,7 @@ type BackupDestinationParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when type=NFS) (Updatable) Deprecated. The local directory path on each VM cluster node where the NFS server location is mounted. The local directory path and the NFS server location must each be the same across all of the VM cluster nodes. Ensure that the NFS mount is maintained continuously on all of the VM cluster nodes. This field is deprecated. Use the mountTypeDetails field instead to specify the mount type for NFS.
 	// +kubebuilder:validation:Optional

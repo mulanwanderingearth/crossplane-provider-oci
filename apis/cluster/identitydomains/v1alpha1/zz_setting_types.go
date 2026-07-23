@@ -25,7 +25,7 @@ type CertificateValidationInitParameters struct {
 	CrlLocation *string `json:"crlLocation,omitempty" tf:"crl_location,omitempty"`
 
 	// (Updatable) The CRL refresh interval in minutes
-	CrlRefreshInterval *float64 `json:"crlRefreshInterval,omitempty" tf:"crl_refresh_interval,omitempty"`
+	CrlRefreshInterval *int64 `json:"crlRefreshInterval,omitempty" tf:"crl_refresh_interval,omitempty"`
 
 	// (Updatable) OCSP is enabled Configuration
 	OcspEnabled *bool `json:"ocspEnabled,omitempty" tf:"ocsp_enabled,omitempty"`
@@ -40,7 +40,7 @@ type CertificateValidationInitParameters struct {
 	OcspSigningCertificateAlias *string `json:"ocspSigningCertificateAlias,omitempty" tf:"ocsp_signing_certificate_alias,omitempty"`
 
 	// (Updatable) The OCSP Timeout duration in minutes
-	OcspTimeoutDuration *float64 `json:"ocspTimeoutDuration,omitempty" tf:"ocsp_timeout_duration,omitempty"`
+	OcspTimeoutDuration *int64 `json:"ocspTimeoutDuration,omitempty" tf:"ocsp_timeout_duration,omitempty"`
 
 	// (Updatable) OCSP Accept unknown response status from ocsp responder.
 	OcspUnknownResponseStatusAllowed *bool `json:"ocspUnknownResponseStatusAllowed,omitempty" tf:"ocsp_unknown_response_status_allowed,omitempty"`
@@ -58,7 +58,7 @@ type CertificateValidationObservation struct {
 	CrlLocation *string `json:"crlLocation,omitempty" tf:"crl_location,omitempty"`
 
 	// (Updatable) The CRL refresh interval in minutes
-	CrlRefreshInterval *float64 `json:"crlRefreshInterval,omitempty" tf:"crl_refresh_interval,omitempty"`
+	CrlRefreshInterval *int64 `json:"crlRefreshInterval,omitempty" tf:"crl_refresh_interval,omitempty"`
 
 	// (Updatable) OCSP is enabled Configuration
 	OcspEnabled *bool `json:"ocspEnabled,omitempty" tf:"ocsp_enabled,omitempty"`
@@ -73,7 +73,7 @@ type CertificateValidationObservation struct {
 	OcspSigningCertificateAlias *string `json:"ocspSigningCertificateAlias,omitempty" tf:"ocsp_signing_certificate_alias,omitempty"`
 
 	// (Updatable) The OCSP Timeout duration in minutes
-	OcspTimeoutDuration *float64 `json:"ocspTimeoutDuration,omitempty" tf:"ocsp_timeout_duration,omitempty"`
+	OcspTimeoutDuration *int64 `json:"ocspTimeoutDuration,omitempty" tf:"ocsp_timeout_duration,omitempty"`
 
 	// (Updatable) OCSP Accept unknown response status from ocsp responder.
 	OcspUnknownResponseStatusAllowed *bool `json:"ocspUnknownResponseStatusAllowed,omitempty" tf:"ocsp_unknown_response_status_allowed,omitempty"`
@@ -95,7 +95,7 @@ type CertificateValidationParameters struct {
 
 	// (Updatable) The CRL refresh interval in minutes
 	// +kubebuilder:validation:Optional
-	CrlRefreshInterval *float64 `json:"crlRefreshInterval,omitempty" tf:"crl_refresh_interval,omitempty"`
+	CrlRefreshInterval *int64 `json:"crlRefreshInterval,omitempty" tf:"crl_refresh_interval,omitempty"`
 
 	// (Updatable) OCSP is enabled Configuration
 	// +kubebuilder:validation:Optional
@@ -115,7 +115,7 @@ type CertificateValidationParameters struct {
 
 	// (Updatable) The OCSP Timeout duration in minutes
 	// +kubebuilder:validation:Optional
-	OcspTimeoutDuration *float64 `json:"ocspTimeoutDuration,omitempty" tf:"ocsp_timeout_duration,omitempty"`
+	OcspTimeoutDuration *int64 `json:"ocspTimeoutDuration,omitempty" tf:"ocsp_timeout_duration,omitempty"`
 
 	// (Updatable) OCSP Accept unknown response status from ocsp responder.
 	// +kubebuilder:validation:Optional
@@ -137,7 +137,7 @@ type CloudGateCorsSettingsInitParameters struct {
 	CloudGateCorsExposedHeaders []*string `json:"cloudGateCorsExposedHeaders,omitempty" tf:"cloud_gate_cors_exposed_headers,omitempty"`
 
 	// (Updatable) Maximum number of seconds a CORS Pre-flight Response may be cached by client.
-	CloudGateCorsMaxAge *float64 `json:"cloudGateCorsMaxAge,omitempty" tf:"cloud_gate_cors_max_age,omitempty"`
+	CloudGateCorsMaxAge *int64 `json:"cloudGateCorsMaxAge,omitempty" tf:"cloud_gate_cors_max_age,omitempty"`
 }
 
 type CloudGateCorsSettingsObservation struct {
@@ -155,7 +155,7 @@ type CloudGateCorsSettingsObservation struct {
 	CloudGateCorsExposedHeaders []*string `json:"cloudGateCorsExposedHeaders,omitempty" tf:"cloud_gate_cors_exposed_headers,omitempty"`
 
 	// (Updatable) Maximum number of seconds a CORS Pre-flight Response may be cached by client.
-	CloudGateCorsMaxAge *float64 `json:"cloudGateCorsMaxAge,omitempty" tf:"cloud_gate_cors_max_age,omitempty"`
+	CloudGateCorsMaxAge *int64 `json:"cloudGateCorsMaxAge,omitempty" tf:"cloud_gate_cors_max_age,omitempty"`
 }
 
 type CloudGateCorsSettingsParameters struct {
@@ -178,7 +178,7 @@ type CloudGateCorsSettingsParameters struct {
 
 	// (Updatable) Maximum number of seconds a CORS Pre-flight Response may be cached by client.
 	// +kubebuilder:validation:Optional
-	CloudGateCorsMaxAge *float64 `json:"cloudGateCorsMaxAge,omitempty" tf:"cloud_gate_cors_max_age,omitempty"`
+	CloudGateCorsMaxAge *int64 `json:"cloudGateCorsMaxAge,omitempty" tf:"cloud_gate_cors_max_age,omitempty"`
 }
 
 type CompanyNamesInitParameters struct {
@@ -211,6 +211,12 @@ type CompanyNamesParameters struct {
 }
 
 type DefaultCompanyNamesInitParameters struct {
+
+	// (Updatable) Locale
+	Locale *string `json:"locale,omitempty" tf:"locale,omitempty"`
+
+	// (Updatable) Company name
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DefaultCompanyNamesObservation struct {
@@ -223,9 +229,26 @@ type DefaultCompanyNamesObservation struct {
 }
 
 type DefaultCompanyNamesParameters struct {
+
+	// (Updatable) Locale
+	// +kubebuilder:validation:Optional
+	Locale *string `json:"locale" tf:"locale,omitempty"`
+
+	// (Updatable) Company name
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type DefaultImagesInitParameters struct {
+
+	// (Updatable) A human-readable name, primarily used for display purposes
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) Indicates the image type
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Company name
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DefaultImagesObservation struct {
@@ -241,9 +264,27 @@ type DefaultImagesObservation struct {
 }
 
 type DefaultImagesParameters struct {
+
+	// (Updatable) A human-readable name, primarily used for display purposes
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) Indicates the image type
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type" tf:"type,omitempty"`
+
+	// (Updatable) Company name
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type DefaultLoginTextsInitParameters struct {
+
+	// (Updatable) Locale
+	Locale *string `json:"locale,omitempty" tf:"locale,omitempty"`
+
+	// (Updatable) Company name
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DefaultLoginTextsObservation struct {
@@ -256,6 +297,14 @@ type DefaultLoginTextsObservation struct {
 }
 
 type DefaultLoginTextsParameters struct {
+
+	// (Updatable) Locale
+	// +kubebuilder:validation:Optional
+	Locale *string `json:"locale" tf:"locale,omitempty"`
+
+	// (Updatable) Company name
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type ImagesInitParameters struct {
@@ -332,7 +381,7 @@ type PurgeConfigsInitParameters struct {
 	ResourceName *string `json:"resourceName,omitempty" tf:"resource_name,omitempty"`
 
 	// (Updatable) Retention Period
-	RetentionPeriod *float64 `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
+	RetentionPeriod *int64 `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
 }
 
 type PurgeConfigsObservation struct {
@@ -341,7 +390,7 @@ type PurgeConfigsObservation struct {
 	ResourceName *string `json:"resourceName,omitempty" tf:"resource_name,omitempty"`
 
 	// (Updatable) Retention Period
-	RetentionPeriod *float64 `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
+	RetentionPeriod *int64 `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
 }
 
 type PurgeConfigsParameters struct {
@@ -352,10 +401,22 @@ type PurgeConfigsParameters struct {
 
 	// (Updatable) Retention Period
 	// +kubebuilder:validation:Optional
-	RetentionPeriod *float64 `json:"retentionPeriod" tf:"retention_period,omitempty"`
+	RetentionPeriod *int64 `json:"retentionPeriod" tf:"retention_period,omitempty"`
 }
 
 type SettingIdcsCreatedByInitParameters struct {
+
+	// (Updatable) A human-readable name, primarily used for display purposes
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Indicates the image type
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Company name
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SettingIdcsCreatedByObservation struct {
@@ -377,9 +438,37 @@ type SettingIdcsCreatedByObservation struct {
 }
 
 type SettingIdcsCreatedByParameters struct {
+
+	// (Updatable) A human-readable name, primarily used for display purposes
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Indicates the image type
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Company name
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type SettingIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) A human-readable name, primarily used for display purposes
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Indicates the image type
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Company name
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SettingIdcsLastModifiedByObservation struct {
@@ -401,6 +490,22 @@ type SettingIdcsLastModifiedByObservation struct {
 }
 
 type SettingIdcsLastModifiedByParameters struct {
+
+	// (Updatable) A human-readable name, primarily used for display purposes
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Indicates the image type
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Company name
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type SettingInitParameters struct {
@@ -423,7 +528,7 @@ type SettingInitParameters struct {
 	Attributes *string `json:"attributes,omitempty" tf:"attributes,omitempty"`
 
 	// (Updatable) Audit Event retention period. If set, overrides default of 30 days after which Audit Events will be purged
-	AuditEventRetentionPeriod *float64 `json:"auditEventRetentionPeriod,omitempty" tf:"audit_event_retention_period,omitempty"`
+	AuditEventRetentionPeriod *int64 `json:"auditEventRetentionPeriod,omitempty" tf:"audit_event_retention_period,omitempty"`
 
 	// (Updatable) The Authorization field value consists of credentials containing the authentication information of the user agent for the realm of the resource being requested.
 	Authorization *string `json:"authorization,omitempty" tf:"authorization,omitempty"`
@@ -465,7 +570,7 @@ type SettingInitParameters struct {
 	DefaultTrustScope *string `json:"defaultTrustScope,omitempty" tf:"default_trust_scope,omitempty"`
 
 	// (Updatable) The level of diagnostic logging that is currently in effect. A level of 0 (zero) indicates that diagnostic logging is disabled. A level of 1 (one) indicates that diagnostic logging is enabled.
-	DiagnosticLevel *float64 `json:"diagnosticLevel,omitempty" tf:"diagnostic_level,omitempty"`
+	DiagnosticLevel *int64 `json:"diagnosticLevel,omitempty" tf:"diagnostic_level,omitempty"`
 
 	// (Updatable) Controls whether DiagnosticRecords for external search-operations (against SCIM resource-types in the Admin service) identify returned resources.  If true, indicates that for each successful external search-operation at least one DiagnosticRecord will include at least one identifier for each matching resource that is returned in that search-response.  If false, no DiagnosticRecord should be expected to identify returned resources for a search-operation.  The default value is false.
 	DiagnosticRecordForSearchIdentifiesReturnedResources *bool `json:"diagnosticRecordForSearchIdentifiesReturnedResources,omitempty" tf:"diagnostic_record_for_search_identifies_returned_resources,omitempty"`
@@ -477,7 +582,7 @@ type SettingInitParameters struct {
 	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
 
 	// (Updatable) Maximum duration for IAM User Principal Session Token expiry
-	IAMUpstSessionExpiry *float64 `json:"iamUpstSessionExpiry,omitempty" tf:"iam_upst_session_expiry,omitempty"`
+	IAMUpstSessionExpiry *int64 `json:"iamUpstSessionExpiry,omitempty" tf:"iam_upst_session_expiry,omitempty"`
 
 	// The basic endpoint for the identity domain
 	IdcsEndpoint *string `json:"idcsEndpoint,omitempty" tf:"idcs_endpoint,omitempty"`
@@ -498,10 +603,10 @@ type SettingInitParameters struct {
 	LoginTexts []LoginTextsInitParameters `json:"loginTexts,omitempty" tf:"login_texts,omitempty"`
 
 	// (Updatable) Limit the maximum return of CMVA for an App
-	MaxNoOfAppCmvaToReturn *float64 `json:"maxNoOfAppCmvaToReturn,omitempty" tf:"max_no_of_app_cmva_to_return,omitempty"`
+	MaxNoOfAppCmvaToReturn *int64 `json:"maxNoOfAppCmvaToReturn,omitempty" tf:"max_no_of_app_cmva_to_return,omitempty"`
 
 	// (Updatable) Limit the maximum return of members for an AppRole
-	MaxNoOfAppRoleMembersToReturn *float64 `json:"maxNoOfAppRoleMembersToReturn,omitempty" tf:"max_no_of_app_role_members_to_return,omitempty"`
+	MaxNoOfAppRoleMembersToReturn *int64 `json:"maxNoOfAppRoleMembersToReturn,omitempty" tf:"max_no_of_app_role_members_to_return,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
@@ -556,6 +661,21 @@ type SettingInitParameters struct {
 }
 
 type SettingMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type SettingMetaObservation struct {
@@ -577,6 +697,26 @@ type SettingMetaObservation struct {
 }
 
 type SettingMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type SettingObservation struct {
@@ -597,7 +737,7 @@ type SettingObservation struct {
 	Attributes *string `json:"attributes,omitempty" tf:"attributes,omitempty"`
 
 	// (Updatable) Audit Event retention period. If set, overrides default of 30 days after which Audit Events will be purged
-	AuditEventRetentionPeriod *float64 `json:"auditEventRetentionPeriod,omitempty" tf:"audit_event_retention_period,omitempty"`
+	AuditEventRetentionPeriod *int64 `json:"auditEventRetentionPeriod,omitempty" tf:"audit_event_retention_period,omitempty"`
 
 	// (Updatable) The Authorization field value consists of credentials containing the authentication information of the user agent for the realm of the resource being requested.
 	Authorization *string `json:"authorization,omitempty" tf:"authorization,omitempty"`
@@ -657,7 +797,7 @@ type SettingObservation struct {
 	DeleteInProgress *bool `json:"deleteInProgress,omitempty" tf:"delete_in_progress,omitempty"`
 
 	// (Updatable) The level of diagnostic logging that is currently in effect. A level of 0 (zero) indicates that diagnostic logging is disabled. A level of 1 (one) indicates that diagnostic logging is enabled.
-	DiagnosticLevel *float64 `json:"diagnosticLevel,omitempty" tf:"diagnostic_level,omitempty"`
+	DiagnosticLevel *int64 `json:"diagnosticLevel,omitempty" tf:"diagnostic_level,omitempty"`
 
 	// (Updatable) Controls whether DiagnosticRecords for external search-operations (against SCIM resource-types in the Admin service) identify returned resources.  If true, indicates that for each successful external search-operation at least one DiagnosticRecord will include at least one identifier for each matching resource that is returned in that search-response.  If false, no DiagnosticRecord should be expected to identify returned resources for a search-operation.  The default value is false.
 	DiagnosticRecordForSearchIdentifiesReturnedResources *bool `json:"diagnosticRecordForSearchIdentifiesReturnedResources,omitempty" tf:"diagnostic_record_for_search_identifies_returned_resources,omitempty"`
@@ -675,7 +815,7 @@ type SettingObservation struct {
 	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
 
 	// (Updatable) Maximum duration for IAM User Principal Session Token expiry
-	IAMUpstSessionExpiry *float64 `json:"iamUpstSessionExpiry,omitempty" tf:"iam_upst_session_expiry,omitempty"`
+	IAMUpstSessionExpiry *int64 `json:"iamUpstSessionExpiry,omitempty" tf:"iam_upst_session_expiry,omitempty"`
 
 	// (Updatable) Unique identifier for the SCIM Resource as defined by the Service Provider. Each representation of the Resource MUST include a non-empty id value. This identifier MUST be unique across the Service Provider's entire set of Resources. It MUST be a stable, non-reassignable identifier that does not change when the same Resource is returned in subsequent requests. The value of the id attribute is always issued by the Service Provider and MUST never be specified by the Service Consumer. bulkId: is a reserved keyword and MUST NOT be used in the unique identifier.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -711,10 +851,10 @@ type SettingObservation struct {
 	LoginTexts []LoginTextsObservation `json:"loginTexts,omitempty" tf:"login_texts,omitempty"`
 
 	// (Updatable) Limit the maximum return of CMVA for an App
-	MaxNoOfAppCmvaToReturn *float64 `json:"maxNoOfAppCmvaToReturn,omitempty" tf:"max_no_of_app_cmva_to_return,omitempty"`
+	MaxNoOfAppCmvaToReturn *int64 `json:"maxNoOfAppCmvaToReturn,omitempty" tf:"max_no_of_app_cmva_to_return,omitempty"`
 
 	// (Updatable) Limit the maximum return of members for an AppRole
-	MaxNoOfAppRoleMembersToReturn *float64 `json:"maxNoOfAppRoleMembersToReturn,omitempty" tf:"max_no_of_app_role_members_to_return,omitempty"`
+	MaxNoOfAppRoleMembersToReturn *int64 `json:"maxNoOfAppRoleMembersToReturn,omitempty" tf:"max_no_of_app_role_members_to_return,omitempty"`
 
 	// (Updatable) A complex attribute that contains resource metadata. All sub-attributes are OPTIONAL.
 	Meta []SettingMetaObservation `json:"meta,omitempty" tf:"meta,omitempty"`
@@ -808,7 +948,7 @@ type SettingParameters struct {
 
 	// (Updatable) Audit Event retention period. If set, overrides default of 30 days after which Audit Events will be purged
 	// +kubebuilder:validation:Optional
-	AuditEventRetentionPeriod *float64 `json:"auditEventRetentionPeriod,omitempty" tf:"audit_event_retention_period,omitempty"`
+	AuditEventRetentionPeriod *int64 `json:"auditEventRetentionPeriod,omitempty" tf:"audit_event_retention_period,omitempty"`
 
 	// (Updatable) The Authorization field value consists of credentials containing the authentication information of the user agent for the realm of the resource being requested.
 	// +kubebuilder:validation:Optional
@@ -864,7 +1004,7 @@ type SettingParameters struct {
 
 	// (Updatable) The level of diagnostic logging that is currently in effect. A level of 0 (zero) indicates that diagnostic logging is disabled. A level of 1 (one) indicates that diagnostic logging is enabled.
 	// +kubebuilder:validation:Optional
-	DiagnosticLevel *float64 `json:"diagnosticLevel,omitempty" tf:"diagnostic_level,omitempty"`
+	DiagnosticLevel *int64 `json:"diagnosticLevel,omitempty" tf:"diagnostic_level,omitempty"`
 
 	// (Updatable) Controls whether DiagnosticRecords for external search-operations (against SCIM resource-types in the Admin service) identify returned resources.  If true, indicates that for each successful external search-operation at least one DiagnosticRecord will include at least one identifier for each matching resource that is returned in that search-response.  If false, no DiagnosticRecord should be expected to identify returned resources for a search-operation.  The default value is false.
 	// +kubebuilder:validation:Optional
@@ -880,7 +1020,7 @@ type SettingParameters struct {
 
 	// (Updatable) Maximum duration for IAM User Principal Session Token expiry
 	// +kubebuilder:validation:Optional
-	IAMUpstSessionExpiry *float64 `json:"iamUpstSessionExpiry,omitempty" tf:"iam_upst_session_expiry,omitempty"`
+	IAMUpstSessionExpiry *int64 `json:"iamUpstSessionExpiry,omitempty" tf:"iam_upst_session_expiry,omitempty"`
 
 	// The basic endpoint for the identity domain
 	// +kubebuilder:validation:Optional
@@ -908,11 +1048,11 @@ type SettingParameters struct {
 
 	// (Updatable) Limit the maximum return of CMVA for an App
 	// +kubebuilder:validation:Optional
-	MaxNoOfAppCmvaToReturn *float64 `json:"maxNoOfAppCmvaToReturn,omitempty" tf:"max_no_of_app_cmva_to_return,omitempty"`
+	MaxNoOfAppCmvaToReturn *int64 `json:"maxNoOfAppCmvaToReturn,omitempty" tf:"max_no_of_app_cmva_to_return,omitempty"`
 
 	// (Updatable) Limit the maximum return of members for an AppRole
 	// +kubebuilder:validation:Optional
-	MaxNoOfAppRoleMembersToReturn *float64 `json:"maxNoOfAppRoleMembersToReturn,omitempty" tf:"max_no_of_app_role_members_to_return,omitempty"`
+	MaxNoOfAppRoleMembersToReturn *int64 `json:"maxNoOfAppRoleMembersToReturn,omitempty" tf:"max_no_of_app_role_members_to_return,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	// +kubebuilder:validation:Optional

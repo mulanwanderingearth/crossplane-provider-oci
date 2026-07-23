@@ -41,8 +41,7 @@ type AgentDataIngestionJobInitParameters struct {
 	DataSourceIDSelector *v1.Selector `json:"dataSourceIdSelector,omitempty" tf:"-"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly description of the data ingestion job.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -51,8 +50,7 @@ type AgentDataIngestionJobInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type AgentDataIngestionJobObservation struct {
@@ -70,8 +68,7 @@ type AgentDataIngestionJobObservation struct {
 	DataSourceID *string `json:"dataSourceId,omitempty" tf:"data_source_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly description of the data ingestion job.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -80,8 +77,7 @@ type AgentDataIngestionJobObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the DataIngestionJob.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -96,8 +92,7 @@ type AgentDataIngestionJobObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the data ingestion job was created, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -137,8 +132,7 @@ type AgentDataIngestionJobParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly description of the data ingestion job.
 	// +kubebuilder:validation:Optional
@@ -150,8 +144,7 @@ type AgentDataIngestionJobParameters struct {
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type DataIngestionJobStatisticsInitParameters struct {
@@ -160,16 +153,16 @@ type DataIngestionJobStatisticsInitParameters struct {
 type DataIngestionJobStatisticsObservation struct {
 
 	// The duration of this ingestion job.
-	DurationInSeconds *float64 `json:"durationInSeconds,omitempty" tf:"duration_in_seconds,omitempty"`
+	DurationInSeconds *int64 `json:"durationInSeconds,omitempty" tf:"duration_in_seconds,omitempty"`
 
 	// The number of files that have failed during the ingestion.
-	NumberOfFailedFiles *float64 `json:"numberOfFailedFiles,omitempty" tf:"number_of_failed_files,omitempty"`
+	NumberOfFailedFiles *int64 `json:"numberOfFailedFiles,omitempty" tf:"number_of_failed_files,omitempty"`
 
 	// The number of files that have been ignored during the ingestion.
-	NumberOfIgnoredFiles *float64 `json:"numberOfIgnoredFiles,omitempty" tf:"number_of_ignored_files,omitempty"`
+	NumberOfIgnoredFiles *int64 `json:"numberOfIgnoredFiles,omitempty" tf:"number_of_ignored_files,omitempty"`
 
 	// The number of files that have been successfully ingested during the ingestion.
-	NumberOfIngestedFiles *float64 `json:"numberOfIngestedFiles,omitempty" tf:"number_of_ingested_files,omitempty"`
+	NumberOfIngestedFiles *int64 `json:"numberOfIngestedFiles,omitempty" tf:"number_of_ingested_files,omitempty"`
 }
 
 type DataIngestionJobStatisticsParameters struct {

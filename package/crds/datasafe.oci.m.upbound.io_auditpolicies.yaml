@@ -237,7 +237,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the audit policy.
                     type: string
@@ -253,15 +252,16 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   provisionTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Provision. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   retrieveFromTargetTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Retrieve From Target. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -454,7 +454,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the audit policy.
                     type: string
@@ -470,15 +469,16 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   provisionTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Provision. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   retrieveFromTargetTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Retrieve From Target. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -664,7 +664,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of the audit policy.
                     type: string
@@ -680,7 +679,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the audit policy.
                     type: string
@@ -696,11 +694,13 @@ spec:
                   provisionTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Provision. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   retrieveFromTargetTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Retrieve From Target. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of the audit policy.
                     type: string
@@ -711,7 +711,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags. Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   targetId:
                     description: The OCID of the target for which the audit policy
                       is created.

@@ -368,7 +368,8 @@ spec:
                             issue only leaf certificates. There is no limit if the
                             constraint isn't specified. Path length constraints cannot
                             be updated.
-                          type: number
+                          format: int64
+                          type: integer
                         ruleType:
                           description: (Updatable) The type of rule, whether an issuance
                             rule that defines the constraints which restricts the
@@ -599,7 +600,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A brief description of the CA.
                     type: string
@@ -615,7 +615,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   kmsKeyId:
                     description: The OCID of the Oracle Cloud Infrastructure Vault
                       key used to encrypt the CA.
@@ -1028,7 +1027,8 @@ spec:
                             issue only leaf certificates. There is no limit if the
                             constraint isn't specified. Path length constraints cannot
                             be updated.
-                          type: number
+                          format: int64
+                          type: integer
                         ruleType:
                           description: (Updatable) The type of rule, whether an issuance
                             rule that defines the constraints which restricts the
@@ -1259,7 +1259,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A brief description of the CA.
                     type: string
@@ -1275,7 +1274,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   kmsKeyId:
                     description: The OCID of the Oracle Cloud Infrastructure Vault
                       key used to encrypt the CA.
@@ -1668,7 +1666,8 @@ spec:
                             issue only leaf certificates. There is no limit if the
                             constraint isn't specified. Path length constraints cannot
                             be updated.
-                          type: number
+                          format: int64
+                          type: integer
                         ruleType:
                           description: (Updatable) The type of rule, whether an issuance
                             rule that defines the constraints which restricts the
@@ -1817,7 +1816,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A brief description of the CA.
                     type: string
@@ -1833,7 +1831,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the CA.
                     type: string

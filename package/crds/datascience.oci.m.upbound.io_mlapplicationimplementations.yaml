@@ -165,7 +165,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -173,7 +172,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   logging:
                     description: (Updatable) Configuration of Logging for ML Application
                       Implementation.
@@ -826,7 +824,6 @@ spec:
                       during ML Application package upload. Each argument is a simple
                       key-value pair.
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -945,7 +942,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -953,7 +949,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   logging:
                     description: (Updatable) Configuration of Logging for ML Application
                       Implementation.
@@ -1606,7 +1601,6 @@ spec:
                       during ML Application package upload. Each argument is a simple
                       key-value pair.
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -1772,7 +1766,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: Description of this configuration property
                     type: string
@@ -1783,7 +1776,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: OCID of the resource
                     type: string
@@ -1904,7 +1896,6 @@ spec:
                       during ML Application package upload. Each argument is a simple
                       key-value pair.
                     type: object
-                    x-kubernetes-map-type: granular
                   packageVersion:
                     description: The version of ML Application Package (e.g. "1.2"
                       or "2.0.4") defined in ML Application package descriptor. Value
@@ -1921,7 +1912,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: Creation time of MlApplicationImplementation creation
                       in the format defined by RFC 3339.

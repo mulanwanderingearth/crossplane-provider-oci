@@ -413,7 +413,8 @@ spec:
                     type: string
                   totalAddresses:
                     description: Count of total addresses in the AddressList
-                    type: number
+                    format: int64
+                    type: integer
                   type:
                     description: Type of address List. The accepted values are - *
                       FQDN * IP

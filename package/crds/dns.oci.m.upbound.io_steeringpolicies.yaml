@@ -190,7 +190,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the steering
                       policy. Does not have to be unique and can be changed. Avoid
@@ -203,7 +202,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   healthCheckMonitorId:
                     description: (Updatable) The OCID of the health check monitor
                       providing health data about the answers of the steering policy.
@@ -340,7 +338,8 @@ spec:
                                         relative order of those with the same value.
                                         Answers can be given a value between 0 and
                                         255.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               caseCondition:
@@ -363,7 +362,8 @@ spec:
                                   answers remain before the limit rule is processed,
                                   only the first two answers in the list will remain
                                   after the limit rule has been processed.'
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         defaultAnswerData:
@@ -394,7 +394,8 @@ spec:
                                   the list without changing the relative order of
                                   those with the same value. Answers can be given
                                   a value between 0 and 255.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         defaultCount:
@@ -405,7 +406,8 @@ spec:
                             cases. In this scenario, the next rule will be processed.
                             If no rules remain to be processed, the answer will be
                             chosen from the remaining list of answers.
-                          type: number
+                          format: int64
+                          type: integer
                         description:
                           description: A user-defined description of the rule's purpose
                             or behavior.
@@ -426,7 +428,8 @@ spec:
                     description: (Updatable) The Time To Live (TTL) for responses
                       from the steering policy, in seconds. If not specified during
                       creation, a value of 30 seconds will be used.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -572,7 +575,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the steering
                       policy. Does not have to be unique and can be changed. Avoid
@@ -585,7 +587,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   healthCheckMonitorId:
                     description: (Updatable) The OCID of the health check monitor
                       providing health data about the answers of the steering policy.
@@ -722,7 +723,8 @@ spec:
                                         relative order of those with the same value.
                                         Answers can be given a value between 0 and
                                         255.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               caseCondition:
@@ -745,7 +747,8 @@ spec:
                                   answers remain before the limit rule is processed,
                                   only the first two answers in the list will remain
                                   after the limit rule has been processed.'
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         defaultAnswerData:
@@ -776,7 +779,8 @@ spec:
                                   the list without changing the relative order of
                                   those with the same value. Answers can be given
                                   a value between 0 and 255.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         defaultCount:
@@ -787,7 +791,8 @@ spec:
                             cases. In this scenario, the next rule will be processed.
                             If no rules remain to be processed, the answer will be
                             chosen from the remaining list of answers.
-                          type: number
+                          format: int64
+                          type: integer
                         description:
                           description: A user-defined description of the rule's purpose
                             or behavior.
@@ -808,7 +813,8 @@ spec:
                     description: (Updatable) The Time To Live (TTL) for responses
                       from the steering policy, in seconds. If not specified during
                       creation, a value of 30 seconds will be used.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -933,7 +939,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the steering
                       policy. Does not have to be unique and can be changed. Avoid
@@ -946,7 +951,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. For more information, see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   healthCheckMonitorId:
                     description: (Updatable) The OCID of the health check monitor
                       providing health data about the answers of the steering policy.
@@ -1004,7 +1008,8 @@ spec:
                                         relative order of those with the same value.
                                         Answers can be given a value between 0 and
                                         255.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                               caseCondition:
@@ -1027,7 +1032,8 @@ spec:
                                   answers remain before the limit rule is processed,
                                   only the first two answers in the list will remain
                                   after the limit rule has been processed.'
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         defaultAnswerData:
@@ -1058,7 +1064,8 @@ spec:
                                   the list without changing the relative order of
                                   those with the same value. Answers can be given
                                   a value between 0 and 255.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         defaultCount:
@@ -1069,7 +1076,8 @@ spec:
                             cases. In this scenario, the next rule will be processed.
                             If no rules remain to be processed, the answer will be
                             chosen from the remaining list of answers.
-                          type: number
+                          format: int64
+                          type: integer
                         description:
                           description: A user-defined description of the rule's purpose
                             or behavior.
@@ -1100,7 +1108,8 @@ spec:
                     description: (Updatable) The Time To Live (TTL) for responses
                       from the steering policy, in seconds. If not specified during
                       creation, a value of 30 seconds will be used.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

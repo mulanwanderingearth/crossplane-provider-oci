@@ -87,8 +87,7 @@ type ComputeHostObservation struct {
 	ConfigurationState *string `json:"configurationState,omitempty" tf:"configuration_state,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -100,8 +99,7 @@ type ComputeHostObservation struct {
 	FirmwareBundleID *string `json:"firmwareBundleId,omitempty" tf:"firmware_bundle_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID for Customer-unique GPU Memory Fabric
 	GpuMemoryFabricID *string `json:"gpuMemoryFabricId,omitempty" tf:"gpu_memory_fabric_id,omitempty"`
@@ -122,8 +120,7 @@ type ComputeHostObservation struct {
 	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
 
 	// A free-form description detailing why the host is in its current state.
-	// +mapType=granular
-	LifecycleDetails map[string]*string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
+	LifecycleDetails map[string]string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The OCID for Customer-unique Local Block
 	LocalBlockID *string `json:"localBlockId,omitempty" tf:"local_block_id,omitempty"`

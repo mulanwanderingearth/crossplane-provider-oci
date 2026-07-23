@@ -25,7 +25,7 @@ type ItemsInitParameters struct {
 	Rtype *string `json:"rtype,omitempty" tf:"rtype,omitempty"`
 
 	// (Updatable) The Time To Live for the record, in seconds. Using a TTL lower than 30 seconds is not recommended.
-	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type ItemsObservation struct {
@@ -49,7 +49,7 @@ type ItemsObservation struct {
 	Rtype *string `json:"rtype,omitempty" tf:"rtype,omitempty"`
 
 	// (Updatable) The Time To Live for the record, in seconds. Using a TTL lower than 30 seconds is not recommended.
-	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type ItemsParameters struct {
@@ -68,7 +68,7 @@ type ItemsParameters struct {
 
 	// (Updatable) The Time To Live for the record, in seconds. Using a TTL lower than 30 seconds is not recommended.
 	// +kubebuilder:validation:Optional
-	TTL *float64 `json:"ttl" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl" tf:"ttl,omitempty"`
 }
 
 type RrsetInitParameters struct {

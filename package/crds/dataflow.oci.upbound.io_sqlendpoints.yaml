@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of CreateSQLEndpointDetails.
                     type: string
@@ -211,7 +210,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   logCompartmentId:
                     description: (Updatable) The identifier of the log group compartment
                       used with the SQL Endpoint.
@@ -376,10 +374,12 @@ spec:
                     type: object
                   logRetentionDuration:
                     description: (Updatable) Log retention duration in days
-                    type: number
+                    format: int64
+                    type: integer
                   maxExecutorCount:
                     description: (Updatable) The maximum number of executors.
-                    type: number
+                    format: int64
+                    type: integer
                   metastoreId:
                     description: Metastore OCID
                     type: string
@@ -461,7 +461,8 @@ spec:
                     type: object
                   minExecutorCount:
                     description: (Updatable) The minimum number of executors.
-                    type: number
+                    format: int64
+                    type: integer
                   networkConfiguration:
                     description: The network configuration of a SQL Endpoint.
                     items:
@@ -670,7 +671,6 @@ spec:
                       to set a property that is not allowed to be overwritten will
                       cause a 400 status to be returned.'
                     type: object
-                    x-kubernetes-map-type: granular
                   sqlEndpointVersion:
                     description: The version of the SQL Endpoint.
                     type: string
@@ -779,7 +779,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of CreateSQLEndpointDetails.
                     type: string
@@ -830,7 +829,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   logCompartmentId:
                     description: (Updatable) The identifier of the log group compartment
                       used with the SQL Endpoint.
@@ -995,10 +993,12 @@ spec:
                     type: object
                   logRetentionDuration:
                     description: (Updatable) Log retention duration in days
-                    type: number
+                    format: int64
+                    type: integer
                   maxExecutorCount:
                     description: (Updatable) The maximum number of executors.
-                    type: number
+                    format: int64
+                    type: integer
                   metastoreId:
                     description: Metastore OCID
                     type: string
@@ -1080,7 +1080,8 @@ spec:
                     type: object
                   minExecutorCount:
                     description: (Updatable) The minimum number of executors.
-                    type: number
+                    format: int64
+                    type: integer
                   networkConfiguration:
                     description: The network configuration of a SQL Endpoint.
                     items:
@@ -1289,7 +1290,6 @@ spec:
                       to set a property that is not allowed to be overwritten will
                       cause a 400 status to be returned.'
                     type: object
-                    x-kubernetes-map-type: granular
                   sqlEndpointVersion:
                     description: The version of the SQL Endpoint.
                     type: string
@@ -1431,7 +1431,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) The description of CreateSQLEndpointDetails.
                     type: string
@@ -1482,7 +1481,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The provision identifier that is immutable on creation.
                     type: string
@@ -1506,16 +1504,19 @@ spec:
                     type: string
                   logRetentionDuration:
                     description: (Updatable) Log retention duration in days
-                    type: number
+                    format: int64
+                    type: integer
                   maxExecutorCount:
                     description: (Updatable) The maximum number of executors.
-                    type: number
+                    format: int64
+                    type: integer
                   metastoreId:
                     description: Metastore OCID
                     type: string
                   minExecutorCount:
                     description: (Updatable) The minimum number of executors.
-                    type: number
+                    format: int64
+                    type: integer
                   networkConfiguration:
                     description: The network configuration of a SQL Endpoint.
                     items:
@@ -1580,7 +1581,6 @@ spec:
                       to set a property that is not allowed to be overwritten will
                       cause a 400 status to be returned.'
                     type: object
-                    x-kubernetes-map-type: granular
                   sqlEndpointVersion:
                     description: The version of the SQL Endpoint.
                     type: string
@@ -1603,7 +1603,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the Sql Endpoint was created. An RFC3339
                       formatted datetime string.

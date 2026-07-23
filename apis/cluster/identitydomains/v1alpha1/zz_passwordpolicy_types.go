@@ -14,6 +14,12 @@ import (
 )
 
 type ConfiguredPasswordPolicyRulesInitParameters struct {
+
+	// (Updatable) The specific password policy rule
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Updatable) User-friendly text that describes a specific password policy rule
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ConfiguredPasswordPolicyRulesObservation struct {
@@ -26,6 +32,14 @@ type ConfiguredPasswordPolicyRulesObservation struct {
 }
 
 type ConfiguredPasswordPolicyRulesParameters struct {
+
+	// (Updatable) The specific password policy rule
+	// +kubebuilder:validation:Optional
+	Key *string `json:"key" tf:"key,omitempty"`
+
+	// (Updatable) User-friendly text that describes a specific password policy rule
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type GroupsInitParameters struct {
@@ -74,6 +88,18 @@ type GroupsParameters struct {
 }
 
 type PasswordPolicyIdcsCreatedByInitParameters struct {
+
+	// (Updatable) Group Display Name
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) User-friendly text that describes a specific password policy rule
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type PasswordPolicyIdcsCreatedByObservation struct {
@@ -95,9 +121,37 @@ type PasswordPolicyIdcsCreatedByObservation struct {
 }
 
 type PasswordPolicyIdcsCreatedByParameters struct {
+
+	// (Updatable) Group Display Name
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) User-friendly text that describes a specific password policy rule
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type PasswordPolicyIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) Group Display Name
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) User-friendly text that describes a specific password policy rule
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type PasswordPolicyIdcsLastModifiedByObservation struct {
@@ -119,6 +173,22 @@ type PasswordPolicyIdcsLastModifiedByObservation struct {
 }
 
 type PasswordPolicyIdcsLastModifiedByParameters struct {
+
+	// (Updatable) Group Display Name
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) User-friendly text that describes a specific password policy rule
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type PasswordPolicyInitParameters_2 struct {
@@ -157,7 +227,7 @@ type PasswordPolicyInitParameters_2 struct {
 	DisallowedUserAttributeValues []*string `json:"disallowedUserAttributeValues,omitempty" tf:"disallowed_user_attribute_values,omitempty"`
 
 	// (Updatable) The number of distinct characters between old password and new password
-	DistinctCharacters *float64 `json:"distinctCharacters,omitempty" tf:"distinct_characters,omitempty"`
+	DistinctCharacters *int64 `json:"distinctCharacters,omitempty" tf:"distinct_characters,omitempty"`
 
 	// (Updatable) An identifier for the Resource as defined by the Service Consumer. The externalId may simplify identification of the Resource between Service Consumer and Service Provider by allowing the Consumer to refer to the Resource with its own identifier, obviating the need to store a local mapping between the local identifier of the Resource and the identifier used by the Service Provider. Each Resource MAY include a non-empty externalId value. The value of the externalId attribute is always issued by the Service Consumer and can never be specified by the Service Provider. The Service Provider MUST always interpret the externalId as scoped to the Service Consumer's tenant.
 	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
@@ -178,67 +248,67 @@ type PasswordPolicyInitParameters_2 struct {
 	LastNameDisallowed *bool `json:"lastNameDisallowed,omitempty" tf:"last_name_disallowed,omitempty"`
 
 	// (Updatable) The time period in minutes to lock out a user account when the threshold of invalid login attempts is reached. The available range is from 5 through 1440 minutes (24 hours).
-	LockoutDuration *float64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
+	LockoutDuration *int64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
 
 	// (Updatable) An integer that represents the maximum number of failed logins before an account is locked
-	MaxIncorrectAttempts *float64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
+	MaxIncorrectAttempts *int64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
 
 	// (Updatable) The maximum password length (in characters). A value of 0 or no value indicates no maximum length restriction.
-	MaxLength *float64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
+	MaxLength *int64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
 
 	// (Updatable) The maximum number of repeated characters allowed in a password.  A value of 0 or no value indicates no such restriction.
-	MaxRepeatedChars *float64 `json:"maxRepeatedChars,omitempty" tf:"max_repeated_chars,omitempty"`
+	MaxRepeatedChars *int64 `json:"maxRepeatedChars,omitempty" tf:"max_repeated_chars,omitempty"`
 
 	// (Updatable) The maximum number of special characters in a password.  A value of 0 or no value indicates no maximum special characters restriction.
-	MaxSpecialChars *float64 `json:"maxSpecialChars,omitempty" tf:"max_special_chars,omitempty"`
+	MaxSpecialChars *int64 `json:"maxSpecialChars,omitempty" tf:"max_special_chars,omitempty"`
 
 	// (Updatable) The minimum number of a combination of alphabetic and numeric characters in a password.  A value of 0 or no value indicates no minimum alphanumeric character restriction.
-	MinAlphaNumerals *float64 `json:"minAlphaNumerals,omitempty" tf:"min_alpha_numerals,omitempty"`
+	MinAlphaNumerals *int64 `json:"minAlphaNumerals,omitempty" tf:"min_alpha_numerals,omitempty"`
 
 	// (Updatable) The minimum number of alphabetic characters in a password.  A value of 0 or no value indicates no minimum alphas restriction.
-	MinAlphas *float64 `json:"minAlphas,omitempty" tf:"min_alphas,omitempty"`
+	MinAlphas *int64 `json:"minAlphas,omitempty" tf:"min_alphas,omitempty"`
 
 	// (Updatable) The minimum password length (in characters). A value of 0 or no value indicates no minimum length restriction.
-	MinLength *float64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
+	MinLength *int64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
 
 	// (Updatable) The minimum number of lowercase alphabetic characters in a password.  A value of 0 or no value indicates no minimum lowercase restriction.
-	MinLowerCase *float64 `json:"minLowerCase,omitempty" tf:"min_lower_case,omitempty"`
+	MinLowerCase *int64 `json:"minLowerCase,omitempty" tf:"min_lower_case,omitempty"`
 
 	// (Updatable) The minimum number of numeric characters in a password.  A value of 0 or no value indicates no minimum numeric character restriction.
-	MinNumerals *float64 `json:"minNumerals,omitempty" tf:"min_numerals,omitempty"`
+	MinNumerals *int64 `json:"minNumerals,omitempty" tf:"min_numerals,omitempty"`
 
 	// (Updatable) Minimum time after which the user can resubmit the reset password request
-	MinPasswordAge *float64 `json:"minPasswordAge,omitempty" tf:"min_password_age,omitempty"`
+	MinPasswordAge *int64 `json:"minPasswordAge,omitempty" tf:"min_password_age,omitempty"`
 
 	// (Updatable) The minimum number of special characters in a password. A value of 0 or no value indicates no minimum special characters restriction.
-	MinSpecialChars *float64 `json:"minSpecialChars,omitempty" tf:"min_special_chars,omitempty"`
+	MinSpecialChars *int64 `json:"minSpecialChars,omitempty" tf:"min_special_chars,omitempty"`
 
 	// (Updatable) The minimum number of unique characters in a password.  A value of 0 or no value indicates no minimum unique characters restriction.
-	MinUniqueChars *float64 `json:"minUniqueChars,omitempty" tf:"min_unique_chars,omitempty"`
+	MinUniqueChars *int64 `json:"minUniqueChars,omitempty" tf:"min_unique_chars,omitempty"`
 
 	// (Updatable) The minimum number of uppercase alphabetic characters in a password. A value of 0 or no value indicates no minimum uppercase restriction.
-	MinUpperCase *float64 `json:"minUpperCase,omitempty" tf:"min_upper_case,omitempty"`
+	MinUpperCase *int64 `json:"minUpperCase,omitempty" tf:"min_upper_case,omitempty"`
 
 	// (Updatable) A String that is the name of the policy to display to the user. This is the only mandatory attribute for a password policy.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The number of passwords that will be kept in history that may not be used as a password
-	NumPasswordsInHistory *float64 `json:"numPasswordsInHistory,omitempty" tf:"num_passwords_in_history,omitempty"`
+	NumPasswordsInHistory *int64 `json:"numPasswordsInHistory,omitempty" tf:"num_passwords_in_history,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
 
 	// (Updatable) An integer indicating the number of days before which the user should be warned about password expiry.
-	PasswordExpireWarning *float64 `json:"passwordExpireWarning,omitempty" tf:"password_expire_warning,omitempty"`
+	PasswordExpireWarning *int64 `json:"passwordExpireWarning,omitempty" tf:"password_expire_warning,omitempty"`
 
 	// (Updatable) The number of days after which the password expires automatically
-	PasswordExpiresAfter *float64 `json:"passwordExpiresAfter,omitempty" tf:"password_expires_after,omitempty"`
+	PasswordExpiresAfter *int64 `json:"passwordExpiresAfter,omitempty" tf:"password_expires_after,omitempty"`
 
 	// (Updatable) Indicates whether the password policy is configured as Simple, Standard, or Custom.
 	PasswordStrengthSecretRef *v1.SecretKeySelector `json:"passwordStrengthSecretRef,omitempty" tf:"-"`
 
 	// (Updatable) Password policy priority
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Updatable) A String value whose contents indicate a set of characters that must appear, in any sequence, in a password value
 	RequiredChars *string `json:"requiredChars,omitempty" tf:"required_chars,omitempty"`
@@ -260,6 +330,21 @@ type PasswordPolicyInitParameters_2 struct {
 }
 
 type PasswordPolicyMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type PasswordPolicyMetaObservation struct {
@@ -281,6 +366,26 @@ type PasswordPolicyMetaObservation struct {
 }
 
 type PasswordPolicyMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type PasswordPolicyObservation_2 struct {
@@ -328,7 +433,7 @@ type PasswordPolicyObservation_2 struct {
 	DisallowedUserAttributeValues []*string `json:"disallowedUserAttributeValues,omitempty" tf:"disallowed_user_attribute_values,omitempty"`
 
 	// (Updatable) The number of distinct characters between old password and new password
-	DistinctCharacters *float64 `json:"distinctCharacters,omitempty" tf:"distinct_characters,omitempty"`
+	DistinctCharacters *int64 `json:"distinctCharacters,omitempty" tf:"distinct_characters,omitempty"`
 
 	// (Updatable) Oracle Cloud Infrastructure Domain Id (ocid) in which the resource lives.
 	DomainOcid *string `json:"domainOcid,omitempty" tf:"domain_ocid,omitempty"`
@@ -367,67 +472,67 @@ type PasswordPolicyObservation_2 struct {
 	LastNameDisallowed *bool `json:"lastNameDisallowed,omitempty" tf:"last_name_disallowed,omitempty"`
 
 	// (Updatable) The time period in minutes to lock out a user account when the threshold of invalid login attempts is reached. The available range is from 5 through 1440 minutes (24 hours).
-	LockoutDuration *float64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
+	LockoutDuration *int64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
 
 	// (Updatable) An integer that represents the maximum number of failed logins before an account is locked
-	MaxIncorrectAttempts *float64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
+	MaxIncorrectAttempts *int64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
 
 	// (Updatable) The maximum password length (in characters). A value of 0 or no value indicates no maximum length restriction.
-	MaxLength *float64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
+	MaxLength *int64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
 
 	// (Updatable) The maximum number of repeated characters allowed in a password.  A value of 0 or no value indicates no such restriction.
-	MaxRepeatedChars *float64 `json:"maxRepeatedChars,omitempty" tf:"max_repeated_chars,omitempty"`
+	MaxRepeatedChars *int64 `json:"maxRepeatedChars,omitempty" tf:"max_repeated_chars,omitempty"`
 
 	// (Updatable) The maximum number of special characters in a password.  A value of 0 or no value indicates no maximum special characters restriction.
-	MaxSpecialChars *float64 `json:"maxSpecialChars,omitempty" tf:"max_special_chars,omitempty"`
+	MaxSpecialChars *int64 `json:"maxSpecialChars,omitempty" tf:"max_special_chars,omitempty"`
 
 	// (Updatable) A complex attribute that contains resource metadata. All sub-attributes are OPTIONAL.
 	Meta []PasswordPolicyMetaObservation `json:"meta,omitempty" tf:"meta,omitempty"`
 
 	// (Updatable) The minimum number of a combination of alphabetic and numeric characters in a password.  A value of 0 or no value indicates no minimum alphanumeric character restriction.
-	MinAlphaNumerals *float64 `json:"minAlphaNumerals,omitempty" tf:"min_alpha_numerals,omitempty"`
+	MinAlphaNumerals *int64 `json:"minAlphaNumerals,omitempty" tf:"min_alpha_numerals,omitempty"`
 
 	// (Updatable) The minimum number of alphabetic characters in a password.  A value of 0 or no value indicates no minimum alphas restriction.
-	MinAlphas *float64 `json:"minAlphas,omitempty" tf:"min_alphas,omitempty"`
+	MinAlphas *int64 `json:"minAlphas,omitempty" tf:"min_alphas,omitempty"`
 
 	// (Updatable) The minimum password length (in characters). A value of 0 or no value indicates no minimum length restriction.
-	MinLength *float64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
+	MinLength *int64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
 
 	// (Updatable) The minimum number of lowercase alphabetic characters in a password.  A value of 0 or no value indicates no minimum lowercase restriction.
-	MinLowerCase *float64 `json:"minLowerCase,omitempty" tf:"min_lower_case,omitempty"`
+	MinLowerCase *int64 `json:"minLowerCase,omitempty" tf:"min_lower_case,omitempty"`
 
 	// (Updatable) The minimum number of numeric characters in a password.  A value of 0 or no value indicates no minimum numeric character restriction.
-	MinNumerals *float64 `json:"minNumerals,omitempty" tf:"min_numerals,omitempty"`
+	MinNumerals *int64 `json:"minNumerals,omitempty" tf:"min_numerals,omitempty"`
 
 	// (Updatable) Minimum time after which the user can resubmit the reset password request
-	MinPasswordAge *float64 `json:"minPasswordAge,omitempty" tf:"min_password_age,omitempty"`
+	MinPasswordAge *int64 `json:"minPasswordAge,omitempty" tf:"min_password_age,omitempty"`
 
 	// (Updatable) The minimum number of special characters in a password. A value of 0 or no value indicates no minimum special characters restriction.
-	MinSpecialChars *float64 `json:"minSpecialChars,omitempty" tf:"min_special_chars,omitempty"`
+	MinSpecialChars *int64 `json:"minSpecialChars,omitempty" tf:"min_special_chars,omitempty"`
 
 	// (Updatable) The minimum number of unique characters in a password.  A value of 0 or no value indicates no minimum unique characters restriction.
-	MinUniqueChars *float64 `json:"minUniqueChars,omitempty" tf:"min_unique_chars,omitempty"`
+	MinUniqueChars *int64 `json:"minUniqueChars,omitempty" tf:"min_unique_chars,omitempty"`
 
 	// (Updatable) The minimum number of uppercase alphabetic characters in a password. A value of 0 or no value indicates no minimum uppercase restriction.
-	MinUpperCase *float64 `json:"minUpperCase,omitempty" tf:"min_upper_case,omitempty"`
+	MinUpperCase *int64 `json:"minUpperCase,omitempty" tf:"min_upper_case,omitempty"`
 
 	// (Updatable) A String that is the name of the policy to display to the user. This is the only mandatory attribute for a password policy.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) The number of passwords that will be kept in history that may not be used as a password
-	NumPasswordsInHistory *float64 `json:"numPasswordsInHistory,omitempty" tf:"num_passwords_in_history,omitempty"`
+	NumPasswordsInHistory *int64 `json:"numPasswordsInHistory,omitempty" tf:"num_passwords_in_history,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
 
 	// (Updatable) An integer indicating the number of days before which the user should be warned about password expiry.
-	PasswordExpireWarning *float64 `json:"passwordExpireWarning,omitempty" tf:"password_expire_warning,omitempty"`
+	PasswordExpireWarning *int64 `json:"passwordExpireWarning,omitempty" tf:"password_expire_warning,omitempty"`
 
 	// (Updatable) The number of days after which the password expires automatically
-	PasswordExpiresAfter *float64 `json:"passwordExpiresAfter,omitempty" tf:"password_expires_after,omitempty"`
+	PasswordExpiresAfter *int64 `json:"passwordExpiresAfter,omitempty" tf:"password_expires_after,omitempty"`
 
 	// (Updatable) Password policy priority
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Updatable) A String value whose contents indicate a set of characters that must appear, in any sequence, in a password value
 	RequiredChars *string `json:"requiredChars,omitempty" tf:"required_chars,omitempty"`
@@ -499,7 +604,7 @@ type PasswordPolicyParameters_2 struct {
 
 	// (Updatable) The number of distinct characters between old password and new password
 	// +kubebuilder:validation:Optional
-	DistinctCharacters *float64 `json:"distinctCharacters,omitempty" tf:"distinct_characters,omitempty"`
+	DistinctCharacters *int64 `json:"distinctCharacters,omitempty" tf:"distinct_characters,omitempty"`
 
 	// (Updatable) An identifier for the Resource as defined by the Service Consumer. The externalId may simplify identification of the Resource between Service Consumer and Service Provider by allowing the Consumer to refer to the Resource with its own identifier, obviating the need to store a local mapping between the local identifier of the Resource and the identifier used by the Service Provider. Each Resource MAY include a non-empty externalId value. The value of the externalId attribute is always issued by the Service Consumer and can never be specified by the Service Provider. The Service Provider MUST always interpret the externalId as scoped to the Service Consumer's tenant.
 	// +kubebuilder:validation:Optional
@@ -527,59 +632,59 @@ type PasswordPolicyParameters_2 struct {
 
 	// (Updatable) The time period in minutes to lock out a user account when the threshold of invalid login attempts is reached. The available range is from 5 through 1440 minutes (24 hours).
 	// +kubebuilder:validation:Optional
-	LockoutDuration *float64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
+	LockoutDuration *int64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
 
 	// (Updatable) An integer that represents the maximum number of failed logins before an account is locked
 	// +kubebuilder:validation:Optional
-	MaxIncorrectAttempts *float64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
+	MaxIncorrectAttempts *int64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
 
 	// (Updatable) The maximum password length (in characters). A value of 0 or no value indicates no maximum length restriction.
 	// +kubebuilder:validation:Optional
-	MaxLength *float64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
+	MaxLength *int64 `json:"maxLength,omitempty" tf:"max_length,omitempty"`
 
 	// (Updatable) The maximum number of repeated characters allowed in a password.  A value of 0 or no value indicates no such restriction.
 	// +kubebuilder:validation:Optional
-	MaxRepeatedChars *float64 `json:"maxRepeatedChars,omitempty" tf:"max_repeated_chars,omitempty"`
+	MaxRepeatedChars *int64 `json:"maxRepeatedChars,omitempty" tf:"max_repeated_chars,omitempty"`
 
 	// (Updatable) The maximum number of special characters in a password.  A value of 0 or no value indicates no maximum special characters restriction.
 	// +kubebuilder:validation:Optional
-	MaxSpecialChars *float64 `json:"maxSpecialChars,omitempty" tf:"max_special_chars,omitempty"`
+	MaxSpecialChars *int64 `json:"maxSpecialChars,omitempty" tf:"max_special_chars,omitempty"`
 
 	// (Updatable) The minimum number of a combination of alphabetic and numeric characters in a password.  A value of 0 or no value indicates no minimum alphanumeric character restriction.
 	// +kubebuilder:validation:Optional
-	MinAlphaNumerals *float64 `json:"minAlphaNumerals,omitempty" tf:"min_alpha_numerals,omitempty"`
+	MinAlphaNumerals *int64 `json:"minAlphaNumerals,omitempty" tf:"min_alpha_numerals,omitempty"`
 
 	// (Updatable) The minimum number of alphabetic characters in a password.  A value of 0 or no value indicates no minimum alphas restriction.
 	// +kubebuilder:validation:Optional
-	MinAlphas *float64 `json:"minAlphas,omitempty" tf:"min_alphas,omitempty"`
+	MinAlphas *int64 `json:"minAlphas,omitempty" tf:"min_alphas,omitempty"`
 
 	// (Updatable) The minimum password length (in characters). A value of 0 or no value indicates no minimum length restriction.
 	// +kubebuilder:validation:Optional
-	MinLength *float64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
+	MinLength *int64 `json:"minLength,omitempty" tf:"min_length,omitempty"`
 
 	// (Updatable) The minimum number of lowercase alphabetic characters in a password.  A value of 0 or no value indicates no minimum lowercase restriction.
 	// +kubebuilder:validation:Optional
-	MinLowerCase *float64 `json:"minLowerCase,omitempty" tf:"min_lower_case,omitempty"`
+	MinLowerCase *int64 `json:"minLowerCase,omitempty" tf:"min_lower_case,omitempty"`
 
 	// (Updatable) The minimum number of numeric characters in a password.  A value of 0 or no value indicates no minimum numeric character restriction.
 	// +kubebuilder:validation:Optional
-	MinNumerals *float64 `json:"minNumerals,omitempty" tf:"min_numerals,omitempty"`
+	MinNumerals *int64 `json:"minNumerals,omitempty" tf:"min_numerals,omitempty"`
 
 	// (Updatable) Minimum time after which the user can resubmit the reset password request
 	// +kubebuilder:validation:Optional
-	MinPasswordAge *float64 `json:"minPasswordAge,omitempty" tf:"min_password_age,omitempty"`
+	MinPasswordAge *int64 `json:"minPasswordAge,omitempty" tf:"min_password_age,omitempty"`
 
 	// (Updatable) The minimum number of special characters in a password. A value of 0 or no value indicates no minimum special characters restriction.
 	// +kubebuilder:validation:Optional
-	MinSpecialChars *float64 `json:"minSpecialChars,omitempty" tf:"min_special_chars,omitempty"`
+	MinSpecialChars *int64 `json:"minSpecialChars,omitempty" tf:"min_special_chars,omitempty"`
 
 	// (Updatable) The minimum number of unique characters in a password.  A value of 0 or no value indicates no minimum unique characters restriction.
 	// +kubebuilder:validation:Optional
-	MinUniqueChars *float64 `json:"minUniqueChars,omitempty" tf:"min_unique_chars,omitempty"`
+	MinUniqueChars *int64 `json:"minUniqueChars,omitempty" tf:"min_unique_chars,omitempty"`
 
 	// (Updatable) The minimum number of uppercase alphabetic characters in a password. A value of 0 or no value indicates no minimum uppercase restriction.
 	// +kubebuilder:validation:Optional
-	MinUpperCase *float64 `json:"minUpperCase,omitempty" tf:"min_upper_case,omitempty"`
+	MinUpperCase *int64 `json:"minUpperCase,omitempty" tf:"min_upper_case,omitempty"`
 
 	// (Updatable) A String that is the name of the policy to display to the user. This is the only mandatory attribute for a password policy.
 	// +kubebuilder:validation:Optional
@@ -587,7 +692,7 @@ type PasswordPolicyParameters_2 struct {
 
 	// (Updatable) The number of passwords that will be kept in history that may not be used as a password
 	// +kubebuilder:validation:Optional
-	NumPasswordsInHistory *float64 `json:"numPasswordsInHistory,omitempty" tf:"num_passwords_in_history,omitempty"`
+	NumPasswordsInHistory *int64 `json:"numPasswordsInHistory,omitempty" tf:"num_passwords_in_history,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	// +kubebuilder:validation:Optional
@@ -595,11 +700,11 @@ type PasswordPolicyParameters_2 struct {
 
 	// (Updatable) An integer indicating the number of days before which the user should be warned about password expiry.
 	// +kubebuilder:validation:Optional
-	PasswordExpireWarning *float64 `json:"passwordExpireWarning,omitempty" tf:"password_expire_warning,omitempty"`
+	PasswordExpireWarning *int64 `json:"passwordExpireWarning,omitempty" tf:"password_expire_warning,omitempty"`
 
 	// (Updatable) The number of days after which the password expires automatically
 	// +kubebuilder:validation:Optional
-	PasswordExpiresAfter *float64 `json:"passwordExpiresAfter,omitempty" tf:"password_expires_after,omitempty"`
+	PasswordExpiresAfter *int64 `json:"passwordExpiresAfter,omitempty" tf:"password_expires_after,omitempty"`
 
 	// (Updatable) Indicates whether the password policy is configured as Simple, Standard, or Custom.
 	// +kubebuilder:validation:Optional
@@ -607,7 +712,7 @@ type PasswordPolicyParameters_2 struct {
 
 	// (Updatable) Password policy priority
 	// +kubebuilder:validation:Optional
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Updatable) A String value whose contents indicate a set of characters that must appear, in any sequence, in a password value
 	// +kubebuilder:validation:Optional

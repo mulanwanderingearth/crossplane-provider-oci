@@ -17,8 +17,7 @@ import (
 type DrPlanInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the DR plan being created.  Example: EBS Switchover PHX to IAD
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -37,11 +36,10 @@ type DrPlanInitParameters struct {
 	DrProtectionGroupIDSelector *v1.NamespacedSelector `json:"drProtectionGroupIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Refresh. Could be set to any integer value.
-	RefreshTrigger *float64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
+	RefreshTrigger *int64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
 
 	// The OCID of the source DR plan that should be cloned.  Example: ocid1.drplan.oc1..uniqueID
 	SourcePlanID *string `json:"sourcePlanId,omitempty" tf:"source_plan_id,omitempty"`
@@ -50,7 +48,7 @@ type DrPlanInitParameters struct {
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Verify. Could be set to any integer value.
-	VerifyTrigger *float64 `json:"verifyTrigger,omitempty" tf:"verify_trigger,omitempty"`
+	VerifyTrigger *int64 `json:"verifyTrigger,omitempty" tf:"verify_trigger,omitempty"`
 }
 
 type DrPlanObservation struct {
@@ -59,8 +57,7 @@ type DrPlanObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the DR plan being created.  Example: EBS Switchover PHX to IAD
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -69,8 +66,7 @@ type DrPlanObservation struct {
 	DrProtectionGroupID *string `json:"drProtectionGroupId,omitempty" tf:"dr_protection_group_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the DR plan.  Example: ocid1.drplan.oc1..uniqueID
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -91,7 +87,7 @@ type DrPlanObservation struct {
 	PlanGroups []PlanGroupsObservation `json:"planGroups,omitempty" tf:"plan_groups,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Refresh. Could be set to any integer value.
-	RefreshTrigger *float64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
+	RefreshTrigger *int64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
 
 	// The OCID of the source DR plan that should be cloned.  Example: ocid1.drplan.oc1..uniqueID
 	SourcePlanID *string `json:"sourcePlanId,omitempty" tf:"source_plan_id,omitempty"`
@@ -100,8 +96,7 @@ type DrPlanObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the DR plan was created. An RFC3339 formatted datetime string.  Example: 2019-03-29T09:36:42Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -113,15 +108,14 @@ type DrPlanObservation struct {
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Verify. Could be set to any integer value.
-	VerifyTrigger *float64 `json:"verifyTrigger,omitempty" tf:"verify_trigger,omitempty"`
+	VerifyTrigger *int64 `json:"verifyTrigger,omitempty" tf:"verify_trigger,omitempty"`
 }
 
 type DrPlanParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The display name of the DR plan being created.  Example: EBS Switchover PHX to IAD
 	// +kubebuilder:validation:Optional
@@ -143,12 +137,11 @@ type DrPlanParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Refresh. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	RefreshTrigger *float64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
+	RefreshTrigger *int64 `json:"refreshTrigger,omitempty" tf:"refresh_trigger,omitempty"`
 
 	// The OCID of the source DR plan that should be cloned.  Example: ocid1.drplan.oc1..uniqueID
 	// +kubebuilder:validation:Optional
@@ -160,7 +153,7 @@ type DrPlanParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Verify. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	VerifyTrigger *float64 `json:"verifyTrigger,omitempty" tf:"verify_trigger,omitempty"`
+	VerifyTrigger *int64 `json:"verifyTrigger,omitempty" tf:"verify_trigger,omitempty"`
 }
 
 type ObjectStorageScriptLocationInitParameters struct {
@@ -235,7 +228,7 @@ type StepsObservation struct {
 	RefreshStatus *string `json:"refreshStatus,omitempty" tf:"refresh_status,omitempty"`
 
 	// The timeout in seconds for executing this step.  Example: 600
-	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout *int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 
 	// The type of DR plan to be created.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`

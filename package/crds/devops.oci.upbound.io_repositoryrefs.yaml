@@ -534,7 +534,6 @@ spec:
                       and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -542,7 +541,6 @@ spec:
                       predefined name, type or scope. Exists for cross-compatibility
                       only.  See Resource Tags. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   fullRefName:
                     description: Unique full reference name inside a repository.
                     type: string

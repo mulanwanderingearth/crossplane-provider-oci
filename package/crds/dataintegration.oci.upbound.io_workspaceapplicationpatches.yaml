@@ -105,7 +105,8 @@ spec:
                   objectStatus:
                     description: The status of an object that can be set to value
                       1 for shallow references across objects, other values reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   patchType:
                     description: The type of the patch applied or being applied on
                       the application.
@@ -133,7 +134,8 @@ spec:
                           type: array
                         registryVersion:
                           description: The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   workspaceId:
@@ -259,7 +261,8 @@ spec:
                   objectStatus:
                     description: The status of an object that can be set to value
                       1 for shallow references across objects, other values reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   patchType:
                     description: The type of the patch applied or being applied on
                       the application.
@@ -287,7 +290,8 @@ spec:
                           type: array
                         registryVersion:
                           description: The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   workspaceId:
@@ -482,7 +486,8 @@ spec:
                     type: string
                   applicationVersion:
                     description: The application version of the patch.
-                    type: number
+                    format: int64
+                    type: integer
                   dependentObjectMetadata:
                     description: List of dependent objects in this patch.
                     items:
@@ -511,7 +516,8 @@ spec:
                           type: string
                         objectVersion:
                           description: The object version.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The type of the object in patch.
                           type: string
@@ -526,7 +532,6 @@ spec:
                     description: The errors encountered while applying the patch,
                       if any.
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   identifier:
@@ -544,7 +549,6 @@ spec:
                       key. This structure provides mapping between user provided key
                       and generated key.
                     type: object
-                    x-kubernetes-map-type: granular
                   metadata:
                     description: A summary type containing information about the object
                       including its key, name and when/who created/updated it.
@@ -615,7 +619,6 @@ spec:
                             type: string
                           description: Information property fields.
                           type: object
-                          x-kubernetes-map-type: granular
                         isFavorite:
                           description: Specifies whether this object is a favorite
                             or not.
@@ -629,7 +632,8 @@ spec:
                           type: array
                         registryVersion:
                           description: The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                         timeCreated:
                           description: The date and time that the object was created.
                           type: string
@@ -663,10 +667,12 @@ spec:
                   objectStatus:
                     description: The status of an object that can be set to value
                       1 for shallow references across objects, other values reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   objectVersion:
                     description: The object version.
-                    type: number
+                    format: int64
+                    type: integer
                   parentRef:
                     description: A reference to the object's parent.
                     items:
@@ -708,7 +714,8 @@ spec:
                           type: string
                         objectVersion:
                           description: The object version.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The type of the object in patch.
                           type: string
@@ -745,7 +752,8 @@ spec:
                           type: array
                         registryVersion:
                           description: The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   timePatched:

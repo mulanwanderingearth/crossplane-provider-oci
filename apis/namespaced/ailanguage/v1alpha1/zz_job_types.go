@@ -17,7 +17,7 @@ import (
 type InputConfigurationInitParameters struct {
 
 	// meta data about documents For CSV valid JSON format is {"CSV" :{inputColumn: "reviewDetails", rowId: "reviewId", copyColumnsToOutput: ["reviewId" "userId"] , delimiter: ","} Note: In future if new file types added we will update here in documentation about input file meta data
-	Configuration map[string]map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// Type of documents supported for this release only TXT,CSV  and one element is allowed here. for future scope this is marked as list
 	DocumentTypes []*string `json:"documentTypes,omitempty" tf:"document_types,omitempty"`
@@ -26,7 +26,7 @@ type InputConfigurationInitParameters struct {
 type InputConfigurationObservation struct {
 
 	// meta data about documents For CSV valid JSON format is {"CSV" :{inputColumn: "reviewDetails", rowId: "reviewId", copyColumnsToOutput: ["reviewId" "userId"] , delimiter: ","} Note: In future if new file types added we will update here in documentation about input file meta data
-	Configuration map[string]map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// Type of documents supported for this release only TXT,CSV  and one element is allowed here. for future scope this is marked as list
 	DocumentTypes []*string `json:"documentTypes,omitempty" tf:"document_types,omitempty"`
@@ -36,7 +36,7 @@ type InputConfigurationParameters struct {
 
 	// meta data about documents For CSV valid JSON format is {"CSV" :{inputColumn: "reviewDetails", rowId: "reviewId", copyColumnsToOutput: ["reviewId" "userId"] , delimiter: ","} Note: In future if new file types added we will update here in documentation about input file meta data
 	// +kubebuilder:validation:Optional
-	Configuration map[string]map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// Type of documents supported for this release only TXT,CSV  and one element is allowed here. for future scope this is marked as list
 	// +kubebuilder:validation:Optional
@@ -131,7 +131,7 @@ type JobObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Number of documents processed for prediction. For CSV this signifies number of rows and for TXT this signifies number of files.
-	CompletedDocuments *float64 `json:"completedDocuments,omitempty" tf:"completed_documents,omitempty"`
+	CompletedDocuments *int64 `json:"completedDocuments,omitempty" tf:"completed_documents,omitempty"`
 
 	// The OCID of the user who created the job.
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
@@ -143,7 +143,7 @@ type JobObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Number of documents failed for prediction. For CSV this signifies number of rows and for TXT this signifies number of files.
-	FailedDocuments *float64 `json:"failedDocuments,omitempty" tf:"failed_documents,omitempty"`
+	FailedDocuments *int64 `json:"failedDocuments,omitempty" tf:"failed_documents,omitempty"`
 
 	// The OCID of the job.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -164,16 +164,16 @@ type JobObservation struct {
 	OutputLocation []OutputLocationObservation `json:"outputLocation,omitempty" tf:"output_location,omitempty"`
 
 	// Number of documents still to process. For CSV this signifies number of rows and for TXT this signifies number of files.
-	PendingDocuments *float64 `json:"pendingDocuments,omitempty" tf:"pending_documents,omitempty"`
+	PendingDocuments *int64 `json:"pendingDocuments,omitempty" tf:"pending_documents,omitempty"`
 
 	// How much progress the operation has made, vs the total amount of work that must be performed.
-	PercentComplete *float64 `json:"percentComplete,omitempty" tf:"percent_complete,omitempty"`
+	PercentComplete *int64 `json:"percentComplete,omitempty" tf:"percent_complete,omitempty"`
 
 	// The current state of the Job.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Time to live duration in days for Job. Job will be available till max 90 days.
-	TTLInDays *float64 `json:"ttlInDays,omitempty" tf:"ttl_in_days,omitempty"`
+	TTLInDays *int64 `json:"ttlInDays,omitempty" tf:"ttl_in_days,omitempty"`
 
 	// Job accepted time.
 	TimeAccepted *string `json:"timeAccepted,omitempty" tf:"time_accepted,omitempty"`
@@ -185,10 +185,10 @@ type JobObservation struct {
 	TimeStarted *string `json:"timeStarted,omitempty" tf:"time_started,omitempty"`
 
 	// Total number of documents given as input for prediction. For CSV this signifies number of rows and for TXT this signifies number of files.
-	TotalDocuments *float64 `json:"totalDocuments,omitempty" tf:"total_documents,omitempty"`
+	TotalDocuments *int64 `json:"totalDocuments,omitempty" tf:"total_documents,omitempty"`
 
 	// warnings count
-	WarningsCount *float64 `json:"warningsCount,omitempty" tf:"warnings_count,omitempty"`
+	WarningsCount *int64 `json:"warningsCount,omitempty" tf:"warnings_count,omitempty"`
 }
 
 type JobParameters struct {
@@ -234,7 +234,7 @@ type JobParameters struct {
 type ModelMetadataDetailsInitParameters struct {
 
 	// meta data about documents For CSV valid JSON format is {"CSV" :{inputColumn: "reviewDetails", rowId: "reviewId", copyColumnsToOutput: ["reviewId" "userId"] , delimiter: ","} Note: In future if new file types added we will update here in documentation about input file meta data
-	Configuration map[string]map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// Unique identifier endpoint OCID that should be used for inference
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ailanguage/v1alpha1.Endpoint
@@ -272,7 +272,7 @@ type ModelMetadataDetailsInitParameters struct {
 type ModelMetadataDetailsObservation struct {
 
 	// meta data about documents For CSV valid JSON format is {"CSV" :{inputColumn: "reviewDetails", rowId: "reviewId", copyColumnsToOutput: ["reviewId" "userId"] , delimiter: ","} Note: In future if new file types added we will update here in documentation about input file meta data
-	Configuration map[string]map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// Unique identifier endpoint OCID that should be used for inference
 	EndpointID *string `json:"endpointId,omitempty" tf:"endpoint_id,omitempty"`
@@ -291,7 +291,7 @@ type ModelMetadataDetailsParameters struct {
 
 	// meta data about documents For CSV valid JSON format is {"CSV" :{inputColumn: "reviewDetails", rowId: "reviewId", copyColumnsToOutput: ["reviewId" "userId"] , delimiter: ","} Note: In future if new file types added we will update here in documentation about input file meta data
 	// +kubebuilder:validation:Optional
-	Configuration map[string]map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// Unique identifier endpoint OCID that should be used for inference
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ailanguage/v1alpha1.Endpoint

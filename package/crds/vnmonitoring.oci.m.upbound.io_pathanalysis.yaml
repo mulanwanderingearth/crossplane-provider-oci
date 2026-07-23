@@ -772,7 +772,8 @@ spec:
                     type: string
                   protocol:
                     description: The IP protocol to used for the path analysis.
-                    type: number
+                    format: int64
+                    type: integer
                   protocolParameters:
                     description: (Applicable when type=ADHOC_QUERY) Defines the IP
                       protocol parameters for a PathAnalyzerTest resource.
@@ -781,17 +782,21 @@ spec:
                         destinationPort:
                           description: The destination port to use in a PathAnalyzerTest
                             resource.
-                          type: number
+                          format: int64
+                          type: integer
                         icmpCode:
                           description: (Applicable when type=ICMP) The ICMP code.
-                          type: number
+                          format: int64
+                          type: integer
                         icmpType:
                           description: The ICMP type.
-                          type: number
+                          format: int64
+                          type: integer
                         sourcePort:
                           description: (Applicable when type=TCP | UDP) The source
                             port to use in a PathAnalyzerTest resource.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The type of the Endpoint.
                           type: string
@@ -2158,7 +2163,8 @@ spec:
                     type: string
                   protocol:
                     description: The IP protocol to used for the path analysis.
-                    type: number
+                    format: int64
+                    type: integer
                   protocolParameters:
                     description: (Applicable when type=ADHOC_QUERY) Defines the IP
                       protocol parameters for a PathAnalyzerTest resource.
@@ -2167,17 +2173,21 @@ spec:
                         destinationPort:
                           description: The destination port to use in a PathAnalyzerTest
                             resource.
-                          type: number
+                          format: int64
+                          type: integer
                         icmpCode:
                           description: (Applicable when type=ICMP) The ICMP code.
-                          type: number
+                          format: int64
+                          type: integer
                         icmpType:
                           description: The ICMP type.
-                          type: number
+                          format: int64
+                          type: integer
                         sourcePort:
                           description: (Applicable when type=TCP | UDP) The source
                             port to use in a PathAnalyzerTest resource.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The type of the Endpoint.
                           type: string
@@ -2949,7 +2959,8 @@ spec:
                     type: string
                   protocol:
                     description: The IP protocol to used for the path analysis.
-                    type: number
+                    format: int64
+                    type: integer
                   protocolParameters:
                     description: (Applicable when type=ADHOC_QUERY) Defines the IP
                       protocol parameters for a PathAnalyzerTest resource.
@@ -2958,17 +2969,21 @@ spec:
                         destinationPort:
                           description: The destination port to use in a PathAnalyzerTest
                             resource.
-                          type: number
+                          format: int64
+                          type: integer
                         icmpCode:
                           description: (Applicable when type=ICMP) The ICMP code.
-                          type: number
+                          format: int64
+                          type: integer
                         icmpType:
                           description: The ICMP type.
-                          type: number
+                          format: int64
+                          type: integer
                         sourcePort:
                           description: (Applicable when type=TCP | UDP) The source
                             port to use in a PathAnalyzerTest resource.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The type of the Endpoint.
                           type: string

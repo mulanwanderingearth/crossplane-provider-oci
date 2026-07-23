@@ -77,7 +77,8 @@ spec:
                             For auto key rotation the interval should between 60 day
                             and 365 days (1 year). Note: User must specify this parameter
                             when creating a new schedule.'
-                          type: number
+                          format: int64
+                          type: integer
                         timeOfLastRotation:
                           description: '(Updatable) A property indicating Last rotation
                             Date. Example: 2023-04-04T00:00:00Z.'
@@ -196,7 +197,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   desiredState:
                     description: '(Updatable) Desired state of the key. Possible values
                       : ENABLED or DISABLED'
@@ -305,7 +305,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoRotationEnabled:
                     description: (Updatable) A parameter specifying whether the auto
                       key rotation is enabled or not.
@@ -325,7 +324,8 @@ spec:
                         length:
                           description: 'The length of the key in bytes, expressed
                             as an integer. Supported values include the following:'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   managementEndpoint:
@@ -435,7 +435,8 @@ spec:
                             For auto key rotation the interval should between 60 day
                             and 365 days (1 year). Note: User must specify this parameter
                             when creating a new schedule.'
-                          type: number
+                          format: int64
+                          type: integer
                         timeOfLastRotation:
                           description: '(Updatable) A property indicating Last rotation
                             Date. Example: 2023-04-04T00:00:00Z.'
@@ -554,7 +555,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   desiredState:
                     description: '(Updatable) Desired state of the key. Possible values
                       : ENABLED or DISABLED'
@@ -663,7 +663,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutoRotationEnabled:
                     description: (Updatable) A parameter specifying whether the auto
                       key rotation is enabled or not.
@@ -683,7 +682,8 @@ spec:
                         length:
                           description: 'The length of the key in bytes, expressed
                             as an integer. Supported values include the following:'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   managementEndpoint:
@@ -858,7 +858,8 @@ spec:
                             For auto key rotation the interval should between 60 day
                             and 365 days (1 year). Note: User must specify this parameter
                             when creating a new schedule.'
-                          type: number
+                          format: int64
+                          type: integer
                         timeOfLastRotation:
                           description: '(Updatable) A property indicating Last rotation
                             Date. Example: 2023-04-04T00:00:00Z.'
@@ -903,7 +904,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   desiredState:
                     description: '(Updatable) Desired state of the key. Possible values
                       : ENABLED or DISABLED'
@@ -948,7 +948,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the key.
                     type: string
@@ -975,7 +974,8 @@ spec:
                         length:
                           description: 'The length of the key in bytes, expressed
                             as an integer. Supported values include the following:'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   managementEndpoint:

@@ -169,7 +169,8 @@ spec:
                     description: The retention period, in days, for the snapshot that
                       allows you to perform a rollback of the upgrade operation. After
                       this number of days passes, you cannot roll back the upgrade.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -279,7 +280,8 @@ spec:
                     description: The retention period, in days, for the snapshot that
                       allows you to perform a rollback of the upgrade operation. After
                       this number of days passes, you cannot roll back the upgrade.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -412,7 +414,8 @@ spec:
                     type: string
                   cpuCoreCount:
                     description: The number of CPU cores enabled on the DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStoragePercentage:
                     description: The percentage assigned to DATA storage (user data
                       and database files). The remaining percentage is assigned to
@@ -420,12 +423,14 @@ spec:
                       manager backups). Accepted values are 40 and 80. The default
                       is 80 percent assigned to DATA storage. Not applicable for virtual
                       machine DB systems.
-                    type: number
+                    format: int64
+                    type: integer
                   dataStorageSizeInGb:
                     description: The data storage size, in gigabytes, that is currently
                       available to the DB system. Applies only for virtual machine
                       DB systems.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseEdition:
                     description: The Oracle Database edition that applies to all the
                       databases on the DB system.
@@ -450,7 +455,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   diskRedundancy:
                     description: The type of redundancy configured for the DB system.
                       NORMAL is 2-way redundancy. HIGH is 3-way redundancy.
@@ -476,7 +480,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   hostname:
                     description: The hostname for the DB system.
                     type: string
@@ -503,7 +506,8 @@ spec:
                                 type: string
                               share:
                                 description: The relative priority of this database.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         lifecycleDetails:
@@ -545,7 +549,8 @@ spec:
                   listenerPort:
                     description: The port number configured for the listener on the
                       DB system.
-                    type: number
+                    format: int64
+                    type: integer
                   maintenanceWindow:
                     description: The scheduling details for the quarterly maintenance
                       window. Patching and system updates take place during the maintenance
@@ -567,13 +572,15 @@ spec:
                             should be performed. The window is a 4 hour slot. Valid
                             values are
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         leadTimeInWeeks:
                           description: Lead time window allows user to set a lead
                             time to prepare for a down time. The lead time is in weeks
                             and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: Months during the year when maintenance should
                             be performed.
@@ -601,7 +608,8 @@ spec:
                             to specify specific days of the week and hours that maintenance
                             will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -618,7 +626,8 @@ spec:
                   nodeCount:
                     description: The number of nodes in the DB system. For RAC DB
                       systems, the value is greater than 1.
-                    type: number
+                    format: int64
+                    type: integer
                   nsgIds:
                     description: 'A list of the OCIDs of the network security groups
                       (NSGs) that this resource belongs to. Setting this to an empty
@@ -638,7 +647,8 @@ spec:
                     description: The RECO/REDO storage size, in gigabytes, that is
                       currently allocated to the DB system. Applies only for virtual
                       machine DB systems.
-                    type: number
+                    format: int64
+                    type: integer
                   scanDnsName:
                     description: The FQDN of the DNS record for the SCAN IP addresses
                       that are associated with the DB system.
@@ -664,7 +674,8 @@ spec:
                     description: The retention period, in days, for the snapshot that
                       allows you to perform a rollback of the upgrade operation. After
                       this number of days passes, you cannot roll back the upgrade.
-                    type: number
+                    format: int64
+                    type: integer
                   sourceDbSystemId:
                     description: The OCID of the DB system.
                     type: string

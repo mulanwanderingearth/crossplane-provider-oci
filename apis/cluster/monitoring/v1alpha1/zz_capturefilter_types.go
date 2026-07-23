@@ -28,8 +28,7 @@ type CaptureFilterInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -41,8 +40,7 @@ type CaptureFilterInitParameters struct {
 	FlowLogCaptureFilterRules []FlowLogCaptureFilterRulesInitParameters `json:"flowLogCaptureFilterRules,omitempty" tf:"flow_log_capture_filter_rules,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The set of rules governing what traffic a VTAP mirrors.
 	VtapCaptureFilterRules []VtapCaptureFilterRulesInitParameters `json:"vtapCaptureFilterRules,omitempty" tf:"vtap_capture_filter_rules,omitempty"`
@@ -54,8 +52,7 @@ type CaptureFilterObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -67,8 +64,7 @@ type CaptureFilterObservation struct {
 	FlowLogCaptureFilterRules []FlowLogCaptureFilterRulesObservation `json:"flowLogCaptureFilterRules,omitempty" tf:"flow_log_capture_filter_rules,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The capture filter's Oracle ID (OCID).
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -100,8 +96,7 @@ type CaptureFilterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -117,8 +112,7 @@ type CaptureFilterParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The set of rules governing what traffic a VTAP mirrors.
 	// +kubebuilder:validation:Optional
@@ -128,30 +122,30 @@ type CaptureFilterParameters struct {
 type DestinationPortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type DestinationPortRangeObservation struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type DestinationPortRangeParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type FlowLogCaptureFilterRulesInitParameters struct {
@@ -169,7 +163,7 @@ type FlowLogCaptureFilterRulesInitParameters struct {
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) A lower number indicates a higher priority, range 0-9. Each rule must have a distinct priority.
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Updatable) The transport protocol the filter uses.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -178,7 +172,7 @@ type FlowLogCaptureFilterRulesInitParameters struct {
 	RuleAction *string `json:"ruleAction,omitempty" tf:"rule_action,omitempty"`
 
 	// (Updatable) Sampling interval as 1 of X, where X is an integer not greater than 100000.
-	SamplingRate *float64 `json:"samplingRate,omitempty" tf:"sampling_rate,omitempty"`
+	SamplingRate *int64 `json:"samplingRate,omitempty" tf:"sampling_rate,omitempty"`
 
 	// (Updatable) Traffic from this CIDR will be captured in the flow log.
 	SourceCidr *string `json:"sourceCidr,omitempty" tf:"source_cidr,omitempty"`
@@ -205,7 +199,7 @@ type FlowLogCaptureFilterRulesObservation struct {
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) A lower number indicates a higher priority, range 0-9. Each rule must have a distinct priority.
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Updatable) The transport protocol the filter uses.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -214,7 +208,7 @@ type FlowLogCaptureFilterRulesObservation struct {
 	RuleAction *string `json:"ruleAction,omitempty" tf:"rule_action,omitempty"`
 
 	// (Updatable) Sampling interval as 1 of X, where X is an integer not greater than 100000.
-	SamplingRate *float64 `json:"samplingRate,omitempty" tf:"sampling_rate,omitempty"`
+	SamplingRate *int64 `json:"samplingRate,omitempty" tf:"sampling_rate,omitempty"`
 
 	// (Updatable) Traffic from this CIDR will be captured in the flow log.
 	SourceCidr *string `json:"sourceCidr,omitempty" tf:"source_cidr,omitempty"`
@@ -246,7 +240,7 @@ type FlowLogCaptureFilterRulesParameters struct {
 
 	// (Updatable) A lower number indicates a higher priority, range 0-9. Each rule must have a distinct priority.
 	// +kubebuilder:validation:Optional
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Updatable) The transport protocol the filter uses.
 	// +kubebuilder:validation:Optional
@@ -258,7 +252,7 @@ type FlowLogCaptureFilterRulesParameters struct {
 
 	// (Updatable) Sampling interval as 1 of X, where X is an integer not greater than 100000.
 	// +kubebuilder:validation:Optional
-	SamplingRate *float64 `json:"samplingRate,omitempty" tf:"sampling_rate,omitempty"`
+	SamplingRate *int64 `json:"samplingRate,omitempty" tf:"sampling_rate,omitempty"`
 
 	// (Updatable) Traffic from this CIDR will be captured in the flow log.
 	// +kubebuilder:validation:Optional
@@ -276,88 +270,88 @@ type FlowLogCaptureFilterRulesParameters struct {
 type IcmpOptionsInitParameters struct {
 
 	// (Updatable) The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type IcmpOptionsObservation struct {
 
 	// (Updatable) The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type IcmpOptionsParameters struct {
 
 	// (Updatable) The ICMP code .
 	// +kubebuilder:validation:Optional
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
 	// +kubebuilder:validation:Optional
-	Type *float64 `json:"type" tf:"type,omitempty"`
+	Type *int64 `json:"type" tf:"type,omitempty"`
 }
 
 type SourcePortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type SourcePortRangeObservation struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type SourcePortRangeParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type TCPOptionsDestinationPortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type TCPOptionsDestinationPortRangeObservation struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type TCPOptionsDestinationPortRangeParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type TCPOptionsInitParameters struct {
@@ -392,59 +386,59 @@ type TCPOptionsParameters struct {
 type TCPOptionsSourcePortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type TCPOptionsSourcePortRangeObservation struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type TCPOptionsSourcePortRangeParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type UDPOptionsDestinationPortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type UDPOptionsDestinationPortRangeObservation struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type UDPOptionsDestinationPortRangeParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type UDPOptionsInitParameters struct {
@@ -479,59 +473,59 @@ type UDPOptionsParameters struct {
 type UDPOptionsSourcePortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type UDPOptionsSourcePortRangeObservation struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type UDPOptionsSourcePortRangeParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type VtapCaptureFilterRulesIcmpOptionsInitParameters struct {
 
 	// (Updatable) The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type VtapCaptureFilterRulesIcmpOptionsObservation struct {
 
 	// (Updatable) The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type VtapCaptureFilterRulesIcmpOptionsParameters struct {
 
 	// (Updatable) The ICMP code .
 	// +kubebuilder:validation:Optional
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// (Updatable) The ICMP type.
 	// +kubebuilder:validation:Optional
-	Type *float64 `json:"type" tf:"type,omitempty"`
+	Type *int64 `json:"type" tf:"type,omitempty"`
 }
 
 type VtapCaptureFilterRulesInitParameters struct {
@@ -655,30 +649,30 @@ type VtapCaptureFilterRulesTCPOptionsParameters struct {
 type VtapCaptureFilterRulesUDPOptionsDestinationPortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type VtapCaptureFilterRulesUDPOptionsDestinationPortRangeObservation struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type VtapCaptureFilterRulesUDPOptionsDestinationPortRangeParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type VtapCaptureFilterRulesUDPOptionsInitParameters struct {
@@ -713,30 +707,30 @@ type VtapCaptureFilterRulesUDPOptionsParameters struct {
 type VtapCaptureFilterRulesUDPOptionsSourcePortRangeInitParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type VtapCaptureFilterRulesUDPOptionsSourcePortRangeObservation struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type VtapCaptureFilterRulesUDPOptionsSourcePortRangeParameters struct {
 
 	// (Updatable) The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// (Updatable) The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 // CaptureFilterSpec defines the desired state of CaptureFilter

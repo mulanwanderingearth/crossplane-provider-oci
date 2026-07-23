@@ -38,7 +38,7 @@ type ClusterNodesParameters struct {
 type MysqlHeatWaveClusterInitParameters struct {
 
 	// (Updatable) A change to the number of nodes in the HeatWave cluster will result in the entire cluster being torn down and re-created with the new cluster of nodes. This may result in a significant downtime for the analytics capability while the HeatWave cluster is re-provisioned.
-	ClusterSize *float64 `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
+	ClusterSize *int64 `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
 
 	// The DB System OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/mysql/v1alpha1.MysqlDbSystem
@@ -68,7 +68,7 @@ type MysqlHeatWaveClusterObservation struct {
 	ClusterNodes []ClusterNodesObservation `json:"clusterNodes,omitempty" tf:"cluster_nodes,omitempty"`
 
 	// (Updatable) A change to the number of nodes in the HeatWave cluster will result in the entire cluster being torn down and re-created with the new cluster of nodes. This may result in a significant downtime for the analytics capability while the HeatWave cluster is re-provisioned.
-	ClusterSize *float64 `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
+	ClusterSize *int64 `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
 
 	// The DB System OCID.
 	DBSystemID *string `json:"dbSystemId,omitempty" tf:"db_system_id,omitempty"`
@@ -98,7 +98,7 @@ type MysqlHeatWaveClusterParameters struct {
 
 	// (Updatable) A change to the number of nodes in the HeatWave cluster will result in the entire cluster being torn down and re-created with the new cluster of nodes. This may result in a significant downtime for the analytics capability while the HeatWave cluster is re-provisioned.
 	// +kubebuilder:validation:Optional
-	ClusterSize *float64 `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
+	ClusterSize *int64 `json:"clusterSize,omitempty" tf:"cluster_size,omitempty"`
 
 	// The DB System OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/mysql/v1alpha1.MysqlDbSystem

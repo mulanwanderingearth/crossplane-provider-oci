@@ -31,15 +31,13 @@ type CertificateInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name for the SSL certificate. The name can be changed and does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Set to true if the SSL certificate is self-signed.
 	IsTrustVerificationDisabled *bool `json:"isTrustVerificationDisabled,omitempty" tf:"is_trust_verification_disabled,omitempty"`
@@ -57,8 +55,7 @@ type CertificateObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name for the SSL certificate. The name can be changed and does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -67,8 +64,7 @@ type CertificateObservation struct {
 	Extensions []ExtensionsObservation `json:"extensions,omitempty" tf:"extensions,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the SSL certificate.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -106,7 +102,7 @@ type CertificateObservation struct {
 	TimeNotValidBefore *string `json:"timeNotValidBefore,omitempty" tf:"time_not_valid_before,omitempty"`
 
 	// The version of the encoded certificate.
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type CertificateParameters struct {
@@ -130,8 +126,7 @@ type CertificateParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name for the SSL certificate. The name can be changed and does not need to be unique.
 	// +kubebuilder:validation:Optional
@@ -139,8 +134,7 @@ type CertificateParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Set to true if the SSL certificate is self-signed.
 	// +kubebuilder:validation:Optional
@@ -208,10 +202,10 @@ type PublicKeyInfoObservation struct {
 	Algorithm *string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
 	// The private key exponent.
-	Exponent *float64 `json:"exponent,omitempty" tf:"exponent,omitempty"`
+	Exponent *int64 `json:"exponent,omitempty" tf:"exponent,omitempty"`
 
 	// The number of bits in a key used by a cryptographic algorithm.
-	KeySize *float64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
+	KeySize *int64 `json:"keySize,omitempty" tf:"key_size,omitempty"`
 }
 
 type PublicKeyInfoParameters struct {

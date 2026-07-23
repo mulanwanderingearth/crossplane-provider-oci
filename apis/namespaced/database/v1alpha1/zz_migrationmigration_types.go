@@ -91,10 +91,10 @@ type DataPumpParametersInitParameters struct {
 	ExcludeParameters []*string `json:"excludeParameters,omitempty" tf:"exclude_parameters,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Maximum number of worker processes that can be used for a Data Pump Export job.
-	ExportParallelismDegree *float64 `json:"exportParallelismDegree,omitempty" tf:"export_parallelism_degree,omitempty"`
+	ExportParallelismDegree *int64 `json:"exportParallelismDegree,omitempty" tf:"export_parallelism_degree,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Maximum number of worker processes that can be used for a Data Pump Import job. For an Autonomous Database, ODMS will automatically query its CPU core count and set this property.
-	ImportParallelismDegree *float64 `json:"importParallelismDegree,omitempty" tf:"import_parallelism_degree,omitempty"`
+	ImportParallelismDegree *int64 `json:"importParallelismDegree,omitempty" tf:"import_parallelism_degree,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Set to false to force Data Pump worker process to run on one instance.
 	IsCluster *bool `json:"isCluster,omitempty" tf:"is_cluster,omitempty"`
@@ -112,10 +112,10 @@ type DataPumpParametersObservation struct {
 	ExcludeParameters []*string `json:"excludeParameters,omitempty" tf:"exclude_parameters,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Maximum number of worker processes that can be used for a Data Pump Export job.
-	ExportParallelismDegree *float64 `json:"exportParallelismDegree,omitempty" tf:"export_parallelism_degree,omitempty"`
+	ExportParallelismDegree *int64 `json:"exportParallelismDegree,omitempty" tf:"export_parallelism_degree,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Maximum number of worker processes that can be used for a Data Pump Import job. For an Autonomous Database, ODMS will automatically query its CPU core count and set this property.
-	ImportParallelismDegree *float64 `json:"importParallelismDegree,omitempty" tf:"import_parallelism_degree,omitempty"`
+	ImportParallelismDegree *int64 `json:"importParallelismDegree,omitempty" tf:"import_parallelism_degree,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Set to false to force Data Pump worker process to run on one instance.
 	IsCluster *bool `json:"isCluster,omitempty" tf:"is_cluster,omitempty"`
@@ -136,11 +136,11 @@ type DataPumpParametersParameters struct {
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Maximum number of worker processes that can be used for a Data Pump Export job.
 	// +kubebuilder:validation:Optional
-	ExportParallelismDegree *float64 `json:"exportParallelismDegree,omitempty" tf:"export_parallelism_degree,omitempty"`
+	ExportParallelismDegree *int64 `json:"exportParallelismDegree,omitempty" tf:"export_parallelism_degree,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Maximum number of worker processes that can be used for a Data Pump Import job. For an Autonomous Database, ODMS will automatically query its CPU core count and set this property.
 	// +kubebuilder:validation:Optional
-	ImportParallelismDegree *float64 `json:"importParallelismDegree,omitempty" tf:"import_parallelism_degree,omitempty"`
+	ImportParallelismDegree *int64 `json:"importParallelismDegree,omitempty" tf:"import_parallelism_degree,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Set to false to force Data Pump worker process to run on one instance.
 	// +kubebuilder:validation:Optional
@@ -334,7 +334,7 @@ type GgsDeploymentParameters struct {
 type GgsDetailsExtractInitParameters struct {
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Length of time (in seconds) that a transaction can be open before Extract generates a warning message that the transaction is long-running. If not specified, Extract will not generate a warning on long-running transactions.
-	LongTransDuration *float64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
+	LongTransDuration *int64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Extract performance.
 	PerformanceProfile *string `json:"performanceProfile,omitempty" tf:"performance_profile,omitempty"`
@@ -343,7 +343,7 @@ type GgsDetailsExtractInitParameters struct {
 type GgsDetailsExtractObservation struct {
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Length of time (in seconds) that a transaction can be open before Extract generates a warning message that the transaction is long-running. If not specified, Extract will not generate a warning on long-running transactions.
-	LongTransDuration *float64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
+	LongTransDuration *int64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Extract performance.
 	PerformanceProfile *string `json:"performanceProfile,omitempty" tf:"performance_profile,omitempty"`
@@ -353,7 +353,7 @@ type GgsDetailsExtractParameters struct {
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Length of time (in seconds) that a transaction can be open before Extract generates a warning message that the transaction is long-running. If not specified, Extract will not generate a warning on long-running transactions.
 	// +kubebuilder:validation:Optional
-	LongTransDuration *float64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
+	LongTransDuration *int64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Extract performance.
 	// +kubebuilder:validation:Optional
@@ -363,7 +363,7 @@ type GgsDetailsExtractParameters struct {
 type GgsDetailsInitParameters struct {
 
 	// (Updatable) ODMS will monitor GoldenGate end-to-end latency until the lag time is lower than the specified value in seconds.
-	AcceptableLag *float64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
+	AcceptableLag *int64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Parameters for GoldenGate Extract processes.
 	Extract []GgsDetailsExtractInitParameters `json:"extract,omitempty" tf:"extract,omitempty"`
@@ -375,7 +375,7 @@ type GgsDetailsInitParameters struct {
 type GgsDetailsObservation struct {
 
 	// (Updatable) ODMS will monitor GoldenGate end-to-end latency until the lag time is lower than the specified value in seconds.
-	AcceptableLag *float64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
+	AcceptableLag *int64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Parameters for GoldenGate Extract processes.
 	Extract []GgsDetailsExtractObservation `json:"extract,omitempty" tf:"extract,omitempty"`
@@ -391,7 +391,7 @@ type GgsDetailsParameters struct {
 
 	// (Updatable) ODMS will monitor GoldenGate end-to-end latency until the lag time is lower than the specified value in seconds.
 	// +kubebuilder:validation:Optional
-	AcceptableLag *float64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
+	AcceptableLag *int64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Parameters for GoldenGate Extract processes.
 	// +kubebuilder:validation:Optional
@@ -405,7 +405,7 @@ type GgsDetailsParameters struct {
 type HubDetailsExtractInitParameters struct {
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Length of time (in seconds) that a transaction can be open before Extract generates a warning message that the transaction is long-running. If not specified, Extract will not generate a warning on long-running transactions.
-	LongTransDuration *float64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
+	LongTransDuration *int64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Extract performance.
 	PerformanceProfile *string `json:"performanceProfile,omitempty" tf:"performance_profile,omitempty"`
@@ -414,7 +414,7 @@ type HubDetailsExtractInitParameters struct {
 type HubDetailsExtractObservation struct {
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Length of time (in seconds) that a transaction can be open before Extract generates a warning message that the transaction is long-running. If not specified, Extract will not generate a warning on long-running transactions.
-	LongTransDuration *float64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
+	LongTransDuration *int64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Extract performance.
 	PerformanceProfile *string `json:"performanceProfile,omitempty" tf:"performance_profile,omitempty"`
@@ -424,7 +424,7 @@ type HubDetailsExtractParameters struct {
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Length of time (in seconds) that a transaction can be open before Extract generates a warning message that the transaction is long-running. If not specified, Extract will not generate a warning on long-running transactions.
 	// +kubebuilder:validation:Optional
-	LongTransDuration *float64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
+	LongTransDuration *int64 `json:"longTransDuration,omitempty" tf:"long_trans_duration,omitempty"`
 
 	// (Applicable when database_combination=ORACLE) (Updatable) Extract performance.
 	// +kubebuilder:validation:Optional
@@ -434,7 +434,7 @@ type HubDetailsExtractParameters struct {
 type HubDetailsInitParameters struct {
 
 	// (Updatable) ODMS will monitor GoldenGate end-to-end latency until the lag time is lower than the specified value in seconds.
-	AcceptableLag *float64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
+	AcceptableLag *int64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
 
 	// (Updatable) The OCID of the resource being referenced.
 	ComputeID *string `json:"computeId,omitempty" tf:"compute_id,omitempty"`
@@ -481,7 +481,7 @@ type HubDetailsInitParameters struct {
 type HubDetailsObservation struct {
 
 	// (Updatable) ODMS will monitor GoldenGate end-to-end latency until the lag time is lower than the specified value in seconds.
-	AcceptableLag *float64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
+	AcceptableLag *int64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
 
 	// (Updatable) The OCID of the resource being referenced.
 	ComputeID *string `json:"computeId,omitempty" tf:"compute_id,omitempty"`
@@ -509,7 +509,7 @@ type HubDetailsParameters struct {
 
 	// (Updatable) ODMS will monitor GoldenGate end-to-end latency until the lag time is lower than the specified value in seconds.
 	// +kubebuilder:validation:Optional
-	AcceptableLag *float64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
+	AcceptableLag *int64 `json:"acceptableLag,omitempty" tf:"acceptable_lag,omitempty"`
 
 	// (Updatable) The OCID of the resource being referenced.
 	// +kubebuilder:validation:Optional
@@ -937,8 +937,7 @@ type MigrationMigrationInitParameters struct {
 	DatabaseCombination *string `json:"databaseCombination,omitempty" tf:"database_combination,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Does not have to be unique, and it's changeable.  Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -950,8 +949,7 @@ type MigrationMigrationInitParameters struct {
 	ExcludeObjects []MigrationMigrationExcludeObjectsInitParameters `json:"excludeObjects,omitempty" tf:"exclude_objects,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Optional settings for Oracle GoldenGate processes
 	GgsDetails []GgsDetailsInitParameters `json:"ggsDetails,omitempty" tf:"ggs_details,omitempty"`
@@ -1045,8 +1043,7 @@ type MigrationMigrationObservation struct {
 	DatabaseCombination *string `json:"databaseCombination,omitempty" tf:"database_combination,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Does not have to be unique, and it's changeable.  Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -1061,8 +1058,7 @@ type MigrationMigrationObservation struct {
 	ExecutingJobID *string `json:"executingJobId,omitempty" tf:"executing_job_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Optional settings for Oracle GoldenGate processes
 	GgsDetails []GgsDetailsObservation `json:"ggsDetails,omitempty" tf:"ggs_details,omitempty"`
@@ -1095,8 +1091,7 @@ type MigrationMigrationObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) The OCID of the resource being referenced.
 	TargetDatabaseConnectionID *string `json:"targetDatabaseConnectionId,omitempty" tf:"target_database_connection_id,omitempty"`
@@ -1168,8 +1163,7 @@ type MigrationMigrationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly description. Does not have to be unique, and it's changeable.  Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -1185,8 +1179,7 @@ type MigrationMigrationParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace.  For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Optional settings for Oracle GoldenGate processes
 	// +kubebuilder:validation:Optional
@@ -1384,7 +1377,7 @@ type TablespaceDetailsInitParameters struct {
 	BlockSizeInKbs *string `json:"blockSizeInKbs,omitempty" tf:"block_size_in_kbs,omitempty"`
 
 	// (Applicable when target_type=ADB_D_AUTOCREATE | NON_ADB_AUTOCREATE) (Updatable) Size to extend the tablespace in MB.  Note: Only applicable if 'isBigFile' property is set to true.
-	ExtendSizeInMbs *float64 `json:"extendSizeInMbs,omitempty" tf:"extend_size_in_mbs,omitempty"`
+	ExtendSizeInMbs *int64 `json:"extendSizeInMbs,omitempty" tf:"extend_size_in_mbs,omitempty"`
 
 	// (Applicable when target_type=ADB_D_AUTOCREATE | NON_ADB_AUTOCREATE) (Updatable) Set this property to true to auto-create tablespaces in the target Database. Note: This is not applicable for Autonomous Database Serverless databases.
 	IsAutoCreate *bool `json:"isAutoCreate,omitempty" tf:"is_auto_create,omitempty"`
@@ -1405,7 +1398,7 @@ type TablespaceDetailsObservation struct {
 	BlockSizeInKbs *string `json:"blockSizeInKbs,omitempty" tf:"block_size_in_kbs,omitempty"`
 
 	// (Applicable when target_type=ADB_D_AUTOCREATE | NON_ADB_AUTOCREATE) (Updatable) Size to extend the tablespace in MB.  Note: Only applicable if 'isBigFile' property is set to true.
-	ExtendSizeInMbs *float64 `json:"extendSizeInMbs,omitempty" tf:"extend_size_in_mbs,omitempty"`
+	ExtendSizeInMbs *int64 `json:"extendSizeInMbs,omitempty" tf:"extend_size_in_mbs,omitempty"`
 
 	// (Applicable when target_type=ADB_D_AUTOCREATE | NON_ADB_AUTOCREATE) (Updatable) Set this property to true to auto-create tablespaces in the target Database. Note: This is not applicable for Autonomous Database Serverless databases.
 	IsAutoCreate *bool `json:"isAutoCreate,omitempty" tf:"is_auto_create,omitempty"`
@@ -1428,7 +1421,7 @@ type TablespaceDetailsParameters struct {
 
 	// (Applicable when target_type=ADB_D_AUTOCREATE | NON_ADB_AUTOCREATE) (Updatable) Size to extend the tablespace in MB.  Note: Only applicable if 'isBigFile' property is set to true.
 	// +kubebuilder:validation:Optional
-	ExtendSizeInMbs *float64 `json:"extendSizeInMbs,omitempty" tf:"extend_size_in_mbs,omitempty"`
+	ExtendSizeInMbs *int64 `json:"extendSizeInMbs,omitempty" tf:"extend_size_in_mbs,omitempty"`
 
 	// (Applicable when target_type=ADB_D_AUTOCREATE | NON_ADB_AUTOCREATE) (Updatable) Set this property to true to auto-create tablespaces in the target Database. Note: This is not applicable for Autonomous Database Serverless databases.
 	// +kubebuilder:validation:Optional

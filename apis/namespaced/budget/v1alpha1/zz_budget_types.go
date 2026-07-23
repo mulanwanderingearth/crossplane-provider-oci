@@ -17,10 +17,10 @@ import (
 type BudgetInitParameters struct {
 
 	// (Updatable) The amount of the budget expressed as a whole number in the currency of the customer's rate card.
-	Amount *float64 `json:"amount,omitempty" tf:"amount,omitempty"`
+	Amount *int64 `json:"amount,omitempty" tf:"amount,omitempty"`
 
 	// (Updatable) The number of days offset from the first day of the month, at which the budget processing period starts. In months that have fewer days than this value, processing will begin on the last day of that month. For example, for a value of 12, processing starts every month on the 12th at midnight.
-	BudgetProcessingPeriodStartOffset *float64 `json:"budgetProcessingPeriodStartOffset,omitempty" tf:"budget_processing_period_start_offset,omitempty"`
+	BudgetProcessingPeriodStartOffset *int64 `json:"budgetProcessingPeriodStartOffset,omitempty" tf:"budget_processing_period_start_offset,omitempty"`
 
 	// The OCID of the compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -35,8 +35,7 @@ type BudgetInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the budget.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -48,8 +47,7 @@ type BudgetInitParameters struct {
 	EndDate *string `json:"endDate,omitempty" tf:"end_date,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The type of the budget processing period. Valid values are INVOICE, MONTH, and SINGLE_USE.
 	ProcessingPeriodType *string `json:"processingPeriodType,omitempty" tf:"processing_period_type,omitempty"`
@@ -61,8 +59,7 @@ type BudgetInitParameters struct {
 	StartDate *string `json:"startDate,omitempty" tf:"start_date,omitempty"`
 
 	// (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// This is DEPRECATED. Set the target compartment ID in targets instead.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -90,20 +87,19 @@ type BudgetObservation struct {
 	ActualSpend *float64 `json:"actualSpend,omitempty" tf:"actual_spend,omitempty"`
 
 	// The total number of alert rules in the budget.
-	AlertRuleCount *float64 `json:"alertRuleCount,omitempty" tf:"alert_rule_count,omitempty"`
+	AlertRuleCount *int64 `json:"alertRuleCount,omitempty" tf:"alert_rule_count,omitempty"`
 
 	// (Updatable) The amount of the budget expressed as a whole number in the currency of the customer's rate card.
-	Amount *float64 `json:"amount,omitempty" tf:"amount,omitempty"`
+	Amount *int64 `json:"amount,omitempty" tf:"amount,omitempty"`
 
 	// (Updatable) The number of days offset from the first day of the month, at which the budget processing period starts. In months that have fewer days than this value, processing will begin on the last day of that month. For example, for a value of 12, processing starts every month on the 12th at midnight.
-	BudgetProcessingPeriodStartOffset *float64 `json:"budgetProcessingPeriodStartOffset,omitempty" tf:"budget_processing_period_start_offset,omitempty"`
+	BudgetProcessingPeriodStartOffset *int64 `json:"budgetProcessingPeriodStartOffset,omitempty" tf:"budget_processing_period_start_offset,omitempty"`
 
 	// The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the budget.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -118,8 +114,7 @@ type BudgetObservation struct {
 	ForecastedSpend *float64 `json:"forecastedSpend,omitempty" tf:"forecasted_spend,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the budget.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -137,8 +132,7 @@ type BudgetObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// This is DEPRECATED. Set the target compartment ID in targets instead.
 	TargetCompartmentID *string `json:"targetCompartmentId,omitempty" tf:"target_compartment_id,omitempty"`
@@ -159,18 +153,18 @@ type BudgetObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// The version of the budget. Starts from 1 and increments by 1.
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type BudgetParameters struct {
 
 	// (Updatable) The amount of the budget expressed as a whole number in the currency of the customer's rate card.
 	// +kubebuilder:validation:Optional
-	Amount *float64 `json:"amount,omitempty" tf:"amount,omitempty"`
+	Amount *int64 `json:"amount,omitempty" tf:"amount,omitempty"`
 
 	// (Updatable) The number of days offset from the first day of the month, at which the budget processing period starts. In months that have fewer days than this value, processing will begin on the last day of that month. For example, for a value of 12, processing starts every month on the 12th at midnight.
 	// +kubebuilder:validation:Optional
-	BudgetProcessingPeriodStartOffset *float64 `json:"budgetProcessingPeriodStartOffset,omitempty" tf:"budget_processing_period_start_offset,omitempty"`
+	BudgetProcessingPeriodStartOffset *int64 `json:"budgetProcessingPeriodStartOffset,omitempty" tf:"budget_processing_period_start_offset,omitempty"`
 
 	// The OCID of the compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -187,8 +181,7 @@ type BudgetParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the budget.
 	// +kubebuilder:validation:Optional
@@ -204,8 +197,7 @@ type BudgetParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The type of the budget processing period. Valid values are INVOICE, MONTH, and SINGLE_USE.
 	// +kubebuilder:validation:Optional
@@ -221,8 +213,7 @@ type BudgetParameters struct {
 
 	// (Updatable) Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// This is DEPRECATED. Set the target compartment ID in targets instead.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment

@@ -78,7 +78,8 @@ spec:
                             This parameter affects the number of OCPUs, amount of
                             memory, and other resources allocated to the Analytics
                             Instance.
-                          type: number
+                          format: int64
+                          type: integer
                         idcsDomainId:
                           description: IDCS domain OCID identifying a stripe and service
                             administrator user.
@@ -406,7 +407,8 @@ spec:
                             This parameter affects the number of OCPUs, amount of
                             memory, and other resources allocated to the Analytics
                             Instance.
-                          type: number
+                          format: int64
+                          type: integer
                         idcsDomainId:
                           description: IDCS domain OCID identifying a stripe and service
                             administrator user.
@@ -792,7 +794,8 @@ spec:
                             This parameter affects the number of OCPUs, amount of
                             memory, and other resources allocated to the Analytics
                             Instance.
-                          type: number
+                          format: int64
+                          type: integer
                         idcsDomainId:
                           description: IDCS domain OCID identifying a stripe and service
                             administrator user.

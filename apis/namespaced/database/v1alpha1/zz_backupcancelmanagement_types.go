@@ -30,7 +30,7 @@ type BackupCancelManagementInitParameters struct {
 	BackupIDSelector *v1.NamespacedSelector `json:"backupIdSelector,omitempty" tf:"-"`
 
 	// When changed to a different integer, re-triggers cancel backup on the backup specified by the backup_id
-	CancelBackupTrigger *float64 `json:"cancelBackupTrigger,omitempty" tf:"cancel_backup_trigger,omitempty"`
+	CancelBackupTrigger *int64 `json:"cancelBackupTrigger,omitempty" tf:"cancel_backup_trigger,omitempty"`
 }
 
 type BackupCancelManagementObservation struct {
@@ -39,7 +39,7 @@ type BackupCancelManagementObservation struct {
 	BackupID *string `json:"backupId,omitempty" tf:"backup_id,omitempty"`
 
 	// When changed to a different integer, re-triggers cancel backup on the backup specified by the backup_id
-	CancelBackupTrigger *float64 `json:"cancelBackupTrigger,omitempty" tf:"cancel_backup_trigger,omitempty"`
+	CancelBackupTrigger *int64 `json:"cancelBackupTrigger,omitempty" tf:"cancel_backup_trigger,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 }
@@ -62,7 +62,7 @@ type BackupCancelManagementParameters struct {
 
 	// When changed to a different integer, re-triggers cancel backup on the backup specified by the backup_id
 	// +kubebuilder:validation:Optional
-	CancelBackupTrigger *float64 `json:"cancelBackupTrigger,omitempty" tf:"cancel_backup_trigger,omitempty"`
+	CancelBackupTrigger *int64 `json:"cancelBackupTrigger,omitempty" tf:"cancel_backup_trigger,omitempty"`
 }
 
 // BackupCancelManagementSpec defines the desired state of BackupCancelManagement

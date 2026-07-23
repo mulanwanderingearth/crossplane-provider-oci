@@ -17,59 +17,59 @@ import (
 type DestinationPortRangeInitParameters struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type DestinationPortRangeObservation struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type DestinationPortRangeParameters struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type NetworkSecurityGroupSecurityRuleIcmpOptionsInitParameters struct {
 
 	// The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type NetworkSecurityGroupSecurityRuleIcmpOptionsObservation struct {
 
 	// The ICMP code .
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// The ICMP type.
-	Type *float64 `json:"type,omitempty" tf:"type,omitempty"`
+	Type *int64 `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type NetworkSecurityGroupSecurityRuleIcmpOptionsParameters struct {
 
 	// The ICMP code .
 	// +kubebuilder:validation:Optional
-	Code *float64 `json:"code,omitempty" tf:"code,omitempty"`
+	Code *int64 `json:"code,omitempty" tf:"code,omitempty"`
 
 	// The ICMP type.
 	// +kubebuilder:validation:Optional
-	Type *float64 `json:"type" tf:"type,omitempty"`
+	Type *int64 `json:"type" tf:"type,omitempty"`
 }
 
 type NetworkSecurityGroupSecurityRuleInitParameters struct {
@@ -252,30 +252,30 @@ type NetworkSecurityGroupSecurityRuleTCPOptionsParameters struct {
 type NetworkSecurityGroupSecurityRuleTCPOptionsSourcePortRangeInitParameters struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type NetworkSecurityGroupSecurityRuleTCPOptionsSourcePortRangeObservation struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type NetworkSecurityGroupSecurityRuleTCPOptionsSourcePortRangeParameters struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type NetworkSecurityGroupSecurityRuleUDPOptionsInitParameters struct {
@@ -302,59 +302,59 @@ type NetworkSecurityGroupSecurityRuleUDPOptionsParameters struct {
 type NetworkSecurityGroupSecurityRuleUDPOptionsSourcePortRangeInitParameters struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type NetworkSecurityGroupSecurityRuleUDPOptionsSourcePortRangeObservation struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type NetworkSecurityGroupSecurityRuleUDPOptionsSourcePortRangeParameters struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 type UDPOptionsDestinationPortRangeInitParameters struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type UDPOptionsDestinationPortRangeObservation struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
-	Max *float64 `json:"max,omitempty" tf:"max,omitempty"`
+	Max *int64 `json:"max,omitempty" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
-	Min *float64 `json:"min,omitempty" tf:"min,omitempty"`
+	Min *int64 `json:"min,omitempty" tf:"min,omitempty"`
 }
 
 type UDPOptionsDestinationPortRangeParameters struct {
 
 	// The maximum port number, which must not be less than the minimum port number. To specify a single port number, set both the min and max to the same value.
 	// +kubebuilder:validation:Optional
-	Max *float64 `json:"max" tf:"max,omitempty"`
+	Max *int64 `json:"max" tf:"max,omitempty"`
 
 	// The minimum port number, which must not be greater than the maximum port number.
 	// +kubebuilder:validation:Optional
-	Min *float64 `json:"min" tf:"min,omitempty"`
+	Min *int64 `json:"min" tf:"min,omitempty"`
 }
 
 // NetworkSecurityGroupSecurityRuleSpec defines the desired state of NetworkSecurityGroupSecurityRule

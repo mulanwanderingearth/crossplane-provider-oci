@@ -16,8 +16,7 @@ import (
 type FusionEnvironmentServiceAttachmentInitParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// unique FusionEnvironment identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/fusionapps/v1alpha1.FusionEnvironment
@@ -55,15 +54,13 @@ type FusionEnvironmentServiceAttachmentObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Service Attachment Display name, can be renamed
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// unique FusionEnvironment identifier
 	FusionEnvironmentID *string `json:"fusionEnvironmentId,omitempty" tf:"fusion_environment_id,omitempty"`
@@ -97,8 +94,7 @@ type FusionEnvironmentServiceAttachmentParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// unique FusionEnvironment identifier
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/fusionapps/v1alpha1.FusionEnvironment

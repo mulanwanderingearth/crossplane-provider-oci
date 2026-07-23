@@ -36,7 +36,7 @@ type BdsInstanceNodeReplaceConfigurationInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) This value is the minimum period of time to wait before triggering node replacement. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) Details of the type of level used to trigger the creation of a new node backup configuration or node replacement configuration.
 	LevelTypeDetails []BdsInstanceNodeReplaceConfigurationLevelTypeDetailsInitParameters `json:"levelTypeDetails,omitempty" tf:"level_type_details,omitempty"`
@@ -106,7 +106,7 @@ type BdsInstanceNodeReplaceConfigurationObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) This value is the minimum period of time to wait before triggering node replacement. The value is in minutes.
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// The id of the NodeReplaceConfiguration defined under BDS resources, not OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -156,7 +156,7 @@ type BdsInstanceNodeReplaceConfigurationParameters struct {
 
 	// (Updatable) This value is the minimum period of time to wait before triggering node replacement. The value is in minutes.
 	// +kubebuilder:validation:Optional
-	DurationInMinutes *float64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
+	DurationInMinutes *int64 `json:"durationInMinutes,omitempty" tf:"duration_in_minutes,omitempty"`
 
 	// (Updatable) Details of the type of level used to trigger the creation of a new node backup configuration or node replacement configuration.
 	// +kubebuilder:validation:Optional

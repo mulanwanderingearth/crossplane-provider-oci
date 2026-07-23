@@ -59,15 +59,13 @@ type RepositoryInitParameters struct {
 	DefaultBranch *string `json:"defaultBranch,omitempty" tf:"default_branch,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Details of the repository. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Configuration information for mirroring the repository.
 	MirrorRepositoryConfig []MirrorRepositoryConfigInitParameters `json:"mirrorRepositoryConfig,omitempty" tf:"mirror_repository_config,omitempty"`
@@ -108,10 +106,10 @@ type RepositoryInitParameters struct {
 type RepositoryObservation struct {
 
 	// The count of the branches present in the repository.
-	BranchCount *float64 `json:"branchCount,omitempty" tf:"branch_count,omitempty"`
+	BranchCount *int64 `json:"branchCount,omitempty" tf:"branch_count,omitempty"`
 
 	// The count of the commits present in the repository.
-	CommitCount *float64 `json:"commitCount,omitempty" tf:"commit_count,omitempty"`
+	CommitCount *int64 `json:"commitCount,omitempty" tf:"commit_count,omitempty"`
 
 	// The OCID of the repository's compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -120,15 +118,13 @@ type RepositoryObservation struct {
 	DefaultBranch *string `json:"defaultBranch,omitempty" tf:"default_branch,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Details of the repository. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// HTTP URL that you use to git clone, pull and push.
 	HTTPURL *string `json:"httpUrl,omitempty" tf:"http_url,omitempty"`
@@ -170,8 +166,7 @@ type RepositoryObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. See Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the repository was created. Format defined by RFC3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -191,8 +186,7 @@ type RepositoryParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Details of the repository. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -200,8 +194,7 @@ type RepositoryParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Configuration information for mirroring the repository.
 	// +kubebuilder:validation:Optional

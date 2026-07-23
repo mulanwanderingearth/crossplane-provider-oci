@@ -98,8 +98,7 @@ type WorkspaceExportRequestObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// Contains key of the error
-	// +mapType=granular
-	ErrorMessages map[string]*string `json:"errorMessages,omitempty" tf:"error_messages,omitempty"`
+	ErrorMessages map[string]string `json:"errorMessages,omitempty" tf:"error_messages,omitempty"`
 
 	// The array of exported object details.
 	ExportedItems []ExportedItemsObservation `json:"exportedItems,omitempty" tf:"exported_items,omitempty"`
@@ -143,7 +142,7 @@ type WorkspaceExportRequestObservation struct {
 	TimeStartedInMillis *string `json:"timeStartedInMillis,omitempty" tf:"time_started_in_millis,omitempty"`
 
 	// Number of objects that are exported.
-	TotalExportedObjectCount *float64 `json:"totalExportedObjectCount,omitempty" tf:"total_exported_object_count,omitempty"`
+	TotalExportedObjectCount *int64 `json:"totalExportedObjectCount,omitempty" tf:"total_exported_object_count,omitempty"`
 
 	// The workspace ID.
 	WorkspaceID *string `json:"workspaceId,omitempty" tf:"workspace_id,omitempty"`

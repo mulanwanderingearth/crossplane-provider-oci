@@ -26,7 +26,7 @@ type ApprovalRulesItemsInitParameters struct {
 	DestinationBranch *string `json:"destinationBranch,omitempty" tf:"destination_branch,omitempty"`
 
 	// (Updatable) Minimum number of approvals which must be provided by the reviewers specified in the list before the rule can be satisfied
-	MinApprovalsCount *float64 `json:"minApprovalsCount,omitempty" tf:"min_approvals_count,omitempty"`
+	MinApprovalsCount *int64 `json:"minApprovalsCount,omitempty" tf:"min_approvals_count,omitempty"`
 
 	// (Updatable) Name which is used to uniquely identify an approval rule.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -41,7 +41,7 @@ type ApprovalRulesItemsObservation struct {
 	DestinationBranch *string `json:"destinationBranch,omitempty" tf:"destination_branch,omitempty"`
 
 	// (Updatable) Minimum number of approvals which must be provided by the reviewers specified in the list before the rule can be satisfied
-	MinApprovalsCount *float64 `json:"minApprovalsCount,omitempty" tf:"min_approvals_count,omitempty"`
+	MinApprovalsCount *int64 `json:"minApprovalsCount,omitempty" tf:"min_approvals_count,omitempty"`
 
 	// (Updatable) Name which is used to uniquely identify an approval rule.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -58,7 +58,7 @@ type ApprovalRulesItemsParameters struct {
 
 	// (Updatable) Minimum number of approvals which must be provided by the reviewers specified in the list before the rule can be satisfied
 	// +kubebuilder:validation:Optional
-	MinApprovalsCount *float64 `json:"minApprovalsCount" tf:"min_approvals_count,omitempty"`
+	MinApprovalsCount *int64 `json:"minApprovalsCount" tf:"min_approvals_count,omitempty"`
 
 	// (Updatable) Name which is used to uniquely identify an approval rule.
 	// +kubebuilder:validation:Optional

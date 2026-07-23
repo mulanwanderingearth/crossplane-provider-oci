@@ -15,6 +15,15 @@ import (
 )
 
 type APIKeysInitParameters struct {
+
+	// (Updatable) Key or name of the tag.
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type APIKeysObservation struct {
@@ -33,6 +42,18 @@ type APIKeysObservation struct {
 }
 
 type APIKeysParameters struct {
+
+	// (Updatable) Key or name of the tag.
+	// +kubebuilder:validation:Optional
+	Key *string `json:"key,omitempty" tf:"key,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AddressesInitParameters struct {
@@ -125,6 +146,18 @@ type AddressesParameters struct {
 }
 
 type ApplicableAuthenticationTargetAppInitParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) Timeout interval for Synchronization TargetAction in milliseconds
+	TargetRequestTimeout *int64 `json:"targetRequestTimeout,omitempty" tf:"target_request_timeout,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ApplicableAuthenticationTargetAppObservation struct {
@@ -136,7 +169,7 @@ type ApplicableAuthenticationTargetAppObservation struct {
 	Ref *string `json:"ref,omitempty" tf:"ref,omitempty"`
 
 	// (Updatable) Timeout interval for Synchronization TargetAction in milliseconds
-	TargetRequestTimeout *float64 `json:"targetRequestTimeout,omitempty" tf:"target_request_timeout,omitempty"`
+	TargetRequestTimeout *int64 `json:"targetRequestTimeout,omitempty" tf:"target_request_timeout,omitempty"`
 
 	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
@@ -146,9 +179,34 @@ type ApplicableAuthenticationTargetAppObservation struct {
 }
 
 type ApplicableAuthenticationTargetAppParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) Timeout interval for Synchronization TargetAction in milliseconds
+	// +kubebuilder:validation:Optional
+	TargetRequestTimeout *int64 `json:"targetRequestTimeout,omitempty" tf:"target_request_timeout,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ApplicablePasswordPolicyInitParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) PasswordPolicy priority
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ApplicablePasswordPolicyObservation struct {
@@ -157,7 +215,7 @@ type ApplicablePasswordPolicyObservation struct {
 	Display *string `json:"display,omitempty" tf:"display,omitempty"`
 
 	// (Updatable) PasswordPolicy priority
-	Priority *float64 `json:"priority,omitempty" tf:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
 
 	// (Updatable) The URI of the corresponding Group resource to which the user belongs
 	Ref *string `json:"ref,omitempty" tf:"ref,omitempty"`
@@ -167,9 +225,27 @@ type ApplicablePasswordPolicyObservation struct {
 }
 
 type ApplicablePasswordPolicyParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) PasswordPolicy priority
+	// +kubebuilder:validation:Optional
+	Priority *int64 `json:"priority,omitempty" tf:"priority,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type AuthTokensInitParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AuthTokensObservation struct {
@@ -185,6 +261,14 @@ type AuthTokensObservation struct {
 }
 
 type AuthTokensParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type BypassCodesInitParameters struct {
@@ -210,6 +294,12 @@ type BypassCodesParameters struct {
 }
 
 type CustomerSecretKeysInitParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type CustomerSecretKeysObservation struct {
@@ -225,9 +315,23 @@ type CustomerSecretKeysObservation struct {
 }
 
 type CustomerSecretKeysParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DBCredentialsInitParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DBCredentialsObservation struct {
@@ -243,6 +347,14 @@ type DBCredentialsObservation struct {
 }
 
 type DBCredentialsParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type DelegatedAuthenticationTargetAppInitParameters struct {
@@ -523,6 +635,18 @@ type FactorIdentifierParameters struct {
 }
 
 type IdcsAppRolesLimitedToGroupsInitParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The id of the Oracle Identity Cloud Service AppRole grant limited to one or more Groups.
+	IdcsAppRoleID *string `json:"idcsAppRoleId,omitempty" tf:"idcs_app_role_id,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type IdcsAppRolesLimitedToGroupsObservation struct {
@@ -544,6 +668,22 @@ type IdcsAppRolesLimitedToGroupsObservation struct {
 }
 
 type IdcsAppRolesLimitedToGroupsParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The id of the Oracle Identity Cloud Service AppRole grant limited to one or more Groups.
+	// +kubebuilder:validation:Optional
+	IdcsAppRoleID *string `json:"idcsAppRoleId" tf:"idcs_app_role_id,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type ImsInitParameters struct {
@@ -607,7 +747,7 @@ type LockedInitParameters struct {
 	On *bool `json:"on,omitempty" tf:"on,omitempty"`
 
 	// (Updatable) Indicates the reason for locking the account. Valid values are: 0 - failed password login attempts, 1 - admin lock, 2 - failed reset password attempts, 3 - failed MFA login attempts, 4 - failed MFA login attempts for federated user, 5 - failed Database login attempts
-	Reason *float64 `json:"reason,omitempty" tf:"reason,omitempty"`
+	Reason *int64 `json:"reason,omitempty" tf:"reason,omitempty"`
 }
 
 type LockedObservation struct {
@@ -622,7 +762,7 @@ type LockedObservation struct {
 	On *bool `json:"on,omitempty" tf:"on,omitempty"`
 
 	// (Updatable) Indicates the reason for locking the account. Valid values are: 0 - failed password login attempts, 1 - admin lock, 2 - failed reset password attempts, 3 - failed MFA login attempts, 4 - failed MFA login attempts for federated user, 5 - failed Database login attempts
-	Reason *float64 `json:"reason,omitempty" tf:"reason,omitempty"`
+	Reason *int64 `json:"reason,omitempty" tf:"reason,omitempty"`
 }
 
 type LockedParameters struct {
@@ -641,7 +781,7 @@ type LockedParameters struct {
 
 	// (Updatable) Indicates the reason for locking the account. Valid values are: 0 - failed password login attempts, 1 - admin lock, 2 - failed reset password attempts, 3 - failed MFA login attempts, 4 - failed MFA login attempts for federated user, 5 - failed Database login attempts
 	// +kubebuilder:validation:Optional
-	Reason *float64 `json:"reason,omitempty" tf:"reason,omitempty"`
+	Reason *int64 `json:"reason,omitempty" tf:"reason,omitempty"`
 }
 
 type ManagerInitParameters struct {
@@ -739,6 +879,12 @@ type NameParameters struct {
 }
 
 type OAuth2ClientCredentialsInitParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type OAuth2ClientCredentialsObservation struct {
@@ -754,9 +900,23 @@ type OAuth2ClientCredentialsObservation struct {
 }
 
 type OAuth2ClientCredentialsParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type PasswordVerifiersInitParameters struct {
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type PasswordVerifiersObservation struct {
@@ -769,6 +929,14 @@ type PasswordVerifiersObservation struct {
 }
 
 type PasswordVerifiersParameters struct {
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type PhoneNumbersInitParameters struct {
@@ -977,7 +1145,7 @@ type RiskScoresInitParameters struct {
 	RiskLevel *string `json:"riskLevel,omitempty" tf:"risk_level,omitempty"`
 
 	// (Updatable) Risk Score value
-	Score *float64 `json:"score,omitempty" tf:"score,omitempty"`
+	Score *int64 `json:"score,omitempty" tf:"score,omitempty"`
 
 	// (Updatable) Risk Provider Profile Source
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
@@ -1001,7 +1169,7 @@ type RiskScoresObservation struct {
 	RiskLevel *string `json:"riskLevel,omitempty" tf:"risk_level,omitempty"`
 
 	// (Updatable) Risk Score value
-	Score *float64 `json:"score,omitempty" tf:"score,omitempty"`
+	Score *int64 `json:"score,omitempty" tf:"score,omitempty"`
 
 	// (Updatable) Risk Provider Profile Source
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
@@ -1025,7 +1193,7 @@ type RiskScoresParameters struct {
 
 	// (Updatable) Risk Score value
 	// +kubebuilder:validation:Optional
-	Score *float64 `json:"score" tf:"score,omitempty"`
+	Score *int64 `json:"score" tf:"score,omitempty"`
 
 	// (Updatable) Risk Provider Profile Source
 	// +kubebuilder:validation:Optional
@@ -1090,6 +1258,12 @@ type RolesParameters struct {
 }
 
 type SMTPCredentialsInitParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SMTPCredentialsObservation struct {
@@ -1105,6 +1279,14 @@ type SMTPCredentialsObservation struct {
 }
 
 type SMTPCredentialsParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SecQuestionsInitParameters struct {
@@ -1182,6 +1364,18 @@ type SocialAccountsParameters struct {
 }
 
 type SupportAccountsInitParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) User Support User Id
+	UserID *string `json:"userId,omitempty" tf:"user_id,omitempty"`
+
+	// (Updatable) Registration provider
+	UserProvider *string `json:"userProvider,omitempty" tf:"user_provider,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SupportAccountsObservation struct {
@@ -1203,6 +1397,22 @@ type SupportAccountsObservation struct {
 }
 
 type SupportAccountsParameters struct {
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) User Support User Id
+	// +kubebuilder:validation:Optional
+	UserID *string `json:"userId,omitempty" tf:"user_id,omitempty"`
+
+	// (Updatable) Registration provider
+	// +kubebuilder:validation:Optional
+	UserProvider *string `json:"userProvider,omitempty" tf:"user_provider,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type TermsOfUseConsentsInitParameters struct {
@@ -1455,7 +1665,7 @@ type UrnietfparamsscimschemasoracleidcsextensiondbCredentialsUserInitParameters 
 type UrnietfparamsscimschemasoracleidcsextensiondbCredentialsUserObservation struct {
 
 	// (Updatable) The number of failed login attempts. The value is reset to 0 after a successful login.
-	DBLoginAttempts *float64 `json:"dbLoginAttempts,omitempty" tf:"db_login_attempts,omitempty"`
+	DBLoginAttempts *int64 `json:"dbLoginAttempts,omitempty" tf:"db_login_attempts,omitempty"`
 
 	// (Updatable) The database username.
 	DBUserName *string `json:"dbUserName,omitempty" tf:"db_user_name,omitempty"`
@@ -1469,6 +1679,21 @@ type UrnietfparamsscimschemasoracleidcsextensiondbCredentialsUserParameters stru
 }
 
 type UrnietfparamsscimschemasoracleidcsextensiondbUserUserInitParameters struct {
+
+	// (Updatable) DB global roles to which the user is granted access.
+	DBGlobalRoles []*string `json:"dbGlobalRoles,omitempty" tf:"db_global_roles,omitempty"`
+
+	// (Updatable) DB domain level schema to which the user is granted access.
+	DomainLevelSchema *string `json:"domainLevelSchema,omitempty" tf:"domain_level_schema,omitempty"`
+
+	// (Updatable) DB instance level schema to which the user is granted access.
+	InstanceLevelSchema *string `json:"instanceLevelSchema,omitempty" tf:"instance_level_schema,omitempty"`
+
+	// (Updatable) If true, indicates this is a database user.
+	IsDBUser *bool `json:"isDbUser,omitempty" tf:"is_db_user,omitempty"`
+
+	// (Updatable) Password Verifiers for DB User.
+	PasswordVerifiers []PasswordVerifiersInitParameters `json:"passwordVerifiers,omitempty" tf:"password_verifiers,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensiondbUserUserObservation struct {
@@ -1490,6 +1715,26 @@ type UrnietfparamsscimschemasoracleidcsextensiondbUserUserObservation struct {
 }
 
 type UrnietfparamsscimschemasoracleidcsextensiondbUserUserParameters struct {
+
+	// (Updatable) DB global roles to which the user is granted access.
+	// +kubebuilder:validation:Optional
+	DBGlobalRoles []*string `json:"dbGlobalRoles,omitempty" tf:"db_global_roles,omitempty"`
+
+	// (Updatable) DB domain level schema to which the user is granted access.
+	// +kubebuilder:validation:Optional
+	DomainLevelSchema *string `json:"domainLevelSchema,omitempty" tf:"domain_level_schema,omitempty"`
+
+	// (Updatable) DB instance level schema to which the user is granted access.
+	// +kubebuilder:validation:Optional
+	InstanceLevelSchema *string `json:"instanceLevelSchema,omitempty" tf:"instance_level_schema,omitempty"`
+
+	// (Updatable) If true, indicates this is a database user.
+	// +kubebuilder:validation:Optional
+	IsDBUser *bool `json:"isDbUser,omitempty" tf:"is_db_user,omitempty"`
+
+	// (Updatable) Password Verifiers for DB User.
+	// +kubebuilder:validation:Optional
+	PasswordVerifiers []PasswordVerifiersParameters `json:"passwordVerifiers,omitempty" tf:"password_verifiers,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionkerberosUserUserInitParameters struct {
@@ -1520,7 +1765,7 @@ type UrnietfparamsscimschemasoracleidcsextensionmfaUserInitParameters struct {
 	Devices []DevicesInitParameters `json:"devices,omitempty" tf:"devices,omitempty"`
 
 	// (Updatable) The number of incorrect multi factor authentication sign in attempts made by this user. The user is  locked if this reaches the threshold specified in the maxIncorrectAttempts attribute in AuthenticationFactorSettings.
-	LoginAttempts *float64 `json:"loginAttempts,omitempty" tf:"login_attempts,omitempty"`
+	LoginAttempts *int64 `json:"loginAttempts,omitempty" tf:"login_attempts,omitempty"`
 
 	// (Updatable) The date when the user enrolled in multi factor authentication. This will be set to null, when the user resets their factors.
 	MfaEnabledOn *string `json:"mfaEnabledOn,omitempty" tf:"mfa_enabled_on,omitempty"`
@@ -1556,7 +1801,7 @@ type UrnietfparamsscimschemasoracleidcsextensionmfaUserObservation struct {
 	Devices []DevicesObservation `json:"devices,omitempty" tf:"devices,omitempty"`
 
 	// (Updatable) The number of incorrect multi factor authentication sign in attempts made by this user. The user is  locked if this reaches the threshold specified in the maxIncorrectAttempts attribute in AuthenticationFactorSettings.
-	LoginAttempts *float64 `json:"loginAttempts,omitempty" tf:"login_attempts,omitempty"`
+	LoginAttempts *int64 `json:"loginAttempts,omitempty" tf:"login_attempts,omitempty"`
 
 	// (Updatable) The date when the user enrolled in multi factor authentication. This will be set to null, when the user resets their factors.
 	MfaEnabledOn *string `json:"mfaEnabledOn,omitempty" tf:"mfa_enabled_on,omitempty"`
@@ -1595,7 +1840,7 @@ type UrnietfparamsscimschemasoracleidcsextensionmfaUserParameters struct {
 
 	// (Updatable) The number of incorrect multi factor authentication sign in attempts made by this user. The user is  locked if this reaches the threshold specified in the maxIncorrectAttempts attribute in AuthenticationFactorSettings.
 	// +kubebuilder:validation:Optional
-	LoginAttempts *float64 `json:"loginAttempts,omitempty" tf:"login_attempts,omitempty"`
+	LoginAttempts *int64 `json:"loginAttempts,omitempty" tf:"login_attempts,omitempty"`
 
 	// (Updatable) The date when the user enrolled in multi factor authentication. This will be set to null, when the user resets their factors.
 	// +kubebuilder:validation:Optional
@@ -1631,6 +1876,30 @@ type UrnietfparamsscimschemasoracleidcsextensionmfaUserParameters struct {
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionpasswordStateUserInitParameters struct {
+
+	// (Updatable) Applicable Password Policy
+	ApplicablePasswordPolicy []ApplicablePasswordPolicyInitParameters `json:"applicablePasswordPolicy,omitempty" tf:"applicable_password_policy,omitempty"`
+
+	// (Updatable) Indicates that the current password MAY NOT be changed and all other password expiry settings SHALL be ignored
+	CantChange *bool `json:"cantChange,omitempty" tf:"cant_change,omitempty"`
+
+	// (Updatable) Indicates that the password expiry policy will not be applied for the current Resource
+	CantExpire *bool `json:"cantExpire,omitempty" tf:"cant_expire,omitempty"`
+
+	// (Updatable) Indicates whether the user password is expired. If this value is false, password expiry is still evaluated during user login.
+	Expired *bool `json:"expired,omitempty" tf:"expired,omitempty"`
+
+	// (Updatable) A DateTime that specifies the date and time when last failed password validation was set
+	LastFailedValidationDate *string `json:"lastFailedValidationDate,omitempty" tf:"last_failed_validation_date,omitempty"`
+
+	// (Updatable) A DateTime that specifies the date and time when the current password was set
+	LastSuccessfulSetDate *string `json:"lastSuccessfulSetDate,omitempty" tf:"last_successful_set_date,omitempty"`
+
+	// (Updatable) A DateTime that specifies the date and time when last successful password validation was set
+	LastSuccessfulValidationDate *string `json:"lastSuccessfulValidationDate,omitempty" tf:"last_successful_validation_date,omitempty"`
+
+	// (Updatable) Indicates that the subject password value MUST change on next login. If not changed, typically the account is locked. The value may be set indirectly when the subject's current password expires or directly set by an administrator.
+	MustChange *bool `json:"mustChange,omitempty" tf:"must_change,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionpasswordStateUserObservation struct {
@@ -1661,6 +1930,38 @@ type UrnietfparamsscimschemasoracleidcsextensionpasswordStateUserObservation str
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionpasswordStateUserParameters struct {
+
+	// (Updatable) Applicable Password Policy
+	// +kubebuilder:validation:Optional
+	ApplicablePasswordPolicy []ApplicablePasswordPolicyParameters `json:"applicablePasswordPolicy,omitempty" tf:"applicable_password_policy,omitempty"`
+
+	// (Updatable) Indicates that the current password MAY NOT be changed and all other password expiry settings SHALL be ignored
+	// +kubebuilder:validation:Optional
+	CantChange *bool `json:"cantChange,omitempty" tf:"cant_change,omitempty"`
+
+	// (Updatable) Indicates that the password expiry policy will not be applied for the current Resource
+	// +kubebuilder:validation:Optional
+	CantExpire *bool `json:"cantExpire,omitempty" tf:"cant_expire,omitempty"`
+
+	// (Updatable) Indicates whether the user password is expired. If this value is false, password expiry is still evaluated during user login.
+	// +kubebuilder:validation:Optional
+	Expired *bool `json:"expired,omitempty" tf:"expired,omitempty"`
+
+	// (Updatable) A DateTime that specifies the date and time when last failed password validation was set
+	// +kubebuilder:validation:Optional
+	LastFailedValidationDate *string `json:"lastFailedValidationDate,omitempty" tf:"last_failed_validation_date,omitempty"`
+
+	// (Updatable) A DateTime that specifies the date and time when the current password was set
+	// +kubebuilder:validation:Optional
+	LastSuccessfulSetDate *string `json:"lastSuccessfulSetDate,omitempty" tf:"last_successful_set_date,omitempty"`
+
+	// (Updatable) A DateTime that specifies the date and time when last successful password validation was set
+	// +kubebuilder:validation:Optional
+	LastSuccessfulValidationDate *string `json:"lastSuccessfulValidationDate,omitempty" tf:"last_successful_validation_date,omitempty"`
+
+	// (Updatable) Indicates that the subject password value MUST change on next login. If not changed, typically the account is locked. The value may be set indirectly when the subject's current password expires or directly set by an administrator.
+	// +kubebuilder:validation:Optional
+	MustChange *bool `json:"mustChange,omitempty" tf:"must_change,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionpasswordlessUserInitParameters struct {
@@ -1705,7 +2006,7 @@ type UrnietfparamsscimschemasoracleidcsextensionpasswordlessUserParameters struc
 type UrnietfparamsscimschemasoracleidcsextensionposixUserInitParameters struct {
 
 	// (Updatable) Primary Group identifier of the POSIX user
-	GIDNumber *float64 `json:"gidNumber,omitempty" tf:"gid_number,omitempty"`
+	GIDNumber *int64 `json:"gidNumber,omitempty" tf:"gid_number,omitempty"`
 
 	// (Updatable) General information about the POSIX account such as their real name and phone number
 	Gecos *string `json:"gecos,omitempty" tf:"gecos,omitempty"`
@@ -1717,13 +2018,13 @@ type UrnietfparamsscimschemasoracleidcsextensionposixUserInitParameters struct {
 	LoginShell *string `json:"loginShell,omitempty" tf:"login_shell,omitempty"`
 
 	// (Updatable) Integer uniquely identifying a user in a POSIX administrative domain
-	UIDNumber *float64 `json:"uidNumber,omitempty" tf:"uid_number,omitempty"`
+	UIDNumber *int64 `json:"uidNumber,omitempty" tf:"uid_number,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionposixUserObservation struct {
 
 	// (Updatable) Primary Group identifier of the POSIX user
-	GIDNumber *float64 `json:"gidNumber,omitempty" tf:"gid_number,omitempty"`
+	GIDNumber *int64 `json:"gidNumber,omitempty" tf:"gid_number,omitempty"`
 
 	// (Updatable) General information about the POSIX account such as their real name and phone number
 	Gecos *string `json:"gecos,omitempty" tf:"gecos,omitempty"`
@@ -1735,14 +2036,14 @@ type UrnietfparamsscimschemasoracleidcsextensionposixUserObservation struct {
 	LoginShell *string `json:"loginShell,omitempty" tf:"login_shell,omitempty"`
 
 	// (Updatable) Integer uniquely identifying a user in a POSIX administrative domain
-	UIDNumber *float64 `json:"uidNumber,omitempty" tf:"uid_number,omitempty"`
+	UIDNumber *int64 `json:"uidNumber,omitempty" tf:"uid_number,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionposixUserParameters struct {
 
 	// (Updatable) Primary Group identifier of the POSIX user
 	// +kubebuilder:validation:Optional
-	GIDNumber *float64 `json:"gidNumber,omitempty" tf:"gid_number,omitempty"`
+	GIDNumber *int64 `json:"gidNumber,omitempty" tf:"gid_number,omitempty"`
 
 	// (Updatable) General information about the POSIX account such as their real name and phone number
 	// +kubebuilder:validation:Optional
@@ -1758,7 +2059,7 @@ type UrnietfparamsscimschemasoracleidcsextensionposixUserParameters struct {
 
 	// (Updatable) Integer uniquely identifying a user in a POSIX administrative domain
 	// +kubebuilder:validation:Optional
-	UIDNumber *float64 `json:"uidNumber,omitempty" tf:"uid_number,omitempty"`
+	UIDNumber *int64 `json:"uidNumber,omitempty" tf:"uid_number,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionsecurityQuestionsUserInitParameters struct {
@@ -1909,6 +2210,24 @@ type UrnietfparamsscimschemasoracleidcsextensiontermsOfUseUserParameters struct 
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserCredentialsUserInitParameters struct {
+
+	// (Updatable) A list of API keys corresponding to user.
+	APIKeys []APIKeysInitParameters `json:"apiKeys,omitempty" tf:"api_keys,omitempty"`
+
+	// (Updatable) A list of Auth tokens corresponding to user.
+	AuthTokens []AuthTokensInitParameters `json:"authTokens,omitempty" tf:"auth_tokens,omitempty"`
+
+	// (Updatable) A list of customer secret keys corresponding to user.
+	CustomerSecretKeys []CustomerSecretKeysInitParameters `json:"customerSecretKeys,omitempty" tf:"customer_secret_keys,omitempty"`
+
+	// (Updatable) A list of database credentials corresponding to user.
+	DBCredentials []DBCredentialsInitParameters `json:"dbCredentials,omitempty" tf:"db_credentials,omitempty"`
+
+	// (Updatable) A list of OAuth2 client credentials corresponding to a user.
+	OAuth2ClientCredentials []OAuth2ClientCredentialsInitParameters `json:"oAuth2ClientCredentials,omitempty" tf:"o_auth2client_credentials,omitempty"`
+
+	// (Updatable) A list of SMTP credentials corresponding to user.
+	SMTPCredentials []SMTPCredentialsInitParameters `json:"smtpCredentials,omitempty" tf:"smtp_credentials,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserCredentialsUserObservation struct {
@@ -1933,6 +2252,30 @@ type UrnietfparamsscimschemasoracleidcsextensionuserCredentialsUserObservation s
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserCredentialsUserParameters struct {
+
+	// (Updatable) A list of API keys corresponding to user.
+	// +kubebuilder:validation:Optional
+	APIKeys []APIKeysParameters `json:"apiKeys,omitempty" tf:"api_keys,omitempty"`
+
+	// (Updatable) A list of Auth tokens corresponding to user.
+	// +kubebuilder:validation:Optional
+	AuthTokens []AuthTokensParameters `json:"authTokens,omitempty" tf:"auth_tokens,omitempty"`
+
+	// (Updatable) A list of customer secret keys corresponding to user.
+	// +kubebuilder:validation:Optional
+	CustomerSecretKeys []CustomerSecretKeysParameters `json:"customerSecretKeys,omitempty" tf:"customer_secret_keys,omitempty"`
+
+	// (Updatable) A list of database credentials corresponding to user.
+	// +kubebuilder:validation:Optional
+	DBCredentials []DBCredentialsParameters `json:"dbCredentials,omitempty" tf:"db_credentials,omitempty"`
+
+	// (Updatable) A list of OAuth2 client credentials corresponding to a user.
+	// +kubebuilder:validation:Optional
+	OAuth2ClientCredentials []OAuth2ClientCredentialsParameters `json:"oAuth2ClientCredentials,omitempty" tf:"o_auth2client_credentials,omitempty"`
+
+	// (Updatable) A list of SMTP credentials corresponding to user.
+	// +kubebuilder:validation:Optional
+	SMTPCredentials []SMTPCredentialsParameters `json:"smtpCredentials,omitempty" tf:"smtp_credentials,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserStateUserInitParameters struct {
@@ -1941,7 +2284,7 @@ type UrnietfparamsscimschemasoracleidcsextensionuserStateUserInitParameters stru
 	Locked []LockedInitParameters `json:"locked,omitempty" tf:"locked,omitempty"`
 
 	// (Updatable) The maximum number of concurrent sessions for a user.
-	MaxConcurrentSessions *float64 `json:"maxConcurrentSessions,omitempty" tf:"max_concurrent_sessions,omitempty"`
+	MaxConcurrentSessions *int64 `json:"maxConcurrentSessions,omitempty" tf:"max_concurrent_sessions,omitempty"`
 
 	// (Updatable) A complex attribute that indicates a password recovery is locked (blocking any new sessions).
 	RecoveryLocked []RecoveryLockedInitParameters `json:"recoveryLocked,omitempty" tf:"recovery_locked,omitempty"`
@@ -1959,19 +2302,19 @@ type UrnietfparamsscimschemasoracleidcsextensionuserStateUserObservation struct 
 	Locked []LockedObservation `json:"locked,omitempty" tf:"locked,omitempty"`
 
 	// (Updatable) The number of incorrect multi factor authentication sign in attempts made by this user. The user is  locked if this reaches the threshold specified in the maxIncorrectAttempts attribute in AuthenticationFactorSettings.
-	LoginAttempts *float64 `json:"loginAttempts,omitempty" tf:"login_attempts,omitempty"`
+	LoginAttempts *int64 `json:"loginAttempts,omitempty" tf:"login_attempts,omitempty"`
 
 	// (Updatable) The maximum number of concurrent sessions for a user.
-	MaxConcurrentSessions *float64 `json:"maxConcurrentSessions,omitempty" tf:"max_concurrent_sessions,omitempty"`
+	MaxConcurrentSessions *int64 `json:"maxConcurrentSessions,omitempty" tf:"max_concurrent_sessions,omitempty"`
 
 	// (Updatable) The previous successful login date.
 	PreviousSuccessfulLoginDate *string `json:"previousSuccessfulLoginDate,omitempty" tf:"previous_successful_login_date,omitempty"`
 
 	// (Updatable) The number of failed recovery attempts. The value is reset to 0 after a successful login.
-	RecoveryAttempts *float64 `json:"recoveryAttempts,omitempty" tf:"recovery_attempts,omitempty"`
+	RecoveryAttempts *int64 `json:"recoveryAttempts,omitempty" tf:"recovery_attempts,omitempty"`
 
 	// (Updatable) The number of failed account recovery enrollment attempts.
-	RecoveryEnrollAttempts *float64 `json:"recoveryEnrollAttempts,omitempty" tf:"recovery_enroll_attempts,omitempty"`
+	RecoveryEnrollAttempts *int64 `json:"recoveryEnrollAttempts,omitempty" tf:"recovery_enroll_attempts,omitempty"`
 
 	// (Updatable) A complex attribute that indicates a password recovery is locked (blocking any new sessions).
 	RecoveryLocked []RecoveryLockedObservation `json:"recoveryLocked,omitempty" tf:"recovery_locked,omitempty"`
@@ -1985,7 +2328,7 @@ type UrnietfparamsscimschemasoracleidcsextensionuserStateUserParameters struct {
 
 	// (Updatable) The maximum number of concurrent sessions for a user.
 	// +kubebuilder:validation:Optional
-	MaxConcurrentSessions *float64 `json:"maxConcurrentSessions,omitempty" tf:"max_concurrent_sessions,omitempty"`
+	MaxConcurrentSessions *int64 `json:"maxConcurrentSessions,omitempty" tf:"max_concurrent_sessions,omitempty"`
 
 	// (Updatable) A complex attribute that indicates a password recovery is locked (blocking any new sessions).
 	// +kubebuilder:validation:Optional
@@ -1993,6 +2336,18 @@ type UrnietfparamsscimschemasoracleidcsextensionuserStateUserParameters struct {
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserAccountsInitParameters struct {
+
+	// (Updatable) User status
+	Active *bool `json:"active,omitempty" tf:"active,omitempty"`
+
+	// (Updatable) The ID of the App to which this Account gives access.
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) A complex attribute that contains attributes representing the name
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserAccountsObservation struct {
@@ -2014,9 +2369,46 @@ type UrnietfparamsscimschemasoracleidcsextensionuserUserAccountsObservation stru
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserAccountsParameters struct {
+
+	// (Updatable) User status
+	// +kubebuilder:validation:Optional
+	Active *bool `json:"active,omitempty" tf:"active,omitempty"`
+
+	// (Updatable) The ID of the App to which this Account gives access.
+	// +kubebuilder:validation:Optional
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) A complex attribute that contains attributes representing the name
+	// +kubebuilder:validation:Optional
+	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserAppRolesInitParameters struct {
+
+	// (Updatable) If true, then the role provides administrative access privileges. READ-ONLY.
+	AdminRole *bool `json:"adminRole,omitempty" tf:"admin_role,omitempty"`
+
+	// (Updatable) The ID of the App to which this Account gives access.
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) The name (Client ID) of the App that defines this AppRole.
+	AppName *string `json:"appName,omitempty" tf:"app_name,omitempty"`
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The name (if any) under which this AppRole should appear in this User's group-memberships for reasons of backward compatibility. Oracle Identity Cloud Service distinguishes between Groups and AppRoles, but some services still expect AppRoles appear as if they were service-instance-specific Groups.
+	LegacyGroupName *string `json:"legacyGroupName,omitempty" tf:"legacy_group_name,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserAppRolesObservation struct {
@@ -2047,9 +2439,49 @@ type UrnietfparamsscimschemasoracleidcsextensionuserUserAppRolesObservation stru
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserAppRolesParameters struct {
+
+	// (Updatable) If true, then the role provides administrative access privileges. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	AdminRole *bool `json:"adminRole,omitempty" tf:"admin_role,omitempty"`
+
+	// (Updatable) The ID of the App to which this Account gives access.
+	// +kubebuilder:validation:Optional
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) The name (Client ID) of the App that defines this AppRole.
+	// +kubebuilder:validation:Optional
+	AppName *string `json:"appName,omitempty" tf:"app_name,omitempty"`
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The name (if any) under which this AppRole should appear in this User's group-memberships for reasons of backward compatibility. Oracle Identity Cloud Service distinguishes between Groups and AppRoles, but some services still expect AppRoles appear as if they were service-instance-specific Groups.
+	// +kubebuilder:validation:Optional
+	LegacyGroupName *string `json:"legacyGroupName,omitempty" tf:"legacy_group_name,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserGrantsInitParameters struct {
+
+	// (Updatable) The ID of the App to which this Account gives access.
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) Each value of grantMechanism indicates how (or by what component) some App (or App-Entitlement) was granted. A customer or the UI should use only grantMechanism values that start with 'ADMINISTRATOR':
+	GrantMechanism *string `json:"grantMechanism,omitempty" tf:"grant_mechanism,omitempty"`
+
+	// (Updatable) Grantor identifier
+	GrantorID *string `json:"grantorId,omitempty" tf:"grantor_id,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserGrantsObservation struct {
@@ -2071,6 +2503,22 @@ type UrnietfparamsscimschemasoracleidcsextensionuserUserGrantsObservation struct
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserGrantsParameters struct {
+
+	// (Updatable) The ID of the App to which this Account gives access.
+	// +kubebuilder:validation:Optional
+	AppID *string `json:"appId,omitempty" tf:"app_id,omitempty"`
+
+	// (Updatable) Each value of grantMechanism indicates how (or by what component) some App (or App-Entitlement) was granted. A customer or the UI should use only grantMechanism values that start with 'ADMINISTRATOR':
+	// +kubebuilder:validation:Optional
+	GrantMechanism *string `json:"grantMechanism,omitempty" tf:"grant_mechanism,omitempty"`
+
+	// (Updatable) Grantor identifier
+	// +kubebuilder:validation:Optional
+	GrantorID *string `json:"grantorId,omitempty" tf:"grantor_id,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionuserUserInitParameters struct {
@@ -2305,6 +2753,30 @@ type UrnietfparamsscimschemasoracleidcsextensionuserUserSyncedFromAppParameters 
 }
 
 type UserGroupsInitParameters struct {
+
+	// (Updatable) Date when the member is Added to the group
+	DateAdded *string `json:"dateAdded,omitempty" tf:"date_added,omitempty"`
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) An identifier for the Resource as defined by the Service Consumer. The externalId may simplify identification of the Resource between Service Consumer and Service Provider by allowing the Consumer to refer to the Resource with its own identifier, obviating the need to store a local mapping between the local identifier of the Resource and the identifier used by the Service Provider. Each Resource MAY include a non-empty externalId value. The value of the externalId attribute is always issued by the Service Consumer and can never be specified by the Service Provider. The Service Provider MUST always interpret the externalId as scoped to the Service Consumer's tenant.
+	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
+
+	// (Updatable) The membership OCID.
+	MembershipOcid *string `json:"membershipOcid,omitempty" tf:"membership_ocid,omitempty"`
+
+	// (Updatable) A human readable name for Group as defined by the Service Consumer. READ-ONLY.
+	NonUniqueDisplay *string `json:"nonUniqueDisplay,omitempty" tf:"non_unique_display,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UserGroupsObservation struct {
@@ -2338,9 +2810,53 @@ type UserGroupsObservation struct {
 }
 
 type UserGroupsParameters struct {
+
+	// (Updatable) Date when the member is Added to the group
+	// +kubebuilder:validation:Optional
+	DateAdded *string `json:"dateAdded,omitempty" tf:"date_added,omitempty"`
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) An identifier for the Resource as defined by the Service Consumer. The externalId may simplify identification of the Resource between Service Consumer and Service Provider by allowing the Consumer to refer to the Resource with its own identifier, obviating the need to store a local mapping between the local identifier of the Resource and the identifier used by the Service Provider. Each Resource MAY include a non-empty externalId value. The value of the externalId attribute is always issued by the Service Consumer and can never be specified by the Service Provider. The Service Provider MUST always interpret the externalId as scoped to the Service Consumer's tenant.
+	// +kubebuilder:validation:Optional
+	ExternalID *string `json:"externalId,omitempty" tf:"external_id,omitempty"`
+
+	// (Updatable) The membership OCID.
+	// +kubebuilder:validation:Optional
+	MembershipOcid *string `json:"membershipOcid,omitempty" tf:"membership_ocid,omitempty"`
+
+	// (Updatable) A human readable name for Group as defined by the Service Consumer. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	NonUniqueDisplay *string `json:"nonUniqueDisplay,omitempty" tf:"non_unique_display,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type UserIdcsCreatedByInitParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UserIdcsCreatedByObservation struct {
@@ -2362,9 +2878,37 @@ type UserIdcsCreatedByObservation struct {
 }
 
 type UserIdcsCreatedByParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type UserIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UserIdcsLastModifiedByObservation struct {
@@ -2386,6 +2930,22 @@ type UserIdcsLastModifiedByObservation struct {
 }
 
 type UserIdcsLastModifiedByParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the User's group.
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) A label indicating the attribute's function; e.g., 'work' or 'home'.
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type UserInitParameters_2 struct {
@@ -2536,6 +3096,21 @@ type UserInitParameters_2 struct {
 }
 
 type UserMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type UserMetaObservation struct {
@@ -2557,6 +3132,26 @@ type UserMetaObservation struct {
 }
 
 type UserMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type UserObservation_2 struct {
@@ -2970,6 +3565,9 @@ type UserTagsParameters struct {
 }
 
 type UserTokenInitParameters struct {
+
+	// (Updatable) Email address
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UserTokenObservation struct {
@@ -2982,6 +3580,10 @@ type UserTokenObservation struct {
 }
 
 type UserTokenParameters struct {
+
+	// (Updatable) Email address
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type UserUrnietfparamsscimschemasoracleidcsextensionOciTagsDefinedTagsInitParameters struct {

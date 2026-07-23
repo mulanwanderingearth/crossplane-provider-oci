@@ -68,7 +68,8 @@ spec:
                       longer be valid after the number of hours in the wallet rotation
                       grace period has passed. During the grace period, both the old
                       wallet and the current wallet can be used.
-                    type: number
+                    format: int64
+                    type: integer
                   shouldRotate:
                     description: (Updatable) Indicates whether to rotate the wallet
                       or not. If false, the wallet will not be rotated. The default
@@ -94,7 +95,8 @@ spec:
                       longer be valid after the number of hours in the wallet rotation
                       grace period has passed. During the grace period, both the old
                       wallet and the current wallet can be used.
-                    type: number
+                    format: int64
+                    type: integer
                   shouldRotate:
                     description: (Updatable) Indicates whether to rotate the wallet
                       or not. If false, the wallet will not be rotated. The default
@@ -173,7 +175,8 @@ spec:
                       longer be valid after the number of hours in the wallet rotation
                       grace period has passed. During the grace period, both the old
                       wallet and the current wallet can be used.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     type: string
                   shouldRotate:

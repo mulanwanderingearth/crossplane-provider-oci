@@ -161,12 +161,14 @@ spec:
                     description: Maximum sustained read throughput limit for the new
                       replica table. If not specified, the local table's read limit
                       is used.
-                    type: number
+                    format: int64
+                    type: integer
                   maxWriteUnits:
                     description: Maximum sustained write throughput limit for the
                       new replica table. If not specified, the local table's write
                       limit is used.
-                    type: number
+                    format: int64
+                    type: integer
                   region:
                     description: Name of the remote region in standard Oracle Cloud
                       Infrastructure format, i.e. us-ashburn-1
@@ -349,12 +351,14 @@ spec:
                     description: Maximum sustained read throughput limit for the new
                       replica table. If not specified, the local table's read limit
                       is used.
-                    type: number
+                    format: int64
+                    type: integer
                   maxWriteUnits:
                     description: Maximum sustained write throughput limit for the
                       new replica table. If not specified, the local table's write
                       limit is used.
-                    type: number
+                    format: int64
+                    type: integer
                   region:
                     description: Name of the remote region in standard Oracle Cloud
                       Infrastructure format, i.e. us-ashburn-1
@@ -548,12 +552,14 @@ spec:
                     description: Maximum sustained read throughput limit for the new
                       replica table. If not specified, the local table's read limit
                       is used.
-                    type: number
+                    format: int64
+                    type: integer
                   maxWriteUnits:
                     description: Maximum sustained write throughput limit for the
                       new replica table. If not specified, the local table's write
                       limit is used.
-                    type: number
+                    format: int64
+                    type: integer
                   region:
                     description: Name of the remote region in standard Oracle Cloud
                       Infrastructure format, i.e. us-ashburn-1

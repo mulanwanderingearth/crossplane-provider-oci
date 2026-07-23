@@ -71,7 +71,7 @@ type ReplicasObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// (Updatable) Maximum sustained write throughput limit for the table.
-	MaxWriteUnits *float64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
+	MaxWriteUnits *int64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
 
 	// A customer-facing region identifier
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
@@ -104,7 +104,7 @@ type SchemaObservation struct {
 	ShardKey []*string `json:"shardKey,omitempty" tf:"shard_key,omitempty"`
 
 	// The default Time-to-Live for the table, in days.
-	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
+	TTL *int64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
 }
 
 type SchemaParameters struct {
@@ -128,12 +128,10 @@ type TableInitParameters struct {
 	DdlStatement *string `json:"ddlStatement,omitempty" tf:"ddl_statement,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// True if table can be reclaimed after an idle period.
 	IsAutoReclaimable *bool `json:"isAutoReclaimable,omitempty" tf:"is_auto_reclaimable,omitempty"`
@@ -151,13 +149,13 @@ type TableLimitsInitParameters struct {
 	CapacityMode *string `json:"capacityMode,omitempty" tf:"capacity_mode,omitempty"`
 
 	// (Updatable) Maximum sustained read throughput limit for the table.
-	MaxReadUnits *float64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
+	MaxReadUnits *int64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
 
 	// (Updatable) Maximum size of storage used by the table.
-	MaxStorageInGbs *float64 `json:"maxStorageInGbs,omitempty" tf:"max_storage_in_gbs,omitempty"`
+	MaxStorageInGbs *int64 `json:"maxStorageInGbs,omitempty" tf:"max_storage_in_gbs,omitempty"`
 
 	// (Updatable) Maximum sustained write throughput limit for the table.
-	MaxWriteUnits *float64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
+	MaxWriteUnits *int64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
 }
 
 type TableLimitsObservation struct {
@@ -166,13 +164,13 @@ type TableLimitsObservation struct {
 	CapacityMode *string `json:"capacityMode,omitempty" tf:"capacity_mode,omitempty"`
 
 	// (Updatable) Maximum sustained read throughput limit for the table.
-	MaxReadUnits *float64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
+	MaxReadUnits *int64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
 
 	// (Updatable) Maximum size of storage used by the table.
-	MaxStorageInGbs *float64 `json:"maxStorageInGbs,omitempty" tf:"max_storage_in_gbs,omitempty"`
+	MaxStorageInGbs *int64 `json:"maxStorageInGbs,omitempty" tf:"max_storage_in_gbs,omitempty"`
 
 	// (Updatable) Maximum sustained write throughput limit for the table.
-	MaxWriteUnits *float64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
+	MaxWriteUnits *int64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
 }
 
 type TableLimitsParameters struct {
@@ -183,15 +181,15 @@ type TableLimitsParameters struct {
 
 	// (Updatable) Maximum sustained read throughput limit for the table.
 	// +kubebuilder:validation:Optional
-	MaxReadUnits *float64 `json:"maxReadUnits" tf:"max_read_units,omitempty"`
+	MaxReadUnits *int64 `json:"maxReadUnits" tf:"max_read_units,omitempty"`
 
 	// (Updatable) Maximum size of storage used by the table.
 	// +kubebuilder:validation:Optional
-	MaxStorageInGbs *float64 `json:"maxStorageInGbs" tf:"max_storage_in_gbs,omitempty"`
+	MaxStorageInGbs *int64 `json:"maxStorageInGbs" tf:"max_storage_in_gbs,omitempty"`
 
 	// (Updatable) Maximum sustained write throughput limit for the table.
 	// +kubebuilder:validation:Optional
-	MaxWriteUnits *float64 `json:"maxWriteUnits" tf:"max_write_units,omitempty"`
+	MaxWriteUnits *int64 `json:"maxWriteUnits" tf:"max_write_units,omitempty"`
 }
 
 type TableObservation struct {
@@ -203,12 +201,10 @@ type TableObservation struct {
 	DdlStatement *string `json:"ddlStatement,omitempty" tf:"ddl_statement,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique identifier that is immutable.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -223,7 +219,7 @@ type TableObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// If this table is in a replication set, this value represents the progress of the initialization of the replica's data.  A value of 100 indicates that initialization has completed.
-	LocalReplicaInitializationInPercent *float64 `json:"localReplicaInitializationInPercent,omitempty" tf:"local_replica_initialization_in_percent,omitempty"`
+	LocalReplicaInitializationInPercent *int64 `json:"localReplicaInitializationInPercent,omitempty" tf:"local_replica_initialization_in_percent,omitempty"`
 
 	// Table name.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -241,8 +237,7 @@ type TableObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Read-only system tag. These predefined keys are scoped to namespaces.  At present the only supported namespace is "orcl-cloud"; and the only key in that namespace is "free-tier-retained". Example: {"orcl-cloud"": {"free-tier-retained": "true"}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) Throughput and storage limits configuration of a table. It is required for top level table, must be null for child table as child table shares its top parent table's limits.
 	TableLimits []TableLimitsObservation `json:"tableLimits,omitempty" tf:"table_limits,omitempty"`
@@ -278,13 +273,11 @@ type TableParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"foo-namespace": {"bar-key": "value"}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// True if table can be reclaimed after an idle period.
 	// +kubebuilder:validation:Optional

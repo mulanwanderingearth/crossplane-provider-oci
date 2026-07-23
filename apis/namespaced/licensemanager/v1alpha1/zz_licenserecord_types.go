@@ -17,8 +17,7 @@ import (
 type LicenseRecordInitParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) License record name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -27,8 +26,7 @@ type LicenseRecordInitParameters struct {
 	ExpirationDate *string `json:"expirationDate,omitempty" tf:"expiration_date,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Specifies if the license record term is perpertual.
 	IsPerpetual *bool `json:"isPerpetual,omitempty" tf:"is_perpetual,omitempty"`
@@ -37,7 +35,7 @@ type LicenseRecordInitParameters struct {
 	IsUnlimited *bool `json:"isUnlimited,omitempty" tf:"is_unlimited,omitempty"`
 
 	// (Updatable) The number of license units added by a user in a license record. Default 1
-	LicenseCount *float64 `json:"licenseCount,omitempty" tf:"license_count,omitempty"`
+	LicenseCount *int64 `json:"licenseCount,omitempty" tf:"license_count,omitempty"`
 
 	// (Updatable) The license record product ID.
 	ProductID *string `json:"productId,omitempty" tf:"product_id,omitempty"`
@@ -65,8 +63,7 @@ type LicenseRecordObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) License record name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -75,8 +72,7 @@ type LicenseRecordObservation struct {
 	ExpirationDate *string `json:"expirationDate,omitempty" tf:"expiration_date,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The license record OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -88,7 +84,7 @@ type LicenseRecordObservation struct {
 	IsUnlimited *bool `json:"isUnlimited,omitempty" tf:"is_unlimited,omitempty"`
 
 	// (Updatable) The number of license units added by a user in a license record. Default 1
-	LicenseCount *float64 `json:"licenseCount,omitempty" tf:"license_count,omitempty"`
+	LicenseCount *int64 `json:"licenseCount,omitempty" tf:"license_count,omitempty"`
 
 	// The product license unit.
 	LicenseUnit *string `json:"licenseUnit,omitempty" tf:"license_unit,omitempty"`
@@ -109,8 +105,7 @@ type LicenseRecordObservation struct {
 	SupportEndDate *string `json:"supportEndDate,omitempty" tf:"support_end_date,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the license record was created. An RFC 3339-formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -123,8 +118,7 @@ type LicenseRecordParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) License record name.
 	// +kubebuilder:validation:Optional
@@ -136,8 +130,7 @@ type LicenseRecordParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type, or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Specifies if the license record term is perpertual.
 	// +kubebuilder:validation:Optional
@@ -149,7 +142,7 @@ type LicenseRecordParameters struct {
 
 	// (Updatable) The number of license units added by a user in a license record. Default 1
 	// +kubebuilder:validation:Optional
-	LicenseCount *float64 `json:"licenseCount,omitempty" tf:"license_count,omitempty"`
+	LicenseCount *int64 `json:"licenseCount,omitempty" tf:"license_count,omitempty"`
 
 	// (Updatable) The license record product ID.
 	// +kubebuilder:validation:Optional

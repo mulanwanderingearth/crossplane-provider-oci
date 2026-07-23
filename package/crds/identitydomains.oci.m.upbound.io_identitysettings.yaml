@@ -235,11 +235,13 @@ spec:
                         manualAssignmentEndsAt:
                           description: (Updatable) The number at which the Posix Gid
                             Manual assignment ends.
-                          type: number
+                          format: int64
+                          type: integer
                         manualAssignmentStartsFrom:
                           description: (Updatable) The number from which the Posix
                             Gid Manual assignment starts.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   posixUid:
@@ -249,11 +251,13 @@ spec:
                         manualAssignmentEndsAt:
                           description: (Updatable) The number at which the Posix Gid
                             Manual assignment ends.
-                          type: number
+                          format: int64
+                          type: integer
                         manualAssignmentStartsFrom:
                           description: (Updatable) The number from which the Posix
                             Gid Manual assignment starts.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   primaryEmailRequired:
@@ -307,7 +311,8 @@ spec:
                         expiresAfter:
                           description: (Updatable) Indicates the number of minutes
                             after which the token expires automatically.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: (Updatable) The type of resource, User or App,
                             that created this Resource
@@ -507,11 +512,13 @@ spec:
                         manualAssignmentEndsAt:
                           description: (Updatable) The number at which the Posix Gid
                             Manual assignment ends.
-                          type: number
+                          format: int64
+                          type: integer
                         manualAssignmentStartsFrom:
                           description: (Updatable) The number from which the Posix
                             Gid Manual assignment starts.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   posixUid:
@@ -521,11 +528,13 @@ spec:
                         manualAssignmentEndsAt:
                           description: (Updatable) The number at which the Posix Gid
                             Manual assignment ends.
-                          type: number
+                          format: int64
+                          type: integer
                         manualAssignmentStartsFrom:
                           description: (Updatable) The number from which the Posix
                             Gid Manual assignment starts.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   primaryEmailRequired:
@@ -579,7 +588,8 @@ spec:
                         expiresAfter:
                           description: (Updatable) Indicates the number of minutes
                             after which the token expires automatically.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: (Updatable) The type of resource, User or App,
                             that created this Resource
@@ -878,11 +888,13 @@ spec:
                         manualAssignmentEndsAt:
                           description: (Updatable) The number at which the Posix Gid
                             Manual assignment ends.
-                          type: number
+                          format: int64
+                          type: integer
                         manualAssignmentStartsFrom:
                           description: (Updatable) The number from which the Posix
                             Gid Manual assignment starts.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   posixUid:
@@ -892,11 +904,13 @@ spec:
                         manualAssignmentEndsAt:
                           description: (Updatable) The number at which the Posix Gid
                             Manual assignment ends.
-                          type: number
+                          format: int64
+                          type: integer
                         manualAssignmentStartsFrom:
                           description: (Updatable) The number from which the Posix
                             Gid Manual assignment starts.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   primaryEmailRequired:
@@ -958,7 +972,8 @@ spec:
                         expiresAfter:
                           description: (Updatable) Indicates the number of minutes
                             after which the token expires automatically.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: (Updatable) The type of resource, User or App,
                             that created this Resource

@@ -129,7 +129,7 @@ type ConnectionDetailsInitParameters struct {
 	Hosts []HostsInitParameters `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// (Applicable when entity_source=PE_COMANAGED_DATABASE) Listener port number used for connection requests for rivate endpoint accessed db resource.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Protocol used for connection requests for private endpoint accssed database resource.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -147,7 +147,7 @@ type ConnectionDetailsObservation struct {
 	Hosts []HostsObservation `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// (Applicable when entity_source=PE_COMANAGED_DATABASE) Listener port number used for connection requests for rivate endpoint accessed db resource.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Protocol used for connection requests for private endpoint accssed database resource.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -168,7 +168,7 @@ type ConnectionDetailsParameters struct {
 
 	// (Applicable when entity_source=PE_COMANAGED_DATABASE) Listener port number used for connection requests for rivate endpoint accessed db resource.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Protocol used for connection requests for private endpoint accssed database resource.
 	// +kubebuilder:validation:Optional
@@ -354,8 +354,7 @@ type DatabaseInsightInitParameters struct {
 	DbmPrivateEndpointIDSelector *v1.NamespacedSelector `json:"dbmPrivateEndpointIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Database Deployment Type (EXACS will be supported in the future)
 	DeploymentType *string `json:"deploymentType,omitempty" tf:"deployment_type,omitempty"`
@@ -396,8 +395,7 @@ type DatabaseInsightInitParameters struct {
 	ExadataInsightIDSelector *v1.NamespacedSelector `json:"exadataInsightIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Flag is to identify if advanced features for autonomous database is enabled or not
 	IsAdvancedFeaturesEnabled *bool `json:"isAdvancedFeaturesEnabled,omitempty" tf:"is_advanced_features_enabled,omitempty"`
@@ -435,8 +433,7 @@ type DatabaseInsightInitParameters struct {
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// (Applicable when entity_source=AUTONOMOUS_DATABASE | MACS_MANAGED_AUTONOMOUS_DATABASE | MACS_MANAGED_CLOUD_DATABASE | PE_COMANAGED_DATABASE) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type DatabaseInsightObservation struct {
@@ -484,8 +481,7 @@ type DatabaseInsightObservation struct {
 	DbmPrivateEndpointID *string `json:"dbmPrivateEndpointId,omitempty" tf:"dbm_private_endpoint_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Database Deployment Type (EXACS will be supported in the future)
 	DeploymentType *string `json:"deploymentType,omitempty" tf:"deployment_type,omitempty"`
@@ -515,8 +511,7 @@ type DatabaseInsightObservation struct {
 	ExadataInsightID *string `json:"exadataInsightId,omitempty" tf:"exadata_insight_id,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Database insight identifier
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -543,7 +538,7 @@ type DatabaseInsightObservation struct {
 	ParentID *string `json:"parentId,omitempty" tf:"parent_id,omitempty"`
 
 	// Processor count. This is the OCPU count for Autonomous Database and CPU core count for other database types.
-	ProcessorCount *float64 `json:"processorCount,omitempty" tf:"processor_count,omitempty"`
+	ProcessorCount *int64 `json:"processorCount,omitempty" tf:"processor_count,omitempty"`
 
 	// The OCID of the Exadata Infrastructure.
 	RootID *string `json:"rootId,omitempty" tf:"root_id,omitempty"`
@@ -558,8 +553,7 @@ type DatabaseInsightObservation struct {
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// (Applicable when entity_source=AUTONOMOUS_DATABASE | MACS_MANAGED_AUTONOMOUS_DATABASE | MACS_MANAGED_CLOUD_DATABASE | PE_COMANAGED_DATABASE) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the database insight was first enabled. An RFC3339 formatted datetime string
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -641,8 +635,7 @@ type DatabaseInsightParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Database Deployment Type (EXACS will be supported in the future)
 	// +kubebuilder:validation:Optional
@@ -690,8 +683,7 @@ type DatabaseInsightParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Flag is to identify if advanced features for autonomous database is enabled or not
 	// +kubebuilder:validation:Optional
@@ -735,8 +727,7 @@ type DatabaseInsightParameters struct {
 
 	// (Applicable when entity_source=AUTONOMOUS_DATABASE | MACS_MANAGED_AUTONOMOUS_DATABASE | MACS_MANAGED_CLOUD_DATABASE | PE_COMANAGED_DATABASE) System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type HostsInitParameters struct {
@@ -745,7 +736,7 @@ type HostsInitParameters struct {
 	HostIP *string `json:"hostIp,omitempty" tf:"host_ip,omitempty"`
 
 	// (Applicable when entity_source=PE_COMANAGED_DATABASE) Listener port number used for connection requests for rivate endpoint accessed db resource.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type HostsObservation struct {
@@ -754,7 +745,7 @@ type HostsObservation struct {
 	HostIP *string `json:"hostIp,omitempty" tf:"host_ip,omitempty"`
 
 	// (Applicable when entity_source=PE_COMANAGED_DATABASE) Listener port number used for connection requests for rivate endpoint accessed db resource.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type HostsParameters struct {
@@ -765,7 +756,7 @@ type HostsParameters struct {
 
 	// (Applicable when entity_source=PE_COMANAGED_DATABASE) Listener port number used for connection requests for rivate endpoint accessed db resource.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 // DatabaseInsightSpec defines the desired state of DatabaseInsight

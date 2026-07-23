@@ -54,8 +54,7 @@ type ObjectInitParameters struct {
 
 	// Optional user-defined metadata key and value.
 	// Note: All specified keys must be in lower case.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The Object Storage namespace used for the request.
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
@@ -113,8 +112,7 @@ type ObjectObservation struct {
 
 	// Optional user-defined metadata key and value.
 	// Note: All specified keys must be in lower case.
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The Object Storage namespace used for the request.
 	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
@@ -192,8 +190,7 @@ type ObjectParameters struct {
 	// Optional user-defined metadata key and value.
 	// Note: All specified keys must be in lower case.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Metadata map[string]*string `json:"metadata,omitempty" tf:"metadata,omitempty"`
+	Metadata map[string]string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// The Object Storage namespace used for the request.
 	// +kubebuilder:validation:Optional

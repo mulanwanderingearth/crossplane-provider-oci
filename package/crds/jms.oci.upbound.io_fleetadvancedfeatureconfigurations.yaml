@@ -484,7 +484,8 @@ spec:
                                             description: '(Updatable) Key size for
                                               the encryption algorithm. Allowed values:
                                               256 for EC, 2048 for DH/DSA/RSA'
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           name:
                                             description: (Updatable) The algorithm
                                               name.
@@ -503,7 +504,8 @@ spec:
                                             description: '(Updatable) Key size for
                                               the encryption algorithm. Allowed values:
                                               256 for EC, 2048 for DH/DSA/RSA'
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           name:
                                             description: (Updatable) The algorithm
                                               name.
@@ -522,7 +524,8 @@ spec:
                                             description: '(Updatable) Key size for
                                               the encryption algorithm. Allowed values:
                                               256 for EC, 2048 for DH/DSA/RSA'
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           name:
                                             description: (Updatable) The algorithm
                                               name.
@@ -543,7 +546,8 @@ spec:
                                     ftpProxyPort:
                                       description: (Updatable) Ftp port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     httpProxyHost:
                                       description: (Updatable) Http host to be set
                                         in net.properties file.
@@ -551,7 +555,8 @@ spec:
                                     httpProxyPort:
                                       description: (Updatable) Http port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     httpsProxyHost:
                                       description: (Updatable) Https host to be set
                                         in net.properties file.
@@ -559,7 +564,8 @@ spec:
                                     httpsProxyPort:
                                       description: (Updatable) Https port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     socksProxyHost:
                                       description: (Updatable) Socks host to be set
                                         in net.properties file.
@@ -567,7 +573,8 @@ spec:
                                     socksProxyPort:
                                       description: (Updatable) Socks port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     useSystemProxies:
                                       description: (Updatable) Sets "java.net.useSystemProxies=true"
                                         in net.properties when they exist.
@@ -1017,7 +1024,8 @@ spec:
                                             description: '(Updatable) Key size for
                                               the encryption algorithm. Allowed values:
                                               256 for EC, 2048 for DH/DSA/RSA'
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           name:
                                             description: (Updatable) The algorithm
                                               name.
@@ -1036,7 +1044,8 @@ spec:
                                             description: '(Updatable) Key size for
                                               the encryption algorithm. Allowed values:
                                               256 for EC, 2048 for DH/DSA/RSA'
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           name:
                                             description: (Updatable) The algorithm
                                               name.
@@ -1055,7 +1064,8 @@ spec:
                                             description: '(Updatable) Key size for
                                               the encryption algorithm. Allowed values:
                                               256 for EC, 2048 for DH/DSA/RSA'
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           name:
                                             description: (Updatable) The algorithm
                                               name.
@@ -1076,7 +1086,8 @@ spec:
                                     ftpProxyPort:
                                       description: (Updatable) Ftp port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     httpProxyHost:
                                       description: (Updatable) Http host to be set
                                         in net.properties file.
@@ -1084,7 +1095,8 @@ spec:
                                     httpProxyPort:
                                       description: (Updatable) Http port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     httpsProxyHost:
                                       description: (Updatable) Https host to be set
                                         in net.properties file.
@@ -1092,7 +1104,8 @@ spec:
                                     httpsProxyPort:
                                       description: (Updatable) Https port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     socksProxyHost:
                                       description: (Updatable) Socks host to be set
                                         in net.properties file.
@@ -1100,7 +1113,8 @@ spec:
                                     socksProxyPort:
                                       description: (Updatable) Socks port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     useSystemProxies:
                                       description: (Updatable) Sets "java.net.useSystemProxies=true"
                                         in net.properties when they exist.
@@ -1331,7 +1345,8 @@ spec:
                                             description: '(Updatable) Key size for
                                               the encryption algorithm. Allowed values:
                                               256 for EC, 2048 for DH/DSA/RSA'
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           name:
                                             description: (Updatable) The algorithm
                                               name.
@@ -1350,7 +1365,8 @@ spec:
                                             description: '(Updatable) Key size for
                                               the encryption algorithm. Allowed values:
                                               256 for EC, 2048 for DH/DSA/RSA'
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           name:
                                             description: (Updatable) The algorithm
                                               name.
@@ -1369,7 +1385,8 @@ spec:
                                             description: '(Updatable) Key size for
                                               the encryption algorithm. Allowed values:
                                               256 for EC, 2048 for DH/DSA/RSA'
-                                            type: number
+                                            format: int64
+                                            type: integer
                                           name:
                                             description: (Updatable) The algorithm
                                               name.
@@ -1390,7 +1407,8 @@ spec:
                                     ftpProxyPort:
                                       description: (Updatable) Ftp port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     httpProxyHost:
                                       description: (Updatable) Http host to be set
                                         in net.properties file.
@@ -1398,7 +1416,8 @@ spec:
                                     httpProxyPort:
                                       description: (Updatable) Http port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     httpsProxyHost:
                                       description: (Updatable) Https host to be set
                                         in net.properties file.
@@ -1406,7 +1425,8 @@ spec:
                                     httpsProxyPort:
                                       description: (Updatable) Https port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     socksProxyHost:
                                       description: (Updatable) Socks host to be set
                                         in net.properties file.
@@ -1414,7 +1434,8 @@ spec:
                                     socksProxyPort:
                                       description: (Updatable) Socks port number to
                                         be set in net.properties file.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     useSystemProxies:
                                       description: (Updatable) Sets "java.net.useSystemProxies=true"
                                         in net.properties when they exist.

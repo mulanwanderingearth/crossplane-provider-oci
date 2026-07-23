@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. Does not have
                       to be unique, and it''s changeable. Avoid entering confidential
@@ -201,7 +200,8 @@ spec:
                               value:
                                 description: (Updatable) The number of requests that
                                   can be made per time period.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         rateLimit:
@@ -216,7 +216,8 @@ spec:
                               value:
                                 description: (Updatable) The number of requests that
                                   can be made per time period.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         targets:
@@ -316,7 +317,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   locks:
@@ -434,7 +434,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. Does not have
                       to be unique, and it''s changeable. Avoid entering confidential
@@ -475,7 +474,8 @@ spec:
                               value:
                                 description: (Updatable) The number of requests that
                                   can be made per time period.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         rateLimit:
@@ -490,7 +490,8 @@ spec:
                               value:
                                 description: (Updatable) The number of requests that
                                   can be made per time period.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         targets:
@@ -590,7 +591,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   locks:
@@ -717,7 +717,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: '(Updatable) A user-friendly name. Does not have
                       to be unique, and it''s changeable. Avoid entering confidential
@@ -758,7 +757,8 @@ spec:
                               value:
                                 description: (Updatable) The number of requests that
                                   can be made per time period.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         rateLimit:
@@ -773,7 +773,8 @@ spec:
                               value:
                                 description: (Updatable) The number of requests that
                                   can be made per time period.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         targets:
@@ -797,7 +798,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of a usage plan resource.
                     type: string
@@ -840,7 +840,6 @@ spec:
                       and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the lock was created.
                     type: string

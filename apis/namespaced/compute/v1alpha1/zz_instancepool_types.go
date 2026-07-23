@@ -29,15 +29,13 @@ type InstancePoolInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the instance configuration associated with the instance pool.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/compute/v1alpha1.InstanceConfiguration
@@ -67,7 +65,7 @@ type InstancePoolInitParameters struct {
 	PlacementConfigurations []InstancePoolPlacementConfigurationsInitParameters `json:"placementConfigurations,omitempty" tf:"placement_configurations,omitempty"`
 
 	// (Updatable) The number of instances that should be in the instance pool. Modifying this value will override the size of the instance pool. If the instance pool is linked with autoscaling configuration, autoscaling configuration could resize the instance pool at a later point. The instance pool's actual size may differ from the configured size if it is associated with an autoscaling configuration, instance pool's actual size will be reflected in this size attribute.
-	Size *float64 `json:"size,omitempty" tf:"size,omitempty"`
+	Size *int64 `json:"size,omitempty" tf:"size,omitempty"`
 
 	// (Updatable) The target state for the instance pool update operation (ignored at create time and should not be set). Could be set to RUNNING or STOPPED.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -102,7 +100,7 @@ type InstancePoolLoadBalancersInitParameters struct {
 	LoadBalancerIDSelector *v1.NamespacedSelector `json:"loadBalancerIdSelector,omitempty" tf:"-"`
 
 	// The port value to use when creating the backend set.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// Indicates which VNIC on each instance in the pool should be used to associate with the load balancer. Possible values are "PrimaryVnic" or the displayName of one of the secondary VNICs on the instance configuration that is associated with the instance pool.
 	VnicSelection *string `json:"vnicSelection,omitempty" tf:"vnic_selection,omitempty"`
@@ -123,7 +121,7 @@ type InstancePoolLoadBalancersObservation struct {
 	LoadBalancerID *string `json:"loadBalancerId,omitempty" tf:"load_balancer_id,omitempty"`
 
 	// The port value to use when creating the backend set.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The target state for the instance pool update operation (ignored at create time and should not be set). Could be set to RUNNING or STOPPED.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -164,7 +162,7 @@ type InstancePoolLoadBalancersParameters struct {
 
 	// The port value to use when creating the backend set.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port" tf:"port,omitempty"`
+	Port *int64 `json:"port" tf:"port,omitempty"`
 
 	// Indicates which VNIC on each instance in the pool should be used to associate with the load balancer. Possible values are "PrimaryVnic" or the displayName of one of the secondary VNICs on the instance configuration that is associated with the instance pool.
 	// +kubebuilder:validation:Optional
@@ -174,24 +172,22 @@ type InstancePoolLoadBalancersParameters struct {
 type InstancePoolObservation struct {
 
 	// The number of actual instances in the instance pool on the cloud. This attribute will be different when instance pool is used along with autoScaling Configuration.
-	ActualSize *float64 `json:"actualSize,omitempty" tf:"actual_size,omitempty"`
+	ActualSize *int64 `json:"actualSize,omitempty" tf:"actual_size,omitempty"`
 
 	// (Updatable) The OCID of the compartment containing the instance pool.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Count of instance in running state associated to the Instance Pool.
-	CurrentSize *float64 `json:"currentSize,omitempty" tf:"current_size,omitempty"`
+	CurrentSize *int64 `json:"currentSize,omitempty" tf:"current_size,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the instance pool.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -215,7 +211,7 @@ type InstancePoolObservation struct {
 	PlacementConfigurations []InstancePoolPlacementConfigurationsObservation `json:"placementConfigurations,omitempty" tf:"placement_configurations,omitempty"`
 
 	// (Updatable) The number of instances that should be in the instance pool. Modifying this value will override the size of the instance pool. If the instance pool is linked with autoscaling configuration, autoscaling configuration could resize the instance pool at a later point. The instance pool's actual size may differ from the configured size if it is associated with an autoscaling configuration, instance pool's actual size will be reflected in this size attribute.
-	Size *float64 `json:"size,omitempty" tf:"size,omitempty"`
+	Size *int64 `json:"size,omitempty" tf:"size,omitempty"`
 
 	// (Updatable) The target state for the instance pool update operation (ignored at create time and should not be set). Could be set to RUNNING or STOPPED.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -241,8 +237,7 @@ type InstancePoolParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -250,8 +245,7 @@ type InstancePoolParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the instance configuration associated with the instance pool.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/compute/v1alpha1.InstanceConfiguration
@@ -288,7 +282,7 @@ type InstancePoolParameters struct {
 
 	// (Updatable) The number of instances that should be in the instance pool. Modifying this value will override the size of the instance pool. If the instance pool is linked with autoscaling configuration, autoscaling configuration could resize the instance pool at a later point. The instance pool's actual size may differ from the configured size if it is associated with an autoscaling configuration, instance pool's actual size will be reflected in this size attribute.
 	// +kubebuilder:validation:Optional
-	Size *float64 `json:"size,omitempty" tf:"size,omitempty"`
+	Size *int64 `json:"size,omitempty" tf:"size,omitempty"`
 
 	// (Updatable) The target state for the instance pool update operation (ignored at create time and should not be set). Could be set to RUNNING or STOPPED.
 	// +kubebuilder:validation:Optional
@@ -646,7 +640,7 @@ type PreTerminationInitParameters struct {
 	OnTimeout []OnTimeoutInitParameters `json:"onTimeout,omitempty" tf:"on_timeout,omitempty"`
 
 	// (Updatable) The timeout in seconds for pre-termination action for an instance pool(min = 0 sec, max = 7200 secs).
-	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout *int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type PreTerminationObservation struct {
@@ -658,7 +652,7 @@ type PreTerminationObservation struct {
 	OnTimeout []OnTimeoutObservation `json:"onTimeout,omitempty" tf:"on_timeout,omitempty"`
 
 	// (Updatable) The timeout in seconds for pre-termination action for an instance pool(min = 0 sec, max = 7200 secs).
-	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout *int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type PreTerminationParameters struct {
@@ -673,7 +667,7 @@ type PreTerminationParameters struct {
 
 	// (Updatable) The timeout in seconds for pre-termination action for an instance pool(min = 0 sec, max = 7200 secs).
 	// +kubebuilder:validation:Optional
-	Timeout *float64 `json:"timeout" tf:"timeout,omitempty"`
+	Timeout *int64 `json:"timeout" tf:"timeout,omitempty"`
 }
 
 // InstancePoolSpec defines the desired state of InstancePool

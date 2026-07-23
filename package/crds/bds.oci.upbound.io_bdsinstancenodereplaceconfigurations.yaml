@@ -179,7 +179,8 @@ spec:
                     description: (Updatable) This value is the minimum period of time
                       to wait before triggering node replacement. The value is in
                       minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   levelTypeDetails:
                     description: (Updatable) Details of the type of level used to
                       trigger the creation of a new node backup configuration or node
@@ -401,7 +402,8 @@ spec:
                     description: (Updatable) This value is the minimum period of time
                       to wait before triggering node replacement. The value is in
                       minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   levelTypeDetails:
                     description: (Updatable) Details of the type of level used to
                       trigger the creation of a new node backup configuration or node
@@ -626,7 +628,8 @@ spec:
                     description: (Updatable) This value is the minimum period of time
                       to wait before triggering node replacement. The value is in
                       minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     description: The id of the NodeReplaceConfiguration defined under
                       BDS resources, not OCID.

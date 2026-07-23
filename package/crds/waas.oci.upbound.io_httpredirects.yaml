@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name of the HTTP Redirect.
                       The name can be changed and does not need to be unique.
@@ -176,11 +175,11 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   responseCode:
                     description: (Updatable) The response code returned for the redirect
                       to the client. For more information, see RFC 7231.
-                    type: number
+                    format: int64
+                    type: integer
                   target:
                     description: (Updatable) The redirect target object including
                       all the redirect data.
@@ -207,7 +206,8 @@ spec:
                         port:
                           description: (Updatable) Port number of the target destination
                             of the redirect, default to match protocol
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: (Updatable) The protocol used for the target,
                             http or https.
@@ -327,7 +327,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name of the HTTP Redirect.
                       The name can be changed and does not need to be unique.
@@ -343,11 +342,11 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   responseCode:
                     description: (Updatable) The response code returned for the redirect
                       to the client. For more information, see RFC 7231.
-                    type: number
+                    format: int64
+                    type: integer
                   target:
                     description: (Updatable) The redirect target object including
                       all the redirect data.
@@ -374,7 +373,8 @@ spec:
                         port:
                           description: (Updatable) Port number of the target destination
                             of the redirect, default to match protocol
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: (Updatable) The protocol used for the target,
                             http or https.
@@ -507,7 +507,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The user-friendly name of the HTTP Redirect.
                       The name can be changed and does not need to be unique.
@@ -523,14 +522,14 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the HTTP Redirect.
                     type: string
                   responseCode:
                     description: (Updatable) The response code returned for the redirect
                       to the client. For more information, see RFC 7231.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current lifecycle state of the HTTP Redirect.
                     type: string
@@ -560,7 +559,8 @@ spec:
                         port:
                           description: (Updatable) Port number of the target destination
                             of the redirect, default to match protocol
-                          type: number
+                          format: int64
+                          type: integer
                         protocol:
                           description: (Updatable) The protocol used for the target,
                             http or https.

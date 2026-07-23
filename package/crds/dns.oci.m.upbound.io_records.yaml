@@ -163,7 +163,8 @@ spec:
                     type: string
                   ttl:
                     description: (Updatable) The Time To Live for the record, in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   zoneNameOrId:
                     description: The name or OCID of the target zone.
                     type: string
@@ -285,7 +286,8 @@ spec:
                     type: string
                   ttl:
                     description: (Updatable) The Time To Live for the record, in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   zoneNameOrId:
                     description: The name or OCID of the target zone.
                     type: string
@@ -403,7 +405,8 @@ spec:
                     type: string
                   ttl:
                     description: (Updatable) The Time To Live for the record, in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   zoneNameOrId:
                     description: The name or OCID of the target zone.
                     type: string

@@ -19,7 +19,7 @@ type CatalogItemInitParameters struct {
 	CatalogSourcePayload []CatalogSourcePayloadInitParameters `json:"catalogSourcePayload,omitempty" tf:"catalog_source_payload,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Clone Catalog Item. Could be set to any integer value.
-	CloneCatalogItemTrigger *float64 `json:"cloneCatalogItemTrigger,omitempty" tf:"clone_catalog_item_trigger,omitempty"`
+	CloneCatalogItemTrigger *int64 `json:"cloneCatalogItemTrigger,omitempty" tf:"clone_catalog_item_trigger,omitempty"`
 
 	// (Updatable) The OCID of the compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -37,8 +37,7 @@ type CatalogItemInitParameters struct {
 	ConfigSourceType *string `json:"configSourceType,omitempty" tf:"config_source_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when config_source_type=STACK_TEMPLATE_CATALOG_SOURCE) Template Description
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -47,8 +46,7 @@ type CatalogItemInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when config_source_type=MARKETPLACE_CATALOG_SOURCE) This listing Id parameter of Payload.
 	ListingID *string `json:"listingId,omitempty" tf:"listing_id,omitempty"`
@@ -78,7 +76,7 @@ type CatalogItemObservation struct {
 	CatalogSourcePayload []CatalogSourcePayloadObservation `json:"catalogSourcePayload,omitempty" tf:"catalog_source_payload,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Clone Catalog Item. Could be set to any integer value.
-	CloneCatalogItemTrigger *float64 `json:"cloneCatalogItemTrigger,omitempty" tf:"clone_catalog_item_trigger,omitempty"`
+	CloneCatalogItemTrigger *int64 `json:"cloneCatalogItemTrigger,omitempty" tf:"clone_catalog_item_trigger,omitempty"`
 
 	// (Updatable) The OCID of the compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -87,8 +85,7 @@ type CatalogItemObservation struct {
 	ConfigSourceType *string `json:"configSourceType,omitempty" tf:"config_source_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when config_source_type=STACK_TEMPLATE_CATALOG_SOURCE) Template Description
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -97,8 +94,7 @@ type CatalogItemObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the catalog.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -125,8 +121,7 @@ type CatalogItemObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the CatalogItem was last checked by backfill job, in the format defined by RFC 3339. Example: 2016-08-25T21:10:29.600Z
 	TimeBackfillLastChecked *string `json:"timeBackfillLastChecked,omitempty" tf:"time_backfill_last_checked,omitempty"`
@@ -155,7 +150,7 @@ type CatalogItemParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Clone Catalog Item. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	CloneCatalogItemTrigger *float64 `json:"cloneCatalogItemTrigger,omitempty" tf:"clone_catalog_item_trigger,omitempty"`
+	CloneCatalogItemTrigger *int64 `json:"cloneCatalogItemTrigger,omitempty" tf:"clone_catalog_item_trigger,omitempty"`
 
 	// (Updatable) The OCID of the compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -176,8 +171,7 @@ type CatalogItemParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when config_source_type=STACK_TEMPLATE_CATALOG_SOURCE) Template Description
 	// +kubebuilder:validation:Optional
@@ -189,8 +183,7 @@ type CatalogItemParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Applicable when config_source_type=MARKETPLACE_CATALOG_SOURCE) This listing Id parameter of Payload.
 	// +kubebuilder:validation:Optional

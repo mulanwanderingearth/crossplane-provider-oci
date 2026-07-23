@@ -16,44 +16,44 @@ import (
 type ActionMembersInitParameters struct {
 
 	// (Updatable) The estimated time of the execution action member in minutes.
-	EstimatedTimeInMins *float64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
+	EstimatedTimeInMins *int64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
 
 	// (Updatable) The OCID of the parent resource the execution action belongs to.
 	MemberID *string `json:"memberId,omitempty" tf:"member_id,omitempty"`
 
 	// (Updatable) The priority order of the execution action member.
-	MemberOrder *float64 `json:"memberOrder,omitempty" tf:"member_order,omitempty"`
+	MemberOrder *int64 `json:"memberOrder,omitempty" tf:"member_order,omitempty"`
 
 	// (Updatable) The current status of the execution action member. Valid states are SCHEDULED, IN_PROGRESS, FAILED, CANCELED, DURATION_EXCEEDED, RESCHEDULED and COMPLETED. enum:
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// (Updatable) The total time taken by corresponding resource activity in minutes.
-	TotalTimeTakenInMins *float64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
+	TotalTimeTakenInMins *int64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
 }
 
 type ActionMembersObservation struct {
 
 	// (Updatable) The estimated time of the execution action member in minutes.
-	EstimatedTimeInMins *float64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
+	EstimatedTimeInMins *int64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
 
 	// (Updatable) The OCID of the parent resource the execution action belongs to.
 	MemberID *string `json:"memberId,omitempty" tf:"member_id,omitempty"`
 
 	// (Updatable) The priority order of the execution action member.
-	MemberOrder *float64 `json:"memberOrder,omitempty" tf:"member_order,omitempty"`
+	MemberOrder *int64 `json:"memberOrder,omitempty" tf:"member_order,omitempty"`
 
 	// (Updatable) The current status of the execution action member. Valid states are SCHEDULED, IN_PROGRESS, FAILED, CANCELED, DURATION_EXCEEDED, RESCHEDULED and COMPLETED. enum:
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// (Updatable) The total time taken by corresponding resource activity in minutes.
-	TotalTimeTakenInMins *float64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
+	TotalTimeTakenInMins *int64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
 }
 
 type ActionMembersParameters struct {
 
 	// (Updatable) The estimated time of the execution action member in minutes.
 	// +kubebuilder:validation:Optional
-	EstimatedTimeInMins *float64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
+	EstimatedTimeInMins *int64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
 
 	// (Updatable) The OCID of the parent resource the execution action belongs to.
 	// +kubebuilder:validation:Optional
@@ -61,7 +61,7 @@ type ActionMembersParameters struct {
 
 	// (Updatable) The priority order of the execution action member.
 	// +kubebuilder:validation:Optional
-	MemberOrder *float64 `json:"memberOrder" tf:"member_order,omitempty"`
+	MemberOrder *int64 `json:"memberOrder" tf:"member_order,omitempty"`
 
 	// (Updatable) The current status of the execution action member. Valid states are SCHEDULED, IN_PROGRESS, FAILED, CANCELED, DURATION_EXCEEDED, RESCHEDULED and COMPLETED. enum:
 	// +kubebuilder:validation:Optional
@@ -69,7 +69,7 @@ type ActionMembersParameters struct {
 
 	// (Updatable) The total time taken by corresponding resource activity in minutes.
 	// +kubebuilder:validation:Optional
-	TotalTimeTakenInMins *float64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
+	TotalTimeTakenInMins *int64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
 }
 
 type ExecutionActionInitParameters struct {
@@ -78,8 +78,7 @@ type ExecutionActionInitParameters struct {
 	ActionMembers []ActionMembersInitParameters `json:"actionMembers,omitempty" tf:"action_members,omitempty"`
 
 	// (Updatable) Map<ParamName, ParamValue> where a key value pair describes the specific action parameter. Example: {"count": "3"}
-	// +mapType=granular
-	ActionParams map[string]*string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
+	ActionParams map[string]string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
 
 	// The action type of the execution action being performed
 	ActionType *string `json:"actionType,omitempty" tf:"action_type,omitempty"`
@@ -97,8 +96,7 @@ type ExecutionActionInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The OCID of the execution window resource the execution action belongs to.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.ExecutionWindow
@@ -114,8 +112,7 @@ type ExecutionActionInitParameters struct {
 	ExecutionWindowIDSelector *v1.Selector `json:"executionWindowIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type ExecutionActionObservation struct {
@@ -124,8 +121,7 @@ type ExecutionActionObservation struct {
 	ActionMembers []ActionMembersObservation `json:"actionMembers,omitempty" tf:"action_members,omitempty"`
 
 	// (Updatable) Map<ParamName, ParamValue> where a key value pair describes the specific action parameter. Example: {"count": "3"}
-	// +mapType=granular
-	ActionParams map[string]*string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
+	ActionParams map[string]string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
 
 	// The action type of the execution action being performed
 	ActionType *string `json:"actionType,omitempty" tf:"action_type,omitempty"`
@@ -134,8 +130,7 @@ type ExecutionActionObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Description of the execution action.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -144,17 +139,16 @@ type ExecutionActionObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) The estimated time of the execution action member in minutes.
-	EstimatedTimeInMins *float64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
+	EstimatedTimeInMins *int64 `json:"estimatedTimeInMins,omitempty" tf:"estimated_time_in_mins,omitempty"`
 
 	// The priority order of the execution action.
-	ExecutionActionOrder *float64 `json:"executionActionOrder,omitempty" tf:"execution_action_order,omitempty"`
+	ExecutionActionOrder *int64 `json:"executionActionOrder,omitempty" tf:"execution_action_order,omitempty"`
 
 	// (Updatable) The OCID of the execution window resource the execution action belongs to.
 	ExecutionWindowID *string `json:"executionWindowId,omitempty" tf:"execution_window_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the execution action.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -175,7 +169,7 @@ type ExecutionActionObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) The total time taken by corresponding resource activity in minutes.
-	TotalTimeTakenInMins *float64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
+	TotalTimeTakenInMins *int64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
 }
 
 type ExecutionActionParameters struct {
@@ -186,8 +180,7 @@ type ExecutionActionParameters struct {
 
 	// (Updatable) Map<ParamName, ParamValue> where a key value pair describes the specific action parameter. Example: {"count": "3"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	ActionParams map[string]*string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
+	ActionParams map[string]string `json:"actionParams,omitempty" tf:"action_params,omitempty"`
 
 	// The action type of the execution action being performed
 	// +kubebuilder:validation:Optional
@@ -208,8 +201,7 @@ type ExecutionActionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The OCID of the execution window resource the execution action belongs to.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.ExecutionWindow
@@ -227,8 +219,7 @@ type ExecutionActionParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 // ExecutionActionSpec defines the desired state of ExecutionAction

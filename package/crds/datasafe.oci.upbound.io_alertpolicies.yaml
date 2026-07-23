@@ -180,7 +180,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: Describes the alert policy rule.
                     type: string
@@ -195,7 +194,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   severity:
                     description: (Updatable) Severity level of the alert raised by
                       this policy.
@@ -321,7 +319,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: Describes the alert policy rule.
                     type: string
@@ -336,7 +333,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   severity:
                     description: (Updatable) Severity level of the alert raised by
                       this policy.
@@ -475,7 +471,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: Describes the alert policy rule.
                     type: string
@@ -490,7 +485,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the alert policy.
                     type: string
@@ -515,7 +509,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags. Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: Creation date and time of the alert policy, in the
                       format defined by RFC3339.

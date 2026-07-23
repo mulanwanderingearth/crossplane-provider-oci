@@ -29,7 +29,7 @@ type DatastoreAttachmentsObservation struct {
 	IPAddress *string `json:"ipAddress,omitempty" tf:"ip_address,omitempty"`
 
 	// The port of datastore attachment.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// An IQN of the Block Storage Volume.
 	VolumeIqn *string `json:"volumeIqn,omitempty" tf:"volume_iqn,omitempty"`
@@ -72,8 +72,7 @@ type EsxiHostInitParameters struct {
 	CurrentSku *string `json:"currentSku,omitempty" tf:"current_sku,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A list of datastore clusters.
 	DetachDatastoreClusterIds []*string `json:"detachDatastoreClusterIds,omitempty" tf:"detach_datastore_cluster_ids,omitempty"`
@@ -88,8 +87,7 @@ type EsxiHostInitParameters struct {
 	FailedEsxiHostID *string `json:"failedEsxiHostId,omitempty" tf:"failed_esxi_host_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCPU count of the ESXi host.
 	HostOcpuCount *float64 `json:"hostOcpuCount,omitempty" tf:"host_ocpu_count,omitempty"`
@@ -113,8 +111,7 @@ type EsxiHostInitParameters struct {
 	SddcID *string `json:"sddcId,omitempty" tf:"sddc_id,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) The OCID of the Byol Allocation for VCF (VMware Cloud Foundation) deployment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ocvp/v1alpha1.ByolAllocation
@@ -169,8 +166,7 @@ type EsxiHostObservation struct {
 	DatastoreClusterIds []*string `json:"datastoreClusterIds,omitempty" tf:"datastore_cluster_ids,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A list of datastore clusters.
 	DetachDatastoreClusterIds []*string `json:"detachDatastoreClusterIds,omitempty" tf:"detach_datastore_cluster_ids,omitempty"`
@@ -185,8 +181,7 @@ type EsxiHostObservation struct {
 	FailedEsxiHostID *string `json:"failedEsxiHostId,omitempty" tf:"failed_esxi_host_id,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The date and time when the new esxi host should start billing cycle. RFC3339. Example: 2021-07-25T21:10:29.600Z
 	GracePeriodEndDate *string `json:"gracePeriodEndDate,omitempty" tf:"grace_period_end_date,omitempty"`
@@ -233,8 +228,7 @@ type EsxiHostObservation struct {
 	SwapBillingHostID *string `json:"swapBillingHostId,omitempty" tf:"swap_billing_host_id,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the ESXi host was created, in the format defined by RFC3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -294,8 +288,7 @@ type EsxiHostParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A list of datastore clusters.
 	// +kubebuilder:validation:Optional
@@ -315,8 +308,7 @@ type EsxiHostParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCPU count of the ESXi host.
 	// +kubebuilder:validation:Optional
@@ -348,8 +340,7 @@ type EsxiHostParameters struct {
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) The OCID of the Byol Allocation for VCF (VMware Cloud Foundation) deployment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/ocvp/v1alpha1.ByolAllocation

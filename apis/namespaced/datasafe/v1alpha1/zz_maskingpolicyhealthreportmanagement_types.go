@@ -60,8 +60,7 @@ type MaskingPolicyHealthReportManagementObservation struct {
 	// The OCID of the compartment that contains the masking report.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// masking report,
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -69,8 +68,7 @@ type MaskingPolicyHealthReportManagementObservation struct {
 	// masking report,
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the pre-masking report.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`

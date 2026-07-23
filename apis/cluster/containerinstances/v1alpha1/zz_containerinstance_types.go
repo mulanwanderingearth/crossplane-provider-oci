@@ -108,8 +108,7 @@ type ContainerInstanceInitParameters struct {
 	DNSConfig []DNSConfigInitParameters `json:"dnsConfig,omitempty" tf:"dns_config,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information. If you don't provide a name, a name is generated automatically.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -118,8 +117,7 @@ type ContainerInstanceInitParameters struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The amount of time that processes in a container have to gracefully end when the container must be stopped. For example, when you delete a container instance. After the timeout is reached, the processes are sent a signal to be deleted.
 	GracefulShutdownTimeoutInSeconds *string `json:"gracefulShutdownTimeoutInSeconds,omitempty" tf:"graceful_shutdown_timeout_in_seconds,omitempty"`
@@ -152,7 +150,7 @@ type ContainerInstanceObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// The number of containers on the container instance.
-	ContainerCount *float64 `json:"containerCount,omitempty" tf:"container_count,omitempty"`
+	ContainerCount *int64 `json:"containerCount,omitempty" tf:"container_count,omitempty"`
 
 	// Container restart policy
 	ContainerRestartPolicy *string `json:"containerRestartPolicy,omitempty" tf:"container_restart_policy,omitempty"`
@@ -164,8 +162,7 @@ type ContainerInstanceObservation struct {
 	DNSConfig []DNSConfigObservation `json:"dnsConfig,omitempty" tf:"dns_config,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information. If you don't provide a name, a name is generated automatically.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -174,8 +171,7 @@ type ContainerInstanceObservation struct {
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The amount of time that processes in a container have to gracefully end when the container must be stopped. For example, when you delete a container instance. After the timeout is reached, the processes are sent a signal to be deleted.
 	GracefulShutdownTimeoutInSeconds *string `json:"gracefulShutdownTimeoutInSeconds,omitempty" tf:"graceful_shutdown_timeout_in_seconds,omitempty"`
@@ -199,8 +195,7 @@ type ContainerInstanceObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the container instance was created, in the format defined by RFC 3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -212,7 +207,7 @@ type ContainerInstanceObservation struct {
 	Vnics []VnicsObservation `json:"vnics,omitempty" tf:"vnics,omitempty"`
 
 	// The number of volumes that are attached to the container instance.
-	VolumeCount *float64 `json:"volumeCount,omitempty" tf:"volume_count,omitempty"`
+	VolumeCount *int64 `json:"volumeCount,omitempty" tf:"volume_count,omitempty"`
 
 	// A volume is a directory with data that is accessible across multiple containers in a container instance.
 	Volumes []VolumesObservation `json:"volumes,omitempty" tf:"volumes,omitempty"`
@@ -251,8 +246,7 @@ type ContainerInstanceParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information. If you don't provide a name, a name is generated automatically.
 	// +kubebuilder:validation:Optional
@@ -264,8 +258,7 @@ type ContainerInstanceParameters struct {
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The amount of time that processes in a container have to gracefully end when the container must be stopped. For example, when you delete a container instance. After the timeout is reached, the processes are sent a signal to be deleted.
 	// +kubebuilder:validation:Optional
@@ -305,19 +298,16 @@ type ContainersInitParameters struct {
 	Command []*string `json:"command,omitempty" tf:"command,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information. If you don't provide a name, a name is generated automatically.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// A map of additional environment variables to set in the environment of the container's ENTRYPOINT process. These variables are in addition to any variables already defined in the container's image.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// list of container health checks to check container status and take appropriate action if container status is failed. There are two types of health checks that we currently support HTTP and TCP.
 	HealthChecks []HealthChecksInitParameters `json:"healthChecks,omitempty" tf:"health_checks,omitempty"`
@@ -362,24 +352,21 @@ type ContainersObservation struct {
 	ContainerInstanceID *string `json:"containerInstanceId,omitempty" tf:"container_instance_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information. If you don't provide a name, a name is generated automatically.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// A map of additional environment variables to set in the environment of the container's ENTRYPOINT process. These variables are in addition to any variables already defined in the container's image.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
-	ExitCode *float64 `json:"exitCode,omitempty" tf:"exit_code,omitempty"`
+	ExitCode *int64 `json:"exitCode,omitempty" tf:"exit_code,omitempty"`
 
 	// The fault domain where the container instance runs.
 	FaultDomain *string `json:"faultDomain,omitempty" tf:"fault_domain,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// list of container health checks to check container status and take appropriate action if container status is failed. There are two types of health checks that we currently support HTTP and TCP.
 	HealthChecks []HealthChecksObservation `json:"healthChecks,omitempty" tf:"health_checks,omitempty"`
@@ -403,8 +390,7 @@ type ContainersObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the container instance was created, in the format defined by RFC 3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -433,8 +419,7 @@ type ContainersParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information. If you don't provide a name, a name is generated automatically.
 	// +kubebuilder:validation:Optional
@@ -442,13 +427,11 @@ type ContainersParameters struct {
 
 	// A map of additional environment variables to set in the environment of the container's ENTRYPOINT process. These variables are in addition to any variables already defined in the container's image.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// list of container health checks to check container status and take appropriate action if container status is failed. There are two types of health checks that we currently support HTTP and TCP.
 	// +kubebuilder:validation:Optional
@@ -553,7 +536,7 @@ type HealthChecksInitParameters struct {
 	FailureAction *string `json:"failureAction,omitempty" tf:"failure_action,omitempty"`
 
 	// Number of consecutive failures at which we consider the check failed.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Applicable when health_check_type=HTTP) Container health check HTTP headers.
 	Headers []HeadersInitParameters `json:"headers,omitempty" tf:"headers,omitempty"`
@@ -562,10 +545,10 @@ type HealthChecksInitParameters struct {
 	HealthCheckType *string `json:"healthCheckType,omitempty" tf:"health_check_type,omitempty"`
 
 	// The initial delay in seconds before start checking container health status.
-	InitialDelayInSeconds *float64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
+	InitialDelayInSeconds *int64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
 
 	// Number of seconds between two consecutive runs for checking container health.
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// Container HTTP header Key.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -574,17 +557,17 @@ type HealthChecksInitParameters struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// Container health check HTTP port.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	StatusDetails *string `json:"statusDetails,omitempty" tf:"status_details,omitempty"`
 
 	// Number of consecutive successes at which we consider the check succeeded again after it was in failure state.
-	SuccessThreshold *float64 `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
+	SuccessThreshold *int64 `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
 
 	// Length of waiting time in seconds before marking health check failed.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type HealthChecksObservation struct {
@@ -593,7 +576,7 @@ type HealthChecksObservation struct {
 	FailureAction *string `json:"failureAction,omitempty" tf:"failure_action,omitempty"`
 
 	// Number of consecutive failures at which we consider the check failed.
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Applicable when health_check_type=HTTP) Container health check HTTP headers.
 	Headers []HeadersObservation `json:"headers,omitempty" tf:"headers,omitempty"`
@@ -602,10 +585,10 @@ type HealthChecksObservation struct {
 	HealthCheckType *string `json:"healthCheckType,omitempty" tf:"health_check_type,omitempty"`
 
 	// The initial delay in seconds before start checking container health status.
-	InitialDelayInSeconds *float64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
+	InitialDelayInSeconds *int64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
 
 	// Number of seconds between two consecutive runs for checking container health.
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// Container HTTP header Key.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -614,17 +597,17 @@ type HealthChecksObservation struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// Container health check HTTP port.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	StatusDetails *string `json:"statusDetails,omitempty" tf:"status_details,omitempty"`
 
 	// Number of consecutive successes at which we consider the check succeeded again after it was in failure state.
-	SuccessThreshold *float64 `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
+	SuccessThreshold *int64 `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
 
 	// Length of waiting time in seconds before marking health check failed.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type HealthChecksParameters struct {
@@ -635,7 +618,7 @@ type HealthChecksParameters struct {
 
 	// Number of consecutive failures at which we consider the check failed.
 	// +kubebuilder:validation:Optional
-	FailureThreshold *float64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
+	FailureThreshold *int64 `json:"failureThreshold,omitempty" tf:"failure_threshold,omitempty"`
 
 	// (Applicable when health_check_type=HTTP) Container health check HTTP headers.
 	// +kubebuilder:validation:Optional
@@ -647,11 +630,11 @@ type HealthChecksParameters struct {
 
 	// The initial delay in seconds before start checking container health status.
 	// +kubebuilder:validation:Optional
-	InitialDelayInSeconds *float64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
+	InitialDelayInSeconds *int64 `json:"initialDelayInSeconds,omitempty" tf:"initial_delay_in_seconds,omitempty"`
 
 	// Number of seconds between two consecutive runs for checking container health.
 	// +kubebuilder:validation:Optional
-	IntervalInSeconds *float64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
+	IntervalInSeconds *int64 `json:"intervalInSeconds,omitempty" tf:"interval_in_seconds,omitempty"`
 
 	// Container HTTP header Key.
 	// +kubebuilder:validation:Optional
@@ -663,7 +646,7 @@ type HealthChecksParameters struct {
 
 	// Container health check HTTP port.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
@@ -673,11 +656,11 @@ type HealthChecksParameters struct {
 
 	// Number of consecutive successes at which we consider the check succeeded again after it was in failure state.
 	// +kubebuilder:validation:Optional
-	SuccessThreshold *float64 `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
+	SuccessThreshold *int64 `json:"successThreshold,omitempty" tf:"success_threshold,omitempty"`
 
 	// Length of waiting time in seconds before marking health check failed.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 }
 
 type ImagePullSecretsInitParameters struct {
@@ -797,10 +780,10 @@ type SecurityContextInitParameters struct {
 	IsRootFileSystemReadonly *bool `json:"isRootFileSystemReadonly,omitempty" tf:"is_root_file_system_readonly,omitempty"`
 
 	// The group ID (GID) to run the entrypoint process of the container. Uses runtime default if not provided.
-	RunAsGroup *float64 `json:"runAsGroup,omitempty" tf:"run_as_group,omitempty"`
+	RunAsGroup *int64 `json:"runAsGroup,omitempty" tf:"run_as_group,omitempty"`
 
 	// The user ID (UID) to run the entrypoint process of the container. Defaults to user specified UID in container image metadata if not provided. This must be provided if runAsGroup is provided.
-	RunAsUser *float64 `json:"runAsUser,omitempty" tf:"run_as_user,omitempty"`
+	RunAsUser *int64 `json:"runAsUser,omitempty" tf:"run_as_user,omitempty"`
 
 	// The type of security context
 	SecurityContextType *string `json:"securityContextType,omitempty" tf:"security_context_type,omitempty"`
@@ -818,10 +801,10 @@ type SecurityContextObservation struct {
 	IsRootFileSystemReadonly *bool `json:"isRootFileSystemReadonly,omitempty" tf:"is_root_file_system_readonly,omitempty"`
 
 	// The group ID (GID) to run the entrypoint process of the container. Uses runtime default if not provided.
-	RunAsGroup *float64 `json:"runAsGroup,omitempty" tf:"run_as_group,omitempty"`
+	RunAsGroup *int64 `json:"runAsGroup,omitempty" tf:"run_as_group,omitempty"`
 
 	// The user ID (UID) to run the entrypoint process of the container. Defaults to user specified UID in container image metadata if not provided. This must be provided if runAsGroup is provided.
-	RunAsUser *float64 `json:"runAsUser,omitempty" tf:"run_as_user,omitempty"`
+	RunAsUser *int64 `json:"runAsUser,omitempty" tf:"run_as_user,omitempty"`
 
 	// The type of security context
 	SecurityContextType *string `json:"securityContextType,omitempty" tf:"security_context_type,omitempty"`
@@ -843,11 +826,11 @@ type SecurityContextParameters struct {
 
 	// The group ID (GID) to run the entrypoint process of the container. Uses runtime default if not provided.
 	// +kubebuilder:validation:Optional
-	RunAsGroup *float64 `json:"runAsGroup,omitempty" tf:"run_as_group,omitempty"`
+	RunAsGroup *int64 `json:"runAsGroup,omitempty" tf:"run_as_group,omitempty"`
 
 	// The user ID (UID) to run the entrypoint process of the container. Defaults to user specified UID in container image metadata if not provided. This must be provided if runAsGroup is provided.
 	// +kubebuilder:validation:Optional
-	RunAsUser *float64 `json:"runAsUser,omitempty" tf:"run_as_user,omitempty"`
+	RunAsUser *int64 `json:"runAsUser,omitempty" tf:"run_as_user,omitempty"`
 
 	// The type of security context
 	// +kubebuilder:validation:Optional
@@ -892,15 +875,13 @@ type ShapeConfigParameters struct {
 type VnicsInitParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information. If you don't provide a name, a name is generated automatically.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the VNIC's primary private IP. Used for DNS.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -935,15 +916,13 @@ type VnicsInitParameters struct {
 type VnicsObservation struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information. If you don't provide a name, a name is generated automatically.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the VNIC's primary private IP. Used for DNS.
 	HostnameLabel *string `json:"hostnameLabel,omitempty" tf:"hostname_label,omitempty"`
@@ -972,8 +951,7 @@ type VnicsParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information. If you don't provide a name, a name is generated automatically.
 	// +kubebuilder:validation:Optional
@@ -981,8 +959,7 @@ type VnicsParameters struct {
 
 	// Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the VNIC's primary private IP. Used for DNS.
 	// +kubebuilder:validation:Optional
@@ -1029,7 +1006,7 @@ type VolumeMountsInitParameters struct {
 	MountPath *string `json:"mountPath,omitempty" tf:"mount_path,omitempty"`
 
 	// If there is more than one partition in the volume, reference this number of partitions. Here is an example: Number  Start   End     Size    File system  Name                  Flags 1      1049kB  106MB   105MB   fat16        EFI System Partition  boot, esp 2      106MB   1180MB  1074MB  xfs 3      1180MB  50.0GB  48.8GB                                     lvm
-	Partition *float64 `json:"partition,omitempty" tf:"partition,omitempty"`
+	Partition *int64 `json:"partition,omitempty" tf:"partition,omitempty"`
 
 	// A subpath inside the referenced volume.
 	SubPath *string `json:"subPath,omitempty" tf:"sub_path,omitempty"`
@@ -1047,7 +1024,7 @@ type VolumeMountsObservation struct {
 	MountPath *string `json:"mountPath,omitempty" tf:"mount_path,omitempty"`
 
 	// If there is more than one partition in the volume, reference this number of partitions. Here is an example: Number  Start   End     Size    File system  Name                  Flags 1      1049kB  106MB   105MB   fat16        EFI System Partition  boot, esp 2      106MB   1180MB  1074MB  xfs 3      1180MB  50.0GB  48.8GB                                     lvm
-	Partition *float64 `json:"partition,omitempty" tf:"partition,omitempty"`
+	Partition *int64 `json:"partition,omitempty" tf:"partition,omitempty"`
 
 	// A subpath inside the referenced volume.
 	SubPath *string `json:"subPath,omitempty" tf:"sub_path,omitempty"`
@@ -1068,7 +1045,7 @@ type VolumeMountsParameters struct {
 
 	// If there is more than one partition in the volume, reference this number of partitions. Here is an example: Number  Start   End     Size    File system  Name                  Flags 1      1049kB  106MB   105MB   fat16        EFI System Partition  boot, esp 2      106MB   1180MB  1074MB  xfs 3      1180MB  50.0GB  48.8GB                                     lvm
 	// +kubebuilder:validation:Optional
-	Partition *float64 `json:"partition,omitempty" tf:"partition,omitempty"`
+	Partition *int64 `json:"partition,omitempty" tf:"partition,omitempty"`
 
 	// A subpath inside the referenced volume.
 	// +kubebuilder:validation:Optional

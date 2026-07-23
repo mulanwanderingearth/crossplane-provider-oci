@@ -167,7 +167,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the WAAS policy.
                       The name can be changed and does not need to be unique.
@@ -183,7 +182,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   originGroups:
                     description: (Updatable) The map of origin groups and their keys
                       used to associate origins to the wafConfig. Origin groups allow
@@ -206,7 +204,8 @@ spec:
                                   but is not required upon updating the configuration.
                                 type: string
                               weight:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -234,13 +233,15 @@ spec:
                             the web application listens on. If unspecified, defaults
                             to 80. If 0 is specified - the origin is not used for
                             HTTP traffic.
-                          type: number
+                          format: int64
+                          type: integer
                         httpsPort:
                           description: (Updatable) The HTTPS port on the origin that
                             the web application listens on. If unspecified, defaults
                             to 443. If 0 is specified - the origin is not used for
                             HTTPS traffic.
-                          type: number
+                          format: int64
+                          type: integer
                         label:
                           type: string
                         uri:
@@ -380,15 +381,16 @@ spec:
                                   will include a User-Agent header field with value
                                   "waf health checks".'
                                 type: object
-                                x-kubernetes-map-type: granular
                               healthyThreshold:
                                 description: (Updatable) Number of successful health
                                   checks after which the server is marked up.
-                                type: number
+                                format: int64
+                                type: integer
                               intervalInSeconds:
                                 description: (Updatable) Time between health checks
                                   of an individual origin server, in seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -411,11 +413,13 @@ spec:
                                 description: (Updatable) Response timeout represents
                                   wait time until request is considered failed, in
                                   seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               unhealthyThreshold:
                                 description: (Updatable) Number of failed health checks
                                   after which the server is marked down.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         isBehindCdn:
@@ -475,7 +479,8 @@ spec:
                                   (Updatable) The time for which a browser should
                                   keep the cookie in seconds. Empty value will cause
                                   the cookie to expire at the end of a browser session.
-                                type: number
+                                format: int64
+                                type: integer
                               method:
                                 description: (Updatable) An HTTP verb (i.e. HEAD,
                                   GET, or POST) to use when performing the health
@@ -564,7 +569,8 @@ spec:
                                   404, 405, 408, 409, 411, 412, 413, 414, 415, 416,
                                   422, 444, 494, 495, 496, 497, 499, 500, 501, 502,
                                   503, 504, 507.'
-                                type: number
+                                format: int64
+                                type: integer
                               bypassChallenges:
                                 description: (Updatable) The list of challenges to
                                   bypass when action is set to BYPASS. If unspecified
@@ -656,7 +662,8 @@ spec:
                                 description: (Updatable) The number of allowed requests
                                   per second from one IP address. If unspecified,
                                   defaults to 1.
-                                type: number
+                                format: int64
+                                type: integer
                               blockResponseCode:
                                 description: '(Updatable) The response status code
                                   to return when action is set to BLOCK, blockAction
@@ -667,7 +674,8 @@ spec:
                                   404, 405, 408, 409, 411, 412, 413, 414, 415, 416,
                                   422, 444, 494, 495, 496, 497, 499, 500, 501, 502,
                                   503, 504, 507.'
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -676,7 +684,8 @@ spec:
                                 description: (Updatable) The maximum number of requests
                                   allowed to be queued before subsequent requests
                                   are dropped. If unspecified, defaults to 10.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         cachingRules:
@@ -769,7 +778,8 @@ spec:
                                 description: (Updatable) The amount of time before
                                   the CAPTCHA expires, in seconds. If unspecified,
                                   defaults to 300.
-                                type: number
+                                format: int64
+                                type: integer
                               submitLabel:
                                 description: (Updatable) The text to show on the label
                                   of the CAPTCHA challenge submit button. If unspecified,
@@ -831,7 +841,8 @@ spec:
                                 description: (Updatable) The number of seconds between
                                   challenges for the same IP address. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               challengeSettings:
                                 description: (Updatable) The challenge settings if
                                   action is set to BLOCK.
@@ -876,7 +887,8 @@ spec:
                                         408, 409, 411, 412, 413, 414, 415, 416, 422,
                                         444, 494, 495, 496, 497, 499, 500, 501, 502,
                                         503, 504, 507.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     captchaFooter:
                                       description: (Updatable) The text to show in
                                         the footer when showing a CAPTCHA challenge
@@ -906,12 +918,14 @@ spec:
                                 description: (Updatable) The number of failed requests
                                   allowed before taking action. If unspecified, defaults
                                   to 10.
-                                type: number
+                                format: int64
+                                type: integer
                               failureThresholdExpirationInSeconds:
                                 description: (Updatable) The number of seconds before
                                   the failure threshold resets. If unspecified, defaults
                                   to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -920,12 +934,14 @@ spec:
                                 description: (Updatable) The maximum number of IP
                                   addresses permitted with the same device fingerprint.
                                   If unspecified, defaults to 20.
-                                type: number
+                                format: int64
+                                type: integer
                               maxAddressCountExpirationInSeconds:
                                 description: (Updatable) The number of seconds before
                                   the maximum addresses count resets. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         humanInteractionChallenge:
@@ -944,7 +960,8 @@ spec:
                                 description: (Updatable) The number of seconds between
                                   challenges for the same IP address. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               challengeSettings:
                                 description: (Updatable) The challenge settings if
                                   action is set to BLOCK.
@@ -989,7 +1006,8 @@ spec:
                                         408, 409, 411, 412, 413, 414, 415, 416, 422,
                                         444, 494, 495, 496, 497, 499, 500, 501, 502,
                                         503, 504, 507.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     captchaFooter:
                                       description: (Updatable) The text to show in
                                         the footer when showing a CAPTCHA challenge
@@ -1019,17 +1037,20 @@ spec:
                                 description: (Updatable) The number of failed requests
                                   allowed before taking action. If unspecified, defaults
                                   to 10.
-                                type: number
+                                format: int64
+                                type: integer
                               failureThresholdExpirationInSeconds:
                                 description: (Updatable) The number of seconds before
                                   the failure threshold resets. If unspecified, defaults
                                   to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               interactionThreshold:
                                 description: (Updatable) The number of interactions
                                   required to pass the challenge. If unspecified,
                                   defaults to 3.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -1044,7 +1065,8 @@ spec:
                                 description: (Updatable) The number of seconds to
                                   record the interactions from the user. If unspecified,
                                   defaults to 15.
-                                type: number
+                                format: int64
+                                type: integer
                               setHttpHeader:
                                 description: (Updatable) Adds an additional HTTP header
                                   to requests that fail the challenge before being
@@ -1077,7 +1099,8 @@ spec:
                                 description: (Updatable) The number of seconds between
                                   challenges for the same IP address. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               areRedirectsChallenged:
                                 description: (Updatable) When enabled, redirect responses
                                   from the origin will also be challenged. This will
@@ -1129,7 +1152,8 @@ spec:
                                         408, 409, 411, 412, 413, 414, 415, 416, 422,
                                         444, 494, 495, 496, 497, 499, 500, 501, 502,
                                         503, 504, 507.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     captchaFooter:
                                       description: (Updatable) The text to show in
                                         the footer when showing a CAPTCHA challenge
@@ -1179,7 +1203,8 @@ spec:
                                 description: (Updatable) The number of failed requests
                                   allowed before taking action. If unspecified, defaults
                                   to 10.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -1274,7 +1299,8 @@ spec:
                                   404, 405, 408, 409, 411, 412, 413, 414, 415, 416,
                                   422, 444, 494, 495, 496, 497, 499, 500, 501, 502,
                                   503, 504, 507.'
-                                type: number
+                                format: int64
+                                type: integer
                               isResponseInspected:
                                 description: (Updatable) Inspects the response body
                                   of origin responses. Can be used to detect leakage
@@ -1293,7 +1319,8 @@ spec:
                                   960335), the following requests would be blocked:
                                   GET /myapp/path?query=one&query=two&query=three
                                   POST /myapp/path with Body {"argument1":"one","argument2":"two","argument3":"three"}'
-                                type: number
+                                format: int64
+                                type: integer
                               maxNameLengthPerArgument:
                                 description: '(Updatable) The maximum length allowed
                                   for each argument name, in characters. Arguements
@@ -1302,13 +1329,15 @@ spec:
                                   This setting only applies if a corresponding protection
                                   rule is enabled, such as the "Values Limits" rule
                                   (key: 960208).'
-                                type: number
+                                format: int64
+                                type: integer
                               maxResponseSizeInKiB:
                                 description: (Updatable) The maximum response size
                                   to be fully inspected, in binary kilobytes (KiB).
                                   Anything over this limit will be partially inspected.
                                   If unspecified, defaults to 1024.
-                                type: number
+                                format: int64
+                                type: integer
                               maxTotalNameLengthOfArguments:
                                 description: '(Updatable) The maximum length allowed
                                   for the sum of the argument name and value, in characters.
@@ -1317,7 +1346,8 @@ spec:
                                   to 64000. This setting only applies if a corresponding
                                   protection rule is enabled, such as the "Total Arguments
                                   Limits" rule (key: 960341).'
-                                type: number
+                                format: int64
+                                type: integer
                               mediaTypes:
                                 description: (Updatable) The list of media types to
                                   allow for inspection, if isResponseInspected is
@@ -1332,7 +1362,8 @@ spec:
                                   traffic traffic, in days. After the analysis period,
                                   WafRecommendations will be populated. If unspecified,
                                   defaults to 10.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         whitelists:
@@ -1466,7 +1497,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the WAAS policy.
                       The name can be changed and does not need to be unique.
@@ -1482,7 +1512,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   originGroups:
                     description: (Updatable) The map of origin groups and their keys
                       used to associate origins to the wafConfig. Origin groups allow
@@ -1505,7 +1534,8 @@ spec:
                                   but is not required upon updating the configuration.
                                 type: string
                               weight:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -1533,13 +1563,15 @@ spec:
                             the web application listens on. If unspecified, defaults
                             to 80. If 0 is specified - the origin is not used for
                             HTTP traffic.
-                          type: number
+                          format: int64
+                          type: integer
                         httpsPort:
                           description: (Updatable) The HTTPS port on the origin that
                             the web application listens on. If unspecified, defaults
                             to 443. If 0 is specified - the origin is not used for
                             HTTPS traffic.
-                          type: number
+                          format: int64
+                          type: integer
                         label:
                           type: string
                         uri:
@@ -1679,15 +1711,16 @@ spec:
                                   will include a User-Agent header field with value
                                   "waf health checks".'
                                 type: object
-                                x-kubernetes-map-type: granular
                               healthyThreshold:
                                 description: (Updatable) Number of successful health
                                   checks after which the server is marked up.
-                                type: number
+                                format: int64
+                                type: integer
                               intervalInSeconds:
                                 description: (Updatable) Time between health checks
                                   of an individual origin server, in seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -1710,11 +1743,13 @@ spec:
                                 description: (Updatable) Response timeout represents
                                   wait time until request is considered failed, in
                                   seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               unhealthyThreshold:
                                 description: (Updatable) Number of failed health checks
                                   after which the server is marked down.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         isBehindCdn:
@@ -1774,7 +1809,8 @@ spec:
                                   (Updatable) The time for which a browser should
                                   keep the cookie in seconds. Empty value will cause
                                   the cookie to expire at the end of a browser session.
-                                type: number
+                                format: int64
+                                type: integer
                               method:
                                 description: (Updatable) An HTTP verb (i.e. HEAD,
                                   GET, or POST) to use when performing the health
@@ -1863,7 +1899,8 @@ spec:
                                   404, 405, 408, 409, 411, 412, 413, 414, 415, 416,
                                   422, 444, 494, 495, 496, 497, 499, 500, 501, 502,
                                   503, 504, 507.'
-                                type: number
+                                format: int64
+                                type: integer
                               bypassChallenges:
                                 description: (Updatable) The list of challenges to
                                   bypass when action is set to BYPASS. If unspecified
@@ -1955,7 +1992,8 @@ spec:
                                 description: (Updatable) The number of allowed requests
                                   per second from one IP address. If unspecified,
                                   defaults to 1.
-                                type: number
+                                format: int64
+                                type: integer
                               blockResponseCode:
                                 description: '(Updatable) The response status code
                                   to return when action is set to BLOCK, blockAction
@@ -1966,7 +2004,8 @@ spec:
                                   404, 405, 408, 409, 411, 412, 413, 414, 415, 416,
                                   422, 444, 494, 495, 496, 497, 499, 500, 501, 502,
                                   503, 504, 507.'
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -1975,7 +2014,8 @@ spec:
                                 description: (Updatable) The maximum number of requests
                                   allowed to be queued before subsequent requests
                                   are dropped. If unspecified, defaults to 10.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         cachingRules:
@@ -2068,7 +2108,8 @@ spec:
                                 description: (Updatable) The amount of time before
                                   the CAPTCHA expires, in seconds. If unspecified,
                                   defaults to 300.
-                                type: number
+                                format: int64
+                                type: integer
                               submitLabel:
                                 description: (Updatable) The text to show on the label
                                   of the CAPTCHA challenge submit button. If unspecified,
@@ -2130,7 +2171,8 @@ spec:
                                 description: (Updatable) The number of seconds between
                                   challenges for the same IP address. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               challengeSettings:
                                 description: (Updatable) The challenge settings if
                                   action is set to BLOCK.
@@ -2175,7 +2217,8 @@ spec:
                                         408, 409, 411, 412, 413, 414, 415, 416, 422,
                                         444, 494, 495, 496, 497, 499, 500, 501, 502,
                                         503, 504, 507.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     captchaFooter:
                                       description: (Updatable) The text to show in
                                         the footer when showing a CAPTCHA challenge
@@ -2205,12 +2248,14 @@ spec:
                                 description: (Updatable) The number of failed requests
                                   allowed before taking action. If unspecified, defaults
                                   to 10.
-                                type: number
+                                format: int64
+                                type: integer
                               failureThresholdExpirationInSeconds:
                                 description: (Updatable) The number of seconds before
                                   the failure threshold resets. If unspecified, defaults
                                   to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -2219,12 +2264,14 @@ spec:
                                 description: (Updatable) The maximum number of IP
                                   addresses permitted with the same device fingerprint.
                                   If unspecified, defaults to 20.
-                                type: number
+                                format: int64
+                                type: integer
                               maxAddressCountExpirationInSeconds:
                                 description: (Updatable) The number of seconds before
                                   the maximum addresses count resets. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         humanInteractionChallenge:
@@ -2243,7 +2290,8 @@ spec:
                                 description: (Updatable) The number of seconds between
                                   challenges for the same IP address. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               challengeSettings:
                                 description: (Updatable) The challenge settings if
                                   action is set to BLOCK.
@@ -2288,7 +2336,8 @@ spec:
                                         408, 409, 411, 412, 413, 414, 415, 416, 422,
                                         444, 494, 495, 496, 497, 499, 500, 501, 502,
                                         503, 504, 507.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     captchaFooter:
                                       description: (Updatable) The text to show in
                                         the footer when showing a CAPTCHA challenge
@@ -2318,17 +2367,20 @@ spec:
                                 description: (Updatable) The number of failed requests
                                   allowed before taking action. If unspecified, defaults
                                   to 10.
-                                type: number
+                                format: int64
+                                type: integer
                               failureThresholdExpirationInSeconds:
                                 description: (Updatable) The number of seconds before
                                   the failure threshold resets. If unspecified, defaults
                                   to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               interactionThreshold:
                                 description: (Updatable) The number of interactions
                                   required to pass the challenge. If unspecified,
                                   defaults to 3.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -2343,7 +2395,8 @@ spec:
                                 description: (Updatable) The number of seconds to
                                   record the interactions from the user. If unspecified,
                                   defaults to 15.
-                                type: number
+                                format: int64
+                                type: integer
                               setHttpHeader:
                                 description: (Updatable) Adds an additional HTTP header
                                   to requests that fail the challenge before being
@@ -2376,7 +2429,8 @@ spec:
                                 description: (Updatable) The number of seconds between
                                   challenges for the same IP address. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               areRedirectsChallenged:
                                 description: (Updatable) When enabled, redirect responses
                                   from the origin will also be challenged. This will
@@ -2428,7 +2482,8 @@ spec:
                                         408, 409, 411, 412, 413, 414, 415, 416, 422,
                                         444, 494, 495, 496, 497, 499, 500, 501, 502,
                                         503, 504, 507.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     captchaFooter:
                                       description: (Updatable) The text to show in
                                         the footer when showing a CAPTCHA challenge
@@ -2478,7 +2533,8 @@ spec:
                                 description: (Updatable) The number of failed requests
                                   allowed before taking action. If unspecified, defaults
                                   to 10.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -2573,7 +2629,8 @@ spec:
                                   404, 405, 408, 409, 411, 412, 413, 414, 415, 416,
                                   422, 444, 494, 495, 496, 497, 499, 500, 501, 502,
                                   503, 504, 507.'
-                                type: number
+                                format: int64
+                                type: integer
                               isResponseInspected:
                                 description: (Updatable) Inspects the response body
                                   of origin responses. Can be used to detect leakage
@@ -2592,7 +2649,8 @@ spec:
                                   960335), the following requests would be blocked:
                                   GET /myapp/path?query=one&query=two&query=three
                                   POST /myapp/path with Body {"argument1":"one","argument2":"two","argument3":"three"}'
-                                type: number
+                                format: int64
+                                type: integer
                               maxNameLengthPerArgument:
                                 description: '(Updatable) The maximum length allowed
                                   for each argument name, in characters. Arguements
@@ -2601,13 +2659,15 @@ spec:
                                   This setting only applies if a corresponding protection
                                   rule is enabled, such as the "Values Limits" rule
                                   (key: 960208).'
-                                type: number
+                                format: int64
+                                type: integer
                               maxResponseSizeInKiB:
                                 description: (Updatable) The maximum response size
                                   to be fully inspected, in binary kilobytes (KiB).
                                   Anything over this limit will be partially inspected.
                                   If unspecified, defaults to 1024.
-                                type: number
+                                format: int64
+                                type: integer
                               maxTotalNameLengthOfArguments:
                                 description: '(Updatable) The maximum length allowed
                                   for the sum of the argument name and value, in characters.
@@ -2616,7 +2676,8 @@ spec:
                                   to 64000. This setting only applies if a corresponding
                                   protection rule is enabled, such as the "Total Arguments
                                   Limits" rule (key: 960341).'
-                                type: number
+                                format: int64
+                                type: integer
                               mediaTypes:
                                 description: (Updatable) The list of media types to
                                   allow for inspection, if isResponseInspected is
@@ -2631,7 +2692,8 @@ spec:
                                   traffic traffic, in days. After the analysis period,
                                   WafRecommendations will be populated. If unspecified,
                                   defaults to 10.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         whitelists:
@@ -2779,7 +2841,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name for the WAAS policy.
                       The name can be changed and does not need to be unique.
@@ -2795,7 +2856,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: (Updatable) The OCID of the custom protection rule.
                     type: string
@@ -2821,7 +2881,8 @@ spec:
                                   but is not required upon updating the configuration.
                                 type: string
                               weight:
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                       type: object
@@ -2849,13 +2910,15 @@ spec:
                             the web application listens on. If unspecified, defaults
                             to 80. If 0 is specified - the origin is not used for
                             HTTP traffic.
-                          type: number
+                          format: int64
+                          type: integer
                         httpsPort:
                           description: (Updatable) The HTTPS port on the origin that
                             the web application listens on. If unspecified, defaults
                             to 443. If 0 is specified - the origin is not used for
                             HTTPS traffic.
-                          type: number
+                          format: int64
+                          type: integer
                         label:
                           type: string
                         uri:
@@ -2919,15 +2982,16 @@ spec:
                                   will include a User-Agent header field with value
                                   "waf health checks".'
                                 type: object
-                                x-kubernetes-map-type: granular
                               healthyThreshold:
                                 description: (Updatable) Number of successful health
                                   checks after which the server is marked up.
-                                type: number
+                                format: int64
+                                type: integer
                               intervalInSeconds:
                                 description: (Updatable) Time between health checks
                                   of an individual origin server, in seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -2950,11 +3014,13 @@ spec:
                                 description: (Updatable) Response timeout represents
                                   wait time until request is considered failed, in
                                   seconds.
-                                type: number
+                                format: int64
+                                type: integer
                               unhealthyThreshold:
                                 description: (Updatable) Number of failed health checks
                                   after which the server is marked down.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         isBehindCdn:
@@ -3014,7 +3080,8 @@ spec:
                                   (Updatable) The time for which a browser should
                                   keep the cookie in seconds. Empty value will cause
                                   the cookie to expire at the end of a browser session.
-                                type: number
+                                format: int64
+                                type: integer
                               method:
                                 description: (Updatable) An HTTP verb (i.e. HEAD,
                                   GET, or POST) to use when performing the health
@@ -3110,7 +3177,8 @@ spec:
                                   404, 405, 408, 409, 411, 412, 413, 414, 415, 416,
                                   422, 444, 494, 495, 496, 497, 499, 500, 501, 502,
                                   503, 504, 507.'
-                                type: number
+                                format: int64
+                                type: integer
                               bypassChallenges:
                                 description: (Updatable) The list of challenges to
                                   bypass when action is set to BYPASS. If unspecified
@@ -3202,7 +3270,8 @@ spec:
                                 description: (Updatable) The number of allowed requests
                                   per second from one IP address. If unspecified,
                                   defaults to 1.
-                                type: number
+                                format: int64
+                                type: integer
                               blockResponseCode:
                                 description: '(Updatable) The response status code
                                   to return when action is set to BLOCK, blockAction
@@ -3213,7 +3282,8 @@ spec:
                                   404, 405, 408, 409, 411, 412, 413, 414, 415, 416,
                                   422, 444, 494, 495, 496, 497, 499, 500, 501, 502,
                                   503, 504, 507.'
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -3222,7 +3292,8 @@ spec:
                                 description: (Updatable) The maximum number of requests
                                   allowed to be queued before subsequent requests
                                   are dropped. If unspecified, defaults to 10.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         cachingRules:
@@ -3315,7 +3386,8 @@ spec:
                                 description: (Updatable) The amount of time before
                                   the CAPTCHA expires, in seconds. If unspecified,
                                   defaults to 300.
-                                type: number
+                                format: int64
+                                type: integer
                               submitLabel:
                                 description: (Updatable) The text to show on the label
                                   of the CAPTCHA challenge submit button. If unspecified,
@@ -3377,7 +3449,8 @@ spec:
                                 description: (Updatable) The number of seconds between
                                   challenges for the same IP address. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               challengeSettings:
                                 description: (Updatable) The challenge settings if
                                   action is set to BLOCK.
@@ -3422,7 +3495,8 @@ spec:
                                         408, 409, 411, 412, 413, 414, 415, 416, 422,
                                         444, 494, 495, 496, 497, 499, 500, 501, 502,
                                         503, 504, 507.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     captchaFooter:
                                       description: (Updatable) The text to show in
                                         the footer when showing a CAPTCHA challenge
@@ -3452,12 +3526,14 @@ spec:
                                 description: (Updatable) The number of failed requests
                                   allowed before taking action. If unspecified, defaults
                                   to 10.
-                                type: number
+                                format: int64
+                                type: integer
                               failureThresholdExpirationInSeconds:
                                 description: (Updatable) The number of seconds before
                                   the failure threshold resets. If unspecified, defaults
                                   to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -3466,12 +3542,14 @@ spec:
                                 description: (Updatable) The maximum number of IP
                                   addresses permitted with the same device fingerprint.
                                   If unspecified, defaults to 20.
-                                type: number
+                                format: int64
+                                type: integer
                               maxAddressCountExpirationInSeconds:
                                 description: (Updatable) The number of seconds before
                                   the maximum addresses count resets. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         humanInteractionChallenge:
@@ -3490,7 +3568,8 @@ spec:
                                 description: (Updatable) The number of seconds between
                                   challenges for the same IP address. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               challengeSettings:
                                 description: (Updatable) The challenge settings if
                                   action is set to BLOCK.
@@ -3535,7 +3614,8 @@ spec:
                                         408, 409, 411, 412, 413, 414, 415, 416, 422,
                                         444, 494, 495, 496, 497, 499, 500, 501, 502,
                                         503, 504, 507.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     captchaFooter:
                                       description: (Updatable) The text to show in
                                         the footer when showing a CAPTCHA challenge
@@ -3565,17 +3645,20 @@ spec:
                                 description: (Updatable) The number of failed requests
                                   allowed before taking action. If unspecified, defaults
                                   to 10.
-                                type: number
+                                format: int64
+                                type: integer
                               failureThresholdExpirationInSeconds:
                                 description: (Updatable) The number of seconds before
                                   the failure threshold resets. If unspecified, defaults
                                   to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               interactionThreshold:
                                 description: (Updatable) The number of interactions
                                   required to pass the challenge. If unspecified,
                                   defaults to 3.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -3590,7 +3673,8 @@ spec:
                                 description: (Updatable) The number of seconds to
                                   record the interactions from the user. If unspecified,
                                   defaults to 15.
-                                type: number
+                                format: int64
+                                type: integer
                               setHttpHeader:
                                 description: (Updatable) Adds an additional HTTP header
                                   to requests that fail the challenge before being
@@ -3623,7 +3707,8 @@ spec:
                                 description: (Updatable) The number of seconds between
                                   challenges for the same IP address. If unspecified,
                                   defaults to 60.
-                                type: number
+                                format: int64
+                                type: integer
                               areRedirectsChallenged:
                                 description: (Updatable) When enabled, redirect responses
                                   from the origin will also be challenged. This will
@@ -3675,7 +3760,8 @@ spec:
                                         408, 409, 411, 412, 413, 414, 415, 416, 422,
                                         444, 494, 495, 496, 497, 499, 500, 501, 502,
                                         503, 504, 507.'
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     captchaFooter:
                                       description: (Updatable) The text to show in
                                         the footer when showing a CAPTCHA challenge
@@ -3725,7 +3811,8 @@ spec:
                                 description: (Updatable) The number of failed requests
                                   allowed before taking action. If unspecified, defaults
                                   to 10.
-                                type: number
+                                format: int64
+                                type: integer
                               isEnabled:
                                 description: (Updatable) Enables or disables the health
                                   checks.
@@ -3820,7 +3907,8 @@ spec:
                                   404, 405, 408, 409, 411, 412, 413, 414, 415, 416,
                                   422, 444, 494, 495, 496, 497, 499, 500, 501, 502,
                                   503, 504, 507.'
-                                type: number
+                                format: int64
+                                type: integer
                               isResponseInspected:
                                 description: (Updatable) Inspects the response body
                                   of origin responses. Can be used to detect leakage
@@ -3839,7 +3927,8 @@ spec:
                                   960335), the following requests would be blocked:
                                   GET /myapp/path?query=one&query=two&query=three
                                   POST /myapp/path with Body {"argument1":"one","argument2":"two","argument3":"three"}'
-                                type: number
+                                format: int64
+                                type: integer
                               maxNameLengthPerArgument:
                                 description: '(Updatable) The maximum length allowed
                                   for each argument name, in characters. Arguements
@@ -3848,13 +3937,15 @@ spec:
                                   This setting only applies if a corresponding protection
                                   rule is enabled, such as the "Values Limits" rule
                                   (key: 960208).'
-                                type: number
+                                format: int64
+                                type: integer
                               maxResponseSizeInKiB:
                                 description: (Updatable) The maximum response size
                                   to be fully inspected, in binary kilobytes (KiB).
                                   Anything over this limit will be partially inspected.
                                   If unspecified, defaults to 1024.
-                                type: number
+                                format: int64
+                                type: integer
                               maxTotalNameLengthOfArguments:
                                 description: '(Updatable) The maximum length allowed
                                   for the sum of the argument name and value, in characters.
@@ -3863,7 +3954,8 @@ spec:
                                   to 64000. This setting only applies if a corresponding
                                   protection rule is enabled, such as the "Total Arguments
                                   Limits" rule (key: 960341).'
-                                type: number
+                                format: int64
+                                type: integer
                               mediaTypes:
                                 description: (Updatable) The list of media types to
                                   allow for inspection, if isResponseInspected is
@@ -3878,7 +3970,8 @@ spec:
                                   traffic traffic, in days. After the analysis period,
                                   WafRecommendations will be populated. If unspecified,
                                   defaults to 10.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         whitelists:

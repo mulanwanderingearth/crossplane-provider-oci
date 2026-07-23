@@ -40,12 +40,10 @@ type DataSafeConfigurationObservation struct {
 	DataSafeNATGatewayIPAddress *string `json:"dataSafeNatGatewayIpAddress,omitempty" tf:"data_safe_nat_gateway_ip_address,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Details of the tenancy level global settings in Data Safe.
 	GlobalSettings []GlobalSettingsObservation `json:"globalSettings,omitempty" tf:"global_settings,omitempty"`
@@ -94,10 +92,10 @@ type GlobalSettingsObservation struct {
 	IsPaidUsage *bool `json:"isPaidUsage,omitempty" tf:"is_paid_usage,omitempty"`
 
 	// The offline retention period in months.
-	OfflineRetentionPeriod *float64 `json:"offlineRetentionPeriod,omitempty" tf:"offline_retention_period,omitempty"`
+	OfflineRetentionPeriod *int64 `json:"offlineRetentionPeriod,omitempty" tf:"offline_retention_period,omitempty"`
 
 	// The online retention period in months.
-	OnlineRetentionPeriod *float64 `json:"onlineRetentionPeriod,omitempty" tf:"online_retention_period,omitempty"`
+	OnlineRetentionPeriod *int64 `json:"onlineRetentionPeriod,omitempty" tf:"online_retention_period,omitempty"`
 }
 
 type GlobalSettingsParameters struct {

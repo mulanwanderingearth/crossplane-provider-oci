@@ -452,7 +452,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description for this resource.
                     type: string
@@ -469,7 +468,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   kind:
                     description: (Updatable) Discriminator.
                     type: string
@@ -508,7 +506,8 @@ spec:
                                   interval and queryOffsetSecs=120 will use the query
                                   time window of 11:48-11:58 rather than 11:50-12:00
                                   without queryOffsetSecs.
-                                type: number
+                                format: int64
+                                type: integer
                               recurringInterval:
                                 description: (Applicable when type=FIXED_FREQUENCY)
                                   (Updatable) Recurring interval in ISO 8601 extended
@@ -522,7 +521,8 @@ spec:
                                   (Updatable) Number of times (0-based) to execute
                                   until auto-stop. Default value -1 will execute indefinitely.
                                   Value 0 will execute once.
-                                type: number
+                                format: int64
+                                type: integer
                               timeEnd:
                                 description: (Applicable when kind=STANDARD) (Updatable)
                                   End time for the schedule, even if the schedule
@@ -948,7 +948,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description for this resource.
                     type: string
@@ -965,7 +964,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   kind:
                     description: (Updatable) Discriminator.
                     type: string
@@ -1004,7 +1002,8 @@ spec:
                                   interval and queryOffsetSecs=120 will use the query
                                   time window of 11:48-11:58 rather than 11:50-12:00
                                   without queryOffsetSecs.
-                                type: number
+                                format: int64
+                                type: integer
                               recurringInterval:
                                 description: (Applicable when type=FIXED_FREQUENCY)
                                   (Updatable) Recurring interval in ISO 8601 extended
@@ -1018,7 +1017,8 @@ spec:
                                   (Updatable) Number of times (0-based) to execute
                                   until auto-stop. Default value -1 will execute indefinitely.
                                   Value 0 will execute once.
-                                type: number
+                                format: int64
+                                type: integer
                               timeEnd:
                                 description: (Applicable when kind=STANDARD) (Updatable)
                                   End time for the schedule, even if the schedule
@@ -1271,7 +1271,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description for this resource.
                     type: string
@@ -1288,7 +1287,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the data plane resource.
                     type: string
@@ -1336,7 +1334,8 @@ spec:
                                   interval and queryOffsetSecs=120 will use the query
                                   time window of 11:48-11:58 rather than 11:50-12:00
                                   without queryOffsetSecs.
-                                type: number
+                                format: int64
+                                type: integer
                               recurringInterval:
                                 description: (Applicable when type=FIXED_FREQUENCY)
                                   (Updatable) Recurring interval in ISO 8601 extended
@@ -1350,7 +1349,8 @@ spec:
                                   (Updatable) Number of times (0-based) to execute
                                   until auto-stop. Default value -1 will execute indefinitely.
                                   Value 0 will execute once.
-                                type: number
+                                format: int64
+                                type: integer
                               timeEnd:
                                 description: (Applicable when kind=STANDARD) (Updatable)
                                   End time for the schedule, even if the schedule

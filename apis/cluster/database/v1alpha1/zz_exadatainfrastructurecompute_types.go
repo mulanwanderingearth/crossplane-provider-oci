@@ -43,7 +43,7 @@ type ExadataInfrastructureComputeInitParameters struct {
 	ActivationFile *string `json:"activationFile,omitempty" tf:"activation_file,omitempty"`
 
 	// The requested number of additional compute servers for the Exadata infrastructure.
-	AdditionalComputeCountComputeManagedResource *float64 `json:"additionalComputeCountComputeManagedResource,omitempty" tf:"additional_compute_count_compute_managed_resource,omitempty"`
+	AdditionalComputeCountComputeManagedResource *int64 `json:"additionalComputeCountComputeManagedResource,omitempty" tf:"additional_compute_count_compute_managed_resource,omitempty"`
 
 	// The requested Oracle Exadata System Model specification for the additional compute servers. The system model determines the amount of compute or storage server resources available for use. For more information, please see [System and Shape Configuration Options] (https://docs.oracle.com/en/engineered-systems/exadata-cloud-at-customer/ecccm/ecc-system-config-options.html#GUID-9E090174-5C57-4EB1-9243-B470F9F10D6B)
 	AdditionalComputeSystemModelComputeManagedResource *string `json:"additionalComputeSystemModelComputeManagedResource,omitempty" tf:"additional_compute_system_model_compute_managed_resource,omitempty"`
@@ -65,6 +65,9 @@ type ExadataInfrastructureComputeMaintenanceWindowDaysOfWeekParameters struct {
 }
 
 type ExadataInfrastructureComputeMaintenanceWindowInitParameters struct {
+
+	// If true, enables the monthly patching option.
+	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 }
 
 type ExadataInfrastructureComputeMaintenanceWindowMonthsInitParameters struct {
@@ -82,13 +85,13 @@ type ExadataInfrastructureComputeMaintenanceWindowMonthsParameters struct {
 type ExadataInfrastructureComputeMaintenanceWindowObservation struct {
 
 	// Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// Days during the week when maintenance should be performed.
 	DaysOfWeek []ExadataInfrastructureComputeMaintenanceWindowDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -97,7 +100,7 @@ type ExadataInfrastructureComputeMaintenanceWindowObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// Months during the year when maintenance should be performed.
 	Months []ExadataInfrastructureComputeMaintenanceWindowMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -109,25 +112,29 @@ type ExadataInfrastructureComputeMaintenanceWindowObservation struct {
 	Preference *string `json:"preference,omitempty" tf:"preference,omitempty"`
 
 	// Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type ExadataInfrastructureComputeMaintenanceWindowParameters struct {
+
+	// If true, enables the monthly patching option.
+	// +kubebuilder:validation:Optional
+	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 }
 
 type ExadataInfrastructureComputeObservation struct {
 
 	// The requested number of additional storage servers activated for the Exadata infrastructure.
-	ActivatedStorageCount *float64 `json:"activatedStorageCount,omitempty" tf:"activated_storage_count,omitempty"`
+	ActivatedStorageCount *int64 `json:"activatedStorageCount,omitempty" tf:"activated_storage_count,omitempty"`
 
 	// (Updatable) The activation zip file. If provided in config, exadata infrastructure will be activated after creation. Updates are not allowed on activated exadata infrastructure.
 	ActivationFile *string `json:"activationFile,omitempty" tf:"activation_file,omitempty"`
 
 	// The number of additional compute servers for the Exadata infrastructure.
-	AdditionalComputeCount *float64 `json:"additionalComputeCount,omitempty" tf:"additional_compute_count,omitempty"`
+	AdditionalComputeCount *int64 `json:"additionalComputeCount,omitempty" tf:"additional_compute_count,omitempty"`
 
 	// The requested number of additional compute servers for the Exadata infrastructure.
-	AdditionalComputeCountComputeManagedResource *float64 `json:"additionalComputeCountComputeManagedResource,omitempty" tf:"additional_compute_count_compute_managed_resource,omitempty"`
+	AdditionalComputeCountComputeManagedResource *int64 `json:"additionalComputeCountComputeManagedResource,omitempty" tf:"additional_compute_count_compute_managed_resource,omitempty"`
 
 	// Oracle Exadata System Model specification. The system model determines the amount of compute or storage server resources available for use. For more information, please see [System and Shape Configuration Options] (https://docs.oracle.com/en/engineered-systems/exadata-cloud-at-customer/ecccm/ecc-system-config-options.html#GUID-9E090174-5C57-4EB1-9243-B470F9F10D6B)
 	AdditionalComputeSystemModel *string `json:"additionalComputeSystemModel,omitempty" tf:"additional_compute_system_model,omitempty"`
@@ -136,7 +143,7 @@ type ExadataInfrastructureComputeObservation struct {
 	AdditionalComputeSystemModelComputeManagedResource *string `json:"additionalComputeSystemModelComputeManagedResource,omitempty" tf:"additional_compute_system_model_compute_managed_resource,omitempty"`
 
 	// The requested number of additional storage servers for the Exadata infrastructure.
-	AdditionalStorageCount *float64 `json:"additionalStorageCount,omitempty" tf:"additional_storage_count,omitempty"`
+	AdditionalStorageCount *int64 `json:"additionalStorageCount,omitempty" tf:"additional_storage_count,omitempty"`
 
 	// The CIDR block for the Exadata administration network.
 	AdminNetworkCidr *string `json:"adminNetworkCidr,omitempty" tf:"admin_network_cidr,omitempty"`
@@ -151,7 +158,7 @@ type ExadataInfrastructureComputeObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// The number of compute servers for the Exadata infrastructure.
-	ComputeCount *float64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
+	ComputeCount *int64 `json:"computeCount,omitempty" tf:"compute_count,omitempty"`
 
 	// The list of contacts for the Exadata infrastructure.
 	Contacts []ExadataInfrastructureComputeContactsObservation `json:"contacts,omitempty" tf:"contacts,omitempty"`
@@ -160,7 +167,7 @@ type ExadataInfrastructureComputeObservation struct {
 	CorporateProxy *string `json:"corporateProxy,omitempty" tf:"corporate_proxy,omitempty"`
 
 	// The number of enabled CPU cores.
-	CpusEnabled *float64 `json:"cpusEnabled,omitempty" tf:"cpus_enabled,omitempty"`
+	CpusEnabled *int64 `json:"cpusEnabled,omitempty" tf:"cpus_enabled,omitempty"`
 
 	CreateAsync *bool `json:"createAsync,omitempty" tf:"create_async,omitempty"`
 
@@ -168,7 +175,7 @@ type ExadataInfrastructureComputeObservation struct {
 	CsiNumber *string `json:"csiNumber,omitempty" tf:"csi_number,omitempty"`
 
 	// The local node storage allocated in GBs.
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	// The software version of the database servers (dom0) in the Exadata infrastructure.
 	DBServerVersion *string `json:"dbServerVersion,omitempty" tf:"db_server_version,omitempty"`
@@ -180,8 +187,7 @@ type ExadataInfrastructureComputeObservation struct {
 	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the Exadata Cloud@Customer infrastructure. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -190,8 +196,7 @@ type ExadataInfrastructureComputeObservation struct {
 	ExadataInfrastructureID *string `json:"exadataInfrastructureId,omitempty" tf:"exadata_infrastructure_id,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The gateway for the control plane network.
 	Gateway *string `json:"gateway,omitempty" tf:"gateway,omitempty"`
@@ -215,19 +220,19 @@ type ExadataInfrastructureComputeObservation struct {
 	MaintenanceWindow []ExadataInfrastructureComputeMaintenanceWindowObservation `json:"maintenanceWindow,omitempty" tf:"maintenance_window,omitempty"`
 
 	// The total number of CPU cores available.
-	MaxCPUCount *float64 `json:"maxCpuCount,omitempty" tf:"max_cpu_count,omitempty"`
+	MaxCPUCount *int64 `json:"maxCpuCount,omitempty" tf:"max_cpu_count,omitempty"`
 
 	// The total local node storage available in GBs.
-	MaxDBNodeStorageInGbs *float64 `json:"maxDbNodeStorageInGbs,omitempty" tf:"max_db_node_storage_in_gbs,omitempty"`
+	MaxDBNodeStorageInGbs *int64 `json:"maxDbNodeStorageInGbs,omitempty" tf:"max_db_node_storage_in_gbs,omitempty"`
 
 	// The total available DATA disk group size.
 	MaxDataStorageInTbs *float64 `json:"maxDataStorageInTbs,omitempty" tf:"max_data_storage_in_tbs,omitempty"`
 
 	// The total memory available in GBs.
-	MaxMemoryInGbs *float64 `json:"maxMemoryInGbs,omitempty" tf:"max_memory_in_gbs,omitempty"`
+	MaxMemoryInGbs *int64 `json:"maxMemoryInGbs,omitempty" tf:"max_memory_in_gbs,omitempty"`
 
 	// The memory allocated in GBs.
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// The monthly software version of the database servers (dom0) in the Exadata infrastructure.
 	MonthlyDBServerVersion *string `json:"monthlyDbServerVersion,omitempty" tf:"monthly_db_server_version,omitempty"`
@@ -245,7 +250,7 @@ type ExadataInfrastructureComputeObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// The number of Exadata storage servers for the Exadata infrastructure.
-	StorageCount *float64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
+	StorageCount *int64 `json:"storageCount,omitempty" tf:"storage_count,omitempty"`
 
 	// The software version of the storage servers (cells) in the Exadata infrastructure.
 	StorageServerVersion *string `json:"storageServerVersion,omitempty" tf:"storage_server_version,omitempty"`
@@ -265,7 +270,7 @@ type ExadataInfrastructureComputeParameters struct {
 
 	// The requested number of additional compute servers for the Exadata infrastructure.
 	// +kubebuilder:validation:Optional
-	AdditionalComputeCountComputeManagedResource *float64 `json:"additionalComputeCountComputeManagedResource,omitempty" tf:"additional_compute_count_compute_managed_resource,omitempty"`
+	AdditionalComputeCountComputeManagedResource *int64 `json:"additionalComputeCountComputeManagedResource,omitempty" tf:"additional_compute_count_compute_managed_resource,omitempty"`
 
 	// The requested Oracle Exadata System Model specification for the additional compute servers. The system model determines the amount of compute or storage server resources available for use. For more information, please see [System and Shape Configuration Options] (https://docs.oracle.com/en/engineered-systems/exadata-cloud-at-customer/ecccm/ecc-system-config-options.html#GUID-9E090174-5C57-4EB1-9243-B470F9F10D6B)
 	// +kubebuilder:validation:Optional

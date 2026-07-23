@@ -19,7 +19,7 @@ type CloudAutonomousVmClusterInitParameters struct {
 	AutonomousDataStorageSizeInTbs *float64 `json:"autonomousDataStorageSizeInTbs,omitempty" tf:"autonomous_data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) The number of CPU cores to be enabled per VM cluster node.
-	CPUCoreCountPerNode *float64 `json:"cpuCoreCountPerNode,omitempty" tf:"cpu_core_count_per_node,omitempty"`
+	CPUCoreCountPerNode *int64 `json:"cpuCoreCountPerNode,omitempty" tf:"cpu_core_count_per_node,omitempty"`
 
 	// The OCID of the cloud Exadata infrastructure.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.CloudExadataInfrastructure
@@ -55,8 +55,7 @@ type CloudAutonomousVmClusterInitParameters struct {
 	DBServers []*string `json:"dbServers,omitempty" tf:"db_servers,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User defined description of the cloud Autonomous VM cluster.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -68,8 +67,7 @@ type CloudAutonomousVmClusterInitParameters struct {
 	DistributionAlgorithm *string `json:"distributionAlgorithm,omitempty" tf:"distribution_algorithm,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Enable mutual TLS(mTLS) authentication for database at time of provisioning a VMCluster. This is applicable to database TLS Certificates only. Default is TLS
 	IsMtlsEnabledVMCluster *bool `json:"isMtlsEnabledVmCluster,omitempty" tf:"is_mtls_enabled_vm_cluster,omitempty"`
@@ -81,7 +79,7 @@ type CloudAutonomousVmClusterInitParameters struct {
 	MaintenanceWindowDetails []CloudAutonomousVmClusterMaintenanceWindowDetailsInitParameters `json:"maintenanceWindowDetails,omitempty" tf:"maintenance_window_details,omitempty"`
 
 	// The amount of memory (in GBs) to be enabled per OCPU or ECPU.
-	MemoryPerOracleComputeUnitInGbs *float64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
+	MemoryPerOracleComputeUnitInGbs *int64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
 
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
@@ -91,17 +89,16 @@ type CloudAutonomousVmClusterInitParameters struct {
 	OpcDryRun *bool `json:"opcDryRun,omitempty" tf:"opc_dry_run,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Register Pkcs. Could be set to any integer value.
-	RegisterPkcsTrigger *float64 `json:"registerPkcsTrigger,omitempty" tf:"register_pkcs_trigger,omitempty"`
+	RegisterPkcsTrigger *int64 `json:"registerPkcsTrigger,omitempty" tf:"register_pkcs_trigger,omitempty"`
 
 	// (Updatable) The SCAN Listener Non TLS port. Default is 1521.
-	ScanListenerPortNonTLS *float64 `json:"scanListenerPortNonTls,omitempty" tf:"scan_listener_port_non_tls,omitempty"`
+	ScanListenerPortNonTLS *int64 `json:"scanListenerPortNonTls,omitempty" tf:"scan_listener_port_non_tls,omitempty"`
 
 	// (Updatable) The SCAN Listener TLS port. Default is 2484.
-	ScanListenerPortTLS *float64 `json:"scanListenerPortTls,omitempty" tf:"scan_listener_port_tls,omitempty"`
+	ScanListenerPortTLS *int64 `json:"scanListenerPortTls,omitempty" tf:"scan_listener_port_tls,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// Percentage of ECPU memory allocated for SGA(System Global Area).
 	SgaPercentage *float64 `json:"sgaPercentage,omitempty" tf:"sga_percentage,omitempty"`
@@ -128,10 +125,10 @@ type CloudAutonomousVmClusterInitParameters struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) The total number of Autonomous Container Databases that can be created.
-	TotalContainerDatabases *float64 `json:"totalContainerDatabases,omitempty" tf:"total_container_databases,omitempty"`
+	TotalContainerDatabases *int64 `json:"totalContainerDatabases,omitempty" tf:"total_container_databases,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Unregister Pkcs. Could be set to any integer value.
-	UnregisterPkcsTrigger *float64 `json:"unregisterPkcsTrigger,omitempty" tf:"unregister_pkcs_trigger,omitempty"`
+	UnregisterPkcsTrigger *int64 `json:"unregisterPkcsTrigger,omitempty" tf:"unregister_pkcs_trigger,omitempty"`
 }
 
 type CloudAutonomousVmClusterMaintenanceWindowDaysOfWeekInitParameters struct {
@@ -168,13 +165,13 @@ type CloudAutonomousVmClusterMaintenanceWindowDetailsDaysOfWeekParameters struct
 type CloudAutonomousVmClusterMaintenanceWindowDetailsInitParameters struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []CloudAutonomousVmClusterMaintenanceWindowDetailsDaysOfWeekInitParameters `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -183,7 +180,7 @@ type CloudAutonomousVmClusterMaintenanceWindowDetailsInitParameters struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []CloudAutonomousVmClusterMaintenanceWindowDetailsMonthsInitParameters `json:"months,omitempty" tf:"months,omitempty"`
@@ -198,7 +195,7 @@ type CloudAutonomousVmClusterMaintenanceWindowDetailsInitParameters struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type CloudAutonomousVmClusterMaintenanceWindowDetailsMonthsInitParameters struct {
@@ -223,13 +220,13 @@ type CloudAutonomousVmClusterMaintenanceWindowDetailsMonthsParameters struct {
 type CloudAutonomousVmClusterMaintenanceWindowDetailsObservation struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []CloudAutonomousVmClusterMaintenanceWindowDetailsDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -238,7 +235,7 @@ type CloudAutonomousVmClusterMaintenanceWindowDetailsObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []CloudAutonomousVmClusterMaintenanceWindowDetailsMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -253,14 +250,14 @@ type CloudAutonomousVmClusterMaintenanceWindowDetailsObservation struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type CloudAutonomousVmClusterMaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
 	// +kubebuilder:validation:Optional
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	// +kubebuilder:validation:Optional
@@ -268,7 +265,7 @@ type CloudAutonomousVmClusterMaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
 	// +kubebuilder:validation:Optional
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	// +kubebuilder:validation:Optional
@@ -280,7 +277,7 @@ type CloudAutonomousVmClusterMaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
 	// +kubebuilder:validation:Optional
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	// +kubebuilder:validation:Optional
@@ -300,7 +297,7 @@ type CloudAutonomousVmClusterMaintenanceWindowDetailsParameters struct {
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
 	// +kubebuilder:validation:Optional
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type CloudAutonomousVmClusterMaintenanceWindowInitParameters struct {
@@ -321,13 +318,13 @@ type CloudAutonomousVmClusterMaintenanceWindowMonthsParameters struct {
 type CloudAutonomousVmClusterMaintenanceWindowObservation struct {
 
 	// (Updatable) Determines the amount of time the system will wait before the start of each database server patching operation. Custom action timeout is in minutes and valid value is between 15 to 120 (inclusive).
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// (Updatable) Days during the week when maintenance should be performed.
 	DaysOfWeek []CloudAutonomousVmClusterMaintenanceWindowDaysOfWeekObservation `json:"daysOfWeek,omitempty" tf:"days_of_week,omitempty"`
 
 	// (Updatable) The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are
-	HoursOfDay []*float64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
+	HoursOfDay []*int64 `json:"hoursOfDay,omitempty" tf:"hours_of_day,omitempty"`
 
 	// (Updatable) If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations.
 	IsCustomActionTimeoutEnabled *bool `json:"isCustomActionTimeoutEnabled,omitempty" tf:"is_custom_action_timeout_enabled,omitempty"`
@@ -336,7 +333,7 @@ type CloudAutonomousVmClusterMaintenanceWindowObservation struct {
 	IsMonthlyPatchingEnabled *bool `json:"isMonthlyPatchingEnabled,omitempty" tf:"is_monthly_patching_enabled,omitempty"`
 
 	// (Updatable) Lead time window allows user to set a lead time to prepare for a down time. The lead time is in weeks and valid value is between 1 to 4.
-	LeadTimeInWeeks *float64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
+	LeadTimeInWeeks *int64 `json:"leadTimeInWeeks,omitempty" tf:"lead_time_in_weeks,omitempty"`
 
 	// (Updatable) Months during the year when maintenance should be performed.
 	Months []CloudAutonomousVmClusterMaintenanceWindowMonthsObservation `json:"months,omitempty" tf:"months,omitempty"`
@@ -351,7 +348,7 @@ type CloudAutonomousVmClusterMaintenanceWindowObservation struct {
 	SkipRu []*bool `json:"skipRu,omitempty" tf:"skip_ru,omitempty"`
 
 	// (Updatable) Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. For example, to allow maintenance during the 2nd week of the month (from the 8th day to the 14th day of the month), use the value 2. Maintenance cannot be scheduled for the fifth week of months that contain more than 28 days. Note that this parameter works in conjunction with the  daysOfWeek and hoursOfDay parameters to allow you to specify specific days of the week and hours that maintenance will be performed.
-	WeeksOfMonth []*float64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
+	WeeksOfMonth []*int64 `json:"weeksOfMonth,omitempty" tf:"weeks_of_month,omitempty"`
 }
 
 type CloudAutonomousVmClusterMaintenanceWindowParameters struct {
@@ -372,16 +369,16 @@ type CloudAutonomousVmClusterObservation struct {
 	AvailableAutonomousDataStorageSizeInTbs *float64 `json:"availableAutonomousDataStorageSizeInTbs,omitempty" tf:"available_autonomous_data_storage_size_in_tbs,omitempty"`
 
 	// The number of Autonomous Container Databases that can be created with the currently available local storage.
-	AvailableContainerDatabases *float64 `json:"availableContainerDatabases,omitempty" tf:"available_container_databases,omitempty"`
+	AvailableContainerDatabases *int64 `json:"availableContainerDatabases,omitempty" tf:"available_container_databases,omitempty"`
 
 	// CPU cores available for allocation to Autonomous AI Databases.
 	AvailableCpus *float64 `json:"availableCpus,omitempty" tf:"available_cpus,omitempty"`
 
 	// The number of CPU cores on the cloud Autonomous VM cluster.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// (Updatable) The number of CPU cores to be enabled per VM cluster node.
-	CPUCoreCountPerNode *float64 `json:"cpuCoreCountPerNode,omitempty" tf:"cpu_core_count_per_node,omitempty"`
+	CPUCoreCountPerNode *int64 `json:"cpuCoreCountPerNode,omitempty" tf:"cpu_core_count_per_node,omitempty"`
 
 	// The percentage of total number of CPUs used in an Autonomous VM Cluster.
 	CPUPercentage *float64 `json:"cpuPercentage,omitempty" tf:"cpu_percentage,omitempty"`
@@ -399,7 +396,7 @@ type CloudAutonomousVmClusterObservation struct {
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
 
 	// The local node storage allocated in GBs.
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	// The list of database servers.
 	DBServers []*string `json:"dbServers,omitempty" tf:"db_servers,omitempty"`
@@ -411,8 +408,7 @@ type CloudAutonomousVmClusterObservation struct {
 	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User defined description of the cloud Autonomous VM cluster.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -430,8 +426,7 @@ type CloudAutonomousVmClusterObservation struct {
 	ExadataStorageInTbsLowestScaledValue *float64 `json:"exadataStorageInTbsLowestScaledValue,omitempty" tf:"exadata_storage_in_tbs_lowest_scaled_value,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The hostname for the cloud Autonomous VM cluster.
 	Hostname *string `json:"hostname,omitempty" tf:"hostname,omitempty"`
@@ -461,16 +456,16 @@ type CloudAutonomousVmClusterObservation struct {
 	MaintenanceWindowDetails []CloudAutonomousVmClusterMaintenanceWindowDetailsObservation `json:"maintenanceWindowDetails,omitempty" tf:"maintenance_window_details,omitempty"`
 
 	// The lowest value to which maximum number of ACDs can be scaled down.
-	MaxAcdsLowestScaledValue *float64 `json:"maxAcdsLowestScaledValue,omitempty" tf:"max_acds_lowest_scaled_value,omitempty"`
+	MaxAcdsLowestScaledValue *int64 `json:"maxAcdsLowestScaledValue,omitempty" tf:"max_acds_lowest_scaled_value,omitempty"`
 
 	// The amount of memory (in GBs) to be enabled per OCPU or ECPU.
 	MemoryPerComputeUnitInGbs *float64 `json:"memoryPerComputeUnitInGbs,omitempty" tf:"memory_per_compute_unit_in_gbs,omitempty"`
 
 	// The amount of memory (in GBs) to be enabled per OCPU or ECPU.
-	MemoryPerOracleComputeUnitInGbs *float64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
+	MemoryPerOracleComputeUnitInGbs *int64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
 
 	// The memory allocated in GBs.
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// Details of the multi cloud identity connectors of the VM cluster.
 	MultiCloudIdentityConnectorConfigs []MultiCloudIdentityConnectorConfigsObservation `json:"multiCloudIdentityConnectorConfigs,omitempty" tf:"multi_cloud_identity_connector_configs,omitempty"`
@@ -479,10 +474,10 @@ type CloudAutonomousVmClusterObservation struct {
 	NextMaintenanceRunID *string `json:"nextMaintenanceRunId,omitempty" tf:"next_maintenance_run_id,omitempty"`
 
 	// The number of database servers in the cloud VM cluster.
-	NodeCount *float64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
+	NodeCount *int64 `json:"nodeCount,omitempty" tf:"node_count,omitempty"`
 
 	// The number of non-provisionable Autonomous Container Databases in an Autonomous VM Cluster.
-	NonProvisionableAutonomousContainerDatabases *float64 `json:"nonProvisionableAutonomousContainerDatabases,omitempty" tf:"non_provisionable_autonomous_container_databases,omitempty"`
+	NonProvisionableAutonomousContainerDatabases *int64 `json:"nonProvisionableAutonomousContainerDatabases,omitempty" tf:"non_provisionable_autonomous_container_databases,omitempty"`
 
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +listType=set
@@ -492,16 +487,16 @@ type CloudAutonomousVmClusterObservation struct {
 	OcpuCount *float64 `json:"ocpuCount,omitempty" tf:"ocpu_count,omitempty"`
 
 	// The lowest value to which ocpus can be scaled down.
-	OcpusLowestScaledValue *float64 `json:"ocpusLowestScaledValue,omitempty" tf:"ocpus_lowest_scaled_value,omitempty"`
+	OcpusLowestScaledValue *int64 `json:"ocpusLowestScaledValue,omitempty" tf:"ocpus_lowest_scaled_value,omitempty"`
 
 	// (Updatable) Indicates that the request is a dry run, if set to "true". A dry run request does not actually  creating or updating a resource and is used only to perform validation on the submitted data.
 	OpcDryRun *bool `json:"opcDryRun,omitempty" tf:"opc_dry_run,omitempty"`
 
 	// The number of provisionable Autonomous Container Databases in an Autonomous VM Cluster.
-	ProvisionableAutonomousContainerDatabases *float64 `json:"provisionableAutonomousContainerDatabases,omitempty" tf:"provisionable_autonomous_container_databases,omitempty"`
+	ProvisionableAutonomousContainerDatabases *int64 `json:"provisionableAutonomousContainerDatabases,omitempty" tf:"provisionable_autonomous_container_databases,omitempty"`
 
 	// The number of provisioned Autonomous Container Databases in an Autonomous VM Cluster.
-	ProvisionedAutonomousContainerDatabases *float64 `json:"provisionedAutonomousContainerDatabases,omitempty" tf:"provisioned_autonomous_container_databases,omitempty"`
+	ProvisionedAutonomousContainerDatabases *int64 `json:"provisionedAutonomousContainerDatabases,omitempty" tf:"provisioned_autonomous_container_databases,omitempty"`
 
 	// The number of CPUs provisioned in an Autonomous VM Cluster.
 	ProvisionedCpus *float64 `json:"provisionedCpus,omitempty" tf:"provisioned_cpus,omitempty"`
@@ -510,20 +505,19 @@ type CloudAutonomousVmClusterObservation struct {
 	ReclaimableCpus *float64 `json:"reclaimableCpus,omitempty" tf:"reclaimable_cpus,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Register Pkcs. Could be set to any integer value.
-	RegisterPkcsTrigger *float64 `json:"registerPkcsTrigger,omitempty" tf:"register_pkcs_trigger,omitempty"`
+	RegisterPkcsTrigger *int64 `json:"registerPkcsTrigger,omitempty" tf:"register_pkcs_trigger,omitempty"`
 
 	// The number of CPUs reserved in an Autonomous VM Cluster.
 	ReservedCpus *float64 `json:"reservedCpus,omitempty" tf:"reserved_cpus,omitempty"`
 
 	// (Updatable) The SCAN Listener Non TLS port. Default is 1521.
-	ScanListenerPortNonTLS *float64 `json:"scanListenerPortNonTls,omitempty" tf:"scan_listener_port_non_tls,omitempty"`
+	ScanListenerPortNonTLS *int64 `json:"scanListenerPortNonTls,omitempty" tf:"scan_listener_port_non_tls,omitempty"`
 
 	// (Updatable) The SCAN Listener TLS port. Default is 2484.
-	ScanListenerPortTLS *float64 `json:"scanListenerPortTls,omitempty" tf:"scan_listener_port_tls,omitempty"`
+	ScanListenerPortTLS *int64 `json:"scanListenerPortTls,omitempty" tf:"scan_listener_port_tls,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// Percentage of ECPU memory allocated for SGA(System Global Area).
 	SgaPercentage *float64 `json:"sgaPercentage,omitempty" tf:"sga_percentage,omitempty"`
@@ -541,8 +535,7 @@ type CloudAutonomousVmClusterObservation struct {
 	SubscriptionID *string `json:"subscriptionId,omitempty" tf:"subscription_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// TDE keystore type
 	TdeKeyStoreType *string `json:"tdeKeyStoreType,omitempty" tf:"tde_key_store_type,omitempty"`
@@ -563,13 +556,13 @@ type CloudAutonomousVmClusterObservation struct {
 	TotalAutonomousDataStorageInTbs *float64 `json:"totalAutonomousDataStorageInTbs,omitempty" tf:"total_autonomous_data_storage_in_tbs,omitempty"`
 
 	// (Updatable) The total number of Autonomous Container Databases that can be created.
-	TotalContainerDatabases *float64 `json:"totalContainerDatabases,omitempty" tf:"total_container_databases,omitempty"`
+	TotalContainerDatabases *int64 `json:"totalContainerDatabases,omitempty" tf:"total_container_databases,omitempty"`
 
 	// The total number of CPUs in an Autonomous VM Cluster.
 	TotalCpus *float64 `json:"totalCpus,omitempty" tf:"total_cpus,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Unregister Pkcs. Could be set to any integer value.
-	UnregisterPkcsTrigger *float64 `json:"unregisterPkcsTrigger,omitempty" tf:"unregister_pkcs_trigger,omitempty"`
+	UnregisterPkcsTrigger *int64 `json:"unregisterPkcsTrigger,omitempty" tf:"unregister_pkcs_trigger,omitempty"`
 }
 
 type CloudAutonomousVmClusterParameters struct {
@@ -580,7 +573,7 @@ type CloudAutonomousVmClusterParameters struct {
 
 	// (Updatable) The number of CPU cores to be enabled per VM cluster node.
 	// +kubebuilder:validation:Optional
-	CPUCoreCountPerNode *float64 `json:"cpuCoreCountPerNode,omitempty" tf:"cpu_core_count_per_node,omitempty"`
+	CPUCoreCountPerNode *int64 `json:"cpuCoreCountPerNode,omitempty" tf:"cpu_core_count_per_node,omitempty"`
 
 	// The OCID of the cloud Exadata infrastructure.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/database/v1alpha1.CloudExadataInfrastructure
@@ -622,8 +615,7 @@ type CloudAutonomousVmClusterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) User defined description of the cloud Autonomous VM cluster.
 	// +kubebuilder:validation:Optional
@@ -639,8 +631,7 @@ type CloudAutonomousVmClusterParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Enable mutual TLS(mTLS) authentication for database at time of provisioning a VMCluster. This is applicable to database TLS Certificates only. Default is TLS
 	// +kubebuilder:validation:Optional
@@ -656,7 +647,7 @@ type CloudAutonomousVmClusterParameters struct {
 
 	// The amount of memory (in GBs) to be enabled per OCPU or ECPU.
 	// +kubebuilder:validation:Optional
-	MemoryPerOracleComputeUnitInGbs *float64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
+	MemoryPerOracleComputeUnitInGbs *int64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
 
 	// (Updatable) The list of OCIDs for the network security groups (NSGs) to which this resource belongs. Setting this to an empty list removes all resources from all NSGs. For more information about NSGs, see Security Rules. NsgIds restrictions:
 	// +kubebuilder:validation:Optional
@@ -669,20 +660,19 @@ type CloudAutonomousVmClusterParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Register Pkcs. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	RegisterPkcsTrigger *float64 `json:"registerPkcsTrigger,omitempty" tf:"register_pkcs_trigger,omitempty"`
+	RegisterPkcsTrigger *int64 `json:"registerPkcsTrigger,omitempty" tf:"register_pkcs_trigger,omitempty"`
 
 	// (Updatable) The SCAN Listener Non TLS port. Default is 1521.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortNonTLS *float64 `json:"scanListenerPortNonTls,omitempty" tf:"scan_listener_port_non_tls,omitempty"`
+	ScanListenerPortNonTLS *int64 `json:"scanListenerPortNonTls,omitempty" tf:"scan_listener_port_non_tls,omitempty"`
 
 	// (Updatable) The SCAN Listener TLS port. Default is 2484.
 	// +kubebuilder:validation:Optional
-	ScanListenerPortTLS *float64 `json:"scanListenerPortTls,omitempty" tf:"scan_listener_port_tls,omitempty"`
+	ScanListenerPortTLS *int64 `json:"scanListenerPortTls,omitempty" tf:"scan_listener_port_tls,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// Percentage of ECPU memory allocated for SGA(System Global Area).
 	// +kubebuilder:validation:Optional
@@ -715,11 +705,11 @@ type CloudAutonomousVmClusterParameters struct {
 
 	// (Updatable) The total number of Autonomous Container Databases that can be created.
 	// +kubebuilder:validation:Optional
-	TotalContainerDatabases *float64 `json:"totalContainerDatabases,omitempty" tf:"total_container_databases,omitempty"`
+	TotalContainerDatabases *int64 `json:"totalContainerDatabases,omitempty" tf:"total_container_databases,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Unregister Pkcs. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	UnregisterPkcsTrigger *float64 `json:"unregisterPkcsTrigger,omitempty" tf:"unregister_pkcs_trigger,omitempty"`
+	UnregisterPkcsTrigger *int64 `json:"unregisterPkcsTrigger,omitempty" tf:"unregister_pkcs_trigger,omitempty"`
 }
 
 type MultiCloudIdentityConnectorConfigsInitParameters struct {

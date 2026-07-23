@@ -331,12 +331,10 @@ type MlApplicationImplementationInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Configuration of Logging for ML Application Implementation.
 	Logging []LoggingInitParameters `json:"logging,omitempty" tf:"logging,omitempty"`
@@ -363,8 +361,7 @@ type MlApplicationImplementationInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) ML Application package arguments required during ML Application package upload. Each argument is a simple key-value pair.
-	// +mapType=granular
-	OpcMLAppPackageArgs map[string]*string `json:"opcMlAppPackageArgs,omitempty" tf:"opc_ml_app_package_args,omitempty"`
+	OpcMLAppPackageArgs map[string]string `json:"opcMlAppPackageArgs,omitempty" tf:"opc_ml_app_package_args,omitempty"`
 }
 
 type MlApplicationImplementationObservation struct {
@@ -382,15 +379,13 @@ type MlApplicationImplementationObservation struct {
 	ConfigurationSchema []ConfigurationSchemaObservation `json:"configurationSchema,omitempty" tf:"configuration_schema,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Description of this configuration property
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// OCID of the resource
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -419,8 +414,7 @@ type MlApplicationImplementationObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) ML Application package arguments required during ML Application package upload. Each argument is a simple key-value pair.
-	// +mapType=granular
-	OpcMLAppPackageArgs map[string]*string `json:"opcMlAppPackageArgs,omitempty" tf:"opc_ml_app_package_args,omitempty"`
+	OpcMLAppPackageArgs map[string]string `json:"opcMlAppPackageArgs,omitempty" tf:"opc_ml_app_package_args,omitempty"`
 
 	// The version of ML Application Package (e.g. "1.2" or "2.0.4") defined in ML Application package descriptor. Value is not mandatory only for CREATING state otherwise it must be always presented.
 	PackageVersion *string `json:"packageVersion,omitempty" tf:"package_version,omitempty"`
@@ -429,8 +423,7 @@ type MlApplicationImplementationObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Creation time of MlApplicationImplementation creation in the format defined by RFC 3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -460,13 +453,11 @@ type MlApplicationImplementationParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Configuration of Logging for ML Application Implementation.
 	// +kubebuilder:validation:Optional
@@ -498,8 +489,7 @@ type MlApplicationImplementationParameters struct {
 
 	// (Updatable) ML Application package arguments required during ML Application package upload. Each argument is a simple key-value pair.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	OpcMLAppPackageArgs map[string]*string `json:"opcMlAppPackageArgs,omitempty" tf:"opc_ml_app_package_args,omitempty"`
+	OpcMLAppPackageArgs map[string]string `json:"opcMlAppPackageArgs,omitempty" tf:"opc_ml_app_package_args,omitempty"`
 }
 
 type TriggerLogInitParameters struct {

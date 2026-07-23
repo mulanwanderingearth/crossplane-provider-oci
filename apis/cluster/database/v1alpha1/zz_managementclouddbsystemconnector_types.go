@@ -94,7 +94,7 @@ type ConnectionInfoConnectionStringInitParameters struct {
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// The port used to connect to the ASM instance.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -112,7 +112,7 @@ type ConnectionInfoConnectionStringObservation struct {
 	Hosts []*string `json:"hosts,omitempty" tf:"hosts,omitempty"`
 
 	// The port used to connect to the ASM instance.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -133,7 +133,7 @@ type ConnectionInfoConnectionStringParameters struct {
 
 	// The port used to connect to the ASM instance.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The protocol used to connect to the ASM instance.
 	// +kubebuilder:validation:Optional
@@ -208,15 +208,13 @@ type ManagementCloudDbSystemConnectorInitParameters struct {
 	ConnectorType *string `json:"connectorType,omitempty" tf:"connector_type,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the cloud connector. The name does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 type ManagementCloudDbSystemConnectorObservation struct {
@@ -243,15 +241,13 @@ type ManagementCloudDbSystemConnectorObservation struct {
 	ConnectorType *string `json:"connectorType,omitempty" tf:"connector_type,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the cloud connector. The name does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the cloud DB system connector.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -263,8 +259,7 @@ type ManagementCloudDbSystemConnectorObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. System tags can be viewed by users, but can only be created by the system.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the connectionStatus of the cloud DB system connector was last updated.
 	TimeConnectionStatusLastUpdated *string `json:"timeConnectionStatusLastUpdated,omitempty" tf:"time_connection_status_last_updated,omitempty"`
@@ -306,8 +301,7 @@ type ManagementCloudDbSystemConnectorParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the cloud connector. The name does not have to be unique.
 	// +kubebuilder:validation:Optional
@@ -315,8 +309,7 @@ type ManagementCloudDbSystemConnectorParameters struct {
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 }
 
 // ManagementCloudDbSystemConnectorSpec defines the desired state of ManagementCloudDbSystemConnector

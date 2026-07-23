@@ -192,7 +192,8 @@ spec:
                           type: boolean
                         minimumPasswordLength:
                           description: (Updatable) Minimum password length required.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object
@@ -327,7 +328,8 @@ spec:
                           type: boolean
                         minimumPasswordLength:
                           description: (Updatable) Minimum password length required.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object
@@ -469,7 +471,8 @@ spec:
                           type: boolean
                         minimumPasswordLength:
                           description: (Updatable) Minimum password length required.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object

@@ -108,7 +108,7 @@ type MigrationJobAdvisorReportCheckItemsObservation struct {
 	Metadata []MetadataObservation `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// Number of database objects to migrate.
-	ObjectCount *float64 `json:"objectCount,omitempty" tf:"object_count,omitempty"`
+	ObjectCount *int64 `json:"objectCount,omitempty" tf:"object_count,omitempty"`
 
 	// Pre-Migration advisor result.
 	ResultType *string `json:"resultType,omitempty" tf:"result_type,omitempty"`
@@ -168,19 +168,19 @@ type SummaryInitParameters struct {
 type SummaryObservation struct {
 
 	// Number of BLOCKER results in the extended advisor report.
-	BlockerResultsTotalCount *float64 `json:"blockerResultsTotalCount,omitempty" tf:"blocker_results_total_count,omitempty"`
+	BlockerResultsTotalCount *int64 `json:"blockerResultsTotalCount,omitempty" tf:"blocker_results_total_count,omitempty"`
 
 	// Number of FATAL results in the extended advisor report.
-	FatalResultsTotalCount *float64 `json:"fatalResultsTotalCount,omitempty" tf:"fatal_results_total_count,omitempty"`
+	FatalResultsTotalCount *int64 `json:"fatalResultsTotalCount,omitempty" tf:"fatal_results_total_count,omitempty"`
 
 	// Number of INFORMATIONAL results in the extended advisor report.
-	InformationalResultsTotalCount *float64 `json:"informationalResultsTotalCount,omitempty" tf:"informational_results_total_count,omitempty"`
+	InformationalResultsTotalCount *int64 `json:"informationalResultsTotalCount,omitempty" tf:"informational_results_total_count,omitempty"`
 
 	// Number of PASS results in the extended advisor report.
-	PassResultsTotalCount *float64 `json:"passResultsTotalCount,omitempty" tf:"pass_results_total_count,omitempty"`
+	PassResultsTotalCount *int64 `json:"passResultsTotalCount,omitempty" tf:"pass_results_total_count,omitempty"`
 
 	// Number of WARNING results in the extended advisor report.
-	WarningResultsTotalCount *float64 `json:"warningResultsTotalCount,omitempty" tf:"warning_results_total_count,omitempty"`
+	WarningResultsTotalCount *int64 `json:"warningResultsTotalCount,omitempty" tf:"warning_results_total_count,omitempty"`
 }
 
 type SummaryParameters struct {

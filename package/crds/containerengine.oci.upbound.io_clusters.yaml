@@ -170,7 +170,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   endpointConfig:
                     description: The network configuration for access to the Cluster
                       control plane.
@@ -275,7 +274,6 @@ spec:
                             that can be referenced in a Zero Trust Packet Routing
                             (ZPR) policy to control access to ZPR-supported resources.
                           type: object
-                          x-kubernetes-map-type: granular
                         subnetId:
                           description: The OCID of the regional subnet in which to
                             place the Cluster endpoint.
@@ -366,7 +364,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   imagePolicyConfig:
                     description: (Updatable) The image verification policy for signature
                       validation. Once a policy is created and enabled with one or
@@ -718,7 +715,6 @@ spec:
                                   For more information, see Resource Tags. Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
@@ -728,7 +724,6 @@ spec:
                                   information, see Resource Tags. Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         serviceLbConfig:
@@ -754,7 +749,6 @@ spec:
                                   For more information, see Resource Tags. Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
@@ -764,7 +758,6 @@ spec:
                                   information, see Resource Tags. Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         serviceLbSubnetIdSelector:
@@ -1046,7 +1039,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   endpointConfig:
                     description: The network configuration for access to the Cluster
                       control plane.
@@ -1151,7 +1143,6 @@ spec:
                             that can be referenced in a Zero Trust Packet Routing
                             (ZPR) policy to control access to ZPR-supported resources.
                           type: object
-                          x-kubernetes-map-type: granular
                         subnetId:
                           description: The OCID of the regional subnet in which to
                             place the Cluster endpoint.
@@ -1242,7 +1233,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   imagePolicyConfig:
                     description: (Updatable) The image verification policy for signature
                       validation. Once a policy is created and enabled with one or
@@ -1594,7 +1584,6 @@ spec:
                                   For more information, see Resource Tags. Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
@@ -1604,7 +1593,6 @@ spec:
                                   information, see Resource Tags. Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         serviceLbConfig:
@@ -1630,7 +1618,6 @@ spec:
                                   For more information, see Resource Tags. Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
@@ -1640,7 +1627,6 @@ spec:
                                   information, see Resource Tags. Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         serviceLbSubnetIdSelector:
@@ -1941,7 +1927,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   endpointConfig:
                     description: The network configuration for access to the Cluster
                       control plane.
@@ -1967,7 +1952,6 @@ spec:
                             that can be referenced in a Zero Trust Packet Routing
                             (ZPR) policy to control access to ZPR-supported resources.
                           type: object
-                          x-kubernetes-map-type: granular
                         subnetId:
                           description: The OCID of the regional subnet in which to
                             place the Cluster endpoint.
@@ -2007,7 +1991,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the cluster.
                     type: string
@@ -2262,7 +2245,6 @@ spec:
                                   For more information, see Resource Tags. Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
@@ -2272,7 +2254,6 @@ spec:
                                   information, see Resource Tags. Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         serviceLbConfig:
@@ -2298,7 +2279,6 @@ spec:
                                   For more information, see Resource Tags. Example:
                                   {"Operations.CostCenter": "42"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                               freeformTags:
                                 additionalProperties:
                                   type: string
@@ -2308,7 +2288,6 @@ spec:
                                   information, see Resource Tags. Example: {"Department":
                                   "Finance"}'
                                 type: object
-                                x-kubernetes-map-type: granular
                             type: object
                           type: array
                         serviceLbSubnetIds:

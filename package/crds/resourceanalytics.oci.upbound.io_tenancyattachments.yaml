@@ -392,7 +392,8 @@ spec:
                               inProgressCount:
                                 description: The number of data population tasks currently
                                   in progress.
-                                type: number
+                                format: int64
+                                type: integer
                               status:
                                 description: The overall status of the data population
                                   from the monitored region of the tenancy.
@@ -400,7 +401,8 @@ spec:
                               succeededCount:
                                 description: The number of data population tasks that
                                   have succeeded.
-                                type: number
+                                format: int64
+                                type: integer
                               timeEnded:
                                 description: 'The date and time the data population
                                   task completed, in the format defined by RFC 3339.  Example:
@@ -413,7 +415,8 @@ spec:
                                 type: string
                               totalCount:
                                 description: The total number of data population tasks.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         regionId:
@@ -436,7 +439,6 @@ spec:
                       and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   tenancyId:
                     description: The OCID of the tenancy associated with this TenancyAttachment.
                     type: string

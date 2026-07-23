@@ -155,14 +155,12 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   freeformTags:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   manageDefaultResourceId:
                     type: string
                   routeRules:
@@ -278,14 +276,12 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   freeformTags:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   manageDefaultResourceId:
                     type: string
                   routeRules:
@@ -410,14 +406,12 @@ spec:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     type: string
                   freeformTags:
                     additionalProperties:
                       type: string
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     type: string
                   manageDefaultResourceId:

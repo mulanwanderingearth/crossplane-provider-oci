@@ -35,8 +35,7 @@ type OceInstanceInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) OceInstance description
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -45,8 +44,7 @@ type OceInstanceInitParameters struct {
 	DrRegion *string `json:"drRegion,omitempty" tf:"dr_region,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Identity Cloud Service access token identifying a stripe and service administrator user
 	IdcsAccessTokenSecretRef v1.LocalSecretKeySelector `json:"idcsAccessTokenSecretRef" tf:"-"`
@@ -91,8 +89,7 @@ type OceInstanceObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) OceInstance description
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -101,8 +98,7 @@ type OceInstanceObservation struct {
 	DrRegion *string `json:"drRegion,omitempty" tf:"dr_region,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique GUID identifier that is immutable on creation
 	GUID *string `json:"guid,omitempty" tf:"guid,omitempty"`
@@ -132,8 +128,7 @@ type OceInstanceObservation struct {
 	ObjectStorageNamespace *string `json:"objectStorageNamespace,omitempty" tf:"object_storage_namespace,omitempty"`
 
 	// SERVICE data. Example: {"service": {"IDCS": "value"}}
-	// +mapType=granular
-	Service map[string]*string `json:"service,omitempty" tf:"service,omitempty"`
+	Service map[string]string `json:"service,omitempty" tf:"service,omitempty"`
 
 	// The current state of the instance lifecycle.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -142,8 +137,7 @@ type OceInstanceObservation struct {
 	StateMessage *string `json:"stateMessage,omitempty" tf:"state_message,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Tenancy Identifier
 	TenancyID *string `json:"tenancyId,omitempty" tf:"tenancy_id,omitempty"`
@@ -189,8 +183,7 @@ type OceInstanceParameters struct {
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) OceInstance description
 	// +kubebuilder:validation:Optional
@@ -202,8 +195,7 @@ type OceInstanceParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Identity Cloud Service access token identifying a stripe and service administrator user
 	// +kubebuilder:validation:Optional

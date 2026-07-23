@@ -28,12 +28,12 @@ func (in *AdditionalEgressRulesInitParameters) DeepCopyInto(out *AdditionalEgres
 	}
 	if in.MaxDestinationPort != nil {
 		in, out := &in.MaxDestinationPort, &out.MaxDestinationPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinDestinationPort != nil {
 		in, out := &in.MinDestinationPort, &out.MinDestinationPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -63,12 +63,12 @@ func (in *AdditionalEgressRulesObservation) DeepCopyInto(out *AdditionalEgressRu
 	}
 	if in.MaxDestinationPort != nil {
 		in, out := &in.MaxDestinationPort, &out.MaxDestinationPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinDestinationPort != nil {
 		in, out := &in.MinDestinationPort, &out.MinDestinationPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -98,12 +98,12 @@ func (in *AdditionalEgressRulesParameters) DeepCopyInto(out *AdditionalEgressRul
 	}
 	if in.MaxDestinationPort != nil {
 		in, out := &in.MaxDestinationPort, &out.MaxDestinationPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.MinDestinationPort != nil {
 		in, out := &in.MinDestinationPort, &out.MinDestinationPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -917,18 +917,9 @@ func (in *FusionEnvironmentFamilyInitParameters) DeepCopyInto(out *FusionEnviron
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -945,18 +936,9 @@ func (in *FusionEnvironmentFamilyInitParameters) DeepCopyInto(out *FusionEnviron
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.SubscriptionIds != nil {
@@ -1029,18 +1011,9 @@ func (in *FusionEnvironmentFamilyObservation) DeepCopyInto(out *FusionEnvironmen
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1057,18 +1030,9 @@ func (in *FusionEnvironmentFamilyObservation) DeepCopyInto(out *FusionEnvironmen
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1149,18 +1113,9 @@ func (in *FusionEnvironmentFamilyParameters) DeepCopyInto(out *FusionEnvironment
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1177,18 +1132,9 @@ func (in *FusionEnvironmentFamilyParameters) DeepCopyInto(out *FusionEnvironment
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.SubscriptionIds != nil {
@@ -1304,18 +1250,9 @@ func (in *FusionEnvironmentInitParameters) DeepCopyInto(out *FusionEnvironmentIn
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1325,18 +1262,9 @@ func (in *FusionEnvironmentInitParameters) DeepCopyInto(out *FusionEnvironmentIn
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FusionEnvironmentFamilyID != nil {
@@ -1488,18 +1416,9 @@ func (in *FusionEnvironmentObservation) DeepCopyInto(out *FusionEnvironmentObser
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1514,18 +1433,9 @@ func (in *FusionEnvironmentObservation) DeepCopyInto(out *FusionEnvironmentObser
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FusionEnvironmentFamilyID != nil {
@@ -1709,18 +1619,9 @@ func (in *FusionEnvironmentParameters) DeepCopyInto(out *FusionEnvironmentParame
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1730,18 +1631,9 @@ func (in *FusionEnvironmentParameters) DeepCopyInto(out *FusionEnvironmentParame
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FusionEnvironmentFamilyID != nil {
@@ -2128,18 +2020,9 @@ func (in *FusionEnvironmentServiceAttachmentInitParameters) DeepCopyInto(out *Fu
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FusionEnvironmentID != nil {
@@ -2231,18 +2114,9 @@ func (in *FusionEnvironmentServiceAttachmentObservation) DeepCopyInto(out *Fusio
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -2252,18 +2126,9 @@ func (in *FusionEnvironmentServiceAttachmentObservation) DeepCopyInto(out *Fusio
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FusionEnvironmentID != nil {
@@ -2328,18 +2193,9 @@ func (in *FusionEnvironmentServiceAttachmentParameters) DeepCopyInto(out *Fusion
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.FusionEnvironmentID != nil {

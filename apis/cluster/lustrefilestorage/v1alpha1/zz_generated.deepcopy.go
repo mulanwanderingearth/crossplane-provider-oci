@@ -235,7 +235,7 @@ func (in *LustreFileSystemInitParameters) DeepCopyInto(out *LustreFileSystemInit
 	}
 	if in.CapacityInGbs != nil {
 		in, out := &in.CapacityInGbs, &out.CapacityInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ClusterPlacementGroupID != nil {
@@ -277,18 +277,9 @@ func (in *LustreFileSystemInitParameters) DeepCopyInto(out *LustreFileSystemInit
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -318,18 +309,9 @@ func (in *LustreFileSystemInitParameters) DeepCopyInto(out *LustreFileSystemInit
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.KMSKeyID != nil {
@@ -367,7 +349,7 @@ func (in *LustreFileSystemInitParameters) DeepCopyInto(out *LustreFileSystemInit
 	}
 	if in.OverrideMaintenanceTrigger != nil {
 		in, out := &in.OverrideMaintenanceTrigger, &out.OverrideMaintenanceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PerformanceTier != nil {
@@ -399,18 +381,9 @@ func (in *LustreFileSystemInitParameters) DeepCopyInto(out *LustreFileSystemInit
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -467,7 +440,7 @@ func (in *LustreFileSystemObservation) DeepCopyInto(out *LustreFileSystemObserva
 	}
 	if in.CapacityInGbs != nil {
 		in, out := &in.CapacityInGbs, &out.CapacityInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ClusterPlacementGroupID != nil {
@@ -489,18 +462,9 @@ func (in *LustreFileSystemObservation) DeepCopyInto(out *LustreFileSystemObserva
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -520,18 +484,9 @@ func (in *LustreFileSystemObservation) DeepCopyInto(out *LustreFileSystemObserva
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -591,7 +546,7 @@ func (in *LustreFileSystemObservation) DeepCopyInto(out *LustreFileSystemObserva
 	}
 	if in.OverrideMaintenanceTrigger != nil {
 		in, out := &in.OverrideMaintenanceTrigger, &out.OverrideMaintenanceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PerformanceTier != nil {
@@ -618,18 +573,9 @@ func (in *LustreFileSystemObservation) DeepCopyInto(out *LustreFileSystemObserva
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeBillingCycleEnd != nil {
@@ -669,7 +615,7 @@ func (in *LustreFileSystemParameters) DeepCopyInto(out *LustreFileSystemParamete
 	}
 	if in.CapacityInGbs != nil {
 		in, out := &in.CapacityInGbs, &out.CapacityInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ClusterPlacementGroupID != nil {
@@ -711,18 +657,9 @@ func (in *LustreFileSystemParameters) DeepCopyInto(out *LustreFileSystemParamete
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -752,18 +689,9 @@ func (in *LustreFileSystemParameters) DeepCopyInto(out *LustreFileSystemParamete
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.KMSKeyID != nil {
@@ -801,7 +729,7 @@ func (in *LustreFileSystemParameters) DeepCopyInto(out *LustreFileSystemParamete
 	}
 	if in.OverrideMaintenanceTrigger != nil {
 		in, out := &in.OverrideMaintenanceTrigger, &out.OverrideMaintenanceTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.PerformanceTier != nil {
@@ -833,18 +761,9 @@ func (in *LustreFileSystemParameters) DeepCopyInto(out *LustreFileSystemParamete
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -1085,18 +1004,9 @@ func (in *ObjectStorageLinkInitParameters) DeepCopyInto(out *ObjectStorageLinkIn
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1111,18 +1021,9 @@ func (in *ObjectStorageLinkInitParameters) DeepCopyInto(out *ObjectStorageLinkIn
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsOverwrite != nil {
@@ -1152,22 +1053,22 @@ func (in *ObjectStorageLinkInitParameters) DeepCopyInto(out *ObjectStorageLinkIn
 	}
 	if in.StartExportToObjectTrigger != nil {
 		in, out := &in.StartExportToObjectTrigger, &out.StartExportToObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StartImportFromObjectTrigger != nil {
 		in, out := &in.StartImportFromObjectTrigger, &out.StartImportFromObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StopExportToObjectTrigger != nil {
 		in, out := &in.StopExportToObjectTrigger, &out.StopExportToObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StopImportFromObjectTrigger != nil {
 		in, out := &in.StopImportFromObjectTrigger, &out.StopImportFromObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1234,18 +1135,9 @@ func (in *ObjectStorageLinkObservation) DeepCopyInto(out *ObjectStorageLinkObser
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1260,18 +1152,9 @@ func (in *ObjectStorageLinkObservation) DeepCopyInto(out *ObjectStorageLinkObser
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -1306,12 +1189,12 @@ func (in *ObjectStorageLinkObservation) DeepCopyInto(out *ObjectStorageLinkObser
 	}
 	if in.StartExportToObjectTrigger != nil {
 		in, out := &in.StartExportToObjectTrigger, &out.StartExportToObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StartImportFromObjectTrigger != nil {
 		in, out := &in.StartImportFromObjectTrigger, &out.StartImportFromObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.State != nil {
@@ -1321,28 +1204,19 @@ func (in *ObjectStorageLinkObservation) DeepCopyInto(out *ObjectStorageLinkObser
 	}
 	if in.StopExportToObjectTrigger != nil {
 		in, out := &in.StopExportToObjectTrigger, &out.StopExportToObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StopImportFromObjectTrigger != nil {
 		in, out := &in.StopImportFromObjectTrigger, &out.StopImportFromObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1392,18 +1266,9 @@ func (in *ObjectStorageLinkParameters) DeepCopyInto(out *ObjectStorageLinkParame
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1418,18 +1283,9 @@ func (in *ObjectStorageLinkParameters) DeepCopyInto(out *ObjectStorageLinkParame
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsOverwrite != nil {
@@ -1459,22 +1315,22 @@ func (in *ObjectStorageLinkParameters) DeepCopyInto(out *ObjectStorageLinkParame
 	}
 	if in.StartExportToObjectTrigger != nil {
 		in, out := &in.StartExportToObjectTrigger, &out.StartExportToObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StartImportFromObjectTrigger != nil {
 		in, out := &in.StartImportFromObjectTrigger, &out.StartImportFromObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StopExportToObjectTrigger != nil {
 		in, out := &in.StopExportToObjectTrigger, &out.StopExportToObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.StopImportFromObjectTrigger != nil {
 		in, out := &in.StopImportFromObjectTrigger, &out.StopImportFromObjectTrigger
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

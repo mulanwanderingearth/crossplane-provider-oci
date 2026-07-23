@@ -357,18 +357,9 @@ func (in *LicenseRecordInitParameters) DeepCopyInto(out *LicenseRecordInitParame
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -383,18 +374,9 @@ func (in *LicenseRecordInitParameters) DeepCopyInto(out *LicenseRecordInitParame
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsPerpetual != nil {
@@ -409,7 +391,7 @@ func (in *LicenseRecordInitParameters) DeepCopyInto(out *LicenseRecordInitParame
 	}
 	if in.LicenseCount != nil {
 		in, out := &in.LicenseCount, &out.LicenseCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ProductID != nil {
@@ -491,18 +473,9 @@ func (in *LicenseRecordObservation) DeepCopyInto(out *LicenseRecordObservation) 
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -517,18 +490,9 @@ func (in *LicenseRecordObservation) DeepCopyInto(out *LicenseRecordObservation) 
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -548,7 +512,7 @@ func (in *LicenseRecordObservation) DeepCopyInto(out *LicenseRecordObservation) 
 	}
 	if in.LicenseCount != nil {
 		in, out := &in.LicenseCount, &out.LicenseCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.LicenseUnit != nil {
@@ -583,18 +547,9 @@ func (in *LicenseRecordObservation) DeepCopyInto(out *LicenseRecordObservation) 
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -624,18 +579,9 @@ func (in *LicenseRecordParameters) DeepCopyInto(out *LicenseRecordParameters) {
 	*out = *in
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -650,18 +596,9 @@ func (in *LicenseRecordParameters) DeepCopyInto(out *LicenseRecordParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IsPerpetual != nil {
@@ -676,7 +613,7 @@ func (in *LicenseRecordParameters) DeepCopyInto(out *LicenseRecordParameters) {
 	}
 	if in.LicenseCount != nil {
 		in, out := &in.LicenseCount, &out.LicenseCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ProductID != nil {
@@ -798,18 +735,9 @@ func (in *ProductLicenseInitParameters) DeepCopyInto(out *ProductLicenseInitPara
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -819,18 +747,9 @@ func (in *ProductLicenseInitParameters) DeepCopyInto(out *ProductLicenseInitPara
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Images != nil {
@@ -904,7 +823,7 @@ func (in *ProductLicenseObservation) DeepCopyInto(out *ProductLicenseObservation
 	*out = *in
 	if in.ActiveLicenseRecordCount != nil {
 		in, out := &in.ActiveLicenseRecordCount, &out.ActiveLicenseRecordCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -914,18 +833,9 @@ func (in *ProductLicenseObservation) DeepCopyInto(out *ProductLicenseObservation
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -935,18 +845,9 @@ func (in *ProductLicenseObservation) DeepCopyInto(out *ProductLicenseObservation
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -998,18 +899,9 @@ func (in *ProductLicenseObservation) DeepCopyInto(out *ProductLicenseObservation
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -1024,12 +916,12 @@ func (in *ProductLicenseObservation) DeepCopyInto(out *ProductLicenseObservation
 	}
 	if in.TotalActiveLicenseUnitCount != nil {
 		in, out := &in.TotalActiveLicenseUnitCount, &out.TotalActiveLicenseUnitCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TotalLicenseRecordCount != nil {
 		in, out := &in.TotalLicenseRecordCount, &out.TotalLicenseRecordCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.TotalLicenseUnitsConsumed != nil {
@@ -1074,18 +966,9 @@ func (in *ProductLicenseParameters) DeepCopyInto(out *ProductLicenseParameters) 
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.DisplayName != nil {
@@ -1095,18 +978,9 @@ func (in *ProductLicenseParameters) DeepCopyInto(out *ProductLicenseParameters) 
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Images != nil {

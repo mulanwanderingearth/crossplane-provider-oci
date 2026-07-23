@@ -52,15 +52,13 @@ type PrivilegedApiRequestInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Duration in hours for which access is sought on the target resource.
-	DurationInHrs *float64 `json:"durationInHrs,omitempty" tf:"duration_in_hrs,omitempty"`
+	DurationInHrs *int64 `json:"durationInHrs,omitempty" tf:"duration_in_hrs,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Oracle Cloud Infrastructure Notification topic to publish messages related to this Privileged Api Request.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ons/v1alpha1.NotificationTopic
@@ -112,21 +110,19 @@ type PrivilegedApiRequestObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Name of the privilegedApi control. The name must be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// Duration in hours for which access is sought on the target resource.
-	DurationInHrs *float64 `json:"durationInHrs,omitempty" tf:"duration_in_hrs,omitempty"`
+	DurationInHrs *int64 `json:"durationInHrs,omitempty" tf:"duration_in_hrs,omitempty"`
 
 	// entityType of resource for which the AccessRequest is applicable
 	EntityType *string `json:"entityType,omitempty" tf:"entity_type,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the privilegedApi request.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -138,7 +134,7 @@ type PrivilegedApiRequestObservation struct {
 	NotificationTopicID *string `json:"notificationTopicId,omitempty" tf:"notification_topic_id,omitempty"`
 
 	// Number of approvers required to approve an privilegedApi request.
-	NumberOfApproversRequired *float64 `json:"numberOfApproversRequired,omitempty" tf:"number_of_approvers_required,omitempty"`
+	NumberOfApproversRequired *int64 `json:"numberOfApproversRequired,omitempty" tf:"number_of_approvers_required,omitempty"`
 
 	// The OCID of the privilegedApi control governing the target resource.
 	PrivilegedAPIControlID *string `json:"privilegedApiControlId,omitempty" tf:"privileged_api_control_id,omitempty"`
@@ -183,8 +179,7 @@ type PrivilegedApiRequestObservation struct {
 	SubResourceNameList []*string `json:"subResourceNameList,omitempty" tf:"sub_resource_name_list,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// A list of ticket numbers related to this Privileged Api Access Request, e.g. Service Request (SR) number and JIRA ticket number.
 	TicketNumbers []*string `json:"ticketNumbers,omitempty" tf:"ticket_numbers,omitempty"`
@@ -216,17 +211,15 @@ type PrivilegedApiRequestParameters struct {
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Duration in hours for which access is sought on the target resource.
 	// +kubebuilder:validation:Optional
-	DurationInHrs *float64 `json:"durationInHrs,omitempty" tf:"duration_in_hrs,omitempty"`
+	DurationInHrs *int64 `json:"durationInHrs,omitempty" tf:"duration_in_hrs,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Oracle Cloud Infrastructure Notification topic to publish messages related to this Privileged Api Request.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/ons/v1alpha1.NotificationTopic

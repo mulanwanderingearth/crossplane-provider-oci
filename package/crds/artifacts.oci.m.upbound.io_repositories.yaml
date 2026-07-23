@@ -151,7 +151,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the repository.
                       It can be updated later.
@@ -169,7 +168,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isImmutable:
                     description: Whether to make the repository immutable. The artifacts
                       of an immutable repository cannot be overwritten.
@@ -283,7 +281,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the repository.
                       It can be updated later.
@@ -301,7 +298,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isImmutable:
                     description: Whether to make the repository immutable. The artifacts
                       of an immutable repository cannot be overwritten.
@@ -394,7 +390,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description of the repository.
                       It can be updated later.
@@ -412,7 +407,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: 'The OCID of the repository.  Example: ocid1.artifactrepository.oc1..exampleuniqueID'
                     type: string

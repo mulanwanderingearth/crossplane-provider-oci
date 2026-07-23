@@ -152,7 +152,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Inventory displayName.
                     type: string
@@ -164,7 +163,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               initProvider:
                 description: |-
@@ -272,7 +270,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Inventory displayName.
                     type: string
@@ -284,7 +281,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                 type: object
               managementPolicies:
                 default:
@@ -367,7 +363,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Inventory displayName.
                     type: string
@@ -379,7 +374,6 @@ spec:
                       predefined name, type, or namespace/scope. For more information,
                       see Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Inventory OCID.
                     type: string
@@ -400,7 +394,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time when the inventory was created. An RFC3339
                       formatted datetime string.

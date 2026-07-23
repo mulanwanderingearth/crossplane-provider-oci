@@ -805,7 +805,8 @@ spec:
                   retryCount:
                     description: The number of times the association will be attempted
                       before failing.
-                    type: number
+                    format: int64
+                    type: integer
                   sourceDisplayName:
                     description: The source display name.
                     type: string

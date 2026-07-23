@@ -54,7 +54,7 @@ type NetworkFirewallPolicyMappedSecretInitParameters struct {
 	VaultSecretIDSelector *v1.Selector `json:"vaultSecretIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Version number of the secret to be used.
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 type NetworkFirewallPolicyMappedSecretObservation struct {
@@ -83,7 +83,7 @@ type NetworkFirewallPolicyMappedSecretObservation struct {
 	VaultSecretID *string `json:"vaultSecretId,omitempty" tf:"vault_secret_id,omitempty"`
 
 	// (Updatable) Version number of the secret to be used.
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 type NetworkFirewallPolicyMappedSecretParameters struct {
@@ -134,7 +134,7 @@ type NetworkFirewallPolicyMappedSecretParameters struct {
 
 	// (Updatable) Version number of the secret to be used.
 	// +kubebuilder:validation:Optional
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 // NetworkFirewallPolicyMappedSecretSpec defines the desired state of NetworkFirewallPolicyMappedSecret

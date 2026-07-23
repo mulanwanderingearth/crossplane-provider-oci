@@ -162,7 +162,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Describes the target-alert policy association.
                     type: string
@@ -178,7 +177,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isEnabled:
                     description: (Updatable) Indicates if the target-alert policy
                       association is enabled or disabled.
@@ -438,7 +436,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Describes the target-alert policy association.
                     type: string
@@ -454,7 +451,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isEnabled:
                     description: (Updatable) Indicates if the target-alert policy
                       association is enabled or disabled.
@@ -724,7 +720,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Describes the target-alert policy association.
                     type: string
@@ -740,7 +735,6 @@ spec:
                       or namespace. For more information, see Resource Tags  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the target-alert policy association.
                     type: string
@@ -765,7 +759,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags. Example: {"orcl-cloud.free-tier-retained": "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   targetId:
                     description: The OCID of the target or target database group.
                     type: string

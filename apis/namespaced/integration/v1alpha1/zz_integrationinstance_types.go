@@ -74,7 +74,7 @@ type AlternateCustomEndpointsObservation struct {
 	CertificateSecretID *string `json:"certificateSecretId,omitempty" tf:"certificate_secret_id,omitempty"`
 
 	// The secret version used for the certificate-secret-id (if certificate-secret-id is specified).
-	CertificateSecretVersion *float64 `json:"certificateSecretVersion,omitempty" tf:"certificate_secret_version,omitempty"`
+	CertificateSecretVersion *int64 `json:"certificateSecretVersion,omitempty" tf:"certificate_secret_version,omitempty"`
 
 	// Type of DNS.
 	DNSType *string `json:"dnsType,omitempty" tf:"dns_type,omitempty"`
@@ -187,7 +187,7 @@ type CustomEndpointObservation struct {
 	CertificateSecretID *string `json:"certificateSecretId,omitempty" tf:"certificate_secret_id,omitempty"`
 
 	// The secret version used for the certificate-secret-id (if certificate-secret-id is specified).
-	CertificateSecretVersion *float64 `json:"certificateSecretVersion,omitempty" tf:"certificate_secret_version,omitempty"`
+	CertificateSecretVersion *int64 `json:"certificateSecretVersion,omitempty" tf:"certificate_secret_version,omitempty"`
 
 	// Type of DNS.
 	DNSType *string `json:"dnsType,omitempty" tf:"dns_type,omitempty"`
@@ -357,7 +357,7 @@ type IntegrationInstanceInitParameters struct {
 	ConsumptionModel *string `json:"consumptionModel,omitempty" tf:"consumption_model,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Convert Instance. Could be set to any integer value.
-	ConvertInstanceTrigger *float64 `json:"convertInstanceTrigger,omitempty" tf:"convert_instance_trigger,omitempty"`
+	ConvertInstanceTrigger *int64 `json:"convertInstanceTrigger,omitempty" tf:"convert_instance_trigger,omitempty"`
 
 	// (Updatable) Details for a custom endpoint for the integration instance (update).
 	CustomEndpoint []CustomEndpointInitParameters `json:"customEndpoint,omitempty" tf:"custom_endpoint,omitempty"`
@@ -366,11 +366,10 @@ type IntegrationInstanceInitParameters struct {
 	DataRetentionPeriod *string `json:"dataRetentionPeriod,omitempty" tf:"data_retention_period,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Disable Process Automation. Could be set to any integer value.
-	DisableProcessAutomationTrigger *float64 `json:"disableProcessAutomationTrigger,omitempty" tf:"disable_process_automation_trigger,omitempty"`
+	DisableProcessAutomationTrigger *int64 `json:"disableProcessAutomationTrigger,omitempty" tf:"disable_process_automation_trigger,omitempty"`
 
 	// (Updatable) Integration Instance Identifier.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -389,16 +388,15 @@ type IntegrationInstanceInitParameters struct {
 	DomainIDSelector *v1.NamespacedSelector `json:"domainIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Enable Process Automation. Could be set to any integer value.
-	EnableProcessAutomationTrigger *float64 `json:"enableProcessAutomationTrigger,omitempty" tf:"enable_process_automation_trigger,omitempty"`
+	EnableProcessAutomationTrigger *int64 `json:"enableProcessAutomationTrigger,omitempty" tf:"enable_process_automation_trigger,omitempty"`
 
-	ExtendDataRetentionTrigger *float64 `json:"extendDataRetentionTrigger,omitempty" tf:"extend_data_retention_trigger,omitempty"`
+	ExtendDataRetentionTrigger *int64 `json:"extendDataRetentionTrigger,omitempty" tf:"extend_data_retention_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
-	FailoverTrigger *float64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
+	FailoverTrigger *int64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) IDCS Authentication token. This is required for all realms with IDCS. Its optional as its not required for non IDCS realms.
 	IdcsAtSecretRef *v1.LocalSecretKeySelector `json:"idcsAtSecretRef,omitempty" tf:"-"`
@@ -422,7 +420,7 @@ type IntegrationInstanceInitParameters struct {
 	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
 
 	// (Updatable) The number of configured message packs
-	MessagePacks *float64 `json:"messagePacks,omitempty" tf:"message_packs,omitempty"`
+	MessagePacks *int64 `json:"messagePacks,omitempty" tf:"message_packs,omitempty"`
 
 	// Base representation of a network endpoint.
 	NetworkEndpointDetails []NetworkEndpointDetailsInitParameters `json:"networkEndpointDetails,omitempty" tf:"network_endpoint_details,omitempty"`
@@ -438,8 +436,7 @@ type IntegrationInstanceInitParameters struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type IntegrationInstanceObservation struct {
@@ -459,7 +456,7 @@ type IntegrationInstanceObservation struct {
 	ConsumptionModel *string `json:"consumptionModel,omitempty" tf:"consumption_model,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Convert Instance. Could be set to any integer value.
-	ConvertInstanceTrigger *float64 `json:"convertInstanceTrigger,omitempty" tf:"convert_instance_trigger,omitempty"`
+	ConvertInstanceTrigger *int64 `json:"convertInstanceTrigger,omitempty" tf:"convert_instance_trigger,omitempty"`
 
 	// (Updatable) Details for a custom endpoint for the integration instance (update).
 	CustomEndpoint []CustomEndpointObservation `json:"customEndpoint,omitempty" tf:"custom_endpoint,omitempty"`
@@ -468,11 +465,10 @@ type IntegrationInstanceObservation struct {
 	DataRetentionPeriod *string `json:"dataRetentionPeriod,omitempty" tf:"data_retention_period,omitempty"`
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Disable Process Automation. Could be set to any integer value.
-	DisableProcessAutomationTrigger *float64 `json:"disableProcessAutomationTrigger,omitempty" tf:"disable_process_automation_trigger,omitempty"`
+	DisableProcessAutomationTrigger *int64 `json:"disableProcessAutomationTrigger,omitempty" tf:"disable_process_automation_trigger,omitempty"`
 
 	// Disaster recovery details for the integration instance created in the region.
 	DisasterRecoveryDetails []DisasterRecoveryDetailsObservation `json:"disasterRecoveryDetails,omitempty" tf:"disaster_recovery_details,omitempty"`
@@ -484,16 +480,15 @@ type IntegrationInstanceObservation struct {
 	DomainID *string `json:"domainId,omitempty" tf:"domain_id,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Enable Process Automation. Could be set to any integer value.
-	EnableProcessAutomationTrigger *float64 `json:"enableProcessAutomationTrigger,omitempty" tf:"enable_process_automation_trigger,omitempty"`
+	EnableProcessAutomationTrigger *int64 `json:"enableProcessAutomationTrigger,omitempty" tf:"enable_process_automation_trigger,omitempty"`
 
-	ExtendDataRetentionTrigger *float64 `json:"extendDataRetentionTrigger,omitempty" tf:"extend_data_retention_trigger,omitempty"`
+	ExtendDataRetentionTrigger *int64 `json:"extendDataRetentionTrigger,omitempty" tf:"extend_data_retention_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
-	FailoverTrigger *float64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
+	FailoverTrigger *int64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The Virtual Cloud Network OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -528,7 +523,7 @@ type IntegrationInstanceObservation struct {
 	LogGroupID *string `json:"logGroupId,omitempty" tf:"log_group_id,omitempty"`
 
 	// (Updatable) The number of configured message packs
-	MessagePacks *float64 `json:"messagePacks,omitempty" tf:"message_packs,omitempty"`
+	MessagePacks *int64 `json:"messagePacks,omitempty" tf:"message_packs,omitempty"`
 
 	// Base representation of a network endpoint.
 	NetworkEndpointDetails []NetworkEndpointDetailsObservation `json:"networkEndpointDetails,omitempty" tf:"network_endpoint_details,omitempty"`
@@ -553,8 +548,7 @@ type IntegrationInstanceObservation struct {
 	StateMessage *string `json:"stateMessage,omitempty" tf:"state_message,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the the Integration Instance was created. An RFC3339 formatted datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -591,7 +585,7 @@ type IntegrationInstanceParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Convert Instance. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ConvertInstanceTrigger *float64 `json:"convertInstanceTrigger,omitempty" tf:"convert_instance_trigger,omitempty"`
+	ConvertInstanceTrigger *int64 `json:"convertInstanceTrigger,omitempty" tf:"convert_instance_trigger,omitempty"`
 
 	// (Updatable) Details for a custom endpoint for the integration instance (update).
 	// +kubebuilder:validation:Optional
@@ -603,12 +597,11 @@ type IntegrationInstanceParameters struct {
 
 	// (Updatable) Usage of predefined tag keys. These predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Disable Process Automation. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	DisableProcessAutomationTrigger *float64 `json:"disableProcessAutomationTrigger,omitempty" tf:"disable_process_automation_trigger,omitempty"`
+	DisableProcessAutomationTrigger *int64 `json:"disableProcessAutomationTrigger,omitempty" tf:"disable_process_automation_trigger,omitempty"`
 
 	// (Updatable) Integration Instance Identifier.
 	// +kubebuilder:validation:Optional
@@ -630,19 +623,18 @@ type IntegrationInstanceParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Enable Process Automation. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	EnableProcessAutomationTrigger *float64 `json:"enableProcessAutomationTrigger,omitempty" tf:"enable_process_automation_trigger,omitempty"`
+	EnableProcessAutomationTrigger *int64 `json:"enableProcessAutomationTrigger,omitempty" tf:"enable_process_automation_trigger,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	ExtendDataRetentionTrigger *float64 `json:"extendDataRetentionTrigger,omitempty" tf:"extend_data_retention_trigger,omitempty"`
+	ExtendDataRetentionTrigger *int64 `json:"extendDataRetentionTrigger,omitempty" tf:"extend_data_retention_trigger,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Failover. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	FailoverTrigger *float64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
+	FailoverTrigger *int64 `json:"failoverTrigger,omitempty" tf:"failover_trigger,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) IDCS Authentication token. This is required for all realms with IDCS. Its optional as its not required for non IDCS realms.
 	// +kubebuilder:validation:Optional
@@ -674,7 +666,7 @@ type IntegrationInstanceParameters struct {
 
 	// (Updatable) The number of configured message packs
 	// +kubebuilder:validation:Optional
-	MessagePacks *float64 `json:"messagePacks,omitempty" tf:"message_packs,omitempty"`
+	MessagePacks *int64 `json:"messagePacks,omitempty" tf:"message_packs,omitempty"`
 
 	// Base representation of a network endpoint.
 	// +kubebuilder:validation:Optional
@@ -695,8 +687,7 @@ type IntegrationInstanceParameters struct {
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 }
 
 type NetworkEndpointDetailsInitParameters struct {

@@ -107,7 +107,7 @@ type VmClusterAddVirtualMachineFileSystemConfigurationDetailsInitParameters stru
 type VmClusterAddVirtualMachineFileSystemConfigurationDetailsObservation struct {
 
 	// The file system size to be allocated in GBs.
-	FileSystemSizeGb *float64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
+	FileSystemSizeGb *int64 `json:"fileSystemSizeGb,omitempty" tf:"file_system_size_gb,omitempty"`
 
 	// The mount point of file system.
 	MountPoint *string `json:"mountPoint,omitempty" tf:"mount_point,omitempty"`
@@ -150,10 +150,10 @@ type VmClusterAddVirtualMachineObservation struct {
 	ComputeModel *string `json:"computeModel,omitempty" tf:"compute_model,omitempty"`
 
 	// The number of enabled CPU cores.
-	CpusEnabled *float64 `json:"cpusEnabled,omitempty" tf:"cpus_enabled,omitempty"`
+	CpusEnabled *int64 `json:"cpusEnabled,omitempty" tf:"cpus_enabled,omitempty"`
 
 	// The local node storage allocated in GBs.
-	DBNodeStorageSizeInGbs *float64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
+	DBNodeStorageSizeInGbs *int64 `json:"dbNodeStorageSizeInGbs,omitempty" tf:"db_node_storage_size_in_gbs,omitempty"`
 
 	// The list of Exacc DB servers for the cluster to be added.
 	DBServers []DBServersObservation `json:"dbServers,omitempty" tf:"db_servers,omitempty"`
@@ -162,7 +162,7 @@ type VmClusterAddVirtualMachineObservation struct {
 	DataCollectionOptions []VmClusterAddVirtualMachineDataCollectionOptionsObservation `json:"dataCollectionOptions,omitempty" tf:"data_collection_options,omitempty"`
 
 	// The percentage assigned to DATA storage (user data and database files). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	DataStoragePercentage *float64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
+	DataStoragePercentage *int64 `json:"dataStoragePercentage,omitempty" tf:"data_storage_percentage,omitempty"`
 
 	// Size of the DATA disk group in GBs.
 	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
@@ -171,8 +171,7 @@ type VmClusterAddVirtualMachineObservation struct {
 	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// The user-friendly name for the Exadata Cloud@Customer VM cluster. The name does not need to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -187,8 +186,7 @@ type VmClusterAddVirtualMachineObservation struct {
 	FileSystemConfigurationDetails []VmClusterAddVirtualMachineFileSystemConfigurationDetailsObservation `json:"fileSystemConfigurationDetails,omitempty" tf:"file_system_configuration_details,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The Oracle Grid Infrastructure software version for the VM cluster.
 	GiVersion *string `json:"giVersion,omitempty" tf:"gi_version,omitempty"`
@@ -212,13 +210,13 @@ type VmClusterAddVirtualMachineObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The memory allocated in GBs.
-	MemorySizeInGbs *float64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
+	MemorySizeInGbs *int64 `json:"memorySizeInGbs,omitempty" tf:"memory_size_in_gbs,omitempty"`
 
 	// The number of enabled CPU cores.
 	OcpusEnabled *float64 `json:"ocpusEnabled,omitempty" tf:"ocpus_enabled,omitempty"`
 
 	// The percentage assigned to RECO storage (database redo logs, archive logs, and recovery manager backups). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	RecoStoragePercentage *float64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
+	RecoStoragePercentage *int64 `json:"recoStoragePercentage,omitempty" tf:"reco_storage_percentage,omitempty"`
 
 	// The public key portion of one or more key pairs used for SSH access to the VM cluster.
 	SSHPublicKeys []*string `json:"sshPublicKeys,omitempty" tf:"ssh_public_keys,omitempty"`
@@ -227,7 +225,7 @@ type VmClusterAddVirtualMachineObservation struct {
 	Shape *string `json:"shape,omitempty" tf:"shape,omitempty"`
 
 	// The percentage assigned to SPARSE storage (Exadata snapshots). See Storage Configuration in the Exadata documentation for details on the impact of the configuration settings on storage.
-	SparseStoragePercentage *float64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
+	SparseStoragePercentage *int64 `json:"sparseStoragePercentage,omitempty" tf:"sparse_storage_percentage,omitempty"`
 
 	// The current state of the VM cluster.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`

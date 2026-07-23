@@ -29,8 +29,7 @@ type ByolInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the BYOL.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -42,8 +41,7 @@ type ByolInitParameters struct {
 	EntitlementKey *string `json:"entitlementKey,omitempty" tf:"entitlement_key,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hyperscaler identifier in Broadcom systems.
 	SiteID *string `json:"siteId,omitempty" tf:"site_id,omitempty"`
@@ -58,20 +56,19 @@ type ByolInitParameters struct {
 	TimeTermStart *string `json:"timeTermStart,omitempty" tf:"time_term_start,omitempty"`
 
 	// (Updatable) Total quantity of licensed units for the specified softwareType:
-	TotalUnits *float64 `json:"totalUnits,omitempty" tf:"total_units,omitempty"`
+	TotalUnits *int64 `json:"totalUnits,omitempty" tf:"total_units,omitempty"`
 }
 
 type ByolObservation struct {
 
 	// The quantity of licensed units that not yet allocated to specific region.
-	AvailableUnits *float64 `json:"availableUnits,omitempty" tf:"available_units,omitempty"`
+	AvailableUnits *int64 `json:"availableUnits,omitempty" tf:"available_units,omitempty"`
 
 	// (Updatable) The OCID of the compartment that contains the BYOL.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the BYOL.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -83,8 +80,7 @@ type ByolObservation struct {
 	EntitlementKey *string `json:"entitlementKey,omitempty" tf:"entitlement_key,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the BYOL.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -99,8 +95,7 @@ type ByolObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the BYOL was created, in the format defined by RFC3339. Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -115,7 +110,7 @@ type ByolObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) Total quantity of licensed units for the specified softwareType:
-	TotalUnits *float64 `json:"totalUnits,omitempty" tf:"total_units,omitempty"`
+	TotalUnits *int64 `json:"totalUnits,omitempty" tf:"total_units,omitempty"`
 }
 
 type ByolParameters struct {
@@ -135,8 +130,7 @@ type ByolParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A description of the BYOL.
 	// +kubebuilder:validation:Optional
@@ -152,8 +146,7 @@ type ByolParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The hyperscaler identifier in Broadcom systems.
 	// +kubebuilder:validation:Optional
@@ -173,7 +166,7 @@ type ByolParameters struct {
 
 	// (Updatable) Total quantity of licensed units for the specified softwareType:
 	// +kubebuilder:validation:Optional
-	TotalUnits *float64 `json:"totalUnits,omitempty" tf:"total_units,omitempty"`
+	TotalUnits *int64 `json:"totalUnits,omitempty" tf:"total_units,omitempty"`
 }
 
 // ByolSpec defines the desired state of Byol

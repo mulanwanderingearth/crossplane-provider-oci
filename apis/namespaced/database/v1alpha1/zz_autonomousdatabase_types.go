@@ -92,10 +92,10 @@ type AutonomousDatabaseInitParameters struct {
 	ArePrimaryWhitelistedIpsUsed *bool `json:"arePrimaryWhitelistedIpsUsed,omitempty" tf:"are_primary_whitelisted_ips_used,omitempty"`
 
 	// (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable) The frequency a refreshable clone is refreshed after auto-refresh is enabled. The minimum is 1 hour. The maximum is 7 days. The date and time that auto-refresh is enabled is controlled by the timeOfAutoRefreshStart parameter.
-	AutoRefreshFrequencyInSeconds *float64 `json:"autoRefreshFrequencyInSeconds,omitempty" tf:"auto_refresh_frequency_in_seconds,omitempty"`
+	AutoRefreshFrequencyInSeconds *int64 `json:"autoRefreshFrequencyInSeconds,omitempty" tf:"auto_refresh_frequency_in_seconds,omitempty"`
 
 	// (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable) The time, in seconds, the data of the refreshable clone lags the primary database at the point of refresh. The minimum is 0 minutes (0 mins means refresh to the latest available timestamp). The maximum is 7 days. The lag time increases after refreshing until the next data refresh happens.
-	AutoRefreshPointLagInSeconds *float64 `json:"autoRefreshPointLagInSeconds,omitempty" tf:"auto_refresh_point_lag_in_seconds,omitempty"`
+	AutoRefreshPointLagInSeconds *int64 `json:"autoRefreshPointLagInSeconds,omitempty" tf:"auto_refresh_point_lag_in_seconds,omitempty"`
 
 	// The Autonomous Container Database OCID. Used only by Autonomous AI Database on Dedicated Exadata Infrastructure.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.AutonomousContainerDatabase
@@ -143,19 +143,19 @@ type AutonomousDatabaseInitParameters struct {
 	AutonomousMaintenanceScheduleType *string `json:"autonomousMaintenanceScheduleType,omitempty" tf:"autonomous_maintenance_schedule_type,omitempty"`
 
 	// (Updatable) Retention period, in days, for long-term backups
-	BackupRetentionPeriodInDays *float64 `json:"backupRetentionPeriodInDays,omitempty" tf:"backup_retention_period_in_days,omitempty"`
+	BackupRetentionPeriodInDays *int64 `json:"backupRetentionPeriodInDays,omitempty" tf:"backup_retention_period_in_days,omitempty"`
 
 	// (Updatable) The maximum number of CPUs allowed with a Bring Your Own License (BYOL), including those used for auto-scaling, disaster recovery, tools, etc. Any CPU usage above this limit is considered as License Included and billed.
 	ByolComputeCountLimit *float64 `json:"byolComputeCountLimit,omitempty" tf:"byol_compute_count_limit,omitempty"`
 
 	// (Updatable) The number of CPU cores to be made available to the database. For Autonomous AI Databases on dedicated Exadata infrastructure, the maximum number of cores is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The character set for the Autonomous AI Database. The default is AL32UTF8. Allowed values for an Autonomous AI Database Serverless instance as as returned by List Autonomous AI Database Character Sets
 	CharacterSet *string `json:"characterSet,omitempty" tf:"character_set,omitempty"`
 
 	// (Applicable when source=BACKUP_FROM_ID | BACKUP_FROM_TIMESTAMP) A list of the source Autonomous AI Database's table space number(s) used to create this partial clone from the backup.
-	CloneTableSpaceList []*float64 `json:"cloneTableSpaceList,omitempty" tf:"clone_table_space_list,omitempty"`
+	CloneTableSpaceList []*int64 `json:"cloneTableSpaceList,omitempty" tf:"clone_table_space_list,omitempty"`
 
 	// The Autonomous AI Database clone type.
 	CloneType *string `json:"cloneType,omitempty" tf:"clone_type,omitempty"`
@@ -197,10 +197,10 @@ type AutonomousDatabaseInitParameters struct {
 	DataSafeStatus *string `json:"dataSafeStatus,omitempty" tf:"data_safe_status,omitempty"`
 
 	// (Updatable) The size, in gigabytes, of the data volume that will be created and attached to the database. This storage can later be scaled up if needed. The maximum storage value is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// (Updatable) The size, in terabytes, of the data volume that will be created and attached to the database. This storage can later be scaled up if needed. For Autonomous AI Databases on dedicated Exadata infrastructure, the maximum storage value is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details. A full Exadata service is allocated when the Autonomous AI Database size is set to the upper limit (384 TB).
-	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
+	DataStorageSizeInTbs *int64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) The Oracle AI Database Edition that applies to the Autonomous AI Databases. This parameter accepts options STANDARD_EDITION and ENTERPRISE_EDITION.
 	DatabaseEdition *string `json:"databaseEdition,omitempty" tf:"database_edition,omitempty"`
@@ -209,8 +209,7 @@ type AutonomousDatabaseInitParameters struct {
 	DatabaseManagementStatus *string `json:"databaseManagementStatus,omitempty" tf:"database_management_status,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Indicates the disaster recovery (DR) type of the standby Autonomous AI Database Serverless instance. Autonomous Data Guard (ADG) DR type provides business critical DR with a faster recovery time objective (RTO) during failover or switchover. Backup-based DR type provides lower cost DR with a slower RTO during failover or switchover.
 	DisasterRecoveryType *string `json:"disasterRecoveryType,omitempty" tf:"disaster_recovery_type,omitempty"`
@@ -225,11 +224,10 @@ type AutonomousDatabaseInitParameters struct {
 	EncryptionKey []EncryptionKeyInitParameters `json:"encryptionKey,omitempty" tf:"encryption_key,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The percentage of the System Global Area(SGA) assigned to In-Memory tables in Autonomous AI Database. This property is applicable only to Autonomous AI Databases on the Exadata Cloud@Customer platform.
-	InMemoryPercentage *float64 `json:"inMemoryPercentage,omitempty" tf:"in_memory_percentage,omitempty"`
+	InMemoryPercentage *int64 `json:"inMemoryPercentage,omitempty" tf:"in_memory_percentage,omitempty"`
 
 	// (Updatable) Indicates if the database-level access control is enabled. If disabled, database access is defined by the network security rules. If enabled, database access is restricted to the IP addresses defined by the rules specified with the whitelistedIps property. While specifying whitelistedIps rules is optional, if database-level access control is enabled and no rules are specified, the database will become inaccessible. The rules can be added later using the UpdateAutonomousDatabase API operation or edit option in console. When creating a database clone, the desired access control setting should be specified. By default, database-level access control will be disabled for the clone.
 	IsAccessControlEnabled *bool `json:"isAccessControlEnabled,omitempty" tf:"is_access_control_enabled,omitempty"`
@@ -299,7 +297,7 @@ type AutonomousDatabaseInitParameters struct {
 	LicenseModel *string `json:"licenseModel,omitempty" tf:"license_model,omitempty"`
 
 	// Parameter that allows users to select an acceptable maximum data loss limit in seconds, up to which Automatic Failover will be triggered when necessary for a Local Autonomous Data Guard
-	LocalAdgAutoFailoverMaxDataLossLimit *float64 `json:"localAdgAutoFailoverMaxDataLossLimit,omitempty" tf:"local_adg_auto_failover_max_data_loss_limit,omitempty"`
+	LocalAdgAutoFailoverMaxDataLossLimit *int64 `json:"localAdgAutoFailoverMaxDataLossLimit,omitempty" tf:"local_adg_auto_failover_max_data_loss_limit,omitempty"`
 
 	// The OCID of the dedicated resource pool leader Autonomous Database in the same region, associated with local Autonomous Data Guard for a dedicated resource pool member.
 	LocalAdgResourcePoolLeaderID *string `json:"localAdgResourcePoolLeaderId,omitempty" tf:"local_adg_resource_pool_leader_id,omitempty"`
@@ -308,7 +306,7 @@ type AutonomousDatabaseInitParameters struct {
 	LongTermBackupSchedule []LongTermBackupScheduleInitParameters `json:"longTermBackupSchedule,omitempty" tf:"long_term_backup_schedule,omitempty"`
 
 	// (Updatable) The number of CPU cores to be made available to the database. For Autonomous AI Databases on dedicated Exadata infrastructure, the maximum number of cores is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
-	MaxCPUCoreCount *float64 `json:"maxCpuCoreCount,omitempty" tf:"max_cpu_core_count,omitempty"`
+	MaxCPUCoreCount *int64 `json:"maxCpuCoreCount,omitempty" tf:"max_cpu_core_count,omitempty"`
 
 	// The character set for the Autonomous AI Database. The default is AL32UTF8. Use List Autonomous AI Database Character Sets to list the allowed values for an Autonomous AI Database Serverless instance. For an Autonomous AI Database on dedicated Exadata infrastructure, the allowed values are: AL16UTF16 or UTF8.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
@@ -370,13 +368,12 @@ type AutonomousDatabaseInitParameters struct {
 	SecretIDSelector *v1.NamespacedSelector `json:"secretIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The version of the vault secret. If no version is specified, the latest version will be used.
-	SecretVersionNumber *float64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
+	SecretVersionNumber *int64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
-	ShrinkAdbTrigger *float64 `json:"shrinkAdbTrigger,omitempty" tf:"shrink_adb_trigger,omitempty"`
+	ShrinkAdbTrigger *int64 `json:"shrinkAdbTrigger,omitempty" tf:"shrink_adb_trigger,omitempty"`
 
 	// The source of the database: Use NONE for creating a new Autonomous AI Database. Use DATABASE for creating a new Autonomous AI Database by cloning an existing Autonomous AI Database. Use CROSS_REGION_DATAGUARD to create a standby Data Guard database in another region.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
@@ -517,8 +514,7 @@ type AutonomousDatabaseObservation struct {
 	ActualUsedDataStorageSizeInTbs *float64 `json:"actualUsedDataStorageSizeInTbs,omitempty" tf:"actual_used_data_storage_size_in_tbs,omitempty"`
 
 	// Additional attributes for this resource. Each attribute is a simple key-value pair with no predefined name, type, or namespace. Example: { "gcpAccountName": "gcpName" }
-	// +mapType=granular
-	AdditionalAttributes map[string]*string `json:"additionalAttributes,omitempty" tf:"additional_attributes,omitempty"`
+	AdditionalAttributes map[string]string `json:"additionalAttributes,omitempty" tf:"additional_attributes,omitempty"`
 
 	// The amount of storage currently allocated for the database tables and billed for, rounded up. When auto-scaling is not enabled, this value is equal to the dataStorageSizeInTBs value. You can compare this value to the actualUsedDataStorageSizeInTBs value to determine if a manual shrink operation is appropriate for your allocated storage.
 	AllocatedStorageSizeInTbs *float64 `json:"allocatedStorageSizeInTbs,omitempty" tf:"allocated_storage_size_in_tbs,omitempty"`
@@ -530,10 +526,10 @@ type AutonomousDatabaseObservation struct {
 	ArePrimaryWhitelistedIpsUsed *bool `json:"arePrimaryWhitelistedIpsUsed,omitempty" tf:"are_primary_whitelisted_ips_used,omitempty"`
 
 	// (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable) The frequency a refreshable clone is refreshed after auto-refresh is enabled. The minimum is 1 hour. The maximum is 7 days. The date and time that auto-refresh is enabled is controlled by the timeOfAutoRefreshStart parameter.
-	AutoRefreshFrequencyInSeconds *float64 `json:"autoRefreshFrequencyInSeconds,omitempty" tf:"auto_refresh_frequency_in_seconds,omitempty"`
+	AutoRefreshFrequencyInSeconds *int64 `json:"autoRefreshFrequencyInSeconds,omitempty" tf:"auto_refresh_frequency_in_seconds,omitempty"`
 
 	// (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable) The time, in seconds, the data of the refreshable clone lags the primary database at the point of refresh. The minimum is 0 minutes (0 mins means refresh to the latest available timestamp). The maximum is 7 days. The lag time increases after refreshing until the next data refresh happens.
-	AutoRefreshPointLagInSeconds *float64 `json:"autoRefreshPointLagInSeconds,omitempty" tf:"auto_refresh_point_lag_in_seconds,omitempty"`
+	AutoRefreshPointLagInSeconds *int64 `json:"autoRefreshPointLagInSeconds,omitempty" tf:"auto_refresh_point_lag_in_seconds,omitempty"`
 
 	// The Autonomous Container Database OCID. Used only by Autonomous AI Database on Dedicated Exadata Infrastructure.
 	AutonomousContainerDatabaseID *string `json:"autonomousContainerDatabaseId,omitempty" tf:"autonomous_container_database_id,omitempty"`
@@ -560,19 +556,19 @@ type AutonomousDatabaseObservation struct {
 	BackupConfig []AutonomousDatabaseBackupConfigObservation `json:"backupConfig,omitempty" tf:"backup_config,omitempty"`
 
 	// (Updatable) Retention period, in days, for long-term backups
-	BackupRetentionPeriodInDays *float64 `json:"backupRetentionPeriodInDays,omitempty" tf:"backup_retention_period_in_days,omitempty"`
+	BackupRetentionPeriodInDays *int64 `json:"backupRetentionPeriodInDays,omitempty" tf:"backup_retention_period_in_days,omitempty"`
 
 	// (Updatable) The maximum number of CPUs allowed with a Bring Your Own License (BYOL), including those used for auto-scaling, disaster recovery, tools, etc. Any CPU usage above this limit is considered as License Included and billed.
 	ByolComputeCountLimit *float64 `json:"byolComputeCountLimit,omitempty" tf:"byol_compute_count_limit,omitempty"`
 
 	// (Updatable) The number of CPU cores to be made available to the database. For Autonomous AI Databases on dedicated Exadata infrastructure, the maximum number of cores is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The character set for the Autonomous AI Database. The default is AL32UTF8. Allowed values for an Autonomous AI Database Serverless instance as as returned by List Autonomous AI Database Character Sets
 	CharacterSet *string `json:"characterSet,omitempty" tf:"character_set,omitempty"`
 
 	// (Applicable when source=BACKUP_FROM_ID | BACKUP_FROM_TIMESTAMP) A list of the source Autonomous AI Database's table space number(s) used to create this partial clone from the backup.
-	CloneTableSpaceList []*float64 `json:"cloneTableSpaceList,omitempty" tf:"clone_table_space_list,omitempty"`
+	CloneTableSpaceList []*int64 `json:"cloneTableSpaceList,omitempty" tf:"clone_table_space_list,omitempty"`
 
 	// The Autonomous AI Database clone type.
 	CloneType *string `json:"cloneType,omitempty" tf:"clone_type,omitempty"`
@@ -614,10 +610,10 @@ type AutonomousDatabaseObservation struct {
 	DataSafeStatus *string `json:"dataSafeStatus,omitempty" tf:"data_safe_status,omitempty"`
 
 	// (Updatable) The size, in gigabytes, of the data volume that will be created and attached to the database. This storage can later be scaled up if needed. The maximum storage value is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// (Updatable) The size, in terabytes, of the data volume that will be created and attached to the database. This storage can later be scaled up if needed. For Autonomous AI Databases on dedicated Exadata infrastructure, the maximum storage value is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details. A full Exadata service is allocated when the Autonomous AI Database size is set to the upper limit (384 TB).
-	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
+	DataStorageSizeInTbs *int64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) The Oracle AI Database Edition that applies to the Autonomous AI Databases. This parameter accepts options STANDARD_EDITION and ENTERPRISE_EDITION.
 	DatabaseEdition *string `json:"databaseEdition,omitempty" tf:"database_edition,omitempty"`
@@ -629,8 +625,7 @@ type AutonomousDatabaseObservation struct {
 	DataguardRegionType *string `json:"dataguardRegionType,omitempty" tf:"dataguard_region_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Deprecated. The disaster recovery (DR) region type of the Autonomous AI Database. For Autonomous AI Database Serverless instances, DR associations have designated primary and standby regions. These region types do not change when the database changes roles. The standby region in DR associations can be the same region as the primary region, or they can be in a remote regions. Some database administration operations may be available only in the primary region of the DR association, and cannot be performed when the database using the primary role is operating in a remote region.
 	DisasterRecoveryRegionType *string `json:"disasterRecoveryRegionType,omitempty" tf:"disaster_recovery_region_type,omitempty"`
@@ -657,20 +652,19 @@ type AutonomousDatabaseObservation struct {
 	ExternalLocationZone *string `json:"externalLocationZone,omitempty" tf:"external_location_zone,omitempty"`
 
 	// Indicates the number of seconds of data loss for a Data Guard failover.
-	FailedDataRecoveryInSeconds *float64 `json:"failedDataRecoveryInSeconds,omitempty" tf:"failed_data_recovery_in_seconds,omitempty"`
+	FailedDataRecoveryInSeconds *int64 `json:"failedDataRecoveryInSeconds,omitempty" tf:"failed_data_recovery_in_seconds,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Autonomous AI Database.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The area assigned to In-Memory tables in Autonomous AI Database.
-	InMemoryAreaInGbs *float64 `json:"inMemoryAreaInGbs,omitempty" tf:"in_memory_area_in_gbs,omitempty"`
+	InMemoryAreaInGbs *int64 `json:"inMemoryAreaInGbs,omitempty" tf:"in_memory_area_in_gbs,omitempty"`
 
 	// (Updatable) The percentage of the System Global Area(SGA) assigned to In-Memory tables in Autonomous AI Database. This property is applicable only to Autonomous AI Databases on the Exadata Cloud@Customer platform.
-	InMemoryPercentage *float64 `json:"inMemoryPercentage,omitempty" tf:"in_memory_percentage,omitempty"`
+	InMemoryPercentage *int64 `json:"inMemoryPercentage,omitempty" tf:"in_memory_percentage,omitempty"`
 
 	// The infrastructure type this resource belongs to.
 	InfrastructureType *string `json:"infrastructureType,omitempty" tf:"infrastructure_type,omitempty"`
@@ -760,7 +754,7 @@ type AutonomousDatabaseObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// Parameter that allows users to select an acceptable maximum data loss limit in seconds, up to which Automatic Failover will be triggered when necessary for a Local Autonomous Data Guard
-	LocalAdgAutoFailoverMaxDataLossLimit *float64 `json:"localAdgAutoFailoverMaxDataLossLimit,omitempty" tf:"local_adg_auto_failover_max_data_loss_limit,omitempty"`
+	LocalAdgAutoFailoverMaxDataLossLimit *int64 `json:"localAdgAutoFailoverMaxDataLossLimit,omitempty" tf:"local_adg_auto_failover_max_data_loss_limit,omitempty"`
 
 	// The OCID of the dedicated resource pool leader Autonomous Database in the same region, associated with local Autonomous Data Guard for a dedicated resource pool member.
 	LocalAdgResourcePoolLeaderID *string `json:"localAdgResourcePoolLeaderId,omitempty" tf:"local_adg_resource_pool_leader_id,omitempty"`
@@ -778,13 +772,13 @@ type AutonomousDatabaseObservation struct {
 	MaintenanceTargetComponent *string `json:"maintenanceTargetComponent,omitempty" tf:"maintenance_target_component,omitempty"`
 
 	// (Updatable) The number of CPU cores to be made available to the database. For Autonomous AI Databases on dedicated Exadata infrastructure, the maximum number of cores is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
-	MaxCPUCoreCount *float64 `json:"maxCpuCoreCount,omitempty" tf:"max_cpu_core_count,omitempty"`
+	MaxCPUCoreCount *int64 `json:"maxCpuCoreCount,omitempty" tf:"max_cpu_core_count,omitempty"`
 
 	// The amount of memory (in GBs) to be enabled per OCPU or ECPU.
 	MemoryPerComputeUnitInGbs *float64 `json:"memoryPerComputeUnitInGbs,omitempty" tf:"memory_per_compute_unit_in_gbs,omitempty"`
 
 	// The amount of memory (in GBs, rounded off to nearest integer value) to be enabled per OCPU or ECPU. This is deprecated. Please refer to memoryPerComputeUnitInGBs for accurate value.
-	MemoryPerOracleComputeUnitInGbs *float64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
+	MemoryPerOracleComputeUnitInGbs *int64 `json:"memoryPerOracleComputeUnitInGbs,omitempty" tf:"memory_per_oracle_compute_unit_in_gbs,omitempty"`
 
 	// The character set for the Autonomous AI Database. The default is AL32UTF8. Use List Autonomous AI Database Character Sets to list the allowed values for an Autonomous AI Database Serverless instance. For an Autonomous AI Database on dedicated Exadata infrastructure, the allowed values are: AL16UTF16 or UTF8.
 	NcharacterSet *string `json:"ncharacterSet,omitempty" tf:"ncharacter_set,omitempty"`
@@ -866,16 +860,15 @@ type AutonomousDatabaseObservation struct {
 	SecretID *string `json:"secretId,omitempty" tf:"secret_id,omitempty"`
 
 	// (Updatable) The version of the vault secret. If no version is specified, the latest version will be used.
-	SecretVersionNumber *float64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
+	SecretVersionNumber *int64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The URL of the Service Console for the Autonomous AI Database.
 	ServiceConsoleURL *string `json:"serviceConsoleUrl,omitempty" tf:"service_console_url,omitempty"`
 
-	ShrinkAdbTrigger *float64 `json:"shrinkAdbTrigger,omitempty" tf:"shrink_adb_trigger,omitempty"`
+	ShrinkAdbTrigger *int64 `json:"shrinkAdbTrigger,omitempty" tf:"shrink_adb_trigger,omitempty"`
 
 	// The source of the database: Use NONE for creating a new Autonomous AI Database. Use DATABASE for creating a new Autonomous AI Database by cloning an existing Autonomous AI Database. Use CROSS_REGION_DATAGUARD to create a standby Data Guard database in another region.
 	Source *string `json:"source,omitempty" tf:"source,omitempty"`
@@ -908,8 +901,7 @@ type AutonomousDatabaseObservation struct {
 	SwitchoverToRemotePeerID *string `json:"switchoverToRemotePeerId,omitempty" tf:"switchover_to_remote_peer_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Autonomous AI Database was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -987,10 +979,10 @@ type AutonomousDatabaseObservation struct {
 	UseLatestAvailableBackupTimeStamp *bool `json:"useLatestAvailableBackupTimeStamp,omitempty" tf:"use_latest_available_backup_time_stamp,omitempty"`
 
 	// The storage space consumed by Autonomous AI Database in GBs.
-	UsedDataStorageSizeInGbs *float64 `json:"usedDataStorageSizeInGbs,omitempty" tf:"used_data_storage_size_in_gbs,omitempty"`
+	UsedDataStorageSizeInGbs *int64 `json:"usedDataStorageSizeInGbs,omitempty" tf:"used_data_storage_size_in_gbs,omitempty"`
 
 	// The amount of storage that has been used for Autonomous AI Databases in dedicated infrastructure, in terabytes.
-	UsedDataStorageSizeInTbs *float64 `json:"usedDataStorageSizeInTbs,omitempty" tf:"used_data_storage_size_in_tbs,omitempty"`
+	UsedDataStorageSizeInTbs *int64 `json:"usedDataStorageSizeInTbs,omitempty" tf:"used_data_storage_size_in_tbs,omitempty"`
 
 	// The URLs for accessing Oracle Application Express (APEX) and SQL Developer Web with a browser from a Compute instance within your VCN or that has a direct connection to your VCN. Note that these URLs are provided by the console only for databases on dedicated Exadata infrastructure.  Example: {"sqlDevWebUrl": "https://<hostname>/ords...", "apexUrl", "https://<hostname>/ords..."}
 	VanityConnectionUrls []VanityConnectionUrlsObservation `json:"vanityConnectionUrls,omitempty" tf:"vanity_connection_urls,omitempty"`
@@ -1018,11 +1010,11 @@ type AutonomousDatabaseParameters struct {
 
 	// (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable) The frequency a refreshable clone is refreshed after auto-refresh is enabled. The minimum is 1 hour. The maximum is 7 days. The date and time that auto-refresh is enabled is controlled by the timeOfAutoRefreshStart parameter.
 	// +kubebuilder:validation:Optional
-	AutoRefreshFrequencyInSeconds *float64 `json:"autoRefreshFrequencyInSeconds,omitempty" tf:"auto_refresh_frequency_in_seconds,omitempty"`
+	AutoRefreshFrequencyInSeconds *int64 `json:"autoRefreshFrequencyInSeconds,omitempty" tf:"auto_refresh_frequency_in_seconds,omitempty"`
 
 	// (Applicable when source=CLONE_TO_REFRESHABLE) (Updatable) The time, in seconds, the data of the refreshable clone lags the primary database at the point of refresh. The minimum is 0 minutes (0 mins means refresh to the latest available timestamp). The maximum is 7 days. The lag time increases after refreshing until the next data refresh happens.
 	// +kubebuilder:validation:Optional
-	AutoRefreshPointLagInSeconds *float64 `json:"autoRefreshPointLagInSeconds,omitempty" tf:"auto_refresh_point_lag_in_seconds,omitempty"`
+	AutoRefreshPointLagInSeconds *int64 `json:"autoRefreshPointLagInSeconds,omitempty" tf:"auto_refresh_point_lag_in_seconds,omitempty"`
 
 	// The Autonomous Container Database OCID. Used only by Autonomous AI Database on Dedicated Exadata Infrastructure.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/database/v1alpha1.AutonomousContainerDatabase
@@ -1076,7 +1068,7 @@ type AutonomousDatabaseParameters struct {
 
 	// (Updatable) Retention period, in days, for long-term backups
 	// +kubebuilder:validation:Optional
-	BackupRetentionPeriodInDays *float64 `json:"backupRetentionPeriodInDays,omitempty" tf:"backup_retention_period_in_days,omitempty"`
+	BackupRetentionPeriodInDays *int64 `json:"backupRetentionPeriodInDays,omitempty" tf:"backup_retention_period_in_days,omitempty"`
 
 	// (Updatable) The maximum number of CPUs allowed with a Bring Your Own License (BYOL), including those used for auto-scaling, disaster recovery, tools, etc. Any CPU usage above this limit is considered as License Included and billed.
 	// +kubebuilder:validation:Optional
@@ -1084,7 +1076,7 @@ type AutonomousDatabaseParameters struct {
 
 	// (Updatable) The number of CPU cores to be made available to the database. For Autonomous AI Databases on dedicated Exadata infrastructure, the maximum number of cores is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
 	// +kubebuilder:validation:Optional
-	CPUCoreCount *float64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
+	CPUCoreCount *int64 `json:"cpuCoreCount,omitempty" tf:"cpu_core_count,omitempty"`
 
 	// The character set for the Autonomous AI Database. The default is AL32UTF8. Allowed values for an Autonomous AI Database Serverless instance as as returned by List Autonomous AI Database Character Sets
 	// +kubebuilder:validation:Optional
@@ -1092,7 +1084,7 @@ type AutonomousDatabaseParameters struct {
 
 	// (Applicable when source=BACKUP_FROM_ID | BACKUP_FROM_TIMESTAMP) A list of the source Autonomous AI Database's table space number(s) used to create this partial clone from the backup.
 	// +kubebuilder:validation:Optional
-	CloneTableSpaceList []*float64 `json:"cloneTableSpaceList,omitempty" tf:"clone_table_space_list,omitempty"`
+	CloneTableSpaceList []*int64 `json:"cloneTableSpaceList,omitempty" tf:"clone_table_space_list,omitempty"`
 
 	// The Autonomous AI Database clone type.
 	// +kubebuilder:validation:Optional
@@ -1145,11 +1137,11 @@ type AutonomousDatabaseParameters struct {
 
 	// (Updatable) The size, in gigabytes, of the data volume that will be created and attached to the database. This storage can later be scaled up if needed. The maximum storage value is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
 	// +kubebuilder:validation:Optional
-	DataStorageSizeInGb *float64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
+	DataStorageSizeInGb *int64 `json:"dataStorageSizeInGb,omitempty" tf:"data_storage_size_in_gb,omitempty"`
 
 	// (Updatable) The size, in terabytes, of the data volume that will be created and attached to the database. This storage can later be scaled up if needed. For Autonomous AI Databases on dedicated Exadata infrastructure, the maximum storage value is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details. A full Exadata service is allocated when the Autonomous AI Database size is set to the upper limit (384 TB).
 	// +kubebuilder:validation:Optional
-	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
+	DataStorageSizeInTbs *int64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) The Oracle AI Database Edition that applies to the Autonomous AI Databases. This parameter accepts options STANDARD_EDITION and ENTERPRISE_EDITION.
 	// +kubebuilder:validation:Optional
@@ -1161,8 +1153,7 @@ type AutonomousDatabaseParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Indicates the disaster recovery (DR) type of the standby Autonomous AI Database Serverless instance. Autonomous Data Guard (ADG) DR type provides business critical DR with a faster recovery time objective (RTO) during failover or switchover. Backup-based DR type provides lower cost DR with a slower RTO during failover or switchover.
 	// +kubebuilder:validation:Optional
@@ -1182,12 +1173,11 @@ type AutonomousDatabaseParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The percentage of the System Global Area(SGA) assigned to In-Memory tables in Autonomous AI Database. This property is applicable only to Autonomous AI Databases on the Exadata Cloud@Customer platform.
 	// +kubebuilder:validation:Optional
-	InMemoryPercentage *float64 `json:"inMemoryPercentage,omitempty" tf:"in_memory_percentage,omitempty"`
+	InMemoryPercentage *int64 `json:"inMemoryPercentage,omitempty" tf:"in_memory_percentage,omitempty"`
 
 	// (Updatable) Indicates if the database-level access control is enabled. If disabled, database access is defined by the network security rules. If enabled, database access is restricted to the IP addresses defined by the rules specified with the whitelistedIps property. While specifying whitelistedIps rules is optional, if database-level access control is enabled and no rules are specified, the database will become inaccessible. The rules can be added later using the UpdateAutonomousDatabase API operation or edit option in console. When creating a database clone, the desired access control setting should be specified. By default, database-level access control will be disabled for the clone.
 	// +kubebuilder:validation:Optional
@@ -1278,7 +1268,7 @@ type AutonomousDatabaseParameters struct {
 
 	// Parameter that allows users to select an acceptable maximum data loss limit in seconds, up to which Automatic Failover will be triggered when necessary for a Local Autonomous Data Guard
 	// +kubebuilder:validation:Optional
-	LocalAdgAutoFailoverMaxDataLossLimit *float64 `json:"localAdgAutoFailoverMaxDataLossLimit,omitempty" tf:"local_adg_auto_failover_max_data_loss_limit,omitempty"`
+	LocalAdgAutoFailoverMaxDataLossLimit *int64 `json:"localAdgAutoFailoverMaxDataLossLimit,omitempty" tf:"local_adg_auto_failover_max_data_loss_limit,omitempty"`
 
 	// The OCID of the dedicated resource pool leader Autonomous Database in the same region, associated with local Autonomous Data Guard for a dedicated resource pool member.
 	// +kubebuilder:validation:Optional
@@ -1290,7 +1280,7 @@ type AutonomousDatabaseParameters struct {
 
 	// (Updatable) The number of CPU cores to be made available to the database. For Autonomous AI Databases on dedicated Exadata infrastructure, the maximum number of cores is determined by the infrastructure shape. See Characteristics of Infrastructure Shapes for shape details.
 	// +kubebuilder:validation:Optional
-	MaxCPUCoreCount *float64 `json:"maxCpuCoreCount,omitempty" tf:"max_cpu_core_count,omitempty"`
+	MaxCPUCoreCount *int64 `json:"maxCpuCoreCount,omitempty" tf:"max_cpu_core_count,omitempty"`
 
 	// The character set for the Autonomous AI Database. The default is AL32UTF8. Use List Autonomous AI Database Character Sets to list the allowed values for an Autonomous AI Database Serverless instance. For an Autonomous AI Database on dedicated Exadata infrastructure, the allowed values are: AL16UTF16 or UTF8.
 	// +kubebuilder:validation:Optional
@@ -1369,15 +1359,14 @@ type AutonomousDatabaseParameters struct {
 
 	// (Updatable) The version of the vault secret. If no version is specified, the latest version will be used.
 	// +kubebuilder:validation:Optional
-	SecretVersionNumber *float64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
+	SecretVersionNumber *int64 `json:"secretVersionNumber,omitempty" tf:"secret_version_number,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"Oracle-ZPR": {"MaxEgressCount": {"value": "42", "mode": "audit"}}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	ShrinkAdbTrigger *float64 `json:"shrinkAdbTrigger,omitempty" tf:"shrink_adb_trigger,omitempty"`
+	ShrinkAdbTrigger *int64 `json:"shrinkAdbTrigger,omitempty" tf:"shrink_adb_trigger,omitempty"`
 
 	// The source of the database: Use NONE for creating a new Autonomous AI Database. Use DATABASE for creating a new Autonomous AI Database by cloning an existing Autonomous AI Database. Use CROSS_REGION_DATAGUARD to create a standby Data Guard database in another region.
 	// +kubebuilder:validation:Optional
@@ -1475,8 +1464,7 @@ type ConnectionStringsInitParameters struct {
 type ConnectionStringsObservation struct {
 
 	// Returns all connection strings that can be used to connect to the Autonomous AI Database. For more information, please see Predefined Database Service Names for Autonomous AI Transaction Processing
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 
 	// The database service provides the least level of resources to each SQL statement, but supports the most number of concurrent SQL statements.
 	Dedicated *string `json:"dedicated,omitempty" tf:"dedicated,omitempty"`
@@ -1542,7 +1530,7 @@ type DBToolsDetailsInitParameters struct {
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) The max idle time, in minutes, after which the VM used by database tools will be terminated.
-	MaxIdleTimeInMinutes *float64 `json:"maxIdleTimeInMinutes,omitempty" tf:"max_idle_time_in_minutes,omitempty"`
+	MaxIdleTimeInMinutes *int64 `json:"maxIdleTimeInMinutes,omitempty" tf:"max_idle_time_in_minutes,omitempty"`
 
 	// (Updatable) Name of the day of the week.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -1557,7 +1545,7 @@ type DBToolsDetailsObservation struct {
 	IsEnabled *bool `json:"isEnabled,omitempty" tf:"is_enabled,omitempty"`
 
 	// (Updatable) The max idle time, in minutes, after which the VM used by database tools will be terminated.
-	MaxIdleTimeInMinutes *float64 `json:"maxIdleTimeInMinutes,omitempty" tf:"max_idle_time_in_minutes,omitempty"`
+	MaxIdleTimeInMinutes *int64 `json:"maxIdleTimeInMinutes,omitempty" tf:"max_idle_time_in_minutes,omitempty"`
 
 	// (Updatable) Name of the day of the week.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -1575,7 +1563,7 @@ type DBToolsDetailsParameters struct {
 
 	// (Updatable) The max idle time, in minutes, after which the VM used by database tools will be terminated.
 	// +kubebuilder:validation:Optional
-	MaxIdleTimeInMinutes *float64 `json:"maxIdleTimeInMinutes,omitempty" tf:"max_idle_time_in_minutes,omitempty"`
+	MaxIdleTimeInMinutes *int64 `json:"maxIdleTimeInMinutes,omitempty" tf:"max_idle_time_in_minutes,omitempty"`
 
 	// (Updatable) Name of the day of the week.
 	// +kubebuilder:validation:Optional
@@ -1958,7 +1946,7 @@ type LocalStandbyDBObservation struct {
 	ExternalLocationZone *string `json:"externalLocationZone,omitempty" tf:"external_location_zone,omitempty"`
 
 	// The amount of time, in seconds, that the data of the standby database lags the data of the primary database. Can be used to determine the potential data loss in the event of a failover.
-	LagTimeInSeconds *float64 `json:"lagTimeInSeconds,omitempty" tf:"lag_time_in_seconds,omitempty"`
+	LagTimeInSeconds *int64 `json:"lagTimeInSeconds,omitempty" tf:"lag_time_in_seconds,omitempty"`
 
 	// Information about the current lifecycle state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
@@ -1994,7 +1982,7 @@ type LongTermBackupScheduleInitParameters struct {
 	RepeatCadence *string `json:"repeatCadence,omitempty" tf:"repeat_cadence,omitempty"`
 
 	// Retention period, in days, for long-term backups
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
 	// The timestamp for the long-term backup schedule. For a MONTHLY cadence, months having fewer days than the provided date will have the backup taken on the last day of that month.
 	TimeOfBackup *string `json:"timeOfBackup,omitempty" tf:"time_of_backup,omitempty"`
@@ -2009,7 +1997,7 @@ type LongTermBackupScheduleObservation struct {
 	RepeatCadence *string `json:"repeatCadence,omitempty" tf:"repeat_cadence,omitempty"`
 
 	// Retention period, in days, for long-term backups
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
 	// The timestamp for the long-term backup schedule. For a MONTHLY cadence, months having fewer days than the provided date will have the backup taken on the last day of that month.
 	TimeOfBackup *string `json:"timeOfBackup,omitempty" tf:"time_of_backup,omitempty"`
@@ -2027,7 +2015,7 @@ type LongTermBackupScheduleParameters struct {
 
 	// Retention period, in days, for long-term backups
 	// +kubebuilder:validation:Optional
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
 	// The timestamp for the long-term backup schedule. For a MONTHLY cadence, months having fewer days than the provided date will have the backup taken on the last day of that month.
 	// +kubebuilder:validation:Optional
@@ -2136,16 +2124,16 @@ type ResourcePoolSummaryInitParameters struct {
 	IsDisabled *bool `json:"isDisabled,omitempty" tf:"is_disabled,omitempty"`
 
 	// (Updatable) Resource pool size.
-	PoolSize *float64 `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
+	PoolSize *int64 `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
 
 	// (Updatable) Resource pool storage size in TBs.
-	PoolStorageSizeInTbs *float64 `json:"poolStorageSizeInTbs,omitempty" tf:"pool_storage_size_in_tbs,omitempty"`
+	PoolStorageSizeInTbs *int64 `json:"poolStorageSizeInTbs,omitempty" tf:"pool_storage_size_in_tbs,omitempty"`
 }
 
 type ResourcePoolSummaryObservation struct {
 
 	// (Updatable) Available capacity left for new elastic pool members provision
-	AvailableComputeCapacity *float64 `json:"availableComputeCapacity,omitempty" tf:"available_compute_capacity,omitempty"`
+	AvailableComputeCapacity *int64 `json:"availableComputeCapacity,omitempty" tf:"available_compute_capacity,omitempty"`
 
 	// (Updatable) Available storage capacity (in TB) that can be used for adding new members or scaling existing members in a dedicated elastic pool.
 	AvailableStorageCapacityInTbs *float64 `json:"availableStorageCapacityInTbs,omitempty" tf:"available_storage_capacity_in_tbs,omitempty"`
@@ -2154,13 +2142,13 @@ type ResourcePoolSummaryObservation struct {
 	IsDisabled *bool `json:"isDisabled,omitempty" tf:"is_disabled,omitempty"`
 
 	// (Updatable) Resource pool size.
-	PoolSize *float64 `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
+	PoolSize *int64 `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
 
 	// (Updatable) Resource pool storage size in TBs.
-	PoolStorageSizeInTbs *float64 `json:"poolStorageSizeInTbs,omitempty" tf:"pool_storage_size_in_tbs,omitempty"`
+	PoolStorageSizeInTbs *int64 `json:"poolStorageSizeInTbs,omitempty" tf:"pool_storage_size_in_tbs,omitempty"`
 
 	// Resource Pool total capacity, it's currently 4x of pool size
-	TotalComputeCapacity *float64 `json:"totalComputeCapacity,omitempty" tf:"total_compute_capacity,omitempty"`
+	TotalComputeCapacity *int64 `json:"totalComputeCapacity,omitempty" tf:"total_compute_capacity,omitempty"`
 }
 
 type ResourcePoolSummaryParameters struct {
@@ -2175,11 +2163,11 @@ type ResourcePoolSummaryParameters struct {
 
 	// (Updatable) Resource pool size.
 	// +kubebuilder:validation:Optional
-	PoolSize *float64 `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
+	PoolSize *int64 `json:"poolSize,omitempty" tf:"pool_size,omitempty"`
 
 	// (Updatable) Resource pool storage size in TBs.
 	// +kubebuilder:validation:Optional
-	PoolStorageSizeInTbs *float64 `json:"poolStorageSizeInTbs,omitempty" tf:"pool_storage_size_in_tbs,omitempty"`
+	PoolStorageSizeInTbs *int64 `json:"poolStorageSizeInTbs,omitempty" tf:"pool_storage_size_in_tbs,omitempty"`
 }
 
 type ScheduledOperationsDayOfWeekInitParameters struct {
@@ -2252,7 +2240,7 @@ type StandbyDBObservation struct {
 	ExternalLocationZone *string `json:"externalLocationZone,omitempty" tf:"external_location_zone,omitempty"`
 
 	// The amount of time, in seconds, that the data of the standby database lags the data of the primary database. Can be used to determine the potential data loss in the event of a failover.
-	LagTimeInSeconds *float64 `json:"lagTimeInSeconds,omitempty" tf:"lag_time_in_seconds,omitempty"`
+	LagTimeInSeconds *int64 `json:"lagTimeInSeconds,omitempty" tf:"lag_time_in_seconds,omitempty"`
 
 	// Information about the current lifecycle state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`

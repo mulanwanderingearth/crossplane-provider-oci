@@ -28,15 +28,13 @@ type KafkaClusterConfigInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A shared configuration object used by 0 or more kafka clusters.
 	LatestConfig []LatestConfigInitParameters `json:"latestConfig,omitempty" tf:"latest_config,omitempty"`
@@ -48,15 +46,13 @@ type KafkaClusterConfigObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the KafkaClusterConfig.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -71,8 +67,7 @@ type KafkaClusterConfigObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) The date and time the KafkaClusterConfigVersion was created, in the format defined by RFC 3339. Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -98,8 +93,7 @@ type KafkaClusterConfigParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A user-friendly name. Does not have to be unique, and it's changeable. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -107,8 +101,7 @@ type KafkaClusterConfigParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A shared configuration object used by 0 or more kafka clusters.
 	// +kubebuilder:validation:Optional
@@ -131,11 +124,10 @@ type LatestConfigInitParameters struct {
 	ConfigIDSelector *v1.Selector `json:"configIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Cluster configuration key-value pairs
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// (Updatable) Version of the cluster configuration
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 type LatestConfigObservation struct {
@@ -144,14 +136,13 @@ type LatestConfigObservation struct {
 	ConfigID *string `json:"configId,omitempty" tf:"config_id,omitempty"`
 
 	// (Updatable) Cluster configuration key-value pairs
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// (Updatable) The date and time the KafkaClusterConfigVersion was created, in the format defined by RFC 3339. Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
 
 	// (Updatable) Version of the cluster configuration
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 type LatestConfigParameters struct {
@@ -172,12 +163,11 @@ type LatestConfigParameters struct {
 
 	// (Updatable) Cluster configuration key-value pairs
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Properties map[string]*string `json:"properties" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties" tf:"properties,omitempty"`
 
 	// (Updatable) Version of the cluster configuration
 	// +kubebuilder:validation:Optional
-	VersionNumber *float64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
+	VersionNumber *int64 `json:"versionNumber,omitempty" tf:"version_number,omitempty"`
 }
 
 // KafkaClusterConfigSpec defines the desired state of KafkaClusterConfig

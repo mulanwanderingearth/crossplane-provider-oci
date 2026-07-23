@@ -308,8 +308,7 @@ type NamespaceScheduledTaskInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description for this resource.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -318,8 +317,7 @@ type NamespaceScheduledTaskInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Discriminator.
 	Kind *string `json:"kind,omitempty" tf:"kind,omitempty"`
@@ -346,8 +344,7 @@ type NamespaceScheduledTaskObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description for this resource.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -356,8 +353,7 @@ type NamespaceScheduledTaskObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the data plane resource.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -420,8 +416,7 @@ type NamespaceScheduledTaskParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description for this resource.
 	// +kubebuilder:validation:Optional
@@ -433,8 +428,7 @@ type NamespaceScheduledTaskParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Discriminator.
 	// +kubebuilder:validation:Optional
@@ -466,13 +460,13 @@ type ScheduleInitParameters struct {
 	MisfirePolicy *string `json:"misfirePolicy,omitempty" tf:"misfire_policy,omitempty"`
 
 	// (Applicable when kind=STANDARD) (Updatable) Number of seconds to offset the query time window by to accommodate capture late arriving data. For example, a schedule run at 12:00 with a 10 minute interval and queryOffsetSecs=120 will use the query time window of 11:48-11:58 rather than 11:50-12:00 without queryOffsetSecs.
-	QueryOffsetSecs *float64 `json:"queryOffsetSecs,omitempty" tf:"query_offset_secs,omitempty"`
+	QueryOffsetSecs *int64 `json:"queryOffsetSecs,omitempty" tf:"query_offset_secs,omitempty"`
 
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Recurring interval in ISO 8601 extended format as described in https://en.wikipedia.org/wiki/ISO_8601#Durations. The largest supported unit is D, e.g. P14D (not P2W). The value must be at least 5 minutes (PT5M) and at most 3 weeks (P21D or PT30240M).
 	RecurringInterval *string `json:"recurringInterval,omitempty" tf:"recurring_interval,omitempty"`
 
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Number of times (0-based) to execute until auto-stop. Default value -1 will execute indefinitely. Value 0 will execute once.
-	RepeatCount *float64 `json:"repeatCount,omitempty" tf:"repeat_count,omitempty"`
+	RepeatCount *int64 `json:"repeatCount,omitempty" tf:"repeat_count,omitempty"`
 
 	// (Applicable when kind=STANDARD) (Updatable) End time for the schedule, even if the schedule would otherwise have remaining executions.
 	TimeEnd *string `json:"timeEnd,omitempty" tf:"time_end,omitempty"`
@@ -493,13 +487,13 @@ type ScheduleObservation struct {
 	MisfirePolicy *string `json:"misfirePolicy,omitempty" tf:"misfire_policy,omitempty"`
 
 	// (Applicable when kind=STANDARD) (Updatable) Number of seconds to offset the query time window by to accommodate capture late arriving data. For example, a schedule run at 12:00 with a 10 minute interval and queryOffsetSecs=120 will use the query time window of 11:48-11:58 rather than 11:50-12:00 without queryOffsetSecs.
-	QueryOffsetSecs *float64 `json:"queryOffsetSecs,omitempty" tf:"query_offset_secs,omitempty"`
+	QueryOffsetSecs *int64 `json:"queryOffsetSecs,omitempty" tf:"query_offset_secs,omitempty"`
 
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Recurring interval in ISO 8601 extended format as described in https://en.wikipedia.org/wiki/ISO_8601#Durations. The largest supported unit is D, e.g. P14D (not P2W). The value must be at least 5 minutes (PT5M) and at most 3 weeks (P21D or PT30240M).
 	RecurringInterval *string `json:"recurringInterval,omitempty" tf:"recurring_interval,omitempty"`
 
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Number of times (0-based) to execute until auto-stop. Default value -1 will execute indefinitely. Value 0 will execute once.
-	RepeatCount *float64 `json:"repeatCount,omitempty" tf:"repeat_count,omitempty"`
+	RepeatCount *int64 `json:"repeatCount,omitempty" tf:"repeat_count,omitempty"`
 
 	// (Applicable when kind=STANDARD) (Updatable) End time for the schedule, even if the schedule would otherwise have remaining executions.
 	TimeEnd *string `json:"timeEnd,omitempty" tf:"time_end,omitempty"`
@@ -523,7 +517,7 @@ type ScheduleParameters struct {
 
 	// (Applicable when kind=STANDARD) (Updatable) Number of seconds to offset the query time window by to accommodate capture late arriving data. For example, a schedule run at 12:00 with a 10 minute interval and queryOffsetSecs=120 will use the query time window of 11:48-11:58 rather than 11:50-12:00 without queryOffsetSecs.
 	// +kubebuilder:validation:Optional
-	QueryOffsetSecs *float64 `json:"queryOffsetSecs,omitempty" tf:"query_offset_secs,omitempty"`
+	QueryOffsetSecs *int64 `json:"queryOffsetSecs,omitempty" tf:"query_offset_secs,omitempty"`
 
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Recurring interval in ISO 8601 extended format as described in https://en.wikipedia.org/wiki/ISO_8601#Durations. The largest supported unit is D, e.g. P14D (not P2W). The value must be at least 5 minutes (PT5M) and at most 3 weeks (P21D or PT30240M).
 	// +kubebuilder:validation:Optional
@@ -531,7 +525,7 @@ type ScheduleParameters struct {
 
 	// (Applicable when type=FIXED_FREQUENCY) (Updatable) Number of times (0-based) to execute until auto-stop. Default value -1 will execute indefinitely. Value 0 will execute once.
 	// +kubebuilder:validation:Optional
-	RepeatCount *float64 `json:"repeatCount,omitempty" tf:"repeat_count,omitempty"`
+	RepeatCount *int64 `json:"repeatCount,omitempty" tf:"repeat_count,omitempty"`
 
 	// (Applicable when kind=STANDARD) (Updatable) End time for the schedule, even if the schedule would otherwise have remaining executions.
 	// +kubebuilder:validation:Optional

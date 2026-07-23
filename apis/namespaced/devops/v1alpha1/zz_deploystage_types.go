@@ -20,7 +20,7 @@ type ApprovalPolicyInitParameters struct {
 	ApprovalPolicyType *string `json:"approvalPolicyType,omitempty" tf:"approval_policy_type,omitempty"`
 
 	// (Updatable) A minimum number of approvals required for stage to proceed.
-	NumberOfApprovalsRequired *float64 `json:"numberOfApprovalsRequired,omitempty" tf:"number_of_approvals_required,omitempty"`
+	NumberOfApprovalsRequired *int64 `json:"numberOfApprovalsRequired,omitempty" tf:"number_of_approvals_required,omitempty"`
 }
 
 type ApprovalPolicyObservation struct {
@@ -29,7 +29,7 @@ type ApprovalPolicyObservation struct {
 	ApprovalPolicyType *string `json:"approvalPolicyType,omitempty" tf:"approval_policy_type,omitempty"`
 
 	// (Updatable) A minimum number of approvals required for stage to proceed.
-	NumberOfApprovalsRequired *float64 `json:"numberOfApprovalsRequired,omitempty" tf:"number_of_approvals_required,omitempty"`
+	NumberOfApprovalsRequired *int64 `json:"numberOfApprovalsRequired,omitempty" tf:"number_of_approvals_required,omitempty"`
 }
 
 type ApprovalPolicyParameters struct {
@@ -40,7 +40,7 @@ type ApprovalPolicyParameters struct {
 
 	// (Updatable) A minimum number of approvals required for stage to proceed.
 	// +kubebuilder:validation:Optional
-	NumberOfApprovalsRequired *float64 `json:"numberOfApprovalsRequired" tf:"number_of_approvals_required,omitempty"`
+	NumberOfApprovalsRequired *int64 `json:"numberOfApprovalsRequired" tf:"number_of_approvals_required,omitempty"`
 }
 
 type BlueBackendIpsInitParameters struct {
@@ -361,15 +361,13 @@ type DeployStageInitParameters struct {
 	ComputeInstanceGroupDeployEnvironmentIDSelector *v1.NamespacedSelector `json:"computeInstanceGroupDeployEnvironmentIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when deploy_stage_type=DEPLOY_FUNCTION) (Updatable) User provided key and value pair configuration, which is assigned through constants or parameter.
-	// +mapType=granular
-	Config map[string]*string `json:"config,omitempty" tf:"config,omitempty"`
+	Config map[string]string `json:"config,omitempty" tf:"config,omitempty"`
 
 	// (Updatable) Specifies the container configuration.
 	ContainerConfig []ContainerConfigInitParameters `json:"containerConfig,omitempty" tf:"container_config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when deploy_stage_type=INVOKE_FUNCTION) (Updatable) Optional artifact OCID. The artifact will be included in the body for the function invocation during the stage's execution. If the DeployArtifact.argumentSubstituitionMode is set to SUBSTITUTE_PLACEHOLDERS, then the pipeline parameter values will be used to replace the placeholders in the artifact content.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/devops/v1alpha1.DeployArtifact
@@ -448,8 +446,7 @@ type DeployStageInitParameters struct {
 	FailurePolicy []FailurePolicyInitParameters `json:"failurePolicy,omitempty" tf:"failure_policy,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Function environment OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/devops/v1alpha1.DeployEnvironment
@@ -465,7 +462,7 @@ type DeployStageInitParameters struct {
 	FunctionDeployEnvironmentIDSelector *v1.NamespacedSelector `json:"functionDeployEnvironmentIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when deploy_stage_type=DEPLOY_FUNCTION) (Updatable) Timeout for execution of the Function. Value in seconds.
-	FunctionTimeoutInSeconds *float64 `json:"functionTimeoutInSeconds,omitempty" tf:"function_timeout_in_seconds,omitempty"`
+	FunctionTimeoutInSeconds *int64 `json:"functionTimeoutInSeconds,omitempty" tf:"function_timeout_in_seconds,omitempty"`
 
 	// (Updatable) Collection of backend environment IP addresses.
 	GreenBackendIps []GreenBackendIpsInitParameters `json:"greenBackendIps,omitempty" tf:"green_backend_ips,omitempty"`
@@ -508,7 +505,7 @@ type DeployStageInitParameters struct {
 	LoadBalancerConfig []LoadBalancerConfigInitParameters `json:"loadBalancerConfig,omitempty" tf:"load_balancer_config,omitempty"`
 
 	// (Applicable when deploy_stage_type=OKE_HELM_CHART_DEPLOYMENT) (Updatable) Limit the maximum number of revisions saved per release. Use 0 for no limit. Set to 10 by default
-	MaxHistory *float64 `json:"maxHistory,omitempty" tf:"max_history,omitempty"`
+	MaxHistory *int64 `json:"maxHistory,omitempty" tf:"max_history,omitempty"`
 
 	// (Applicable when deploy_stage_type=DEPLOY_FUNCTION) (Updatable) Maximum usable memory for the Function (in MB).
 	MaxMemoryInMbs *string `json:"maxMemoryInMbs,omitempty" tf:"max_memory_in_mbs,omitempty"`
@@ -611,7 +608,7 @@ type DeployStageInitParameters struct {
 	TestLoadBalancerConfig []TestLoadBalancerConfigInitParameters `json:"testLoadBalancerConfig,omitempty" tf:"test_load_balancer_config,omitempty"`
 
 	// (Applicable when deploy_stage_type=SHELL | OKE_HELM_CHART_DEPLOYMENT) (Updatable) Time to wait for execution of a Shell/Helm stage. Defaults to 36000 seconds for Shell and 300 seconds for Helm Stage
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) Specifies the target or destination backend set.
 	TrafficShiftTarget *string `json:"trafficShiftTarget,omitempty" tf:"traffic_shift_target,omitempty"`
@@ -659,15 +656,13 @@ type DeployStageObservation struct {
 	ComputeInstanceGroupDeployEnvironmentID *string `json:"computeInstanceGroupDeployEnvironmentId,omitempty" tf:"compute_instance_group_deploy_environment_id,omitempty"`
 
 	// (Applicable when deploy_stage_type=DEPLOY_FUNCTION) (Updatable) User provided key and value pair configuration, which is assigned through constants or parameter.
-	// +mapType=granular
-	Config map[string]*string `json:"config,omitempty" tf:"config,omitempty"`
+	Config map[string]string `json:"config,omitempty" tf:"config,omitempty"`
 
 	// (Updatable) Specifies the container configuration.
 	ContainerConfig []ContainerConfigObservation `json:"containerConfig,omitempty" tf:"container_config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when deploy_stage_type=INVOKE_FUNCTION) (Updatable) Optional artifact OCID. The artifact will be included in the body for the function invocation during the stage's execution. If the DeployArtifact.argumentSubstituitionMode is set to SUBSTITUTE_PLACEHOLDERS, then the pipeline parameter values will be used to replace the placeholders in the artifact content.
 	DeployArtifactID *string `json:"deployArtifactId,omitempty" tf:"deploy_artifact_id,omitempty"`
@@ -706,14 +701,13 @@ type DeployStageObservation struct {
 	FailurePolicy []FailurePolicyObservation `json:"failurePolicy,omitempty" tf:"failure_policy,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Function environment OCID.
 	FunctionDeployEnvironmentID *string `json:"functionDeployEnvironmentId,omitempty" tf:"function_deploy_environment_id,omitempty"`
 
 	// (Applicable when deploy_stage_type=DEPLOY_FUNCTION) (Updatable) Timeout for execution of the Function. Value in seconds.
-	FunctionTimeoutInSeconds *float64 `json:"functionTimeoutInSeconds,omitempty" tf:"function_timeout_in_seconds,omitempty"`
+	FunctionTimeoutInSeconds *int64 `json:"functionTimeoutInSeconds,omitempty" tf:"function_timeout_in_seconds,omitempty"`
 
 	// (Updatable) Collection of backend environment IP addresses.
 	GreenBackendIps []GreenBackendIpsObservation `json:"greenBackendIps,omitempty" tf:"green_backend_ips,omitempty"`
@@ -752,7 +746,7 @@ type DeployStageObservation struct {
 	LoadBalancerConfig []LoadBalancerConfigObservation `json:"loadBalancerConfig,omitempty" tf:"load_balancer_config,omitempty"`
 
 	// (Applicable when deploy_stage_type=OKE_HELM_CHART_DEPLOYMENT) (Updatable) Limit the maximum number of revisions saved per release. Use 0 for no limit. Set to 10 by default
-	MaxHistory *float64 `json:"maxHistory,omitempty" tf:"max_history,omitempty"`
+	MaxHistory *int64 `json:"maxHistory,omitempty" tf:"max_history,omitempty"`
 
 	// (Applicable when deploy_stage_type=DEPLOY_FUNCTION) (Updatable) Maximum usable memory for the Function (in MB).
 	MaxMemoryInMbs *string `json:"maxMemoryInMbs,omitempty" tf:"max_memory_in_mbs,omitempty"`
@@ -818,8 +812,7 @@ type DeployStageObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. See Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_BLUE_GREEN_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_DEPLOYMENT) (Updatable) Specifies configuration for load balancer traffic shift stages. The load balancer specified here should be an Application load balancer type. Network load balancers are not supported.
 	TestLoadBalancerConfig []TestLoadBalancerConfigObservation `json:"testLoadBalancerConfig,omitempty" tf:"test_load_balancer_config,omitempty"`
@@ -831,7 +824,7 @@ type DeployStageObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Applicable when deploy_stage_type=SHELL | OKE_HELM_CHART_DEPLOYMENT) (Updatable) Time to wait for execution of a Shell/Helm stage. Defaults to 36000 seconds for Shell and 300 seconds for Helm Stage
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) Specifies the target or destination backend set.
 	TrafficShiftTarget *string `json:"trafficShiftTarget,omitempty" tf:"traffic_shift_target,omitempty"`
@@ -937,8 +930,7 @@ type DeployStageParameters struct {
 
 	// (Applicable when deploy_stage_type=DEPLOY_FUNCTION) (Updatable) User provided key and value pair configuration, which is assigned through constants or parameter.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Config map[string]*string `json:"config,omitempty" tf:"config,omitempty"`
+	Config map[string]string `json:"config,omitempty" tf:"config,omitempty"`
 
 	// (Updatable) Specifies the container configuration.
 	// +kubebuilder:validation:Optional
@@ -946,8 +938,7 @@ type DeployStageParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Applicable when deploy_stage_type=INVOKE_FUNCTION) (Updatable) Optional artifact OCID. The artifact will be included in the body for the function invocation during the stage's execution. If the DeployArtifact.argumentSubstituitionMode is set to SUBSTITUTE_PLACEHOLDERS, then the pipeline parameter values will be used to replace the placeholders in the artifact content.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/devops/v1alpha1.DeployArtifact
@@ -1039,8 +1030,7 @@ type DeployStageParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Function environment OCID.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/devops/v1alpha1.DeployEnvironment
@@ -1058,7 +1048,7 @@ type DeployStageParameters struct {
 
 	// (Applicable when deploy_stage_type=DEPLOY_FUNCTION) (Updatable) Timeout for execution of the Function. Value in seconds.
 	// +kubebuilder:validation:Optional
-	FunctionTimeoutInSeconds *float64 `json:"functionTimeoutInSeconds,omitempty" tf:"function_timeout_in_seconds,omitempty"`
+	FunctionTimeoutInSeconds *int64 `json:"functionTimeoutInSeconds,omitempty" tf:"function_timeout_in_seconds,omitempty"`
 
 	// (Updatable) Collection of backend environment IP addresses.
 	// +kubebuilder:validation:Optional
@@ -1112,7 +1102,7 @@ type DeployStageParameters struct {
 
 	// (Applicable when deploy_stage_type=OKE_HELM_CHART_DEPLOYMENT) (Updatable) Limit the maximum number of revisions saved per release. Use 0 for no limit. Set to 10 by default
 	// +kubebuilder:validation:Optional
-	MaxHistory *float64 `json:"maxHistory,omitempty" tf:"max_history,omitempty"`
+	MaxHistory *int64 `json:"maxHistory,omitempty" tf:"max_history,omitempty"`
 
 	// (Applicable when deploy_stage_type=DEPLOY_FUNCTION) (Updatable) Maximum usable memory for the Function (in MB).
 	// +kubebuilder:validation:Optional
@@ -1236,7 +1226,7 @@ type DeployStageParameters struct {
 
 	// (Applicable when deploy_stage_type=SHELL | OKE_HELM_CHART_DEPLOYMENT) (Updatable) Time to wait for execution of a Shell/Helm stage. Defaults to 36000 seconds for Shell and 300 seconds for Helm Stage
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) Specifies the target or destination backend set.
 	// +kubebuilder:validation:Optional
@@ -1321,10 +1311,10 @@ type DeployStageWaitCriteriaParameters struct {
 type FailurePolicyInitParameters struct {
 
 	// (Updatable) The threshold count of failed instances in the group, which when reached or exceeded sets the stage as FAILED.
-	FailureCount *float64 `json:"failureCount,omitempty" tf:"failure_count,omitempty"`
+	FailureCount *int64 `json:"failureCount,omitempty" tf:"failure_count,omitempty"`
 
 	// (Updatable) The failure percentage threshold, which when reached or exceeded sets the stage as FAILED. Percentage is computed as the ceiling value of the number of failed instances over the total count of the instances in the group.
-	FailurePercentage *float64 `json:"failurePercentage,omitempty" tf:"failure_percentage,omitempty"`
+	FailurePercentage *int64 `json:"failurePercentage,omitempty" tf:"failure_percentage,omitempty"`
 
 	// (Updatable) Specifies if the failure instance size is given by absolute number or by percentage.
 	PolicyType *string `json:"policyType,omitempty" tf:"policy_type,omitempty"`
@@ -1333,10 +1323,10 @@ type FailurePolicyInitParameters struct {
 type FailurePolicyObservation struct {
 
 	// (Updatable) The threshold count of failed instances in the group, which when reached or exceeded sets the stage as FAILED.
-	FailureCount *float64 `json:"failureCount,omitempty" tf:"failure_count,omitempty"`
+	FailureCount *int64 `json:"failureCount,omitempty" tf:"failure_count,omitempty"`
 
 	// (Updatable) The failure percentage threshold, which when reached or exceeded sets the stage as FAILED. Percentage is computed as the ceiling value of the number of failed instances over the total count of the instances in the group.
-	FailurePercentage *float64 `json:"failurePercentage,omitempty" tf:"failure_percentage,omitempty"`
+	FailurePercentage *int64 `json:"failurePercentage,omitempty" tf:"failure_percentage,omitempty"`
 
 	// (Updatable) Specifies if the failure instance size is given by absolute number or by percentage.
 	PolicyType *string `json:"policyType,omitempty" tf:"policy_type,omitempty"`
@@ -1346,11 +1336,11 @@ type FailurePolicyParameters struct {
 
 	// (Updatable) The threshold count of failed instances in the group, which when reached or exceeded sets the stage as FAILED.
 	// +kubebuilder:validation:Optional
-	FailureCount *float64 `json:"failureCount,omitempty" tf:"failure_count,omitempty"`
+	FailureCount *int64 `json:"failureCount,omitempty" tf:"failure_count,omitempty"`
 
 	// (Updatable) The failure percentage threshold, which when reached or exceeded sets the stage as FAILED. Percentage is computed as the ceiling value of the number of failed instances over the total count of the instances in the group.
 	// +kubebuilder:validation:Optional
-	FailurePercentage *float64 `json:"failurePercentage,omitempty" tf:"failure_percentage,omitempty"`
+	FailurePercentage *int64 `json:"failurePercentage,omitempty" tf:"failure_percentage,omitempty"`
 
 	// (Updatable) Specifies if the failure instance size is given by absolute number or by percentage.
 	// +kubebuilder:validation:Optional
@@ -1379,7 +1369,7 @@ type GreenBackendIpsParameters struct {
 type LoadBalancerConfigInitParameters struct {
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port for the backend server.
-	BackendPort *float64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
+	BackendPort *int64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
 
 	// (Updatable) Name of the load balancer listener.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loadbalancer/v1alpha1.Listener
@@ -1411,7 +1401,7 @@ type LoadBalancerConfigInitParameters struct {
 type LoadBalancerConfigObservation struct {
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port for the backend server.
-	BackendPort *float64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
+	BackendPort *int64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
 
 	// (Updatable) Name of the load balancer listener.
 	ListenerName *string `json:"listenerName,omitempty" tf:"listener_name,omitempty"`
@@ -1427,7 +1417,7 @@ type LoadBalancerConfigParameters struct {
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port for the backend server.
 	// +kubebuilder:validation:Optional
-	BackendPort *float64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
+	BackendPort *int64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
 
 	// (Updatable) Name of the load balancer listener.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loadbalancer/v1alpha1.Listener
@@ -1461,7 +1451,7 @@ type LoadBalancerConfigParameters struct {
 type ProductionLoadBalancerConfigInitParameters struct {
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port for the backend server.
-	BackendPort *float64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
+	BackendPort *int64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
 
 	// (Updatable) Name of the load balancer listener.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loadbalancer/v1alpha1.Listener
@@ -1493,7 +1483,7 @@ type ProductionLoadBalancerConfigInitParameters struct {
 type ProductionLoadBalancerConfigObservation struct {
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port for the backend server.
-	BackendPort *float64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
+	BackendPort *int64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
 
 	// (Updatable) Name of the load balancer listener.
 	ListenerName *string `json:"listenerName,omitempty" tf:"listener_name,omitempty"`
@@ -1509,7 +1499,7 @@ type ProductionLoadBalancerConfigParameters struct {
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port for the backend server.
 	// +kubebuilder:validation:Optional
-	BackendPort *float64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
+	BackendPort *int64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
 
 	// (Updatable) Name of the load balancer listener.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loadbalancer/v1alpha1.Listener
@@ -1562,13 +1552,13 @@ type RollbackPolicyParameters struct {
 type RolloutPolicyInitParameters struct {
 
 	// (Updatable) The number that will be used to determine how many instances will be deployed concurrently.
-	BatchCount *float64 `json:"batchCount,omitempty" tf:"batch_count,omitempty"`
+	BatchCount *int64 `json:"batchCount,omitempty" tf:"batch_count,omitempty"`
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_BLUE_GREEN_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_TRAFFIC_SHIFT | COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT | OKE_CANARY_TRAFFIC_SHIFT) (Updatable) The duration of delay between batch rollout. The default delay is 1 minute.
-	BatchDelayInSeconds *float64 `json:"batchDelayInSeconds,omitempty" tf:"batch_delay_in_seconds,omitempty"`
+	BatchDelayInSeconds *int64 `json:"batchDelayInSeconds,omitempty" tf:"batch_delay_in_seconds,omitempty"`
 
 	// (Updatable) The percentage that will be used to determine how many instances will be deployed concurrently.
-	BatchPercentage *float64 `json:"batchPercentage,omitempty" tf:"batch_percentage,omitempty"`
+	BatchPercentage *int64 `json:"batchPercentage,omitempty" tf:"batch_percentage,omitempty"`
 
 	// (Updatable) Specifies if the failure instance size is given by absolute number or by percentage.
 	PolicyType *string `json:"policyType,omitempty" tf:"policy_type,omitempty"`
@@ -1580,13 +1570,13 @@ type RolloutPolicyInitParameters struct {
 type RolloutPolicyObservation struct {
 
 	// (Updatable) The number that will be used to determine how many instances will be deployed concurrently.
-	BatchCount *float64 `json:"batchCount,omitempty" tf:"batch_count,omitempty"`
+	BatchCount *int64 `json:"batchCount,omitempty" tf:"batch_count,omitempty"`
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_BLUE_GREEN_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_TRAFFIC_SHIFT | COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT | OKE_CANARY_TRAFFIC_SHIFT) (Updatable) The duration of delay between batch rollout. The default delay is 1 minute.
-	BatchDelayInSeconds *float64 `json:"batchDelayInSeconds,omitempty" tf:"batch_delay_in_seconds,omitempty"`
+	BatchDelayInSeconds *int64 `json:"batchDelayInSeconds,omitempty" tf:"batch_delay_in_seconds,omitempty"`
 
 	// (Updatable) The percentage that will be used to determine how many instances will be deployed concurrently.
-	BatchPercentage *float64 `json:"batchPercentage,omitempty" tf:"batch_percentage,omitempty"`
+	BatchPercentage *int64 `json:"batchPercentage,omitempty" tf:"batch_percentage,omitempty"`
 
 	// (Updatable) Specifies if the failure instance size is given by absolute number or by percentage.
 	PolicyType *string `json:"policyType,omitempty" tf:"policy_type,omitempty"`
@@ -1599,15 +1589,15 @@ type RolloutPolicyParameters struct {
 
 	// (Updatable) The number that will be used to determine how many instances will be deployed concurrently.
 	// +kubebuilder:validation:Optional
-	BatchCount *float64 `json:"batchCount,omitempty" tf:"batch_count,omitempty"`
+	BatchCount *int64 `json:"batchCount,omitempty" tf:"batch_count,omitempty"`
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_BLUE_GREEN_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_DEPLOYMENT | COMPUTE_INSTANCE_GROUP_CANARY_TRAFFIC_SHIFT | COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT | OKE_CANARY_TRAFFIC_SHIFT) (Updatable) The duration of delay between batch rollout. The default delay is 1 minute.
 	// +kubebuilder:validation:Optional
-	BatchDelayInSeconds *float64 `json:"batchDelayInSeconds,omitempty" tf:"batch_delay_in_seconds,omitempty"`
+	BatchDelayInSeconds *int64 `json:"batchDelayInSeconds,omitempty" tf:"batch_delay_in_seconds,omitempty"`
 
 	// (Updatable) The percentage that will be used to determine how many instances will be deployed concurrently.
 	// +kubebuilder:validation:Optional
-	BatchPercentage *float64 `json:"batchPercentage,omitempty" tf:"batch_percentage,omitempty"`
+	BatchPercentage *int64 `json:"batchPercentage,omitempty" tf:"batch_percentage,omitempty"`
 
 	// (Updatable) Specifies if the failure instance size is given by absolute number or by percentage.
 	// +kubebuilder:validation:Optional
@@ -1746,7 +1736,7 @@ type ShapeConfigParameters struct {
 type TestLoadBalancerConfigInitParameters struct {
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port for the backend server.
-	BackendPort *float64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
+	BackendPort *int64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
 
 	// (Updatable) Name of the load balancer listener.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loadbalancer/v1alpha1.Listener
@@ -1778,7 +1768,7 @@ type TestLoadBalancerConfigInitParameters struct {
 type TestLoadBalancerConfigObservation struct {
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port for the backend server.
-	BackendPort *float64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
+	BackendPort *int64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
 
 	// (Updatable) Name of the load balancer listener.
 	ListenerName *string `json:"listenerName,omitempty" tf:"listener_name,omitempty"`
@@ -1794,7 +1784,7 @@ type TestLoadBalancerConfigParameters struct {
 
 	// (Applicable when deploy_stage_type=COMPUTE_INSTANCE_GROUP_ROLLING_DEPLOYMENT | LOAD_BALANCER_TRAFFIC_SHIFT) (Updatable) Listen port for the backend server.
 	// +kubebuilder:validation:Optional
-	BackendPort *float64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
+	BackendPort *int64 `json:"backendPort,omitempty" tf:"backend_port,omitempty"`
 
 	// (Updatable) Name of the load balancer listener.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/loadbalancer/v1alpha1.Listener

@@ -58,7 +58,7 @@ type SessionInitParameters struct {
 	KeyType *string `json:"keyType,omitempty" tf:"key_type,omitempty"`
 
 	// The amount of time the session can remain active.
-	SessionTTLInSeconds *float64 `json:"sessionTtlInSeconds,omitempty" tf:"session_ttl_in_seconds,omitempty"`
+	SessionTTLInSeconds *int64 `json:"sessionTtlInSeconds,omitempty" tf:"session_ttl_in_seconds,omitempty"`
 
 	// Details about a bastion session's target resource.
 	TargetResourceDetails []TargetResourceDetailsInitParameters `json:"targetResourceDetails,omitempty" tf:"target_resource_details,omitempty"`
@@ -94,11 +94,10 @@ type SessionObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The connection message for the session.
-	// +mapType=granular
-	SSHMetadata map[string]*string `json:"sshMetadata,omitempty" tf:"ssh_metadata,omitempty"`
+	SSHMetadata map[string]string `json:"sshMetadata,omitempty" tf:"ssh_metadata,omitempty"`
 
 	// The amount of time the session can remain active.
-	SessionTTLInSeconds *float64 `json:"sessionTtlInSeconds,omitempty" tf:"session_ttl_in_seconds,omitempty"`
+	SessionTTLInSeconds *int64 `json:"sessionTtlInSeconds,omitempty" tf:"session_ttl_in_seconds,omitempty"`
 
 	// The current state of the session.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -143,7 +142,7 @@ type SessionParameters struct {
 
 	// The amount of time the session can remain active.
 	// +kubebuilder:validation:Optional
-	SessionTTLInSeconds *float64 `json:"sessionTtlInSeconds,omitempty" tf:"session_ttl_in_seconds,omitempty"`
+	SessionTTLInSeconds *int64 `json:"sessionTtlInSeconds,omitempty" tf:"session_ttl_in_seconds,omitempty"`
 
 	// Details about a bastion session's target resource.
 	// +kubebuilder:validation:Optional
@@ -175,7 +174,7 @@ type TargetResourceDetailsInitParameters struct {
 	TargetResourceOperatingSystemUserNameSelector *v1.NamespacedSelector `json:"targetResourceOperatingSystemUserNameSelector,omitempty" tf:"-"`
 
 	// (Applicable when session_type=MANAGED_SSH | PORT_FORWARDING) The port number to connect to on the target resource.
-	TargetResourcePort *float64 `json:"targetResourcePort,omitempty" tf:"target_resource_port,omitempty"`
+	TargetResourcePort *int64 `json:"targetResourcePort,omitempty" tf:"target_resource_port,omitempty"`
 
 	// (Applicable when session_type=MANAGED_SSH | PORT_FORWARDING) The private IP address of the target resource that the session connects to.
 	TargetResourcePrivateIPAddress *string `json:"targetResourcePrivateIpAddress,omitempty" tf:"target_resource_private_ip_address,omitempty"`
@@ -199,7 +198,7 @@ type TargetResourceDetailsObservation struct {
 	TargetResourceOperatingSystemUserName *string `json:"targetResourceOperatingSystemUserName,omitempty" tf:"target_resource_operating_system_user_name,omitempty"`
 
 	// (Applicable when session_type=MANAGED_SSH | PORT_FORWARDING) The port number to connect to on the target resource.
-	TargetResourcePort *float64 `json:"targetResourcePort,omitempty" tf:"target_resource_port,omitempty"`
+	TargetResourcePort *int64 `json:"targetResourcePort,omitempty" tf:"target_resource_port,omitempty"`
 
 	// (Applicable when session_type=MANAGED_SSH | PORT_FORWARDING) The private IP address of the target resource that the session connects to.
 	TargetResourcePrivateIPAddress *string `json:"targetResourcePrivateIpAddress,omitempty" tf:"target_resource_private_ip_address,omitempty"`
@@ -235,7 +234,7 @@ type TargetResourceDetailsParameters struct {
 
 	// (Applicable when session_type=MANAGED_SSH | PORT_FORWARDING) The port number to connect to on the target resource.
 	// +kubebuilder:validation:Optional
-	TargetResourcePort *float64 `json:"targetResourcePort,omitempty" tf:"target_resource_port,omitempty"`
+	TargetResourcePort *int64 `json:"targetResourcePort,omitempty" tf:"target_resource_port,omitempty"`
 
 	// (Applicable when session_type=MANAGED_SSH | PORT_FORWARDING) The private IP address of the target resource that the session connects to.
 	// +kubebuilder:validation:Optional

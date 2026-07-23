@@ -20,7 +20,7 @@ type CapabilitiesInitParameters struct {
 	IsPrimaryConsumerGroupEnabled *bool `json:"isPrimaryConsumerGroupEnabled,omitempty" tf:"is_primary_consumer_group_enabled,omitempty"`
 
 	// (Applicable when type=CONSUMER_GROUPS) (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue.  A value of 0 indicates that the DLQ is not used. If the value isn't set, it will be using the value defined at the queue level.
-	PrimaryConsumerGroupDeadLetterQueueDeliveryCount *float64 `json:"primaryConsumerGroupDeadLetterQueueDeliveryCount,omitempty" tf:"primary_consumer_group_dead_letter_queue_delivery_count,omitempty"`
+	PrimaryConsumerGroupDeadLetterQueueDeliveryCount *int64 `json:"primaryConsumerGroupDeadLetterQueueDeliveryCount,omitempty" tf:"primary_consumer_group_dead_letter_queue_delivery_count,omitempty"`
 
 	// (Applicable when type=CONSUMER_GROUPS) (Updatable) Name of the primary consumer group. If omitted, it will be named "Primary Consumer Group".
 	PrimaryConsumerGroupDisplayName *string `json:"primaryConsumerGroupDisplayName,omitempty" tf:"primary_consumer_group_display_name,omitempty"`
@@ -38,7 +38,7 @@ type CapabilitiesObservation struct {
 	IsPrimaryConsumerGroupEnabled *bool `json:"isPrimaryConsumerGroupEnabled,omitempty" tf:"is_primary_consumer_group_enabled,omitempty"`
 
 	// (Applicable when type=CONSUMER_GROUPS) (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue.  A value of 0 indicates that the DLQ is not used. If the value isn't set, it will be using the value defined at the queue level.
-	PrimaryConsumerGroupDeadLetterQueueDeliveryCount *float64 `json:"primaryConsumerGroupDeadLetterQueueDeliveryCount,omitempty" tf:"primary_consumer_group_dead_letter_queue_delivery_count,omitempty"`
+	PrimaryConsumerGroupDeadLetterQueueDeliveryCount *int64 `json:"primaryConsumerGroupDeadLetterQueueDeliveryCount,omitempty" tf:"primary_consumer_group_dead_letter_queue_delivery_count,omitempty"`
 
 	// (Applicable when type=CONSUMER_GROUPS) (Updatable) Name of the primary consumer group. If omitted, it will be named "Primary Consumer Group".
 	PrimaryConsumerGroupDisplayName *string `json:"primaryConsumerGroupDisplayName,omitempty" tf:"primary_consumer_group_display_name,omitempty"`
@@ -58,7 +58,7 @@ type CapabilitiesParameters struct {
 
 	// (Applicable when type=CONSUMER_GROUPS) (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue.  A value of 0 indicates that the DLQ is not used. If the value isn't set, it will be using the value defined at the queue level.
 	// +kubebuilder:validation:Optional
-	PrimaryConsumerGroupDeadLetterQueueDeliveryCount *float64 `json:"primaryConsumerGroupDeadLetterQueueDeliveryCount,omitempty" tf:"primary_consumer_group_dead_letter_queue_delivery_count,omitempty"`
+	PrimaryConsumerGroupDeadLetterQueueDeliveryCount *int64 `json:"primaryConsumerGroupDeadLetterQueueDeliveryCount,omitempty" tf:"primary_consumer_group_dead_letter_queue_delivery_count,omitempty"`
 
 	// (Applicable when type=CONSUMER_GROUPS) (Updatable) Name of the primary consumer group. If omitted, it will be named "Primary Consumer Group".
 	// +kubebuilder:validation:Optional
@@ -79,7 +79,7 @@ type QueueInitParameters struct {
 	Capabilities []CapabilitiesInitParameters `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
 
 	// (Updatable) The percentage of allocated queue resources that can be consumed by a single channel. For example, if a queue has a storage limit of 2Gb, and a single channel consumption limit is 0.1 (10%), that means data size of a single channel  can't exceed 200Mb. Consumption limit of 100% (default) means that a single channel can consume up-to all allocated queue's resources.
-	ChannelConsumptionLimit *float64 `json:"channelConsumptionLimit,omitempty" tf:"channel_consumption_limit,omitempty"`
+	ChannelConsumptionLimit *int64 `json:"channelConsumptionLimit,omitempty" tf:"channel_consumption_limit,omitempty"`
 
 	// (Updatable) The OCID of the compartment containing the queue.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -107,33 +107,31 @@ type QueueInitParameters struct {
 	CustomEncryptionKeyIDSelector *v1.NamespacedSelector `json:"customEncryptionKeyIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue. A value of 0 indicates that the DLQ is not used.
-	DeadLetterQueueDeliveryCount *float64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
+	DeadLetterQueueDeliveryCount *int64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name of the queue.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Purge. Could be set to any integer value.
-	PurgeTrigger *float64 `json:"purgeTrigger,omitempty" tf:"purge_trigger,omitempty"`
+	PurgeTrigger *int64 `json:"purgeTrigger,omitempty" tf:"purge_trigger,omitempty"`
 
 	// (Updatable) An optional value that specifies the purge behavior for the Queue. Could be set to NORMAL, DLQ or BOTH. If unset, the default value is NORMAL
 	PurgeType *string `json:"purgeType,omitempty" tf:"purge_type,omitempty"`
 
 	// The retention period of messages in the queue, in seconds.
-	RetentionInSeconds *float64 `json:"retentionInSeconds,omitempty" tf:"retention_in_seconds,omitempty"`
+	RetentionInSeconds *int64 `json:"retentionInSeconds,omitempty" tf:"retention_in_seconds,omitempty"`
 
 	// (Updatable) The default polling timeout of the messages in the queue, in seconds.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) The default visibility timeout of the messages consumed from the queue, in seconds.
-	VisibilityInSeconds *float64 `json:"visibilityInSeconds,omitempty" tf:"visibility_in_seconds,omitempty"`
+	VisibilityInSeconds *int64 `json:"visibilityInSeconds,omitempty" tf:"visibility_in_seconds,omitempty"`
 }
 
 type QueueObservation struct {
@@ -142,7 +140,7 @@ type QueueObservation struct {
 	Capabilities []CapabilitiesObservation `json:"capabilities,omitempty" tf:"capabilities,omitempty"`
 
 	// (Updatable) The percentage of allocated queue resources that can be consumed by a single channel. For example, if a queue has a storage limit of 2Gb, and a single channel consumption limit is 0.1 (10%), that means data size of a single channel  can't exceed 200Mb. Consumption limit of 100% (default) means that a single channel can consume up-to all allocated queue's resources.
-	ChannelConsumptionLimit *float64 `json:"channelConsumptionLimit,omitempty" tf:"channel_consumption_limit,omitempty"`
+	ChannelConsumptionLimit *int64 `json:"channelConsumptionLimit,omitempty" tf:"channel_consumption_limit,omitempty"`
 
 	// (Updatable) The OCID of the compartment containing the queue.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
@@ -151,18 +149,16 @@ type QueueObservation struct {
 	CustomEncryptionKeyID *string `json:"customEncryptionKeyId,omitempty" tf:"custom_encryption_key_id,omitempty"`
 
 	// (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue. A value of 0 indicates that the DLQ is not used.
-	DeadLetterQueueDeliveryCount *float64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
+	DeadLetterQueueDeliveryCount *int64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name of the queue.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// A unique identifier for the queue that is immutable on creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -174,20 +170,19 @@ type QueueObservation struct {
 	MessagesEndpoint *string `json:"messagesEndpoint,omitempty" tf:"messages_endpoint,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Purge. Could be set to any integer value.
-	PurgeTrigger *float64 `json:"purgeTrigger,omitempty" tf:"purge_trigger,omitempty"`
+	PurgeTrigger *int64 `json:"purgeTrigger,omitempty" tf:"purge_trigger,omitempty"`
 
 	// (Updatable) An optional value that specifies the purge behavior for the Queue. Could be set to NORMAL, DLQ or BOTH. If unset, the default value is NORMAL
 	PurgeType *string `json:"purgeType,omitempty" tf:"purge_type,omitempty"`
 
 	// The retention period of messages in the queue, in seconds.
-	RetentionInSeconds *float64 `json:"retentionInSeconds,omitempty" tf:"retention_in_seconds,omitempty"`
+	RetentionInSeconds *int64 `json:"retentionInSeconds,omitempty" tf:"retention_in_seconds,omitempty"`
 
 	// The current state of the queue.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time that the queue was created, expressed in RFC 3339 timestamp format.  Example: 2018-04-20T00:00:07.405Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -196,10 +191,10 @@ type QueueObservation struct {
 	TimeUpdated *string `json:"timeUpdated,omitempty" tf:"time_updated,omitempty"`
 
 	// (Updatable) The default polling timeout of the messages in the queue, in seconds.
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) The default visibility timeout of the messages consumed from the queue, in seconds.
-	VisibilityInSeconds *float64 `json:"visibilityInSeconds,omitempty" tf:"visibility_in_seconds,omitempty"`
+	VisibilityInSeconds *int64 `json:"visibilityInSeconds,omitempty" tf:"visibility_in_seconds,omitempty"`
 }
 
 type QueueParameters struct {
@@ -210,7 +205,7 @@ type QueueParameters struct {
 
 	// (Updatable) The percentage of allocated queue resources that can be consumed by a single channel. For example, if a queue has a storage limit of 2Gb, and a single channel consumption limit is 0.1 (10%), that means data size of a single channel  can't exceed 200Mb. Consumption limit of 100% (default) means that a single channel can consume up-to all allocated queue's resources.
 	// +kubebuilder:validation:Optional
-	ChannelConsumptionLimit *float64 `json:"channelConsumptionLimit,omitempty" tf:"channel_consumption_limit,omitempty"`
+	ChannelConsumptionLimit *int64 `json:"channelConsumptionLimit,omitempty" tf:"channel_consumption_limit,omitempty"`
 
 	// (Updatable) The OCID of the compartment containing the queue.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -241,12 +236,11 @@ type QueueParameters struct {
 
 	// (Updatable) The number of times a message can be delivered to a consumer before being moved to the dead letter queue. A value of 0 indicates that the DLQ is not used.
 	// +kubebuilder:validation:Optional
-	DeadLetterQueueDeliveryCount *float64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
+	DeadLetterQueueDeliveryCount *int64 `json:"deadLetterQueueDeliveryCount,omitempty" tf:"dead_letter_queue_delivery_count,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The user-friendly name of the queue.
 	// +kubebuilder:validation:Optional
@@ -254,12 +248,11 @@ type QueueParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Purge. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	PurgeTrigger *float64 `json:"purgeTrigger,omitempty" tf:"purge_trigger,omitempty"`
+	PurgeTrigger *int64 `json:"purgeTrigger,omitempty" tf:"purge_trigger,omitempty"`
 
 	// (Updatable) An optional value that specifies the purge behavior for the Queue. Could be set to NORMAL, DLQ or BOTH. If unset, the default value is NORMAL
 	// +kubebuilder:validation:Optional
@@ -267,15 +260,15 @@ type QueueParameters struct {
 
 	// The retention period of messages in the queue, in seconds.
 	// +kubebuilder:validation:Optional
-	RetentionInSeconds *float64 `json:"retentionInSeconds,omitempty" tf:"retention_in_seconds,omitempty"`
+	RetentionInSeconds *int64 `json:"retentionInSeconds,omitempty" tf:"retention_in_seconds,omitempty"`
 
 	// (Updatable) The default polling timeout of the messages in the queue, in seconds.
 	// +kubebuilder:validation:Optional
-	TimeoutInSeconds *float64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
+	TimeoutInSeconds *int64 `json:"timeoutInSeconds,omitempty" tf:"timeout_in_seconds,omitempty"`
 
 	// (Updatable) The default visibility timeout of the messages consumed from the queue, in seconds.
 	// +kubebuilder:validation:Optional
-	VisibilityInSeconds *float64 `json:"visibilityInSeconds,omitempty" tf:"visibility_in_seconds,omitempty"`
+	VisibilityInSeconds *int64 `json:"visibilityInSeconds,omitempty" tf:"visibility_in_seconds,omitempty"`
 }
 
 // QueueSpec defines the desired state of Queue

@@ -104,8 +104,7 @@ type ClusterInitParameters struct {
 	Datastores []DatastoresInitParameters `json:"datastores,omitempty" tf:"datastores,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A list of datastore clusters.
 	DetachDatastoreClusterIds []*string `json:"detachDatastoreClusterIds,omitempty" tf:"detach_datastore_cluster_ids,omitempty"`
@@ -114,14 +113,13 @@ type ClusterInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The number of ESXi hosts to create in the Cluster. You can add more hosts later (see CreateEsxiHost).
-	EsxiHostsCount *float64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
+	EsxiHostsCount *int64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
 
 	// (Updatable) The ESXi software bundle to install on the ESXi hosts in the Cluster.  Only versions under the same vmwareSoftwareVersion and have been validate by Oracle Cloud VMware Solution will be accepted. To get a list of the available versions, use ListSupportedVmwareSoftwareVersions.
 	EsxiSoftwareVersion *string `json:"esxiSoftwareVersion,omitempty" tf:"esxi_software_version,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The billing option selected during Cluster creation. ListSupportedCommitments.
 	InitialCommitment *string `json:"initialCommitment,omitempty" tf:"initial_commitment,omitempty"`
@@ -177,7 +175,7 @@ type ClusterInitParameters struct {
 type ClusterObservation struct {
 
 	// The number of ESXi hosts to create in the Cluster. You can add more hosts later (see CreateEsxiHost).
-	ActualEsxiHostsCount *float64 `json:"actualEsxiHostsCount,omitempty" tf:"actual_esxi_hosts_count,omitempty"`
+	ActualEsxiHostsCount *int64 `json:"actualEsxiHostsCount,omitempty" tf:"actual_esxi_hosts_count,omitempty"`
 
 	// A list of datastore clusters.
 	AttachDatastoreClusterIds []*string `json:"attachDatastoreClusterIds,omitempty" tf:"attach_datastore_cluster_ids,omitempty"`
@@ -201,8 +199,7 @@ type ClusterObservation struct {
 	Datastores []DatastoresObservation `json:"datastores,omitempty" tf:"datastores,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A list of datastore clusters.
 	DetachDatastoreClusterIds []*string `json:"detachDatastoreClusterIds,omitempty" tf:"detach_datastore_cluster_ids,omitempty"`
@@ -211,14 +208,13 @@ type ClusterObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// The number of ESXi hosts to create in the Cluster. You can add more hosts later (see CreateEsxiHost).
-	EsxiHostsCount *float64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
+	EsxiHostsCount *int64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
 
 	// (Updatable) The ESXi software bundle to install on the ESXi hosts in the Cluster.  Only versions under the same vmwareSoftwareVersion and have been validate by Oracle Cloud VMware Solution will be accepted. To get a list of the available versions, use ListSupportedVmwareSoftwareVersions.
 	EsxiSoftwareVersion *string `json:"esxiSoftwareVersion,omitempty" tf:"esxi_software_version,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Cluster.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -251,8 +247,7 @@ type ClusterObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {orcl-cloud: {free-tier-retain: true}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Cluster was created, in the format defined by RFC3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -304,8 +299,7 @@ type ClusterParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// A list of datastore clusters.
 	// +kubebuilder:validation:Optional
@@ -317,7 +311,7 @@ type ClusterParameters struct {
 
 	// The number of ESXi hosts to create in the Cluster. You can add more hosts later (see CreateEsxiHost).
 	// +kubebuilder:validation:Optional
-	EsxiHostsCount *float64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
+	EsxiHostsCount *int64 `json:"esxiHostsCount,omitempty" tf:"esxi_hosts_count,omitempty"`
 
 	// (Updatable) The ESXi software bundle to install on the ESXi hosts in the Cluster.  Only versions under the same vmwareSoftwareVersion and have been validate by Oracle Cloud VMware Solution will be accepted. To get a list of the available versions, use ListSupportedVmwareSoftwareVersions.
 	// +kubebuilder:validation:Optional
@@ -325,8 +319,7 @@ type ClusterParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The billing option selected during Cluster creation. ListSupportedCommitments.
 	// +kubebuilder:validation:Optional

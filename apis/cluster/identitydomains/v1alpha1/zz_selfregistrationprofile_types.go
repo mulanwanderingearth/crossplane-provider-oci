@@ -259,6 +259,18 @@ type HeaderTextParameters struct {
 }
 
 type SelfRegistrationProfileIdcsCreatedByInitParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Localized value of after submit text in corresponding locale
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SelfRegistrationProfileIdcsCreatedByObservation struct {
@@ -280,9 +292,37 @@ type SelfRegistrationProfileIdcsCreatedByObservation struct {
 }
 
 type SelfRegistrationProfileIdcsCreatedByParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Localized value of after submit text in corresponding locale
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type SelfRegistrationProfileIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Localized value of after submit text in corresponding locale
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SelfRegistrationProfileIdcsLastModifiedByObservation struct {
@@ -304,6 +344,22 @@ type SelfRegistrationProfileIdcsLastModifiedByObservation struct {
 }
 
 type SelfRegistrationProfileIdcsLastModifiedByParameters struct {
+
+	// (Updatable) A human readable name, primarily used for display purposes. READ-ONLY.
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) Localized value of after submit text in corresponding locale
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type SelfRegistrationProfileInitParameters struct {
@@ -369,7 +425,7 @@ type SelfRegistrationProfileInitParameters struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) Number of days redirect URL is valid
-	NumberOfDaysRedirectURLIsValid *float64 `json:"numberOfDaysRedirectUrlIsValid,omitempty" tf:"number_of_days_redirect_url_is_valid,omitempty"`
+	NumberOfDaysRedirectURLIsValid *int64 `json:"numberOfDaysRedirectUrlIsValid,omitempty" tf:"number_of_days_redirect_url_is_valid,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
@@ -394,6 +450,21 @@ type SelfRegistrationProfileInitParameters struct {
 }
 
 type SelfRegistrationProfileMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type SelfRegistrationProfileMetaObservation struct {
@@ -415,6 +486,26 @@ type SelfRegistrationProfileMetaObservation struct {
 }
 
 type SelfRegistrationProfileMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type SelfRegistrationProfileObservation struct {
@@ -507,7 +598,7 @@ type SelfRegistrationProfileObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// (Updatable) Number of days redirect URL is valid
-	NumberOfDaysRedirectURLIsValid *float64 `json:"numberOfDaysRedirectUrlIsValid,omitempty" tf:"number_of_days_redirect_url_is_valid,omitempty"`
+	NumberOfDaysRedirectURLIsValid *int64 `json:"numberOfDaysRedirectUrlIsValid,omitempty" tf:"number_of_days_redirect_url_is_valid,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
@@ -618,7 +709,7 @@ type SelfRegistrationProfileParameters struct {
 
 	// (Updatable) Number of days redirect URL is valid
 	// +kubebuilder:validation:Optional
-	NumberOfDaysRedirectURLIsValid *float64 `json:"numberOfDaysRedirectUrlIsValid,omitempty" tf:"number_of_days_redirect_url_is_valid,omitempty"`
+	NumberOfDaysRedirectURLIsValid *int64 `json:"numberOfDaysRedirectUrlIsValid,omitempty" tf:"number_of_days_redirect_url_is_valid,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	// +kubebuilder:validation:Optional
@@ -684,7 +775,7 @@ type UserAttributesInitParameters struct {
 	FullyQualifiedAttributeName *string `json:"fullyQualifiedAttributeName,omitempty" tf:"fully_qualified_attribute_name,omitempty"`
 
 	// (Updatable) SCIM++ Properties:
-	SeqNumber *float64 `json:"seqNumber,omitempty" tf:"seq_number,omitempty"`
+	SeqNumber *int64 `json:"seqNumber,omitempty" tf:"seq_number,omitempty"`
 
 	// (Updatable) Localized value of after submit text in corresponding locale
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
@@ -702,7 +793,7 @@ type UserAttributesObservation struct {
 	Metadata *string `json:"metadata,omitempty" tf:"metadata,omitempty"`
 
 	// (Updatable) SCIM++ Properties:
-	SeqNumber *float64 `json:"seqNumber,omitempty" tf:"seq_number,omitempty"`
+	SeqNumber *int64 `json:"seqNumber,omitempty" tf:"seq_number,omitempty"`
 
 	// (Updatable) Localized value of after submit text in corresponding locale
 	Value *string `json:"value,omitempty" tf:"value,omitempty"`
@@ -716,7 +807,7 @@ type UserAttributesParameters struct {
 
 	// (Updatable) SCIM++ Properties:
 	// +kubebuilder:validation:Optional
-	SeqNumber *float64 `json:"seqNumber" tf:"seq_number,omitempty"`
+	SeqNumber *int64 `json:"seqNumber" tf:"seq_number,omitempty"`
 
 	// (Updatable) Localized value of after submit text in corresponding locale
 	// +kubebuilder:validation:Optional

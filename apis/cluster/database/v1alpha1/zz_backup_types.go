@@ -27,9 +27,6 @@ type BackupEncryptionKeyLocationDetailsObservation struct {
 	// Provide the key OCID of a registered GCP key.
 	GoogleCloudProviderEncryptionKeyID *string `json:"googleCloudProviderEncryptionKeyId,omitempty" tf:"google_cloud_provider_encryption_key_id,omitempty"`
 
-	// Provide the HSM password as you would in RDBMS for External HSM.
-	HSMPassword *string `json:"hsmPassword,omitempty" tf:"hsm_password,omitempty"`
-
 	// Use 'EXTERNAL' for creating a new database or migrating a database key to an External HSM. Use 'AZURE' for creating a new database or migrating a database key to Azure. Use 'AWS' for creating a new database or migrating a database key to Aws. Use 'GCP' for creating a new database or migrating a database key to Gcp.
 	ProviderType *string `json:"providerType,omitempty" tf:"provider_type,omitempty"`
 }
@@ -55,9 +52,9 @@ type BackupInitParameters struct {
 	// The user-friendly name for the backup. The name does not have to be unique.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
-	RetentionPeriodInYears *float64 `json:"retentionPeriodInYears,omitempty" tf:"retention_period_in_years,omitempty"`
+	RetentionPeriodInYears *int64 `json:"retentionPeriodInYears,omitempty" tf:"retention_period_in_years,omitempty"`
 }
 
 type BackupObservation struct {
@@ -106,9 +103,9 @@ type BackupObservation struct {
 	// Additional information about the current lifecycle state.
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
-	RetentionPeriodInYears *float64 `json:"retentionPeriodInYears,omitempty" tf:"retention_period_in_years,omitempty"`
+	RetentionPeriodInYears *int64 `json:"retentionPeriodInYears,omitempty" tf:"retention_period_in_years,omitempty"`
 
 	SecondaryKMSKeyIds []*string `json:"secondaryKmsKeyIds,omitempty" tf:"secondary_kms_key_ids,omitempty"`
 
@@ -157,10 +154,10 @@ type BackupParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	RetentionPeriodInDays *float64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
+	RetentionPeriodInDays *int64 `json:"retentionPeriodInDays,omitempty" tf:"retention_period_in_days,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	RetentionPeriodInYears *float64 `json:"retentionPeriodInYears,omitempty" tf:"retention_period_in_years,omitempty"`
+	RetentionPeriodInYears *int64 `json:"retentionPeriodInYears,omitempty" tf:"retention_period_in_years,omitempty"`
 }
 
 // BackupSpec defines the desired state of Backup

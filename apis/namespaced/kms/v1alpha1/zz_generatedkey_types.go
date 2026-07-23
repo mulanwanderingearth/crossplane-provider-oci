@@ -17,8 +17,7 @@ import (
 type GeneratedKeyInitParameters struct {
 
 	// Information that can be used to provide an encryption context for the encrypted data. The length of the string representation of the associated data must be fewer than 4096 characters.
-	// +mapType=granular
-	AssociatedData map[string]*string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
+	AssociatedData map[string]string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
 
 	// The service endpoint to perform cryptographic operations against. Cryptographic operations include 'Encrypt,' 'Decrypt,' and 'GenerateDataEncryptionKey' operations. see Vault Crypto endpoint.
 	CryptoEndpoint *string `json:"cryptoEndpoint,omitempty" tf:"crypto_endpoint,omitempty"`
@@ -42,15 +41,13 @@ type GeneratedKeyInitParameters struct {
 	KeyShape []KeyShapeInitParameters `json:"keyShape,omitempty" tf:"key_shape,omitempty"`
 
 	// Information that provides context for audit logging. You can provide this additional data by formatting it as key-value pairs to include in audit logs when audit logging is enabled.
-	// +mapType=granular
-	LoggingContext map[string]*string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
+	LoggingContext map[string]string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
 }
 
 type GeneratedKeyObservation struct {
 
 	// Information that can be used to provide an encryption context for the encrypted data. The length of the string representation of the associated data must be fewer than 4096 characters.
-	// +mapType=granular
-	AssociatedData map[string]*string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
+	AssociatedData map[string]string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
 
 	// The encrypted data encryption key generated from a master encryption key.
 	Ciphertext *string `json:"ciphertext,omitempty" tf:"ciphertext,omitempty"`
@@ -70,8 +67,7 @@ type GeneratedKeyObservation struct {
 	KeyShape []KeyShapeObservation `json:"keyShape,omitempty" tf:"key_shape,omitempty"`
 
 	// Information that provides context for audit logging. You can provide this additional data by formatting it as key-value pairs to include in audit logs when audit logging is enabled.
-	// +mapType=granular
-	LoggingContext map[string]*string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
+	LoggingContext map[string]string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
 
 	// The plaintext data encryption key, a base64-encoded sequence of random bytes, which is included if the GenerateDataEncryptionKey request includes the includePlaintextKey parameter and sets its value to "true".
 	Plaintext *string `json:"plaintext,omitempty" tf:"plaintext,omitempty"`
@@ -84,8 +80,7 @@ type GeneratedKeyParameters struct {
 
 	// Information that can be used to provide an encryption context for the encrypted data. The length of the string representation of the associated data must be fewer than 4096 characters.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	AssociatedData map[string]*string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
+	AssociatedData map[string]string `json:"associatedData,omitempty" tf:"associated_data,omitempty"`
 
 	// The service endpoint to perform cryptographic operations against. Cryptographic operations include 'Encrypt,' 'Decrypt,' and 'GenerateDataEncryptionKey' operations. see Vault Crypto endpoint.
 	// +kubebuilder:validation:Optional
@@ -114,8 +109,7 @@ type GeneratedKeyParameters struct {
 
 	// Information that provides context for audit logging. You can provide this additional data by formatting it as key-value pairs to include in audit logs when audit logging is enabled.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	LoggingContext map[string]*string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
+	LoggingContext map[string]string `json:"loggingContext,omitempty" tf:"logging_context,omitempty"`
 }
 
 type KeyShapeInitParameters struct {
@@ -127,7 +121,7 @@ type KeyShapeInitParameters struct {
 	CurveID *string `json:"curveId,omitempty" tf:"curve_id,omitempty"`
 
 	// The length of the key in bytes, expressed as an integer. Supported values include the following:
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 }
 
 type KeyShapeObservation struct {
@@ -139,7 +133,7 @@ type KeyShapeObservation struct {
 	CurveID *string `json:"curveId,omitempty" tf:"curve_id,omitempty"`
 
 	// The length of the key in bytes, expressed as an integer. Supported values include the following:
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 }
 
 type KeyShapeParameters struct {
@@ -154,7 +148,7 @@ type KeyShapeParameters struct {
 
 	// The length of the key in bytes, expressed as an integer. Supported values include the following:
 	// +kubebuilder:validation:Optional
-	Length *float64 `json:"length" tf:"length,omitempty"`
+	Length *int64 `json:"length" tf:"length,omitempty"`
 }
 
 // GeneratedKeySpec defines the desired state of GeneratedKey

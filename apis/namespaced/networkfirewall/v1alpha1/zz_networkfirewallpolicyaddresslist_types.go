@@ -62,7 +62,7 @@ type NetworkFirewallPolicyAddressListObservation struct {
 	ParentResourceID *string `json:"parentResourceId,omitempty" tf:"parent_resource_id,omitempty"`
 
 	// Count of total addresses in the AddressList
-	TotalAddresses *float64 `json:"totalAddresses,omitempty" tf:"total_addresses,omitempty"`
+	TotalAddresses *int64 `json:"totalAddresses,omitempty" tf:"total_addresses,omitempty"`
 
 	// Type of address List. The accepted values are - * FQDN * IP
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`

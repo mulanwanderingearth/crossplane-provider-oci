@@ -330,7 +330,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   cloudAutonomousVmClusterId:
@@ -592,7 +593,8 @@ spec:
                     description: (Updatable) The CPU value beyond which an Autonomous
                       AI Database will be opened across multiple nodes. The default
                       value of this attribute is 16 for OCPUs and 64 for ECPUs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbUniqueName:
                     description: Deprecated. The DB_UNIQUE_NAME value is set by Oracle
                       Cloud Infrastructure.  Do not specify a value for this parameter.
@@ -607,7 +609,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name for the Autonomous Container
                       Database.
@@ -733,11 +734,13 @@ spec:
                   failoverTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Failover. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   fastStartFailOverLagLimitInSeconds:
                     description: (Updatable) The lag time for my preference based
                       on data loss tolerance in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -746,7 +749,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutomaticFailoverEnabled:
                     description: (Updatable) Indicates whether Automatic Failover
                       is enabled for Autonomous Container Database Dataguard Association
@@ -927,7 +929,8 @@ spec:
                             system will wait before the start of each database server
                             patching operation. Custom action timeout is in minutes
                             and valid value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -948,7 +951,8 @@ spec:
                             time slot 16:00 - 19:59 UTC - 20 - represents time slot
                             20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Updatable) If true, enables the configuration
@@ -963,7 +967,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -1006,7 +1011,8 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -1187,7 +1193,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   peerAutonomousContainerDatabaseCompartmentId:
@@ -1529,7 +1536,8 @@ spec:
                   reinstateTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Reinstate. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   rotateKeyTrigger:
                     type: boolean
                   serviceLevelAgreementType:
@@ -1549,11 +1557,13 @@ spec:
                       maintenance window of the standby Autonomous Container Database.
                       This value represents the number of days before scheduled maintenance
                       of the primary database.
-                    type: number
+                    format: int64
+                    type: integer
                   switchoverTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Switchover. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   vaultId:
                     description: The OCID of the Oracle Cloud Infrastructure vault.
                       This parameter and secretId are required for Customer Managed
@@ -1640,7 +1650,8 @@ spec:
                     description: (Updatable) The percentage of CPUs reserved across
                       nodes to support node failover. Allowed values are 0%, 25%,
                       50%, 75%, and 100%, with 50% being the default option.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -1910,7 +1921,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   cloudAutonomousVmClusterId:
@@ -2172,7 +2184,8 @@ spec:
                     description: (Updatable) The CPU value beyond which an Autonomous
                       AI Database will be opened across multiple nodes. The default
                       value of this attribute is 16 for OCPUs and 64 for ECPUs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbUniqueName:
                     description: Deprecated. The DB_UNIQUE_NAME value is set by Oracle
                       Cloud Infrastructure.  Do not specify a value for this parameter.
@@ -2187,7 +2200,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name for the Autonomous Container
                       Database.
@@ -2313,11 +2325,13 @@ spec:
                   failoverTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Failover. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   fastStartFailOverLagLimitInSeconds:
                     description: (Updatable) The lag time for my preference based
                       on data loss tolerance in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -2326,7 +2340,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAutomaticFailoverEnabled:
                     description: (Updatable) Indicates whether Automatic Failover
                       is enabled for Autonomous Container Database Dataguard Association
@@ -2507,7 +2520,8 @@ spec:
                             system will wait before the start of each database server
                             patching operation. Custom action timeout is in minutes
                             and valid value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -2528,7 +2542,8 @@ spec:
                             time slot 16:00 - 19:59 UTC - 20 - represents time slot
                             20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Updatable) If true, enables the configuration
@@ -2543,7 +2558,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -2586,7 +2602,8 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -2767,7 +2784,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   peerAutonomousContainerDatabaseCompartmentId:
@@ -3109,7 +3127,8 @@ spec:
                   reinstateTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Reinstate. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   rotateKeyTrigger:
                     type: boolean
                   serviceLevelAgreementType:
@@ -3129,11 +3148,13 @@ spec:
                       maintenance window of the standby Autonomous Container Database.
                       This value represents the number of days before scheduled maintenance
                       of the primary database.
-                    type: number
+                    format: int64
+                    type: integer
                   switchoverTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Switchover. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   vaultId:
                     description: The OCID of the Oracle Cloud Infrastructure vault.
                       This parameter and secretId are required for Customer Managed
@@ -3220,7 +3241,8 @@ spec:
                     description: (Updatable) The percentage of CPUs reserved across
                       nodes to support node failover. Allowed values are 0%, 25%,
                       50%, 75%, and 100%, with 50% being the default option.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -3383,12 +3405,14 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                         spaceUtilizedInGbs:
                           description: The total space utilized (in GBs) by this Autonomous
                             Container Database on this backup destination, rounded
                             to the nearest integer.
-                          type: number
+                          format: int64
+                          type: integer
                         timeAtWhichStorageDetailsAreUpdated:
                           description: The latest timestamp when the backup destination
                             details, such as 'spaceUtilized,' are updated.
@@ -3501,7 +3525,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   backupDestinationPropertiesList:
@@ -3523,7 +3548,8 @@ spec:
                           description: The total space utilized (in GBs) by this Autonomous
                             Container Database on this backup destination, rounded
                             to the nearest integer.
-                          type: number
+                          format: int64
+                          type: integer
                         timeAtWhichStorageDetailsAreUpdated:
                           description: The latest timestamp when the backup destination
                             details, such as 'spaceUtilized,' are updated.
@@ -3593,7 +3619,8 @@ spec:
                         fastStartFailOverLagLimitInSeconds:
                           description: (Updatable) The lag time for my preference
                             based on data loss tolerance in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         isAutomaticFailoverEnabled:
                           description: (Updatable) Indicates whether Automatic Failover
                             is enabled for Autonomous Container Database Dataguard
@@ -3676,7 +3703,8 @@ spec:
                         fastStartFailOverLagLimitInSeconds:
                           description: (Updatable) The lag time for my preference
                             based on data loss tolerance in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         isAutomaticFailoverEnabled:
                           description: (Updatable) Indicates whether Automatic Failover
                             is enabled for Autonomous Container Database Dataguard
@@ -3737,7 +3765,8 @@ spec:
                     description: (Updatable) The CPU value beyond which an Autonomous
                       AI Database will be opened across multiple nodes. The default
                       value of this attribute is 16 for OCPUs and 64 for ECPUs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbUniqueName:
                     description: Deprecated. The DB_UNIQUE_NAME value is set by Oracle
                       Cloud Infrastructure.  Do not specify a value for this parameter.
@@ -3752,7 +3781,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) The display name for the Autonomous Container
                       Database.
@@ -3790,11 +3818,13 @@ spec:
                   failoverTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Failover. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   fastStartFailOverLagLimitInSeconds:
                     description: (Updatable) The lag time for my preference based
                       on data loss tolerance in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -3803,7 +3833,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: (Updatable) The OCID of the backup destination.
                     type: string
@@ -3907,7 +3936,8 @@ spec:
                             system will wait before the start of each database server
                             patching operation. Custom action timeout is in minutes
                             and valid value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -3928,7 +3958,8 @@ spec:
                             time slot 16:00 - 19:59 UTC - 20 - represents time slot
                             20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Updatable) If true, enables the configuration
@@ -3943,7 +3974,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -3986,7 +4018,8 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -4001,7 +4034,8 @@ spec:
                             system will wait before the start of each database server
                             patching operation. Custom action timeout is in minutes
                             and valid value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: (Updatable) Days during the week when maintenance
                             should be performed.
@@ -4022,7 +4056,8 @@ spec:
                             time slot 16:00 - 19:59 UTC - 20 - represents time slot
                             20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: (Updatable) If true, enables the configuration
@@ -4037,7 +4072,8 @@ spec:
                           description: (Updatable) Lead time window allows user to
                             set a lead time to prepare for a down time. The lead time
                             is in weeks and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: (Updatable) Months during the year when maintenance
                             should be performed.
@@ -4080,7 +4116,8 @@ spec:
                             you to specify specific days of the week and hours that
                             maintenance will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -4093,7 +4130,8 @@ spec:
                       integer value) enabled per ECPU or OCPU in the Autonomous VM
                       Cluster. This is deprecated. Please refer to memoryPerComputeUnitInGBs
                       for accurate value.
-                    type: number
+                    format: int64
+                    type: integer
                   netServicesArchitecture:
                     description: (Updatable) Enabling SHARED server architecture enables
                       a database server to allow many client processes to share very
@@ -4184,7 +4222,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   peerAutonomousContainerDatabaseCompartmentId:
@@ -4246,7 +4285,8 @@ spec:
                             allocated for an Autonomous Container Database to store
                             backups on the recovery appliance, in GBs, rounded to
                             the nearest integer.
-                          type: number
+                          format: int64
+                          type: integer
                         recoveryWindowInDays:
                           description: (Updatable) Number of days between the current
                             and the earliest point of recoverability covered by automatic
@@ -4256,7 +4296,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                         timeRecoveryApplianceDetailsUpdated:
                           description: The time when the recovery appliance details
                             are updated.
@@ -4266,7 +4307,8 @@ spec:
                   reinstateTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Reinstate. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   reservedCpus:
                     description: The number of CPUs reserved in an Autonomous Container
                       Database.
@@ -4294,14 +4336,16 @@ spec:
                       maintenance window of the standby Autonomous Container Database.
                       This value represents the number of days before scheduled maintenance
                       of the primary database.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of Autonomous Data Guard.
                     type: string
                   switchoverTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Switchover. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   systemTags:
                     additionalProperties:
                       type: string
@@ -4309,7 +4353,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the Autonomous DataGuard association
                       was created.
@@ -4326,7 +4369,8 @@ spec:
                   totalCpus:
                     description: The number of CPUs allocated to the Autonomous VM
                       cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   vaultId:
                     description: The OCID of the Oracle Cloud Infrastructure vault.
                       This parameter and secretId are required for Customer Managed
@@ -4339,7 +4383,8 @@ spec:
                     description: (Updatable) The percentage of CPUs reserved across
                       nodes to support node failover. Allowed values are 0%, 25%,
                       50%, 75%, and 100%, with 50% being the default option.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

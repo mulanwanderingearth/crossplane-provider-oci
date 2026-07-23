@@ -29,10 +29,10 @@ type TableReplicaInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// Maximum sustained read throughput limit for the new replica table. If not specified, the local table's read limit is used.
-	MaxReadUnits *float64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
+	MaxReadUnits *int64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
 
 	// Maximum sustained write throughput limit for the new replica table. If not specified, the local table's write limit is used.
-	MaxWriteUnits *float64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
+	MaxWriteUnits *int64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
 
 	// Name of the remote region in standard Oracle Cloud Infrastructure format, i.e. us-ashburn-1
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
@@ -58,10 +58,10 @@ type TableReplicaObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Maximum sustained read throughput limit for the new replica table. If not specified, the local table's read limit is used.
-	MaxReadUnits *float64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
+	MaxReadUnits *int64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
 
 	// Maximum sustained write throughput limit for the new replica table. If not specified, the local table's write limit is used.
-	MaxWriteUnits *float64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
+	MaxWriteUnits *int64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
 
 	// Name of the remote region in standard Oracle Cloud Infrastructure format, i.e. us-ashburn-1
 	Region *string `json:"region,omitempty" tf:"region,omitempty"`
@@ -87,11 +87,11 @@ type TableReplicaParameters struct {
 
 	// Maximum sustained read throughput limit for the new replica table. If not specified, the local table's read limit is used.
 	// +kubebuilder:validation:Optional
-	MaxReadUnits *float64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
+	MaxReadUnits *int64 `json:"maxReadUnits,omitempty" tf:"max_read_units,omitempty"`
 
 	// Maximum sustained write throughput limit for the new replica table. If not specified, the local table's write limit is used.
 	// +kubebuilder:validation:Optional
-	MaxWriteUnits *float64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
+	MaxWriteUnits *int64 `json:"maxWriteUnits,omitempty" tf:"max_write_units,omitempty"`
 
 	// Name of the remote region in standard Oracle Cloud Infrastructure format, i.e. us-ashburn-1
 	// +kubebuilder:validation:Optional

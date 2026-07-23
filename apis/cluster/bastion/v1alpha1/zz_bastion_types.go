@@ -37,15 +37,13 @@ type BastionInitParameters struct {
 	DNSProxyStatus *string `json:"dnsProxyStatus,omitempty" tf:"dns_proxy_status,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The maximum amount of time that any session on the bastion can remain active.
-	MaxSessionTTLInSeconds *float64 `json:"maxSessionTtlInSeconds,omitempty" tf:"max_session_ttl_in_seconds,omitempty"`
+	MaxSessionTTLInSeconds *int64 `json:"maxSessionTtlInSeconds,omitempty" tf:"max_session_ttl_in_seconds,omitempty"`
 
 	// The name of the bastion, which can't be changed after creation.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -54,8 +52,7 @@ type BastionInitParameters struct {
 	PhoneBookEntry *string `json:"phoneBookEntry,omitempty" tf:"phone_book_entry,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. This is unique to ZPR, and helps identify which resources are allowed to be accessed by what permission controls. Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) A list of IP addresses of the hosts that the bastion has access to. Not applicable to standard bastions.
 	StaticJumpHostIPAddresses []*string `json:"staticJumpHostIpAddresses,omitempty" tf:"static_jump_host_ip_addresses,omitempty"`
@@ -89,12 +86,10 @@ type BastionObservation struct {
 	DNSProxyStatus *string `json:"dnsProxyStatus,omitempty" tf:"dns_proxy_status,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The unique identifier (OCID) of the bastion, which can't be changed after creation.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -103,10 +98,10 @@ type BastionObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// (Updatable) The maximum amount of time that any session on the bastion can remain active.
-	MaxSessionTTLInSeconds *float64 `json:"maxSessionTtlInSeconds,omitempty" tf:"max_session_ttl_in_seconds,omitempty"`
+	MaxSessionTTLInSeconds *int64 `json:"maxSessionTtlInSeconds,omitempty" tf:"max_session_ttl_in_seconds,omitempty"`
 
 	// The maximum number of active sessions allowed on the bastion.
-	MaxSessionsAllowed *float64 `json:"maxSessionsAllowed,omitempty" tf:"max_sessions_allowed,omitempty"`
+	MaxSessionsAllowed *int64 `json:"maxSessionsAllowed,omitempty" tf:"max_sessions_allowed,omitempty"`
 
 	// The name of the bastion, which can't be changed after creation.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -118,8 +113,7 @@ type BastionObservation struct {
 	PrivateEndpointIPAddress *string `json:"privateEndpointIpAddress,omitempty" tf:"private_endpoint_ip_address,omitempty"`
 
 	// (Updatable) Security Attributes for this resource. This is unique to ZPR, and helps identify which resources are allowed to be accessed by what permission controls. Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// The current state of the bastion.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -128,8 +122,7 @@ type BastionObservation struct {
 	StaticJumpHostIPAddresses []*string `json:"staticJumpHostIpAddresses,omitempty" tf:"static_jump_host_ip_addresses,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The unique identifier (OCID) of the subnet that the bastion connects to.
 	TargetSubnetID *string `json:"targetSubnetId,omitempty" tf:"target_subnet_id,omitempty"`
@@ -173,17 +166,15 @@ type BastionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The maximum amount of time that any session on the bastion can remain active.
 	// +kubebuilder:validation:Optional
-	MaxSessionTTLInSeconds *float64 `json:"maxSessionTtlInSeconds,omitempty" tf:"max_session_ttl_in_seconds,omitempty"`
+	MaxSessionTTLInSeconds *int64 `json:"maxSessionTtlInSeconds,omitempty" tf:"max_session_ttl_in_seconds,omitempty"`
 
 	// The name of the bastion, which can't be changed after creation.
 	// +kubebuilder:validation:Optional
@@ -195,8 +186,7 @@ type BastionParameters struct {
 
 	// (Updatable) Security Attributes for this resource. This is unique to ZPR, and helps identify which resources are allowed to be accessed by what permission controls. Example: {"Oracle-DataSecurity-ZPR.MaxEgressCount.value": "42", "Oracle-DataSecurity-ZPR.MaxEgressCount.mode": "audit"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	SecurityAttributes map[string]*string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
+	SecurityAttributes map[string]string `json:"securityAttributes,omitempty" tf:"security_attributes,omitempty"`
 
 	// (Updatable) A list of IP addresses of the hosts that the bastion has access to. Not applicable to standard bastions.
 	// +kubebuilder:validation:Optional

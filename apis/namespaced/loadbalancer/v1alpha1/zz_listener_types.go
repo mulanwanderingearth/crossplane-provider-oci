@@ -20,7 +20,7 @@ type ConnectionConfigurationInitParameters struct {
 	BackendTCPProxyProtocolOptions []*string `json:"backendTcpProxyProtocolOptions,omitempty" tf:"backend_tcp_proxy_protocol_options,omitempty"`
 
 	// (Updatable) The backend TCP Proxy Protocol version.  Example: 1
-	BackendTCPProxyProtocolVersion *float64 `json:"backendTcpProxyProtocolVersion,omitempty" tf:"backend_tcp_proxy_protocol_version,omitempty"`
+	BackendTCPProxyProtocolVersion *int64 `json:"backendTcpProxyProtocolVersion,omitempty" tf:"backend_tcp_proxy_protocol_version,omitempty"`
 
 	// (Updatable) The maximum idle time, in seconds, allowed between two successive receive or two successive send operations between the client and backend servers. A send operation does not reset the timer for receive operations. A receive operation does not reset the timer for send operations.
 	IdleTimeoutInSeconds *string `json:"idleTimeoutInSeconds,omitempty" tf:"idle_timeout_in_seconds,omitempty"`
@@ -32,7 +32,7 @@ type ConnectionConfigurationObservation struct {
 	BackendTCPProxyProtocolOptions []*string `json:"backendTcpProxyProtocolOptions,omitempty" tf:"backend_tcp_proxy_protocol_options,omitempty"`
 
 	// (Updatable) The backend TCP Proxy Protocol version.  Example: 1
-	BackendTCPProxyProtocolVersion *float64 `json:"backendTcpProxyProtocolVersion,omitempty" tf:"backend_tcp_proxy_protocol_version,omitempty"`
+	BackendTCPProxyProtocolVersion *int64 `json:"backendTcpProxyProtocolVersion,omitempty" tf:"backend_tcp_proxy_protocol_version,omitempty"`
 
 	// (Updatable) The maximum idle time, in seconds, allowed between two successive receive or two successive send operations between the client and backend servers. A send operation does not reset the timer for receive operations. A receive operation does not reset the timer for send operations.
 	IdleTimeoutInSeconds *string `json:"idleTimeoutInSeconds,omitempty" tf:"idle_timeout_in_seconds,omitempty"`
@@ -46,7 +46,7 @@ type ConnectionConfigurationParameters struct {
 
 	// (Updatable) The backend TCP Proxy Protocol version.  Example: 1
 	// +kubebuilder:validation:Optional
-	BackendTCPProxyProtocolVersion *float64 `json:"backendTcpProxyProtocolVersion,omitempty" tf:"backend_tcp_proxy_protocol_version,omitempty"`
+	BackendTCPProxyProtocolVersion *int64 `json:"backendTcpProxyProtocolVersion,omitempty" tf:"backend_tcp_proxy_protocol_version,omitempty"`
 
 	// (Updatable) The maximum idle time, in seconds, allowed between two successive receive or two successive send operations between the client and backend servers. A send operation does not reset the timer for receive operations. A receive operation does not reset the timer for send operations.
 	// +kubebuilder:validation:Optional
@@ -110,7 +110,7 @@ type ListenerInitParameters struct {
 	PathRouteSetNameSelector *v1.NamespacedSelector `json:"pathRouteSetNameSelector,omitempty" tf:"-"`
 
 	// (Updatable) The communication port for the listener.  Example: 80
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol on which the listener accepts connection requests. To get a list of valid protocols, use the ListProtocols operation.  Example: HTTP
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -166,7 +166,7 @@ type ListenerObservation struct {
 	PathRouteSetName *string `json:"pathRouteSetName,omitempty" tf:"path_route_set_name,omitempty"`
 
 	// (Updatable) The communication port for the listener.  Example: 80
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol on which the listener accepts connection requests. To get a list of valid protocols, use the ListProtocols operation.  Example: HTTP
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -247,7 +247,7 @@ type ListenerParameters struct {
 
 	// (Updatable) The communication port for the listener.  Example: 80
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Updatable) The protocol on which the listener accepts connection requests. To get a list of valid protocols, use the ListProtocols operation.  Example: HTTP
 	// +kubebuilder:validation:Optional
@@ -317,7 +317,7 @@ type ListenerSSLConfigurationInitParameters struct {
 	TrustedCertificateAuthorityIds []*string `json:"trustedCertificateAuthorityIds,omitempty" tf:"trusted_certificate_authority_ids,omitempty"`
 
 	// (Updatable) The maximum depth for peer certificate chain verification.  Example: 3
-	VerifyDepth *float64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
+	VerifyDepth *int64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
 
 	// (Updatable) Whether the load balancer listener should verify peer certificates.  Example: true
 	VerifyPeerCertificate *bool `json:"verifyPeerCertificate,omitempty" tf:"verify_peer_certificate,omitempty"`
@@ -347,7 +347,7 @@ type ListenerSSLConfigurationObservation struct {
 	TrustedCertificateAuthorityIds []*string `json:"trustedCertificateAuthorityIds,omitempty" tf:"trusted_certificate_authority_ids,omitempty"`
 
 	// (Updatable) The maximum depth for peer certificate chain verification.  Example: 3
-	VerifyDepth *float64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
+	VerifyDepth *int64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
 
 	// (Updatable) Whether the load balancer listener should verify peer certificates.  Example: true
 	VerifyPeerCertificate *bool `json:"verifyPeerCertificate,omitempty" tf:"verify_peer_certificate,omitempty"`
@@ -394,7 +394,7 @@ type ListenerSSLConfigurationParameters struct {
 
 	// (Updatable) The maximum depth for peer certificate chain verification.  Example: 3
 	// +kubebuilder:validation:Optional
-	VerifyDepth *float64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
+	VerifyDepth *int64 `json:"verifyDepth,omitempty" tf:"verify_depth,omitempty"`
 
 	// (Updatable) Whether the load balancer listener should verify peer certificates.  Example: true
 	// +kubebuilder:validation:Optional

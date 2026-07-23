@@ -845,13 +845,15 @@ spec:
                         port:
                           description: 'The volume''s iSCSI port, usually port 860
                             or 3260.  Example: 3260'
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   port:
                     description: 'The volume''s iSCSI port, usually port 860 or 3260.  Example:
                       3260'
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of the volume attachment.
                     type: string

@@ -84,7 +84,7 @@ type ColumnInfoInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Specifies the display order of the column.
-	DisplayOrder *float64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
+	DisplayOrder *int64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
 
 	// (Updatable) Name of the column on which the filter must be applied.
 	FieldName *string `json:"fieldName,omitempty" tf:"field_name,omitempty"`
@@ -108,7 +108,7 @@ type ColumnInfoObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Specifies the display order of the column.
-	DisplayOrder *float64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
+	DisplayOrder *int64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
 
 	// (Updatable) Name of the column on which the filter must be applied.
 	FieldName *string `json:"fieldName,omitempty" tf:"field_name,omitempty"`
@@ -136,7 +136,7 @@ type ColumnInfoParameters struct {
 
 	// (Updatable) Specifies the display order of the column.
 	// +kubebuilder:validation:Optional
-	DisplayOrder *float64 `json:"displayOrder" tf:"display_order,omitempty"`
+	DisplayOrder *int64 `json:"displayOrder" tf:"display_order,omitempty"`
 
 	// (Updatable) Name of the column on which the filter must be applied.
 	// +kubebuilder:validation:Optional
@@ -160,7 +160,7 @@ type ColumnSortingsInitParameters struct {
 	IsAscending *bool `json:"isAscending,omitempty" tf:"is_ascending,omitempty"`
 
 	// (Updatable) Indicates the order at which column must be sorted.
-	SortingOrder *float64 `json:"sortingOrder,omitempty" tf:"sorting_order,omitempty"`
+	SortingOrder *int64 `json:"sortingOrder,omitempty" tf:"sorting_order,omitempty"`
 }
 
 type ColumnSortingsObservation struct {
@@ -172,7 +172,7 @@ type ColumnSortingsObservation struct {
 	IsAscending *bool `json:"isAscending,omitempty" tf:"is_ascending,omitempty"`
 
 	// (Updatable) Indicates the order at which column must be sorted.
-	SortingOrder *float64 `json:"sortingOrder,omitempty" tf:"sorting_order,omitempty"`
+	SortingOrder *int64 `json:"sortingOrder,omitempty" tf:"sorting_order,omitempty"`
 }
 
 type ColumnSortingsParameters struct {
@@ -187,7 +187,7 @@ type ColumnSortingsParameters struct {
 
 	// (Updatable) Indicates the order at which column must be sorted.
 	// +kubebuilder:validation:Optional
-	SortingOrder *float64 `json:"sortingOrder" tf:"sorting_order,omitempty"`
+	SortingOrder *int64 `json:"sortingOrder" tf:"sorting_order,omitempty"`
 }
 
 type ReportDefinitionInitParameters struct {
@@ -214,8 +214,7 @@ type ReportDefinitionInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the report definition.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -224,8 +223,7 @@ type ReportDefinitionInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the parent report definition.
 	ParentID *string `json:"parentId,omitempty" tf:"parent_id,omitempty"`
@@ -258,8 +256,7 @@ type ReportDefinitionObservation struct {
 	DataSource *string `json:"dataSource,omitempty" tf:"data_source,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the report definition.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -268,11 +265,10 @@ type ReportDefinitionObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Specifies the display order of the column.
-	DisplayOrder *float64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
+	DisplayOrder *int64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the report definition.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -302,7 +298,7 @@ type ReportDefinitionObservation struct {
 	ScheduledReportName *string `json:"scheduledReportName,omitempty" tf:"scheduled_report_name,omitempty"`
 
 	// Specifies the limit on the number of rows in the report.
-	ScheduledReportRowLimit *float64 `json:"scheduledReportRowLimit,omitempty" tf:"scheduled_report_row_limit,omitempty"`
+	ScheduledReportRowLimit *int64 `json:"scheduledReportRowLimit,omitempty" tf:"scheduled_report_row_limit,omitempty"`
 
 	// (Updatable) Additional scim filters used to get the specific summary.
 	ScimFilter *string `json:"scimFilter,omitempty" tf:"scim_filter,omitempty"`
@@ -314,8 +310,7 @@ type ReportDefinitionObservation struct {
 	Summary []SummaryObservation `json:"summary,omitempty" tf:"summary,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Specifies the date and time the report definition was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -353,8 +348,7 @@ type ReportDefinitionParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the report definition.
 	// +kubebuilder:validation:Optional
@@ -366,8 +360,7 @@ type ReportDefinitionParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the parent report definition.
 	// +kubebuilder:validation:Optional
@@ -384,7 +377,7 @@ type SummaryInitParameters struct {
 	CountOf *string `json:"countOf,omitempty" tf:"count_of,omitempty"`
 
 	// (Updatable) Specifies the display order of the column.
-	DisplayOrder *float64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
+	DisplayOrder *int64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
 
 	// (Updatable) A comma-delimited string that specifies the names of the fields by which the records must be aggregated to get the summary.
 	GroupByFieldName *string `json:"groupByFieldName,omitempty" tf:"group_by_field_name,omitempty"`
@@ -405,7 +398,7 @@ type SummaryObservation struct {
 	CountOf *string `json:"countOf,omitempty" tf:"count_of,omitempty"`
 
 	// (Updatable) Specifies the display order of the column.
-	DisplayOrder *float64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
+	DisplayOrder *int64 `json:"displayOrder,omitempty" tf:"display_order,omitempty"`
 
 	// (Updatable) A comma-delimited string that specifies the names of the fields by which the records must be aggregated to get the summary.
 	GroupByFieldName *string `json:"groupByFieldName,omitempty" tf:"group_by_field_name,omitempty"`
@@ -428,7 +421,7 @@ type SummaryParameters struct {
 
 	// (Updatable) Specifies the display order of the column.
 	// +kubebuilder:validation:Optional
-	DisplayOrder *float64 `json:"displayOrder" tf:"display_order,omitempty"`
+	DisplayOrder *int64 `json:"displayOrder" tf:"display_order,omitempty"`
 
 	// (Updatable) A comma-delimited string that specifies the names of the fields by which the records must be aggregated to get the summary.
 	// +kubebuilder:validation:Optional

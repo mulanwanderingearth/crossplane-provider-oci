@@ -357,7 +357,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Vb Instance Identifier.
                     type: string
@@ -368,7 +367,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idcsOpenIdSecretRef:
                     description: (Updatable) Encrypted IDCS Open ID token. This is
                       required for pre-UCPIS cloud accounts, but not UCPIS, hence
@@ -522,7 +520,8 @@ spec:
                     type: array
                   nodeCount:
                     description: (Updatable) The number of Nodes
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -835,7 +834,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Vb Instance Identifier.
                     type: string
@@ -846,7 +844,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idcsOpenIdSecretRef:
                     description: (Updatable) Encrypted IDCS Open ID token. This is
                       required for pre-UCPIS cloud accounts, but not UCPIS, hence
@@ -1000,7 +997,8 @@ spec:
                     type: array
                   nodeCount:
                     description: (Updatable) The number of Nodes
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -1092,7 +1090,8 @@ spec:
                         certificateSecretVersion:
                           description: The secret version used for the certificate-secret-id
                             (if certificate-secret-id is specified).
-                          type: number
+                          format: int64
+                          type: integer
                         hostname:
                           description: (Updatable) A custom hostname to be used for
                             the vb instance URL, in FQDN format.
@@ -1122,7 +1121,8 @@ spec:
                         certificateSecretVersion:
                           description: The secret version used for the certificate-secret-id
                             (if certificate-secret-id is specified).
-                          type: number
+                          format: int64
+                          type: integer
                         hostname:
                           description: (Updatable) A custom hostname to be used for
                             the vb instance URL, in FQDN format.
@@ -1136,7 +1136,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Vb Instance Identifier.
                     type: string
@@ -1147,7 +1146,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: (Updatable) The Virtual Cloud Network OCID.
                     type: string
@@ -1219,7 +1217,8 @@ spec:
                     type: array
                   nodeCount:
                     description: (Updatable) The number of Nodes
-                    type: number
+                    format: int64
+                    type: integer
                   serviceNatGatewayIp:
                     description: The NAT gateway IP address for the VB service VCN
                     type: string
@@ -1242,7 +1241,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time the the VbInstance was created. An RFC3339
                       formatted datetime string.

@@ -154,7 +154,8 @@ spec:
                   connectionTimeout:
                     description: (Updatable) Number in milliseconds. The timeout for
                       connecting to the Prometheus Exporter's endpoint.
-                    type: number
+                    format: int64
+                    type: integer
                   managementAgentId:
                     description: Unique Management Agent identifier
                     type: string
@@ -269,11 +270,13 @@ spec:
                     description: (Updatable) Number in kilobytes. The limit on the
                       data being sent, not to exceed the agent's fixed limit of 400
                       (KB).
-                    type: number
+                    format: int64
+                    type: integer
                   readTimeout:
                     description: (Updatable) Number in milliseconds. The timeout for
                       reading the response from the Prometheus Exporter's endpoint.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceGroup:
                     description: (Updatable) Oracle Cloud Infrastructure monitoring
                       resource group to assign the metric to.
@@ -281,7 +284,8 @@ spec:
                   scheduleMins:
                     description: (Updatable) Number in minutes. The scraping occurs
                       at the specified interval.
-                    type: number
+                    format: int64
+                    type: integer
                   type:
                     description: '(Updatable) The type of the DataSource. Support
                       types: PROMETHEUS_EMITTER'
@@ -397,7 +401,8 @@ spec:
                   connectionTimeout:
                     description: (Updatable) Number in milliseconds. The timeout for
                       connecting to the Prometheus Exporter's endpoint.
-                    type: number
+                    format: int64
+                    type: integer
                   managementAgentId:
                     description: Unique Management Agent identifier
                     type: string
@@ -512,11 +517,13 @@ spec:
                     description: (Updatable) Number in kilobytes. The limit on the
                       data being sent, not to exceed the agent's fixed limit of 400
                       (KB).
-                    type: number
+                    format: int64
+                    type: integer
                   readTimeout:
                     description: (Updatable) Number in milliseconds. The timeout for
                       reading the response from the Prometheus Exporter's endpoint.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceGroup:
                     description: (Updatable) Oracle Cloud Infrastructure monitoring
                       resource group to assign the metric to.
@@ -524,7 +531,8 @@ spec:
                   scheduleMins:
                     description: (Updatable) Number in minutes. The scraping occurs
                       at the specified interval.
-                    type: number
+                    format: int64
+                    type: integer
                   type:
                     description: '(Updatable) The type of the DataSource. Support
                       types: PROMETHEUS_EMITTER'
@@ -624,7 +632,8 @@ spec:
                   connectionTimeout:
                     description: (Updatable) Number in milliseconds. The timeout for
                       connecting to the Prometheus Exporter's endpoint.
-                    type: number
+                    format: int64
+                    type: integer
                   dataSourceKey:
                     description: Identifier for DataSource. This represents the type
                       and name for the data source associated with the Management
@@ -667,16 +676,19 @@ spec:
                   readDataLimit:
                     description: Number in kilobytes. The limit on the data being
                       sent, not to exceed the agent's fixed limit of 400 (KB).
-                    type: number
+                    format: int64
+                    type: integer
                   readDataLimitInKilobytes:
                     description: (Updatable) Number in kilobytes. The limit on the
                       data being sent, not to exceed the agent's fixed limit of 400
                       (KB).
-                    type: number
+                    format: int64
+                    type: integer
                   readTimeout:
                     description: (Updatable) Number in milliseconds. The timeout for
                       reading the response from the Prometheus Exporter's endpoint.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceGroup:
                     description: (Updatable) Oracle Cloud Infrastructure monitoring
                       resource group to assign the metric to.
@@ -684,7 +696,8 @@ spec:
                   scheduleMins:
                     description: (Updatable) Number in minutes. The scraping occurs
                       at the specified interval.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: State of the DataSource.
                     type: string

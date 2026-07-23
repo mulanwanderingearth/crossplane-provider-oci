@@ -15,6 +15,18 @@ import (
 )
 
 type AuthenticationFactorSettingIdcsCreatedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The value of the attribute to be evaluated
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AuthenticationFactorSettingIdcsCreatedByObservation struct {
@@ -36,9 +48,37 @@ type AuthenticationFactorSettingIdcsCreatedByObservation struct {
 }
 
 type AuthenticationFactorSettingIdcsCreatedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The value of the attribute to be evaluated
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type AuthenticationFactorSettingIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The value of the attribute to be evaluated
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type AuthenticationFactorSettingIdcsLastModifiedByObservation struct {
@@ -60,6 +100,22 @@ type AuthenticationFactorSettingIdcsLastModifiedByObservation struct {
 }
 
 type AuthenticationFactorSettingIdcsLastModifiedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The value of the attribute to be evaluated
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type AuthenticationFactorSettingInitParameters struct {
@@ -175,6 +231,21 @@ type AuthenticationFactorSettingInitParameters struct {
 }
 
 type AuthenticationFactorSettingMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type AuthenticationFactorSettingMetaObservation struct {
@@ -196,6 +267,26 @@ type AuthenticationFactorSettingMetaObservation struct {
 }
 
 type AuthenticationFactorSettingMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type AuthenticationFactorSettingObservation struct {
@@ -510,19 +601,19 @@ type AuthenticationFactorSettingTagsParameters struct {
 type BypassCodeSettingsInitParameters struct {
 
 	// (Updatable) Expiry (in minutes) of any bypass code that is generated by the help desk
-	HelpDeskCodeExpiryInMins *float64 `json:"helpDeskCodeExpiryInMins,omitempty" tf:"help_desk_code_expiry_in_mins,omitempty"`
+	HelpDeskCodeExpiryInMins *int64 `json:"helpDeskCodeExpiryInMins,omitempty" tf:"help_desk_code_expiry_in_mins,omitempty"`
 
 	// (Updatable) If true, indicates that help desk bypass code generation is enabled
 	HelpDeskGenerationEnabled *bool `json:"helpDeskGenerationEnabled,omitempty" tf:"help_desk_generation_enabled,omitempty"`
 
 	// (Updatable) The maximum number of times that any bypass code that is generated by the help desk can be used
-	HelpDeskMaxUsage *float64 `json:"helpDeskMaxUsage,omitempty" tf:"help_desk_max_usage,omitempty"`
+	HelpDeskMaxUsage *int64 `json:"helpDeskMaxUsage,omitempty" tf:"help_desk_max_usage,omitempty"`
 
 	// (Updatable) Exact length of the bypass code to be generated
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 
 	// (Updatable) The maximum number of bypass codes that can be issued to any user
-	MaxActive *float64 `json:"maxActive,omitempty" tf:"max_active,omitempty"`
+	MaxActive *int64 `json:"maxActive,omitempty" tf:"max_active,omitempty"`
 
 	// (Updatable) If true, indicates that self-service bypass code generation is enabled
 	SelfServiceGenerationEnabled *bool `json:"selfServiceGenerationEnabled,omitempty" tf:"self_service_generation_enabled,omitempty"`
@@ -531,19 +622,19 @@ type BypassCodeSettingsInitParameters struct {
 type BypassCodeSettingsObservation struct {
 
 	// (Updatable) Expiry (in minutes) of any bypass code that is generated by the help desk
-	HelpDeskCodeExpiryInMins *float64 `json:"helpDeskCodeExpiryInMins,omitempty" tf:"help_desk_code_expiry_in_mins,omitempty"`
+	HelpDeskCodeExpiryInMins *int64 `json:"helpDeskCodeExpiryInMins,omitempty" tf:"help_desk_code_expiry_in_mins,omitempty"`
 
 	// (Updatable) If true, indicates that help desk bypass code generation is enabled
 	HelpDeskGenerationEnabled *bool `json:"helpDeskGenerationEnabled,omitempty" tf:"help_desk_generation_enabled,omitempty"`
 
 	// (Updatable) The maximum number of times that any bypass code that is generated by the help desk can be used
-	HelpDeskMaxUsage *float64 `json:"helpDeskMaxUsage,omitempty" tf:"help_desk_max_usage,omitempty"`
+	HelpDeskMaxUsage *int64 `json:"helpDeskMaxUsage,omitempty" tf:"help_desk_max_usage,omitempty"`
 
 	// (Updatable) Exact length of the bypass code to be generated
-	Length *float64 `json:"length,omitempty" tf:"length,omitempty"`
+	Length *int64 `json:"length,omitempty" tf:"length,omitempty"`
 
 	// (Updatable) The maximum number of bypass codes that can be issued to any user
-	MaxActive *float64 `json:"maxActive,omitempty" tf:"max_active,omitempty"`
+	MaxActive *int64 `json:"maxActive,omitempty" tf:"max_active,omitempty"`
 
 	// (Updatable) If true, indicates that self-service bypass code generation is enabled
 	SelfServiceGenerationEnabled *bool `json:"selfServiceGenerationEnabled,omitempty" tf:"self_service_generation_enabled,omitempty"`
@@ -553,7 +644,7 @@ type BypassCodeSettingsParameters struct {
 
 	// (Updatable) Expiry (in minutes) of any bypass code that is generated by the help desk
 	// +kubebuilder:validation:Optional
-	HelpDeskCodeExpiryInMins *float64 `json:"helpDeskCodeExpiryInMins" tf:"help_desk_code_expiry_in_mins,omitempty"`
+	HelpDeskCodeExpiryInMins *int64 `json:"helpDeskCodeExpiryInMins" tf:"help_desk_code_expiry_in_mins,omitempty"`
 
 	// (Updatable) If true, indicates that help desk bypass code generation is enabled
 	// +kubebuilder:validation:Optional
@@ -561,15 +652,15 @@ type BypassCodeSettingsParameters struct {
 
 	// (Updatable) The maximum number of times that any bypass code that is generated by the help desk can be used
 	// +kubebuilder:validation:Optional
-	HelpDeskMaxUsage *float64 `json:"helpDeskMaxUsage" tf:"help_desk_max_usage,omitempty"`
+	HelpDeskMaxUsage *int64 `json:"helpDeskMaxUsage" tf:"help_desk_max_usage,omitempty"`
 
 	// (Updatable) Exact length of the bypass code to be generated
 	// +kubebuilder:validation:Optional
-	Length *float64 `json:"length" tf:"length,omitempty"`
+	Length *int64 `json:"length" tf:"length,omitempty"`
 
 	// (Updatable) The maximum number of bypass codes that can be issued to any user
 	// +kubebuilder:validation:Optional
-	MaxActive *float64 `json:"maxActive" tf:"max_active,omitempty"`
+	MaxActive *int64 `json:"maxActive" tf:"max_active,omitempty"`
 
 	// (Updatable) If true, indicates that self-service bypass code generation is enabled
 	// +kubebuilder:validation:Optional
@@ -582,28 +673,28 @@ type ClientAppSettingsInitParameters struct {
 	DeviceProtectionPolicy *string `json:"deviceProtectionPolicy,omitempty" tf:"device_protection_policy,omitempty"`
 
 	// (Updatable) The period of time in seconds that the system will lock a user out of the service after that user exceeds the maximum number of login failures
-	InitialLockoutPeriodInSecs *float64 `json:"initialLockoutPeriodInSecs,omitempty" tf:"initial_lockout_period_in_secs,omitempty"`
+	InitialLockoutPeriodInSecs *int64 `json:"initialLockoutPeriodInSecs,omitempty" tf:"initial_lockout_period_in_secs,omitempty"`
 
 	// (Updatable) The size of the key that the system uses to generate the public-private key pair
-	KeyPairLength *float64 `json:"keyPairLength,omitempty" tf:"key_pair_length,omitempty"`
+	KeyPairLength *int64 `json:"keyPairLength,omitempty" tf:"key_pair_length,omitempty"`
 
 	// (Updatable) The pattern of escalation that the system follows, in locking a particular user out of the service.
 	LockoutEscalationPattern *string `json:"lockoutEscalationPattern,omitempty" tf:"lockout_escalation_pattern,omitempty"`
 
 	// (Updatable) The maximum number of times that a particular user can fail to login before the system locks that user out of the service
-	MaxFailuresBeforeLockout *float64 `json:"maxFailuresBeforeLockout,omitempty" tf:"max_failures_before_lockout,omitempty"`
+	MaxFailuresBeforeLockout *int64 `json:"maxFailuresBeforeLockout,omitempty" tf:"max_failures_before_lockout,omitempty"`
 
 	// (Updatable) The maximum number of login failures that the system will allow before raising a warning and sending an alert via email
-	MaxFailuresBeforeWarning *float64 `json:"maxFailuresBeforeWarning,omitempty" tf:"max_failures_before_warning,omitempty"`
+	MaxFailuresBeforeWarning *int64 `json:"maxFailuresBeforeWarning,omitempty" tf:"max_failures_before_warning,omitempty"`
 
 	// (Updatable) The maximum period of time that the system will lock a particular user out of the service regardless of what the configured pattern of escalation would otherwise dictate
-	MaxLockoutIntervalInSecs *float64 `json:"maxLockoutIntervalInSecs,omitempty" tf:"max_lockout_interval_in_secs,omitempty"`
+	MaxLockoutIntervalInSecs *int64 `json:"maxLockoutIntervalInSecs,omitempty" tf:"max_lockout_interval_in_secs,omitempty"`
 
 	// (Updatable) Minimum length of the Personal Identification Number (PIN)
-	MinPinLength *float64 `json:"minPinLength,omitempty" tf:"min_pin_length,omitempty"`
+	MinPinLength *int64 `json:"minPinLength,omitempty" tf:"min_pin_length,omitempty"`
 
 	// (Updatable) The period of time in days after which a client should refresh its policy by re-reading that policy from the server
-	PolicyUpdateFreqInDays *float64 `json:"policyUpdateFreqInDays,omitempty" tf:"policy_update_freq_in_days,omitempty"`
+	PolicyUpdateFreqInDays *int64 `json:"policyUpdateFreqInDays,omitempty" tf:"policy_update_freq_in_days,omitempty"`
 
 	// (Updatable) Indicates which algorithm the system will use to sign requests
 	RequestSigningAlgo *string `json:"requestSigningAlgo,omitempty" tf:"request_signing_algo,omitempty"`
@@ -615,7 +706,7 @@ type ClientAppSettingsInitParameters struct {
 	UnlockAppForEachRequestEnabled *bool `json:"unlockAppForEachRequestEnabled,omitempty" tf:"unlock_app_for_each_request_enabled,omitempty"`
 
 	// (Updatable) Specifies the period of time in seconds after which the client App should require the user to unlock the App. In order to unlock the App, the user must supply a Personal Identification Number (PIN) or a biometric authentication-factor. A value of zero means that it is disabled.
-	UnlockAppIntervalInSecs *float64 `json:"unlockAppIntervalInSecs,omitempty" tf:"unlock_app_interval_in_secs,omitempty"`
+	UnlockAppIntervalInSecs *int64 `json:"unlockAppIntervalInSecs,omitempty" tf:"unlock_app_interval_in_secs,omitempty"`
 
 	// (Updatable) If true, indicates that the system should require the user to unlock the client App, when the client App comes to the foreground in the display of the device. In order to unlock the App, the user must supply a Personal Identification Number (PIN) or a biometric authentication-factor.
 	UnlockOnAppForegroundEnabled *bool `json:"unlockOnAppForegroundEnabled,omitempty" tf:"unlock_on_app_foreground_enabled,omitempty"`
@@ -630,28 +721,28 @@ type ClientAppSettingsObservation struct {
 	DeviceProtectionPolicy *string `json:"deviceProtectionPolicy,omitempty" tf:"device_protection_policy,omitempty"`
 
 	// (Updatable) The period of time in seconds that the system will lock a user out of the service after that user exceeds the maximum number of login failures
-	InitialLockoutPeriodInSecs *float64 `json:"initialLockoutPeriodInSecs,omitempty" tf:"initial_lockout_period_in_secs,omitempty"`
+	InitialLockoutPeriodInSecs *int64 `json:"initialLockoutPeriodInSecs,omitempty" tf:"initial_lockout_period_in_secs,omitempty"`
 
 	// (Updatable) The size of the key that the system uses to generate the public-private key pair
-	KeyPairLength *float64 `json:"keyPairLength,omitempty" tf:"key_pair_length,omitempty"`
+	KeyPairLength *int64 `json:"keyPairLength,omitempty" tf:"key_pair_length,omitempty"`
 
 	// (Updatable) The pattern of escalation that the system follows, in locking a particular user out of the service.
 	LockoutEscalationPattern *string `json:"lockoutEscalationPattern,omitempty" tf:"lockout_escalation_pattern,omitempty"`
 
 	// (Updatable) The maximum number of times that a particular user can fail to login before the system locks that user out of the service
-	MaxFailuresBeforeLockout *float64 `json:"maxFailuresBeforeLockout,omitempty" tf:"max_failures_before_lockout,omitempty"`
+	MaxFailuresBeforeLockout *int64 `json:"maxFailuresBeforeLockout,omitempty" tf:"max_failures_before_lockout,omitempty"`
 
 	// (Updatable) The maximum number of login failures that the system will allow before raising a warning and sending an alert via email
-	MaxFailuresBeforeWarning *float64 `json:"maxFailuresBeforeWarning,omitempty" tf:"max_failures_before_warning,omitempty"`
+	MaxFailuresBeforeWarning *int64 `json:"maxFailuresBeforeWarning,omitempty" tf:"max_failures_before_warning,omitempty"`
 
 	// (Updatable) The maximum period of time that the system will lock a particular user out of the service regardless of what the configured pattern of escalation would otherwise dictate
-	MaxLockoutIntervalInSecs *float64 `json:"maxLockoutIntervalInSecs,omitempty" tf:"max_lockout_interval_in_secs,omitempty"`
+	MaxLockoutIntervalInSecs *int64 `json:"maxLockoutIntervalInSecs,omitempty" tf:"max_lockout_interval_in_secs,omitempty"`
 
 	// (Updatable) Minimum length of the Personal Identification Number (PIN)
-	MinPinLength *float64 `json:"minPinLength,omitempty" tf:"min_pin_length,omitempty"`
+	MinPinLength *int64 `json:"minPinLength,omitempty" tf:"min_pin_length,omitempty"`
 
 	// (Updatable) The period of time in days after which a client should refresh its policy by re-reading that policy from the server
-	PolicyUpdateFreqInDays *float64 `json:"policyUpdateFreqInDays,omitempty" tf:"policy_update_freq_in_days,omitempty"`
+	PolicyUpdateFreqInDays *int64 `json:"policyUpdateFreqInDays,omitempty" tf:"policy_update_freq_in_days,omitempty"`
 
 	// (Updatable) Indicates which algorithm the system will use to sign requests
 	RequestSigningAlgo *string `json:"requestSigningAlgo,omitempty" tf:"request_signing_algo,omitempty"`
@@ -663,7 +754,7 @@ type ClientAppSettingsObservation struct {
 	UnlockAppForEachRequestEnabled *bool `json:"unlockAppForEachRequestEnabled,omitempty" tf:"unlock_app_for_each_request_enabled,omitempty"`
 
 	// (Updatable) Specifies the period of time in seconds after which the client App should require the user to unlock the App. In order to unlock the App, the user must supply a Personal Identification Number (PIN) or a biometric authentication-factor. A value of zero means that it is disabled.
-	UnlockAppIntervalInSecs *float64 `json:"unlockAppIntervalInSecs,omitempty" tf:"unlock_app_interval_in_secs,omitempty"`
+	UnlockAppIntervalInSecs *int64 `json:"unlockAppIntervalInSecs,omitempty" tf:"unlock_app_interval_in_secs,omitempty"`
 
 	// (Updatable) If true, indicates that the system should require the user to unlock the client App, when the client App comes to the foreground in the display of the device. In order to unlock the App, the user must supply a Personal Identification Number (PIN) or a biometric authentication-factor.
 	UnlockOnAppForegroundEnabled *bool `json:"unlockOnAppForegroundEnabled,omitempty" tf:"unlock_on_app_foreground_enabled,omitempty"`
@@ -680,11 +771,11 @@ type ClientAppSettingsParameters struct {
 
 	// (Updatable) The period of time in seconds that the system will lock a user out of the service after that user exceeds the maximum number of login failures
 	// +kubebuilder:validation:Optional
-	InitialLockoutPeriodInSecs *float64 `json:"initialLockoutPeriodInSecs" tf:"initial_lockout_period_in_secs,omitempty"`
+	InitialLockoutPeriodInSecs *int64 `json:"initialLockoutPeriodInSecs" tf:"initial_lockout_period_in_secs,omitempty"`
 
 	// (Updatable) The size of the key that the system uses to generate the public-private key pair
 	// +kubebuilder:validation:Optional
-	KeyPairLength *float64 `json:"keyPairLength" tf:"key_pair_length,omitempty"`
+	KeyPairLength *int64 `json:"keyPairLength" tf:"key_pair_length,omitempty"`
 
 	// (Updatable) The pattern of escalation that the system follows, in locking a particular user out of the service.
 	// +kubebuilder:validation:Optional
@@ -692,23 +783,23 @@ type ClientAppSettingsParameters struct {
 
 	// (Updatable) The maximum number of times that a particular user can fail to login before the system locks that user out of the service
 	// +kubebuilder:validation:Optional
-	MaxFailuresBeforeLockout *float64 `json:"maxFailuresBeforeLockout" tf:"max_failures_before_lockout,omitempty"`
+	MaxFailuresBeforeLockout *int64 `json:"maxFailuresBeforeLockout" tf:"max_failures_before_lockout,omitempty"`
 
 	// (Updatable) The maximum number of login failures that the system will allow before raising a warning and sending an alert via email
 	// +kubebuilder:validation:Optional
-	MaxFailuresBeforeWarning *float64 `json:"maxFailuresBeforeWarning" tf:"max_failures_before_warning,omitempty"`
+	MaxFailuresBeforeWarning *int64 `json:"maxFailuresBeforeWarning" tf:"max_failures_before_warning,omitempty"`
 
 	// (Updatable) The maximum period of time that the system will lock a particular user out of the service regardless of what the configured pattern of escalation would otherwise dictate
 	// +kubebuilder:validation:Optional
-	MaxLockoutIntervalInSecs *float64 `json:"maxLockoutIntervalInSecs" tf:"max_lockout_interval_in_secs,omitempty"`
+	MaxLockoutIntervalInSecs *int64 `json:"maxLockoutIntervalInSecs" tf:"max_lockout_interval_in_secs,omitempty"`
 
 	// (Updatable) Minimum length of the Personal Identification Number (PIN)
 	// +kubebuilder:validation:Optional
-	MinPinLength *float64 `json:"minPinLength" tf:"min_pin_length,omitempty"`
+	MinPinLength *int64 `json:"minPinLength" tf:"min_pin_length,omitempty"`
 
 	// (Updatable) The period of time in days after which a client should refresh its policy by re-reading that policy from the server
 	// +kubebuilder:validation:Optional
-	PolicyUpdateFreqInDays *float64 `json:"policyUpdateFreqInDays" tf:"policy_update_freq_in_days,omitempty"`
+	PolicyUpdateFreqInDays *int64 `json:"policyUpdateFreqInDays" tf:"policy_update_freq_in_days,omitempty"`
 
 	// (Updatable) Indicates which algorithm the system will use to sign requests
 	// +kubebuilder:validation:Optional
@@ -724,7 +815,7 @@ type ClientAppSettingsParameters struct {
 
 	// (Updatable) Specifies the period of time in seconds after which the client App should require the user to unlock the App. In order to unlock the App, the user must supply a Personal Identification Number (PIN) or a biometric authentication-factor. A value of zero means that it is disabled.
 	// +kubebuilder:validation:Optional
-	UnlockAppIntervalInSecs *float64 `json:"unlockAppIntervalInSecs" tf:"unlock_app_interval_in_secs,omitempty"`
+	UnlockAppIntervalInSecs *int64 `json:"unlockAppIntervalInSecs" tf:"unlock_app_interval_in_secs,omitempty"`
 
 	// (Updatable) If true, indicates that the system should require the user to unlock the client App, when the client App comes to the foreground in the display of the device. In order to unlock the App, the user must supply a Personal Identification Number (PIN) or a biometric authentication-factor.
 	// +kubebuilder:validation:Optional
@@ -865,16 +956,16 @@ type EmailSettingsParameters struct {
 type EndpointRestrictionsInitParameters struct {
 
 	// (Updatable) Maximum number of days until an endpoint can be trusted
-	MaxEndpointTrustDurationInDays *float64 `json:"maxEndpointTrustDurationInDays,omitempty" tf:"max_endpoint_trust_duration_in_days,omitempty"`
+	MaxEndpointTrustDurationInDays *int64 `json:"maxEndpointTrustDurationInDays,omitempty" tf:"max_endpoint_trust_duration_in_days,omitempty"`
 
 	// (Updatable) Maximum number of enrolled devices per user
-	MaxEnrolledDevices *float64 `json:"maxEnrolledDevices,omitempty" tf:"max_enrolled_devices,omitempty"`
+	MaxEnrolledDevices *int64 `json:"maxEnrolledDevices,omitempty" tf:"max_enrolled_devices,omitempty"`
 
 	// (Updatable) An integer that represents the maximum number of failed MFA logins before an account is locked
-	MaxIncorrectAttempts *float64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
+	MaxIncorrectAttempts *int64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
 
 	// (Updatable) Max number of trusted endpoints per user
-	MaxTrustedEndpoints *float64 `json:"maxTrustedEndpoints,omitempty" tf:"max_trusted_endpoints,omitempty"`
+	MaxTrustedEndpoints *int64 `json:"maxTrustedEndpoints,omitempty" tf:"max_trusted_endpoints,omitempty"`
 
 	// (Updatable) Specify if trusted endpoints are enabled
 	TrustedEndpointsEnabled *bool `json:"trustedEndpointsEnabled,omitempty" tf:"trusted_endpoints_enabled,omitempty"`
@@ -883,16 +974,16 @@ type EndpointRestrictionsInitParameters struct {
 type EndpointRestrictionsObservation struct {
 
 	// (Updatable) Maximum number of days until an endpoint can be trusted
-	MaxEndpointTrustDurationInDays *float64 `json:"maxEndpointTrustDurationInDays,omitempty" tf:"max_endpoint_trust_duration_in_days,omitempty"`
+	MaxEndpointTrustDurationInDays *int64 `json:"maxEndpointTrustDurationInDays,omitempty" tf:"max_endpoint_trust_duration_in_days,omitempty"`
 
 	// (Updatable) Maximum number of enrolled devices per user
-	MaxEnrolledDevices *float64 `json:"maxEnrolledDevices,omitempty" tf:"max_enrolled_devices,omitempty"`
+	MaxEnrolledDevices *int64 `json:"maxEnrolledDevices,omitempty" tf:"max_enrolled_devices,omitempty"`
 
 	// (Updatable) An integer that represents the maximum number of failed MFA logins before an account is locked
-	MaxIncorrectAttempts *float64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
+	MaxIncorrectAttempts *int64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
 
 	// (Updatable) Max number of trusted endpoints per user
-	MaxTrustedEndpoints *float64 `json:"maxTrustedEndpoints,omitempty" tf:"max_trusted_endpoints,omitempty"`
+	MaxTrustedEndpoints *int64 `json:"maxTrustedEndpoints,omitempty" tf:"max_trusted_endpoints,omitempty"`
 
 	// (Updatable) Specify if trusted endpoints are enabled
 	TrustedEndpointsEnabled *bool `json:"trustedEndpointsEnabled,omitempty" tf:"trusted_endpoints_enabled,omitempty"`
@@ -902,19 +993,19 @@ type EndpointRestrictionsParameters struct {
 
 	// (Updatable) Maximum number of days until an endpoint can be trusted
 	// +kubebuilder:validation:Optional
-	MaxEndpointTrustDurationInDays *float64 `json:"maxEndpointTrustDurationInDays" tf:"max_endpoint_trust_duration_in_days,omitempty"`
+	MaxEndpointTrustDurationInDays *int64 `json:"maxEndpointTrustDurationInDays" tf:"max_endpoint_trust_duration_in_days,omitempty"`
 
 	// (Updatable) Maximum number of enrolled devices per user
 	// +kubebuilder:validation:Optional
-	MaxEnrolledDevices *float64 `json:"maxEnrolledDevices" tf:"max_enrolled_devices,omitempty"`
+	MaxEnrolledDevices *int64 `json:"maxEnrolledDevices" tf:"max_enrolled_devices,omitempty"`
 
 	// (Updatable) An integer that represents the maximum number of failed MFA logins before an account is locked
 	// +kubebuilder:validation:Optional
-	MaxIncorrectAttempts *float64 `json:"maxIncorrectAttempts" tf:"max_incorrect_attempts,omitempty"`
+	MaxIncorrectAttempts *int64 `json:"maxIncorrectAttempts" tf:"max_incorrect_attempts,omitempty"`
 
 	// (Updatable) Max number of trusted endpoints per user
 	// +kubebuilder:validation:Optional
-	MaxTrustedEndpoints *float64 `json:"maxTrustedEndpoints" tf:"max_trusted_endpoints,omitempty"`
+	MaxTrustedEndpoints *int64 `json:"maxTrustedEndpoints" tf:"max_trusted_endpoints,omitempty"`
 
 	// (Updatable) Specify if trusted endpoints are enabled
 	// +kubebuilder:validation:Optional
@@ -991,78 +1082,78 @@ type ThirdPartyFactorParameters struct {
 type TotpSettingsInitParameters struct {
 
 	// (Updatable) The period of time (in minutes) that a one-time passcode remains valid that the system sends by email.
-	EmailOtpValidityDurationInMins *float64 `json:"emailOtpValidityDurationInMins,omitempty" tf:"email_otp_validity_duration_in_mins,omitempty"`
+	EmailOtpValidityDurationInMins *int64 `json:"emailOtpValidityDurationInMins,omitempty" tf:"email_otp_validity_duration_in_mins,omitempty"`
 
 	// (Updatable) Exact length of the email one-time passcode.
-	EmailPasscodeLength *float64 `json:"emailPasscodeLength,omitempty" tf:"email_passcode_length,omitempty"`
+	EmailPasscodeLength *int64 `json:"emailPasscodeLength,omitempty" tf:"email_passcode_length,omitempty"`
 
 	// (Updatable) The hashing algorithm to be used to calculate a One-Time Passcode. By default, the system uses SHA1.
 	HashingAlgorithm *string `json:"hashingAlgorithm,omitempty" tf:"hashing_algorithm,omitempty"`
 
 	// (Updatable) The period of time (in seconds) that a JSON Web Token (JWT) is valid
-	JwtValidityDurationInSecs *float64 `json:"jwtValidityDurationInSecs,omitempty" tf:"jwt_validity_duration_in_secs,omitempty"`
+	JwtValidityDurationInSecs *int64 `json:"jwtValidityDurationInSecs,omitempty" tf:"jwt_validity_duration_in_secs,omitempty"`
 
 	// (Updatable) The duration of time (in days) after which the shared secret has to be refreshed
-	KeyRefreshIntervalInDays *float64 `json:"keyRefreshIntervalInDays,omitempty" tf:"key_refresh_interval_in_days,omitempty"`
+	KeyRefreshIntervalInDays *int64 `json:"keyRefreshIntervalInDays,omitempty" tf:"key_refresh_interval_in_days,omitempty"`
 
 	// (Updatable) Exact length of the One-Time Passcode that the system should generate
-	PasscodeLength *float64 `json:"passcodeLength,omitempty" tf:"passcode_length,omitempty"`
+	PasscodeLength *int64 `json:"passcodeLength,omitempty" tf:"passcode_length,omitempty"`
 
 	// (Updatable) The period of time (in minutes) for which a One-Time Passcode that the system sends by Short Message Service (SMS) or by voice remains valid
-	SMSOtpValidityDurationInMins *float64 `json:"smsOtpValidityDurationInMins,omitempty" tf:"sms_otp_validity_duration_in_mins,omitempty"`
+	SMSOtpValidityDurationInMins *int64 `json:"smsOtpValidityDurationInMins,omitempty" tf:"sms_otp_validity_duration_in_mins,omitempty"`
 
 	// (Updatable) Exact length of the Short Message Service (SMS) One-Time Passcode
-	SMSPasscodeLength *float64 `json:"smsPasscodeLength,omitempty" tf:"sms_passcode_length,omitempty"`
+	SMSPasscodeLength *int64 `json:"smsPasscodeLength,omitempty" tf:"sms_passcode_length,omitempty"`
 
 	// (Updatable) Time (in secs) to be used as the time step
-	TimeStepInSecs *float64 `json:"timeStepInSecs,omitempty" tf:"time_step_in_secs,omitempty"`
+	TimeStepInSecs *int64 `json:"timeStepInSecs,omitempty" tf:"time_step_in_secs,omitempty"`
 
 	// (Updatable) The tolerance/step-size that the system should use when validating a One-Time Passcode
-	TimeStepTolerance *float64 `json:"timeStepTolerance,omitempty" tf:"time_step_tolerance,omitempty"`
+	TimeStepTolerance *int64 `json:"timeStepTolerance,omitempty" tf:"time_step_tolerance,omitempty"`
 }
 
 type TotpSettingsObservation struct {
 
 	// (Updatable) The period of time (in minutes) that a one-time passcode remains valid that the system sends by email.
-	EmailOtpValidityDurationInMins *float64 `json:"emailOtpValidityDurationInMins,omitempty" tf:"email_otp_validity_duration_in_mins,omitempty"`
+	EmailOtpValidityDurationInMins *int64 `json:"emailOtpValidityDurationInMins,omitempty" tf:"email_otp_validity_duration_in_mins,omitempty"`
 
 	// (Updatable) Exact length of the email one-time passcode.
-	EmailPasscodeLength *float64 `json:"emailPasscodeLength,omitempty" tf:"email_passcode_length,omitempty"`
+	EmailPasscodeLength *int64 `json:"emailPasscodeLength,omitempty" tf:"email_passcode_length,omitempty"`
 
 	// (Updatable) The hashing algorithm to be used to calculate a One-Time Passcode. By default, the system uses SHA1.
 	HashingAlgorithm *string `json:"hashingAlgorithm,omitempty" tf:"hashing_algorithm,omitempty"`
 
 	// (Updatable) The period of time (in seconds) that a JSON Web Token (JWT) is valid
-	JwtValidityDurationInSecs *float64 `json:"jwtValidityDurationInSecs,omitempty" tf:"jwt_validity_duration_in_secs,omitempty"`
+	JwtValidityDurationInSecs *int64 `json:"jwtValidityDurationInSecs,omitempty" tf:"jwt_validity_duration_in_secs,omitempty"`
 
 	// (Updatable) The duration of time (in days) after which the shared secret has to be refreshed
-	KeyRefreshIntervalInDays *float64 `json:"keyRefreshIntervalInDays,omitempty" tf:"key_refresh_interval_in_days,omitempty"`
+	KeyRefreshIntervalInDays *int64 `json:"keyRefreshIntervalInDays,omitempty" tf:"key_refresh_interval_in_days,omitempty"`
 
 	// (Updatable) Exact length of the One-Time Passcode that the system should generate
-	PasscodeLength *float64 `json:"passcodeLength,omitempty" tf:"passcode_length,omitempty"`
+	PasscodeLength *int64 `json:"passcodeLength,omitempty" tf:"passcode_length,omitempty"`
 
 	// (Updatable) The period of time (in minutes) for which a One-Time Passcode that the system sends by Short Message Service (SMS) or by voice remains valid
-	SMSOtpValidityDurationInMins *float64 `json:"smsOtpValidityDurationInMins,omitempty" tf:"sms_otp_validity_duration_in_mins,omitempty"`
+	SMSOtpValidityDurationInMins *int64 `json:"smsOtpValidityDurationInMins,omitempty" tf:"sms_otp_validity_duration_in_mins,omitempty"`
 
 	// (Updatable) Exact length of the Short Message Service (SMS) One-Time Passcode
-	SMSPasscodeLength *float64 `json:"smsPasscodeLength,omitempty" tf:"sms_passcode_length,omitempty"`
+	SMSPasscodeLength *int64 `json:"smsPasscodeLength,omitempty" tf:"sms_passcode_length,omitempty"`
 
 	// (Updatable) Time (in secs) to be used as the time step
-	TimeStepInSecs *float64 `json:"timeStepInSecs,omitempty" tf:"time_step_in_secs,omitempty"`
+	TimeStepInSecs *int64 `json:"timeStepInSecs,omitempty" tf:"time_step_in_secs,omitempty"`
 
 	// (Updatable) The tolerance/step-size that the system should use when validating a One-Time Passcode
-	TimeStepTolerance *float64 `json:"timeStepTolerance,omitempty" tf:"time_step_tolerance,omitempty"`
+	TimeStepTolerance *int64 `json:"timeStepTolerance,omitempty" tf:"time_step_tolerance,omitempty"`
 }
 
 type TotpSettingsParameters struct {
 
 	// (Updatable) The period of time (in minutes) that a one-time passcode remains valid that the system sends by email.
 	// +kubebuilder:validation:Optional
-	EmailOtpValidityDurationInMins *float64 `json:"emailOtpValidityDurationInMins" tf:"email_otp_validity_duration_in_mins,omitempty"`
+	EmailOtpValidityDurationInMins *int64 `json:"emailOtpValidityDurationInMins" tf:"email_otp_validity_duration_in_mins,omitempty"`
 
 	// (Updatable) Exact length of the email one-time passcode.
 	// +kubebuilder:validation:Optional
-	EmailPasscodeLength *float64 `json:"emailPasscodeLength" tf:"email_passcode_length,omitempty"`
+	EmailPasscodeLength *int64 `json:"emailPasscodeLength" tf:"email_passcode_length,omitempty"`
 
 	// (Updatable) The hashing algorithm to be used to calculate a One-Time Passcode. By default, the system uses SHA1.
 	// +kubebuilder:validation:Optional
@@ -1070,31 +1161,31 @@ type TotpSettingsParameters struct {
 
 	// (Updatable) The period of time (in seconds) that a JSON Web Token (JWT) is valid
 	// +kubebuilder:validation:Optional
-	JwtValidityDurationInSecs *float64 `json:"jwtValidityDurationInSecs" tf:"jwt_validity_duration_in_secs,omitempty"`
+	JwtValidityDurationInSecs *int64 `json:"jwtValidityDurationInSecs" tf:"jwt_validity_duration_in_secs,omitempty"`
 
 	// (Updatable) The duration of time (in days) after which the shared secret has to be refreshed
 	// +kubebuilder:validation:Optional
-	KeyRefreshIntervalInDays *float64 `json:"keyRefreshIntervalInDays" tf:"key_refresh_interval_in_days,omitempty"`
+	KeyRefreshIntervalInDays *int64 `json:"keyRefreshIntervalInDays" tf:"key_refresh_interval_in_days,omitempty"`
 
 	// (Updatable) Exact length of the One-Time Passcode that the system should generate
 	// +kubebuilder:validation:Optional
-	PasscodeLength *float64 `json:"passcodeLength" tf:"passcode_length,omitempty"`
+	PasscodeLength *int64 `json:"passcodeLength" tf:"passcode_length,omitempty"`
 
 	// (Updatable) The period of time (in minutes) for which a One-Time Passcode that the system sends by Short Message Service (SMS) or by voice remains valid
 	// +kubebuilder:validation:Optional
-	SMSOtpValidityDurationInMins *float64 `json:"smsOtpValidityDurationInMins" tf:"sms_otp_validity_duration_in_mins,omitempty"`
+	SMSOtpValidityDurationInMins *int64 `json:"smsOtpValidityDurationInMins" tf:"sms_otp_validity_duration_in_mins,omitempty"`
 
 	// (Updatable) Exact length of the Short Message Service (SMS) One-Time Passcode
 	// +kubebuilder:validation:Optional
-	SMSPasscodeLength *float64 `json:"smsPasscodeLength" tf:"sms_passcode_length,omitempty"`
+	SMSPasscodeLength *int64 `json:"smsPasscodeLength" tf:"sms_passcode_length,omitempty"`
 
 	// (Updatable) Time (in secs) to be used as the time step
 	// +kubebuilder:validation:Optional
-	TimeStepInSecs *float64 `json:"timeStepInSecs" tf:"time_step_in_secs,omitempty"`
+	TimeStepInSecs *int64 `json:"timeStepInSecs" tf:"time_step_in_secs,omitempty"`
 
 	// (Updatable) The tolerance/step-size that the system should use when validating a One-Time Passcode
 	// +kubebuilder:validation:Optional
-	TimeStepTolerance *float64 `json:"timeStepTolerance" tf:"time_step_tolerance,omitempty"`
+	TimeStepTolerance *int64 `json:"timeStepTolerance" tf:"time_step_tolerance,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionfidoAuthenticationFactorSettingsInitParameters struct {
@@ -1115,7 +1206,7 @@ type UrnietfparamsscimschemasoracleidcsextensionfidoAuthenticationFactorSettings
 	AuthenticatorSelectionUserVerification *string `json:"authenticatorSelectionUserVerification,omitempty" tf:"authenticator_selection_user_verification,omitempty"`
 
 	// (Updatable) Number of domain levels Oracle Identity Cloud Service should use for origin comparision
-	DomainValidationLevel *float64 `json:"domainValidationLevel,omitempty" tf:"domain_validation_level,omitempty"`
+	DomainValidationLevel *int64 `json:"domainValidationLevel,omitempty" tf:"domain_validation_level,omitempty"`
 
 	// (Updatable) Flag used to indicate whether we need to restrict creation of multiple credentials in same authenticator
 	ExcludeCredentials *bool `json:"excludeCredentials,omitempty" tf:"exclude_credentials,omitempty"`
@@ -1124,7 +1215,7 @@ type UrnietfparamsscimschemasoracleidcsextensionfidoAuthenticationFactorSettings
 	PublicKeyTypes []*string `json:"publicKeyTypes,omitempty" tf:"public_key_types,omitempty"`
 
 	// (Updatable) Timeout for the fido authentication to complete
-	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout *int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionfidoAuthenticationFactorSettingsObservation struct {
@@ -1145,7 +1236,7 @@ type UrnietfparamsscimschemasoracleidcsextensionfidoAuthenticationFactorSettings
 	AuthenticatorSelectionUserVerification *string `json:"authenticatorSelectionUserVerification,omitempty" tf:"authenticator_selection_user_verification,omitempty"`
 
 	// (Updatable) Number of domain levels Oracle Identity Cloud Service should use for origin comparision
-	DomainValidationLevel *float64 `json:"domainValidationLevel,omitempty" tf:"domain_validation_level,omitempty"`
+	DomainValidationLevel *int64 `json:"domainValidationLevel,omitempty" tf:"domain_validation_level,omitempty"`
 
 	// (Updatable) Flag used to indicate whether we need to restrict creation of multiple credentials in same authenticator
 	ExcludeCredentials *bool `json:"excludeCredentials,omitempty" tf:"exclude_credentials,omitempty"`
@@ -1154,7 +1245,7 @@ type UrnietfparamsscimschemasoracleidcsextensionfidoAuthenticationFactorSettings
 	PublicKeyTypes []*string `json:"publicKeyTypes,omitempty" tf:"public_key_types,omitempty"`
 
 	// (Updatable) Timeout for the fido authentication to complete
-	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
+	Timeout *int64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionfidoAuthenticationFactorSettingsParameters struct {
@@ -1181,7 +1272,7 @@ type UrnietfparamsscimschemasoracleidcsextensionfidoAuthenticationFactorSettings
 
 	// (Updatable) Number of domain levels Oracle Identity Cloud Service should use for origin comparision
 	// +kubebuilder:validation:Optional
-	DomainValidationLevel *float64 `json:"domainValidationLevel,omitempty" tf:"domain_validation_level,omitempty"`
+	DomainValidationLevel *int64 `json:"domainValidationLevel,omitempty" tf:"domain_validation_level,omitempty"`
 
 	// (Updatable) Flag used to indicate whether we need to restrict creation of multiple credentials in same authenticator
 	// +kubebuilder:validation:Optional
@@ -1193,7 +1284,7 @@ type UrnietfparamsscimschemasoracleidcsextensionfidoAuthenticationFactorSettings
 
 	// (Updatable) Timeout for the fido authentication to complete
 	// +kubebuilder:validation:Optional
-	Timeout *float64 `json:"timeout" tf:"timeout,omitempty"`
+	Timeout *int64 `json:"timeout" tf:"timeout,omitempty"`
 }
 
 type UrnietfparamsscimschemasoracleidcsextensionthirdPartyAuthenticationFactorSettingsInitParameters struct {

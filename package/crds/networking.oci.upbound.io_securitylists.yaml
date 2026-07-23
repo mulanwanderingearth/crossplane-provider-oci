@@ -160,7 +160,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -191,10 +190,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -225,11 +226,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -239,12 +242,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -261,11 +266,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -275,12 +282,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -295,7 +304,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ingressSecurityRules:
                     description: (Updatable) Rules for allowing ingress IP packets.
                     items:
@@ -312,10 +320,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -355,11 +365,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -369,12 +381,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -391,11 +405,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -405,12 +421,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -595,7 +613,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -626,10 +643,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -660,11 +679,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -674,12 +695,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -696,11 +719,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -710,12 +735,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -730,7 +757,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   ingressSecurityRules:
                     description: (Updatable) Rules for allowing ingress IP packets.
                     items:
@@ -747,10 +773,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -790,11 +818,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -804,12 +834,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -826,11 +858,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -840,12 +874,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -1034,7 +1070,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags.  Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A user-friendly name. Does not have to
                       be unique, and it's changeable. Avoid entering confidential
@@ -1065,10 +1100,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -1099,11 +1136,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -1113,12 +1152,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -1135,11 +1176,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -1149,12 +1192,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -1169,7 +1214,6 @@ spec:
                       or namespace. For more information, see Resource Tags.  Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The security list's Oracle Cloud ID (OCID).
                     type: string
@@ -1189,10 +1233,12 @@ spec:
                             properties:
                               code:
                                 description: (Updatable) The ICMP code .
-                                type: number
+                                format: int64
+                                type: integer
                               type:
                                 description: (Updatable) The ICMP type.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -1232,11 +1278,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -1246,12 +1294,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object
@@ -1268,11 +1318,13 @@ spec:
                                   Must not be lower than the minimum port number.
                                   To specify a single port number, set both the min
                                   and max to the same value.
-                                type: number
+                                format: int64
+                                type: integer
                               min:
                                 description: (Updatable) The minimum port number.
                                   Must not be greater than the maximum port number.
-                                type: number
+                                format: int64
+                                type: integer
                               sourcePortRange:
                                 description: (Updatable)
                                 items:
@@ -1282,12 +1334,14 @@ spec:
                                         Must not be lower than the minimum port number.
                                         To specify a single port number, set both
                                         the min and max to the same value.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                     min:
                                       description: (Updatable) The minimum port number.
                                         Must not be greater than the maximum port
                                         number.
-                                      type: number
+                                      format: int64
+                                      type: integer
                                   type: object
                                 type: array
                             type: object

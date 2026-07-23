@@ -47,10 +47,10 @@ type AccountRecoverySettingInitParameters struct {
 	IdcsEndpoint *string `json:"idcsEndpoint,omitempty" tf:"idcs_endpoint,omitempty"`
 
 	// (Updatable) Indicates how many minutes to disable account recovery for the user. The default value is 30 metric minutes.
-	LockoutDuration *float64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
+	LockoutDuration *int64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
 
 	// (Updatable) Indicates the maximum number of failed account recovery attempts allowed for the user.
-	MaxIncorrectAttempts *float64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
+	MaxIncorrectAttempts *int64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
@@ -113,10 +113,10 @@ type AccountRecoverySettingObservation struct {
 	IdcsPreventedOperations []*string `json:"idcsPreventedOperations,omitempty" tf:"idcs_prevented_operations,omitempty"`
 
 	// (Updatable) Indicates how many minutes to disable account recovery for the user. The default value is 30 metric minutes.
-	LockoutDuration *float64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
+	LockoutDuration *int64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
 
 	// (Updatable) Indicates the maximum number of failed account recovery attempts allowed for the user.
-	MaxIncorrectAttempts *float64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
+	MaxIncorrectAttempts *int64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
 
 	// (Updatable) A complex attribute that contains resource metadata. All sub-attributes are OPTIONAL.
 	Meta []MetaObservation `json:"meta,omitempty" tf:"meta,omitempty"`
@@ -179,11 +179,11 @@ type AccountRecoverySettingParameters struct {
 
 	// (Updatable) Indicates how many minutes to disable account recovery for the user. The default value is 30 metric minutes.
 	// +kubebuilder:validation:Optional
-	LockoutDuration *float64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
+	LockoutDuration *int64 `json:"lockoutDuration,omitempty" tf:"lockout_duration,omitempty"`
 
 	// (Updatable) Indicates the maximum number of failed account recovery attempts allowed for the user.
 	// +kubebuilder:validation:Optional
-	MaxIncorrectAttempts *float64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
+	MaxIncorrectAttempts *int64 `json:"maxIncorrectAttempts,omitempty" tf:"max_incorrect_attempts,omitempty"`
 
 	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
 	// +kubebuilder:validation:Optional
@@ -203,6 +203,18 @@ type AccountRecoverySettingParameters struct {
 }
 
 type IdcsCreatedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type IdcsCreatedByObservation struct {
@@ -224,9 +236,37 @@ type IdcsCreatedByObservation struct {
 }
 
 type IdcsCreatedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type IdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type IdcsLastModifiedByObservation struct {
@@ -248,9 +288,40 @@ type IdcsLastModifiedByObservation struct {
 }
 
 type IdcsLastModifiedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type MetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type MetaObservation struct {
@@ -272,6 +343,26 @@ type MetaObservation struct {
 }
 
 type MetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type TagsInitParameters struct {

@@ -72,18 +72,9 @@ func (in *AnalyticsInstanceInitParameters) DeepCopyInto(out *AnalyticsInstanceIn
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -123,18 +114,9 @@ func (in *AnalyticsInstanceInitParameters) DeepCopyInto(out *AnalyticsInstanceIn
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdcsAccessTokenSecretRef != nil {
@@ -250,18 +232,9 @@ func (in *AnalyticsInstanceObservation) DeepCopyInto(out *AnalyticsInstanceObser
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -291,18 +264,9 @@ func (in *AnalyticsInstanceObservation) DeepCopyInto(out *AnalyticsInstanceObser
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -344,18 +308,9 @@ func (in *AnalyticsInstanceObservation) DeepCopyInto(out *AnalyticsInstanceObser
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -417,18 +372,9 @@ func (in *AnalyticsInstanceParameters) DeepCopyInto(out *AnalyticsInstanceParame
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -468,18 +414,9 @@ func (in *AnalyticsInstanceParameters) DeepCopyInto(out *AnalyticsInstanceParame
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.IdcsAccessTokenSecretRef != nil {
@@ -1215,7 +1152,7 @@ func (in *CapacityInitParameters) DeepCopyInto(out *CapacityInitParameters) {
 	}
 	if in.CapacityValue != nil {
 		in, out := &in.CapacityValue, &out.CapacityValue
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1240,7 +1177,7 @@ func (in *CapacityObservation) DeepCopyInto(out *CapacityObservation) {
 	}
 	if in.CapacityValue != nil {
 		in, out := &in.CapacityValue, &out.CapacityValue
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1265,7 +1202,7 @@ func (in *CapacityParameters) DeepCopyInto(out *CapacityParameters) {
 	}
 	if in.CapacityValue != nil {
 		in, out := &in.CapacityValue, &out.CapacityValue
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1620,7 +1557,7 @@ func (in *PrivateSourceScanHostsInitParameters) DeepCopyInto(out *PrivateSourceS
 	}
 	if in.ScanPort != nil {
 		in, out := &in.ScanPort, &out.ScanPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1650,7 +1587,7 @@ func (in *PrivateSourceScanHostsObservation) DeepCopyInto(out *PrivateSourceScan
 	}
 	if in.ScanPort != nil {
 		in, out := &in.ScanPort, &out.ScanPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1680,7 +1617,7 @@ func (in *PrivateSourceScanHostsParameters) DeepCopyInto(out *PrivateSourceScanH
 	}
 	if in.ScanPort != nil {
 		in, out := &in.ScanPort, &out.ScanPort
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

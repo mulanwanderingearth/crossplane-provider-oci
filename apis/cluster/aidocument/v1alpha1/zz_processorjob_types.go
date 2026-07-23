@@ -22,7 +22,7 @@ type FeaturesInitParameters struct {
 	GenerateSearchablePdf *bool `json:"generateSearchablePdf,omitempty" tf:"generate_searchable_pdf,omitempty"`
 
 	// (Applicable when feature_type=DOCUMENT_CLASSIFICATION | LANGUAGE_CLASSIFICATION) The maximum number of results to return.
-	MaxResults *float64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
+	MaxResults *int64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
 
 	// (Applicable when feature_type=DOCUMENT_CLASSIFICATION | DOCUMENT_ELEMENTS_EXTRACTION | KEY_VALUE_EXTRACTION | TABLE_EXTRACTION | TEXT_EXTRACTION) Unique identifier custom model OCID that should be used for inference.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/aidocument/v1alpha1.Model
@@ -53,7 +53,7 @@ type FeaturesObservation struct {
 	GenerateSearchablePdf *bool `json:"generateSearchablePdf,omitempty" tf:"generate_searchable_pdf,omitempty"`
 
 	// (Applicable when feature_type=DOCUMENT_CLASSIFICATION | LANGUAGE_CLASSIFICATION) The maximum number of results to return.
-	MaxResults *float64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
+	MaxResults *int64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
 
 	// (Applicable when feature_type=DOCUMENT_CLASSIFICATION | DOCUMENT_ELEMENTS_EXTRACTION | KEY_VALUE_EXTRACTION | TABLE_EXTRACTION | TEXT_EXTRACTION) Unique identifier custom model OCID that should be used for inference.
 	ModelID *string `json:"modelId,omitempty" tf:"model_id,omitempty"`
@@ -77,7 +77,7 @@ type FeaturesParameters struct {
 
 	// (Applicable when feature_type=DOCUMENT_CLASSIFICATION | LANGUAGE_CLASSIFICATION) The maximum number of results to return.
 	// +kubebuilder:validation:Optional
-	MaxResults *float64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
+	MaxResults *int64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
 
 	// (Applicable when feature_type=DOCUMENT_CLASSIFICATION | DOCUMENT_ELEMENTS_EXTRACTION | KEY_VALUE_EXTRACTION | TABLE_EXTRACTION | TEXT_EXTRACTION) Unique identifier custom model OCID that should be used for inference.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/aidocument/v1alpha1.Model

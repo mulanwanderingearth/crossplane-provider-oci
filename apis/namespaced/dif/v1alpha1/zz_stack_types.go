@@ -32,10 +32,10 @@ type AdbInitParameters struct {
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
 
 	// (Updatable) The size, in terabytes, of the data volume that will be created and attached to the database.
-	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
+	DataStorageSizeInTbs *int64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) The compute amount (ECPUs) available to the database.
-	Ecpu *float64 `json:"ecpu,omitempty" tf:"ecpu,omitempty"`
+	Ecpu *int64 `json:"ecpu,omitempty" tf:"ecpu,omitempty"`
 
 	// Id for the adw instance.
 	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
@@ -78,10 +78,10 @@ type AdbObservation struct {
 	DBWorkload *string `json:"dbWorkload,omitempty" tf:"db_workload,omitempty"`
 
 	// (Updatable) The size, in terabytes, of the data volume that will be created and attached to the database.
-	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
+	DataStorageSizeInTbs *int64 `json:"dataStorageSizeInTbs,omitempty" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) The compute amount (ECPUs) available to the database.
-	Ecpu *float64 `json:"ecpu,omitempty" tf:"ecpu,omitempty"`
+	Ecpu *int64 `json:"ecpu,omitempty" tf:"ecpu,omitempty"`
 
 	// Id for the adw instance.
 	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
@@ -123,11 +123,11 @@ type AdbParameters struct {
 
 	// (Updatable) The size, in terabytes, of the data volume that will be created and attached to the database.
 	// +kubebuilder:validation:Optional
-	DataStorageSizeInTbs *float64 `json:"dataStorageSizeInTbs" tf:"data_storage_size_in_tbs,omitempty"`
+	DataStorageSizeInTbs *int64 `json:"dataStorageSizeInTbs" tf:"data_storage_size_in_tbs,omitempty"`
 
 	// (Updatable) The compute amount (ECPUs) available to the database.
 	// +kubebuilder:validation:Optional
-	Ecpu *float64 `json:"ecpu" tf:"ecpu,omitempty"`
+	Ecpu *int64 `json:"ecpu" tf:"ecpu,omitempty"`
 
 	// Id for the adw instance.
 	// +kubebuilder:validation:Optional
@@ -492,7 +492,7 @@ type DataflowInitParameters struct {
 	LogBucketInstanceID *string `json:"logBucketInstanceId,omitempty" tf:"log_bucket_instance_id,omitempty"`
 
 	// (Updatable) The number of executor VMs requested.
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// (Updatable) OCID of the already provisioned dataflow private endpoint.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/dataflow/v1alpha1.PrivateEndpoint
@@ -544,7 +544,7 @@ type DataflowObservation struct {
 	LogBucketInstanceID *string `json:"logBucketInstanceId,omitempty" tf:"log_bucket_instance_id,omitempty"`
 
 	// (Updatable) The number of executor VMs requested.
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// (Updatable) OCID of the already provisioned dataflow private endpoint.
 	PrivateEndpointID *string `json:"privateEndpointId,omitempty" tf:"private_endpoint_id,omitempty"`
@@ -596,7 +596,7 @@ type DataflowParameters struct {
 
 	// (Updatable) The number of executor VMs requested.
 	// +kubebuilder:validation:Optional
-	NumExecutors *float64 `json:"numExecutors" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors" tf:"num_executors,omitempty"`
 
 	// (Updatable) OCID of the already provisioned dataflow private endpoint.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/dataflow/v1alpha1.PrivateEndpoint
@@ -653,30 +653,30 @@ type DifDependenciesParameters struct {
 type DriverShapeConfigInitParameters struct {
 
 	// (Updatable) The amount of memory used for the driver or executors.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Updatable) The total number of OCPUs used for the driver or executors. See here for details.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type DriverShapeConfigObservation struct {
 
 	// (Updatable) The amount of memory used for the driver or executors.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Updatable) The total number of OCPUs used for the driver or executors. See here for details.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type DriverShapeConfigParameters struct {
 
 	// (Updatable) The amount of memory used for the driver or executors.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs" tf:"memory_in_gbs,omitempty"`
 
 	// (Updatable) The total number of OCPUs used for the driver or executors. See here for details.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus" tf:"ocpus,omitempty"`
 }
 
 type EndpointDetailsInitParameters struct {
@@ -726,30 +726,30 @@ type EndpointsParameters struct {
 type ExecutorShapeConfigInitParameters struct {
 
 	// (Updatable) The amount of memory used for the driver or executors.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Updatable) The total number of OCPUs used for the driver or executors. See here for details.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type ExecutorShapeConfigObservation struct {
 
 	// (Updatable) The amount of memory used for the driver or executors.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Updatable) The total number of OCPUs used for the driver or executors. See here for details.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type ExecutorShapeConfigParameters struct {
 
 	// (Updatable) The amount of memory used for the driver or executors.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs" tf:"memory_in_gbs,omitempty"`
 
 	// (Updatable) The total number of OCPUs used for the driver or executors. See here for details.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus" tf:"ocpus,omitempty"`
 }
 
 type GenaiInitParameters struct {
@@ -770,7 +770,7 @@ type GenaiInitParameters struct {
 	OciRegion *string `json:"ociRegion,omitempty" tf:"oci_region,omitempty"`
 
 	// (Updatable) No of replicas of base model to be used for hosting.
-	UnitCount *float64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
+	UnitCount *int64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
 }
 
 type GenaiObservation struct {
@@ -791,7 +791,7 @@ type GenaiObservation struct {
 	OciRegion *string `json:"ociRegion,omitempty" tf:"oci_region,omitempty"`
 
 	// (Updatable) No of replicas of base model to be used for hosting.
-	UnitCount *float64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
+	UnitCount *int64 `json:"unitCount,omitempty" tf:"unit_count,omitempty"`
 }
 
 type GenaiParameters struct {
@@ -818,7 +818,7 @@ type GenaiParameters struct {
 
 	// (Updatable) No of replicas of base model to be used for hosting.
 	// +kubebuilder:validation:Optional
-	UnitCount *float64 `json:"unitCount" tf:"unit_count,omitempty"`
+	UnitCount *int64 `json:"unitCount" tf:"unit_count,omitempty"`
 }
 
 type GgcsConnectionsInitParameters struct {
@@ -917,7 +917,7 @@ type GgcsInitParameters struct {
 	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
 
 	// (Updatable) The Minimum number of OCPUs to be made available for this Deployment.
-	Ocpu *float64 `json:"ocpu,omitempty" tf:"ocpu,omitempty"`
+	Ocpu *int64 `json:"ocpu,omitempty" tf:"ocpu,omitempty"`
 
 	// Version of OGG.
 	OggVersion *string `json:"oggVersion,omitempty" tf:"ogg_version,omitempty"`
@@ -973,7 +973,7 @@ type GgcsObservation struct {
 	InstanceID *string `json:"instanceId,omitempty" tf:"instance_id,omitempty"`
 
 	// (Updatable) The Minimum number of OCPUs to be made available for this Deployment.
-	Ocpu *float64 `json:"ocpu,omitempty" tf:"ocpu,omitempty"`
+	Ocpu *int64 `json:"ocpu,omitempty" tf:"ocpu,omitempty"`
 
 	// Version of OGG.
 	OggVersion *string `json:"oggVersion,omitempty" tf:"ogg_version,omitempty"`
@@ -1010,7 +1010,7 @@ type GgcsParameters struct {
 
 	// (Updatable) The Minimum number of OCPUs to be made available for this Deployment.
 	// +kubebuilder:validation:Optional
-	Ocpu *float64 `json:"ocpu" tf:"ocpu,omitempty"`
+	Ocpu *int64 `json:"ocpu" tf:"ocpu,omitempty"`
 
 	// Version of OGG.
 	// +kubebuilder:validation:Optional
@@ -1630,7 +1630,7 @@ type StackInitParameters struct {
 	Adb []AdbInitParameters `json:"adb,omitempty" tf:"adb,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Add Service. Could be set to any integer value.
-	AddServiceTrigger *float64 `json:"addServiceTrigger,omitempty" tf:"add_service_trigger,omitempty"`
+	AddServiceTrigger *int64 `json:"addServiceTrigger,omitempty" tf:"add_service_trigger,omitempty"`
 
 	// AI Data Platform Details if aidataplatform is included in services.
 	Aidataplatform []AidataplatformInitParameters `json:"aidataplatform,omitempty" tf:"aidataplatform,omitempty"`
@@ -1651,18 +1651,16 @@ type StackInitParameters struct {
 	Dataflow []DataflowInitParameters `json:"dataflow,omitempty" tf:"dataflow,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Deploy Artifacts. Could be set to any integer value.
-	DeployArtifactsTrigger *float64 `json:"deployArtifactsTrigger,omitempty" tf:"deploy_artifacts_trigger,omitempty"`
+	DeployArtifactsTrigger *int64 `json:"deployArtifactsTrigger,omitempty" tf:"deploy_artifacts_trigger,omitempty"`
 
 	// A user-friendly name. Should be unique per compartment. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) GenAi Details if genai is included in services.
 	Genai []GenaiInitParameters `json:"genai,omitempty" tf:"genai,omitempty"`
@@ -1700,7 +1698,7 @@ type StackObservation struct {
 	Adb []AdbObservation `json:"adb,omitempty" tf:"adb,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Add Service. Could be set to any integer value.
-	AddServiceTrigger *float64 `json:"addServiceTrigger,omitempty" tf:"add_service_trigger,omitempty"`
+	AddServiceTrigger *int64 `json:"addServiceTrigger,omitempty" tf:"add_service_trigger,omitempty"`
 
 	// AI Data Platform Details if aidataplatform is included in services.
 	Aidataplatform []AidataplatformObservation `json:"aidataplatform,omitempty" tf:"aidataplatform,omitempty"`
@@ -1712,18 +1710,16 @@ type StackObservation struct {
 	Dataflow []DataflowObservation `json:"dataflow,omitempty" tf:"dataflow,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Deploy Artifacts. Could be set to any integer value.
-	DeployArtifactsTrigger *float64 `json:"deployArtifactsTrigger,omitempty" tf:"deploy_artifacts_trigger,omitempty"`
+	DeployArtifactsTrigger *int64 `json:"deployArtifactsTrigger,omitempty" tf:"deploy_artifacts_trigger,omitempty"`
 
 	// A user-friendly name. Should be unique per compartment. Avoid entering confidential information.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) GenAi Details if genai is included in services.
 	Genai []GenaiObservation `json:"genai,omitempty" tf:"genai,omitempty"`
@@ -1767,8 +1763,7 @@ type StackObservation struct {
 	SubnetID *string `json:"subnetId,omitempty" tf:"subnet_id,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the Stack was created, in the format defined by RFC 3339.  Example: 2016-08-25T21:10:29.600Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -1785,7 +1780,7 @@ type StackParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Add Service. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	AddServiceTrigger *float64 `json:"addServiceTrigger,omitempty" tf:"add_service_trigger,omitempty"`
+	AddServiceTrigger *int64 `json:"addServiceTrigger,omitempty" tf:"add_service_trigger,omitempty"`
 
 	// AI Data Platform Details if aidataplatform is included in services.
 	// +kubebuilder:validation:Optional
@@ -1810,12 +1805,11 @@ type StackParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Deploy Artifacts. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	DeployArtifactsTrigger *float64 `json:"deployArtifactsTrigger,omitempty" tf:"deploy_artifacts_trigger,omitempty"`
+	DeployArtifactsTrigger *int64 `json:"deployArtifactsTrigger,omitempty" tf:"deploy_artifacts_trigger,omitempty"`
 
 	// A user-friendly name. Should be unique per compartment. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -1823,8 +1817,7 @@ type StackParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) GenAi Details if genai is included in services.
 	// +kubebuilder:validation:Optional

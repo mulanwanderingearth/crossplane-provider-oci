@@ -753,7 +753,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. To provide
                       some insight about the resource. Avoid entering confidential
@@ -789,7 +788,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isTargetAutoConfirm:
                     description: (Updatable) A value that represents if auto-confirming
                       of the targets can be enabled. This will allow targets to be
@@ -1974,7 +1972,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. To provide
                       some insight about the resource. Avoid entering confidential
@@ -2010,7 +2007,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isTargetAutoConfirm:
                     description: (Updatable) A value that represents if auto-confirming
                       of the targets can be enabled. This will allow targets to be
@@ -2682,7 +2678,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A user-friendly description. To provide
                       some insight about the resource. Avoid entering confidential
@@ -2718,7 +2713,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the resource.
                     type: string
@@ -2969,7 +2963,6 @@ spec:
                       and scoped to a namespace. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The time this resource was created. An RFC3339 formatted
                       datetime string.

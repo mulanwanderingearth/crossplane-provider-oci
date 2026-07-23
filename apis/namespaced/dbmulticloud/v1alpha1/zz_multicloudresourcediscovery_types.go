@@ -29,15 +29,13 @@ type MultiCloudResourceDiscoveryInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Display name of the Multicloud Resource Discovery resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the Oracle DB Connector resource.
 	OracleDBConnectorID *string `json:"oracleDbConnectorId,omitempty" tf:"oracle_db_connector_id,omitempty"`
@@ -46,8 +44,7 @@ type MultiCloudResourceDiscoveryInitParameters struct {
 	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
 
 	// Discover resource using attributes as key-value pair. For GCP supported attributes (keyRing) For Azure supported attributes (keyVault) GCP Example {"keyRing": "projects/db-mc-dataplane/locations/global/keyRings/dbmci-keyring"} or {"keyRing": "dbmci-keyring"} Azure Example {"keyVault": "/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/yumfei0808Test/providers/Microsoft.KeyVault/managedHSMs/orp7HSM001"} or {"keyVault": "orp7HSM001"}
-	// +mapType=granular
-	ResourcesFilter map[string]*string `json:"resourcesFilter,omitempty" tf:"resources_filter,omitempty"`
+	ResourcesFilter map[string]string `json:"resourcesFilter,omitempty" tf:"resources_filter,omitempty"`
 }
 
 type MultiCloudResourceDiscoveryObservation struct {
@@ -56,15 +53,13 @@ type MultiCloudResourceDiscoveryObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Display name of the Multicloud Resource Discovery resource.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the Multicloud Resource Discovery resource
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -85,15 +80,13 @@ type MultiCloudResourceDiscoveryObservation struct {
 	Resources []ResourcesObservation `json:"resources,omitempty" tf:"resources,omitempty"`
 
 	// Discover resource using attributes as key-value pair. For GCP supported attributes (keyRing) For Azure supported attributes (keyVault) GCP Example {"keyRing": "projects/db-mc-dataplane/locations/global/keyRings/dbmci-keyring"} or {"keyRing": "dbmci-keyring"} Azure Example {"keyVault": "/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/yumfei0808Test/providers/Microsoft.KeyVault/managedHSMs/orp7HSM001"} or {"keyVault": "orp7HSM001"}
-	// +mapType=granular
-	ResourcesFilter map[string]*string `json:"resourcesFilter,omitempty" tf:"resources_filter,omitempty"`
+	ResourcesFilter map[string]string `json:"resourcesFilter,omitempty" tf:"resources_filter,omitempty"`
 
 	// The current lifecycle state of the discovered resource.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// Time when the Multicloud Discovery Resource was created in RFC 3339 timestamp format, e.g. '2020-05-22T21:10:29.600Z'
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -119,8 +112,7 @@ type MultiCloudResourceDiscoveryParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Display name of the Multicloud Resource Discovery resource.
 	// +kubebuilder:validation:Optional
@@ -128,8 +120,7 @@ type MultiCloudResourceDiscoveryParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the Oracle DB Connector resource.
 	// +kubebuilder:validation:Optional
@@ -141,8 +132,7 @@ type MultiCloudResourceDiscoveryParameters struct {
 
 	// Discover resource using attributes as key-value pair. For GCP supported attributes (keyRing) For Azure supported attributes (keyVault) GCP Example {"keyRing": "projects/db-mc-dataplane/locations/global/keyRings/dbmci-keyring"} or {"keyRing": "dbmci-keyring"} Azure Example {"keyVault": "/subscriptions/fd42b73d-5f28-4a23-ae7c-ca08c625fe07/resourceGroups/yumfei0808Test/providers/Microsoft.KeyVault/managedHSMs/orp7HSM001"} or {"keyVault": "orp7HSM001"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	ResourcesFilter map[string]*string `json:"resourcesFilter,omitempty" tf:"resources_filter,omitempty"`
+	ResourcesFilter map[string]string `json:"resourcesFilter,omitempty" tf:"resources_filter,omitempty"`
 }
 
 type ResourcesInitParameters struct {
@@ -160,8 +150,7 @@ type ResourcesObservation struct {
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
 	// Discovered Resource's properties.
-	// +mapType=granular
-	Properties map[string]*string `json:"properties,omitempty" tf:"properties,omitempty"`
+	Properties map[string]string `json:"properties,omitempty" tf:"properties,omitempty"`
 
 	// Discovered Resource Group Name.
 	ResourceGroup *string `json:"resourceGroup,omitempty" tf:"resource_group,omitempty"`

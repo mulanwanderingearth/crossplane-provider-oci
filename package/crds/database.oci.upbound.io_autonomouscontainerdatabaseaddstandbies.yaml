@@ -157,7 +157,8 @@ spec:
                   fastStartFailOverLagLimitInSeconds:
                     description: The lag time for my preference based on data loss
                       tolerance in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   isAutomaticFailoverEnabled:
                     description: Indicates whether Automatic Failover is enabled for
                       Autonomous Container Database Dataguard Association
@@ -319,7 +320,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   peerAutonomousContainerDatabaseCompartmentId:
@@ -579,7 +581,8 @@ spec:
                       window of the standby Autonomous Container Database. This value
                       represents the number of days before scheduled maintenance of
                       the primary database.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -676,7 +679,8 @@ spec:
                   fastStartFailOverLagLimitInSeconds:
                     description: The lag time for my preference based on data loss
                       tolerance in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   isAutomaticFailoverEnabled:
                     description: Indicates whether Automatic Failover is enabled for
                       Autonomous Container Database Dataguard Association
@@ -838,7 +842,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   peerAutonomousContainerDatabaseCompartmentId:
@@ -1098,7 +1103,8 @@ spec:
                       window of the standby Autonomous Container Database. This value
                       represents the number of days before scheduled maintenance of
                       the primary database.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -1280,7 +1286,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   cloudAutonomousVmClusterId:
@@ -1328,7 +1335,8 @@ spec:
                         fastStartFailOverLagLimitInSeconds:
                           description: The lag time for my preference based on data
                             loss tolerance in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         isAutomaticFailoverEnabled:
                           description: Indicates whether Automatic Failover is enabled
                             for Autonomous Container Database Dataguard Association
@@ -1407,7 +1415,8 @@ spec:
                         fastStartFailOverLagLimitInSeconds:
                           description: The lag time for my preference based on data
                             loss tolerance in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         isAutomaticFailoverEnabled:
                           description: Indicates whether Automatic Failover is enabled
                             for Autonomous Container Database Dataguard Association
@@ -1467,7 +1476,8 @@ spec:
                     description: The CPU value beyond which an Autonomous AI Database
                       will be opened across multiple nodes. The default value of this
                       attribute is 16 for OCPUs and 64 for ECPUs.
-                    type: number
+                    format: int64
+                    type: integer
                   dbUniqueName:
                     description: Deprecated. The DB_UNIQUE_NAME value is set by Oracle
                       Cloud Infrastructure.  Do not specify a value for this parameter.
@@ -1483,7 +1493,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: The user-provided name for the Autonomous Container
                       Database.
@@ -1518,7 +1527,8 @@ spec:
                   fastStartFailOverLagLimitInSeconds:
                     description: The lag time for my preference based on data loss
                       tolerance in seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -1527,7 +1537,6 @@ spec:
                       For more information, see Resource Tags.  Example: {"Department":
                       "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the backup destination.
                     type: string
@@ -1628,7 +1637,8 @@ spec:
                             wait before the start of each database server patching
                             operation. Custom action timeout is in minutes and valid
                             value is between 15 to 120 (inclusive).
-                          type: number
+                          format: int64
+                          type: integer
                         daysOfWeek:
                           description: Days during the week when maintenance should
                             be performed.
@@ -1648,7 +1658,8 @@ spec:
                             12:00 - 15:59 UTC - 16 - represents time slot 16:00 -
                             19:59 UTC - 20 - represents time slot 20:00 - 23:59 UTC
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                         isCustomActionTimeoutEnabled:
                           description: If true, enables the configuration of a custom
@@ -1662,7 +1673,8 @@ spec:
                           description: Lead time window allows user to set a lead
                             time to prepare for a down time. The lead time is in weeks
                             and valid value is between 1 to 4.
-                          type: number
+                          format: int64
+                          type: integer
                         months:
                           description: Months during the year when maintenance should
                             be performed.
@@ -1704,7 +1716,8 @@ spec:
                             to specify specific days of the week and hours that maintenance
                             will be performed.
                           items:
-                            type: number
+                            format: int64
+                            type: integer
                           type: array
                       type: object
                     type: array
@@ -1717,7 +1730,8 @@ spec:
                       integer value) enabled per ECPU or OCPU in the Autonomous VM
                       Cluster. This is deprecated. Please refer to memoryPerComputeUnitInGBs
                       for accurate value.
-                    type: number
+                    format: int64
+                    type: integer
                   netServicesArchitecture:
                     description: Enabling SHARED server architecture enables a database
                       server to allow many client processes to share very few server
@@ -1798,7 +1812,8 @@ spec:
                             When the value is updated, it is applied to all existing
                             automatic backups. If the number of specified days is
                             0 then there will be no backups.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   peerAutonomousContainerDatabaseCompartmentId:
@@ -1859,7 +1874,8 @@ spec:
                       window of the standby Autonomous Container Database. This value
                       represents the number of days before scheduled maintenance of
                       the primary database.
-                    type: number
+                    format: int64
+                    type: integer
                   state:
                     description: The current state of Autonomous Data Guard.
                     type: string
@@ -1879,7 +1895,8 @@ spec:
                   totalCpus:
                     description: The number of CPUs allocated to the Autonomous VM
                       cluster.
-                    type: number
+                    format: int64
+                    type: integer
                   vaultId:
                     description: The OCID of the Oracle Cloud Infrastructure vault.
                       This parameter and secretId are required for Customer Managed
@@ -1892,7 +1909,8 @@ spec:
                     description: The percentage of CPUs reserved across nodes to support
                       node failover. Allowed values are 0%, 25%, 50%, 75%, and 100%,
                       with 50% being the default option.
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               conditions:
                 description: Conditions of the resource.

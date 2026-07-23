@@ -81,7 +81,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Detailed description for the object.
                     type: string
@@ -98,7 +97,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   identifier:
                     description: (Updatable) Value can only contain upper case letters,
                       underscore, and numbers. It should begin with upper case letter
@@ -124,7 +122,8 @@ spec:
                     description: (Updatable) The status of an object that can be set
                       to value 1 for shallow references across objects, other values
                       reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   registryMetadata:
                     description: Information about the object and its parent.
                     items:
@@ -149,7 +148,8 @@ spec:
                           type: array
                         registryVersion:
                           description: The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   sourceApplicationInfo:
@@ -357,7 +357,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Detailed description for the object.
                     type: string
@@ -374,7 +373,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   identifier:
                     description: (Updatable) Value can only contain upper case letters,
                       underscore, and numbers. It should begin with upper case letter
@@ -400,7 +398,8 @@ spec:
                     description: (Updatable) The status of an object that can be set
                       to value 1 for shallow references across objects, other values
                       reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   registryMetadata:
                     description: Information about the object and its parent.
                     items:
@@ -425,7 +424,8 @@ spec:
                           type: array
                         registryVersion:
                           description: The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   sourceApplicationInfo:
@@ -722,7 +722,8 @@ spec:
                 properties:
                   applicationVersion:
                     description: The application's version.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: OCID of the compartment that this resource belongs
                       to. Defaults to compartment of the Workspace.
@@ -734,7 +735,6 @@ spec:
                       key is predefined and scoped to a namespace. See Resource Tags.
                       Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   dependentObjectMetadata:
                     description: A list of dependent objects in this patch.
                     items:
@@ -764,7 +764,8 @@ spec:
                           type: string
                         objectVersion:
                           description: The object version.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The type of the object in patch.
                           type: string
@@ -786,7 +787,6 @@ spec:
                       tag is a simple key-value pair with no predefined name, type,
                       or namespace. See Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: OCID of the resource that is used to uniquely identify
                       the application
@@ -807,7 +807,6 @@ spec:
                       key. This structure provides mapping between user provided key
                       and generated key.
                     type: object
-                    x-kubernetes-map-type: granular
                   metadata:
                     description: A summary type containing information about the object
                       including its key, name and when/who created/updated it.
@@ -881,7 +880,6 @@ spec:
                             type: string
                           description: Information property fields.
                           type: object
-                          x-kubernetes-map-type: granular
                         isFavorite:
                           description: Specifies whether this object is a favorite
                             or not.
@@ -895,7 +893,8 @@ spec:
                           type: array
                         registryVersion:
                           description: The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                         timeCreated:
                           description: The date and time that the object was created.
                           type: string
@@ -926,10 +925,12 @@ spec:
                     description: (Updatable) The status of an object that can be set
                       to value 1 for shallow references across objects, other values
                       reserved.
-                    type: number
+                    format: int64
+                    type: integer
                   objectVersion:
                     description: The object version.
-                    type: number
+                    format: int64
+                    type: integer
                   parentRef:
                     description: A reference to the object's parent.
                     items:
@@ -972,7 +973,8 @@ spec:
                           type: string
                         objectVersion:
                           description: The object version.
-                          type: number
+                          format: int64
+                          type: integer
                         type:
                           description: The type of the object in patch.
                           type: string
@@ -1002,7 +1004,8 @@ spec:
                           type: array
                         registryVersion:
                           description: The registry version.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   sourceApplicationInfo:

@@ -33,8 +33,7 @@ type AuditTrailInitParameters struct {
 	CanUpdateLastArchiveTimeOnTarget *bool `json:"canUpdateLastArchiveTimeOnTarget,omitempty" tf:"can_update_last_archive_time_on_target,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the audit trail.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -43,14 +42,13 @@ type AuditTrailInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates if auto purge is enabled on the target database, which helps delete audit data in the target database every seven days so that the database's audit trail does not become too large.
 	IsAutoPurgeEnabled *bool `json:"isAutoPurgeEnabled,omitempty" tf:"is_auto_purge_enabled,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Resume. Could be set to any integer value.
-	ResumeTrigger *float64 `json:"resumeTrigger,omitempty" tf:"resume_trigger,omitempty"`
+	ResumeTrigger *int64 `json:"resumeTrigger,omitempty" tf:"resume_trigger,omitempty"`
 
 	// (Updatable) The target state for the Audit Trail. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -74,8 +72,7 @@ type AuditTrailObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the audit trail.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -84,8 +81,7 @@ type AuditTrailObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the audit trail.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -97,7 +93,7 @@ type AuditTrailObservation struct {
 	LifecycleDetails *string `json:"lifecycleDetails,omitempty" tf:"lifecycle_details,omitempty"`
 
 	// The secondary id assigned for the peer database registered with Data Safe.
-	PeerTargetDatabaseKey *float64 `json:"peerTargetDatabaseKey,omitempty" tf:"peer_target_database_key,omitempty"`
+	PeerTargetDatabaseKey *int64 `json:"peerTargetDatabaseKey,omitempty" tf:"peer_target_database_key,omitempty"`
 
 	// The details of the audit trail purge job that ran on the "purgeJobTime".
 	PurgeJobDetails *string `json:"purgeJobDetails,omitempty" tf:"purge_job_details,omitempty"`
@@ -109,7 +105,7 @@ type AuditTrailObservation struct {
 	PurgeJobTime *string `json:"purgeJobTime,omitempty" tf:"purge_job_time,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Resume. Could be set to any integer value.
-	ResumeTrigger *float64 `json:"resumeTrigger,omitempty" tf:"resume_trigger,omitempty"`
+	ResumeTrigger *int64 `json:"resumeTrigger,omitempty" tf:"resume_trigger,omitempty"`
 
 	// (Updatable) The target state for the Audit Trail. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -118,8 +114,7 @@ type AuditTrailObservation struct {
 	Status *string `json:"status,omitempty" tf:"status,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The OCID of the Data Safe target for which the audit trail is created.
 	TargetID *string `json:"targetId,omitempty" tf:"target_id,omitempty"`
@@ -165,8 +160,7 @@ type AuditTrailParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the audit trail.
 	// +kubebuilder:validation:Optional
@@ -178,8 +172,7 @@ type AuditTrailParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates if auto purge is enabled on the target database, which helps delete audit data in the target database every seven days so that the database's audit trail does not become too large.
 	// +kubebuilder:validation:Optional
@@ -187,7 +180,7 @@ type AuditTrailParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Resume. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ResumeTrigger *float64 `json:"resumeTrigger,omitempty" tf:"resume_trigger,omitempty"`
+	ResumeTrigger *int64 `json:"resumeTrigger,omitempty" tf:"resume_trigger,omitempty"`
 
 	// (Updatable) The target state for the Audit Trail. Could be set to ACTIVE or INACTIVE.
 	// +kubebuilder:validation:Optional

@@ -19,16 +19,16 @@ type EstimatedPatchingTimeInitParameters struct {
 type EstimatedPatchingTimeObservation struct {
 
 	// The estimated time required in minutes for database server patching.
-	EstimatedDBServerPatchingTime *float64 `json:"estimatedDbServerPatchingTime,omitempty" tf:"estimated_db_server_patching_time,omitempty"`
+	EstimatedDBServerPatchingTime *int64 `json:"estimatedDbServerPatchingTime,omitempty" tf:"estimated_db_server_patching_time,omitempty"`
 
 	// The estimated time required in minutes for network switch patching.
-	EstimatedNetworkSwitchesPatchingTime *float64 `json:"estimatedNetworkSwitchesPatchingTime,omitempty" tf:"estimated_network_switches_patching_time,omitempty"`
+	EstimatedNetworkSwitchesPatchingTime *int64 `json:"estimatedNetworkSwitchesPatchingTime,omitempty" tf:"estimated_network_switches_patching_time,omitempty"`
 
 	// The estimated time required in minutes for storage server patching.
-	EstimatedStorageServerPatchingTime *float64 `json:"estimatedStorageServerPatchingTime,omitempty" tf:"estimated_storage_server_patching_time,omitempty"`
+	EstimatedStorageServerPatchingTime *int64 `json:"estimatedStorageServerPatchingTime,omitempty" tf:"estimated_storage_server_patching_time,omitempty"`
 
 	// The estimated total time required in minutes for all patching operations.
-	TotalEstimatedPatchingTime *float64 `json:"totalEstimatedPatchingTime,omitempty" tf:"total_estimated_patching_time,omitempty"`
+	TotalEstimatedPatchingTime *int64 `json:"totalEstimatedPatchingTime,omitempty" tf:"total_estimated_patching_time,omitempty"`
 }
 
 type EstimatedPatchingTimeParameters struct {
@@ -83,13 +83,13 @@ type MaintenanceRunObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// Extend current custom action timeout between the current database servers during waiting state, from 0 (zero) to 30 minutes.
-	CurrentCustomActionTimeoutInMins *float64 `json:"currentCustomActionTimeoutInMins,omitempty" tf:"current_custom_action_timeout_in_mins,omitempty"`
+	CurrentCustomActionTimeoutInMins *int64 `json:"currentCustomActionTimeoutInMins,omitempty" tf:"current_custom_action_timeout_in_mins,omitempty"`
 
 	// The name of the current infrastruture component that is getting patched.
 	CurrentPatchingComponent *string `json:"currentPatchingComponent,omitempty" tf:"current_patching_component,omitempty"`
 
 	// Determines the amount of time the system will wait before the start of each database server patching operation. Specify a number of minutes, from 15 to 120.
-	CustomActionTimeoutInMins *float64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
+	CustomActionTimeoutInMins *int64 `json:"customActionTimeoutInMins,omitempty" tf:"custom_action_timeout_in_mins,omitempty"`
 
 	// The Autonomous AI Database Software Image OCID
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
@@ -128,7 +128,7 @@ type MaintenanceRunObservation struct {
 	MaintenanceType *string `json:"maintenanceType,omitempty" tf:"maintenance_type,omitempty"`
 
 	// Contain the patch failure count.
-	PatchFailureCount *float64 `json:"patchFailureCount,omitempty" tf:"patch_failure_count,omitempty"`
+	PatchFailureCount *int64 `json:"patchFailureCount,omitempty" tf:"patch_failure_count,omitempty"`
 
 	// The unique identifier of the patch. The identifier string includes the patch type, the Oracle AI Database version, and the patch creation date (using the format YYMMDD). For example, the identifier ru_patch_19.9.0.0_201030 is used for an RU patch for Oracle AI Database 19.9.0.0 that was released October 30, 2020.
 	PatchID *string `json:"patchId,omitempty" tf:"patch_id,omitempty"`
@@ -161,8 +161,7 @@ type MaintenanceRunObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The target software version for the database server patching operation.
 	TargetDBServerVersion *string `json:"targetDbServerVersion,omitempty" tf:"target_db_server_version,omitempty"`
@@ -186,7 +185,7 @@ type MaintenanceRunObservation struct {
 	TimeStarted *string `json:"timeStarted,omitempty" tf:"time_started,omitempty"`
 
 	// The total time taken by corresponding resource activity in minutes.
-	TotalTimeTakenInMins *float64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
+	TotalTimeTakenInMins *int64 `json:"totalTimeTakenInMins,omitempty" tf:"total_time_taken_in_mins,omitempty"`
 
 	// A list of key-value pairs where the key will contain the window type and value contains all the windowDetails of that window type.
 	WindowTypeDescriptions []WindowTypeDescriptionsObservation `json:"windowTypeDescriptions,omitempty" tf:"window_type_descriptions,omitempty"`

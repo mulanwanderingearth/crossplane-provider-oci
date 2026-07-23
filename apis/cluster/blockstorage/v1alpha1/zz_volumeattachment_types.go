@@ -25,7 +25,7 @@ type MultipathDevicesObservation struct {
 	Iqn *string `json:"iqn,omitempty" tf:"iqn,omitempty"`
 
 	// The volume's iSCSI port, usually port 860 or 3260.  Example: 3260
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type MultipathDevicesParameters struct {
@@ -163,7 +163,7 @@ type VolumeAttachmentObservation struct {
 	MultipathDevices []MultipathDevicesObservation `json:"multipathDevices,omitempty" tf:"multipath_devices,omitempty"`
 
 	// The volume's iSCSI port, usually port 860 or 3260.  Example: 3260
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The current state of the volume attachment.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`

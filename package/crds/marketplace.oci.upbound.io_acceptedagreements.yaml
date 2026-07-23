@@ -165,7 +165,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A display name for the accepted agreement.
                     type: string
@@ -177,7 +176,6 @@ spec:
                       predefined name, type, or namespace. For more information, see
                       Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   listingId:
                     description: The unique identifier for the listing associated
                       with the agreement.
@@ -294,7 +292,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A display name for the accepted agreement.
                     type: string
@@ -306,7 +303,6 @@ spec:
                       predefined name, type, or namespace. For more information, see
                       Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   listingId:
                     description: The unique identifier for the listing associated
                       with the agreement.
@@ -444,7 +440,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) A display name for the accepted agreement.
                     type: string
@@ -456,7 +451,6 @@ spec:
                       predefined name, type, or namespace. For more information, see
                       Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The unique identifier for the acceptance of the agreement
                       within a specific compartment.

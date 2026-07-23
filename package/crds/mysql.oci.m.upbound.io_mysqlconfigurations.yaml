@@ -152,7 +152,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) User-provided data about the Configuration.
                     type: string
@@ -166,7 +165,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   initVariables:
                     description: DEPRECATED -- please use the options field instead.
                       User-defined service variables set only at DB system initialization.
@@ -293,13 +291,15 @@ spec:
                             of AUTO_INCREMENT columns. Both variables have global
                             and session values, and each can assume an integer value
                             between 1 and 65,535 inclusive.
-                          type: number
+                          format: int64
+                          type: integer
                         autoIncrementOffset:
                           description: This variable has a default value of 1. If
                             it is left with its default value, and Group Replication
                             is started on the server in multi-primary mode, it is
                             changed to the server ID.
-                          type: number
+                          format: int64
+                          type: integer
                         autocommit:
                           description: ("autocommit")
                           type: boolean
@@ -311,7 +311,8 @@ spec:
                           description: Sets the binary log expiration period in seconds.
                             binlogExpireLogsSeconds corresponds to the MySQL binary
                             logging system variable binlog_expire_logs_seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         binlogGroupCommitSyncDelay:
                           description: Controls how many microseconds the binary log
                             commit waits before synchronizing the binary log file
@@ -320,13 +321,15 @@ spec:
                             synchronized together to disk at once, reducing the overall
                             time to commit a group of transactions because the larger
                             groups required fewer time units per group.
-                          type: number
+                          format: int64
+                          type: integer
                         binlogGroupCommitSyncNoDelayCount:
                           description: The maximum number of transactions to wait
                             for before aborting the current delay as specified by
                             binlog_group_commit_sync_delay. If binlog_group_commit_sync_delay
                             is set to 0, then this option has no effect.
-                          type: number
+                          format: int64
+                          type: integer
                         binlogRowMetadata:
                           description: Configures the amount of table metadata added
                             to the binary log when using row-based logging. binlogRowMetadata
@@ -371,11 +374,13 @@ spec:
                           description: The number of seconds that the mysqld server
                             waits for a connect packet before responding with Bad
                             handshake.
-                          type: number
+                          format: int64
+                          type: integer
                         connectionMemoryChunkSize:
                           description: Set the chunking size for updates to the global
                             memory usage counter Global_connection_memory.
-                          type: number
+                          format: int64
+                          type: integer
                         connectionMemoryLimit:
                           description: Set the maximum amount of memory that can be
                             used by a single user connection.
@@ -408,7 +413,8 @@ spec:
                         generatedRandomPasswordLength:
                           description: ("generated_random_password_length") DEPRECATED
                             -- variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         globalConnectionMemoryLimit:
                           description: Set the total amount of memory that can be
                             used by all user connections.
@@ -425,7 +431,8 @@ spec:
                           type: string
                         informationSchemaStatsExpiry:
                           description: ("information_schema_stats_expiry")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbAdaptiveHashIndex:
                           description: Whether the InnoDB adaptive hash index is enabled
                             or disabled. It may be desirable, depending on your workload,
@@ -438,14 +445,17 @@ spec:
                           description: The lock mode to use for generating auto-increment
                             values. Permissible values are 0, 1, or 2, for traditional,
                             consecutive, or interleaved, respectively.
-                          type: number
+                          format: int64
+                          type: integer
                         innodbBufferPoolDumpPct:
                           description: Specifies the percentage of the most recently
                             used pages for each buffer pool to read out and dump.
-                          type: number
+                          format: int64
+                          type: integer
                         innodbBufferPoolInstances:
                           description: ("innodb_buffer_pool_instances")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbBufferPoolSize:
                           description: The size (in bytes) of the buffer pool, that
                             is, the memory area where InnoDB caches table and index
@@ -465,19 +475,23 @@ spec:
                         innodbDdlThreads:
                           description: innodbDdlThreads corresponds to the MySQL system
                             variable [innodb_ddl_threads] (https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_ddl_threads)
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtEnableStopword:
                           description: ("innodb_ft_enable_stopword")
                           type: boolean
                         innodbFtMaxTokenSize:
                           description: ("innodb_ft_max_token_size")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtMinTokenSize:
                           description: ("innodb_ft_min_token_size")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtNumWordOptimize:
                           description: ("innodb_ft_num_word_optimize")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtResultCacheLimit:
                           description: ("innodb_ft_result_cache_limit")
                           type: string
@@ -486,7 +500,8 @@ spec:
                           type: string
                         innodbLockWaitTimeout:
                           description: ("innodb_lock_wait_timeout")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbLogWriterThreads:
                           description: Enables dedicated log writer threads for writing
                             redo log records from the log buffer to the system buffers
@@ -498,7 +513,8 @@ spec:
                         innodbMaxPurgeLagDelay:
                           description: The maximum delay in microseconds for the delay
                             imposed when the innodb_max_purge_lag threshold is exceeded.
-                          type: number
+                          format: int64
+                          type: integer
                         innodbNumaInterleave:
                           description: Enables the NUMA interleave memory policy for
                             allocation of the InnoDB buffer pool. When innodb_numa_interleave
@@ -534,7 +550,8 @@ spec:
                           type: boolean
                         innodbSortBufferSize:
                           description: 'This variable defines:'
-                          type: number
+                          format: int64
+                          type: integer
                         innodbStatsPersistentSamplePages:
                           description: The number of index pages to sample when estimating
                             cardinality and other statistics for an indexed column,
@@ -561,7 +578,8 @@ spec:
                         interactiveTimeout:
                           description: The number of seconds the server waits for
                             activity on an interactive connection before closing it.
-                          type: number
+                          format: int64
+                          type: integer
                         joinBufferSize:
                           description: The minimum size of the buffer that is used
                             for plain index scans, range index scans, and joins that
@@ -589,14 +607,16 @@ spec:
                             real time, not CPU time, so a query that is under the
                             threshold on a lightly loaded system might be above the
                             threshold on a heavily loaded one.
-                          type: number
+                          format: int64
+                          type: integer
                         mandatoryRoles:
                           description: ("mandatory_roles")
                           type: string
                         maxAllowedPacket:
                           description: The maximum size of one packet or any generated/intermediate
                             string.
-                          type: number
+                          format: int64
+                          type: integer
                         maxBinlogCacheSize:
                           description: Sets the size of the transaction cache.
                           type: string
@@ -605,7 +625,8 @@ spec:
                           type: string
                         maxConnections:
                           description: ("max_connections")
-                          type: number
+                          format: int64
+                          type: integer
                         maxExecutionTime:
                           description: ("max_execution_time")
                           type: string
@@ -615,7 +636,8 @@ spec:
                           type: string
                         maxPreparedStmtCount:
                           description: ("max_prepared_stmt_count")
-                          type: number
+                          format: int64
+                          type: integer
                         maxSeeksForKey:
                           description: Limit the assumed maximum number of seeks when
                             looking up rows based on a key. The MySQL optimizer assumes
@@ -641,23 +663,28 @@ spec:
                         mysqlZstdDefaultCompressionLevel:
                           description: DEPRECATED -- typo of mysqlx_zstd_default_compression_level.
                             variable will be ignored.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxConnectTimeout:
                           description: The number of seconds X Plugin waits for the
                             first packet to be received from newly connected clients.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxDeflateDefaultCompressionLevel:
                           description: Set the default compression level for the deflate
                             algorithm. ("mysqlx_deflate_default_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxDeflateMaxClientCompressionLevel:
                           description: Limit the upper bound of accepted compression
                             levels for the deflate algorithm. ("mysqlx_deflate_max_client_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxDocumentIdUniquePrefix:
                           description: ("mysqlx_document_id_unique_prefix") DEPRECATED
                             -- variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxEnableHelloNotice:
                           description: ("mysqlx_enable_hello_notice") DEPRECATED --
                             variable should not be settable and will be ignored
@@ -665,60 +692,73 @@ spec:
                         mysqlxIdleWorkerThreadTimeout:
                           description: ("mysqlx_idle_worker_thread_timeout") DEPRECATED
                             -- variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxInteractiveTimeout:
                           description: The number of seconds to wait for interactive
                             clients to timeout.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxLz4DefaultCompressionLevel:
                           description: Set the default compression level for the lz4
                             algorithm. ("mysqlx_lz4_default_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxLz4MaxClientCompressionLevel:
                           description: Limit the upper bound of accepted compression
                             levels for the lz4 algorithm. ("mysqlx_lz4_max_client_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxMaxAllowedPacket:
                           description: The maximum size of network packets that can
                             be received by X Plugin.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxMinWorkerThreads:
                           description: ("mysqlx_min_worker_threads") DEPRECATED --
                             variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxReadTimeout:
                           description: The number of seconds that X Plugin waits for
                             blocking read operations to complete. After this time,
                             if the read operation is not successful, X Plugin closes
                             the connection and returns a warning notice with the error
                             code ER_IO_READ_ERROR to the client application.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxWaitTimeout:
                           description: The number of seconds that X Plugin waits for
                             activity on a connection.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxWriteTimeout:
                           description: The number of seconds that X Plugin waits for
                             blocking write operations to complete. After this time,
                             if the write operation is not successful, X Plugin closes
                             the connection.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxZstdDefaultCompressionLevel:
                           description: Set the default compression level for the zstd
                             algorithm. ("mysqlx_zstd_default_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxZstdMaxClientCompressionLevel:
                           description: Limit the upper bound of accepted compression
                             levels for the zstd algorithm. ("mysqlx_zstd_max_client_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         netReadTimeout:
                           description: The number of seconds to wait for more data
                             from a connection before aborting the read.
-                          type: number
+                          format: int64
+                          type: integer
                         netWriteTimeout:
                           description: The number of seconds to wait for a block to
                             be written to a connection before aborting the write.
-                          type: number
+                          format: int64
+                          type: integer
                         optimizerSwitch:
                           description: The optimizer_switch system variable enables
                             control over optimizer behavior. The value of this variable
@@ -750,7 +790,8 @@ spec:
                         regexpTimeLimit:
                           description: regexpTimeLimit corresponds to the MySQL system
                             variable [regexp_time_limit] (https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_regexp_time_limit)
-                          type: number
+                          format: int64
+                          type: integer
                         relayLogSpaceLimit:
                           description: The maximum amount of space to use for all
                             relay logs.
@@ -762,13 +803,15 @@ spec:
                             read, and tries to reconnect. Setting this variable has
                             no immediate effect. The state of the variable applies
                             on all subsequent START REPLICA commands.
-                          type: number
+                          format: int64
+                          type: integer
                         replicaParallelWorkers:
                           description: Beginning with MySQL 8.0.26, slave_parallel_workers
                             is deprecated, and you should use replica_parallel_workers
                             instead. (Prior to MySQL 8.0.26, you must use slave_parallel_workers
                             to set the number of applier threads.)
-                          type: number
+                          format: int64
+                          type: integer
                         replicaTypeConversions:
                           description: From MySQL 8.0.26, use replica_type_conversions
                             in place of slave_type_conversions, which is deprecated
@@ -818,12 +861,14 @@ spec:
                             cache to speed up opening of tables. The table definition
                             cache takes less space and does not use file descriptors,
                             unlike the normal table cache.
-                          type: number
+                          format: int64
+                          type: integer
                         tableOpenCache:
                           description: The number of open tables for all threads.
                             Increasing this value increases the number of file descriptors
                             that mysqld requires.
-                          type: number
+                          format: int64
+                          type: integer
                         temptableMaxRam:
                           description: Defines the maximum amount of memory that can
                             be occupied by the TempTable storage engine before it
@@ -846,7 +891,8 @@ spec:
                             to the defined value. The default value is 0, which enforces
                             no limit. threadPoolMaxTransactionsLimit corresponds to
                             the MySQL Database Service-specific system variable thread_pool_max_transactions_limit.
-                          type: number
+                          format: int64
+                          type: integer
                         threadPoolQueryThreadsPerGroup:
                           description: The maximum number of query threads permitted
                             in a thread group. The maximum value is 4096, but if thread_pool_max_transactions_limit
@@ -857,7 +903,8 @@ spec:
                             thread pool algorithm (thread_pool_algorithm = 1), consider
                             increasing the value if you experience slower response
                             times due to long-running transactions.
-                          type: number
+                          format: int64
+                          type: integer
                         threadPoolSize:
                           description: The number of thread groups in the thread pool.
                             This is the most important parameter controlling thread
@@ -865,7 +912,8 @@ spec:
                             simultaneously. If a value outside the range of permissible
                             values is specified, the thread pool plugin does not load
                             and the server writes a message to the error log.
-                          type: number
+                          format: int64
+                          type: integer
                         threadPoolTransactionDelay:
                           description: The delay period before executing a new transaction,
                             in milliseconds. The maximum value is 300000 (5 minutes).
@@ -875,7 +923,8 @@ spec:
                             affect index creation or an online buffer pool resizing
                             operation, you can configure a transaction delay to reduce
                             resource contention while those operations are running.
-                          type: number
+                          format: int64
+                          type: integer
                         timeZone:
                           description: Initializes the time zone for each client that
                             connects.
@@ -892,7 +941,8 @@ spec:
                           description: The number of seconds the server waits for
                             activity on a noninteractive connection before closing
                             it.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object
@@ -1001,7 +1051,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) User-provided data about the Configuration.
                     type: string
@@ -1015,7 +1064,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   initVariables:
                     description: DEPRECATED -- please use the options field instead.
                       User-defined service variables set only at DB system initialization.
@@ -1142,13 +1190,15 @@ spec:
                             of AUTO_INCREMENT columns. Both variables have global
                             and session values, and each can assume an integer value
                             between 1 and 65,535 inclusive.
-                          type: number
+                          format: int64
+                          type: integer
                         autoIncrementOffset:
                           description: This variable has a default value of 1. If
                             it is left with its default value, and Group Replication
                             is started on the server in multi-primary mode, it is
                             changed to the server ID.
-                          type: number
+                          format: int64
+                          type: integer
                         autocommit:
                           description: ("autocommit")
                           type: boolean
@@ -1160,7 +1210,8 @@ spec:
                           description: Sets the binary log expiration period in seconds.
                             binlogExpireLogsSeconds corresponds to the MySQL binary
                             logging system variable binlog_expire_logs_seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         binlogGroupCommitSyncDelay:
                           description: Controls how many microseconds the binary log
                             commit waits before synchronizing the binary log file
@@ -1169,13 +1220,15 @@ spec:
                             synchronized together to disk at once, reducing the overall
                             time to commit a group of transactions because the larger
                             groups required fewer time units per group.
-                          type: number
+                          format: int64
+                          type: integer
                         binlogGroupCommitSyncNoDelayCount:
                           description: The maximum number of transactions to wait
                             for before aborting the current delay as specified by
                             binlog_group_commit_sync_delay. If binlog_group_commit_sync_delay
                             is set to 0, then this option has no effect.
-                          type: number
+                          format: int64
+                          type: integer
                         binlogRowMetadata:
                           description: Configures the amount of table metadata added
                             to the binary log when using row-based logging. binlogRowMetadata
@@ -1220,11 +1273,13 @@ spec:
                           description: The number of seconds that the mysqld server
                             waits for a connect packet before responding with Bad
                             handshake.
-                          type: number
+                          format: int64
+                          type: integer
                         connectionMemoryChunkSize:
                           description: Set the chunking size for updates to the global
                             memory usage counter Global_connection_memory.
-                          type: number
+                          format: int64
+                          type: integer
                         connectionMemoryLimit:
                           description: Set the maximum amount of memory that can be
                             used by a single user connection.
@@ -1257,7 +1312,8 @@ spec:
                         generatedRandomPasswordLength:
                           description: ("generated_random_password_length") DEPRECATED
                             -- variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         globalConnectionMemoryLimit:
                           description: Set the total amount of memory that can be
                             used by all user connections.
@@ -1274,7 +1330,8 @@ spec:
                           type: string
                         informationSchemaStatsExpiry:
                           description: ("information_schema_stats_expiry")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbAdaptiveHashIndex:
                           description: Whether the InnoDB adaptive hash index is enabled
                             or disabled. It may be desirable, depending on your workload,
@@ -1287,14 +1344,17 @@ spec:
                           description: The lock mode to use for generating auto-increment
                             values. Permissible values are 0, 1, or 2, for traditional,
                             consecutive, or interleaved, respectively.
-                          type: number
+                          format: int64
+                          type: integer
                         innodbBufferPoolDumpPct:
                           description: Specifies the percentage of the most recently
                             used pages for each buffer pool to read out and dump.
-                          type: number
+                          format: int64
+                          type: integer
                         innodbBufferPoolInstances:
                           description: ("innodb_buffer_pool_instances")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbBufferPoolSize:
                           description: The size (in bytes) of the buffer pool, that
                             is, the memory area where InnoDB caches table and index
@@ -1314,19 +1374,23 @@ spec:
                         innodbDdlThreads:
                           description: innodbDdlThreads corresponds to the MySQL system
                             variable [innodb_ddl_threads] (https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_ddl_threads)
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtEnableStopword:
                           description: ("innodb_ft_enable_stopword")
                           type: boolean
                         innodbFtMaxTokenSize:
                           description: ("innodb_ft_max_token_size")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtMinTokenSize:
                           description: ("innodb_ft_min_token_size")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtNumWordOptimize:
                           description: ("innodb_ft_num_word_optimize")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtResultCacheLimit:
                           description: ("innodb_ft_result_cache_limit")
                           type: string
@@ -1335,7 +1399,8 @@ spec:
                           type: string
                         innodbLockWaitTimeout:
                           description: ("innodb_lock_wait_timeout")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbLogWriterThreads:
                           description: Enables dedicated log writer threads for writing
                             redo log records from the log buffer to the system buffers
@@ -1347,7 +1412,8 @@ spec:
                         innodbMaxPurgeLagDelay:
                           description: The maximum delay in microseconds for the delay
                             imposed when the innodb_max_purge_lag threshold is exceeded.
-                          type: number
+                          format: int64
+                          type: integer
                         innodbNumaInterleave:
                           description: Enables the NUMA interleave memory policy for
                             allocation of the InnoDB buffer pool. When innodb_numa_interleave
@@ -1383,7 +1449,8 @@ spec:
                           type: boolean
                         innodbSortBufferSize:
                           description: 'This variable defines:'
-                          type: number
+                          format: int64
+                          type: integer
                         innodbStatsPersistentSamplePages:
                           description: The number of index pages to sample when estimating
                             cardinality and other statistics for an indexed column,
@@ -1410,7 +1477,8 @@ spec:
                         interactiveTimeout:
                           description: The number of seconds the server waits for
                             activity on an interactive connection before closing it.
-                          type: number
+                          format: int64
+                          type: integer
                         joinBufferSize:
                           description: The minimum size of the buffer that is used
                             for plain index scans, range index scans, and joins that
@@ -1438,14 +1506,16 @@ spec:
                             real time, not CPU time, so a query that is under the
                             threshold on a lightly loaded system might be above the
                             threshold on a heavily loaded one.
-                          type: number
+                          format: int64
+                          type: integer
                         mandatoryRoles:
                           description: ("mandatory_roles")
                           type: string
                         maxAllowedPacket:
                           description: The maximum size of one packet or any generated/intermediate
                             string.
-                          type: number
+                          format: int64
+                          type: integer
                         maxBinlogCacheSize:
                           description: Sets the size of the transaction cache.
                           type: string
@@ -1454,7 +1524,8 @@ spec:
                           type: string
                         maxConnections:
                           description: ("max_connections")
-                          type: number
+                          format: int64
+                          type: integer
                         maxExecutionTime:
                           description: ("max_execution_time")
                           type: string
@@ -1464,7 +1535,8 @@ spec:
                           type: string
                         maxPreparedStmtCount:
                           description: ("max_prepared_stmt_count")
-                          type: number
+                          format: int64
+                          type: integer
                         maxSeeksForKey:
                           description: Limit the assumed maximum number of seeks when
                             looking up rows based on a key. The MySQL optimizer assumes
@@ -1490,23 +1562,28 @@ spec:
                         mysqlZstdDefaultCompressionLevel:
                           description: DEPRECATED -- typo of mysqlx_zstd_default_compression_level.
                             variable will be ignored.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxConnectTimeout:
                           description: The number of seconds X Plugin waits for the
                             first packet to be received from newly connected clients.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxDeflateDefaultCompressionLevel:
                           description: Set the default compression level for the deflate
                             algorithm. ("mysqlx_deflate_default_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxDeflateMaxClientCompressionLevel:
                           description: Limit the upper bound of accepted compression
                             levels for the deflate algorithm. ("mysqlx_deflate_max_client_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxDocumentIdUniquePrefix:
                           description: ("mysqlx_document_id_unique_prefix") DEPRECATED
                             -- variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxEnableHelloNotice:
                           description: ("mysqlx_enable_hello_notice") DEPRECATED --
                             variable should not be settable and will be ignored
@@ -1514,60 +1591,73 @@ spec:
                         mysqlxIdleWorkerThreadTimeout:
                           description: ("mysqlx_idle_worker_thread_timeout") DEPRECATED
                             -- variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxInteractiveTimeout:
                           description: The number of seconds to wait for interactive
                             clients to timeout.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxLz4DefaultCompressionLevel:
                           description: Set the default compression level for the lz4
                             algorithm. ("mysqlx_lz4_default_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxLz4MaxClientCompressionLevel:
                           description: Limit the upper bound of accepted compression
                             levels for the lz4 algorithm. ("mysqlx_lz4_max_client_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxMaxAllowedPacket:
                           description: The maximum size of network packets that can
                             be received by X Plugin.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxMinWorkerThreads:
                           description: ("mysqlx_min_worker_threads") DEPRECATED --
                             variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxReadTimeout:
                           description: The number of seconds that X Plugin waits for
                             blocking read operations to complete. After this time,
                             if the read operation is not successful, X Plugin closes
                             the connection and returns a warning notice with the error
                             code ER_IO_READ_ERROR to the client application.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxWaitTimeout:
                           description: The number of seconds that X Plugin waits for
                             activity on a connection.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxWriteTimeout:
                           description: The number of seconds that X Plugin waits for
                             blocking write operations to complete. After this time,
                             if the write operation is not successful, X Plugin closes
                             the connection.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxZstdDefaultCompressionLevel:
                           description: Set the default compression level for the zstd
                             algorithm. ("mysqlx_zstd_default_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxZstdMaxClientCompressionLevel:
                           description: Limit the upper bound of accepted compression
                             levels for the zstd algorithm. ("mysqlx_zstd_max_client_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         netReadTimeout:
                           description: The number of seconds to wait for more data
                             from a connection before aborting the read.
-                          type: number
+                          format: int64
+                          type: integer
                         netWriteTimeout:
                           description: The number of seconds to wait for a block to
                             be written to a connection before aborting the write.
-                          type: number
+                          format: int64
+                          type: integer
                         optimizerSwitch:
                           description: The optimizer_switch system variable enables
                             control over optimizer behavior. The value of this variable
@@ -1599,7 +1689,8 @@ spec:
                         regexpTimeLimit:
                           description: regexpTimeLimit corresponds to the MySQL system
                             variable [regexp_time_limit] (https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_regexp_time_limit)
-                          type: number
+                          format: int64
+                          type: integer
                         relayLogSpaceLimit:
                           description: The maximum amount of space to use for all
                             relay logs.
@@ -1611,13 +1702,15 @@ spec:
                             read, and tries to reconnect. Setting this variable has
                             no immediate effect. The state of the variable applies
                             on all subsequent START REPLICA commands.
-                          type: number
+                          format: int64
+                          type: integer
                         replicaParallelWorkers:
                           description: Beginning with MySQL 8.0.26, slave_parallel_workers
                             is deprecated, and you should use replica_parallel_workers
                             instead. (Prior to MySQL 8.0.26, you must use slave_parallel_workers
                             to set the number of applier threads.)
-                          type: number
+                          format: int64
+                          type: integer
                         replicaTypeConversions:
                           description: From MySQL 8.0.26, use replica_type_conversions
                             in place of slave_type_conversions, which is deprecated
@@ -1667,12 +1760,14 @@ spec:
                             cache to speed up opening of tables. The table definition
                             cache takes less space and does not use file descriptors,
                             unlike the normal table cache.
-                          type: number
+                          format: int64
+                          type: integer
                         tableOpenCache:
                           description: The number of open tables for all threads.
                             Increasing this value increases the number of file descriptors
                             that mysqld requires.
-                          type: number
+                          format: int64
+                          type: integer
                         temptableMaxRam:
                           description: Defines the maximum amount of memory that can
                             be occupied by the TempTable storage engine before it
@@ -1695,7 +1790,8 @@ spec:
                             to the defined value. The default value is 0, which enforces
                             no limit. threadPoolMaxTransactionsLimit corresponds to
                             the MySQL Database Service-specific system variable thread_pool_max_transactions_limit.
-                          type: number
+                          format: int64
+                          type: integer
                         threadPoolQueryThreadsPerGroup:
                           description: The maximum number of query threads permitted
                             in a thread group. The maximum value is 4096, but if thread_pool_max_transactions_limit
@@ -1706,7 +1802,8 @@ spec:
                             thread pool algorithm (thread_pool_algorithm = 1), consider
                             increasing the value if you experience slower response
                             times due to long-running transactions.
-                          type: number
+                          format: int64
+                          type: integer
                         threadPoolSize:
                           description: The number of thread groups in the thread pool.
                             This is the most important parameter controlling thread
@@ -1714,7 +1811,8 @@ spec:
                             simultaneously. If a value outside the range of permissible
                             values is specified, the thread pool plugin does not load
                             and the server writes a message to the error log.
-                          type: number
+                          format: int64
+                          type: integer
                         threadPoolTransactionDelay:
                           description: The delay period before executing a new transaction,
                             in milliseconds. The maximum value is 300000 (5 minutes).
@@ -1724,7 +1822,8 @@ spec:
                             affect index creation or an online buffer pool resizing
                             operation, you can configure a transaction delay to reduce
                             resource contention while those operations are running.
-                          type: number
+                          format: int64
+                          type: integer
                         timeZone:
                           description: Initializes the time zone for each client that
                             connects.
@@ -1741,7 +1840,8 @@ spec:
                           description: The number of seconds the server waits for
                             activity on a noninteractive connection before closing
                             it.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object
@@ -1825,7 +1925,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) User-provided data about the Configuration.
                     type: string
@@ -1839,7 +1938,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the Configuration.
                     type: string
@@ -1885,7 +1983,6 @@ spec:
                       are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained":
                       "true"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: The date and time the Configuration was created,
                       as described by RFC 3339.
@@ -1909,13 +2006,15 @@ spec:
                             of AUTO_INCREMENT columns. Both variables have global
                             and session values, and each can assume an integer value
                             between 1 and 65,535 inclusive.
-                          type: number
+                          format: int64
+                          type: integer
                         autoIncrementOffset:
                           description: This variable has a default value of 1. If
                             it is left with its default value, and Group Replication
                             is started on the server in multi-primary mode, it is
                             changed to the server ID.
-                          type: number
+                          format: int64
+                          type: integer
                         autocommit:
                           description: ("autocommit")
                           type: boolean
@@ -1927,7 +2026,8 @@ spec:
                           description: Sets the binary log expiration period in seconds.
                             binlogExpireLogsSeconds corresponds to the MySQL binary
                             logging system variable binlog_expire_logs_seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         binlogGroupCommitSyncDelay:
                           description: Controls how many microseconds the binary log
                             commit waits before synchronizing the binary log file
@@ -1936,13 +2036,15 @@ spec:
                             synchronized together to disk at once, reducing the overall
                             time to commit a group of transactions because the larger
                             groups required fewer time units per group.
-                          type: number
+                          format: int64
+                          type: integer
                         binlogGroupCommitSyncNoDelayCount:
                           description: The maximum number of transactions to wait
                             for before aborting the current delay as specified by
                             binlog_group_commit_sync_delay. If binlog_group_commit_sync_delay
                             is set to 0, then this option has no effect.
-                          type: number
+                          format: int64
+                          type: integer
                         binlogRowMetadata:
                           description: Configures the amount of table metadata added
                             to the binary log when using row-based logging. binlogRowMetadata
@@ -1987,11 +2089,13 @@ spec:
                           description: The number of seconds that the mysqld server
                             waits for a connect packet before responding with Bad
                             handshake.
-                          type: number
+                          format: int64
+                          type: integer
                         connectionMemoryChunkSize:
                           description: Set the chunking size for updates to the global
                             memory usage counter Global_connection_memory.
-                          type: number
+                          format: int64
+                          type: integer
                         connectionMemoryLimit:
                           description: Set the maximum amount of memory that can be
                             used by a single user connection.
@@ -2024,7 +2128,8 @@ spec:
                         generatedRandomPasswordLength:
                           description: ("generated_random_password_length") DEPRECATED
                             -- variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         globalConnectionMemoryLimit:
                           description: Set the total amount of memory that can be
                             used by all user connections.
@@ -2041,7 +2146,8 @@ spec:
                           type: string
                         informationSchemaStatsExpiry:
                           description: ("information_schema_stats_expiry")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbAdaptiveHashIndex:
                           description: Whether the InnoDB adaptive hash index is enabled
                             or disabled. It may be desirable, depending on your workload,
@@ -2054,14 +2160,17 @@ spec:
                           description: The lock mode to use for generating auto-increment
                             values. Permissible values are 0, 1, or 2, for traditional,
                             consecutive, or interleaved, respectively.
-                          type: number
+                          format: int64
+                          type: integer
                         innodbBufferPoolDumpPct:
                           description: Specifies the percentage of the most recently
                             used pages for each buffer pool to read out and dump.
-                          type: number
+                          format: int64
+                          type: integer
                         innodbBufferPoolInstances:
                           description: ("innodb_buffer_pool_instances")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbBufferPoolSize:
                           description: The size (in bytes) of the buffer pool, that
                             is, the memory area where InnoDB caches table and index
@@ -2081,19 +2190,23 @@ spec:
                         innodbDdlThreads:
                           description: innodbDdlThreads corresponds to the MySQL system
                             variable [innodb_ddl_threads] (https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_ddl_threads)
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtEnableStopword:
                           description: ("innodb_ft_enable_stopword")
                           type: boolean
                         innodbFtMaxTokenSize:
                           description: ("innodb_ft_max_token_size")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtMinTokenSize:
                           description: ("innodb_ft_min_token_size")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtNumWordOptimize:
                           description: ("innodb_ft_num_word_optimize")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbFtResultCacheLimit:
                           description: ("innodb_ft_result_cache_limit")
                           type: string
@@ -2102,7 +2215,8 @@ spec:
                           type: string
                         innodbLockWaitTimeout:
                           description: ("innodb_lock_wait_timeout")
-                          type: number
+                          format: int64
+                          type: integer
                         innodbLogWriterThreads:
                           description: Enables dedicated log writer threads for writing
                             redo log records from the log buffer to the system buffers
@@ -2114,7 +2228,8 @@ spec:
                         innodbMaxPurgeLagDelay:
                           description: The maximum delay in microseconds for the delay
                             imposed when the innodb_max_purge_lag threshold is exceeded.
-                          type: number
+                          format: int64
+                          type: integer
                         innodbNumaInterleave:
                           description: Enables the NUMA interleave memory policy for
                             allocation of the InnoDB buffer pool. When innodb_numa_interleave
@@ -2150,7 +2265,8 @@ spec:
                           type: boolean
                         innodbSortBufferSize:
                           description: 'This variable defines:'
-                          type: number
+                          format: int64
+                          type: integer
                         innodbStatsPersistentSamplePages:
                           description: The number of index pages to sample when estimating
                             cardinality and other statistics for an indexed column,
@@ -2177,7 +2293,8 @@ spec:
                         interactiveTimeout:
                           description: The number of seconds the server waits for
                             activity on an interactive connection before closing it.
-                          type: number
+                          format: int64
+                          type: integer
                         joinBufferSize:
                           description: The minimum size of the buffer that is used
                             for plain index scans, range index scans, and joins that
@@ -2205,14 +2322,16 @@ spec:
                             real time, not CPU time, so a query that is under the
                             threshold on a lightly loaded system might be above the
                             threshold on a heavily loaded one.
-                          type: number
+                          format: int64
+                          type: integer
                         mandatoryRoles:
                           description: ("mandatory_roles")
                           type: string
                         maxAllowedPacket:
                           description: The maximum size of one packet or any generated/intermediate
                             string.
-                          type: number
+                          format: int64
+                          type: integer
                         maxBinlogCacheSize:
                           description: Sets the size of the transaction cache.
                           type: string
@@ -2221,7 +2340,8 @@ spec:
                           type: string
                         maxConnections:
                           description: ("max_connections")
-                          type: number
+                          format: int64
+                          type: integer
                         maxExecutionTime:
                           description: ("max_execution_time")
                           type: string
@@ -2231,7 +2351,8 @@ spec:
                           type: string
                         maxPreparedStmtCount:
                           description: ("max_prepared_stmt_count")
-                          type: number
+                          format: int64
+                          type: integer
                         maxSeeksForKey:
                           description: Limit the assumed maximum number of seeks when
                             looking up rows based on a key. The MySQL optimizer assumes
@@ -2257,23 +2378,28 @@ spec:
                         mysqlZstdDefaultCompressionLevel:
                           description: DEPRECATED -- typo of mysqlx_zstd_default_compression_level.
                             variable will be ignored.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxConnectTimeout:
                           description: The number of seconds X Plugin waits for the
                             first packet to be received from newly connected clients.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxDeflateDefaultCompressionLevel:
                           description: Set the default compression level for the deflate
                             algorithm. ("mysqlx_deflate_default_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxDeflateMaxClientCompressionLevel:
                           description: Limit the upper bound of accepted compression
                             levels for the deflate algorithm. ("mysqlx_deflate_max_client_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxDocumentIdUniquePrefix:
                           description: ("mysqlx_document_id_unique_prefix") DEPRECATED
                             -- variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxEnableHelloNotice:
                           description: ("mysqlx_enable_hello_notice") DEPRECATED --
                             variable should not be settable and will be ignored
@@ -2281,60 +2407,73 @@ spec:
                         mysqlxIdleWorkerThreadTimeout:
                           description: ("mysqlx_idle_worker_thread_timeout") DEPRECATED
                             -- variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxInteractiveTimeout:
                           description: The number of seconds to wait for interactive
                             clients to timeout.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxLz4DefaultCompressionLevel:
                           description: Set the default compression level for the lz4
                             algorithm. ("mysqlx_lz4_default_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxLz4MaxClientCompressionLevel:
                           description: Limit the upper bound of accepted compression
                             levels for the lz4 algorithm. ("mysqlx_lz4_max_client_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxMaxAllowedPacket:
                           description: The maximum size of network packets that can
                             be received by X Plugin.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxMinWorkerThreads:
                           description: ("mysqlx_min_worker_threads") DEPRECATED --
                             variable should not be settable and will be ignored
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxReadTimeout:
                           description: The number of seconds that X Plugin waits for
                             blocking read operations to complete. After this time,
                             if the read operation is not successful, X Plugin closes
                             the connection and returns a warning notice with the error
                             code ER_IO_READ_ERROR to the client application.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxWaitTimeout:
                           description: The number of seconds that X Plugin waits for
                             activity on a connection.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxWriteTimeout:
                           description: The number of seconds that X Plugin waits for
                             blocking write operations to complete. After this time,
                             if the write operation is not successful, X Plugin closes
                             the connection.
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxZstdDefaultCompressionLevel:
                           description: Set the default compression level for the zstd
                             algorithm. ("mysqlx_zstd_default_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         mysqlxZstdMaxClientCompressionLevel:
                           description: Limit the upper bound of accepted compression
                             levels for the zstd algorithm. ("mysqlx_zstd_max_client_compression_level")
-                          type: number
+                          format: int64
+                          type: integer
                         netReadTimeout:
                           description: The number of seconds to wait for more data
                             from a connection before aborting the read.
-                          type: number
+                          format: int64
+                          type: integer
                         netWriteTimeout:
                           description: The number of seconds to wait for a block to
                             be written to a connection before aborting the write.
-                          type: number
+                          format: int64
+                          type: integer
                         optimizerSwitch:
                           description: The optimizer_switch system variable enables
                             control over optimizer behavior. The value of this variable
@@ -2366,7 +2505,8 @@ spec:
                         regexpTimeLimit:
                           description: regexpTimeLimit corresponds to the MySQL system
                             variable [regexp_time_limit] (https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_regexp_time_limit)
-                          type: number
+                          format: int64
+                          type: integer
                         relayLogSpaceLimit:
                           description: The maximum amount of space to use for all
                             relay logs.
@@ -2378,13 +2518,15 @@ spec:
                             read, and tries to reconnect. Setting this variable has
                             no immediate effect. The state of the variable applies
                             on all subsequent START REPLICA commands.
-                          type: number
+                          format: int64
+                          type: integer
                         replicaParallelWorkers:
                           description: Beginning with MySQL 8.0.26, slave_parallel_workers
                             is deprecated, and you should use replica_parallel_workers
                             instead. (Prior to MySQL 8.0.26, you must use slave_parallel_workers
                             to set the number of applier threads.)
-                          type: number
+                          format: int64
+                          type: integer
                         replicaTypeConversions:
                           description: From MySQL 8.0.26, use replica_type_conversions
                             in place of slave_type_conversions, which is deprecated
@@ -2434,12 +2576,14 @@ spec:
                             cache to speed up opening of tables. The table definition
                             cache takes less space and does not use file descriptors,
                             unlike the normal table cache.
-                          type: number
+                          format: int64
+                          type: integer
                         tableOpenCache:
                           description: The number of open tables for all threads.
                             Increasing this value increases the number of file descriptors
                             that mysqld requires.
-                          type: number
+                          format: int64
+                          type: integer
                         temptableMaxRam:
                           description: Defines the maximum amount of memory that can
                             be occupied by the TempTable storage engine before it
@@ -2462,7 +2606,8 @@ spec:
                             to the defined value. The default value is 0, which enforces
                             no limit. threadPoolMaxTransactionsLimit corresponds to
                             the MySQL Database Service-specific system variable thread_pool_max_transactions_limit.
-                          type: number
+                          format: int64
+                          type: integer
                         threadPoolQueryThreadsPerGroup:
                           description: The maximum number of query threads permitted
                             in a thread group. The maximum value is 4096, but if thread_pool_max_transactions_limit
@@ -2473,7 +2618,8 @@ spec:
                             thread pool algorithm (thread_pool_algorithm = 1), consider
                             increasing the value if you experience slower response
                             times due to long-running transactions.
-                          type: number
+                          format: int64
+                          type: integer
                         threadPoolSize:
                           description: The number of thread groups in the thread pool.
                             This is the most important parameter controlling thread
@@ -2481,7 +2627,8 @@ spec:
                             simultaneously. If a value outside the range of permissible
                             values is specified, the thread pool plugin does not load
                             and the server writes a message to the error log.
-                          type: number
+                          format: int64
+                          type: integer
                         threadPoolTransactionDelay:
                           description: The delay period before executing a new transaction,
                             in milliseconds. The maximum value is 300000 (5 minutes).
@@ -2491,7 +2638,8 @@ spec:
                             affect index creation or an online buffer pool resizing
                             operation, you can configure a transaction delay to reduce
                             resource contention while those operations are running.
-                          type: number
+                          format: int64
+                          type: integer
                         timeZone:
                           description: Initializes the time zone for each client that
                             connects.
@@ -2508,7 +2656,8 @@ spec:
                           description: The number of seconds the server waits for
                             activity on a noninteractive connection before closing
                             it.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object

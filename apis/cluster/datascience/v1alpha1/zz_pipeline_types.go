@@ -19,8 +19,7 @@ type ConfigurationDetailsInitParameters struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for steps in the pipeline.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the entire Pipeline. Timer starts when the Pipeline Run is in progress.
 	MaximumRuntimeInMinutes *string `json:"maximumRuntimeInMinutes,omitempty" tf:"maximum_runtime_in_minutes,omitempty"`
@@ -35,8 +34,7 @@ type ConfigurationDetailsObservation struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for steps in the pipeline.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the entire Pipeline. Timer starts when the Pipeline Run is in progress.
 	MaximumRuntimeInMinutes *string `json:"maximumRuntimeInMinutes,omitempty" tf:"maximum_runtime_in_minutes,omitempty"`
@@ -53,8 +51,7 @@ type ConfigurationDetailsParameters struct {
 
 	// (Updatable) Environment variables to set for steps in the pipeline.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the entire Pipeline. Timer starts when the Pipeline Run is in progress.
 	// +kubebuilder:validation:Optional
@@ -294,7 +291,7 @@ type OutputParameters struct {
 type PipelineInfrastructureConfigurationDetailsInitParameters struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance.
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The size of the block storage volume to attach to the pipeline step run instance specified as a parameter. This overrides the blockStorageSizeInGBs value. The request will fail if the parameters used are null or invalid.
 	BlockStorageSizeInGbsParameterized *string `json:"blockStorageSizeInGbsParameterized,omitempty" tf:"block_storage_size_in_gbs_parameterized,omitempty"`
@@ -322,7 +319,7 @@ type PipelineInfrastructureConfigurationDetailsInitParameters struct {
 type PipelineInfrastructureConfigurationDetailsObservation struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance.
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The size of the block storage volume to attach to the pipeline step run instance specified as a parameter. This overrides the blockStorageSizeInGBs value. The request will fail if the parameters used are null or invalid.
 	BlockStorageSizeInGbsParameterized *string `json:"blockStorageSizeInGbsParameterized,omitempty" tf:"block_storage_size_in_gbs_parameterized,omitempty"`
@@ -341,7 +338,7 @@ type PipelineInfrastructureConfigurationDetailsParameters struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance.
 	// +kubebuilder:validation:Optional
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The size of the block storage volume to attach to the pipeline step run instance specified as a parameter. This overrides the blockStorageSizeInGBs value. The request will fail if the parameters used are null or invalid.
 	// +kubebuilder:validation:Optional
@@ -388,8 +385,7 @@ type PipelineInitParameters struct {
 	ConfigurationDetails []ConfigurationDetailsInitParameters `json:"configurationDetails,omitempty" tf:"configuration_details,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	DeleteRelatedPipelineRuns *bool `json:"deleteRelatedPipelineRuns,omitempty" tf:"delete_related_pipeline_runs,omitempty"`
 
@@ -400,8 +396,7 @@ type PipelineInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The infrastructure configuration details of a pipeline or a step.
 	InfrastructureConfigurationDetails []PipelineInfrastructureConfigurationDetailsInitParameters `json:"infrastructureConfigurationDetails,omitempty" tf:"infrastructure_configuration_details,omitempty"`
@@ -410,8 +405,7 @@ type PipelineInitParameters struct {
 	LogConfigurationDetails []LogConfigurationDetailsInitParameters `json:"logConfigurationDetails,omitempty" tf:"log_configuration_details,omitempty"`
 
 	// (Updatable) Parameters used in the pipeline.
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// The OCID of the project to associate the pipeline with.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/datascience/v1alpha1.Project
@@ -447,8 +441,7 @@ type PipelineObservation struct {
 	CreatedBy *string `json:"createdBy,omitempty" tf:"created_by,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	DeleteRelatedPipelineRuns *bool `json:"deleteRelatedPipelineRuns,omitempty" tf:"delete_related_pipeline_runs,omitempty"`
 
@@ -459,8 +452,7 @@ type PipelineObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the pipeline.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -475,8 +467,7 @@ type PipelineObservation struct {
 	LogConfigurationDetails []LogConfigurationDetailsObservation `json:"logConfigurationDetails,omitempty" tf:"log_configuration_details,omitempty"`
 
 	// (Updatable) Parameters used in the pipeline.
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// The OCID of the project to associate the pipeline with.
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
@@ -493,8 +484,7 @@ type PipelineObservation struct {
 	StorageMountConfigurationDetailsList []StorageMountConfigurationDetailsListObservation `json:"storageMountConfigurationDetailsList,omitempty" tf:"storage_mount_configuration_details_list,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time the resource was created in the timestamp format defined by RFC3339. Example: 2020-08-06T21:10:29.41Z
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -524,8 +514,7 @@ type PipelineParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	DeleteRelatedPipelineRuns *bool `json:"deleteRelatedPipelineRuns,omitempty" tf:"delete_related_pipeline_runs,omitempty"`
@@ -540,8 +529,7 @@ type PipelineParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. See Resource Tags. Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The infrastructure configuration details of a pipeline or a step.
 	// +kubebuilder:validation:Optional
@@ -553,8 +541,7 @@ type PipelineParameters struct {
 
 	// (Updatable) Parameters used in the pipeline.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Parameters map[string]*string `json:"parameters,omitempty" tf:"parameters,omitempty"`
+	Parameters map[string]string `json:"parameters,omitempty" tf:"parameters,omitempty"`
 
 	// The OCID of the project to associate the pipeline with.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/datascience/v1alpha1.Project
@@ -689,8 +676,7 @@ type StepConfigurationDetailsInitParameters struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for steps in the pipeline.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the entire Pipeline. Timer starts when the Pipeline Run is in progress.
 	MaximumRuntimeInMinutes *string `json:"maximumRuntimeInMinutes,omitempty" tf:"maximum_runtime_in_minutes,omitempty"`
@@ -702,8 +688,7 @@ type StepConfigurationDetailsObservation struct {
 	CommandLineArguments *string `json:"commandLineArguments,omitempty" tf:"command_line_arguments,omitempty"`
 
 	// (Updatable) Environment variables to set for steps in the pipeline.
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the entire Pipeline. Timer starts when the Pipeline Run is in progress.
 	MaximumRuntimeInMinutes *string `json:"maximumRuntimeInMinutes,omitempty" tf:"maximum_runtime_in_minutes,omitempty"`
@@ -717,8 +702,7 @@ type StepConfigurationDetailsParameters struct {
 
 	// (Updatable) Environment variables to set for steps in the pipeline.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
+	EnvironmentVariables map[string]string `json:"environmentVariables,omitempty" tf:"environment_variables,omitempty"`
 
 	// (Updatable) A time bound for the execution of the entire Pipeline. Timer starts when the Pipeline Run is in progress.
 	// +kubebuilder:validation:Optional
@@ -797,8 +781,7 @@ type StepContainerConfigurationDetailsParameters struct {
 type StepDataflowConfigurationDetailsInitParameters struct {
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) The Spark configuration passed to the running process.
-	// +mapType=granular
-	Configuration map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) The VM shape for the driver.
 	DriverShape *string `json:"driverShape,omitempty" tf:"driver_shape,omitempty"`
@@ -816,7 +799,7 @@ type StepDataflowConfigurationDetailsInitParameters struct {
 	LogsBucketURI *string `json:"logsBucketUri,omitempty" tf:"logs_bucket_uri,omitempty"`
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) The number of executor VMs requested.
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) An Oracle Cloud Infrastructure URI of the bucket to be used as default warehouse directory for BATCH SQL runs.
 	WarehouseBucketURI *string `json:"warehouseBucketUri,omitempty" tf:"warehouse_bucket_uri,omitempty"`
@@ -825,8 +808,7 @@ type StepDataflowConfigurationDetailsInitParameters struct {
 type StepDataflowConfigurationDetailsObservation struct {
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) The Spark configuration passed to the running process.
-	// +mapType=granular
-	Configuration map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) The VM shape for the driver.
 	DriverShape *string `json:"driverShape,omitempty" tf:"driver_shape,omitempty"`
@@ -844,7 +826,7 @@ type StepDataflowConfigurationDetailsObservation struct {
 	LogsBucketURI *string `json:"logsBucketUri,omitempty" tf:"logs_bucket_uri,omitempty"`
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) The number of executor VMs requested.
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) An Oracle Cloud Infrastructure URI of the bucket to be used as default warehouse directory for BATCH SQL runs.
 	WarehouseBucketURI *string `json:"warehouseBucketUri,omitempty" tf:"warehouse_bucket_uri,omitempty"`
@@ -854,8 +836,7 @@ type StepDataflowConfigurationDetailsParameters struct {
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) The Spark configuration passed to the running process.
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Configuration map[string]*string `json:"configuration,omitempty" tf:"configuration,omitempty"`
+	Configuration map[string]string `json:"configuration,omitempty" tf:"configuration,omitempty"`
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) The VM shape for the driver.
 	// +kubebuilder:validation:Optional
@@ -879,7 +860,7 @@ type StepDataflowConfigurationDetailsParameters struct {
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) The number of executor VMs requested.
 	// +kubebuilder:validation:Optional
-	NumExecutors *float64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
+	NumExecutors *int64 `json:"numExecutors,omitempty" tf:"num_executors,omitempty"`
 
 	// (Applicable when step_type=DATAFLOW) (Updatable) An Oracle Cloud Infrastructure URI of the bucket to be used as default warehouse directory for BATCH SQL runs.
 	// +kubebuilder:validation:Optional
@@ -1078,7 +1059,7 @@ type StepDetailsParameters struct {
 type StepInfrastructureConfigurationDetailsInitParameters struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance.
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The size of the block storage volume to attach to the pipeline step run instance specified as a parameter. This overrides the blockStorageSizeInGBs value. The request will fail if the parameters used are null or invalid.
 	BlockStorageSizeInGbsParameterized *string `json:"blockStorageSizeInGbsParameterized,omitempty" tf:"block_storage_size_in_gbs_parameterized,omitempty"`
@@ -1106,7 +1087,7 @@ type StepInfrastructureConfigurationDetailsInitParameters struct {
 type StepInfrastructureConfigurationDetailsObservation struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance.
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs,omitempty" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The size of the block storage volume to attach to the pipeline step run instance specified as a parameter. This overrides the blockStorageSizeInGBs value. The request will fail if the parameters used are null or invalid.
 	BlockStorageSizeInGbsParameterized *string `json:"blockStorageSizeInGbsParameterized,omitempty" tf:"block_storage_size_in_gbs_parameterized,omitempty"`
@@ -1125,7 +1106,7 @@ type StepInfrastructureConfigurationDetailsParameters struct {
 
 	// (Updatable) The size of the block storage volume to attach to the instance.
 	// +kubebuilder:validation:Optional
-	BlockStorageSizeInGbs *float64 `json:"blockStorageSizeInGbs" tf:"block_storage_size_in_gbs,omitempty"`
+	BlockStorageSizeInGbs *int64 `json:"blockStorageSizeInGbs" tf:"block_storage_size_in_gbs,omitempty"`
 
 	// (Updatable) The size of the block storage volume to attach to the pipeline step run instance specified as a parameter. This overrides the blockStorageSizeInGBs value. The request will fail if the parameters used are null or invalid.
 	// +kubebuilder:validation:Optional

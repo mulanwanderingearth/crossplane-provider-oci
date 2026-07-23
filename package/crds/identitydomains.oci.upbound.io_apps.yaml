@@ -77,7 +77,8 @@ spec:
                     description: (Updatable) Expiry-time in seconds for an Access
                       Token. Any token that allows access to this App will expire
                       after the specified duration.
-                    type: number
+                    format: int64
+                    type: integer
                   active:
                     description: (Updatable) Status of the account
                     type: boolean
@@ -211,22 +212,27 @@ spec:
                           type: string
                         maxLength:
                           description: (Updatable) Maximum length of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         maxSize:
                           description: (Updatable) Maximum size of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         minLength:
                           description: (Updatable) Minimum length of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         minSize:
                           description: (Updatable) Minimum size of the attribute..
-                          type: number
+                          format: int64
+                          type: integer
                         name:
                           description: (Updatable) Name of the account
                           type: string
                         order:
                           description: (Updatable) Data type of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         readOnly:
                           description: (Updatable) If true, indicates that this value
                             must be protected.
@@ -532,7 +538,8 @@ spec:
                     description: (Updatable) Expiry-time in seconds for a Refresh
                       Token.  Any token that allows access to this App, once refreshed,
                       will expire after the specified duration.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceTypeSchemaVersion:
                     description: (Updatable) An endpoint-specific schema version number
                       to use in the Request. Allowed version values are Earliest Version
@@ -751,7 +758,8 @@ spec:
                         allowAuthzDecisionTtl:
                           description: (Updatable) Allow Authz policy decision expiry
                             time in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         allowAuthzPolicy:
                           description: (Updatable) Allow Authz Policy.
                           items:
@@ -774,7 +782,8 @@ spec:
                         denyAuthzDecisionTtl:
                           description: (Updatable) Deny Authz policy decision expiry
                             time in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         denyAuthzPolicy:
                           description: (Updatable) Deny Authz Policy.
                           items:
@@ -947,10 +956,12 @@ spec:
                           type: string
                         maxRenewableAge:
                           description: (Updatable) Max Renewable Age in seconds
-                          type: number
+                          format: int64
+                          type: integer
                         maxTicketLife:
                           description: (Updatable) Max Ticket Life in seconds
-                          type: number
+                          format: int64
+                          type: integer
                         realmName:
                           description: (Updatable) The name of the Kerberos Realm
                             that this App uses for authentication.
@@ -965,7 +976,8 @@ spec:
                           x-kubernetes-list-type: set
                         ticketFlags:
                           description: (Updatable) Ticket Flags
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   urnietfparamsscimschemasoracleidcsextensionmanagedappApp:
@@ -1007,7 +1019,8 @@ spec:
                                 type: string
                               order:
                                 description: (Updatable) Data type of the attribute.
-                                type: number
+                                format: int64
+                                type: integer
                               required:
                                 description: (Updatable) Attribute is required or
                                   optional.
@@ -1030,25 +1043,30 @@ spec:
                               maxIdle:
                                 description: (Updatable) Maximum number of connector
                                   instances in the pool that are idle and active.
-                                type: number
+                                format: int64
+                                type: integer
                               maxObjects:
                                 description: (Updatable) Maximum number of connector
                                   instances in the pool that are idle and active.
-                                type: number
+                                format: int64
+                                type: integer
                               maxWait:
                                 description: (Updatable) Maximum time (in milliseconds)
                                   to wait for a free connector instance to become
                                   available before failing.
-                                type: number
+                                format: int64
+                                type: integer
                               minEvictableIdleTimeMillis:
                                 description: (Updatable) Minimum time (in milliseconds)
                                   to wait before evicting an idle conenctor instance
                                   from the pool.
-                                type: number
+                                format: int64
+                                type: integer
                               minIdle:
                                 description: (Updatable) Minimum number of idle connector
                                   instances in the pool.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         connected:
@@ -1099,7 +1117,8 @@ spec:
                                 type: string
                               order:
                                 description: (Updatable) Data type of the attribute.
-                                type: number
+                                format: int64
+                                type: integer
                               required:
                                 description: (Updatable) Attribute is required or
                                   optional.
@@ -1474,7 +1493,8 @@ spec:
                     description: (Updatable) Expiry-time in seconds for an Access
                       Token. Any token that allows access to this App will expire
                       after the specified duration.
-                    type: number
+                    format: int64
+                    type: integer
                   active:
                     description: (Updatable) Status of the account
                     type: boolean
@@ -1608,22 +1628,27 @@ spec:
                           type: string
                         maxLength:
                           description: (Updatable) Maximum length of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         maxSize:
                           description: (Updatable) Maximum size of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         minLength:
                           description: (Updatable) Minimum length of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         minSize:
                           description: (Updatable) Minimum size of the attribute..
-                          type: number
+                          format: int64
+                          type: integer
                         name:
                           description: (Updatable) Name of the account
                           type: string
                         order:
                           description: (Updatable) Data type of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         readOnly:
                           description: (Updatable) If true, indicates that this value
                             must be protected.
@@ -1929,7 +1954,8 @@ spec:
                     description: (Updatable) Expiry-time in seconds for a Refresh
                       Token.  Any token that allows access to this App, once refreshed,
                       will expire after the specified duration.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceTypeSchemaVersion:
                     description: (Updatable) An endpoint-specific schema version number
                       to use in the Request. Allowed version values are Earliest Version
@@ -2148,7 +2174,8 @@ spec:
                         allowAuthzDecisionTtl:
                           description: (Updatable) Allow Authz policy decision expiry
                             time in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         allowAuthzPolicy:
                           description: (Updatable) Allow Authz Policy.
                           items:
@@ -2171,7 +2198,8 @@ spec:
                         denyAuthzDecisionTtl:
                           description: (Updatable) Deny Authz policy decision expiry
                             time in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         denyAuthzPolicy:
                           description: (Updatable) Deny Authz Policy.
                           items:
@@ -2344,10 +2372,12 @@ spec:
                           type: string
                         maxRenewableAge:
                           description: (Updatable) Max Renewable Age in seconds
-                          type: number
+                          format: int64
+                          type: integer
                         maxTicketLife:
                           description: (Updatable) Max Ticket Life in seconds
-                          type: number
+                          format: int64
+                          type: integer
                         realmName:
                           description: (Updatable) The name of the Kerberos Realm
                             that this App uses for authentication.
@@ -2362,7 +2392,8 @@ spec:
                           x-kubernetes-list-type: set
                         ticketFlags:
                           description: (Updatable) Ticket Flags
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   urnietfparamsscimschemasoracleidcsextensionmanagedappApp:
@@ -2404,7 +2435,8 @@ spec:
                                 type: string
                               order:
                                 description: (Updatable) Data type of the attribute.
-                                type: number
+                                format: int64
+                                type: integer
                               required:
                                 description: (Updatable) Attribute is required or
                                   optional.
@@ -2427,25 +2459,30 @@ spec:
                               maxIdle:
                                 description: (Updatable) Maximum number of connector
                                   instances in the pool that are idle and active.
-                                type: number
+                                format: int64
+                                type: integer
                               maxObjects:
                                 description: (Updatable) Maximum number of connector
                                   instances in the pool that are idle and active.
-                                type: number
+                                format: int64
+                                type: integer
                               maxWait:
                                 description: (Updatable) Maximum time (in milliseconds)
                                   to wait for a free connector instance to become
                                   available before failing.
-                                type: number
+                                format: int64
+                                type: integer
                               minEvictableIdleTimeMillis:
                                 description: (Updatable) Minimum time (in milliseconds)
                                   to wait before evicting an idle conenctor instance
                                   from the pool.
-                                type: number
+                                format: int64
+                                type: integer
                               minIdle:
                                 description: (Updatable) Minimum number of idle connector
                                   instances in the pool.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         connected:
@@ -2496,7 +2533,8 @@ spec:
                                 type: string
                               order:
                                 description: (Updatable) Data type of the attribute.
-                                type: number
+                                format: int64
+                                type: integer
                               required:
                                 description: (Updatable) Attribute is required or
                                   optional.
@@ -2968,7 +3006,8 @@ spec:
                     description: (Updatable) Expiry-time in seconds for an Access
                       Token. Any token that allows access to this App will expire
                       after the specified duration.
-                    type: number
+                    format: int64
+                    type: integer
                   accounts:
                     description: (Updatable) Accounts of App
                     items:
@@ -3173,22 +3212,27 @@ spec:
                           type: string
                         maxLength:
                           description: (Updatable) Maximum length of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         maxSize:
                           description: (Updatable) Maximum size of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         minLength:
                           description: (Updatable) Minimum length of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         minSize:
                           description: (Updatable) Minimum size of the attribute..
-                          type: number
+                          format: int64
+                          type: integer
                         name:
                           description: (Updatable) Name of the account
                           type: string
                         order:
                           description: (Updatable) Data type of the attribute.
-                          type: number
+                          format: int64
+                          type: integer
                         readOnly:
                           description: (Updatable) If true, indicates that this value
                             must be protected.
@@ -3797,7 +3841,8 @@ spec:
                     description: (Updatable) Expiry-time in seconds for a Refresh
                       Token.  Any token that allows access to this App, once refreshed,
                       will expire after the specified duration.
-                    type: number
+                    format: int64
+                    type: integer
                   resourceTypeSchemaVersion:
                     description: (Updatable) An endpoint-specific schema version number
                       to use in the Request. Allowed version values are Earliest Version
@@ -4053,7 +4098,8 @@ spec:
                         allowAuthzDecisionTtl:
                           description: (Updatable) Allow Authz policy decision expiry
                             time in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         allowAuthzPolicy:
                           description: (Updatable) Allow Authz Policy.
                           items:
@@ -4082,7 +4128,8 @@ spec:
                         denyAuthzDecisionTtl:
                           description: (Updatable) Deny Authz policy decision expiry
                             time in seconds.
-                          type: number
+                          format: int64
+                          type: integer
                         denyAuthzPolicy:
                           description: (Updatable) Deny Authz Policy.
                           items:
@@ -4266,10 +4313,12 @@ spec:
                           type: string
                         maxRenewableAge:
                           description: (Updatable) Max Renewable Age in seconds
-                          type: number
+                          format: int64
+                          type: integer
                         maxTicketLife:
                           description: (Updatable) Max Ticket Life in seconds
-                          type: number
+                          format: int64
+                          type: integer
                         realmName:
                           description: (Updatable) The name of the Kerberos Realm
                             that this App uses for authentication.
@@ -4284,7 +4333,8 @@ spec:
                           x-kubernetes-list-type: set
                         ticketFlags:
                           description: (Updatable) Ticket Flags
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   urnietfparamsscimschemasoracleidcsextensionmanagedappApp:
@@ -4334,7 +4384,8 @@ spec:
                                 type: string
                               order:
                                 description: (Updatable) Data type of the attribute.
-                                type: number
+                                format: int64
+                                type: integer
                               required:
                                 description: (Updatable) Attribute is required or
                                   optional.
@@ -4357,25 +4408,30 @@ spec:
                               maxIdle:
                                 description: (Updatable) Maximum number of connector
                                   instances in the pool that are idle and active.
-                                type: number
+                                format: int64
+                                type: integer
                               maxObjects:
                                 description: (Updatable) Maximum number of connector
                                   instances in the pool that are idle and active.
-                                type: number
+                                format: int64
+                                type: integer
                               maxWait:
                                 description: (Updatable) Maximum time (in milliseconds)
                                   to wait for a free connector instance to become
                                   available before failing.
-                                type: number
+                                format: int64
+                                type: integer
                               minEvictableIdleTimeMillis:
                                 description: (Updatable) Minimum time (in milliseconds)
                                   to wait before evicting an idle conenctor instance
                                   from the pool.
-                                type: number
+                                format: int64
+                                type: integer
                               minIdle:
                                 description: (Updatable) Minimum number of idle connector
                                   instances in the pool.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         canBeAuthoritative:
@@ -4456,7 +4512,8 @@ spec:
                                 type: string
                               order:
                                 description: (Updatable) Data type of the attribute.
-                                type: number
+                                format: int64
+                                type: integer
                               required:
                                 description: (Updatable) Attribute is required or
                                   optional.

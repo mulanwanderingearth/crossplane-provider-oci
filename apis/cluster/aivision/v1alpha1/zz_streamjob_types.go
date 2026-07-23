@@ -19,7 +19,7 @@ type FeaturesInitParameters struct {
 	FeatureType *string `json:"featureType,omitempty" tf:"feature_type,omitempty"`
 
 	// (Applicable when feature_type=FACE_DETECTION) (Updatable) The maximum number of results to return.
-	MaxResults *float64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
+	MaxResults *int64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
 
 	// (Applicable when feature_type=FACE_DETECTION) (Updatable) Whether or not return face landmarks.
 	ShouldReturnLandmarks *bool `json:"shouldReturnLandmarks,omitempty" tf:"should_return_landmarks,omitempty"`
@@ -34,7 +34,7 @@ type FeaturesObservation struct {
 	FeatureType *string `json:"featureType,omitempty" tf:"feature_type,omitempty"`
 
 	// (Applicable when feature_type=FACE_DETECTION) (Updatable) The maximum number of results to return.
-	MaxResults *float64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
+	MaxResults *int64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
 
 	// (Applicable when feature_type=FACE_DETECTION) (Updatable) Whether or not return face landmarks.
 	ShouldReturnLandmarks *bool `json:"shouldReturnLandmarks,omitempty" tf:"should_return_landmarks,omitempty"`
@@ -51,7 +51,7 @@ type FeaturesParameters struct {
 
 	// (Applicable when feature_type=FACE_DETECTION) (Updatable) The maximum number of results to return.
 	// +kubebuilder:validation:Optional
-	MaxResults *float64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
+	MaxResults *int64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
 
 	// (Applicable when feature_type=FACE_DETECTION) (Updatable) Whether or not return face landmarks.
 	// +kubebuilder:validation:Optional
@@ -77,8 +77,7 @@ type StreamJobInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Stream job display name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -87,8 +86,7 @@ type StreamJobInitParameters struct {
 	Features []FeaturesInitParameters `json:"features,omitempty" tf:"features,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The target state for the Stream Job. Could be set to ACTIVE or INACTIVE.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
@@ -119,8 +117,7 @@ type StreamJobObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Stream job display name.
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
@@ -129,8 +126,7 @@ type StreamJobObservation struct {
 	Features []FeaturesObservation `json:"features,omitempty" tf:"features,omitempty"`
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// OCID of the streamJob.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -148,8 +144,7 @@ type StreamJobObservation struct {
 	StreamSourceID *string `json:"streamSourceId,omitempty" tf:"stream_source_id,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. For example: {"orcl-cloud": {"free-tier-retained": "true"}}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// When the streamJob was created, as an RFC3339 datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -175,8 +170,7 @@ type StreamJobParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For example: {"foo-namespace": {"bar-key": "value"}}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Stream job display name.
 	// +kubebuilder:validation:Optional
@@ -188,8 +182,7 @@ type StreamJobParameters struct {
 
 	// (Updatable) A simple key-value pair that is applied without any predefined name, type, or scope. It exists for cross-compatibility only. For example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The target state for the Stream Job. Could be set to ACTIVE or INACTIVE.
 	// +kubebuilder:validation:Optional
@@ -305,7 +298,7 @@ type TrackingTypesInitParameters struct {
 	DetectionModelIDSelector *v1.Selector `json:"detectionModelIdSelector,omitempty" tf:"-"`
 
 	// (Applicable when feature_type=FACE_DETECTION) (Updatable) The maximum number of results to return.
-	MaxResults *float64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
+	MaxResults *int64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
 
 	// (Updatable) List of the objects to be tracked.
 	Objects []*string `json:"objects,omitempty" tf:"objects,omitempty"`
@@ -339,7 +332,7 @@ type TrackingTypesObservation struct {
 	DetectionModelID *string `json:"detectionModelId,omitempty" tf:"detection_model_id,omitempty"`
 
 	// (Applicable when feature_type=FACE_DETECTION) (Updatable) The maximum number of results to return.
-	MaxResults *float64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
+	MaxResults *int64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
 
 	// (Updatable) List of the objects to be tracked.
 	Objects []*string `json:"objects,omitempty" tf:"objects,omitempty"`
@@ -387,7 +380,7 @@ type TrackingTypesParameters struct {
 
 	// (Applicable when feature_type=FACE_DETECTION) (Updatable) The maximum number of results to return.
 	// +kubebuilder:validation:Optional
-	MaxResults *float64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
+	MaxResults *int64 `json:"maxResults,omitempty" tf:"max_results,omitempty"`
 
 	// (Updatable) List of the objects to be tracked.
 	// +kubebuilder:validation:Optional

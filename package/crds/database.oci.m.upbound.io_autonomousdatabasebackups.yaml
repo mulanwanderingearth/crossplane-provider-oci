@@ -223,7 +223,8 @@ spec:
                   retentionPeriodInDays:
                     description: (Updatable) Retention period, in days, for long-term
                       backups
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               initProvider:
                 description: |-
@@ -400,7 +401,8 @@ spec:
                   retentionPeriodInDays:
                     description: (Updatable) Retention period, in days, for long-term
                       backups
-                    type: number
+                    format: int64
+                    type: integer
                 type: object
               managementPolicies:
                 default:
@@ -590,7 +592,8 @@ spec:
                   retentionPeriodInDays:
                     description: (Updatable) Retention period, in days, for long-term
                       backups
-                    type: number
+                    format: int64
+                    type: integer
                   sizeInTbs:
                     description: The backup size in terrabytes (TB).
                     type: number

@@ -175,11 +175,11 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   detachCloneTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Detach Clone. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -274,7 +274,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   kmsKeyId:
@@ -575,11 +574,11 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   detachCloneTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Detach Clone. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -674,7 +673,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isLockOverride:
                     type: boolean
                   kmsKeyId:
@@ -976,7 +974,8 @@ spec:
                   cloneCount:
                     description: Specifies the total number of children of a file
                       system.
-                    type: number
+                    format: int64
+                    type: integer
                   compartmentId:
                     description: (Updatable) The OCID of the compartment to create
                       the file system in.
@@ -988,11 +987,11 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   detachCloneTrigger:
                     description: (Updatable) An optional property when incremented
                       triggers Detach Clone. Could be set to any integer value.
-                    type: number
+                    format: int64
+                    type: integer
                   displayName:
                     description: '(Updatable) A user-friendly name. It does not have
                       to be unique, and it is changeable. Avoid entering confidential
@@ -1011,7 +1010,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the file system.
                     type: string
@@ -1083,7 +1081,8 @@ spec:
                   replicationSourceCount:
                     description: Specifies the total number of replications for which
                       this file system is a source.
-                    type: number
+                    format: int64
+                    type: integer
                   replicationTargetId:
                     description: The OCID of the replication target associated with
                       the file system. Empty if the file system is not being used
@@ -1117,7 +1116,6 @@ spec:
                     description: System tags for this resource. System tags are applied
                       to resources by internal Oracle Cloud Infrastructure services.
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: When the lock was created.
                     type: string

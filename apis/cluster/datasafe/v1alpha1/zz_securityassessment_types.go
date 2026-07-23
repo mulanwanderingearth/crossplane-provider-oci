@@ -19,28 +19,28 @@ type AdvisoryInitParameters struct {
 type AdvisoryObservation struct {
 
 	// The number of findings in the Auditing category.
-	AuditingFindingsCount *float64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
+	AuditingFindingsCount *int64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
 
 	// The number of findings in the Authorization Control category.
-	AuthorizationControlFindingsCount *float64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
+	AuthorizationControlFindingsCount *int64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
 
 	// The number of findings in the Database Configuration category.
-	DBConfigurationFindingsCount *float64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
+	DBConfigurationFindingsCount *int64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
 
 	// The number of findings in the Data Encryption category.
-	DataEncryptionFindingsCount *float64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
+	DataEncryptionFindingsCount *int64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
 
 	// The number of findings in the Fine-Grained Access Control category.
-	FineGrainedAccessControlFindingsCount *float64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
+	FineGrainedAccessControlFindingsCount *int64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
 
 	// The number of findings in the Privileges and Roles category.
-	PrivilegesAndRolesFindingsCount *float64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
+	PrivilegesAndRolesFindingsCount *int64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
 
 	// The number of targets that contributed to the counts at this risk level.
-	TargetsCount *float64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
+	TargetsCount *int64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
 
 	// The number of findings in the User Accounts category.
-	UserAccountsFindingsCount *float64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
+	UserAccountsFindingsCount *int64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
 }
 
 type AdvisoryParameters struct {
@@ -82,28 +82,28 @@ type DeferredInitParameters struct {
 type DeferredObservation struct {
 
 	// The number of findings in the Auditing category.
-	AuditingFindingsCount *float64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
+	AuditingFindingsCount *int64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
 
 	// The number of findings in the Authorization Control category.
-	AuthorizationControlFindingsCount *float64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
+	AuthorizationControlFindingsCount *int64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
 
 	// The number of findings in the Database Configuration category.
-	DBConfigurationFindingsCount *float64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
+	DBConfigurationFindingsCount *int64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
 
 	// The number of findings in the Data Encryption category.
-	DataEncryptionFindingsCount *float64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
+	DataEncryptionFindingsCount *int64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
 
 	// The number of findings in the Fine-Grained Access Control category.
-	FineGrainedAccessControlFindingsCount *float64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
+	FineGrainedAccessControlFindingsCount *int64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
 
 	// The number of findings in the Privileges and Roles category.
-	PrivilegesAndRolesFindingsCount *float64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
+	PrivilegesAndRolesFindingsCount *int64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
 
 	// The number of targets that contributed to the counts at this risk level.
-	TargetsCount *float64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
+	TargetsCount *int64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
 
 	// The number of findings in the User Accounts category.
-	UserAccountsFindingsCount *float64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
+	UserAccountsFindingsCount *int64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
 }
 
 type DeferredParameters struct {
@@ -115,28 +115,28 @@ type EvaluateInitParameters struct {
 type EvaluateObservation struct {
 
 	// The number of findings in the Auditing category.
-	AuditingFindingsCount *float64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
+	AuditingFindingsCount *int64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
 
 	// The number of findings in the Authorization Control category.
-	AuthorizationControlFindingsCount *float64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
+	AuthorizationControlFindingsCount *int64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
 
 	// The number of findings in the Database Configuration category.
-	DBConfigurationFindingsCount *float64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
+	DBConfigurationFindingsCount *int64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
 
 	// The number of findings in the Data Encryption category.
-	DataEncryptionFindingsCount *float64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
+	DataEncryptionFindingsCount *int64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
 
 	// The number of findings in the Fine-Grained Access Control category.
-	FineGrainedAccessControlFindingsCount *float64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
+	FineGrainedAccessControlFindingsCount *int64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
 
 	// The number of findings in the Privileges and Roles category.
-	PrivilegesAndRolesFindingsCount *float64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
+	PrivilegesAndRolesFindingsCount *int64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
 
 	// The number of targets that contributed to the counts at this risk level.
-	TargetsCount *float64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
+	TargetsCount *int64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
 
 	// The number of findings in the User Accounts category.
-	UserAccountsFindingsCount *float64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
+	UserAccountsFindingsCount *int64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
 }
 
 type EvaluateParameters struct {
@@ -148,28 +148,28 @@ type HighRiskInitParameters struct {
 type HighRiskObservation struct {
 
 	// The number of findings in the Auditing category.
-	AuditingFindingsCount *float64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
+	AuditingFindingsCount *int64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
 
 	// The number of findings in the Authorization Control category.
-	AuthorizationControlFindingsCount *float64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
+	AuthorizationControlFindingsCount *int64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
 
 	// The number of findings in the Database Configuration category.
-	DBConfigurationFindingsCount *float64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
+	DBConfigurationFindingsCount *int64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
 
 	// The number of findings in the Data Encryption category.
-	DataEncryptionFindingsCount *float64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
+	DataEncryptionFindingsCount *int64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
 
 	// The number of findings in the Fine-Grained Access Control category.
-	FineGrainedAccessControlFindingsCount *float64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
+	FineGrainedAccessControlFindingsCount *int64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
 
 	// The number of findings in the Privileges and Roles category.
-	PrivilegesAndRolesFindingsCount *float64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
+	PrivilegesAndRolesFindingsCount *int64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
 
 	// The number of targets that contributed to the counts at this risk level.
-	TargetsCount *float64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
+	TargetsCount *int64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
 
 	// The number of findings in the User Accounts category.
-	UserAccountsFindingsCount *float64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
+	UserAccountsFindingsCount *int64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
 }
 
 type HighRiskParameters struct {
@@ -181,28 +181,28 @@ type LowRiskInitParameters struct {
 type LowRiskObservation struct {
 
 	// The number of findings in the Auditing category.
-	AuditingFindingsCount *float64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
+	AuditingFindingsCount *int64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
 
 	// The number of findings in the Authorization Control category.
-	AuthorizationControlFindingsCount *float64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
+	AuthorizationControlFindingsCount *int64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
 
 	// The number of findings in the Database Configuration category.
-	DBConfigurationFindingsCount *float64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
+	DBConfigurationFindingsCount *int64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
 
 	// The number of findings in the Data Encryption category.
-	DataEncryptionFindingsCount *float64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
+	DataEncryptionFindingsCount *int64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
 
 	// The number of findings in the Fine-Grained Access Control category.
-	FineGrainedAccessControlFindingsCount *float64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
+	FineGrainedAccessControlFindingsCount *int64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
 
 	// The number of findings in the Privileges and Roles category.
-	PrivilegesAndRolesFindingsCount *float64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
+	PrivilegesAndRolesFindingsCount *int64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
 
 	// The number of targets that contributed to the counts at this risk level.
-	TargetsCount *float64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
+	TargetsCount *int64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
 
 	// The number of findings in the User Accounts category.
-	UserAccountsFindingsCount *float64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
+	UserAccountsFindingsCount *int64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
 }
 
 type LowRiskParameters struct {
@@ -214,28 +214,28 @@ type MediumRiskInitParameters struct {
 type MediumRiskObservation struct {
 
 	// The number of findings in the Auditing category.
-	AuditingFindingsCount *float64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
+	AuditingFindingsCount *int64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
 
 	// The number of findings in the Authorization Control category.
-	AuthorizationControlFindingsCount *float64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
+	AuthorizationControlFindingsCount *int64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
 
 	// The number of findings in the Database Configuration category.
-	DBConfigurationFindingsCount *float64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
+	DBConfigurationFindingsCount *int64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
 
 	// The number of findings in the Data Encryption category.
-	DataEncryptionFindingsCount *float64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
+	DataEncryptionFindingsCount *int64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
 
 	// The number of findings in the Fine-Grained Access Control category.
-	FineGrainedAccessControlFindingsCount *float64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
+	FineGrainedAccessControlFindingsCount *int64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
 
 	// The number of findings in the Privileges and Roles category.
-	PrivilegesAndRolesFindingsCount *float64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
+	PrivilegesAndRolesFindingsCount *int64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
 
 	// The number of targets that contributed to the counts at this risk level.
-	TargetsCount *float64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
+	TargetsCount *int64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
 
 	// The number of findings in the User Accounts category.
-	UserAccountsFindingsCount *float64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
+	UserAccountsFindingsCount *int64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
 }
 
 type MediumRiskParameters struct {
@@ -247,28 +247,28 @@ type PassInitParameters struct {
 type PassObservation struct {
 
 	// The number of findings in the Auditing category.
-	AuditingFindingsCount *float64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
+	AuditingFindingsCount *int64 `json:"auditingFindingsCount,omitempty" tf:"auditing_findings_count,omitempty"`
 
 	// The number of findings in the Authorization Control category.
-	AuthorizationControlFindingsCount *float64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
+	AuthorizationControlFindingsCount *int64 `json:"authorizationControlFindingsCount,omitempty" tf:"authorization_control_findings_count,omitempty"`
 
 	// The number of findings in the Database Configuration category.
-	DBConfigurationFindingsCount *float64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
+	DBConfigurationFindingsCount *int64 `json:"dbConfigurationFindingsCount,omitempty" tf:"db_configuration_findings_count,omitempty"`
 
 	// The number of findings in the Data Encryption category.
-	DataEncryptionFindingsCount *float64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
+	DataEncryptionFindingsCount *int64 `json:"dataEncryptionFindingsCount,omitempty" tf:"data_encryption_findings_count,omitempty"`
 
 	// The number of findings in the Fine-Grained Access Control category.
-	FineGrainedAccessControlFindingsCount *float64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
+	FineGrainedAccessControlFindingsCount *int64 `json:"fineGrainedAccessControlFindingsCount,omitempty" tf:"fine_grained_access_control_findings_count,omitempty"`
 
 	// The number of findings in the Privileges and Roles category.
-	PrivilegesAndRolesFindingsCount *float64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
+	PrivilegesAndRolesFindingsCount *int64 `json:"privilegesAndRolesFindingsCount,omitempty" tf:"privileges_and_roles_findings_count,omitempty"`
 
 	// The number of targets that contributed to the counts at this risk level.
-	TargetsCount *float64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
+	TargetsCount *int64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
 
 	// The number of findings in the User Accounts category.
-	UserAccountsFindingsCount *float64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
+	UserAccountsFindingsCount *int64 `json:"userAccountsFindingsCount,omitempty" tf:"user_accounts_findings_count,omitempty"`
 }
 
 type PassParameters struct {
@@ -298,7 +298,7 @@ type ReferencesParameters struct {
 type SecurityAssessmentInitParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Apply Template. Could be set to any integer value.
-	ApplyTemplateTrigger *float64 `json:"applyTemplateTrigger,omitempty" tf:"apply_template_trigger,omitempty"`
+	ApplyTemplateTrigger *int64 `json:"applyTemplateTrigger,omitempty" tf:"apply_template_trigger,omitempty"`
 
 	// The OCID of the security assessment. The assessment should be of type SAVED.  It will be required while creating the template baseline assessment for individual targets to fetch the detailed information from an existing security assessment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/datasafe/v1alpha1.SecurityAssessment
@@ -314,7 +314,7 @@ type SecurityAssessmentInitParameters struct {
 	BaseSecurityAssessmentIDSelector *v1.Selector `json:"baseSecurityAssessmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) An optional property when incremented triggers Compare To Template Baseline. Could be set to any integer value.
-	CompareToTemplateBaselineTrigger *float64 `json:"compareToTemplateBaselineTrigger,omitempty" tf:"compare_to_template_baseline_trigger,omitempty"`
+	CompareToTemplateBaselineTrigger *int64 `json:"compareToTemplateBaselineTrigger,omitempty" tf:"compare_to_template_baseline_trigger,omitempty"`
 
 	// (Updatable) The OCID of the compartment that contains the security assessment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -329,8 +329,7 @@ type SecurityAssessmentInitParameters struct {
 	CompartmentIDSelector *v1.Selector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the security assessment.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -339,14 +338,13 @@ type SecurityAssessmentInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates whether the assessment is scheduled to run.
 	IsAssessmentScheduled *bool `json:"isAssessmentScheduled,omitempty" tf:"is_assessment_scheduled,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Remove Template. Could be set to any integer value.
-	RemoveTemplateTrigger *float64 `json:"removeTemplateTrigger,omitempty" tf:"remove_template_trigger,omitempty"`
+	RemoveTemplateTrigger *int64 `json:"removeTemplateTrigger,omitempty" tf:"remove_template_trigger,omitempty"`
 
 	// (Updatable) To schedule the assessment for running periodically, specify the schedule in this attribute. Create or schedule one assessment per compartment. If not defined, the assessment runs immediately. Format - ;
 	Schedule *string `json:"schedule,omitempty" tf:"schedule,omitempty"`
@@ -377,7 +375,7 @@ type SecurityAssessmentInitParameters struct {
 type SecurityAssessmentObservation struct {
 
 	// (Updatable) An optional property when incremented triggers Apply Template. Could be set to any integer value.
-	ApplyTemplateTrigger *float64 `json:"applyTemplateTrigger,omitempty" tf:"apply_template_trigger,omitempty"`
+	ApplyTemplateTrigger *int64 `json:"applyTemplateTrigger,omitempty" tf:"apply_template_trigger,omitempty"`
 
 	// The OCID of the security assessment. The assessment should be of type SAVED.  It will be required while creating the template baseline assessment for individual targets to fetch the detailed information from an existing security assessment.
 	BaseSecurityAssessmentID *string `json:"baseSecurityAssessmentId,omitempty" tf:"base_security_assessment_id,omitempty"`
@@ -389,14 +387,13 @@ type SecurityAssessmentObservation struct {
 	Checks []ChecksObservation `json:"checks,omitempty" tf:"checks,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Compare To Template Baseline. Could be set to any integer value.
-	CompareToTemplateBaselineTrigger *float64 `json:"compareToTemplateBaselineTrigger,omitempty" tf:"compare_to_template_baseline_trigger,omitempty"`
+	CompareToTemplateBaselineTrigger *int64 `json:"compareToTemplateBaselineTrigger,omitempty" tf:"compare_to_template_baseline_trigger,omitempty"`
 
 	// (Updatable) The OCID of the compartment that contains the security assessment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the security assessment.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -405,8 +402,7 @@ type SecurityAssessmentObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the security assessment.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -436,7 +432,7 @@ type SecurityAssessmentObservation struct {
 	Link *string `json:"link,omitempty" tf:"link,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Remove Template. Could be set to any integer value.
-	RemoveTemplateTrigger *float64 `json:"removeTemplateTrigger,omitempty" tf:"remove_template_trigger,omitempty"`
+	RemoveTemplateTrigger *int64 `json:"removeTemplateTrigger,omitempty" tf:"remove_template_trigger,omitempty"`
 
 	// (Updatable) To schedule the assessment for running periodically, specify the schedule in this attribute. Create or schedule one assessment per compartment. If not defined, the assessment runs immediately. Format - ;
 	Schedule *string `json:"schedule,omitempty" tf:"schedule,omitempty"`
@@ -451,8 +447,7 @@ type SecurityAssessmentObservation struct {
 	Statistics []StatisticsObservation `json:"statistics,omitempty" tf:"statistics,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The OCID of the target database group that the group assessment is created for.
 	TargetDatabaseGroupID *string `json:"targetDatabaseGroupId,omitempty" tf:"target_database_group_id,omitempty"`
@@ -492,7 +487,7 @@ type SecurityAssessmentParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Apply Template. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	ApplyTemplateTrigger *float64 `json:"applyTemplateTrigger,omitempty" tf:"apply_template_trigger,omitempty"`
+	ApplyTemplateTrigger *int64 `json:"applyTemplateTrigger,omitempty" tf:"apply_template_trigger,omitempty"`
 
 	// The OCID of the security assessment. The assessment should be of type SAVED.  It will be required while creating the template baseline assessment for individual targets to fetch the detailed information from an existing security assessment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/datasafe/v1alpha1.SecurityAssessment
@@ -510,7 +505,7 @@ type SecurityAssessmentParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Compare To Template Baseline. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	CompareToTemplateBaselineTrigger *float64 `json:"compareToTemplateBaselineTrigger,omitempty" tf:"compare_to_template_baseline_trigger,omitempty"`
+	CompareToTemplateBaselineTrigger *int64 `json:"compareToTemplateBaselineTrigger,omitempty" tf:"compare_to_template_baseline_trigger,omitempty"`
 
 	// (Updatable) The OCID of the compartment that contains the security assessment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/cluster/identity/v1alpha1.Compartment
@@ -527,8 +522,7 @@ type SecurityAssessmentParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Description of the security assessment.
 	// +kubebuilder:validation:Optional
@@ -540,8 +534,7 @@ type SecurityAssessmentParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Indicates whether the assessment is scheduled to run.
 	// +kubebuilder:validation:Optional
@@ -549,7 +542,7 @@ type SecurityAssessmentParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Remove Template. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	RemoveTemplateTrigger *float64 `json:"removeTemplateTrigger,omitempty" tf:"remove_template_trigger,omitempty"`
+	RemoveTemplateTrigger *int64 `json:"removeTemplateTrigger,omitempty" tf:"remove_template_trigger,omitempty"`
 
 	// (Updatable) To schedule the assessment for running periodically, specify the schedule in this attribute. Create or schedule one assessment per compartment. If not defined, the assessment runs immediately. Format - ;
 	// +kubebuilder:validation:Optional
@@ -609,7 +602,7 @@ type StatisticsObservation struct {
 	Pass []PassObservation `json:"pass,omitempty" tf:"pass,omitempty"`
 
 	// The number of targets that contributed to the counts at this risk level.
-	TargetsCount *float64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
+	TargetsCount *int64 `json:"targetsCount,omitempty" tf:"targets_count,omitempty"`
 }
 
 type StatisticsParameters struct {

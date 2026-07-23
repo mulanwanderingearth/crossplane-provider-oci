@@ -71,18 +71,21 @@ spec:
                         maxAllowedFailuresPerInterval:
                           description: (Updatable) Intervals with failed runs more
                             than this value will be classified as UNAVAILABLE.
-                          type: number
+                          format: int64
+                          type: integer
                         minAllowedRunsPerInterval:
                           description: (Updatable) Intervals with runs less than this
                             value will be classified as UNKNOWN and excluded from
                             the availability calculations.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   batchIntervalInSeconds:
                     description: (Updatable) Time interval between 2 runs in round
                       robin batch mode (*SchedulingPolicy - BATCHED_ROUND_ROBIN).
-                    type: number
+                    format: int64
+                    type: integer
                   configuration:
                     description: (Updatable) Details of monitor configuration.
                     items:
@@ -307,7 +310,8 @@ spec:
                           description: (Applicable when config_type=FTP_CONFIG) (Updatable)
                             Download size limit in Bytes, at which to stop the transfer.
                             Maximum download size limit is 5 MiB.
-                          type: number
+                          format: int64
+                          type: integer
                         ftpBasicAuthenticationDetails:
                           description: (Applicable when config_type=FTP_CONFIG) (Updatable)
                             Details for basic authentication.
@@ -488,7 +492,8 @@ spec:
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
                                   | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG)
                                   (Updatable) Number of hops.
-                                type: number
+                                format: int64
+                                type: integer
                               probeMode:
                                 description: (Applicable when config_type=BROWSER_CONFIG
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
@@ -501,7 +506,8 @@ spec:
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
                                   | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG)
                                   (Updatable) Number of probes per hop.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: (Applicable when config_type=BROWSER_CONFIG
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
@@ -513,7 +519,8 @@ spec:
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
                                   | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG)
                                   (Updatable) Number of probe packets sent out simultaneously.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -719,7 +726,8 @@ spec:
                           description: (Applicable when config_type=FTP_CONFIG) (Updatable)
                             File upload size in Bytes, at which to stop the transfer.
                             Maximum upload size is 5 MiB.
-                          type: number
+                          format: int64
+                          type: integer
                         verifyResponseCodes:
                           description: (Applicable when config_type=BROWSER_CONFIG
                             | FTP_CONFIG | REST_CONFIG | SCRIPTED_REST_CONFIG) (Updatable)
@@ -758,7 +766,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Unique name that can be edited. The name
                       should not contain any confidential information.
@@ -770,7 +777,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isIpv6:
                     description: (Updatable) If enabled, domain name will resolve
                       to an IPv6 address.
@@ -806,7 +812,8 @@ spec:
                     description: (Updatable) Interval in seconds after the start time
                       when the job should be repeated. Minimum repeatIntervalInSeconds
                       should be 300 seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   schedulingPolicy:
                     description: (Updatable) Scheduling policy to decide the distribution
                       of monitor executions on vantage points.
@@ -940,7 +947,8 @@ spec:
                       for Scripted REST, Scripted Browser and Browser monitors. Monitor
                       will be allowed to run only for timeoutInSeconds time. It would
                       be terminated after that.
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePoints:
                     description: (Updatable) A list of vantage points from which to
                       execute the monitor. Use /publicVantagePoints to fetch public
@@ -981,18 +989,21 @@ spec:
                         maxAllowedFailuresPerInterval:
                           description: (Updatable) Intervals with failed runs more
                             than this value will be classified as UNAVAILABLE.
-                          type: number
+                          format: int64
+                          type: integer
                         minAllowedRunsPerInterval:
                           description: (Updatable) Intervals with runs less than this
                             value will be classified as UNKNOWN and excluded from
                             the availability calculations.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   batchIntervalInSeconds:
                     description: (Updatable) Time interval between 2 runs in round
                       robin batch mode (*SchedulingPolicy - BATCHED_ROUND_ROBIN).
-                    type: number
+                    format: int64
+                    type: integer
                   configuration:
                     description: (Updatable) Details of monitor configuration.
                     items:
@@ -1217,7 +1228,8 @@ spec:
                           description: (Applicable when config_type=FTP_CONFIG) (Updatable)
                             Download size limit in Bytes, at which to stop the transfer.
                             Maximum download size limit is 5 MiB.
-                          type: number
+                          format: int64
+                          type: integer
                         ftpBasicAuthenticationDetails:
                           description: (Applicable when config_type=FTP_CONFIG) (Updatable)
                             Details for basic authentication.
@@ -1398,7 +1410,8 @@ spec:
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
                                   | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG)
                                   (Updatable) Number of hops.
-                                type: number
+                                format: int64
+                                type: integer
                               probeMode:
                                 description: (Applicable when config_type=BROWSER_CONFIG
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
@@ -1411,7 +1424,8 @@ spec:
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
                                   | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG)
                                   (Updatable) Number of probes per hop.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: (Applicable when config_type=BROWSER_CONFIG
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
@@ -1423,7 +1437,8 @@ spec:
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
                                   | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG)
                                   (Updatable) Number of probe packets sent out simultaneously.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -1629,7 +1644,8 @@ spec:
                           description: (Applicable when config_type=FTP_CONFIG) (Updatable)
                             File upload size in Bytes, at which to stop the transfer.
                             Maximum upload size is 5 MiB.
-                          type: number
+                          format: int64
+                          type: integer
                         verifyResponseCodes:
                           description: (Applicable when config_type=BROWSER_CONFIG
                             | FTP_CONFIG | REST_CONFIG | SCRIPTED_REST_CONFIG) (Updatable)
@@ -1668,7 +1684,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Unique name that can be edited. The name
                       should not contain any confidential information.
@@ -1680,7 +1695,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isIpv6:
                     description: (Updatable) If enabled, domain name will resolve
                       to an IPv6 address.
@@ -1716,7 +1730,8 @@ spec:
                     description: (Updatable) Interval in seconds after the start time
                       when the job should be repeated. Minimum repeatIntervalInSeconds
                       should be 300 seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   schedulingPolicy:
                     description: (Updatable) Scheduling policy to decide the distribution
                       of monitor executions on vantage points.
@@ -1850,7 +1865,8 @@ spec:
                       for Scripted REST, Scripted Browser and Browser monitors. Monitor
                       will be allowed to run only for timeoutInSeconds time. It would
                       be terminated after that.
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePoints:
                     description: (Updatable) A list of vantage points from which to
                       execute the monitor. Use /publicVantagePoints to fetch public
@@ -1964,18 +1980,21 @@ spec:
                         maxAllowedFailuresPerInterval:
                           description: (Updatable) Intervals with failed runs more
                             than this value will be classified as UNAVAILABLE.
-                          type: number
+                          format: int64
+                          type: integer
                         minAllowedRunsPerInterval:
                           description: (Updatable) Intervals with runs less than this
                             value will be classified as UNKNOWN and excluded from
                             the availability calculations.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   batchIntervalInSeconds:
                     description: (Updatable) Time interval between 2 runs in round
                       robin batch mode (*SchedulingPolicy - BATCHED_ROUND_ROBIN).
-                    type: number
+                    format: int64
+                    type: integer
                   configuration:
                     description: (Updatable) Details of monitor configuration.
                     items:
@@ -2092,7 +2111,8 @@ spec:
                           description: (Applicable when config_type=FTP_CONFIG) (Updatable)
                             Download size limit in Bytes, at which to stop the transfer.
                             Maximum download size limit is 5 MiB.
-                          type: number
+                          format: int64
+                          type: integer
                         ftpBasicAuthenticationDetails:
                           description: (Applicable when config_type=FTP_CONFIG) (Updatable)
                             Details for basic authentication.
@@ -2165,7 +2185,8 @@ spec:
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
                                   | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG)
                                   (Updatable) Number of hops.
-                                type: number
+                                format: int64
+                                type: integer
                               probeMode:
                                 description: (Applicable when config_type=BROWSER_CONFIG
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
@@ -2178,7 +2199,8 @@ spec:
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
                                   | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG)
                                   (Updatable) Number of probes per hop.
-                                type: number
+                                format: int64
+                                type: integer
                               protocol:
                                 description: (Applicable when config_type=BROWSER_CONFIG
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
@@ -2190,7 +2212,8 @@ spec:
                                   | DNS_SERVER_CONFIG | FTP_CONFIG | NETWORK_CONFIG
                                   | REST_CONFIG | SCRIPTED_BROWSER_CONFIG | SCRIPTED_REST_CONFIG)
                                   (Updatable) Number of probe packets sent out simultaneously.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         protocol:
@@ -2301,7 +2324,8 @@ spec:
                           description: (Applicable when config_type=FTP_CONFIG) (Updatable)
                             File upload size in Bytes, at which to stop the transfer.
                             Maximum upload size is 5 MiB.
-                          type: number
+                          format: int64
+                          type: integer
                         verifyResponseCodes:
                           description: (Applicable when config_type=BROWSER_CONFIG
                             | FTP_CONFIG | REST_CONFIG | SCRIPTED_REST_CONFIG) (Updatable)
@@ -2346,7 +2370,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: (Updatable) Unique name that can be edited. The name
                       should not contain any confidential information.
@@ -2358,7 +2381,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the monitor.
                     type: string
@@ -2400,7 +2422,8 @@ spec:
                     description: (Updatable) Interval in seconds after the start time
                       when the job should be repeated. Minimum repeatIntervalInSeconds
                       should be 300 seconds.
-                    type: number
+                    format: int64
+                    type: integer
                   schedulingPolicy:
                     description: (Updatable) Scheduling policy to decide the distribution
                       of monitor executions on vantage points.
@@ -2482,10 +2505,12 @@ spec:
                       for Scripted REST, Scripted Browser and Browser monitors. Monitor
                       will be allowed to run only for timeoutInSeconds time. It would
                       be terminated after that.
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePointCount:
                     description: Number of vantage points where monitor is running.
-                    type: number
+                    format: int64
+                    type: integer
                   vantagePoints:
                     description: (Updatable) A list of vantage points from which to
                       execute the monitor. Use /publicVantagePoints to fetch public

@@ -85,7 +85,7 @@ type LevelsConfigurationParameters struct {
 type ProfileInitParameters struct {
 
 	// (Updatable) The time period over which to collect data for the recommendations, measured in number of days.
-	AggregationIntervalInDays *float64 `json:"aggregationIntervalInDays,omitempty" tf:"aggregation_interval_in_days,omitempty"`
+	AggregationIntervalInDays *int64 `json:"aggregationIntervalInDays,omitempty" tf:"aggregation_interval_in_days,omitempty"`
 
 	// The OCID of the tenancy. The tenancy is the root compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -100,15 +100,13 @@ type ProfileInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Text describing the profile. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type, or namespace. For more information, see Resource Tags. Exists for cross-compatibility only.  Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A list of configuration levels for each recommendation.
 	LevelsConfiguration []LevelsConfigurationInitParameters `json:"levelsConfiguration,omitempty" tf:"levels_configuration,omitempty"`
@@ -126,21 +124,19 @@ type ProfileInitParameters struct {
 type ProfileObservation struct {
 
 	// (Updatable) The time period over which to collect data for the recommendations, measured in number of days.
-	AggregationIntervalInDays *float64 `json:"aggregationIntervalInDays,omitempty" tf:"aggregation_interval_in_days,omitempty"`
+	AggregationIntervalInDays *int64 `json:"aggregationIntervalInDays,omitempty" tf:"aggregation_interval_in_days,omitempty"`
 
 	// The OCID of the tenancy. The tenancy is the root compartment.
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Text describing the profile. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type, or namespace. For more information, see Resource Tags. Exists for cross-compatibility only.  Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The unique OCID of the profile.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -154,8 +150,7 @@ type ProfileObservation struct {
 	// The profile's current state.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// (Updatable) Optional. The compartments specified in the profile override for a recommendation.
 	TargetCompartments []TargetCompartmentsObservation `json:"targetCompartments,omitempty" tf:"target_compartments,omitempty"`
@@ -174,7 +169,7 @@ type ProfileParameters struct {
 
 	// (Updatable) The time period over which to collect data for the recommendations, measured in number of days.
 	// +kubebuilder:validation:Optional
-	AggregationIntervalInDays *float64 `json:"aggregationIntervalInDays,omitempty" tf:"aggregation_interval_in_days,omitempty"`
+	AggregationIntervalInDays *int64 `json:"aggregationIntervalInDays,omitempty" tf:"aggregation_interval_in_days,omitempty"`
 
 	// The OCID of the tenancy. The tenancy is the root compartment.
 	// +crossplane:generate:reference:type=github.com/oracle/provider-oci/apis/namespaced/identity/v1alpha1.Compartment
@@ -191,8 +186,7 @@ type ProfileParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Text describing the profile. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -200,8 +194,7 @@ type ProfileParameters struct {
 
 	// (Updatable) Simple key-value pair applied without any predefined name, type, or namespace. For more information, see Resource Tags. Exists for cross-compatibility only.  Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) A list of configuration levels for each recommendation.
 	// +kubebuilder:validation:Optional

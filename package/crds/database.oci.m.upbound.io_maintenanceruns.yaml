@@ -544,7 +544,8 @@ spec:
                     description: Extend current custom action timeout between the
                       current database servers during waiting state, from 0 (zero)
                       to 30 minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   currentPatchingComponent:
                     description: The name of the current infrastruture component that
                       is getting patched.
@@ -553,7 +554,8 @@ spec:
                     description: Determines the amount of time the system will wait
                       before the start of each database server patching operation.
                       Specify a number of minutes, from 15 to 120.
-                    type: number
+                    format: int64
+                    type: integer
                   databaseSoftwareImageId:
                     description: The Autonomous AI Database Software Image OCID
                     type: string
@@ -576,19 +578,23 @@ spec:
                         estimatedDbServerPatchingTime:
                           description: The estimated time required in minutes for
                             database server patching.
-                          type: number
+                          format: int64
+                          type: integer
                         estimatedNetworkSwitchesPatchingTime:
                           description: The estimated time required in minutes for
                             network switch patching.
-                          type: number
+                          format: int64
+                          type: integer
                         estimatedStorageServerPatchingTime:
                           description: The estimated time required in minutes for
                             storage server patching.
-                          type: number
+                          format: int64
+                          type: integer
                         totalEstimatedPatchingTime:
                           description: The estimated total time required in minutes
                             for all patching operations.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                   id:
@@ -620,7 +626,8 @@ spec:
                     type: string
                   patchFailureCount:
                     description: Contain the patch failure count.
-                    type: number
+                    format: int64
+                    type: integer
                   patchId:
                     description: The unique identifier of the patch. The identifier
                       string includes the patch type, the Oracle AI Database version,
@@ -675,7 +682,6 @@ spec:
                       and scoped to a namespace. For more information, see Resource
                       Tags.
                     type: object
-                    x-kubernetes-map-type: granular
                   targetDbServerVersion:
                     description: The target software version for the database server
                       patching operation.
@@ -704,7 +710,8 @@ spec:
                   totalTimeTakenInMins:
                     description: The total time taken by corresponding resource activity
                       in minutes.
-                    type: number
+                    format: int64
+                    type: integer
                   windowTypeDescriptions:
                     description: A list of key-value pairs where the key will contain
                       the window type and value contains all the windowDetails of

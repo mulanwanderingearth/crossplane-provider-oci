@@ -56,8 +56,7 @@ type DatabaseSnapshotStandbyConnectionStringsInitParameters struct {
 type DatabaseSnapshotStandbyConnectionStringsObservation struct {
 
 	// All connection strings to use to connect to the Database.
-	// +mapType=granular
-	AllConnectionStrings map[string]*string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
+	AllConnectionStrings map[string]string `json:"allConnectionStrings,omitempty" tf:"all_connection_strings,omitempty"`
 
 	// Host name based CDB Connection String.
 	CdbDefault *string `json:"cdbDefault,omitempty" tf:"cdb_default,omitempty"`
@@ -120,7 +119,7 @@ type DatabaseSnapshotStandbyDBBackupConfigObservation struct {
 	BackupDestinationDetails []DatabaseSnapshotStandbyDBBackupConfigBackupDestinationDetailsObservation `json:"backupDestinationDetails,omitempty" tf:"backup_destination_details,omitempty"`
 
 	// Number of days between the current and the earliest point of recoverability covered by automatic backups. This value applies to automatic backups only. After a new automatic backup has been created, Oracle removes old automatic backups that are created before the window. When the value is updated, it is applied to all existing automatic backups.
-	RecoveryWindowInDays *float64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
+	RecoveryWindowInDays *int64 `json:"recoveryWindowInDays,omitempty" tf:"recovery_window_in_days,omitempty"`
 
 	// If set to true, configures automatic full backups in the local region (the region of the DB system) for the first backup run immediately.
 	RunImmediateFullBackup *bool `json:"runImmediateFullBackup,omitempty" tf:"run_immediate_full_backup,omitempty"`
@@ -178,7 +177,7 @@ type DatabaseSnapshotStandbyInitParameters struct {
 	DatabaseIDSelector *v1.NamespacedSelector `json:"databaseIdSelector,omitempty" tf:"-"`
 
 	// SnapshotDurationInDays is the duration in day(s) after which the Snapshot Standby Database will get converted back to Physical Standby. The minimum value of snapshotDurationInDays is 3 days and maximum value is 14 days. Default value will be 7 days if not provided in the Request.
-	SnapshotDurationInDays *float64 `json:"snapshotDurationInDays,omitempty" tf:"snapshot_duration_in_days,omitempty"`
+	SnapshotDurationInDays *int64 `json:"snapshotDurationInDays,omitempty" tf:"snapshot_duration_in_days,omitempty"`
 
 	// Defines the conversion type of the standby database. Specify this to convert a physical standby to a snapshot standby and vice versa.
 	StandbyConversionType *string `json:"standbyConversionType,omitempty" tf:"standby_conversion_type,omitempty"`
@@ -226,12 +225,10 @@ type DatabaseSnapshotStandbyObservation struct {
 	DatabaseSoftwareImageID *string `json:"databaseSoftwareImageId,omitempty" tf:"database_software_image_id,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the backup destination.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -252,7 +249,7 @@ type DatabaseSnapshotStandbyObservation struct {
 	KeyStoreWalletName *string `json:"keyStoreWalletName,omitempty" tf:"key_store_wallet_name,omitempty"`
 
 	// The duration when the latest database backup created.
-	LastBackupDurationInSeconds *float64 `json:"lastBackupDurationInSeconds,omitempty" tf:"last_backup_duration_in_seconds,omitempty"`
+	LastBackupDurationInSeconds *int64 `json:"lastBackupDurationInSeconds,omitempty" tf:"last_backup_duration_in_seconds,omitempty"`
 
 	// The date and time when the latest database backup was created.
 	LastBackupTimestamp *string `json:"lastBackupTimestamp,omitempty" tf:"last_backup_timestamp,omitempty"`
@@ -273,7 +270,7 @@ type DatabaseSnapshotStandbyObservation struct {
 	SidPrefix *string `json:"sidPrefix,omitempty" tf:"sid_prefix,omitempty"`
 
 	// SnapshotDurationInDays is the duration in day(s) after which the Snapshot Standby Database will get converted back to Physical Standby. The minimum value of snapshotDurationInDays is 3 days and maximum value is 14 days. Default value will be 7 days if not provided in the Request.
-	SnapshotDurationInDays *float64 `json:"snapshotDurationInDays,omitempty" tf:"snapshot_duration_in_days,omitempty"`
+	SnapshotDurationInDays *int64 `json:"snapshotDurationInDays,omitempty" tf:"snapshot_duration_in_days,omitempty"`
 
 	// Point in time recovery timeStamp of the source database at which cloned database system is cloned from the source database system, as described in RFC 3339
 	SourceDatabasePointInTimeRecoveryTimestamp *string `json:"sourceDatabasePointInTimeRecoveryTimestamp,omitempty" tf:"source_database_point_in_time_recovery_timestamp,omitempty"`
@@ -316,7 +313,7 @@ type DatabaseSnapshotStandbyParameters struct {
 
 	// SnapshotDurationInDays is the duration in day(s) after which the Snapshot Standby Database will get converted back to Physical Standby. The minimum value of snapshotDurationInDays is 3 days and maximum value is 14 days. Default value will be 7 days if not provided in the Request.
 	// +kubebuilder:validation:Optional
-	SnapshotDurationInDays *float64 `json:"snapshotDurationInDays,omitempty" tf:"snapshot_duration_in_days,omitempty"`
+	SnapshotDurationInDays *int64 `json:"snapshotDurationInDays,omitempty" tf:"snapshot_duration_in_days,omitempty"`
 
 	// Defines the conversion type of the standby database. Specify this to convert a physical standby to a snapshot standby and vice versa.
 	// +kubebuilder:validation:Optional

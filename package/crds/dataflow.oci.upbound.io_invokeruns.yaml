@@ -436,7 +436,6 @@ spec:
                       to set a property that is not allowed to be overwritten will
                       cause a 400 status to be returned.'
                     type: object
-                    x-kubernetes-map-type: granular
                   definedTags:
                     additionalProperties:
                       type: string
@@ -444,7 +443,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: A user-friendly name that does not have to be unique.
                       Avoid entering confidential information. If this value is not
@@ -511,7 +509,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idleTimeoutInMinutes:
                     description: '(Updatable) The timeout value in minutes used to
                       manage Runs. A Run would be stopped after inactivity for this
@@ -534,7 +531,8 @@ spec:
                     type: string
                   numExecutors:
                     description: The number of executor VMs requested.
-                    type: number
+                    format: int64
+                    type: integer
                   opcParentRptUrl:
                     description: Parent resource control plane endpoint used to exchange
                       for upper level resource principal token.
@@ -1028,7 +1026,6 @@ spec:
                       to set a property that is not allowed to be overwritten will
                       cause a 400 status to be returned.'
                     type: object
-                    x-kubernetes-map-type: granular
                   definedTags:
                     additionalProperties:
                       type: string
@@ -1036,7 +1033,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: A user-friendly name that does not have to be unique.
                       Avoid entering confidential information. If this value is not
@@ -1103,7 +1099,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   idleTimeoutInMinutes:
                     description: '(Updatable) The timeout value in minutes used to
                       manage Runs. A Run would be stopped after inactivity for this
@@ -1126,7 +1121,8 @@ spec:
                     type: string
                   numExecutors:
                     description: The number of executor VMs requested.
-                    type: number
+                    format: int64
+                    type: integer
                   opcParentRptUrl:
                     description: Parent resource control plane endpoint used to exchange
                       for upper level resource principal token.
@@ -1401,7 +1397,6 @@ spec:
                       to set a property that is not allowed to be overwritten will
                       cause a 400 status to be returned.'
                     type: object
-                    x-kubernetes-map-type: granular
                   dataReadInBytes:
                     description: The data read by the run in bytes.
                     type: string
@@ -1415,7 +1410,6 @@ spec:
                       key is predefined and scoped to a namespace. For more information,
                       see Resource Tags. Example: {"Operations.CostCenter": "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   displayName:
                     description: A user-friendly name that does not have to be unique.
                       Avoid entering confidential information. If this value is not
@@ -1486,7 +1480,6 @@ spec:
                       or namespace. For more information, see Resource Tags. Example:
                       {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The ID of a run.
                     type: string
@@ -1518,7 +1511,8 @@ spec:
                     type: string
                   numExecutors:
                     description: The number of executor VMs requested.
-                    type: number
+                    format: int64
+                    type: integer
                   opcParentRptUrl:
                     description: Parent resource control plane endpoint used to exchange
                       for upper level resource principal token.
@@ -1576,7 +1570,8 @@ spec:
                       CIDR block and should be a multiple of 256.  If the value is
                       not a multiple of 256, it is rounded up to the next multiple
                       of 256. For example, 300 is rounded up to 512.
-                    type: number
+                    format: int64
+                    type: integer
                   privateEndpointNsgIds:
                     description: An array of network security group OCIDs.
                     items:
@@ -1606,7 +1601,8 @@ spec:
                     type: string
                   totalOcpu:
                     description: The total number of oCPU requested by the run.
-                    type: number
+                    format: int64
+                    type: integer
                   type:
                     description: The Spark application processing type.
                     type: string

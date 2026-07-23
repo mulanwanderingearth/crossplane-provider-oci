@@ -97,8 +97,7 @@ type ToolsDatabaseToolsMcpToolsetInitParameters struct {
 	DefaultExecutionType *string `json:"defaultExecutionType,omitempty" tf:"default_execution_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A human readable description of the Database Tools MCP toolset.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -107,8 +106,7 @@ type ToolsDatabaseToolsMcpToolsetInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the related Generative AI Semantic Store.
 	GenerativeAISemanticStoreID *string `json:"generativeAiSemanticStoreId,omitempty" tf:"generative_ai_semantic_store_id,omitempty"`
@@ -147,7 +145,7 @@ type ToolsDatabaseToolsMcpToolsetInitParameters struct {
 	Variables []VariablesInitParameters `json:"variables,omitempty" tf:"variables,omitempty"`
 
 	// (Updatable) The MCP toolset version
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ToolsDatabaseToolsMcpToolsetLocksInitParameters struct {
@@ -214,8 +212,7 @@ type ToolsDatabaseToolsMcpToolsetObservation struct {
 	DefaultExecutionType *string `json:"defaultExecutionType,omitempty" tf:"default_execution_type,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A human readable description of the Database Tools MCP toolset.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -224,8 +221,7 @@ type ToolsDatabaseToolsMcpToolsetObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the related Generative AI Semantic Store.
 	GenerativeAISemanticStoreID *string `json:"generativeAiSemanticStoreId,omitempty" tf:"generative_ai_semantic_store_id,omitempty"`
@@ -249,8 +245,7 @@ type ToolsDatabaseToolsMcpToolsetObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// When the lock was created.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -274,7 +269,7 @@ type ToolsDatabaseToolsMcpToolsetObservation struct {
 	Variables []VariablesObservation `json:"variables,omitempty" tf:"variables,omitempty"`
 
 	// (Updatable) The MCP toolset version
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ToolsDatabaseToolsMcpToolsetParameters struct {
@@ -316,8 +311,7 @@ type ToolsDatabaseToolsMcpToolsetParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A human readable description of the Database Tools MCP toolset.
 	// +kubebuilder:validation:Optional
@@ -329,8 +323,7 @@ type ToolsDatabaseToolsMcpToolsetParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the related Generative AI Semantic Store.
 	// +kubebuilder:validation:Optional
@@ -379,7 +372,7 @@ type ToolsDatabaseToolsMcpToolsetParameters struct {
 
 	// (Updatable) The MCP toolset version
 	// +kubebuilder:validation:Optional
-	Version *float64 `json:"version,omitempty" tf:"version,omitempty"`
+	Version *int64 `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ToolsDatabaseToolsMcpToolsetSourceInitParameters struct {

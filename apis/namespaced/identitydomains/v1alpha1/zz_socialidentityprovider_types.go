@@ -44,6 +44,18 @@ type RelayIdpParamMappingsParameters struct {
 }
 
 type SocialIdentityProviderIdcsCreatedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SocialIdentityProviderIdcsCreatedByObservation struct {
@@ -64,9 +76,37 @@ type SocialIdentityProviderIdcsCreatedByObservation struct {
 }
 
 type SocialIdentityProviderIdcsCreatedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type SocialIdentityProviderIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type SocialIdentityProviderIdcsLastModifiedByObservation struct {
@@ -87,6 +127,22 @@ type SocialIdentityProviderIdcsLastModifiedByObservation struct {
 }
 
 type SocialIdentityProviderIdcsLastModifiedByParameters struct {
+
+	// (Updatable) The displayName of the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// (Updatable) The OCID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// (Updatable) The type of resource, User or App, that created this Resource
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// (Updatable) The ID of the SCIM resource that represents the User or App who created this Resource
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type SocialIdentityProviderInitParameters struct {
@@ -129,7 +185,7 @@ type SocialIdentityProviderInitParameters struct {
 	ClientCredentialInPayload *bool `json:"clientCredentialInPayload,omitempty" tf:"client_credential_in_payload,omitempty"`
 
 	// (Updatable) Social IDP allowed clock skew time
-	ClockSkewInSeconds *float64 `json:"clockSkewInSeconds,omitempty" tf:"clock_skew_in_seconds,omitempty"`
+	ClockSkewInSeconds *int64 `json:"clockSkewInSeconds,omitempty" tf:"clock_skew_in_seconds,omitempty"`
 
 	// (Updatable) Social IDP Client Application Client ID
 	ConsumerKey *string `json:"consumerKey,omitempty" tf:"consumer_key,omitempty"`
@@ -232,6 +288,21 @@ type SocialIdentityProviderJitProvAssignedGroupsParameters struct {
 }
 
 type SocialIdentityProviderMetaInitParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type SocialIdentityProviderMetaObservation struct {
@@ -253,6 +324,26 @@ type SocialIdentityProviderMetaObservation struct {
 }
 
 type SocialIdentityProviderMetaParameters struct {
+
+	// (Updatable) The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// (Updatable) The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// (Updatable) The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// (Updatable) Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// (Updatable) The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type SocialIdentityProviderObservation struct {
@@ -285,7 +376,7 @@ type SocialIdentityProviderObservation struct {
 	ClientCredentialInPayload *bool `json:"clientCredentialInPayload,omitempty" tf:"client_credential_in_payload,omitempty"`
 
 	// (Updatable) Social IDP allowed clock skew time
-	ClockSkewInSeconds *float64 `json:"clockSkewInSeconds,omitempty" tf:"clock_skew_in_seconds,omitempty"`
+	ClockSkewInSeconds *int64 `json:"clockSkewInSeconds,omitempty" tf:"clock_skew_in_seconds,omitempty"`
 
 	// (Updatable) Oracle Cloud Infrastructure Compartment Id (ocid) in which the resource lives.
 	CompartmentOcid *string `json:"compartmentOcid,omitempty" tf:"compartment_ocid,omitempty"`
@@ -443,7 +534,7 @@ type SocialIdentityProviderParameters struct {
 
 	// (Updatable) Social IDP allowed clock skew time
 	// +kubebuilder:validation:Optional
-	ClockSkewInSeconds *float64 `json:"clockSkewInSeconds,omitempty" tf:"clock_skew_in_seconds,omitempty"`
+	ClockSkewInSeconds *int64 `json:"clockSkewInSeconds,omitempty" tf:"clock_skew_in_seconds,omitempty"`
 
 	// (Updatable) Social IDP Client Application Client ID
 	// +kubebuilder:validation:Optional

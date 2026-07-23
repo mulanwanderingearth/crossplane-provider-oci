@@ -120,11 +120,11 @@ func (in *BackupPolicyInitParameters) DeepCopyInto(out *BackupPolicyInitParamete
 	}
 	if in.DaysOfTheMonth != nil {
 		in, out := &in.DaysOfTheMonth, &out.DaysOfTheMonth
-		*out = make([]*float64, len(*in))
+		*out = make([]*int64, len(*in))
 		for i := range *in {
 			if (*in)[i] != nil {
 				in, out := &(*in)[i], &(*out)[i]
-				*out = new(float64)
+				*out = new(int64)
 				**out = **in
 			}
 		}
@@ -147,7 +147,7 @@ func (in *BackupPolicyInitParameters) DeepCopyInto(out *BackupPolicyInitParamete
 	}
 	if in.RetentionDays != nil {
 		in, out := &in.RetentionDays, &out.RetentionDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -179,11 +179,11 @@ func (in *BackupPolicyObservation) DeepCopyInto(out *BackupPolicyObservation) {
 	}
 	if in.DaysOfTheMonth != nil {
 		in, out := &in.DaysOfTheMonth, &out.DaysOfTheMonth
-		*out = make([]*float64, len(*in))
+		*out = make([]*int64, len(*in))
 		for i := range *in {
 			if (*in)[i] != nil {
 				in, out := &(*in)[i], &(*out)[i]
-				*out = new(float64)
+				*out = new(int64)
 				**out = **in
 			}
 		}
@@ -206,7 +206,7 @@ func (in *BackupPolicyObservation) DeepCopyInto(out *BackupPolicyObservation) {
 	}
 	if in.RetentionDays != nil {
 		in, out := &in.RetentionDays, &out.RetentionDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -238,11 +238,11 @@ func (in *BackupPolicyParameters) DeepCopyInto(out *BackupPolicyParameters) {
 	}
 	if in.DaysOfTheMonth != nil {
 		in, out := &in.DaysOfTheMonth, &out.DaysOfTheMonth
-		*out = make([]*float64, len(*in))
+		*out = make([]*int64, len(*in))
 		for i := range *in {
 			if (*in)[i] != nil {
 				in, out := &(*in)[i], &(*out)[i]
-				*out = new(float64)
+				*out = new(int64)
 				**out = **in
 			}
 		}
@@ -265,7 +265,7 @@ func (in *BackupPolicyParameters) DeepCopyInto(out *BackupPolicyParameters) {
 	}
 	if in.RetentionDays != nil {
 		in, out := &in.RetentionDays, &out.RetentionDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -353,7 +353,7 @@ func (in *CopyPolicyInitParameters) DeepCopyInto(out *CopyPolicyInitParameters) 
 	}
 	if in.RetentionPeriod != nil {
 		in, out := &in.RetentionPeriod, &out.RetentionPeriod
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -389,7 +389,7 @@ func (in *CopyPolicyObservation) DeepCopyInto(out *CopyPolicyObservation) {
 	}
 	if in.RetentionPeriod != nil {
 		in, out := &in.RetentionPeriod, &out.RetentionPeriod
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -425,7 +425,7 @@ func (in *CopyPolicyParameters) DeepCopyInto(out *CopyPolicyParameters) {
 	}
 	if in.RetentionPeriod != nil {
 		in, out := &in.RetentionPeriod, &out.RetentionPeriod
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1575,7 +1575,7 @@ func (in *OdspInsightListInitParameters) DeepCopyInto(out *OdspInsightListInitPa
 	}
 	if in.RetentionPeriodInDays != nil {
 		in, out := &in.RetentionPeriodInDays, &out.RetentionPeriodInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1600,7 +1600,7 @@ func (in *OdspInsightListObservation) DeepCopyInto(out *OdspInsightListObservati
 	}
 	if in.RetentionPeriodInDays != nil {
 		in, out := &in.RetentionPeriodInDays, &out.RetentionPeriodInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1625,7 +1625,7 @@ func (in *OdspInsightListParameters) DeepCopyInto(out *OdspInsightListParameters
 	}
 	if in.RetentionPeriodInDays != nil {
 		in, out := &in.RetentionPeriodInDays, &out.RetentionPeriodInDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1777,18 +1777,9 @@ func (in *PatchOperationsInitParameters) DeepCopyInto(out *PatchOperationsInitPa
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -1833,18 +1824,9 @@ func (in *PatchOperationsObservation) DeepCopyInto(out *PatchOperationsObservati
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -1889,18 +1871,9 @@ func (in *PatchOperationsParameters) DeepCopyInto(out *PatchOperationsParameters
 	}
 	if in.Value != nil {
 		in, out := &in.Value, &out.Value
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -1925,7 +1898,7 @@ func (in *PitrPolicyInitParameters) DeepCopyInto(out *PitrPolicyInitParameters) 
 	}
 	if in.RestoreDays != nil {
 		in, out := &in.RestoreDays, &out.RestoreDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1950,7 +1923,7 @@ func (in *PitrPolicyObservation) DeepCopyInto(out *PitrPolicyObservation) {
 	}
 	if in.RestoreDays != nil {
 		in, out := &in.RestoreDays, &out.RestoreDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1975,7 +1948,7 @@ func (in *PitrPolicyParameters) DeepCopyInto(out *PitrPolicyParameters) {
 	}
 	if in.RestoreDays != nil {
 		in, out := &in.RestoreDays, &out.RestoreDays
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -2052,18 +2025,9 @@ func (in *PsqlBackupInitParameters) DeepCopyInto(out *PsqlBackupInitParameters) 
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2078,23 +2042,14 @@ func (in *PsqlBackupInitParameters) DeepCopyInto(out *PsqlBackupInitParameters) 
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.RetentionPeriod != nil {
 		in, out := &in.RetentionPeriod, &out.RetentionPeriod
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SourceBackupDetails != nil {
@@ -2153,7 +2108,7 @@ func (in *PsqlBackupObservation) DeepCopyInto(out *PsqlBackupObservation) {
 	*out = *in
 	if in.BackupSize != nil {
 		in, out := &in.BackupSize, &out.BackupSize
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.CompartmentID != nil {
@@ -2182,18 +2137,9 @@ func (in *PsqlBackupObservation) DeepCopyInto(out *PsqlBackupObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2208,18 +2154,9 @@ func (in *PsqlBackupObservation) DeepCopyInto(out *PsqlBackupObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -2244,7 +2181,7 @@ func (in *PsqlBackupObservation) DeepCopyInto(out *PsqlBackupObservation) {
 	}
 	if in.RetentionPeriod != nil {
 		in, out := &in.RetentionPeriod, &out.RetentionPeriod
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SourceBackupDetails != nil {
@@ -2266,18 +2203,9 @@ func (in *PsqlBackupObservation) DeepCopyInto(out *PsqlBackupObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -2342,18 +2270,9 @@ func (in *PsqlBackupParameters) DeepCopyInto(out *PsqlBackupParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2368,23 +2287,14 @@ func (in *PsqlBackupParameters) DeepCopyInto(out *PsqlBackupParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.RetentionPeriod != nil {
 		in, out := &in.RetentionPeriod, &out.RetentionPeriod
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.SourceBackupDetails != nil {
@@ -2511,18 +2421,9 @@ func (in *PsqlConfigurationInitParameters) DeepCopyInto(out *PsqlConfigurationIn
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2537,28 +2438,19 @@ func (in *PsqlConfigurationInitParameters) DeepCopyInto(out *PsqlConfigurationIn
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.InstanceMemorySizeInGbs != nil {
 		in, out := &in.InstanceMemorySizeInGbs, &out.InstanceMemorySizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceOcpuCount != nil {
 		in, out := &in.InstanceOcpuCount, &out.InstanceOcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsFlexible != nil {
@@ -2573,18 +2465,9 @@ func (in *PsqlConfigurationInitParameters) DeepCopyInto(out *PsqlConfigurationIn
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -2681,18 +2564,9 @@ func (in *PsqlConfigurationObservation) DeepCopyInto(out *PsqlConfigurationObser
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2707,18 +2581,9 @@ func (in *PsqlConfigurationObservation) DeepCopyInto(out *PsqlConfigurationObser
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -2728,12 +2593,12 @@ func (in *PsqlConfigurationObservation) DeepCopyInto(out *PsqlConfigurationObser
 	}
 	if in.InstanceMemorySizeInGbs != nil {
 		in, out := &in.InstanceMemorySizeInGbs, &out.InstanceMemorySizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceOcpuCount != nil {
 		in, out := &in.InstanceOcpuCount, &out.InstanceOcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsFlexible != nil {
@@ -2758,18 +2623,9 @@ func (in *PsqlConfigurationObservation) DeepCopyInto(out *PsqlConfigurationObser
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.TimeCreated != nil {
@@ -2832,18 +2688,9 @@ func (in *PsqlConfigurationParameters) DeepCopyInto(out *PsqlConfigurationParame
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -2858,28 +2705,19 @@ func (in *PsqlConfigurationParameters) DeepCopyInto(out *PsqlConfigurationParame
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.InstanceMemorySizeInGbs != nil {
 		in, out := &in.InstanceMemorySizeInGbs, &out.InstanceMemorySizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceOcpuCount != nil {
 		in, out := &in.InstanceOcpuCount, &out.InstanceOcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.IsFlexible != nil {
@@ -2894,18 +2732,9 @@ func (in *PsqlConfigurationParameters) DeepCopyInto(out *PsqlConfigurationParame
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 }
@@ -3039,18 +2868,9 @@ func (in *PsqlDbSystemInitParameters) DeepCopyInto(out *PsqlDbSystemInitParamete
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3065,33 +2885,24 @@ func (in *PsqlDbSystemInitParameters) DeepCopyInto(out *PsqlDbSystemInitParamete
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.InstanceCount != nil {
 		in, out := &in.InstanceCount, &out.InstanceCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceMemorySizeInGbs != nil {
 		in, out := &in.InstanceMemorySizeInGbs, &out.InstanceMemorySizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceOcpuCount != nil {
 		in, out := &in.InstanceOcpuCount, &out.InstanceOcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstancesDetails != nil {
@@ -3258,18 +3069,9 @@ func (in *PsqlDbSystemObservation) DeepCopyInto(out *PsqlDbSystemObservation) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3284,18 +3086,9 @@ func (in *PsqlDbSystemObservation) DeepCopyInto(out *PsqlDbSystemObservation) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.ID != nil {
@@ -3305,17 +3098,17 @@ func (in *PsqlDbSystemObservation) DeepCopyInto(out *PsqlDbSystemObservation) {
 	}
 	if in.InstanceCount != nil {
 		in, out := &in.InstanceCount, &out.InstanceCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceMemorySizeInGbs != nil {
 		in, out := &in.InstanceMemorySizeInGbs, &out.InstanceMemorySizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceOcpuCount != nil {
 		in, out := &in.InstanceOcpuCount, &out.InstanceOcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Instances != nil {
@@ -3410,18 +3203,9 @@ func (in *PsqlDbSystemObservation) DeepCopyInto(out *PsqlDbSystemObservation) {
 	}
 	if in.SystemTags != nil {
 		in, out := &in.SystemTags, &out.SystemTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.SystemType != nil {
@@ -3508,18 +3292,9 @@ func (in *PsqlDbSystemParameters) DeepCopyInto(out *PsqlDbSystemParameters) {
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -3534,33 +3309,24 @@ func (in *PsqlDbSystemParameters) DeepCopyInto(out *PsqlDbSystemParameters) {
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.InstanceCount != nil {
 		in, out := &in.InstanceCount, &out.InstanceCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceMemorySizeInGbs != nil {
 		in, out := &in.InstanceMemorySizeInGbs, &out.InstanceMemorySizeInGbs
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstanceOcpuCount != nil {
 		in, out := &in.InstanceOcpuCount, &out.InstanceOcpuCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.InstancesDetails != nil {

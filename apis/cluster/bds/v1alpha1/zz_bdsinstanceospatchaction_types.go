@@ -91,50 +91,50 @@ type BdsInstanceOsPatchActionParameters struct {
 type PatchingConfigsInitParameters struct {
 
 	// How many nodes to be patched in each iteration.
-	BatchSize *float64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
+	BatchSize *int64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 
 	// Type of strategy used for detailed patching configuration
 	PatchingConfigStrategy *string `json:"patchingConfigStrategy,omitempty" tf:"patching_config_strategy,omitempty"`
 
 	// Acceptable number of failed-to-be-patched nodes in each batch. The maximum number of failed-to-patch nodes cannot exceed 20% of the number of nodes.
-	ToleranceThresholdPerBatch *float64 `json:"toleranceThresholdPerBatch,omitempty" tf:"tolerance_threshold_per_batch,omitempty"`
+	ToleranceThresholdPerBatch *int64 `json:"toleranceThresholdPerBatch,omitempty" tf:"tolerance_threshold_per_batch,omitempty"`
 
 	// Acceptable number of failed-to-be-patched nodes in each domain. The maximum number of failed-to-patch nodes cannot exceed 20% of the number of nodes.
-	ToleranceThresholdPerDomain *float64 `json:"toleranceThresholdPerDomain,omitempty" tf:"tolerance_threshold_per_domain,omitempty"`
+	ToleranceThresholdPerDomain *int64 `json:"toleranceThresholdPerDomain,omitempty" tf:"tolerance_threshold_per_domain,omitempty"`
 
 	// The wait time between batches in seconds.
-	WaitTimeBetweenBatchInSeconds *float64 `json:"waitTimeBetweenBatchInSeconds,omitempty" tf:"wait_time_between_batch_in_seconds,omitempty"`
+	WaitTimeBetweenBatchInSeconds *int64 `json:"waitTimeBetweenBatchInSeconds,omitempty" tf:"wait_time_between_batch_in_seconds,omitempty"`
 
 	// The wait time between AD/FD in seconds.
-	WaitTimeBetweenDomainInSeconds *float64 `json:"waitTimeBetweenDomainInSeconds,omitempty" tf:"wait_time_between_domain_in_seconds,omitempty"`
+	WaitTimeBetweenDomainInSeconds *int64 `json:"waitTimeBetweenDomainInSeconds,omitempty" tf:"wait_time_between_domain_in_seconds,omitempty"`
 }
 
 type PatchingConfigsObservation struct {
 
 	// How many nodes to be patched in each iteration.
-	BatchSize *float64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
+	BatchSize *int64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 
 	// Type of strategy used for detailed patching configuration
 	PatchingConfigStrategy *string `json:"patchingConfigStrategy,omitempty" tf:"patching_config_strategy,omitempty"`
 
 	// Acceptable number of failed-to-be-patched nodes in each batch. The maximum number of failed-to-patch nodes cannot exceed 20% of the number of nodes.
-	ToleranceThresholdPerBatch *float64 `json:"toleranceThresholdPerBatch,omitempty" tf:"tolerance_threshold_per_batch,omitempty"`
+	ToleranceThresholdPerBatch *int64 `json:"toleranceThresholdPerBatch,omitempty" tf:"tolerance_threshold_per_batch,omitempty"`
 
 	// Acceptable number of failed-to-be-patched nodes in each domain. The maximum number of failed-to-patch nodes cannot exceed 20% of the number of nodes.
-	ToleranceThresholdPerDomain *float64 `json:"toleranceThresholdPerDomain,omitempty" tf:"tolerance_threshold_per_domain,omitempty"`
+	ToleranceThresholdPerDomain *int64 `json:"toleranceThresholdPerDomain,omitempty" tf:"tolerance_threshold_per_domain,omitempty"`
 
 	// The wait time between batches in seconds.
-	WaitTimeBetweenBatchInSeconds *float64 `json:"waitTimeBetweenBatchInSeconds,omitempty" tf:"wait_time_between_batch_in_seconds,omitempty"`
+	WaitTimeBetweenBatchInSeconds *int64 `json:"waitTimeBetweenBatchInSeconds,omitempty" tf:"wait_time_between_batch_in_seconds,omitempty"`
 
 	// The wait time between AD/FD in seconds.
-	WaitTimeBetweenDomainInSeconds *float64 `json:"waitTimeBetweenDomainInSeconds,omitempty" tf:"wait_time_between_domain_in_seconds,omitempty"`
+	WaitTimeBetweenDomainInSeconds *int64 `json:"waitTimeBetweenDomainInSeconds,omitempty" tf:"wait_time_between_domain_in_seconds,omitempty"`
 }
 
 type PatchingConfigsParameters struct {
 
 	// How many nodes to be patched in each iteration.
 	// +kubebuilder:validation:Optional
-	BatchSize *float64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
+	BatchSize *int64 `json:"batchSize,omitempty" tf:"batch_size,omitempty"`
 
 	// Type of strategy used for detailed patching configuration
 	// +kubebuilder:validation:Optional
@@ -142,19 +142,19 @@ type PatchingConfigsParameters struct {
 
 	// Acceptable number of failed-to-be-patched nodes in each batch. The maximum number of failed-to-patch nodes cannot exceed 20% of the number of nodes.
 	// +kubebuilder:validation:Optional
-	ToleranceThresholdPerBatch *float64 `json:"toleranceThresholdPerBatch,omitempty" tf:"tolerance_threshold_per_batch,omitempty"`
+	ToleranceThresholdPerBatch *int64 `json:"toleranceThresholdPerBatch,omitempty" tf:"tolerance_threshold_per_batch,omitempty"`
 
 	// Acceptable number of failed-to-be-patched nodes in each domain. The maximum number of failed-to-patch nodes cannot exceed 20% of the number of nodes.
 	// +kubebuilder:validation:Optional
-	ToleranceThresholdPerDomain *float64 `json:"toleranceThresholdPerDomain,omitempty" tf:"tolerance_threshold_per_domain,omitempty"`
+	ToleranceThresholdPerDomain *int64 `json:"toleranceThresholdPerDomain,omitempty" tf:"tolerance_threshold_per_domain,omitempty"`
 
 	// The wait time between batches in seconds.
 	// +kubebuilder:validation:Optional
-	WaitTimeBetweenBatchInSeconds *float64 `json:"waitTimeBetweenBatchInSeconds,omitempty" tf:"wait_time_between_batch_in_seconds,omitempty"`
+	WaitTimeBetweenBatchInSeconds *int64 `json:"waitTimeBetweenBatchInSeconds,omitempty" tf:"wait_time_between_batch_in_seconds,omitempty"`
 
 	// The wait time between AD/FD in seconds.
 	// +kubebuilder:validation:Optional
-	WaitTimeBetweenDomainInSeconds *float64 `json:"waitTimeBetweenDomainInSeconds,omitempty" tf:"wait_time_between_domain_in_seconds,omitempty"`
+	WaitTimeBetweenDomainInSeconds *int64 `json:"waitTimeBetweenDomainInSeconds,omitempty" tf:"wait_time_between_domain_in_seconds,omitempty"`
 }
 
 // BdsInstanceOsPatchActionSpec defines the desired state of BdsInstanceOsPatchAction

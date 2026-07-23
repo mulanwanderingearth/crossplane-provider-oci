@@ -22,8 +22,7 @@ type PatchOperationsInitParameters struct {
 	Selection *string `json:"selection,omitempty" tf:"selection,omitempty"`
 
 	// (Updatable)
-	// +mapType=granular
-	Value map[string]*string `json:"value,omitempty" tf:"value,omitempty"`
+	Value map[string]string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type PatchOperationsObservation struct {
@@ -35,8 +34,7 @@ type PatchOperationsObservation struct {
 	Selection *string `json:"selection,omitempty" tf:"selection,omitempty"`
 
 	// (Updatable)
-	// +mapType=granular
-	Value map[string]*string `json:"value,omitempty" tf:"value,omitempty"`
+	Value map[string]string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type PatchOperationsParameters struct {
@@ -51,8 +49,7 @@ type PatchOperationsParameters struct {
 
 	// (Updatable)
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	Value map[string]*string `json:"value" tf:"value,omitempty"`
+	Value map[string]string `json:"value" tf:"value,omitempty"`
 }
 
 type SecurityAssessmentCheckInitParameters struct {

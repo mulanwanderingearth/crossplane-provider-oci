@@ -178,7 +178,6 @@ spec:
                       "host1", "port": "1521", "database": "orcl"}}} . denoting each
                       level. For more information check out this example'
                     type: object
-                    x-kubernetes-map-type: granular
                   typeKey:
                     description: The key of the data asset type. This can be obtained
                       via the '/types' endpoint.
@@ -302,7 +301,6 @@ spec:
                       "host1", "port": "1521", "database": "orcl"}}} . denoting each
                       level. For more information check out this example'
                     type: object
-                    x-kubernetes-map-type: granular
                   typeKey:
                     description: The key of the data asset type. This can be obtained
                       via the '/types' endpoint.
@@ -456,7 +454,6 @@ spec:
                       "host1", "port": "1521", "database": "orcl"}}} . denoting each
                       level. For more information check out this example'
                     type: object
-                    x-kubernetes-map-type: granular
                   state:
                     description: The current state of the data asset.
                     type: string

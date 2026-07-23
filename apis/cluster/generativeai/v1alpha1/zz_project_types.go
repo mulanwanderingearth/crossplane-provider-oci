@@ -84,30 +84,30 @@ type CondenserConfigParameters struct {
 type ConversationConfigInitParameters struct {
 
 	// (Updatable) Retention period (in hours) for conversations. The TTL starts from the time the conversation was last updated.
-	ConversationsRetentionInHours *float64 `json:"conversationsRetentionInHours,omitempty" tf:"conversations_retention_in_hours,omitempty"`
+	ConversationsRetentionInHours *int64 `json:"conversationsRetentionInHours,omitempty" tf:"conversations_retention_in_hours,omitempty"`
 
 	// (Updatable) Retention period (in hours) for responses. The TTL starts from the time the response was created.
-	ResponsesRetentionInHours *float64 `json:"responsesRetentionInHours,omitempty" tf:"responses_retention_in_hours,omitempty"`
+	ResponsesRetentionInHours *int64 `json:"responsesRetentionInHours,omitempty" tf:"responses_retention_in_hours,omitempty"`
 }
 
 type ConversationConfigObservation struct {
 
 	// (Updatable) Retention period (in hours) for conversations. The TTL starts from the time the conversation was last updated.
-	ConversationsRetentionInHours *float64 `json:"conversationsRetentionInHours,omitempty" tf:"conversations_retention_in_hours,omitempty"`
+	ConversationsRetentionInHours *int64 `json:"conversationsRetentionInHours,omitempty" tf:"conversations_retention_in_hours,omitempty"`
 
 	// (Updatable) Retention period (in hours) for responses. The TTL starts from the time the response was created.
-	ResponsesRetentionInHours *float64 `json:"responsesRetentionInHours,omitempty" tf:"responses_retention_in_hours,omitempty"`
+	ResponsesRetentionInHours *int64 `json:"responsesRetentionInHours,omitempty" tf:"responses_retention_in_hours,omitempty"`
 }
 
 type ConversationConfigParameters struct {
 
 	// (Updatable) Retention period (in hours) for conversations. The TTL starts from the time the conversation was last updated.
 	// +kubebuilder:validation:Optional
-	ConversationsRetentionInHours *float64 `json:"conversationsRetentionInHours,omitempty" tf:"conversations_retention_in_hours,omitempty"`
+	ConversationsRetentionInHours *int64 `json:"conversationsRetentionInHours,omitempty" tf:"conversations_retention_in_hours,omitempty"`
 
 	// (Updatable) Retention period (in hours) for responses. The TTL starts from the time the response was created.
 	// +kubebuilder:validation:Optional
-	ResponsesRetentionInHours *float64 `json:"responsesRetentionInHours,omitempty" tf:"responses_retention_in_hours,omitempty"`
+	ResponsesRetentionInHours *int64 `json:"responsesRetentionInHours,omitempty" tf:"responses_retention_in_hours,omitempty"`
 }
 
 type EmbeddingConfigInitParameters struct {
@@ -283,8 +283,7 @@ type ProjectInitParameters struct {
 	ConversationConfig []ConversationConfigInitParameters `json:"conversationConfig,omitempty" tf:"conversation_config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the GenerativeAiProject.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -293,8 +292,7 @@ type ProjectInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Configuration settings for long-term memory behavior.
 	LongTermMemoryConfig []LongTermMemoryConfigInitParameters `json:"longTermMemoryConfig,omitempty" tf:"long_term_memory_config,omitempty"`
@@ -312,8 +310,7 @@ type ProjectObservation struct {
 	ConversationConfig []ConversationConfigObservation `json:"conversationConfig,omitempty" tf:"conversation_config,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the GenerativeAiProject.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -322,8 +319,7 @@ type ProjectObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// An OCID that uniquely identifies a GenerativeAiProject.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -341,8 +337,7 @@ type ProjectObservation struct {
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// System tags for this resource. Each key is predefined and scoped to a namespace.  Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The date and time that the generativeAiProject was created in the format of an RFC3339 datetime string.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -372,8 +367,7 @@ type ProjectParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.  Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) An optional description of the GenerativeAiProject.
 	// +kubebuilder:validation:Optional
@@ -385,8 +379,7 @@ type ProjectParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Configuration settings for long-term memory behavior.
 	// +kubebuilder:validation:Optional

@@ -44,8 +44,7 @@ type BuildPipelineStageInitParameters struct {
 	BuildSpecFile *string `json:"buildSpecFile,omitempty" tf:"build_spec_file,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Specifies an array of artifacts that need to be pushed to the artifactory stores.
 	DeliverArtifactCollection []DeliverArtifactCollectionInitParameters `json:"deliverArtifactCollection,omitempty" tf:"deliver_artifact_collection,omitempty"`
@@ -70,8 +69,7 @@ type BuildPipelineStageInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Image name for the build environment
 	Image *string `json:"image,omitempty" tf:"image,omitempty"`
@@ -86,7 +84,7 @@ type BuildPipelineStageInitParameters struct {
 	PrivateAccessConfig []PrivateAccessConfigInitParameters `json:"privateAccessConfig,omitempty" tf:"private_access_config,omitempty"`
 
 	// (Applicable when build_pipeline_stage_type=BUILD) (Updatable) Timeout for the build stage execution. Specify value in seconds.
-	StageExecutionTimeoutInSeconds *float64 `json:"stageExecutionTimeoutInSeconds,omitempty" tf:"stage_execution_timeout_in_seconds,omitempty"`
+	StageExecutionTimeoutInSeconds *int64 `json:"stageExecutionTimeoutInSeconds,omitempty" tf:"stage_execution_timeout_in_seconds,omitempty"`
 
 	// (Updatable) Specifies wait criteria for the Wait stage.
 	WaitCriteria []WaitCriteriaInitParameters `json:"waitCriteria,omitempty" tf:"wait_criteria,omitempty"`
@@ -116,8 +114,7 @@ type BuildPipelineStageObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Specifies an array of artifacts that need to be pushed to the artifactory stores.
 	DeliverArtifactCollection []DeliverArtifactCollectionObservation `json:"deliverArtifactCollection,omitempty" tf:"deliver_artifact_collection,omitempty"`
@@ -132,8 +129,7 @@ type BuildPipelineStageObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) The OCID of the predecessor stage. If a stage is the first stage in the pipeline, then the ID is the pipeline's OCID.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -157,14 +153,13 @@ type BuildPipelineStageObservation struct {
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
 
 	// (Applicable when build_pipeline_stage_type=BUILD) (Updatable) Timeout for the build stage execution. Specify value in seconds.
-	StageExecutionTimeoutInSeconds *float64 `json:"stageExecutionTimeoutInSeconds,omitempty" tf:"stage_execution_timeout_in_seconds,omitempty"`
+	StageExecutionTimeoutInSeconds *int64 `json:"stageExecutionTimeoutInSeconds,omitempty" tf:"stage_execution_timeout_in_seconds,omitempty"`
 
 	// The current state of the stage.
 	State *string `json:"state,omitempty" tf:"state,omitempty"`
 
 	// Usage of system tag keys. These predefined keys are scoped to namespaces. See Resource Tags. Example: {"orcl-cloud.free-tier-retained": "true"}
-	// +mapType=granular
-	SystemTags map[string]*string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
+	SystemTags map[string]string `json:"systemTags,omitempty" tf:"system_tags,omitempty"`
 
 	// The time the stage was created. Format defined by RFC3339.
 	TimeCreated *string `json:"timeCreated,omitempty" tf:"time_created,omitempty"`
@@ -214,8 +209,7 @@ type BuildPipelineStageParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. See Resource Tags. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) Specifies an array of artifacts that need to be pushed to the artifactory stores.
 	// +kubebuilder:validation:Optional
@@ -245,8 +239,7 @@ type BuildPipelineStageParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only.  See Resource Tags. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) Image name for the build environment
 	// +kubebuilder:validation:Optional
@@ -266,7 +259,7 @@ type BuildPipelineStageParameters struct {
 
 	// (Applicable when build_pipeline_stage_type=BUILD) (Updatable) Timeout for the build stage execution. Specify value in seconds.
 	// +kubebuilder:validation:Optional
-	StageExecutionTimeoutInSeconds *float64 `json:"stageExecutionTimeoutInSeconds,omitempty" tf:"stage_execution_timeout_in_seconds,omitempty"`
+	StageExecutionTimeoutInSeconds *int64 `json:"stageExecutionTimeoutInSeconds,omitempty" tf:"stage_execution_timeout_in_seconds,omitempty"`
 
 	// (Updatable) Specifies wait criteria for the Wait stage.
 	// +kubebuilder:validation:Optional
@@ -317,10 +310,10 @@ type BuildRunnerShapeConfigInitParameters struct {
 	BuildRunnerType *string `json:"buildRunnerType,omitempty" tf:"build_runner_type,omitempty"`
 
 	// (Updatable) The total amount of memory set for the instance in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Updatable) The total number of OCPUs set for the instance.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type BuildRunnerShapeConfigObservation struct {
@@ -329,10 +322,10 @@ type BuildRunnerShapeConfigObservation struct {
 	BuildRunnerType *string `json:"buildRunnerType,omitempty" tf:"build_runner_type,omitempty"`
 
 	// (Updatable) The total amount of memory set for the instance in gigabytes.
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Updatable) The total number of OCPUs set for the instance.
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type BuildRunnerShapeConfigParameters struct {
@@ -343,11 +336,11 @@ type BuildRunnerShapeConfigParameters struct {
 
 	// (Updatable) The total amount of memory set for the instance in gigabytes.
 	// +kubebuilder:validation:Optional
-	MemoryInGbs *float64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
+	MemoryInGbs *int64 `json:"memoryInGbs,omitempty" tf:"memory_in_gbs,omitempty"`
 
 	// (Updatable) The total number of OCPUs set for the instance.
 	// +kubebuilder:validation:Optional
-	Ocpus *float64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
+	Ocpus *int64 `json:"ocpus,omitempty" tf:"ocpus,omitempty"`
 }
 
 type BuildSourceCollectionInitParameters struct {

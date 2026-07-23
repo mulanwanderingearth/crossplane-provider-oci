@@ -151,7 +151,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description about the On-premise
                       vantage point.
@@ -163,7 +162,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: Unique On-premise vantage point name that cannot
                       be edited. The name should not contain any confidential information.
@@ -276,7 +274,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description about the On-premise
                       vantage point.
@@ -288,7 +285,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: Unique On-premise vantage point name that cannot
                       be edited. The name should not contain any confidential information.
@@ -379,7 +375,6 @@ spec:
                       key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) A short description about the On-premise
                       vantage point.
@@ -394,7 +389,6 @@ spec:
                       without any predefined name, type or scope. Exists for cross-compatibility
                       only. Example: {"bar-key": "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The OCID of the On-premise vantage point.
                     type: string
@@ -421,7 +415,8 @@ spec:
                         available:
                           description: Number of available workers in a specific On-premise
                             vantage point.
-                          type: number
+                          format: int64
+                          type: integer
                         availableCapabilities:
                           description: List of available capabilities in a specific
                             On-premise vantage point.
@@ -434,13 +429,15 @@ spec:
                               onPremiseVantagePointCount:
                                 description: Count of available capability in a specific
                                   On-premise vantage point.
-                                type: number
+                                format: int64
+                                type: integer
                             type: object
                           type: array
                         disabled:
                           description: Number of disabled workers in a specific On-premise
                             vantage point.
-                          type: number
+                          format: int64
+                          type: integer
                         minVersion:
                           description: Minimum version among the workers in a specific
                             On-premise vantage point.
@@ -448,11 +445,13 @@ spec:
                         total:
                           description: Total number of workers in a specific On-premise
                             vantage point.
-                          type: number
+                          format: int64
+                          type: integer
                         used:
                           description: Number of occupied workers in a specific On-premise
                             vantage point.
-                          type: number
+                          format: int64
+                          type: integer
                       type: object
                     type: array
                 type: object

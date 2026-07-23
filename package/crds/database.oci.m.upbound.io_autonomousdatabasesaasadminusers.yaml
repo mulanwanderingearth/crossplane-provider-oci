@@ -155,7 +155,8 @@ spec:
                     description: How long, in hours, the SaaS administrative user
                       will stay enabled. If no duration is specified, the default
                       value 1 will be used.
-                    type: number
+                    format: int64
+                    type: integer
                   passwordSecretRef:
                     description: 'A strong password for SaaS administrative user.
                       The password must be a minimum of nine (9) characters and contain
@@ -178,7 +179,8 @@ spec:
                   secretVersionNumber:
                     description: The version of the vault secret. If no version is
                       specified, the latest version will be used.
-                    type: number
+                    format: int64
+                    type: integer
                   timeSaasAdminUserEnabled:
                     description: The date and time the SaaS administrative user was
                       enabled at, for the Autonomous AI Database.
@@ -291,7 +293,8 @@ spec:
                     description: How long, in hours, the SaaS administrative user
                       will stay enabled. If no duration is specified, the default
                       value 1 will be used.
-                    type: number
+                    format: int64
+                    type: integer
                   passwordSecretRef:
                     description: 'A strong password for SaaS administrative user.
                       The password must be a minimum of nine (9) characters and contain
@@ -314,7 +317,8 @@ spec:
                   secretVersionNumber:
                     description: The version of the vault secret. If no version is
                       specified, the latest version will be used.
-                    type: number
+                    format: int64
+                    type: integer
                   timeSaasAdminUserEnabled:
                     description: The date and time the SaaS administrative user was
                       enabled at, for the Autonomous AI Database.
@@ -398,7 +402,8 @@ spec:
                     description: How long, in hours, the SaaS administrative user
                       will stay enabled. If no duration is specified, the default
                       value 1 will be used.
-                    type: number
+                    format: int64
+                    type: integer
                   id:
                     description: The OCID of the Autonomous AI Database.
                     type: string
@@ -408,7 +413,8 @@ spec:
                   secretVersionNumber:
                     description: The version of the vault secret. If no version is
                       specified, the latest version will be used.
-                    type: number
+                    format: int64
+                    type: integer
                   timeSaasAdminUserEnabled:
                     description: The date and time the SaaS administrative user was
                       enabled at, for the Autonomous AI Database.

@@ -70,18 +70,9 @@ func (in *BlockchainPlatformInitParameters) DeepCopyInto(out *BlockchainPlatform
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -111,18 +102,9 @@ func (in *BlockchainPlatformInitParameters) DeepCopyInto(out *BlockchainPlatform
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	in.IdcsAccessTokenSecretRef.DeepCopyInto(&out.IdcsAccessTokenSecretRef)
@@ -160,7 +142,7 @@ func (in *BlockchainPlatformInitParameters) DeepCopyInto(out *BlockchainPlatform
 	}
 	if in.TotalOcpuCapacity != nil {
 		in, out := &in.TotalOcpuCapacity, &out.TotalOcpuCapacity
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -234,18 +216,9 @@ func (in *BlockchainPlatformObservation) DeepCopyInto(out *BlockchainPlatformObs
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -265,18 +238,9 @@ func (in *BlockchainPlatformObservation) DeepCopyInto(out *BlockchainPlatformObs
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.HostOcpuUtilizationInfo != nil {
@@ -370,7 +334,7 @@ func (in *BlockchainPlatformObservation) DeepCopyInto(out *BlockchainPlatformObs
 	}
 	if in.TotalOcpuCapacity != nil {
 		in, out := &in.TotalOcpuCapacity, &out.TotalOcpuCapacity
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -415,18 +379,9 @@ func (in *BlockchainPlatformParameters) DeepCopyInto(out *BlockchainPlatformPara
 	}
 	if in.DefinedTags != nil {
 		in, out := &in.DefinedTags, &out.DefinedTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	if in.Description != nil {
@@ -456,18 +411,9 @@ func (in *BlockchainPlatformParameters) DeepCopyInto(out *BlockchainPlatformPara
 	}
 	if in.FreeformTags != nil {
 		in, out := &in.FreeformTags, &out.FreeformTags
-		*out = make(map[string]*string, len(*in))
+		*out = make(map[string]string, len(*in))
 		for key, val := range *in {
-			var outVal *string
-			if val == nil {
-				(*out)[key] = nil
-			} else {
-				inVal := (*in)[key]
-				in, out := &inVal, &outVal
-				*out = new(string)
-				**out = **in
-			}
-			(*out)[key] = outVal
+			(*out)[key] = val
 		}
 	}
 	in.IdcsAccessTokenSecretRef.DeepCopyInto(&out.IdcsAccessTokenSecretRef)
@@ -505,7 +451,7 @@ func (in *BlockchainPlatformParameters) DeepCopyInto(out *BlockchainPlatformPara
 	}
 	if in.TotalOcpuCapacity != nil {
 		in, out := &in.TotalOcpuCapacity, &out.TotalOcpuCapacity
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1533,17 +1479,17 @@ func (in *ReplicasInitParameters) DeepCopyInto(out *ReplicasInitParameters) {
 	*out = *in
 	if in.CACount != nil {
 		in, out := &in.CACount, &out.CACount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ConsoleCount != nil {
 		in, out := &in.ConsoleCount, &out.ConsoleCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ProxyCount != nil {
 		in, out := &in.ProxyCount, &out.ProxyCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1563,17 +1509,17 @@ func (in *ReplicasObservation) DeepCopyInto(out *ReplicasObservation) {
 	*out = *in
 	if in.CACount != nil {
 		in, out := &in.CACount, &out.CACount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ConsoleCount != nil {
 		in, out := &in.ConsoleCount, &out.ConsoleCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ProxyCount != nil {
 		in, out := &in.ProxyCount, &out.ProxyCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }
@@ -1593,17 +1539,17 @@ func (in *ReplicasParameters) DeepCopyInto(out *ReplicasParameters) {
 	*out = *in
 	if in.CACount != nil {
 		in, out := &in.CACount, &out.CACount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ConsoleCount != nil {
 		in, out := &in.ConsoleCount, &out.ConsoleCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 	if in.ProxyCount != nil {
 		in, out := &in.ProxyCount, &out.ProxyCount
-		*out = new(float64)
+		*out = new(int64)
 		**out = **in
 	}
 }

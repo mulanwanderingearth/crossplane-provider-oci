@@ -364,7 +364,6 @@ spec:
                       They serve the same purpose and functionality as fields in the
                       metadata object.
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: The unique OCID associated with the resource action.
                     type: string
@@ -374,7 +373,6 @@ spec:
                     description: fields in that these can be nested JSON objects (whereas
                       metadata fields are string/string maps only).
                     type: object
-                    x-kubernetes-map-type: granular
                   name:
                     description: The name assigned to the resource.
                     type: string

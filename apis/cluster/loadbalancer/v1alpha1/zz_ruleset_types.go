@@ -58,7 +58,7 @@ type IPMaxConnectionsInitParameters struct {
 	IPAddresses []*string `json:"ipAddresses,omitempty" tf:"ip_addresses,omitempty"`
 
 	// (Updatable) The maximum number of simultaneous connections that the specified IPs can make to the Listener. IPs without a maxConnections setting can make either defaultMaxConnections simultaneous connections to a listener or, if no defaultMaxConnections is specified, an unlimited number of simultaneous connections to a listener.
-	MaxConnections *float64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+	MaxConnections *int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
 }
 
 type IPMaxConnectionsObservation struct {
@@ -67,7 +67,7 @@ type IPMaxConnectionsObservation struct {
 	IPAddresses []*string `json:"ipAddresses,omitempty" tf:"ip_addresses,omitempty"`
 
 	// (Updatable) The maximum number of simultaneous connections that the specified IPs can make to the Listener. IPs without a maxConnections setting can make either defaultMaxConnections simultaneous connections to a listener or, if no defaultMaxConnections is specified, an unlimited number of simultaneous connections to a listener.
-	MaxConnections *float64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+	MaxConnections *int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
 }
 
 type IPMaxConnectionsParameters struct {
@@ -78,7 +78,7 @@ type IPMaxConnectionsParameters struct {
 
 	// (Updatable) The maximum number of simultaneous connections that the specified IPs can make to the Listener. IPs without a maxConnections setting can make either defaultMaxConnections simultaneous connections to a listener or, if no defaultMaxConnections is specified, an unlimited number of simultaneous connections to a listener.
 	// +kubebuilder:validation:Optional
-	MaxConnections *float64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
+	MaxConnections *int64 `json:"maxConnections,omitempty" tf:"max_connections,omitempty"`
 }
 
 type ItemsInitParameters struct {
@@ -97,13 +97,13 @@ type ItemsInitParameters struct {
 	Conditions []ConditionsInitParameters `json:"conditions,omitempty" tf:"conditions,omitempty"`
 
 	// (Applicable when action=IP_BASED_MAX_CONNECTIONS) (Updatable) The maximum number of connections that the any IP can make to a listener unless the IP is mentioned in maxConnections. If no defaultMaxConnections is specified the default is unlimited.
-	DefaultMaxConnections *float64 `json:"defaultMaxConnections,omitempty" tf:"default_max_connections,omitempty"`
+	DefaultMaxConnections *int64 `json:"defaultMaxConnections,omitempty" tf:"default_max_connections,omitempty"`
 
 	// (Applicable when action=ALLOW) (Updatable) A brief description of the access control rule. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Applicable when action=HTTP_HEADER) (Updatable) The maximum size of each buffer used for reading http client request header. This value indicates the maximum size allowed for each buffer. The allowed values for buffer size are 8, 16, 32 and 64.
-	HTTPLargeHeaderSizeInKb *float64 `json:"httpLargeHeaderSizeInKb,omitempty" tf:"http_large_header_size_in_kb,omitempty"`
+	HTTPLargeHeaderSizeInKb *int64 `json:"httpLargeHeaderSizeInKb,omitempty" tf:"http_large_header_size_in_kb,omitempty"`
 
 	// (Updatable) A header name that conforms to RFC 7230.  Example: example_header_name
 	Header *string `json:"header,omitempty" tf:"header,omitempty"`
@@ -118,10 +118,10 @@ type ItemsInitParameters struct {
 	RedirectURI []RedirectURIInitParameters `json:"redirectUri,omitempty" tf:"redirect_uri,omitempty"`
 
 	// (Applicable when action=REDIRECT) (Updatable) The HTTP status code to return when the incoming request is redirected.
-	ResponseCode *float64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
+	ResponseCode *int64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
 
 	// (Applicable when action=CONTROL_ACCESS_USING_HTTP_METHODS) (Updatable) The HTTP status code to return when the requested HTTP method is not in the list of allowed methods. The associated status line returned with the code is mapped from the standard HTTP specification. The default value is 405 (Method Not Allowed).  Example: 403
-	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
+	StatusCode *int64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 
 	// (Applicable when action=EXTEND_HTTP_REQUEST_HEADER_VALUE | EXTEND_HTTP_RESPONSE_HEADER_VALUE) (Updatable) A string to append to the header value. The resulting header value must still conform to RFC 7230. With the following exceptions:
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
@@ -146,13 +146,13 @@ type ItemsObservation struct {
 	Conditions []ConditionsObservation `json:"conditions,omitempty" tf:"conditions,omitempty"`
 
 	// (Applicable when action=IP_BASED_MAX_CONNECTIONS) (Updatable) The maximum number of connections that the any IP can make to a listener unless the IP is mentioned in maxConnections. If no defaultMaxConnections is specified the default is unlimited.
-	DefaultMaxConnections *float64 `json:"defaultMaxConnections,omitempty" tf:"default_max_connections,omitempty"`
+	DefaultMaxConnections *int64 `json:"defaultMaxConnections,omitempty" tf:"default_max_connections,omitempty"`
 
 	// (Applicable when action=ALLOW) (Updatable) A brief description of the access control rule. Avoid entering confidential information.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Applicable when action=HTTP_HEADER) (Updatable) The maximum size of each buffer used for reading http client request header. This value indicates the maximum size allowed for each buffer. The allowed values for buffer size are 8, 16, 32 and 64.
-	HTTPLargeHeaderSizeInKb *float64 `json:"httpLargeHeaderSizeInKb,omitempty" tf:"http_large_header_size_in_kb,omitempty"`
+	HTTPLargeHeaderSizeInKb *int64 `json:"httpLargeHeaderSizeInKb,omitempty" tf:"http_large_header_size_in_kb,omitempty"`
 
 	// (Updatable) A header name that conforms to RFC 7230.  Example: example_header_name
 	Header *string `json:"header,omitempty" tf:"header,omitempty"`
@@ -167,10 +167,10 @@ type ItemsObservation struct {
 	RedirectURI []RedirectURIObservation `json:"redirectUri,omitempty" tf:"redirect_uri,omitempty"`
 
 	// (Applicable when action=REDIRECT) (Updatable) The HTTP status code to return when the incoming request is redirected.
-	ResponseCode *float64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
+	ResponseCode *int64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
 
 	// (Applicable when action=CONTROL_ACCESS_USING_HTTP_METHODS) (Updatable) The HTTP status code to return when the requested HTTP method is not in the list of allowed methods. The associated status line returned with the code is mapped from the standard HTTP specification. The default value is 405 (Method Not Allowed).  Example: 403
-	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
+	StatusCode *int64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 
 	// (Applicable when action=EXTEND_HTTP_REQUEST_HEADER_VALUE | EXTEND_HTTP_RESPONSE_HEADER_VALUE) (Updatable) A string to append to the header value. The resulting header value must still conform to RFC 7230. With the following exceptions:
 	Suffix *string `json:"suffix,omitempty" tf:"suffix,omitempty"`
@@ -200,7 +200,7 @@ type ItemsParameters struct {
 
 	// (Applicable when action=IP_BASED_MAX_CONNECTIONS) (Updatable) The maximum number of connections that the any IP can make to a listener unless the IP is mentioned in maxConnections. If no defaultMaxConnections is specified the default is unlimited.
 	// +kubebuilder:validation:Optional
-	DefaultMaxConnections *float64 `json:"defaultMaxConnections,omitempty" tf:"default_max_connections,omitempty"`
+	DefaultMaxConnections *int64 `json:"defaultMaxConnections,omitempty" tf:"default_max_connections,omitempty"`
 
 	// (Applicable when action=ALLOW) (Updatable) A brief description of the access control rule. Avoid entering confidential information.
 	// +kubebuilder:validation:Optional
@@ -208,7 +208,7 @@ type ItemsParameters struct {
 
 	// (Applicable when action=HTTP_HEADER) (Updatable) The maximum size of each buffer used for reading http client request header. This value indicates the maximum size allowed for each buffer. The allowed values for buffer size are 8, 16, 32 and 64.
 	// +kubebuilder:validation:Optional
-	HTTPLargeHeaderSizeInKb *float64 `json:"httpLargeHeaderSizeInKb,omitempty" tf:"http_large_header_size_in_kb,omitempty"`
+	HTTPLargeHeaderSizeInKb *int64 `json:"httpLargeHeaderSizeInKb,omitempty" tf:"http_large_header_size_in_kb,omitempty"`
 
 	// (Updatable) A header name that conforms to RFC 7230.  Example: example_header_name
 	// +kubebuilder:validation:Optional
@@ -228,11 +228,11 @@ type ItemsParameters struct {
 
 	// (Applicable when action=REDIRECT) (Updatable) The HTTP status code to return when the incoming request is redirected.
 	// +kubebuilder:validation:Optional
-	ResponseCode *float64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
+	ResponseCode *int64 `json:"responseCode,omitempty" tf:"response_code,omitempty"`
 
 	// (Applicable when action=CONTROL_ACCESS_USING_HTTP_METHODS) (Updatable) The HTTP status code to return when the requested HTTP method is not in the list of allowed methods. The associated status line returned with the code is mapped from the standard HTTP specification. The default value is 405 (Method Not Allowed).  Example: 403
 	// +kubebuilder:validation:Optional
-	StatusCode *float64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
+	StatusCode *int64 `json:"statusCode,omitempty" tf:"status_code,omitempty"`
 
 	// (Applicable when action=EXTEND_HTTP_REQUEST_HEADER_VALUE | EXTEND_HTTP_RESPONSE_HEADER_VALUE) (Updatable) A string to append to the header value. The resulting header value must still conform to RFC 7230. With the following exceptions:
 	// +kubebuilder:validation:Optional
@@ -252,7 +252,7 @@ type RedirectURIInitParameters struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// (Applicable when action=REDIRECT) (Updatable) The communication port to use in the redirect URI.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Applicable when action=REDIRECT) (Updatable) The HTTP protocol to use in the redirect URI.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -270,7 +270,7 @@ type RedirectURIObservation struct {
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// (Applicable when action=REDIRECT) (Updatable) The communication port to use in the redirect URI.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Applicable when action=REDIRECT) (Updatable) The HTTP protocol to use in the redirect URI.
 	Protocol *string `json:"protocol,omitempty" tf:"protocol,omitempty"`
@@ -291,7 +291,7 @@ type RedirectURIParameters struct {
 
 	// (Applicable when action=REDIRECT) (Updatable) The communication port to use in the redirect URI.
 	// +kubebuilder:validation:Optional
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// (Applicable when action=REDIRECT) (Updatable) The HTTP protocol to use in the redirect URI.
 	// +kubebuilder:validation:Optional

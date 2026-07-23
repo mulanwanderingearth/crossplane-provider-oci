@@ -22,7 +22,7 @@ type AvailableCapabilitiesObservation struct {
 	Capability *string `json:"capability,omitempty" tf:"capability,omitempty"`
 
 	// Count of available capability in a specific On-premise vantage point.
-	OnPremiseVantagePointCount *float64 `json:"onPremiseVantagePointCount,omitempty" tf:"on_premise_vantage_point_count,omitempty"`
+	OnPremiseVantagePointCount *int64 `json:"onPremiseVantagePointCount,omitempty" tf:"on_premise_vantage_point_count,omitempty"`
 }
 
 type AvailableCapabilitiesParameters struct {
@@ -44,15 +44,13 @@ type OnPremiseVantagePointInitParameters struct {
 	ApmDomainIDSelector *v1.Selector `json:"apmDomainIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description about the On-premise vantage point.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique On-premise vantage point name that cannot be edited. The name should not contain any confidential information.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
@@ -67,8 +65,7 @@ type OnPremiseVantagePointObservation struct {
 	ApmDomainID *string `json:"apmDomainId,omitempty" tf:"apm_domain_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description about the On-premise vantage point.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -77,8 +74,7 @@ type OnPremiseVantagePointObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the On-premise vantage point.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -117,8 +113,7 @@ type OnPremiseVantagePointParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. Example: {"foo-namespace.bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) A short description about the On-premise vantage point.
 	// +kubebuilder:validation:Optional
@@ -126,8 +121,7 @@ type OnPremiseVantagePointParameters struct {
 
 	// (Updatable) Simple key-value pair that is applied without any predefined name, type or scope. Exists for cross-compatibility only. Example: {"bar-key": "value"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// Unique On-premise vantage point name that cannot be edited. The name should not contain any confidential information.
 	// +kubebuilder:validation:Optional
@@ -144,22 +138,22 @@ type WorkersSummaryInitParameters struct {
 type WorkersSummaryObservation struct {
 
 	// Number of available workers in a specific On-premise vantage point.
-	Available *float64 `json:"available,omitempty" tf:"available,omitempty"`
+	Available *int64 `json:"available,omitempty" tf:"available,omitempty"`
 
 	// List of available capabilities in a specific On-premise vantage point.
 	AvailableCapabilities []AvailableCapabilitiesObservation `json:"availableCapabilities,omitempty" tf:"available_capabilities,omitempty"`
 
 	// Number of disabled workers in a specific On-premise vantage point.
-	Disabled *float64 `json:"disabled,omitempty" tf:"disabled,omitempty"`
+	Disabled *int64 `json:"disabled,omitempty" tf:"disabled,omitempty"`
 
 	// Minimum version among the workers in a specific On-premise vantage point.
 	MinVersion *string `json:"minVersion,omitempty" tf:"min_version,omitempty"`
 
 	// Total number of workers in a specific On-premise vantage point.
-	Total *float64 `json:"total,omitempty" tf:"total,omitempty"`
+	Total *int64 `json:"total,omitempty" tf:"total,omitempty"`
 
 	// Number of occupied workers in a specific On-premise vantage point.
-	Used *float64 `json:"used,omitempty" tf:"used,omitempty"`
+	Used *int64 `json:"used,omitempty" tf:"used,omitempty"`
 }
 
 type WorkersSummaryParameters struct {

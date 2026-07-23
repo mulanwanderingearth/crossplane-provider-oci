@@ -59,6 +59,18 @@ type ApprovalWorkflowAssignmentApprovalWorkflowParameters struct {
 }
 
 type ApprovalWorkflowAssignmentIdcsCreatedByInitParameters struct {
+
+	// (Updatable) Display name of the approval workflow
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// Unique Oracle Cloud Infrastructure Identifier of the approval workflow
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// Indicates type of the entity that is associated with this assignment (for ARM validation)
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// Identifier of the approval workflow
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ApprovalWorkflowAssignmentIdcsCreatedByObservation struct {
@@ -80,9 +92,37 @@ type ApprovalWorkflowAssignmentIdcsCreatedByObservation struct {
 }
 
 type ApprovalWorkflowAssignmentIdcsCreatedByParameters struct {
+
+	// (Updatable) Display name of the approval workflow
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// Unique Oracle Cloud Infrastructure Identifier of the approval workflow
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// Indicates type of the entity that is associated with this assignment (for ARM validation)
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// Identifier of the approval workflow
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type ApprovalWorkflowAssignmentIdcsLastModifiedByInitParameters struct {
+
+	// (Updatable) Display name of the approval workflow
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// Unique Oracle Cloud Infrastructure Identifier of the approval workflow
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// Indicates type of the entity that is associated with this assignment (for ARM validation)
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// Identifier of the approval workflow
+	Value *string `json:"value,omitempty" tf:"value,omitempty"`
 }
 
 type ApprovalWorkflowAssignmentIdcsLastModifiedByObservation struct {
@@ -104,6 +144,22 @@ type ApprovalWorkflowAssignmentIdcsLastModifiedByObservation struct {
 }
 
 type ApprovalWorkflowAssignmentIdcsLastModifiedByParameters struct {
+
+	// (Updatable) Display name of the approval workflow
+	// +kubebuilder:validation:Optional
+	Display *string `json:"display,omitempty" tf:"display,omitempty"`
+
+	// Unique Oracle Cloud Infrastructure Identifier of the approval workflow
+	// +kubebuilder:validation:Optional
+	Ocid *string `json:"ocid,omitempty" tf:"ocid,omitempty"`
+
+	// Indicates type of the entity that is associated with this assignment (for ARM validation)
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+
+	// Identifier of the approval workflow
+	// +kubebuilder:validation:Optional
+	Value *string `json:"value" tf:"value,omitempty"`
 }
 
 type ApprovalWorkflowAssignmentInitParameters struct {
@@ -143,6 +199,21 @@ type ApprovalWorkflowAssignmentInitParameters struct {
 }
 
 type ApprovalWorkflowAssignmentMetaInitParameters struct {
+
+	// The DateTime the Resource was added to the Service Provider
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// Name of the resource type of the resource--for example, Users or Groups
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ApprovalWorkflowAssignmentMetaObservation struct {
@@ -164,6 +235,26 @@ type ApprovalWorkflowAssignmentMetaObservation struct {
 }
 
 type ApprovalWorkflowAssignmentMetaParameters struct {
+
+	// The DateTime the Resource was added to the Service Provider
+	// +kubebuilder:validation:Optional
+	Created *string `json:"created,omitempty" tf:"created,omitempty"`
+
+	// The most recent DateTime that the details of this Resource were updated at the Service Provider. If this Resource has never been modified since its initial creation, the value MUST be the same as the value of created. The attribute MUST be a DateTime.
+	// +kubebuilder:validation:Optional
+	LastModified *string `json:"lastModified,omitempty" tf:"last_modified,omitempty"`
+
+	// The URI of the Resource being returned. This value MUST be the same as the Location HTTP response header.
+	// +kubebuilder:validation:Optional
+	Location *string `json:"location,omitempty" tf:"location,omitempty"`
+
+	// Name of the resource type of the resource--for example, Users or Groups
+	// +kubebuilder:validation:Optional
+	ResourceType *string `json:"resourceType,omitempty" tf:"resource_type,omitempty"`
+
+	// The version of the Resource being returned. This value must be the same as the ETag HTTP response header.
+	// +kubebuilder:validation:Optional
+	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 }
 
 type ApprovalWorkflowAssignmentObservation struct {

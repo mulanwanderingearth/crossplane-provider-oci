@@ -160,7 +160,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the Digital Assistant
                       instance.
@@ -177,7 +176,6 @@ spec:
                       without any predefined name, type, or scope. Example: {"bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   identityDomain:
                     description: If isRoleBasedAccess is set to true, this property
                       specifies the identity domain that is to be used to implement
@@ -297,7 +295,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the Digital Assistant
                       instance.
@@ -314,7 +311,6 @@ spec:
                       without any predefined name, type, or scope. Example: {"bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   identityDomain:
                     description: If isRoleBasedAccess is set to true, this property
                       specifies the identity domain that is to be used to implement
@@ -459,7 +455,6 @@ spec:
                       predefined keys are scoped to namespaces. Example: {"foo-namespace.bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   description:
                     description: (Updatable) Description of the Digital Assistant
                       instance.
@@ -476,7 +471,6 @@ spec:
                       without any predefined name, type, or scope. Example: {"bar-key":
                       "value"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   id:
                     description: Unique immutable identifier that was assigned when
                       the instance was created.

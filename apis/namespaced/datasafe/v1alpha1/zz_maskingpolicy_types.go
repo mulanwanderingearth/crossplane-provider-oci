@@ -96,7 +96,7 @@ type ColumnSourceParameters struct {
 type MaskingPolicyInitParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Add Masking Columns From Sdm. Could be set to any integer value.
-	AddMaskingColumnsFromSdmTrigger *float64 `json:"addMaskingColumnsFromSdmTrigger,omitempty" tf:"add_masking_columns_from_sdm_trigger,omitempty"`
+	AddMaskingColumnsFromSdmTrigger *int64 `json:"addMaskingColumnsFromSdmTrigger,omitempty" tf:"add_masking_columns_from_sdm_trigger,omitempty"`
 
 	// (Updatable) Details to associate a column source with a masking policy.
 	ColumnSource []ColumnSourceInitParameters `json:"columnSource,omitempty" tf:"column_source,omitempty"`
@@ -114,8 +114,7 @@ type MaskingPolicyInitParameters struct {
 	CompartmentIDSelector *v1.NamespacedSelector `json:"compartmentIdSelector,omitempty" tf:"-"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the masking policy.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -124,11 +123,10 @@ type MaskingPolicyInitParameters struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Health Report. Could be set to any integer value.
-	GenerateHealthReportTrigger *float64 `json:"generateHealthReportTrigger,omitempty" tf:"generate_health_report_trigger,omitempty"`
+	GenerateHealthReportTrigger *int64 `json:"generateHealthReportTrigger,omitempty" tf:"generate_health_report_trigger,omitempty"`
 
 	// (Updatable) Indicates if the temporary tables created during a masking operation should be dropped after masking. It's enabled by default. Set this attribute to false to preserve the temporary tables. Masking creates temporary tables that map the original sensitive  data values to mask values. By default, these temporary tables are dropped after masking. But, in some cases, you may want  to preserve this information to track how masking changed your data. Note that doing so compromises security. These tables  must be dropped before the database is available for unprivileged users.
 	IsDropTempTablesEnabled *bool `json:"isDropTempTablesEnabled,omitempty" tf:"is_drop_temp_tables_enabled,omitempty"`
@@ -155,7 +153,7 @@ type MaskingPolicyInitParameters struct {
 type MaskingPolicyObservation struct {
 
 	// (Updatable) An optional property when incremented triggers Add Masking Columns From Sdm. Could be set to any integer value.
-	AddMaskingColumnsFromSdmTrigger *float64 `json:"addMaskingColumnsFromSdmTrigger,omitempty" tf:"add_masking_columns_from_sdm_trigger,omitempty"`
+	AddMaskingColumnsFromSdmTrigger *int64 `json:"addMaskingColumnsFromSdmTrigger,omitempty" tf:"add_masking_columns_from_sdm_trigger,omitempty"`
 
 	// Specifies whether target database credentials are required to perform masking with this policy
 	AreTargetCredentialsRequired *bool `json:"areTargetCredentialsRequired,omitempty" tf:"are_target_credentials_required,omitempty"`
@@ -167,8 +165,7 @@ type MaskingPolicyObservation struct {
 	CompartmentID *string `json:"compartmentId,omitempty" tf:"compartment_id,omitempty"`
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the masking policy.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -177,11 +174,10 @@ type MaskingPolicyObservation struct {
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Health Report. Could be set to any integer value.
-	GenerateHealthReportTrigger *float64 `json:"generateHealthReportTrigger,omitempty" tf:"generate_health_report_trigger,omitempty"`
+	GenerateHealthReportTrigger *int64 `json:"generateHealthReportTrigger,omitempty" tf:"generate_health_report_trigger,omitempty"`
 
 	// The OCID of the masking policy.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -221,7 +217,7 @@ type MaskingPolicyParameters struct {
 
 	// (Updatable) An optional property when incremented triggers Add Masking Columns From Sdm. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	AddMaskingColumnsFromSdmTrigger *float64 `json:"addMaskingColumnsFromSdmTrigger,omitempty" tf:"add_masking_columns_from_sdm_trigger,omitempty"`
+	AddMaskingColumnsFromSdmTrigger *int64 `json:"addMaskingColumnsFromSdmTrigger,omitempty" tf:"add_masking_columns_from_sdm_trigger,omitempty"`
 
 	// (Updatable) Details to associate a column source with a masking policy.
 	// +kubebuilder:validation:Optional
@@ -242,8 +238,7 @@ type MaskingPolicyParameters struct {
 
 	// (Updatable) Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags Example: {"Operations.CostCenter": "42"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// (Updatable) The description of the masking policy.
 	// +kubebuilder:validation:Optional
@@ -255,12 +250,11 @@ type MaskingPolicyParameters struct {
 
 	// (Updatable) Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags  Example: {"Department": "Finance"}
 	// +kubebuilder:validation:Optional
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// (Updatable) An optional property when incremented triggers Generate Health Report. Could be set to any integer value.
 	// +kubebuilder:validation:Optional
-	GenerateHealthReportTrigger *float64 `json:"generateHealthReportTrigger,omitempty" tf:"generate_health_report_trigger,omitempty"`
+	GenerateHealthReportTrigger *int64 `json:"generateHealthReportTrigger,omitempty" tf:"generate_health_report_trigger,omitempty"`
 
 	// (Updatable) Indicates if the temporary tables created during a masking operation should be dropped after masking. It's enabled by default. Set this attribute to false to preserve the temporary tables. Masking creates temporary tables that map the original sensitive  data values to mask values. By default, these temporary tables are dropped after masking. But, in some cases, you may want  to preserve this information to track how masking changed your data. Note that doing so compromises security. These tables  must be dropped before the database is available for unprivileged users.
 	// +kubebuilder:validation:Optional

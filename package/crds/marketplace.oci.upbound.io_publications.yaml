@@ -161,7 +161,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -170,7 +169,6 @@ spec:
                       predefined name, type, or namespace. For more information, see
                       Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAgreementAcknowledged:
                     description: Whether the publisher acknowledged that they have
                       the right and authority to share the contents of the publication
@@ -432,7 +430,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -441,7 +438,6 @@ spec:
                       predefined name, type, or namespace. For more information, see
                       Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   isAgreementAcknowledged:
                     description: Whether the publisher acknowledged that they have
                       the right and authority to share the contents of the publication
@@ -732,7 +728,6 @@ spec:
                       For more information, see Resource Tags. Example: {"Operations.CostCenter":
                       "42"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   freeformTags:
                     additionalProperties:
                       type: string
@@ -741,7 +736,6 @@ spec:
                       predefined name, type, or namespace. For more information, see
                       Resource Tags. Example: {"Department": "Finance"}'
                     type: object
-                    x-kubernetes-map-type: granular
                   icon:
                     description: The model for upload data for images and icons.
                     items:
@@ -872,7 +866,6 @@ spec:
                       more information, see Resource Tags. Example: {orcl-cloud: {free-tier-retain:
                       true}}'
                     type: object
-                    x-kubernetes-map-type: granular
                   timeCreated:
                     description: 'The date and time the publication was created, expressed
                       in RFC 3339 timestamp format.  Example: 2016-08-25T21:10:29.600Z'

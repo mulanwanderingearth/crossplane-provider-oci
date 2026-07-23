@@ -61,8 +61,7 @@ type ActionCreateZoneFromZoneFileObservation struct {
 	DNSSECState *string `json:"dnssecState,omitempty" tf:"dnssec_state,omitempty"`
 
 	// Defined tags for this resource. Each key is predefined and scoped to a namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	DefinedTags map[string]*string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
+	DefinedTags map[string]string `json:"definedTags,omitempty" tf:"defined_tags,omitempty"`
 
 	// External secondary servers for the zone. This field is currently not supported when zoneType is SECONDARY or scope is PRIVATE.
 	ExternalDownstreams []ExternalDownstreamsObservation `json:"externalDownstreams,omitempty" tf:"external_downstreams,omitempty"`
@@ -71,8 +70,7 @@ type ActionCreateZoneFromZoneFileObservation struct {
 	ExternalMasters []ExternalMastersObservation `json:"externalMasters,omitempty" tf:"external_masters,omitempty"`
 
 	// Free-form tags for this resource. Each tag is a simple key-value pair with no predefined name, type, or namespace. For more information, see Resource Tags.
-	// +mapType=granular
-	FreeformTags map[string]*string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
+	FreeformTags map[string]string `json:"freeformTags,omitempty" tf:"freeform_tags,omitempty"`
 
 	// The OCID of the zone.
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
@@ -185,7 +183,7 @@ type ExternalDownstreamsObservation struct {
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
 	// The server's port. Port value must be a value of 53, otherwise omit the port value.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The OCID of the TSIG key. A TSIG key is used to secure DNS messages (in this case, zone transfers) between two systems that both have the (shared) secret.
 	TsigKeyID *string `json:"tsigKeyId,omitempty" tf:"tsig_key_id,omitempty"`
@@ -203,7 +201,7 @@ type ExternalMastersObservation struct {
 	Address *string `json:"address,omitempty" tf:"address,omitempty"`
 
 	// The server's port. Port value must be a value of 53, otherwise omit the port value.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 
 	// The OCID of the TSIG key. A TSIG key is used to secure DNS messages (in this case, zone transfers) between two systems that both have the (shared) secret.
 	TsigKeyID *string `json:"tsigKeyId,omitempty" tf:"tsig_key_id,omitempty"`
@@ -220,9 +218,9 @@ type KskDNSSECKeyVersionsObservation struct {
 
 	DsData []DsDataObservation `json:"dsData,omitempty" tf:"ds_data,omitempty"`
 
-	KeyTag *float64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
+	KeyTag *int64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
 
-	LengthInBytes *float64 `json:"lengthInBytes,omitempty" tf:"length_in_bytes,omitempty"`
+	LengthInBytes *int64 `json:"lengthInBytes,omitempty" tf:"length_in_bytes,omitempty"`
 
 	// The OCID of the zone.
 	PredecessorDNSSECKeyVersionUUID *string `json:"predecessorDnssecKeyVersionUuid,omitempty" tf:"predecessor_dnssec_key_version_uuid,omitempty"`
@@ -279,7 +277,7 @@ type ZoneTransferServersObservation struct {
 	IsTransferSource *bool `json:"isTransferSource,omitempty" tf:"is_transfer_source,omitempty"`
 
 	// The server's port. Port value must be a value of 53, otherwise omit the port value.
-	Port *float64 `json:"port,omitempty" tf:"port,omitempty"`
+	Port *int64 `json:"port,omitempty" tf:"port,omitempty"`
 }
 
 type ZoneTransferServersParameters struct {
@@ -291,9 +289,9 @@ type ZskDNSSECKeyVersionsInitParameters struct {
 type ZskDNSSECKeyVersionsObservation struct {
 	Algorithm *string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
-	KeyTag *float64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
+	KeyTag *int64 `json:"keyTag,omitempty" tf:"key_tag,omitempty"`
 
-	LengthInBytes *float64 `json:"lengthInBytes,omitempty" tf:"length_in_bytes,omitempty"`
+	LengthInBytes *int64 `json:"lengthInBytes,omitempty" tf:"length_in_bytes,omitempty"`
 
 	// The OCID of the zone.
 	PredecessorDNSSECKeyVersionUUID *string `json:"predecessorDnssecKeyVersionUuid,omitempty" tf:"predecessor_dnssec_key_version_uuid,omitempty"`
